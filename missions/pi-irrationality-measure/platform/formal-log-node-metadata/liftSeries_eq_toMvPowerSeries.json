@@ -1,0 +1,40 @@
+{
+  "theorem_name": "OAI.PiExponent.FormalLogTruncation.liftSeries_eq_toMvPowerSeries",
+  "theorem_title": "Agreement of the lifted series with the first-coordinate embedding",
+  "natural_language_statement": "Let R be a commutative ring, let m be a natural number, and let f be a formal power series over R. The multivariate lift of f to power series in m + 1 variables is exactly the canonical embedding of f into coordinate 0. Equivalently, for every finitely supported exponent vector d : Fin (m + 1) →₀ ℕ, the coefficient of the lifted series at d is the coefficient of f at d(0) when d is zero on every other coordinate, and is zero otherwise. In Lean notation, this is `FormalLogJet.liftSeries m f = f.toMvPowerSeries (0 : Fin (m + 1))`.",
+  "tags": [
+    "formal-power-series",
+    "multivariate-power-series",
+    "coefficient-identities",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "explanation": "The map liftSeries is built by mapping a univariate series into multivariate series and reindexing its exponents into the distinguished first coordinate. This identity states its exact effect: all coefficients off that coordinate vanish, while coefficients on it agree with the original series. It supplies a direct rewrite for the later formal logarithmic-tail and jet arguments; no analytic convergence assumption is involved.",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L15-L43",
+    "source_command_witness": {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+      "source_graph_name": "OAI.PiExponent.FormalLogTruncation.liftSeries_eq_toMvPowerSeries",
+      "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+      "port_command_range": {
+        "start": 356,
+        "end": 1556
+      },
+      "original_command_range": {
+        "start": 342,
+        "end": 1525
+      },
+      "port_command_sha256": "bedb4297659810d15b1e726ac6cc46495af04a8eae8e2dc06c33f197a93b0e79",
+      "original_command_sha256": "40050b2422ea6888b61c0dad73765f65c4ef83ecd7b2fcb5ba82b3608eb7bee6",
+      "port_and_original_command_bytes_equal": false,
+      "port_kernel_type_actual_source_snapshot_verified": true,
+      "original_command_boundaries_from_full_file_equal_line_correspondence": true
+    },
+    "facts": "missions/pi-irrationality-measure/verification/sketch-FormalLogTruncation-20261007-223910.log",
+    "facts_sha256": "59bf6b39630930bc0137ae4d3ea482679f75e9ba60a0ec2cf9bb91e896461be6"
+  }
+}

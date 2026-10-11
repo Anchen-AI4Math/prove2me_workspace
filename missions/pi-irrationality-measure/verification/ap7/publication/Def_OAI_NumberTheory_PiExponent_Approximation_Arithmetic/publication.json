@@ -1,0 +1,104 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "9a9408f9f0eb79b3867ac1184ac874dd15f7ebb62eb5b83aa464a864d876bdf0",
+  "publish_intent": {
+    "at_utc": "2026-10-08T13:23:26.615111+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+      "definition_title": "Positive constant for least-common-multiple estimates",
+      "definition": "import Mathlib.Algebra.Polynomial.Eval.Subring\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.Zsqrtd.GaussianInt\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent.Arithmetic\r\n\r\nnoncomputable def lcmConstant : ℝ := Real.log 4 + 4\r\n\r\ntheorem lcmConstant_pos : 0 < lcmConstant := by\r\n  have h : 0 < Real.log (4 : ℝ) := Real.log_pos (by norm_num)\r\n  dsimp [lcmConstant]\r\n  linarith\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.Arithmetic\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "The real constant lcmConstant = log 4 + 4 is positive. The definition supplies an explicit positive coefficient for subsequent bounds on logarithms of least common multiples.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean#L13-L18",
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "9a9408f9f0eb79b3867ac1184ac874dd15f7ebb62eb5b83aa464a864d876bdf0",
+    "bundle_source_sha256": "f966344d0c55d6ce540e29ab8d7d4fc7748a3346820b5693e0db35d665cdbfc4",
+    "bundle_manifest_sha256": "b09e9229bbe3a70aed0ff84708291323d88525f5d41d36d927170c1f9ca9c1e4",
+    "validation_sha256": "dfc24aee948689befbe6f2802950e2f207bd42964ed0d1997d10de54a04d3e2e"
+  },
+  "updated_at_utc": "2026-10-09T13:24:26.408140+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "3e11cf71-aac6-4b1a-9f1f-389160f4ad75",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/3e11cf71-aac6-4b1a-9f1f-389160f4ad75 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "d4a13ab2bfab63a2ace8763c0bb89c8451d21f7a6cb146ac2a996683f6a2ff28"
+  },
+  "job_id": "3e11cf71-aac6-4b1a-9f1f-389160f4ad75",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "3e11cf71-aac6-4b1a-9f1f-389160f4ad75",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+      "theorem_title": "Positive constant for least-common-multiple estimates",
+      "formal_statement": "",
+      "natural_language_statement": "The real constant lcmConstant = log 4 + 4 is positive. The definition supplies an explicit positive coefficient for subsequent bounds on logarithms of least common multiples.",
+      "definitions": "import Mathlib.Algebra.Polynomial.Eval.Subring\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.Zsqrtd.GaussianInt\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent.Arithmetic\r\n\r\nnoncomputable def lcmConstant : ℝ := Real.log 4 + 4\r\n\r\ntheorem lcmConstant_pos : 0 < lcmConstant := by\r\n  have h : 0 < Real.log (4 : ℝ) := Real.log_pos (by norm_num)\r\n  dsimp [lcmConstant]\r\n  linarith\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.Arithmetic\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean#L13-L18",
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "6b1ef300-c311-4ddb-b85c-8d588035e79f",
+      "created_at": "2026-10-08T13:23:28.510282+00:00",
+      "updated_at": "2026-10-08T13:23:38.075253+00:00"
+    }
+  },
+  "definition_id": "6b1ef300-c311-4ddb-b85c-8d588035e79f",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "6b1ef300-c311-4ddb-b85c-8d588035e79f",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+      "theorem_title": "Positive constant for least-common-multiple estimates",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "The real constant lcmConstant = log 4 + 4 is positive. The definition supplies an explicit positive coefficient for subsequent bounds on logarithms of least common multiples.",
+      "created_at": "2026-10-08T13:23:37.155684+00:00",
+      "vote_count": 0,
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Algebra.Polynomial.Eval.Subring\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.Zsqrtd.GaussianInt\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent.Arithmetic\r\n\r\nnoncomputable def lcmConstant : ℝ := Real.log 4 + 4\r\n\r\ntheorem lcmConstant_pos : 0 < lcmConstant := by\r\n  have h : 0 < Real.log (4 : ℝ) := Real.log_pos (by norm_num)\r\n  dsimp [lcmConstant]\r\n  linarith\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.Arithmetic\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean#L13-L18",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "historical_publication": {
+    "path": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json",
+    "sha256": "f3635e4faf08ed5327e41007698a1f53ca50231979d4b4fad9595a671d750e31"
+  },
+  "read_only_continuation": {
+    "path": "verification/ap7/arithmetic-definition-known-job-readback.json",
+    "sha256": "04733c67fdd14059499a4c7dc6ec19a7ac81ee4fb96b529de039525beac56b30",
+    "POST_used": false
+  }
+}

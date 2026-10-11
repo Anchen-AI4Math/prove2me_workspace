@@ -1,0 +1,229 @@
+{
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+    "CoefficientMapFiniteSum": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native-HarmonicStability",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_HarmonicStability"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-HarmonicStability.log",
+      "log_sha256": "2b42acc1d342c3b904eb9ed2245b096bc1d00b780ec79b3ab96068187c8a8472"
+    },
+    {
+      "label": "build-native-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-CoefficientMap.log",
+      "log_sha256": "c8d2e6d673013ead9c4e20ebcadd82c29d425d95c45e78b5cee4fc99a5e30c5d"
+    },
+    {
+      "label": "build-native-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-CoefficientMapJet.log",
+      "log_sha256": "9ad1d423e81407d4b1630142658be0a381f7738b7b74bc732b0c895c70ba6126"
+    },
+    {
+      "label": "build-native-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-CoefficientMapInjectivity.log",
+      "log_sha256": "3e601ac75bdab39290fbb1b46beb2e0a9f5c725b30c09fcf674ebf6556a4bd8e"
+    },
+    {
+      "label": "build-native-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapPartialFractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-CoefficientMapPartialFractions.log",
+      "log_sha256": "92cd9676b3ded20af596c233d1622f8c1e912e91a7f974d3eed78360854d4812"
+    },
+    {
+      "label": "build-native-CoefficientMapFiniteSum",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapFiniteSum"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "build-native-CoefficientMapFiniteSum.log",
+      "log_sha256": "c538123ec18d75b9e49e27e8bf91ba4b1e6362f1444428ae37e842b2d9d54d89"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "5b8c98e377e7509669dc6a3b640885d5ad137bd10291caf61be114a2bde11b09"
+    },
+    {
+      "label": "stage2-CoefficientMap",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMap_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMap.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-CoefficientMapJet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapJet_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapJet.log",
+      "log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "label": "stage2-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapInjectivity_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapInjectivity.log",
+      "log_sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "label": "stage2-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapPartialFractions_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapPartialFractions.log",
+      "log_sha256": "ce926ada1f8f998d6e80876e2906cd9d40bd3c9fa17ff9ab8d058637e611249d"
+    },
+    {
+      "label": "stage2-CoefficientMapFiniteSum",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapFiniteSum_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapFiniteSum.log",
+      "log_sha256": "48f51f47d71fe234bda336dbc3c353bce75df9126c8987dfd2d0199f45ba15eb"
+    },
+    {
+      "label": "stage2-HarmonicStability",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_HarmonicStability_sketch.lean",
+        "Definitions/Def_ZetaNine_HarmonicStability.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-HarmonicStability.log",
+      "log_sha256": "be2346bf05ab06cb022f7d4ebda1b70d4245e05214524d3ea251416202d35d69"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapFiniteSum.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-finite-sum\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "a024a32d0e631e5b37bd752648d7deb2a08d6d0912e89f35fe49a8e606990957"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapConnection.connection_homogeneous_kernel_zero",
+      "theorem_title": "Original connection homogeneous kernel is zero for n>=1",
+      "formal_statement": "theorem ZetaNine.CoefficientMapConnection.connection_homogeneous_kernel_zero (n : ℕ) (hn : 1 ≤ n) (P q : ℚ[X])\n    (hqdeg : q.natDegree ≤ 9)\n    (heq : connectionD n * P.comp (connectionU n) + connectionH n q = 0) :\n    P = 0 ∧ q = 0:= by sorry",
+      "natural_language_statement": "For every n>=1, rational polynomials P,q with natDegree(q)<=9 satisfying the actual homogeneous identity D_n P(u_n)+H_n(q)=0 must both vanish. No P-degree bound or preassigned kernel conclusion is assumed. The tenfold root argument retains n>=1; the written signed n=0 system has a nonzero kernel.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapConnection\n\nset_option autoImplicit false\nnoncomputable section\nopen Polynomial ZetaNine.CoefficientMapConnection\n",
+      "source": "Actual original D/H connection system; frozen source SHA256 098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapConnection.connectionLinearMap_bijective",
+      "theorem_title": "The genuine fifteen-coordinate connection map is bijective",
+      "formal_statement": "theorem ZetaNine.CoefficientMapConnection.connectionLinearMap_bijective (n : ℕ) (hn : 1 ≤ n) :\n    Function.Bijective (connectionLinearMap n):= by sorry",
+      "natural_language_statement": "For every n>=1, the genuine rational linear map from the five P coefficients and ten q coefficients to the fifteen even t coefficients of D_n P(u_n)+H_n(q) is bijective. Reflection recovers the whole polynomial. These even t coordinates are triangularly equivalent to the paper u coordinates; identical matrix entries are not asserted.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapConnection\n\nset_option autoImplicit false\nnoncomputable section\nopen Polynomial ZetaNine.CoefficientMapConnection\n",
+      "source": "Actual original D/H connection system; frozen source SHA256 098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapConnection.connection_five_systems_unique",
+      "theorem_title": "The five original connection systems have unique bounded rational solutions",
+      "formal_statement": "theorem ZetaNine.CoefficientMapConnection.connection_five_systems_unique (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    ∃! pq : ℚ[X] × ℚ[X], pq.1.natDegree ≤ 4 ∧ pq.2.natDegree ≤ 9 ∧\n      connectionD n * pq.1.comp (connectionU n) + connectionH n pq.2 =\n        (connectionTarget n r.val).comp (connectionU n):= by sorry",
+      "natural_language_statement": "For every n>=1 and r=0,...,4, there exists exactly one rational polynomial pair P,q of natural degrees at most four and nine satisfying the full original polynomial identity with the genuine scaled three-factor Z_n(u)(u-n-1)^r target. Rational-function, HasSum and five-output parameter transport are separate results.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapConnection\n\nset_option autoImplicit false\nnoncomputable section\nopen Polynomial ZetaNine.CoefficientMapConnection\n",
+      "source": "Actual original D/H connection system; frozen source SHA256 098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "formalization"
+      ]
+    }
+  ]
+}

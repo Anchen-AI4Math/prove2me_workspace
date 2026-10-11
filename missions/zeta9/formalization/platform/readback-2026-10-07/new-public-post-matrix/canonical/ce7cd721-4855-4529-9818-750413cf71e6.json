@@ -1,0 +1,23 @@
+{
+  "theorem_id": "ce7cd721-4855-4529-9818-750413cf71e6",
+  "theorem_name": "ZetaNine.min_lt_weighted_average_lt_max",
+  "theorem_title": "Positive weights sandwich their weighted average",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem min_lt_weighted_average_lt_max\n    (w r : Fin 5 → ℝ) (hw : ∀ j : Fin 5, 0 < w j)\n    (hsum : ∑ j : Fin 5, w j = 1)\n    (hnd : ∃ j j' : Fin 5, r j ≠ r j') :\n    (∃ j : Fin 5, r j < ∑ i : Fin 5, w i * r i) ∧\n      (∃ j : Fin 5, (∑ i : Fin 5, w i * r i) < r j) := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## Positive weights sandwich their weighted average\n\nLet $w,r:\\{0,1,2,3,4\\}\\to\\mathbb{R}$ with $w_j>0$ for every $j$, $\\sum_j w_j=1$, and\nsuppose $r$ is not constant. Then the weighted average\n$S=\\sum_j w_j\\,r_j$ is strictly above one of the sampled values and strictly below\nanother:\n\n$$\\exists j,\\ r_j<S\n\\qquad\\text{and}\\qquad\n\\exists j,\\ S<r_j .$$\n\n**Why.** If every $r_j\\ge S$, then $S=\\sum_j w_jr_j\\ge\\sum_j w_j S=S$, and equality in\nthe intermediate step forces $r_j-S=0$ for every $j$ — because the summands\n$w_j(r_j-S)$ are nonnegative and add up to $0$ and each $w_j$ is nonzero. That makes\n$r$ constant, contradicting the hypothesis. The other inequality is the same argument\nwith the sign reversed. No compactness or ordering of the index set is used.\n\n**Scope.** This is the ordering heart of local node **FI**. In the construction the\nfive weights are the exact positive cubature weights of FQ and the two coordinate sums\nare normalised to $1$ and $\\zeta(9)$, so the true value is a weighted average of the\nfive sampled ratios and the lemma places it strictly between their minimum and their\nmaximum. The non-constancy hypothesis is where the rank-two non-degeneracy of the\ninverse image enters; if all sampled ratios coincided there would be no interval at\nall. The lemma says nothing about the *width* of the interval, about the exponent\n$-10.1109$ rate, or about the open question whether the moving shortest output avoids\nthe interval — that is target T5.",
+  "created_at": "2026-09-25T03:25:17.300562+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/research/five-point-ratio-window.md, strict five-sample ratio window, 2026-09-25",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

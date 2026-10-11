@@ -1,0 +1,57 @@
+{
+  "theorem_name": "OAI.PiExponent.tendsto_nat_add_one_div_pow",
+  "independently_closed_project_dependencies": [
+    "OAI.PiExponent.tendsto_nat_add_one_div_pow"
+  ],
+  "full_main_tree_complete": false,
+  "source_module": "OAI.NumberTheory.PiExponent.Analysis.DimensionLimits",
+  "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/DimensionLimits.lean",
+  "source_sha256": "25abcb10165890a64fce08bf1f36492cd4b4f5031dc206d1f1b841f1baa7d66f",
+  "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/DimensionLimits.lean",
+  "original_source_sha256": "57bd77d4eeaa3bcbf7d18a52124adc24e5339c87037bc90154c1cb5de177b9cf",
+  "source_graph": "missions/pi-irrationality-measure/verification/decl_graph.jsonl",
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "facts": "missions/pi-irrationality-measure/verification/sketch-DimensionLimits-20261007-223436.log",
+  "facts_sha256": "c431defdda2a5966dfcc5ea6b7fd5014b5253273866aab3a0ca929fc712762be",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DimensionLimits.lean#L9-L13",
+  "preamble": "import Mathlib.Analysis.SpecificLimits.Normed\n\nopen Filter Topology\n\n\n",
+  "formal_statement": "theorem OAI.PiExponent.tendsto_nat_add_one_div_pow {r : \u211d} (hr : 1 < r) :\r\n    Tendsto (fun n : \u2115 => ((n : \u211d) + 1) / r ^ n) atTop (\ud835\udcdd 0) := by sorry",
+  "solution_fragment": "theorem solution {r : \u211d} (hr : 1 < r) :\r\n    Tendsto (fun n : \u2115 => ((n : \u211d) + 1) / r ^ n) atTop (\ud835\udcdd 0) := by\r\n  have h\u2081 := tendsto_pow_const_div_const_pow_of_one_lt 1 hr\r\n  have h\u2080 := tendsto_pow_const_div_const_pow_of_one_lt 0 hr\r\n  simpa only [pow_one, pow_zero, \u2190 add_div, zero_add] using h\u2081.add h\u2080",
+  "statement_edits": [
+    {
+      "start": 123,
+      "end": 150,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 42
+    },
+    {
+      "start": 245,
+      "end": 453,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 123,
+      "end": 150,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    }
+  ],
+  "statement": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_tendsto_nat_add_one_div_pow/Thm_OAI_PiExponent_tendsto_nat_add_one_div_pow.lean",
+  "statement_sha256": "81b886df5f2b8a22cdc3a69c9b2e89c85026b151e8c890beeb18c2c61bedfd98",
+  "solution": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_tendsto_nat_add_one_div_pow/Sol_OAI_PiExponent_tendsto_nat_add_one_div_pow.lean",
+  "solution_sha256": "714ba98374a9745fd0557b98d974beb907ad192120fa8bfacc0f2932eac2d26b",
+  "snapshot_core_sha256": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+  "runtime_sha256": "7c50fd8ec1144847da49fb1e802f8acef679ae60502140dd18cec707129b3765",
+  "validated": true,
+  "pending": [],
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "64045c7b22c5c75bd1520e9f2b6febbd251457f5d27b112a4b9188599c87ad48",
+    "SnapshotGenerated.lean": "0b904739b75a70b3a7760a3b4664dc0c8ed889b791a204ff2e1f3c82ad6c5381"
+  },
+  "validation": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_tendsto_nat_add_one_div_pow/validation.json",
+  "validation_sha256": "86804e3bc4c61b8ef5870f350270f00d37b77457814ed94ae7863184087fe720"
+}

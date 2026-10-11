@@ -1,0 +1,131 @@
+{
+  "checked_at": "2026-10-07T11:07:43.831510+00:00",
+  "phase_SOURCE_sha256": "73287d44a99a3cc1f79a05bbae943c470ba66f139e1435a3af626e7ca8dc5630",
+  "frozen_PF_SOURCE_sha256": "dda7b66a1dcc8b07d4f059aa026fdbcaee600d0d59ebef587dd87ada124f8ecb",
+  "scope": "Pure wrapper safety fixtures, hypothetical legitimate prepared-cache state; fabricated PINs give no authorization.",
+  "checks": {
+    "normal_seven_and_resume": {
+      "fake_POSTs": [
+        {
+          "endpoint": "/submit-definition",
+          "operation": "definition_ZetaNine_AnalyticPhase",
+          "wire_sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+          "wire_sha256": "c804b8bb590266e6e5bf1f987f9d89006995a7b7a72c5371470d8016f4a7d3a3",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_global_lt_certified",
+          "wire_sha256": "07342d7e1cc16df4346e1407b24684d531266ff054aa620bba426ebc0f3b339f",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_global_upper_bound",
+          "wire_sha256": "98be6f50bc99249c7016d7462bd0005ea297bb7087c09bd3cf4a334920d7768b",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+          "wire_sha256": "18f45f94d76d90a7ea84422e557105b25a301391db1ac1736828fdfbb2cb7cc8",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_global_lt_certified",
+          "wire_sha256": "f5b4c01296267d8299cc0ef7a39c358e70ae4434afc379806ce07d258971c1ee",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_global_upper_bound",
+          "wire_sha256": "354ed6e0f5c3b2c6f3d0524efb670de9d4be4743cc3581c4fc14524e381e48f9",
+          "WAL_and_wire_first": true
+        }
+      ],
+      "resume_additional_fake_POSTs": 0,
+      "all_seven_receipt_hashes_and_wire_bindings": true
+    },
+    "invalid_receipt_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "duplicate_journal_blocks": {
+      "exception": "AssertionError",
+      "message": "Duplicate operation in journal"
+    },
+    "changed_saved_wire_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_PIN_blocks": {
+      "exception": "RuntimeError",
+      "message": "Complete unchanged phase preparation is required; no business POST"
+    },
+    "first_unknown": {
+      "exception": "RuntimeError",
+      "message": "FAKE outcome uncertain"
+    },
+    "unknown_same_operation_blocks": {
+      "exception": "RuntimeError",
+      "message": "Unresolved POST in this phase batch; reconcile documented remote history before ANY further business POST"
+    },
+    "unknown_other_operation_blocks": {
+      "exception": "RuntimeError",
+      "message": "Unresolved POST in this phase batch; reconcile documented remote history before ANY further business POST"
+    },
+    "unknown_fake_POST_count": 1,
+    "invalid_response_first": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "invalid_response_all_other_POSTs_block": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "invalid_response_fake_POST_count": 1,
+    "concurrent_second_writer_blocks": {
+      "exception": "RuntimeError",
+      "message": "Another phase batch writer is live; do not duplicate business POSTs"
+    },
+    "concurrent_same_operation_fake_POST_count": 1,
+    "cross_process_exclusive_lock": {
+      "held_parent_child": {
+        "lock_acquired": false,
+        "exception": "Another phase batch writer is live; do not duplicate business POSTs"
+      },
+      "released_parent_child": {
+        "lock_acquired": true
+      }
+    },
+    "changed_file_bytes_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_definition_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_problem_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "MIME_transfer_encoding": {
+      "rejected": false,
+      "literal_file_bytes_differ": true,
+      "expected_file_sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+      "literal_wire_file_sha256": "cac7bb0162fc2cb76f705c768257b5b24720c61c6419a1a199503a6210a8f4c8",
+      "fake_or_actual_POSTs_for_this_probe": 0
+    }
+  },
+  "Lean_calls": 0,
+  "network_calls": 0,
+  "credentials_reads": 0,
+  "mathematical_independent_PASS_not_claimed": true
+}

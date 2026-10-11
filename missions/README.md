@@ -13,6 +13,7 @@ python scripts/workspace.py build <slug>
 
 | 领域 | 任务与交接 | agent 入口 |
 | --- | --- | --- |
+| number-theory | [Pi irrationality measure: OpenAI exponent-two campaign entry](pi-irrationality-measure/status.md) | [pi-irrationality-measure](pi-irrationality-measure/AGENTS.md) |
 | magic-squares | [Magic Squares I: order-three enumeration](magic-squares/status.md) | [magic-squares](magic-squares/AGENTS.md) |
 | magic-squares | [Magic Squares II: semi-magic count](semi-magic/status.md) | [semi-magic](semi-magic/AGENTS.md) |
 | magic-squares | [Magic Squares III: normal order-three squares](normal3/status.md) | [normal3](normal3/AGENTS.md) |
@@ -32,5 +33,6 @@ python scripts/workspace.py build <slug>
 | logic | [Fast-growing hierarchies above epsilon-zero: feasibility](fgh-scout/FEASIBILITY-REPORT.md) | [fgh-scout](fgh-scout/AGENTS.md) |
 | combinatorics | [Binary strings with no adjacent ones](no-adjacent/status.md) | [no-adjacent](no-adjacent/AGENTS.md) |
 | approximation-algorithms | [Karmarkar-Karp II: geometric grouping](kk-bin-packing/status.md) | [kk-bin-packing](kk-bin-packing/AGENTS.md) |
+| combinatorics | [Snaky in 21 Maker moves](snaky-21/status.md) | [snaky-21](snaky-21/AGENTS.md) |
 
 平台状态以各任务的带日期证据为准。新增任务需登记 `index.json`、`scope.json`、`AGENTS.md` 与本目录导航，再运行 `python scripts/workspace.py check`。

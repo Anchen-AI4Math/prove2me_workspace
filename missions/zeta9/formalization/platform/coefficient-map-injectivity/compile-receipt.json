@@ -1,0 +1,376 @@
+{
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-native.log",
+      "log_sha256": "c6c501c080ee7ae198d1df0ac41c74b71a68f74e24bb1f7c0ce11a78c45efcf9"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "1b6cd29f9ff656ceca13e8851e1e94cad1c18cbdf0e97a9098389acc883318d1"
+    },
+    {
+      "label": "stage2-CoefficientMap",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMap_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMap.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-CoefficientMapJet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapJet_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapJet.log",
+      "log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "label": "stage2-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapInjectivity_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapInjectivity.log",
+      "log_sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "fa28891522f32058e7c4275f15ac1893365c06983b028b146919e08085bd16e9"
+    },
+    {
+      "label": "build-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMap.log",
+      "log_sha256": "fe35820c151fd70a96f4b4b240684331032a1fa33b165b9c11f0d23619db0689"
+    },
+    {
+      "label": "build-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapJet.log",
+      "log_sha256": "66d7adf1d3a6485f4aa6047d26df9704c2b5bb3df432a9fc7f991e4e4c78a5a1"
+    },
+    {
+      "label": "build-definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-definition.log",
+      "log_sha256": "801d6c9fba23afcb2fe69514ca05dfb3f0645b2ff1bd48d87222ae8793951c19"
+    },
+    {
+      "label": "build-0-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-0-solution.log",
+      "log_sha256": "9b032254551205117a57c9b5b3d0d071b1d23c5dc5450f0018f39872cb04611c"
+    },
+    {
+      "label": "build-0-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-0-reference.log",
+      "log_sha256": "5a1f7d2e6869df6e69b6d2aa179936da5e37650d14eefb44b2aa574e55558f99"
+    },
+    {
+      "label": "build-1-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-1-solution.log",
+      "log_sha256": "b8675524826720e1929ed73899b5e4fed655fa3cc79b2efaa169d93c9758dad3"
+    },
+    {
+      "label": "build-1-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-1-reference.log",
+      "log_sha256": "095e68e91746aa7536a105a70e6a06cad40c619c7166b9597778427935da9cf8"
+    },
+    {
+      "label": "build-2-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapInjectivity_quartic_is_proper"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-2-solution.log",
+      "log_sha256": "ffa965c576162dd721d6e0638176965cc64350a37eacd1387e961f93f3e7de3f"
+    },
+    {
+      "label": "build-2-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapInjectivity_quartic_is_proper"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "build-2-reference.log",
+      "log_sha256": "822363a00387d08b5d79ff57c906accf2a88f5e1e1d4fb7145a1c6f6fcac671e"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "b153b692023884b43445fddd13ab6e519aaeff7e5b70eab72f0652335a58dc3c"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "3aea8b53c81e6fdd542bb51a153cddecb2d9686f4e9c450baef32f9f9a61e011"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "2bdb2b282b18e6a5864e893977da5beaf17f203821a25f36c60b8ef7d67af005"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "d33118631daa9edad1034be321d07c12d014682f802358ddcc8eef4e18c5b58f"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "0ffa795ddf75c7ae48c1910cd95f6134b41ae04252dc9d201aab5632b46621be"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "095eec5720492d4d34717a95ec9d0d328bd742eccc168401601278075eb97b70"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "7260d1818d628055672cd4b4548897633218a3835826e111a5b55a4c3381038c"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "143732481eae360f2c22df9116fe5c4cb15c88993d892349cc963c25eddeca85"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "9d00ad3782d765795e075105097a87b86f414b194ec4f7a4fa2b824f6f9721ab"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "fd02e6ca16c4bf67fc318f9cb9dab83ede7af1111e4e2611ac9cde5291d2eee3"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-injectivity\\project",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "aa377760bfdc61848a8142833df4d9d68fd1a6430d384cac6838ec0f269a7e4a"
+    }
+  ],
+  "complete": true,
+  "native_and_staged_objects_borrowed": false
+}

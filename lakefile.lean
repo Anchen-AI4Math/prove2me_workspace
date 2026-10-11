@@ -109,10 +109,33 @@ lean_lib «Solutions» where
   roots := #[]
   globs := #[.submodules `Solutions]
 
+-- OpenAI family 017, isolated source port against this workspace's Mathlib pin.
+-- Built only through the pi-irrationality-measure mission scope.
+lean_lib «PiExponentSource» where
+  srcDir := "missions/pi-irrationality-measure/port/lean"
+  roots := #[`OAI.NumberTheory.PiExponent.Main]
+  globs := #[.submodules `OAI]
+
+lean_lib «PiExponentAudit» where
+  srcDir := "missions/pi-irrationality-measure/verification"
+  roots := #[`TargetAxioms]
+
 -- The root is a multi-mission workspace, not a single proof project.
+lean_lib «Snaky21Proofs» where
+  roots := #[]
+  globs := #[.submodules `Solutions.Snaky21]
+
 -- Select a mission with: python scripts/workspace.py build <slug>
 -- Keep the aggregate Solutions target available only for explicit full audits.
 @[default_target]
 lean_lib «Workspace» where
   roots := #[]
   globs := #[]
+
+lean_lib PiExponentStageProofs where
+  srcDir := "missions/pi-irrationality-measure/verification"
+  roots := #[
+    `independent.OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le.Sol_OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le,
+    `independent.OAI_PiExponent_tendsto_nat_add_one_div_pow.Sol_OAI_PiExponent_tendsto_nat_add_one_div_pow,
+    `«nodes-preview».OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.Sol_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le
+  ]

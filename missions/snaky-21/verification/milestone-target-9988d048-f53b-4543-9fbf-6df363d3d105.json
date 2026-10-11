@@ -1,0 +1,36 @@
+{
+  "theorem_id": "ba8a045d-4e6e-478a-8e05-4c1527165825",
+  "theorem_name": "OAI.SnakyConditional.snaky_winning_strategy_with_legal_states",
+  "theorem_title": null,
+  "status": "Open",
+  "formal_statement": "theorem snaky_winning_strategy_with_legal_states :\n    ∃ σ : Policy Cell,\n      (∀ r M B, σ r M B ∉ M ∧ σ r M B ∉ B) ∧\n      ∀ β : ℕ → Cell, LegalRepliesBeforeFinal σ 35 β ∅ ∅ →\n        HasSnaky (playState σ 35 β ∅ ∅ 35).1 ∧\n        (playState σ 35 β ∅ ∅ 35).1.card = 35 ∧\n        Disjoint (playState σ 35 β ∅ ∅ 35).1 (playState σ 35 β ∅ ∅ 34).2 ∧\n        ∀ k, k < 35 →\n          Disjoint (playState σ 35 β ∅ ∅ k).1 (playState σ 35 β ∅ ∅ k).2 ∧\n          (playState σ 35 β ∅ ∅ k).2.card = k := by\n  sorry\n\nend OAI.SnakyConditional\n",
+  "natural_language_statement": "The theorem states that there is a policy σ for a maker-breaker style game on the integer grid ℤ×ℤ, where a policy maps the number of remaining rounds, the maker's current finite set and the breaker's current finite set to a cell, such that σ always proposes a cell lying in neither set. Moreover, for every breaker reply sequence β from ℕ to cells that is legal before the final round, played for N=35 rounds from empty initial sets, several things hold. Here round k (counting from 0) has the maker add σ(35−k, M, B) to its set M and the breaker add β(k) to its set B, and legality means that for every k with k+1<35, β(k) is neither the maker's newly chosen cell, nor already in M, nor already in B. Under this assumption the maker's final set after 35 rounds contains a copy of the six-cell shape {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)} under one of the eight rotations and reflections of the square lattice, followed by a translation; the final maker set has exactly 35 cells; it is disjoint from the breaker's set after 34 rounds; and for every k<35 the maker and breaker sets after k rounds are disjoint and the breaker set has exactly k cells.",
+  "created_at": "2026-10-07T04:33:23.613985+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyConditional.lean; bytes 1454..2042\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\nimport Definitions.Def_SnakyConditional\n\nnamespace OAI.SnakyConditional\n\nopen OrdinaryStrategy\n\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyConditional.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "b7fe6994-aa75-46f2-a2a9-cbcee665391f",
+      "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "reviewer_username": "Community (Bot)",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-07T07:06:53.275973+00:00"
+    },
+    {
+      "audit_id": "abfa1890-e715-4417-b224-6769beb71fba",
+      "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "reviewer_username": "wurtle",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-07T07:06:53.515959+00:00"
+    }
+  ],
+  "readback": null
+}

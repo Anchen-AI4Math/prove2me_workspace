@@ -1,0 +1,57 @@
+{
+  "Lean_executed": false,
+  "actual_driver_adapted_source": {
+    "task_relative": "formalization/platform/coefficient-map-matrix/run_actual.py",
+    "bytes": 9860,
+    "sha256": "68deb273ebddde6f7ee04288fb2dbf34adafc28613684a2c83e098e15617515e"
+  },
+  "short_snapshot_helper_source": {
+    "task_relative": "formalization/platform/coefficient-map-matrix/retain_actual_inputs.py",
+    "bytes": 1444,
+    "sha256": "3ae676ffb420dfe031c7539f63a12c63d0ddfd882d7b383c4eea7450d574cf69"
+  },
+  "source_only_copy": true,
+  "no_compiler_objects_copied": true,
+  "exact_literal_adaptations": [
+    {
+      "before": "Future serial Matrix author oracles.",
+      "after": "Future serial GenericNumeratorPF author oracles."
+    },
+    {
+      "before": "role='Matrix platform author, independent review required'",
+      "after": "role='GenericNumeratorPF platform author, independent review required'"
+    },
+    {
+      "before": "MATRIX_RUN_",
+      "after": "NUMERATOR_PF_RUN_"
+    },
+    {
+      "before": "assert p.sha(TASK/row['task_relative']) == p.sha(ROOT/row['root_relative']) == row['sha256']",
+      "after": "source = TASK/row['task_relative'] if row['task_relative'] else ROOT/row['root_relative']\n        assert p.sha(source) == p.sha(ROOT/row['root_relative']) == row['sha256']"
+    },
+    {
+      "before": "missions/zeta9/formalization/CoefficientMapMatrix.lean",
+      "after": "missions/zeta9/formalization/CoefficientMapNumeratorPartialFractions.lean"
+    },
+    {
+      "before": "assert len(latest) == 44 and all(r['exit_code'] == 0 for r in latest.values())",
+      "after": "assert len(latest) == state['future_oracle_calls']['total'] and all(r['exit_code'] == 0 for r in latest.values())"
+    },
+    {
+      "before": "print('44 actual oracle/source/control calls completed; later staging and author freeze still pending.')",
+      "after": "print(str(len(latest))+' actual oracle/source/control calls completed; later staging and author freeze still pending.')"
+    }
+  ],
+  "outputs": [
+    {
+      "task_relative": "formalization/platform/coefficient-map-numerator-pf/execute_oracles.py",
+      "bytes": 9866,
+      "sha256": "83e6b82d51db2e04d5c416b400d3fe6f9dfe9f7b6f1baefe0511740451add2be"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-numerator-pf/retain_actual_inputs.py",
+      "bytes": 1444,
+      "sha256": "3ae676ffb420dfe031c7539f63a12c63d0ddfd882d7b383c4eea7450d574cf69"
+    }
+  ]
+}

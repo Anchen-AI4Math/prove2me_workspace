@@ -1,0 +1,23 @@
+{
+  "theorem_id": "77135f94-b700-497a-9598-1304d5238120",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.unbounded_packet_interpolation",
+  "theorem_title": "Unrestricted polynomial interpolation of finite logarithmic packets",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.unbounded_packet_interpolation\n    {nu : ℝ} (d : FixedData nu) (H : ℝ) :\n    ∀ y : Row d H → ℂ, ∃ P : MvPolynomial (Fin (d.m + 1)) ℂ,\n      ∀ ρ : Row d H,\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector ρ.2.val)\n          (FormalInterpolation.formalJet\n            (fun i => (ρ.1.val : ℂ) * MatrixArithmetic.rationalCenters\n              (finiteNumerators d) (finiteDenominators d) i) P) = y ρ := by sorry",
+  "natural_language_statement": "For a fixed admissible family and any real height, every prescribed finite packet of formal logarithmic jet coefficients at the centers $jr$ is realized by a polynomial, with no weighted degree restriction. The polynomial ring has $m+1$ variables and coefficients in $\\mathbb C$; the packet records precisely the coefficients indexed by the strict row simplex at that height.\n\nThis isolates the algebraic interpolation step: local finite jet interpolation combined with the Chinese remainder theorem at distinct centers. It makes no assertion about the eventual weighted degree budget. For nonpositive height the coefficient index set is empty.\n\n**Formalization note.** Adapted concrete coefficient formulation of `AffineJetPackets.formalJet_packets_surjective`. Rational weights and strict jet indices are represented by the fixed matrix row weights and indices; arbitrary height can be treated by finite local jet interpolation. No degree bound is added.",
+  "created_at": "2026-10-08T04:49:28.767121+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Jets/AffineJetPackets.lean, formalJet_packets_surjective; Jets/AlgebraicJetPackets.lean, formalJet_packet_surjective; Jets/AdmissibleJetPackets.lean, distinctness of curveCenters. Adapted to concrete row coefficient indices.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

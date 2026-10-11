@@ -1,0 +1,111 @@
+--- .rt\opfa1\c\Solutions\Sol_ZetaNine_CoefficientMapFormalTransportOutputs_constant.lean
++++ .rt\opfa1\c\Solutions\OutputsConstantV2.lean
+@@ -380,21 +380,21 @@
+   simp only [Polynomial.coeff_coe]
+   apply Finset.sum_nbij' (fun d : ℕ × ℕ => 9 - d.1) (fun l : ℕ => (9 - l, l - s))
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     rw [Finset.mem_Icc]
+     omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+-    rw [Finset.mem_antidiagonal]
++    rw [Finset.HasAntidiagonal.mem_antidiagonal]
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     apply Prod.ext <;> dsimp <;> omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     unfold localCoefficient
+     have hfirst : 9 - (9 - d.1) = d.1 := by omega
+     have hsecond : 9 - d.1 - s = d.2 := by omega
+@@ -3299,7 +3299,7 @@
+   simpa only [connectionP, connectionQ, connectionPair, dif_pos hn] using
+     (Classical.choose_spec (connection_five_systems_unique n hn r).exists)
+ 
+-/-- Rows are new monomial indices; columns are old P coefficient indices. -/
++/- Rows are new monomial indices; columns are old P coefficient indices. -/
+ end ZetaNine.CoefficientMapFormalTransportData
+ 
+ /- SOURCE module missions.zeta9.formalization.CoefficientMapFormalTransportBounds; full proof bodies preserved. -/
+--- .rt\opfa1\f\Solutions\Sol_ZetaNine_CoefficientMapFormalTransportOutputs_five.lean
++++ .rt\opfa1\f\Solutions\OutputsFiveV2.lean
+@@ -380,21 +380,21 @@
+   simp only [Polynomial.coeff_coe]
+   apply Finset.sum_nbij' (fun d : ℕ × ℕ => 9 - d.1) (fun l : ℕ => (9 - l, l - s))
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     rw [Finset.mem_Icc]
+     omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+-    rw [Finset.mem_antidiagonal]
++    rw [Finset.HasAntidiagonal.mem_antidiagonal]
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     apply Prod.ext <;> dsimp <;> omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     unfold localCoefficient
+     have hfirst : 9 - (9 - d.1) = d.1 := by omega
+     have hsecond : 9 - d.1 - s = d.2 := by omega
+@@ -3299,7 +3299,7 @@
+   simpa only [connectionP, connectionQ, connectionPair, dif_pos hn] using
+     (Classical.choose_spec (connection_five_systems_unique n hn r).exists)
+ 
+-/-- Rows are new monomial indices; columns are old P coefficient indices. -/
++/- Rows are new monomial indices; columns are old P coefficient indices. -/
+ end ZetaNine.CoefficientMapFormalTransportData
+ 
+ /- SOURCE module missions.zeta9.formalization.CoefficientMapFormalTransportBounds; full proof bodies preserved. -/
+--- .rt\opfa1\m\Solutions\Sol_ZetaNine_CoefficientMapFormalTransportOutputs_matrix.lean
++++ .rt\opfa1\m\Solutions\OutputsMatrixV2.lean
+@@ -380,21 +380,21 @@
+   simp only [Polynomial.coeff_coe]
+   apply Finset.sum_nbij' (fun d : ℕ × ℕ => 9 - d.1) (fun l : ℕ => (9 - l, l - s))
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     rw [Finset.mem_Icc]
+     omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+-    rw [Finset.mem_antidiagonal]
++    rw [Finset.HasAntidiagonal.mem_antidiagonal]
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     apply Prod.ext <;> dsimp <;> omega
+   · intro l hl
+     have hl' := Finset.mem_Icc.mp hl
+     omega
+   · intro d hd
+-    have hd' := Finset.mem_antidiagonal.mp hd
++    have hd' := Finset.HasAntidiagonal.mem_antidiagonal.mp hd
+     unfold localCoefficient
+     have hfirst : 9 - (9 - d.1) = d.1 := by omega
+     have hsecond : 9 - d.1 - s = d.2 := by omega
+@@ -3299,7 +3299,7 @@
+   simpa only [connectionP, connectionQ, connectionPair, dif_pos hn] using
+     (Classical.choose_spec (connection_five_systems_unique n hn r).exists)
+ 
+-/-- Rows are new monomial indices; columns are old P coefficient indices. -/
++/- Rows are new monomial indices; columns are old P coefficient indices. -/
+ end ZetaNine.CoefficientMapFormalTransportData
+ 
+ /- SOURCE module missions.zeta9.formalization.CoefficientMapFormalTransportBounds; full proof bodies preserved. -/

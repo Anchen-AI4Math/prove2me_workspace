@@ -1,0 +1,192 @@
+{
+  "root_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "207cc87c-ecbb-4be0-ab87-a1c3c0c0293f",
+      "theorem_name": "ZetaNine.irrational_of_two_small_integer_forms",
+      "theorem_title": "Two independent small integer forms imply irrationality",
+      "status": "Proved",
+      "formal_statement": "namespace ZetaNine\n\ntheorem irrational_of_two_small_integer_forms (x : ℝ)\n    (h : ∀ ε : ℝ, 0 < ε →\n      ∃ b₁ a₁ b₂ a₂ : ℤ,\n        b₁ * a₂ ≠ b₂ * a₁ ∧\n        |(b₁ : ℝ) + (a₁ : ℝ) * x| < ε ∧\n        |(b₂ : ℝ) + (a₂ : ℝ) * x| < ε) :\n    Irrational x := by sorry\n\nend ZetaNine",
+      "natural_language_statement": "Let x be real. If, for every positive tolerance, there are two integer coefficient pairs with nonzero determinant and both corresponding forms b+a x have absolute value below that tolerance, then x is irrational. This is the general mathematical criterion used at node P; it does not construct the pairs for ζ(9).",
+      "created_at": "2026-09-24T13:13:47.705398+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "Local ζ(9) research, round6/research/analytic.md §5 and roadmap/DAG.md §J to root; mathematical proof in notes, Lean statement only in this draft.",
+      "tags": [
+        "irrationality",
+        "linear-forms",
+        "number-theory"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+      "theorem_name": "ZetaNine.irrational_zeta_nine",
+      "theorem_title": "Irrationality of ζ(9)",
+      "status": "Open",
+      "formal_statement": "namespace ZetaNine\n\ntheorem irrational_zeta_nine :\n    Irrational ((riemannZeta (9 : ℂ)).re) := by sorry\n\nend ZetaNine",
+      "natural_language_statement": "The real part of the Riemann zeta function at the complex number 9 is irrational. At this positive integer it is the classical real value ζ(9)=∑_{k≥1}k^(−9). This is the open mission goal.",
+      "created_at": "2026-09-24T13:15:38.397538+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "Classical open single-value irrationality problem; see W. Zudilin, Arithmetic of linear forms involving odd zeta values, arXiv:math/0206176, and local ζ(9) roadmap/DAG.md §J to root.",
+      "tags": [
+        "irrationality",
+        "number-theory",
+        "zeta-values"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "60c1cf49-6b01-448c-b38a-88dc2fcb8ba0",
+      "theorem_name": "ZetaNine.exponentially_small_nonzero_forms_of_zeta_nine",
+      "theorem_title": "Exponentially small nonzero integer forms in 1 and zeta(9)",
+      "status": "Open",
+      "formal_statement": "namespace ZetaNine\n\ntheorem exponentially_small_nonzero_forms_of_zeta_nine :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ n : ℕ in Filter.atTop,\n        ∃ b a : ℤ,\n          (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re ≠ 0 ∧\n          |(b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) := by sorry\n\nend ZetaNine",
+      "natural_language_statement": "## Exponentially small nonzero integer forms in $1$ and $\\zeta(9)$\n\nThere is a real constant $c>0$ such that, for all sufficiently large natural numbers\n$n$, there are integers $b,a\\in\\mathbb{Z}$ with\n\n$$b+a\\,\\zeta(9)\\neq 0 \\qquad\\text{and}\\qquad \\bigl|b+a\\,\\zeta(9)\\bigr|<e^{-cn},$$\n\nwhere $\\zeta(9)$ denotes $\\operatorname{Re}\\zeta(9)=\\bigl(\\texttt{riemannZeta}\\,(9:\\mathbb{C})\\bigr).\\mathrm{re}$.\n\nEquivalently: the weighted lattice construction must produce a single integer linear\nform in $1$ and $\\zeta(9)$ that is **nonzero** and **exponentially small** along\ninfinitely many scales, with a fixed exponential rate.\n\n**Status: open.** This is the analytic obligation of the one-form route, and the\nchild that the goal's one-form reduction imports.\n\n**How the local notes are supposed to supply it.** The local DAG derives this\nobligation from two independent ingredients. The open target **J** (the exponential\nlattice margin $B_n+\\sigma_n\\le\\tau-\\varepsilon$ along infinitely many even $n$)\nsupplies, through the two-dimensional Gauss bound on the second minimum of the\ninverse-image lattice, a short integer output. The note-proved analytic decay\nestimate then bounds the value of the associated linear form by\n$e^{(-\\tau+o(1))n}$ times the weighted norm of that output, and the two exponential\nfactors combine into a fixed negative rate. The *nonvanishing* half is exactly the\npart that the mission's open one-sign targets supply: a nonzero quartic with one\nweak sign in its five Taylor coefficients at $u_0$ has a strictly nonzero complete\nkernel sum, and the note-proved theorem\n`ZetaNine.taylor_sign_implies_kernel_sum_pos` is the formalised core of that step.\nNeither ingredient is formalised as a concrete statement here, so the obligation is\npublished as an open problem.\n\n**Relation to the goal.** The statement is strictly stronger than irrationality of\n$\\zeta(9)$: with the proved criterion\n`ZetaNine.irrational_of_small_nonzero_integer_forms` it implies the goal. It is\n**not equivalent** to the goal, because a general irrational number need not admit\nexponentially good rational approximations with a fixed rate — such a statement\ndemands the specific construction. Note also that the nonvanishing hypothesis is not\nredundant: without it the zero form would satisfy the smallness condition for a\nrational value as well.",
+      "created_at": "2026-09-25T02:42:30.807762+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "Local zeta9 research note, roadmap/DAG.md section 'J to root' and 'Full lattice positive direction to root', 2026-09-25",
+      "tags": [
+        "irrationality",
+        "number-theory",
+        "zeta-values"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "691b1665-f122-47f7-a3e4-2c28a06055f2",
+      "theorem_name": "ZetaNine.exponentially_small_independent_forms_of_zeta_nine",
+      "theorem_title": "Exponentially small independent integer forms in 1 and zeta(9)",
+      "status": "Open",
+      "formal_statement": "namespace ZetaNine\n\ntheorem exponentially_small_independent_forms_of_zeta_nine :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ n : ℕ in Filter.atTop,\n        ∃ b₁ a₁ b₂ a₂ : ℤ,\n          b₁ * a₂ ≠ b₂ * a₁ ∧\n          |(b₁ : ℝ) + (a₁ : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) ∧\n          |(b₂ : ℝ) + (a₂ : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) := by sorry\n\nend ZetaNine",
+      "natural_language_statement": "## Exponentially small independent integer forms in $1$ and $\\zeta(9)$\n\nThere is a real constant $c>0$ such that, for all sufficiently large natural numbers\n$n$, there are integers $b_1,a_1,b_2,a_2\\in\\mathbb{Z}$ with\n\n$$b_1a_2\\neq b_2a_1,\\qquad\n\\bigl|b_1+a_1\\,\\zeta(9)\\bigr|<e^{-cn},\\qquad\n\\bigl|b_2+a_2\\,\\zeta(9)\\bigr|<e^{-cn},$$\n\nwhere $\\zeta(9)=\\bigl(\\texttt{riemannZeta}\\,(9:\\mathbb{C})\\bigr).\\mathrm{re}$ and\n$c>0$ is a fixed exponential rate.\n\n**Status: open.** This is the analytic obligation of the mission's main (two-form)\nroute and the child that the goal's two-form reduction imports.\n\n**How the local notes are supposed to supply it.** This is the two-form version of\nthe previous obligation. The open target **J** gives, by the two-dimensional Gauss\nbound for the second successive minimum of the inverse-image lattice, two integer\noutputs whose weighted norms are $\\le e^{(\\tau-\\varepsilon/2)n}$; because the\ninverse image $E_n$ is injective, the two outputs are independent and so the two\nlinear forms are non-proportional. The note-proved uniform analytic decay estimate\nthen makes both values exponentially small with the same rate. Neither the lattice\nstatement nor the decay estimate is formalised concretely here.\n\n**Relation to the goal.** With the proved criterion\n`ZetaNine.irrational_of_two_small_integer_forms` this obligation implies the goal.\nIt is the more demanding of the two published obligations because it requires two\nnon-proportional forms along the **same** sequence of scales, rather than one form\nwith a nonvanishing certificate.\n\n**Note on the missing nonvanishing clause.** Unlike the one-form obligation, this\nstatement does not require either form to be nonzero. That is intentional and\nsufficient: if both forms $b_i+a_i\\,\\zeta(9)$ vanished, then both coefficient vectors\n$(b_i,a_i)$ would lie in the span of $(-x,1)$ with $x=\\zeta(9)$ (a vanishing form\nwith $x=0$ has $b_i=0$ and the vector is again in that span), so\n$b_1a_2-b_2a_1=0$. Independence therefore already forces at least one form to be\nnonzero, which is precisely the hypothesis consumed by the two-form criterion;\nadding a nonvanishing clause would duplicate a consequence.",
+      "created_at": "2026-09-25T02:42:32.712136+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "Local zeta9 research note, roadmap/DAG.md section 'J to root' and roadmap/research/arithmetic.md two-dimensional Gauss bound, 2026-09-25",
+      "tags": [
+        "irrationality",
+        "number-theory",
+        "zeta-values"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "c1147ec6-b702-4ce3-86a6-04aaf358e544",
+      "theorem_name": "ZetaNine.irrational_of_small_nonzero_integer_forms",
+      "theorem_title": "One-form irrationality criterion",
+      "status": "Proved",
+      "formal_statement": "namespace ZetaNine\n\ntheorem irrational_of_small_nonzero_integer_forms (x : ℝ)\n    (h : ∀ ε : ℝ, 0 < ε →\n      ∃ b a : ℤ,\n        (b : ℝ) + (a : ℝ) * x ≠ 0 ∧\n        |(b : ℝ) + (a : ℝ) * x| < ε) :\n    Irrational x := by sorry\n\nend ZetaNine",
+      "natural_language_statement": "## One-form irrationality criterion\n\nLet $x \\in \\mathbb{R}$. Suppose that for **every** $\\varepsilon>0$ there are integers\n$b,a \\in \\mathbb{Z}$ such that the integer form $b+ax$ is **nonzero** and\n\n$$0<|b+ax|<\\varepsilon .$$\n\nThen $x$ is irrational.\n\n**Why.** Write a supposed rational value as $x=p/q$ with $q\\neq 0$. Applying the\nhypothesis with $\\varepsilon=1/|q|$ produces $(b,a)$ with\n\n$$0<|b+a\\,p/q|<1/|q| .$$\n\nMultiplying by $|q|$ gives $0<|bq+ap|<1$, but $bq+ap$ is an integer, and the only\ninteger of absolute value $<1$ is $0$. Hence $bq+ap=0$, that is $b+a\\,p/q=0$,\ncontradicting $b+a\\,p/q\\neq 0$. Therefore $x\\notin\\mathbb{Q}$.\n\n**Scope.** This is the *criterion* half of local node **TP** (\"positive one-form\nbridge\"): it converts a supply of small nonzero integer forms in $1$ and $x$ into\nirrationality of $x$, with no independence hypothesis and no reference to the\n$\\zeta(9)$ construction. On the actual construction the missing input is the sign\ncertificate that makes the form nonzero: the note-proved comparison is that a\nnonzero quartic with all five Taylor coefficients at $u_0$ of one weak sign has a\nstrictly nonzero complete weighted sum, so the corresponding integer form is\nnonzero. Neither the sign certificate for the concrete construction nor the\nexistence of the forms is claimed here. The theorem is stated for an arbitrary real\n$x$ and proved outright.",
+      "created_at": "2026-09-25T02:42:27.715979+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "Local zeta9 research note, roadmap/research/full-lattice-sign-next.md and roadmap/research/moving-short-sign-next.md, node TP, 2026-09-25",
+      "tags": [
+        "irrationality",
+        "number-theory",
+        "zeta-values"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-0da22fdd-858a-4f10-bc22-d779b7aefbf3",
+      "submission_id": "0da22fdd-858a-4f10-bc22-d779b7aefbf3",
+      "parent_theorem_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "# Reduction: the goal from the two-form route\n\nThis submission reduces the mission's goal,\n$\\zeta(9)\\notin\\mathbb Q$, to **two** children.\n\n1. `ZetaNine.irrational_of_two_small_integer_forms` (**Proved**): if a real $x$\n   admits two non-proportional integer forms in $1$ and $x$ of arbitrarily small\n   absolute value, then $x$ is irrational.\n2. `ZetaNine.exponentially_small_independent_forms_of_zeta_nine` (**Open**): there is\n   a fixed $c>0$ such that, for all sufficiently large $n$, there are integers\n   $b_1a_2\\neq b_2a_1$ with both $|b_i+a_i\\,\\zeta(9)|<e^{-cn}$.\n\n**Assembly.** Given $\\varepsilon>0$, choose a scale $n$ with $e^{-cn}<\\varepsilon$;\nthe open child provides two independent forms of absolute value below $e^{-cn}$ at\nthat scale, hence below $\\varepsilon$, and the two-form criterion gives\nirrationality of $\\zeta(9)$. The passage from the eventual statement to a single\nscale again uses $e^{-cn}=(e^{-c})^n$ with ratio $e^{-c}\\in(0,1)$.\n\n**Scope and honesty of this reduction.** This is the mission's main line, matching\nthe reduction $R\\leftarrow J,F,A,G,P$ recorded in the mission description: the child\npackages the four local ingredients — the open exponential margin J, the coefficient\nmap F, the analytic decay A and the Gauss lattice bound G — into the single\nobligation that two independent small forms exist with a fixed exponential rate. The\nchild is strictly stronger than the goal (it requires two non-proportional forms\nalong one sequence of scales) and is not an equivalent restatement of it. The\nmathematical work of the route lives entirely in the child; the formal content of\nthis submission is the quantitative extraction of a single scale from the asymptotic\nstatement together with the correct independence and smallness bookkeeping.\n",
+      "created_at": "2026-09-25T02:44:24.152809+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-42bd3e13-9b9b-45e5-bfc6-e6dcc275b634",
+      "submission_id": "42bd3e13-9b9b-45e5-bfc6-e6dcc275b634",
+      "parent_theorem_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "# Reduction: the goal from the one-form route\n\nThis submission reduces the mission's goal,\n$\\zeta(9)\\notin\\mathbb Q$, to **two** children.\n\n1. `ZetaNine.irrational_of_small_nonzero_integer_forms` (**Proved**): if a real $x$\n   admits nonzero integer forms $b+ax$ of arbitrarily small absolute value, then $x$\n   is irrational.\n2. `ZetaNine.exponentially_small_nonzero_forms_of_zeta_nine` (**Open**): there is a\n   fixed $c>0$ such that, for all sufficiently large $n$, some nonzero integer form\n   $b+a\\,\\zeta(9)$ satisfies $|b+a\\,\\zeta(9)|<e^{-cn}$.\n\n**Assembly.** Given $\\varepsilon>0$, the open child supplies a scale $n$ at which\n$e^{-cn}<\\varepsilon$ together with a nonzero form of absolute value below $e^{-cn}$;\nthat form is then below $\\varepsilon$, so the criterion applies and yields\nirrationality of $\\zeta(9)$. Passing from the eventual statement to a single scale\nuses $e^{-cn}=(e^{-c})^n$ with $e^{-c}<1$ and the convergence of a geometric\nsequence with ratio in $(0,1)$ to $0$.\n\n**Scope and honesty of this reduction.** The child is a strictly **stronger**\nstatement than the goal, not an equivalent restatement: it demands approximations of\na fixed exponential quality, which a general irrational number need not admit, and\nit carries the nonvanishing condition that the zero form would otherwise satisfy\ntrivially for rational values. The proof content of this reduction is the\nquantitative passage from an asymptotic scale to an arbitrary $\\varepsilon$; the\nmathematical work of the route lives entirely in the open child, which is the\nformalisation-free packaging of the local notes' combination of the open lattice\nmargin J, the Gauss bound, the uniform analytic decay, and the one-sign\nnonvanishing certificate. This is the one-form alternative route recorded in the\nmission description as $R\\leftarrow T,\\mathrm{TP},X,A,F$ and\n$R\\leftarrow T5,\\mathrm{FQ},X,A,F$.\n",
+      "created_at": "2026-09-25T02:44:23.238811+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "207cc87c-ecbb-4be0-ab87-a1c3c0c0293f",
+      "target": "sketch-0da22fdd-858a-4f10-bc22-d779b7aefbf3",
+      "kind": "sketch"
+    },
+    {
+      "source": "691b1665-f122-47f7-a3e4-2c28a06055f2",
+      "target": "sketch-0da22fdd-858a-4f10-bc22-d779b7aefbf3",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-0da22fdd-858a-4f10-bc22-d779b7aefbf3",
+      "target": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+      "kind": "sketch"
+    },
+    {
+      "source": "60c1cf49-6b01-448c-b38a-88dc2fcb8ba0",
+      "target": "sketch-42bd3e13-9b9b-45e5-bfc6-e6dcc275b634",
+      "kind": "sketch"
+    },
+    {
+      "source": "c1147ec6-b702-4ce3-86a6-04aaf358e544",
+      "target": "sketch-42bd3e13-9b9b-45e5-bfc6-e6dcc275b634",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-42bd3e13-9b9b-45e5-bfc6-e6dcc275b634",
+      "target": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+      "kind": "sketch"
+    }
+  ],
+  "has_hidden_deprecated_sketches": false
+}

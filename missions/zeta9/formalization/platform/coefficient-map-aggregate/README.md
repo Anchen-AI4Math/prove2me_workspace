@@ -1,0 +1,11 @@
+# Actual five rational aggregate offline author batch
+
+Three original endpoints: aggregate_add, polynomial_restore, aggregate_zero_all_rho. F=(B,rho3,rho5,rho7,rho9) is actual finite negative harmonic and weighted local coefficient data. No individual coefficient array, kernel triviality, inverse or irrationality claim. The all-nine-total endpoint keeps Even and actual StrongProperMultiplier.
+
+Fresh native eight-source plus unchanged HarmonicStability compilation, official Stage1/Stage2/header, exact original types, all20 original proofs and genuine parent helper closure. Seven staged root modules require eight fixed existing Definitions. Constructor proof fields are locally closed from10 real helpers at four actual reference spans. No new global lemma or boundary assumption in Definition.
+
+49 actual definition types compare across7contexts (343).46 ordinary values compare literally (322). Actual pretty values differ for coordinateLinearMap (7); aggregateLinearMap elides changed proof fields as dots (7), and the third composition keeps its pretty value (7). These pretty equalities are not treated as full expression equality. All staged contexts match the new Definition. Native comparison enables pp.proofs and also records unelided Expr repr. A native comparison namespace uses the exact same six generated definitions with genuine native dependencies. Six whole-function rfl equalities, six actual Meta.isDefEq value comparisons and three additional data equalities confirm kernel equality. No sample-only equality shortcut.
+
+54 exact native coordinate and boundary records recompile against staged Solution, including n0X4 actual F0/Wnonzero/rho1=1/proper/notStrong/divergent and genuine zero/nonmonic quartic roundtrips. Real additional HasSum helper proofs live in audit-only code. Public endpoints retain exact hypotheses. Original20 proofs remain in each Solution; local constructor proofs never replace them.
+
+All proof evidence has only standard axioms. References contain intentional sorryAx and are not proofs. Actual compiled objects, sources, logs and observed exits are hash-bound; only shared Mathlib package cache is reused. Previous1106 frozen author members remain unchanged. This is an author gate; independent platform review and root/platform actions remain separate.

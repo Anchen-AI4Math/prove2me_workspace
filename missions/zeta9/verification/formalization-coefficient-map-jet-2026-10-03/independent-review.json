@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "verdict": "PASS_ACTUAL_FORMAL_LOCAL_ALL_NINE_ORDERS_ONLY",
+  "review_role": "Independent mathematical and Lean reviewer; another agent authored and froze the source",
+  "checked_at": "2026-10-03T14:43:21.286208+00:00",
+  "sources_sha256": {
+    "CoefficientMap.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+  },
+  "source": "missions/zeta9/formalization/CoefficientMapJet.lean",
+  "written_source": "missions/zeta9/round5/research/arithmetic.md Eq(5), specialized p=9,q=1,m=n",
+  "written_source_sha256": "182db8764ab513f43cd6176688c6be940147766f10f15d30faa2ea1a4dd722be",
+  "author_scope_note_sha256": "c67ba58698bb056218e830cf24c422633a5a1ffb8290e4eb09897d6bbc125336",
+  "environment": {
+    "compiler": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "actual_mathlib_git_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "inspected_actual_inverse_module_sha256": "7baa5b49b7c25f738b9ec8f22bb9b6ef9e948a08db7ee64f5ebce19d7d2bdb37"
+  },
+  "checks": [
+    {
+      "check": "actual shifted products, not assumed coefficients",
+      "pass": true,
+      "detail": "shiftedVariable=X-C(j); shiftedNumerator is n!^7 times the actual two shifted n-factor products; shiftedClearedDenominator is the actual pole product with j erased. localCoefficient and weightedLocalCoefficient extract coeff(9-s) from their genuine series, with no coefficient array input or target identity premise."
+    },
+    {
+      "check": "point-value unweighted and weighted rational bridges",
+      "pass": true,
+      "detail": "Polynomial evaluations are proved equal to numerator(-j+z), clearedPoleProduct(-j+z), and actual clearedR/clearedWeightedR. These are algebraic rational quotients using the actual frozen base definitions, not a replacement binomial formula."
+    },
+    {
+      "check": "denominator unit from the actual nonzero constant",
+      "pass": true,
+      "detail": "The polynomial's formal constant coefficient equals the erased pole product at -j, proved nonzero by the frozen base lemma. Its ninth power has nonzero constant coefficient. Mathlib's PowerSeries inverse cancel lemmas require exactly this fact, which is proved rather than assumed."
+    },
+    {
+      "check": "formal quotient existence and uniqueness",
+      "pass": true,
+      "detail": "clearedSeries=N*(D^9)^-1 satisfies S*D^9=N, and multiplication by the actual inverse proves uniqueness. The independent audit proves the closed exists-unique statement without a coefficient/decomposition/invertibility hypothesis."
+    },
+    {
+      "check": "weighted formal quotient existence and uniqueness",
+      "pass": true,
+      "detail": "weightedClearedSeries is S times the actual composed polynomial W(localU). The source proves the weighted denominator identity. The independent audit additionally proves it equals (N*W(localU))*(D^9)^-1 and is the unique solution of the weighted identity, for every W in Q[X]."
+    },
+    {
+      "check": "bridge to the actual weighted rational function at regular points",
+      "pass": true,
+      "detail": "The independent audit composes the Jet weighted evaluation bridge with the frozen base clear_weighted_highest_pole theorem. For j<=n and all -j+z+k nonzero, actual weightedR(-j+z)*z^9 equals the displayed genuine shifted polynomial quotient."
+    },
+    {
+      "check": "all orders and correct index bounds",
+      "pass": true,
+      "detail": "For 1<=s<=9 the coefficient is exactly degree 9-s of the cleared series. Nat subtraction outside that domain is not interpreted as an extra pole order; valid actual pole interpretation also uses 0<=j<=n."
+    },
+    {
+      "check": "genuine coeff_mul convolution and bijective reindexing",
+      "pass": true,
+      "detail": "The source unfolds the actual weighted coefficient and applies PowerSeries.coeff_mul. On antidiagonal(a+b=9-s), l=9-a ranges over Icc s 9; the inverse map is (9-l,l-s). Lean checks both membership directions, both inverse equations and the matching summands, with bounds controlling every truncated subtraction."
+    },
+    {
+      "check": "unscaled local coordinate",
+      "pass": true,
+      "detail": "localU equals -j(n-j)+(n-2j)X+X^2 for j<=n, by the actual shifted product. No u/n^2 scaling, hidden denominator rescaling, or substitute local variable is used."
+    },
+    {
+      "check": "integer polynomial coefficients correctly cast into Q",
+      "pass": true,
+      "detail": "integerLocalU is in Z[X], maps exactly to localU under Int.castRingHom Q, and Polynomial.map_comp gives the coefficient identity. The full integer-W convolution multiplies actual rational localCoefficient values by the cast integer coefficients of W.comp(integerLocalU). The independent audit proves these multiplier coefficients have integer witnesses."
+    },
+    {
+      "check": "integer multiplier does not assert all local coefficients integral",
+      "pass": true,
+      "detail": "The rational coefficients of S remain in Q. No denominator-clearing theorem for lower local coefficients is proved here. For n=2,j=0,s=8,W=1 the actual local quotient recurrence gives -173/2, so interpreting integer_coefficient_convolution as coefficientwise integrality would be false."
+    },
+    {
+      "check": "highest coefficient compatibility and n=0 boundary",
+      "pass": true,
+      "detail": "localCoefficient_nine and weightedLocalCoefficient_nine equal the frozen actual cleared-pole values. The independent audit proves S_(0,0)=1, c_(0,0,9)=1 and all c_(0,0,s)=0 for 1<=s<9, without altering the original even n>=2 application."
+    },
+    {
+      "check": "arbitrary local W versus global growth constraints",
+      "pass": true,
+      "detail": "The local convolution is valid for arbitrary polynomial W, including the original integer quartic regime. It does not prove that unrestricted degree W satisfies the infinity degree bound required for a convergent infinite-sum/partial-fraction application."
+    },
+    {
+      "check": "formal series and analytic/Laurent trust boundary",
+      "pass": true,
+      "detail": "This is the unique formal local quotient in Q[[z]], determined by the actual polynomial numerator and unit denominator. Polynomial point-value bridges are not an evaluation/convergence theorem for an infinite formal series at nonzero z. No analytic Taylor convergence, Lean LaurentSeries/RatFunc embedding, full global partial fractions or coefficient-sum identities are established here."
+    },
+    {
+      "check": "actual type/definition coverage and no imported theorem stub",
+      "pass": true,
+      "detail": "All 28 actual Jet declarations, including nine definition values and nineteen proofs, are covered by the author's imported record, plus one closed statement in the original even n>=2, j<=n, integer-quartic, s=1..9 regime. The actual imports are only the frozen complete CoefficientMap and the needed Mathlib modules; no PNT, registration stub or other mission is imported."
+    },
+    {
+      "check": "independent compilation, axioms and exact regressions",
+      "pass": true,
+      "detail": "Exact byte copies at original module paths compile sequentially in a separate minimal project: base exit0, Jet exit0, ten independent closed review statements exit0. Ten original Jet endpoints and ten review statements use no axioms outside propext, Classical.choice, Quot.sound. Exact rational recurrence regressions check all nine orders in 2025 weighted cases and 675 regular bridges; finite data is not the universal proof."
+    }
+  ],
+  "source_defects": [],
+  "remaining_obligations": [
+    "Formal LaurentSeries/RatFunc embedding if needed as a separate formal interface; no analytic convergence follows from the current formal series equality.",
+    "Global partial-fraction identity for the actual weighted rational function, including any polynomial part when degree bounds are not imposed.",
+    "Reflection identities, all even total coefficient cancellations, and the order-one cancellation.",
+    "Lower coefficient denominator-clearing/valuation bounds and integrality of the complete linear-form normalization.",
+    "Exact convergent infinite-sum identity L(W), including harmonic constants and zeta coefficients.",
+    "Actual full five-dimensional coefficient map F, all-even invertibility and exact prescribed-output inverse images.",
+    "Infinite nonzero small integer linear forms and zeta(9) irrationality."
+  ],
+  "scope_flags": {
+    "actual_formal_local_jet": true,
+    "all_s_one_to_nine_convolution": true,
+    "integer_W_composition_coefficients": true,
+    "all_lower_coefficients_integer": false,
+    "analytic_series_convergence_proved": false,
+    "full_Laurent_interface_proved": false,
+    "global_partial_fractions_proved": false,
+    "full_F_completed": false,
+    "invertibility_completed": false,
+    "exact_infinite_L_completed": false,
+    "irrationality_proved": false
+  },
+  "independent_build_steps": [
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMap"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapJet"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "JetReviewAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "original_Jet_axiom_endpoints": 10,
+  "independent_closed_review_statements": 10,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": {},
+  "imported_type_records": 29,
+  "actual_source_definition_values": 9,
+  "actual_source_theorems": 19,
+  "finite_arithmetic": {
+    "status": "PASS",
+    "parameter_range": "0 <= n <= 8; 0 <= j <= n; 1 <= s <= 9",
+    "local_parameter_pairs": 45,
+    "all_order_weighted_coefficients": 2025,
+    "integer_multiplier_coefficients": 540,
+    "regular_weighted_bridges": 675,
+    "method": "Independent exact rational polynomial products and formal quotient recurrence; no float or proof-source coefficient arrays",
+    "finite_checks_are_not_the_universal_proof": true
+  },
+  "rational_lower_coefficient_example": {
+    "n": 2,
+    "j": 0,
+    "s": 8,
+    "integer_W": "1",
+    "local_coefficient": "-173/2",
+    "integer": false,
+    "method": "Exact rational quotient recurrence from the actual shifted products: 512*c1+6912*6=-2816",
+    "example_is_a_mathematical_arithmetic_check_not_an_extra_Lean_theorem": true
+  },
+  "evidence": {
+    "author_compile_receipt_sha256": "154d424b057232f3763654f29aaf6c7a3efcb9ae69dd8faa6a6c6f169c6f8b3c",
+    "author_type_report_sha256": "3dddbd8bf6939f1b7fe9334a4c9a3af3696135f62f3026937a457edbdbac2634",
+    "independent_compile_log": "independent-review/independent-compile.log",
+    "independent_compile_log_sha256": "f83f3de5faeb825206bb14ec0f31cd472f6b131de67a044e50ff7293b4ba9820",
+    "independent_compile_receipt_sha256": "534630a4900ad8814d4329e877ad35fd5fff9ed08ef727cc2b6db525d1d817a9",
+    "review_audit_source_sha256": "8401247db556f171475b94fef23ee71f84096f651f9b2fd9b2ddad48fcf38506",
+    "exact_arithmetic_sha256": "86e40fe4abdb707efbcee1df35518f6d72e0ee9c77af02e7263514b460be25c3"
+  },
+  "original_sources_unchanged": true,
+  "frozen_advanced_zip_unchanged_sha256": "87c7ea2680bda568e8e2b36b82f48dab6910ab9bf92e8b4486471c547792e31c",
+  "source_root_scope_frozen_package_edits": [],
+  "network_API_credential_operations": false,
+  "platform_acceptance_claimed": false
+}

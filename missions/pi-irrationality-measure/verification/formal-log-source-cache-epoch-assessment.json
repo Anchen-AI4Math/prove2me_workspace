@@ -1,0 +1,33 @@
+{
+  "Lean_started": false,
+  "artifact_kind": "formal-log-source34-cache-experiment-assessment",
+  "baseline_seconds": 208.88823789999878,
+  "benchmark": "verification/formal-log-source-cache-epoch-benchmark.json",
+  "benchmark_completed": true,
+  "benchmark_sha256": "a7c361c5383367b3f961b03579e64d492e66a2ee8f28f0bbdd4ac094e09c7a09",
+  "cached_seconds": 217.37951440000325,
+  "entire_view_and_frozen_certificate_bytes_equal": true,
+  "network_used": false,
+  "next_profiling_target": "Measure sourcegen.readonly_generator/full 875-module metadata-plan reconstruction, context.degree_provider/source-subset174 and repeated preflight input hashing; do not infer their runtime share from static call counts.",
+  "prototype_helper": "scripts/formal_log_source_cache_epoch.py",
+  "prototype_sha256": "4f06183bc6bb784c63b7db47ec1dbcc18b2c294515fad915e60bdb46224e38e3",
+  "publisher_switched": false,
+  "reason": "Source34 original full calls total only4.34s of208.89s; cache copying and additional guards cost enough that this trial was8.49s slower. Shared-machine timing is noisy, but the intended bottleneck is not dominant.",
+  "recommended_for_main_flow": false,
+  "remaining_resolution_boundary": {
+    "description": "Original record() recomputes current ordered OLean resolution. Entry typed inventory checks this, but prototype hit/exit SHA guards alone do not detect a newly introduced same-module OLean in an earlier search root when old pinned bytes remain unchanged. Do not activate this prototype without exact per-hit/exit module/path/search-root resolution checks and a shadow-file negative fixture.",
+    "file": "scripts/validate_namespace_context_providers.py",
+    "fixed_file_hashes_stable_in_actual_trial": true,
+    "lines": [
+      175,
+      176,
+      177,
+      178,
+      179,
+      180
+    ]
+  },
+  "saved_seconds": -8.49127650000446,
+  "schema_version": 1,
+  "six_full_replays_reduced_to_three": true
+}

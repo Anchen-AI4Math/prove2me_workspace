@@ -1,0 +1,43 @@
+{
+  "theorem_id": "a925cba9-6bcf-4296-940d-3886687da227",
+  "theorem_name": "FCP.Zeta.zudilin_five_seven_nine_eleven",
+  "theorem_title": "Zudilin: one of $\\zeta(5), \\zeta(7), \\zeta(9), \\zeta(11)$ is irrational",
+  "status": "Proved",
+  "formal_statement": "namespace FCP.Zeta\n\ntheorem zudilin_five_seven_nine_eleven :\n    ({5, 7, 9, 11} ∩ {a : ℕ | ∃ x : ℝ, Irrational x ∧ riemannZeta a = x}).Nonempty := by sorry\n\nend FCP.Zeta",
+  "natural_language_statement": "**Zudilin's theorem (2001).** At least one of $\\zeta(5)$, $\\zeta(7)$, $\\zeta(9)$, $\\zeta(11)$ is irrational. The proof refines the Ball--Rivoal hypergeometric construction; the theorem is the sharpest known localisation of irrationality among small odd zeta values, and it does not identify which value is irrational.",
+  "created_at": "2026-09-15T20:54:03.868852+00:00",
+  "vote_count": 0,
+  "tags": [
+    "analysis",
+    "number-theory"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Formal Conjectures library (Google DeepMind), Apache-2.0, https://github.com/google-deepmind/formal-conjectures (FormalConjectures/Wikipedia/RiemannZetaValues.lean); W. Zudilin, One of the numbers $\\zeta(5), \\zeta(7), \\zeta(9), \\zeta(11)$ is irrational, Russ. Math. Surv. 56 (2001), 774--776",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "882ae2df-6e81-4f59-a513-047cee69b90c",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": null,
+      "created_at": "2026-09-17T02:26:39.727873+00:00"
+    },
+    {
+      "audit_id": "42fc2366-b446-4bf7-87a7-0d4233a76b21",
+      "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+      "reviewer_username": "Lucas",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-09-17T02:26:42.800077+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "**Non-blind read-back.** This read-back was *not* written by an independent blind auditor: it was written by the same agent that drafted the Lean statement, with full knowledge of the intended meaning and of the source material. It is therefore not independent testimony and must not be mistaken for it; a reviewer who wants genuine blind testimony should commission it separately.\n\nConsider the set of natural numbers $\\{5, 7, 9, 11\\}$ and the set of natural numbers $a$ for which there exists an irrational real $x$ with $\\zeta(a) = x$. The claim is that the intersection of these two sets is nonempty: some $a \\in \\{5,7,9,11\\}$ has $\\zeta(a)$ real and irrational.\n\nNo claim is made about *which* $a$ works, and the statement would also be satisfied if several of them were irrational.",
+    "model": "Aristotle by Harmonic (non-blind: same agent that drafted the statements)",
+    "created_at": "2026-09-15T20:54:05.543117+00:00"
+  }
+}

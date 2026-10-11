@@ -1,0 +1,76 @@
+{
+  "checked_at_utc": "2026-10-09T07:31:58.452144+00:00",
+  "read_only": true,
+  "records": [
+    {
+      "http_status": 200,
+      "body": {
+        "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+        "theorem_name": "OAI.PiExponent.pi_eventual_lower_bound",
+        "theorem_title": "The eventual rational approximation lower bound for pi",
+        "status": "Open",
+        "formal_statement": "theorem OAI.PiExponent.pi_eventual_lower_bound : PiEventualLowerBound := by sorry",
+        "natural_language_statement": "For every real exponent $\\nu>2$, there exists a natural threshold $Q\\ge2$ such that every integer numerator $p$ and natural denominator $q\\ge Q$ satisfy\n$$q^{-\\nu}\\le |\\pi-p/q|.$$\nThe threshold is uniform over both numerator and denominator. This is the pi-specific eventual approximation bound. Together with the general approximation lemmas, it yields the integer-denominator formulation and the real-supremum characterization of irrationality exponent two.\n",
+        "created_at": "2026-10-07T07:21:51.736866+00:00",
+        "vote_count": 0,
+        "tags": [
+          "irrationality-measure",
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Main.lean#L8-L9",
+        "deprecated_at": null,
+        "deprecated_by": null,
+        "visibility": "public",
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "audits": [],
+        "readback": null
+      }
+    },
+    {
+      "http_status": 200,
+      "body": {
+        "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+        "theorem_name": "PiIrrationality.openai_bound_two",
+        "theorem_title": "The irrationality measure of π is at most 2",
+        "status": "Open",
+        "formal_statement": "theorem PiIrrationality.openai_bound_two : PiIrrationality.UpperBound (2 : ℝ) := by sorry",
+        "natural_language_statement": "The irrationality measure of $\\pi$ is at most $2$: for every real $\\varepsilon>0$, there is a natural threshold $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{2+\\varepsilon}<|\\pi-p/q|$. This uses the campaign's shared definition. Source: [OpenAI, PiExponent, family 017](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean). The exact source conjunction is included separately as OAI.PiExponent.main; this campaign goal records its upper-bound consequence.",
+        "created_at": "2026-10-07T06:01:15.267396+00:00",
+        "vote_count": 0,
+        "tags": [
+          "diophantine-approximation",
+          "irrationality",
+          "number-theory",
+          "pi"
+        ],
+        "preamble": "import Definitions.Def_PiIrrationality_UpperBound",
+        "source": "Campaign definition: https://teorth.github.io/optimizationproblems/constants/7a.html . Each entry must cite the source establishing its particular bound.",
+        "deprecated_at": null,
+        "deprecated_by": null,
+        "visibility": "public",
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "audits": [
+          {
+            "audit_id": "2f11784c-2b16-4b3f-baaa-fef4bbcca455",
+            "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+            "reviewer_username": "Community (Bot)",
+            "decision": "confirm",
+            "comment": null,
+            "created_at": "2026-10-07T06:19:11.74308+00:00"
+          },
+          {
+            "audit_id": "6c8c48f1-5469-4ab9-b7c3-8219e5b56a3b",
+            "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+            "reviewer_username": "marwahaha",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-07T06:19:53.222203+00:00"
+          }
+        ],
+        "readback": null
+      }
+    }
+  ]
+}

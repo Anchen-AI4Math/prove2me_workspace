@@ -1,0 +1,22 @@
+{
+  "id": "b7f38b78-0c12-457a-a021-c447f0016c5e",
+  "kind": "definition",
+  "theorem_name": "ZetaNine_CoefficientMapReflection",
+  "theorem_title": "Actual reflection variable, local coefficient totals and strong proper domain",
+  "formal_statement": "",
+  "natural_language_statement": "For $n\\ge0$ and $W\\in\\mathbb Q[X]$, let $c^W_{n,j,s}$ be the actual local coefficient of the genuine shifted numerator/unit denominator quotient from the Base/Jet/Injectivity/PF definition chain. Define the reflection variable $V_n(X)=-X-n$ and the finite coefficient total $\\rho_{n,s}(W)=\\sum_{j=0}^{n}c^W_{n,j,s}$. Define\n\n$$\\mathrm{StrongProper}(n,W)\\iff 2n+2\\operatorname{natdeg}W\\le9(n+1)-2.$$\n\nFinally define the genuine partial basis $B_{n,j,s}=(\\prod_{0\\le k\\le n,\\ k\\ne j}(X+k))^9(X+j)^{9-s}$. These are four actual objects/conditions, not a reflection, cancellation or invertibility conclusion encoded as an assumption. StrongProper is stricter than the strict proper-degree condition.",
+  "definitions": "import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\n\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMapReflection\n\nopen scoped BigOperators\nopen Finset Polynomial\nopen CoefficientMapInjectivity CoefficientMapPartialFractions\n\ndef reflectionVariable (n : ℕ) : ℚ[X] := -X - C (n : ℚ)\n\ndef rho (n s : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ j ∈ range (n + 1), CoefficientMapJet.weightedLocalCoefficient n j s W\n\ndef StrongProperMultiplier (n : ℕ) (W : ℚ[X]) : Prop :=\n  2 * n + 2 * W.natDegree ≤ 9 * (n + 1) - 2\n\ndef partialBasis (n j s : ℕ) : ℚ[X] :=\n  clearedPolePolynomial n j ^ 9 * (X + C (j : ℚ)) ^ (9 - s)\n\nend ZetaNine.CoefficientMapReflection\n",
+  "source": "Zeta(9) actual finite reflection and coefficient-total research: missions/zeta9/research/coefficient-map-reflection-2026-10-03.md. Frozen source missions/zeta9/formalization/CoefficientMapReflection.lean, SHA256 8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707. This uses the actual finite product numerator/denominator, genuine weighted formal local coefficients and proved finite partial-fraction identity.",
+  "tags": [
+    "number-theory",
+    "polynomials",
+    "formal-power-series",
+    "reflection"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "46306e7b-9adc-43aa-925d-1e9ee80c56a6",
+  "created_at": "2026-10-03T18:35:37.932766+00:00",
+  "updated_at": "2026-10-03T18:52:00.90566+00:00"
+}

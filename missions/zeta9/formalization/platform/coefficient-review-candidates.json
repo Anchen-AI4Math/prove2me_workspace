@@ -1,0 +1,100 @@
+{
+  "status": "review_candidates_only_not_submitted",
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "mission_id": "8195d8fe-059f-4515-92b4-57b585e2bac6",
+  "verified_source": "missions/zeta9/formalization/ShortZeroCoefficient.lean",
+  "compile_receipt": "missions/zeta9/verification/formalization-short-zero-coefficient-2026-10-02/compile-receipt.json",
+  "source_note": "The written note still retains its dated pre-formalization status. The new Lean proof formally closes the coefficient C3 claim, not the root irrationality or linear-form nonvanishing goal.",
+  "definitions": [
+    {
+      "definition_name": "ZetaNine_ShortZeroCoefficient",
+      "definition_title": "The actual finite short-zero coefficient",
+      "definition": "import Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Data.Finset.Range\nimport Mathlib.Data.Int.Basic\n\nset_option autoImplicit false\nopen scoped BigOperators\n\nnamespace ZetaNine.ShortZeroCoefficient\n\n/-- The exact natural weight used by the genuine finite coefficient sum. -/\ndef weightedCoeff (n m r b j : ℕ) : ℕ :=\n  n.choose j ^ r * ((j + m).choose m * (n - j + m).choose m) ^ b\n\n/-- The exact integer highest coefficient in the original short-zero construction. -/\ndef A (n m : ℕ) : ℤ :=\n  28 * ∑ j ∈ Finset.range (n + 1), (-1 : ℤ) ^ (m + j) *\n    (weightedCoeff n m 3 7 j : ℤ)\n\nend ZetaNine.ShortZeroCoefficient\n",
+      "natural_language_statement": "Define the exact natural binomial weight $w_{n,m,r,b}(j)=\\binom{n}{j}^{r}[\\binom{j+m}{m}\\binom{n-j+m}{m}]^{b}$ and the genuine integer short-zero coefficient $A_{n,m}=28\\sum_{j=0}^{n}(-1)^{m+j}w_{n,m,3,7}(j)$. These are definitions only; no sign, nonvanishing, gamma identity or analytic assumption is embedded.",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/short-zero-coefficient-nonvanishing.md, section 1 (the exact A_(n,m) definition and equation (1)), section 6 (equation (3) and the terminating Dixon factorial formula), section 7 (the coefficient nonvanishing conclusion).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false,
+      "local_path": "Definitions/Def_ZetaNine_ShortZeroCoefficient.lean"
+    }
+  ],
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.ShortZeroCoefficient.A_even_signed_lower",
+      "theorem_title": "All-parameter signed lower bound for the genuine short-zero coefficient",
+      "formal_statement": "theorem ZetaNine.ShortZeroCoefficient.A_even_signed_lower (d m : ℕ) :\n    (28 : ℤ) * ((2 * d).choose d : ℤ) * ((3 * d).choose d : ℤ) *\n        ((d + m).choose m : ℤ) ^ 14 ≤ (-1 : ℤ) ^ (m + d) * A (2 * d) m := by sorry",
+      "natural_language_statement": "For every pair of natural numbers $d,m$, the actual highest coefficient $A_{2d,m}$ of the original short-zero construction satisfies\n\n$$(-1)^{m+d}A_{2d,m}\\ge28\\binom{2d}{d}\\binom{3d}{d}\\binom{d+m}{m}^{14}>0.$$\n\nThe theorem covers all even degrees $n=2d$, including $n=0$, and every $m\\ge0$. In particular it applies to every even $n\\ge2$ in the original analytic parameter domain $14m\\le3n+1$. The product $\\binom{2d}{d}\\binom{3d}{d}$ is $(3d)!/(d!)^3$, so this is the fully explicit bound in section 6. No positivity, gamma expansion or nonvanishing assumption is imposed on the coefficient. This concerns the finite coefficient $A$, and does not assert nonvanishing or decay of $A\\zeta(9)+B$.",
+      "preamble": "import Definitions.Def_ZetaNine_ShortZeroCoefficient\nimport Mathlib.Algebra.Group.Even\nopen scoped BigOperators\nopen ZetaNine.ShortZeroCoefficient\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/short-zero-coefficient-nonvanishing.md, section 1 (the exact A_(n,m) definition and equation (1)), section 6 (equation (3) and the terminating Dixon factorial formula), section 7 (the coefficient nonvanishing conclusion).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_ShortZeroCoefficient_A_even_signed_lower.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_ShortZeroCoefficient_A_even_signed_lower.lean",
+      "definition_dependency": "ZetaNine_ShortZeroCoefficient",
+      "verified_local_theorem": "ZetaNine.ShortZeroCoefficient.A_even_signed_lower",
+      "explanation": "A direct third-order Euler-operator certificate proves the genuine Franel identity for the actual cubic binomial polynomial. Its kernel is uniquely determined by the constant coefficient; the explicit gamma expansion satisfies the same equation by a proved gamma-coefficient factorial recurrence and telescoping. In symmetric degree $2d$, its signed value at $-1$ is the positive top gamma coefficient $\\binom{2d}{d}\\binom{3d}{d}$. Each paired Euler operator maps a gamma basis element to two gamma basis elements with nonnegative coefficients and multiplies the signed endpoint by at least $(d+c)^2$. A complete block, including its exact factorial normalizer, therefore multiplies the signed endpoint by at least $\\binom{d+m}{m}^2$. The seven genuine weighting blocks give the fourteenth power. Finally the exact identity between the actual finite sum $A$ and the weighted polynomial value supplies the factor $28$ and sign $(-1)^{m+d}$. All these steps are unconditional Lean theorems; the Franel identity is proved rather than supplied as a hypothesis."
+    },
+    {
+      "theorem_name": "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even",
+      "theorem_title": "The genuine short-zero highest coefficient never vanishes at even degree",
+      "formal_statement": "theorem ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even (n m : ℕ) (hn : Even n) :\n    A n m ≠ 0 := by sorry",
+      "natural_language_statement": "For every even natural number $n$ and every natural number $m$, the exact finite coefficient\n\n$$A_{n,m}=28\\sum_{j=0}^{n}(-1)^{m+j}\\binom{n}{j}^{3}\\binom{j+m}{m}^{7}\\binom{n-j+m}{m}^{7}$$\n\nis nonzero. This includes degree zero and, in particular, closes the original C3 coefficient-nonvanishing claim for every even $n\\ge2$ with $14m\\le3n+1$. The only hypothesis is evenness of $n$; no real-root property, gamma expansion, positivity identity or coefficient lower bound is assumed. It does not assert $A_{n,m}\\zeta(9)+B_{n,m}\\ne0$.",
+      "preamble": "import Definitions.Def_ZetaNine_ShortZeroCoefficient\nimport Mathlib.Algebra.Group.Even\nopen scoped BigOperators\nopen ZetaNine.ShortZeroCoefficient\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/short-zero-coefficient-nonvanishing.md, section 1 (the exact A_(n,m) definition and equation (1)), section 6 (equation (3) and the terminating Dixon factorial formula), section 7 (the coefficient nonvanishing conclusion).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_ShortZeroCoefficient_A_ne_zero_of_even.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_ShortZeroCoefficient_A_ne_zero_of_even.lean",
+      "definition_dependency": "ZetaNine_ShortZeroCoefficient",
+      "verified_local_theorem": "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even",
+      "even_parameterization_theorem": "ZetaNine.ShortZeroCoefficient.A_even_ne_zero",
+      "explanation": "Write $n=2d$. The proved all-parameter signed lower bound is a product of $28$ and strictly positive binomial coefficients, so $(-1)^{m+d}A_{2d,m}>0$. A zero coefficient would make this signed value zero, a contradiction. The proof uses the genuine finite sum definition and the already verified unconditional Franel and paired-operator argument; it does not substitute an abstract positive candidate for the original coefficient."
+    }
+  ],
+  "solution_split_recommendation": {
+    "public_definition_contains_only": [
+      "ZetaNine.ShortZeroCoefficient.weightedCoeff",
+      "ZetaNine.ShortZeroCoefficient.A"
+    ],
+    "required_solution_import": "import Definitions.Def_ZetaNine_ShortZeroCoefficient",
+    "remove_from_solution_core": "Only the two exact def declarations weightedCoeff and A in namespace ZetaNine.ShortZeroCoefficient; retain the surrounding namespace and every proof. Do not redefine A in a Core namespace or replace it by the positive gamma candidate.",
+    "keep_in_full_solution_core": [
+      "The independently verified namespace ZetaNine.FranelGamma, including its operator kernel-uniqueness and genuine Franel identity proof.",
+      "All polynomial, gamma-cone, paired-operator and exact factorial-normalization definitions and lemmas in namespace ZetaNine.ShortZeroCoefficient.",
+      "The actual H-to-certificate bridge, unconditional A_even_signed_lower/A_even_signed_pos/A_even_ne_zero/A_even_abs_lower, Even-n wrappers and the fully proved Dixon identities."
+    ],
+    "definition_layer_excludes": [
+      "Franel/gamma proof objects",
+      "GammaCone positivity",
+      "real-root preservation axioms",
+      "complex or external theorem proofs",
+      "any positivity or nonvanishing assumption"
+    ],
+    "packaging_gate": "Build the split shared Definition and each full Solution with the actual pinned Lean environment, then rerun #print axioms for the final exact public theorem names. The standalone proof receipt is not a substitute for verifying the split platform bundle."
+  },
+  "verified_source_sha256": "9bf18387c4a51dd6dca03ecf197fc1cd85337fabf5b1d3421e2302e452347dbc",
+  "verification": {
+    "standalone_compile_exit": 0,
+    "axiom_audit_exit": 0,
+    "key_theorems_audited": 16,
+    "allowed_axioms_only": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "all_even_C3_complete": true,
+    "definition_compile_exit": 0,
+    "split_platform_bundle_must_still_be_built": true
+  }
+}

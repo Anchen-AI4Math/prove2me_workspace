@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "prepared_at_utc": "2026-10-07T09:25:33.581045+00:00",
+  "status": "PURE_SOURCE_PREPARATION_ONLY",
+  "actual_lean_calls": 0,
+  "actual_kernel_checks": 0,
+  "actual_api_calls": 0,
+  "credential_reads": 0,
+  "complete_theorem_bodies": 28,
+  "sources": [
+    {
+      "task_relative": "formalization/AnalyticFactorialBounds.lean",
+      "bytes": 4544,
+      "sha256": "524a4c235b01c8f076b95a0dc6b94e530240b7e3c0b4b46eee0b829a8a9e74f7",
+      "complete_theorem_bodies": [
+        "real_factorial_pos",
+        "log_factorial_succ",
+        "log_successor_increment_upper",
+        "log_successor_increment_lower",
+        "log_factorial_lower",
+        "log_factorial_upper",
+        "log_factorial_pred"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalFactorial.lean",
+      "bytes": 6600,
+      "sha256": "b0906498361ec158e647084f984ce3181a1faaea3d5026fd47cf8e1a9049d0f0",
+      "complete_theorem_bodies": [
+        "rational_factorial_ne_zero",
+        "ascending_product_factorial",
+        "actual_falling_product_factorial",
+        "actual_rising_product_factorial",
+        "actual_poleProduct_factorial",
+        "actualR_factorial",
+        "actualR_factorial_real",
+        "actualR_pos",
+        "actualR_real_pos",
+        "actualR_log_factorial"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalLogBound.lean",
+      "bytes": 6522,
+      "sha256": "a2620cd2f97d56f9b2e5f61ea3df1fc1a3bed8ceee1ce614fbc5a715e26ec723",
+      "complete_theorem_bodies": [
+        "scaled_phase_identity",
+        "actualR_log_le_phase",
+        "actualR_log_le_certified",
+        "actualR_le_certified",
+        "actualR_compact_bound"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalTail.lean",
+      "bytes": 5121,
+      "sha256": "058fed97101688709976db1c517fd9fe45700ab20a2e1963a47982cfb6cb58a8",
+      "complete_theorem_bodies": [
+        "actual_falling_product_le",
+        "actual_rising_product_tail_le",
+        "actual_poleProduct_ge",
+        "actualR_tail_bound_rational",
+        "actualR_tail_bound",
+        "actual_tail_weight_le"
+      ]
+    }
+  ],
+  "required_verified_native_phase_dependencies": [
+    {
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-2026-10-07/native-export/AnalyticPhase.lean",
+      "bytes": 6791,
+      "sha256": "2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd"
+    },
+    {
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-2026-10-07/native-export/AnalyticPhaseUpperBound.lean",
+      "bytes": 8563,
+      "sha256": "388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635"
+    }
+  ],
+  "actual_product_dependency": {
+    "task_relative": "formalization/CoefficientMap.lean",
+    "bytes": 11295,
+    "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+  },
+  "mathlib_signature_bindings": [
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "bytes": 28943,
+      "sha256": "42b6acb11772eb8ebf98216023d1a56558a05dd7d4b8e647604c5a5d47495ee5",
+      "observed_signatures": [
+        "theorem log_le_sub_one_of_pos",
+        "theorem log_mul",
+        "theorem log_div",
+        "theorem log_pow",
+        "theorem log_le_iff_le_exp"
+      ]
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Data/Nat/Factorial/Basic.lean",
+      "bytes": 22937,
+      "sha256": "01b8416d33e612a180b218160b7465bc199beb769b31b65f74e3be1f7e167351",
+      "observed_signatures": [
+        "theorem factorial_succ",
+        "theorem factorial_mul_ascFactorial'",
+        "theorem factorial_mul_descFactorial"
+      ]
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Data/Nat/Factorial/BigOperators.lean",
+      "bytes": 2495,
+      "sha256": "de593b88dffd5e943779d163d28abd3872ded8f3a740f651c263a0fc27150f13",
+      "observed_signatures": [
+        "theorem ascFactorial_eq_prod_range",
+        "theorem descFactorial_eq_prod_range"
+      ]
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+      "bytes": 16691,
+      "sha256": "b8895f88ed7e00e1da3c37f7334c9e7e83882f32e128c71298b8162e14f8743f",
+      "observed_signatures": [
+        "theorem prod_range_natCast_sub",
+        "lemma cast_prod"
+      ]
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Analysis/SumIntegralComparisons.lean",
+      "bytes": 17145,
+      "sha256": "f243f7a4f2eeb1ea334ac789e9b360571640b24565dbd77f245c4ee3f5b686cd",
+      "observed_signatures": [
+        "theorem AntitoneOn.tsum_comp_add_le_integral"
+      ]
+    }
+  ],
+  "exact_fraction_checks": {
+    "finite_product_factorial_equalities": 225,
+    "finite_zero_terms": 36,
+    "finite_actual_tail_pointwise_bounds": 240,
+    "finite_checks_are_not_universal_proofs": true,
+    "compact_constants_by_r": [
+      4,
+      24,
+      144,
+      864,
+      5184
+    ],
+    "tail_constants_by_r": [
+      "9/3584",
+      "27/1792",
+      "81/896",
+      "243/448",
+      "729/224"
+    ],
+    "tail_exponent_domain": [
+      {
+        "r": 0,
+        "s_minus_7n": 9,
+        "s_minus_one_minus_7n": 8
+      },
+      {
+        "r": 1,
+        "s_minus_7n": 7,
+        "s_minus_one_minus_7n": 6
+      },
+      {
+        "r": 2,
+        "s_minus_7n": 5,
+        "s_minus_one_minus_7n": 4
+      },
+      {
+        "r": 3,
+        "s_minus_7n": 3,
+        "s_minus_one_minus_7n": 2
+      },
+      {
+        "r": 4,
+        "s_minus_7n": 1,
+        "s_minus_one_minus_7n": 0
+      }
+    ],
+    "phase_exponent_c": "2641/250",
+    "tail_gamma_lower": "5579441/500000",
+    "tail_gamma_lower_minus_c": "297441/500000",
+    "exact_log_remainder_constant": 18,
+    "log_n_coefficient_cancellation": {
+      "n": 0,
+      "k": 0
+    },
+    "linear_term_cancellation": {
+      "n": 0,
+      "k": 0
+    }
+  },
+  "remaining_for_whole_Z9_A": [
+    "Compile these 28 complete SOURCE endpoints with own objects and actual full types.",
+    "Independent review of every actual source/type/value/axiom boundary.",
+    "Prove quantitative p-series tail with M=2n, s=7n+9-2r.",
+    "Prove real moment summation bound from compact and tail bounds.",
+    "Prove arbitrary changing-coefficient weighted triangle estimate and uniform o(1).",
+    "Publish accepted actual endpoints on the current public mission workflow."
+  ]
+}

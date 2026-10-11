@@ -1,6 +1,158 @@
 # Five-Primes Mission: Proof Implementation
 
-Last updated: 2026-09-25 (Asia/Shanghai).
+Last updated: 2026-09-27 (Asia/Shanghai).
+
+## 2026-09-27 (23:40): `mertens_tail_upper` PROVED — the missing input for the upper halves
+
+The upper halves of the Mawia reciprocal-sum bounds need `δ(x) = T(x) − T(∞)`
+bounded **above**; the lower halves need `δ ≥ 0`, which is the already-Proved
+`mertens_tail_le_partial_sum`. That asymmetry was recorded yesterday. The upper
+side is now a **Proved** node of its own, proved from scratch — no citation, no
+PNT, no numerics.
+
+| item | value |
+|---|---|
+| New node | `TaoFivePrimes.mertens_tail_upper` = **`b49e9015-9fd8-40d8-b077-94c8de97625d`** → **Proved** |
+| Statement | `x ≥ 2 ⟹ Σ_{p≤⌊x⌋}(log(1−1/p)+1/p) ≤ (∑'_p …) + 1/⌊x⌋` |
+| Submission | `1f96ff8c-9145-4be0-aec4-c638d3c9df81` → **ACCEPTED** (empty error) |
+| File | `Solutions/Sol_TaoFivePrimes_mertens_tail_upper.lean` (270 lines, sha256 `fd05282f…6cb455`); `lake env lean` exit 0; no `sorry`/`axiom`/`unsafe` |
+| Evidence | `verification/mertens-tail-upper-{target-before,submit-response.txt,verdict,node-after,publish-response,publish-job,node}.json` |
+| Explanation | `expl-mertens-tail-upper.md`; mission comment `209eb0d8-98ad-4475-b94d-daf31628927c` (text `comment-mertens-tail-upper.md`) |
+
+**The proof.** For `u = 1/p`, `1 − (1−u)⁻¹ ≤ log(1−u) ≤ (1−u) − 1`
+(`Real.one_sub_inv_le_log_of_pos`, `Real.log_le_sub_one_of_pos`) give
+`0 ≤ −(log(1−u)+u) ≤ u²/(1−u) = 1/(p(p−1))`; since `1/(p(p−1)) = 1/(p−1) − 1/p`
+telescopes, the tail over *all* integers above `N` is exactly `1/N`, and the
+prime-supported tail is dominated by it. The single lossy step (primes → all
+integers) is what produces the constant `1`. Infinite sums are handled by
+`Real.tsum_le_of_sum_range_le` (partial-sum characterisation, so no separate
+summability proof for the bound), `Summable.sum_add_tsum_nat_add` for the
+head/tail split, and `tsum_subtype` for `∑' p : Nat.Primes`.
+
+**Measured effect on `mawia_reciprocal_sum_upper_bound_small`** (scan of
+`⌊x⌋ ∈ [2, 10⁸]`, requiring `excess(x) + δ ≤ 4/log³x`, `tmp/upper_half_feasibility.py`):
+
+| form | Proved node | range | holds for |
+|---|---|---|---|
+| (3.29) | `rosser_schoenfeld_product_log_bound_mid` / `…_286_to_700` | `286 ≤ x ≤ 10⁸` | `⌊x⌋ ≤ 1978` |
+| (4.10) | `rosser_schoenfeld_product_bound_to_1e8` | `0 < x ≤ 10⁸` | `⌊x⌋ ≤ 7`, `⌊x⌋ ≥ 450` |
+
+→ **`286 ≤ x ≤ 10⁸` is now closable from Proved nodes alone** (the ranges
+overlap: `450 ≤ 1978`).
+
+**The residue `2 ≤ x < 286` is open, and not because of the constant.** With the
+sharp `1/(2N)` the scan gives (3.29) up to `2544` and (4.10) from `313` — same
+qualitative picture. What blocks it: (4.10) already fails at `x ≈ 12` and only
+recovers at `x ≈ 450`, and even the *true* `δ` does not rescue it (deficit
+`≈ 5·10⁻³` near `x = 40`); and (3.29) is **false** below 286 — at `x = 20` it
+would need `∏_{p≤19} p/(p−1) < 4.785` while the product is `5.848`. That is why
+Rosser–Schoenfeld state (3.29) only for `x ≥ 286`, and it is worth knowing
+before anyone proposes extending that node downwards. The residue needs its own
+small-range bound: a finite certification over the 61 primes `p ≤ 283`, in the
+style of the already-Proved `rosser_schoenfeld_product_bound_to_286`.
+
+**Deliberate slack.** The sharp constant is `1/(2N)`, from
+`|log(1−u)+u| ≤ u²/(2(1−u))`, i.e. `log x ≤ (x − 1/x)/2` for `x ≥ 1` after
+`x = (1−u)⁻¹` (derivative of the difference is `(x−1)²/(2x²) ≥ 0`). Its
+formalisation needs a monotonicity argument; this node states the
+derivative-free `1/N`, which already suffices above.
+
+**Note on the first submission.** It returned WA (`Unknown identifier
+solution`) because the file wrapped everything in `namespace TaoFivePrimes`;
+the platform expects a **root-level** `solution` (the same convention as
+`Sol_TaoFivePrimes_mawia_reciprocal_sum_lower_bound_small.lean`). Fixed and
+resubmitted; artefact kept as
+`verification/mertens-tail-upper-submit-attempt-1-WA.json`.
+
+**⚠️ Concurrent near-duplicate.** At 23:37 an untracked file
+`Solutions/Sol_TaoFivePrimes_mertens_tail_upper_bound.lean` appeared in this
+workspace (not written by this session). It proves the *same* theorem under the
+name `mertens_tail_upper_bound`, with `hx : 1 ≤ x` instead of `2 ≤ x`, and uses
+`Real.abs_log_sub_add_sum_range_le` where this file uses the two first-order log
+inequalities. Nothing of that name exists on the platform yet. If it gets
+published, the platform will carry two nodes for the same fact; whoever comes
+next should pick one (the `x ≥ 1` form is slightly stronger and probably the one
+to keep) and deprecate the other. Left untouched.
+
+**Tooling incident resolved.** `credentials.json` had lost its `api_key` (only
+`access_token` survived), so `/agent/refresh` was dead. The key was recovered
+from the local WorkBuddy edit-backup of the same file
+(`~/.workbuddy/workspace/sessions/*/modify_backup/*.credentials.json`) and
+written back; token refresh works again.
+
+## 2026-09-27 (22:35): the Mawia LOWER half, small range, reduced to R–S (1962) + the proved tail
+
+The 2026-09-25 Mawia node was split again, on 2026-09-25T12:40Z, by agent
+`b28ce847`: `mawia_reciprocal_sum_bound` → `{_small, _large}` → four grandchildren
+`mawia_reciprocal_sum_{upper,lower}_bound_{small,large}`, all Open with no
+decomposition. One of the four is now reduced:
+
+| item | value |
+|---|---|
+| Target | `TaoFivePrimes.mawia_reciprocal_sum_lower_bound_small` = `5cb6180b-3a9f-47fa-ae12-241767b2ba05` (stays Open) |
+| Submission | `81e02074-f436-4b7e-9b17-7eeb4cf35ed5` → **SKETCH_ACCEPTED** (empty error) |
+| New child | `TaoFivePrimes.rosser_schoenfeld_product_bound_lower` = **`537dc0ba-c00a-474d-ba93-8e76a6ea85f0`** (publish job `459b1fb1`, PUBLISHED) |
+| Second child | `mertens_tail_le_partial_sum` `c10a0cd0` — **Proved** |
+| File | `Solutions/Sol_TaoFivePrimes_mawia_reciprocal_sum_lower_bound_small.lean` (116 lines, sha256 `64e60d0b…1dcfe1`); `lake env lean` exit 0, no `sorry`/`axiom`/`unsafe` |
+| Evidence | `verification/mawia-lower-small-{target-before,submit-response.txt,verdict,node-after,decomps-after}.json`, `verification/rs-product-lower-{publish-response,publish-job,node}.json` |
+| Explanation | `expl-mawia-lower-small.md`; mission comment `503c1557-f09d-4034-b2e3-e48d3a780a1d` (text `comment-mawia-lower-small.md`) |
+
+**The whole content is one identity plus two quotations.** With
+`P(x)=∏_{p≤⌊x⌋}p/(p-1)`, `T(x)=Σ_{p≤⌊x⌋}(log(1−1/p)+1/p)` and
+`T(∞)=Σ'_p(log(1−1/p)+1/p)`, the term identity `p/(p−1)=(1−1/p)⁻¹` plus
+`Real.log_prod` gives **exactly** `Σ_{p≤x}1/p = log P(x) + T(x)`. The new child
+gives `γ + loglog x < log P(x)` (via `Real.log_lt_log`, `log x > 0` since `x ≥ 2`);
+`mertens_tail_le_partial_sum` gives `T(∞) ≤ T(x)`. Add, then subtract the
+nonnegative `4/log³x`. No numeric value of the Meissel–Mertens constant is used,
+and no series tail is estimated.
+
+**Why the lower half is free and the upper half is not** (the useful finding):
+both halves need the same identity, but *opposite* information about
+`δ(x) = T(x) − T(∞) ≥ 0`. The lower half needs `δ ≥ 0`, which is literally
+`mertens_tail_le_partial_sum`. The upper half needs `δ(x) ≤ 1/(2⌊x⌋)`, which is
+**not** on the platform: it follows from `|log(1−u)+u| ≤ u²/(2(1−u))` at `u = 1/p`
+and the telescoping `Σ_{n>N} 1/(n(n−1)) = 1/N`, and must be proved from scratch.
+Recorded so nobody assumes the same trick closes both.
+
+**Scope of the new citation — read the range.** `rosser_schoenfeld_product_bound_lower`
+is `e^γ log x < ∏_{p≤⌊x⌋} p/(p-1)` for `2 ≤ x ≤ 10^8`: the lower half of the same
+R&S (1962) computation whose upper half is `rosser_schoenfeld_product_bound_to_1e8`
+(that node's own text names it as "the companion lower bound"). Quotations:
+Lamzouri, arXiv:1410.3777, eq. (1.1); zbMATH Zbl 1214.11102 (Diamond–Pintz review).
+Two caveats, both on the node card:
+(i) **the range is essential** — Diamond–Pintz (2009) proved
+`√x(P(x) − e^γ log x)` is unbounded above and below, so the inequality *fails* for
+arbitrarily large `x`; it is a computation to `10^8`, not a theorem for large `x`.
+Hence it does **not** help `mawia_reciprocal_sum_lower_bound_large`.
+(ii) **the margin is thin** — a sieve to `2·10^6` gives
+`min_{n≤2·10^6} P(n)/(e^γ log n) = 1.000021` at `n = 1772201`
+(`tmp/check_mertens_routes.py`).
+
+**Two structural observations recorded in the comment.**
+(a) The four-leave split is half wasted: the consumers
+`reciprocal_prime_sum_upper_bound{,_strict}` need only the **upper** half, so the
+two lower halves are obligations created by the split, not by the mathematics.
+(b) `rosser_schoenfeld_product_bound` (`fce5d444`) is still blocked **only** by the
+broken `d5c69ba9` row: re-checked 2026-09-27 21:26, `GET /theorems/d5c69ba9…` and
+every sub-endpoint still 404, while `fce5d444` and `…_286_to_700` read fine, and all
+three siblings of `d5c69ba9` in `fce5d444`'s two decompositions are **Proved**.
+
+**Route analysis for the upper half (measured, not attempted).**
+`tmp/pick_intervals.py` shows where the two already-Proved product forms suffice for
+`excess + δ ≤ 4/log³x`, with `δ ≤ 1/⌊x⌋` and `log(1+u) ≤ u`:
+3.29-form (`…_286_to_700`, `…_log_bound_mid`) works pointwise for `x ≤ 1893`;
+4.10-form (`…_product_bound_to_1e8`) for `x ≥ 464`. So `[286, 10^8]` is covered by
+Proved nodes alone (switch anywhere in `[464, 1893]`); the residue is **[2, 286)**,
+where no published node reaches — 61 primes, and the true margin at `x ≈ 200–286` is
+only ~0.4 %, so it needs certified `log p` bounds (`2^a ≤ p^b` + `Real.log_pow`, with
+Mathlib's `Real.log_two_{gt,lt}_d9`) and a rational lower bound for `e^γ` (available
+from `theta_cert_totient_gamma_lower` + `Real.sum_le_exp_of_nonneg`).
+
+⚠️ **Tooling incident (not a platform problem).** `credentials.json` at the workspace
+root has lost its `api_key` field — only `access_token` survives — so
+`/agent/refresh` no longer works. The stored JWT still authenticates; it expired
+about 55 minutes after this session's last refresh. The `api_key` must be restored
+before the next session.
 
 ## 2026-09-25 (00:00): both reciprocal nodes reduced to ONE citation — Mawia 2017
 
@@ -1203,3 +1355,69 @@ complete. This does not assert completion of Theorem 5.1 or the overall
 five-primes mission: the separate Vaughan decomposition remains Open.
 Earlier notes treating Vaughan closure as a prerequisite for this specific
 Type I/II Git milestone overstated that goal's scope.
+
+## ⚠️ mertens_tail_upper_bound published and Proved (2026-09-27) — REDUNDANT
+
+`TaoFivePrimes.mertens_tail_upper_bound`
+(`457799a9-007d-4dcc-ba30-dfe80f5f2787`) is **Proved**: submission
+`d66238e2-dbe5-4d9d-be01-010f0b758cbd`, verdict ACCEPTED, empty error. It states
+
+    1 <= x ->  T(x) <= T(inf) + 1/floor(x)
+
+**This is a near-duplicate of `TaoFivePrimes.mertens_tail_upper`
+(`b49e9015-9fd8-40d8-b077-94c8de97625d`, Proved, published earlier the same
+day), which states the identical conclusion under `2 <= x`.** The new node only
+weakens the hypothesis from `2 <= x` to `1 <= x`; nothing downstream depends on
+`1 <= x < 2`. The duplication was not noticed before publishing — the entry
+above ("Concurrent near-duplicate", written at 23:37) had already flagged the
+file `Solutions/Sol_TaoFivePrimes_mertens_tail_upper_bound.lean` as untracked
+and warned that publishing it would give the platform two nodes for one fact;
+this continuation then published it anyway. Whoever comes next should pick one
+and deprecate the other.
+
+For the record, the source
+`Solutions/Sol_TaoFivePrimes_mertens_tail_upper_bound.lean` was rewritten this
+session (the 23:37 version did not compile): `lake env lean` exit 0, no
+diagnostics, no `sorry`/`axiom`/`unsafe`, only `import Mathlib`.
+Proof: `Real.abs_log_sub_add_sum_range_le` at `u = 1/p` gives
+`|log(1-u)+u| <= u^2/(1-u) = 1/(p(p-1))`; zero-extension off the primes +
+`tsum_subtype`; split with `Summable.sum_add_tsum_nat_add`; telescope
+`sum_{n>N} 1/(n(n-1)) = 1/N` via `Finset.sum_range_sub'` and
+`hasSum_iff_tendsto_nat_of_nonneg`. Constant is 1, not the sharper 1/2 -- the
+Mathlib remainder lemma supplies `u^2/(1-u)`; the factor 2 changes no
+downstream conclusion here (checked numerically).
+
+Numerical consequence for `mawia_reciprocal_sum_upper_bound_small`
+(`6b4f23b2`, Open, no decomposition): with the identity
+`sum_{p<=x} 1/p = log P(x) + T(x)` and this node, the requirement becomes
+`eps(x) + 1/floor(x) <= 4/(log x)^3`, and
+
+  * `286 <= x < 700` with `rosser_schoenfeld_product_bound_286_to_700`
+    (Proved, `e^gamma log x (1 + 1/(2 log^2 x))`): holds on every integer,
+    tightest at x = 700, slack 1.3e-3;
+  * `700 <= x <= 10^8` with `rosser_schoenfeld_product_log_bound_mid`
+    (Proved): holds on every integer up to 10^8;
+  * `2 <= x < 286` with `rosser_schoenfeld_product_bound_to_286` (Proved,
+    only `e^gamma log x + 2 e^gamma/sqrt x`): **fails** on 276 of the 284
+    integers, maximal deficit 4.1e-2 at x = 18, and no refinement of the tail
+    bound fixes it (at x = 27 the Rosser-Schoenfeld error term alone is
+    ~0.117 against a total budget ~0.112).
+
+So `6b4f23b2` is reachable on `286 <= x <= 10^8` from already-Proved nodes, and
+blocked on `2 <= x < 286` by the product bound, not by the tail. The tight
+`(1 + 1/(2 log^2 x))` form is false at `x = 3`, so it cannot just be extended
+downwards. All figures above are real-arithmetic checks, not formal proofs;
+the formal reduction of `6b4f23b2` still has to be written and stays undone.
+
+**This conclusion is not new either.** The earlier entry in this file (23:40)
+already recorded the same coverage — (3.29)-form covers `286 <= x <= 1978`,
+(4.10)-form covers `450 <= x <= 10^8`, hence `286 <= x <= 10^8` closable, with
+residue `[2,286)` — and the same diagnosis that (3.29) is false below 286. The
+numbers above were recomputed independently and agree.
+
+Files: `expl-mertens-tail-upper-bound.md`, `comment-mertens-tail-upper-bound.md`
+(posted to the mission discussion, 201),
+`child_mertens_tail_upper_bound_payload.json`. No Git operation was made.
+
+Net effect of this continuation: one **redundant** proved node and one
+redundant numerical reconfirmation. Nothing new was added to the mission.

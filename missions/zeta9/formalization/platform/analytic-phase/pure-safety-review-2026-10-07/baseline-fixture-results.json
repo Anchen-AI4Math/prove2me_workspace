@@ -1,0 +1,237 @@
+{
+  "checked_at": "2026-10-07T11:00:48.555137+00:00",
+  "review_kind": "pure offline publishing safety; no mathematical independent certification",
+  "SOURCE_snapshots": {
+    "publish_numerator_pf_new_mission_2026_10_07.py": {
+      "sha256": "dda7b66a1dcc8b07d4f059aa026fdbcaee600d0d59ebef587dd87ada124f8ecb",
+      "bytes": 19276,
+      "snapshot": "source-snapshots/publish_numerator_pf_new_mission_2026_10_07.py"
+    },
+    "publish_analytic_phase_new_mission_2026_10_07.py": {
+      "sha256": "468471974c6099830041ce7d76ddea259e75162d60ab93eb5a3e94a8e9c9e5e2",
+      "bytes": 9165,
+      "snapshot": "source-snapshots/publish_analytic_phase_new_mission_2026_10_07.py"
+    },
+    "prepare_analytic_phase_publication_2026_10_07.py": {
+      "sha256": "a64d5c896fe037b2e0bff1858a5bc92837b769a5c8cb6f803d16666b5cd51ef0",
+      "bytes": 6127,
+      "snapshot": "source-snapshots/prepare_analytic_phase_publication_2026_10_07.py"
+    }
+  },
+  "Lean_calls": 0,
+  "network_calls": 0,
+  "credentials_reads": 0,
+  "baseline_unknown_result": {
+    "uncertain_error": "FAKE response lost after FAKE POST: unknown result",
+    "same_operation_retry_blocked": true,
+    "different_operation_permitted_after_unknown": true,
+    "fake_POSTs": [
+      {
+        "endpoint": "/verify",
+        "body_sha256": "3d7c3c43d0de27d88336122dc0d4ff69f840572ffc7847a063e303e3e7cef654",
+        "operation": "problem_2",
+        "WAL_and_wire_present_before_fake_POST": true
+      },
+      {
+        "endpoint": "/verify",
+        "body_sha256": "8bbd3b2b4620f4fe134af4a73ee88f66e25cd53de1b558ae460187c241a79de8",
+        "operation": "proof_1",
+        "WAL_and_wire_present_before_fake_POST": true
+      }
+    ],
+    "journal": {
+      "new_proposal_id": "offline-new",
+      "attempts": [
+        {
+          "operation": "problem_2",
+          "endpoint": "/verify",
+          "intended_at": "2026-10-07T11:00:48.565101+00:00",
+          "wire_body_sha256": "3d7c3c43d0de27d88336122dc0d4ff69f840572ffc7847a063e303e3e7cef654",
+          "wire_body_bytes": 23,
+          "wire_body_task_relative": "out/wire/f7cb7b6ff6688e22.body",
+          "content_type": "offline/type",
+          "receipt_task_relative": "receipt-problem-2.json",
+          "receipt_saved": false,
+          "old_mission_write": false,
+          "kind": "proof",
+          "name": "problem_2"
+        },
+        {
+          "operation": "proof_1",
+          "endpoint": "/verify",
+          "intended_at": "2026-10-07T11:00:48.569866+00:00",
+          "wire_body_sha256": "8bbd3b2b4620f4fe134af4a73ee88f66e25cd53de1b558ae460187c241a79de8",
+          "wire_body_bytes": 21,
+          "wire_body_task_relative": "out/wire/864e5824025bac72.body",
+          "content_type": "offline/type",
+          "receipt_task_relative": "receipt-proof-1.json",
+          "receipt_saved": true,
+          "old_mission_write": false,
+          "kind": "proof",
+          "name": "proof_1",
+          "job_id": null,
+          "submission_id": "fake-submission-2"
+        }
+      ]
+    }
+  },
+  "baseline_concurrent_writers": {
+    "same_operation_fake_POST_count": 2,
+    "fake_POSTs": [
+      {
+        "endpoint": "/verify",
+        "body_sha256": "32ae8f13c57bb470602126e14517ce610f9d9b9635bdc1a12d9fb99b8f36ed46",
+        "operation": "proof_same",
+        "WAL_and_wire_present_before_fake_POST": true
+      },
+      {
+        "endpoint": "/verify",
+        "body_sha256": "32ae8f13c57bb470602126e14517ce610f9d9b9635bdc1a12d9fb99b8f36ed46",
+        "operation": "proof_same",
+        "WAL_and_wire_present_before_fake_POST": true
+      }
+    ],
+    "receipts": [
+      {
+        "submission_id": "fake-submission-1"
+      },
+      {
+        "submission_id": "fake-submission-2"
+      }
+    ],
+    "schedule": "Both exact transact invocations read the empty journal. B's original save is delayed until A completes. Original save/load values are unchanged; scheduling wrappers add no decision logic.",
+    "journal": {
+      "new_proposal_id": "offline-new",
+      "attempts": [
+        {
+          "operation": "proof_same",
+          "endpoint": "/verify",
+          "intended_at": "2026-10-07T11:00:48.584838+00:00",
+          "wire_body_sha256": "32ae8f13c57bb470602126e14517ce610f9d9b9635bdc1a12d9fb99b8f36ed46",
+          "wire_body_bytes": 22,
+          "wire_body_task_relative": "out/wire/7a75a4f94e7a0fcc.body",
+          "content_type": "offline/type",
+          "receipt_task_relative": "same-receipt.json",
+          "receipt_saved": true,
+          "old_mission_write": false,
+          "kind": "proof",
+          "name": "same",
+          "job_id": null,
+          "submission_id": "fake-submission-2"
+        }
+      ]
+    }
+  },
+  "baseline_proof_reread": {
+    "prepare_pinned_solution_sha256": "b0bac1a719dae8c4890390c8cf6ba699bd346913d8559f765b428a3054a6c7e9",
+    "later_wire_file_sha256": "51c3b1db6388494806ae40e1ca832f8410913135f8c4f438ca0a029b8bc28f8d",
+    "recorded_solution_sha256": "51c3b1db6388494806ae40e1ca832f8410913135f8c4f438ca0a029b8bc28f8d",
+    "unreviewed_fixture_bytes_permitted": true,
+    "fake_POSTs": [
+      {
+        "endpoint": "/verify",
+        "body_sha256": "1f0c9b24c78bbf38d33f0f42cf39d4db89e074d9bb9a3b644243bee3f230f24b",
+        "operation": "proof_Fake.target",
+        "WAL_and_wire_present_before_fake_POST": true
+      }
+    ],
+    "scope": "Only a fabricated solution in this pure fixture is changed; no real staged/frozen bytes are changed."
+  },
+  "actual_metadata": {
+    "exact_seven_payloads": [
+      {
+        "kind": "definition",
+        "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+        "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+        "bytes": 1122
+      },
+      {
+        "kind": "statement_type_catalog_only",
+        "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+        "sha256": "fc16c1dbf8f8deb4bae91c4f617c30ec1d94b3df0416500c553d379fefa259f3",
+        "bytes": 233
+      },
+      {
+        "kind": "complete_solution",
+        "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+        "sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+        "bytes": 13957
+      },
+      {
+        "kind": "statement_type_catalog_only",
+        "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+        "sha256": "d9f4537cf960871654fe8ac638d5e932f8557b17daaadbaf14247abe77cd4617",
+        "bytes": 257
+      },
+      {
+        "kind": "complete_solution",
+        "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+        "sha256": "bb57f5ac1bbc1ea26a18654ed39b66b636bfadad405382f9f7eb6a4289e1c46e",
+        "bytes": 13986
+      },
+      {
+        "kind": "statement_type_catalog_only",
+        "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+        "sha256": "f895f3c77872595dbec35f37cf1aba4638118bc37386becdf0ea09b55352cfae",
+        "bytes": 250
+      },
+      {
+        "kind": "complete_solution",
+        "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+        "sha256": "ba0b74c055a04005e5b760eec2c8ecd26ea2a5961278eb3837824773b1d11960",
+        "bytes": 13974
+      }
+    ],
+    "all_three_full_original_headers": [
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+        "full_original_formal_statement": "theorem ZetaNine.AnalyticPhase.phase_strictAntiOn_right : StrictAntiOn phase (Ici (101 / 100 : ℝ)) := by sorry",
+        "double_newline_reference_exact": true
+      },
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_global_lt_certified",
+        "full_original_formal_statement": "theorem ZetaNine.AnalyticPhase.phase_global_lt_certified (x : ℝ) (hx : 1 < x) :\n    phase x < (-10564011 / 1000000 : ℝ) := by sorry",
+        "double_newline_reference_exact": true
+      },
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_global_upper_bound",
+        "full_original_formal_statement": "theorem ZetaNine.AnalyticPhase.phase_global_upper_bound :\n    ∀ x : ℝ, 1 < x → phase x ≤ (-2641 / 250 : ℝ) := by sorry",
+        "double_newline_reference_exact": true
+      }
+    ],
+    "all_three_unique_names": true,
+    "public_definition": true,
+    "public_problems": true,
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "proposal_mutation_permitted": false,
+    "mission_link_permitted": false,
+    "definition_metadata": {
+      "definition_name": "ZetaNine_AnalyticPhase",
+      "definition_title": "Actual phase and auxiliary functions for zeta(9)",
+      "natural_language_statement": "Define f(x)=10x log(x)+(x+2)log(x+2)-(x-1)log(x-1)-10(x+1)log(x+1), its derivative ratio, and the auxiliary functions used for its whole-domain upper bound.",
+      "source": "ZetaNine local research, AnalyticPhase.lean and AnalyticPhaseUpperBound.lean; independently compiled exports SHA-256 2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd and 388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635. Native independent audit SHA-256 f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc.",
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "problem_metadata": [
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+        "theorem_title": "Actual phase decreases strictly on [101/100, infinity)",
+        "natural_language_statement": "For any real x and y with 101/100 ≤ x < y, f(y) < f(x).",
+        "source": "ZetaNine local research, AnalyticPhase.lean and AnalyticPhaseUpperBound.lean; independently compiled exports SHA-256 2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd and 388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635. Native independent audit SHA-256 f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc."
+      },
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_global_lt_certified",
+        "theorem_title": "Strict certified bound for the actual phase on x>1",
+        "natural_language_statement": "For every real x>1, f(x)<-10564011/1000000.",
+        "source": "ZetaNine local research, AnalyticPhase.lean and AnalyticPhaseUpperBound.lean; independently compiled exports SHA-256 2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd and 388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635. Native independent audit SHA-256 f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc."
+      },
+      {
+        "theorem_name": "ZetaNine.AnalyticPhase.phase_global_upper_bound",
+        "theorem_title": "Whole-domain actual phase bound -2641/250",
+        "natural_language_statement": "For every real x>1, f(x)≤-2641/250.",
+        "source": "ZetaNine local research, AnalyticPhase.lean and AnalyticPhaseUpperBound.lean; independently compiled exports SHA-256 2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd and 388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635. Native independent audit SHA-256 f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc."
+      }
+    ]
+  }
+}

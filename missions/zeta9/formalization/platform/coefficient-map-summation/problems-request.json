@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapSummation.actualSeries_norm_summable",
+      "theorem_title": "The actual positive weighted rational series is absolutely summable",
+      "formal_statement": "theorem ZetaNine.CoefficientMapSummation.actualSeries_norm_summable (n : ℕ) (W : ℚ[X]) (hstrong : StrongProperMultiplier n W) :\n    Summable (fun t : ℕ => ‖actualSeries n W t‖):= by sorry",
+      "natural_language_statement": "For every natural $n$ and $W\\in\\mathbb Q[X]$ with $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$, the genuine positive weighted sequence is absolutely summable: $\\sum_{k\\ge0}|f_{n,W}(k+1)|<\\infty$. No Even n premise is required. The actual simple-pole coefficient total is proved zero from the stronger degree gap; its simple-pole terms are grouped into convergent differences. There is no supplied summability or cancellation hypothesis. Strict properness alone is insufficient: $n=0,W=X^4$ gives the divergent harmonic sequence.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapSummation\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapSummation ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapFiniteSum ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) actual p9,q1,m=n,d0 infinite summation: missions/zeta9/research/coefficient-map-summation-2026-10-04.md. Frozen actual source SHA256 c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d. Actual numerator/pole products, shifted unit-denominator coefficient array, finite harmonic B/rho and actual strong-domain cancellation prove absolute convergence and the actual infinite L. Original declaration lines 249–250.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapSummation.actualSeries_hasSum_exactL",
+      "theorem_title": "The actual even-n strong-domain series has the exact odd-zeta sum",
+      "formal_statement": "theorem ZetaNine.CoefficientMapSummation.actualSeries_hasSum_exactL (n : ℕ) (hn : Even n) (W : ℚ[X])\n    (hstrong : StrongProperMultiplier n W) : HasSum (actualSeries n W) (exactL n W):= by sorry",
+      "natural_language_statement": "Let $n$ be even and $W\\in\\mathbb Q[X]$ satisfy $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$. Then the actual positive rational sequence has genuine HasSum to $B_n(W)+\\rho_{n,3}(W)\\Re\\zeta(3)+\\rho_{n,5}(W)\\Re\\zeta(5)+\\rho_{n,7}(W)\\Re\\zeta(7)+\\rho_{n,9}(W)\\Re\\zeta(9)$. Both summability and actual rho cancellations are proved, without additional rho/summability/zeta inputs. The specialization $n=0,W=X^3$ gives the actual zeta3 series. In contrast, $n=0,W=X^4$ is outside the strong domain: its totalized Lean tsum is0 but it has no HasSum to any real number.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapSummation\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapSummation ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapFiniteSum ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) actual p9,q1,m=n,d0 infinite summation: missions/zeta9/research/coefficient-map-summation-2026-10-04.md. Frozen actual source SHA256 c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d. Actual numerator/pole products, shifted unit-denominator coefficient array, finite harmonic B/rho and actual strong-domain cancellation prove absolute convergence and the actual infinite L. Original declaration lines 259–266.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapSummation.original_integer_quartic_exact_infinite_L",
+      "theorem_title": "The original even-n integer-quartic weighted series has its exact infinite sum",
+      "formal_statement": "theorem ZetaNine.CoefficientMapSummation.original_integer_quartic_exact_infinite_L (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℤ[X]) (hW : W.natDegree ≤ 4) :\n    HasSum (actualSeries n (W.map (Int.castRingHom ℚ))) (exactL n (W.map (Int.castRingHom ℚ))):= by sorry",
+      "natural_language_statement": "For every even integer $n\\ge2$ and integer polynomial $W\\in\\mathbb Z[X]$ with degree at most4, cast its coefficients to $\\mathbb Q$ and form the original actual p9,q1,m=n,d0 weighted rational function. The genuine positive sequence has HasSum to its exact $B+\\rho_3\\Re\\zeta(3)+\\rho_5\\Re\\zeta(5)+\\rho_7\\Re\\zeta(7)+\\rho_9\\Re\\zeta(9)$ linear form. The stronger degree bound is proved from the stated quartic/even-n domain. Integer W is not a claim that every rational local coefficient or full linear form is an integer. General parameters, inverse denominator heights, a small nonzero integer-form sequence, J and irrationality are separate obligations.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapSummation\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapSummation ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapFiniteSum ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) actual p9,q1,m=n,d0 infinite summation: missions/zeta9/research/coefficient-map-summation-2026-10-04.md. Frozen actual source SHA256 c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d. Actual numerator/pole products, shifted unit-denominator coefficient array, finite harmonic B/rho and actual strong-domain cancellation prove absolute convergence and the actual infinite L. Original declaration lines 272–275.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    }
+  ]
+}

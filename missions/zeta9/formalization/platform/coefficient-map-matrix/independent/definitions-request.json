@@ -1,0 +1,16 @@
+[
+  {
+    "definition_name": "ZetaNine_CoefficientMapMatrix",
+    "definition_title": "The actual monomial-row F matrix and selected rational inverse",
+    "definition": "import Definitions.Def_ZetaNine_CoefficientMapKernelBridge\nimport Mathlib.LinearAlgebra.Matrix.NonsingularInverse\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators Matrix\nopen Polynomial\n\nnamespace ZetaNine.CoefficientMapMatrix\n\nopen CoefficientMapAggregate CoefficientMapKernelBridge\n\ndef actualFMatrix (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun i j => aggregate n (X ^ i.val) j\n\n/-- The genuine two selected output directions are B and rho9. -/\ndef selectionMatrix : Matrix (Fin 2) (Fin 5) ℚ :=\n  fun i j => if i = 0 then (if j = 0 then 1 else 0) else (if j = 4 then 1 else 0)\n\ndef selectedIntegerPair (b a : ℤ) : Fin 2 → ℚ :=\n  fun i => if i = 0 then (b : ℚ) else (a : ℚ)\n\ndef selectedIntegerOutput (b a : ℤ) : Fin 5 → ℚ :=\n  fun j => if j = 0 then (b : ℚ) else if j = 4 then (a : ℚ) else 0\n\ndef selectedIntegerMultiplier (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ) : ℚ[X] :=\n  inverseMultiplier n hn2 hn (selectedIntegerOutput b a)\n\nend ZetaNine.CoefficientMapMatrix\n",
+    "natural_language_statement": "Define the genuine F monomial rows and five actual output columns, the two selected integer directions B and rho9, and their actual rational inverse multiplier on Even n>=2. All five original Definition values remain fixed; no invertibility or sum premise is added.",
+    "source": "Actual frozen native CoefficientMapMatrix SHA256 a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+    "tags": [
+      "number-theory",
+      "linear-algebra",
+      "formalization"
+    ],
+    "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "private": false
+  }
+]

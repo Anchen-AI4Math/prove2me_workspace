@@ -1,0 +1,9 @@
+{
+  "role": "Pure Python recovery recorder attempt, no Lean/Lake/API invocation",
+  "exit_code": 1,
+  "failure": "ValueError: Definitions/Def_ZetaNine_HarmonicStability.lean is outside the task-relative directory",
+  "cause": "The new recorder initially encoded all source origins as task-relative, including an actual shared import dependency",
+  "repair": "The new recorder binding now stores origin_absolute for actual dependencies outside the task",
+  "original_preparation_or_sources_modified": false,
+  "failed_attempt_excluded_from_pure_recovery_success": true
+}

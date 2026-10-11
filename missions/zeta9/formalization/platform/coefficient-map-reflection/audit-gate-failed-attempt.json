@@ -1,0 +1,285 @@
+{
+  "verdict": "FAIL",
+  "phase": "author Python exact source splice gate",
+  "error": "complete_original_Reflection_proof_core_and_all_three_parser_splices_exact",
+  "traceback": "Traceback (most recent call last):\n  File \"D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\inspect_gate.py\", line 6, in <module>\n    try:exec(compile(p.read_bytes(),str(p),\"exec\"),g)\n        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\audit_and_freeze.py\", line 98, in <module>\n    check(\"complete_original_Reflection_proof_core_and_all_three_parser_splices_exact\",all(stage_replays) and len(prov[\"definition_facts\"])==4 and len(prov[\"deleted_diagnostic_facts\"])==11,{\"original_proofs_retained_per_Sol\":30,\"new_hypotheses\":[]})\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\audit_and_freeze.py\", line 14, in check\n    checks.append({\"name\":name,\"pass\":bool(okay),\"evidence\":evidence});assert okay,name\n                                                                              ^^^^\nAssertionError: complete_original_Reflection_proof_core_and_all_three_parser_splices_exact\n",
+  "checks": [
+    {
+      "name": "five_frozen_actual_sources_unchanged",
+      "pass": true,
+      "evidence": {
+        "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+        "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+        "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+        "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+        "CoefficientMapReflection": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+      }
+    },
+    {
+      "name": "prior_independent_native_math_review_bound",
+      "pass": true,
+      "evidence": {
+        "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-review.json",
+        "sha256": "ac3d8f135cb3c69b39074548bea712f418fa6d0273ad27e33805374c1db20123",
+        "is_independent_transplantation_review": false
+      }
+    },
+    {
+      "name": "all_thirty_one_actual_author_runs_exit_zero",
+      "pass": true,
+      "evidence": {
+        "runs": 31,
+        "native_source_compilation": 1,
+        "official_graph_and_parser_and_header_runs": 7,
+        "staged_source_builds_including_actual_existing_Definitions": 11,
+        "actual_import_reports": 11,
+        "toolchain_probe": 1
+      }
+    },
+    {
+      "name": "actual_pinned_Lean_Mathlib_environment",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "all_thirty_four_actual_definition_types_and_values_equal",
+      "pass": true,
+      "evidence": {
+        "Base": 9,
+        "Jet": 9,
+        "Injectivity": 7,
+        "PartialFractions": 5,
+        "Reflection": 4,
+        "exact_actual_comparisons": 238
+      }
+    },
+    {
+      "name": "three_original_Solution_reference_types_exact_no_extra_hypotheses",
+      "pass": true,
+      "evidence": [
+        {
+          "theorem": "ZetaNine.CoefficientMapReflection.local_coefficient_reflection",
+          "actual_original_type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : Polynomial ℚ),\n      j ≤ n →\n        1 ≤ s →\n          s ≤ 9 →\n            ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (n - j) s W =\n              (-1) ^ (s + 1) * ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapReflection.rho_even_order_zero",
+          "actual_original_type": "∀ (n s : ℕ), Even n → ∀ (W : Polynomial ℚ), 1 ≤ s → s ≤ 9 → Even s → ZetaNine.CoefficientMapReflection.rho n s W = 0",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapReflection.rho_one_zero_of_strong_proper",
+          "actual_original_type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W → ZetaNine.CoefficientMapReflection.rho n 1 W = 0",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "complete_solution_endpoints_exact_standard_three_axioms",
+      "pass": true,
+      "evidence": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "all_original_thirty_proofs_cross_module_closure_and_wrapper_standard_axioms",
+      "pass": true,
+      "evidence": {
+        "proofs_per_solution": 65,
+        "total_proof_records": 195,
+        "cross_module_inline_names": [
+          "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+          "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+          "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+          "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+          "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+          "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+          "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+          "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+          "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+          "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+          "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+          "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+          "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+          "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+          "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+          "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+          "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+          "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+          "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+          "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+          "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+          "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+          "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+          "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+          "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+          "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+          "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+          "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+          "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+          "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+          "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation"
+        ]
+      }
+    },
+    {
+      "name": "no_external_Theorems_Solutions_or_native_proof_boundary",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "reference_stubs_explicitly_not_proofs",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "actual_source_core_and_Def_lightweight",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "documented_offline_API_fields_only",
+      "pass": true,
+      "evidence": {
+        "schema_reference": "formalization/platform/readback-2026-10-03/api-docs/references/contribute.md",
+        "API_called": false
+      }
+    },
+    {
+      "name": "definition_request_exact_staged_source",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "Even_n_and_strong_bound_and_both_boundary_prose_faithful",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "native_independent_exact_domains_and_open_limits_bound",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "four_actual_dependency_Def_stage_root_bytes_identical",
+      "pass": true,
+      "evidence": [
+        {
+          "root_relative": "Definitions/Def_ZetaNine_CoefficientMap.lean",
+          "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff",
+          "task_relative": "formalization/platform/coefficient-map/staged/Definitions/Def_ZetaNine_CoefficientMap.lean"
+        },
+        {
+          "root_relative": "Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+          "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+          "task_relative": "formalization/platform/coefficient-map-jet/staged/Definitions/Def_ZetaNine_CoefficientMapJet.lean"
+        },
+        {
+          "root_relative": "Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+          "sha256": "d7f71b43ed4f4ac8f1994ecf80dad165f4008960f6a304efcd45ebc60342b1b1",
+          "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean"
+        },
+        {
+          "root_relative": "Definitions/Def_ZetaNine_CoefficientMapPartialFractions.lean",
+          "sha256": "74904aff5266f68b9d9f5c3013fb636f48d0cadda75e872093419845f9b666e5",
+          "task_relative": "formalization/platform/coefficient-map-partial-fractions/staged/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.lean"
+        }
+      ]
+    },
+    {
+      "name": "all_515_old_author_frozen_members_unchanged",
+      "pass": true,
+      "evidence": {
+        "Base_frozen_members": 96,
+        "Jet_frozen_members": 111,
+        "Injectivity_frozen_members": 134,
+        "PartialFractions_frozen_members": 174,
+        "old_batches_written_by_author": false
+      }
+    },
+    {
+      "name": "real_graph_no_axiom_declaration_or_external_boundary",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "actual_cross_source_proof_spans_exact",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "complete_original_Reflection_proof_core_and_all_three_parser_splices_exact",
+      "pass": false,
+      "evidence": {
+        "original_proofs_retained_per_Sol": 30,
+        "new_hypotheses": []
+      }
+    }
+  ],
+  "actual_proof_source_modified": false,
+  "native_and_staged_Lean_compilations_exit_zero": true,
+  "first_difference_offset": 31566,
+  "actual_context": "n + 8) = 0\n    rw [partialBasis_higher_pole_top_coefficient n j s hj' hs2 hs'.2, mul_zero]\n\ntheorem checked_rho_one_zero_of_strong_proper (n : ℕ) (W : ℚ[X])\n    (hstrong : StrongProperMultiplier n W) : rho n 1 W = 0 := by\n  have hpoly := actual_global_polynomial_partial_fract",
+  "oracle_reconstruction_context": "n + 8) = 0\n    rw [partialBasis_higher_pole_top_coefficient n j s hj' hs2 hs'.2, mul_zero]\n\ntheorem rho_one_zero_of_strong_proper (n : ℕ) (W : ℚ[X])\n    (hstrong : StrongProperMultiplier n W) : rho n 1 W = 0 := by\n  have hpoly := actual_global_polynomial_partial_fractions n W",
+  "actual_bytes": 33157,
+  "reconstructed_bytes": 33141,
+  "stage_replays": [
+    false,
+    false,
+    false
+  ],
+  "original_audit_script_sha256": "6d80cc72bdcd56e3c55a45bdaa4e9459ad2c5d369371b26c31b401739015e3e3"
+}

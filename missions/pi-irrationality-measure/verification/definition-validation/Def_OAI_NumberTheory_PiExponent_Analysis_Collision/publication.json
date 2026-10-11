@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "3b4c3c8eced447694c30f0f1437e5a2b6ddc3a1995b47e1dedf0541c03c52ed3",
+  "publish_intent": {
+    "at_utc": "2026-10-08T08:28:35.557029+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+      "definition_title": "Holomorphic error term in the determinant estimate",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Choose\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\n\n\nnamespace OAI\n\nopen scoped BigOperators Topology\nopen Filter\n\nnamespace PiExponent\n\nnoncomputable def holomorphicError (K : ℕ) (w0 v0 wstar : ℝ) : ℝ :=\n  100 * K / w0 + Real.log 2 / v0 + Real.log (200 * K) / wstar\n\n\n\n\n\nend PiExponent\n\nend OAI\n",
+      "natural_language_statement": "For a natural number $K$ and real parameters $w_0$, $v_0$, and $w_\\star$, this definition assigns the real quantity\n\n$$E_{\\mathrm{hol}}(K,w_0,v_0,w_\\star)=\\frac{100K}{w_0}+\\frac{\\log 2}{v_0}+\\frac{\\log(200K)}{w_\\star}.$$\n\nThe declaration itself imposes no positivity, nonzero, or size conditions on these inputs; such hypotheses belong to any later estimate that uses the expression. In the source development it packages the holomorphic contribution appearing in a determinant upper bound.",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, Analysis/Collision.lean, definition holomorphicError, lines 12-13: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/Collision.lean#L12-L13",
+      "tags": [
+        "number-theory",
+        "complex-analysis",
+        "pi",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "3b4c3c8eced447694c30f0f1437e5a2b6ddc3a1995b47e1dedf0541c03c52ed3",
+    "bundle_source_sha256": "cf1e8ed2327697b0c8c716a479f10a0e464a77bd8a2d925068ca810587e8b731",
+    "bundle_manifest_sha256": "6a794b16bd608585e2abbd20ffd1deff06c00f155870f83d0ca40f88eb63b4de",
+    "validation_sha256": "c7631401799769814e1f4f64ab4b35d6593ff0daa5a4ca49cbed9554e7d8c3fc"
+  },
+  "updated_at_utc": "2026-10-08T08:32:12.853587+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "9918f103-8c23-4521-aefb-3f4df8e00951",
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/9918f103-8c23-4521-aefb-3f4df8e00951 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "7cb2fd0c8e773a84e50c6bf66ae5bd176b3237a25b2891a48f600ccaadcf88d8"
+  },
+  "job_id": "9918f103-8c23-4521-aefb-3f4df8e00951",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "9918f103-8c23-4521-aefb-3f4df8e00951",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+      "theorem_title": "Holomorphic error term in the determinant estimate",
+      "formal_statement": "",
+      "natural_language_statement": "For a natural number $K$ and real parameters $w_0$, $v_0$, and $w_\\star$, this definition assigns the real quantity\n\n$$E_{\\mathrm{hol}}(K,w_0,v_0,w_\\star)=\\frac{100K}{w_0}+\\frac{\\log 2}{v_0}+\\frac{\\log(200K)}{w_\\star}.$$\n\nThe declaration itself imposes no positivity, nonzero, or size conditions on these inputs; such hypotheses belong to any later estimate that uses the expression. In the source development it packages the holomorphic contribution appearing in a determinant upper bound.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Choose\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\n\n\nnamespace OAI\n\nopen scoped BigOperators Topology\nopen Filter\n\nnamespace PiExponent\n\nnoncomputable def holomorphicError (K : ℕ) (w0 v0 wstar : ℝ) : ℝ :=\n  100 * K / w0 + Real.log 2 / v0 + Real.log (200 * K) / wstar\n\n\n\n\n\nend PiExponent\n\nend OAI\n",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, Analysis/Collision.lean, definition holomorphicError, lines 12-13: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/Collision.lean#L12-L13",
+      "tags": [
+        "number-theory",
+        "complex-analysis",
+        "pi",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e7e8f0df-8e23-43cf-aaac-4464d5084082",
+      "created_at": "2026-10-08T08:28:36.556764+00:00",
+      "updated_at": "2026-10-08T08:28:45.017193+00:00"
+    }
+  },
+  "definition_id": "e7e8f0df-8e23-43cf-aaac-4464d5084082",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "e7e8f0df-8e23-43cf-aaac-4464d5084082",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_Collision",
+      "theorem_title": "Holomorphic error term in the determinant estimate",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a natural number $K$ and real parameters $w_0$, $v_0$, and $w_\\star$, this definition assigns the real quantity\n\n$$E_{\\mathrm{hol}}(K,w_0,v_0,w_\\star)=\\frac{100K}{w_0}+\\frac{\\log 2}{v_0}+\\frac{\\log(200K)}{w_\\star}.$$\n\nThe declaration itself imposes no positivity, nonzero, or size conditions on these inputs; such hypotheses belong to any later estimate that uses the expression. In the source development it packages the holomorphic contribution appearing in a determinant upper bound.",
+      "created_at": "2026-10-08T08:28:43.865459+00:00",
+      "vote_count": 0,
+      "tags": [
+        "complex-analysis",
+        "number-theory",
+        "openai-pi-exponent-017",
+        "pi"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Choose\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\n\n\nnamespace OAI\n\nopen scoped BigOperators Topology\nopen Filter\n\nnamespace PiExponent\n\nnoncomputable def holomorphicError (K : ℕ) (w0 v0 wstar : ℝ) : ℝ :=\n  100 * K / w0 + Real.log 2 / v0 + Real.log (200 * K) / wstar\n\n\n\n\n\nend PiExponent\n\nend OAI\n",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, Analysis/Collision.lean, definition holomorphicError, lines 12-13: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/Collision.lean#L12-L13",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

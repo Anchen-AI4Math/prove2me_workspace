@@ -1,0 +1,27 @@
+{
+  "theorem_id": "cbb9cc51-c34d-4c25-9c61-dd4bc0e969e1",
+  "theorem_name": "ZetaNine.exponential_margin_of_volume_and_shape",
+  "theorem_title": "Eventual volume bound and vanishing shape imply an exponential margin",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem exponential_margin_of_volume_and_shape (B σ : ℕ → ℝ)\n    (hB : ∃ β : ℝ, β < (2641 / 250 : ℝ) ∧\n      ∀ᶠ k : ℕ in Filter.atTop, B (2 * k + 2) ≤ β)\n    (hS : Filter.Tendsto (fun k : ℕ => σ (2 * k + 2))\n      Filter.atTop (nhds 0)) :\n    ∃ ε : ℝ, 0 < ε ∧\n      ∀ᶠ k : ℕ in Filter.atTop,\n        B (2 * k + 2) + σ (2 * k + 2) ≤ (2641 / 250 : ℝ) - ε := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "For arbitrary real sequences B and σ, suppose B(2k+2) is eventually at most some β<2641/250 and σ(2k+2) tends to zero. Then some positive ε gives B(2k+2)+σ(2k+2)≤2641/250−ε for all sufficiently large k. This is the abstract V+S⇒J bridge; it does not establish those hypotheses for the concrete ζ(9) sequences.",
+  "created_at": "2026-09-24T13:14:41.778439+00:00",
+  "vote_count": 0,
+  "tags": [
+    "asymptotics",
+    "lattices",
+    "number-theory"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local ζ(9) roadmap/DAG.md §V and S to J; mathematical proof in notes, Lean statement only in this draft.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "For any functions \\(B,\\sigma:\\mathbb N\\to\\mathbb R\\), suppose there is a real number \\(\\beta<2641/250\\) such that \\(B(2k+2)\\leq\\beta\\) for all sufficiently large natural numbers \\(k\\), and suppose \\(\\sigma(2k+2)\\to 0\\) as \\(k\\to\\infty\\). Then there is a real number \\(\\varepsilon>0\\) such that \\(B(2k+2)+\\sigma(2k+2)\\leq 2641/250-\\varepsilon\\) for all sufficiently large natural numbers \\(k\\). The hypotheses impose no conditions on the functions at indices outside the sequence \\(2,4,6,\\ldots\\).",
+    "model": "gpt-6",
+    "created_at": "2026-09-24T13:14:43.604514+00:00"
+  }
+}

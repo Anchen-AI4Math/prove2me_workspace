@@ -1,0 +1,142 @@
+{
+  "status": "UNCOMPILED_SOURCE_PREPARATION_EXACT_RATIONAL_ARITHMETIC_PASS",
+  "role": "independent mathematical and Lean-source candidate author; not a kernel audit",
+  "Lean_executed": false,
+  "API_executed": false,
+  "proof_objects_borrowed": false,
+  "old_15_lemma_source_unchanged": true,
+  "actual_function": "ZetaNine.AnalyticPhase.phase",
+  "candidate_theorems": [
+    "phase_one_eq",
+    "smoothPhaseGap_one",
+    "smoothPhaseGap_hasDerivAt",
+    "smoothPhaseRatio_pos",
+    "smoothPhaseRatio_le_upperSlopeConstant",
+    "smoothPhaseSlope_eq_log_ratio",
+    "smoothPhaseSlope_nonpos",
+    "smoothPhaseGap_antitoneOn",
+    "smoothPhaseGap_le_zero",
+    "mul_one_add_log_div_le",
+    "phase_small_interval_identity",
+    "phase_small_interval_le_one_add_constant",
+    "phase_global_le_one_add_constant",
+    "log_two_lower_rational",
+    "log_three_upper_rational",
+    "upperSlopeConstant_lt_rational",
+    "phase_one_add_constant_lt_certified",
+    "phase_global_lt_certified",
+    "phase_global_upper_bound"
+  ],
+  "candidate_definitions": [
+    "smoothPhaseGap",
+    "smoothPhaseSlope",
+    "smoothPhaseRatio"
+  ],
+  "exact_domain": "forall real x, 1 < x",
+  "exact_requested_bound": "-2641/250",
+  "certified_stronger_cap": "-10564011/1000000",
+  "strict_cap_margin": {
+    "numerator": "11",
+    "denominator": "1000000"
+  },
+  "exact_rational_checks": {
+    "log2_argument": "1/3",
+    "log2_terms": 6,
+    "log2_partial": {
+      "numerator": "7878956",
+      "denominator": "22733865"
+    },
+    "log2_lower_margin": {
+      "numerator": "335369",
+      "denominator": "4546773000000"
+    },
+    "log3_argument": "1/2",
+    "log3_terms": 11,
+    "log3_partial": {
+      "numerator": "16760750996903",
+      "denominator": "30512586424320"
+    },
+    "proved_Mathlib_log3_tail": {
+      "numerator": "1",
+      "denominator": "6291456"
+    },
+    "log3_upper_margin": {
+      "numerator": "4849955261",
+      "denominator": "11918979072000000"
+    },
+    "actual_A": {
+      "numerator": "33249125974877255751301",
+      "denominator": "10763674952097696180200100"
+    },
+    "A_upper_margin": {
+      "numerator": "10629627104625445517309",
+      "denominator": "10763674952097696180200100000"
+    },
+    "exact_log_cap": {
+      "numerator": "-2409384437319792298863635513293524127",
+      "denominator": "228074695985534299148834369195212800"
+    }
+  },
+  "mathematical_chain": [
+    "Actual smooth G(1)=0; its derivative is log((x+2)*(x/(x+1))^10)-log(A).",
+    "On the closed interval [1,101/100], x/(x+1)<=101/201 and x+2<=301/100, hence the derivative is nonpositive.",
+    "Continuity is proved only for smooth G; no continuity of u log(u) at zero is assumed.",
+    "Antitonicity gives G(1+u)<=0 for 0<u<=1/100.",
+    "Actual phase(1+u)=phase(1)+u*(1+log(A/u))+G(1+u).",
+    "log z<=z-1 gives u*(1+log(A/u))<=A for every positive u.",
+    "The existing actual strictAntiOn right component controls all x>=101/100.",
+    "Actual phase(1)=3log3-20log2; certified rational log bounds and A<309/100000 close the global strict cap."
+  ],
+  "source_contract": {
+    "no_desired_bound_or_derivative_hypothesis": true,
+    "no_sorry_axiom_native_decide": true,
+    "imports_unchanged_uncompiled_base": true,
+    "whole_open_domain_preserved": true,
+    "candidate_already_owned_by_scope_glob": true,
+    "official_build_target_added": false,
+    "preparation_directory_owned": true,
+    "compiled_or_registered_proof_claimed": false
+  },
+  "exact_open_obligations": [
+    "Fresh compilation of the unchanged 15-lemma base and this complete candidate.",
+    "Explicit full-type/standard-axiom checks after a new Root Lean lane grant.",
+    "Moment asymptotics, infinite tails and uniform o(1) are separate parts of Z9.A and are not proved here."
+  ],
+  "stable_inputs": [
+    {
+      "root_relative": "missions/zeta9/formalization/AnalyticPhase.lean",
+      "bytes": 6709,
+      "sha256": "475f95ba7e9c977a78b6efa8e0f1599d2ec32fcc20e46bfb1bfb3b5e309ea38c"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/AnalyticPhaseUpperBound.lean",
+      "bytes": 8495,
+      "sha256": "9e0ed4cb7757b17af9a64b69927a3fa47c440d1828f239be50e473ab24a21c16"
+    },
+    {
+      "root_relative": "missions/zeta9/verification/formalization-analytic-phase-upper-bound-preparation-2026-10-07/exact_certificate.py",
+      "bytes": 6571,
+      "sha256": "a3fb12c3e01c2c629b9caae69d70f434a437e3bcca1983eaf0b66e4046faa0b5"
+    },
+    {
+      "root_relative": "missions/zeta9/verification/formalization-analytic-phase-upper-bound-preparation-2026-10-07/README.md",
+      "bytes": 1920,
+      "sha256": "51ef81f8d1b9e48726bd1c2fb240c8627c136c735a4bd7e1e899719224c57019"
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/Deriv.lean",
+      "bytes": 19255,
+      "sha256": "5b466c08783c9649bb79fe4be57c43440de4709ef477e6101b148280e3da8b76"
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Analysis/Calculus/Deriv/MeanValue.lean",
+      "bytes": 30428,
+      "sha256": "2c831b5764fa713bb2858687868818a7178be1a285c055505a2814ea2b459511"
+    },
+    {
+      "root_relative": ".lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Log/Basic.lean",
+      "bytes": 28943,
+      "sha256": "42b6acb11772eb8ebf98216023d1a56558a05dd7d4b8e647604c5a5d47495ee5"
+    }
+  ]
+}

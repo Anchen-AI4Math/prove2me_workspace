@@ -1,0 +1,571 @@
+{
+  "reviewed_at": "2026-10-07T11:11:00.782823+00:00",
+  "verdict": "PASS_FOR_REVIEWED_PUBLICATION_SAFETY_SCOPE",
+  "phase_SOURCE": {
+    "task_relative": "scripts/publish_analytic_phase_new_mission_2026_10_07.py",
+    "sha256": "3b36cc7787dc0a2f348a5dd1037f3f9189cf4b0a15bf291a11d8e523b35ebf2b",
+    "bytes": 16695
+  },
+  "preparer_SOURCE": {
+    "task_relative": "scripts/prepare_analytic_phase_publication_2026_10_07.py",
+    "sha256": "a64d5c896fe037b2e0bff1858a5bc92837b769a5c8cb6f803d16666b5cd51ef0"
+  },
+  "frozen_PF_SOURCE_sha256_unchanged": "dda7b66a1dcc8b07d4f059aa026fdbcaee600d0d59ebef587dd87ada124f8ecb",
+  "resolved_findings": [
+    {
+      "problem": "Unknown POST only blocked the same operation",
+      "repair": "Phase batch barrier stops every further business POST until Root reconciles documented history",
+      "fixture": "baseline_unknown_result -> final unknown_other_operation_blocks"
+    },
+    {
+      "problem": "Concurrent writers could both POST the same operation",
+      "repair": "Exclusive Windows byte writer lock serializes batch writers",
+      "fixture": "baseline_concurrent_writers -> final concurrent and real Python cross-process lock checks"
+    },
+    {
+      "problem": "Proof bytes could be re-read after preparation and differ from reviewed bytes",
+      "repair": "Full outgoing Definition/Problem/multipart file bytes checked against in-memory reviewed snapshots",
+      "fixture": "baseline_proof_reread -> final changed payloads and original verify integration"
+    },
+    {
+      "problem": "MIME transfer decoding could hide different literal upload bytes",
+      "repair": "Reject Content-Transfer-Encoding and duplicate disposition/type headers",
+      "fixture": "updated MIME transfer-encoding permissive -> final base64/duplicate header prePOST rejection"
+    }
+  ],
+  "guard_results": {
+    "complete_Root_PIN_before_normal_credentials_or_API_entrypoints": true,
+    "missing_PIN_actual_expected_RuntimeError": true,
+    "official_v0_12_1_docs_six_exact_pins": true,
+    "official_health_version_before_credentials_SOURCE_order": true,
+    "old_mission_and_frozen_proposal_writes_blocked_in_fake_guard_cases": true,
+    "normal_business_POSTs_exactly_seven": true,
+    "successful_resume_additional_POSTs": 0,
+    "unknown_result_blocks_entire_batch": true,
+    "concurrent_same_operation_POSTs_exactly_one": true,
+    "cross_process_lock_blocks_held_and_allows_released": true,
+    "invalid_receipt_or_journal_or_wire_or_PIN_blocks_before_POST": true,
+    "actual_seven_payloads_and_copies_exact": true,
+    "actual_three_complete_original_headers_and_double_newline_references_exact": true,
+    "metadata_describes_phase_component": true,
+    "whole_Z9_A_or_irrationality_claimed": false
+  },
+  "scope_limits": [
+    "No real credentials or network were read/used",
+    "No Lean compilation performed",
+    "Does not certify independent mathematical PASS; the reviewer authored Phase platform payloads",
+    "Real publication still requires complete Root native/platform author/platform independent pins and their full binding gates",
+    "Unknown result is deliberately not auto-reconciled; Root must use documented remote history before modifying/recovering WAL state"
+  ],
+  "Lean_calls": 0,
+  "network_calls": 0,
+  "credentials_reads": 0,
+  "mathematical_independent_PASS_not_claimed": true,
+  "fixtures": {
+    "baseline-fixture-results.json": {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/baseline-fixture-results.json",
+      "sha256": "41fb8ee9ec43255620b0472cf0c65cffe1d985bab848cd4cf81f78d2767f8992"
+    },
+    "static-review-results.json": {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/static-review-results.json",
+      "sha256": "fa8074b2c478b9d88242414d868259b9729c9ef29f387a0ee661d99cb1f0196c"
+    },
+    "updated-fixture-results.json": {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/updated-fixture-results.json",
+      "sha256": "c3f0e53b73ee981d997511d6a655cda979f97d87e969021e8116df94ad8e666e"
+    },
+    "final-fixture-results.json": {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/final-fixture-results.json",
+      "sha256": "328e92451f79fb67ac982a42a11971a86a14d4ef50f720bb687ab819bbe02e26"
+    }
+  },
+  "stable_files": [
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/baseline-fixture-results.json",
+      "bytes": 11427,
+      "sha256": "41fb8ee9ec43255620b0472cf0c65cffe1d985bab848cd4cf81f78d2767f8992"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/final-fixture-results.json",
+      "bytes": 5405,
+      "sha256": "328e92451f79fb67ac982a42a11971a86a14d4ef50f720bb687ab819bbe02e26"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/concurrent-writers/out/business-post-journal.json",
+      "bytes": 665,
+      "sha256": "2ba8519667d60ceebae93254fce85167e3c27ef105b51f0a92f216dfe7d3076a"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/concurrent-writers/out/wire/7a75a4f94e7a0fcc.body",
+      "bytes": 22,
+      "sha256": "32ae8f13c57bb470602126e14517ce610f9d9b9635bdc1a12d9fb99b8f36ed46"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/concurrent-writers/same-receipt.json",
+      "bytes": 46,
+      "sha256": "939c755ca1438dff1650042b65c22012162c97a429148a79f0909036d29d3182"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-concurrent-exclusive/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 31,
+      "sha256": "113fd34755362d524936b5ca8e4f10a0584fd7d7173cc476f9d3c5d2c724b305"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-concurrent-exclusive/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-concurrent-exclusive/out/business-post-journal.json",
+      "bytes": 960,
+      "sha256": "c6c527beeaa545c423f630945132f8fec4dfb052f196ded5648f5113dc88dfca"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-concurrent-exclusive/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-concurrent-exclusive/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-headers/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-headers/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-invalid-first-response/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 46,
+      "sha256": "22f18d9069f4bc4eda1ef3728227f2e4729dc930f71b8a02c95a0a741971e547"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-invalid-first-response/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-invalid-first-response/out/business-post-journal.json",
+      "bytes": 807,
+      "sha256": "02b16ac56af8638ccd5ef39275712f589cb0e503a27c2b80af6d7a560cf4de8f"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-invalid-first-response/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-invalid-first-response/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 31,
+      "sha256": "113fd34755362d524936b5ca8e4f10a0584fd7d7173cc476f9d3c5d2c724b305"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_global_lt_certified.json",
+      "bytes": 84,
+      "sha256": "9082c0062a97b43a275a9ea67e80614ea3f6a62d1602df3c3832e0a5277df69b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_global_upper_bound.json",
+      "bytes": 84,
+      "sha256": "4ca00b7bdfb5b1af50e93e654b004168ccffeddbce2895ef5ae82435fdca25fe"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_strictAntiOn_right.json",
+      "bytes": 84,
+      "sha256": "295c7d578b23e587650059df96683466875ab37f2039a7fda1257e71e4cf0d46"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_global_lt_certified.json",
+      "bytes": 38,
+      "sha256": "cc505d3a2c43dda08389241654cc22eee3249f0cc62299cb43bd3883e1ea7c45"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_global_upper_bound.json",
+      "bytes": 38,
+      "sha256": "ecbb4cfbce1d15dabc87fbe2f3901280072767537a7b75756a3932c8de81754a"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_strictAntiOn_right.json",
+      "bytes": 38,
+      "sha256": "b2889bcfada42b906b46de0f965019239615fe21f26f8811df09a3b4bfda5e73"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 16,
+      "sha256": "0437347fe0d968aeb244e29edf165ac891b44f818af9072cf430fd52d275cc67"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/business-post-journal.json",
+      "bytes": 7333,
+      "sha256": "f781ff9542a1132e02a39dd2e7a35c36ad6e45c355a41448c2853a3c9639445f"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/1060d4ef68c7bd33.body",
+      "bytes": 933,
+      "sha256": "98be6f50bc99249c7016d7462bd0005ea297bb7087c09bd3cf4a334920d7768b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/435244591c8a82e1.body",
+      "bytes": 14841,
+      "sha256": "e2b4816d509c36598ecc21283cfbb4a664d1092608f9144151902745a51a5972"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/4b5efb87087d60f2.body",
+      "bytes": 949,
+      "sha256": "c804b8bb590266e6e5bf1f987f9d89006995a7b7a72c5371470d8016f4a7d3a3"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/a8e1059714879a8d.body",
+      "bytes": 956,
+      "sha256": "07342d7e1cc16df4346e1407b24684d531266ff054aa620bba426ebc0f3b339f"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/cbb6b5d6c774860c.body",
+      "bytes": 14963,
+      "sha256": "bd037884ac9c6e1d66b9fd784886e540f007772c9d478d3998a1a2b7b5784f81"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-normal-seven/out/wire/dc60c58196e6536b.body",
+      "bytes": 14867,
+      "sha256": "f124dc207c128de7b66f3fa735172f073e2dbd63d47f4820f528bcae48b424c3"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-original_verify_integration/batch/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+      "bytes": 53,
+      "sha256": "91aef7d354df845a2139c24dba60380421da87e66ba4f6f58a508140fbcf4f2c"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-original_verify_integration/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-original_verify_integration/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-proof-wire-binding/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-proof-wire-binding/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-unknown-barrier/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-unknown-barrier/out/business-post-journal.json",
+      "bytes": 755,
+      "sha256": "22c959fc0882ebdbba655fdbdd527f55bf581e9f9488147c9d32ca36a31996f0"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-unknown-barrier/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/final-updated-unknown-barrier/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/proof-read-after-gate/batch/proof-receipts/Fake_target.json",
+      "bytes": 46,
+      "sha256": "6f6df1679952fefcd49788fa882a7f6f0cbfaa73078f5b7696fb9a123ab4e6a5"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/proof-read-after-gate/batch/staged/Solutions/Sol_Fake.lean",
+      "bytes": 67,
+      "sha256": "51c3b1db6388494806ae40e1ca832f8410913135f8c4f438ca0a029b8bc28f8d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/proof-read-after-gate/out/business-post-journal.json",
+      "bytes": 935,
+      "sha256": "3c792920d4d75deee02d4dad4e9e20d0f4d35dfc94cd91453434627d92da06ce"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/proof-read-after-gate/out/wire/8f189f8c86cff835.body",
+      "bytes": 641,
+      "sha256": "1f0c9b24c78bbf38d33f0f42cf39d4db89e074d9bb9a3b644243bee3f230f24b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/unknown-result/out/business-post-journal.json",
+      "bytes": 1211,
+      "sha256": "4dc2303b9e9952078157d26f8a14b0b0777407824f465a30b6cf4ba1111a6b43"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/unknown-result/out/wire/864e5824025bac72.body",
+      "bytes": 21,
+      "sha256": "8bbd3b2b4620f4fe134af4a73ee88f66e25cd53de1b558ae460187c241a79de8"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/unknown-result/out/wire/f7cb7b6ff6688e22.body",
+      "bytes": 23,
+      "sha256": "3d7c3c43d0de27d88336122dc0d4ff69f840572ffc7847a063e303e3e7cef654"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/unknown-result/receipt-proof-1.json",
+      "bytes": 46,
+      "sha256": "939c755ca1438dff1650042b65c22012162c97a429148a79f0909036d29d3182"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-concurrent-exclusive/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 31,
+      "sha256": "113fd34755362d524936b5ca8e4f10a0584fd7d7173cc476f9d3c5d2c724b305"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-concurrent-exclusive/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-concurrent-exclusive/out/business-post-journal.json",
+      "bytes": 960,
+      "sha256": "9d4feefed01a2467eceb6bfca139dce9df3c6f918c0d22c907e6a4fb8902a368"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-concurrent-exclusive/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-concurrent-exclusive/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-invalid-first-response/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 46,
+      "sha256": "22f18d9069f4bc4eda1ef3728227f2e4729dc930f71b8a02c95a0a741971e547"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-invalid-first-response/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-invalid-first-response/out/business-post-journal.json",
+      "bytes": 807,
+      "sha256": "354d81a57948218a5d8aeffd6384465dd616d3122f25d80d033da4ec83671127"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-invalid-first-response/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-invalid-first-response/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/definition-receipts/ZetaNine_AnalyticPhase.json",
+      "bytes": 31,
+      "sha256": "113fd34755362d524936b5ca8e4f10a0584fd7d7173cc476f9d3c5d2c724b305"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_global_lt_certified.json",
+      "bytes": 84,
+      "sha256": "9082c0062a97b43a275a9ea67e80614ea3f6a62d1602df3c3832e0a5277df69b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_global_upper_bound.json",
+      "bytes": 84,
+      "sha256": "4ca00b7bdfb5b1af50e93e654b004168ccffeddbce2895ef5ae82435fdca25fe"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/problem-receipts/ZetaNine.AnalyticPhase.phase_strictAntiOn_right.json",
+      "bytes": 84,
+      "sha256": "295c7d578b23e587650059df96683466875ab37f2039a7fda1257e71e4cf0d46"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_global_lt_certified.json",
+      "bytes": 38,
+      "sha256": "cc505d3a2c43dda08389241654cc22eee3249f0cc62299cb43bd3883e1ea7c45"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_global_upper_bound.json",
+      "bytes": 38,
+      "sha256": "ecbb4cfbce1d15dabc87fbe2f3901280072767537a7b75756a3932c8de81754a"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/batch/proof-receipts/ZetaNine.AnalyticPhase.phase_strictAntiOn_right.json",
+      "bytes": 38,
+      "sha256": "b2889bcfada42b906b46de0f965019239615fe21f26f8811df09a3b4bfda5e73"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 16,
+      "sha256": "0437347fe0d968aeb244e29edf165ac891b44f818af9072cf430fd52d275cc67"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/business-post-journal.json",
+      "bytes": 7333,
+      "sha256": "0ac1ef8d6aee85e3c8a560def578f94b568a9fb05f6762d41bed45866d3ba656"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/1060d4ef68c7bd33.body",
+      "bytes": 933,
+      "sha256": "98be6f50bc99249c7016d7462bd0005ea297bb7087c09bd3cf4a334920d7768b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/435244591c8a82e1.body",
+      "bytes": 14841,
+      "sha256": "18f45f94d76d90a7ea84422e557105b25a301391db1ac1736828fdfbb2cb7cc8"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/4b5efb87087d60f2.body",
+      "bytes": 949,
+      "sha256": "c804b8bb590266e6e5bf1f987f9d89006995a7b7a72c5371470d8016f4a7d3a3"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/a8e1059714879a8d.body",
+      "bytes": 956,
+      "sha256": "07342d7e1cc16df4346e1407b24684d531266ff054aa620bba426ebc0f3b339f"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/cbb6b5d6c774860c.body",
+      "bytes": 14963,
+      "sha256": "f5b4c01296267d8299cc0ef7a39c358e70ae4434afc379806ce07d258971c1ee"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-normal-seven/out/wire/dc60c58196e6536b.body",
+      "bytes": 14867,
+      "sha256": "354ed6e0f5c3b2c6f3d0524efb670de9d4be4743cc3581c4fc14524e381e48f9"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-proof-wire-binding/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-proof-wire-binding/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-unknown-barrier/FAKE-PIN-NOT-AUTHORIZATION.json",
+      "bytes": 57,
+      "sha256": "ac448594b702c314bf7f7589d18fdfca0817032fb94508d943a9effabaeca961"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-unknown-barrier/out/business-post-journal.json",
+      "bytes": 755,
+      "sha256": "3031a8ddfe5e0d9bf2812c0b6b3da6f2ca4fa1429fe68fc009dd518a5a47d78d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-unknown-barrier/out/business-writer.lock",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/fixtures/updated-unknown-barrier/out/wire/36a732b20a9d3f99.body",
+      "bytes": 1880,
+      "sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/review_final.py",
+      "bytes": 10200,
+      "sha256": "a394b5ab452e482d219936771d9df444d81a86959403540e09508cec3f2782cc"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/review_fixture.py",
+      "bytes": 12141,
+      "sha256": "eb537e03ac24a28f9e7cffc990550d0cc36006696a510bf635064748b04f2215"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/review_static.py",
+      "bytes": 6512,
+      "sha256": "cb627dd7613d9e609fbfb0a3f23722a561b00f00b76405b66d635378b9cf59ef"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/review_updated.py",
+      "bytes": 15113,
+      "sha256": "22dce57513a2be824211d0c315bb3b135e6cfd844f478bbdb10bbb8e588a16c9"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/3b36cc7787dc0a2f348a5dd1037f3f9189cf4b0a15bf291a11d8e523b35ebf2b-publish_analytic_phase_new_mission_2026_10_07.py",
+      "bytes": 16695,
+      "sha256": "3b36cc7787dc0a2f348a5dd1037f3f9189cf4b0a15bf291a11d8e523b35ebf2b"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/73287d44a99a3cc1f79a05bbae943c470ba66f139e1435a3af626e7ca8dc5630-publish_analytic_phase_new_mission_2026_10_07.py",
+      "bytes": 16442,
+      "sha256": "73287d44a99a3cc1f79a05bbae943c470ba66f139e1435a3af626e7ca8dc5630"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/audit_new_mission_2026_10_07.py",
+      "bytes": 4408,
+      "sha256": "756bacd2ee03c90a411ef07b1a368873e00d062f4e77945bfce138645a45cc73"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/prepare_analytic_phase_publication_2026_10_07.py",
+      "bytes": 6127,
+      "sha256": "a64d5c896fe037b2e0bff1858a5bc92837b769a5c8cb6f803d16666b5cd51ef0"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/publish_analytic_phase_new_mission_2026_10_07.py",
+      "bytes": 9165,
+      "sha256": "468471974c6099830041ce7d76ddea259e75162d60ab93eb5a3e94a8e9c9e5e2"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/publish_mission_2026_10_02.py",
+      "bytes": 11093,
+      "sha256": "63f915a6b5e3b82159d7f29dd657c7d5cc541d100df4b7fd51b4da12d0b6bfa4"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/source-snapshots/publish_numerator_pf_new_mission_2026_10_07.py",
+      "bytes": 19276,
+      "sha256": "dda7b66a1dcc8b07d4f059aa026fdbcaee600d0d59ebef587dd87ada124f8ecb"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/static-review-results.json",
+      "bytes": 3897,
+      "sha256": "fa8074b2c478b9d88242414d868259b9729c9ef29f387a0ee661d99cb1f0196c"
+    },
+    {
+      "task_relative": "formalization/platform/analytic-phase/pure-safety-review-2026-10-07/updated-fixture-results.json",
+      "bytes": 5147,
+      "sha256": "c3f0e53b73ee981d997511d6a655cda979f97d87e969021e8116df94ad8e666e"
+    }
+  ],
+  "stable_files_count": 97,
+  "stable_bytes": 288154
+}

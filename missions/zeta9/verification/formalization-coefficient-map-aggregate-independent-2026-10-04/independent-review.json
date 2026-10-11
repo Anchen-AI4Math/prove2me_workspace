@@ -1,0 +1,827 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS",
+  "scope_verdict": "PASS_ACTUAL_F_LINEARITY_AND_QUARTIC_COORDINATES_ONLY",
+  "review_role": "Independent mathematics reviewer; not Aggregate author",
+  "checked_at": "2026-10-03T17:55:16.155573+00:00",
+  "source": "missions/zeta9/formalization/CoefficientMapAggregate.lean",
+  "source_sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+  "environment": {
+    "lean_toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "checks": [
+    {
+      "name": "author_35_frozen_members_and_fixed_controls_unchanged",
+      "pass": true,
+      "detail": {
+        "source": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+        "receipt": "3470a09613a9e8e2ac2995c17ff93b4481ca4a18748292594f0086283efc92b6",
+        "manifest": "19054108e5c8c315e4c873d815cea2cd9049e9d61a5d392d3eb052cf1f24ceea",
+        "prior_receipt": "105b370b310afef6959210faf12d7e687c2c760f2363ca6e0c03f6063fafb0b7",
+        "prior_review": "fb0d4a09e3273fe430688521771ea582463d31cd98caf50764a7498293c040fa"
+      }
+    },
+    {
+      "name": "explicit_prior_independent_Summation_report_and_receipt_reuse",
+      "pass": true,
+      "detail": {
+        "seven_actual_native_dependencies": 7,
+        "pure_Definitions": 1,
+        "not_rebuilt_this_review": true,
+        "prior_review_sha256": "fb0d4a09e3273fe430688521771ea582463d31cd98caf50764a7498293c040fa"
+      }
+    },
+    {
+      "name": "all_eight_reused_source_object_actual_zero_receipts_and_byte_identical_new_cache_copies",
+      "pass": true,
+      "detail": {
+        "prior_cache_owner": "this independent reviewer",
+        "author_objects_never_on_selected_native_import_path": true
+      }
+    },
+    {
+      "name": "three_new_actual_Lean_calls_all_exit_zero",
+      "pass": true,
+      "detail": {
+        "fresh_Aggregate_source": 1,
+        "fresh_author_type_replay": 1,
+        "independent_boundaries": 1,
+        "actual_exits": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "32_author_closed_types_and_six_definition_values_replayed_exact",
+      "pass": true,
+      "detail": {
+        "source_defs": 6,
+        "source_proofs": 20,
+        "author_boundaries": 6,
+        "type_and_definitionValue_exact": true
+      }
+    },
+    {
+      "name": "all_32_author_and_22_independent_records_have_only_standard_axioms",
+      "pass": true,
+      "detail": {
+        "allowed_axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "sorryAx": false
+      }
+    },
+    {
+      "name": "all_six_defs_and_twenty_proofs_covered_no_source_holes",
+      "pass": true,
+      "detail": {
+        "complete_source_decl_coverage": true
+      }
+    },
+    {
+      "name": "imports_are_actual_Summation_and_Mathlib_only",
+      "pass": true,
+      "detail": {
+        "Theorems_imports": [],
+        "Solutions_imports": [],
+        "assumed_coefficients": [],
+        "proof_input_boundaries": []
+      }
+    },
+    {
+      "name": "actual_F_uses_negative_finite_B_and_true_rho3_5_7_9",
+      "pass": true,
+      "detail": "B = negative double finite harmonic sum of actual local coefficients; four remaining coordinates are actual sums of orders3,5,7,9."
+    },
+    {
+      "name": "linearity_is_proved_from_actual_local_series_not_assumed",
+      "pass": true,
+      "detail": "Arbitrary rational W,V and scalar a,b; no properness required for linearity."
+    },
+    {
+      "name": "all_quartic_coordinates_restore_including_zero_and_nonmonic",
+      "pass": true,
+      "detail": "Fin5 coefficients recover every natDegree≤4 polynomial. Coordinate injectivity is proved; aggregate injectivity is separate."
+    },
+    {
+      "name": "aggregate_zero_implies_all_rho_and_genuine_HasSum_only_with_strong_even_inputs",
+      "pass": true,
+      "detail": {
+        "required": [
+          "Even n",
+          "StrongProperMultiplier n W",
+          "actual aggregate n W=0"
+        ],
+        "conclusion": "actual all-nine rho zero and HasSum of genuine weightedR(k+1) equal0",
+        "kernel_triviality_inferred": false
+      }
+    },
+    {
+      "name": "n0_X4_real_nonzero_quartic_kernel_rho1_1_proper_not_strong",
+      "pass": true,
+      "detail": "Actual quartic input e4/X4 maps to0 while nonzero. rho1=1; strict properness alone cannot eliminate simple poles."
+    },
+    {
+      "name": "n0_X3_real_five_coordinate_output_and_X4_no_HasSum",
+      "pass": true,
+      "detail": "F0(X3)=e1 actual order3 output. F0(X4)=0 but actual sequence1/(k+1) has no HasSum to any real L."
+    },
+    {
+      "name": "six_actual_source_prints_standard_three_axioms",
+      "pass": true,
+      "detail": {
+        "prints": 6,
+        "object_source_sha256_bound": true
+      }
+    }
+  ],
+  "findings": [
+    {
+      "severity": "information",
+      "code": "DOMAIN",
+      "detail": "Actual rational five-dimensional linear F and quartic coordinate recovery only. Aggregate kernel triviality on original even n≥2, inverse and prescribed-target construction remain open in this source."
+    },
+    {
+      "severity": "information",
+      "code": "NECESSARY_NOT_SUFFICIENT",
+      "detail": "Zero F plus Even/Strong yields all aggregate rho zero and genuine HasSum0; it does not yield every local coefficient zero or W=0. Full local array injectivity cannot be applied to aggregate zeros."
+    },
+    {
+      "severity": "information",
+      "code": "REUSE",
+      "detail": "Seven previously fresh independent actual sources and one pure Definition are reused by immutable source/object/log/receipt hashes. Byte-identical objects are cloned into this new cache; no author or root native objects are borrowed."
+    },
+    {
+      "severity": "information",
+      "code": "RETAINED_TRIALS",
+      "detail": "Attempt01 was a partial-cache prefix import error. Attempt02 left a reviewer Pi.single Fin simplification goal, with elaborator sorryAx in that failed log. Both are preserved/excluded; final own boundary22 records allstandard3. Frozen mathematical source was never changed."
+    }
+  ],
+  "counts": {
+    "fresh_calls": 3,
+    "reused_actual_native_sources": 7,
+    "reused_pure_Definitions": 1,
+    "author_records": 32,
+    "independent_boundary_records": 22
+  },
+  "original_even_n_at_least_two_kernel_triviality_proved_in_source": false,
+  "aggregate_inverse_proved_in_source": false,
+  "five_dimensional_aggregate_distinct_from_full_local_array": true,
+  "new_external_proof_assumptions": [],
+  "root_scope_API_credentials_writes": false,
+  "failed_trials_excluded_from_success_evidence": true,
+  "stable_files": [
+    {
+      "task_relative": null,
+      "root_relative": "Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "bytes": 974,
+      "sha256": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92"
+    },
+    {
+      "task_relative": "../../.lake/build/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "root_relative": "missions/zeta9/../../.lake/build/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "bytes": 29608,
+      "sha256": "f9362998fa16268c07db9e732a9d52774bde35957121856fddf67176f03ea43d"
+    },
+    {
+      "task_relative": "../../Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "root_relative": "missions/zeta9/../../Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "bytes": 974,
+      "sha256": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapAggregate.compile-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapAggregate.compile-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapAggregate.compile.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapAggregate.compile.log",
+      "bytes": 697,
+      "sha256": "2a63161394ce86a9922932d36669625fc762958434f8abf0f104d91aad2f9ee0"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapAggregate.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapAggregate.lean",
+      "bytes": 8188,
+      "sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapAggregate.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapAggregate.olean",
+      "bytes": 483960,
+      "sha256": "eea8f0d21103d459bd029971aca519be50b63a56dfc5aaf3176a839b2a3e7329"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapFiniteSum.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+      "bytes": 6644,
+      "sha256": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapFiniteSum.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "bytes": 260416,
+      "sha256": "2359a7bfd0d35377f9e286ed239a7c0a017f6306b15e758d8a42c5ba42f497e0"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+      "bytes": 18065,
+      "sha256": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.lean",
+      "bytes": 17678,
+      "sha256": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "bytes": 768560,
+      "sha256": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapSummation.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapSummation.lean",
+      "bytes": 15204,
+      "sha256": "c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapSummation.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "bytes": 524080,
+      "sha256": "c3682c99420a919415a8115c22191a9de308846b3a3e3f738ab14b352764df25"
+    },
+    {
+      "task_relative": "research/coefficient-map-aggregate-2026-10-04.md",
+      "root_relative": "missions/zeta9/research/coefficient-map-aggregate-2026-10-04.md",
+      "bytes": 2090,
+      "sha256": "e141e38a203ef17f768dd66827b9370191afcfe0526dbcbda1a9cae46465fa3c"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "bytes": 4493,
+      "sha256": "e60a70590ea9daabf35e2c581c1146cef0cf824d03e47d622bda295324e2d9a8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/SHA256SUMS.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/SHA256SUMS.txt",
+      "bytes": 4480,
+      "sha256": "19054108e5c8c315e4c873d815cea2cd9049e9d61a5d392d3eb052cf1f24ceea"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/compile-receipt.json",
+      "bytes": 11300,
+      "sha256": "3470a09613a9e8e2ac2995c17ff93b4481ca4a18748292594f0086283efc92b6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/freeze_aggregate.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/freeze_aggregate.py",
+      "bytes": 8326,
+      "sha256": "5192b498704793d32dd757389085d94e30f9eb626ddad70641b2c43fb690d624"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/prepare_audit.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/prepare_audit.py",
+      "bytes": 5085,
+      "sha256": "88818d15b727600e9009d1a975c3e5540453f2fa134810c395a6d6a5d7c3f189"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit.lean",
+      "bytes": 6323,
+      "sha256": "ff7638f2e5ff3937950ff087405c431b3c41d1a8616c03c379f4bf9c96746b60"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/type-audit.log",
+      "bytes": 11336,
+      "sha256": "afb105e5f632a4a4c2060da3f3d6f4853470e0bb5408b0ce3d6404278032a7ec"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-2026-10-04/type-report.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-2026-10-04/type-report.json",
+      "bytes": 13421,
+      "sha256": "143a09b8e9646a1ac099632c1fff70f98742108b7a3beeb493656f75ce63e5ab"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-independent-compile-receipt.json",
+      "bytes": 1993,
+      "sha256": "e86a6d6b25f9ca4aab995b0de0084f721683fc35d9c03f2eb7b60cacdf7dec03"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate.log",
+      "bytes": 409,
+      "sha256": "d4aee5a2045b1cd35a43c1ef241c5c9ecdee0a37bedcab00f3d1ce332dbee6bf"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-01-before-prefix-copy-native-Aggregate.ps1",
+      "bytes": 717,
+      "sha256": "4565793e958a9d23aff81c69394cf9c3b8b70bbe0c3d990b018b55031e1435d4"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit.lean",
+      "bytes": 8796,
+      "sha256": "abb5e49a17b8eab8dbbd3ab128e8a97695b34d3ec263839862ffef28717b6bc6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-boundary-audit.log",
+      "bytes": 8658,
+      "sha256": "8bff26c09f3c3020e5750625ddeb767df449c5d7c427ca80842a74ec25dc1300"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/attempt-02-before-Fin-single-simp-independent-compile-receipt.json",
+      "bytes": 4505,
+      "sha256": "6994064e5b8b391fe273c6fd6af9789c63786861d6146df9bb09262925cbf67b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.lean",
+      "bytes": 6323,
+      "sha256": "ff7638f2e5ff3937950ff087405c431b3c41d1a8616c03c379f4bf9c96746b60"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.log",
+      "bytes": 11304,
+      "sha256": "040e9661e8ecd47f243591bf0074bd347b44a69ae77c840d82668d6b5030782a"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/author-type-replay.ps1",
+      "bytes": 564,
+      "sha256": "59d74cc0504b0ffea1d2557dc00ed5818989e1e7f00c5148f0c790319faf6a93"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/dependency-reuse.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/dependency-reuse.json",
+      "bytes": 15379,
+      "sha256": "29315e637d93c31698b3f89d7c27d63d9cebabba9f0a4b146720f646d5103971"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/finalize.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/finalize.py",
+      "bytes": 11467,
+      "sha256": "9e48eee1b0306ebd5aacee1c90300df4d121451f647940f4c435bc1fc7d75187"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.lean",
+      "bytes": 8844,
+      "sha256": "cb98171fda921247bd01a6d4f2cda3736f7b27b71ceaf5abeb33254c7c60a783"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.log",
+      "bytes": 7013,
+      "sha256": "d0a94cd1f2265d20bf6b642cea8589a006880033536af56d816b78e92d90c97d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-audit.ps1",
+      "bytes": 572,
+      "sha256": "34d8cf7fa946cda7582ac6130b70b0d03f933ac5e427725218d1b1c38379e5de"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-boundary-types.json",
+      "bytes": 8146,
+      "sha256": "3e365ea3f1563cbc0e4360feb51a22e1aff46e590669a3e6de05ef9aa3282f93"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-compile-receipt.json",
+      "bytes": 4505,
+      "sha256": "a0a8a14d2717476e2582f68a1755fa1322b99b4ed050726e0dba9adca0eb8308"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-original-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-original-types.json",
+      "bytes": 13421,
+      "sha256": "143a09b8e9646a1ac099632c1fff70f98742108b7a3beeb493656f75ce63e5ab"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-review.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-review.log",
+      "bytes": 994,
+      "sha256": "d0fa33a1d6980485d1f3568eafb0c11abfff76284469544527df27e64ab1dfff"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-review.md",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/independent-review.md",
+      "bytes": 978,
+      "sha256": "c92216b91d554423a54d5039e3010ab656457092405852ac47e9b4e62e5785a7"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate.log",
+      "bytes": 691,
+      "sha256": "84ca57b285f4feb9db10e32acdb5f82493bfefdbc6f7ddab8123dd6d45d07330"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native-Aggregate.ps1",
+      "bytes": 717,
+      "sha256": "4565793e958a9d23aff81c69394cf9c3b8b70bbe0c3d990b018b55031e1435d4"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "bytes": 29512,
+      "sha256": "d13c92e8140b605e6e687c03c0c629d86301c00ab3c4b21c6815b1e234e04e20"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapAggregate.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapAggregate.olean",
+      "bytes": 483960,
+      "sha256": "eea8f0d21103d459bd029971aca519be50b63a56dfc5aaf3176a839b2a3e7329"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "bytes": 260416,
+      "sha256": "2359a7bfd0d35377f9e286ed239a7c0a017f6306b15e758d8a42c5ba42f497e0"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "bytes": 768560,
+      "sha256": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "bytes": 524080,
+      "sha256": "c3682c99420a919415a8115c22191a9de308846b3a3e3f738ab14b352764df25"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-aggregate-independent-2026-10-04/replay.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-aggregate-independent-2026-10-04/replay.py",
+      "bytes": 5470,
+      "sha256": "e59d21957d690e6a04a5402b2178e2baff66d8811f043b7309615a70c9f88924"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-finite-sum-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-finite-sum-2026-10-03/compile-receipt.json",
+      "bytes": 5383,
+      "sha256": "ed4208781a35fc1b7b81abbe1dd762c64d96e4bb704a6e287743dea4e956212f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "bytes": 7397,
+      "sha256": "c15cc9b3e545095c944db689aca5140723603fb63119697f47d81749d1dedcfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "bytes": 5288,
+      "sha256": "154d424b057232f3763654f29aaf6c7a3efcb9ae69dd8faa6a6c6f169c6f8b3c"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "bytes": 8884,
+      "sha256": "a422a5d3b6d5ddaaa1a26ac8e468266331b08ac78ec3788707db2e131809075d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/compile-receipt.json",
+      "bytes": 9351,
+      "sha256": "3f56ab9b0dc6e0b22390c317b8f31c8062b7b6f1616e037915e27a7cdad604bb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-2026-10-04/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-2026-10-04/compile-receipt.json",
+      "bytes": 12876,
+      "sha256": "1fefb593daf7d350b202e3a1429c6f58c150c89e34fd985d6fc51c2f4f1c89b4"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/independent-compile-receipt.json",
+      "bytes": 14525,
+      "sha256": "105b370b310afef6959210faf12d7e687c2c760f2363ca6e0c03f6063fafb0b7"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/independent-review.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/independent-review.json",
+      "bytes": 60404,
+      "sha256": "fb0d4a09e3273fe430688521771ea582463d31cd98caf50764a7498293c040fa"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap.log",
+      "bytes": 933,
+      "sha256": "f0b920c9005031dab2dbc385a6f295c2ab2a6285ec6d92960f8094d614835293"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMap.ps1",
+      "bytes": 553,
+      "sha256": "7cdb7f849b87ec8ded52ef541fbd1ec328b0675eedc06ba0220667233a3919e3"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum.log",
+      "bytes": 770,
+      "sha256": "e496cd4ff6b32242645f2fef0a49c43606e45cd237d83079168338add19eedf6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapFiniteSum.ps1",
+      "bytes": 571,
+      "sha256": "fdcefabfad45ef285a3cfe94866c57476bbf3b930435c3830dcf99480d193b42"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity.log",
+      "bytes": 1198,
+      "sha256": "6ea6ccdba6c56226d4dece522c0450c3ae3fbe6ed24b4193c779f1766c169367"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapInjectivity.ps1",
+      "bytes": 575,
+      "sha256": "6b742816cf2d4cc49d6e18fcc22c2289dd5afa60c83b7f5dd7abd900b7d2ac7e"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet.log",
+      "bytes": 1222,
+      "sha256": "b9ea2bad281c3f8c011e062f877fca9ccc10b6600425c4b7c483c2f7250f00d8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapJet.ps1",
+      "bytes": 559,
+      "sha256": "57a4d85b07a091cd8c7ee732aa75e25125abb0fd55157ea1789a2fca5f4c9e25"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions.log",
+      "bytes": 1645,
+      "sha256": "fc52c42281adc8d5d520db8b77511fcc9079656ee74304802da6ef505350114f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapPartialFractions.ps1",
+      "bytes": 585,
+      "sha256": "1fb4dbc1f8d990e228143abf35bc4a341b7e909e0f7bbdcb5045b27bfafeefd3"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection.log",
+      "bytes": 1404,
+      "sha256": "8e6d55ede0268232e10959b7bb96e662d84858db344860feacb0d9c776378838"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapReflection.ps1",
+      "bytes": 573,
+      "sha256": "2b2b432a8363a9107f9a92e055cb9ea43bc28002b648a22917744f5a283567a6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation.log",
+      "bytes": 1488,
+      "sha256": "a0c7eeb1952277d6053b59474323cd9b0fa3b6f060c577d93d64b298bb5c4d58"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-CoefficientMapSummation.ps1",
+      "bytes": 571,
+      "sha256": "01257518c2f26283dddebfda971e99da14b93e4a520ad9d1192be66d8bc00159"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native-HarmonicStabilityDefinition.ps1",
+      "bytes": 551,
+      "sha256": "891c3f8aa8567ce62f5592646649d31e040e60d778cc27d674b3d1c4a2a48290"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "bytes": 29512,
+      "sha256": "d13c92e8140b605e6e687c03c0c629d86301c00ab3c4b21c6815b1e234e04e20"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "bytes": 260416,
+      "sha256": "2359a7bfd0d35377f9e286ed239a7c0a017f6306b15e758d8a42c5ba42f497e0"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "bytes": 768560,
+      "sha256": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-summation-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "bytes": 524080,
+      "sha256": "c3682c99420a919415a8115c22191a9de308846b3a3e3f738ab14b352764df25"
+    }
+  ],
+  "hash_exclusions": [
+    "report self",
+    "scope/status",
+    "API/docs/credentials"
+  ]
+}

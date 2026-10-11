@@ -1,0 +1,23 @@
+{
+  "theorem_id": "37ff9673-ea18-4954-8859-e711491af165",
+  "theorem_name": "ZetaNine.CoefficientMapConnection.connection_five_systems_unique",
+  "theorem_title": "The five original connection systems have unique bounded rational solutions",
+  "status": "Proved",
+  "formal_statement": "theorem ZetaNine.CoefficientMapConnection.connection_five_systems_unique (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    ∃! pq : ℚ[X] × ℚ[X], pq.1.natDegree ≤ 4 ∧ pq.2.natDegree ≤ 9 ∧\n      connectionD n * pq.1.comp (connectionU n) + connectionH n pq.2 =\n        (connectionTarget n r.val).comp (connectionU n):= by sorry",
+  "natural_language_statement": "For every n>=1 and r=0,...,4, there exists exactly one rational polynomial pair P,q of natural degrees at most four and nine satisfying the full original polynomial identity with the genuine scaled three-factor Z_n(u)(u-n-1)^r target. Rational-function, HasSum and five-output parameter transport are separate results.",
+  "created_at": "2026-10-04T11:47:07.484165+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "polynomials"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_CoefficientMapConnection\n\nset_option autoImplicit false\nnoncomputable section\nopen Polynomial ZetaNine.CoefficientMapConnection\n",
+  "source": "Actual original D/H connection system; frozen source SHA256 098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,127 @@
+{
+  "definition_title": "Admissible data for the approximation argument",
+  "natural_language_statement": "Fix real parameters $\\nu,\\Lambda,c$. An element of $\\mathrm{AdmissibleParameters}(\\nu,\\Lambda,c)$ consists of a base record $P:\\mathrm{Parameters}(\\nu)$, real numbers $\\epsilon,F_0,w_\\star$, natural numbers $m,K$, rational numbers $w_0,v_0,\\sigma$, integer and natural sequences $p_n,q_n$, and a real sequence $x_n$, subject to the following conditions. The base parameters obey $0<\\theta<A<B<1$, $1<C$, $B<1/C$, $B<C\\theta$, $C\\theta<1$, $0<\\eta<1$, and $1-\\theta<\\nu(A-\\theta)$, where $\\theta,A,B,C,\\eta$ are the fields of $P$. The additional gap is $g=\\nu(A(1-\\eta)-\\theta)-(1-\\theta)$; the record requires $0<\\epsilon<g$ and $\\epsilon\\le 1/2$.\n\nThe scale and dimension data satisfy $0<F_0$, $2/\\theta<F_0$, $\\nu/F_0<\\epsilon/3$, $1\\le m$, and $K=\\mathrm{dimensionK}(C,m)\\ge1$. The rational weights satisfy $w_0=\\mathrm{dimensionW}(B,m)$ and $v_0=\\mathrm{dimensionV}(\\theta,B,C,m)$ after casting to $\\mathbb{R}$, with both positive, and\n\n$$\nK\\frac{w_0}{v_0}\\theta^m=\\frac12,\\qquad K\\theta^m<1.\n$$\n\nThey also satisfy the dimension margin $(\\Lambda F_0m+2\\log 2)/v_0+100K/w_0<\\epsilon/3$ and the collision bound $2<c\\,\\eta^2K\\theta^m/((m+1)v_0A^m)$. The rational $\\sigma$ is positive and obeys\n\n$$\n(1+3\\sigma)^{m+1}K(w_0/v_0)\\theta^m<1,\\quad (1+3\\sigma)^mK\\theta^m<1,\\quad (1+\\sigma)\\theta<1.\n$$\n\nThe sequences satisfy $x_0=1$, $x_{n+1}=\\lceil\\log q_n\\rceil$, $2\\le q_n$, $p_n\\ne0$, and $|\\pi-p_n/q_n|\\le q_n^{-\\nu}$ for every $n$, as well as $1\\le x_i$ for every $i$. Their growth satisfies $\\mathrm{SeparatedWeightGrowth}(m,D,x)$ with $D$ the separation factor formed from $m$, the interpolation separation constant at $(m,\\sigma)$, $w_0,v_0,\\theta$. Finally, $w_\\star>0$ is a minimum attained among $x_1,\\ldots,x_m$, and the weight margin is $\\Lambda\\sum_{i=1}^m1/x_i+(\\theta+\\log4+\\log(2K)+\\nu+\\log(200K))/w_\\star<\\epsilon/3$.\n\nThe bundle contains the structure command and its 49 declarations generated from that structure command, plus nine additional declarations: the interpolation-separation constant, the weight-error coefficient, the rational-weight sequence and its cast/positivity lemmas, and four error definitions. It packages admissible data and derived quantities; it does not assert that such data exist for arbitrary $\\nu,\\Lambda,c$.\n\nThe nine declarations outside the structure also specify the following derived quantities. The interpolation separation constant is $2(m+2)^{m+2}(1+(m+2)/\\sigma)^{m+2}$, and the weight-error coefficient is $\\theta+\\log4+\\log(2K)+\\nu+\\log(200K)$. The rational weight is $1$ at index zero and $\\lceil\\log q_n\\rceil$ at index $n+1$; its real cast equals $x_i$, and it is positive. The four error definitions are\n$$\nE_{\\rm arith}=\\frac{\\Lambda F_0m}{v_0}+\\Lambda\\sum_{i=1}^m\\frac1{x_i}+\\frac{\\theta}{w_\\star},\\qquad\nE_{\\rm trans}=\\frac{\\nu}{F_0}+\\frac{\\log2}{v_0}+\\frac{\\log4+\\log(2K)+\\nu}{w_\\star},\n$$\n$$\nE_{\\rm holo}=\\frac{100K}{w_0}+\\frac{\\log2}{v_0}+\\frac{\\log(200K)}{w_\\star},\\qquad\nE_{\\rm analytic}=E_{\\rm trans}+E_{\\rm holo}.\n$$",
+  "explanation": "The record collects the quantitative hypotheses used to select rational approximants to $\\pi$ and control the dimension, collision, and weight errors. Its base field reuses the existing Parameters record. The 49 declarations owned by the structure command comprise the structure's type, constructor, projections, recursors, and generated structural declarations; the other nine declarations are the separately defined helpers listed above. The existence theorem from the source module is not included in this bundle, so the metadata makes no universal existence claim.",
+  "declarations": [
+    "OAI.PiExponent.AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.mk",
+    "OAI.PiExponent.AdmissibleParameters.base",
+    "OAI.PiExponent.AdmissibleParameters.epsilon",
+    "OAI.PiExponent.AdmissibleParameters.F0",
+    "OAI.PiExponent.AdmissibleParameters.m",
+    "OAI.PiExponent.AdmissibleParameters.K",
+    "OAI.PiExponent.AdmissibleParameters.w0",
+    "OAI.PiExponent.AdmissibleParameters.v0",
+    "OAI.PiExponent.AdmissibleParameters.sigma",
+    "OAI.PiExponent.AdmissibleParameters.p",
+    "OAI.PiExponent.AdmissibleParameters.q",
+    "OAI.PiExponent.AdmissibleParameters.x",
+    "OAI.PiExponent.AdmissibleParameters.wstar",
+    "OAI.PiExponent.AdmissibleParameters.epsilon_pos",
+    "OAI.PiExponent.AdmissibleParameters.epsilon_lt_gap",
+    "OAI.PiExponent.AdmissibleParameters.epsilon_le_half",
+    "OAI.PiExponent.AdmissibleParameters.F0_pos",
+    "OAI.PiExponent.AdmissibleParameters.F0_large",
+    "OAI.PiExponent.AdmissibleParameters.initial_margin",
+    "OAI.PiExponent.AdmissibleParameters.m_pos",
+    "OAI.PiExponent.AdmissibleParameters.K_eq",
+    "OAI.PiExponent.AdmissibleParameters.K_pos",
+    "OAI.PiExponent.AdmissibleParameters.w0_eq",
+    "OAI.PiExponent.AdmissibleParameters.v0_eq",
+    "OAI.PiExponent.AdmissibleParameters.w0_pos",
+    "OAI.PiExponent.AdmissibleParameters.v0_pos",
+    "OAI.PiExponent.AdmissibleParameters.volume_eq",
+    "OAI.PiExponent.AdmissibleParameters.volume_lt_one",
+    "OAI.PiExponent.AdmissibleParameters.dimension_margin",
+    "OAI.PiExponent.AdmissibleParameters.collision_margin",
+    "OAI.PiExponent.AdmissibleParameters.sigma_pos",
+    "OAI.PiExponent.AdmissibleParameters.sigma_volume",
+    "OAI.PiExponent.AdmissibleParameters.sigma_centers",
+    "OAI.PiExponent.AdmissibleParameters.sigma_theta",
+    "OAI.PiExponent.AdmissibleParameters.x_zero",
+    "OAI.PiExponent.AdmissibleParameters.x_log",
+    "OAI.PiExponent.AdmissibleParameters.approximations",
+    "OAI.PiExponent.AdmissibleParameters.x_one_le",
+    "OAI.PiExponent.AdmissibleParameters.weight_growth",
+    "OAI.PiExponent.AdmissibleParameters.wstar_pos",
+    "OAI.PiExponent.AdmissibleParameters.wstar_lower",
+    "OAI.PiExponent.AdmissibleParameters.wstar_attained",
+    "OAI.PiExponent.AdmissibleParameters.weight_margin",
+    "OAI.PiExponent.AdmissibleParameters.rec",
+    "OAI.PiExponent.AdmissibleParameters.recOn",
+    "OAI.PiExponent.AdmissibleParameters.casesOn",
+    "OAI.PiExponent.AdmissibleParameters.noConfusion",
+    "OAI.PiExponent.AdmissibleParameters.mk.noConfusion",
+    "OAI.PiExponent.interpolationSeparationConstant",
+    "OAI.PiExponent.weightErrorCoefficient",
+    "OAI.PiExponent.AdmissibleParameters.rationalWeight",
+    "OAI.PiExponent.AdmissibleParameters.cast_rationalWeight",
+    "OAI.PiExponent.AdmissibleParameters.rationalWeight_pos",
+    "OAI.PiExponent.AdmissibleParameters.arithmeticError",
+    "OAI.PiExponent.AdmissibleParameters.translationError",
+    "OAI.PiExponent.AdmissibleParameters.holomorphicError",
+    "OAI.PiExponent.AdmissibleParameters.analyticError"
+  ],
+  "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean#L14-L307",
+  "tags": [
+    "number-theory",
+    "rational-approximation",
+    "diophantine-approximation",
+    "openai-pi-exponent-017"
+  ],
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+  "selected_source_units": [
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12604",
+      "start_line": 295,
+      "end_line": 297
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12784",
+      "start_line": 299,
+      "end_line": 301
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12936",
+      "start_line": 303,
+      "end_line": 305
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:13093",
+      "start_line": 307,
+      "end_line": 307
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327",
+      "start_line": 50,
+      "end_line": 103
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:552",
+      "start_line": 14,
+      "end_line": 16
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:939",
+      "start_line": 23,
+      "end_line": 24
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9489",
+      "start_line": 226,
+      "end_line": 228
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9601",
+      "start_line": 230,
+      "end_line": 233
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9818",
+      "start_line": 235,
+      "end_line": 239
+    }
+  ]
+}

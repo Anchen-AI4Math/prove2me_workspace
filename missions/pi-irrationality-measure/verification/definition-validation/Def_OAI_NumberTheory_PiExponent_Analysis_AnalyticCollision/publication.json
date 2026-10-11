@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "f7befacba36a06b7eed715a1d7853fe4d9b040cbf23502813e75cab3514d91d7",
+  "publish_intent": {
+    "at_utc": "2026-10-08T09:30:15.824845+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+      "definition_title": "Analytic coefficient and row-test constructions",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\nopen Complex Finset\r\n\r\nnamespace PiExponent.AnalyticCollision\r\n\r\nnoncomputable def exponentialMonomial (b h : ℂ) (d : ℕ) (z : ℂ) : ℂ :=\r\n  b * Complex.exp (h * z) * z ^ d\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedTaylorCoeff (f : ℂ → ℂ) (R : ℝ) (d : ℕ) : ℂ :=\r\n  cauchyPowerSeries f 0 R d (fun _ => (R : ℂ))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def rowTest (ell : ℕ) (f : ℂ → ℂ) : ℂ :=\r\n  cauchyPowerSeries f 0 (1 / 2) ell (fun _ => 1)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.AnalyticCollision\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "This module defines three complex-valued constructions used in the analytic determinant estimates. For $b,h,z\\in\\mathbb C$ and $d\\in\\mathbb N$, the exponential monomial is\n\n$$M_{b,h,d}(z)=b\\,e^{hz}z^d.$$\n\nFor a function $f:\\mathbb C\\to\\mathbb C$, a real radius $R$, and $d\\in\\mathbb N$, the normalized Taylor coefficient is the Cauchy-power-series coefficient of $f$ about $0$ at radius $R$, evaluated on the constant vector with value $R$. For $\\ell\\in\\mathbb N$, the row test is the same construction at radius $1/2$, evaluated on the constant vector with value $1$. These are definitions and assume no analyticity or radius-positivity hypotheses on $f$ or $R$; later analytic bounds state the conditions they need.",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, definitions in Analysis/AnalyticCollision.lean: exponentialMonomial, lines 10-11 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L10-L11); normalizedTaylorCoeff, lines 31-32 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L31-L32); rowTest, lines 88-89 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L88-L89)",
+      "tags": [
+        "number-theory",
+        "complex-analysis",
+        "pi",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "f7befacba36a06b7eed715a1d7853fe4d9b040cbf23502813e75cab3514d91d7",
+    "bundle_source_sha256": "d89d140376a74b9fcb1d2547c66f2bc70e919de511132a1848269bc6499014b5",
+    "bundle_manifest_sha256": "206cde8f910152a2b54147496a83c7c9b9bf90e092945cfe30f2aff2ffdae1bb",
+    "validation_sha256": "7a5f2703363b170d6754c6b808d7f03eba4e52fb2f7f6005c57993f3a0b8856f"
+  },
+  "updated_at_utc": "2026-10-08T09:40:32.085225+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "23d1f54d-948e-44bf-894f-18346f8313e0",
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/23d1f54d-948e-44bf-894f-18346f8313e0 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "bbfc9c755e48f5f5a3024be681e8179b336c03fd4d8cb38b848f82621c0ad2e9"
+  },
+  "job_id": "23d1f54d-948e-44bf-894f-18346f8313e0",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "23d1f54d-948e-44bf-894f-18346f8313e0",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+      "theorem_title": "Analytic coefficient and row-test constructions",
+      "formal_statement": "",
+      "natural_language_statement": "This module defines three complex-valued constructions used in the analytic determinant estimates. For $b,h,z\\in\\mathbb C$ and $d\\in\\mathbb N$, the exponential monomial is\n\n$$M_{b,h,d}(z)=b\\,e^{hz}z^d.$$\n\nFor a function $f:\\mathbb C\\to\\mathbb C$, a real radius $R$, and $d\\in\\mathbb N$, the normalized Taylor coefficient is the Cauchy-power-series coefficient of $f$ about $0$ at radius $R$, evaluated on the constant vector with value $R$. For $\\ell\\in\\mathbb N$, the row test is the same construction at radius $1/2$, evaluated on the constant vector with value $1$. These are definitions and assume no analyticity or radius-positivity hypotheses on $f$ or $R$; later analytic bounds state the conditions they need.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\nopen Complex Finset\r\n\r\nnamespace PiExponent.AnalyticCollision\r\n\r\nnoncomputable def exponentialMonomial (b h : ℂ) (d : ℕ) (z : ℂ) : ℂ :=\r\n  b * Complex.exp (h * z) * z ^ d\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedTaylorCoeff (f : ℂ → ℂ) (R : ℝ) (d : ℕ) : ℂ :=\r\n  cauchyPowerSeries f 0 R d (fun _ => (R : ℂ))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def rowTest (ell : ℕ) (f : ℂ → ℂ) : ℂ :=\r\n  cauchyPowerSeries f 0 (1 / 2) ell (fun _ => 1)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.AnalyticCollision\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, definitions in Analysis/AnalyticCollision.lean: exponentialMonomial, lines 10-11 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L10-L11); normalizedTaylorCoeff, lines 31-32 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L31-L32); rowTest, lines 88-89 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L88-L89)",
+      "tags": [
+        "number-theory",
+        "complex-analysis",
+        "pi",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "82d606c5-f704-4255-8948-696d425a76a1",
+      "created_at": "2026-10-08T09:30:17.579601+00:00",
+      "updated_at": "2026-10-08T09:30:25.576993+00:00"
+    }
+  },
+  "definition_id": "82d606c5-f704-4255-8948-696d425a76a1",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "82d606c5-f704-4255-8948-696d425a76a1",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision",
+      "theorem_title": "Analytic coefficient and row-test constructions",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "This module defines three complex-valued constructions used in the analytic determinant estimates. For $b,h,z\\in\\mathbb C$ and $d\\in\\mathbb N$, the exponential monomial is\n\n$$M_{b,h,d}(z)=b\\,e^{hz}z^d.$$\n\nFor a function $f:\\mathbb C\\to\\mathbb C$, a real radius $R$, and $d\\in\\mathbb N$, the normalized Taylor coefficient is the Cauchy-power-series coefficient of $f$ about $0$ at radius $R$, evaluated on the constant vector with value $R$. For $\\ell\\in\\mathbb N$, the row test is the same construction at radius $1/2$, evaluated on the constant vector with value $1$. These are definitions and assume no analyticity or radius-positivity hypotheses on $f$ or $R$; later analytic bounds state the conditions they need.",
+      "created_at": "2026-10-08T09:30:24.480409+00:00",
+      "vote_count": 0,
+      "tags": [
+        "complex-analysis",
+        "number-theory",
+        "openai-pi-exponent-017",
+        "pi"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\nopen Complex Finset\r\n\r\nnamespace PiExponent.AnalyticCollision\r\n\r\nnoncomputable def exponentialMonomial (b h : ℂ) (d : ℕ) (z : ℂ) : ℂ :=\r\n  b * Complex.exp (h * z) * z ^ d\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedTaylorCoeff (f : ℂ → ℂ) (R : ℝ) (d : ℕ) : ℂ :=\r\n  cauchyPowerSeries f 0 R d (fun _ => (R : ℂ))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def rowTest (ell : ℕ) (f : ℂ → ℂ) : ℂ :=\r\n  cauchyPowerSeries f 0 (1 / 2) ell (fun _ => 1)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.AnalyticCollision\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, source commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, definitions in Analysis/AnalyticCollision.lean: exponentialMonomial, lines 10-11 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L10-L11); normalizedTaylorCoeff, lines 31-32 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L31-L32); rowTest, lines 88-89 (https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticCollision.lean#L88-L89)",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

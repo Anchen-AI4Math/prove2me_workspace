@@ -1,0 +1,359 @@
+{
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+  },
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "root_writes": false,
+  "API_called": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-original-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-original-CoefficientMap.log",
+      "log_sha256": "917bd761b76a4f462f60256b29682274c6a9d13e0c063211c60f4e82349f744a"
+    },
+    {
+      "label": "build-original-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-original-CoefficientMapJet.log",
+      "log_sha256": "fc97822e6dc4a3b1865ba94605ac3854201822d5a35396e60c3b431349bfb369"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "4271391e51ccaf923f380bb921cca87a3574c956cf5c52789b6bdc31937c23c7"
+    },
+    {
+      "label": "stage2-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_sketch_info.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine.CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "stage2-extract.log",
+      "log_sha256": "d5c0e41e2b46438c2d1a7913cdebf0d3a52d8a94d47200c16cf32d57aec25f9e"
+    },
+    {
+      "label": "stage2-base-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_base_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine.CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "stage2-base-extract.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "54d3d293683200fe0f6acccc936dea10d2fd2e127ded3504f454c1358772b0af"
+    },
+    {
+      "label": "build-Base-Definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-Base-Definition.log",
+      "log_sha256": "d4654f2880906f1aa4eb7ba5280cc8c8366e2aa74320ca6bc8f2a6c9b5bf9c98"
+    },
+    {
+      "label": "build-staged-0",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-0.log",
+      "log_sha256": "683239898b5f3bf23231101c85ed933160d8197beecb1f56a119326e4bbb4311"
+    },
+    {
+      "label": "build-staged-1",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-1.log",
+      "log_sha256": "90151f65f8795c054a5f93f62c091833931d9f518001e806678234e0c536f6db"
+    },
+    {
+      "label": "build-staged-2",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-2.log",
+      "log_sha256": "e4327379122e95f11efd45e4aa35529c91669fabf1f88d7ba6a2a0c72de40963"
+    },
+    {
+      "label": "build-staged-3",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-3.log",
+      "log_sha256": "376a50a36c57663ddd4ec89d822c2b2a6567a74165512fb0c2f4345ed8687b44"
+    },
+    {
+      "label": "build-staged-4",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-4.log",
+      "log_sha256": "284aefc29cbee447d88de222d55bcbffd1ae04c1db4cd2854aa02b747b206bba"
+    },
+    {
+      "label": "build-staged-5",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-5.log",
+      "log_sha256": "e63fca1dfde2e7d773c8076f1ed54543010be045c81604535e368a4aa5c9fad6"
+    },
+    {
+      "label": "build-staged-6",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "build-staged-6.log",
+      "log_sha256": "0927eb390a5f382c02d6523e5ef115b811065d66bb2827d0b3abbd3158fdf465"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "a97c923ae7c292f02830eb52ddfc5b831373b9241b7f0454861f92e6e97f48ce"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "5e7fe1fc4bf243814853a9eecbd9c547d82dee2e6a568a31fa70f8aef3c4c4fb"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "d2ea1736c16604419bb294deb763f0f4a00a610e75c29f8e1a406c3e0230b321"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "82c5a6247500b581d6244f50c211e5f789be3038a157cfcd9d29f6e46b219158"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "ad7bf34cb573d2626dcb2cdae889232ed25b71a36c69013df6d07252cb35a6aa"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "c6f1a5fda4da788e62a4631f0f313a14f556d13c03bc963b04df12ce13b8eb0c"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "e749abc475c0bd5e64525af5d28acc608354120c5b3556465d96263e21392a91"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "925992fe26062f838d26cc7bb4e366b057a148bf5b0859ddea959a0becd6feb8"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "21c51053daf4b71109ef1afb955589640659560235f4ecc3e8725ca976e465b0"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "8af06fada20066000b8bd303434febb6be833997f8e15a1143b39bf42d9c61fe"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "6e4dad8e96315af3144efc7f02bdcfe0f0156fcdbb1f229f91fde99eac2af47d"
+    }
+  ],
+  "complete": true,
+  "all_exit_codes_actually_observed": true
+}

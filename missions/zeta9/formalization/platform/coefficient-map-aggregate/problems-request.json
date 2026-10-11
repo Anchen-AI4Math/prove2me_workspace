@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapAggregate.aggregate_add",
+      "theorem_title": "Additivity of the actual five rational coefficient outputs",
+      "formal_statement": "theorem ZetaNine.CoefficientMapAggregate.aggregate_add (n : ℕ) (W V : ℚ[X]) :\n    aggregate n (W + V) = aggregate n W + aggregate n V:= by sorry",
+      "natural_language_statement": "Let $n$ be any natural number and let $W,V\\in\\mathbb Q[X]$. For the actual aggregate\n\n$$F_n(W)=(B_n(W),\\rho_{n,3}(W),\\rho_{n,5}(W),\\rho_{n,7}(W),\\rho_{n,9}(W)),$$\n\nwhere every coefficient is extracted from the genuine weighted formal local series and $B_n$ is the finite negative harmonic constant, one has\n\n$$F_n(W+V)=F_n(W)+F_n(V).$$\n\nThe equality is of all five rational coordinates, with pointwise addition. It holds for arbitrary rational polynomials and includes $n=0$ and zero polynomials, without an evenness, degree, properness or cancellation hypothesis.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapAggregate\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapSummation ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) genuine five rational coefficient outputs and quartic coordinates: missions/zeta9/research/coefficient-map-aggregate-2026-10-04.md. Frozen missions/zeta9/formalization/CoefficientMapAggregate.lean SHA256 e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299. The coefficients are extracted from the actual weighted local formal series; B is the actual finite negative harmonic constant. Original declaration lines 64–67.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapAggregate.polynomial_restore",
+      "theorem_title": "Exact recovery of every rational quartic from its five coefficients",
+      "formal_statement": "theorem ZetaNine.CoefficientMapAggregate.polynomial_restore (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    coordinatePolynomial (polynomialCoordinates W) = W:= by sorry",
+      "natural_language_statement": "Let $W\\in\\mathbb Q[X]$ have natural degree at most four. Write $\\pi(W)_i=[X^i]W$ for $0\\le i\\le4$, and define $C(a)=\\sum_{i=0}^4 a_iX^i$ for a rational five-coordinate vector $a$. Then\n\n$$C(\\pi(W))=W.$$\n\nThis recovers the actual polynomial from its five coefficients, including the zero polynomial, constants and nonmonic quartics. The degree bound is essential. It is a statement about quartic coordinates and does not assert that the aggregate $F_n$ has an inverse.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapAggregate\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapSummation ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) genuine five rational coefficient outputs and quartic coordinates: missions/zeta9/research/coefficient-map-aggregate-2026-10-04.md. Frozen missions/zeta9/formalization/CoefficientMapAggregate.lean SHA256 e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299. The coefficients are extracted from the actual weighted local formal series; B is the actual finite negative harmonic constant. Original declaration lines 131–136.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapAggregate.aggregate_zero_all_rho",
+      "theorem_title": "All nine coefficient totals vanish under actual even strong-proper aggregate zero",
+      "formal_statement": "theorem ZetaNine.CoefficientMapAggregate.aggregate_zero_all_rho (n : ℕ) (hn : Even n) (W : ℚ[X])\n    (hstrong : StrongProperMultiplier n W) (hzero : aggregate n W = 0)\n    (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) : CoefficientMapFiniteSum.rho n s W = 0:= by sorry",
+      "natural_language_statement": "Let $n$ be an even natural number, and let $W\\in\\mathbb Q[X]$ satisfy the actual stronger degree bound\n\n$$2n+2\\operatorname{natdeg}(W)+2\\le9(n+1).$$\n\nAssume the genuine five-output aggregate vanishes, $F_n(W)=0$, with coordinates $B_n(W),\\rho_{n,3}(W),\\rho_{n,5}(W),\\rho_{n,7}(W),\\rho_{n,9}(W)$. Then, for every natural order $s$ with $1\\le s\\le9$,\n\n$$\\rho_{n,s}(W)=\\sum_{j=0}^n c^W_{n,j,s}=0.$$\n\nThese are the actual totals of the weighted local coefficients. Evenness and the stronger degree bound are retained. The conclusion concerns nine totals, not the individual local coefficient array, and it does not infer $W=0$. Strict properness alone would not suffice: $n=0,W=X^4$ has $F_0(X^4)=0$ but $\\rho_{0,1}=1$; it is proper and fails the stronger bound.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapAggregate\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapSummation ZetaNine.HarmonicStability\n",
+      "source": "Zeta(9) genuine five rational coefficient outputs and quartic coordinates: missions/zeta9/research/coefficient-map-aggregate-2026-10-04.md. Frozen missions/zeta9/formalization/CoefficientMapAggregate.lean SHA256 e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299. The coefficients are extracted from the actual weighted local formal series; B is the actual finite negative harmonic constant. Original declaration lines 156–165.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    }
+  ]
+}

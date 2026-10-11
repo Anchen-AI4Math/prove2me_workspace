@@ -1,0 +1,57 @@
+{
+  "theorem_name": "OAI.PiExponent.DeterminantAnalyticBound.log_norm_sum_le",
+  "independently_closed_project_dependencies": [
+    "OAI.PiExponent.DeterminantAnalyticBound.log_norm_sum_le"
+  ],
+  "full_main_tree_complete": false,
+  "source_module": "OAI.NumberTheory.PiExponent.Analysis.DeterminantAnalyticBound",
+  "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean",
+  "source_sha256": "c38bc7610aa8224fc9f766085ddf407c6ed1d9ab84eecee0a8f1e93102c082c3",
+  "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean",
+  "original_source_sha256": "609c1cc3b024cd9c552cbd6d06dd03e139ef30e2d3afa82ff0c430458f74cede",
+  "source_graph": "missions/pi-irrationality-measure/verification/decl_graph.jsonl",
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantAnalyticBound-20261007-223355.log",
+  "facts_sha256": "c9c65492a278ced311761fa82894a7f2d23fb78d97bdd689f0b284c0feb4002d",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean#L105-L130",
+  "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Choose\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nopen scoped BigOperators\n\n\n",
+  "formal_statement": "theorem OAI.PiExponent.DeterminantAnalyticBound.log_norm_sum_le {\u03a9 : Type*} [Fintype \u03a9]\r\n    (term : \u03a9 \u2192 \u2102) (delta : \u2102) {M : \u2115} {H Q E : \u211d}\r\n    (hM : 0 < M) (hH : 0 < H) (hQ : 0 < Q)\r\n    (hcard : (Fintype.card \u03a9 : \u211d) \u2264 Q ^ M)\r\n    (hexpansion : delta = \u2211 x, term x) (hne : delta \u2260 0)\r\n    (hterm : \u2200 x, \u2016term x\u2016 \u2264 Real.exp ((M : \u211d) * H * E)) :\r\n    Real.log \u2016delta\u2016 / ((M : \u211d) * H) \u2264 E + Real.log Q / H := by sorry",
+  "solution_fragment": "theorem solution {\u03a9 : Type*} [Fintype \u03a9]\r\n    (term : \u03a9 \u2192 \u2102) (delta : \u2102) {M : \u2115} {H Q E : \u211d}\r\n    (hM : 0 < M) (hH : 0 < H) (hQ : 0 < Q)\r\n    (hcard : (Fintype.card \u03a9 : \u211d) \u2264 Q ^ M)\r\n    (hexpansion : delta = \u2211 x, term x) (hne : delta \u2260 0)\r\n    (hterm : \u2200 x, \u2016term x\u2016 \u2264 Real.exp ((M : \u211d) * H * E)) :\r\n    Real.log \u2016delta\u2016 / ((M : \u211d) * H) \u2264 E + Real.log Q / H := by\r\n  have hbound : \u2016delta\u2016 \u2264 Real.exp ((M : \u211d) * H * (E + Real.log Q / H)) := by\r\n    calc\r\n      _ = \u2016\u2211 x, term x\u2016 := by rw [hexpansion]\r\n      _ \u2264 \u2211 x, \u2016term x\u2016 := norm_sum_le _ _\r\n      _ \u2264 \u2211 _x : \u03a9, Real.exp ((M : \u211d) * H * E) := Finset.sum_le_sum fun x _ => hterm x\r\n      _ = (Fintype.card \u03a9 : \u211d) * Real.exp ((M : \u211d) * H * E) := by simp\r\n      _ \u2264 Q ^ M * Real.exp ((M : \u211d) * H * E) :=\r\n        mul_le_mul_of_nonneg_right hcard (Real.exp_pos _).le\r\n      _ = _ := by\r\n        have he : Q ^ M = Real.exp ((M : \u211d) * Real.log Q) := by\r\n          rw [Real.exp_nat_mul, Real.exp_log hQ]\r\n        rw [he, \u2190 Real.exp_add]\r\n        congr 1\r\n        field_simp\r\n        ring\r\n  have hlog := Real.log_le_log (norm_pos_iff.mpr hne) hbound\r\n  rw [Real.log_exp] at hlog\r\n  apply (div_le_iff\u2080 (mul_pos (by exact_mod_cast hM) hH)).mpr\r\n  nlinarith [hlog]",
+  "statement_edits": [
+    {
+      "start": 5782,
+      "end": 5797,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 55
+    },
+    {
+      "start": 6179,
+      "end": 7071,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 5782,
+      "end": 5797,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    }
+  ],
+  "statement": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le/Thm_OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le.lean",
+  "statement_sha256": "26972926de8274d70b55af682639685498cd1c70a819ad17f3819dfdf0c7295c",
+  "solution": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le/Sol_OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le.lean",
+  "solution_sha256": "4cbd9b1788e8a6b3ef628fc45a5beacf6dd24a7a87d2690449c02c8304b2d8ca",
+  "snapshot_core_sha256": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+  "runtime_sha256": "7c50fd8ec1144847da49fb1e802f8acef679ae60502140dd18cec707129b3765",
+  "validated": true,
+  "pending": [],
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "490a5d831e289259d2a36d713c0cb50e70a55eb972b2d3e74c94428b3a4f8aa4",
+    "SnapshotGenerated.lean": "8fd5dd8e4c1b94fd9a50fbe46e1e112c0b17b36350775e9f5ed0fe3a712a38b6"
+  },
+  "validation": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_DeterminantAnalyticBound_log_norm_sum_le/validation.json",
+  "validation_sha256": "70313e63ac8c1584125fd4b5865c1a7f6940b9b75770e46f8534255a9973ddb2"
+}

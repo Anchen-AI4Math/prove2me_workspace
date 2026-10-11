@@ -1,0 +1,17 @@
+[
+  {
+    "definition_name": "ZetaNine_CoefficientMapFiniteSum",
+    "definition_title": "Actual finite weighted rational sum, coefficient totals and harmonic tail",
+    "definition": "import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\nimport Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Algebra.BigOperators.Intervals\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMapFiniteSum\n\nopen scoped BigOperators\nopen Finset Polynomial\nopen HarmonicStability CoefficientMapInjectivity CoefficientMapPartialFractions\n\ndef rho (n s : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ j ∈ range (n + 1), CoefficientMapJet.weightedLocalCoefficient n j s W\n\ndef constantTerm (n : ℕ) (W : ℚ[X]) : ℚ :=\n  -(∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n    CoefficientMapJet.weightedLocalCoefficient n j s W * harmonicPower s j)\n\ndef finiteL (n T : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ t ∈ Icc 1 T, CoefficientMap.weightedR n W (t : ℚ)\n\ndef shiftedTail (n T : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n    CoefficientMapJet.weightedLocalCoefficient n j s W *\n      (harmonicPower s (T + j) - harmonicPower s T)\n\nend ZetaNine.CoefficientMapFiniteSum\n",
+    "natural_language_statement": "For $n,T\\ge0$ and $W\\in\\mathbb Q[X]$, use the actual coefficients $c^W_{n,j,s}$ of the genuine local series and the existing finite harmonic number $H_N^{(s)}=\\sum_{k=1}^N k^{-s}$, also for $s=0$. Define\n\n$$\\rho_{n,s}(W)=\\sum_{j=0}^n c^W_{n,j,s},\\qquad B_n(W)=-\\sum_{j=0}^n\\sum_{s=1}^9 c^W_{n,j,s}H_j^{(s)}.$$\n\nDefine the actual finite rational sum $L_{n,T}(W)=\\sum_{t=1}^T R_{n,W}(t)$ and the finite shifted tail\n\n$$E_{n,T}(W)=\\sum_{j=0}^n\\sum_{s=1}^9c^W_{n,j,s}(H_{T+j}^{(s)}-H_T^{(s)}).$$\n\nThese are four genuine finite definitions. No coefficient cancellation, infinite sum, reflection or convergence is encoded as a premise. The existing harmonicPower definition is unchanged.",
+    "source": "Zeta(9) actual finite harmonic summation: missions/zeta9/research/coefficient-map-finite-sum-2026-10-03.md. Frozen missions/zeta9/formalization/CoefficientMapFiniteSum.lean SHA256 b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97. Coefficients are the actual weighted formal local jets of the p=9,q=1,m=n rational function, using the genuine finite global partial-fraction identity.",
+    "tags": [
+      "number-theory",
+      "finite-sums",
+      "harmonic-numbers",
+      "polynomials"
+    ],
+    "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "private": false
+  }
+]

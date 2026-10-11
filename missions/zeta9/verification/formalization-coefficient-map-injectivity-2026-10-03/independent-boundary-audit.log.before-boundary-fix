@@ -1,0 +1,80 @@
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:91:86: error: unsolved goals
+⊢ (PowerSeries.coeff 8) ((PowerSeries.X ^ 2) ^ 4) = 1
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:93:29: warning: This simp argument is unused:
+  pow_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Polynomial.pow_comp]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:105:2: error: No goals to be solved
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:103:4: warning: This simp argument is unused:
+  Finset.prod_range_succ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [ZetaNine.CoefficientMap.weightedR, ZetaNine.CoefficientMap.actualR, ZetaNine.CoefficientMap.numerator,
+    ZetaNine.CoefficientMap.poleProduct]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:109:51: error: unsolved goals
+s : ℕ
+hs1 : 1 ≤ s
+hs9 : s ≤ 9
+hj : 0 ≤ 0
+hindex : 9 - s ≠ 10
+⊢ (PowerSeries.coeff (9 - s)) ((PowerSeries.X ^ 2) ^ 5) = 0
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:115:29: warning: This simp argument is unused:
+  pow_mul
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Polynomial.pow_comp, hindex]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+D:/users/self_projects/prove2me_workspace/missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/independent-boundary-audit.lean:115:38: warning: This simp argument is unused:
+  hindex
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Polynomial.pow_comp, pow_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseNumerator","definitionValue":"fun n =>\n  (Polynomial.C (↑n.factorial ^ 7) * ∏ i ∈ Finset.range n, (Polynomial.X - Polynomial.C (↑i + 1))) *\n    ∏ i ∈ Finset.range n, (Polynomial.X + Polynomial.C ↑n + Polynomial.C (↑i + 1))","type":"ℕ → ℚ[X]"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseU","definitionValue":"fun n => Polynomial.X * (Polynomial.X + Polynomial.C ↑n)","type":"ℕ → ℚ[X]"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.weightedNumerator","definitionValue":"fun n W => ZetaNine.CoefficientMapInjectivity.baseNumerator n * W.comp (ZetaNine.CoefficientMapInjectivity.baseU n)","type":"ℕ → ℚ[X] → ℚ[X]"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.polePolynomial","definitionValue":"fun n => ∏ j ∈ Finset.range (n + 1), (Polynomial.X + Polynomial.C ↑j)","type":"ℕ → ℚ[X]"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero","definitionValue":"fun n W => ∀ j ≤ n, ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0","type":"ℕ → ℚ[X] → Prop"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.ProperMultiplier","definitionValue":"fun n W => 2 * n + 2 * W.natDegree < 9 * (n + 1)","type":"ℕ → ℚ[X] → Prop"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap","definitionValue":"fun n W j s => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (↑j) (↑s + 1) W","type":"(n : ℕ) → ℚ[X] → Fin (n + 1) → Fin 9 → ℚ"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseNumerator_eval","definitionValue":null,"type":"∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift","definitionValue":null,"type":"∀ (n j : ℕ) (W : ℚ[X]),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility","definitionValue":null,"type":"∀ (n j : ℕ) (W : ℚ[X]),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    Polynomial.X ^ 9 ∣ ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility","definitionValue":null,"type":"∀ (n j : ℕ) (W : ℚ[X]),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.pole_factors_coprime","definitionValue":null,"type":"∀ (a b : ℕ), a ≠ b → IsCoprime ((Polynomial.X + Polynomial.C ↑a) ^ 9) ((Polynomial.X + Polynomial.C ↑b) ^ 9)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W →\n    ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree","definitionValue":null,"type":"∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n).natDegree = n + 1"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree","definitionValue":null,"type":"∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9).natDegree = 9 * (n + 1)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseU_natDegree","definitionValue":null,"type":"∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseU n).natDegree = 2"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero","definitionValue":null,"type":"∀ (n : ℕ), ZetaNine.CoefficientMapInjectivity.baseNumerator n ≠ 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le","definitionValue":null,"type":"∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseNumerator n).natDegree ≤ 2 * n"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]), (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).natDegree ≤ 2 * n + 2 * W.natDegree"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapInjectivity.weightedNumerator n W = 0 → W = 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub","definitionValue":null,"type":"∀ (n j s : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W - V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W -\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.local_coefficients_injective","definitionValue":null,"type":"∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier n V →\n      (∀ j ≤ n,\n          ∀ (s : ℕ),\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n                  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V) →\n        W = V"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective","definitionValue":null,"type":"∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"ZetaNine.CoefficientMapInjectivity.quartic_is_proper","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_closed_zero_kernel","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    (∀ j ≤ n, ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) → W = 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_closed_array_injective","definitionValue":null,"type":"∀ (n : ℕ), Function.Injective fun W j s => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (↑j) (↑s + 1) ↑W"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_difference_proper","definitionValue":null,"type":"∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier n V →\n      ZetaNine.CoefficientMapInjectivity.ProperMultiplier n (W - V)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_quartic_array","definitionValue":null,"type":"∀ (n : ℕ) (W V : ℚ[X]),\n  W.natDegree ≤ 4 →\n    V.natDegree ≤ 4 →\n      ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n W =\n          ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n V →\n        W = V"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_original_integer_quartic","definitionValue":null,"type":"∀ (n : ℕ),\n  Even n →\n    2 ≤ n →\n      ∀ (W V : ℤ[X]),\n        W.natDegree ≤ 4 →\n          V.natDegree ≤ 4 →\n            ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n (Polynomial.map (Int.castRingHom ℚ) W) =\n                ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n (Polynomial.map (Int.castRingHom ℚ) V) →\n              W = V"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_array","definitionValue":null,"type":"∀ (W V : ℚ[X]),\n  W.natDegree ≤ 4 →\n    V.natDegree ≤ 4 →\n      ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap 0 W =\n          ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap 0 V →\n        W = V"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_actual_rational_representation","definitionValue":null,"type":"∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W) /\n      Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9 =\n    ZetaNine.CoefficientMap.weightedR n W t"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_zero_multiplier_proper","definitionValue":null,"type":"∀ (n : ℕ), ZetaNine.CoefficientMapInjectivity.ProperMultiplier n 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_series","definitionValue":null,"type":"∀ (W : ℚ[X]), ZetaNine.CoefficientMapJet.weightedClearedSeries 0 0 W = ↑(W.comp (Polynomial.X ^ 2))"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_quartic_proper","definitionValue":null,"type":"ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4)"}
+{"axioms":["propext","sorryAx","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_nonzero_simple_pole","definitionValue":null,"type":"ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 1 (Polynomial.X ^ 4) = 1"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_quartic_no_two_degree_gap","definitionValue":null,"type":"¬2 * 0 + 2 * (Polynomial.X ^ 4).natDegree + 2 ≤ 9 * (0 + 1)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_actual_simple_pole","definitionValue":null,"type":"∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"}
+{"axioms":["propext","sorryAx","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_nonproper_kernel","definitionValue":null,"type":"ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero 0 (Polynomial.X ^ 5)"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_nonproper_nonzero","definitionValue":null,"type":"Polynomial.X ^ 5 ≠ 0"}
+{"axioms":["propext","Classical.choice","Quot.sound"],"declaration":"independent_n_zero_nonproper_bound","definitionValue":null,"type":"¬ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 5)"}

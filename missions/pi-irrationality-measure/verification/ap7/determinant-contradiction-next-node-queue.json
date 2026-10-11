@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap7-targeted-next-node-queue",
+  "status": "source-audited-compile-not-started",
+  "basis": "Read the exact source graph rows, AST unit ranges, existing provider certificate and publication record for the three direct prerequisite candidates of piEventualLowerBound_of_interpolation_and_analytic_aggregate.",
+  "target": {
+    "source_name": "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+    "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+    "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+    "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L167-L180",
+    "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+    "source_lines": [167, 180],
+    "type_dependencies": [
+      "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+      "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+      "OAI.PiExponent.PiEventualLowerBound"
+    ],
+    "direct_value_dependencies": [
+      "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+      "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+      "OAI.PiExponent.exists_admissible_parameters",
+      "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+      "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+      "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+      "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+      "OAI.PiExponent.AdmissibleParameters",
+      "OAI.PiExponent.Arithmetic.lcmConstant"
+    ]
+  },
+  "immediate_recommendation": {
+    "source_name": "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+    "reason": "It is the smallest still-missing direct theorem prerequisite. Its exact graph row has only collisionConstant as type and value dependency. The needed source definition and positivity theorem are adjacent AST units in the same source module, and the theorem body is a three-line direct proof. The larger no_fixed_data theorem depends on many unrelated determinant, matrix, analytic, interpolation, and admissible-parameter declarations.",
+    "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+    "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+    "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L15-L19",
+    "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+    "units": [
+      {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+        "kind": "def",
+        "source_lines": [15, 15],
+        "ast_start_byte": 463,
+        "ast_end_byte_exclusive": 522,
+        "exact_source": "noncomputable def collisionConstant : ℝ := Real.log 2 / 4"
+      },
+      {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+        "kind": "theorem",
+        "source_lines": [17, 19],
+        "ast_start_byte": 526,
+        "ast_end_byte_exclusive": 673,
+        "exact_source": "theorem collisionConstant_pos : 0 < collisionConstant := by\n  unfold collisionConstant\n  exact div_pos (Real.log_pos (by norm_num)) (by norm_num)"
+      }
+    ],
+    "source_imports_in_original_module": [
+      "OAI.NumberTheory.PiExponent.CoreImports",
+      "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      "OAI.NumberTheory.PiExponent.Approximation.Comparison",
+      "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "OAI.NumberTheory.PiExponent.Statement"
+    ],
+    "type_dependencies": ["OAI.PiExponent.DeterminantContradiction.collisionConstant"],
+    "value_dependencies": ["OAI.PiExponent.DeterminantContradiction.collisionConstant"],
+    "expected_ci_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction",
+    "existing_actual_ci_certificate": null,
+    "existing_actual_olean": null,
+    "existing_publication_record": null,
+    "publication_status": "not-submitted-no-record",
+    "next_work": "Stage these two exact source units together as the minimal actual Definition provider candidate, run its recorded CI pipeline and preserve the resulting OLean/certificate. Do not infer validation from the adjacent source or from the unrelated Arithmetic provider."
+  },
+  "candidate_statuses": [
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+      "decision": "already locally reusable; not the next missing unit",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean#L13-L18",
+      "source_lines": [15, 18],
+      "ci_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+      "actual_ci_certificate": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/provider-validation-fast.json",
+      "actual_ci_certificate_sha256": "dfc24aee948689befbe6f2802950e2f207bd42964ed0d1997d10de54a04d3e2e",
+      "actual_ci_status": "local-kernel-provider-validated",
+      "actual_olean": "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic.olean",
+      "actual_olean_sha256_from_prepare_record": "952824317a034ce9a80b609181aa40b444fbdeb2b5b0440c3067edea5946793b",
+      "publication_record": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json",
+      "definition_id": "6b1ef300-c311-4ddb-b85c-8d588035e79f",
+      "publication_status": "PENDING",
+      "publication_job_id": "3e11cf71-aac6-4b1a-9f1f-389160f4ad75",
+      "publication_updated_at_utc": "2026-10-08T13:29:02.407391+00:00",
+      "publication_validation_sha256": "dfc24aee948689befbe6f2802950e2f207bd42964ed0d1997d10de54a04d3e2e"
+    },
+    {
+      "source_name": "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+      "decision": "selected next actual provider candidate",
+      "ci_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction",
+      "actual_ci_certificate": null,
+      "actual_olean": null,
+      "publication_record": null,
+      "publication_status": "not-submitted-no-record"
+    },
+    {
+      "source_name": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+      "decision": "defer; not a minimal next node",
+      "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+      "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L125-L165",
+      "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+      "source_lines": [125, 165],
+      "type_dependencies": [
+        "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement"
+      ],
+      "value_dependencies": [
+        "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "OAI.PiExponent.Parameters.A",
+        "OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate",
+        "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound",
+        "OAI.PiExponent.AdmissibleParameters.collision_exceeds_error_sum",
+        "OAI.PiExponent.InterpolationMatrix.exists_full_row_minor_of_surjective",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.DeterminantContradiction.Column",
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.AdmissibleParameters.analyticError",
+        "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "OAI.PiExponent.AdmissibleParameters.arithmeticError",
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.AdmissibleParameters.K",
+        "OAI.PiExponent.DeterminantContradiction.actualMean_bounds",
+        "OAI.PiExponent.Arithmetic.lcmConstant",
+        "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "OAI.PiExponent.AdmissibleParameters.m",
+        "OAI.PiExponent.determinant_bounds_inconsistent",
+        "OAI.PiExponent.DeterminantContradiction.Row",
+        "OAI.PiExponent.AdmissibleParameters.w0",
+        "OAI.PiExponent.AdmissibleParameters.v0",
+        "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+        "OAI.PiExponent.Parameters.eta",
+        "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "OAI.PiExponent.Parameters.theta",
+        "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "OAI.PiExponent.AdmissibleParameters.error_sum_lt_gap",
+        "OAI.PiExponent.InterpolationMatrix.columnWeights",
+        "OAI.PiExponent.AdmissibleParameters.base",
+        "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+      ],
+      "actual_ci_certificate": null,
+      "actual_olean": null,
+      "publication_record": null,
+      "publication_status": "not-submitted-no-record",
+      "reason_deferred": "Its exact graph row has 3 type dependencies and 36 value dependencies, spanning determinant bounds, matrix construction, interpolation, analytic error bounds, and the admissible-parameter record."
+    }
+  ],
+  "source_graph_evidence": {
+    "graph_path": "verification/decl_graph.jsonl",
+    "target_source_graph_row": {
+      "type_dependencies": [
+        "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "OAI.PiExponent.PiEventualLowerBound"
+      ],
+      "value_dependencies": [
+        "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+        "OAI.PiExponent.exists_admissible_parameters",
+        "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+        "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+        "OAI.PiExponent.AdmissibleParameters",
+        "OAI.PiExponent.Arithmetic.lcmConstant"
+      ]
+    },
+    "collision_constant_pos_graph_row": {
+      "type_dependencies": ["OAI.PiExponent.DeterminantContradiction.collisionConstant"],
+      "value_dependencies": ["OAI.PiExponent.DeterminantContradiction.collisionConstant"]
+    },
+    "no_fixed_data_graph_row_value_dependency_count": 36,
+    "root_audit_note": "verification/root-dependency-frontier-audit.json has a historical branch count for the eventual-lower-bound theorem; this queue uses the exact current graph rows and explicit local certificate/publication record checks for the selected prerequisite instead of treating aggregate counts as a readiness certificate."
+  }
+}

@@ -1,0 +1,3 @@
+$env:LEAN_PATH = "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-reflection/independent/cache/platform/build;" + $env:LEAN_PATH + ";D:/users/self_projects/prove2me_workspace"
+& lean -o "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-reflection/independent/cache/platform/build/Solutions/Sol_ZetaNine_CoefficientMapReflection_rho_even_order_zero.olean" "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-reflection/staged/Solutions/Sol_ZetaNine_CoefficientMapReflection_rho_even_order_zero.lean"
+exit $LASTEXITCODE

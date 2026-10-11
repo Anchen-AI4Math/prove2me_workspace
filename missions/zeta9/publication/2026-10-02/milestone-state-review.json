@@ -1,0 +1,491 @@
+{
+  "schema": "zeta9-existing-milestone-state-review-v1",
+  "review_date": "2026-10-02",
+  "purpose": "Faithful wording suggestions for only the specified existing old milestones; not an API payload or a publication receipt.",
+  "source_files": [
+    "roadmap/dag.json",
+    "research/progress-2026-10-02.md",
+    "research/progress-2026-09-29-all-models.md"
+  ],
+  "scope_boundary": "No credentials read; no platform/API operation; no DAG edit. Remote identifiers and linked/completed states were not independently read here.",
+  "status_policy": {
+    "proved_in_notes": "A completed written research result. Retain an explicit not-Lean-verified label; do not use a formal theorem Proved status on this evidence alone.",
+    "open": "Retain the unresolved mathematical claim. Equivalent reformulations and finite certificates do not satisfy its infinite quantifiers.",
+    "alternatives": "J/CP and auxiliary sufficient directions are not a list of independent obstacles all required simultaneously."
+  },
+  "counts": {
+    "specified_old_milestone_suggestions": 17,
+    "proved_in_notes": 15,
+    "open": 2,
+    "unconfirmed_aliases": 1
+  },
+  "local_text_conflicts_not_edited": [
+    {
+      "location": "roadmap/dag.json reductions Z9.RED.VA.DISCOUNT qualification",
+      "issue": "It still says VD remains open, whereas node Z9.VD and its latest evidence say proved-in-notes. Use the node/latest proof state in public milestone wording."
+    },
+    {
+      "location": "roadmap/DAG.md historical XL paragraph / next-steps block",
+      "issue": "Historical text still describes the dominant second mode and VC/VD budgets as missing; later 2026-09-29 proofs already close these written research obligations."
+    }
+  ],
+  "suggestions": [
+    {
+      "existing_milestone_key_hint": "Q1",
+      "local_node_id": "Z9.Q",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "No literal Q1 node exists in dag.json. Match the remote old title/statement to Z9.Q before applying this candidate alias.",
+      "suggested_title": "Smith 内容消去体积基线（书面已证）",
+      "suggested_description": "对全部偶数 n≥2，体积基线准确等于 [log Ξ_n+log(N_n/g_n)]/(2n)，共同清分母不改变该恒等式。它已是书面完成的结构输入，不是仍缺的渐近算术估计。远端 Q1 须先以原标题和陈述核对是否确为本地 Q。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every even n>=2, with Xi_n the weighted area of E_n=S F_n^(-1), B_n=[log Xi_n+log(N_n/g_n)]/(2n), and D_n/s1_n=q_n delta3_n/delta4star_n independently of the positive common denominator D_n.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/volume-cancellation.md",
+          "section": "Exact Smith and inverse-area proof"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "X",
+      "local_node_id": "Z9.X",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "逆像面积指数界（书面已证；已由 XL 加强）",
+      "suggested_description": "真实加权连接的外平方给出全部偶数参数的逆像面积上指数界，低于 (1/4)log(3711015000)。后来 XL 进一步证明精确面积率 (1/4)log(AB)。面积控制本身不排除最短方向最终固定，不能视为 J 已完成。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For all even n tending to infinity, limsup log(Xi_n)/(2n) <= (1/4)log rho(exterior_square(G)) < (1/4)log(3711015000), where G is the proven weighted connection limit.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/inverse-area-rate.md",
+          "section": "Exterior-square block-product proof"
+        },
+        {
+          "path": "roadmap/verification/check_inverse_area_roots.py",
+          "section": "exact rational root sign certificate"
+        },
+        {
+          "path": "roadmap/research/inverse-area-audit.md",
+          "section": "independent proof audit and sharper rational root intervals"
+        },
+        {
+          "path": "round7/research/connection.md",
+          "section": "weighted connection"
+        },
+        {
+          "path": "round8/research/limit-obstruction.md",
+          "section": "characteristic polynomial"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "VB",
+      "local_node_id": "Z9.VB",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "小与大素数误差总预算（书面已证）",
+      "suggested_description": "节点原陈述中的总误差预算已经由 VC、H、Z 及完整局部块证明完成；应从主要数学障碍移至已完成的研究输入。误差预算和后续体积余量仍不控制独立的形状条件。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "With E_n=sum_{p<=n}(v_p(N_n)-11 floor(log_p n))_+ log p and H_n=sum_{p>n}v_p(N_n) log p, limsup as even n tends to infinity of (E_n+H_n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9.",
+      "source_evidence": [
+        {
+          "path": "research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "VC",
+      "local_node_id": "Z9.VC",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "中间素数超额率 <0.10661775（书面已证）",
+      "suggested_description": "E_mid=sum_{sqrt(7n/2)<p≤n}(v_p(N_n)−11)_+ log p 的 limsup/n 已严格低于 0.10661775，强于原 0.61071437 门槛。此处是全参数书面证明和局部证书，不能用旧 22.337 或未认证模型尾段描述当前状态。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "Let E_mid(n)=sum over primes sqrt(7n/2)<p<=n of (v_p(N_n)-11)_+ log p. Then limsup as even n tends to infinity of E_mid(n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9-1/2 (approximately 0.61071437).",
+      "source_evidence": [
+        {
+          "path": "research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "latest_bound_from_dag": "limsup E_mid/n < 0.10661775.",
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "VD",
+      "local_node_id": "Z9.VD",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "折扣后中间素数率 <−0.05865038（书面已证）",
+      "suggested_description": "使用真实折扣 U_n 的带符号预算已完成：limsup(E_mid−U_n)/n < −0.05865038。它不是实际量极限存在或每个有限 n 均有同样不等式的断言。无需把 VD 继续列作数学开放节点。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "Define U_n=sum_{p<=n} min((11a_p-v_p(N_n))_+,9a_p) log p with a_p=floor(log_p n). Then limsup as even n tends to infinity of (E_mid(n)-U_n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9-1/2.",
+      "source_evidence": [
+        {
+          "path": "research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "latest_bound_from_dag": "limsup (E_mid-U_n)/n < -0.05865038.",
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "H",
+      "local_node_id": "Z9.H",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "大素数平移迹估值与预算（书面已证）",
+      "suggested_description": "对偶数 n≥8、素数 p>n，v_p(N_n)≤floor(3n/(2p))；因此大素数预算 H_n≤θ(3n/2)−θ(n)，limsup H_n/n≤1/2。平移迹和 minor-gcd 证明已完成，不是所有素数预算的单独完成证明。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every even n>=8 and every prime p>n, v_p(N_n)<=floor(3n/(2p)). Consequently the p>n prime budget H_n is at most theta(3n/2)-theta(n), and limsup H_n/n<=1/2.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/prime-valuation-attack.md",
+          "section": "finite-field translation trace and minor-gcd proof"
+        },
+        {
+          "path": "roadmap/verification/check_prime_valuation_attack.py",
+          "section": "independent finite exact cross-check"
+        },
+        {
+          "path": "roadmap/verification/prime-valuation-attack-audit.json",
+          "section": "finite trace and valuation certificate"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "Z",
+      "local_node_id": "Z9.Z",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "小素数超额贡献 o(n)（书面已证）",
+      "suggested_description": "对偶数 n≥4，p≤sqrt(7n/2) 的超额贡献有显式上界 42 floor(sqrt(7n/2)) log(7n/2)，所以为 o(n)。该截断结果已经完成；中间素数部分须引用另已完成的 VC/VD。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every even n>=4, the contribution of primes p<=sqrt(7n/2) to E_n is at most 42 floor(sqrt(7n/2)) log(7n/2), hence is o(n).",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/prime-valuation-attack.md",
+          "section": "uniform small-prime truncation bound"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "I",
+      "local_node_id": "Z9.I",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "合并极点估值与可截断尾预算（书面已证）",
+      "suggested_description": "合并极点矩的 p-adic 整性、满足指定条件时的额外一阶消去以及 v_p(N_n)≤38 的粗界已证明；固定截断 H>1 时，较小中间素数尾段率≤27/H。它是完成的局部工具，其自身不是根目标的充分条件；较强完整模型预算另见 VC/VD。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every even n>=2 and prime sqrt(7n/2)<p<=n, write m=floor(n/p), K=7m+9, and define the merged-pole moments M_{a,k}(W) as in the evidence for every integer polynomial W of degree<=4. Every M_{a,k}(W) lies in p^(7m) Z_(p); if p>K, 1<=k<=K, and (k-1)p<7n, then sum over a mod p of M_{a,k}(W) lies in p^(7m+1) Z_(p). Also v_p(N_n)<=30+D_np-5h_np<=38, where D_np is the exact determinant valuation residual and h_np=1 if 3(n mod p)>=2p-1 and 0 otherwise. Consequently for fixed H>1 the contribution to E_mid from p<=n/H has limsup rate at most 27/H.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/intermediate-prime-attack.md",
+          "section": "CRT merged-pole proof, local valuation bound, and precise finite diagnostics"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "LC",
+      "local_node_id": "Z9.LC",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "内禀局部同余斜率和 primitive 倍数（书面已证）",
+      "suggested_description": "同余格可准确写成 zM_n≡0 mod g；primitive 方向的进入倍数为 g/gcd(g,content(zM_n))。每个 p^e 条件可用含 unit 的一列点积表示，并有全局 adjugate 生成式。准确公式已证，但它尚未给出全部移动方向的统一短向量排除。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every even n>=2 and divisor g of N_n, M_n=J_n/s1_n is integral with Smith factors (1,N_n), and Lambda_g={zK_n:zM_n=0 mod g}. A primitive direction has multiplier g/gcd(g,content(zM_n)); for each p^e|g the local condition is one dot product against any column of M_n containing a p-adic unit. Globally Lambda_g is the row lattice generated by the rows of gI_2 and adj(M_n), then multiplied by K_n.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/shape-advance.md",
+          "section": "intrinsic matrix and local-column proof"
+        },
+        {
+          "path": "roadmap/research/shape-or-j-next.md",
+          "section": "Smith-coordinate proof of the global adjugate generator"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "SP",
+      "local_node_id": "Z9.SP",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "鞍点弱同号推出完整和非零（书面已证）",
+      "suggested_description": "对预定窗口 h_n→0 且 n h_n²/log n→∞，全部充分大偶数 n 和任意次数≤4的非零实多项式，窗口内实际整数样本弱同号就使完整无限正核和严格同号非零；包括任意固定 A 的 A log(n)/sqrt(n) 窗口。这是条件引理，不能据此将 TS 的无穷最短方向符号条件标为完成。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every predetermined positive window sequence h_n tending to zero with n h_n^2/log n tending to infinity, every sufficiently large even n, and every nonzero real quartic q, one weak sign of q(k(k+n)/n^2) at all k>n with |k/n-x_*|<=h_n forces its infinite positive-kernel sum to be strictly nonzero with that sign. In particular h_n=A(log n)/sqrt(n) for any fixed A>0 is valid. Consequently an infinite sequence of exponentially short integer outputs with this sampled sign proves irrationality of zeta(9).",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/full-lattice-sign-next.md",
+          "section": "uniform Stirling, five-sample interpolation and infinite-tail proof"
+        },
+        {
+          "path": "roadmap/verification/check_signed_saddle_samples.py",
+          "section": "two finite full-lattice signed-sum certificates"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "FI",
+      "local_node_id": "Z9.FI",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "五点严格比值窗与整数斜率判据（书面已证）",
+      "suggested_description": "五个实际比值形成严格夹住 ζ(9) 的非退化有理窗，位于 Taylor 窗内且宽度上指数低于 −10.1109。弱同号等价于整数斜率避开开窗，端点允许零值；严格同号使用闭窗。尚未证明移动第一方向无穷次避窗，T5 保持开放。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For all sufficiently large even n, the five rational sample ratios r_(n,j)=q_(n,(0,1))(y_(n,j))/q_(n,(1,0))(y_(n,j)) have positive denominators and define a nondegenerate interval ell_n=min_j r_(n,j)<zeta(9)<h_n=max_j r_(n,j), strictly inside the Taylor coefficient ratio interval. Its width has limsup logarithmic rate below -10.1109. For every nonzero integer output (b,a), five-sample weak sign agreement is equivalent to a=0 or -b/a outside the open interval (ell_n,h_n); strict sign agreement uses the closed interval. This does not prove the infinite shortest-vector condition T5.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/five-point-ratio-window.md",
+          "section": "strict positive cubature average, Taylor convexity, and endpoint criterion"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "FC",
+      "local_node_id": "Z9.FC",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "端点既约分母与整数间隔桥梁（书面已证）",
+      "suggested_description": "真实伴随行求值给出精确端点分母；落在开窗内的整数斜率满足 |a|·窗宽>1/min(Q_−,Q_+)；外积还给所有第一输出的高度上界。它证明 FD 的逐参数充分桥梁，未证明 FD 的无穷产品条件或端点分母的所需渐近上界。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For all sufficiently large even n, put A_n=d_n^9 F_n, C_n=S adj(A_n), and Ctilde_n=C_n/delta4star_n. At each of the five sample integers t_(n,j), the ratio r_(n,j)=Ctilde_A v(t)/Ctilde_B v(t) has reduced denominator Q_(n,j)=|Ctilde_B v(t)|/gcd(|Ctilde_B v(t)|,|Ctilde_A v(t)|). If an integer output (b,a), a!=0, has slope -b/a strictly inside (ell_n,h_n), then |a|(h_n-ell_n)>1/min(Q_-,Q_+). Every first output also satisfies |a|<=lambda1(E_n)||(1,0)E_n W_n||_2/Xi_n. Hence the product condition in FD at any eligible n forces every first output to have weak one-sign values at all five samples.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/t5-arithmetic-next.md",
+          "section": "sections 1-2, adjugate endpoint formula, integer separation, and exterior-product height bound"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "FM",
+      "local_node_id": "Z9.FM",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "同谱有理替代连接的结构限制（书面已证）",
+      "suggested_description": "存在保留极限谱、两步正性、五个实际节点及正求积的有理替代连接，其最终第一方向固定且五点混合符号。该例只排除依赖这些结构后果的抽象证明；它不保留真实有限连接 C(n)，不是实际 ζ(9) 构造或无理性的反例。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For every sufficiently large even n, a rational full-rank alternative Taylor connection can be constructed with the actual five prescribed sample nodes, a strictly positive exact five-node cubature, positive moment column, eventually positive two-step transfer, and the same limiting spectrum H and inverse-area upper exponent as the actual construction, but with rational output value theta and eventual first outputs exactly +/−(-c,d) mixed-sign at the five samples. It is an obstruction only to a proof using those structural consequences alone; it does not preserve the exact actual finite-parameter connection C(n).",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/t5-transfer-next.md",
+          "section": "section 3, rational alternative connection and eventual zero-relation first output"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "XL",
+      "local_node_id": "Z9.XL",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "真实面积精确率与第一输出高度界（书面已证）",
+      "suggested_description": "真实外积锥和原始 F20 初值给 log Ξ_n/(2n)→(1/4)log(AB)；所有完整输出格第一向量的高度上指数≤(1/4)log(A/B)<5.05562。第二实际模态的非零性已得到，旧的待证明次模态文字应移除；该结论仍不证明 FD/J 或最短方向不固定。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For the actual recurrence, lim log(Xi_n)/(2n)=(1/4)log(A B), where A and -B are the two dominant eigenvalues of G. The exact rational invariant cone holds for all real n>=20 and contains the actual F20 wedge. Every complete output lattice first vector (b,a) satisfies limsup log(max(1,abs(a)))/n <= (1/4)log(A/B) < 5.05562. Combined with the proved arithmetic bound, limsup B_n < 10.394861.",
+      "source_evidence": [
+        {
+          "path": "research/exterior-cone-2026-09-29.md",
+          "section": "All-parameter rational cone, projective contraction and dominant exterior eigenvalue"
+        },
+        {
+          "path": "verification/exterior-cone-2026-09-29/certificate.json",
+          "section": "Exact coefficient positivity, original F20 wedge and logarithm intervals"
+        },
+        {
+          "path": "roadmap/research/inverse-area-lower-next.md",
+          "section": "sections 1-4, Perron growth, inverse-block lower bound, positive-moment angle, and height consequence"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "CM",
+      "local_node_id": "Z9.CM",
+      "local_mathematical_status": "proved-in-notes",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "临界第二极小值与无理性的等价判据（书面已证）",
+      "suggested_description": "完整核渐近和格结构证明：ζ(9) 无理等价于 λ₂=o(n⁵ exp(−f_*n))，也等价于相应 liminf 比值为零。等价定理本身已完成；其中的短向量条件 CP 仍开放，证明等价不能算证明 ζ(9) 无理。",
+      "research_completion_recommendation": "may_mark_written_research_complete_with_explicit_non_Lean_label",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "For the actual positive kernel and full output lattice, Z_n is asymptotic to C_Z n^(-5)exp(f_*n), both fixed coordinate rows have norm Theta(n^5 exp(-f_*n)), and zeta(9) is irrational if and only if lambda2_n=o(n^5 exp(-f_*n)), if and only if liminf lambda2_n/[n^5 exp(-f_*n)]=0. Equivalently, lambda1_n/(Xi_n Z_n) tends to infinity. Under rationality zeta(9)=c/d in lowest terms, liminf lambda2_n/[n^5 exp(-f_*n)]>=1/(d C_Z ||v_*||)>0; the unique late first direction is +/−(-c,d), lambda1_n lambda2_n/Xi_n tends to one, and lambda1_n/(Xi_n Z_n) stays bounded above and below by positive constants. This is a criterion and does not establish its open short-vector hypothesis.",
+      "source_evidence": [
+        {
+          "path": "roadmap/research/critical-polynomial-margin.md",
+          "section": "sections 1-3, positive moment row bounds, rank-one collapse, Diophantine dichotomy, and Minkowski comparison"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "J",
+      "local_node_id": "Z9.J",
+      "local_mathematical_status": "open",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "无穷指数裕量与不固定方向（仍开放）",
+      "suggested_description": "尚未证明存在 ε>0 和无穷偶数 n 使 B_n+σ_n≤10.564−ε。在已证 V 与真实多项式运输下，J 与 ζ(9) 无理、liminf σ_n=0、primitive 第一方向无穷换向等价。10-02 六个同侧最小分母形式严格非零且小于 1，只是有限改善；其无限衰减与 Farey 父分母增长也与无理性等价，不能据此完成 J。",
+      "research_completion_recommendation": "keep_open",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "There exist epsilon>0 and infinitely many even n>=2 such that B_n+sigma_n <= 10.564-epsilon.",
+      "source_evidence": [
+        {
+          "path": "research/shape-direction-2026-09-29.md",
+          "section": "Polynomial transport and equivalence, not a proof of J"
+        }
+      ],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    },
+    {
+      "existing_milestone_key_hint": "S",
+      "local_node_id": "Z9.S",
+      "local_mathematical_status": "open",
+      "remote_identity_checked": false,
+      "identity_match_note": "Match the existing remote milestone title/statement to this local node; no remote identifier is inferred here.",
+      "suggested_title": "全序列形状缺损趋零（仍开放；较强充分条件）",
+      "suggested_description": "σ_n→0 尚未证明；它要求全序列形状控制。V 已完成，V+S 足以推出 J，但当前没有证明 J⇒S。S 不应与 J/CP 计为必须逐一解决的独立障碍。关于 liminf σ_n=0 的等价关系已证，但该条件本身仍开放；更不能误写成 σ_n 的全序列收敛已经完成。",
+      "research_completion_recommendation": "keep_open",
+      "formal_theorem_state_recommendation": "leave_unchanged; this review does not establish a Lean proof or platform theorem acceptance",
+      "source_statement_exact": "As even n tends to infinity, sigma_n tends to 0; equivalently log(mu1(Lambda_g_n)/sqrt(g_n Delta_n))=o(n).",
+      "source_evidence": [],
+      "latest_bound_from_dag": null,
+      "new_context_sources": [
+        "research/progress-2026-10-02.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "stage": "UNCOMPILED_TRANSPLANT_SOURCE_ONLY",
+  "definition": "ZetaNine_AnalyticUniformWeighted",
+  "local_definition": "Definitions/Def_ZetaNine_AnalyticUniformWeighted.lean",
+  "targets": [
+    {
+      "key": "moment",
+      "theorem_name": "ZetaNine.AnalyticUniformMomentBound.actualMoment_uniform_bound",
+      "theorem_id": "ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound",
+      "local_reference": "Theorems/Thm_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+      "local_solution": "Solutions/Sol_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+      "wrapper_arguments": "n r hn hr",
+      "exact_original_header": "theorem actualMoment_uniform_bound (n r : ℕ) (hn : 1 ≤ n) (hr : r ≤ 4) :\n    actualMoment n r ≤ momentBoundConstant * ((n : ℝ) + 1) ^ 10 *\n      Real.exp (-(2641 / 250 : ℝ) * n) * (n : ℝ) ^ (2 * r)",
+      "original_prefix": "theorem actualMoment_uniform_bound (n r : ℕ) (hn : 1 ≤ n) (hr : r ≤ 4) :\n    actualMoment n r ≤ momentBoundConstant * ((n : ℝ) + 1) ^ 10 *\n      Real.exp (-(2641 / 250 : ℝ) * n) * (n : ℝ) ^ (2 * r) :=",
+      "reference_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+        "bytes": 688,
+        "sha256": "c62620442eaa8812f24591eea06809251331309989a05fc5ee856a3ffbffdfae"
+      },
+      "solution_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+        "bytes": 81362,
+        "sha256": "a1da7bed13446009607ddaab446ed2731233b79fd1ef52f4a87c3d12d67c2248"
+      },
+      "statement_catalog_only_by_sorry": true,
+      "solution_all_122_original_proof_bodies_inline": true,
+      "UNCOMPILED_TRANSPLANT": true
+    },
+    {
+      "key": "changing",
+      "theorem_name": "ZetaNine.AnalyticWeightedBound.changing_quartics_uniform_bound",
+      "theorem_id": "ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound",
+      "local_reference": "Theorems/Thm_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+      "local_solution": "Solutions/Sol_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+      "wrapper_arguments": "W hW",
+      "exact_original_header": "theorem changing_quartics_uniform_bound (W : ℕ → ℚ[X])\n    (hW : ∀ n : ℕ, (W n).natDegree ≤ 4) :\n    ∀ n : ℕ, 1 ≤ n → |∑' m : ℕ, actualWeightedSequence n (W n) m| ≤\n      analyticPrefactor n * weightedCoefficientHeight n (W n)",
+      "original_prefix": "theorem changing_quartics_uniform_bound (W : ℕ → ℚ[X])\n    (hW : ∀ n : ℕ, (W n).natDegree ≤ 4) :\n    ∀ n : ℕ, 1 ≤ n → |∑' m : ℕ, actualWeightedSequence n (W n) m| ≤\n      analyticPrefactor n * weightedCoefficientHeight n (W n) :=",
+      "reference_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+        "bytes": 720,
+        "sha256": "e4a1c849779cfcf1e18177ea7da24501d0c8d2dee0b957ec6816f730ce375d7f"
+      },
+      "solution_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+        "bytes": 81394,
+        "sha256": "cd1ce8aaabea27391e0e0d92644e73cef6ee1e450ad7c0faefc0b5e113be1d19"
+      },
+      "statement_catalog_only_by_sorry": true,
+      "solution_all_122_original_proof_bodies_inline": true,
+      "UNCOMPILED_TRANSPLANT": true
+    },
+    {
+      "key": "uniform",
+      "theorem_name": "ZetaNine.AnalyticWeightedBound.actual_weighted_uniform_o_one",
+      "theorem_id": "ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one",
+      "local_reference": "Theorems/Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+      "local_solution": "Solutions/Sol_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+      "wrapper_arguments": "",
+      "exact_original_header": "theorem actual_weighted_uniform_o_one :\n    ∃ ε : ℕ → ℝ, Tendsto ε atTop (𝓝 0) ∧\n      ∀ n : ℕ, 1 ≤ n → ∀ W : ℚ[X], W.natDegree ≤ 4 →\n        |∑' m : ℕ, actualWeightedSequence n W m| ≤\n          Real.exp ((-(2641 / 250 : ℝ) + ε n) * n) * weightedCoefficientHeight n W",
+      "original_prefix": "theorem actual_weighted_uniform_o_one :\n    ∃ ε : ℕ → ℝ, Tendsto ε atTop (𝓝 0) ∧\n      ∀ n : ℕ, 1 ≤ n → ∀ W : ℚ[X], W.natDegree ≤ 4 →\n        |∑' m : ℕ, actualWeightedSequence n W m| ≤\n          Real.exp ((-(2641 / 250 : ℝ) + ε n) * n) * weightedCoefficientHeight n W :=",
+      "reference_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+        "bytes": 776,
+        "sha256": "d5df9095c28cef4e774defe0e61c62e63005f6cd37384348e74f8eebabdc28ff"
+      },
+      "solution_binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+        "bytes": 81445,
+        "sha256": "e4d580204f188ade1eda30a5bb05476eac11462399186887d87bf97ded33c52a"
+      },
+      "statement_catalog_only_by_sorry": true,
+      "solution_all_122_original_proof_bodies_inline": true,
+      "UNCOMPILED_TRANSPLANT": true
+    }
+  ],
+  "canonical_dependencies": [
+    {
+      "definition_id": "ZetaNine_CoefficientMap",
+      "module": "Definitions.Def_ZetaNine_CoefficientMap",
+      "actual_shared_canonical_source": {
+        "root_relative": "Definitions/Def_ZetaNine_CoefficientMap.lean",
+        "bytes": 1246,
+        "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+      },
+      "staged_exact_copy": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Definitions/Def_ZetaNine_CoefficientMap.lean",
+        "bytes": 1246,
+        "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+      },
+      "original_whole_values_exact": true,
+      "definition_count": 9
+    },
+    {
+      "definition_id": "ZetaNine_AnalyticPhase",
+      "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+      "actual_shared_canonical_source": {
+        "root_relative": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+        "bytes": 1122,
+        "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002"
+      },
+      "staged_exact_copy": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Definitions/Def_ZetaNine_AnalyticPhase.lean",
+        "bytes": 1122,
+        "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002"
+      },
+      "original_whole_values_exact": true,
+      "definition_count": 7
+    }
+  ],
+  "payloads": [
+    {
+      "kind": "definition_new13_functions",
+      "path": "Definitions/Def_ZetaNine_AnalyticUniformWeighted.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Definitions/Def_ZetaNine_AnalyticUniformWeighted.lean",
+        "bytes": 2010,
+        "sha256": "546b8530fadba06fd1f3a3b34a3628d98df88942d76a9e9a22077f2939d717a3"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+        "bytes": 688,
+        "sha256": "c62620442eaa8812f24591eea06809251331309989a05fc5ee856a3ffbffdfae"
+      }
+    },
+    {
+      "kind": "complete_solution_122_original_proofs_plus_wrapper",
+      "path": "Solutions/Sol_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticUniformMomentBound_actualMoment_uniform_bound.lean",
+        "bytes": 81362,
+        "sha256": "a1da7bed13446009607ddaab446ed2731233b79fd1ef52f4a87c3d12d67c2248"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+        "bytes": 720,
+        "sha256": "e4a1c849779cfcf1e18177ea7da24501d0c8d2dee0b957ec6816f730ce375d7f"
+      }
+    },
+    {
+      "kind": "complete_solution_122_original_proofs_plus_wrapper",
+      "path": "Solutions/Sol_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticWeightedBound_changing_quartics_uniform_bound.lean",
+        "bytes": 81394,
+        "sha256": "cd1ce8aaabea27391e0e0d92644e73cef6ee1e450ad7c0faefc0b5e113be1d19"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Theorems/Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+        "bytes": 776,
+        "sha256": "d5df9095c28cef4e774defe0e61c62e63005f6cd37384348e74f8eebabdc28ff"
+      }
+    },
+    {
+      "kind": "complete_solution_122_original_proofs_plus_wrapper",
+      "path": "Solutions/Sol_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+      "binding": {
+        "task_relative": "formalization/platform/analytic-uniform-weighted/staged/Solutions/Sol_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one.lean",
+        "bytes": 81445,
+        "sha256": "e4d580204f188ade1eda30a5bb05476eac11462399186887d87bf97ded33c52a"
+      }
+    }
+  ],
+  "Mathlib_ENV": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "references_catalog_only_never_proof": true,
+  "native_independent_review_pass": false,
+  "transplant_author_independent_pass": false,
+  "uploaded": false
+}

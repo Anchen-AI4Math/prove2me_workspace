@@ -1,0 +1,21 @@
+{
+  "id": "e75bfb6c-a00b-4af6-9268-c7b382ed4282",
+  "kind": "problem",
+  "theorem_name": "ZetaNine.CenterDenominator.primitive_center_denominator_divisor",
+  "theorem_title": "Explicit divisor of the content-adjusted center denominator",
+  "formal_statement": "theorem ZetaNine.CenterDenominator.primitive_center_denominator_divisor {ι : Type*} [Fintype ι] (u v : ι → ℤ) (a b Δ : ℤ)\n    (hprimitive : ∃ c : ι → ℤ, (∑ i, c i * u i) = 1)\n    (ha : a ≠ 0) (hΔ : Δ ≠ 0)\n    (hminor : ∀ i j, Δ ∣ u i * v j - u j * v i) :\n    (normSq u).natAbs /\n        Int.gcd (normSq u) (b * Δ * saturatedGram u v Δ) ∣\n      (Rat.divInt (b * dot u v) (a * normSq u)).den := by sorry",
+  "natural_language_statement": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every exterior minor. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$ and $D_\\Delta=(T\\langle v,v\\rangle-C^2)/\\Delta^2$. For any integers $a\\ne0$ and $b$, the center $\\xi=bC/(aT)$ satisfies\n\n$$\\frac{T}{\\gcd(T,b\\Delta D_\\Delta)}\\mid\\operatorname{den}(\\xi).$$\n\nPrimitivity guarantees $T>0$. Neither coprimality of $a,b$ nor primitiveness of $v$ is required. For primitive row reductions and their content ratio this is the computable divisor in equation (6). It asserts an exact denominator divisor, not the still-unproved exponential growth needed for the irrationality route.",
+  "definitions": "import Definitions.Def_ZetaNine_GramContent\nimport Mathlib.Data.Int.GCD\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Tactic.Ring\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Data.Nat.GCD.Basic\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nopen scoped BigOperators\nopen ZetaNine.GramContent\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/direction-arithmetic-next-2026-10-02.md, section 2, equation (6).",
+  "tags": [
+    "number-theory",
+    "zeta-function",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "b3c67d4e-0f05-484e-b795-af057457788e",
+  "created_at": "2026-10-02T14:16:47.64205+00:00",
+  "updated_at": "2026-10-02T14:34:18.501384+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "theorem_id": "a4ac5f9f-d4eb-4911-b163-47b9569c9156",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.weighted_representative_scale_exists",
+  "theorem_title": "Existence of an admissible weighted representative scale",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.weighted_representative_scale_exists\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) :\n    ∃ (R : ℚ) (T : Fin d.m → ℕ) (e : Fin (d.m + 1) → ℕ),\n      0 < R ∧ (∀ i, 0 < e i) ∧\n      (∀ i, InterpolationMatrix.rowWeights d.v0 d.base.theta\n        (MatrixArithmetic.logWeights (finiteDenominators d)) i.succ ≤\n        (T i : ℝ) * InterpolationMatrix.rowWeights d.v0 d.base.theta\n          (MatrixArithmetic.logWeights (finiteDenominators d)) 0) ∧\n      (∀ i, (R : ℝ) = (e i : ℝ) *\n        InterpolationMatrix.rowWeights d.v0 d.base.theta\n          (MatrixArithmetic.logWeights (finiteDenominators d)) i) := by sorry",
+  "natural_language_statement": "For every parameter $\\\\nu>2$ and admissible determinant family $d$, there are a positive rational scale $R$, natural-number cutoffs $T_i$, and positive integer exponents $e_i$ satisfying $$v_{i+1}\\\\le T_i v_0,\\\\qquad R=e_i v_i,$$ where $v_i$ is the row-weight sequence determined by $d$. This supplies the fixed scale data used in the eventual representative theorem.",
+  "created_at": "2026-10-08T06:29:18.716528+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_LogarithmicCenterIdeals\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightedGeometryScale.lean (Scale and chooseScale); Ampleness/AdmissibleBlowupGeometry.lean (scale).",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,14 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.AnalyticWeightedBound.actual_weighted_uniform_o_one",
+      "theorem_title": "Actual quartic-weighted kernel: coefficient-uniform exponential decay",
+      "formal_statement": "namespace ZetaNine.AnalyticWeightedBound\r\ntheorem actual_weighted_uniform_o_one :\r\n    ∃ ε : ℕ → ℝ, Tendsto ε atTop (𝓝 0) ∧\r\n      ∀ n : ℕ, 1 ≤ n → ∀ W : ℚ[X], W.natDegree ≤ 4 →\r\n        |∑' m : ℕ, actualWeightedSequence n W m| ≤\r\n          Real.exp ((-(2641 / 250 : ℝ) + ε n) * n) * weightedCoefficientHeight n W := by sorry\r\nend ZetaNine.AnalyticWeightedBound",
+      "preamble": "import Definitions.Def_ZetaNine_AnalyticUniformWeighted\r\nset_option autoImplicit false\r\nset_option maxHeartbeats 16000000\r\nset_option maxRecDepth 200000\r\nnoncomputable section\r\nopen scoped BigOperators Topology\r\nopen Set Finset Filter Polynomial\r\nopen ZetaNine\r\nopen ZetaNine.AnalyticMomentBounds ZetaNine.AnalyticUniformMomentBound\r\nopen ZetaNine.AnalyticWeightedBound",
+      "natural_language_statement": "For the actual factorial rational kernel $R_n$ and every rational polynomial $W$ of degree at most four, there is one error sequence $\\varepsilon_n\\to0$, independent of $W$, such that\n\n$$\\left|\\sum_{m\\ge0}W((m+1)(m+1+n))R_n(m+1)\\right|\\le e^{(-2641/250+\\varepsilon_n)n}\\sum_{r=0}^4 |W_r|n^{2r}\\qquad(n\\ge1).$$\n\nThis is an upper bound for the genuine infinite sum and allows arbitrary changing rational quartics. The complete proof establishes the true moments and summability rather than assuming either. It provides analytic decay; it does not construct short integer outputs, prove the lattice margin J, or assert irrationality. The rate is the certified rational lower precision used by the local analytic proof, not a claim of the exact saddle exponent.",
+      "source": "Local zeta(9) research: research/analytic-weighted-uniform-source-delta-2026-10-07.md; complete original factorial, actual-moment, phase and quartic proof chain in the submitted Lean file. Native and fresh platform independent validation completed 2026-10-08."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "theorem_title": "A uniform margin for weighted reciprocal sums",
+  "natural_language_statement": "Let $m$ be a natural number, $\\Lambda,\\epsilon>0$ real numbers, and $S\\ge0$ a real number. There exists $X\\ge1$ such that, for every real $w_\\star>X$ and every real family $(w_i)_{0\\le i<m}$ with $w_i\\ge w_\\star$ for all $i$,\n\n$$\\Lambda\\sum_{i=0}^{m-1}\\frac1{w_i}+\\frac S{w_\\star}<\\epsilon.$$\n\nThe same threshold applies to every family with the stated common lower bound, including the empty family when $m=0$.",
+  "explanation": "Set $X=\\max\\{1,(\\Lambda m+S)/\\epsilon\\}$. For $w_\\star>X$, one has $w_\\star>0$ and $\\Lambda m+S<\\epsilon w_\\star$, hence $(\\Lambda m+S)/w_\\star<\\epsilon$. Every $w_i\\ge w_\\star$ is positive and satisfies $1/w_i\\le1/w_\\star$. Summing these inequalities and multiplying by $\\Lambda>0$ bounds the required expression by $(\\Lambda m+S)/w_\\star$, proving the strict margin. This is the source argument in OpenAI math family 017 at commit adc7f1241b42e322a6451854ab7e4b4c146bf78a.",
+  "tags": [
+    "openai-pi-exponent-017",
+    "number-theory",
+    "uniform-estimate"
+  ],
+  "theorem_name": "OAI.PiExponent.exists_uniform_weight_error_margin",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L33-L49",
+    "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+    "source_range": {
+      "start": {
+        "col": 0,
+        "line": 33,
+        "normalizedOffset": 1204,
+        "offset": 1236
+      },
+      "end": {
+        "col": 19,
+        "line": 49,
+        "normalizedOffset": 2084,
+        "offset": 2132
+      }
+    },
+    "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+    "original_source_sha256": "b76595598194e525a5652cfb07430c5cb8835d12e1f5892934223afa0e320a37",
+    "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+    "port_source_sha256": "b3bf8453c0816835902670015c46f138faa636d2bdb7290ead8aa8ce6d026415",
+    "facts": "missions/pi-irrationality-measure/verification/sketch-WeightErrorMargin-20261008-000633.log",
+    "facts_sha256": "4c93bc769567802619c046fd1a7b4e631ed11c7d30704d8ad26853ef893149bb"
+  }
+}

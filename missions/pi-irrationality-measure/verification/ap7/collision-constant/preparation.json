@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap7-collision-constant-provider-preparation",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+  "provided_names": [
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos"
+  ],
+  "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+  "exact_source_units": [
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+      "kind": "def",
+      "start": 463,
+      "end": 522,
+      "lines": [
+        15,
+        15
+      ],
+      "owner_kind": "definition",
+      "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:463",
+      "row_sha256": "dd1f0febdc04faccd4b5e374f91928f327ce4a31bbeeebe0c7fb60c41e15115e",
+      "sha256": "4399fc38e3b8bf12eccd408f5b6846cdf3ce48ba6916d93d350305a4ae1ff058"
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos",
+      "kind": "theorem",
+      "start": 526,
+      "end": 673,
+      "lines": [
+        17,
+        19
+      ],
+      "owner_kind": "inline",
+      "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:526",
+      "row_sha256": "e438b1c64aecbfe969ddb1c29774204c1f6c172f81011488e6e24e9ca4641dae",
+      "sha256": "5dae6b320ec2ee5b9d1ef0eed0530367780036fae0abbfe6f2cccfe62dfb0c95"
+    }
+  ],
+  "namespace": "OAI.PiExponent.DeterminantContradiction",
+  "source_context_commands": [
+    "open Filter",
+    "open scoped Topology"
+  ],
+  "minimal_import": "Mathlib",
+  "minimal_import_basis": {
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant": {
+      "type_dependencies": [],
+      "value_dependencies": []
+    },
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant_pos": {
+      "type_dependencies": [
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant"
+      ],
+      "value_dependencies": [
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant"
+      ]
+    }
+  },
+  "structural_core": "verification/StructuralKernelSnapshotCore.inc",
+  "structural_core_sha256": "b0e9d33b62aaed702066cd358943a3d61e3641ec7e4d464c76bb1809c85ce33d",
+  "order": [
+    "Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant.lean",
+    "SourceSnapshot.lean",
+    "GeneratedSnapshot.lean"
+  ],
+  "commands": [
+    "python scripts/preflight_staged_module.py ap7/collision-constant/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant.lean --root ap7/collision-constant --imports-manifest ap7/collision-constant/c1.json --emit-olean --timeout-seconds 300",
+    "python scripts/preflight_staged_module.py ap7/collision-constant/SourceSnapshot.lean --root ap7/collision-constant --imports-manifest ap7/collision-constant/c2.json --timeout-seconds 300",
+    "python scripts/preflight_staged_module.py ap7/collision-constant/GeneratedSnapshot.lean --root ap7/collision-constant --imports-manifest ap7/collision-constant/c3.json --timeout-seconds 300",
+    "python scripts/certify_collision_constant_provider_existing.py --certify-existing"
+  ],
+  "expected_provider_olean": "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant.olean",
+  "snapshot_outputs": {
+    "SourceSnapshot.lean": "verification/ap7/collision-constant/source-full-ci.jsonl",
+    "GeneratedSnapshot.lean": "verification/ap7/collision-constant/generated-full-ci.jsonl"
+  },
+  "input_hashes": {
+    "scripts/stage_collision_constant_provider.py": "536b05fe2c2de6f01842c3d6a899ac58295d198178e8e42bbd612e065f1fa03d",
+    "scripts/certify_collision_constant_provider_existing.py": "779bf996663a3123dadbfa1bc2736d1ffb1eadd9f1885005403b70fca28d88a8",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "scripts/validate_namespace_context_providers.py": "fc398f10e2a4403aa1461569e0b9b3d1b6c6efbfad474c0f150d91fcbe8a7dd8",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+    "verification/ap7/determinant-contradiction-next-node-queue.json": "7d9467a876d071196f3ca448837da034bb74dba43770ac2867ea9832ad2e9bd2",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276",
+    "verification/StructuralKernelSnapshotCore.inc": "b0e9d33b62aaed702066cd358943a3d61e3641ec7e4d464c76bb1809c85ce33d",
+    "verification/lean-runtime.json": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef"
+  },
+  "Lean_started": false,
+  "API_used": false,
+  "validated": false,
+  "submission_ready": false,
+  "proposal_status": "Draft"
+}

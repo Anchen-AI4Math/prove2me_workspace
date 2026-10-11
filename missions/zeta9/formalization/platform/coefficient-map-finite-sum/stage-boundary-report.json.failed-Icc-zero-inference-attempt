@@ -1,0 +1,417 @@
+{
+  "exit_code": 1,
+  "records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "definitionValue": "fun q => Real.log ↑q.den",
+      "type": "ℚ → ℝ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "definitionValue": "fun s N => ∑ j ∈ Finset.Icc 1 N, 1 / ↑j ^ s",
+      "type": "ℕ → ℕ → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "definitionValue": "fun n s W => ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "definitionValue": "fun n W =>\n  -∑ j ∈ Finset.range (n + 1),\n      ∑ s ∈ Finset.Icc 1 9,\n        ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W * ZetaNine.HarmonicStability.harmonicPower s j",
+      "type": "ℕ → ℚ[X] → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "definitionValue": "fun n T W => ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "definitionValue": "fun n T W =>\n  ∑ j ∈ Finset.range (n + 1),\n    ∑ s ∈ Finset.Icc 1 9,\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n        (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T)",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "definitionValue": null,
+      "type": "∀ (s T : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + 1) = ZetaNine.HarmonicStability.harmonicPower s T + 1 / ↑(T + 1) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "definitionValue": null,
+      "type": "∀ (s T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.checked_actual_grouped_finite_identity",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "definitionValue": null,
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_positive_integer_regular",
+      "definitionValue": null,
+      "type": "∀ (n t : ℕ), 1 ≤ t → ∀ k ≤ n, ↑t + ↑k ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_finite_exchange",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (f : ℕ → ℕ → ℕ → ℚ),\n  ∑ t ∈ Finset.Icc 1 T, ∑ j ∈ Finset.range (n + 1), ∑ s ∈ Finset.Icc 1 9, f t j s =\n    ∑ j ∈ Finset.range (n + 1), ∑ s ∈ Finset.Icc 1 9, ∑ t ∈ Finset.Icc 1 T, f t j s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_closed_expanded",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_closed_grouped",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_closed_no_simple",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_closed_odd",
+      "definitionValue": null,
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_shift_T_zero",
+      "definitionValue": null,
+      "type": "∀ (s j : ℕ),\n  ∑ t ∈ Finset.Icc 1 0, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (0 + j) - ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_shift_j_zero",
+      "definitionValue": null,
+      "type": "∀ (s T : ℕ), ∑ t ∈ Finset.Icc 1 T, 1 / ↑t ^ s = ZetaNine.HarmonicStability.harmonicPower s T"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_shift_s_zero",
+      "definitionValue": null,
+      "type": "∀ (T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ 0 =\n    ZetaNine.HarmonicStability.harmonicPower 0 (T + j) - ZetaNine.HarmonicStability.harmonicPower 0 j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_tail_positive_shift",
+      "definitionValue": null,
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_finite_T_zero",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.finiteL n 0 W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_tail_T_zero_cancels_constant",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.shiftedTail n 0 W = -ZetaNine.CoefficientMapFiniteSum.constantTerm n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_constant_n_zero",
+      "definitionValue": null,
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.constantTerm 0 W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_tail_n_zero",
+      "definitionValue": null,
+      "type": "∀ (T : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 T W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_series",
+      "definitionValue": null,
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapJet.weightedClearedSeries 0 0 W = ↑(W.comp (Polynomial.X ^ 2))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_proper",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_simple_coefficient",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_higher_coefficients",
+      "definitionValue": null,
+      "type": "∀ (s : ℕ), 2 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 s (Polynomial.X ^ 4) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_rho_one",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapFiniteSum.rho 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_rho_higher",
+      "definitionValue": null,
+      "type": "∀ (s : ℕ), 2 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_no_simple_cancellation",
+      "definitionValue": null,
+      "type": "¬ZetaNine.CoefficientMapFiniteSum.rho 0 1 (Polynomial.X ^ 4) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_actual_simple_pole",
+      "definitionValue": null,
+      "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_actual_finite",
+      "definitionValue": null,
+      "type": "∀ (T : ℕ),\n  ZetaNine.CoefficientMapFiniteSum.finiteL 0 T (Polynomial.X ^ 4) = ZetaNine.HarmonicStability.harmonicPower 1 T"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_finite_at_one",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapFiniteSum.finiteL 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_dropped_simple_RHS",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapFiniteSum.constantTerm 0 (Polynomial.X ^ 4) +\n      ∑ s ∈ Finset.Icc 2 9,\n        ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) * ZetaNine.HarmonicStability.harmonicPower s 1 +\n    ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 1 (Polynomial.X ^ 4) =\n  0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_no_simple_without_cancellation_false",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapFiniteSum.finiteL 0 1 (Polynomial.X ^ 4) ≠\n  ZetaNine.CoefficientMapFiniteSum.constantTerm 0 (Polynomial.X ^ 4) +\n      ∑ s ∈ Finset.Icc 2 9,\n        ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) * ZetaNine.HarmonicStability.harmonicPower s 1 +\n    ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 1 (Polynomial.X ^ 4)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_ind_n_zero_X_four_not_two_degree_gap",
+      "definitionValue": null,
+      "type": "¬2 * 0 + 2 * (Polynomial.X ^ 4).natDegree + 2 ≤ 9 * (0 + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_stage_difference_T_zero",
+      "definitionValue": null,
+      "type": "∀ (s j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (0 + j) - ZetaNine.HarmonicStability.harmonicPower s 0 =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (0 + ↑k) ^ s"
+    }
+  ],
+  "all_standard_axioms": true,
+  "log_sha256": "44a7d7e7b4333242877e0299c1c52cc0573f19f7308727efd9fa3c5d5422bbf0"
+}

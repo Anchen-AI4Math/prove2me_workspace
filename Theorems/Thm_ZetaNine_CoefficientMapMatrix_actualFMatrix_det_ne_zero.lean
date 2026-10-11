@@ -1,0 +1,8 @@
+import Definitions.Def_ZetaNine_CoefficientMapMatrix
+
+set_option autoImplicit false
+open scoped BigOperators Matrix
+open Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge
+
+theorem ZetaNine.CoefficientMapMatrix.actualFMatrix_det_ne_zero (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) :
+    (actualFMatrix n).det ≠ 0:= by sorry

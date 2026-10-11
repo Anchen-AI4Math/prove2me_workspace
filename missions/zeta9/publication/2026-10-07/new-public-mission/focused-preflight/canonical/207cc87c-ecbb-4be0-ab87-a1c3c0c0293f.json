@@ -1,0 +1,27 @@
+{
+  "theorem_id": "207cc87c-ecbb-4be0-ab87-a1c3c0c0293f",
+  "theorem_name": "ZetaNine.irrational_of_two_small_integer_forms",
+  "theorem_title": "Two independent small integer forms imply irrationality",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem irrational_of_two_small_integer_forms (x : ℝ)\n    (h : ∀ ε : ℝ, 0 < ε →\n      ∃ b₁ a₁ b₂ a₂ : ℤ,\n        b₁ * a₂ ≠ b₂ * a₁ ∧\n        |(b₁ : ℝ) + (a₁ : ℝ) * x| < ε ∧\n        |(b₂ : ℝ) + (a₂ : ℝ) * x| < ε) :\n    Irrational x := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "Let x be real. If, for every positive tolerance, there are two integer coefficient pairs with nonzero determinant and both corresponding forms b+a x have absolute value below that tolerance, then x is irrational. This is the general mathematical criterion used at node P; it does not construct the pairs for ζ(9).",
+  "created_at": "2026-09-24T13:13:47.705398+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "linear-forms",
+    "number-theory"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local ζ(9) research, round6/research/analytic.md §5 and roadmap/DAG.md §J to root; mathematical proof in notes, Lean statement only in this draft.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "For every real number \\(x\\), if for every real \\(\\varepsilon>0\\) there are integers \\(b_1,a_1,b_2,a_2\\) such that \\(b_1a_2\\ne b_2a_1\\), \\(\\lvert b_1+a_1x\\rvert<\\varepsilon\\), and \\(\\lvert b_2+a_2x\\rvert<\\varepsilon\\), then \\(x\\) is irrational: it is not equal to any rational number.",
+    "model": "gpt-6",
+    "created_at": "2026-09-24T13:13:48.568752+00:00"
+  }
+}

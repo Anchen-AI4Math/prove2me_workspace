@@ -1,0 +1,21 @@
+{
+  "id": "1f3b0793-0f71-4283-af32-ff621468eb77",
+  "kind": "problem",
+  "theorem_name": "ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated",
+  "theorem_title": "Primitive-row Gram content divides the scaled divided determinant",
+  "formal_statement": "theorem ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated {ι : Type*} [Fintype ι] (u v : ι → ℤ) (Δ : ℤ)\n    (hprimitive : ∃ a : ι → ℤ, (∑ i, a i * u i) = 1) (hΔ : Δ ≠ 0)\n    (hminor : ∀ i j, Δ ∣ u i * v j - u j * v i) :\n    (Int.gcd (normSq u) (dot u v) : ℤ) ∣ Δ * saturatedGram u v Δ := by sorry",
+  "natural_language_statement": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every minor $u_iv_j-u_jv_i$. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$, $R=\\langle v,v\\rangle$ and $D_\\Delta=(TR-C^2)/\\Delta^2$. Then\n\n$$\\gcd(T,C)\\mid \\Delta D_\\Delta.$$\n\nPrimitivity means that the coordinates of $u$ admit an integral Bézout combination equal to one. The theorem covers every finite dimension and every nonzero common minor divisor, including the exterior content. It does not assume squarefreeness, linear independence or nondegeneracy modulo any prime.",
+  "definitions": "import Definitions.Def_ZetaNine_GramContent\nimport Mathlib.Data.Int.GCD\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Tactic.Ring\nopen scoped BigOperators\nopen ZetaNine.GramContent\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/direction-arithmetic-next-2026-10-02.md, section 1, equations (1) and (5).",
+  "tags": [
+    "number-theory",
+    "zeta-function",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "17f19266-744f-4790-b31a-e7c5c18ca549",
+  "created_at": "2026-10-02T14:16:47.573372+00:00",
+  "updated_at": "2026-10-02T14:34:06.466989+00:00"
+}

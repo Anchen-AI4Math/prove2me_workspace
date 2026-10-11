@@ -1,0 +1,24 @@
+{
+  "theorem_id": "a4d7220e-a967-499d-a96b-5d020a46e1d3",
+  "theorem_name": "ZetaNine.HarmonicStability.harmonic_log_den_rate",
+  "theorem_title": "The reduced generalized harmonic denominator has rate equal to its positive order",
+  "status": "Proved",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_log_den_rate (s : ℕ) (hs : 0 < s) :\n    Tendsto (fun N : ℕ => logDen (harmonicPower s N) / (N : ℝ))\n      atTop (nhds (s : ℝ)):= by sorry",
+  "natural_language_statement": "For every fixed positive natural number $s$, write $H_N^{(s)}=\\sum_{j=1}^N j^{-s}$ in lowest terms. Then $\\log\\operatorname{den}(H_N^{(s)})/N\\to s$ along all natural $N\\to\\infty$. The only hypothesis is $s>0$. The prime-number-theorem inputs and the harmonic baseline are proved in the complete solution rather than assumed.",
+  "created_at": "2026-10-03T14:05:41.933221+00:00",
+  "vote_count": 0,
+  "tags": [
+    "asymptotics",
+    "formalization",
+    "harmonic-numbers",
+    "number-theory"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 128–133, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,124 @@
+{
+  "Lean_started": false,
+  "artifact_kind": "formal-log-readonly-static-performance-audit",
+  "c2_prepare_snapshot": {
+    "calls_original_check_snapshot": false,
+    "calls_original_check_source": false,
+    "f1_view_count": 1,
+    "file": "scripts/stage_formal_log_successor_children_repaired.py",
+    "parent_once_line": 117,
+    "parent_to_f2_line": 43,
+    "snapshot_documents_consumes_existing_evidence_lines": [
+      90,
+      126
+    ],
+    "source_replay_consumes_existing_evidence_lines": [
+      79,
+      124
+    ]
+  },
+  "context_replay_paths": [
+    {
+      "call_line": 287,
+      "count": 1,
+      "path": "f1.certify -> f1.definition_interfaces -> context.setup + context.certify_generated"
+    },
+    {
+      "call_line": 145,
+      "count": 1,
+      "path": "successor.certify -> definition_interfaces -> context.setup + context.certify_generated"
+    },
+    {
+      "call_lines": [
+        153,
+        276,
+        47,
+        70,
+        345
+      ],
+      "count": 1,
+      "path": "same definition_interfaces -> FormalLogProvider.validate_formal_log_provider -> setup -> generator.context_evidence -> context.validate_context_provider -> context.certify_generated"
+    }
+  ],
+  "existing_sources_or_certificates_modified": false,
+  "f1_chain": [
+    {
+      "call": "childcheck.validate_proved_child(c1)",
+      "file": "scripts/validate_formal_log_successor_node.py",
+      "line": 86
+    },
+    {
+      "call": "certify(stage)",
+      "file": "scripts/validate_formal_log_proved_child.py",
+      "line": 294
+    },
+    {
+      "call": "parent.validate_formal_node(F1)",
+      "file": "scripts/validate_formal_log_proved_child.py",
+      "line": 206
+    }
+  ],
+  "hashes": {
+    "scripts/certify_command_emission_probe.py": "5ac5deac8fc9b44cf4d0611c0d9f727d3f56adb688b695ef5efed0d068fdbdb2",
+    "scripts/generate_formal_log_truncation_provider.py": "2a43e21fb7483d2c34243af3758887f09ac876403e90eebbfb7c86b9702469ec",
+    "scripts/generate_namespace_context_providers.py": "5887e585b899b4a3c07499f55e4766a2694ad6c279ae70b2138e885b6e6dbead",
+    "scripts/provider_source_subset_cache_windows.py": "1d7c2ba78f4777950199cf257cbbafdce06336f909f603ddbf6363baba489b0e",
+    "scripts/stage_formal_log_successor_children_repaired.py": "40d5ee69dd54b939663384970ee3f68062e34b5f95a91c64aa680d596f053ab1",
+    "scripts/validate_formal_log_f3_complete_node_repaired.py": "e59db91b0c19026106294683e737c4f1060439d9aaccb9addd5502aa9e158a7a",
+    "scripts/validate_formal_log_node.py": "e9b3d44cc7086aa8e8890c137847de1702688282043b66f21bf608534421a0b1",
+    "scripts/validate_formal_log_proved_child.py": "828afd8a0b732b1e222a67a60e52f60d09d15ac14d784cfd5c9c6075fa462ac0",
+    "scripts/validate_formal_log_successor_node.py": "20f761f0d169c7af296faea379bb7547909abd56f79d0bdba03a207d7617bfb4",
+    "scripts/validate_formal_log_truncation_provider.py": "e8b664ce0670a9b44bc326dbe02ccb7c93d81bf54351aba3003c270ecc533b5e",
+    "scripts/validate_namespace_context_providers.py": "fc398f10e2a4403aa1461569e0b9b3d1b6c6efbfad474c0f150d91fcbe8a7dd8"
+  },
+  "network_used": false,
+  "publisher_cache_switched": false,
+  "recommendation": {
+    "boundary": "Do not memoize mutable context.certify_generated(g,results) or global generator objects. Never share results across processes/invocations. Future c2/c3 typed certificates need explicit source_preflight, snapshot_preflight and snapshot_preparation handlers; existing C1 uses preflights mapping and current publisher inventory already covers it.",
+    "expected_benefit": "Static eliminated-call counts only; no runtime speedup claimed until a full baseline-versus-adapter comparison with exact same certificate bytes and final typed input guard passes.",
+    "phase1": "Memoize context.source_cache only for exact same g/results identities inside one context.certify_generated invocation, with first full verifier call, deepcopy returns and final union typed SHA guard. This reduces source34 replays from6to3 without sharing mutable generator state across setups.",
+    "phase2": "To share across the three independently reconstructed g objects, define an exact bounded projection of every source_certificate argument read: graph_sha,34 original request dictionaries, each referenced unit graph_names/start/end offsets, each referenced source-module SHA and stage2 facts SHA. Add fixed source-certificate/catalog/subset/unit-plan/manifest/exporter/JSONL/preflight/runtime/OLean pins. Do not key only on saved certificate SHA."
+  },
+  "schema_version": 1,
+  "single_successful_f2_or_f3_review_counts": {
+    "context_certify_generated": 3,
+    "context_degree_provider": 3,
+    "context_source_cache": 6,
+    "f1_validate_formal_node": 1,
+    "provider_subset174_validation_minimum": 3,
+    "source34_duplicate_replays_above_first": 5
+  },
+  "source34_internal_duplicate": [
+    {
+      "caller": "generated_group -> source_cache(g,results)",
+      "file": "scripts/validate_namespace_context_providers.py",
+      "line": 274
+    },
+    {
+      "caller": "certify_generated -> source_cache(g,results)",
+      "file": "scripts/validate_namespace_context_providers.py",
+      "line": 312
+    }
+  ],
+  "source_cache_readonly_audit": {
+    "calls_source_certificate_once_line": 234,
+    "compares_saved_certificate_line": 235,
+    "definition_line": 233,
+    "file": "scripts/validate_namespace_context_providers.py",
+    "mutation_of_returned_source_rows_found": false,
+    "normalizer_creates_new_lists": true,
+    "normalizer_file": "scripts/certify_command_emission_probe.py",
+    "normalizer_line": 137,
+    "returned_original_rows_consumers": [
+      {
+        "action": "discarded while certificate used to build generated-group manifest",
+        "line": 274
+      },
+      {
+        "action": "read for type/value/axiom comparison",
+        "line": 312
+      }
+    ]
+  },
+  "static_only": true
+}

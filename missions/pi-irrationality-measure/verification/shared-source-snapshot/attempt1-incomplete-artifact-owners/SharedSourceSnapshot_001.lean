@@ -1,0 +1,1457 @@
+import Lean
+import OAI.NumberTheory.PiExponent.Main
+
+open Lean Meta
+
+namespace PiExponentSharedSourceSnapshot
+
+/- A request is text-backed on purpose.  The exporter resolves sourceName by
+walking Environment.constants and retaining the actual Name object.  In
+particular, private numeric Name components are never reconstructed from a
+printed string. -/
+structure SourceRequest where
+  sourceName : String
+  expectedModule : String
+  graphKind : String
+  declGraphSha256 : String
+  declGraphRowSha256 : String
+  ownerKind : String
+  ownerId : String
+  commandUnit : String
+
+partial def levelJson : Level → Json
+  | .zero => Json.arr #[toJson "zero"]
+  | .succ u => Json.arr #[toJson "succ", levelJson u]
+  | .max u v => Json.arr #[toJson "max", levelJson u, levelJson v]
+  | .imax u v => Json.arr #[toJson "imax", levelJson u, levelJson v]
+  | .param n => Json.arr #[toJson "param", toJson n.toString]
+  | .mvar n => Json.arr #[toJson "mvar", toJson n.name.toString]
+
+def binderTag : BinderInfo → String
+  | .default => "explicit"
+  | .implicit => "implicit"
+  | .strictImplicit => "strictImplicit"
+  | .instImplicit => "instance"
+
+-- This is the same kernel-relevant Expr encoding used by TypedSnapshotCore.
+-- Binder display names and source metadata intentionally do not occur in it.
+partial def exprJson : Expr → Json
+  | .bvar i => Json.arr #[toJson "bvar", toJson i]
+  | .fvar n => Json.arr #[toJson "fvar", toJson n.name.toString]
+  | .mvar n => Json.arr #[toJson "mvar", toJson n.name.toString]
+  | .sort u => Json.arr #[toJson "sort", levelJson u]
+  | .const n us => Json.arr #[toJson "const", toJson n.toString,
+      Json.arr (us.map levelJson).toArray]
+  | .app f a => Json.arr #[toJson "app", exprJson f, exprJson a]
+  | .lam _ t b bi => Json.arr #[toJson "lambda", toJson (binderTag bi), exprJson t, exprJson b]
+  | .forallE _ t b bi => Json.arr #[toJson "forall", toJson (binderTag bi), exprJson t, exprJson b]
+  | .letE _ t v b nondep => Json.arr #[toJson "let", exprJson t, exprJson v, exprJson b, toJson nondep]
+  | .lit (.natVal n) => Json.arr #[toJson "natLiteral", toJson n]
+  | .lit (.strVal s) => Json.arr #[toJson "stringLiteral", toJson s]
+  | .mdata _ e => exprJson e
+  | .proj n i e => Json.arr #[toJson "projection", toJson n.toString, toJson i, exprJson e]
+
+def envKind : ConstantInfo → String
+  | .thmInfo _ => "theorem"
+  | .defnInfo _ => "def"
+  | .axiomInfo _ => "axiom"
+  | .opaqueInfo _ => "opaque"
+  | .inductInfo _ => "inductive"
+  | .ctorInfo _ => "ctor"
+  | .recInfo _ => "rec"
+  | .quotInfo _ => "quot"
+
+def kindMetadata : ConstantInfo → Json
+  | .thmInfo _ => Json.mkObj [("proofValueExported", toJson false)]
+  | .defnInfo d => Json.mkObj [
+      ("valueExported", toJson true),
+      ("safety", toJson (reprStr d.safety))]
+  | .axiomInfo a => Json.mkObj [("isUnsafe", toJson a.isUnsafe)]
+  | .opaqueInfo o => Json.mkObj [
+      ("valueExported", toJson false),
+      ("isUnsafe", toJson o.isUnsafe)]
+  | .inductInfo i => Json.mkObj [
+      ("numParams", toJson i.numParams),
+      ("numIndices", toJson i.numIndices),
+      ("all", toJson (i.all.map Name.toString)),
+      ("constructors", toJson (i.ctors.map Name.toString)),
+      ("numNested", toJson i.numNested),
+      ("isRecursive", toJson i.isRec),
+      ("isUnsafe", toJson i.isUnsafe),
+      ("isReflexive", toJson i.isReflexive)]
+  | .ctorInfo c => Json.mkObj [
+      ("inductive", toJson c.induct.toString),
+      ("constructorIndex", toJson c.cidx),
+      ("numParams", toJson c.numParams),
+      ("numFields", toJson c.numFields),
+      ("isUnsafe", toJson c.isUnsafe)]
+  | .recInfo r => Json.mkObj [
+      ("all", toJson (r.all.map Name.toString)),
+      ("numParams", toJson r.numParams),
+      ("numIndices", toJson r.numIndices),
+      ("numMotives", toJson r.numMotives),
+      ("numMinors", toJson r.numMinors),
+      ("ruleConstructors", toJson (r.rules.map (fun rule => rule.ctor.toString))),
+      ("supportsK", toJson r.k),
+      ("isUnsafe", toJson r.isUnsafe)]
+  | .quotInfo _ => Json.mkObj []
+
+def moduleFor? (env : Environment) (name : Name) : Option Name :=
+  match env.getModuleIdxFor? name with
+  | some idx => env.header.moduleNames[idx.toNat]?
+  | none => none
+
+def isClosed (e : Expr) : Bool :=
+  !e.hasMVar && !e.hasFVar && !e.hasLooseBVars
+
+def actualNameIndex (env : Environment) : MetaM (Std.HashMap String Name) := do
+  let mut index : Std.HashMap String Name := {}
+  for (name, _) in env.constants.toList do
+    let key := name.toString
+    if let some prior := index.get? key then
+      unless prior == name do
+        throwError "Environment Name.toString collision: {key}"
+    else
+      index := index.insert key name
+  return index
+
+/- Stream one compact object per line.  Only DefinitionVal values are emitted.
+Theorem proof terms are deliberately absent; theorem rows certify their types,
+module ownership, kinds and axioms. -/
+def exportSourceSnapshotJsonl (requests : Array SourceRequest) (output : String) : MetaM Unit := do
+  let env ← getEnv
+  let index ← actualNameIndex env
+  let handle ← IO.FS.Handle.mk output .write
+  for request in requests do
+    let some name := index.get? request.sourceName
+      | throwError "Source declaration string is absent from Environment.constants: {request.sourceName}"
+    let some ci := env.find? name
+      | throwError "Resolved source declaration is absent from the environment: {name}"
+    let some actualModule := moduleFor? env name
+      | throwError "Source declaration has no imported module owner: {name}"
+    unless actualModule.toString == request.expectedModule do
+      throwError "Source module mismatch for {name}: graph={request.expectedModule}, env={actualModule}"
+    let actualKind := envKind ci
+    unless actualKind == request.graphKind do
+      throwError "Source kind mismatch for {name}: graph={request.graphKind}, env={actualKind}"
+    unless isClosed ci.type do
+      throwError "Source declaration type is not closed: {name}"
+    let value := match ci with
+      | .defnInfo d => some d.value
+      | _ => none
+    if let some v := value then
+      unless isClosed v do
+        throwError "Source definition value is not closed: {name}"
+    let axioms ← Lean.collectAxioms name
+    let axiomNames := axioms.toList.map Name.toString
+      |>.mergeSort (fun a b => compare a b == .lt)
+    let row := Json.mkObj [
+      ("schemaVersion", toJson 1),
+      ("sourceName", toJson name.toString),
+      ("sourceModule", toJson actualModule.toString),
+      ("declGraphSha256", toJson request.declGraphSha256),
+      ("declGraphRowSha256", toJson request.declGraphRowSha256),
+      ("graphKind", toJson request.graphKind),
+      ("envKind", toJson actualKind),
+      ("ownerKind", toJson request.ownerKind),
+      ("ownerId", toJson request.ownerId),
+      ("commandUnit", toJson request.commandUnit),
+      ("levelParams", toJson (ci.levelParams.map Name.toString)),
+      ("closedType", toJson true),
+      ("closedValue", value.map (fun _ => toJson true) |>.getD Json.null),
+      ("type", exprJson ci.type),
+      ("value", value.map exprJson |>.getD Json.null),
+      ("axioms", toJson axiomNames),
+      ("kindMetadata", kindMetadata ci)]
+    handle.putStrLn row.compress
+  handle.flush
+
+end PiExponentSharedSourceSnapshot
+
+open PiExponentSharedSourceSnapshot
+
+def sharedSourceRequests : Array SourceRequest := #[
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.arithmeticError",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "9e6fd74814be14863914b39dd84fffc1e4ab4051d81cb843514da48b6ad5c745",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12604"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.base",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0870767dac60e9e015d91e1c6914268fc5a75193947844383f584e4e3c3db6ff",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.casesOn",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "fb122f4f0b80a12f44aed313a371e2c56be9d5ba5dc4d3df903cf2b680cfc844",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.cast_rationalWeight",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "97c9500758cc1b110964abd42b4db9ecccf610b3a8c7cfc58cb103c980de8070",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9601"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.collision_margin",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "84bfa8e68dd1fbbf7f77c61a6f9bce064330677ec6dab08880f47f592dd34a85",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveCenters",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "ad0453e923275bacc98a998bd276f25ffb9fb85c95e6ffe59e5d71c543dc3752",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality:321"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveCenters_injective",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "ffdd2514c9c983322a636847f43ce150366cc7ffea87854e1f257fda4501f690",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveInequality:513"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveDegreeWeights",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "78289e8efcb24b43f844811b1a98c92cd4b6fb2a50878600b35036c292b8c431",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:330"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveDegreeWeights_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f1321bd5a489a20ed5ef41de90cc35ab8abab55d576c77aba3b2c45cccf8058c",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:977"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveJetWeights",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "579f9ccedc1e33f8ac19d2e778d9c628e9cfd144f017c5b0afdfe03b44d6bd6d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:441"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curveJetWeights_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "ce49cf136d06455dbe2622a3a7ffb116eea069a776a259b46928159d6b66b033",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:1215"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.curve_separated_weight_products",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "8ca083ac76105c57719a40b3bb1546d700340148b5cb8ba1e7e5decedf79bb4d",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:4547",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.AdmissibleCurveWeights:4547"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.dimension_margin",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "3d7c12295ae9dd15a57f1098be6fa89b7e2e995b6f2a9f9de6dfedcc5e05272e",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.epsilon",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "997dda484fc9c6c4df59258ead4b0ff48858ffe1475a073e41c0cd72252b4f58",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.epsilon_le_half",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "756dbf6888b3abca3143363014fc938bd426f0f2868d9a863a1aed944a8c038d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.epsilon_lt_gap",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7a52307cc27628e9b08d4d04119a3177104542c20f1044410cc57345606b7659",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.epsilon_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "5f557f266f5920f3d5fc0707f350aeb0a5b3efe05f752ec73db0e8bb017a5ad0",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.holomorphicError",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "3c7589e8562d6a358c2a9d587332bee9e8ae29cd0c6d9350d0b8d55bba0971d6",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12936"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.initial_margin",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f4484806a112aacdf4dab4967f6b000a7d9903322fc1701926a072aec2a7d0ac",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.m",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "d4e9015c664f68ec0c8f884e95478c645cc4ef2efa5bd838abfe68a26fd517b2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.m_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "e49fec9450acb197928cf9bc6fca97d2cb0d30e439d5535a37dcbaf14688fe15",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.mk",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "ctor",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b6aa2511d0b6f5dbb66c13f080c9c0590a22109e32b6e0247172b69926d230d0",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.mk.noConfusion",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f0a96c772cb0ab288855a6f878530c95d700c41b0512fb76e1fa67a2353ab193",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.noConfusion",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "aa7fdd7013b61ead06aac1f276f8e2efdbdd2de06fe6888ea9736f5c2e4b165c",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.p",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "24ae95a144f64ded836576d32841423aed8e60ca95849a20a64a4cf3510d88a5",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.q",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "8a274dd3132e9589f81d6918a3b40b4f60926b66d529ff5a107c6f86e86cc07e",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.rationalWeight",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "de156a5d629cdbd7e50f5c436de7976a71426c3bdd035e645d3d20b0f2c399e6",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9489"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.rationalWeight_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "4d0a71c146240aa0a6593fa4f4ea014db8eff3be5ae0bac80bfd0f9b878bc95d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9818"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.rec",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "rec",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "461cc675fd598d7e69d803076ca99f3af3bef39f77604eef020d5756f667f3cb",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.recOn",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "a2cb066747349fec5c889a6cd3cca90bc9336979714dc20a5b940f39fc13cab9",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.sigma",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "62d01aef6f0c6b7ee934e98163dce70b2e73f7d31d485b9c49c9629d032228b2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.sigma_centers",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "49aab0fe8796f41c5417ffe2d03b4acfb3c47412d09c32ea7dd8446a040c1923",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.sigma_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "fe2038c34541e78771cb77ebb9e21ea1241e5739b2fa077d48e26c0a59439612",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.sigma_theta",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0226d22e7ed13f7ef3eba3181f4e544bef4747356320d6208f56550107d4d475",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.sigma_volume",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "50b588c2a26c3cf930f6a70903644004bcf3249dc762be28e6b93facf61e72a2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.translationError",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "70234677172bb5396274cd862433b32d475989035953d9b17e0af072b4ed5e79",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12784"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.v0",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "32e60970381f16d5084a46d2a82245aae8f8d640737814caf25112d4313e4eef",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.v0_eq",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b12ef1a233b168f1cb12db4527acbdf2645a6262ff279decefee033976ee5eba",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.v0_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "8bf95ea99a27be454eaa8d8814c0764bb6889a9de310911208f5afe60f297f00",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.volume_eq",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b694ea149bbe3bbd21c7c0714a8a75bea8ab7fb0097b3903b89be3d065b42684",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.volume_lt_one",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "fc991d23bfad19356d4212f994b5c778a3d378a0321ce6707b77e9bfbe4eb29a",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.w0",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "cbfb437ac6f8bf3a8b1bb4d016b3f1e7d32ee189902b03e47a98de53c350476a",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.w0_eq",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "e5ed5c83295b807cc0fff10f1627802ebb10e8dafed9b9f98a17a4d8e667f1f9",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.w0_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "4327cae9ef0fec5683a994f6356f67d795d6d4037e20fc0600a3777b20dc027e",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.weight_growth",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b70db00109afdf3108de8a0373186561041683d8a5f744aabb9227dd5fb30c10",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.weight_margin",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "82ff198ada4b33c69b15be674e29b6cc3b960abfb7cafcf500ca829c8f75cd48",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.wstar",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f46018696e8cc4bb9d9fa60c4bfe11903d42a69bc02a72a9f6cae52ec6585737",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.wstar_attained",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "ae3b89dd0a91d663f9c7c60d7a9ad66729ca607ed5ec6ab7d7d8a5ce15495f9d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.wstar_lower",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b8962fd7410292f589961d06a99202a07da45f196583ee3ec28702888ddba6ff",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.wstar_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c303662deee1ea3a9d16246be9f19130a51f8b418777f342701cdd4714d76697",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.x",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "3d2fb4c0ac87c30c17e50e74f7a3511ca4fc004fa976b575df9c80edccd60540",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.x_log",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b91a285cb298905184148e0e3eec7df492fb5ad914a0c0df2a8b915d6783e61b",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.x_one_le",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "60716a30d4c06faa34f980b218a5b69cefe2538b9fd24218ab7f730572c2f912",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AdmissibleParameters.x_zero",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "1a3642ca8c261b85a664a129811d130c65c7971b4d5820ce584f94db33942d69",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientFrame.polynomialCoefficient_eq",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "99807cfa196e7ce66eb9321438d508b72d238b6d1d629a176522dd0841e46a19",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame:3488",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame:3488"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientFrame.polynomialPowerFrame",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "164ee762cce08665dcc0fd07f8037273a80fbf243da919d8054718ebe96b5388",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame:2948"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientFrame.untwistPowerFrame",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "957dbb2de2b7a235adcf0078363f2bf9d0f2511e8a237641936040793ae652ea",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientFrame:364"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientInterface.Frame",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "1545cbe457d5a24211f4f8e056ab22ca2921fc3e4b1957ab31ee93538bfaa5bc",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface:412"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientInterface.Sections",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "3a99f985bbd3977036964a6b46fd37bceca67634162763903dad1b38d4bec17c",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface:515"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetCoefficientInterface.coefficient",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7ee603ddae85fef0750030d94b034f0c6755b1ac5c8211ff6b2cb4088cd31a46",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetCoefficientInterface:592"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetPolynomial.polynomialCoefficient",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "71a7e7e4f3911fca6c57f710b511be522e17221cb18d16984e5f2d7c537f3570",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial:1802"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetPolynomial.polynomialQuotient_surjective_of_jetRestriction",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "30c5cf0a678c5e8c33f4eef78ea2bb1aa37a1690ad900c3163828a98a4942383",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial:2146",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetPolynomial:2146"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetQuotient.globalSectionCoefficient",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "3c7ff540de5d5bd3a1030e54edd234aca29cf720f2690e68c2923290b75a2e04",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient:2818"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetQuotient.untwistSectionsIso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "342f1108c59bd13f8caa069bc722c2475bcd74ac436ba04565e655251b0576b6",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetQuotient:854"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetSupport.globalQuotientValue",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "1a0317a60d5e9ce1f70483a32965d1b1be682669a790c531fdb395b5b62851e7",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport:3743"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetSupport.localQuotientEquiv",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "6a761371743182de8d771030a954bcfd989f7ea08345c613279eb6207b8907b1",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport:3067"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetSupport.restrictionSectionsIso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "a4fdbcf2ce98046662792dd2a3414ea08ab26a1fe12887666b82ed61616ec448",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport:2728"
+    },
+    {
+      sourceName := "OAI.PiExponent.AffineJetSupport.sectionsIso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "bcc1a023bc0221ab3642124e94aa8bd64dda187f5816c3f2c8733d2a7d3ed0fb",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AffineJetSupport:2922"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.formalJet_packet_surjective",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7d2ec6e5c833f9aaeb636a5914927ece435fdbdc40d318e98599f7381e8efba7",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:9151",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:9151"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.inverseTriangularMap",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "9aa041f17fde21235504435aa273124e297a5b819617f0c825506acb0489c593",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:531"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.inverseTriangularMap_X_succ",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c758b31a7cc5d495b1b31e2be279db36e0bb2fa0f795dbbe17d51c5248901fa5",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:1347"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.inverseTriangularMap_X_zero",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "a6d6f293462146b89b0b2e86528f1ef186973fccfbaa590262c75544f9f74ef5",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:1171"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.inverseTriangularMap_comp",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "27328542db41111b1f30e20c3abe08b6e5c3e1524b0fe6cf3c8587511ffdf6c5",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:2215"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.triangularEquiv",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7b6926cb7c2bae6a36390cfa2795694a9273fb2f90004aa1a159d9d267eaf1c2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:2740"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.triangularMap",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "9a07243cc83ea42d03465da75e5890937397cdf8206a2ea457296666a9f3f797",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:279"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.triangularMap_X_succ",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "2191c19c131fe5561c9c3e1108ff5acc2d29cd0f39e117b24fcc477a48898050",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:949"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.triangularMap_X_zero",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f682b57f6a3b7213024fbcba270e6668c951f0a834ea662b0e974dcafc113b6d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:794"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.triangularMap_comp_inverse",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0a503375a6762a627a9afa519026c32e0a9be18675a6050acdfa24c0339c3e74",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:1601"
+    },
+    {
+      sourceName := "OAI.PiExponent.AlgebraicJetPackets.truncatedFormalJet_eq_polynomial",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "190771aebaa8565ed9592a422be7a1b3cb821199b33ee824619c152f93cae9be",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:3502",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:3502"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleCohomologyFinite.cohomology_finite_of_ample",
+      expectedModule := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7123d8197e83245130322ef93f2eda19dcf88362b72fe30ba89e7190ab572997",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite:628",
+      commandUnit := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite:628"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleCohomologyFinite.projectiveBase_eq_polynomialProjectiveProjection",
+      expectedModule := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "50a5825504eba50002b01c16d54635393ad5eab92836bfba361c56a61fd9a437",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite",
+      commandUnit := "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite:443"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.affine_local_generators",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "81b72af544cf736f81101e37fdc37e20c823adffa161cadf70d2f82ef179ac14",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:3210"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.ample_eventual_global_generators",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleAllPowersGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0013bd5322ca568248c0b50580171752971d99e593ad2b6515dbf8e902b33bc0",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleAllPowersGeneration:407",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleAllPowersGeneration:407"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.eventual_global_generators_of_section_cover",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "5197b64f395387cf3c4abadb08cf863a6f49fd2d1564b603fb576b730e9b085b",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:3764"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.openSectionEquiv_postcomp",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7052ffa9291c578a1680549c782e68157a8fad2976b08e5e9bc38a539707ab62",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:2584"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.openSectionEquiv_restrict_from_top",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "df7b00182122a5cf21c9486d6b40e6ac9127f673987804f8c2df9bb01177f8f8",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:2105"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.sectionMultiply_isIso_restrict",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "098c58e3b2f313b217363c26a462fd538b4ce432e4962274c3d24b02300045ce",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:580"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleGlobalGeneration.twistSection_isIso_restrict",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "6e46657b3930c7581cc71e4bc5f073bb4ced6a031673953da1fc90597efc025f",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleGlobalGeneration:1227"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleIso.isAmple_of_sheaf_iso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "5b72e43d1cdcdc6c2f07a1e4dbdf96b6a4e975f8cd6c9796bb4b93791f329cf3",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso:480"
+    },
+    {
+      sourceName := "OAI.PiExponent.AmpleIso.sectionOpen_postcomp_iso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "252c712206d03b9b7f4590b10166c262abc9e6fa2ad82ea52645174a0f7b9582",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.AmpleIso:256"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.exponentialMonomial",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "bec031f893fbb515efbb6c776962e476304e03112706cf215beb90cfeae36a42",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:202"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.hasSum_translated_row",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticRowSeries",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b1ee2a3502258136497bfe6c8d12ecd58d6a6754346dfeab00c9ba151686d2a7",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticRowSeries:2757",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticRowSeries:2757"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.norm_exponentialMonomial_le_exp_budget",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "9bad5761cf9cb12f4ef1a09be672021026bad5ba65fcf0935ba07d334e2c4291",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:6573",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:6573"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.norm_normalizedTaylorCoeff_le",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "30b34615b3c0950599b42c7c4d77a991d7a4416e38f191172714034269d9d003",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:1329",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:1329"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.norm_rowTest_le",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "bf32e2465979f10ee78f047990f9874256c772a3d56e349a1fbdf7903b4aba05",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:4161",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:4161"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.normalizedTaylorCoeff",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "9e3f893e20fb72eeafca30261521e66600320ccbcca713c143ebf6e9c109c383",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:1189"
+    },
+    {
+      sourceName := "OAI.PiExponent.AnalyticCollision.rowTest",
+      expectedModule := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f6df91c8ff9da9968b275cd3b6aca4856dccab619822d1f4d96c7fe4eabcf368",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision",
+      commandUnit := "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:4043"
+    },
+    {
+      sourceName := "OAI.PiExponent.Arithmetic.lcmConstant",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "31cc4f14cbc40464a9583c80c042821d3aa246550eff9a7f4033fd8276f3fd17",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic:355"
+    },
+    {
+      sourceName := "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+      expectedModule := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "5e0991837b4d676e7b577ba55d62b526a92628f4ae7acf1fa1c00562475ecafa",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic:14105",
+      commandUnit := "OAI.NumberTheory.PiExponent.Approximation.Arithmetic:14105"
+    },
+    {
+      sourceName := "OAI.PiExponent.BirationalOpenIso.exists_open_iso_of_generic_inverse",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.BirationalOpenIso",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0f8328dbf81ba5ac0db16cb5e4c48a131523cdcb5509c7f27b809c1eeeb6428b",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.BirationalOpenIso:273",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.BirationalOpenIso:273"
+    },
+    {
+      sourceName := "OAI.PiExponent.BirationalValuationStalk.stalkClosedPointTo_bijective",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f1a05fb00d454ca6a121f084ee0c7e96d14674d8272488a35fade1ce027fbe65",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk:2559"
+    },
+    {
+      sourceName := "OAI.PiExponent.BirationalValuationStalk.stalkClosedPointTo_field_compatibility",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c24d249077953df276ed75966c3d61d52700f4a2fc5410ae07e288541dc555ff",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk:848"
+    },
+    {
+      sourceName := "OAI.PiExponent.BirationalValuationStalk.stalkMap_isIso",
+      expectedModule := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "af63e36d3a20ee3905f34c0688ea207e131fe0e329a6fd158e62ac8610d4caf2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk",
+      commandUnit := "OAI.NumberTheory.PiExponent.Geometry.BirationalValuationStalk:3653"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupCurveMargin.contactSum",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "f49f6de645ac736d5d2ab1a3a25e6796ab8ec78c40776a49a64fe351724ce3a6",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin:6588"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupCurveMargin.marginCoefficient",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "fdda1a073774c1d1f2dba239ab8d229697b772bac454f5e7438ab0ef299e4263",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin:1609"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupCurveMargin.poleDegree",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "de499d4677a54c61ab2591c5c6c506904e3c29a28029485963f0e8ee18f26713",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupCurveMargin:7198"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.blowupBundle",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.GlobalBlowupJetSurjectivity",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "0d8d99f7966e92cd78a5e827686ac549e4289de8b8da725ef2eb7fe8484ca377",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.GlobalBlowupJetSurjectivity",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.GlobalBlowupJetSurjectivity:481"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.eventual_blowup_jetRestriction_surjective_of_affine_recovery",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetReesReduction",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "d37adedda6af44f03165bc10d57f69a307763e980d5a587422da96ee5d260359",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetReesReduction:446",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetReesReduction:446"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.eventual_jetRestriction_surjective_of_ample_comparison",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "a0029e40d7e8450609af65b63984664a2da94a21143ff0814a40250e9f423f66",
+      ownerKind := "node",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:2225",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:2225"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.jetQuotient",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "326bc1b7e964563dff8d886b1887c087f23d53b83bd62ead2b26a2062d9105ad",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:506"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.jetRestriction",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "54675b80d2b20e109759d35d0cd05d9a985b1f9175105f23191e1cb0357b9623",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:836"
+    },
+    {
+      sourceName := "OAI.PiExponent.BlowupJetSurjectivity.twistedIdeal",
+      expectedModule := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "2b53fd6d8d1446cd5f9a4a97a4662cb56b80bc7c5820bb6b224d4475412a7e6d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity",
+      commandUnit := "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:663"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.active",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "93151b80ac3111481271d883605c58e02a1e26c4ba2b6d0663d0899611be4ae9",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:185"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.active_nonempty",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c666079ab49a6779b7bafab66540b3bc4cceacb7dce3c9e38430dbdafb0419b3",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:448"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.add_not_all_zero",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "771eada4252684714edcf94f56a3097c9e885e44408be4a82f831a20d51d23bd",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:5056"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.contact",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "1916138d8569b829fea0d332886d438f7aee7a2666bf28f31d2f894f8d621bb8",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:631"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.contact_add_high_tail",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "e548a7d3324b5985d1a59e018fbb9b5db1a8e2101a8c1fb3d5365c76dd2e8344",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:5397"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.contact_bound",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "5360950695ef44e8b60daa0975f539259b7ff31e7f1f4ae62a50930a2c4da16d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:1937"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.contact_le",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "4e3a3c792d978e49bab824758b1e53ca36b748f2878c1dc4e69b970e82af6e0b",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:812"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.contact_pos",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "7811208f0c3deda4f40eaec306c1690f7f4d415d15c9332101162291ddcf9622",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:1393"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.exists_attaining_add",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c517c29d0a54bc1345df75408c3ffbd70b4f51f9d04c64ff73af9c0ed03f4b7a",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:3741"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.exists_attains",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "b4a3948d5abfec209d2ed8c4cc4516753b79ca4b9d5074fa7cf14beaf4829c9d",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:1044"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.le_contact",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "6d9c2e2d650af40c91453697f570eb86e9c81b38a2b9590e903e12bb52553d95",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:2374"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.mem_active",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "d602b9f9602f3fbf11c6767b2edec2125e4301f357160ae37b67b5ab3079b8d2",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:308"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContact.order_add_lower",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "e793cf0c95c94ac54c2b4170de1d31a96c7fb74ac7beee5d7ac4cdcef41c9425",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContact",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContact:2776"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContactIdeal.addVal_pow_toNat",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "c3e16366405f06afb2b545eb79757e757cb6c9fb97a859585b0c331d570691fc",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal:945"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContactIdeal.colength_eq_contact",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      graphKind := "theorem",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "975d395818b72c5e79030198e4af1e05e1bc900799d372e486d6b1013ea189df",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal:4207"
+    },
+    {
+      sourceName := "OAI.PiExponent.BranchContactIdeal.contact",
+      expectedModule := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      graphKind := "def",
+      declGraphSha256 := "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+      declGraphRowSha256 := "97e133726d5483bd62b203f7c773504dec2fee93e061e05066541676d467b7fd",
+      ownerKind := "definition_bundle",
+      ownerId := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal",
+      commandUnit := "OAI.NumberTheory.PiExponent.Jets.BranchContactIdeal:1310"
+    }
+  ]
+
+run_meta do
+  exportSourceSnapshotJsonl sharedSourceRequests "missions/pi-irrationality-measure/verification/shared-source-snapshot/complete-source/SharedSourceSnapshot_001.jsonl"

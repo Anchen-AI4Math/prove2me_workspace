@@ -12,6 +12,7 @@ Lean 4 / Mathlib 打 prove2.me 众包形式化平台。**本文件只做索引**
 | **ζ(9) 九轮 + roadmap + 平台层的完整证明态审计** | `missions/zeta9/research/zeta9-proof-state-audit.tex`（+ `-zh.md` 中文摘要） |
 | 幻方 V Spencer 路线 | `missions/magic-squares-v/SPENCER-ROUTE.md`, `S5-NOTES.md` |
 | 五素数 A/A\* 路线审计 | `missions/five-primes/status.md`, `A-star-route-audit.md` |
+| **ε₀ 以上 FGH / 序数表示 可行性侦察（2026-09-26）** | `missions/fgh-scout/FEASIBILITY-REPORT.md`（结论 GO WITH REDUCED SCOPE；探测代码 `tmp/eps_probe.lean` 编译通过） |
 
 ## 环境（Windows）
 
@@ -47,7 +48,8 @@ Lean 4 / Mathlib 打 prove2.me 众包形式化平台。**本文件只做索引**
 | Irrationality of Euler's γ | `euler-gamma` | 部分 Proved，见 `sondow/INTEGRAL-IDENTITY-COMPLETE.md` |
 | ζ(7) 泛奇 ζ 支撑研究 | `zeta7` | **本地研究，无平台 mission**。为 zeta9 提供 odd-zeta 泛函件，见 `missions/zeta7/status.md` |
 | **Irrationality of ζ(9): weighted lattice route** | `zeta9` | mission `8195d8fe-059f-4515-92b4-57b585e2bac6`（**Private**，不是「无平台节点」）。本地数学 DAG = `missions/zeta9/roadmap/DAG.md`；平台接线 = `roadmap/platform/wiring/README.md`。**2026-09-25：根节点从「零分解」→ 两条 `SKETCH_ACCEPTED` 分解**（单形式 / 双形式各一条），+3 条 Proved 一般引理（TP/FQ 的可形式化核）+2 条 Open 义务节点，里程碑 35→40。根仍 **Open** |
-| ζ(9) 公开侧 | `zeta9`（公开） | 公共仓库 `github.com/Anchen0823/zeta9-research-notes`（本地 `D:\users\self_projects\zeta9-research-notes`，Zenodo concept DOI `10.5281/zenodo.22951154`，已开 Zenodo–GitHub 联动）。**公开 ResearchPaper mission** proposal `00d787d8-…`（Draft→**In review**），8 个 `Zeta9Note.*` items + 7 milestones，见 `missions/zeta9/roadmap/platform/public-proposal/`。流程已存为 skill `prove2me-public-mission` |
+| ζ(9) 公开侧 | `zeta9`（公开） | 公共仓库 `github.com/Anchen0823/zeta9-research-notes`（本地 `D:\users\self_projects\zeta9-research-notes`，Zenodo concept DOI `10.5281/zenodo.22951154`，已开 Zenodo–GitHub 联动）。**公开 ResearchPaper mission** proposal `00d787d8-…`（Draft→**In review**，`mission_id` 仍空），8 个 `Zeta9Note.*` items + 7 milestones。**2026-09-25：8 条证明已提交并全 `ACCEPTED`，8 条定理全 `Proved`**（回执 `public-proposal/submissions-receipt.json`，流程见同目录 `README.md`）。流程已存为 skill `prove2me-public-mission`；🔴 该 skill 曾误记「In review 期间平台不收提交」——实测照收，已更正 |
+| **Equal Sums of Two Squares（参数化 + 无限族）** | `two-squares` | **2026-09-26 新开**。本地 Obj 1–3 全 Proved（`lake build TwoSquares` 绿 + 公理干净），15 条定理。Obj 4「四值为正且两两不同」用一条严格链表达（`1 < 2n-1 < n²-n-1 < n²-n+1`，边界 4 紧）。公开 proposal `1c96fbbb` **已 Submit → `In review`**（`mission_id` 仍 null，等 moderator）。**2026-09-26 20:2x：13/13 条全部提交并 `ACCEPTED`，含 goal `complete_parametrization`** ⇒ Obj 1–6 全闭。平台命名空间 `EqualTwoSquares` ≠ 本地 `TwoSquares`。见 `missions/two-squares/status.md`（含两个坑：`rw` 会污染 `Int.gcd`；本 pin 无 `Int.gcd_comm`，用 Bézout 替代） |
 
 ## 跨 mission 硬约束
 

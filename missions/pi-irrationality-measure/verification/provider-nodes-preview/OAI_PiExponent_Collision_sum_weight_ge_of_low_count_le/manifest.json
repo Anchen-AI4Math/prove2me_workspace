@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "variant": "all-shared-public-provider-nodes-preview",
+  "node": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196",
+  "theorem_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+  "source_graph_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_components": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean",
+      "source_sha256": "978224941ce8a30dd6edb8136100ea51e0a913e3b872b56c32b644ef036513aa",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-CollisionCombinatorics-20261007-223113.log",
+      "facts_sha256": "f76dad7573c61ba51b73afef244d6ed2c43a772c7be59bcccb16b279fd37d334",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean",
+      "original_source_sha256": "85e2ba7f5119ff808b28ab3e17e5a65fc3559101f27a22f0efed6b154a8286aa"
+    }
+  ],
+  "component_order": [
+    "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics"
+  ],
+  "definition_dependency_witnesses": [],
+  "definition_certificates": [],
+  "child_nodes": {},
+  "child_dependency_witnesses": {},
+  "imports": [
+    "Lean",
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+    "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+    "Mathlib.Analysis.Complex.CauchyIntegral",
+    "Mathlib.Analysis.Complex.TaylorSeries",
+    "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+    "Mathlib.Analysis.SpecialFunctions.Complex.LogBounds",
+    "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+    "Mathlib.RingTheory.PowerSeries.Log",
+    "Mathlib.RingTheory.PowerSeries.Order",
+    "Mathlib.RingTheory.PowerSeries.Trunc",
+    "Mathlib.Tactic",
+    "Mathlib.Topology.Instances.Matrix"
+  ],
+  "whole_import_closure_inventory": {
+    "nodes": [
+      "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196"
+    ],
+    "definitions": [],
+    "public_bindings": {
+      "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum": [
+        {
+          "name": "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum",
+          "source_graph_name": "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum",
+          "unit": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:5428",
+          "provider_kind": "node",
+          "provider": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196",
+          "elaboration_only": false
+        }
+      ],
+      "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le": [
+        {
+          "name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+          "source_graph_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+          "unit": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196",
+          "provider_kind": "node",
+          "provider": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196",
+          "elaboration_only": false
+        }
+      ]
+    },
+    "collisions": {},
+    "includes_elaboration_only_helpers": true,
+    "actual_environment_validated": false,
+    "planned_source_witness_only": true
+  },
+  "preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.Collision\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem cutoff_mul_high_count_le_sum {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) (cutoff : ℝ)\r\n    (hnonneg : ∀ i ∈ rows, 0 ≤ weight i) :\r\n    cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) ≤\r\n      ∑ i ∈ rows, weight i := by\r\n  classical\r\n  calc\r\n    _ = ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), cutoff := by\r\n      simp [mul_comm]\r\n    _ ≤ ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), weight i := by\r\n      apply Finset.sum_le_sum\r\n      intro i hi\r\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\r\n    _ ≤ ∑ i ∈ rows, weight i := by\r\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\r\n      intro i hi _\r\n      exact hnonneg i hi\r\n\r\n\r\n\r\nend PiExponent.Collision\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent OAI.PiExponent.Collision\nopen scoped BigOperators\n\n\nopen Lean Meta in\nrun_meta do\n  let requests : Array (String × Lean.Name × String) := #[]\n  let env ← Lean.getEnv\n  let mut rows : Array Lean.Json := #[]\n  let mut actualNames : Array Lean.Name := #[]\n  for (sourceName, userName, expectedKind) in requests do\n    let mut candidates : Array Lean.Name := #[]\n    for (actualName, _) in env.constants.toList do\n      if Lean.privateToUserName? actualName == some userName then\n        if (env.getModuleIdxFor? actualName).isNone then\n          candidates := candidates.push actualName\n    unless candidates.size == 1 do\n      throwError \"Expected one OwnModule private binding for {userName}, found {candidates.size}\"\n    let actualName := candidates[0]!\n    let some ci := env.find? actualName | throwError \"Missing recovered private declaration\"\n    let (kind, value, safety) ← match ci with\n      | .thmInfo t => pure (\"theorem\", t.value, Lean.Json.null)\n      | .defnInfo d => pure (\"def\", d.value, Lean.toJson (reprStr d.safety))\n      | _ => throwError \"Recovered private CI is neither theorem nor definition\"\n    unless kind == expectedKind do\n      throwError \"Recovered private CI kind differs from source Graph: {actualName}\"\n    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||\n        value.hasMVar || value.hasFVar || value.hasLooseBVars then\n      throwError \"Recovered private CI type/value is not closed\"\n    let axioms ← Lean.collectAxioms actualName\n    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do\n      throwError \"Private helper has nonstandard axioms: {actualName}\"\n    actualNames := actualNames.push actualName\n    rows := rows.push <| Lean.Json.mkObj [\n      (\"sourceGraphName\", Lean.toJson sourceName),\n      (\"nodeGeneratedName\", Lean.toJson userName.toString),\n      (\"actualKernelName\", Lean.toJson actualName.toString),\n      (\"kind\", Lean.toJson kind), (\"safety\", safety),\n      (\"ownerKind\", Lean.toJson \"OwnModule\"),\n      (\"ownModule\", Lean.toJson env.mainModule.toString),\n      (\"moduleIndexIsNone\", Lean.toJson true),\n      (\"levelParams\", Lean.toJson (ci.levelParams.map Lean.Name.toString)),\n      (\"typeRefs\", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),\n      (\"valueRefs\", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),\n      (\"snapshotValueRequired\", Lean.toJson (kind == \"def\")),\n      (\"axioms\", Lean.toJson (axioms.map Lean.Name.toString))]\n  IO.println (\"PI_ISOLATED_PRIVATE_MAP \" ++ (Lean.Json.mkObj [\n    (\"artifact\", Lean.toJson \"Thm\"),\n    (\"ownModule\", Lean.toJson env.mainModule.toString),\n    (\"rows\", Lean.Json.arr rows)]).compress)\n",
+  "mathematical_preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.Collision\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem cutoff_mul_high_count_le_sum {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) (cutoff : ℝ)\r\n    (hnonneg : ∀ i ∈ rows, 0 ≤ weight i) :\r\n    cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) ≤\r\n      ∑ i ∈ rows, weight i := by\r\n  classical\r\n  calc\r\n    _ = ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), cutoff := by\r\n      simp [mul_comm]\r\n    _ ≤ ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), weight i := by\r\n      apply Finset.sum_le_sum\r\n      intro i hi\r\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\r\n    _ ≤ ∑ i ∈ rows, weight i := by\r\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\r\n      intro i hi _\r\n      exact hnonneg i hi\r\n\r\n\r\n\r\nend PiExponent.Collision\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent OAI.PiExponent.Collision\nopen scoped BigOperators\n\n",
+  "solution_preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.Collision\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem cutoff_mul_high_count_le_sum {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) (cutoff : ℝ)\r\n    (hnonneg : ∀ i ∈ rows, 0 ≤ weight i) :\r\n    cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) ≤\r\n      ∑ i ∈ rows, weight i := by\r\n  classical\r\n  calc\r\n    _ = ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), cutoff := by\r\n      simp [mul_comm]\r\n    _ ≤ ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), weight i := by\r\n      apply Finset.sum_le_sum\r\n      intro i hi\r\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\r\n    _ ≤ ∑ i ∈ rows, weight i := by\r\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\r\n      intro i hi _\r\n      exact hnonneg i hi\r\n\r\n\r\n\r\nend PiExponent.Collision\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent OAI.PiExponent.Collision\nopen scoped BigOperators\n\n\nopen Lean Meta in\nrun_meta do\n  let requests : Array (String × Lean.Name × String) := #[]\n  let env ← Lean.getEnv\n  let mut rows : Array Lean.Json := #[]\n  let mut actualNames : Array Lean.Name := #[]\n  for (sourceName, userName, expectedKind) in requests do\n    let mut candidates : Array Lean.Name := #[]\n    for (actualName, _) in env.constants.toList do\n      if Lean.privateToUserName? actualName == some userName then\n        if (env.getModuleIdxFor? actualName).isNone then\n          candidates := candidates.push actualName\n    unless candidates.size == 1 do\n      throwError \"Expected one OwnModule private binding for {userName}, found {candidates.size}\"\n    let actualName := candidates[0]!\n    let some ci := env.find? actualName | throwError \"Missing recovered private declaration\"\n    let (kind, value, safety) ← match ci with\n      | .thmInfo t => pure (\"theorem\", t.value, Lean.Json.null)\n      | .defnInfo d => pure (\"def\", d.value, Lean.toJson (reprStr d.safety))\n      | _ => throwError \"Recovered private CI is neither theorem nor definition\"\n    unless kind == expectedKind do\n      throwError \"Recovered private CI kind differs from source Graph: {actualName}\"\n    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||\n        value.hasMVar || value.hasFVar || value.hasLooseBVars then\n      throwError \"Recovered private CI type/value is not closed\"\n    let axioms ← Lean.collectAxioms actualName\n    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do\n      throwError \"Private helper has nonstandard axioms: {actualName}\"\n    actualNames := actualNames.push actualName\n    rows := rows.push <| Lean.Json.mkObj [\n      (\"sourceGraphName\", Lean.toJson sourceName),\n      (\"nodeGeneratedName\", Lean.toJson userName.toString),\n      (\"actualKernelName\", Lean.toJson actualName.toString),\n      (\"kind\", Lean.toJson kind), (\"safety\", safety),\n      (\"ownerKind\", Lean.toJson \"OwnModule\"),\n      (\"ownModule\", Lean.toJson env.mainModule.toString),\n      (\"moduleIndexIsNone\", Lean.toJson true),\n      (\"levelParams\", Lean.toJson (ci.levelParams.map Lean.Name.toString)),\n      (\"typeRefs\", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),\n      (\"valueRefs\", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),\n      (\"snapshotValueRequired\", Lean.toJson (kind == \"def\")),\n      (\"axioms\", Lean.toJson (axioms.map Lean.Name.toString))]\n  IO.println (\"PI_ISOLATED_PRIVATE_MAP \" ++ (Lean.Json.mkObj [\n    (\"artifact\", Lean.toJson \"Sol\"),\n    (\"ownModule\", Lean.toJson env.mainModule.toString),\n    (\"rows\", Lean.Json.arr rows)]).compress)\n",
+  "formal_statement": "theorem OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) {cutoff η : ℝ}\r\n    (hcutoff : 0 ≤ cutoff) (hnonneg : ∀ i ∈ rows, 0 ≤ weight i)\r\n    (hlow : ((rows.filter fun i => weight i ≤ cutoff).card : ℝ) ≤\r\n      η * rows.card) :\r\n    cutoff * (1 - η) * rows.card ≤ ∑ i ∈ rows, weight i := by sorry\n\nend\n",
+  "solution_fragment": "theorem solution {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) {cutoff η : ℝ}\r\n    (hcutoff : 0 ≤ cutoff) (hnonneg : ∀ i ∈ rows, 0 ≤ weight i)\r\n    (hlow : ((rows.filter fun i => weight i ≤ cutoff).card : ℝ) ≤\r\n      η * rows.card) :\r\n    cutoff * (1 - η) * rows.card ≤ ∑ i ∈ rows, weight i := open OAI OAI.PiExponent OAI.PiExponent.Collision in by\r\n  classical\r\n  have hcard : ((rows.filter fun i => weight i ≤ cutoff).card : ℝ) +\r\n      ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) = rows.card := by\r\n    exact_mod_cast (Finset.card_filter_add_card_filter_not (s := rows)\r\n      (fun i => weight i ≤ cutoff))\r\n  have hhigh : (1 - η) * rows.card ≤\r\n      ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) := by nlinarith\r\n  calc\r\n    _ = cutoff * ((1 - η) * rows.card) := by ring\r\n    _ ≤ cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) :=\r\n      mul_le_mul_of_nonneg_left hhigh hcutoff\r\n    _ ≤ ∑ i ∈ rows, weight i := OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum rows weight cutoff hnonneg\n",
+  "top_level_literal_theorem_solution": true,
+  "restored_target_context": {
+    "preamble": "section\nopen OAI OAI.PiExponent OAI.PiExponent.Collision\nopen scoped BigOperators\n",
+    "closing": "\nend\n",
+    "namespace_opens": [
+      "OAI",
+      "OAI.PiExponent",
+      "OAI.PiExponent.Collision"
+    ],
+    "source_scope_frames": [
+      {
+        "kind": "namespace",
+        "name": "OAI",
+        "source_range": {
+          "end": {
+            "col": 13,
+            "line": 3,
+            "normalizedOffset": 65,
+            "offset": 67
+          },
+          "start": {
+            "col": 0,
+            "line": 3,
+            "normalizedOffset": 52,
+            "offset": 54
+          }
+        },
+        "source_text": "namespace OAI"
+      },
+      {
+        "kind": "namespace",
+        "name": "PiExponent",
+        "source_range": {
+          "end": {
+            "col": 30,
+            "line": 7,
+            "normalizedOffset": 123,
+            "offset": 129
+          },
+          "start": {
+            "col": 0,
+            "line": 7,
+            "normalizedOffset": 93,
+            "offset": 99
+          }
+        },
+        "source_text": "namespace PiExponent.Collision"
+      },
+      {
+        "kind": "namespace",
+        "name": "Collision",
+        "source_range": {
+          "end": {
+            "col": 30,
+            "line": 7,
+            "normalizedOffset": 123,
+            "offset": 129
+          },
+          "start": {
+            "col": 0,
+            "line": 7,
+            "normalizedOffset": 93,
+            "offset": 99
+          }
+        },
+        "source_text": "namespace PiExponent.Collision"
+      }
+    ],
+    "context_commands": [
+      {
+        "syntaxKind": "Lean.Parser.Command.open",
+        "source_range": {
+          "end": {
+            "col": 24,
+            "line": 5,
+            "normalizedOffset": 91,
+            "offset": 95
+          },
+          "start": {
+            "col": 0,
+            "line": 5,
+            "normalizedOffset": 67,
+            "offset": 71
+          }
+        },
+        "source_sha256": "3da4aaed9c768db0668f749056a761cfb74d3f51180dc125ccd5c3a5add1b3d6",
+        "generated_sha256": "3da4aaed9c768db0668f749056a761cfb74d3f51180dc125ccd5c3a5add1b3d6",
+        "edits": []
+      }
+    ],
+    "literal_root_binding": true,
+    "validated": false,
+    "pending": [
+      "actual namespace elaboration",
+      "original/generated kernel type equality",
+      "actual attribute/provider dependencies",
+      "solution axiom audit"
+    ]
+  },
+  "scope_closing": "\nend\n",
+  "restored_local_instances": [],
+  "node_generated_names": [],
+  "source_to_generated_private_kernel_names": null,
+  "private_ci_comparison_policy": {
+    "map_required": "source Graph private Name to actual generated CI Name from certified per-artifact environment maps",
+    "type_comparison": "structural kernel Expr JSON with explicit constant Name mapping and universe binder name normalization only",
+    "def_value_comparison": "complete structural kernel Expr JSON; required nonnull for every def/abbrev source and generated row",
+    "theorem_value_comparison": "proof value null; CI type/closed proof/Std3 required",
+    "pretty_string_rewriting_forbidden": true,
+    "validated": false
+  },
+  "public_inline_ci_requests": [
+    {
+      "source_graph_name": "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum",
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics",
+      "source_unit": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:5428",
+      "generated_name": "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum",
+      "source_command_range": {
+        "start": {
+          "col": 0,
+          "line": 119,
+          "normalizedOffset": 5310,
+          "offset": 5428
+        },
+        "end": {
+          "col": 24,
+          "line": 135,
+          "normalizedOffset": 6058,
+          "offset": 6192
+        }
+      },
+      "generated_companion": false
+    }
+  ],
+  "private_map_log_marker": "PI_ISOLATED_PRIVATE_MAP ",
+  "kernel_name_mapping_validated": false,
+  "elaboration_only_helpers": [],
+  "source_edits": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics",
+      "edits": [
+        {
+          "start": 133,
+          "end": 799,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 803,
+          "end": 1116,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1120,
+          "end": 1274,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1278,
+          "end": 1662,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1666,
+          "end": 2604,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 2608,
+          "end": 3029,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 3033,
+          "end": 3288,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 3292,
+          "end": 4617,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 4621,
+          "end": 5102,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 5106,
+          "end": 5424,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 6196,
+          "end": 7240,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 0,
+          "end": 50,
+          "replacement": "",
+          "reason": "rewrite parser import command"
+        }
+      ],
+      "retained_units": [
+        "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:5428"
+      ]
+    }
+  ],
+  "statement_edits": [
+    {
+      "start": 6204,
+      "end": 6233,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 54
+    },
+    {
+      "start": 6546,
+      "end": 7240,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 6204,
+      "end": 6233,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    },
+    {
+      "start": 7185,
+      "end": 7213,
+      "reason": "rewrite authority-bound project reference to generated FQN",
+      "replacement_bytes": 53
+    }
+  ],
+  "project_reference_rewrites": [
+    {
+      "start": 7185,
+      "end": 7213,
+      "replacement": "OAI.PiExponent.Collision.cutoff_mul_high_count_le_sum",
+      "reason": "rewrite authority-bound project reference to generated FQN"
+    }
+  ],
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "snapshot_core": "verification/TypeOnlyTheoremSnapshotCore.inc",
+  "snapshot_core_sha256": "09716404d45acbbaf2728a2071042f7e4a1d08b8b5058692a71211ae6e465951",
+  "runtime_sha256": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+  "input_hashes": {
+    "verification/ast-unit-inventory.json": "b5061a3e42a7a66bdbd978344767ec5db6991d684ce785e3b281f900f065e506",
+    "verification/ast-scope-inventory.json": "d9df5bfb5074bff700b77a23eafb464130f31d6540eb1564c070274b13d93bbf",
+    "verification/ast-wrapper-inventory.json": "f4f66678c84741dc8ea08b15c02c36135eb395aa3ca827d1501e53e4ac7b00d4",
+    "verification/ast-import-inventory.json": "bbf09a327e2fef3f970f44a84e35e4d088a93e4cd2cdf660cef268bc5667f2e3",
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+    "verification/platform-unit-plan-preview.json": "0c7cfb50e1cdff2285e12fd06ddd761e8dddb88ed9fd1b0c3898884e72090430",
+    "verification/platform-artifact-plan-preview.json": "07d545d9919a358a56de18d6dd64444a90c1de1be642ec16d67354069d3a2294",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+    "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+    "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "253064eecfc2ca7577915d47cc906de847efa9344be1f9775c84fd8818e961b1",
+    "verification/inline-provider-collision-audit.json": "3ad990e8de02fd0de572a326ab8b549a2d9703d16271e02460ba4999adb38de7",
+    "scripts/generate_platform_provider_bundles.py": "64e489619c64bed6648b830b1d442443bdae2a2ea676fd14ede40eb09832263e",
+    "scripts/plan_platform_units_providers.py": "43c4232b632d6e8d648a879ad4e6868a1055f35217f5400a86b1fc05168e2829"
+  },
+  "implementation_sha256": {
+    "generate_platform_provider_nodes.py": "1413ccd0ba934a71a867981ead0efac238608e3f9030b05ccc4e83638666b565",
+    "generate_platform_provider_bundles.py": "64e489619c64bed6648b830b1d442443bdae2a2ea676fd14ede40eb09832263e",
+    "generate_platform_nodes.py": "5a2309a4d487d30c7d1c056a4f22431bcad51dbfd193f6cb44495879570e08f7",
+    "generate_platform_bundles.py": "286cd7b18284d43c3393f23883a1e72b09c4f02d7fe4f2521bed7d0fccb18436",
+    "restore_node_context.py": "97d802196838ccbfed33742f1309cd4902e1a67b0263abbd4fbab93f17e00406",
+    "private_inline_binding.py": "187a73bfb156f3aabd2cbab15157891686f597b290992f6de44b1439b8952a52",
+    "private_node_binding.py": "53ab1a835acfa39e6cfa8d737e6c6118fdacfe1ff7ec8000db5e9cd15d6a6e1c",
+    "platform_statement.py": "05deaa1e37d8c3ce753c8d6238b5735dc6e7ac75409636a58b7368fd264b1d50",
+    "span_edits.py": "f0c2ffab90469dc63b678ee84eabb2c04c5fcbb7385a9592ef615ef4f681b9c6",
+    "plan_platform_units_providers.py": "43c4232b632d6e8d648a879ad4e6868a1055f35217f5400a86b1fc05168e2829"
+  },
+  "inline_type_json_outputs": {
+    "original": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/original-inline-types.json",
+    "generated": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/generated-inline-types.json"
+  },
+  "public_inline_type_json_outputs": {
+    "original": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/original-public-inline-types.json",
+    "generated": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/generated-public-inline-types.json"
+  },
+  "provisional": true,
+  "validated": false,
+  "submission_ready": false,
+  "full_tree_ready": false,
+  "theorem_proof_values_exported": false,
+  "lean_started": false,
+  "api_used": false,
+  "pending": [
+    "actual imported Def OLeans and exact certificates",
+    "actual child node statements and certificates",
+    "four exact files compiled within 300 seconds",
+    "actual private CI maps, types and proofStd",
+    "original/generated kernel types with only universe-name normalization",
+    "publication flow review"
+  ],
+  "outputs_sha256": {
+    "Thm_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean": "28b82c82343e57c51cb4e3dc9b001f597452c14e508c177b1f7e1ec86dbb8c2c",
+    "Sol_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean": "357eecefb62ac6810fb8abc0a1c3b53e14ebfecfbc0078ec5ee2001d1c51a7df",
+    "SnapshotOriginal.lean": "a63f52cff21176eb608506f3775ba48c3eea09c22ab086be474ee8ee7412b447",
+    "SnapshotGenerated.lean": "71b6f0b325f9fc7d506004ca001a1753764739d3582c85b27b144562b252eb10"
+  },
+  "statement": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/Thm_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean",
+  "solution": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/Sol_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean",
+  "statement_sha256": "28b82c82343e57c51cb4e3dc9b001f597452c14e508c177b1f7e1ec86dbb8c2c",
+  "solution_sha256": "357eecefb62ac6810fb8abc0a1c3b53e14ebfecfbc0078ec5ee2001d1c51a7df",
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "a63f52cff21176eb608506f3775ba48c3eea09c22ab086be474ee8ee7412b447",
+    "SnapshotGenerated.lean": "71b6f0b325f9fc7d506004ca001a1753764739d3582c85b27b144562b252eb10"
+  }
+}

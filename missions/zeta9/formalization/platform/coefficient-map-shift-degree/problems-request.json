@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_coefficient",
+      "theorem_title": "Exact next surviving coefficient of the actual polynomial shift difference",
+      "formal_statement": "theorem ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_coefficient (n : ℕ) (H : ℚ[X]) (hH : H ≠ 0) :\n    (shiftDifference n H).coeff (H.natDegree + 10) =\n      (7 * (n : ℚ) - 2 - (H.natDegree : ℚ)) * H.leadingCoeff:= by sorry",
+      "natural_language_statement": "For every natural $n$ and nonzero rational polynomial $H$ of natural degree $d$, the coefficient of $X^{d+10}$ in the actual $D_n(H)$ equals $(7n-2-d)\\operatorname{LC}(H)$. This identity needs only $H\\ne0$; no positivity, parity, degree-gap, monicity or preassigned operator relation is assumed. The degree-$d+11$ terms cancel in the actual polynomial calculation.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapShiftDegree\n\nset_option autoImplicit false\nopen Polynomial\nopen ZetaNine ZetaNine.CoefficientMapShiftDegree\n",
+      "source": "Zeta(9) actual polynomial shift operator: missions/zeta9/research/coefficient-map-shift-degree-2026-10-04.md. Frozen source SHA256 96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953. The relationship to the rational telescoper is proved separately; it is not an input to these polynomial endpoints. Original declaration lines 78–106.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "finite-differences",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_degree_lower_bound",
+      "theorem_title": "Actual shift difference degree lower bound in the nonresonant domain",
+      "formal_statement": "theorem ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_degree_lower_bound (n : ℕ) (hn : 1 ≤ n)\n    (H : ℚ[X]) (hH : H ≠ 0) (hdeg : H.natDegree ≤ 7 * n - 3) :\n    H.natDegree + 10 ≤ (shiftDifference n H).natDegree:= by sorry",
+      "natural_language_statement": "Let $n\\ge1$ and let nonzero $H\\in\\mathbb Q[X]$ satisfy $d=\\operatorname{natdeg}H\\le7n-3$. Then $d+10\\le\\operatorname{natdeg}D_n(H)$. The exact coefficient is proved nonzero from these original inequalities. No parity or monicity premise is added. The bound matters: $n=1,H=X^5$ lies outside it and has vanishing coefficient of $X^{15}$ although $D_1(X^5)(1)=-1152$.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapShiftDegree\n\nset_option autoImplicit false\nopen Polynomial\nopen ZetaNine ZetaNine.CoefficientMapShiftDegree\n",
+      "source": "Zeta(9) actual polynomial shift operator: missions/zeta9/research/coefficient-map-shift-degree-2026-10-04.md. Frozen source SHA256 96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953. The relationship to the rational telescoper is proved separately; it is not an input to these polynomial endpoints. Original declaration lines 119–122.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "finite-differences",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_small_degree_implies_zero",
+      "theorem_title": "A low-degree actual shift difference forces the input polynomial to vanish",
+      "formal_statement": "theorem ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_small_degree_implies_zero (n : ℕ) (hn : 1 ≤ n)\n    (H : ℚ[X]) (hdeg : H.natDegree ≤ 7 * n - 3)\n    (hsmall : (shiftDifference n H).natDegree ≤ 8) : H = 0:= by sorry",
+      "natural_language_statement": "Let $n\\ge1$ and $H\\in\\mathbb Q[X]$ satisfy $\\operatorname{natdeg}H\\le7n-3$ and $\\operatorname{natdeg}D_n(H)\\le8$. Then $H=0$. No nonzero-input premise or kernel equation is assumed: the original low operator degree and quotient degree bound yield a contradiction if $H\\ne0$. Zero input, constant input and the $n=1,X^5$ resonance are preserved by exact boundary checks. These polynomial facts do not by themselves state a rational telescoper relationship, coefficient-map inverse or zeta irrationality.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapShiftDegree\n\nset_option autoImplicit false\nopen Polynomial\nopen ZetaNine ZetaNine.CoefficientMapShiftDegree\n",
+      "source": "Zeta(9) actual polynomial shift operator: missions/zeta9/research/coefficient-map-shift-degree-2026-10-04.md. Frozen source SHA256 96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953. The relationship to the rational telescoper is proved separately; it is not an input to these polynomial endpoints. Original declaration lines 124–129.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "finite-differences",
+        "formalization"
+      ]
+    }
+  ]
+}

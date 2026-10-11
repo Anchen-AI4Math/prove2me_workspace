@@ -1,0 +1,562 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.prescribed_target_absolute_sum",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  Summable fun k =>\n    ‖↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) ↑(k + 1))‖"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.pure_zeta_nine_nonzero_rational_quartic",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∃ W,\n        W.natDegree ≤ 4 ∧\n          W ≠ 0 ∧\n            ZetaNine.CoefficientMapAggregate.aggregate n W = Pi.single 4 1 ∧\n              HasSum (fun k => ↑(ZetaNine.CoefficientMap.weightedR n W ↑(k + 1))) (riemannZeta 9).re ∧\n                Summable fun k => ‖↑(ZetaNine.CoefficientMap.weightedR n W ↑(k + 1))‖"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.actual_polynomial_bridge_no_supplied_shift_relation",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W H : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n                ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H →\n              Polynomial.C (↑n.factorial ^ 7) * W.comp (Polynomial.X * (Polynomial.X + Polynomial.C ↑n)) =\n                (Polynomial.X - Polynomial.C (↑n + 1)) * (Polynomial.X + Polynomial.C ↑n) ^ 10 * H -\n                  Polynomial.X ^ 10 * (Polynomial.X + Polynomial.C (2 * ↑n + 1)) * H.comp (Polynomial.X + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.true_R_A_factor",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.actualR n t * ((t - ↑n - 1) * (t + ↑n) ^ 10) =\n          ↑n.factorial ^ 7 * Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.rootPolynomial n) /\n            Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.concrete_n_two_bijective",
+    "definitionValue": null,
+    "type": "Function.Bijective ⇑(ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap 2)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.concrete_R_A_B_shift",
+    "definitionValue": null,
+    "type": "ZetaNine.CoefficientMap.actualR 2 5 * ((5 - 2 - 1) * (5 + 2) ^ 10) =\n  ZetaNine.CoefficientMap.actualR 2 4 * (4 ^ 10 * (4 + 2 * 2 + 1))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.prescribed_target_actual_HasSum",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  HasSum\n    (fun k =>\n      ↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b)\n          ↑(k + 1)))\n    (↑(b 0) +\n      (↑(b 1) * (riemannZeta 3).re + ↑(b 2) * (riemannZeta 5).re + ↑(b 3) * (riemannZeta 7).re +\n        ↑(b 4) * (riemannZeta 9).re))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.actual_equiv_toFun",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (a : Fin 5 → ℚ),\n  (ZetaNine.CoefficientMapKernelBridge.actualAggregateEquiv n hn2 hn) a =\n    ZetaNine.CoefficientMapAggregate.aggregate n (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.zero_n_nonzero_quartic_aggregate_kernel",
+    "definitionValue": null,
+    "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0 ∧ Polynomial.X ^ 4 ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.actual_A_B_definitions",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ZetaNine.CoefficientMapKernelBridge.aValue n t = (t - ↑n - 1) * (t + ↑n) ^ 10 ∧\n    ZetaNine.CoefficientMapKernelBridge.bValue n t = t ^ 10 * (t + 2 * ↑n + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.all_five_inverse_outputs",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapFiniteSum.constantTerm n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) =\n      b 0 ∧\n    ZetaNine.CoefficientMapFiniteSum.rho n 3 (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) = b 1 ∧\n      ZetaNine.CoefficientMapFiniteSum.rho n 5 (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) =\n          b 2 ∧\n        ZetaNine.CoefficientMapFiniteSum.rho n 7 (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) =\n            b 3 ∧\n          ZetaNine.CoefficientMapFiniteSum.rho n 9 (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) =\n            b 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.excluded_n_zero_and_odd_one",
+    "definitionValue": null,
+    "type": "¬2 ≤ 0 ∧ ¬Even 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.zero_n_aggregate_quartic_not_injective",
+    "definitionValue": null,
+    "type": "¬Function.Injective ⇑(ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap 0)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.integer_outputs_have_unique_rational_quartic",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 2 ≤ n → Even n → ∀ (b : Fin 5 → ℤ), ∃! W, ZetaNine.CoefficientMapAggregate.aggregate n ↑W = fun i => ↑(b i)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.original_integer_coefficients_injectivity",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W V : ℤ[X]),\n        W.natDegree ≤ 4 →\n          V.natDegree ≤ 4 →\n            ZetaNine.CoefficientMapAggregate.aggregate n (Polynomial.map (Int.castRingHom ℚ) W) =\n                ZetaNine.CoefficientMapAggregate.aggregate n (Polynomial.map (Int.castRingHom ℚ) V) →\n              Polynomial.map (Int.castRingHom ℚ) W = Polynomial.map (Int.castRingHom ℚ) V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.inverse_zero_exact",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n), ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn 0 = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.genuine_kernel_from_five_raw_entries",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapFiniteSum.constantTerm n W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 3 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.rho n 5 W = 0 →\n                ZetaNine.CoefficientMapFiniteSum.rho n 7 W = 0 → ZetaNine.CoefficientMapFiniteSum.rho n 9 W = 0 → W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.inverse_add_actual",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (a b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn (a + b) =\n    ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn a +\n      ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.inverse_smul_actual",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (c : ℚ) (b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn (c • b) =\n    c • ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "IndependentKernel.inverse_both_actual_coordinate_laws",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (a b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.aggregate n\n        (ZetaNine.CoefficientMapAggregate.coordinatePolynomial\n          ((ZetaNine.CoefficientMapKernelBridge.actualAggregateEquiv n hn2 hn).symm b)) =\n      b ∧\n    (ZetaNine.CoefficientMapKernelBridge.actualAggregateEquiv n hn2 hn).symm\n        (ZetaNine.CoefficientMapAggregate.aggregate n (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a)) =\n      a"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_actual_aggregate",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.aggregate n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) = b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.rootPolynomial_numerator_factor",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ↑n.factorial ^ 7 * Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.rootPolynomial n) =\n    ZetaNine.CoefficientMap.numerator n t * (t - ↑n - 1) * (t + ↑n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.positiveProduct_shift",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ZetaNine.CoefficientMapKernelBridge.positiveProduct n (t + 1) * (t - ↑n) =\n    t * ZetaNine.CoefficientMapKernelBridge.positiveProduct n t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.poleProduct_last_factor",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (t : ℚ),\n      ZetaNine.CoefficientMap.poleProduct n t =\n        Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) * (t + ↑n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.original_quartic_aggregate_kernel_zero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 2 ≤ n → Even n → ∀ (W : ℚ[X]), W.natDegree ≤ 4 → ZetaNine.CoefficientMapAggregate.aggregate n W = 0 → W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.prescribedL",
+    "definitionValue": "fun b =>\n  ↑(b 0) +\n    (↑(b 1) * ZetaNine.CoefficientMapSummation.zetaReal 3 + ↑(b 2) * ZetaNine.CoefficientMapSummation.zetaReal 5 +\n        ↑(b 3) * ZetaNine.CoefficientMapSummation.zetaReal 7 +\n      ↑(b 4) * ZetaNine.CoefficientMapSummation.zetaReal 9)",
+    "type": "(Fin 5 → ℚ) → ℝ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_natDegree_le",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b).natDegree ≤ 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.negativeProduct.eq_1",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), ZetaNine.CoefficientMapKernelBridge.negativeProduct n t = ∏ k ∈ Finset.range n, (t + ↑n + (↑k + 1))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.positiveProduct.eq_1",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), ZetaNine.CoefficientMapKernelBridge.positiveProduct n t = ∏ k ∈ Finset.range n, (t - (↑k + 1))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier",
+    "definitionValue": "fun n hn2 hn b =>\n  ZetaNine.CoefficientMapAggregate.coordinatePolynomial\n    ((ZetaNine.CoefficientMapKernelBridge.actualAggregateEquiv n hn2 hn).symm b)",
+    "type": "(n : ℕ) → 2 ≤ n → Even n → (Fin 5 → ℚ) → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.aValue.eq_1",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), ZetaNine.CoefficientMapKernelBridge.aValue n t = (t - ↑n - 1) * (t + ↑n) ^ 10"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.original_five_dimensional_map_bijective",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 2 ≤ n → Even n → Function.Bijective ⇑(ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_actual_HasSum_and_absolute",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  HasSum\n      (fun t =>\n        ↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b)\n            ↑(t + 1)))\n      (ZetaNine.CoefficientMapKernelBridge.prescribedL b) ∧\n    Summable fun t =>\n      ‖↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b)\n            ↑(t + 1))‖"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.original_five_dimensional_map_injective",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 2 ≤ n → Even n → Function.Injective ⇑(ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.poleProduct_shift_identity",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ZetaNine.CoefficientMap.poleProduct n (t + 1) * t = ZetaNine.CoefficientMap.poleProduct n t * (t + ↑n + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_nonzero_of_output_nonzero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  b ≠ 0 → ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.actual_R_shift_A_equals_R_B",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  (∀ k ≤ n, t + ↑k ≠ 0) →\n    (∀ k ≤ n, t + 1 + ↑k ≠ 0) →\n      ZetaNine.CoefficientMap.actualR n (t + 1) * ZetaNine.CoefficientMapKernelBridge.aValue n (t + 1) =\n        ZetaNine.CoefficientMap.actualR n t * ZetaNine.CoefficientMapKernelBridge.bValue n t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.negativeProduct",
+    "definitionValue": "fun n t => ∏ k ∈ Finset.range n, (t + ↑n + (↑k + 1))",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.every_exact_formal_output_has_unique_quartic",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 2 ≤ n → Even n → ∀ (b : Fin 5 → ℚ), ∃! W, ZetaNine.CoefficientMapAggregate.aggregate n ↑W = b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.bValue.eq_1",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), ZetaNine.CoefficientMapKernelBridge.bValue n t = t ^ 10 * (t + 2 * ↑n + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.positiveProduct",
+    "definitionValue": "fun n t => ∏ k ∈ Finset.range n, (t - (↑k + 1))",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.negativeProduct_shift",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ZetaNine.CoefficientMapKernelBridge.negativeProduct n (t + 1) * (t + ↑n + 1) =\n    ZetaNine.CoefficientMapKernelBridge.negativeProduct n t * (t + 2 * ↑n + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.finite_product_shift_identity",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (f : ℕ → ℚ), (∏ k ∈ Finset.range n, f (k + 1)) * f 0 = (∏ k ∈ Finset.range n, f k) * f n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.actual_R_ne_zero_above_n",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), ↑n < t → ZetaNine.CoefficientMap.actualR n t ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.original_quartic_aggregate_injective",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W V : ℚ[X]),\n        W.natDegree ≤ 4 →\n          V.natDegree ≤ 4 →\n            ZetaNine.CoefficientMapAggregate.aggregate n W = ZetaNine.CoefficientMapAggregate.aggregate n V → W = V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.aValue",
+    "definitionValue": "fun n t => (t - ↑n - 1) * (t + ↑n) ^ 10",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.numerator_shift_identity",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ),\n  ZetaNine.CoefficientMap.numerator n (t + 1) * (t - ↑n) * (t + ↑n + 1) =\n    ZetaNine.CoefficientMap.numerator n t * t * (t + 2 * ↑n + 1)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.actual_R_A_equals_Pzero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.actualR n t * ZetaNine.CoefficientMapKernelBridge.aValue n t =\n          ↑n.factorial ^ 7 * Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.rootPolynomial n) /\n            Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_exact_L",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapSummation.exactL n (ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b) =\n    ZetaNine.CoefficientMapKernelBridge.prescribedL b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.actualAggregateEquiv",
+    "definitionValue": "fun n hn2 hn => LinearEquiv.ofBijective (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n) ⋯",
+    "type": "(n : ℕ) → 2 ≤ n → Even n → (Fin 5 → ℚ) ≃ₗ[ℚ] Fin 5 → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.prescribedL.eq_1",
+    "definitionValue": null,
+    "type": "∀ (b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapKernelBridge.prescribedL b =\n    ↑(b 0) +\n      (↑(b 1) * ZetaNine.CoefficientMapSummation.zetaReal 3 + ↑(b 2) * ZetaNine.CoefficientMapSummation.zetaReal 5 +\n          ↑(b 3) * ZetaNine.CoefficientMapSummation.zetaReal 7 +\n        ↑(b 4) * ZetaNine.CoefficientMapSummation.zetaReal 9)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier.congr_simp",
+    "definitionValue": null,
+    "type": "∀ (n n_1 : ℕ) (e_n : n = n_1) (hn2 : 2 ≤ n) (hn : Even n) (b b_1 : Fin 5 → ℚ),\n  b = b_1 →\n    ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b =\n      ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n_1 ⋯ ⋯ b_1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_unique",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b : Fin 5 → ℚ) (W : ℚ[X]),\n  W.natDegree ≤ 4 →\n    ZetaNine.CoefficientMapAggregate.aggregate n W = b →\n      W = ZetaNine.CoefficientMapKernelBridge.inverseMultiplier n hn2 hn b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.telescoper_quotient_as_R_A",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (W H : ℚ[X]),\n      ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n          ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H →\n        ∀ (t : ℚ),\n          (∀ k ≤ n, t + ↑k ≠ 0) →\n            ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n              ZetaNine.CoefficientMap.actualR n t * ZetaNine.CoefficientMapKernelBridge.aValue n t *\n                  Polynomial.eval t H /\n                ↑n.factorial ^ 7"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.bValue",
+    "definitionValue": "fun n t => t ^ 10 * (t + 2 * ↑n + 1)",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapKernelBridge.kernel_actual_polynomial_relation",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W H : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n                ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H →\n              Polynomial.C (↑n.factorial ^ 7) * W.comp (ZetaNine.CoefficientMapInjectivity.baseU n) =\n                (Polynomial.X - Polynomial.C (↑n + 1)) * (Polynomial.X + Polynomial.C ↑n) ^ 10 * H -\n                  Polynomial.X ^ 10 * (Polynomial.X + Polynomial.C (2 * ↑n + 1)) *\n                    H.comp (Polynomial.X + Polynomial.C 1)"
+  }
+]

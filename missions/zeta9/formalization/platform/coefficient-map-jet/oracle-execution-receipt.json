@@ -1,0 +1,125 @@
+{
+  "source_sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+  "source_unchanged": true,
+  "base_source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+  "base_source_unchanged": true,
+  "base_original_olean": "formalization/platform/coefficient-map/build/original/missions/zeta9/formalization/CoefficientMap.olean",
+  "base_original_olean_sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790",
+  "task_local_base_object_copy": "formalization/platform/coefficient-map-jet/build/original/missions/zeta9/formalization/CoefficientMap.olean",
+  "task_local_base_object_copy_sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790",
+  "base_original_oracle_receipt": "formalization/platform/coefficient-map/oracle-execution-receipt.json",
+  "base_original_oracle_receipt_sha256": "e6213e58d097e1549d876a6bc0eef70d98e61789f6f8179014dd218794fed281",
+  "official_stage1": "formalization/platform/coefficient/extract_decl_graph.lean",
+  "official_stage2": "formalization/platform/coefficient/extract_sketch_info.lean",
+  "graph_modules": [
+    "missions.zeta9.formalization.CoefficientMap",
+    "missions.zeta9.formalization.CoefficientMapJet"
+  ],
+  "changes": [
+    "Stage1 root/config/output only; common module prefix includes actual imported Base and Jet.",
+    "Stage2 snapshot directory plus parser command spans solely for diagnostic and mission-import replacement."
+  ],
+  "rows": [
+    {
+      "label": "original-compile",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\original-compile.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\CoefficientMapJet.lean",
+      "source_sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+      "log": "original-compile.log",
+      "log_sha256": "b9ea2bad281c3f8c011e062f877fca9ccc10b6600425c4b7c483c2f7250f00d8",
+      "wrapper": "original-compile.ps1",
+      "wrapper_sha256": "e9ca61fc75d6920920e63571e1096692a106e7b4375b4ef617b18817f943d034",
+      "output": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\build\\original\\missions\\zeta9\\formalization\\CoefficientMapJet.olean",
+      "output_sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\stage1-extract.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\extract_decl_graph.lean",
+      "source_sha256": "728513cb09291e03646b720feb1757184ce92008c697201a32446eded3f8b1ef",
+      "log": "stage1-extract.log",
+      "log_sha256": "4271391e51ccaf923f380bb921cca87a3574c956cf5c52789b6bdc31937c23c7",
+      "wrapper": "stage1-extract.ps1",
+      "wrapper_sha256": "7a8c108d5ea5cfdee18a3c5c6b7db5de0c3a0604472cef628f4600f77d4215ce",
+      "output": null,
+      "output_sha256": null
+    },
+    {
+      "label": "stage2-extract",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\stage2-extract.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\CoefficientMapJet.lean",
+      "source_sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+      "oracle_input_sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+      "oracle_input_bytes": 10033,
+      "stdout": "sketch_info.jsonl",
+      "stdout_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+      "stderr": "stage2-extract-errors.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wrapper": "stage2-extract.ps1",
+      "wrapper_sha256": "c4039a27500ba8fa85034bd8a7e9fab235fb7d5cd72f487109bf4faf0d0050d6",
+      "fact_counts": {
+        "decl": 28,
+        "ref": 141,
+        "command": 47
+      }
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\stage2-header.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\CoefficientMapJet.lean",
+      "source_sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+      "extractor": "extract_header.lean",
+      "extractor_sha256": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677",
+      "stdout": "header_info.jsonl",
+      "stdout_sha256": "54d3d293683200fe0f6acccc936dea10d2fd2e127ded3504f454c1358772b0af",
+      "stderr": "stage2-header-errors.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wrapper": "stage2-header.ps1",
+      "wrapper_sha256": "75f4a47790a04609bdb4392ebb34923c743082929da96d740f873a703b3978ed"
+    }
+  ]
+}

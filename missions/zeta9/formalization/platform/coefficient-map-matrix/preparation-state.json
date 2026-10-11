@@ -1,0 +1,575 @@
+{
+  "status": "PREPARATION_ONLY",
+  "Lean_executed": false,
+  "Stage1_Stage2_results_claimed": false,
+  "author_PASS_claimed": false,
+  "source_sha256": "a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+  "author_sha256": "767b25d5db8a371308a875b023d58f050eb1969650e62917207157c6c8bbc010",
+  "independent_sha256": "c333e8459bd458d62b4a48917a188970c9579ecea6e9707998d9a0289ceb2e72",
+  "pinned_mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "source_project_task_relative": ".rt/ma1",
+  "fresh_build_task_relative": ".rt/ma1/b",
+  "cache_initially_absent": true,
+  "native_proof_objects_borrowed": false,
+  "original_source_counts": {
+    "definitions": 5,
+    "theorems": 17,
+    "records": 22
+  },
+  "new_actual_definitions": [
+    "actualFMatrix",
+    "selectionMatrix",
+    "selectedIntegerPair",
+    "selectedIntegerOutput",
+    "selectedIntegerMultiplier"
+  ],
+  "selected_actual_endpoints": [
+    {
+      "name": "ZetaNine.CoefficientMapMatrix.actualFMatrix_det_ne_zero",
+      "arguments": "n hn2 hn",
+      "frozen_native_full_type_expression_repr": "Lean.Expr.forallE\n  `n\n  (Lean.Expr.const `Nat [])\n  (Lean.Expr.forallE\n    `hn2\n    (Lean.Expr.app\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `LE.le [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instLENat []))\n        (Lean.Expr.app\n          (Lean.Expr.app\n            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n            (Lean.Expr.lit (Lean.Literal.natVal 2)))\n          (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 2)))))\n      (Lean.Expr.bvar 0))\n    (Lean.Expr.forallE\n      `hn\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `Even [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instAddNat []))\n        (Lean.Expr.bvar 1))\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `Ne [Lean.Level.succ (Lean.Level.zero)]) (Lean.Expr.const `Rat []))\n          (Lean.Expr.app\n            (Lean.Expr.app\n              (Lean.Expr.app\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.const `Matrix.det [Lean.Level.zero, Lean.Level.zero])\n                      (Lean.Expr.app\n                        (Lean.Expr.const `Fin [])\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                            (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                          (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                    (Lean.Expr.app\n                      (Lean.Expr.const `instDecidableEqFin [])\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                          (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                        (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                  (Lean.Expr.app\n                    (Lean.Expr.const `Fin.fintype [])\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                        (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                (Lean.Expr.const `Rat []))\n              (Lean.Expr.const `Rat.commRing []))\n            (Lean.Expr.app (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.actualFMatrix []) (Lean.Expr.bvar 2))))\n        (Lean.Expr.app\n          (Lean.Expr.app\n            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Rat []))\n            (Lean.Expr.lit (Lean.Literal.natVal 0)))\n          (Lean.Expr.app (Lean.Expr.const `Rat.instOfNat []) (Lean.Expr.lit (Lean.Literal.natVal 0)))))\n      (Lean.BinderInfo.default))\n    (Lean.BinderInfo.default))\n  (Lean.BinderInfo.default)",
+      "frozen_native_type_pp_diagnostic": "∀ (n : ℕ), 2 ≤ n → Even n → (ZetaNine.CoefficientMapMatrix.actualFMatrix n).det ≠ 0",
+      "frozen_native_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "new_actual_parser_span": null,
+      "new_actual_kernel_type_check": null
+    },
+    {
+      "name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_coordinates_product",
+      "arguments": "n hn2 hn b a",
+      "frozen_native_full_type_expression_repr": "Lean.Expr.forallE\n  `n\n  (Lean.Expr.const `Nat [])\n  (Lean.Expr.forallE\n    `hn2\n    (Lean.Expr.app\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `LE.le [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instLENat []))\n        (Lean.Expr.app\n          (Lean.Expr.app\n            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n            (Lean.Expr.lit (Lean.Literal.natVal 2)))\n          (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 2)))))\n      (Lean.Expr.bvar 0))\n    (Lean.Expr.forallE\n      `hn\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `Even [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instAddNat []))\n        (Lean.Expr.bvar 1))\n      (Lean.Expr.forallE\n        `b\n        (Lean.Expr.const `Int [])\n        (Lean.Expr.forallE\n          `a\n          (Lean.Expr.const `Int [])\n          (Lean.Expr.app\n            (Lean.Expr.app\n              (Lean.Expr.app\n                (Lean.Expr.const `Eq [Lean.Level.succ (Lean.Level.zero)])\n                (Lean.Expr.forallE\n                  `i\n                  (Lean.Expr.app\n                    (Lean.Expr.const `Fin [])\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                        (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 5)))))\n                  (Lean.Expr.const `Rat [])\n                  (Lean.BinderInfo.default)))\n              (Lean.Expr.app\n                (Lean.Expr.const `ZetaNine.CoefficientMapAggregate.polynomialCoordinates [])\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier [])\n                          (Lean.Expr.bvar 4))\n                        (Lean.Expr.bvar 3))\n                      (Lean.Expr.bvar 2))\n                    (Lean.Expr.bvar 1))\n                  (Lean.Expr.bvar 0))))\n            (Lean.Expr.app\n              (Lean.Expr.app\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.const `Matrix.vecMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Fin [])\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 2)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 2))))))\n                        (Lean.Expr.app\n                          (Lean.Expr.const `Fin [])\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                              (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                            (Lean.Expr.app\n                              (Lean.Expr.const `instOfNatNat [])\n                              (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                      (Lean.Expr.const `Rat []))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.const `NonUnitalNonAssocRing.toNonUnitalNonAssocSemiring [Lean.Level.zero])\n                        (Lean.Expr.const `Rat []))\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.const `NonUnitalNonAssocCommRing.toNonUnitalNonAssocRing [Lean.Level.zero])\n                          (Lean.Expr.const `Rat []))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.const `NonUnitalCommRing.toNonUnitalNonAssocCommRing [Lean.Level.zero])\n                            (Lean.Expr.const `Rat []))\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.const `CommRing.toNonUnitalCommRing [Lean.Level.zero])\n                              (Lean.Expr.const `Rat []))\n                            (Lean.Expr.const `Rat.commRing []))))))\n                  (Lean.Expr.app\n                    (Lean.Expr.const `Fin.fintype [])\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                        (Lean.Expr.lit (Lean.Literal.natVal 2)))\n                      (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 2))))))\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.selectedIntegerPair [])\n                    (Lean.Expr.bvar 1))\n                  (Lean.Expr.bvar 0)))\n              (Lean.Expr.app\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.const `Matrix [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `Fin [])\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.app\n                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                        (Lean.Expr.const `Nat []))\n                                      (Lean.Expr.lit (Lean.Literal.natVal 2)))\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `instOfNatNat [])\n                                      (Lean.Expr.lit (Lean.Literal.natVal 2))))))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `Fin [])\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `instOfNatNat [])\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                            (Lean.Expr.const `Rat [])))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.const `Matrix [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                              (Lean.Expr.app\n                                (Lean.Expr.const `Fin [])\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `instOfNatNat [])\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                            (Lean.Expr.app\n                              (Lean.Expr.const `Fin [])\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `instOfNatNat [])\n                                  (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                          (Lean.Expr.const `Rat [])))\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Matrix [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                            (Lean.Expr.app\n                              (Lean.Expr.const `Fin [])\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.lit (Lean.Literal.natVal 2)))\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `instOfNatNat [])\n                                  (Lean.Expr.lit (Lean.Literal.natVal 2))))))\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Fin [])\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                        (Lean.Expr.const `Rat [])))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const\n                                    `Matrix.instHMulOfFintypeOfMulOfAddCommMonoid\n                                    [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `Fin [])\n                                    (Lean.Expr.app\n                                      (Lean.Expr.app\n                                        (Lean.Expr.app\n                                          (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                          (Lean.Expr.const `Nat []))\n                                        (Lean.Expr.lit (Lean.Literal.natVal 2)))\n                                      (Lean.Expr.app\n                                        (Lean.Expr.const `instOfNatNat [])\n                                        (Lean.Expr.lit (Lean.Literal.natVal 2))))))\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `Fin [])\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.app\n                                        (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                        (Lean.Expr.const `Nat []))\n                                      (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `instOfNatNat [])\n                                      (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `Fin [])\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `instOfNatNat [])\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                            (Lean.Expr.const `Rat []))\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Fin.fintype [])\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                        (Lean.Expr.const `Rat.instMul []))\n                      (Lean.Expr.const `Rat.addCommMonoid [])))\n                  (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.selectionMatrix []))\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.const `Inv.inv [Lean.Level.zero])\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Matrix [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                            (Lean.Expr.app\n                              (Lean.Expr.const `Fin [])\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `instOfNatNat [])\n                                  (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Fin [])\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                        (Lean.Expr.const `Rat [])))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.const `Matrix.inv [Lean.Level.zero, Lean.Level.zero])\n                              (Lean.Expr.app\n                                (Lean.Expr.const `Fin [])\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `instOfNatNat [])\n                                    (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                            (Lean.Expr.const `Rat []))\n                          (Lean.Expr.app\n                            (Lean.Expr.const `Fin.fintype [])\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                        (Lean.Expr.app\n                          (Lean.Expr.const `instDecidableEqFin [])\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                              (Lean.Expr.lit (Lean.Literal.natVal 5)))\n                            (Lean.Expr.app\n                              (Lean.Expr.const `instOfNatNat [])\n                              (Lean.Expr.lit (Lean.Literal.natVal 5))))))\n                      (Lean.Expr.const `Rat.commRing [])))\n                  (Lean.Expr.app\n                    (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.actualFMatrix [])\n                    (Lean.Expr.bvar 4))))))\n          (Lean.BinderInfo.default))\n        (Lean.BinderInfo.default))\n      (Lean.BinderInfo.default))\n    (Lean.BinderInfo.default))\n  (Lean.BinderInfo.default)",
+      "frozen_native_type_pp_diagnostic": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ),\n  ZetaNine.CoefficientMapAggregate.polynomialCoordinates\n      (ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier n hn2 hn b a) =\n    Matrix.vecMul (ZetaNine.CoefficientMapMatrix.selectedIntegerPair b a)\n      (ZetaNine.CoefficientMapMatrix.selectionMatrix * (ZetaNine.CoefficientMapMatrix.actualFMatrix n)⁻¹)",
+      "frozen_native_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "new_actual_parser_span": null,
+      "new_actual_kernel_type_check": null
+    },
+    {
+      "name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "arguments": "n hn2 hn b a",
+      "frozen_native_full_type_expression_repr": "Lean.Expr.forallE\n  `n\n  (Lean.Expr.const `Nat [])\n  (Lean.Expr.forallE\n    `hn2\n    (Lean.Expr.app\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `LE.le [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instLENat []))\n        (Lean.Expr.app\n          (Lean.Expr.app\n            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n            (Lean.Expr.lit (Lean.Literal.natVal 2)))\n          (Lean.Expr.app (Lean.Expr.const `instOfNatNat []) (Lean.Expr.lit (Lean.Literal.natVal 2)))))\n      (Lean.Expr.bvar 0))\n    (Lean.Expr.forallE\n      `hn\n      (Lean.Expr.app\n        (Lean.Expr.app\n          (Lean.Expr.app (Lean.Expr.const `Even [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n          (Lean.Expr.const `instAddNat []))\n        (Lean.Expr.bvar 1))\n      (Lean.Expr.forallE\n        `b\n        (Lean.Expr.const `Int [])\n        (Lean.Expr.forallE\n          `a\n          (Lean.Expr.const `Int [])\n          (Lean.Expr.app\n            (Lean.Expr.app\n              (Lean.Expr.const `And [])\n              (Lean.Expr.app\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.const `HasSum [Lean.Level.zero, Lean.Level.zero])\n                            (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Nat []))\n                        (Lean.Expr.const `Real.instAddCommMonoid []))\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.const `UniformSpace.toTopologicalSpace [Lean.Level.zero])\n                          (Lean.Expr.const `Real []))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.const `PseudoMetricSpace.toUniformSpace [Lean.Level.zero])\n                            (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Real.pseudoMetricSpace []))))\n                    (Lean.Expr.lam\n                      `t\n                      (Lean.Expr.const `Nat [])\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app (Lean.Expr.const `Rat.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Real.instRatCast []))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `ZetaNine.CoefficientMap.weightedR []) (Lean.Expr.bvar 5))\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier [])\n                                      (Lean.Expr.bvar 5))\n                                    (Lean.Expr.bvar 4))\n                                  (Lean.Expr.bvar 3))\n                                (Lean.Expr.bvar 2))\n                              (Lean.Expr.bvar 1)))\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app (Lean.Expr.const `Nat.cast [Lean.Level.zero]) (Lean.Expr.const `Rat []))\n                              (Lean.Expr.const `Rat.instNatCast []))\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.app\n                                        (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                                        (Lean.Expr.const `Nat []))\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `instHAdd [Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.const `instAddNat [])))\n                                (Lean.Expr.bvar 0))\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.lit (Lean.Literal.natVal 1)))\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `instOfNatNat [])\n                                  (Lean.Expr.lit (Lean.Literal.natVal 1))))))))\n                      (Lean.BinderInfo.default)))\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                              (Lean.Expr.const `Real []))\n                            (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Real []))\n                        (Lean.Expr.app\n                          (Lean.Expr.app (Lean.Expr.const `instHAdd [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Real.instAdd [])))\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app (Lean.Expr.const `Int.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                          (Lean.Expr.const `Real.instIntCast []))\n                        (Lean.Expr.bvar 1)))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.const `HMul.hMul [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                                (Lean.Expr.const `Real []))\n                              (Lean.Expr.const `Real []))\n                            (Lean.Expr.const `Real []))\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `instHMul [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                            (Lean.Expr.const `Real.instMul [])))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `Int.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                            (Lean.Expr.const `Real.instIntCast []))\n                          (Lean.Expr.bvar 0)))\n                      (Lean.Expr.app\n                        (Lean.Expr.const `ZetaNine.CoefficientMapSummation.zetaReal [])\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero]) (Lean.Expr.const `Nat []))\n                            (Lean.Expr.lit (Lean.Literal.natVal 9)))\n                          (Lean.Expr.app\n                            (Lean.Expr.const `instOfNatNat [])\n                            (Lean.Expr.lit (Lean.Literal.natVal 9))))))))\n                (Lean.Expr.app\n                  (Lean.Expr.const `SummationFilter.unconditional [Lean.Level.zero])\n                  (Lean.Expr.const `Nat []))))\n            (Lean.Expr.app\n              (Lean.Expr.app\n                (Lean.Expr.app\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.const `Summable [Lean.Level.zero, Lean.Level.zero])\n                        (Lean.Expr.const `Real []))\n                      (Lean.Expr.const `Nat []))\n                    (Lean.Expr.const `Real.instAddCommMonoid []))\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.const `UniformSpace.toTopologicalSpace [Lean.Level.zero])\n                      (Lean.Expr.const `Real []))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.const `PseudoMetricSpace.toUniformSpace [Lean.Level.zero])\n                        (Lean.Expr.const `Real []))\n                      (Lean.Expr.const `Real.pseudoMetricSpace []))))\n                (Lean.Expr.lam\n                  `t\n                  (Lean.Expr.const `Nat [])\n                  (Lean.Expr.app\n                    (Lean.Expr.app\n                      (Lean.Expr.app (Lean.Expr.const `Norm.norm [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                      (Lean.Expr.const `Real.norm []))\n                    (Lean.Expr.app\n                      (Lean.Expr.app\n                        (Lean.Expr.app (Lean.Expr.const `Rat.cast [Lean.Level.zero]) (Lean.Expr.const `Real []))\n                        (Lean.Expr.const `Real.instRatCast []))\n                      (Lean.Expr.app\n                        (Lean.Expr.app\n                          (Lean.Expr.app (Lean.Expr.const `ZetaNine.CoefficientMap.weightedR []) (Lean.Expr.bvar 5))\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier [])\n                                    (Lean.Expr.bvar 5))\n                                  (Lean.Expr.bvar 4))\n                                (Lean.Expr.bvar 3))\n                              (Lean.Expr.bvar 2))\n                            (Lean.Expr.bvar 1)))\n                        (Lean.Expr.app\n                          (Lean.Expr.app\n                            (Lean.Expr.app (Lean.Expr.const `Nat.cast [Lean.Level.zero]) (Lean.Expr.const `Rat []))\n                            (Lean.Expr.const `Rat.instNatCast []))\n                          (Lean.Expr.app\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.app\n                                      (Lean.Expr.const `HAdd.hAdd [Lean.Level.zero, Lean.Level.zero, Lean.Level.zero])\n                                      (Lean.Expr.const `Nat []))\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.app\n                                  (Lean.Expr.app\n                                    (Lean.Expr.const `instHAdd [Lean.Level.zero])\n                                    (Lean.Expr.const `Nat []))\n                                  (Lean.Expr.const `instAddNat [])))\n                              (Lean.Expr.bvar 0))\n                            (Lean.Expr.app\n                              (Lean.Expr.app\n                                (Lean.Expr.app\n                                  (Lean.Expr.const `OfNat.ofNat [Lean.Level.zero])\n                                  (Lean.Expr.const `Nat []))\n                                (Lean.Expr.lit (Lean.Literal.natVal 1)))\n                              (Lean.Expr.app\n                                (Lean.Expr.const `instOfNatNat [])\n                                (Lean.Expr.lit (Lean.Literal.natVal 1)))))))))\n                  (Lean.BinderInfo.default)))\n              (Lean.Expr.app\n                (Lean.Expr.const `SummationFilter.unconditional [Lean.Level.zero])\n                (Lean.Expr.const `Nat []))))\n          (Lean.BinderInfo.default))\n        (Lean.BinderInfo.default))\n      (Lean.BinderInfo.default))\n    (Lean.BinderInfo.default))\n  (Lean.BinderInfo.default)",
+      "frozen_native_type_pp_diagnostic": "∀ (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ),\n  HasSum\n      (fun t =>\n        ↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier n hn2 hn b a)\n            ↑(t + 1)))\n      (↑b + ↑a * ZetaNine.CoefficientMapSummation.zetaReal 9) ∧\n    Summable fun t =>\n      ‖↑(ZetaNine.CoefficientMap.weightedR n (ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier n hn2 hn b a)\n            ↑(t + 1))‖",
+      "frozen_native_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "new_actual_parser_span": null,
+      "new_actual_kernel_type_check": null
+    }
+  ],
+  "native_sources": [
+    {
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map-kernel-bridge/dependencies/Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "bytes": 974,
+      "sha256": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92",
+      "module": "Definitions.Def_ZetaNine_HarmonicStability",
+      "project_relative": "Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "parser_name": "Def_ZetaNine_HarmonicStability"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+      "module": "missions.zeta9.formalization.CoefficientMap",
+      "project_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "parser_name": "CoefficientMap"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+      "module": "missions.zeta9.formalization.CoefficientMapJet",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "parser_name": "CoefficientMapJet"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+      "module": "missions.zeta9.formalization.CoefficientMapInjectivity",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "parser_name": "CoefficientMapInjectivity"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+      "bytes": 18065,
+      "sha256": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+      "module": "missions.zeta9.formalization.CoefficientMapPartialFractions",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+      "parser_name": "CoefficientMapPartialFractions"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.lean",
+      "bytes": 17678,
+      "sha256": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707",
+      "module": "missions.zeta9.formalization.CoefficientMapReflection",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapReflection.lean",
+      "parser_name": "CoefficientMapReflection"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+      "bytes": 6644,
+      "sha256": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97",
+      "module": "missions.zeta9.formalization.CoefficientMapFiniteSum",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+      "parser_name": "CoefficientMapFiniteSum"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapSummation.lean",
+      "bytes": 15204,
+      "sha256": "c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d",
+      "module": "missions.zeta9.formalization.CoefficientMapSummation",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapSummation.lean",
+      "parser_name": "CoefficientMapSummation"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapAggregate.lean",
+      "bytes": 8188,
+      "sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+      "module": "missions.zeta9.formalization.CoefficientMapAggregate",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapAggregate.lean",
+      "parser_name": "CoefficientMapAggregate"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapTelescoper.lean",
+      "bytes": 20042,
+      "sha256": "8792e8ba5c6abcbdbe83b0aa4ffa1ab716fd05fac10da7275b86ab2f780fd121",
+      "module": "missions.zeta9.formalization.CoefficientMapTelescoper",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapTelescoper.lean",
+      "parser_name": "CoefficientMapTelescoper"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+      "bytes": 6627,
+      "sha256": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953",
+      "module": "missions.zeta9.formalization.CoefficientMapShiftDegree",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+      "parser_name": "CoefficientMapShiftDegree"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapKernelBridge.lean",
+      "bytes": 17785,
+      "sha256": "1ec15a46ae656bb0be0de0eb44afeca3144a7223a84eecf161693be25205bedb",
+      "module": "missions.zeta9.formalization.CoefficientMapKernelBridge",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapKernelBridge.lean",
+      "parser_name": "CoefficientMapKernelBridge"
+    },
+    {
+      "root_relative": "missions/zeta9/formalization/CoefficientMapMatrix.lean",
+      "bytes": 8091,
+      "sha256": "a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "module": "missions.zeta9.formalization.CoefficientMapMatrix",
+      "project_relative": "missions/zeta9/formalization/CoefficientMapMatrix.lean",
+      "parser_name": "CoefficientMapMatrix"
+    }
+  ],
+  "parent_definitions": [
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "task_relative": "formalization/platform/coefficient-map/staged/Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff",
+      "bytes": 1246,
+      "module": "Definitions.Def_ZetaNine_CoefficientMap"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+      "task_relative": "formalization/platform/coefficient-map-jet/staged/Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+      "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+      "bytes": 1484,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapJet"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "sha256": "d7f71b43ed4f4ac8f1994ecf80dad165f4008960f6a304efcd45ebc60342b1b1",
+      "bytes": 1268,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapInjectivity"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapPartialFractions.lean",
+      "task_relative": "formalization/platform/coefficient-map-partial-fractions/staged/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.lean",
+      "sha256": "74904aff5266f68b9d9f5c3013fb636f48d0cadda75e872093419845f9b666e5",
+      "bytes": 1146,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapPartialFractions"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapReflection.lean",
+      "task_relative": "formalization/platform/coefficient-map-reflection/staged/Definitions/Def_ZetaNine_CoefficientMapReflection.lean",
+      "sha256": "4b15dc1616c4252cffe303f34c502e4373c657f287ed3d6663755f1b0cb539d7",
+      "bytes": 757,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapReflection"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapFiniteSum.lean",
+      "task_relative": "formalization/platform/coefficient-map-finite-sum/staged/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.lean",
+      "sha256": "d1b41541e0fc7e359f96d51e4190206deb4656468896d871b95d449cddcd7fc5",
+      "bytes": 1079,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapFiniteSum"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapSummation.lean",
+      "task_relative": "formalization/platform/coefficient-map-summation/staged/Definitions/Def_ZetaNine_CoefficientMapSummation.lean",
+      "sha256": "469d4c0ba2f3849ad48c764f5e3a56c09f19a726c4ad9b9ba080ec69a853962c",
+      "bytes": 1143,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapSummation"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapAggregate.lean",
+      "task_relative": "formalization/platform/coefficient-map-aggregate/staged/Definitions/Def_ZetaNine_CoefficientMapAggregate.lean",
+      "sha256": "ef491f5136c5a98d976ff9faf73df3b65393bb2caf50772dccafd213c8302079",
+      "bytes": 4920,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapAggregate"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapTelescoper.lean",
+      "task_relative": "formalization/platform/coefficient-map-telescoper/staged/Definitions/Def_ZetaNine_CoefficientMapTelescoper.lean",
+      "sha256": "5b66664fdd82d8e4c7cf5bd1724fd4422146f38e94e825bedf9a4bc541237431",
+      "bytes": 1196,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapTelescoper"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapShiftDegree.lean",
+      "task_relative": "formalization/platform/coefficient-map-shift-degree/staged/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.lean",
+      "sha256": "edc9d4969159b80c6943c76f032115f70cfbef50ce03359236450dd830a0b8e9",
+      "bytes": 493,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapShiftDegree"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "task_relative": "formalization/platform/coefficient-map-kernel-bridge/dependencies/Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "sha256": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92",
+      "bytes": 974,
+      "module": "Definitions.Def_ZetaNine_HarmonicStability"
+    },
+    {
+      "root_relative": "Definitions/Def_ZetaNine_CoefficientMapKernelBridge.lean",
+      "task_relative": "formalization/platform/coefficient-map-kernel-bridge/staged/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.lean",
+      "sha256": "2ec92b17bcb5e578a48cc453365c6d551497bc97fddc4dccf7e632be278f59d3",
+      "bytes": 124831,
+      "module": "Definitions.Def_ZetaNine_CoefficientMapKernelBridge"
+    }
+  ],
+  "native_controls": [
+    {
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-matrix-2026-10-04/type-audit.lean",
+      "bytes": 3458,
+      "sha256": "907966e294f4283d2d461ff99353a03aac66428b0b095df7b751a9dc9a14b93d",
+      "module": "NativeMatrixAuthorSourceControl",
+      "project_relative": "NativeMatrixAuthorSourceControl.lean",
+      "expected_records": 22
+    },
+    {
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-matrix-2026-10-04/endpoint-audit.lean",
+      "bytes": 3715,
+      "sha256": "cbcf631c9594a0d242a58d3979c22361258bf0c18aa246a07586df9bd9e2842e",
+      "module": "NativeMatrixAuthorEndpointControl",
+      "project_relative": "NativeMatrixAuthorEndpointControl.lean",
+      "expected_records": 12
+    },
+    {
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-matrix-independent-2026-10-04/source-full-audit.lean",
+      "bytes": 2255,
+      "sha256": "3eb24c7416f9f7f253d6533137359fb65c5bb137e641cd180e5f83a303e3f01e",
+      "module": "NativeMatrixIndependentSourceControl",
+      "project_relative": "NativeMatrixIndependentSourceControl.lean",
+      "expected_records": 22
+    },
+    {
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-matrix-independent-2026-10-04/independent-boundary.lean",
+      "bytes": 4962,
+      "sha256": "54c7c7109c73f1ad8fcb20d03bf64ef0a76726372ffec251dc0dc7148464c76e",
+      "module": "NativeMatrixIndependentBoundaryControl",
+      "project_relative": "NativeMatrixIndependentBoundaryControl.lean",
+      "expected_records": 26
+    }
+  ],
+  "expected_original_project_definitions": 70,
+  "expected_original_project_definition_count_is_pending_new_actual_graph": true,
+  "actual_proof_closure_size": null,
+  "actual_definition_valueRefs": null,
+  "exact_future_scoped_build_entrypoints": [
+    "Solutions.Sol_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero",
+    "Solutions.Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product",
+    "Solutions.Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute"
+  ],
+  "graph_template_binding": {
+    "task_relative": "formalization/platform/coefficient-map-connection/extract_decl_graph.lean",
+    "bytes": 5306,
+    "sha256": "ee2e159f8c32ab19ed876bc5876900ccfd1a9c1af9be8857fcdf005b80bf5e12"
+  },
+  "parser_template_binding": {
+    "task_relative": "formalization/platform/coefficient-map-jet/extract_sketch_info.lean",
+    "bytes": 9915,
+    "sha256": "471d45aca725d913c33fa16f8b0e7b93fd9892be5cf73460df3beedfa285c7d6"
+  },
+  "header_template_binding": {
+    "task_relative": "formalization/platform/coefficient-map-connection/extract_header.lean",
+    "bytes": 881,
+    "sha256": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677"
+  },
+  "path_checks": [
+    {
+      "module": "Definitions.Def_ZetaNine_HarmonicStability",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_HarmonicStability.olean",
+      "path_plus_64": 188,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMap",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMap.olean",
+      "path_plus_64": 189,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapJet",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapJet.olean",
+      "path_plus_64": 192,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapInjectivity",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapInjectivity.olean",
+      "path_plus_64": 200,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapPartialFractions",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapPartialFractions.olean",
+      "path_plus_64": 205,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapReflection",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapReflection.olean",
+      "path_plus_64": 199,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapFiniteSum",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapFiniteSum.olean",
+      "path_plus_64": 198,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapSummation",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapSummation.olean",
+      "path_plus_64": 198,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapAggregate",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapAggregate.olean",
+      "path_plus_64": 198,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapTelescoper",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapTelescoper.olean",
+      "path_plus_64": 199,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapShiftDegree",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapShiftDegree.olean",
+      "path_plus_64": 200,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapKernelBridge",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapKernelBridge.olean",
+      "path_plus_64": 201,
+      "passed": true
+    },
+    {
+      "module": "missions.zeta9.formalization.CoefficientMapMatrix",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapMatrix.olean",
+      "path_plus_64": 195,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMap",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMap.olean",
+      "path_plus_64": 185,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapJet",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapJet.olean",
+      "path_plus_64": 188,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapInjectivity",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapInjectivity.olean",
+      "path_plus_64": 196,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapPartialFractions",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapPartialFractions.olean",
+      "path_plus_64": 201,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapReflection",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapReflection.olean",
+      "path_plus_64": 195,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapFiniteSum",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapFiniteSum.olean",
+      "path_plus_64": 194,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapSummation",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapSummation.olean",
+      "path_plus_64": 194,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapAggregate",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapAggregate.olean",
+      "path_plus_64": 194,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapTelescoper",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapTelescoper.olean",
+      "path_plus_64": 195,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapShiftDegree",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapShiftDegree.olean",
+      "path_plus_64": 196,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapKernelBridge",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapKernelBridge.olean",
+      "path_plus_64": 197,
+      "passed": true
+    },
+    {
+      "module": "Definitions.Def_ZetaNine_CoefficientMapMatrix",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Definitions\\Def_ZetaNine_CoefficientMapMatrix.olean",
+      "path_plus_64": 191,
+      "passed": true
+    },
+    {
+      "module": "NativeMatrixAuthorSourceControl",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\NativeMatrixAuthorSourceControl.olean",
+      "path_plus_64": 177,
+      "passed": true
+    },
+    {
+      "module": "NativeMatrixAuthorEndpointControl",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\NativeMatrixAuthorEndpointControl.olean",
+      "path_plus_64": 179,
+      "passed": true
+    },
+    {
+      "module": "NativeMatrixIndependentSourceControl",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\NativeMatrixIndependentSourceControl.olean",
+      "path_plus_64": 182,
+      "passed": true
+    },
+    {
+      "module": "NativeMatrixIndependentBoundaryControl",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\NativeMatrixIndependentBoundaryControl.olean",
+      "path_plus_64": 184,
+      "passed": true
+    },
+    {
+      "module": "NativeValueComparisonDefinition",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\NativeValueComparisonDefinition.olean",
+      "path_plus_64": 177,
+      "passed": true
+    },
+    {
+      "module": "StagedValueComparisonDefinition",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\StagedValueComparisonDefinition.olean",
+      "path_plus_64": 177,
+      "passed": true
+    },
+    {
+      "module": "Solutions.Sol_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Solutions\\Sol_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero.olean",
+      "path_plus_64": 215,
+      "passed": true
+    },
+    {
+      "module": "Theorems.Thm_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Theorems\\Thm_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero.olean",
+      "path_plus_64": 214,
+      "passed": true
+    },
+    {
+      "module": "Solutions.Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Solutions\\Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product.olean",
+      "path_plus_64": 235,
+      "passed": true
+    },
+    {
+      "module": "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Theorems\\Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product.olean",
+      "path_plus_64": 234,
+      "passed": true
+    },
+    {
+      "module": "Solutions.Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Solutions\\Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute.olean",
+      "path_plus_64": 242,
+      "passed": true
+    },
+    {
+      "module": "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "path": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\ma1\\b\\lib\\lean\\Theorems\\Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute.olean",
+      "path_plus_64": 241,
+      "passed": true
+    }
+  ],
+  "future_oracle_calls": {
+    "native_source_compiles": 13,
+    "native_control_compiles": 4,
+    "existing_platform_definition_compiles": 11,
+    "actual_stage1": 1,
+    "actual_stage2_source_parsers": 13,
+    "actual_header": 1,
+    "runtime": 1,
+    "total": 44
+  },
+  "future_proof_strategy": "Actual cross-module Stage1 type/value closure plus all source instances; parser-owned declaration/reference/open spans in dependency order. Inline complete original helper proofs, preserve all 17 Matrix proofs, rename only each chosen actual target and wrap it. No import of a Matrix target Theorem or Solution. Parent Definitions remain their hash-fixed actual values.",
+  "future_value_strategy": "Five pure Matrix definitions are copied only from new actual parser spans. Native and staged shared-alias programs differ only by import and each gets five full type/value isDefEq checks and five closed whole-function rfl proofs. Existing proof-bearing parent Definition equivalences require their frozen complete kernel/closed data evidence and explicit actual valueRefs.",
+  "original_domain": "Every inverse/determinant/sum endpoint retains n>=2 and Even n; b,a are integers but the multiplier coefficients and inverse matrix are rational.",
+  "forbidden_added_hypotheses": [
+    "F invertible",
+    "determinant nonzero",
+    "kernel zero",
+    "aggregate bijective",
+    "HasSum",
+    "summability",
+    "zeta independence"
+  ],
+  "excluded_claims": [
+    "integer inverse polynomial",
+    "integral coefficients",
+    "height bounds",
+    "small nonzero integer forms",
+    "irrationality",
+    "formal five-output transport"
+  ],
+  "no_Root_API_credentials_scope_writes": true,
+  "Root_installation_claimed": false,
+  "external_acceptance_claimed": false,
+  "independent_platform_review_required": true
+}

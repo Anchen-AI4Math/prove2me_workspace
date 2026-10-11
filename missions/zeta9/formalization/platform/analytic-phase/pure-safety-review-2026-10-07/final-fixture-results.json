@@ -1,0 +1,147 @@
+{
+  "checked_at": "2026-10-07T11:11:00.778598+00:00",
+  "phase_SOURCE_sha256": "3b36cc7787dc0a2f348a5dd1037f3f9189cf4b0a15bf291a11d8e523b35ebf2b",
+  "frozen_PF_SOURCE_sha256": "dda7b66a1dcc8b07d4f059aa026fdbcaee600d0d59ebef587dd87ada124f8ecb",
+  "checks": {
+    "normal_seven_and_resume": {
+      "fake_POSTs": [
+        {
+          "endpoint": "/submit-definition",
+          "operation": "definition_ZetaNine_AnalyticPhase",
+          "wire_sha256": "baa42701eb693c85faf0d6612207b9e6963707c5a2c2fbfb02c2d9b575664b7b",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+          "wire_sha256": "c804b8bb590266e6e5bf1f987f9d89006995a7b7a72c5371470d8016f4a7d3a3",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_global_lt_certified",
+          "wire_sha256": "07342d7e1cc16df4346e1407b24684d531266ff054aa620bba426ebc0f3b339f",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/submit-problem",
+          "operation": "problem_ZetaNine.AnalyticPhase.phase_global_upper_bound",
+          "wire_sha256": "98be6f50bc99249c7016d7462bd0005ea297bb7087c09bd3cf4a334920d7768b",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+          "wire_sha256": "e2b4816d509c36598ecc21283cfbb4a664d1092608f9144151902745a51a5972",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_global_lt_certified",
+          "wire_sha256": "bd037884ac9c6e1d66b9fd784886e540f007772c9d478d3998a1a2b7b5784f81",
+          "WAL_and_wire_first": true
+        },
+        {
+          "endpoint": "/verify",
+          "operation": "proof_ZetaNine.AnalyticPhase.phase_global_upper_bound",
+          "wire_sha256": "f124dc207c128de7b66f3fa735172f073e2dbd63d47f4820f528bcae48b424c3",
+          "WAL_and_wire_first": true
+        }
+      ],
+      "resume_additional_fake_POSTs": 0,
+      "all_seven_receipt_hashes_and_wire_bindings": true
+    },
+    "invalid_receipt_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "duplicate_journal_blocks": {
+      "exception": "AssertionError",
+      "message": "Duplicate operation in journal"
+    },
+    "changed_saved_wire_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_PIN_blocks": {
+      "exception": "RuntimeError",
+      "message": "Complete unchanged phase preparation is required; no business POST"
+    },
+    "first_unknown": {
+      "exception": "RuntimeError",
+      "message": "FAKE outcome uncertain"
+    },
+    "unknown_same_operation_blocks": {
+      "exception": "RuntimeError",
+      "message": "Unresolved POST in this phase batch; reconcile documented remote history before ANY further business POST"
+    },
+    "unknown_other_operation_blocks": {
+      "exception": "RuntimeError",
+      "message": "Unresolved POST in this phase batch; reconcile documented remote history before ANY further business POST"
+    },
+    "unknown_fake_POST_count": 1,
+    "invalid_response_first": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "invalid_response_all_other_POSTs_block": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "invalid_response_fake_POST_count": 1,
+    "concurrent_second_writer_blocks": {
+      "exception": "RuntimeError",
+      "message": "Another phase batch writer is live; do not duplicate business POSTs"
+    },
+    "concurrent_same_operation_fake_POST_count": 1,
+    "cross_process_exclusive_lock": {
+      "held_parent_child": {
+        "lock_acquired": false,
+        "exception": "Another phase batch writer is live; do not duplicate business POSTs"
+      },
+      "released_parent_child": {
+        "lock_acquired": true
+      }
+    },
+    "changed_file_bytes_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_definition_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "changed_problem_before_POST_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "MIME_transfer_encoding": {
+      "rejected": true,
+      "exception": "AssertionError"
+    }
+  },
+  "additional_checks": {
+    "base64_CTE": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "duplicate_Content_Disposition": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "duplicate_Content_Type": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "header_probes_fake_POSTs": 0,
+    "original_verify_post_gate_file_mutation_blocks": {
+      "exception": "AssertionError",
+      "message": ""
+    },
+    "original_verify_integration_fake_POSTs": 0
+  },
+  "Lean_calls": 0,
+  "network_calls": 0,
+  "credentials_reads": 0,
+  "scope": "Offline publication safety only. Fabricated fixture PIN/cache assumes a legitimately prepared state and confers no real publication authorization."
+}

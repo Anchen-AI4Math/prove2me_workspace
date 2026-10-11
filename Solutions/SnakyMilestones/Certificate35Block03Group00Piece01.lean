@@ -1,0 +1,77 @@
+import Solutions.SnakyMilestones.Certificate35Block03Group00Piece00
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+set_option linter.unusedSimpArgs false
+namespace OAI.SnakyCertificate.MilestoneChecks
+open OAI.SnakyCertificate
+theorem entry_100_checked : entryAt 100 = entry_100 := by
+  rw [entry_chunk_4 14 (by decide)]
+  decide +kernel
+theorem row_100 : rowAt 100 = data_100 := by
+  rw [rowAt, dif_neg (by decide : ¬ 100 < 6), entry_100_checked]
+  change forkRow [placeRow ⟨0, 6, 5, 4⟩ (rowAt 0), placeRow ⟨48, 0, 1, 4⟩ (rowAt 48)] = data_100
+  rw [row_0, row_48]
+  apply row_ext <;> decide +kernel
+theorem entry_good_100 : EntryGood 100 := by
+  unfold EntryGood
+  rw [entry_100_checked]
+  decide +kernel
+theorem good_100 : Good (rowAt 100) := by
+  rw [row_100]
+  unfold Good
+  decide +kernel
+
+theorem entry_101_checked : entryAt 101 = entry_101 := by
+  rw [entry_chunk_4 15 (by decide)]
+  decide +kernel
+theorem row_101 : rowAt 101 = data_101 := by
+  rw [rowAt, dif_neg (by decide : ¬ 101 < 6), entry_101_checked]
+  change forkRow [placeRow ⟨0, 7, 4, 6⟩ (rowAt 0), placeRow ⟨24, 0, 5, 4⟩ (rowAt 24)] = data_101
+  rw [row_0, row_24]
+  apply row_ext <;> decide +kernel
+theorem entry_good_101 : EntryGood 101 := by
+  unfold EntryGood
+  rw [entry_101_checked]
+  decide +kernel
+theorem good_101 : Good (rowAt 101) := by
+  rw [row_101]
+  unfold Good
+  decide +kernel
+
+theorem entry_102_checked : entryAt 102 = entry_102 := by
+  rw [entry_chunk_4 16 (by decide)]
+  decide +kernel
+theorem row_102 : rowAt 102 = data_102 := by
+  rw [rowAt, dif_neg (by decide : ¬ 102 < 6), entry_102_checked]
+  change forkRow [placeRow ⟨6, 3, 4, 5⟩ (rowAt 6), placeRow ⟨25, 2, 6, 3⟩ (rowAt 25)] = data_102
+  rw [row_6, row_25]
+  apply row_ext <;> decide +kernel
+theorem entry_good_102 : EntryGood 102 := by
+  unfold EntryGood
+  rw [entry_102_checked]
+  decide +kernel
+theorem good_102 : Good (rowAt 102) := by
+  rw [row_102]
+  unfold Good
+  decide +kernel
+
+theorem entry_103_checked : entryAt 103 = entry_103 := by
+  rw [entry_chunk_4 17 (by decide)]
+  decide +kernel
+theorem row_103 : rowAt 103 = data_103 := by
+  rw [rowAt, dif_neg (by decide : ¬ 103 < 6), entry_103_checked]
+  change forkRow [placeRow ⟨6, 3, 4, 5⟩ (rowAt 6), placeRow ⟨71, 0, 6, 4⟩ (rowAt 71)] = data_103
+  rw [row_6, row_71]
+  apply row_ext <;> decide +kernel
+theorem entry_good_103 : EntryGood 103 := by
+  unfold EntryGood
+  rw [entry_103_checked]
+  decide +kernel
+theorem good_103 : Good (rowAt 103) := by
+  rw [row_103]
+  unfold Good
+  decide +kernel
+
+theorem block03_group00_piece01_correct : (rowAt 100 = data_100 ∧ Good (rowAt 100) ∧ EntryGood 100) ∧ (rowAt 101 = data_101 ∧ Good (rowAt 101) ∧ EntryGood 101) ∧ (rowAt 102 = data_102 ∧ Good (rowAt 102) ∧ EntryGood 102) ∧ (rowAt 103 = data_103 ∧ Good (rowAt 103) ∧ EntryGood 103) ∧ True := by
+  exact ⟨⟨row_100, good_100, entry_good_100⟩, ⟨row_101, good_101, entry_good_101⟩, ⟨row_102, good_102, entry_good_102⟩, ⟨row_103, good_103, entry_good_103⟩, trivial⟩
+end OAI.SnakyCertificate.MilestoneChecks

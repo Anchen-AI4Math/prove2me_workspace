@@ -1,0 +1,222 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftA",
+    "definitionValue": "fun n => (Polynomial.X - Polynomial.C (↑n + 1)) * (Polynomial.X + Polynomial.C ↑n) ^ 10",
+    "type": "ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftB",
+    "definitionValue": "fun n => Polynomial.X ^ 10 * (Polynomial.X + Polynomial.C (2 * ↑n + 1))",
+    "type": "ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftDifference",
+    "definitionValue": "fun n H =>\n  ZetaNine.CoefficientMapShiftDegree.shiftA n * H -\n    ZetaNine.CoefficientMapShiftDegree.shiftB n * H.comp (Polynomial.X + Polynomial.C 1)",
+    "type": "ℕ → ℚ[X] → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_nextCoeff_mul",
+    "definitionValue": null,
+    "type": "∀ (P H : ℚ[X]), (P * H).nextCoeff = P.nextCoeff * H.leadingCoeff + P.leadingCoeff * H.nextCoeff"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_shift_nextCoeff",
+    "definitionValue": null,
+    "type": "∀ (H : ℚ[X]), (H.comp (Polynomial.X + Polynomial.C 1)).nextCoeff = H.nextCoeff + ↑H.natDegree * H.leadingCoeff"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftA_monic",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftA n).Monic"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftB_monic",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftB n).Monic"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftA_natDegree",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftA n).natDegree = 11"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftB_natDegree",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftB n).natDegree = 11"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftA_nextCoeff",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftA n).nextCoeff = 9 * ↑n - 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.shiftB_nextCoeff",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapShiftDegree.shiftB n).nextCoeff = 2 * ↑n + 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_coefficient",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (H : ℚ[X]),\n  H ≠ 0 →\n    (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H).coeff (H.natDegree + 10) =\n      (7 * ↑n - 2 - ↑H.natDegree) * H.leadingCoeff"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_coefficient_ne_zero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (H : ℚ[X]),\n      H ≠ 0 →\n        H.natDegree ≤ 7 * n - 3 → (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H).coeff (H.natDegree + 10) ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_degree_lower_bound",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (H : ℚ[X]),\n      H ≠ 0 →\n        H.natDegree ≤ 7 * n - 3 → H.natDegree + 10 ≤ (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H).natDegree"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapShiftDegree.actual_shift_difference_small_degree_implies_zero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (H : ℚ[X]),\n      H.natDegree ≤ 7 * n - 3 → (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H).natDegree ≤ 8 → H = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_actual_operator_eval",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (H : ℚ[X]) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H) =\n    (t - (↑n + 1)) * (t + ↑n) ^ 10 * Polynomial.eval t H - t ^ 10 * (t + (2 * ↑n + 1)) * Polynomial.eval (t + 1) H"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_degree_zero_shift",
+    "definitionValue": null,
+    "type": "∀ (H : ℚ[X]), H.natDegree = 0 → H.comp (Polynomial.X + Polynomial.C 1) = H"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_one_constant_coefficient",
+    "definitionValue": null,
+    "type": "(ZetaNine.CoefficientMapShiftDegree.shiftDifference 1 1).coeff 10 = 5"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_one_last_allowed_coefficient",
+    "definitionValue": null,
+    "type": "(ZetaNine.CoefficientMapShiftDegree.shiftDifference 1 (Polynomial.X ^ 4)).coeff 14 = 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_one_resonance_outside_domain",
+    "definitionValue": null,
+    "type": "(ZetaNine.CoefficientMapShiftDegree.shiftDifference 1 (Polynomial.X ^ 5)).coeff 15 = 0 ∧\n  Polynomial.X ^ 5 ≠ 0 ∧ ¬(Polynomial.X ^ 5).natDegree ≤ 7 * 1 - 3"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_two_nonmonic_last_allowed",
+    "definitionValue": null,
+    "type": "(ZetaNine.CoefficientMapShiftDegree.shiftDifference 2 (Polynomial.C 7 * Polynomial.X ^ 11)).coeff 21 = 7"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_exact_kernel_degree_interface",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (H : ℚ[X]),\n      H.natDegree ≤ 7 * n - 3 → (ZetaNine.CoefficientMapShiftDegree.shiftDifference n H).natDegree ≤ 8 → H = 0"
+  }
+]

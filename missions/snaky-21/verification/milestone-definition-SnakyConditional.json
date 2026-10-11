@@ -1,0 +1,36 @@
+{
+  "theorem_id": "8b0d52e9-d2d9-4a88-a838-f5c7b7e5ee3d",
+  "theorem_name": "SnakyConditional",
+  "theorem_title": null,
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Cells are integer lattice points ℤ×ℤ, and snaky is the six-cell shape {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)}. For each r in Fin 8, orient r is one of eight explicit coordinate maps on a cell (x,y): (x,y), (y,x), (x,−y), (−y,x), (−x,y), (y,−x), (−x,−y), (−y,−x) for r=0,…,7 respectively, and placement r t p applies orient r to p and then translates by t. HasSnaky(M) is the proposition that a finite set M of cells contains some placed copy of snaky, meaning there exist r and a translation t such that the image of snaky under placement r t is a subset of M. In the OrdinaryStrategy namespace, for a type α with decidable equality, a Policy is a function taking a natural number, a finite set of maker elements and a finite set of breaker elements, and returning an element of α. Given a policy σ, a horizon N, a breaker sequence β : ℕ → α and starting sets M₀ and B₀, playState gives the pair of sets after k rounds: round k+1 inserts into the maker set the element σ(N−k, current maker set, current breaker set), and inserts β k into the breaker set. makerAt is the maker's move at round k, and LegalRepliesBeforeFinal says that for every k with k+1<N, the breaker's choice β k is neither in the maker set after that round's maker move is added nor in the breaker set before round k. No theorem is stated; these are only definitions.",
+  "created_at": "2026-10-07T04:33:23.549492+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "definition": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyConditional.lean; bytes 16..1454\n-- Kind: block; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\n\nnamespace OAI.SnakyConditional\n\nabbrev Cell := ℤ × ℤ\ndef snaky : Finset Cell := {(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (4, 1)}\ndef orient (r : Fin 8) (p : Cell) : Cell :=\n  match r.val with\n  | 0 => (p.1, p.2)\n  | 1 => (p.2, p.1)\n  | 2 => (p.1, -p.2)\n  | 3 => (-p.2, p.1)\n  | 4 => (-p.1, p.2)\n  | 5 => (p.2, -p.1)\n  | 6 => (-p.1, -p.2)\n  | _ => (-p.2, -p.1)\ndef placement (r : Fin 8) (t p : Cell) : Cell := orient r p + t\ndef HasSnaky (M : Finset Cell) : Prop :=\n  ∃ (r : Fin 8) (t : Cell), snaky.image (placement r t) ⊆ M\n\nnamespace OrdinaryStrategy\n\nvariable {α : Type*} [DecidableEq α]\n\nabbrev Policy (α : Type*) := ℕ → Finset α → Finset α → α\ndef playState (σ : Policy α) (N : ℕ) (β : ℕ → α) (M₀ B₀ : Finset α) :\n    ℕ → Finset α × Finset α\n  | 0 => (M₀, B₀)\n  | k + 1 =>\n      let state := playState σ N β M₀ B₀ k\n      (insert (σ (N - k) state.1 state.2) state.1, insert (β k) state.2)\ndef makerAt (σ : Policy α) (N : ℕ) (β : ℕ → α) (M₀ B₀ : Finset α) (k : ℕ) : α :=\n  let state := playState σ N β M₀ B₀ k\n  σ (N - k) state.1 state.2\ndef LegalRepliesBeforeFinal (σ : Policy α) (N : ℕ) (β : ℕ → α)\n    (M₀ B₀ : Finset α) : Prop :=\n  ∀ k, k + 1 < N →\n    β k ∉ insert (makerAt σ N β M₀ B₀ k) (playState σ N β M₀ B₀ k).1 ∧\n    β k ∉ (playState σ N β M₀ B₀ k).2\nend OrdinaryStrategy\n\nopen OrdinaryStrategy\n\n\n\nend OAI.SnakyConditional\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyConditional.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "4a254d14-f215-4e04-b07e-b8783e71fc1a",
+      "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "reviewer_username": "Community (Bot)",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-07T07:06:53.275973+00:00"
+    },
+    {
+      "audit_id": "4eefb852-ce3c-4ae7-b64b-ef5640600a73",
+      "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "reviewer_username": "wurtle",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-07T07:06:53.515959+00:00"
+    }
+  ],
+  "readback": null
+}

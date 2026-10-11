@@ -1,0 +1,23 @@
+{
+  "theorem_id": "a8a15e54-0fca-4932-b4ea-171e7d02fc03",
+  "theorem_name": "ZetaNine.taylor_sign_implies_kernel_sum_pos",
+  "theorem_title": "Positive Taylor sign forces a strictly positive kernel sum",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem taylor_sign_implies_kernel_sum_pos\n    (R u : ℕ → ℝ) (p : Polynomial ℝ) (u₀ : ℝ)\n    (hR : ∀ k : ℕ, 0 < R k)\n    (hu : ∀ k : ℕ, u₀ ≤ u k)\n    (hcoeff : ∀ i : ℕ, 0 ≤ (Polynomial.taylor u₀ p).coeff i)\n    (hsummable : Summable (fun k : ℕ => R k * p.eval (u k)))\n    (hnonzero : ∃ k : ℕ, 0 < p.eval (u k)) :\n    0 < ∑' k : ℕ, R k * p.eval (u k) := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## Positive Taylor sign forces a strictly positive kernel sum\n\nLet $R:\\mathbb{N}\\to\\mathbb{R}$ be a strictly positive kernel, $u:\\mathbb{N}\\to\\mathbb{R}$\na sampling map, $p\\in\\mathbb{R}[X]$ a real polynomial and $u_0\\in\\mathbb{R}$ an\nexpansion point. Assume:\n\n1. $R(k)>0$ for every $k$;\n2. every sampling point lies at or beyond the expansion point, $u_0\\le u(k)$;\n3. every Taylor coefficient of $p$ at $u_0$ is nonnegative,\n   $\\bigl[\\text{taylor}_{u_0}p\\bigr]_i\\ge 0$ for all $i$;\n4. the weighted series $\\sum_k R(k)\\,p(u(k))$ is summable;\n5. $p$ does not vanish identically on the samples, i.e. $p(u(k))>0$ for some $k$.\n\nThen\n\n$$\\sum_{k\\ge 0} R(k)\\,p(u(k)) \\;>\\; 0 .$$\n\n**Why.** Writing $p(u)=\\sum_i (u-u_0)^i\\,[\\text{taylor}_{u_0}p]_i$ shows that\n$p(u(k))\\ge 0$ whenever $u(k)\\ge u_0$ and all Taylor coefficients at $u_0$ are\nnonnegative. Hence every term $R(k)\\,p(u(k))$ is nonnegative, and by (5) at least one\nterm is strictly positive. A summable series of nonnegative terms with one strictly\npositive term is strictly positive.\n\nThe analogous statement with all Taylor coefficients nonpositive, concluded as\n$\\sum_k R(k)p(u(k))<0$, follows by applying the theorem to $-p$.\n\n**Scope.** This is the *positive-kernel* half of local node **TP**. On the actual\nconstruction the sampling points are $u(k)=k(k+n)$ with $u(k)\\ge(n+1)(2n+1)=:u_0$\nfor $k>n$, so hypothesis (2) is the note's observation that the whole summation tail\nlies beyond the expansion point, and hypothesis (3) is the weak one-sign Taylor\ncondition that the open targets T, TG, TS, T5 are supposed to supply along infinitely\nmany even $n$. The theorem does not assert that any such sign condition holds for the\nactual moving shortest vectors; it only rules out a vanishing sum once a sign is\ngiven. Hypothesis (4) is a genuine summability input and is not automatic.",
+  "created_at": "2026-09-25T02:42:27.191195+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/research/full-lattice-sign-next.md, positive-kernel nonvanishing lemma, 2026-09-25",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

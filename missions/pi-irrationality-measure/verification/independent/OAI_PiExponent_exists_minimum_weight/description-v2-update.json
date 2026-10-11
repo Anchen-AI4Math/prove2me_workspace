@@ -1,0 +1,89 @@
+{
+  "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+  "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+  "original_metadata_sha256": "891f8b092f4be357ee4c8fd74538b3039e6285355842d94979a350cb22dd9f5c",
+  "payload_sha256": "66812dcf59dca2dc6bd59d5155754cdd1fde3bf5d0dc76968c1ed35b63f330ed",
+  "formal_statement_unchanged": true,
+  "proof_source_sha256": "dcf2242460dfd678557e83ccdb7050a19e3689a731513960b9f28bca8b1be836",
+  "readback_before": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+      "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+      "theorem_title": "A nonempty finite family of weights has an attained minimum",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+      "natural_language_statement": "Let m be a natural number with m ≥ 1, let w : Fin m → ℝ, and let X be real. If X < w(i) for every i, then there exists a real wstar with X < wstar, wstar ≤ w(i) for every i, and wstar = w(i) for some i.",
+      "created_at": "2026-10-09T10:12:08.779826+00:00",
+      "vote_count": 0,
+      "tags": [
+        "finite-minimum",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "patch_intent": {
+    "method": "PATCH",
+    "endpoint": "/theorems/30d83fa5-620d-4059-a909-387ac02d2401",
+    "payload_sha256": "66812dcf59dca2dc6bd59d5155754cdd1fde3bf5d0dc76968c1ed35b63f330ed"
+  },
+  "patch_response": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+      "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+      "theorem_title": "A nonempty finite family of weights has an attained minimum",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+      "natural_language_statement": "Let $m\\geq1$ be an integer and let $w_0,\\ldots,w_{m-1}\\in\\mathbb R$. If $X\\in\\mathbb R$ satisfies $X<w_i$ for every $0\\leq i<m$, then there exists $w_\\ast\\in\\mathbb R$ such that\n\n$$X<w_\\ast,\\qquad w_\\ast\\leq w_i\\quad(0\\leq i<m),\\qquad w_\\ast=w_j\\quad\\text{for some }0\\leq j<m.$$\n\nThis attained minimum provides a common lower bound for a nonempty finite family of weights, while retaining the strict bound above the prescribed scale $X$.",
+      "created_at": "2026-10-09T10:12:08.779826+00:00",
+      "vote_count": 0,
+      "tags": [
+        "finite-minimum",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "readback_after": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+      "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+      "theorem_title": "A nonempty finite family of weights has an attained minimum",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+      "natural_language_statement": "Let $m\\geq1$ be an integer and let $w_0,\\ldots,w_{m-1}\\in\\mathbb R$. If $X\\in\\mathbb R$ satisfies $X<w_i$ for every $0\\leq i<m$, then there exists $w_\\ast\\in\\mathbb R$ such that\n\n$$X<w_\\ast,\\qquad w_\\ast\\leq w_i\\quad(0\\leq i<m),\\qquad w_\\ast=w_j\\quad\\text{for some }0\\leq j<m.$$\n\nThis attained minimum provides a common lower bound for a nonempty finite family of weights, while retaining the strict bound above the prescribed scale $X$.",
+      "created_at": "2026-10-09T10:12:08.779826+00:00",
+      "vote_count": 0,
+      "tags": [
+        "finite-minimum",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "description_exact_readback": true
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap7-exact-source-determinant-bounds-node-preparation",
+  "status": "prepared-uncompiled",
+  "source_name": "OAI.PiExponent.determinant_bounds_inconsistent",
+  "solution_name": "solution",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.Comparison",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean#L10-L26",
+  "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean",
+  "source_sha256": "94acf7de974729b172abaf06424076213f5782081aed8961653261a5ec19a1e2",
+  "source_ast_unit": "OAI.NumberTheory.PiExponent.Approximation.Comparison:146",
+  "source_byte_range": [
+    146,
+    929
+  ],
+  "source_line_range": [
+    10,
+    26
+  ],
+  "source_unit_sha256": "aea64f6c828a094a6a15a5fe67fe30b65effb53b8d44af6e4bff3ed658ae8295",
+  "decl_graph_row": {
+    "name": "OAI.PiExponent.determinant_bounds_inconsistent",
+    "module": "OAI.NumberTheory.PiExponent.Approximation.Comparison",
+    "kind": "theorem",
+    "isPrivate": false,
+    "isInstance": false,
+    "userName": "OAI.PiExponent.determinant_bounds_inconsistent",
+    "startLine": 10,
+    "endLine": 26,
+    "ctorParent": null,
+    "constructors": [],
+    "typeDeps": [],
+    "valueDeps": []
+  },
+  "declared_dependencies": {
+    "type": [],
+    "value": [],
+    "inline_helpers": []
+  },
+  "platform_name_override": null,
+  "platform_collision_check": "source theorem override inventory has no row for this source name",
+  "preamble": "import Mathlib.Tactic.Linarith\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nnamespace OAI\nnamespace PiExponent\nopen Filter Topology\n\n",
+  "formal_statement": "theorem determinant_bounds_inconsistent\r\n    (nu theta x b ear ean err collision d : ℝ)\r\n    (hnu : 1 < nu) (hb0 : 0 ≤ b) (hb : b ≤ theta)\r\n    (hgap : ear + ean + err < nu * (x - theta) - (1 - theta))\r\n    (hcollision : 1 + ear + ean + err < collision)\r\n    (hlower : -(1 - b) - ear ≤ d)\r\n    (hupper : d ≤ ean + err + max (-collision) (-nu * (x - b))) : False := by\n  sorry\n\nend PiExponent\nend OAI\n",
+  "compiled_statement_assembly_sha256": "99fff86610183488adc12bc35da96ea97ca4c136dc422185ce0af040b4a6e4c1",
+  "solution_source_sha256": "434a364e0342f7af37b0d2cee40086a8e80515a5e9b4bd19ff70d6b96da4e7c6",
+  "solution_exact_source_transform": "Exact AST theorem unit bytes from the pinned source, with only the leading declaration identifier renamed to solution; the source theorem's namespace wrapper is removed, the exact open Filter Topology context is retained, and the proof body and binder/type bytes are unchanged.",
+  "solution_binding": "Global top-level theorem solution, required by the platform; it is emitted under a fresh _global solution module identity.",
+  "academic_metadata": {
+    "title": "Incompatible determinant bounds",
+    "statement": "For real numbers \\(\\nu,\\theta,x,b,e_{\\rm ar},e_{\\rm an},e_{\\rm r},c,d\\), the following hypotheses are inconsistent:\n\n$$\\begin{aligned}\n1&<\\nu,\\qquad 0\\le b\\le\\theta,\\\\\ne_{\\rm ar}+e_{\\rm an}+e_{\\rm r}&<\\nu(x-\\theta)-(1-\\theta),\\\\\n1+e_{\\rm ar}+e_{\\rm an}+e_{\\rm r}&<c,\\\\\n-(1-b)-e_{\\rm ar}&\\le d\\le e_{\\rm an}+e_{\\rm r}+\\max\\{-c,-\\nu(x-b)\\}.\n\\end{aligned}$$\n\nThe result isolates the contradiction between a lower determinant estimate and the competing analytic/collision upper estimate.",
+    "explanation": "The theorem shows that the stated arithmetic lower bound and analytic/collision upper bound cannot hold simultaneously. It is a self-contained real-inequality step used inside the campaign's determinant contradiction; it introduces no new approximation measure or additional mathematical assumptions.",
+    "tags": [
+      "number-theory",
+      "analysis",
+      "openai-pi-exponent-017"
+    ],
+    "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean#L10-L26"
+  },
+  "runtime_sha256": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+  "input_hashes": {
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean": "94acf7de974729b172abaf06424076213f5782081aed8961653261a5ec19a1e2",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/TypedSnapshotCore.inc": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "verification/ap7/determinant-bounds-inconsistent/Theorems/Thm_OAI_PiExponent_determinant_bounds_inconsistent.lean": "99fff86610183488adc12bc35da96ea97ca4c136dc422185ce0af040b4a6e4c1",
+    "verification/ap7/determinant-bounds-inconsistent/Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent.lean": "93e0f5c1b1149a6a4a4553c9cd9b7cc67813d1fd6c61b55ce6f585ddf0fccb13",
+    "verification/ap7/determinant-bounds-inconsistent/Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent.lean.preflight.json": "0aebc7bdf41adca24bac97defc1b4e404fb71261d348b2195d5a942cf43c9579",
+    "verification/staged-build/lib/lean/Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent.olean": "500ac382b74cd458c57a930644eb9a5110f83da1d4f198242d1aeb618d68ddea",
+    "verification/ap7/determinant-bounds-inconsistent/GeneratedSnapshotWithRefs.lean": "797622b83736a6d217de5a3dbeb9830a83a8c81b7bba9c4ca7cbae35eae87359",
+    "verification/ap7/determinant-bounds-inconsistent/GeneratedSnapshotWithRefs.lean.preflight.json": "06e1e9333e37d0dcac5c89fb70e02d4f2d1fc17e08ea914fcd2a5b5496da7562",
+    "verification/staged-preflight-logs/GeneratedSnapshotWithRefs_20261009T135256_087811Z.log": "8f3e538fb5294419366bfb6ba7bc9ae3412c6903bd7a732c129d8dbbd19ecd57",
+    "scripts/prepare_determinant_bounds_node.py": "4474f9a973d73e7c7e382571b83d18a78f41a7da47435226d7b8c26dbafcf36e",
+    "scripts/certify_determinant_bounds_node_existing.py": "59f77059009b0e0fd6635f31075119918feab472e30cecec338c8076423315eb"
+  },
+  "files": {
+    "Theorems/Thm_OAI_PiExponent_determinant_bounds_inconsistent.lean": {
+      "sha256": "99fff86610183488adc12bc35da96ea97ca4c136dc422185ce0af040b4a6e4c1",
+      "mode": "modecheck",
+      "emit_olean": false,
+      "imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Topology.Instances.Real.Lemmas"
+      ]
+    },
+    "Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent_global.lean": {
+      "sha256": "434a364e0342f7af37b0d2cee40086a8e80515a5e9b4bd19ff70d6b96da4e7c6",
+      "mode": "emit-olean",
+      "emit_olean": true,
+      "imports": [
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Topology.Instances.Real.Lemmas"
+      ]
+    },
+    "SourceSnapshot.lean": {
+      "sha256": "3c50837ffccfba066e070d4184e6e0699c8736a2687b2cfc2d17cef9535d29aa",
+      "mode": "modecheck",
+      "emit_olean": false,
+      "imports": [
+        "Lean",
+        "OAI.NumberTheory.PiExponent.Approximation.Comparison"
+      ]
+    },
+    "GeneratedSnapshotWithRefs.lean": {
+      "sha256": "53b57070072fb6b72ba10593bc5efcca70bd4195c925a07156a5ae6fbb680074",
+      "mode": "modecheck",
+      "emit_olean": false,
+      "imports": [
+        "Lean",
+        "Solutions.Sol_OAI_PiExponent_determinant_bounds_inconsistent_global"
+      ]
+    }
+  },
+  "compile_commands": {
+    "Theorems/Thm_OAI_PiExponent_determinant_bounds_inconsistent.lean": "python scripts/preflight_staged_module.py verification/ap7/determinant-bounds-global-v2/Theorems/Thm_OAI_PiExponent_determinant_bounds_inconsistent.lean --root verification/ap7/determinant-bounds-global-v2 --imports-manifest verification/ap7/determinant-bounds-global-v2/Thm_OAI_PiExponent_determinant_bounds_inconsistent.lean.json --timeout-seconds 300",
+    "Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent_global.lean": "python scripts/preflight_staged_module.py verification/ap7/determinant-bounds-global-v2/Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent_global.lean --root verification/ap7/determinant-bounds-global-v2 --imports-manifest verification/ap7/determinant-bounds-global-v2/Sol_OAI_PiExponent_determinant_bounds_inconsistent_global.lean.json --timeout-seconds 300 --emit-olean",
+    "SourceSnapshot.lean": "python scripts/preflight_staged_module.py verification/ap7/determinant-bounds-global-v2/SourceSnapshot.lean --root verification/ap7/determinant-bounds-global-v2 --imports-manifest verification/ap7/determinant-bounds-global-v2/SourceSnapshot.lean.json --timeout-seconds 300",
+    "GeneratedSnapshotWithRefs.lean": "python scripts/preflight_staged_module.py verification/ap7/determinant-bounds-global-v2/GeneratedSnapshotWithRefs.lean --root verification/ap7/determinant-bounds-global-v2 --imports-manifest verification/ap7/determinant-bounds-global-v2/GeneratedSnapshotWithRefs.lean.json --timeout-seconds 300"
+  },
+  "compiled_statement_equals_preamble_plus_formal_statement": true,
+  "target_comparator_modecheck_only": true,
+  "target_comparator_emits_olean": false,
+  "solution_emits_olean": true,
+  "solution_module": "Solutions.Sol_OAI_PiExponent_determinant_bounds_inconsistent_global",
+  "preserved_namespaced_stage": {
+    "stage": "verification/ap7/determinant-bounds-inconsistent",
+    "target_source_sha256": "99fff86610183488adc12bc35da96ea97ca4c136dc422185ce0af040b4a6e4c1",
+    "namespaced_solution_sha256": "93e0f5c1b1149a6a4a4553c9cd9b7cc67813d1fd6c61b55ce6f585ddf0fccb13",
+    "namespaced_solution_preflight_sha256": "0aebc7bdf41adca24bac97defc1b4e404fb71261d348b2195d5a942cf43c9579",
+    "namespaced_solution_olean": "verification/staged-build/lib/lean/Solutions/Sol_OAI_PiExponent_determinant_bounds_inconsistent.olean",
+    "namespaced_solution_olean_sha256": "500ac382b74cd458c57a930644eb9a5110f83da1d4f198242d1aeb618d68ddea",
+    "failed_generated_snapshot": "verification/ap7/determinant-bounds-inconsistent/GeneratedSnapshotWithRefs.lean",
+    "failed_generated_snapshot_preflight": "verification/ap7/determinant-bounds-inconsistent/GeneratedSnapshotWithRefs.lean.preflight.json",
+    "failed_generated_snapshot_preflight_sha256": "06e1e9333e37d0dcac5c89fb70e02d4f2d1fc17e08ea914fcd2a5b5496da7562",
+    "failed_generated_snapshot_log": "verification/staged-preflight-logs/GeneratedSnapshotWithRefs_20261009T135256_087811Z.log",
+    "failed_generated_snapshot_log_sha256": "8f3e538fb5294419366bfb6ba7bc9ae3412c6903bd7a732c129d8dbbd19ecd57",
+    "new_solution_olean_module_is_distinct": true,
+    "target_bytes_unchanged": true
+  },
+  "single_compiler_sequential": true,
+  "Lean_started": false,
+  "API_used": false,
+  "validated": false,
+  "submission_ready": false,
+  "proposal_status": "Draft"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "2ebb9316-87fd-4031-916a-1c96f4ab3298",
+  "kind": "definition",
+  "theorem_name": "ZetaNine_HarmonicPrimeValuation",
+  "theorem_title": "Harmonic nonmultiple remainder and explicit finite numerator exception product",
+  "formal_statement": "",
+  "natural_language_statement": "For natural $s,N,p$, let $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ be the rational generalized harmonic sum. Define\n\n$$U_{s,N,p}=\\sum_{\\substack{1\\le j\\le N\\\\p\\nmid j}}j^{-s},\\qquad E_{s,K}=\\prod_{k=1}^{K}\\left|\\operatorname{num}(H_k^{(s)})\\right|.$$\n\nThe numerator is the reduced rational numerator and the product is one when $K=0$. Both objects are defined for all natural parameters. The module adds only these two finite expressions to the existing harmonic definition module; it contains no primality, unit, valuation, limit or PNT assertion.",
+  "definitions": "import Definitions.Def_ZetaNine_HarmonicStability\n\nset_option autoImplicit false\nopen scoped BigOperators\n\nnamespace ZetaNine.HarmonicStability\n\n/-- The sum of the actual harmonic terms whose index is not divisible by p. -/\ndef primeRemainder (s N p : ℕ) : ℚ :=\n  ∑ j ∈ (Finset.Icc 1 N).filter (fun j => ¬ p ∣ j), 1 / (j : ℚ) ^ s\n\n/-- Product of the absolute reduced numerators of the actual first K harmonic prefixes. -/\ndef harmonicExceptionalProduct (s K : ℕ) : ℕ :=\n  ∏ k ∈ Finset.Icc 1 K, (harmonicPower s k).num.natAbs\n\nend ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+  "tags": [
+    "number-theory",
+    "zeta-function",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "11984167-2e2e-490b-948a-9f691338b59e",
+  "created_at": "2026-10-02T14:17:05.34172+00:00",
+  "updated_at": "2026-10-02T14:34:58.790502+00:00"
+}

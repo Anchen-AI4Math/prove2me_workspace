@@ -1,0 +1,87 @@
+{
+  "reviewed_at": "2026-10-07T09:35:22.327179+00:00",
+  "role": "Root independent mathematical review; not Lean verification",
+  "frozen_four_source_preparation_sha256": "bddc5450aa8298945697cff6c298726943e7919eeaaf9cbe36ddf1621934f853",
+  "source_bindings": [
+    {
+      "task_relative": "formalization/AnalyticFactorialBounds.lean",
+      "bytes": 4544,
+      "sha256": "524a4c235b01c8f076b95a0dc6b94e530240b7e3c0b4b46eee0b829a8a9e74f7",
+      "complete_theorem_bodies": [
+        "real_factorial_pos",
+        "log_factorial_succ",
+        "log_successor_increment_upper",
+        "log_successor_increment_lower",
+        "log_factorial_lower",
+        "log_factorial_upper",
+        "log_factorial_pred"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalFactorial.lean",
+      "bytes": 6600,
+      "sha256": "b0906498361ec158e647084f984ce3181a1faaea3d5026fd47cf8e1a9049d0f0",
+      "complete_theorem_bodies": [
+        "rational_factorial_ne_zero",
+        "ascending_product_factorial",
+        "actual_falling_product_factorial",
+        "actual_rising_product_factorial",
+        "actual_poleProduct_factorial",
+        "actualR_factorial",
+        "actualR_factorial_real",
+        "actualR_pos",
+        "actualR_real_pos",
+        "actualR_log_factorial"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalLogBound.lean",
+      "bytes": 6522,
+      "sha256": "a2620cd2f97d56f9b2e5f61ea3df1fc1a3bed8ceee1ce614fbc5a715e26ec723",
+      "complete_theorem_bodies": [
+        "scaled_phase_identity",
+        "actualR_log_le_phase",
+        "actualR_log_le_certified",
+        "actualR_le_certified",
+        "actualR_compact_bound"
+      ]
+    },
+    {
+      "task_relative": "formalization/AnalyticRationalTail.lean",
+      "bytes": 5121,
+      "sha256": "058fed97101688709976db1c517fd9fe45700ab20a2e1963a47982cfb6cb58a8",
+      "complete_theorem_bodies": [
+        "actual_falling_product_le",
+        "actual_rising_product_tail_le",
+        "actual_poleProduct_ge",
+        "actualR_tail_bound_rational",
+        "actualR_tail_bound",
+        "actual_tail_weight_le"
+      ]
+    }
+  ],
+  "domain": "n>=1, k>n natural numbers, r in {0,1,2,3,4}",
+  "factorial_ratio_identity": "R_n(k)=n!^7 * ((k-1)!)^10 * (k+2n)! / ((k-n-1)! * ((k+n)!)^10)",
+  "shifted_factorials_removed_before_estimates": true,
+  "linear_terms_cancel_exactly": true,
+  "log_n_leading_coefficients_cancel_exactly": true,
+  "logarithmic_error": "7 log n + log(k+2n) + log(k-n) + 18; 18=7+10+1",
+  "compact": "n<k<2n gives at most n terms (empty for n=1); bound for n<k<=2n valid; normalized moments <=5184 exp(18) n^10 exp(-c n)",
+  "tail": "k>=2n; s=7n+9-2r>=7n+1>=8; p-series bracket <=9/7; normalized n exponent -2; rational prefactor <=729/224",
+  "phase_constant": "c=2641/250",
+  "tail_rate": "gamma=7+6 log 2 > 5579441/500000; gamma-c >297441/500000",
+  "uniform_moment_conclusion_written_math": "S_r,n <= C n^10 exp(-c n) n^(2r), C=5184 exp18+(729/224)exp7",
+  "varying_coefficients": "weighted norm bound has same C n^10 exp(-c n), multiplying sum_{r=0}^4 |w_r,n| n^(2r); requires actual polynomial evaluation and true summation bridge",
+  "unclosed_formal_bridges": [
+    "new candidate SOURCE compilation and full typed/axiom validation",
+    "quantitative pseries actual compilation",
+    "genuine moments defined from original actualSeries and exact disjoint sum decomposition",
+    "true finite-degree polynomial evaluation, triangle inequality, varying-coefficient norm bridge",
+    "conversion of polynomial prefactor to any epsilon exponential rate"
+  ],
+  "Lean_calls": 0,
+  "kernel_checks": 0,
+  "API_calls": 0,
+  "uniform_Z9_A_Lean_PASS_claimed": false,
+  "integer_height_J_or_irrationality_claimed": false
+}

@@ -1,0 +1,3 @@
+$env:LEAN_PATH = "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-partial-fractions/independent/cache/platform/build;" + $env:LEAN_PATH + ";D:/users/self_projects/prove2me_workspace"
+& lean -o "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-partial-fractions/independent/cache/platform/build/Theorems/Thm_ZetaNine_CoefficientMapPartialFractions_actual_global_partial_fractions.olean" "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-partial-fractions/staged/Theorems/Thm_ZetaNine_CoefficientMapPartialFractions_actual_global_partial_fractions.lean"
+exit $LASTEXITCODE

@@ -1,0 +1,42 @@
+{
+  "theorem_name": "OAI.PiExponent.FormalLogTruncation.logTail_mem_rationalWeightedIdeal",
+  "theorem_title": "Weighted-ideal membership of the formal logarithm tail",
+  "natural_language_statement": "Let m be a natural number, let v : Fin (m + 1) → ℚ be nonnegative in every coordinate, and let T and H satisfy H ≤ T · v(0). Then the series logTail(T), embedded into coordinate 0 of the multivariate power-series ring, belongs to the rational weighted ideal determined by v and H. Here logTail(T) is the formal power-series logarithm log(X) minus its truncation below degree T; the statement is algebraic and makes no analytic convergence claim.",
+  "tags": [
+    "formal-power-series",
+    "formal-logarithm",
+    "weighted-ideals",
+    "multivariate-power-series",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "explanation": "The hypothesis H ≤ T · v(0) places every potentially nonzero coefficient of the logarithm tail beyond the weighted-degree cutoff H along the distinguished coordinate 0. Coefficients below T vanish by the definition of logTail, while any exponent supported only at coordinate 0 and below the weighted cutoff would force its degree to be at least T, contradicting the weight bound. The result is a formal-series membership statement for the campaign's rational weighted ideal, not an analytic estimate.",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L280-L300",
+    "source_command_witness": {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+      "source_graph_name": "OAI.PiExponent.FormalLogTruncation.logTail_mem_rationalWeightedIdeal",
+      "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+      "port_command_range": {
+        "start": 12753,
+        "end": 13804
+      },
+      "original_command_range": {
+        "start": 12490,
+        "end": 13521
+      },
+      "port_command_sha256": "283d9fe52e194489eca2fa6a58c0c1359111728bca8796f1a7a5c4f64b57747e",
+      "original_command_sha256": "e72caa9b3b2bb1c3ab24d828864670717d9740d36caeba0add7804e82c498bda",
+      "port_and_original_command_bytes_equal": false,
+      "port_kernel_type_actual_source_snapshot_verified": true,
+      "original_command_boundaries_from_full_file_equal_line_correspondence": true
+    },
+    "inline_support_witnesses": [],
+    "facts": "missions/pi-irrationality-measure/verification/sketch-FormalLogTruncation-20261007-223910.log",
+    "facts_sha256": "59bf6b39630930bc0137ae4d3ea482679f75e9ba60a0ec2cf9bb91e896461be6"
+  }
+}

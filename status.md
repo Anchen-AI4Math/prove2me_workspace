@@ -1,6 +1,6 @@
 # Prove2Me workspace dashboard
 
-Navigation refreshed: 2026-09-27 (Asia/Shanghai). Platform state was not refreshed
+Navigation refreshed: 2026-10-11 (Asia/Shanghai). Platform state was not refreshed
 as part of this local reorganization. Each mission handoff owns its dated status.
 
 ## Start here
@@ -12,19 +12,17 @@ workspace target and does not validate any mission.
 - [All missions and workstreams](missions/README.md) — includes Magic Squares I–V,
   node maintenance, and the number-theory textbook proposal.
 - [Workspace layout and contribution rules](docs/workspace-layout.md)
+- [Large verification data: verify and restore](archives/verification/README.md)
+- [Workspace cleanup record](docs/workspace-cleanup-2026-10-11.json)
 - [Earlier dashboard and full historical work log](docs/history/status-before-2026-09-20.md)
 - [Platform workflow](SKILL.md)
 
-## Work areas
+## Find a task
 
-| Area | Handoffs |
-| --- | --- |
-| Magic-square counting | [I](missions/magic-squares/status.md), [II](missions/semi-magic/status.md), [III](missions/normal3/status.md), [IV](missions/magic-squares-iv/status.md), [V](missions/magic-squares-v/status.md) |
-| Magic-square maintenance | [Node reattachment](missions/magic-squares-reattach/status.md) |
-| Analytic number theory | [Five primes](missions/five-primes/status.md), [Weak Goldbach](missions/weak-goldbach/status.md) |
-| Euler gamma | [Session checkpoint](missions/euler-gamma/SESSION-CHECKPOINT.md) |
-| Probability | [Bunkbed](missions/bunkbed/status.md) |
-| Proposed work | [Number theory textbook](missions/nt-textbook-proposal/DRAFT.md) |
+The [mission index](missions/README.md) is the single navigation table for all
+21 workstreams, including the pi irrationality-measure and Snaky tasks.
+Use `python scripts/workspace.py list` for the current registry and
+`python scripts/workspace.py show <slug>` for the selected handoff and tools.
 
 ## Shared environment
 

@@ -1,0 +1,61 @@
+{
+  "status": "PURE_MATHEMATICAL_SCOPE_REVIEW_CONTROLS_PENDING",
+  "Lean_calls_in_this_review": 0,
+  "API_calls": 0,
+  "observations": [
+    {
+      "claim": "The actual sequence is the original rational weightedR evaluated at m+1 and cast to real",
+      "source": "formalization/AnalyticWeightedBound.lean",
+      "definition": "actualWeightedSequence"
+    },
+    {
+      "claim": "Raw moment is actualR(n,k) times (k(k+n))^r, with first n terms genuinely zero",
+      "source": "formalization/AnalyticMomentBounds.lean",
+      "definitions": [
+        "actualMomentTerm",
+        "actualMomentSequence"
+      ],
+      "lemmas": [
+        "actualR_zero_of_pos_le",
+        "actualMomentTerm_zero_of_pos_le"
+      ]
+    },
+    {
+      "claim": "Compact k=1,...,2n-1 and infinite tail k>=2n are a disjoint exhaustive split; n=1 compact part contains only the k=1 zero",
+      "source": "formalization/AnalyticMomentBounds.lean",
+      "lemma": "actualMoment_eq_compact_add_tail"
+    },
+    {
+      "claim": "No summability input is assumed: reciprocal-power exponent >=7n+1>=8 for n>=1 and r<=4 yields actual summability before tsum bounds",
+      "source": "formalization/AnalyticMomentBounds.lean",
+      "lemmas": [
+        "tailPower_ge",
+        "actualMomentSequence_summable"
+      ]
+    },
+    {
+      "claim": "Single C=5184exp(18)+(729/224)exp(7) and decay2641/250 apply uniformly to all five actual moments",
+      "source": "formalization/AnalyticUniformMomentBound.lean",
+      "lemma": "actualMoment_uniform_bound"
+    },
+    {
+      "claim": "Arbitrary signs and changing quartic coefficients are handled by the genuine Finset triangle inequality and the exact 5-term polynomial evaluation; no coefficient growth or parity restriction occurs",
+      "source": "formalization/AnalyticWeightedBound.lean",
+      "lemmas": [
+        "actualWeightedSequence_eq_actual_moment_sum",
+        "changing_quartics_uniform_bound"
+      ]
+    },
+    {
+      "claim": "The explicit epsilon_n=(log C+10log(n+1))/n tends to zero; n=0 remains outside the final exponent-rewrite domain",
+      "source": "formalization/AnalyticWeightedBound.lean",
+      "lemmas": [
+        "uniformError_tendsto_zero",
+        "analyticPrefactor_eq_uniform_exponent",
+        "actual_weighted_uniform_o_one"
+      ]
+    }
+  ],
+  "completion_boundary": "Only actual uniform analytic upper estimate; integer preimage/height, volume V, J and irrationality remain separate obligations",
+  "independent_expanded_raw_goal_contracts_prepared": 4
+}

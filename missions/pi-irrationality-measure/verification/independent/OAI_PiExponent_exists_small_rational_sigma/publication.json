@@ -1,0 +1,120 @@
+{
+  "theorem_name": "OAI.PiExponent.exists_small_rational_sigma",
+  "metadata_sha256": "9aaf311d221bc242205c63af208242305b1ca5d426e8ca8dd74a0c851423ca8a",
+  "publish_payload_sha256": "095d768375701e946654497c8fcae95615efa355a972b4e9ac3b20e654f84ee7",
+  "publish_intent": {
+    "at_utc": "2026-10-09T09:05:30.452704+00:00",
+    "statement_sha256": "5d918c9dc2f80f3d52c8a1a6bc509e7f0580e7be0005add36382adcfbe7b4057",
+    "payload": {
+      "problems": [
+        {
+          "theorem_name": "OAI.PiExponent.exists_small_rational_sigma",
+          "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+          "formal_statement": "theorem OAI.PiExponent.exists_small_rational_sigma\r\n    (m : ℕ) (α β θ : ℝ) (hα : α < 1) (hβ : β < 1) (hθ : θ < 1) :\r\n    ∃ σ : ℚ, 0 < (σ : ℝ) ∧\r\n      (1 + 3 * (σ : ℝ)) ^ (m + 1) * α < 1 ∧\r\n      (1 + 3 * (σ : ℝ)) ^ m * β < 1 ∧\r\n      (1 + (σ : ℝ)) * θ < 1 := by sorry",
+          "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Sigma.lean#L7-L34",
+          "theorem_title": "A small positive rational parameter satisfying three strict bounds",
+          "natural_language_statement": "Let m be a natural number and let α, β, and θ be real numbers satisfying α < 1, β < 1, and θ < 1. No lower-bound or positivity assumptions on α, β, or θ are imposed. Then there exists a rational number σ > 0 such that (1 + 3σ)^(m+1)α < 1, (1 + 3σ)^mβ < 1, and (1 + σ)θ < 1, with σ viewed as a real number in these inequalities.",
+          "tags": [
+            "openai-pi-exponent-017",
+            "number-theory",
+            "parameter-selection"
+          ]
+        }
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "095d768375701e946654497c8fcae95615efa355a972b4e9ac3b20e654f84ee7"
+  },
+  "updated_at_utc": "2026-10-09T09:08:31.649831+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "b825facf-39d5-4636-b708-b7d9c8e6169d",
+          "name": "OAI.PiExponent.exists_small_rational_sigma"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "job_id": "b825facf-39d5-4636-b708-b7d9c8e6169d",
+  "last_publish_verdict": {
+    "id": "b825facf-39d5-4636-b708-b7d9c8e6169d",
+    "kind": "problem",
+    "theorem_name": "OAI.PiExponent.exists_small_rational_sigma",
+    "theorem_title": "A small positive rational parameter satisfying three strict bounds",
+    "formal_statement": "theorem OAI.PiExponent.exists_small_rational_sigma\r\n    (m : ℕ) (α β θ : ℝ) (hα : α < 1) (hβ : β < 1) (hθ : θ < 1) :\r\n    ∃ σ : ℚ, 0 < (σ : ℝ) ∧\r\n      (1 + 3 * (σ : ℝ)) ^ (m + 1) * α < 1 ∧\r\n      (1 + 3 * (σ : ℝ)) ^ m * β < 1 ∧\r\n      (1 + (σ : ℝ)) * θ < 1 := by sorry",
+    "natural_language_statement": "Let m be a natural number and let α, β, and θ be real numbers satisfying α < 1, β < 1, and θ < 1. No lower-bound or positivity assumptions on α, β, or θ are imposed. Then there exists a rational number σ > 0 such that (1 + 3σ)^(m+1)α < 1, (1 + 3σ)^mβ < 1, and (1 + σ)θ < 1, with σ viewed as a real number in these inequalities.",
+    "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Sigma.lean#L7-L34",
+    "tags": [
+      "openai-pi-exponent-017",
+      "number-theory",
+      "parameter-selection"
+    ],
+    "visibility": "public",
+    "status": "PUBLISHED",
+    "error_message": "",
+    "theorem_id": "65a1e0c8-2ccf-48b8-b28e-589eec73910f",
+    "created_at": "2026-10-09T09:05:33.169882+00:00",
+    "updated_at": "2026-10-09T09:05:40.597306+00:00"
+  },
+  "theorem_id": "65a1e0c8-2ccf-48b8-b28e-589eec73910f",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "65a1e0c8-2ccf-48b8-b28e-589eec73910f",
+      "theorem_name": "OAI.PiExponent.exists_small_rational_sigma",
+      "theorem_title": "A small positive rational parameter satisfying three strict bounds",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_small_rational_sigma\r\n    (m : ℕ) (α β θ : ℝ) (hα : α < 1) (hβ : β < 1) (hθ : θ < 1) :\r\n    ∃ σ : ℚ, 0 < (σ : ℝ) ∧\r\n      (1 + 3 * (σ : ℝ)) ^ (m + 1) * α < 1 ∧\r\n      (1 + 3 * (σ : ℝ)) ^ m * β < 1 ∧\r\n      (1 + (σ : ℝ)) * θ < 1 := by sorry",
+      "natural_language_statement": "Let m be a natural number and let α, β, and θ be real numbers satisfying α < 1, β < 1, and θ < 1. No lower-bound or positivity assumptions on α, β, or θ are imposed. Then there exists a rational number σ > 0 such that (1 + 3σ)^(m+1)α < 1, (1 + 3σ)^mβ < 1, and (1 + σ)θ < 1, with σ viewed as a real number in these inequalities.",
+      "created_at": "2026-10-09T09:05:39.745293+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "parameter-selection"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Sigma.lean#L7-L34",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-09T09:06:44.004986+00:00",
+    "solution_sha256": "b7474bb11f09226d11dff832f22f65c327648f81bc1c299fae6f6177f40f22d1",
+    "theorem_id": "65a1e0c8-2ccf-48b8-b28e-589eec73910f",
+    "multipart_sha256": "1802a9cb1934eb3083d18a1503a01a5bb10ceefafa187364526b371b8589c42f"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "f40e2d1c-fb5e-4123-94f8-37e096adc39b",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "f40e2d1c-fb5e-4123-94f8-37e096adc39b",
+  "last_verify_verdict": {
+    "id": "f40e2d1c-fb5e-4123-94f8-37e096adc39b",
+    "theorem_id": "65a1e0c8-2ccf-48b8-b28e-589eec73910f",
+    "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "65a1e0c8-2ccf-48b8-b28e-589eec73910f/418b0711-62a5-416a-ba5d-876ae8758fe3/f40e2d1c-fb5e-4123-94f8-37e096adc39b.lean",
+    "created_at": "2026-10-09T09:06:46.726549+00:00",
+    "updated_at": "2026-10-09T09:07:22.377259+00:00"
+  },
+  "confirmed_proved": true
+}

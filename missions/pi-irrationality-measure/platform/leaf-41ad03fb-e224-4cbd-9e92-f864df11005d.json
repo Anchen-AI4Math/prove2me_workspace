@@ -1,0 +1,22 @@
+{
+  "theorem_id": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_truncatedJetCoeff",
+  "theorem_title": "The concrete matrix computes truncated jet coefficients",
+  "status": "Open",
+  "formal_statement": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\ntheorem OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_truncatedJetCoeff\n    {nu : Real} (d : FixedData nu) (H : Rat)\n    (P : FormalInterpolation.WeightedPolynomial d.w0\n      (MatrixArithmetic.logWeights (finiteDenominators d)) (H : Real)) :\n    forall rho : Row d H,\n      (actualMatrix d (H : Real)).mulVecLin\n          (fun c : Column d (H : Real) =>\n            P.val.coeff (InterpolationMatrix.exponentVector c.1)) rho =\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector rho.2.val)\n          (MvPolynomial.aeval (Fin.cases (1 + MvPowerSeries.X 0)\n            (fun i => MvPowerSeries.C ((rho.1.val : Complex) *\n                MatrixArithmetic.rationalCenters (finiteNumerators d)\n                  (finiteDenominators d) i) + MvPowerSeries.X i.succ +\n              FormalInterpolation.liftSeries d.m\n                ((PowerSeries.trunc\n                  (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i)\n                  (PowerSeries.log Complex) : Polynomial Complex) : PowerSeries Complex))) P.val) := by sorry\n",
+  "natural_language_statement": "For an admissible determinant family and a weighted polynomial, the concrete truncated logarithmic matrix applied to the polynomial coefficient vector equals the coefficient packet of the truncated logarithmic jet at every row.",
+  "created_at": "2026-10-08T06:35:46.227325+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formal-interpolation",
+    "number-theory"
+  ],
+  "preamble": "",
+  "source": "openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/FormalMatrixBridge.lean, theorem truncatedLogMatrix_mulVec_eq_coeff",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

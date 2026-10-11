@@ -1,0 +1,10 @@
+import Definitions.Def_ZetaNine_CoefficientMapMatrix
+
+set_option autoImplicit false
+open scoped BigOperators Matrix
+open Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge
+
+theorem ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_coordinates_product (n : ℕ) (hn2 : 2 ≤ n)
+    (hn : Even n) (b a : ℤ) :
+    polynomialCoordinates (selectedIntegerMultiplier n hn2 hn b a) =
+      selectedIntegerPair b a ᵥ* (selectionMatrix * (actualFMatrix n)⁻¹):= by sorry

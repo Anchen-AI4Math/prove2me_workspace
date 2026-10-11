@@ -1,0 +1,57 @@
+{
+  "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+  "independently_closed_project_dependencies": [
+    "OAI.PiExponent.exists_minimum_weight"
+  ],
+  "full_main_tree_complete": true,
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+  "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+  "source_sha256": "b3bf8453c0816835902670015c46f138faa636d2bdb7290ead8aa8ce6d026415",
+  "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+  "original_source_sha256": "b76595598194e525a5652cfb07430c5cb8835d12e1f5892934223afa0e320a37",
+  "source_graph": "missions/pi-irrationality-measure/verification/decl_graph.jsonl",
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "facts": "missions/pi-irrationality-measure/verification/sketch-WeightErrorMargin-20261008-000633.log",
+  "facts_sha256": "4c93bc769567802619c046fd1a7b4e631ed11c7d30704d8ad26853ef893149bb",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+  "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+  "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : \u2115) (hm : 1 \u2264 m) (w : Fin m \u2192 \u211d) (X : \u211d)\r\n    (hX : \u2200 i, X < w i) :\r\n    \u2203 wstar : \u211d, X < wstar \u2227 (\u2200 i, wstar \u2264 w i) \u2227\r\n      \u2203 i, wstar = w i := by sorry",
+  "solution_fragment": "theorem solution\r\n    (m : \u2115) (hm : 1 \u2264 m) (w : Fin m \u2192 \u211d) (X : \u211d)\r\n    (hX : \u2200 i, X < w i) :\r\n    \u2203 wstar : \u211d, X < wstar \u2227 (\u2200 i, wstar \u2264 w i) \u2227\r\n      \u2203 i, wstar = w i := by\r\n  have hne : (Finset.univ : Finset (Fin m)).Nonempty :=\r\n    \u27e8\u27e80, by omega\u27e9, Finset.mem_univ _\u27e9\r\n  obtain \u27e8i, _, hi\u27e9 := Finset.exists_min_image Finset.univ w hne\r\n  exact \u27e8w i, hX i, (fun j => hi j (Finset.mem_univ j)), i, rfl\u27e9",
+  "statement_edits": [
+    {
+      "start": 2144,
+      "end": 2165,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 36
+    },
+    {
+      "start": 2344,
+      "end": 2594,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 2144,
+      "end": 2165,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    }
+  ],
+  "statement": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_exists_minimum_weight/Thm_OAI_PiExponent_exists_minimum_weight.lean",
+  "statement_sha256": "6b14d53c70726d6da2ff056b2203e8f4dc413f48f6297031c4ab2550403f7864",
+  "solution": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_exists_minimum_weight/Sol_OAI_PiExponent_exists_minimum_weight.lean",
+  "solution_sha256": "dcf2242460dfd678557e83ccdb7050a19e3689a731513960b9f28bca8b1be836",
+  "snapshot_core_sha256": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+  "runtime_sha256": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+  "validated": true,
+  "pending": [],
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "5988e44f5c37e02bcb8d07194e7e5fd4f94314c06ed3dce59a61b08326f3ed58",
+    "SnapshotGenerated.lean": "09dd56feefc95966a7e6e941fbd3712f677d0875ad6b9d9b249d078f0a60ba3b"
+  },
+  "validation": "missions/pi-irrationality-measure/verification/independent/OAI_PiExponent_exists_minimum_weight/validation.json",
+  "validation_sha256": "7949399ebbe2bb66c5adc97d4a0bcc5a99ceeaf512f5996cf3107cc33dc988e5"
+}

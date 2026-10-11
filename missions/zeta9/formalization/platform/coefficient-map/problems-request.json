@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.clear_highest_pole",
+      "theorem_title": "Clearing the actual highest pole at every regular point",
+      "formal_statement": "theorem ZetaNine.CoefficientMap.clear_highest_pole (n j : ℕ) (hj : j ≤ n) (t : ℚ)\n    (ht : ∀ k ≤ n, t + (k : ℚ) ≠ 0) :\n    actualR n t * (t + j) ^ 9 = clearedR n j t:= by sorry",
+      "natural_language_statement": "Let $n,j$ be natural numbers with $j\\le n$. Define $N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i)$, $Q_n(t)=\\prod_{k=0}^{n}(t+k)$ and $R_n(t)=N_n(t)/Q_n(t)^9$. Let $Q_{n,j}$ omit the factor $t+j$, and write $\\widetilde R_{n,j}=N_n/Q_{n,j}^9$. At every rational point $t$ satisfying $t+k\\ne0$ for all $0\\le k\\le n$,\n\n$$R_n(t)(t+j)^9=\\widetilde R_{n,j}(t).$$\n\nThis identifies the actual cleared expression on the regular domain. It is a finite clearing identity; evaluation of the uncleared rational function at a pole is not used as a coefficient.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMap\n\nset_option autoImplicit false\nopen Finset Polynomial\nopen ZetaNine.CoefficientMap\n",
+      "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Original endpoint declaration lines 75–85.",
+      "tags": [
+        "number-theory",
+        "rational-functions",
+        "pole-coefficients",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq",
+      "theorem_title": "Closed formula for the actual highest cleared-pole coefficient",
+      "formal_statement": "theorem ZetaNine.CoefficientMap.leadingPoleCoefficient_eq (n j : ℕ) (hj : j ≤ n) :\n    leadingPoleCoefficient n j =\n      (-1 : ℚ) ^ (n + j) * (n.choose j : ℚ) ^ 9 *\n        ((n + j).choose n : ℚ) * ((2 * n - j).choose n : ℚ):= by sorry",
+      "natural_language_statement": "For natural numbers $n,j$ with $j\\le n$, let $C_{n,j}$ be the value at $t=-j$ of the actual cleared expression $N_n(t)/Q_{n,j}(t)^9$, where $N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i)$ and $Q_{n,j}(t)=\\prod_{0\\le k\\le n,\\ k\\ne j}(t+k)$. Then\n\n$$C_{n,j}=(-1)^{n+j}\\binom{n}{j}^{9}\\binom{n+j}{n}\\binom{2n-j}{n}.$$\n\nThe coefficient is defined by the original products and clearing operation; this identity computes that value. It covers both endpoint poles $j=0,n$ and the case $n=0$, without a parity assumption.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMap\n\nset_option autoImplicit false\nopen Finset Polynomial\nopen ZetaNine.CoefficientMap\n",
+      "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Original endpoint declaration lines 178–191.",
+      "tags": [
+        "number-theory",
+        "rational-functions",
+        "pole-coefficients",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even",
+      "theorem_title": "Actual weighted highest-pole coefficient at every even order",
+      "formal_statement": "theorem ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even (n j : ℕ) (hn : Even n)\n    (hj : j ≤ n) (W : ℚ[X]) :\n    weightedLeadingPoleCoefficient n j W =\n      (-1 : ℚ) ^ j * (n.choose j : ℚ) ^ 9 *\n        ((n + j).choose n : ℚ) * ((2 * n - j).choose n : ℚ) *\n          W.eval (-(j : ℚ) * (n - j : ℕ)):= by sorry",
+      "natural_language_statement": "Let $n,j$ be natural numbers, with $n$ even and $j\\le n$, and let $W\\in\\mathbb Q[X]$ be any rational polynomial. Starting from the actual rational function $R_n(t)=N_n(t)/Q_n(t)^9$, multiply by $W(t(t+n))$. Define its highest cleared-pole value $C^W_{n,j}$ by evaluating $N_n(t)W(t(t+n))/Q_{n,j}(t)^9$ at $t=-j$. Then\n\n$$C^W_{n,j}=(-1)^j\\binom{n}{j}^{9}\\binom{n+j}{n}\\binom{2n-j}{n}\\,W\\bigl(-j(n-j)\\bigr).$$\n\nThis computes the effect of the actual polynomial multiplier on the highest cleared-pole value. The multiplier is arbitrary, including the zero polynomial, and the weighted coefficient can be zero. The statement covers $n=0$ and does not assert a full Laurent expansion, a lower-coefficient map, or an infinite-sum identity.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMap\n\nset_option autoImplicit false\nopen Finset Polynomial\nopen ZetaNine.CoefficientMap\n",
+      "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Original endpoint declaration lines 260–266.",
+      "tags": [
+        "number-theory",
+        "rational-functions",
+        "pole-coefficients",
+        "formalization"
+      ]
+    }
+  ]
+}

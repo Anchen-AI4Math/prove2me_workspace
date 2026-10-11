@@ -1,0 +1,4649 @@
+{
+  "original_actual_definition_records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "label": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "type": "ℕ → Polynomial ℚ → Prop",
+      "value": "fun n W => ∀ j ≤ n, ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "label": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "type": "ℕ → ℕ → Polynomial ℚ → Polynomial ℚ",
+      "value": "fun n j W =>\n  ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 *\n    (ZetaNine.CoefficientMapPartialFractions.localTruncation n j W).comp (Polynomial.X + Polynomial.C ↑j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "label": "ZetaNine.CoefficientMap.actualR",
+      "type": "ℕ → ℚ → ℚ",
+      "value": "fun n t => ZetaNine.CoefficientMap.numerator n t / ZetaNine.CoefficientMap.poleProduct n t ^ 9"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "label": "ZetaNine.CoefficientMapJet.localU",
+      "type": "ℕ → ℕ → Polynomial ℚ",
+      "value": "fun n j =>\n  ZetaNine.CoefficientMapJet.shiftedVariable j * (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "label": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "type": "ℕ → ℕ → Polynomial ℚ",
+      "value": "fun n j =>\n  (Polynomial.C (↑n.factorial ^ 7) *\n      ∏ i ∈ Finset.range n, (ZetaNine.CoefficientMapJet.shiftedVariable j - Polynomial.C (↑i + 1))) *\n    ∏ i ∈ Finset.range n, (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑n + Polynomial.C (↑i + 1))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "label": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "type": "ℕ → ℕ → PowerSeries ℚ",
+      "value": "fun n j =>\n  ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j) *\n    (↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9)⁻¹"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "type": "ℕ → ℕ → Polynomial ℚ",
+      "value": "fun n j => ∏ k ∈ (Finset.range (n + 1)).erase j, (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑k)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "label": "ZetaNine.CoefficientMap.poleProduct",
+      "type": "ℕ → ℚ → ℚ",
+      "value": "fun n t => ∏ k ∈ Finset.range (n + 1), (t + ↑k)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "label": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "type": "ℕ → ℕ → ℕ → ℚ",
+      "value": "fun n j s => (PowerSeries.coeff (9 - s)) (ZetaNine.CoefficientMapJet.clearedSeries n j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "label": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "type": "ℕ → ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n T W =>\n  ∑ j ∈ Finset.range (n + 1),\n    ∑ s ∈ Finset.Icc 1 9,\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n        (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "label": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "type": "(n : ℕ) → Polynomial ℚ → Fin (n + 1) → Fin 9 → ℚ",
+      "value": "fun n W j s => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (↑j) (↑s + 1) W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "label": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "type": "ℕ → Polynomial ℚ",
+      "value": "fun n => Polynomial.X * (Polynomial.X + Polynomial.C ↑n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "label": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "type": "ℕ → ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n T W => ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "label": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "type": "ℕ → ℕ → Polynomial ℚ → ℚ → ℚ",
+      "value": "fun n j W t => ZetaNine.CoefficientMap.clearedR n j t * Polynomial.eval (t * (t + ↑n)) W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "label": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "type": "ℕ → ℕ → ℚ → ℚ",
+      "value": "fun n j t => ∏ k ∈ (Finset.range (n + 1)).erase j, (t + ↑k)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "label": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "type": "ℕ → ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n s W => ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "label": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "type": "ℕ → ℕ → Polynomial ℚ",
+      "value": "fun n j => ∏ k ∈ (Finset.range (n + 1)).erase j, (Polynomial.X + Polynomial.C ↑k)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "label": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "type": "ℕ → ℕ → Polynomial ℚ → Polynomial ℚ",
+      "value": "fun n j W => (PowerSeries.trunc 9) (ZetaNine.CoefficientMapJet.weightedClearedSeries n j W)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "label": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "type": "ℕ → ℕ → Polynomial ℤ",
+      "value": "fun n j => Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X + Polynomial.X ^ 2"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "label": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "type": "ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n W =>\n  -∑ j ∈ Finset.range (n + 1),\n      ∑ s ∈ Finset.Icc 1 9,\n        ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W * ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "label": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "type": "ℕ → ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n j W => ZetaNine.CoefficientMap.clearedWeightedR n j W (-↑j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "label": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "type": "ℕ → Polynomial ℚ → Polynomial ℚ",
+      "value": "fun n W =>\n  ∑ j ∈ Finset.range (n + 1),\n    ∑ s ∈ Finset.Icc 1 9,\n      Polynomial.C (ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W) *\n          ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 *\n        (Polynomial.X + Polynomial.C ↑j) ^ (9 - s)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "type": "ℕ → Polynomial ℚ",
+      "value": "fun n =>\n  (Polynomial.C (↑n.factorial ^ 7) * ∏ i ∈ Finset.range n, (Polynomial.X - Polynomial.C (↑i + 1))) *\n    ∏ i ∈ Finset.range n, (Polynomial.X + Polynomial.C ↑n + Polynomial.C (↑i + 1))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "label": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "type": "ℕ → ℕ → ℕ → Polynomial ℚ → ℚ",
+      "value": "fun n j s W => (PowerSeries.coeff (9 - s)) (ZetaNine.CoefficientMapJet.weightedClearedSeries n j W)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "label": "ZetaNine.CoefficientMap.weightedR",
+      "type": "ℕ → Polynomial ℚ → ℚ → ℚ",
+      "value": "fun n W t => ZetaNine.CoefficientMap.actualR n t * Polynomial.eval (t * (t + ↑n)) W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "label": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "type": "ℕ → Polynomial ℚ → Prop",
+      "value": "fun n W => 2 * n + 2 * W.natDegree < 9 * (n + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "label": "ZetaNine.HarmonicStability.logDen",
+      "type": "ℚ → ℝ",
+      "value": "fun q => Real.log ↑q.den"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "label": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "type": "ℕ → ℕ → Polynomial ℚ → PowerSeries ℚ",
+      "value": "fun n j W =>\n  ↑((ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).comp\n        (ZetaNine.CoefficientMapJet.shiftedVariable j)) *\n    (↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9)⁻¹"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "label": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "type": "ℕ → ℕ → Polynomial ℚ → PowerSeries ℚ",
+      "value": "fun n j W => ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(W.comp (ZetaNine.CoefficientMapJet.localU n j))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "label": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "type": "ℕ → ℕ → ℚ",
+      "value": "fun n j => ZetaNine.CoefficientMap.clearedR n j (-↑j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "label": "ZetaNine.CoefficientMap.clearedR",
+      "type": "ℕ → ℕ → ℚ → ℚ",
+      "value": "fun n j t => ZetaNine.CoefficientMap.numerator n t / ZetaNine.CoefficientMap.clearedPoleProduct n j t ^ 9"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "label": "ZetaNine.CoefficientMap.numerator",
+      "type": "ℕ → ℚ → ℚ",
+      "value": "fun n t => (↑n.factorial ^ 7 * ∏ i ∈ Finset.range n, (t - (↑i + 1))) * ∏ i ∈ Finset.range n, (t + ↑n + (↑i + 1))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "label": "ZetaNine.HarmonicStability.harmonicPower",
+      "type": "ℕ → ℕ → ℚ",
+      "value": "fun s N => ∑ j ∈ Finset.Icc 1 N, 1 / ↑j ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "type": "ℕ → Polynomial ℚ",
+      "value": "fun n => ∏ j ∈ Finset.range (n + 1), (Polynomial.X + Polynomial.C ↑j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "label": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "type": "ℕ → Polynomial ℚ",
+      "value": "fun j => Polynomial.X - Polynomial.C ↑j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "type": "ℕ → Polynomial ℚ → Polynomial ℚ",
+      "value": "fun n W => ZetaNine.CoefficientMapInjectivity.baseNumerator n * W.comp (ZetaNine.CoefficientMapInjectivity.baseU n)"
+    }
+  ],
+  "definition_comparisons": [
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "definition",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "solution_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "reference_0",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "solution_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "reference_1",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "solution_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "pass": true
+    },
+    {
+      "context": "reference_2",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "pass": true
+    }
+  ],
+  "target_comparisons": [
+    {
+      "target": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "original_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)",
+      "solution_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)",
+      "reference_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)",
+      "pass": true,
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "extra_hypotheses": []
+    },
+    {
+      "target": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "original_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "solution_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "reference_type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "pass": true,
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "extra_hypotheses": []
+    },
+    {
+      "target": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "original_type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s",
+      "solution_type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s",
+      "reference_type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s",
+      "pass": true,
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "extra_hypotheses": []
+    }
+  ],
+  "proof_comparisons": [
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.checked_actual_finite_harmonic_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 0,
+      "declaration": "solution",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.checked_actual_grouped_finite_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 1,
+      "declaration": "solution",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.checked_harmonic_difference_eq_shifted",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "native_declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "native_declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "solution_index": 2,
+      "declaration": "solution",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "pass": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "boundary_comparisons": [
+    {
+      "declaration": "ZetaNine.HarmonicStability.logDen",
+      "native_declaration": "ZetaNine.HarmonicStability.logDen",
+      "type": "ℚ → ℝ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "native_declaration": "ZetaNine.HarmonicStability.harmonicPower",
+      "type": "ℕ → ℕ → ℚ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "type": "ℕ → ℚ[X] → ℚ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.finiteL",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.shiftedTail",
+      "type": "ℕ → ℕ → ℚ[X] → ℚ",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "type": "∀ (s T : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + 1) = ZetaNine.HarmonicStability.harmonicPower s T + 1 / ↑(T + 1) ^ s",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "type": "∀ (s T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.checked_actual_grouped_finite_identity",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "native_declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_positive_integer_regular",
+      "native_declaration": "fs_ind_positive_integer_regular",
+      "type": "∀ (n t : ℕ), 1 ≤ t → ∀ k ≤ n, ↑t + ↑k ≠ 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_finite_exchange",
+      "native_declaration": "fs_ind_finite_exchange",
+      "type": "∀ (n T : ℕ) (f : ℕ → ℕ → ℕ → ℚ),\n  ∑ t ∈ Finset.Icc 1 T, ∑ j ∈ Finset.range (n + 1), ∑ s ∈ Finset.Icc 1 9, f t j s =\n    ∑ j ∈ Finset.range (n + 1), ∑ s ∈ Finset.Icc 1 9, ∑ t ∈ Finset.Icc 1 T, f t j s",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_closed_expanded",
+      "native_declaration": "fs_ind_closed_expanded",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_closed_grouped",
+      "native_declaration": "fs_ind_closed_grouped",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_closed_no_simple",
+      "native_declaration": "fs_ind_closed_no_simple",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_closed_odd",
+      "native_declaration": "fs_ind_closed_odd",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree < 9 * (n + 1) →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_shift_T_zero",
+      "native_declaration": "fs_ind_shift_T_zero",
+      "type": "∀ (s j : ℕ),\n  ∑ t ∈ Finset.Icc 1 0, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (0 + j) - ZetaNine.HarmonicStability.harmonicPower s j",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_shift_j_zero",
+      "native_declaration": "fs_ind_shift_j_zero",
+      "type": "∀ (s T : ℕ), ∑ t ∈ Finset.Icc 1 T, 1 / ↑t ^ s = ZetaNine.HarmonicStability.harmonicPower s T",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_shift_s_zero",
+      "native_declaration": "fs_ind_shift_s_zero",
+      "type": "∀ (T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ 0 =\n    ZetaNine.HarmonicStability.harmonicPower 0 (T + j) - ZetaNine.HarmonicStability.harmonicPower 0 j",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_tail_positive_shift",
+      "native_declaration": "fs_ind_tail_positive_shift",
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_finite_T_zero",
+      "native_declaration": "fs_ind_finite_T_zero",
+      "type": "∀ (n : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.finiteL n 0 W = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_tail_T_zero_cancels_constant",
+      "native_declaration": "fs_ind_tail_T_zero_cancels_constant",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.shiftedTail n 0 W = -ZetaNine.CoefficientMapFiniteSum.constantTerm n W",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_constant_n_zero",
+      "native_declaration": "fs_ind_constant_n_zero",
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.constantTerm 0 W = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_tail_n_zero",
+      "native_declaration": "fs_ind_tail_n_zero",
+      "type": "∀ (T : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 T W = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_series",
+      "native_declaration": "fs_ind_n_zero_series",
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapJet.weightedClearedSeries 0 0 W = ↑(W.comp (Polynomial.X ^ 2))",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_proper",
+      "native_declaration": "fs_ind_n_zero_X_four_proper",
+      "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_simple_coefficient",
+      "native_declaration": "fs_ind_n_zero_X_four_simple_coefficient",
+      "type": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 1 (Polynomial.X ^ 4) = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_higher_coefficients",
+      "native_declaration": "fs_ind_n_zero_X_four_higher_coefficients",
+      "type": "∀ (s : ℕ), 2 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 s (Polynomial.X ^ 4) = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_rho_one",
+      "native_declaration": "fs_ind_n_zero_X_four_rho_one",
+      "type": "ZetaNine.CoefficientMapFiniteSum.rho 0 1 (Polynomial.X ^ 4) = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_rho_higher",
+      "native_declaration": "fs_ind_n_zero_X_four_rho_higher",
+      "type": "∀ (s : ℕ), 2 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_no_simple_cancellation",
+      "native_declaration": "fs_ind_n_zero_X_four_no_simple_cancellation",
+      "type": "¬ZetaNine.CoefficientMapFiniteSum.rho 0 1 (Polynomial.X ^ 4) = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_actual_simple_pole",
+      "native_declaration": "fs_ind_n_zero_X_four_actual_simple_pole",
+      "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_actual_finite",
+      "native_declaration": "fs_ind_n_zero_X_four_actual_finite",
+      "type": "∀ (T : ℕ),\n  ZetaNine.CoefficientMapFiniteSum.finiteL 0 T (Polynomial.X ^ 4) = ZetaNine.HarmonicStability.harmonicPower 1 T",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_finite_at_one",
+      "native_declaration": "fs_ind_n_zero_X_four_finite_at_one",
+      "type": "ZetaNine.CoefficientMapFiniteSum.finiteL 0 1 (Polynomial.X ^ 4) = 1",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_dropped_simple_RHS",
+      "native_declaration": "fs_ind_n_zero_X_four_dropped_simple_RHS",
+      "type": "ZetaNine.CoefficientMapFiniteSum.constantTerm 0 (Polynomial.X ^ 4) +\n      ∑ s ∈ Finset.Icc 2 9,\n        ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) * ZetaNine.HarmonicStability.harmonicPower s 1 +\n    ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 1 (Polynomial.X ^ 4) =\n  0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_no_simple_without_cancellation_false",
+      "native_declaration": "fs_ind_no_simple_without_cancellation_false",
+      "type": "ZetaNine.CoefficientMapFiniteSum.finiteL 0 1 (Polynomial.X ^ 4) ≠\n  ZetaNine.CoefficientMapFiniteSum.constantTerm 0 (Polynomial.X ^ 4) +\n      ∑ s ∈ Finset.Icc 2 9,\n        ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) * ZetaNine.HarmonicStability.harmonicPower s 1 +\n    ZetaNine.CoefficientMapFiniteSum.shiftedTail 0 1 (Polynomial.X ^ 4)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    },
+    {
+      "declaration": "fs_ind_n_zero_X_four_not_two_degree_gap",
+      "native_declaration": "fs_ind_n_zero_X_four_not_two_degree_gap",
+      "type": "¬2 * 0 + 2 * (Polynomial.X ^ 4).natDegree + 2 ≤ 9 * (0 + 1)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "pass": true
+    }
+  ],
+  "author_new_boundary_records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_stage_difference_T_zero",
+      "definitionValue": null,
+      "type": "∀ (s j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (0 + j) - ZetaNine.HarmonicStability.harmonicPower s 0 =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (0 + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_stage_difference_j_zero",
+      "definitionValue": null,
+      "type": "∀ (s T : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + 0) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 0, 1 / (↑T + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_stage_difference_s_zero",
+      "definitionValue": null,
+      "type": "∀ (T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower 0 (T + j) - ZetaNine.HarmonicStability.harmonicPower 0 T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_stage_harmonicPower_s_zero",
+      "definitionValue": null,
+      "type": "∀ (N : ℕ), ZetaNine.HarmonicStability.harmonicPower 0 N = ↑N"
+    }
+  ],
+  "new_boundary_records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_actual_harmonic_definition",
+      "type": "∀ (s N : ℕ), ZetaNine.HarmonicStability.harmonicPower s N = ∑ j ∈ Finset.Icc 1 N, 1 / ↑j ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_all_order_tail_at_zero",
+      "type": "∀ (s j : ℕ), ZetaNine.HarmonicStability.harmonicPower s j = ∑ k ∈ Finset.Icc 1 j, 1 / ↑k ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_empty_shift_at_any_order",
+      "type": "∀ (s T : ℕ), ZetaNine.HarmonicStability.harmonicPower s (T + 0) - ZetaNine.HarmonicStability.harmonicPower s T = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_order_zero_tail_keeps_shift_size",
+      "type": "∀ (T j : ℕ), ZetaNine.HarmonicStability.harmonicPower 0 (T + j) - ZetaNine.HarmonicStability.harmonicPower 0 T = ↑j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_finite_empty_without_properness",
+      "type": "∀ (n : ℕ) (W : ℚ[X]), ZetaNine.CoefficientMapFiniteSum.finiteL n 0 W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_tail_at_zero_exactly_cancels_B",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.shiftedTail n 0 W = -ZetaNine.CoefficientMapFiniteSum.constantTerm n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_actual_zero_X_four_simple_function",
+      "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_actual_simple_boundary_finite_sum",
+      "type": "∀ (T : ℕ),\n  ZetaNine.CoefficientMapFiniteSum.finiteL 0 T (Polynomial.X ^ 4) = ZetaNine.HarmonicStability.harmonicPower 1 T"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "fs_review_actual_simple_boundary_at_two",
+      "type": "ZetaNine.CoefficientMapFiniteSum.finiteL 0 2 (Polynomial.X ^ 4) = 3 / 2"
+    }
+  ],
+  "native_proof_records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "type": "∀ (n T : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "type": "∀ (s T : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + 1) = ZetaNine.HarmonicStability.harmonicPower s T + 1 / ↑(T + 1) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "type": "∀ (s T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+      "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseNumerator n).natDegree ≤ 2 * n"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+      "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseU n).natDegree = 2"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+      "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n).natDegree = n + 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+      "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9).natDegree = 9 * (n + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+      "type": "∀ (a b : ℕ), a ≠ b → IsCoprime ((Polynomial.X + Polynomial.C ↑a) ^ 9) ((Polynomial.X + Polynomial.C ↑b) ^ 9)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).natDegree ≤ 2 * n + 2 * W.natDegree"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "type": "∀ (n j : ℕ),\n  ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+      "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "type": "∀ (n j : ℕ), PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+      "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j + z)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+      "type": "∀ (j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedVariable j) = -↑j + z"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedClearedSeries n j W *\n      ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.weightedR n W t =\n          ∑ j ∈ Finset.range (n + 1),\n            ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.weightedNumerator n W =\n      ZetaNine.CoefficientMapPartialFractions.partialNumerator n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ) (t : ℚ),\n  ZetaNine.CoefficientMap.weightedR n W t =\n    Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W) /\n      Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_comp_shift",
+      "type": "∀ (n j : ℕ),\n  (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j).comp\n      (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial_natDegree",
+      "type": "∀ (n j : ℕ), j ≤ n → (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j).natDegree = n"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9 ∣\n    ZetaNine.CoefficientMapInjectivity.weightedNumerator n W -\n      ZetaNine.CoefficientMapPartialFractions.partialNumerator n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_pole_divisibility",
+      "type": "∀ (n i j : ℕ) (W : Polynomial ℚ),\n  j ≤ n → j ≠ i → (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ ZetaNine.CoefficientMapPartialFractions.partialBlock n i W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "type": "∀ (n i j : ℕ) (W : Polynomial ℚ),\n  j ≤ n →\n    j ≠ i →\n      Polynomial.X ^ 9 ∣\n        (ZetaNine.CoefficientMapPartialFractions.partialBlock n i W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  j ≤ n →\n    Polynomial.X ^ 9 ∣\n      (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W -\n            ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).comp\n        (ZetaNine.CoefficientMapJet.shiftedVariable j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapPartialFractions.localTruncation n j W).comp (Polynomial.X + Polynomial.C ↑j) =\n    ∑ s ∈ Finset.Icc 1 9,\n      Polynomial.C (ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W) *\n        (Polynomial.X + Polynomial.C ↑j) ^ (9 - s)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_natDegree_le",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ), (ZetaNine.CoefficientMapPartialFractions.localTruncation n j W).natDegree ≤ 8"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  Polynomial.X ^ 9 ∣\n    (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) -\n      (ZetaNine.CoefficientMapPartialFractions.partialBlock n j W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_comp_own_shift",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapPartialFractions.partialBlock n j W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j ^ 9 *\n      ZetaNine.CoefficientMapPartialFractions.localTruncation n j W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialBlock_natDegree_le",
+      "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  j ≤ n → (ZetaNine.CoefficientMapPartialFractions.partialBlock n j W).natDegree ≤ 9 * n + 8"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_eq_sum_blocks",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapPartialFractions.partialNumerator n W =\n    ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapPartialFractions.partialBlock n j W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "type": "∀ (n : ℕ) (W : Polynomial ℚ), (ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).natDegree ≤ 9 * n + 8"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "type": "∀ (n j s : ℕ) (W : Polynomial ℚ) (t : ℚ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        (∀ k ≤ n, t + ↑k ≠ 0) →\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n                  Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j) ^ 9 *\n                (t + ↑j) ^ (9 - s) /\n              Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9 =\n            ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) = ZetaNine.CoefficientMap.poleProduct n t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "type": "∀ (n j : ℕ) (t : ℚ),\n  j ≤ n →\n    Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) =\n      (t + ↑j) * Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "type": "∀ (n : ℕ) (t : ℚ), (∀ k ≤ n, t + ↑k ≠ 0) → Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polynomial_X_pow_dvd_of_series",
+      "type": "∀ (P : Polynomial ℚ), PowerSeries.X ^ 9 ∣ ↑P → Polynomial.X ^ 9 ∣ P"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.shifted_divisibility_implies_pole_divisibility",
+      "type": "∀ (P : Polynomial ℚ) (j : ℕ),\n  Polynomial.X ^ 9 ∣ P.comp (ZetaNine.CoefficientMapJet.shiftedVariable j) → (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ P"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.truncation_remainder_X_pow_dvd",
+      "type": "∀ (S : PowerSeries ℚ), PowerSeries.X ^ 9 ∣ S - ↑((PowerSeries.trunc 9) S)"
+    }
+  ],
+  "printed_axioms": [
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.clear_highest_pole",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_ne_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_is_integer",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.signed_leadingPoleCoefficient_pos_even",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR_local_coordinate",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMap",
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.actual_local_rational_expression",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.actual_weighted_local_rational_expression",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient_nine",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient_nine",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapJet",
+      "declaration": "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapInjectivity",
+      "declaration": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.localTruncation_comp_eq_sum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.own_block_matches_nine_jets",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.different_block_shift_X_pow_dvd",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.full_candidate_matches_nine_jets",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.denominator_divides_actual_candidate_difference",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries_denominator_identity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidate_first_nine_coefficients",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.candidate_local_coefficients",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partialNumerator_natDegree_le",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapPartialFractions",
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "native-CoefficientMapFiniteSum",
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "staged-Sol_ZetaNine_CoefficientMapFiniteSum_actual_finite_harmonic_identity",
+      "declaration": "solution",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "staged-Sol_ZetaNine_CoefficientMapFiniteSum_actual_grouped_finite_identity",
+      "declaration": "solution",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "invocation": "staged-Sol_ZetaNine_CoefficientMapFiniteSum_harmonic_difference_eq_shifted",
+      "declaration": "solution",
+      "axioms": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  ]
+}

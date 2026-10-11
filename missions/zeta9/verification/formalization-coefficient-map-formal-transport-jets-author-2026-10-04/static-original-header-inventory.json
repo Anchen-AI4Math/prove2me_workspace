@@ -1,0 +1,111 @@
+{
+  "role": "Uncompiled exact header inventory only",
+  "actual_type_or_parser_claimed": false,
+  "records": [
+    {
+      "name": "pole_factor",
+      "header": "theorem pole_factor (m j : ℕ) (hj : j ≤ m) :\n    polePolynomial m = (X + C (j : ℚ)) * clearedPolePolynomial m j"
+    },
+    {
+      "name": "pole_comp_shift_factor",
+      "header": "theorem pole_comp_shift_factor (m j : ℕ) (hj : j ≤ m) :\n    (polePolynomial m).comp (shiftedVariable j) = X * shiftedClearedDenominator m j"
+    },
+    {
+      "name": "pole_upper",
+      "header": "theorem pole_upper (m : ℕ) :\n    polePolynomial (m + 1) = polePolynomial m * (X + C ((m + 1 : ℕ) : ℚ))"
+    },
+    {
+      "name": "upper_cleared_denominator",
+      "header": "theorem upper_cleared_denominator (m j : ℕ) (hj : j ≤ m) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedClearedDenominator m j * (shiftedVariable j + C ((m + 1 : ℕ) : ℚ))"
+    },
+    {
+      "name": "shift_successor_comp",
+      "header": "theorem shift_successor_comp (j : ℕ) (hj : 1 ≤ j) :\n    (X + 1 : ℚ[X]).comp (shiftedVariable j) = shiftedVariable (j - 1)"
+    },
+    {
+      "name": "lower_cleared_denominator",
+      "header": "theorem lower_cleared_denominator (m j : ℕ) (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedVariable j * shiftedClearedDenominator m (j - 1)"
+    },
+    {
+      "name": "upper_whole_actual_series",
+      "header": "theorem upper_whole_actual_series (m j : ℕ) (A : ℚ[X]) (hj : j ≤ m) :\n    numeratorClearedSeries (m + 1) j ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      numeratorClearedSeries m j A"
+    },
+    {
+      "name": "lower_whole_actual_series",
+      "header": "theorem lower_whole_actual_series (m j : ℕ) (A : ℚ[X])\n    (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    numeratorClearedSeries (m + 1) j (X ^ 9 * A.comp (X + 1)) =\n      numeratorClearedSeries m (j - 1) A"
+    },
+    {
+      "name": "local_zero_of_shift_X_nine",
+      "header": "theorem local_zero_of_shift_X_nine (m j s : ℕ) (A : ℚ[X])\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9)\n    (hA : (X : ℚ[X]) ^ 9 ∣ A.comp (shiftedVariable j)) :\n    numeratorLocalCoefficient m j s A = 0"
+    },
+    {
+      "name": "upper_all_actual_jets",
+      "header": "theorem upper_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      if j ≤ m then numeratorLocalCoefficient m j s A else 0"
+    },
+    {
+      "name": "lower_all_actual_jets",
+      "header": "theorem lower_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s (X ^ 9 * A.comp (X + 1)) =\n      if j = 0 then 0 else numeratorLocalCoefficient m (j - 1) s A"
+    },
+    {
+      "name": "double_all_actual_jets",
+      "header": "theorem double_all_actual_jets (n j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (n + 2) j s\n      (X ^ 9 * (X + C ((n : ℚ) + 2)) ^ 9 * A.comp (X + 1)) =\n      if 1 ≤ j ∧ j ≤ n + 1 then numeratorLocalCoefficient n (j - 1) s A else 0"
+    },
+    {
+      "name": "numeratorClearedSeries_add",
+      "header": "theorem numeratorClearedSeries_add (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A + B) =\n      numeratorClearedSeries m j A + numeratorClearedSeries m j B"
+    },
+    {
+      "name": "numeratorClearedSeries_sub",
+      "header": "theorem numeratorClearedSeries_sub (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A - B) =\n      numeratorClearedSeries m j A - numeratorClearedSeries m j B"
+    },
+    {
+      "name": "numeratorClearedSeries_smul",
+      "header": "theorem numeratorClearedSeries_smul (m j : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorClearedSeries m j (a • A) = a • numeratorClearedSeries m j A"
+    },
+    {
+      "name": "numeratorLocalCoefficient_add",
+      "header": "theorem numeratorLocalCoefficient_add (m j s : ℕ) (A B : ℚ[X]) :\n    numeratorLocalCoefficient m j s (A + B) =\n      numeratorLocalCoefficient m j s A + numeratorLocalCoefficient m j s B"
+    },
+    {
+      "name": "numeratorLocalCoefficient_smul",
+      "header": "theorem numeratorLocalCoefficient_smul (m j s : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorLocalCoefficient m j s (a • A) = a * numeratorLocalCoefficient m j s A"
+    },
+    {
+      "name": "actual_chosen_all_local_coefficients_transport",
+      "header": "theorem actual_chosen_all_local_coefficients_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (j s : ℕ) (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) j s (X ^ r.val) =\n      extendedOldCoefficient n j s (connectionP n r) +\n        extendedRemainderCoefficient n j s (connectionQ n r) -\n        previousRemainderCoefficient n j s (connectionQ n r)"
+    },
+    {
+      "name": "actual_chosen_left_boundary_coefficient",
+      "header": "theorem actual_chosen_left_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) 0 s (X ^ r.val) =\n      remainderCoefficient n 0 s (connectionQ n r)"
+    },
+    {
+      "name": "actual_chosen_right_boundary_coefficient",
+      "header": "theorem actual_chosen_right_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) (n + 2) s (X ^ r.val) =\n      -remainderCoefficient n (n + 1) s (connectionQ n r)"
+    },
+    {
+      "name": "sum_upper_zero_extension",
+      "header": "theorem sum_upper_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j ≤ N then f j else 0) =\n      ∑ j ∈ range (N + 1), f j"
+    },
+    {
+      "name": "sum_lower_zero_extension",
+      "header": "theorem sum_lower_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j = 0 then 0 else f (j - 1)) =\n      ∑ j ∈ range (N + 1), f j"
+    },
+    {
+      "name": "sum_extendedOldCoefficient",
+      "header": "theorem sum_extendedOldCoefficient (n s : ℕ) (P : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedOldCoefficient n j s P) =\n      CoefficientMapFiniteSum.rho n s P"
+    },
+    {
+      "name": "sum_extendedRemainderCoefficient",
+      "header": "theorem sum_extendedRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q"
+    },
+    {
+      "name": "sum_previousRemainderCoefficient",
+      "header": "theorem sum_previousRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), previousRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q"
+    },
+    {
+      "name": "actual_chosen_all_rho_transport",
+      "header": "theorem actual_chosen_all_rho_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    CoefficientMapFiniteSum.rho (n + 2) s (X ^ r.val) =\n      CoefficientMapFiniteSum.rho n s (connectionP n r)"
+    }
+  ],
+  "original_source_sha256": "b081ed2a0c6382d68db5f325e8e8169e0536914cd56b7d52549cb5312f5fe00d"
+}

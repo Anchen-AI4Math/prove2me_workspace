@@ -1,0 +1,18 @@
+{
+  "tags": [
+    "openai-pi-exponent-017",
+    "number-theory",
+    "rational-approximation"
+  ],
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean#L105-L220",
+  "theorem_title": "Existence of admissible approximation parameters for pi",
+  "natural_language_statement": "Given ν ∈ ℝ with ν > 2 and Λ,c ∈ ℝ with Λ > 0 and c > 0, suppose hbad: ∀ Q ∈ ℕ, ∃ p ∈ ℤ, ∃ q ∈ ℕ, Q ≤ q ∧ |π - p/q| ≤ q^(−ν). Then there exists a tuple in the published AdmissibleParameters structure, with ε > 0, m ≥ 1, normalized rational approximations, and the stated approximation, dimension, collision, and weight-error margins, including a positive minimum weight.\n\nDisplay formula: $$h_{\\mathrm{bad}} : \\forall Q \\in \\mathbb{N},\\; \\exists p \\in \\mathbb{Z}, q \\in \\mathbb{N},\\; Q \\le q \\land \\left|\\pi-\\frac{p}{q}\\right| \\le q^{-\\nu}.$$",
+  "mathematical_role": "This theorem is the conditional construction step of the source argument. It turns the approximation hypothesis into witnesses for the published admissibility predicates; it does not assert that the hypothesis itself is true.",
+  "explanation": "Choose the published Parameters using only ν > 2; the rational-approximation hypothesis hbad is used later to obtain the required approximation sequence. From the Parameters gap choose ε, then choose F0, a sufficiently large scale m, and a small rational σ. The dimension-margin and collision lemmas establish the geometric constraints, while the uniform error bound, normalized logarithmic approximations, threshold, and minimum-weight lemma supply the remaining witnesses in the published record.",
+  "formalization_note": "The source declaration OAI.PiExponent.exists_admissible_parameters is exposed under the source017 name OAI.PiExponent.exists_admissible_parameters_source017.",
+  "source_lines": [
+    105,
+    220
+  ]
+}

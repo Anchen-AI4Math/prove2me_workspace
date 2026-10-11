@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-02",
+  "reviewer": "prime_valuation_statement_review",
+  "scope": "Independent mathematical statement/source audit and preparation of candidate platform metadata only. No credentials, API calls, shared-module edits, existing frozen payload edits, or workspace scope edits.",
+  "verdict": "PASS: the declarations faithfully formalize the actual finite-prime arithmetic of sections 1–2. They do not formalize the PNT-dependent full-sequence denominator rate.",
+  "reviewed_sources": [
+    {
+      "path": "missions/zeta9/formalization/HarmonicPrimeValuation.lean",
+      "sha256": "bb7df45433a3441520c343356548ac2cd279e05a4b10ff59b8dd3a13d13a99fb",
+      "reviewed_declarations": [
+        "harmonic_split_prime",
+        "harmonic_scaled_split_prime",
+        "primeRemainder_den_coprime",
+        "harmonic_prefix_den_coprime",
+        "harmonic_large_prime_valuation",
+        "harmonic_large_prime_den_valuation",
+        "harmonic_first_block_den_valuation",
+        "harmonicExceptionalProduct_pos",
+        "harmonic_finite_blocks_den_valuation",
+        "harmonic_finite_prime_product_dvd",
+        "harmonic_finite_prime_log_lower_bound"
+      ]
+    },
+    {
+      "path": "missions/zeta9/research/harmonic-denominator-stability-2026-10-01.md",
+      "sha256": "7b6c9c265282d79fa2a332d3f804dbdead56df3db3f857c510d50ba661ba576b7",
+      "sections": [
+        1,
+        2
+      ]
+    },
+    {
+      "path": "Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "reviewed_objects": [
+        "harmonicPower",
+        "logDen"
+      ]
+    }
+  ],
+  "mathematical_audit": [
+    {
+      "item": "Actual harmonic object",
+      "result": "PASS",
+      "evidence": "harmonicPower s N is literally the rational sum of j^(-s), 1 ≤ j ≤ N. Rat.den is the fully reduced positive denominator and Rat.num.natAbs is the actual reduced numerator magnitude. No arbitrary common denominator or replacement coefficient is used."
+    },
+    {
+      "item": "Prime splitting",
+      "result": "PASS",
+      "evidence": "The index bijection j = p k holds for 1 ≤ k ≤ floor(N/p). The exact splitting H_N = p^(-s) H_floor(N/p) + U_N,p is unconditional for p > 0; primality and N < p^2 are not hypotheses of that equality."
+    },
+    {
+      "item": "Remainder integrality",
+      "result": "PASS",
+      "evidence": "For prime p, each nonmultiple term has denominator coprime to p. Rat.add_den_dvd carries this property through the actual finite sum, including cancellation and zero remainders."
+    },
+    {
+      "item": "Unit prefix condition",
+      "result": "PASS",
+      "evidence": "N < p^2 implies floor(N/p) < p, making the actual prefix denominator prime to p. The explicit hypothesis that p does not divide its reduced numerator is retained. Positivity of the actual prefix supplies nonzero rational terms before padicValRat identities are applied."
+    },
+    {
+      "item": "Negative rational valuation",
+      "result": "PASS",
+      "evidence": "The scaled-prefix term has valuation -s, whereas a nonzero remainder has nonnegative valuation. The proof treats the zero remainder separately and uses positivity of the full harmonic sum to satisfy the nonzero side conditions in the ultrametric equality."
+    },
+    {
+      "item": "Reduced denominator valuation",
+      "result": "PASS",
+      "evidence": "Reducedness excludes a simultaneous p-factor in numerator and denominator. The negative rational valuation -s, with s > 0, therefore forces padicValNat p den(H_N) = s."
+    },
+    {
+      "item": "Fixed finite exception product",
+      "result": "PASS",
+      "evidence": "E_s,K is the product of actual positive prefix numerator magnitudes for 1 ≤ k ≤ K, so E_s,K > 0, even for K = 0 where the empty product is one. If 1 ≤ floor(N/p) ≤ K and p > E_s,K, then p cannot divide the relevant prefix numerator. K < p also implies N < p^2 from the floor bound."
+    },
+    {
+      "item": "Complete finite prime product",
+      "result": "PASS",
+      "evidence": "Every admitted prime contributes p^s to den(H_N). Distinct primes give pairwise coprime prime powers, so their whole product divides the reduced denominator. The empty prime set yields the valid divisor one."
+    },
+    {
+      "item": "Finite log lower bound",
+      "result": "PASS",
+      "evidence": "The positive product divisor is at most the positive reduced denominator. Monotonicity of log and the exact finite product-log identity give s Σ log p ≤ log den(H_N), without a prime-distribution hypothesis."
+    },
+    {
+      "item": "Scope boundary",
+      "result": "PASS",
+      "evidence": "The source file contains no sorry, project axiom, PNT axiom, limit assertion, or claim of ζ(9) irrationality. The next asymptotic step requires separately proving the relevant θ/ψ estimates and limit passage."
+    }
+  ],
+  "independent_exact_checks": {
+    "method": "Python standard-library Fraction, independent of Lean and the existing verification script.",
+    "cases": [
+      {
+        "s": 9,
+        "N": 38,
+        "p": 19,
+        "prefix": "513/512",
+        "prefix_numerator_valuation": 1,
+        "full_reduced_denominator_valuation": 8,
+        "purpose": "Counterexample to removing the actual unit-prefix hypothesis."
+      },
+      {
+        "s": 9,
+        "N": 20,
+        "p": 19,
+        "prefix": "1",
+        "prefix_numerator_valuation": 0,
+        "full_reduced_denominator_valuation": 9,
+        "purpose": "First prime block has no exceptional numerator."
+      },
+      {
+        "s": 1,
+        "N": 80,
+        "p": 29,
+        "prefix": "3/2",
+        "prefix_numerator_valuation": 0,
+        "full_reduced_denominator_valuation": 1
+      },
+      {
+        "s": 1,
+        "N": 80,
+        "p": 79,
+        "prefix": "1",
+        "prefix_numerator_valuation": 0,
+        "full_reduced_denominator_valuation": 1
+      }
+    ],
+    "product_case": {
+      "s": 1,
+      "K": 2,
+      "N": 80,
+      "S": [
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59,
+        61,
+        67,
+        71,
+        73,
+        79
+      ],
+      "exception_product": 3,
+      "all_stated_prime_conditions": true,
+      "prime_product_divides_actual_reduced_denominator": true
+    },
+    "role": "These finite computations diagnose the necessity of hypotheses and provide sanity checks; they are not substitutes for the all-parameter Lean proof."
+  },
+  "compilation_gate": {
+    "independently_verified": true,
+    "reason": "Independently read the root compiler output and dated command audit. They record exit code zero for the exact reviewed source SHA-256, with all ten theorem axiom lines containing only propext, Classical.choice and Quot.sound. The independent reviewer did not rerun compilation; final integrated modules and platform acceptance remain root gates.",
+    "compiler_log": "missions/zeta9/verification/formalization-2026-10-02/harmonic-prime-valuation-lean.log",
+    "command_audit": "missions/zeta9/verification/formalization-2026-10-02/harmonic-prime-valuation-audit.md",
+    "compiler_command": "lake env lean missions/zeta9/formalization/HarmonicPrimeValuation.lean",
+    "reported_exit_code": 0,
+    "reviewed_source_sha256_matches_compile_audit": true,
+    "printed_theorem_count": 10,
+    "recorded_axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "sorry_or_project_axiom_detected": false,
+    "required_before_publication": [
+      "Compile the final shared definition module and selected solution files against the pinned platform environment.",
+      "Confirm printed axioms exclude sorryAx and all project-specific assumptions.",
+      "Match final metadata formal statements to the final proved declarations."
+    ]
+  },
+  "publication_recommendation": {
+    "main_targets": [
+      "ZetaNine.HarmonicStability.harmonic_finite_prime_product_dvd",
+      "ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound"
+    ],
+    "additional_candidate": "ZetaNine.HarmonicStability.harmonic_large_prime_den_valuation",
+    "reason": "The two main targets expose the exact arithmetic input used in the original denominator lower-bound argument. The optional valuation target records the nontrivial actual unit-prefix theorem. None is merely a generic rational-denominator or logarithm lemma copied from Mathlib.",
+    "do_not_publish_separately": [
+      "den_sum_coprime",
+      "reciprocal_den_coprime",
+      "valuation_nonneg_of_den_coprime",
+      "valuation_den_of_negative",
+      "distinct_prime_powers_prod_dvd",
+      "harmonicPower_pos"
+    ],
+    "logical_edges": [
+      {
+        "parent": "ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound",
+        "child": "ZetaNine.HarmonicStability.harmonic_finite_prime_product_dvd",
+        "nature": "The logarithmic inequality is the direct positive-divisor consequence of the actual finite product theorem."
+      }
+    ],
+    "not_completed": [
+      "lim_N log den(H_N^(s)) / N = s",
+      "PNT θ(N) ~ N and ψ(N) ~ N in this Lean project",
+      "The unconditional harmonic specialization of the denominator-growth stability corollary",
+      "The required arithmetic condition for all Mellin parameters",
+      "J/S or irrationality of ζ(9)"
+    ]
+  },
+  "definition_candidate": {
+    "definition_name": "ZetaNine_HarmonicPrimeValuation",
+    "definition_title": "Harmonic nonmultiple remainder and explicit finite numerator exception product",
+    "definition": "import Definitions.Def_ZetaNine_HarmonicStability\n\nset_option autoImplicit false\nopen scoped BigOperators\n\nnamespace ZetaNine.HarmonicStability\n\n/-- The sum of the actual harmonic terms whose index is not divisible by p. -/\ndef primeRemainder (s N p : ℕ) : ℚ :=\n  ∑ j ∈ (Finset.Icc 1 N).filter (fun j => ¬ p ∣ j), 1 / (j : ℚ) ^ s\n\n/-- Product of the absolute reduced numerators of the actual first K harmonic prefixes. -/\ndef harmonicExceptionalProduct (s K : ℕ) : ℕ :=\n  ∏ k ∈ Finset.Icc 1 K, (harmonicPower s k).num.natAbs\n\nend ZetaNine.HarmonicStability\n",
+    "natural_language_statement": "For natural $s,N,p$, let $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ be the rational generalized harmonic sum. Define\n\n$$U_{s,N,p}=\\sum_{\\substack{1\\le j\\le N\\\\p\\nmid j}}j^{-s},\\qquad E_{s,K}=\\prod_{k=1}^{K}\\left|\\operatorname{num}(H_k^{(s)})\\right|.$$\n\nThe numerator is the reduced rational numerator and the product is one when $K=0$. Both objects are defined for all natural parameters. The module adds only these two finite expressions to the existing harmonic definition module; it contains no primality, unit, valuation, limit or PNT assertion.",
+    "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+    "tags": [
+      "number-theory",
+      "zeta-function",
+      "formalization"
+    ],
+    "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "private": false,
+    "local_path": "Definitions/Def_ZetaNine_HarmonicPrimeValuation.lean",
+    "depends_on_definition": "ZetaNine_HarmonicStability",
+    "integration_note": "Create this separate lightweight module instead of rewriting the already published HarmonicStability definition. Replace the two duplicate def blocks in the standalone proof with its import when root creates final shared solution files."
+  },
+  "theorem_candidates": [
+    {
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.NumberTheory.Padics.PadicVal.Basic\nimport Mathlib.Data.Nat.GCD.BigOperators\nimport Mathlib.Tactic\nopen scoped BigOperators\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "definition_dependency": "ZetaNine_HarmonicPrimeValuation",
+      "existing_definition_dependency": "ZetaNine_HarmonicStability",
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_finite_prime_product_dvd",
+      "theorem_title": "Finite admitted prime powers divide the actual harmonic denominator",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_finite_prime_product_dvd (s K N : ℕ) (S : Finset ℕ)\n    (hs : 0 < s)\n    (hS : ∀ p ∈ S, p.Prime ∧ p ≤ N ∧ N / p ≤ K ∧ K < p ∧\n      harmonicExceptionalProduct s K < p) :\n    (∏ p ∈ S, p ^ s) ∣ (harmonicPower s N).den := by sorry",
+      "natural_language_statement": "Let $s>0$, $K,N\\ge0$, and let $S$ be a finite set of primes. Put $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ and\n\n$$E_{s,K}=\\prod_{k=1}^{K}\\left|\\operatorname{num}(H_k^{(s)})\\right|.$$\n\nSuppose every $p\\in S$ satisfies\n\n$$p\\le N,\\qquad \\lfloor N/p\\rfloor\\le K,\\qquad K<p,\\qquad E_{s,K}<p.$$\n\nThen the full finite prime-power product divides the reduced positive harmonic denominator:\n\n$$\\prod_{p\\in S}p^s\\mid\\operatorname{den}(H_N^{(s)}).$$\n\nAll hypotheses refer to the actual finite harmonic prefixes. The explicit exception bound is a sufficient way to exclude their numerator prime factors; it is not a claim that every large prime is automatically a unit. The theorem supplies finite arithmetic and does not assert any asymptotic prime count or denominator growth rate.",
+      "explanation": "Each admitted prime has $1\\le\\lfloor N/p\\rfloor\\le K<p$, hence $N<p^2$. Every possible reduced prefix numerator divides the positive integer $E_{s,K}$. Since $p>E_{s,K}$, that numerator is prime to $p$. Splitting the actual sum into its multiples of $p$ and its nonmultiple remainder gives $v_p(H_N^{(s)})=-s$, so its reduced denominator contains exactly $p^s$. Prime powers associated with distinct members of the finite set are coprime; multiplying these divisors proves the full product divisibility.",
+      "source_declaration_lines": [
+        266,
+        272
+      ],
+      "suggested_local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_finite_prime_product_dvd.lean",
+      "suggested_local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_finite_prime_product_dvd.lean"
+    },
+    {
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.NumberTheory.Padics.PadicVal.Basic\nimport Mathlib.Data.Nat.GCD.BigOperators\nimport Mathlib.Tactic\nopen scoped BigOperators\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "definition_dependency": "ZetaNine_HarmonicPrimeValuation",
+      "existing_definition_dependency": "ZetaNine_HarmonicStability",
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound",
+      "theorem_title": "Finite prime logarithms bound the actual harmonic log denominator below",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound (s K N : ℕ) (S : Finset ℕ)\n    (hs : 0 < s)\n    (hS : ∀ p ∈ S, p.Prime ∧ p ≤ N ∧ N / p ≤ K ∧ K < p ∧\n      harmonicExceptionalProduct s K < p) :\n    (s : ℝ) * (∑ p ∈ S, Real.log (p : ℝ)) ≤ logDen (harmonicPower s N) := by sorry",
+      "natural_language_statement": "Let $s>0$, $K,N\\ge0$, and let $S$ be a finite set of primes. With $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ and $E_{s,K}=\\prod_{k=1}^{K}|\\operatorname{num}(H_k^{(s)})|$, suppose every $p\\in S$ satisfies\n\n$$p\\le N,\\qquad \\lfloor N/p\\rfloor\\le K,\\qquad K<p,\\qquad E_{s,K}<p.$$\n\nThen\n\n$$s\\sum_{p\\in S}\\log p\\le\\log\\operatorname{den}(H_N^{(s)}).$$\n\nHere the denominator is fully reduced and positive. The finite inequality holds for every admitted finite prime set, including the empty set. It is the arithmetic lower bound before applying the prime number theorem; no asymptotic prime-distribution or full-sequence denominator-rate statement is part of the conclusion.",
+      "explanation": "The finite-prime product theorem gives the positive divisor $\\prod_{p\\in S}p^s$ of the actual reduced denominator. Therefore that product is at most the denominator. Take natural logarithms and use the finite identity $\\log\\prod_{p\\in S}p^s=s\\sum_{p\\in S}\\log p$. The positivity needed for logarithmic monotonicity follows from primality and the positive reduced rational denominator.",
+      "source_declaration_lines": [
+        283,
+        289
+      ],
+      "suggested_local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_finite_prime_log_lower_bound.lean",
+      "suggested_local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_finite_prime_log_lower_bound.lean"
+    },
+    {
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.NumberTheory.Padics.PadicVal.Basic\nimport Mathlib.Data.Nat.GCD.BigOperators\nimport Mathlib.Tactic\nopen scoped BigOperators\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "definition_dependency": "ZetaNine_HarmonicPrimeValuation",
+      "existing_definition_dependency": "ZetaNine_HarmonicStability",
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_large_prime_den_valuation",
+      "theorem_title": "A unit harmonic prefix forces the exact large-prime denominator exponent",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_large_prime_den_valuation (s N p : ℕ) (hp : p.Prime)\n    (hs : 0 < s) (hNp : p ≤ N) (hN : N < p ^ 2)\n    (hunit : ¬ p ∣ (harmonicPower s (N / p)).num.natAbs) :\n    padicValNat p (harmonicPower s N).den = s := by sorry",
+      "natural_language_statement": "Let $s>0$ and $N\\ge0$, and let $p$ be prime with $p\\le N<p^2$. If $p$ does not divide the reduced numerator of the actual prefix $H_{\\lfloor N/p\\rfloor}^{(s)}$, then\n\n$$v_p\\!\\left(\\operatorname{den}(H_N^{(s)})\\right)=s,\\qquad H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}.$$\n\nThe numerator-unit condition is essential. For example, $H_2^{(9)}=513/512$ has a factor $19$ in its numerator, and for $N=38,p=19$ the actual denominator exponent is eight instead of nine. The theorem concerns the exact reduced positive denominator for each admitted parameter; it does not invoke the prime number theorem.",
+      "explanation": "Since $N<p^2$, the prefix length $\\lfloor N/p\\rfloor$ is below $p$, so its denominator is prime to $p$. The numerator hypothesis makes its rational $p$-adic valuation zero. In the exact splitting $H_N^{(s)}=p^{-s}H_{\\lfloor N/p\\rfloor}^{(s)}+U_{s,N,p}$, the first term has valuation $-s$, while the nonmultiple remainder is $p$-integral. Unequal valuations imply $v_p(H_N^{(s)})=-s$, with zero remainders handled separately. Reducedness then gives precisely exponent $s$ in the positive denominator.",
+      "source_declaration_lines": [
+        180,
+        184
+      ],
+      "suggested_local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_large_prime_den_valuation.lean",
+      "suggested_local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_large_prime_den_valuation.lean",
+      "publication_role": "Additional actual arithmetic target; the finite product and logarithmic targets are the primary suggested pair."
+    }
+  ]
+}

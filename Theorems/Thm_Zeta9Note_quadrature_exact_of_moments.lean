@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Algebra.Polynomial.Eval.Algebra
+import Mathlib.Algebra.Polynomial.Degree.Defs
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Fintype.Fin
 
 -- Local mirror of the public platform theorem Zeta9Note.quadrature_exact_of_moments.
 -- Placeholder body so that reduction submissions resolve the import locally;

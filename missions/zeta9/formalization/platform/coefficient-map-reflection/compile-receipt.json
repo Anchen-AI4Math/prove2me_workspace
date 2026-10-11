@@ -1,0 +1,436 @@
+{
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+    "CoefficientMapReflection": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapReflection"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-native.log",
+      "log_sha256": "aa1e714170107256fbef495245970b7e1d471006d2797974805595324f0aaede"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "70fd186cc8a8950ab3a6b038307ac2dc14fa46fddbdcd8e6ecee2863a3b32446"
+    },
+    {
+      "label": "stage2-CoefficientMap",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMap_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMap.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-CoefficientMapJet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapJet_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapJet.log",
+      "log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "label": "stage2-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapInjectivity_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapInjectivity.log",
+      "log_sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "label": "stage2-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapPartialFractions_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapPartialFractions.log",
+      "log_sha256": "ce926ada1f8f998d6e80876e2906cd9d40bd3c9fa17ff9ab8d058637e611249d"
+    },
+    {
+      "label": "stage2-CoefficientMapReflection",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapReflection_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapReflection.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapReflection.log",
+      "log_sha256": "aace7d9c2e02b8fb516859a56a477b8b03be3f21a6772021c170220cb19edfde"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapReflection.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "16986cd99ebd0f655193fbf9f44815195ad01491d8b845adb023ac0a7f95e8f4"
+    },
+    {
+      "label": "build-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMap.log",
+      "log_sha256": "3ffc852cdd585914984aac62a617d0a9dcd3d32511add0632e02ba1fe57a9607"
+    },
+    {
+      "label": "build-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapJet.log",
+      "log_sha256": "683239898b5f3bf23231101c85ed933160d8197beecb1f56a119326e4bbb4311"
+    },
+    {
+      "label": "build-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapInjectivity.log",
+      "log_sha256": "1fe157565a8ddd86ec744f1842f5d4cbc12a32e1e92ab050d0ac96f7438e7c93"
+    },
+    {
+      "label": "build-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapPartialFractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapPartialFractions.log",
+      "log_sha256": "575d4bd37558aaf84aadee013ad502995d324856a38f3696b1e90a0ba1348eb1"
+    },
+    {
+      "label": "build-definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapReflection"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-definition.log",
+      "log_sha256": "056e467c5248308399dc5f31443e7765fbeaec3c5398cebbc785734070a1864b"
+    },
+    {
+      "label": "build-0-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapReflection_local_coefficient_reflection"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-0-solution.log",
+      "log_sha256": "fb070a8127768629286d2b8bff0bfba7a609de47b29973b1b4b042bff1733d81"
+    },
+    {
+      "label": "build-0-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapReflection_local_coefficient_reflection"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-0-reference.log",
+      "log_sha256": "e463dd122666d26afaa44a0189614a8c27785cd5654ab9b64c6bf3880fe2064e"
+    },
+    {
+      "label": "build-1-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapReflection_rho_even_order_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-1-solution.log",
+      "log_sha256": "a8c282138a4243de5819f099a479fa7d7f4396f14b62c6fe07f70edb9ff93fb7"
+    },
+    {
+      "label": "build-1-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapReflection_rho_even_order_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-1-reference.log",
+      "log_sha256": "1fb2c0451dce44a0f45c088ab5494d2fe533dde91cbe6caec9f77dd3cc66ce8c"
+    },
+    {
+      "label": "build-2-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapReflection_rho_one_zero_of_strong_proper"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-2-solution.log",
+      "log_sha256": "915f7024528cc3935777533083075d6d6952ae02d00882a659f5d67dda7b7d2e"
+    },
+    {
+      "label": "build-2-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapReflection_rho_one_zero_of_strong_proper"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "build-2-reference.log",
+      "log_sha256": "19c03254f3177c8736439d500ae56fd818326c45a2f5494078ec4ee1f59e994b"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "729a6c7e42fe0a880d37d6ca93f4067e4aad1330c4b60ef72ddda14e6473659a"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "6ec79b62a06d0040812f5413dd50c38134e862bebeba48f682c9260117158636"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "9f9d0b428221696857d6ee82df09a565dfdf3e9ecabe7bfe8bfc6a25335af5b2"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "2c30767d0f328c523732f56a5d8e0aa3a9ad41859be08da762295cf9bae8f283"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "a08214f91fc688fe5c37b23dec242eb9e3ab0f85805e6d047d12b0aea3da6bf5"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "9214cea81febad58f9e6f85e79efa3add7fb06dbcdc53eee77e64904d85c9196"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "71ba4a0d14485e86906c214115d8b207514ba7bb13f0a98e0c62871d55eec66e"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "698a01ed7c0dee1d99456e88ed18acf850ca4d37c9a907ca1a98bbf39ee5c8c0"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "576638ee8da0c65f3d1018cdeb7702a9efce535bf459971d3ac75ab2e5c6a8b6"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "6a1edade7104447ea5e0c4059ac7fea507b6adf9c22c31ffe7bc63613f428fac"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-reflection\\project",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "ccfa2276d8b9862f6671f21ecbb83c0619294dce2bcfe2f242923898112a8892"
+    }
+  ],
+  "complete": true,
+  "native_and_staged_objects_borrowed": false
+}

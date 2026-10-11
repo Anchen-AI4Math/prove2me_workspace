@@ -1,0 +1,68 @@
+--- 3b36cc7787dc0a2f348a5dd1037f3f9189cf4b0a15bf291a11d8e523b35ebf2b
++++ fb2d3ef7bf25a8c0f6d6b53967da0a4a14f1fd910cc6216423cf1484c68dd749
+@@ -23,9 +23,22 @@
+ BATCH = TASK / "formalization/platform/analytic-phase"
+ PREP = BATCH / "publication-preparation-2026-10-07"
+ OUT = BATCH / "publications-for-new-mission-2026-10-07"
+-PIN = BATCH / "Root-reviewed-publication-pin-2026-10-07.json"
++PIN = BATCH / "Root-reviewed-publication-pin-v2-2026-10-07.json"
+ _ORIGINAL_TRANSACT = transport.transact
++_ORIGINAL_VALIDATE_CANONICAL = transport.validate_canonical
+ _REVIEWED = None
++
++
++def phase_validate_canonical(value, item, kind):
++    """Preserve raw readbacks; compare only equivalent CRLF/LF code spelling."""
++    actual, expected = dict(value), dict(item)
++    keys = ["definition"] if kind == "definition" else ["formal_statement", "preamble"]
++    for key in keys:
++        assert isinstance(actual[key], str) and isinstance(expected[key], str)
++        actual[key] = actual[key].replace("\r\n", "\n")
++        expected[key] = expected[key].replace("\r\n", "\n")
++    _ORIGINAL_VALIDATE_CANONICAL(actual, expected, kind)
++    return value
+ 
+ 
+ def phase_binding(row):
+@@ -182,7 +195,7 @@
+         reports.append(report)
+     for row in pin["publication_metadata_bindings"]:
+         phase_binding(row)
+-    manifest = transport.load(PREP / "prepared-publication-v1.json")
++    manifest = transport.load(PREP / "prepared-publication-v2.json")
+     assert manifest["new_proposal_id"] == transport.NEW and manifest["environment"] == transport.ENV
+     assert not manifest["proposal_mutation_permitted"] and not manifest["mission_link_permitted"]
+     assert len(manifest["seven_payloads"]) == 7
+@@ -197,8 +210,8 @@
+         payload_bytes[a.relative_to(BATCH / "staged").as_posix()] = data
+     for row in manifest["metadata"]:
+         phase_binding(row)
+-    definitions = transport.load(PREP / "definitions-request-v1.json")
+-    request = transport.load(PREP / "problems-request-v1.json")
++    definitions = transport.load(PREP / "definitions-request-v2.json")
++    request = transport.load(PREP / "problems-request-v2.json")
+     explanations = transport.load(PREP / "proof-explanations-v1.json")
+     plan = transport.load(BATCH / "target-plan.json")
+     assert len(definitions) == 1 and len(request["problems"]) == 3
+@@ -222,10 +235,11 @@
+         assert not re.search(r"\b(sorry|admit|axiom|unsafe|native_decide)\b", code)
+         assert "import Theorems." not in code
+         reference = payload_bytes[target["local_reference"]].decode("utf-8")
+-        assert reference == item["preamble"] + "\n\n" + item["formal_statement"] + "\n"
++        line_ending = "\r\n" if "\r\n" in reference else "\n"
++        assert reference == item["preamble"] + line_ending * 2 + item["formal_statement"] + line_ending
+         assert item["formal_statement"].startswith("theorem " + item["theorem_name"])
+         assert item["formal_statement"].endswith(" := by sorry")
+-        assert target["exact_original_header"].replace("theorem " + item["theorem_name"].rsplit(".", 1)[1], "theorem " + item["theorem_name"], 1) + " := by sorry" == item["formal_statement"]
++        assert target["exact_original_header"].replace("theorem " + item["theorem_name"].rsplit(".", 1)[1], "theorem " + item["theorem_name"], 1) + " := by sorry" == item["formal_statement"].replace("\r\n", "\n")
+         problems.append({**item, "local_solution": target["local_solution"], "explanation": explanations[item["theorem_name"]]})
+     assert transport.sha(PIN) == pin_sha256
+     _REVIEWED = {"pin_sha256": pin_sha256, "definitions": {x["definition_name"]: x for x in definitions},
+@@ -279,6 +293,7 @@
+     transport.OUT = OUT
+     transport.prepare = prepare
+     transport.transact = phase_transact
++    transport.validate_canonical = phase_validate_canonical
+ 
+ 
+ if __name__ == "__main__":

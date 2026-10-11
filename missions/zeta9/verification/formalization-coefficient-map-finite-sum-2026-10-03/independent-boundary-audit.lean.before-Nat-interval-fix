@@ -1,0 +1,209 @@
+import missions.zeta9.formalization.CoefficientMapFiniteSum
+import Lean
+
+open Lean Meta Polynomial Finset
+open scoped BigOperators
+open ZetaNine.CoefficientMapFiniteSum ZetaNine.HarmonicStability
+open ZetaNine.CoefficientMapInjectivity
+set_option autoImplicit false
+set_option pp.fullNames true
+set_option pp.universes false
+set_option linter.unusedVariables false
+set_option linter.unusedSimpArgs false
+set_option maxHeartbeats 1600000
+
+theorem fs_ind_positive_integer_regular (n t : ℕ) (ht : 1 ≤ t) :
+    ∀ (k : ℕ), k ≤ n → (t : ℚ) + (k : ℚ) ≠ 0 := by
+  intro k hk
+  have htpos : (0 : ℚ) < (t : ℚ) := by exact_mod_cast ht
+  exact ne_of_gt (add_pos_of_pos_of_nonneg htpos (Nat.cast_nonneg k))
+
+theorem fs_ind_finite_exchange (n T : ℕ) (f : ℕ → ℕ → ℕ → ℚ) :
+    (∑ t ∈ Icc 1 T, ∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9, f t j s) =
+      ∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9, ∑ t ∈ Icc 1 T, f t j s := by
+  calc
+    _ = ∑ j ∈ range (n + 1), ∑ t ∈ Icc 1 T, ∑ s ∈ Icc 1 9, f t j s :=
+      Finset.sum_comm
+    _ = _ := by
+      apply Finset.sum_congr rfl
+      intro j hj
+      exact Finset.sum_comm
+
+theorem fs_ind_closed_expanded (n T : ℕ) (W : ℚ[X])
+    (hp : 2 * n + 2 * W.natDegree < 9 * (n + 1)) :
+    (∑ t ∈ Icc 1 T, ZetaNine.CoefficientMap.weightedR n W (t : ℚ)) =
+      ∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,
+        ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *
+          (harmonicPower s (T + j) - harmonicPower s j) :=
+  actual_finite_harmonic_identity n T W hp
+
+theorem fs_ind_closed_grouped (n T : ℕ) (W : ℚ[X])
+    (hp : 2 * n + 2 * W.natDegree < 9 * (n + 1)) :
+    finiteL n T W = constantTerm n W +
+      (∑ s ∈ Icc 1 9, rho n s W * harmonicPower s T) + shiftedTail n T W :=
+  actual_grouped_finite_identity n T W hp
+
+theorem fs_ind_closed_no_simple (n T : ℕ) (W : ℚ[X])
+    (hp : 2 * n + 2 * W.natDegree < 9 * (n + 1)) (h1 : rho n 1 W = 0) :
+    finiteL n T W = constantTerm n W +
+      (∑ s ∈ Icc 2 9, rho n s W * harmonicPower s T) + shiftedTail n T W :=
+  actual_grouped_finite_identity_no_simple_pole n T W hp h1
+
+theorem fs_ind_closed_odd (n T : ℕ) (W : ℚ[X])
+    (hp : 2 * n + 2 * W.natDegree < 9 * (n + 1))
+    (h1 : rho n 1 W = 0) (h2 : rho n 2 W = 0) (h4 : rho n 4 W = 0)
+    (h6 : rho n 6 W = 0) (h8 : rho n 8 W = 0) :
+    finiteL n T W = constantTerm n W +
+      (rho n 3 W * harmonicPower 3 T + rho n 5 W * harmonicPower 5 T +
+       rho n 7 W * harmonicPower 7 T + rho n 9 W * harmonicPower 9 T) + shiftedTail n T W :=
+  actual_grouped_finite_identity_odd n T W hp h1 h2 h4 h6 h8
+
+theorem fs_ind_shift_T_zero (s j : ℕ) :
+    (∑ t ∈ Icc 1 0, 1 / ((t : ℚ) + (j : ℚ)) ^ s) =
+      harmonicPower s (0 + j) - harmonicPower s j :=
+  shifted_harmonic_sum s 0 j
+
+theorem fs_ind_shift_j_zero (s T : ℕ) :
+    (∑ t ∈ Icc 1 T, 1 / (t : ℚ) ^ s) = harmonicPower s T := by
+  simpa [harmonicPower] using shifted_harmonic_sum s T 0
+
+theorem fs_ind_shift_s_zero (T j : ℕ) :
+    (∑ t ∈ Icc 1 T, 1 / ((t : ℚ) + (j : ℚ)) ^ 0) =
+      harmonicPower 0 (T + j) - harmonicPower 0 j :=
+  shifted_harmonic_sum 0 T j
+
+theorem fs_ind_tail_positive_shift (s T j : ℕ) :
+    harmonicPower s (T + j) - harmonicPower s T =
+      ∑ k ∈ Icc 1 j, 1 / ((T : ℚ) + (k : ℚ)) ^ s :=
+  harmonic_difference_eq_shifted s T j
+
+theorem fs_ind_finite_T_zero (n : ℕ) (W : ℚ[X]) : finiteL n 0 W = 0 := by
+  simp [finiteL]
+
+theorem fs_ind_tail_T_zero_cancels_constant (n : ℕ) (W : ℚ[X]) :
+    shiftedTail n 0 W = -constantTerm n W := by
+  simp [shiftedTail, constantTerm, harmonicPower]
+
+theorem fs_ind_constant_n_zero (W : ℚ[X]) : constantTerm 0 W = 0 := by
+  simp [constantTerm, harmonicPower]
+
+theorem fs_ind_tail_n_zero (T : ℕ) (W : ℚ[X]) : shiftedTail 0 T W = 0 := by
+  simp [shiftedTail]
+
+theorem fs_ind_n_zero_series (W : ℚ[X]) :
+    ZetaNine.CoefficientMapJet.weightedClearedSeries 0 0 W =
+      (W.comp ((X : ℚ[X]) ^ 2) : PowerSeries ℚ) := by
+  have hs : ZetaNine.CoefficientMapJet.clearedSeries 0 0 = 1 := by
+    simp [ZetaNine.CoefficientMapJet.clearedSeries,
+      ZetaNine.CoefficientMapJet.shiftedNumerator,
+      ZetaNine.CoefficientMapJet.shiftedClearedDenominator]
+  have hu : ZetaNine.CoefficientMapJet.localU 0 0 = (X : ℚ[X]) ^ 2 := by
+    simp [ZetaNine.CoefficientMapJet.localU,
+      ZetaNine.CoefficientMapJet.shiftedVariable, pow_two]
+  simp only [ZetaNine.CoefficientMapJet.weightedClearedSeries, hs, hu, one_mul]
+
+theorem fs_ind_n_zero_X_four_proper : ProperMultiplier 0 ((X : ℚ[X]) ^ 4) := by
+  norm_num [ProperMultiplier, Polynomial.natDegree_pow]
+
+theorem fs_ind_n_zero_X_four_simple_coefficient :
+    ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 1 ((X : ℚ[X]) ^ 4) = 1 := by
+  rw [ZetaNine.CoefficientMapJet.weightedLocalCoefficient, fs_ind_n_zero_series]
+  simp only [Polynomial.pow_comp, Polynomial.X_comp, map_pow, Polynomial.coe_X]
+  rw [← pow_mul]
+  norm_num
+
+theorem fs_ind_n_zero_X_four_higher_coefficients (s : ℕ) (hs2 : 2 ≤ s) (hs9 : s ≤ 9) :
+    ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 s ((X : ℚ[X]) ^ 4) = 0 := by
+  have hindex : 9 - s ≠ 8 := by omega
+  rw [ZetaNine.CoefficientMapJet.weightedLocalCoefficient, fs_ind_n_zero_series]
+  simp only [Polynomial.pow_comp, Polynomial.X_comp, map_pow, Polynomial.coe_X]
+  rw [← pow_mul]
+  norm_num [PowerSeries.coeff_X_pow, hindex, Ne.symm hindex]
+
+theorem fs_ind_n_zero_X_four_rho_one : rho 0 1 ((X : ℚ[X]) ^ 4) = 1 := by
+  simpa [rho] using fs_ind_n_zero_X_four_simple_coefficient
+
+theorem fs_ind_n_zero_X_four_rho_higher (s : ℕ) (hs2 : 2 ≤ s) (hs9 : s ≤ 9) :
+    rho 0 s ((X : ℚ[X]) ^ 4) = 0 := by
+  simpa [rho] using fs_ind_n_zero_X_four_higher_coefficients s hs2 hs9
+
+theorem fs_ind_n_zero_X_four_no_simple_cancellation :
+    ¬ rho 0 1 ((X : ℚ[X]) ^ 4) = 0 := by
+  rw [fs_ind_n_zero_X_four_rho_one]
+  norm_num
+
+theorem fs_ind_n_zero_X_four_actual_simple_pole (t : ℚ) (ht : t ≠ 0) :
+    ZetaNine.CoefficientMap.weightedR 0 ((X : ℚ[X]) ^ 4) t = 1 / t := by
+  simp [ZetaNine.CoefficientMap.weightedR, ZetaNine.CoefficientMap.actualR,
+    ZetaNine.CoefficientMap.numerator, ZetaNine.CoefficientMap.poleProduct]
+  field_simp
+
+theorem fs_ind_n_zero_X_four_actual_finite (T : ℕ) :
+    finiteL 0 T ((X : ℚ[X]) ^ 4) = harmonicPower 1 T := by
+  unfold finiteL harmonicPower
+  apply Finset.sum_congr rfl
+  intro t ht
+  have htpos : (0 : ℚ) < (t : ℚ) := by exact_mod_cast (Finset.mem_Icc.mp ht).1
+  simpa using fs_ind_n_zero_X_four_actual_simple_pole (t : ℚ) (ne_of_gt htpos)
+
+theorem fs_ind_n_zero_X_four_finite_at_one : finiteL 0 1 ((X : ℚ[X]) ^ 4) = 1 := by
+  rw [fs_ind_n_zero_X_four_actual_finite]
+  norm_num [harmonicPower]
+
+theorem fs_ind_n_zero_X_four_dropped_simple_RHS :
+    constantTerm 0 ((X : ℚ[X]) ^ 4) +
+      (∑ s ∈ Icc 2 9, rho 0 s ((X : ℚ[X]) ^ 4) * harmonicPower s 1) +
+      shiftedTail 0 1 ((X : ℚ[X]) ^ 4) = 0 := by
+  rw [fs_ind_constant_n_zero, fs_ind_tail_n_zero, zero_add, add_zero]
+  apply Finset.sum_eq_zero
+  intro s hs
+  rw [fs_ind_n_zero_X_four_rho_higher s (Finset.mem_Icc.mp hs).1 (Finset.mem_Icc.mp hs).2]
+  simp
+
+theorem fs_ind_no_simple_without_cancellation_false :
+    finiteL 0 1 ((X : ℚ[X]) ^ 4) ≠ constantTerm 0 ((X : ℚ[X]) ^ 4) +
+      (∑ s ∈ Icc 2 9, rho 0 s ((X : ℚ[X]) ^ 4) * harmonicPower s 1) +
+      shiftedTail 0 1 ((X : ℚ[X]) ^ 4) := by
+  rw [fs_ind_n_zero_X_four_finite_at_one, fs_ind_n_zero_X_four_dropped_simple_RHS]
+  norm_num
+
+theorem fs_ind_n_zero_X_four_not_two_degree_gap :
+    ¬ (2 * 0 + 2 * ((X : ℚ[X]) ^ 4).natDegree + 2 ≤ 9 * (0 + 1)) := by
+  norm_num [Polynomial.natDegree_pow]
+
+run_meta do
+  let emit (name : Name) : MetaM Unit := do
+    let ci ← getConstInfo name
+    let typ ← ppExpr ci.type
+    let axs ← Lean.collectAxioms name
+    let value ← match ci with
+      | .defnInfo d => pure (Json.str (← ppExpr d.value).pretty)
+      | _ => pure Json.null
+    IO.println (Json.mkObj [("declaration", Json.str name.toString),
+      ("type", Json.str typ.pretty), ("axioms", toJson (axs.toList.map Name.toString)),
+      ("definitionValue", value)]).compress
+  for name in [
+    `ZetaNine.HarmonicStability.logDen, `ZetaNine.HarmonicStability.harmonicPower,
+    `ZetaNine.CoefficientMapFiniteSum.rho,
+    `ZetaNine.CoefficientMapFiniteSum.constantTerm,
+    `ZetaNine.CoefficientMapFiniteSum.finiteL,
+    `ZetaNine.CoefficientMapFiniteSum.shiftedTail,
+    `ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ,
+    `ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum,
+    `ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity,
+    `ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity,
+    `ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole,
+    `ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd,
+    `ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted,
+    `fs_ind_positive_integer_regular, `fs_ind_finite_exchange,
+    `fs_ind_closed_expanded, `fs_ind_closed_grouped, `fs_ind_closed_no_simple, `fs_ind_closed_odd,
+    `fs_ind_shift_T_zero, `fs_ind_shift_j_zero, `fs_ind_shift_s_zero,
+    `fs_ind_tail_positive_shift, `fs_ind_finite_T_zero,
+    `fs_ind_tail_T_zero_cancels_constant, `fs_ind_constant_n_zero, `fs_ind_tail_n_zero,
+    `fs_ind_n_zero_series, `fs_ind_n_zero_X_four_proper,
+    `fs_ind_n_zero_X_four_simple_coefficient, `fs_ind_n_zero_X_four_higher_coefficients,
+    `fs_ind_n_zero_X_four_rho_one, `fs_ind_n_zero_X_four_rho_higher,
+    `fs_ind_n_zero_X_four_no_simple_cancellation, `fs_ind_n_zero_X_four_actual_simple_pole,
+    `fs_ind_n_zero_X_four_actual_finite, `fs_ind_n_zero_X_four_finite_at_one,
+    `fs_ind_n_zero_X_four_dropped_simple_RHS, `fs_ind_no_simple_without_cancellation_false,
+    `fs_ind_n_zero_X_four_not_two_degree_gap] do emit name

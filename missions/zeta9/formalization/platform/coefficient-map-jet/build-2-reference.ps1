@@ -1,0 +1,3 @@
+$env:LEAN_PATH = "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-jet/build/staged;" + $env:LEAN_PATH + ";D:/users/self_projects/prove2me_workspace"
+& lean -o "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-jet/build/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.olean" "D:/users/self_projects/prove2me_workspace/missions/zeta9/formalization/platform/coefficient-map-jet/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean"
+exit $LASTEXITCODE

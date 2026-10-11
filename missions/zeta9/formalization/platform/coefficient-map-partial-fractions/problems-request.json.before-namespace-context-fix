@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapPartialFractions.candidate_local_coefficients",
+      "theorem_title": "The actual partial-fraction candidate matches every local coefficient",
+      "formal_statement": "theorem ZetaNine.CoefficientMapPartialFractions.candidate_local_coefficients (n j s : ℕ) (W : ℚ[X]) (hj : j ≤ n)\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    PowerSeries.coeff (9 - s) (candidateClearedSeries n j W) =\n      CoefficientMapJet.weightedLocalCoefficient n j s W:= by sorry",
+      "natural_language_statement": "Let $n,j,s$ be natural numbers, $j\\le n$, $1\\le s\\le9$, and let $W\\in\\mathbb Q[X]$ be arbitrary. Let $c^W_{n,j,s}$ be the actual coefficient of $z^{9-s}$ in the genuine weighted local formal quotient. Construct $P_n^W$ from these actual coefficients by $\\sum_{i=0}^{n}\\sum_{r=1}^{9}c^W_{n,i,r}(D^*_{n,i})^9(X+i)^{9-r}$, where $D^*_{n,i}=\\prod_{k\\ne i}(X+k)$. Its cleared candidate local series satisfies\n\n$$[z^{9-s}]\\bigl(P_n^W(z-j)(D_{n,j}(z)^9)^{-1}\\bigr)=c^W_{n,j,s}.$$\n\nThis is a genuine all-nine local coefficient match. It needs neither strict properness nor a global partial-fraction identity as an assumption. It remains valid when the multiplier is outside the proper domain.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) actual finite global partial-fraction research: missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md. Frozen Lean source missions/zeta9/formalization/CoefficientMapPartialFractions.lean, SHA256 eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a. The original actual Base/Jet/Injectivity finite products and local formal coefficients are used throughout. Original declaration lines 227–231.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "theorem_title": "Exact global polynomial identity from actual local coefficients",
+      "formal_statement": "theorem ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions (n : ℕ) (W : ℚ[X])\n    (hproper : ProperMultiplier n W) : weightedNumerator n W = partialNumerator n W:= by sorry",
+      "natural_language_statement": "For any natural $n$ and $W\\in\\mathbb Q[X]$, assume the strict proper-degree condition $2n+2\\operatorname{natdeg}W<9(n+1)$. With $N_n(X)=n!^7\\prod_{i=1}^{n}(X-i)(X+n+i)$, $U_n(X)=X(X+n)$ and the actual formal local coefficients $c^W_{n,j,s}$, one has\n\n$$N_n(X)W(U_n(X))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}c^W_{n,j,s}\\left(\\prod_{0\\le k\\le n,\\ k\\ne j}(X+k)\\right)^9(X+j)^{9-s}.$$\n\nThis is an exact polynomial identity for the actual numerator and actual local coefficient candidate, including $n=0$. Strict properness is essential: at $n=0,W=X^5$ the actual numerator is $X^{10}$ while the nine-order candidate is zero, so the identity would fail without the condition.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) actual finite global partial-fraction research: missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md. Frozen Lean source missions/zeta9/formalization/CoefficientMapPartialFractions.lean, SHA256 eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a. The original actual Base/Jet/Injectivity finite products and local formal coefficients are used throughout. Original declaration lines 264–280.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "theorem_title": "Actual finite global partial fractions at every regular rational point",
+      "formal_statement": "theorem ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions (n : ℕ) (W : ℚ[X])\n    (hproper : ProperMultiplier n W) (t : ℚ)\n    (hregular : ∀ k ≤ n, t + (k : ℚ) ≠ 0) :\n    CoefficientMap.weightedR n W t =\n      ∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n        CoefficientMapJet.weightedLocalCoefficient n j s W / (t + (j : ℚ)) ^ s:= by sorry",
+      "natural_language_statement": "Let $n\\ge0$ be natural, $W\\in\\mathbb Q[X]$, and assume $2n+2\\operatorname{natdeg}W<9(n+1)$. Set $R_n(t)=n!^7\\prod_{i=1}^{n}(t-i)(t+n+i)/(\\prod_{k=0}^{n}(t+k))^9$, and take $c^W_{n,j,s}$ from its actual weighted local formal quotient. At every rational $t$ with $t+k\\ne0$ for all $0\\le k\\le n$,\n\n$$R_n(t)W(t(t+n))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}\\frac{c^W_{n,j,s}}{(t+j)^s}.$$\n\nThis is a finite exact partial-fraction equality at regular rational points. It does not assert infinite-sum convergence, vanishing of the simple-pole total, exact L, or injectivity/invertibility of the original aggregate F. At $n=0,W=X^4$ properness allows the simple pole $1/t$; $W=X^5$ is outside the proper domain.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) actual finite global partial-fraction research: missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md. Frozen Lean source missions/zeta9/formalization/CoefficientMapPartialFractions.lean, SHA256 eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a. The original actual Base/Jet/Injectivity finite products and local formal coefficients are used throughout. Original declaration lines 329–343.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "partial-fractions",
+        "formalization"
+      ]
+    }
+  ]
+}

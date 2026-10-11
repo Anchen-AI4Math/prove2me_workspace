@@ -1,0 +1,54 @@
+{
+  "role": "author staged boundary replay",
+  "rows": [
+    {
+      "label": "stage2-boundary-author",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_boundary_author.lean",
+        "boundary-author-input.lean"
+      ],
+      "exit_code": 0,
+      "log": "stage2-boundary-author.log",
+      "log_sha256": "7109e50c3a78d80b7ef31325e809d098f2f81d5d9868ac94bf0922c4045e3391",
+      "exit_file": "stage2-boundary-author-exit.txt",
+      "exit_file_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "label": "stage2-boundary-independent",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_boundary_independent.lean",
+        "boundary-independent-input.lean"
+      ],
+      "exit_code": 0,
+      "log": "stage2-boundary-independent.log",
+      "log_sha256": "16059857e9a46b097ce8556943f8240360809da7d006a323bc09f07c6641088a",
+      "exit_file": "stage2-boundary-independent-exit.txt",
+      "exit_file_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "label": "stage-boundary-audit",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "stage-boundary-audit.lean"
+      ],
+      "exit_code": 0,
+      "log": "stage-boundary-audit.log",
+      "log_sha256": "66ff164886ce307ee57aeae27f76438bf9decb92718b22cb9738653350b5b059",
+      "exit_file": "stage-boundary-audit-exit.txt",
+      "exit_file_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  ],
+  "complete": true,
+  "same_fresh_project_actual_author_parser_reused": true,
+  "resume_snapshot_sha256": "af882856018a811da58261d5bf2b0aaa828f919e8f7848d3d5710277b65ef2a5"
+}

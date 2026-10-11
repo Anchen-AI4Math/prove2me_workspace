@@ -1,0 +1,62 @@
+"""Configure the established oracle-driven author recipe without editing old batches."""
+from pathlib import Path
+import hashlib,json
+OUT=Path(__file__).resolve().parent
+TASK=OUT.parents[2]
+OLD=TASK / "formalization/platform/coefficient-map-injectivity"
+prepare=(OLD / "prepare_batch.py").read_text(encoding="utf-8")
+prepare=prepare.replace("CoefficientMapInjectivity","CoefficientMapPartialFractions").replace("coefficient-map-injectivity","coefficient-map-partial-fractions")
+prepare=prepare.replace('JET=TASK / "formalization/platform/coefficient-map-jet"','JET=TASK / "formalization/platform/coefficient-map-jet"\nINJ=TASK / "formalization/platform/coefficient-map-injectivity"')
+start=prepare.index('EXPECTED=');end=prepare.index('\nDEFS=',start)
+prepare=prepare[:start]+'''EXPECTED={"CoefficientMap":"e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03","CoefficientMapJet":"e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a","CoefficientMapInjectivity":"ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095","CoefficientMapPartialFractions":"eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"}'''+prepare[end:]
+start=prepare.index('DEFS=');end=prepare.index('\ndef sha(',start)
+prepare=prepare[:start]+'''DEFS=["clearedPolePolynomial","localTruncation","partialBlock","partialNumerator","candidateClearedSeries"]
+TARGETS=["candidate_local_coefficients","actual_global_polynomial_partial_fractions","actual_global_partial_fractions"]
+ARGS=["n j s W hj hs1 hs9","n W hproper","n W hproper t hregular"]
+MATHLIB=["Mathlib.RingTheory.PowerSeries.Trunc"]
+'''+prepare[end:]
+prepare=prepare.replace('.one `missions.zeta9.formalization.CoefficientMapPartialFractions]', '.one `missions.zeta9.formalization.CoefficientMapInjectivity, .one `missions.zeta9.formalization.CoefficientMapPartialFractions]')
+prepare=prepare.replace('[(BASE,"CoefficientMap"),(JET,"CoefficientMapJet")]', '[(BASE,"CoefficientMap"),(JET,"CoefficientMapJet"),(INJ,"CoefficientMapInjectivity")]')
+prepare=prepare.replace('len(core)==25 and sum(g["kind"]=="def" for g in core)==7 and sum(g["kind"]=="theorem" for g in core)==18','len(core)==32 and sum(g["kind"]=="def" for g in core)==5 and sum(g["kind"]=="theorem" for g in core)==27')
+prepare=prepare.replace('for module in ["CoefficientMap","CoefficientMapJet"]:', 'for module in ["CoefficientMap","CoefficientMapJet","CoefficientMapInjectivity"]:')
+prepare=prepare.replace('definition="import Definitions.Def_ZetaNine_CoefficientMapJet\\n"','definition="import Definitions.Def_ZetaNine_CoefficientMapInjectivity\\n"')
+prepare=prepare.replace('["import missions.zeta9.formalization.CoefficientMapJet"]+["import "+m for m in MATHLIB]','["import missions.zeta9.formalization.CoefficientMapInjectivity"]+["import "+m for m in MATHLIB]')
+# The original signatures use the actual Injectivity namespace opened in native PF.
+prepare=prepare.replace('open "+NS+"\\n"', 'open "+NS+" ZetaNine.CoefficientMapInjectivity\\n"')
+prepare=prepare.replace('open "+NS+"\\n\\ntheorem solution', 'open "+NS+" ZetaNine.CoefficientMapInjectivity\\n\\ntheorem solution')
+start=prepare.index('origin=');end=prepare.index('\ndump(OUT / "definitions-request.json"',start)
+prepare=prepare[:start]+'''origin="Zeta(9) actual finite global partial-fraction research: missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md. Frozen Lean source missions/zeta9/formalization/CoefficientMapPartialFractions.lean, SHA256 "+EXPECTED["CoefficientMapPartialFractions"]+". The original actual Base/Jet/Injectivity finite products and local formal coefficients are used throughout."
+definition_nl=r"""For natural $n,j$ and $W\\in\\mathbb Q[X]$, let $D^*_{n,j}(t)=\\prod_{0\\le k\\le n,\\ k\\ne j}(t+k)$ and let $S^W_{n,j}$ be the actual weighted local formal quotient imported from the genuine shifted products. Set $T_{n,j}^W=\\operatorname{trunc}_{<9}S^W_{n,j}$ and $B_{n,j}^W=(D^*_{n,j})^9T^W_{n,j}(X+j)$. Using the actual coefficients $c^W_{n,j,s}=[z^{9-s}]S^W_{n,j}$, define
+
+$$P_n^W=\\sum_{j=0}^{n}\\sum_{s=1}^{9}c^W_{n,j,s}(D^*_{n,j})^9(X+j)^{9-s}.$$
+
+Define the candidate cleared local series by $P_n^W(z-j)(D_{n,j}(z)^9)^{-1}$ in $\\mathbb Q[[z]]$. These five definitions construct a candidate from the genuine local coefficients; neither a global partial-fraction conclusion nor an arbitrary coefficient array is assumed. The complete identity with the actual weighted numerator is a subsequent theorem on the strict proper domain."""
+'''+prepare[end:]
+prepare=prepare.replace('"Actual proper-domain full local coefficient array"','"Actual finite partial-fraction numerator and local candidate series"')
+start=prepare.index('titles=');end=prepare.index('\ntargets=[];',start)
+prepare=prepare[:start]+'''titles=["The actual partial-fraction candidate matches every local coefficient","Exact global polynomial identity from actual local coefficients","Actual finite global partial fractions at every regular rational point"]
+naturals=[r"""Let $n,j,s$ be natural numbers, $j\\le n$, $1\\le s\\le9$, and let $W\\in\\mathbb Q[X]$ be arbitrary. Let $c^W_{n,j,s}$ be the actual coefficient of $z^{9-s}$ in the genuine weighted local formal quotient. Construct $P_n^W$ from these actual coefficients by $\\sum_{i=0}^{n}\\sum_{r=1}^{9}c^W_{n,i,r}(D^*_{n,i})^9(X+i)^{9-r}$, where $D^*_{n,i}=\\prod_{k\\ne i}(X+k)$. Its cleared candidate local series satisfies
+
+$$[z^{9-s}]\\bigl(P_n^W(z-j)(D_{n,j}(z)^9)^{-1}\\bigr)=c^W_{n,j,s}.$$
+
+This is a genuine all-nine local coefficient match. It needs neither strict properness nor a global partial-fraction identity as an assumption. It remains valid when the multiplier is outside the proper domain.""",r"""For any natural $n$ and $W\\in\\mathbb Q[X]$, assume the strict proper-degree condition $2n+2\\operatorname{natdeg}W<9(n+1)$. With $N_n(X)=n!^7\\prod_{i=1}^{n}(X-i)(X+n+i)$, $U_n(X)=X(X+n)$ and the actual formal local coefficients $c^W_{n,j,s}$, one has
+
+$$N_n(X)W(U_n(X))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}c^W_{n,j,s}\\left(\\prod_{0\\le k\\le n,\\ k\\ne j}(X+k)\\right)^9(X+j)^{9-s}.$$
+
+This is an exact polynomial identity for the actual numerator and actual local coefficient candidate, including $n=0$. Strict properness is essential: at $n=0,W=X^5$ the actual numerator is $X^{10}$ while the nine-order candidate is zero, so the identity would fail without the condition.""",r"""Let $n\\ge0$ be natural, $W\\in\\mathbb Q[X]$, and assume $2n+2\\operatorname{natdeg}W<9(n+1)$. Set $R_n(t)=n!^7\\prod_{i=1}^{n}(t-i)(t+n+i)/(\\prod_{k=0}^{n}(t+k))^9$, and take $c^W_{n,j,s}$ from its actual weighted local formal quotient. At every rational $t$ with $t+k\\ne0$ for all $0\\le k\\le n$,
+
+$$R_n(t)W(t(t+n))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}\\frac{c^W_{n,j,s}}{(t+j)^s}.$$
+
+This is a finite exact partial-fraction equality at regular rational points. It does not assert infinite-sum convergence, vanishing of the simple-pole total, exact L, or injectivity/invertibility of the original aggregate F. At $n=0,W=X^4$ properness allows the simple pole $1/t$; $W=X^5$ is outside the proper domain.""" ]
+'''+prepare[end:]
+prepare=prepare.replace('"source_defs":7,"source_proofs":18','"source_defs":5,"source_proofs":27')
+prepare=prepare.replace('assert len(all_defs)==25','assert len(all_defs)==30')
+prepare=prepare.replace('"source_declarations":25,"actual_defs":7,"original_proofs":18','"source_declarations":32,"actual_defs":5,"original_proofs":27')
+prepare=prepare.replace('zeta9InjectivityOfflineAuthor','zeta9PartialFractionsOfflineAuthor')
+prepare=prepare.replace('endswith("Injectivity")','endswith("PartialFractions")')
+prepare=prepare.replace('all three actual Lean parser/ref oracles','all four actual Lean parser/ref oracles')
+prepare=prepare.replace('"formal-power-series","injectivity"','"formal-power-series","partial-fractions"')
+prepare=prepare.replace('"polynomials","injectivity","formalization"','"polynomials","partial-fractions","formalization"')
+(OUT / "prepare_batch.py").write_text(prepare,encoding="utf-8",newline="\n")
+(OUT / "recipe-provenance.json").write_text(json.dumps({"configuration_template":(OLD / "prepare_batch.py").relative_to(TASK).as_posix(),"configuration_template_sha256":hashlib.sha256((OLD / "prepare_batch.py").read_bytes()).hexdigest(),"changes":"Configure four genuine sources, five genuine PF defs, three exact endpoints, three existing Def dependencies, actual Injectivity signature namespace opens, and faithful PF prose. Mathematical source positions remain exclusively from actually executed Lean graph/parser/header facts.","old_recipe_modified":False},indent=2)+"\n",encoding="utf-8")
+print("Configured new PartialFractions oracle-driven recipe only.")

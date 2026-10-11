@@ -1,0 +1,19 @@
+{
+  "theorem_id": "94cac88d-1457-4674-8883-c589270a25a8",
+  "theorem_name": "ZetaNine_AnalyticPhase",
+  "theorem_title": "Actual phase and auxiliary functions for zeta(9)",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Define f(x)=10x log(x)+(x+2)log(x+2)-(x-1)log(x-1)-10(x+1)log(x+1), its derivative ratio, and the auxiliary functions used for its whole-domain upper bound.",
+  "created_at": "2026-10-07T12:11:40.014011+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "definition": "import Mathlib.Analysis.SpecialFunctions.Log.Deriv\r\nimport Mathlib.Analysis.Calculus.Deriv.MeanValue\r\nimport Mathlib.Tactic\r\n\r\nset_option autoImplicit false\r\nnoncomputable section\r\nopen Set\r\nopen scoped BigOperators\r\n\r\nnamespace ZetaNine.AnalyticPhase\r\n\r\ndef phase (x : ℝ) : ℝ :=\r\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\r\n    (x - 1) * Real.log (x - 1) - 10 * (x + 1) * Real.log (x + 1)\r\n\r\ndef phaseRatio (x : ℝ) : ℝ := (x + 2) * x ^ 10 / ((x - 1) * (x + 1) ^ 10)\r\n\r\ndef phaseSlope (x : ℝ) : ℝ :=\r\n  10 * Real.log x + Real.log (x + 2) - Real.log (x - 1) - 10 * Real.log (x + 1)\r\n\r\ndef upperSlopeConstant : ℝ := (301 / 100 : ℝ) * (101 / 201 : ℝ) ^ 10\r\n\r\ndef smoothPhaseGap (x : ℝ) : ℝ :=\r\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\r\n    10 * (x + 1) * Real.log (x + 1) - phase 1 -\r\n      (x - 1) * (1 + Real.log upperSlopeConstant)\r\n\r\ndef smoothPhaseSlope (x : ℝ) : ℝ :=\r\n  10 * Real.log x + Real.log (x + 2) - 10 * Real.log (x + 1) -\r\n    Real.log upperSlopeConstant\r\n\r\ndef smoothPhaseRatio (x : ℝ) : ℝ :=\r\n  (x + 2) * (x / (x + 1)) ^ 10\r\n\r\nend ZetaNine.AnalyticPhase\r\n",
+  "source": "ZetaNine local research, AnalyticPhase.lean and AnalyticPhaseUpperBound.lean; independently compiled exports SHA-256 2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd and 388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635. Native independent audit SHA-256 f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

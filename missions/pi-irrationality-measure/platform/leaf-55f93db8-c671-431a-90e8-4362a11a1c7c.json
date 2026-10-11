@@ -1,0 +1,23 @@
+{
+  "theorem_id": "55f93db8-c671-431a-90e8-4362a11a1c7c",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.eventual_weighted_representatives_of_scale",
+  "theorem_title": "Eventual weighted representatives at a fixed admissible scale",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.eventual_weighted_representatives_of_scale\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu)\n    (R : ℚ) (T : Fin d.m → ℕ) (e : Fin (d.m + 1) → ℕ)\n    (hR : 0 < R) (he : ∀ i, 0 < e i)\n    (hT : ∀ i, InterpolationMatrix.rowWeights d.v0 d.base.theta\n      (MatrixArithmetic.logWeights (finiteDenominators d)) i.succ ≤\n      (T i : ℝ) * InterpolationMatrix.rowWeights d.v0 d.base.theta\n        (MatrixArithmetic.logWeights (finiteDenominators d)) 0)\n    (hscale : ∀ i, (R : ℝ) = (e i : ℝ) *\n      InterpolationMatrix.rowWeights d.v0 d.base.theta\n        (MatrixArithmetic.logWeights (finiteDenominators d)) i) :\n    ∀ᶠ n : ℕ in atTop,\n      ∀ P : MvPolynomial (Fin (d.m + 1)) ℂ,\n        ∃ Q : FormalInterpolation.WeightedPolynomial d.w0\n          (MatrixArithmetic.logWeights (finiteDenominators d)) ((n : ℝ) * (R : ℝ)),\n          P - Q.val ∈ FormalInterpolation.logarithmicCentersIdeal\n            (fun j : Fin d.K => fun i => (j.val : ℂ) *\n              MatrixArithmetic.rationalCenters (finiteNumerators d) (finiteDenominators d) i)\n            T e ^ n := by sorry",
+  "natural_language_statement": "Fix a parameter $\\\\nu>2$, an admissible determinant family $d$, and scale data $R,T_i,e_i$ satisfying the positivity, row-weight bounds, and scale equalities in the hypotheses. For all sufficiently large $n$, every complex polynomial $P$ in the $d.m+1$ variables has a representative $Q$ of weighted degree at most $nR$ in its class modulo the $n$-th power of the product logarithmic center ideal at the rational centers of $d$. The threshold is uniform over $P$.",
+  "created_at": "2026-10-08T06:29:17.377691+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_LogarithmicCenterIdeals\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Ampleness/AdmissibleBlowupGeometry.lean (centerIdeal_restrict and affinePolynomialIdeal); Jets/AdmissibleJetSurjectivity.lean (eventual_jetRestriction_surjective); Jets/AffineJetPolynomial.lean (polynomialQuotient_surjective_of_jetRestriction); Approximation/WeightedGlobalSectionBound.lean (eventual_admissible_supportBound).",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

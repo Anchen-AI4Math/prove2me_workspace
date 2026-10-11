@@ -1,0 +1,137 @@
+"""Exact rational candidate precheck. This script never invokes Lean/Lake/API."""
+from fractions import Fraction as F
+from pathlib import Path
+from math import factorial,prod
+import json,hashlib,sys
+sys.stdout.reconfigure(encoding='utf-8')
+OUT=Path(__file__).resolve().parent;TASK=OUT.parents[1]
+SOURCE=TASK/'formalization/CoefficientMapParameterShift.lean'
+FIXED='dc629940878fd365e1cb995fe3e4ca6b75b38aee6938eeca37a9fa493e7156b0'
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def trim(p):
+ p=[F(x) for x in p]
+ while p and not p[-1]:p.pop()
+ return p
+
+def add(p,q):return trim([(p[i] if i<len(p) else 0)+(q[i] if i<len(q) else 0) for i in range(max(len(p),len(q)))])
+def scale(p,c):return trim([x*c for x in p])
+def sub(p,q):return add(p,scale(q,-1))
+def mul(p,q):
+ if not p or not q:return []
+ a=[F(0)]*(len(p)+len(q)-1)
+ for i,x in enumerate(p):
+  for j,y in enumerate(q):a[i+j]+=x*y
+ return trim(a)
+def power(p,n):
+ r=[F(1)]
+ for _ in range(n):r=mul(r,p)
+ return r
+def ev(p,t):
+ r=F(0)
+ for c in p[::-1]:r=r*t+c
+ return r
+def comp(p,q):
+ r=[]
+ for c in p[::-1]:r=add(mul(r,q),[c])
+ return r
+def coeff(p,i):return p[i] if i<len(p) else F(0)
+def degree(p):return max(0,len(p)-1)
+def rational(f):return str(f)
+def R(n,t):
+ return F(factorial(n)**7)*prod((t-k for k in range(1,n+1)),start=F(1))*prod((t+n+k for k in range(1,n+1)),start=F(1))/prod((t+k for k in range(n+1)),start=F(1))**9
+def reg(n,t):return all(t-1+k for k in range(n+3))
+def q_remainder(n,q,t):
+ return R(n,t)*(t-n-1)/(t-1)**10*ev(q,t*(t+max(n-1,0)))
+def maps(n):
+ U=[0,n,1];V=[0,max(n-1,0),1];W=mul([1,1],[n,1])
+ D=power(sub(U,[n+1]),10)
+ front=mul([-(n+1),1],power([n+1,1],10))
+ back=mul([2*n+1,1],power([-1,1],10))
+ Z=[F(1)]
+ for a in [1,2,3]:Z=mul(Z,[-(n+a)*(2*n+a),1])
+ return U,V,W,D,front,back,Z
+
+def solve_targets(n):
+ U,V,W,D,front,back,Z=maps(n)
+ cols=[mul(D,power(U,i)) for i in range(5)]+[
+  sub(mul(front,power(V,a)),mul(back,power(W,a))) for a in range(10)]
+ targets=[scale(mul(comp(Z,U),power(sub(U,[n+1]),r)),((n+1)*(n+2))**7) for r in range(5)]
+ matrix=[[coeff(c,2*i) for c in cols]+[coeff(c,2*i) for c in targets] for i in range(15)]
+ pivots=[]
+ for j in range(15):
+  k=next((k for k in range(j,15) if matrix[k][j]),None);assert k is not None
+  matrix[j],matrix[k]=matrix[k],matrix[j]
+  pivot=matrix[j][j];pivots.append(rational(pivot))
+  matrix[j]=[x/pivot for x in matrix[j]]
+  for k in range(15):
+   if k==j:continue
+   c=matrix[k][j]
+   if c:matrix[k]=[x-c*y for x,y in zip(matrix[k],matrix[j])]
+ results=[]
+ for r in range(5):
+  c=[matrix[i][15+r] for i in range(15)];P=trim(c[:5]);q=trim(c[5:])
+  lhs=add(mul(D,comp(P,U)),sub(mul(front,comp(q,V)),mul(back,comp(q,W))))
+  assert lhs==targets[r]  # Entire polynomial, all degrees; no projection-only gate.
+  assert degree(P)<=4 and degree(q)<=9
+  point_checks=[]
+  for t in [F(1,2),F(-1,2),F(n+3)]+[F(k) for k in range(2,n+1)]:
+   assert reg(n,t)
+   u=t*(t+n)
+   left=R(n+2,t-1)*(u-(n+1))**r
+   right=R(n,t)*ev(P,u)+q_remainder(n,q,t)-q_remainder(n,q,t+1)
+   assert left==right
+   point_checks.append({'t':rational(t),'left':rational(left),'right':rational(right),'R_old_is_zero':R(n,t)==0})
+  results.append({'n':n,'r':r,'P_coefficients':[rational(x) for x in P],
+   'q_coefficients':[rational(x) for x in q],'P_degree':degree(P),'q_degree':degree(q),
+   'whole_polynomial_residual_zero':True,'actual_rational_transport_points':point_checks})
+ return {'n':n,'all_15_exact_pivots_nonzero':True,'pivots':pivots,'solutions':results}
+
+assert sha(SOURCE)==FIXED,'Candidate changed; do not silently apply the prior inspection.'
+protected=[TASK/'formalization/CoefficientMapConnection.lean',TASK/'formalization/CoefficientMapMatrix.lean',
+ TASK/'formalization/platform/coefficient-map-connection/preparation-verification.json',
+ TASK/'formalization/platform/coefficient-map-kernel-bridge/independent/preparation-verification.json']
+before={p.relative_to(TASK).as_posix():sha(p) for p in protected}
+(OUT/'candidate-observed.lean').write_bytes(SOURCE.read_bytes())
+product_checks=0;R_checks=0;Q_checks=0;regular_checks=0;R_zero_points=0
+for n in range(8):
+ U,V,W,D,front,back,Z=maps(n)
+ assert D==mul(power([-1,1],10),power([n+1,1],10));product_checks+=1
+ assert comp(Z,U)==mul(mul(mul([-(n+1),1],[2*n+1,1]),mul([-(n+2),1],[2*n+2,1])),mul([-(n+3),1],[2*n+3,1]));product_checks+=1
+ assert factorial(n+2)**7==((n+1)*(n+2))**7*factorial(n)**7;product_checks+=1
+ for t in [F(n+3),F(1,2),F(-1,2)]+[F(k) for k in range(2,n+1)]:
+  assert reg(n,t)
+  assert all(t+k for k in range(n+1)) and all(t+1+k for k in range(n+1))
+  assert t-1 and t and t+n+1;regular_checks+=1
+  u=t*(t+n)
+  assert R(n+2,t-1)*ev(D,t)==((n+1)*(n+2))**7*ev(Z,u)*R(n,t);R_checks+=1
+  if not R(n,t):R_zero_points+=1
+  if n>=1:
+   for a in range(10):
+    q=[F(0)]*a+[F(1)]
+    H=sub(mul(front,comp(q,V)),mul(back,comp(q,W)))
+    assert (q_remainder(n,q,t)-q_remainder(n,q,t+1))*ev(D,t)==R(n,t)*ev(H,t);Q_checks+=1
+systems=[solve_targets(n) for n in [1,2,3]]
+n=0;t=F(2);q=[0,1];U,V,W,D,front,back,Z=maps(n)
+Qdiff=q_remainder(n,q,t)-q_remainder(n,q,t+1)
+H=ev(sub(mul(front,comp(q,V)),mul(back,comp(q,W))),t)
+expected=R(n,t)*H/ev(D,t)
+assert Qdiff!=expected
+negative={'kind':'required n>=1 for the Q bridge, not for the product/R ratio identity','n':0,'t':'2','q':'X',
+ 'regular_new':True,'clipped_V_at_t_plus_1':rational(ev(V,t+1)),'paper_W_argument':rational(ev(W,t)),
+ 'actual_Q_difference':rational(Qdiff),'proposed_R_H_over_D':rational(expected),'inequality_verified':True}
+assert sha(SOURCE)==FIXED
+assert before=={p.relative_to(TASK).as_posix():sha(p) for p in protected}
+report={'status':'OFFLINE_CANDIDATE_PRECHECK_ONLY','verdict':None,'Lean_Lake_invocations':0,
+ 'candidate_source_sha256':FIXED,'candidate_task_relative':SOURCE.relative_to(TASK).as_posix(),
+ 'candidate_bytes':SOURCE.stat().st_size,'candidate_compiled_in_this_review':False,
+ 'mathematical_shape_finding':'All reviewed algebraic statements have the expected true product indices, scale and Q(t)-Q(t+1) sign. Actual compilation and type/kernel audit remain required.',
+ 'exact_counts':{'polynomial_factor_and_factorial_checks':product_checks,'regular_implication_points':regular_checks,
+  'actual_R_ratio_points':R_checks,'Q_difference_monomial_points':Q_checks,'regular_points_with_Rold_zero':R_zero_points,
+  'full_15_by_15_systems':len(systems),'exact_whole_polynomial_target_solutions':15,
+  'actual_R_full_transport_solution_points':sum(len(s['actual_rational_transport_points']) for x in systems for s in x['solutions'])},
+ 'full_systems':systems,'necessary_domain_counterexample':negative,'protected_hashes_unchanged':before,
+ 'scope':'finite regular rational point transport only; no five-coordinate F transport, infinite boundary limit, integer inverse or irrationality'}
+(OUT/'offline-review.json').write_bytes((json.dumps(report,ensure_ascii=False,indent=2)+'\n').encode('utf-8'))
+print(json.dumps({'status':report['status'],'candidate_source_sha256':FIXED,'exact_counts':report['exact_counts'],
+ 'n0_counterexample':negative,'Lean_Lake_invocations':0},ensure_ascii=False,indent=2))

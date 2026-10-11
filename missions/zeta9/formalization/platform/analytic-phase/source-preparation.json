@@ -1,0 +1,1030 @@
+{
+  "role": "Phase platform AUTHOR; not native author or native/platform independent reviewer",
+  "native_author_SHA": "a8f8cf52008b69f7b8e7e868a3c754ebc72c89f4f6f1aa89f9ca2bfdf1ff2647",
+  "native_independent_SHA": "f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc",
+  "Root_native_independent_full_binding_gate": {
+    "bytes": 7534943,
+    "sha256": "f2de2d8390c95541091dd5a60c2865186773b71e18dbb450da2c1d54d45d70fc",
+    "task_relative": "verification/formalization-project-handoff-2026-10-07/root-phase-independent-complete-binding-rehash.json"
+  },
+  "critical_sources": [
+    {
+      "export": {
+        "bytes": 6791,
+        "sha256": "2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd",
+        "task_relative": "verification/formalization-analytic-phase-upper-bound-2026-10-07/native-export/AnalyticPhase.lean"
+      },
+      "original": {
+        "bytes": 6709,
+        "sha256": "475f95ba7e9c977a78b6efa8e0f1599d2ec32fcc20e46bfb1bfb3b5e309ea38c",
+        "task_relative": "formalization/AnalyticPhase.lean"
+      }
+    },
+    {
+      "export": {
+        "bytes": 8563,
+        "sha256": "388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635",
+        "task_relative": "verification/formalization-analytic-phase-upper-bound-2026-10-07/native-export/AnalyticPhaseUpperBound.lean"
+      },
+      "original": {
+        "bytes": 8495,
+        "sha256": "9e0ed4cb7757b17af9a64b69927a3fa47c440d1828f239be50e473ab24a21c16",
+        "task_relative": "formalization/AnalyticPhaseUpperBound.lean"
+      }
+    }
+  ],
+  "native_definitions": [
+    {
+      "kind": "def",
+      "name": "phase",
+      "header": "def phase (x : ℝ) : ℝ",
+      "source": "def phase (x : ℝ) : ℝ :=\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\n    (x - 1) * Real.log (x - 1) - 10 * (x + 1) * Real.log (x + 1)\n"
+    },
+    {
+      "kind": "def",
+      "name": "phaseRatio",
+      "header": "def phaseRatio (x : ℝ) : ℝ",
+      "source": "def phaseRatio (x : ℝ) : ℝ := (x + 2) * x ^ 10 / ((x - 1) * (x + 1) ^ 10)\n"
+    },
+    {
+      "kind": "def",
+      "name": "phaseSlope",
+      "header": "def phaseSlope (x : ℝ) : ℝ",
+      "source": "def phaseSlope (x : ℝ) : ℝ :=\n  10 * Real.log x + Real.log (x + 2) - Real.log (x - 1) - 10 * Real.log (x + 1)\n"
+    },
+    {
+      "kind": "def",
+      "name": "upperSlopeConstant",
+      "header": "def upperSlopeConstant : ℝ",
+      "source": "def upperSlopeConstant : ℝ := (301 / 100 : ℝ) * (101 / 201 : ℝ) ^ 10\n"
+    },
+    {
+      "kind": "def",
+      "name": "smoothPhaseGap",
+      "header": "def smoothPhaseGap (x : ℝ) : ℝ",
+      "source": "def smoothPhaseGap (x : ℝ) : ℝ :=\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\n    10 * (x + 1) * Real.log (x + 1) - phase 1 -\n      (x - 1) * (1 + Real.log upperSlopeConstant)\n"
+    },
+    {
+      "kind": "def",
+      "name": "smoothPhaseSlope",
+      "header": "def smoothPhaseSlope (x : ℝ) : ℝ",
+      "source": "def smoothPhaseSlope (x : ℝ) : ℝ :=\n  10 * Real.log x + Real.log (x + 2) - 10 * Real.log (x + 1) -\n    Real.log upperSlopeConstant\n"
+    },
+    {
+      "kind": "def",
+      "name": "smoothPhaseRatio",
+      "header": "def smoothPhaseRatio (x : ℝ) : ℝ",
+      "source": "def smoothPhaseRatio (x : ℝ) : ℝ :=\n  (x + 2) * (x / (x + 1)) ^ 10\n"
+    }
+  ],
+  "native_theorems": [
+    {
+      "kind": "theorem",
+      "name": "phaseGap_identity",
+      "header": "theorem phaseGap_identity (x : ℝ) :\n    (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10 =\n    (743876235460997060507 / 100000000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 0 +\n    (109589356802878649457 / 100000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 1 +\n    (10634683646357555663 / 2000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 2 +\n    (29280046551142071 / 2500000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 3 +\n    (1524457114482447 / 100000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 4 +\n    (32277046531191 / 2500000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 5 +\n    (73792828347 / 10000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 6 +\n    (71169471 / 25000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 7 +\n    (1428963 / 2000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 8 +\n    (1057 / 10 : ℝ) * (x - (101 / 100 : ℝ)) ^ 9 +\n    (7 / 1 : ℝ) * (x - (101 / 100 : ℝ)) ^ 10",
+      "source": "theorem phaseGap_identity (x : ℝ) :\n    (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10 =\n    (743876235460997060507 / 100000000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 0 +\n    (109589356802878649457 / 100000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 1 +\n    (10634683646357555663 / 2000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 2 +\n    (29280046551142071 / 2500000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 3 +\n    (1524457114482447 / 100000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 4 +\n    (32277046531191 / 2500000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 5 +\n    (73792828347 / 10000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 6 +\n    (71169471 / 25000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 7 +\n    (1428963 / 2000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 8 +\n    (1057 / 10 : ℝ) * (x - (101 / 100 : ℝ)) ^ 9 +\n    (7 / 1 : ℝ) * (x - (101 / 100 : ℝ)) ^ 10 := by\n  ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseGap_pos",
+      "header": "theorem phaseGap_pos (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    0 < (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10",
+      "source": "theorem phaseGap_pos (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    0 < (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10 := by\n  rw [phaseGap_identity]\n  have hy : 0 ≤ x - (101 / 100 : ℝ) := sub_nonneg.mpr hx\n  positivity\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseRatio_pos",
+      "header": "theorem phaseRatio_pos (x : ℝ) (hx : 1 < x) : 0 < phaseRatio x",
+      "source": "theorem phaseRatio_pos (x : ℝ) (hx : 1 < x) : 0 < phaseRatio x := by\n  unfold phaseRatio\n  have hx0 : 0 < x := by linarith\n  have hxm : 0 < x - 1 := by linarith\n  have hxp : 0 < x + 1 := by linarith\n  have hx2 : 0 < x + 2 := by linarith\n  positivity\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseRatio_lt_one",
+      "header": "theorem phaseRatio_lt_one (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseRatio x < 1",
+      "source": "theorem phaseRatio_lt_one (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseRatio x < 1 := by\n  have hx0 : 0 < x := by linarith\n  have hxm : 0 < x - 1 := by linarith\n  have hxp : 0 < x + 1 := by linarith\n  have hd : 0 < (x - 1) * (x + 1) ^ 10 := by positivity\n  unfold phaseRatio\n  apply (div_lt_one hd).mpr\n  exact sub_pos.mp (phaseGap_pos x hx)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseSlope_eq_log_ratio",
+      "header": "theorem phaseSlope_eq_log_ratio (x : ℝ) (hx : 1 < x) :\n    phaseSlope x = Real.log (phaseRatio x)",
+      "source": "theorem phaseSlope_eq_log_ratio (x : ℝ) (hx : 1 < x) :\n    phaseSlope x = Real.log (phaseRatio x) := by\n  have hx0 : x ≠ 0 := ne_of_gt (by linarith : 0 < x)\n  have hxm : x - 1 ≠ 0 := ne_of_gt (by linarith : 0 < x - 1)\n  have hxp : x + 1 ≠ 0 := ne_of_gt (by linarith : 0 < x + 1)\n  have hx2 : x + 2 ≠ 0 := ne_of_gt (by linarith : 0 < x + 2)\n  unfold phaseSlope phaseRatio\n  rw [Real.log_div (mul_ne_zero hx2 (pow_ne_zero 10 hx0))\n    (mul_ne_zero hxm (pow_ne_zero 10 hxp)),\n    Real.log_mul hx2 (pow_ne_zero 10 hx0),\n    Real.log_mul hxm (pow_ne_zero 10 hxp), Real.log_pow, Real.log_pow]\n  ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseSlope_neg_right",
+      "header": "theorem phaseSlope_neg_right (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseSlope x < 0",
+      "source": "theorem phaseSlope_neg_right (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseSlope x < 0 := by\n  have hx1 : 1 < x := by linarith\n  rw [phaseSlope_eq_log_ratio x hx1]\n  exact Real.log_neg (phaseRatio_pos x hx1) (phaseRatio_lt_one x hx)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "hasDerivAt_mul_log_shift",
+      "header": "theorem hasDerivAt_mul_log_shift (x a : ℝ) (ha : x + a ≠ 0) :\n    HasDerivAt (fun y : ℝ => (y + a) * Real.log (y + a))\n      (Real.log (x + a) + 1) x",
+      "source": "theorem hasDerivAt_mul_log_shift (x a : ℝ) (ha : x + a ≠ 0) :\n    HasDerivAt (fun y : ℝ => (y + a) * Real.log (y + a))\n      (Real.log (x + a) + 1) x := by\n  have h := ((hasDerivAt_id x).add_const a).mul\n    (((hasDerivAt_id x).add_const a).log ha)\n  convert h using 1\n  all_goals first | rfl | simp [id_eq, one_div, mul_inv_cancel₀ ha]\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_hasDerivAt",
+      "header": "theorem phase_hasDerivAt (x : ℝ) (hx : 1 < x) :\n    HasDerivAt phase (phaseSlope x) x",
+      "source": "theorem phase_hasDerivAt (x : ℝ) (hx : 1 < x) :\n    HasDerivAt phase (phaseSlope x) x := by\n  have h0 : x + 0 ≠ 0 := by linarith\n  have h2 : x + 2 ≠ 0 := by linarith\n  have hm : x + (-1) ≠ 0 := by linarith\n  have hp : x + 1 ≠ 0 := by linarith\n  have h := (((hasDerivAt_mul_log_shift x 0 h0).const_mul 10).add\n    (hasDerivAt_mul_log_shift x 2 h2)).sub\n    (hasDerivAt_mul_log_shift x (-1) hm)\n  have h' := h.sub ((hasDerivAt_mul_log_shift x 1 hp).const_mul 10)\n  convert h' using 1\n  all_goals first | rfl | (funext y; simp [phase, Pi.neg_apply, sub_eq_add_neg]; ring) | (simp [phaseSlope, id_eq, sub_eq_add_neg]; ring)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "deriv_phase",
+      "header": "theorem deriv_phase (x : ℝ) (hx : 1 < x) : deriv phase x = phaseSlope x",
+      "source": "theorem deriv_phase (x : ℝ) (hx : 1 < x) : deriv phase x = phaseSlope x :=\n  (phase_hasDerivAt x hx).deriv\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_strictAntiOn_right",
+      "header": "theorem phase_strictAntiOn_right : StrictAntiOn phase (Ici (101 / 100 : ℝ))",
+      "source": "theorem phase_strictAntiOn_right : StrictAntiOn phase (Ici (101 / 100 : ℝ)) := by\n  apply strictAntiOn_of_deriv_neg (convex_Ici (101 / 100 : ℝ))\n  · intro x hx\n    have hx1 : 1 < x := by have h : (101 / 100 : ℝ) ≤ x := hx; linarith\n    exact (phase_hasDerivAt x hx1).continuousAt.continuousWithinAt\n  · intro x hx\n    have hx' : (101 / 100 : ℝ) ≤ x := interior_subset hx\n    rw [deriv_phase x (by linarith : 1 < x)]\n    exact phaseSlope_neg_right x hx'\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_le_right_endpoint",
+      "header": "theorem phase_le_right_endpoint (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phase x ≤ phase (101 / 100)",
+      "source": "theorem phase_le_right_endpoint (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phase x ≤ phase (101 / 100) := by\n  have h0 : (101 / 100 : ℝ) ∈ Ici (101 / 100 : ℝ) := by\n    change (101 / 100 : ℝ) ≤ (101 / 100 : ℝ)\n    exact le_rfl\n  exact phase_strictAntiOn_right.antitoneOn h0 hx hx\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "upperSlopeConstant_pos",
+      "header": "theorem upperSlopeConstant_pos : 0 < upperSlopeConstant",
+      "source": "theorem upperSlopeConstant_pos : 0 < upperSlopeConstant := by\n  norm_num [upperSlopeConstant]\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "upperSlopeConstant_eq",
+      "header": "theorem upperSlopeConstant_eq : upperSlopeConstant =\n    (33249125974877255751301 / 10763674952097696180200100 : ℝ)",
+      "source": "theorem upperSlopeConstant_eq : upperSlopeConstant =\n    (33249125974877255751301 / 10763674952097696180200100 : ℝ) := by\n  norm_num [upperSlopeConstant]\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseRatio_small_interval_le",
+      "header": "theorem phaseRatio_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseRatio (1 + u) ≤ upperSlopeConstant / u",
+      "source": "theorem phaseRatio_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseRatio (1 + u) ≤ upperSlopeConstant / u := by\n  have h2 : 0 < 2 + u := by linarith\n  have hb : (1 + u) / (2 + u) ≤ (101 / 201 : ℝ) := by\n    apply (div_le_iff₀ h2).mpr\n    nlinarith\n  have hb0 : 0 ≤ (1 + u) / (2 + u) := by positivity\n  have hp : ((1 + u) / (2 + u)) ^ 10 ≤ (101 / 201 : ℝ) ^ 10 :=\n    pow_le_pow_left₀ hb0 hb 10\n  have hc : 3 + u ≤ (301 / 100 : ℝ) := by linarith\n  have hm : (3 + u) * ((1 + u) / (2 + u)) ^ 10 ≤ upperSlopeConstant := by\n    unfold upperSlopeConstant\n    exact mul_le_mul hc hp (by positivity) (by norm_num)\n  have he : phaseRatio (1 + u) = ((3 + u) * ((1 + u) / (2 + u)) ^ 10) / u := by\n    unfold phaseRatio\n    field_simp [ne_of_gt hu, ne_of_gt h2]\n    ring\n  rw [he]\n  exact div_le_div_of_nonneg_right hm (le_of_lt hu)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseSlope_small_interval_le",
+      "header": "theorem phaseSlope_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseSlope (1 + u) ≤ Real.log (upperSlopeConstant / u)",
+      "source": "theorem phaseSlope_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseSlope (1 + u) ≤ Real.log (upperSlopeConstant / u) := by\n  have hx : 1 < 1 + u := by linarith\n  rw [phaseSlope_eq_log_ratio (1 + u) hx]\n  exact Real.log_le_log (phaseRatio_pos (1 + u) hx) (phaseRatio_small_interval_le u hu hu1)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_one_eq",
+      "header": "theorem phase_one_eq : phase 1 = 3 * Real.log 3 - 20 * Real.log 2",
+      "source": "theorem phase_one_eq : phase 1 = 3 * Real.log 3 - 20 * Real.log 2 := by\n  norm_num [phase] <;> ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseGap_one",
+      "header": "theorem smoothPhaseGap_one : smoothPhaseGap 1 = 0",
+      "source": "theorem smoothPhaseGap_one : smoothPhaseGap 1 = 0 := by\n  norm_num [smoothPhaseGap, phase] <;> ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseGap_hasDerivAt",
+      "header": "theorem smoothPhaseGap_hasDerivAt (x : ℝ) (hx : 1 ≤ x) :\n    HasDerivAt smoothPhaseGap (smoothPhaseSlope x) x",
+      "source": "theorem smoothPhaseGap_hasDerivAt (x : ℝ) (hx : 1 ≤ x) :\n    HasDerivAt smoothPhaseGap (smoothPhaseSlope x) x := by\n  have h0 : x + 0 ≠ 0 := by linarith\n  have h2 : x + 2 ≠ 0 := by linarith\n  have hp : x + 1 ≠ 0 := by linarith\n  have hmain :=\n    ((((hasDerivAt_mul_log_shift x 0 h0).const_mul 10).add\n      (hasDerivAt_mul_log_shift x 2 h2)).sub\n        ((hasDerivAt_mul_log_shift x 1 hp).const_mul 10)).sub_const (phase 1)\n  have hlinear := ((hasDerivAt_id x).sub_const 1).mul_const\n    (1 + Real.log upperSlopeConstant)\n  have h := hmain.sub hlinear\n  convert h using 1\n  all_goals first | rfl | (funext y; simp [smoothPhaseGap, id_eq, Pi.neg_apply, sub_eq_add_neg]; ring) | (simp [smoothPhaseSlope, id_eq, sub_eq_add_neg]; ring)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseRatio_pos",
+      "header": "theorem smoothPhaseRatio_pos (x : ℝ) (hx : 1 ≤ x) :\n    0 < smoothPhaseRatio x",
+      "source": "theorem smoothPhaseRatio_pos (x : ℝ) (hx : 1 ≤ x) :\n    0 < smoothPhaseRatio x := by\n  unfold smoothPhaseRatio\n  have hx0 : 0 < x := by linarith\n  have hp : 0 < x + 1 := by linarith\n  have h2 : 0 < x + 2 := by linarith\n  positivity\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseRatio_le_upperSlopeConstant",
+      "header": "theorem smoothPhaseRatio_le_upperSlopeConstant (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseRatio x ≤ upperSlopeConstant",
+      "source": "theorem smoothPhaseRatio_le_upperSlopeConstant (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseRatio x ≤ upperSlopeConstant := by\n  have hx0 : 0 < x := by linarith [hx.1]\n  have hp : 0 < x + 1 := by linarith [hx.1]\n  have hb : x / (x + 1) ≤ (101 / 201 : ℝ) := by\n    apply (div_le_iff₀ hp).mpr\n    nlinarith [hx.2]\n  have hb0 : 0 ≤ x / (x + 1) := le_of_lt (div_pos hx0 hp)\n  have hpow : (x / (x + 1)) ^ 10 ≤ (101 / 201 : ℝ) ^ 10 :=\n    pow_le_pow_left₀ hb0 hb 10\n  have hc : x + 2 ≤ (301 / 100 : ℝ) := by linarith [hx.2]\n  unfold smoothPhaseRatio upperSlopeConstant\n  exact mul_le_mul hc hpow (by positivity) (by norm_num)\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseSlope_eq_log_ratio",
+      "header": "theorem smoothPhaseSlope_eq_log_ratio (x : ℝ) (hx : 1 ≤ x) :\n    smoothPhaseSlope x =\n      Real.log (smoothPhaseRatio x) - Real.log upperSlopeConstant",
+      "source": "theorem smoothPhaseSlope_eq_log_ratio (x : ℝ) (hx : 1 ≤ x) :\n    smoothPhaseSlope x =\n      Real.log (smoothPhaseRatio x) - Real.log upperSlopeConstant := by\n  have hx0 : 0 < x := by linarith\n  have hp : 0 < x + 1 := by linarith\n  have h2 : 0 < x + 2 := by linarith\n  have hr : 0 < x / (x + 1) := div_pos hx0 hp\n  unfold smoothPhaseSlope smoothPhaseRatio\n  rw [Real.log_mul (ne_of_gt h2) (pow_ne_zero 10 (ne_of_gt hr)),\n    Real.log_pow, Real.log_div (ne_of_gt hx0) (ne_of_gt hp)]\n  norm_num <;> ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseSlope_nonpos",
+      "header": "theorem smoothPhaseSlope_nonpos (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseSlope x ≤ 0",
+      "source": "theorem smoothPhaseSlope_nonpos (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseSlope x ≤ 0 := by\n  rw [smoothPhaseSlope_eq_log_ratio x hx.1]\n  exact sub_nonpos.mpr (Real.log_le_log (smoothPhaseRatio_pos x hx.1)\n    (smoothPhaseRatio_le_upperSlopeConstant x hx))\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseGap_antitoneOn",
+      "header": "theorem smoothPhaseGap_antitoneOn :\n    AntitoneOn smoothPhaseGap (Icc (1 : ℝ) (101 / 100 : ℝ))",
+      "source": "theorem smoothPhaseGap_antitoneOn :\n    AntitoneOn smoothPhaseGap (Icc (1 : ℝ) (101 / 100 : ℝ)) := by\n  refine antitoneOn_of_hasDerivWithinAt_nonpos\n    (f' := smoothPhaseSlope) (convex_Icc (1 : ℝ) (101 / 100 : ℝ)) ?_ ?_ ?_\n  · intro x hx\n    exact (smoothPhaseGap_hasDerivAt x hx.1).continuousAt.continuousWithinAt\n  · intro x hx\n    have hx' : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ) := interior_subset hx\n    exact (smoothPhaseGap_hasDerivAt x hx'.1).hasDerivWithinAt\n  · intro x hx\n    have hx' : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ) := interior_subset hx\n    exact smoothPhaseSlope_nonpos x hx'\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "smoothPhaseGap_le_zero",
+      "header": "theorem smoothPhaseGap_le_zero (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseGap x ≤ 0",
+      "source": "theorem smoothPhaseGap_le_zero (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseGap x ≤ 0 := by\n  have h1 : (1 : ℝ) ∈ Icc (1 : ℝ) (101 / 100 : ℝ) := by\n    constructor <;> norm_num\n  have h := smoothPhaseGap_antitoneOn h1 hx hx.1\n  simpa only [smoothPhaseGap_one] using h\n\n/-- The universal elementary cap; its hypotheses assert only positivity. -/\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "mul_one_add_log_div_le",
+      "header": "theorem mul_one_add_log_div_le (a u : ℝ) (ha : 0 < a) (hu : 0 < u) :\n    u * (1 + Real.log (a / u)) ≤ a",
+      "source": "theorem mul_one_add_log_div_le (a u : ℝ) (ha : 0 < a) (hu : 0 < u) :\n    u * (1 + Real.log (a / u)) ≤ a := by\n  have hlog := Real.log_le_sub_one_of_pos (div_pos ha hu)\n  have hmul := mul_le_mul_of_nonneg_left hlog (le_of_lt hu)\n  have he : u * (a / u - 1) = a - u := by\n    field_simp [ne_of_gt hu]\n  calc\n    u * (1 + Real.log (a / u)) = u + u * Real.log (a / u) := by ring\n    _ ≤ u + u * (a / u - 1) := add_le_add (le_refl u) hmul\n    _ = a := by rw [he]; ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_small_interval_identity",
+      "header": "theorem phase_small_interval_identity (u : ℝ) (hu : 0 < u) :\n    phase (1 + u) = phase 1 +\n      u * (1 + Real.log (upperSlopeConstant / u)) + smoothPhaseGap (1 + u)",
+      "source": "theorem phase_small_interval_identity (u : ℝ) (hu : 0 < u) :\n    phase (1 + u) = phase 1 +\n      u * (1 + Real.log (upperSlopeConstant / u)) + smoothPhaseGap (1 + u) := by\n  rw [Real.log_div (ne_of_gt upperSlopeConstant_pos) (ne_of_gt hu)]\n  unfold smoothPhaseGap phase\n  have he : (1 + u : ℝ) - 1 = u := by ring\n  simp only [he]\n  ring\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_small_interval_le_one_add_constant",
+      "header": "theorem phase_small_interval_le_one_add_constant (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) :\n    phase (1 + u) ≤ phase 1 + upperSlopeConstant",
+      "source": "theorem phase_small_interval_le_one_add_constant (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) :\n    phase (1 + u) ≤ phase 1 + upperSlopeConstant := by\n  have hx : (1 + u : ℝ) ∈ Icc (1 : ℝ) (101 / 100 : ℝ) := by\n    constructor <;> linarith\n  have hgap := smoothPhaseGap_le_zero (1 + u) hx\n  have hcap := mul_one_add_log_div_le upperSlopeConstant u upperSlopeConstant_pos hu\n  rw [phase_small_interval_identity u hu]\n  linarith\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_global_le_one_add_constant",
+      "header": "theorem phase_global_le_one_add_constant (x : ℝ) (hx : 1 < x) :\n    phase x ≤ phase 1 + upperSlopeConstant",
+      "source": "theorem phase_global_le_one_add_constant (x : ℝ) (hx : 1 < x) :\n    phase x ≤ phase 1 + upperSlopeConstant := by\n  by_cases hsmall : x ≤ (101 / 100 : ℝ)\n  · have hu : 0 < x - 1 := by linarith\n    have hu1 : x - 1 ≤ (1 / 100 : ℝ) := by linarith\n    have h := phase_small_interval_le_one_add_constant (x - 1) hu hu1\n    have he : (1 + (x - 1) : ℝ) = x := by ring\n    simpa only [he] using h\n  · have hright : (101 / 100 : ℝ) ≤ x := by linarith\n    have hendpoint := phase_small_interval_le_one_add_constant (1 / 100)\n      (by norm_num) (by norm_num)\n    have he : (1 + (1 / 100) : ℝ) = 101 / 100 := by norm_num\n    rw [he] at hendpoint\n    exact (phase_le_right_endpoint x hright).trans hendpoint\n\n/-- Six terms at `1/3`; the lower rational margin is strictly positive. -/\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "log_two_lower_rational",
+      "header": "theorem log_two_lower_rational : (693147 / 1000000 : ℝ) < Real.log 2",
+      "source": "theorem log_two_lower_rational : (693147 / 1000000 : ℝ) < Real.log 2 := by\n  have h := Real.sum_range_le_log_div (x := (1 / 3 : ℝ))\n    (by norm_num) (by norm_num) 6\n  have harg : (1 + (1 / 3 : ℝ)) / (1 - (1 / 3 : ℝ)) = 2 := by norm_num\n  rw [harg] at h\n  norm_num [Finset.sum_range_succ] at h\n  linarith\n\n/-- Eleven terms at `1/2`, using the actual proved Mathlib geometric remainder. -/\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "log_three_upper_rational",
+      "header": "theorem log_three_upper_rational : Real.log 3 < (1098613 / 1000000 : ℝ)",
+      "source": "theorem log_three_upper_rational : Real.log 3 < (1098613 / 1000000 : ℝ) := by\n  have h := Real.log_div_le_sum_range_add (x := (1 / 2 : ℝ))\n    (by norm_num) (by norm_num) 11\n  have harg : (1 + (1 / 2 : ℝ)) / (1 - (1 / 2 : ℝ)) = 3 := by norm_num\n  rw [harg] at h\n  norm_num [Finset.sum_range_succ] at h\n  linarith\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "upperSlopeConstant_lt_rational",
+      "header": "theorem upperSlopeConstant_lt_rational :\n    upperSlopeConstant < (309 / 100000 : ℝ)",
+      "source": "theorem upperSlopeConstant_lt_rational :\n    upperSlopeConstant < (309 / 100000 : ℝ) := by\n  norm_num [upperSlopeConstant]\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_one_add_constant_lt_certified",
+      "header": "theorem phase_one_add_constant_lt_certified :\n    phase 1 + upperSlopeConstant < (-10564011 / 1000000 : ℝ)",
+      "source": "theorem phase_one_add_constant_lt_certified :\n    phase 1 + upperSlopeConstant < (-10564011 / 1000000 : ℝ) := by\n  rw [phase_one_eq]\n  have h2 := log_two_lower_rational\n  have h3 := log_three_upper_rational\n  have hA := upperSlopeConstant_lt_rational\n  linarith\n\n/-- Stronger rational margin, without any finite sampling of the phase. -/\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_global_lt_certified",
+      "header": "theorem phase_global_lt_certified (x : ℝ) (hx : 1 < x) :\n    phase x < (-10564011 / 1000000 : ℝ)",
+      "source": "theorem phase_global_lt_certified (x : ℝ) (hx : 1 < x) :\n    phase x < (-10564011 / 1000000 : ℝ) :=\n  (phase_global_le_one_add_constant x hx).trans_lt phase_one_add_constant_lt_certified\n\n/-- The actual requested whole-domain phase component, with its exact open domain. -/\n"
+    },
+    {
+      "kind": "theorem",
+      "name": "phase_global_upper_bound",
+      "header": "theorem phase_global_upper_bound :\n    ∀ x : ℝ, 1 < x → phase x ≤ (-2641 / 250 : ℝ)",
+      "source": "theorem phase_global_upper_bound :\n    ∀ x : ℝ, 1 < x → phase x ≤ (-2641 / 250 : ℝ) := by\n  intro x hx\n  have h := phase_global_lt_certified x hx\n  linarith\n"
+    }
+  ],
+  "exact_original_34_forall_headers_preserved": true,
+  "exact_original_7_definition_source_preserved": true,
+  "contexts": [
+    {
+      "tag": "native",
+      "task_relative": ".rt/apfa1/native",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "missions.zeta9.formalization.AnalyticPhase",
+          "path": "missions/zeta9/formalization/AnalyticPhase.lean",
+          "binding": {
+            "bytes": 6954,
+            "sha256": "b0516973f7bdae5247e14f15cb42b0c7bbbafe93703a707c81811dd0fee3f2ae",
+            "task_relative": ".rt/apfa1/native/missions/zeta9/formalization/AnalyticPhase.lean"
+          },
+          "label": "native-AnalyticPhase"
+        },
+        {
+          "module": "missions.zeta9.formalization.AnalyticPhaseUpperBound",
+          "path": "missions/zeta9/formalization/AnalyticPhaseUpperBound.lean",
+          "binding": {
+            "bytes": 8770,
+            "sha256": "15522be67d0114314049bc69fcdee9da2678891f0957a9bed3ce5219cacb70f6",
+            "task_relative": ".rt/apfa1/native/missions/zeta9/formalization/AnalyticPhaseUpperBound.lean"
+          },
+          "label": "native-AnalyticPhaseUpperBound"
+        }
+      ]
+    },
+    {
+      "tag": "definition",
+      "task_relative": ".rt/apfa1/definition",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+          "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+          "binding": {
+            "bytes": 1122,
+            "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+            "task_relative": ".rt/apfa1/definition/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+          },
+          "label": "actual-definition"
+        },
+        {
+          "module": "Native.AnalyticPhase",
+          "path": "Native/AnalyticPhase.lean",
+          "binding": {
+            "bytes": 6960,
+            "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+            "task_relative": ".rt/apfa1/definition/Native/AnalyticPhase.lean"
+          },
+          "label": "own-oracle-AnalyticPhase"
+        },
+        {
+          "module": "Native.AnalyticPhaseUpperBound",
+          "path": "Native/AnalyticPhaseUpperBound.lean",
+          "binding": {
+            "bytes": 8754,
+            "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+            "task_relative": ".rt/apfa1/definition/Native/AnalyticPhaseUpperBound.lean"
+          },
+          "label": "own-oracle-AnalyticPhaseUpperBound"
+        },
+        {
+          "module": "PhasePlatformExprDagV1",
+          "path": "PhasePlatformExprDagV1.lean",
+          "binding": {
+            "bytes": 9328,
+            "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+            "task_relative": ".rt/apfa1/definition/PhasePlatformExprDagV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagV1"
+        },
+        {
+          "module": "PhasePlatformExprDagValidationV1",
+          "path": "PhasePlatformExprDagValidationV1.lean",
+          "binding": {
+            "bytes": 3608,
+            "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+            "task_relative": ".rt/apfa1/definition/PhasePlatformExprDagValidationV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagValidationV1"
+        }
+      ]
+    },
+    {
+      "tag": "reference",
+      "task_relative": ".rt/apfa1/reference",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+          "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+          "binding": {
+            "bytes": 1122,
+            "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+            "task_relative": ".rt/apfa1/reference/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+          },
+          "label": "actual-definition"
+        },
+        {
+          "module": "Theorems.Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right",
+          "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+          "binding": {
+            "bytes": 233,
+            "sha256": "fc16c1dbf8f8deb4bae91c4f617c30ec1d94b3df0416500c553d379fefa259f3",
+            "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+          },
+          "label": "reference-type-only-phase_strictAntiOn_right"
+        },
+        {
+          "module": "Theorems.Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified",
+          "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+          "binding": {
+            "bytes": 257,
+            "sha256": "d9f4537cf960871654fe8ac638d5e932f8557b17daaadbaf14247abe77cd4617",
+            "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+          },
+          "label": "reference-type-only-phase_global_lt_certified"
+        },
+        {
+          "module": "Theorems.Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound",
+          "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+          "binding": {
+            "bytes": 250,
+            "sha256": "f895f3c77872595dbec35f37cf1aba4638118bc37386becdf0ea09b55352cfae",
+            "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+          },
+          "label": "reference-type-only-phase_global_upper_bound"
+        }
+      ]
+    },
+    {
+      "tag": "right",
+      "task_relative": ".rt/apfa1/right",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+          "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+          "binding": {
+            "bytes": 1122,
+            "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+            "task_relative": ".rt/apfa1/right/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+          },
+          "label": "actual-definition"
+        },
+        {
+          "module": "Native.AnalyticPhase",
+          "path": "Native/AnalyticPhase.lean",
+          "binding": {
+            "bytes": 6960,
+            "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+            "task_relative": ".rt/apfa1/right/Native/AnalyticPhase.lean"
+          },
+          "label": "own-oracle-AnalyticPhase"
+        },
+        {
+          "module": "Native.AnalyticPhaseUpperBound",
+          "path": "Native/AnalyticPhaseUpperBound.lean",
+          "binding": {
+            "bytes": 8754,
+            "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+            "task_relative": ".rt/apfa1/right/Native/AnalyticPhaseUpperBound.lean"
+          },
+          "label": "own-oracle-AnalyticPhaseUpperBound"
+        },
+        {
+          "module": "Solutions.Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right",
+          "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+          "binding": {
+            "bytes": 13957,
+            "sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+            "task_relative": ".rt/apfa1/right/Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+          },
+          "label": "complete-solution"
+        },
+        {
+          "module": "PhasePlatformExprDagV1",
+          "path": "PhasePlatformExprDagV1.lean",
+          "binding": {
+            "bytes": 9328,
+            "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+            "task_relative": ".rt/apfa1/right/PhasePlatformExprDagV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagV1"
+        },
+        {
+          "module": "PhasePlatformExprDagValidationV1",
+          "path": "PhasePlatformExprDagValidationV1.lean",
+          "binding": {
+            "bytes": 3608,
+            "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+            "task_relative": ".rt/apfa1/right/PhasePlatformExprDagValidationV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagValidationV1"
+        }
+      ]
+    },
+    {
+      "tag": "certified",
+      "task_relative": ".rt/apfa1/certified",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+          "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+          "binding": {
+            "bytes": 1122,
+            "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+            "task_relative": ".rt/apfa1/certified/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+          },
+          "label": "actual-definition"
+        },
+        {
+          "module": "Native.AnalyticPhase",
+          "path": "Native/AnalyticPhase.lean",
+          "binding": {
+            "bytes": 6960,
+            "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+            "task_relative": ".rt/apfa1/certified/Native/AnalyticPhase.lean"
+          },
+          "label": "own-oracle-AnalyticPhase"
+        },
+        {
+          "module": "Native.AnalyticPhaseUpperBound",
+          "path": "Native/AnalyticPhaseUpperBound.lean",
+          "binding": {
+            "bytes": 8754,
+            "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+            "task_relative": ".rt/apfa1/certified/Native/AnalyticPhaseUpperBound.lean"
+          },
+          "label": "own-oracle-AnalyticPhaseUpperBound"
+        },
+        {
+          "module": "Solutions.Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified",
+          "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+          "binding": {
+            "bytes": 13986,
+            "sha256": "bb57f5ac1bbc1ea26a18654ed39b66b636bfadad405382f9f7eb6a4289e1c46e",
+            "task_relative": ".rt/apfa1/certified/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+          },
+          "label": "complete-solution"
+        },
+        {
+          "module": "PhasePlatformExprDagV1",
+          "path": "PhasePlatformExprDagV1.lean",
+          "binding": {
+            "bytes": 9328,
+            "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+            "task_relative": ".rt/apfa1/certified/PhasePlatformExprDagV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagV1"
+        },
+        {
+          "module": "PhasePlatformExprDagValidationV1",
+          "path": "PhasePlatformExprDagValidationV1.lean",
+          "binding": {
+            "bytes": 3608,
+            "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+            "task_relative": ".rt/apfa1/certified/PhasePlatformExprDagValidationV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagValidationV1"
+        }
+      ]
+    },
+    {
+      "tag": "global",
+      "task_relative": ".rt/apfa1/global",
+      "initially_absent": true,
+      "math_sources": [
+        {
+          "module": "Definitions.Def_ZetaNine_AnalyticPhase",
+          "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+          "binding": {
+            "bytes": 1122,
+            "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+            "task_relative": ".rt/apfa1/global/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+          },
+          "label": "actual-definition"
+        },
+        {
+          "module": "Native.AnalyticPhase",
+          "path": "Native/AnalyticPhase.lean",
+          "binding": {
+            "bytes": 6960,
+            "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+            "task_relative": ".rt/apfa1/global/Native/AnalyticPhase.lean"
+          },
+          "label": "own-oracle-AnalyticPhase"
+        },
+        {
+          "module": "Native.AnalyticPhaseUpperBound",
+          "path": "Native/AnalyticPhaseUpperBound.lean",
+          "binding": {
+            "bytes": 8754,
+            "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+            "task_relative": ".rt/apfa1/global/Native/AnalyticPhaseUpperBound.lean"
+          },
+          "label": "own-oracle-AnalyticPhaseUpperBound"
+        },
+        {
+          "module": "Solutions.Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound",
+          "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+          "binding": {
+            "bytes": 13974,
+            "sha256": "ba0b74c055a04005e5b760eec2c8ecd26ea2a5961278eb3837824773b1d11960",
+            "task_relative": ".rt/apfa1/global/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+          },
+          "label": "complete-solution"
+        },
+        {
+          "module": "PhasePlatformExprDagV1",
+          "path": "PhasePlatformExprDagV1.lean",
+          "binding": {
+            "bytes": 9328,
+            "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+            "task_relative": ".rt/apfa1/global/PhasePlatformExprDagV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagV1"
+        },
+        {
+          "module": "PhasePlatformExprDagValidationV1",
+          "path": "PhasePlatformExprDagValidationV1.lean",
+          "binding": {
+            "bytes": 3608,
+            "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+            "task_relative": ".rt/apfa1/global/PhasePlatformExprDagValidationV1.lean"
+          },
+          "label": "own-PhasePlatformExprDagValidationV1"
+        }
+      ]
+    }
+  ],
+  "payloads": [
+    {
+      "kind": "definition",
+      "path": "Definitions/Def_ZetaNine_AnalyticPhase.lean",
+      "binding": {
+        "bytes": 1122,
+        "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+        "task_relative": "formalization/platform/analytic-phase/staged/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+      "binding": {
+        "bytes": 233,
+        "sha256": "fc16c1dbf8f8deb4bae91c4f617c30ec1d94b3df0416500c553d379fefa259f3",
+        "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+      }
+    },
+    {
+      "kind": "complete_solution",
+      "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean",
+      "binding": {
+        "bytes": 13957,
+        "sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+        "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+      "binding": {
+        "bytes": 257,
+        "sha256": "d9f4537cf960871654fe8ac638d5e932f8557b17daaadbaf14247abe77cd4617",
+        "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+      }
+    },
+    {
+      "kind": "complete_solution",
+      "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean",
+      "binding": {
+        "bytes": 13986,
+        "sha256": "bb57f5ac1bbc1ea26a18654ed39b66b636bfadad405382f9f7eb6a4289e1c46e",
+        "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+      }
+    },
+    {
+      "kind": "statement_type_catalog_only",
+      "path": "Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+      "binding": {
+        "bytes": 250,
+        "sha256": "f895f3c77872595dbec35f37cf1aba4638118bc37386becdf0ea09b55352cfae",
+        "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+      }
+    },
+    {
+      "kind": "complete_solution",
+      "path": "Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean",
+      "binding": {
+        "bytes": 13974,
+        "sha256": "ba0b74c055a04005e5b760eec2c8ecd26ea2a5961278eb3837824773b1d11960",
+        "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+      }
+    }
+  ],
+  "stable_files": [
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": "formalization/platform/analytic-phase/staged/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 13986,
+      "sha256": "bb57f5ac1bbc1ea26a18654ed39b66b636bfadad405382f9f7eb6a4289e1c46e",
+      "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+    },
+    {
+      "bytes": 13974,
+      "sha256": "ba0b74c055a04005e5b760eec2c8ecd26ea2a5961278eb3837824773b1d11960",
+      "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+    },
+    {
+      "bytes": 13957,
+      "sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+      "task_relative": "formalization/platform/analytic-phase/staged/Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+    },
+    {
+      "bytes": 257,
+      "sha256": "d9f4537cf960871654fe8ac638d5e932f8557b17daaadbaf14247abe77cd4617",
+      "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+    },
+    {
+      "bytes": 250,
+      "sha256": "f895f3c77872595dbec35f37cf1aba4638118bc37386becdf0ea09b55352cfae",
+      "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+    },
+    {
+      "bytes": 233,
+      "sha256": "fc16c1dbf8f8deb4bae91c4f617c30ec1d94b3df0416500c553d379fefa259f3",
+      "task_relative": "formalization/platform/analytic-phase/staged/Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/certified/lake-manifest.json"
+    },
+    {
+      "bytes": 281,
+      "sha256": "2eb70b509df86534dbdbf5488c584ce84324875aae20c13e5f3d6330af6c3f4f",
+      "task_relative": ".rt/apfa1/certified/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/certified/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/certified/lean_call.py"
+    },
+    {
+      "bytes": 9328,
+      "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+      "task_relative": ".rt/apfa1/certified/PhasePlatformExprDagV1.lean"
+    },
+    {
+      "bytes": 3608,
+      "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+      "task_relative": ".rt/apfa1/certified/PhasePlatformExprDagValidationV1.lean"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/definition/lake-manifest.json"
+    },
+    {
+      "bytes": 282,
+      "sha256": "024a08100bbf2b5bcb220a62f0fd9d5318c3ec5377da3e4dced632036d68500e",
+      "task_relative": ".rt/apfa1/definition/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/definition/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/definition/lean_call.py"
+    },
+    {
+      "bytes": 9328,
+      "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+      "task_relative": ".rt/apfa1/definition/PhasePlatformExprDagV1.lean"
+    },
+    {
+      "bytes": 3608,
+      "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+      "task_relative": ".rt/apfa1/definition/PhasePlatformExprDagValidationV1.lean"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/global/lake-manifest.json"
+    },
+    {
+      "bytes": 278,
+      "sha256": "7ac8f3d4ca68a6eee5df712c496e4dccfbb484b229e1a6383c3536bf565be972",
+      "task_relative": ".rt/apfa1/global/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/global/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/global/lean_call.py"
+    },
+    {
+      "bytes": 9328,
+      "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+      "task_relative": ".rt/apfa1/global/PhasePlatformExprDagV1.lean"
+    },
+    {
+      "bytes": 3608,
+      "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+      "task_relative": ".rt/apfa1/global/PhasePlatformExprDagValidationV1.lean"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/native/lake-manifest.json"
+    },
+    {
+      "bytes": 278,
+      "sha256": "cb0df973a4232329856c35e7803422a7288a064dc91250d756bd00904badee8d",
+      "task_relative": ".rt/apfa1/native/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/native/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/native/lean_call.py"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/reference/lake-manifest.json"
+    },
+    {
+      "bytes": 281,
+      "sha256": "b78f76f28266a0ad470c1569369b25f5fca49ef3be58f7089010fafb7eaa161a",
+      "task_relative": ".rt/apfa1/reference/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/reference/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/reference/lean_call.py"
+    },
+    {
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+      "task_relative": ".rt/apfa1/right/lake-manifest.json"
+    },
+    {
+      "bytes": 277,
+      "sha256": "bfdc73b744add6113af19c5bf8bf6001808042f2657f15036f4271aca557e5fc",
+      "task_relative": ".rt/apfa1/right/lakefile.toml"
+    },
+    {
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+      "task_relative": ".rt/apfa1/right/lean-toolchain"
+    },
+    {
+      "bytes": 1447,
+      "sha256": "e509b517031d8098492b357e3fad000e81052afbc61e93a128eddafb8397db81",
+      "task_relative": ".rt/apfa1/right/lean_call.py"
+    },
+    {
+      "bytes": 9328,
+      "sha256": "448cba75dd50057a77d416bed7982f75ddb486cb98ee704ed78f535620e383a2",
+      "task_relative": ".rt/apfa1/right/PhasePlatformExprDagV1.lean"
+    },
+    {
+      "bytes": 3608,
+      "sha256": "96029484d7cc63953ea3d15caa30daeef14e05bfeaf792fff2631293d1aa52db",
+      "task_relative": ".rt/apfa1/right/PhasePlatformExprDagValidationV1.lean"
+    },
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": ".rt/apfa1/certified/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 6960,
+      "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+      "task_relative": ".rt/apfa1/certified/Native/AnalyticPhase.lean"
+    },
+    {
+      "bytes": 8754,
+      "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+      "task_relative": ".rt/apfa1/certified/Native/AnalyticPhaseUpperBound.lean"
+    },
+    {
+      "bytes": 13986,
+      "sha256": "bb57f5ac1bbc1ea26a18654ed39b66b636bfadad405382f9f7eb6a4289e1c46e",
+      "task_relative": ".rt/apfa1/certified/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+    },
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": ".rt/apfa1/definition/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 6960,
+      "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+      "task_relative": ".rt/apfa1/definition/Native/AnalyticPhase.lean"
+    },
+    {
+      "bytes": 8754,
+      "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+      "task_relative": ".rt/apfa1/definition/Native/AnalyticPhaseUpperBound.lean"
+    },
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": ".rt/apfa1/global/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 6960,
+      "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+      "task_relative": ".rt/apfa1/global/Native/AnalyticPhase.lean"
+    },
+    {
+      "bytes": 8754,
+      "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+      "task_relative": ".rt/apfa1/global/Native/AnalyticPhaseUpperBound.lean"
+    },
+    {
+      "bytes": 13974,
+      "sha256": "ba0b74c055a04005e5b760eec2c8ecd26ea2a5961278eb3837824773b1d11960",
+      "task_relative": ".rt/apfa1/global/Solutions/Sol_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+    },
+    {
+      "bytes": 6954,
+      "sha256": "b0516973f7bdae5247e14f15cb42b0c7bbbafe93703a707c81811dd0fee3f2ae",
+      "task_relative": ".rt/apfa1/native/missions/zeta9/formalization/AnalyticPhase.lean"
+    },
+    {
+      "bytes": 8770,
+      "sha256": "15522be67d0114314049bc69fcdee9da2678891f0957a9bed3ce5219cacb70f6",
+      "task_relative": ".rt/apfa1/native/missions/zeta9/formalization/AnalyticPhaseUpperBound.lean"
+    },
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": ".rt/apfa1/reference/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 257,
+      "sha256": "d9f4537cf960871654fe8ac638d5e932f8557b17daaadbaf14247abe77cd4617",
+      "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_lt_certified.lean"
+    },
+    {
+      "bytes": 250,
+      "sha256": "f895f3c77872595dbec35f37cf1aba4638118bc37386becdf0ea09b55352cfae",
+      "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_global_upper_bound.lean"
+    },
+    {
+      "bytes": 233,
+      "sha256": "fc16c1dbf8f8deb4bae91c4f617c30ec1d94b3df0416500c553d379fefa259f3",
+      "task_relative": ".rt/apfa1/reference/Theorems/Thm_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+    },
+    {
+      "bytes": 1122,
+      "sha256": "af4b31965953bf41ad5ad734d85a53bbb2768ef65b7b41784a9c475150833002",
+      "task_relative": ".rt/apfa1/right/Definitions/Def_ZetaNine_AnalyticPhase.lean"
+    },
+    {
+      "bytes": 6960,
+      "sha256": "64cd4864d6b5eba7e6765a1966428afc12f38dff99ae3905697fbfb48b7ddd8d",
+      "task_relative": ".rt/apfa1/right/Native/AnalyticPhase.lean"
+    },
+    {
+      "bytes": 8754,
+      "sha256": "088c9d906310279443bd9695f927b19358474dbab1a75e35ed6abb35aa648bdd",
+      "task_relative": ".rt/apfa1/right/Native/AnalyticPhaseUpperBound.lean"
+    },
+    {
+      "bytes": 13957,
+      "sha256": "d2fe8801f919dca8d870c123c26ea0af27e8a82a3924c04c5d7cfc57eb2323c4",
+      "task_relative": ".rt/apfa1/right/Solutions/Sol_ZetaNine_AnalyticPhase_phase_strictAntiOn_right.lean"
+    },
+    {
+      "bytes": 10610,
+      "sha256": "ebfbcdb1e15a058e8e80f2119de22f0d4c722f5f0101c235dce32df8c5af71cf",
+      "task_relative": "formalization/platform/analytic-phase/inspect_prepare.py"
+    },
+    {
+      "bytes": 7534943,
+      "sha256": "f2de2d8390c95541091dd5a60c2865186773b71e18dbb450da2c1d54d45d70fc",
+      "task_relative": "verification/formalization-project-handoff-2026-10-07/root-phase-independent-complete-binding-rehash.json"
+    },
+    {
+      "bytes": 9552060,
+      "sha256": "a8f8cf52008b69f7b8e7e868a3c754ebc72c89f4f6f1aa89f9ca2bfdf1ff2647",
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-2026-10-07/author-audit.json"
+    },
+    {
+      "bytes": 9678405,
+      "sha256": "f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc",
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-independent-2026-10-07/independent-audit.json"
+    }
+  ],
+  "original_native_definition_and_proof_SOURCE_reuse_disclosed": true,
+  "oracle_namespace_altered_ONLY_for_independent_whole_value_and_kernel_type_comparison": true,
+  "full_raw_Expr_differences_must_be_recorded_honestly": true,
+  "generic_DAG_source_reuse": {
+    "core": {
+      "bytes": 9156,
+      "sha256": "3e64ab184ba14f2570c7f0fe310196b37dfe4945b07b81d6a72344bbdb68511b",
+      "task_relative": ".rt/api1/APIPhaseExprDagV1.lean"
+    },
+    "fixtures": {
+      "bytes": 3555,
+      "sha256": "597371a0aa63df38c38137ef3e1a5a4bbf0f88050e7fce2aa258af4908db2f69",
+      "task_relative": ".rt/api1/APIPhaseExprDagValidationV1.lean"
+    }
+  },
+  "foreign_mathematical_objects_borrowed": false,
+  "API_calls": 0,
+  "Root_scope_writes": 0,
+  "platform_independent_gate_still_required": true,
+  "complete_Z9_A": false,
+  "author_PASS_claimed": false
+}

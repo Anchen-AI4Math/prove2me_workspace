@@ -152,7 +152,9 @@ def check_graph(data: dict) -> dict:
     }
     for edge in data["research_inputs"]:
         assert edge["parent"] in by_id and edge["input"] in by_id
-        assert by_id[edge["parent"]]["status"] == "open"
+        # Research inputs remain as historical provenance after a parent is
+        # proved by a separate, documented argument; they are not proof edges.
+        assert by_id[edge["parent"]]["status"] in {"open", "proved-in-notes"}
         assert by_id[edge["input"]]["status"] == "proved-in-notes"
         assert "not a complete reduction" in edge["role"] or "not a lower bound" in edge["role"]
         adjacency[edge["parent"]].append(edge["input"])
@@ -190,7 +192,7 @@ def check_graph(data: dict) -> dict:
     walk(data["root_id"])
     assert visited == set(ids), f"unreachable: {set(ids)-visited}"
     assert {node["id"] for node in nodes if node["status"] == "open"} == {
-        "Z9.R", "Z9.J", "Z9.CP", "Z9.T", "Z9.TS", "Z9.T5", "Z9.FD", "Z9.TG", "Z9.V", "Z9.VA", "Z9.VB", "Z9.VC", "Z9.VD", "Z9.S"
+        "Z9.R", "Z9.J", "Z9.CP", "Z9.T", "Z9.TS", "Z9.T5", "Z9.FD", "Z9.TG", "Z9.S"
     }
     return {"node_count": len(nodes), "reduction_count": len(reductions),
             "research_input_count": len(data["research_inputs"]),

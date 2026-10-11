@@ -1,0 +1,402 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.reflectionVariable",
+    "definitionValue": "fun n => -Polynomial.X - Polynomial.C ↑n",
+    "type": "ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.rho",
+    "definitionValue": "fun n s W => ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W",
+    "type": "ℕ → ℕ → ℚ[X] → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.StrongProperMultiplier",
+    "definitionValue": "fun n W => 2 * n + 2 * W.natDegree ≤ 9 * (n + 1) - 2",
+    "type": "ℕ → ℚ[X] → Prop"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialBasis",
+    "definitionValue": "fun n j s =>\n  ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 * (Polynomial.X + Polynomial.C ↑j) ^ (9 - s)",
+    "type": "ℕ → ℕ → ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.product_reverse_range",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (f : ℕ → ℚ[X]), ∏ k ∈ Finset.range (n + 1), f (n - k) = ∏ k ∈ Finset.range (n + 1), f k"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.product_reverse_erased_range",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (f : ℕ → ℚ[X]), ∏ k ∈ (Finset.range (n + 1)).erase (n - j), f (n - k) = ∏ k ∈ (Finset.range (n + 1)).erase j, f k"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.sum_reverse_range",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (f : ℕ → ℚ), ∑ k ∈ Finset.range (n + 1), f (n - k) = ∑ k ∈ Finset.range (n + 1), f k"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.baseNumerator_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  (ZetaNine.CoefficientMapInjectivity.baseNumerator n).comp (ZetaNine.CoefficientMapReflection.reflectionVariable n) =\n    ZetaNine.CoefficientMapInjectivity.baseNumerator n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.baseU_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  (ZetaNine.CoefficientMapInjectivity.baseU n).comp (ZetaNine.CoefficientMapReflection.reflectionVariable n) =\n    ZetaNine.CoefficientMapInjectivity.baseU n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.weightedNumerator_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp\n      (ZetaNine.CoefficientMapReflection.reflectionVariable n) =\n    ZetaNine.CoefficientMapInjectivity.weightedNumerator n W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.polePolynomial_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  (ZetaNine.CoefficientMapInjectivity.polePolynomial n).comp (ZetaNine.CoefficientMapReflection.reflectionVariable n) =\n    Polynomial.C ((-1) ^ (n + 1)) * ZetaNine.CoefficientMapInjectivity.polePolynomial n"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.clearedPolePolynomial_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n (n - j)).comp\n        (ZetaNine.CoefficientMapReflection.reflectionVariable n) =\n      Polynomial.C ((-1) ^ n) * ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.reflectionVariable_eval",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), Polynomial.eval t (ZetaNine.CoefficientMapReflection.reflectionVariable n) = -↑n - t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.actual_weightedR_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]) (t : ℚ), ZetaNine.CoefficientMap.weightedR n W (-↑n - t) = -ZetaNine.CoefficientMap.weightedR n W t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.reflection_preserves_regular_points",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), (∀ k ≤ n, t + ↑k ≠ 0) → ∀ k ≤ n, -↑n - t + ↑k ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.local_shift_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    (ZetaNine.CoefficientMapJet.shiftedVariable (n - j)).comp (-Polynomial.X) =\n      (ZetaNine.CoefficientMapReflection.reflectionVariable n).comp (ZetaNine.CoefficientMapJet.shiftedVariable j)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.shiftedWeightedNumerator_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (W : ℚ[X]),\n  j ≤ n →\n    ((ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp\n            (ZetaNine.CoefficientMapJet.shiftedVariable (n - j))).comp\n        (-Polynomial.X) =\n      (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.shiftedClearedDenominator_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n (n - j)).comp (-Polynomial.X) =\n      Polynomial.C ((-1) ^ n) * ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.rescale_neg_one_C",
+    "definitionValue": null,
+    "type": "∀ (a : ℚ), (PowerSeries.rescale (-1)) (PowerSeries.C a) = PowerSeries.C a"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.rescale_neg_one_polynomial",
+    "definitionValue": null,
+    "type": "∀ (P : ℚ[X]), (PowerSeries.rescale (-1)) ↑P = ↑(P.comp (-Polynomial.X))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.actual_local_series_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      j ≤ n →\n        (PowerSeries.rescale (-1)) (ZetaNine.CoefficientMapJet.weightedClearedSeries n (n - j) W) =\n          ZetaNine.CoefficientMapJet.weightedClearedSeries n j W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.local_coefficient_reflection",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      j ≤ n →\n        1 ≤ s →\n          s ≤ 9 →\n            ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (n - j) s W =\n              (-1) ^ (s + 1) * ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.rho_even_order_zero",
+    "definitionValue": null,
+    "type": "∀ (n s : ℕ), Even n → ∀ (W : ℚ[X]), 1 ≤ s → s ≤ 9 → Even s → ZetaNine.CoefficientMapReflection.rho n s W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.strong_proper_implies_proper",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.quartic_is_strong_proper",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), 1 ≤ n → ∀ (W : ℚ[X]), W.natDegree ≤ 4 → ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.clearedPolePolynomial_monic",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j).Monic"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialBasis_monic",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ), (ZetaNine.CoefficientMapReflection.partialBasis n j s).Monic"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialBasis_natDegree",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ), j ≤ n → (ZetaNine.CoefficientMapReflection.partialBasis n j s).natDegree = 9 * n + (9 - s)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialBasis_simple_pole_top_coefficient",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), j ≤ n → (ZetaNine.CoefficientMapReflection.partialBasis n j 1).coeff (9 * n + 8) = 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialBasis_higher_pole_top_coefficient",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ), j ≤ n → 2 ≤ s → s ≤ 9 → (ZetaNine.CoefficientMapReflection.partialBasis n j s).coeff (9 * n + 8) = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.partialNumerator_top_coefficient_is_rho_one",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  (ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).coeff (9 * n + 8) =\n    ZetaNine.CoefficientMapReflection.rho n 1 W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.rho_one_zero_of_strong_proper",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W → ZetaNine.CoefficientMapReflection.rho n 1 W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.original_integer_quartic_strong_proper",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℤ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapReflection.StrongProperMultiplier n (Polynomial.map (Int.castRingHom ℚ) W)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapReflection.original_integer_quartic_rho_one_zero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℤ[X]),\n        W.natDegree ≤ 4 → ZetaNine.CoefficientMapReflection.rho n 1 (Polynomial.map (Int.castRingHom ℚ) W) = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_original_Eq_three",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℤ[X]),\n        W.natDegree ≤ 4 →\n          (∀ (t : ℚ),\n              ZetaNine.CoefficientMap.weightedR n (Polynomial.map (Int.castRingHom ℚ) W) (-↑n - t) =\n                -ZetaNine.CoefficientMap.weightedR n (Polynomial.map (Int.castRingHom ℚ) W) t) ∧\n            (∀ j ≤ n,\n                ∀ (s : ℕ),\n                  1 ≤ s →\n                    s ≤ 9 →\n                      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (n - j) s\n                          (Polynomial.map (Int.castRingHom ℚ) W) =\n                        (-1) ^ (s + 1) *\n                          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s\n                            (Polynomial.map (Int.castRingHom ℚ) W)) ∧\n              (∀ (s : ℕ),\n                  1 ≤ s →\n                    s ≤ 9 →\n                      Even s → ZetaNine.CoefficientMapReflection.rho n s (Polynomial.map (Int.castRingHom ℚ) W) = 0) ∧\n                ZetaNine.CoefficientMapReflection.rho n 1 (Polynomial.map (Int.castRingHom ℚ) W) = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_regular_actual_reflection",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]) (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        (∀ k ≤ n, -↑n - t + ↑k ≠ 0) ∧\n          ZetaNine.CoefficientMap.weightedR n W (-↑n - t) = -ZetaNine.CoefficientMap.weightedR n W t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_rho_one_with_explicit_stronger_degree",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  2 * n + 2 * W.natDegree ≤ 9 * (n + 1) - 2 →\n    ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 1 W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_zero_X_four_rho_one",
+    "definitionValue": null,
+    "type": "ZetaNine.CoefficientMapReflection.rho 0 1 (Polynomial.X ^ 4) = 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_zero_X_four_proper_not_strong",
+    "definitionValue": null,
+    "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n  ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_zero_X_four_exact_rational",
+    "definitionValue": null,
+    "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"
+  }
+]

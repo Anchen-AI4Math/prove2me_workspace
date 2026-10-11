@@ -1,0 +1,29 @@
+import Definitions.Def_ZetaNine_CoefficientMapMatrix
+import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+
+set_option autoImplicit false
+noncomputable section
+open scoped BigOperators Matrix
+open Polynomial
+
+namespace ZetaNine.CoefficientMapMatrixValueComparison
+
+open CoefficientMapAggregate CoefficientMapKernelBridge
+
+def actualFMatrix (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=
+  fun i j => aggregate n (X ^ i.val) j
+
+/-- The genuine two selected output directions are B and rho9. -/
+def selectionMatrix : Matrix (Fin 2) (Fin 5) ℚ :=
+  fun i j => if i = 0 then (if j = 0 then 1 else 0) else (if j = 4 then 1 else 0)
+
+def selectedIntegerPair (b a : ℤ) : Fin 2 → ℚ :=
+  fun i => if i = 0 then (b : ℚ) else (a : ℚ)
+
+def selectedIntegerOutput (b a : ℤ) : Fin 5 → ℚ :=
+  fun j => if j = 0 then (b : ℚ) else if j = 4 then (a : ℚ) else 0
+
+def selectedIntegerMultiplier (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ) : ℚ[X] :=
+  inverseMultiplier n hn2 hn (selectedIntegerOutput b a)
+
+end ZetaNine.CoefficientMapMatrixValueComparison

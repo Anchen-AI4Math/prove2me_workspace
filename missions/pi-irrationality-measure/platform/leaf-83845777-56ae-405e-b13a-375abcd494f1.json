@@ -1,0 +1,23 @@
+{
+  "theorem_id": "83845777-56ae-405e-b13a-375abcd494f1",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.eventual_packet_interpolation",
+  "theorem_title": "Eventual formal logarithmic packet interpolation at a rational scale",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.eventual_packet_interpolation\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) :\n    ∃ R : ℚ, 0 < R ∧ ∀ᶠ n : ℕ in atTop,\n      Function.Surjective (FormalInterpolation.packetMap d ((n : ℝ) * (R : ℝ))) := by sorry",
+  "natural_language_statement": "Fix $\\nu>2$ and an admissible determinant family $d$. Let $\\mathcal P_d(H)$ be the polynomials whose monomials have column weight at most $H$. At the center $j r$, form the logarithmic jet by substituting $Y=1+t$ and $X_i=j r_i+u_i+\\log(1+t)$. Write $J_d(H)$ for its coefficients indexed by the strict row simplex, at every center $0\\le j<K$.\n\nThere is a positive rational scale $R$ for which all sufficiently large natural multiples admit arbitrary simultaneous coefficient packets:\n\n$$\\exists R\\in\\mathbb Q_{>0}\\;\\exists N\\in\\mathbb N\\;\\forall n\\ge N,\\qquad J_d(nR):\\mathcal P_d(nR)\\longrightarrow\\mathbb C^{\\operatorname{Rows}_d(nR)}\\ \\text{is surjective}.$$\n\nThis is the formal jet interpolation input before transferring from the infinite logarithm to the fixed truncations of the actual matrix.\n\n**Formalization Note.** This is the concrete coefficient formulation of eventual packet surjectivity in the pinned source. The source's positive rational geometric radius is existentially quantified; the matrix row indices replace the equivalent rational jet indices. The source's support bound equals the finite sum used here.",
+  "created_at": "2026-10-07T19:40:52.979988+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleMatrixGeometry.lean#L20-L44; Approximation/AdmissibleMatrixInterpolation.lean#L117-L166 (WeightedPolynomials, packetMap and the cofinal radius).",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

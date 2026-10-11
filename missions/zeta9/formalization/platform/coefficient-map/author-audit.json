@@ -1,0 +1,827 @@
+{
+  "schema_version": 1,
+  "review_role": "author offline source/compile gate; independent review is separate",
+  "verdict": "PASS",
+  "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "checks": [
+    {
+      "name": "frozen_original_source_and_actual_snapshot",
+      "pass": true,
+      "evidence": {
+        "source": "missions/zeta9/formalization/CoefficientMap.lean",
+        "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+        "bytes": 11295
+      }
+    },
+    {
+      "name": "pinned_environment",
+      "pass": true,
+      "evidence": {
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "lean_toolchain": "leanprover/lean4:v4.33.1"
+      }
+    },
+    {
+      "name": "official_oracles_actually_executed",
+      "pass": true,
+      "evidence": {
+        "receipt": "oracle-execution-receipt.json",
+        "declaration_facts": "decl_graph.jsonl",
+        "parser_reference_facts": "sketch_info.jsonl",
+        "regex_mathematical_source_position_queries": false
+      }
+    },
+    {
+      "name": "nine_actual_definitions_only",
+      "pass": true,
+      "evidence": {
+        "declarations": [
+          "ZetaNine.CoefficientMap.numerator",
+          "ZetaNine.CoefficientMap.poleProduct",
+          "ZetaNine.CoefficientMap.actualR",
+          "ZetaNine.CoefficientMap.clearedPoleProduct",
+          "ZetaNine.CoefficientMap.clearedR",
+          "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+          "ZetaNine.CoefficientMap.weightedR",
+          "ZetaNine.CoefficientMap.clearedWeightedR",
+          "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient"
+        ],
+        "all_original_definition_spans_exact": true,
+        "no_closed_formula_substitution": true,
+        "weightedR_retention_reason": "Keep the complete original mathematical helper core unchanged. The actual weightedR API is used by the retained original clear_weighted_highest_pole theorem and describes the actual weighted rational function, although the three selected public roots do not require it directly."
+      }
+    },
+    {
+      "name": "complete_source_mathematical_helper_transplant",
+      "pass": true,
+      "evidence": {
+        "inline_theorem_count_per_solution": 18,
+        "original_27_decl_core": "9 moved defs plus 18 retained proof declarations",
+        "target_source_splices_verified_byte_for_byte": true,
+        "new_external_theorem_boundaries": []
+      }
+    },
+    {
+      "name": "all_nine_definition_types_and_values_exactly_equal",
+      "pass": true,
+      "evidence": {
+        "comparison": "Actual Lean imports, pp.fullNames=true, original vs definition vs all three Solution and reference environments; exact source declaration bytes retained.",
+        "reports": [
+          "types-original.log",
+          "types-definition.log",
+          "types-0-solution.log",
+          "types-0-reference.log",
+          "types-1-solution.log",
+          "types-1-reference.log",
+          "types-2-solution.log",
+          "types-2-reference.log"
+        ]
+      }
+    },
+    {
+      "name": "all_three_original_solution_reference_types_exactly_equal",
+      "pass": true,
+      "evidence": {
+        "targets": [
+          "ZetaNine.CoefficientMap.clear_highest_pole",
+          "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq",
+          "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even"
+        ],
+        "no_extra_binders_or_assumed_original_results": true
+      }
+    },
+    {
+      "name": "all_three_actual_proofs_have_only_standard_axioms",
+      "pass": true,
+      "evidence": {
+        "solution_axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "reference_stubs_contain_sorryAx_and_are_not_proofs": true,
+        "all_Solution_source_has_no_sorry_admit_axiom_unsafe": true
+      }
+    },
+    {
+      "name": "all_fifteen_actual_compile_import_runs_exit_zero",
+      "pass": true,
+      "evidence": {
+        "receipt": "staged-compile-receipt.json",
+        "builds": 7,
+        "actual_import_type_value_reports": 8,
+        "original_oracle_executions_additional": 3
+      }
+    },
+    {
+      "name": "documented_API_payload_schema_and_faithful_public_statements",
+      "pass": true,
+      "evidence": {
+        "API_document": "formalization/platform/readback-2026-10-03/api-docs/references/contribute.md",
+        "no_local_def_in_problem_preamble": true,
+        "regular_point_condition_preserved": true,
+        "unweighted_formula_all_n_j_le_n": true,
+        "weighted_formula_even_n_arbitrary_W_may_vanish": true
+      }
+    },
+    {
+      "name": "offline_task_local_boundary_and_root_copy_plan",
+      "pass": true,
+      "evidence": {
+        "root_copy_plan": "root-copy-plan.json",
+        "no_root_scope_API_credentials_changes": true,
+        "platform_published_or_accepted_claimed": false
+      }
+    }
+  ],
+  "targets": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.clear_highest_pole",
+      "original_statement_type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.actualR n t * (t + ↑j) ^ 9 = ZetaNine.CoefficientMap.clearedR n j t",
+      "original_solution_reference_type_exactly_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution": "Solutions/Sol_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "solution_sha256": "9c6959d6e65d88a7f93dfd126bda0387d5d480673ba899e0a22a562854cd92ac",
+      "reference": "Theorems/Thm_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "reference_sha256": "c29283993b7c9e4e09318802309067a14cbd2700a4c2f78e0167cd55f84fc4b2",
+      "only_source_edits": [
+        "Nine actual def declaration deletions",
+        "Eight parser-certified diagnostic command deletions",
+        "Selected theorem binding and resolved references renamed",
+        "Exact-signature solution wrapper appended"
+      ],
+      "extra_top_level_solution_binders": []
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq",
+      "original_statement_type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMap.leadingPoleCoefficient n j =\n      (-1) ^ (n + j) * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)",
+      "original_solution_reference_type_exactly_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution": "Solutions/Sol_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "solution_sha256": "e5ed6e8348d20c7f8dde405f473a76ca926b143722327df5d75a1b11641c6ba6",
+      "reference": "Theorems/Thm_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "reference_sha256": "ed46e61a07b3417fc4ec356fa3939bc2a50bc5d4628ebd682af6a1b80937b817",
+      "only_source_edits": [
+        "Nine actual def declaration deletions",
+        "Eight parser-certified diagnostic command deletions",
+        "Selected theorem binding and resolved references renamed",
+        "Exact-signature solution wrapper appended"
+      ],
+      "extra_top_level_solution_binders": []
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even",
+      "original_statement_type": "∀ (n j : ℕ),\n  Even n →\n    j ≤ n →\n      ∀ (W : Polynomial ℚ),\n        ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j W =\n          (-1) ^ j * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n) *\n            Polynomial.eval (-↑j * ↑(n - j)) W",
+      "original_solution_reference_type_exactly_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "statement_stub_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution": "Solutions/Sol_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "solution_sha256": "a22b3643f8b4b9ae27693b103e310dcb4436ea01847330b7ae9d648c16ab73ae",
+      "reference": "Theorems/Thm_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "reference_sha256": "07c401a14dd4ad61614fdabaab80d04741aea2d1c98ec577dbaa5bc6e6b99444",
+      "only_source_edits": [
+        "Nine actual def declaration deletions",
+        "Eight parser-certified diagnostic command deletions",
+        "Selected theorem binding and resolved references renamed",
+        "Exact-signature solution wrapper appended"
+      ],
+      "extra_top_level_solution_binders": []
+    }
+  ],
+  "platform_published": false,
+  "platform_accepted": false,
+  "root_installed_by_author": false,
+  "limitations": [
+    "Finite highest-pole clearing and coefficient entry only.",
+    "No complete Laurent expansion or lower partial-fraction coefficient map.",
+    "No full reflection identity or invertibility of the coefficient map.",
+    "No exact infinite L-sum identity, J certificate, or irrationality result.",
+    "Arbitrary polynomial W can annihilate the highest weighted coefficient.",
+    "Statement stubs use sorryAx by design; only Solution modules are proofs.",
+    "Server publication and acceptance are not implied by local compilation."
+  ],
+  "stable_files": [
+    {
+      "task_relative": "formalization/CoefficientMap.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/audit_and_freeze.py",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/audit_and_freeze.py",
+      "bytes": 14086,
+      "sha256": "3ba9f1b78816bfc804a1c23424f35049fc2b577d50fd9bf1e9d006e16e00be8e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/original/missions/zeta9/formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/original/missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Definitions/Def_ZetaNine_CoefficientMap.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Definitions/Def_ZetaNine_CoefficientMap.olean",
+      "bytes": 93424,
+      "sha256": "9a6236dc25afeb3f5dbebe75504fd6284fbb7370e91b9182e26014bbcfc88515"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_clear_highest_pole.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_clear_highest_pole.olean",
+      "bytes": 613880,
+      "sha256": "8edc06f7c6d4d4c814d97a2031d97336ffc4e6ceaa7f91a5c56dd5b4103e9a31"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.olean",
+      "bytes": 613560,
+      "sha256": "3a027192a13902737e4e6b183f1039111b5817aa8d4a1726e5dc1bb9a4f80f90"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Solutions/Sol_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.olean",
+      "bytes": 613864,
+      "sha256": "489316c451adf35d6d6fabe747d07d2ca06e6cfa02a9d8e75e3194ec6b7d1e13"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_clear_highest_pole.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_clear_highest_pole.olean",
+      "bytes": 16728,
+      "sha256": "0c4bb2a4815814b4fe84d6ce967b619f35e1c669b87bf484695179131f77c332"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.olean",
+      "bytes": 18056,
+      "sha256": "d84c6ad62031079c08d751c1f38305ba0ba44d1d1ac0637b7270e613c59eac89"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.olean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build/staged/Theorems/Thm_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.olean",
+      "bytes": 20248,
+      "sha256": "6eb09ee574b2b4a1e8f4ced366847a4470a82427dcd7d2fb3451456bb408734d"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-reference.log",
+      "bytes": 203,
+      "sha256": "bcbe84b89105eaa0d17c611477633d40cdaf56344e29c514a8118c799bca2a1a"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-reference.ps1",
+      "bytes": 564,
+      "sha256": "03b123367e4c1cff8285ccb767bc3bb0c8c65e9315f07b9865d076240b67e0f6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-solution.log",
+      "bytes": 70,
+      "sha256": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-0-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-0-solution.ps1",
+      "bytes": 566,
+      "sha256": "bc9f00dc5d395d5a0c8a2580895e94ede8bd8fae40de678f15a0315981fcce5e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-reference.log",
+      "bytes": 210,
+      "sha256": "c2366c6a0fe8a977415ae3728cc1821326fe4bb7089bd544f1d07431e297aede"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-reference.ps1",
+      "bytes": 578,
+      "sha256": "a44b6d508adc5e5635b9e91658e92ec03c4009b74c1716fd38d5604900d63dc0"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-solution.log",
+      "bytes": 70,
+      "sha256": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-1-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-1-solution.ps1",
+      "bytes": 580,
+      "sha256": "6ee5113423bb094f0e35df7b466b649b1b2685df034809549da5a97a17dd4e50"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-reference.log",
+      "bytes": 223,
+      "sha256": "0c4ce0720d10641142ddd65bd52c41b3a35f15b353f32fecc5dbb935a9968112"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-reference.ps1",
+      "bytes": 604,
+      "sha256": "2d46923ca68e323b8da4faf1e9c88082b8c56228bb803e838b2aea5c6429be16"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-solution.log",
+      "bytes": 70,
+      "sha256": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-2-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-2-solution.ps1",
+      "bytes": 606,
+      "sha256": "9797bfa68e821becf5b2e5bf225252c9424bc947d4b43da520b15f93b699eeb9"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-definition-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-definition-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-definition.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-definition.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/build-definition.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/build-definition.ps1",
+      "bytes": 532,
+      "sha256": "a0eced641c1b29cbcaa04ad395ec57da3902addde9fdf6b06ea5fce3fdf163a9"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/compile_staged.py",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/compile_staged.py",
+      "bytes": 4038,
+      "sha256": "7af251a247bb49cdb0f50fc7070f079716c72b4a67362127d19bc785b75f0ae5"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/decl-plan.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/decl-plan.json",
+      "bytes": 2795,
+      "sha256": "3343065ebbe51e588a55aff8d15560110b349eb7bb3723b7e56a75bbb63a0608"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/decl_graph.jsonl",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/decl_graph.jsonl",
+      "bytes": 10907,
+      "sha256": "2f35a4ab1642495fa90f487aef92ac80b1f6cabd52671ac463e456ad86512efb"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/definitions-request.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/definitions-request.json",
+      "bytes": 3168,
+      "sha256": "350cc050355202d92101b15af6ef8dd8c52dc9c6d49307448087a94fdd7385ed"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/extract_decl_graph.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/extract_decl_graph.lean",
+      "bytes": 5361,
+      "sha256": "18a0f05597f6af1678b9141d50865a1680e0e5e064809006e5c3cb6b8aa61e8c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/extract_sketch_info.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/extract_sketch_info.lean",
+      "bytes": 9911,
+      "sha256": "55e30b39a9e9e73f2a02b8799793a4f4c41ea1420842d9df457ad19148cb5191"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/integration-provenance.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/integration-provenance.json",
+      "bytes": 19762,
+      "sha256": "573366078bbac8f05df46013c6ece4732afe4e09e6fd90d42ab68af08a6c0b63"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/oracle-execution-receipt.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/oracle-execution-receipt.json",
+      "bytes": 4014,
+      "sha256": "e6213e58d097e1549d876a6bc0eef70d98e61789f6f8179014dd218794fed281"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/oracle-input.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/oracle-input.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/original-compile-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/original-compile-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/original-compile.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/original-compile.log",
+      "bytes": 933,
+      "sha256": "f0b920c9005031dab2dbc385a6f295c2ab2a6285ec6d92960f8094d614835293"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/original-compile.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/original-compile.ps1",
+      "bytes": 484,
+      "sha256": "42116207ae985141e078719a8a5ed8fc9e41239d4fe309d9ecedea2a969042ef"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/prepare_coefficient_map.py",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/prepare_coefficient_map.py",
+      "bytes": 15155,
+      "sha256": "64ab153e32f47c1d60861a2be950efc0518c0044364c61370bf6905d1f4284ed"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/problems-request.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/problems-request.json",
+      "bytes": 5844,
+      "sha256": "05e4d06842df5a9561b7beef006a1037e8e429d9cbe81ebcc4a356ea9d16c73e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/README.md",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/README.md",
+      "bytes": 3624,
+      "sha256": "996d3cfe89a3e54cac6fcab228f2818430603b0db36e915a0721c84978db33f5"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/root-copy-plan.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/root-copy-plan.json",
+      "bytes": 3472,
+      "sha256": "5dadb5ca13fdf18862387315abb9da410fae4a81a5290e875ed972233ef28e8b"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/run_oracles.py",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/run_oracles.py",
+      "bytes": 5748,
+      "sha256": "71ed3d49074d2af3e46d1137b0a2100df8d7d87fb0d0ca42f93e174ddd320bdf"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/sketch_info.jsonl",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/sketch_info.jsonl",
+      "bytes": 27894,
+      "sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage1-extract-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage1-extract-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage1-extract.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage1-extract.log",
+      "bytes": 22,
+      "sha256": "ce5edb39e96ab00f1a8a5cdd78bcf807d6b2934b6b7b9cd780508a499751aa8c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage1-extract.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage1-extract.ps1",
+      "bytes": 347,
+      "sha256": "a5b72ddf13ac9b9129da0f67e2dfc4df20c32d97302814ae9fd80f79b784d2cc"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage2-extract-errors.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage2-extract-errors.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage2-extract-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage2-extract-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/stage2-extract.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/stage2-extract.ps1",
+      "bytes": 472,
+      "sha256": "f71fe876f1c43335a5fdaf664e6ae3358732e7555646d2f39a46ecc99ba6e49e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "bytes": 1246,
+      "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "bytes": 10205,
+      "sha256": "9c6959d6e65d88a7f93dfd126bda0387d5d480673ba899e0a22a562854cd92ac"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "bytes": 10281,
+      "sha256": "e5ed6e8348d20c7f8dde405f473a76ca926b143722327df5d75a1b11641c6ba6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Solutions/Sol_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "bytes": 10350,
+      "sha256": "a22b3643f8b4b9ae27693b103e310dcb4436ea01847330b7ae9d648c16ab73ae"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_clear_highest_pole.lean",
+      "bytes": 323,
+      "sha256": "c29283993b7c9e4e09318802309067a14cbd2700a4c2f78e0167cd55f84fc4b2"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_leadingPoleCoefficient_eq.lean",
+      "bytes": 380,
+      "sha256": "ed46e61a07b3417fc4ec356fa3939bc2a50bc5d4628ebd682af6a1b80937b817"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged/Theorems/Thm_ZetaNine_CoefficientMap_weightedLeadingPoleCoefficient_eq_even.lean",
+      "bytes": 476,
+      "sha256": "07c401a14dd4ad61614fdabaab80d04741aea2d1c98ec577dbaa5bc6e6b99444"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/staged-compile-receipt.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/staged-compile-receipt.json",
+      "bytes": 18517,
+      "sha256": "43e41cca9430145812d8b9321b85f3ef715f6dec0c39fc440fbca6bb5811ef0e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/target-plan.json",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/target-plan.json",
+      "bytes": 1411,
+      "sha256": "c8422036a9b05ec87d6f6ac9c0f38039d71f74810abd5c6f2220f8992005550c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-reference.log",
+      "bytes": 3017,
+      "sha256": "59350203e15220b78f6966dedf42ca5384e154e92f1189dfa114932dc2637f1a"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-reference.ps1",
+      "bytes": 343,
+      "sha256": "939d02802c205d586df60c695c58383678a8369f44565af26ce0ac295cab59d5"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-solution.log",
+      "bytes": 2973,
+      "sha256": "7cf6dca58a91fce41f5f57a5cba59fea6a20e5be7d8096ffab4cf2d5482aa636"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-0-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-0-solution.ps1",
+      "bytes": 342,
+      "sha256": "3ff888fc20e65eafd2a8c3592d2957352edb3a910bcdc6b37c3af08281208e9d"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-reference.log",
+      "bytes": 3021,
+      "sha256": "b31f2d9c0fb69beb8fbf75b69b4d3161b51278aa63151b4e6851487d811b6125"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-reference.ps1",
+      "bytes": 343,
+      "sha256": "74fceaa487c7ed51d3410e53092dde13b302863af4b4e629a5325b3569ce4ac3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-solution.log",
+      "bytes": 2970,
+      "sha256": "cb933ca542425880d9d27f0836e4df60d682b0806a34f1af79f21ba8b13518ef"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-1-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-1-solution.ps1",
+      "bytes": 342,
+      "sha256": "f86022a5d895ae90180f62b43c86555ce18816b1eac12d9fa0792ce4f132a7f2"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-reference-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-reference-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-reference.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-reference.log",
+      "bytes": 3162,
+      "sha256": "3c7c386d47dcd52771c0fd76ddb6fd295a0c653d139a35b465d40827a834ab03"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-reference.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-reference.ps1",
+      "bytes": 343,
+      "sha256": "295adbae555ad213f5c7ec0aa2812ff234ba45a9e205bcbe297dbbf8d7d6dd3d"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-solution-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-solution-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-solution.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-solution.log",
+      "bytes": 3098,
+      "sha256": "dcb448abb9dfc17d6ff6e46dc4d47b4f6ebe63e6952ab385183b0567a0537376"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-2-solution.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-2-solution.ps1",
+      "bytes": 342,
+      "sha256": "056d1fa093957dc55246b74b9c4ee641e4b1b064b80aed7a24da0dceaac06be0"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-definition-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-definition-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-definition.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-definition.log",
+      "bytes": 2622,
+      "sha256": "d67b4e0f40f25d0e11fe78885f559b43bc242427c2b6f5c000fd39adf1449021"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-definition.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-definition.ps1",
+      "bytes": 342,
+      "sha256": "62875b3fac4028a83a983f26eb3c1dcec627b65ba088cb3437444447f8ec0925"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-original-exit.txt",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-original-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-original.log",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-original.log",
+      "bytes": 3926,
+      "sha256": "1515bb79f4bd06e543bc4d024dc48d3a1da1ba479f2938b6f92d0dadc3997c75"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types-original.ps1",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types-original.ps1",
+      "bytes": 342,
+      "sha256": "ef07d5bd92e908541fb556c1804042da3ec0c67c605a064f935d5d6e5a331b29"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_0_reference.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_0_reference.lean",
+      "bytes": 1590,
+      "sha256": "73f29728831649e03b22546d889068c0c68164991680a8ae652f6c3818a408d3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_0_solution.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_0_solution.lean",
+      "bytes": 1557,
+      "sha256": "d11a497a717970c0725e80aaef1903cf3247c121e5ab8c6056081e5ee169c1df"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_1_reference.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_1_reference.lean",
+      "bytes": 1611,
+      "sha256": "f679e083d572eeffcac1bf8f12aea964ae95aa70dd769156322f38938e766f60"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_1_solution.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_1_solution.lean",
+      "bytes": 1571,
+      "sha256": "f92f3693d6c160896d1f068bb53676bec12c0713fb7aa6d8f108c60d049ea1d1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_2_reference.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_2_reference.lean",
+      "bytes": 1650,
+      "sha256": "281813a2d4370c8d8e582072e873807f15885794ee5134a9a60b44dbd12cba01"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_2_solution.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_2_solution.lean",
+      "bytes": 1597,
+      "sha256": "059c3441b9c39fff265d801f74d0282e6cf251cad9529e2d5d2a1b946b8b9002"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_definition.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_definition.lean",
+      "bytes": 1478,
+      "sha256": "6cd4f4aeda87cd210a589e8f35aa13e2b4f764942b93c2bfa183a65ccd529fcb"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map/types_original.lean",
+      "root_relative": "missions/zeta9/formalization/platform/coefficient-map/types_original.lean",
+      "bytes": 1824,
+      "sha256": "08cc6baecba803ecca474bf348162852c352caa42498221a6ab00ca85dd01493"
+    }
+  ]
+}

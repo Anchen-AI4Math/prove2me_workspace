@@ -1,0 +1,910 @@
+{
+  "runs": [
+    {
+      "label": "stage-native-author-audit",
+      "exit_code": 0,
+      "records": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.prefixSum",
+          "definitionValue": "fun c j => ∑ i ∈ Finset.range (j + 1), c i",
+          "type": "(ℕ → ℚ) → ℕ → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient",
+          "definitionValue": "fun n j s W =>\n  ZetaNine.CoefficientMapTelescoper.prefixSum (fun i => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n i s W) j",
+          "type": "ℕ → ℕ → ℕ → ℚ[X] → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper",
+          "definitionValue": "fun n W t =>\n  ∑ j ∈ Finset.range n,\n    ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W / (t + ↑j) ^ s",
+          "type": "ℕ → ℚ[X] → ℚ → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator",
+          "definitionValue": "fun n W =>\n  ∑ j ∈ Finset.range n,\n    ∑ s ∈ Finset.Icc 1 9,\n      Polynomial.C (ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W) *\n        ZetaNine.CoefficientMapReflection.partialBasis (n - 1) j s",
+          "type": "ℕ → ℚ[X] → ℚ[X]"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode",
+          "definitionValue": "fun n i =>\n  match i with\n  | Sum.inl k => ↑↑k + 1\n  | Sum.inr k => -↑n - ↑↑k",
+          "type": "(n : ℕ) → Fin (n + 1) ⊕ Fin (n + 1) → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial",
+          "definitionValue": "fun n => ∏ i, (Polynomial.X - Polynomial.C (ZetaNine.CoefficientMapTelescoper.rootNode n i))",
+          "type": "ℕ → ℚ[X]"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.prefixSum_succ",
+          "definitionValue": null,
+          "type": "∀ (c : ℕ → ℚ) (j : ℕ),\n  ZetaNine.CoefficientMapTelescoper.prefixSum c (j + 1) = ZetaNine.CoefficientMapTelescoper.prefixSum c j + c (j + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.finite_cumulative_difference",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (c f : ℕ → ℚ),\n  ∑ j ∈ Finset.range n, ZetaNine.CoefficientMapTelescoper.prefixSum c j * (f j - f (j + 1)) =\n    ∑ j ∈ Finset.range (n + 1), c j * f j - ZetaNine.CoefficientMapTelescoper.prefixSum c n * f n"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_succ",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n (j + 1) s W =\n    ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W +\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (j + 1) s W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_last_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n n s W = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_as_sum_over_orders",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n    ∑ s ∈ Finset.Icc 1 9,\n      ∑ j ∈ Finset.range n, ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_difference_principal_parts",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (t : ℚ),\n            ZetaNine.CoefficientMapTelescoper.telescoper n W t -\n                ZetaNine.CoefficientMapTelescoper.telescoper n W (t + 1) =\n              ∑ j ∈ Finset.range (n + 1),\n                ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.actual_weightedR_is_difference",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (t : ℚ),\n            (∀ k ≤ n, t + ↑k ≠ 0) →\n              ZetaNine.CoefficientMap.weightedR n W t =\n                ZetaNine.CoefficientMapTelescoper.telescoper n W t -\n                  ZetaNine.CoefficientMapTelescoper.telescoper n W (t + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_positive_tendsto_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]),\n  Filter.Tendsto (fun T => ↑(ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1))) Filter.atTop (nhds 0)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.finite_sum_is_telescoper_boundary",
+          "definitionValue": null,
+          "type": "∀ (n T : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n            ZetaNine.CoefficientMapTelescoper.telescoper n W 1 -\n              ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_at_one_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 → ZetaNine.CoefficientMapTelescoper.telescoper n W 1 = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.actual_weightedR_positive_zero",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ) (W : ℚ[X]), 1 ≤ k → k ≤ n → ZetaNine.CoefficientMap.weightedR n W ↑k = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_positive_zeros",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          1 ≤ k → k ≤ n + 1 → ZetaNine.CoefficientMapTelescoper.telescoper n W ↑k = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_reflection",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          j < n →\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n (n - 1 - j) s W =\n                  (-1) ^ s * ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_reflection",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (t : ℚ),\n              ZetaNine.CoefficientMapTelescoper.telescoper n W (1 - ↑n - t) =\n                ZetaNine.CoefficientMapTelescoper.telescoper n W t"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_negative_zeros",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            k ≤ n → ZetaNine.CoefficientMapTelescoper.telescoper n W (-↑n - ↑k) = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cleared_term_division",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ) (a t : ℚ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        (∀ k ≤ n, t + ↑k ≠ 0) →\n          a * Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j) ^ 9 *\n                (t + ↑j) ^ (9 - s) /\n              Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9 =\n            a / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_actual_rational_representation",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (W : ℚ[X]) (t : ℚ),\n      (∀ k < n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n          Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W) /\n            Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator_natDegree_le",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), 1 ≤ n → ∀ (W : ℚ[X]), (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W).natDegree ≤ 9 * n - 1"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode_injective",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), Function.Injective (ZetaNine.CoefficientMapTelescoper.rootNode n)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_monic",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapTelescoper.rootPolynomial n).Monic"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_eq_explicit_products",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  ZetaNine.CoefficientMapTelescoper.rootPolynomial n =\n    (∏ k ∈ Finset.range (n + 1), (Polynomial.X - Polynomial.C (↑k + 1))) *\n      ∏ k ∈ Finset.range (n + 1), (Polynomial.X + Polynomial.C ↑n + Polynomial.C ↑k)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_natDegree",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapTelescoper.rootPolynomial n).natDegree = 2 * n + 2"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator_zero_at_nodes",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (i : Fin (n + 1) ⊕ Fin (n + 1)),\n              Polynomial.eval (ZetaNine.CoefficientMapTelescoper.rootNode n i)\n                  (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W) =\n                0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.all_kernel_nodes_divide_telescoperNumerator",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ZetaNine.CoefficientMapTelescoper.rootPolynomial n ∣\n              ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.checked_actual_polynomial_quotient_degree_bound",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∃ H,\n              ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n                  ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H ∧\n                H.natDegree ≤ 7 * n - 3"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "checked_original_quartic_telescoper_chain",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            (∀ (t : ℚ),\n                (∀ k ≤ n, t + ↑k ≠ 0) →\n                  ZetaNine.CoefficientMap.weightedR n W t =\n                    ZetaNine.CoefficientMapTelescoper.telescoper n W t -\n                      ZetaNine.CoefficientMapTelescoper.telescoper n W (t + 1)) ∧\n              ZetaNine.CoefficientMapTelescoper.telescoper n W 1 = 0 ∧\n                (∀ (t : ℚ),\n                    ZetaNine.CoefficientMapTelescoper.telescoper n W (1 - ↑n - t) =\n                      ZetaNine.CoefficientMapTelescoper.telescoper n W t) ∧\n                  (∀ (k : ℕ), 1 ≤ k → k ≤ n + 1 → ZetaNine.CoefficientMapTelescoper.telescoper n W ↑k = 0) ∧\n                    (∀ k ≤ n, ZetaNine.CoefficientMapTelescoper.telescoper n W (-↑n - ↑k) = 0) ∧\n                      ZetaNine.CoefficientMapTelescoper.rootPolynomial n ∣\n                        ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "checked_node_pole_separation",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), 1 ≤ n → ∀ (i : Fin (n + 1) ⊕ Fin (n + 1)), ∀ k < n, ZetaNine.CoefficientMapTelescoper.rootNode n i + ↑k ≠ 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "checked_actual_quotient_and_rational_function",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∃ H,\n              H.natDegree ≤ 7 * n - 3 ∧\n                ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n                    ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H ∧\n                  ∀ (t : ℚ),\n                    (∀ k < n, t + ↑k ≠ 0) →\n                      ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n                        Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.rootPolynomial n) * Polynomial.eval t H /\n                          Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "checked_actual_finite_boundary",
+          "definitionValue": null,
+          "type": "∀ (n T : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t =\n            ZetaNine.CoefficientMapTelescoper.telescoper n W 1 -\n              ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1)"
+        }
+      ],
+      "expected_records": 35,
+      "log_sha256": "925d7346193756c052d81b479b81fb9229fbd07c1c34b42ff86628d5bfdff213",
+      "all_standard_axioms": true
+    },
+    {
+      "label": "stage-independent-boundary-audit",
+      "exit_code": 0,
+      "records": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.two_n_nodes_formula",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMapTelescoper.rootPolynomial 2 =\n  (Polynomial.X - 1) * (Polynomial.X - 2) * (Polynomial.X - 3) *\n    ((Polynomial.X + 2) * (Polynomial.X + 3) * (Polynomial.X + 4))"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_nodes_formula",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMapTelescoper.rootPolynomial 0 = (Polynomial.X - 1) * Polynomial.X"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.original_quartic_actual_quotient",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    2 ≤ n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∃ H,\n              H.natDegree ≤ 7 * n - 3 ∧\n                ∀ (t : ℚ),\n                  (∀ k < n, t + ↑k ≠ 0) →\n                    ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n                      Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.rootPolynomial n) * Polynomial.eval t H /\n                        Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_harmonic_value",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) 1 = 1"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.actual_telescoper_definition",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n    ∑ j ∈ Finset.range n,\n      ∑ s ∈ Finset.Icc 1 9,\n        (∑ i ∈ Finset.range (j + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n i s W) / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_nodes_are_distinct",
+          "definitionValue": null,
+          "type": "Function.Injective (ZetaNine.CoefficientMapTelescoper.rootNode 0)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper.eq_1",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n    ∑ j ∈ Finset.range n,\n      ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.original_quartic_real_finite_boundary",
+          "definitionValue": null,
+          "type": "∀ (n T : ℕ),\n  Even n →\n    2 ≤ n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∑ t ∈ Finset.Icc 1 T, ZetaNine.CoefficientMap.weightedR n W ↑t =\n              ZetaNine.CoefficientMapTelescoper.telescoper n W 1 -\n                ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_harmonic_difference_false",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) 1 ≠\n  ZetaNine.CoefficientMapTelescoper.telescoper 0 (Polynomial.X ^ 4) 1 -\n    ZetaNine.CoefficientMapTelescoper.telescoper 0 (Polynomial.X ^ 4) 2"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.actual_nodes_regular",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), 1 ≤ n → ∀ (i : Fin (n + 1) ⊕ Fin (n + 1)), ∀ k < n, ZetaNine.CoefficientMapTelescoper.rootNode n i + ↑k ≠ 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_harmonic_not_strong",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n  ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.cumulative_concrete_sign",
+          "definitionValue": null,
+          "type": "∑ j ∈ Finset.range 2, ZetaNine.CoefficientMapTelescoper.prefixSum (fun x => 1) j * (↑j - ↑(j + 1)) = -3"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_harmonic_aggregate_zero",
+          "definitionValue": null,
+          "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_multiplier_telescoper",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (t : ℚ), ZetaNine.CoefficientMapTelescoper.telescoper n 0 t = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.numerator_degree_all_multipliers",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), 1 ≤ n → ∀ (W : ℚ[X]), (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W).natDegree ≤ 9 * n - 1"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.cumulative_raw_identity",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (c f : ℕ → ℚ),\n  ∑ j ∈ Finset.range n, (∑ i ∈ Finset.range (j + 1), c i) * (f j - f (j + 1)) =\n    ∑ j ∈ Finset.range (n + 1), c j * f j - (∑ i ∈ Finset.range (n + 1), c i) * f n"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "IndependentTelescoper.zero_n_telescoper",
+          "definitionValue": null,
+          "type": "∀ (W : ℚ[X]) (t : ℚ), ZetaNine.CoefficientMapTelescoper.telescoper 0 W t = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_eq_explicit_products",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  ZetaNine.CoefficientMapTelescoper.rootPolynomial n =\n    (∏ k ∈ Finset.range (n + 1), (Polynomial.X - Polynomial.C (↑k + 1))) *\n      ∏ k ∈ Finset.range (n + 1), (Polynomial.X + Polynomial.C ↑n + Polynomial.C ↑k)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator_zero_at_nodes",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (i : Fin (n + 1) ⊕ Fin (n + 1)),\n              Polynomial.eval (ZetaNine.CoefficientMapTelescoper.rootNode n i)\n                  (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W) =\n                0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator_natDegree_le",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), 1 ≤ n → ∀ (W : ℚ[X]), (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W).natDegree ≤ 9 * n - 1"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.finite_cumulative_difference",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (c f : ℕ → ℚ),\n  ∑ j ∈ Finset.range n, ZetaNine.CoefficientMapTelescoper.prefixSum c j * (f j - f (j + 1)) =\n    ∑ j ∈ Finset.range (n + 1), c j * f j - ZetaNine.CoefficientMapTelescoper.prefixSum c n * f n"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_at_one_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 → ZetaNine.CoefficientMapTelescoper.telescoper n W 1 = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.all_kernel_nodes_divide_telescoperNumerator",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ZetaNine.CoefficientMapTelescoper.rootPolynomial n ∣\n              ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient.eq_1",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W =\n    ZetaNine.CoefficientMapTelescoper.prefixSum (fun i => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n i s W) j"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode_injective",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), Function.Injective (ZetaNine.CoefficientMapTelescoper.rootNode n)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient",
+          "definitionValue": "fun n j s W =>\n  ZetaNine.CoefficientMapTelescoper.prefixSum (fun i => ZetaNine.CoefficientMapJet.weightedLocalCoefficient n i s W) j",
+          "type": "ℕ → ℕ → ℕ → ℚ[X] → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator.eq_1",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n    ∑ j ∈ Finset.range n,\n      ∑ s ∈ Finset.Icc 1 9,\n        Polynomial.C (ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W) *\n          ZetaNine.CoefficientMapReflection.partialBasis (n - 1) j s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_reflection",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (t : ℚ),\n              ZetaNine.CoefficientMapTelescoper.telescoper n W (1 - ↑n - t) =\n                ZetaNine.CoefficientMapTelescoper.telescoper n W t"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.actual_weightedR_is_difference",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (t : ℚ),\n            (∀ k ≤ n, t + ↑k ≠ 0) →\n              ZetaNine.CoefficientMap.weightedR n W t =\n                ZetaNine.CoefficientMapTelescoper.telescoper n W t -\n                  ZetaNine.CoefficientMapTelescoper.telescoper n W (t + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode.eq_1",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (k : Fin (n + 1)), ZetaNine.CoefficientMapTelescoper.rootNode n (Sum.inl k) = ↑↑k + 1"
+        },
+        {
+          "axioms": [],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode.match_1",
+          "definitionValue": "fun n motive i h_1 h_2 => Sum.casesOn i (fun val => h_1 val) fun val => h_2 val",
+          "type": "(n : ℕ) →\n  (motive : Fin (n + 1) ⊕ Fin (n + 1) → Sort u_1) →\n    (i : Fin (n + 1) ⊕ Fin (n + 1)) →\n      ((k : Fin (n + 1)) → motive (Sum.inl k)) → ((k : Fin (n + 1)) → motive (Sum.inr k)) → motive i"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoperNumerator",
+          "definitionValue": "fun n W =>\n  ∑ j ∈ Finset.range n,\n    ∑ s ∈ Finset.Icc 1 9,\n      Polynomial.C (ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W) *\n        ZetaNine.CoefficientMapReflection.partialBasis (n - 1) j s",
+          "type": "ℕ → ℚ[X] → ℚ[X]"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.prefixSum",
+          "definitionValue": "fun c j => ∑ i ∈ Finset.range (j + 1), c i",
+          "type": "(ℕ → ℚ) → ℕ → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial",
+          "definitionValue": "fun n => ∏ i, (Polynomial.X - Polynomial.C (ZetaNine.CoefficientMapTelescoper.rootNode n i))",
+          "type": "ℕ → ℚ[X]"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_last_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n n s W = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.prefixSum_succ",
+          "definitionValue": null,
+          "type": "∀ (c : ℕ → ℚ) (j : ℕ),\n  ZetaNine.CoefficientMapTelescoper.prefixSum c (j + 1) = ZetaNine.CoefficientMapTelescoper.prefixSum c j + c (j + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_actual_rational_representation",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (W : ℚ[X]) (t : ℚ),\n      (∀ k < n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n          Polynomial.eval t (ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W) /\n            Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial (n - 1)) ^ 9"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_as_sum_over_orders",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  ZetaNine.CoefficientMapTelescoper.telescoper n W t =\n    ∑ s ∈ Finset.Icc 1 9,\n      ∑ j ∈ Finset.range n, ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_reflection",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          j < n →\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n (n - 1 - j) s W =\n                  (-1) ^ s * ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_positive_zeros",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          1 ≤ k → k ≤ n + 1 → ZetaNine.CoefficientMapTelescoper.telescoper n W ↑k = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.checked_actual_polynomial_quotient_degree_bound",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∃ H,\n              ZetaNine.CoefficientMapTelescoper.telescoperNumerator n W =\n                  ZetaNine.CoefficientMapTelescoper.rootPolynomial n * H ∧\n                H.natDegree ≤ 7 * n - 3"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cleared_term_division",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ) (a t : ℚ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        (∀ k ≤ n, t + ↑k ≠ 0) →\n          a * Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j) ^ 9 *\n                (t + ↑j) ^ (9 - s) /\n              Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9 =\n            a / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode.eq_2",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (k : Fin (n + 1)), ZetaNine.CoefficientMapTelescoper.rootNode n (Sum.inr k) = -↑n - ↑↑k"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient_succ",
+          "definitionValue": null,
+          "type": "∀ (n j s : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n (j + 1) s W =\n    ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W +\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (j + 1) s W"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_monic",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapTelescoper.rootPolynomial n).Monic"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.finite_sum_is_telescoper_boundary",
+          "definitionValue": null,
+          "type": "∀ (n T : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n            ZetaNine.CoefficientMapTelescoper.telescoper n W 1 -\n              ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_difference_principal_parts",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (t : ℚ),\n            ZetaNine.CoefficientMapTelescoper.telescoper n W t -\n                ZetaNine.CoefficientMapTelescoper.telescoper n W (t + 1) =\n              ∑ j ∈ Finset.range (n + 1),\n                ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.prefixSum.eq_1",
+          "definitionValue": null,
+          "type": "∀ (c : ℕ → ℚ) (j : ℕ), ZetaNine.CoefficientMapTelescoper.prefixSum c j = ∑ i ∈ Finset.range (j + 1), c i"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.actual_weightedR_positive_zero",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ) (W : ℚ[X]), 1 ≤ k → k ≤ n → ZetaNine.CoefficientMap.weightedR n W ↑k = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootPolynomial_natDegree",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapTelescoper.rootPolynomial n).natDegree = 2 * n + 2"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_positive_tendsto_zero",
+          "definitionValue": null,
+          "type": "∀ (n : ℕ) (W : ℚ[X]),\n  Filter.Tendsto (fun T => ↑(ZetaNine.CoefficientMapTelescoper.telescoper n W ↑(T + 1))) Filter.atTop (𝓝 0)"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper",
+          "definitionValue": "fun n W t =>\n  ∑ j ∈ Finset.range n,\n    ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapTelescoper.cumulativeCoefficient n j s W / (t + ↑j) ^ s",
+          "type": "ℕ → ℚ[X] → ℚ → ℚ"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.telescoper_negative_zeros",
+          "definitionValue": null,
+          "type": "∀ (n k : ℕ),\n  1 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            k ≤ n → ZetaNine.CoefficientMapTelescoper.telescoper n W (-↑n - ↑k) = 0"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "declaration": "ZetaNine.CoefficientMapTelescoper.rootNode",
+          "definitionValue": "fun n i =>\n  match i with\n  | Sum.inl k => ↑↑k + 1\n  | Sum.inr k => -↑n - ↑↑k",
+          "type": "(n : ℕ) → Fin (n + 1) ⊕ Fin (n + 1) → ℚ"
+        }
+      ],
+      "expected_records": 54,
+      "log_sha256": "8b434a9089b88a847ae0d48392406960aa3d0d73590e618761b4b77c668b971a",
+      "all_standard_axioms": true
+    }
+  ],
+  "all_zero": true,
+  "records": 89
+}

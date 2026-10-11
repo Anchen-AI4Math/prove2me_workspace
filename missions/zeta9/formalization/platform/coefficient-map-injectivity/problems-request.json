@@ -1,0 +1,48 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+      "theorem_title": "Zero actual local coefficients force a proper multiplier to vanish",
+      "formal_statement": "theorem ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero (n : ℕ) (W : ℚ[X])\n    (hproper : ProperMultiplier n W) (hzero : AllLocalCoefficientsZero n W) : W = 0:= by sorry",
+      "natural_language_statement": "Let $n\\ge0$ be natural and $W\\in\\mathbb Q[X]$. Assume $2n+2\\deg W<9(n+1)$. Take the actual coefficients $c^W_{n,j,s}=[z^{9-s}](N_{n,j}(D_{n,j}^{9})^{-1}W((z-j)(z-j+n)))$ in $\\mathbb Q[[z]]$, where $N_{n,j}$ and $D_{n,j}$ are the genuine shifted numerator and erased pole-factor denominator. If $c^W_{n,j,s}=0$ for every $0\\le j\\le n$ and $1\\le s\\le9$, then $$W=0.$$ This is the zero-kernel criterion for the complete actual local array in the strict proper domain. It does not concern only five aggregated zeta/constant outputs or assert their injectivity.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapInjectivity\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) finite proper-domain local coefficient-array research: missions/zeta9/research/coefficient-map-injectivity-2026-10-03.md. Frozen actual Lean source missions/zeta9/formalization/CoefficientMapInjectivity.lean, SHA256 ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095; uses genuine Base/Jet products and formal local jets. This concerns the complete (n+1) by 9 array, not the original five aggregated F outputs. Original declaration lines 180–190.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "injectivity",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+      "theorem_title": "Injectivity of the full actual local coefficient array on the proper domain",
+      "formal_statement": "theorem ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective (n : ℕ) :\n    Function.Injective (fun W : {W : ℚ[X] // ProperMultiplier n W} => fullLocalCoefficientMap n W.val):= by sorry",
+      "natural_language_statement": "For every natural $n$, restrict rational polynomials $W$ to $2n+2\\deg W<9(n+1)$ and send them to the complete array of actual formal-jet coefficients $$(c^W_{n,j,s})_{0\\le j\\le n,\\ 1\\le s\\le9}.$$ This map is injective: two multipliers in that domain with identical complete arrays are equal. Every coefficient is taken from the genuine shifted-product formal quotient, not abstract data. No surjectivity, inverse of the original five-dimensional aggregate F, or exact infinite L-sum is claimed.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapInjectivity\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) finite proper-domain local coefficient-array research: missions/zeta9/research/coefficient-map-injectivity-2026-10-03.md. Frozen actual Lean source missions/zeta9/formalization/CoefficientMapInjectivity.lean, SHA256 ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095; uses genuine Base/Jet products and formal local jets. This concerns the complete (n+1) by 9 array, not the original five aggregated F outputs. Original declaration lines 217–226.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "injectivity",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+      "theorem_title": "Every rational quartic multiplier lies in the strict proper domain",
+      "formal_statement": "theorem ZetaNine.CoefficientMapInjectivity.quartic_is_proper (n : ℕ) (W : ℚ[X]) (hW : W.natDegree ≤ 4) : ProperMultiplier n W:= by sorry",
+      "natural_language_statement": "For every natural $n$, including zero, and every $W\\in\\mathbb Q[X]$ with natural degree at most four, $$2n+2\\deg W<9(n+1).$$ Thus every rational quartic multiplier satisfies the strict proper-degree condition for the complete local-array injectivity result. Strict properness gives only at most order $1/t$ decay, without analytic summability or stronger asymptotic cancellation. At $n=0$, $W=X^4$ meets this condition and the actual weighted rational function is $1/t$ on its regular domain, so a simple pole remains possible.",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapInjectivity\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine.CoefficientMapInjectivity\n",
+      "source": "Zeta(9) finite proper-domain local coefficient-array research: missions/zeta9/research/coefficient-map-injectivity-2026-10-03.md. Frozen actual Lean source missions/zeta9/formalization/CoefficientMapInjectivity.lean, SHA256 ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095; uses genuine Base/Jet products and formal local jets. This concerns the complete (n+1) by 9 array, not the original five aggregated F outputs. Original declaration lines 228–230.",
+      "tags": [
+        "number-theory",
+        "polynomials",
+        "injectivity",
+        "formalization"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+  "metadata_sha256": "891f8b092f4be357ee4c8fd74538b3039e6285355842d94979a350cb22dd9f5c",
+  "publish_payload_sha256": "ded34763aef200a9843c5831a00859a78c8418f8fbd89b01f5b420f65bb49bac",
+  "publish_intent": {
+    "at_utc": "2026-10-09T10:11:59.043671+00:00",
+    "statement_sha256": "6b14d53c70726d6da2ff056b2203e8f4dc413f48f6297031c4ab2550403f7864",
+    "payload": {
+      "problems": [
+        {
+          "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+          "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+          "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+          "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+          "theorem_title": "A nonempty finite family of weights has an attained minimum",
+          "natural_language_statement": "Let m be a natural number with m ≥ 1, let w : Fin m → ℝ, and let X be real. If X < w(i) for every i, then there exists a real wstar with X < wstar, wstar ≤ w(i) for every i, and wstar = w(i) for some i.",
+          "tags": [
+            "openai-pi-exponent-017",
+            "number-theory",
+            "finite-minimum"
+          ]
+        }
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "ded34763aef200a9843c5831a00859a78c8418f8fbd89b01f5b420f65bb49bac"
+  },
+  "updated_at_utc": "2026-10-09T10:15:26.274782+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "e3adc575-2eff-4961-84e8-f19c8f48a4fd",
+          "name": "OAI.PiExponent.exists_minimum_weight"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "job_id": "e3adc575-2eff-4961-84e8-f19c8f48a4fd",
+  "last_publish_verdict": {
+    "id": "e3adc575-2eff-4961-84e8-f19c8f48a4fd",
+    "kind": "problem",
+    "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+    "theorem_title": "A nonempty finite family of weights has an attained minimum",
+    "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+    "natural_language_statement": "Let m be a natural number with m ≥ 1, let w : Fin m → ℝ, and let X be real. If X < w(i) for every i, then there exists a real wstar with X < wstar, wstar ≤ w(i) for every i, and wstar = w(i) for some i.",
+    "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+    "tags": [
+      "openai-pi-exponent-017",
+      "number-theory",
+      "finite-minimum"
+    ],
+    "visibility": "public",
+    "status": "PUBLISHED",
+    "error_message": "",
+    "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+    "created_at": "2026-10-09T10:12:01.815205+00:00",
+    "updated_at": "2026-10-09T10:12:09.898967+00:00"
+  },
+  "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+      "theorem_name": "OAI.PiExponent.exists_minimum_weight",
+      "theorem_title": "A nonempty finite family of weights has an attained minimum",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_minimum_weight\r\n    (m : ℕ) (hm : 1 ≤ m) (w : Fin m → ℝ) (X : ℝ)\r\n    (hX : ∀ i, X < w i) :\r\n    ∃ wstar : ℝ, X < wstar ∧ (∀ i, wstar ≤ w i) ∧\r\n      ∃ i, wstar = w i := by sorry",
+      "natural_language_statement": "Let m be a natural number with m ≥ 1, let w : Fin m → ℝ, and let X be real. If X < w(i) for every i, then there exists a real wstar with X < wstar, wstar ≤ w(i) for every i, and wstar = w(i) for some i.",
+      "created_at": "2026-10-09T10:12:08.779826+00:00",
+      "vote_count": 0,
+      "tags": [
+        "finite-minimum",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean#L51-L59",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-09T10:14:13.628728+00:00",
+    "solution_sha256": "dcf2242460dfd678557e83ccdb7050a19e3689a731513960b9f28bca8b1be836",
+    "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+    "multipart_sha256": "fe1caf6efccf2e70c82a3fc29175b7489ac5cbe044d09f30a8066a34c072e95c"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "d776678c-ec1b-4e66-8399-b4f537e21527",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "d776678c-ec1b-4e66-8399-b4f537e21527",
+  "last_verify_verdict": {
+    "id": "d776678c-ec1b-4e66-8399-b4f537e21527",
+    "theorem_id": "30d83fa5-620d-4059-a909-387ac02d2401",
+    "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "30d83fa5-620d-4059-a909-387ac02d2401/418b0711-62a5-416a-ba5d-876ae8758fe3/d776678c-ec1b-4e66-8399-b4f537e21527.lean",
+    "created_at": "2026-10-09T10:14:16.47199+00:00",
+    "updated_at": "2026-10-09T10:14:45.084002+00:00"
+  },
+  "confirmed_proved": true
+}

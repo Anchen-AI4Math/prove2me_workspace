@@ -1,0 +1,160 @@
+{
+  "theorem_name": "OAI.PiExponent.FormalLogTruncation.formalLog_packets_surjective_iff_truncated",
+  "theorem_title": "Weighted coefficient-packet surjectivity is unchanged by truncating the formal logarithm",
+  "natural_language_statement": "Let m be a natural number, let α and J be index types, and let v : Fin (m + 1) → ℚ be a nonnegative rational weight vector. For H ∈ ℚ, put D(v,H) = {d : Fin (m + 1) →₀ ℕ | ∑ₖ d(k)v(k) < H}; the coefficient packet of a multivariate formal power series f is the function d ↦ [Xᵈ]f on D(v,H). Let T : Fin m → ℕ satisfy v(i + 1) ≤ T(i) v(0) for every i, let c assign a complex m-tuple cⱼ to each j ∈ J, and let P assign a polynomial Pₐ in m variables to each a ∈ α. Then the two maps a ↦ (j ↦ packet(formalJet(cⱼ, Pₐ))) and a ↦ (j ↦ packet(truncatedFormalJet(cⱼ, T, Pₐ))) are either both surjective onto all J-indexed packet families or both fail to be surjective. Thus one common index a must realize the prescribed packet for every j in the joint family.",
+  "tags": [
+    "formal-power-series",
+    "formal-logarithm",
+    "weighted-coefficient-packets",
+    "surjectivity",
+    "formal-jets",
+    "truncation",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "explanation": "This result identifies the coefficient data below a rational weighted-degree cutoff that can be realized by the family of formal jets. Under the coordinatewise bound on T, replacing each formal logarithm by its finite truncation preserves exactly the same attainable packet families, including the requirement that one polynomial-family index works simultaneously for all j. It provides a weighted coefficient formulation for later interpolation arguments while remaining entirely within formal power series; it makes no analytic convergence assertion.",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L361-L382",
+    "source_command_witness": {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+      "source_graph_name": "OAI.PiExponent.FormalLogTruncation.formalLog_packets_surjective_iff_truncated",
+      "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+      "port_command_range": {
+        "start": 17060,
+        "end": 18526
+      },
+      "original_command_range": {
+        "start": 16716,
+        "end": 18161
+      },
+      "port_command_sha256": "74f4718932213bb93febd26d4ff5e7a20d0980fb3fd75fa4020ab19f15490ec7",
+      "original_command_sha256": "0774181a05d80bbec54d735b0a998c6e443f68dc37cd13d9e9051889599d48af",
+      "port_and_original_command_bytes_equal": false,
+      "port_kernel_type_actual_source_snapshot_verified": true,
+      "original_command_boundaries_from_full_file_equal_line_correspondence": true
+    },
+    "facts": "missions/pi-irrationality-measure/verification/sketch-FormalLogTruncation-20261007-223910.log",
+    "facts_sha256": "59bf6b39630930bc0137ae4d3ea482679f75e9ba60a0ec2cf9bb91e896461be6",
+    "inline_support_witnesses": [
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.shiftEquiv_mem_iff",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L248-L267",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 11263,
+          "end": 12224
+        },
+        "port_command_sha256": "1c9b5c03019f189b48772e5018e3818de189fec1337f6ede2205fa7b2530c143",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 11032,
+          "end": 11974
+        },
+        "original_command_sha256": "7013b04a664c7acdcc0ed6439afe5018d67102e78bb3111a80600f64b6caa602",
+        "port_and_original_command_bytes_equal": false,
+        "purpose": "Retained original public inline support theorem in the source proof of formalLog_packets_surjective_iff_truncated."
+      },
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.packets_surjective_comp_equiv",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L331-L345",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 15374,
+          "end": 16275
+        },
+        "port_command_sha256": "ef1c8cb6be9d1e438add0d82c851db20194b42373804f3551f7a38d52ed52ce5",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 15060,
+          "end": 15947
+        },
+        "original_command_sha256": "2c552b87d44c6ec13cb5b301891b413ce685af254ffdf71f833e87fd94f09c7e",
+        "port_and_original_command_bytes_equal": false,
+        "purpose": "Retained original public inline support theorem in the source proof of formalLog_packets_surjective_iff_truncated."
+      },
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.packets_surjective_comp_equiv_iff",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L347-L359",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 16279,
+          "end": 17056
+        },
+        "port_command_sha256": "a5f9b40f54030a2219878e00eb7afc27e17177c8f03eddbb85ef0a929e7d6b60",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 15949,
+          "end": 16714
+        },
+        "original_command_sha256": "aa8e6eb707e107e7ec2f4d186de85f9bbaea4b9d8430457115901ff0c633708e",
+        "port_and_original_command_bytes_equal": false,
+        "purpose": "Retained original public inline support theorem in the source proof of formalLog_packets_surjective_iff_truncated."
+      },
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.rationalCoefficientPacket_surjective",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L207-L213",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 9129,
+          "end": 9436
+        },
+        "port_command_sha256": "bde1cf4f1a8b9a3a147da96ccc4efbdbbd52290c2782c17ee114843b8c0b876c",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 8934,
+          "end": 9240
+        },
+        "original_command_sha256": "c2bfa8b64975da3553fe92b5ae807986ad42f5798b064cd3f5148e3bb2aef830",
+        "port_and_original_command_bytes_equal": false,
+        "proof_end_line_version_edit": {
+          "original_line": 213,
+          "port_line": 213,
+          "original_text": "  exact dite_eq_left d.property",
+          "port_text": "  exact dif_pos d.property",
+          "original_raw_line_sha256": "b3e0814e82c109554a8557889fbed966a84242d84314a7b025713245235237ab",
+          "port_raw_line_sha256": "4661147889d855e63fb44c1eedf5fbebf066256dce982ce84894ad355dc11670",
+          "exact_single_replaced_line_between_unchanged_full_file_line_blocks": true,
+          "all_preceding_helper_line_contents_equal": true
+        },
+        "purpose": "Retained original public inline support theorem in the source proof of formalLog_packets_surjective_iff_truncated."
+      },
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.shiftEquiv_apply",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L124-L126",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 5444,
+          "end": 5637
+        },
+        "port_command_sha256": "9e8816944f02b310399285cf84a08c8cf494e040b963526f80a869b428807180",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 5332,
+          "end": 5523
+        },
+        "original_command_sha256": "2362fdbc30b97074cc3f24c5f07b5c7b1c54c023bfc7045f58a4d611b7656187",
+        "port_and_original_command_bytes_equal": false,
+        "purpose": "Retained original public inline support theorem in the source proof of formalLog_packets_surjective_iff_truncated."
+      }
+    ]
+  }
+}

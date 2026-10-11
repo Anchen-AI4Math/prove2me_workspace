@@ -1,0 +1,19 @@
+import Mathlib.NumberTheory.LSeries.RiemannZeta
+import Mathlib.Analysis.PSeries
+import Mathlib.Analysis.Normed.Group.InfiniteSum
+
+#check tendsto_finset_sum
+#check Filter.Tendsto.sum
+#check Finset.summable_sum
+#check summable_sum
+#check Filter.Tendsto.atTop_add_const
+#check Filter.Tendsto.const_add_atTop
+#check tendsto_atTop_add_const_right
+#check tendsto_add_atTop_nat
+#check Finset.sum_range_succ'
+#check HasSum.tendsto_sum_nat
+#check Summable.comp_injective
+#check Real.summable_one_div_nat_pow
+#check Filter.Tendsto.const_mul
+#check Summable.mul_left
+#check Complex.ofReal_tsum

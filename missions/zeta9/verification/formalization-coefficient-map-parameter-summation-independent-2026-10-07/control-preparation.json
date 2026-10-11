@@ -1,0 +1,160 @@
+{
+  "assertions": {
+    "module": "ParameterSummationIndependentAssertionsV1",
+    "project_relative": "ParameterSummationIndependentAssertionsV1.lean",
+    "source": {
+      "task_relative": ".rt/psi1/ParameterSummationIndependentAssertionsV1.lean",
+      "bytes": 11781,
+      "sha256": "0c2abc1b5aa8d3912619f5c92421cea9e2d36728b5a3e79492d23c4922ef2726"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-parameter-summation-independent-2026-10-07/ParameterSummationIndependentAssertionsV1.lean",
+      "bytes": 11781,
+      "sha256": "0c2abc1b5aa8d3912619f5c92421cea9e2d36728b5a3e79492d23c4922ef2726"
+    }
+  },
+  "semantic": {
+    "module": "ParameterSummationIndependentSemanticV1",
+    "project_relative": "ParameterSummationIndependentSemanticV1.lean",
+    "source": {
+      "task_relative": ".rt/psi1/ParameterSummationIndependentSemanticV1.lean",
+      "bytes": 12473,
+      "sha256": "1922ea370d5ccdbd7c68281c0ac31f64dded7ef01363aaca94bbe11f7d046e69"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-parameter-summation-independent-2026-10-07/ParameterSummationIndependentSemanticV1.lean",
+      "bytes": 12473,
+      "sha256": "1922ea370d5ccdbd7c68281c0ac31f64dded7ef01363aaca94bbe11f7d046e69"
+    }
+  },
+  "generated": {
+    "module": "ParameterSummationIndependentGeneratedV1",
+    "project_relative": "ParameterSummationIndependentGeneratedV1.lean",
+    "source": {
+      "task_relative": ".rt/psi1/ParameterSummationIndependentGeneratedV1.lean",
+      "bytes": 6720,
+      "sha256": "a48db753b54d7332f7e821813e9b9383dd3c5b20ad73b58068772c110688330e"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-parameter-summation-independent-2026-10-07/ParameterSummationIndependentGeneratedV1.lean",
+      "bytes": 6720,
+      "sha256": "a48db753b54d7332f7e821813e9b9383dd3c5b20ad73b58068772c110688330e"
+    }
+  },
+  "original_complete_headers": [
+    {
+      "name": "transferMultiplier_natDegree_le",
+      "header": "theorem transferMultiplier_natDegree_le (n : ℕ) (W : ℚ[X]) :\n    (transferMultiplier n W).natDegree ≤ 4"
+    },
+    {
+      "name": "even_add_two",
+      "header": "theorem even_add_two (n : ℕ) (hn : Even n) : Even (n + 2)"
+    },
+    {
+      "name": "exactL_eq_prescribed_actual_output",
+      "header": "theorem exactL_eq_prescribed_actual_output (n : ℕ) (W : ℚ[X]) :\n    exactL n W = prescribedL (aggregate n W)"
+    },
+    {
+      "name": "transfer_actual_five_outputs",
+      "header": "theorem transfer_actual_five_outputs (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    aggregate n (transferMultiplier n W) = aggregate (n + 2) W"
+    },
+    {
+      "name": "transfer_actual_exactL",
+      "header": "theorem transfer_actual_exactL (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    exactL n (transferMultiplier n W) = exactL (n + 2) W"
+    },
+    {
+      "name": "quartic_actual_HasSum_and_absolute",
+      "header": "theorem quartic_actual_HasSum_and_absolute (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    HasSum (actualSeries n W) (exactL n W) ∧\n      Summable (fun t : ℕ => ‖actualSeries n W t‖)"
+    },
+    {
+      "name": "actual_chosen_exactL_transport",
+      "header": "theorem actual_chosen_exactL_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    exactL (n + 2) (X ^ r.val) = exactL n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_HasSum_transport",
+      "header": "theorem actual_chosen_HasSum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (r : Fin 5) :\n    HasSum (actualSeries (n + 2) (X ^ r.val)) (exactL n (connectionP n r)) ∧\n      HasSum (actualSeries n (connectionP n r)) (exactL n (connectionP n r)) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2) (X ^ r.val) t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (connectionP n r) t‖)"
+    },
+    {
+      "name": "actual_chosen_tsum_transport",
+      "header": "theorem actual_chosen_tsum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (r : Fin 5) :\n    (∑' t : ℕ, actualSeries (n + 2) (X ^ r.val) t) =\n      ∑' t : ℕ, actualSeries n (connectionP n r) t"
+    },
+    {
+      "name": "quartic_HasSum_transport",
+      "header": "theorem quartic_HasSum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    HasSum (actualSeries (n + 2) W) (exactL (n + 2) W) ∧\n      HasSum (actualSeries n (transferMultiplier n W)) (exactL (n + 2) W) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2) W t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (transferMultiplier n W) t‖)"
+    },
+    {
+      "name": "quartic_tsum_transport",
+      "header": "theorem quartic_tsum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    (∑' t : ℕ, actualSeries (n + 2) W t) =\n      ∑' t : ℕ, actualSeries n (transferMultiplier n W) t"
+    },
+    {
+      "name": "transferred_inverseMultiplier_eq",
+      "header": "theorem transferred_inverseMultiplier_eq (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b : Fin 5 → ℚ) :\n    transferMultiplier n (inverseMultiplier (n + 2) (by omega) (even_add_two n hn) b) =\n      inverseMultiplier n hn2 hn b"
+    },
+    {
+      "name": "inverseMultiplier_coordinates_transport",
+      "header": "theorem inverseMultiplier_coordinates_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b : Fin 5 → ℚ) :\n    polynomialCoordinates (inverseMultiplier (n + 2) (by omega) (even_add_two n hn) b)\n        ᵥ* connectionGamma n = polynomialCoordinates (inverseMultiplier n hn2 hn b)"
+    },
+    {
+      "name": "chosen_transferMultiplier_eq_connectionP",
+      "header": "theorem chosen_transferMultiplier_eq_connectionP (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (r : Fin 5) :\n    transferMultiplier n (X ^ r.val) = connectionP n r"
+    },
+    {
+      "name": "selectedIntegerMultiplier_transport",
+      "header": "theorem selectedIntegerMultiplier_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b a : ℤ) :\n    transferMultiplier n\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) =\n      selectedIntegerMultiplier n hn2 hn b a"
+    },
+    {
+      "name": "selectedIntegerMultiplier_parameter_HasSum",
+      "header": "theorem selectedIntegerMultiplier_parameter_HasSum (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    HasSum (actualSeries (n + 2)\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a))\n      ((b : ℝ) + (a : ℝ) * zetaReal 9) ∧\n      HasSum (actualSeries n (selectedIntegerMultiplier n hn2 hn b a))\n        ((b : ℝ) + (a : ℝ) * zetaReal 9) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2)\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (selectedIntegerMultiplier n hn2 hn b a) t‖)"
+    },
+    {
+      "name": "selectedIntegerMultiplier_parameter_tsum",
+      "header": "theorem selectedIntegerMultiplier_parameter_tsum (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    (∑' t : ℕ, actualSeries (n + 2)\n      (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) t) =\n      ∑' t : ℕ, actualSeries n (selectedIntegerMultiplier n hn2 hn b a) t"
+    }
+  ],
+  "helper_modules": [
+    "missions.zeta9.formalization.CoefficientMap",
+    "missions.zeta9.formalization.CoefficientMapJet",
+    "missions.zeta9.formalization.CoefficientMapInjectivity",
+    "missions.zeta9.formalization.CoefficientMapPartialFractions",
+    "missions.zeta9.formalization.CoefficientMapReflection",
+    "Definitions.Def_ZetaNine_HarmonicStability",
+    "missions.zeta9.formalization.CoefficientMapFiniteSum",
+    "missions.zeta9.formalization.CoefficientMapSummation",
+    "missions.zeta9.formalization.CoefficientMapAggregate",
+    "missions.zeta9.formalization.CoefficientMapTelescoper",
+    "missions.zeta9.formalization.CoefficientMapShiftDegree",
+    "missions.zeta9.formalization.CoefficientMapKernelBridge",
+    "missions.zeta9.formalization.CoefficientMapConnection",
+    "missions.zeta9.formalization.CoefficientMapParameterShift",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportData",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportBounds",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportNumerators",
+    "missions.zeta9.formalization.CoefficientMapNumeratorPartialFractions",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportJets",
+    "missions.zeta9.formalization.CoefficientMapMatrix",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportOutputs",
+    "missions.zeta9.formalization.CoefficientMapParameterSummationTransport",
+    "ParameterSummationIndependentAssertionsV1"
+  ],
+  "boundary_names": [
+    "n1_exact_r0",
+    "n2_HasSum_r0",
+    "n2_HasSum_r4",
+    "n2_tsum_r4",
+    "n2_transfer_r0",
+    "n2_transfer_r4",
+    "n2_selected_B",
+    "n2_selected_A",
+    "n2_selected_tsum"
+  ],
+  "whole_definition_names": [
+    "ZetaNine.CoefficientMapParameterSummationTransport.transferMultiplier"
+  ],
+  "literal_original_headers_preserved": true,
+  "original_definition_value_expected_by_independent_explicit_finite_sum": true,
+  "whole_function_rfl_required": true,
+  "all_native_generated_helpers_complete_type_value_and_value_inferType_required": true,
+  "author_control_SOURCE_or_proof_objects_reused": false,
+  "author_boundary_contract_consulted_only_for_nine_endpoint_instantiations": true,
+  "independent_PASS_claimed": false
+}

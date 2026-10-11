@@ -1,0 +1,292 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+    "definitionValue": "fun j => Polynomial.X - Polynomial.C ↑j",
+    "type": "ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+    "definitionValue": "fun n j =>\n  (Polynomial.C (↑n.factorial ^ 7) *\n      ∏ i ∈ Finset.range n, (ZetaNine.CoefficientMapJet.shiftedVariable j - Polynomial.C (↑i + 1))) *\n    ∏ i ∈ Finset.range n, (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑n + Polynomial.C (↑i + 1))",
+    "type": "ℕ → ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+    "definitionValue": "fun n j => ∏ k ∈ (Finset.range (n + 1)).erase j, (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑k)",
+    "type": "ℕ → ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.localU",
+    "definitionValue": "fun n j =>\n  ZetaNine.CoefficientMapJet.shiftedVariable j * (ZetaNine.CoefficientMapJet.shiftedVariable j + Polynomial.C ↑n)",
+    "type": "ℕ → ℕ → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+    "definitionValue": "fun n j => Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X + Polynomial.X ^ 2",
+    "type": "ℕ → ℕ → ℤ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+    "definitionValue": "fun n j =>\n  ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j) *\n    (↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9)⁻¹",
+    "type": "ℕ → ℕ → PowerSeries ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+    "definitionValue": "fun n j W => ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(W.comp (ZetaNine.CoefficientMapJet.localU n j))",
+    "type": "ℕ → ℕ → ℚ[X] → PowerSeries ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+    "definitionValue": "fun n j s => (PowerSeries.coeff (9 - s)) (ZetaNine.CoefficientMapJet.clearedSeries n j)",
+    "type": "ℕ → ℕ → ℕ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+    "definitionValue": "fun n j s W => (PowerSeries.coeff (9 - s)) (ZetaNine.CoefficientMapJet.weightedClearedSeries n j W)",
+    "type": "ℕ → ℕ → ℕ → ℚ[X] → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+    "definitionValue": null,
+    "type": "∀ (j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedVariable j) = -↑j + z"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator_eval",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedNumerator n j) = ZetaNine.CoefficientMap.numerator n (-↑j + z)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j + z)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.actual_local_rational_expression",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedNumerator n j) /\n      Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ZetaNine.CoefficientMap.clearedR n j (-↑j + z)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.localU_eval",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.localU n j) = (-↑j + z) * (-↑j + z + ↑n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.localU_eq",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMapJet.localU n j =\n      Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X + Polynomial.X ^ 2"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.integerLocalU_map",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    Polynomial.map (Int.castRingHom ℚ) (ZetaNine.CoefficientMapJet.integerLocalU n j) =\n      ZetaNine.CoefficientMapJet.localU n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.actual_weighted_local_rational_expression",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (W : ℚ[X]) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)) /\n      Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ZetaNine.CoefficientMap.clearedWeightedR n j W (-↑j + z)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (S : PowerSeries ℚ),\n  S * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n      ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j) →\n    S = ZetaNine.CoefficientMapJet.clearedSeries n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedClearedSeries n j W *\n      ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_constant",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff (ZetaNine.CoefficientMapJet.clearedSeries n j) =\n    ZetaNine.CoefficientMap.leadingPoleCoefficient n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.localCoefficient_nine",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), ZetaNine.CoefficientMapJet.localCoefficient n j 9 = ZetaNine.CoefficientMap.leadingPoleCoefficient n j"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient_nine",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 9 W =\n    ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.coefficient_convolution",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ),\n  1 ≤ s →\n    s ≤ 9 →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n          ∑ l ∈ Finset.Icc s 9,\n            ZetaNine.CoefficientMapJet.localCoefficient n j l *\n              (W.comp (ZetaNine.CoefficientMapJet.localU n j)).coeff (l - s)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : ℚ[X]),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                (W.comp\n                      (Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X +\n                        Polynomial.X ^ 2)).coeff\n                  (l - s)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : ℤ[X]),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (Polynomial.map (Int.castRingHom ℚ) W) =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                ↑((W.comp (ZetaNine.CoefficientMapJet.integerLocalU n j)).coeff (l - s))"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_original_local_convolution",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ),\n  2 ≤ n →\n    Even n →\n      j ≤ n →\n        1 ≤ s →\n          s ≤ 9 →\n            ∀ (W : ℤ[X]),\n              W.natDegree ≤ 4 →\n                ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (Polynomial.map (Int.castRingHom ℚ) W) =\n                  ∑ l ∈ Finset.Icc s 9,\n                    ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                      ↑((W.comp (ZetaNine.CoefficientMapJet.integerLocalU n j)).coeff (l - s))"
+  }
+]

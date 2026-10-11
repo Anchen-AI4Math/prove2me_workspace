@@ -1,0 +1,22 @@
+{
+  "theorem_id": "d0d1afad-8cdf-4969-ad45-60f9f32d35e6",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.truncatedJetPacket_surjective_of_fullPacket",
+  "theorem_title": "Transfer packet surjectivity through logarithmic truncation",
+  "status": "Open",
+  "formal_statement": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\ntheorem OAI.PiExponent.FormalInterpolation.truncatedJetPacket_surjective_of_fullPacket\n    {nu : Real} (d : FixedData nu) (H : Rat)\n    (hT : forall i : Fin d.m,\n      MatrixArithmetic.logWeights (finiteDenominators d) i / (d.base.theta : Real) <=\n        (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i : Real) *\n          (d.v0 : Real))\n    (hpacket : Function.Surjective\n      (FormalInterpolation.packetMap d (H : Real))) :\n    Function.Surjective\n      (fun P : FormalInterpolation.WeightedPolynomial d.w0\n          (MatrixArithmetic.logWeights (finiteDenominators d)) (H : Real) =>\n        fun rho : Row d H =>\n          MvPowerSeries.coeff (InterpolationMatrix.exponentVector rho.2.val)\n            (MvPolynomial.aeval (Fin.cases (1 + MvPowerSeries.X 0)\n              (fun i => MvPowerSeries.C ((rho.1.val : Complex) *\n                  MatrixArithmetic.rationalCenters (finiteNumerators d)\n                    (finiteDenominators d) i) + MvPowerSeries.X i.succ +\n                FormalInterpolation.liftSeries d.m\n                  ((PowerSeries.trunc\n                    (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i)\n                    (PowerSeries.log Complex) : Polynomial Complex) : PowerSeries Complex))) P.val)) := by sorry\n",
+  "natural_language_statement": "For admissible determinant data, if the cutoff orders dominate the weighted row coordinates and the full formal logarithmic packet map is surjective, then the coefficient packets formed with the truncated logarithms are also surjective. The cutoff condition ensures the logarithmic tails lie in the weighted ideal, so the invertible formal variable shift preserves packets modulo that ideal.",
+  "created_at": "2026-10-08T06:35:55.733626+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formal-interpolation",
+    "number-theory"
+  ],
+  "preamble": "",
+  "source": "openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean, theorem formalLog_packets_surjective_iff_truncated",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

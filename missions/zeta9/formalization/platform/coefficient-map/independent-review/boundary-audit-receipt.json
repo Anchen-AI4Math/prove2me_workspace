@@ -1,0 +1,86 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "BoundaryAudit.lean"
+  ],
+  "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\independent-review\\project",
+  "exit_code": 0,
+  "source_sha256": "7b36b2e6a11aa1f5781bbebbaeae3fdfeed396f3cd9180dc9b33b7897971088c",
+  "log_sha256": "ca12c1bf41ed9fe1548c3253bcc7b2628a8155f3ee2a19618e6641e97beb4de3",
+  "records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.regular_statement",
+      "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.actualR n t * (t + ↑j) ^ 9 = ZetaNine.CoefficientMap.clearedR n j t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.actual_denominator_nonzero",
+      "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.unweighted_statement",
+      "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMap.leadingPoleCoefficient n j =\n      (-1) ^ (n + j) * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.weighted_statement",
+      "type": "∀ (n j : ℕ),\n  Even n →\n    j ≤ n →\n      ∀ (W : ℚ[X]),\n        ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j W =\n          (-1) ^ j * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n) *\n            Polynomial.eval (-↑j * ↑(n - j)) W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.unweighted_integer_nonzero",
+      "type": "∀ (n j : ℕ),\n  j ≤ n →\n    (∃ z, ZetaNine.CoefficientMap.leadingPoleCoefficient n j = ↑z) ∧\n      ZetaNine.CoefficientMap.leadingPoleCoefficient n j ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.n_zero_boundary",
+      "type": "ZetaNine.CoefficientMap.leadingPoleCoefficient 0 0 = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.arbitrary_zero_W",
+      "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j 0 = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "IndependentIntegration.nonzero_W_can_cancel",
+      "type": "Polynomial.X + Polynomial.C 1 ≠ 0 ∧\n  ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient 2 1 (Polynomial.X + Polynomial.C 1) = 0"
+    }
+  ]
+}

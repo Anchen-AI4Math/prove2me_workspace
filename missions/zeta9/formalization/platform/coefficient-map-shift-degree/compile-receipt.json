@@ -1,0 +1,316 @@
+{
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMapShiftDegree": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapShiftDegree"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-native.log",
+      "log_sha256": "48e9f2a36ed8060032c8f894654bf900e7c2019b1a36dd664f95b58aea38c82e"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "fda6c17bcfc94740f488c9ff8ba5d4592aa2fce0e7d7d506382ebbcbc9e59e1c"
+    },
+    {
+      "label": "stage2-CoefficientMapShiftDegree",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapShiftDegree_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapShiftDegree.log",
+      "log_sha256": "79736d36dffa372c4e01ab53030f084b8cdf43ae27b6bb813e3250bdeb134abd"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapShiftDegree.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "8985b387e541a534ac8fbb68397623ee428d9fd2a2cbbf77880b9c7dd6396282"
+    },
+    {
+      "label": "build-definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapShiftDegree"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-definition.log",
+      "log_sha256": "cb1c243e691647ff24fe84537835931cf01c5ebfc4cbc515263d98a759dcf50e"
+    },
+    {
+      "label": "build-0-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_coefficient"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-0-solution.log",
+      "log_sha256": "31f3deef3737b5fe3c9a01bfaef424804b3db9f5ed79d6f31f1f172567ee5edb"
+    },
+    {
+      "label": "build-0-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_coefficient"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-0-reference.log",
+      "log_sha256": "d706247911d22d10b4c31a57e43f42042f0b6f2bcd61b56a23d9fa6b14473963"
+    },
+    {
+      "label": "build-1-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_degree_lower_bound"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-1-solution.log",
+      "log_sha256": "f9fdbfcbdce43f9a399e14f364bdb6563b6fe893be02befa0434dacd44144de9"
+    },
+    {
+      "label": "build-1-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_degree_lower_bound"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-1-reference.log",
+      "log_sha256": "a68c239ecb1be7ca92a3477d89ce561db865ef3cdfc1a15f668695d56d119bad"
+    },
+    {
+      "label": "build-2-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_small_degree_implies_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-2-solution.log",
+      "log_sha256": "3cc450eb1d09133d53c049a3280f45843191d66c6a1c6e8f81af0249da2bbf41"
+    },
+    {
+      "label": "build-2-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapShiftDegree_actual_shift_difference_small_degree_implies_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "build-2-reference.log",
+      "log_sha256": "ff5914b9c2e7d17fb4a5bc37e30a3517c9640e4cc3f68128b78725a1efc8c9ff"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "5430133e0d11b3ca31a66e3c78350ae919ad59b86880baf6dd9f08ccb0ec9ad2"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "e1ff7938c7e269ffb0bf3975e14b3cd95eb4f109bf05da64be0b1f9ff460fe37"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "f20fa938a40cc08fb31e94b5bb0b202aa01d9ccd80d28e65609667fc0bee0374"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "38a536c8a0b4716a9c80b64e201b13343c675042111fc03d1cea58fd830f6f99"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "a43b91870dabe9de80bdc9db6db8e9303d6bca4aaad3c1aab99669a0c9072d87"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "b48b4fb99356488ba177cf5e2a595ea5db930748dce8c154a0bd2dd98cafce2f"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "2e45d99f6e36036ed55519c441f0e2918f5d6ad9bc28346193c13cb32acce45c"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "7d17e0f88642f56c26f92c0b0c9c991067c4ea1b8dfec09c4c0d899f910a5345"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "dc58a0328fe3b8ce1754c02dedd6a1a8fff7ad9fecd4447cdc41699743fe2f3d"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "648782732c7eb1acdd01eb9ad334226f9c6256cc546d67b9a02890aae9b034e9"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-shift-degree\\project",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "7d584956bac1db5509aad3ccc413847e46e56a588c7aea8775772651b1edcf70"
+    }
+  ],
+  "complete": true,
+  "native_and_staged_objects_borrowed": false
+}

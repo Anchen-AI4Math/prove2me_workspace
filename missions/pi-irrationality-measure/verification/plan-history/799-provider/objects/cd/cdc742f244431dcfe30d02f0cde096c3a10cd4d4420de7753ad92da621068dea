@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "e9ffa6fbe05739ebb7d2463857e713a892bf5e7c3577e45e5792ecafcdf8302d",
+  "publish_intent": {
+    "at_utc": "2026-10-08T11:15:13.107347+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+      "definition_title": "Prime radical membership in the minimal primes",
+      "definition": "import Mathlib.RingTheory.Ideal.MinimalPrime.Localization\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\nvariable {R : Type*} [CommRing R]\r\n\r\ntheorem radical_mem_minimalPrimes (I : Ideal R) [I.radical.IsPrime] :\r\n    I.radical ∈ I.minimalPrimes := by\r\n  rw [← Ideal.radical_minimalPrimes, Ideal.minimalPrimes_eq_subsingleton_self]\r\n  exact Set.mem_singleton _\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "This provider module contains the public Lean theorem stating that, for a commutative ring R and ideal I, if the radical of I is prime, then that radical belongs to the set of minimal prime ideals over I. The module includes the complete proved theorem body.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean, lines 9-12: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean#L9-L12",
+      "tags": [
+        "commutative-algebra",
+        "prime-ideals",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "e9ffa6fbe05739ebb7d2463857e713a892bf5e7c3577e45e5792ecafcdf8302d",
+    "bundle_source_sha256": "6fe261248a067b091ab77f822667f850a264554ceae5da963ac9543a1e5c89a5",
+    "bundle_manifest_sha256": "6f0e43a6806e7d170c5a9b50680064275470114c902c36344d52cf0de22119f8",
+    "validation_sha256": "3625c92f9f26934f9aa9b95f737ccd03d0d464a688d3370232101df9f6669c02"
+  },
+  "updated_at_utc": "2026-10-08T11:17:33.666964+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "a6fc45ef-2ef8-4dab-8863-72fd1da57cc9",
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/a6fc45ef-2ef8-4dab-8863-72fd1da57cc9 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "e84918c802be075625f615ea755d573a4e87f11fb3446435d22730e8c4389789"
+  },
+  "job_id": "a6fc45ef-2ef8-4dab-8863-72fd1da57cc9",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "a6fc45ef-2ef8-4dab-8863-72fd1da57cc9",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+      "theorem_title": "Prime radical membership in the minimal primes",
+      "formal_statement": "",
+      "natural_language_statement": "This provider module contains the public Lean theorem stating that, for a commutative ring R and ideal I, if the radical of I is prime, then that radical belongs to the set of minimal prime ideals over I. The module includes the complete proved theorem body.",
+      "definitions": "import Mathlib.RingTheory.Ideal.MinimalPrime.Localization\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\nvariable {R : Type*} [CommRing R]\r\n\r\ntheorem radical_mem_minimalPrimes (I : Ideal R) [I.radical.IsPrime] :\r\n    I.radical ∈ I.minimalPrimes := by\r\n  rw [← Ideal.radical_minimalPrimes, Ideal.minimalPrimes_eq_subsingleton_self]\r\n  exact Set.mem_singleton _\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean, lines 9-12: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean#L9-L12",
+      "tags": [
+        "commutative-algebra",
+        "prime-ideals",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "bdec8e94-fc3a-4f5a-9aef-c76bd32695d0",
+      "created_at": "2026-10-08T11:15:14.995763+00:00",
+      "updated_at": "2026-10-08T11:15:21.846003+00:00"
+    }
+  },
+  "definition_id": "bdec8e94-fc3a-4f5a-9aef-c76bd32695d0",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "bdec8e94-fc3a-4f5a-9aef-c76bd32695d0",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent",
+      "theorem_title": "Prime radical membership in the minimal primes",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "This provider module contains the public Lean theorem stating that, for a commutative ring R and ideal I, if the radical of I is prime, then that radical belongs to the set of minimal prime ideals over I. The module includes the complete proved theorem body.",
+      "created_at": "2026-10-08T11:15:20.782081+00:00",
+      "vote_count": 0,
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017",
+        "prime-ideals"
+      ],
+      "definition": "import Mathlib.RingTheory.Ideal.MinimalPrime.Localization\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\nvariable {R : Type*} [CommRing R]\r\n\r\ntheorem radical_mem_minimalPrimes (I : Ideal R) [I.radical.IsPrime] :\r\n    I.radical ∈ I.minimalPrimes := by\r\n  rw [← Ideal.radical_minimalPrimes, Ideal.minimalPrimes_eq_subsingleton_self]\r\n  exact Set.mem_singleton _\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean, lines 9-12: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalizedComponent.lean#L9-L12",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "85e23cb342ef303c3a9912e7df35370786a8a0215b7daff947116fbdd44ccc27",
+  "publish_intent": {
+    "at_utc": "2026-10-08T13:35:54.389379+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+      "definition_title": "Asymptotics for affine floor sampling",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nopen Filter Topology\r\n\r\nnamespace PiExponent\r\n\r\ntheorem tendsto_natFloor_affine_atTop {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => ⌊a * x + b⌋₊) atTop atTop :=\r\n  tendsto_nat_floor_atTop.comp\r\n    (tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id))\r\n\r\ntheorem tendsto_natFloor_affine_div {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => (⌊a * x + b⌋₊ : ℝ) / x) atTop (𝓝 a) := by\r\n  have hy : Tendsto (fun x : ℝ => a * x + b) atTop atTop :=\r\n    tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id)\r\n  have hratio : Tendsto (fun x : ℝ => (a * x + b) / x) atTop (𝓝 a) := by\r\n    have h : Tendsto (fun x : ℝ => a + b * x⁻¹) atTop (𝓝 (a + b * 0)) :=\r\n      tendsto_const_nhds.add (tendsto_const_nhds.mul\r\n      (tendsto_inv_atTop_zero : Tendsto (fun x : ℝ => x⁻¹) atTop (𝓝 0)))\r\n    simp only [mul_zero, add_zero] at h\r\n    apply h.congr'\r\n    filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx\r\n    field_simp\r\n  have h := (tendsto_nat_floor_div_atTop.comp hy).mul hratio\r\n  simp only [one_mul] at h\r\n  apply h.congr'\r\n  filter_upwards [hy.eventually (eventually_gt_atTop (0 : ℝ))] with x hx\r\n  change (⌊a * x + b⌋₊ : ℝ) / (a * x + b) * ((a * x + b) / x) = _\r\n  field_simp\r\n\r\ntheorem tendsto_normalized_natFloor_affine {f : ℕ → ℝ} {d : ℕ} {L a : ℝ}\r\n    (hf : Tendsto (fun n : ℕ => f n / (n : ℝ) ^ d) atTop (𝓝 L))\r\n    (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => f ⌊a * x + b⌋₊ / x ^ d) atTop (𝓝 (L * a ^ d)) := by\r\n  have hfloor := tendsto_natFloor_affine_atTop ha b\r\n  have h := (hf.comp hfloor).mul ((tendsto_natFloor_affine_div ha b).pow d)\r\n  apply h.congr'\r\n  filter_upwards [hfloor.eventually (eventually_ge_atTop 1)] with x hx\r\n  have hn : (⌊a * x + b⌋₊ : ℝ) ≠ 0 := by\r\n    exact_mod_cast (by omega : ⌊a * x + b⌋₊ ≠ 0)\r\n  simp only [Function.comp_apply]\r\n  rw [div_pow]\r\n  field_simp\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For real a > 0 and any real b, the natural floor ⌊a x + b⌋₊ tends to infinity as x tends to infinity, and its real cast divided by x tends to a. If f n / n^d tends to L, then f ⌊a x + b⌋₊ / x^d tends to L a^d.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexFloor.lean#L9-L45",
+      "tags": [
+        "asymptotic-analysis",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "85e23cb342ef303c3a9912e7df35370786a8a0215b7daff947116fbdd44ccc27",
+    "bundle_source_sha256": "294a82042b21105177ce492953c4a75338f99bb5bdb7058d577f3762a2f19895",
+    "bundle_manifest_sha256": "515ef22b084e6b0a65726144c81ae6aada58184a309aedc0c1cbab0b11e585b4",
+    "validation_sha256": "a51c42b980216c3fd5440a19d8251e68d80f2f430cc3de665b43ff632c1bec95"
+  },
+  "updated_at_utc": "2026-10-08T13:39:19.159578+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "7a57980b-ae3b-4861-ae09-88ad2c214ce1",
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/7a57980b-ae3b-4861-ae09-88ad2c214ce1 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "ec7cc6acf366ebd71141d3ac7fe19771d8e13cd7ad5abc6065a224a093281784"
+  },
+  "job_id": "7a57980b-ae3b-4861-ae09-88ad2c214ce1",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "7a57980b-ae3b-4861-ae09-88ad2c214ce1",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+      "theorem_title": "Asymptotics for affine floor sampling",
+      "formal_statement": "",
+      "natural_language_statement": "For real a > 0 and any real b, the natural floor ⌊a x + b⌋₊ tends to infinity as x tends to infinity, and its real cast divided by x tends to a. If f n / n^d tends to L, then f ⌊a x + b⌋₊ / x^d tends to L a^d.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nopen Filter Topology\r\n\r\nnamespace PiExponent\r\n\r\ntheorem tendsto_natFloor_affine_atTop {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => ⌊a * x + b⌋₊) atTop atTop :=\r\n  tendsto_nat_floor_atTop.comp\r\n    (tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id))\r\n\r\ntheorem tendsto_natFloor_affine_div {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => (⌊a * x + b⌋₊ : ℝ) / x) atTop (𝓝 a) := by\r\n  have hy : Tendsto (fun x : ℝ => a * x + b) atTop atTop :=\r\n    tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id)\r\n  have hratio : Tendsto (fun x : ℝ => (a * x + b) / x) atTop (𝓝 a) := by\r\n    have h : Tendsto (fun x : ℝ => a + b * x⁻¹) atTop (𝓝 (a + b * 0)) :=\r\n      tendsto_const_nhds.add (tendsto_const_nhds.mul\r\n      (tendsto_inv_atTop_zero : Tendsto (fun x : ℝ => x⁻¹) atTop (𝓝 0)))\r\n    simp only [mul_zero, add_zero] at h\r\n    apply h.congr'\r\n    filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx\r\n    field_simp\r\n  have h := (tendsto_nat_floor_div_atTop.comp hy).mul hratio\r\n  simp only [one_mul] at h\r\n  apply h.congr'\r\n  filter_upwards [hy.eventually (eventually_gt_atTop (0 : ℝ))] with x hx\r\n  change (⌊a * x + b⌋₊ : ℝ) / (a * x + b) * ((a * x + b) / x) = _\r\n  field_simp\r\n\r\ntheorem tendsto_normalized_natFloor_affine {f : ℕ → ℝ} {d : ℕ} {L a : ℝ}\r\n    (hf : Tendsto (fun n : ℕ => f n / (n : ℝ) ^ d) atTop (𝓝 L))\r\n    (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => f ⌊a * x + b⌋₊ / x ^ d) atTop (𝓝 (L * a ^ d)) := by\r\n  have hfloor := tendsto_natFloor_affine_atTop ha b\r\n  have h := (hf.comp hfloor).mul ((tendsto_natFloor_affine_div ha b).pow d)\r\n  apply h.congr'\r\n  filter_upwards [hfloor.eventually (eventually_ge_atTop 1)] with x hx\r\n  have hn : (⌊a * x + b⌋₊ : ℝ) ≠ 0 := by\r\n    exact_mod_cast (by omega : ⌊a * x + b⌋₊ ≠ 0)\r\n  simp only [Function.comp_apply]\r\n  rw [div_pow]\r\n  field_simp\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexFloor.lean#L9-L45",
+      "tags": [
+        "asymptotic-analysis",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "267bbaee-7627-4f89-805d-0230294e25ff",
+      "created_at": "2026-10-08T13:35:56.290682+00:00",
+      "updated_at": "2026-10-08T13:36:03.807193+00:00"
+    }
+  },
+  "definition_id": "267bbaee-7627-4f89-805d-0230294e25ff",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "267bbaee-7627-4f89-805d-0230294e25ff",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+      "theorem_title": "Asymptotics for affine floor sampling",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For real a > 0 and any real b, the natural floor ⌊a x + b⌋₊ tends to infinity as x tends to infinity, and its real cast divided by x tends to a. If f n / n^d tends to L, then f ⌊a x + b⌋₊ / x^d tends to L a^d.",
+      "created_at": "2026-10-08T13:36:02.998084+00:00",
+      "vote_count": 0,
+      "tags": [
+        "asymptotic-analysis",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nopen Filter Topology\r\n\r\nnamespace PiExponent\r\n\r\ntheorem tendsto_natFloor_affine_atTop {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => ⌊a * x + b⌋₊) atTop atTop :=\r\n  tendsto_nat_floor_atTop.comp\r\n    (tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id))\r\n\r\ntheorem tendsto_natFloor_affine_div {a : ℝ} (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => (⌊a * x + b⌋₊ : ℝ) / x) atTop (𝓝 a) := by\r\n  have hy : Tendsto (fun x : ℝ => a * x + b) atTop atTop :=\r\n    tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id)\r\n  have hratio : Tendsto (fun x : ℝ => (a * x + b) / x) atTop (𝓝 a) := by\r\n    have h : Tendsto (fun x : ℝ => a + b * x⁻¹) atTop (𝓝 (a + b * 0)) :=\r\n      tendsto_const_nhds.add (tendsto_const_nhds.mul\r\n      (tendsto_inv_atTop_zero : Tendsto (fun x : ℝ => x⁻¹) atTop (𝓝 0)))\r\n    simp only [mul_zero, add_zero] at h\r\n    apply h.congr'\r\n    filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx\r\n    field_simp\r\n  have h := (tendsto_nat_floor_div_atTop.comp hy).mul hratio\r\n  simp only [one_mul] at h\r\n  apply h.congr'\r\n  filter_upwards [hy.eventually (eventually_gt_atTop (0 : ℝ))] with x hx\r\n  change (⌊a * x + b⌋₊ : ℝ) / (a * x + b) * ((a * x + b) / x) = _\r\n  field_simp\r\n\r\ntheorem tendsto_normalized_natFloor_affine {f : ℕ → ℝ} {d : ℕ} {L a : ℝ}\r\n    (hf : Tendsto (fun n : ℕ => f n / (n : ℝ) ^ d) atTop (𝓝 L))\r\n    (ha : 0 < a) (b : ℝ) :\r\n    Tendsto (fun x : ℝ => f ⌊a * x + b⌋₊ / x ^ d) atTop (𝓝 (L * a ^ d)) := by\r\n  have hfloor := tendsto_natFloor_affine_atTop ha b\r\n  have h := (hf.comp hfloor).mul ((tendsto_natFloor_affine_div ha b).pow d)\r\n  apply h.congr'\r\n  filter_upwards [hfloor.eventually (eventually_ge_atTop 1)] with x hx\r\n  have hn : (⌊a * x + b⌋₊ : ℝ) ≠ 0 := by\r\n    exact_mod_cast (by omega : ⌊a * x + b⌋₊ ≠ 0)\r\n  simp only [Function.comp_apply]\r\n  rw [div_pow]\r\n  field_simp\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexFloor.lean#L9-L45",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "9bd29fe13ec603faf8786f8a886b19c15f7a237f48e5270c3906f4262ab04bd7",
+  "publish_intent": {
+    "at_utc": "2026-10-09T13:37:27.899488+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+      "definition_title": "Collision constant and its positivity",
+      "definition": "import Mathlib\n\nnamespace OAI\n\nopen Filter\nopen scoped Topology\n\nnamespace PiExponent.DeterminantContradiction\n\nnoncomputable def collisionConstant : ℝ := Real.log 2 / 4\n\ntheorem collisionConstant_pos : 0 < collisionConstant := by\r\n  unfold collisionConstant\r\n  exact div_pos (Real.log_pos (by norm_num)) (by norm_num)\n\nend PiExponent.DeterminantContradiction\n\nend OAI\n",
+      "natural_language_statement": "Define the collision constant as log(2)/4. This real constant is strictly positive.\n\nThis provider supplies only the positive numerical constant used by later collision bounds; it does not establish the determinant-contradiction argument.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L15-L19",
+      "tags": [
+        "number-theory",
+        "real-analysis",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "9bd29fe13ec603faf8786f8a886b19c15f7a237f48e5270c3906f4262ab04bd7",
+    "bundle_source_sha256": "003b60ee649641310e259c4d7a0a04e0a00a5414209c3fed92ad646a498c1ea5",
+    "bundle_manifest_sha256": "176d645204699c6230accb7b04e7cfcd98a329a9d2f2b238462970702456d96a",
+    "validation_sha256": "85f10bf3c0d1fb65c7a812fde22cd143b1f0e6804c89960c04eb18a7115a308b"
+  },
+  "updated_at_utc": "2026-10-09T13:39:25.131989+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "3f37842b-b891-4c54-987b-beac50c46a43",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/3f37842b-b891-4c54-987b-beac50c46a43 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "ff29e989b2bad74d7708941ff8354ea857631be6e84bedd437fce2ae5659917e"
+  },
+  "job_id": "3f37842b-b891-4c54-987b-beac50c46a43",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "3f37842b-b891-4c54-987b-beac50c46a43",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+      "theorem_title": "Collision constant and its positivity",
+      "formal_statement": "",
+      "natural_language_statement": "Define the collision constant as log(2)/4. This real constant is strictly positive.\n\nThis provider supplies only the positive numerical constant used by later collision bounds; it does not establish the determinant-contradiction argument.",
+      "definitions": "import Mathlib\n\nnamespace OAI\n\nopen Filter\nopen scoped Topology\n\nnamespace PiExponent.DeterminantContradiction\n\nnoncomputable def collisionConstant : ℝ := Real.log 2 / 4\n\ntheorem collisionConstant_pos : 0 < collisionConstant := by\r\n  unfold collisionConstant\r\n  exact div_pos (Real.log_pos (by norm_num)) (by norm_num)\n\nend PiExponent.DeterminantContradiction\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L15-L19",
+      "tags": [
+        "number-theory",
+        "real-analysis",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e2fb211d-ec5e-4e02-8107-f1abdd9dcaf4",
+      "created_at": "2026-10-09T13:37:30.849771+00:00",
+      "updated_at": "2026-10-09T13:37:41.594431+00:00"
+    }
+  },
+  "definition_id": "e2fb211d-ec5e-4e02-8107-f1abdd9dcaf4",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "e2fb211d-ec5e-4e02-8107-f1abdd9dcaf4",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+      "theorem_title": "Collision constant and its positivity",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Define the collision constant as log(2)/4. This real constant is strictly positive.\n\nThis provider supplies only the positive numerical constant used by later collision bounds; it does not establish the determinant-contradiction argument.",
+      "created_at": "2026-10-09T13:37:40.781345+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "real-analysis"
+      ],
+      "definition": "import Mathlib\n\nnamespace OAI\n\nopen Filter\nopen scoped Topology\n\nnamespace PiExponent.DeterminantContradiction\n\nnoncomputable def collisionConstant : ℝ := Real.log 2 / 4\n\ntheorem collisionConstant_pos : 0 < collisionConstant := by\r\n  unfold collisionConstant\r\n  exact div_pos (Real.log_pos (by norm_num)) (by norm_num)\n\nend PiExponent.DeterminantContradiction\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L15-L19",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

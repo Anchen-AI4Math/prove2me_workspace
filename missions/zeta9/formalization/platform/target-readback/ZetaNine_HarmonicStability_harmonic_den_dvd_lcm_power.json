@@ -1,0 +1,23 @@
+{
+  "theorem_id": "f7ecff96-0cec-4e14-949e-054bfeedde67",
+  "theorem_name": "ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power",
+  "theorem_title": "Actual harmonic denominators divide the finite lcm power",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power (s N : ℕ) :\n    (harmonicPower s N).den ∣ Nat.lcmUpto N ^ s := by sorry",
+  "natural_language_statement": "Let $s,N$ be any natural numbers, $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$, and $L_N=\\operatorname{lcm}(1,\\ldots,N)$, with $L_0=1$. Then\n\n$$\\operatorname{den}(H_N^{(s)})\\mid L_N^s.$$\n\nThe result concerns the reduced denominator of the actual harmonic sum. It includes $s=0$ and $N=0$ and supplies the finite clearing bound used in the arithmetic argument. It makes no lower-bound or asymptotic prime-distribution assertion.",
+  "created_at": "2026-10-02T14:34:46.711968+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "zeta-function"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Topology.MetricSpace.Pseudo.Lemmas\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nopen scoped BigOperators\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

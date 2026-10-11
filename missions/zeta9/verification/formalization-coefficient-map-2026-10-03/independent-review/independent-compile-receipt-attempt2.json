@@ -1,0 +1,183 @@
+{
+  "status": "FAIL",
+  "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+  "original_source_unchanged_after_review": true,
+  "independent_copy_exact_bytes": true,
+  "compiler": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "CoefficientMap"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "ReviewAudit.lean"
+      ],
+      "exit_code": 1
+    }
+  ],
+  "log_sha256": "c47dbd053e77c6f91ee85693ef4b8cb8f27d17e7e02a5911a822dfc00b106e60",
+  "axiom_reports": {
+    "ZetaNine.CoefficientMap.clear_highest_pole": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.leadingPoleCoefficient_ne_zero": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.leadingPoleCoefficient_is_integer": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.signed_leadingPoleCoefficient_pos_even": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.clearedWeightedR_local_coordinate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.regular_clearing": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.deleted_denominator_nonzero": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.computed_highest_coefficient": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.actual_weighted_multiplier": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.weighted_nonzero_iff": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.zero_boundary_coefficient": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.odd_left_sign": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.odd_right_sign": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.even_middle_value": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapIndependentReview.nonzero_polynomial_cancels_top_pole": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ]
+  },
+  "missing_original_reports": [],
+  "unexpected_axioms": {
+    "ZetaNine.CoefficientMapIndependentReview.odd_left_sign": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext",
+        "sorryAx"
+      ]
+    ]
+  },
+  "finite_arithmetic": {
+    "status": "PASS",
+    "parameter_range": "0 <= n <= 12; 0 <= j <= n",
+    "local_coefficients_checked": 91,
+    "regular_point_clearings_checked": 364,
+    "weighted_coefficients_checked": 455,
+    "checks_are_finite_regressions_not_the_universal_proof": true
+  },
+  "PNT_or_task_binary_cache_reused": false,
+  "dependency_reuse": "Exact pinned Mathlib package source/build cache only",
+  "mathematical_source_edits": [],
+  "scope_or_shared_root_edits": [],
+  "frozen_advanced_package_edits": [],
+  "network_API_credential_operations": false
+}

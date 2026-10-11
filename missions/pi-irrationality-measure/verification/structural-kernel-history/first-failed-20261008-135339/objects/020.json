@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "structural-kernel-provider-design-audit",
+  "date": "2026-10-08",
+  "lean_started": false,
+  "api_used": false,
+  "validated": false,
+  "reason_not_validated": "The staged schema-v2 source and generated exporters have not yet been run by Lean.",
+  "source_scope": {
+    "certificate_class": "partial-source-only-two-atomic-structure-families",
+    "rows": 74,
+    "parameters_rows": 25,
+    "admissible_parameters_rows": 49,
+    "whole_atomic_units": [
+      "OAI.NumberTheory.PiExponent.Approximation.Parameters:4283",
+      "OAI.NumberTheory.PiExponent.Approximation.Parameters:5380",
+      "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327"
+    ],
+    "platform_ready": false,
+    "usable_as_full_source_certificate": false
+  },
+  "kernel_metadata": {
+    "schema": "lean-4.33.1-ConstantInfo-complete-v1",
+    "inductive_val_fields_complete": true,
+    "constructor_val_fields_complete": true,
+    "recursor_val_fields_complete": true,
+    "recursor_rule_ctor_nfields_rhs_complete": true,
+    "types_and_definition_values_required": true,
+    "theorem_proof_values_omitted": true,
+    "actual_module_owner_required": true,
+    "std3_required": true,
+    "lean_declaration_source_sha256": "fcb928c1686f0655279a790f92bd61f8c0d6df3be51a5eccaa2880de058e5e24"
+  },
+  "negative_fixtures": {
+    "type_only_rejected": true,
+    "missing_rules_rejected": true,
+    "missing_rule_nfields_rejected": true,
+    "missing_rule_rhs_rejected": true,
+    "null_rule_rhs_rejected": true,
+    "same_validator_path_used": true
+  },
+  "parameters_generated_provider": {
+    "staged": true,
+    "rows": 25,
+    "source_module": "OAI.NumberTheory.PiExponent.Approximation.Parameters",
+    "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "validated": false,
+    "pending": [
+      "actual provider emit-OLean preflight within 300 seconds",
+      "bind exact provider OLean into structural generated snapshot manifest",
+      "actual generated structural snapshot preflight within 300 seconds",
+      "exact source/generated kernel metadata, type, value, and Std3 comparison"
+    ]
+  },
+  "admissible_parameters_generated_provider": {
+    "staged": false,
+    "source_rows_staged": 49,
+    "blocker": "No AdmissibleParameters provider manifest exists in the current 29 safe-leaf staging directory.",
+    "future_support": "The isolated helper accepts a provider whose selected units are a superset of the atomic structure unit and exports only the exact 49 target graph CIs."
+  },
+  "qa": {
+    "python_compile": true,
+    "source_check_plan": true,
+    "parameters_provider_check_only": true,
+    "ordinary_validator_modified": false,
+    "frozen_174_source_cache_modified": false
+  },
+  "artifacts": {
+    "core": {
+      "path": "verification/StructuralKernelSnapshotCore.inc",
+      "sha256": "a3e1b32f18b0403e9763b4c6fc2aaf3316d4d8989d0e09de8afe9d820757a507"
+    },
+    "source_generator": {
+      "path": "scripts/generate_structural_kernel_source_snapshot.py",
+      "sha256": "33a41b999bad2230ca0484b17905837ba8fba7d621fc334041c8e1156102477a"
+    },
+    "source_validator": {
+      "path": "scripts/validate_structural_kernel_source_snapshot.py",
+      "sha256": "c414e8accebb06398443e69361307d69bc6cd46e974da51de761515c09a1ee8a"
+    },
+    "kernel_validator": {
+      "path": "scripts/structural_kernel_snapshot.py",
+      "sha256": "685c82fbb4c4b41bad049896b0f74e2f9bd26be5ced9b0794a4d26862deab365"
+    },
+    "generated_stager": {
+      "path": "scripts/prepare_structural_provider_snapshot.py",
+      "sha256": "4011a82cd9e102827d72b6b4acc2053337705d426600779d4e95c2af8b479996"
+    },
+    "provider_validator": {
+      "path": "scripts/validate_structural_provider_bundle.py",
+      "sha256": "22137ac00d44f964d72bcc35a4d2d1423a7fb318682b729d648fbb98a0899420"
+    },
+    "source_exporter": {
+      "path": "verification/shared-source-snapshot/structural-kernel-74/StructuralKernelSource_000.lean",
+      "sha256": "379e759224f787b4489a093ac3d15ff47e201a40a7b1a9753190181d2b1bb7b9"
+    },
+    "source_manifest": {
+      "path": "verification/shared-source-snapshot/structural-kernel-74/StructuralKernelSource_000.manifest.json",
+      "sha256": "eb9ede4e3d2a186846468929889cd36dffb8b74361c0652b0fbf4d73488bcc18"
+    },
+    "source_catalog": {
+      "path": "verification/shared-source-snapshot/structural-kernel-74/StructuralKernel74.catalog.json",
+      "sha256": "609205ee23bf1c0134adba47eda96affa6af625aee40f09adae4cd32069a1df2"
+    },
+    "parameters_generated_exporter": {
+      "path": "verification/providers-complete-preview/all-shared-safe-leaves/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/SnapshotGeneratedStructural.lean",
+      "sha256": "adbcd63e1ad869d90c64b9d47f186683fed8d7a2a49ecb7aeec239e722acd086"
+    }
+  },
+  "source_preflight_command": "python scripts/preflight_staged_module.py shared-source-snapshot/structural-kernel-74/StructuralKernelSource_000.lean --root shared-source-snapshot/structural-kernel-74 --imports-manifest shared-source-snapshot/structural-kernel-74/StructuralKernelSource_000.manifest.json --timeout-seconds 300"
+}

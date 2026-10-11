@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "review_role": "native mathematical source author audit; not independent review",
+  "verdict": "PASS",
+  "source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+  "source_root_relative": "missions/zeta9/formalization/CoefficientMapConnection.lean",
+  "checks": [
+    {
+      "name": "final_full_native_source_actual_exit_zero",
+      "pass": true,
+      "evidence": {
+        "attempt": 7,
+        "log": "attempt-07\\compile.log",
+        "exit_file": "attempt-07\\exit.txt"
+      }
+    },
+    {
+      "name": "final_source_and_native_object_bound",
+      "pass": true,
+      "evidence": {
+        "attempt": 7,
+        "command": [
+          "lake",
+          "--no-cache",
+          "build",
+          "missions.zeta9.formalization.CoefficientMapConnection"
+        ],
+        "exit_code": 0,
+        "source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+        "source": "attempt-07\\CoefficientMapConnection.lean",
+        "log": "attempt-07\\compile.log",
+        "log_sha256": "89e538fe5bf6ee9da685704b624e8917eabed5a947da2632f8385d798a698b04",
+        "exit_file": "attempt-07\\exit.txt",
+        "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "object": "p\\b\\lib\\lean\\missions\\zeta9\\formalization\\CoefficientMapConnection.olean",
+        "object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c",
+        "retained_object": "attempt-07\\compiled.olean",
+        "retained_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c"
+      }
+    },
+    {
+      "name": "source_copy_exact",
+      "pass": true,
+      "evidence": "The project uses the actual final native source bytes."
+    },
+    {
+      "name": "only_actual_Mathlib_imports",
+      "pass": true,
+      "evidence": [
+        "Mathlib.Algebra.Polynomial.RingDivision",
+        "Mathlib.Algebra.Polynomial.Degree.Lemmas",
+        "Mathlib.Algebra.Polynomial.BigOperators",
+        "Mathlib.LinearAlgebra.FiniteDimensional.Basic",
+        "Mathlib.Tactic"
+      ]
+    },
+    {
+      "name": "no_proof_placeholder_or_new_assumption",
+      "pass": true,
+      "evidence": "No proof placeholder, axiom declaration or unsafe declaration in final source."
+    },
+    {
+      "name": "isolated_native_project_no_borrowed_native_objects",
+      "pass": true,
+      "evidence": "The new p/b project shared only the pinned Mathlib package cache; its source/object was built here."
+    },
+    {
+      "name": "every_actual_source_declaration_audited",
+      "pass": true,
+      "evidence": {
+        "definitions": 12,
+        "theorems": 27,
+        "records": 39
+      }
+    },
+    {
+      "name": "source_types_values_and_full_Expressions_actual",
+      "pass": true,
+      "evidence": "Native Lean getConstInfo/ppExpr/reprStr records, with pp.proofs=true for proof-bearing definition fields."
+    },
+    {
+      "name": "all_native_source_axioms_standard_only",
+      "pass": true,
+      "evidence": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "type_and_boundary_audits_actual_success",
+      "pass": true,
+      "evidence": [
+        {
+          "label": "type-audit",
+          "attempt": 1,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "type-audit.lean"
+          ],
+          "exit_code": 0,
+          "source": "type-audit-attempt-01\\type-audit.lean",
+          "source_sha256": "0b5fcb1415ad6c87ca83c82ae0bc295c1cfaa84f113cf9f375fc6e73aa0cbda6",
+          "log": "type-audit-attempt-01\\compile.log",
+          "log_sha256": "c721b289bcaf811d032a1e43d13aa678df8314c5ba758634f0fb799152c7ec14",
+          "exit_file": "type-audit-attempt-01\\exit.txt",
+          "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+          "native_source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+          "native_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c"
+        },
+        {
+          "label": "boundary-audit",
+          "attempt": 1,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "boundary-audit.lean"
+          ],
+          "exit_code": 1,
+          "source": "boundary-audit-attempt-01\\boundary-audit.lean",
+          "source_sha256": "53096954ff550647e213319ed7e602847fdee6b126414ff389896912d583b12e",
+          "log": "boundary-audit-attempt-01\\compile.log",
+          "log_sha256": "144829931d5c46c238641e7b6dfa9e14a0b2b0de30ab7e5b9ea174dd796d28a0",
+          "exit_file": "boundary-audit-attempt-01\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "native_source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+          "native_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c"
+        },
+        {
+          "label": "boundary-audit",
+          "attempt": 2,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "boundary-audit.lean"
+          ],
+          "exit_code": 0,
+          "source": "boundary-audit-attempt-02\\boundary-audit.lean",
+          "source_sha256": "0090d68abdbc98468009b80bd1a878c38573b6f8cc4c873610dc9244ba192f3c",
+          "log": "boundary-audit-attempt-02\\compile.log",
+          "log_sha256": "7cd8588d85bd34bba1c762a26b1c76e807ad974221e7b868f8db1e566edfdc66",
+          "exit_file": "boundary-audit-attempt-02\\exit.txt",
+          "exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+          "native_source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+          "native_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c"
+        }
+      ]
+    },
+    {
+      "name": "twelve_closed_boundary_records_standard_only",
+      "pass": true,
+      "evidence": [
+        "ConnectionBoundary.n_one_local_coordinate",
+        "ConnectionBoundary.n_one_actual_kernel",
+        "ConnectionBoundary.constant_q_forced_zero",
+        "ConnectionBoundary.n_zero_nat_coordinate_truncated",
+        "ConnectionBoundary.written_n_zero_nonzero_kernel",
+        "ConnectionBoundary.first_factor_exact_value",
+        "ConnectionBoundary.simple_composition_at_n_one",
+        "ConnectionBoundary.actual_H_t_degree_twenty_eight",
+        "ConnectionBoundary.zero_rhs_unique",
+        "ConnectionBoundary.n_one_fifth_original_target",
+        "ConnectionBoundary.original_even_parameter_targets",
+        "ConnectionBoundary.reflected_zero_vector_kernel"
+      ]
+    },
+    {
+      "name": "homogeneous_kernel_has_actual_inputs_only",
+      "pass": true,
+      "evidence": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (P q : Polynomial ℚ),\n      q.natDegree ≤ 9 →\n        ZetaNine.CoefficientMapConnection.connectionD n * P.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n              ZetaNine.CoefficientMapConnection.connectionH n q =\n            0 →\n          P = 0 ∧ q = 0"
+    },
+    {
+      "name": "simple_root_factor_and_multiplicity_proved",
+      "pass": true,
+      "evidence": {
+        "connectionV_simple_root": "∀ (n : ℕ),\n  1 ≤ n →\n    ZetaNine.CoefficientMapConnection.connectionV n - Polynomial.C ↑n =\n      (Polynomial.X - Polynomial.C 1) * (Polynomial.X + Polynomial.C ↑n)",
+        "rootMultiplicity_simple_composition": "∀ (q f g : Polynomial ℚ) (a b : ℚ),\n  q ≠ 0 →\n    f - Polynomial.C a = (Polynomial.X - Polynomial.C b) * g →\n      Polynomial.eval b g ≠ 0 → Polynomial.rootMultiplicity b (q.comp f) = Polynomial.rootMultiplicity a q"
+      }
+    },
+    {
+      "name": "actual_reflection_and_odd_highest_degree_exclusion_proved",
+      "pass": true,
+      "evidence": "The native proofs establish actual reflection, degree<=29 and even highest degree; fifteen even t coefficients then determine the entire polynomial."
+    },
+    {
+      "name": "actual_fifteen_coordinate_linear_map_bijective",
+      "pass": true,
+      "evidence": "∀ (n : ℕ), 1 ≤ n → Function.Bijective ⇑(ZetaNine.CoefficientMapConnection.connectionLinearMap n)"
+    },
+    {
+      "name": "projection_lifted_to_complete_polynomial_identity",
+      "pass": true,
+      "evidence": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (f : Polynomial ℚ),\n      f.natDegree ≤ 29 →\n        f.comp (ZetaNine.CoefficientMapConnection.connectionReflection n) = f →\n          ∃! c,\n            ZetaNine.CoefficientMapConnection.connectionOperator n (ZetaNine.CoefficientMapConnection.inputP c)\n                (ZetaNine.CoefficientMapConnection.inputQ c) =\n              f"
+    },
+    {
+      "name": "original_degree_bounded_system_complete_unique",
+      "pass": true,
+      "evidence": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (f : Polynomial ℚ),\n      f.natDegree ≤ 14 →\n        ∃! pq,\n          pq.1.natDegree ≤ 4 ∧\n            pq.2.natDegree ≤ 9 ∧\n              ZetaNine.CoefficientMapConnection.connectionD n *\n                    pq.1.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n                  ZetaNine.CoefficientMapConnection.connectionH n pq.2 =\n                f.comp (ZetaNine.CoefficientMapConnection.connectionU n)"
+    },
+    {
+      "name": "five_actual_research_right_hand_sides",
+      "pass": true,
+      "evidence": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (r : Fin 5),\n      ∃! pq,\n        pq.1.natDegree ≤ 4 ∧\n          pq.2.natDegree ≤ 9 ∧\n            ZetaNine.CoefficientMapConnection.connectionD n *\n                  pq.1.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n                ZetaNine.CoefficientMapConnection.connectionH n pq.2 =\n              (ZetaNine.CoefficientMapConnection.connectionTarget n ↑r).comp\n                (ZetaNine.CoefficientMapConnection.connectionU n)"
+    },
+    {
+      "name": "n_zero_truncation_and_written_counterexample_separate",
+      "pass": true,
+      "evidence": {
+        "n_zero_nat_coordinate_truncated": "ZetaNine.CoefficientMapConnection.connectionV 0 = Polynomial.X ^ 2 ∧\n  ZetaNine.CoefficientMapConnection.connectionV 0 ≠ Polynomial.X * (Polynomial.X - 1)",
+        "written_n_zero_nonzero_kernel": "Polynomial.X ^ 9 ≠ 0 ∧\n  (Polynomial.X - 1) * (Polynomial.X + 1) ^ 10 * (Polynomial.X ^ 9).comp (Polynomial.X * (Polynomial.X - 1)) -\n      (Polynomial.X + 1) * (Polynomial.X - 1) ^ 10 * (Polynomial.X ^ 9).comp ((Polynomial.X + 1) * Polynomial.X) =\n    0"
+      }
+    },
+    {
+      "name": "all_failed_attempts_retained_and_excluded",
+      "pass": true,
+      "evidence": [
+        {
+          "attempt": 1,
+          "command": [
+            "lake",
+            "--no-cache",
+            "build",
+            "missions.zeta9.formalization.CoefficientMapConnection"
+          ],
+          "exit_code": 1,
+          "source_sha256": "ab804038e0dbae18affcd43d1369dd5492ff81054f31da4dd5c5acd603ea89b8",
+          "source": "attempt-01\\CoefficientMapConnection.lean",
+          "log": "attempt-01\\compile.log",
+          "log_sha256": "7bf9bfc064affb185a09bd54c440df2b60703729e0fdde0c6624651303392788",
+          "exit_file": "attempt-01\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "used_for_final_success": false
+        },
+        {
+          "attempt": 3,
+          "command": [
+            "lake",
+            "--no-cache",
+            "build",
+            "missions.zeta9.formalization.CoefficientMapConnection"
+          ],
+          "exit_code": 1,
+          "source_sha256": "e365bc60213e0fc27c6a42cd08f293ee2ac89036ed9853fbc1865b06f422ed3c",
+          "source": "attempt-03\\CoefficientMapConnection.lean",
+          "log": "attempt-03\\compile.log",
+          "log_sha256": "fdcbcff2905e5f9daf2cbba8fed42dd25ce132fcdb424dc86bfe434d3ae7ee68",
+          "exit_file": "attempt-03\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "used_for_final_success": false
+        },
+        {
+          "attempt": 4,
+          "command": [
+            "lake",
+            "--no-cache",
+            "build",
+            "missions.zeta9.formalization.CoefficientMapConnection"
+          ],
+          "exit_code": 1,
+          "source_sha256": "61f67e68c2fada961a183fb721abb246f908e5ced366d66b99fb615be7011af8",
+          "source": "attempt-04\\CoefficientMapConnection.lean",
+          "log": "attempt-04\\compile.log",
+          "log_sha256": "153fbf10807ea379fc9f24f1360d05d388561d93645c20ae07647ca59b7ffbb5",
+          "exit_file": "attempt-04\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "used_for_final_success": false
+        },
+        {
+          "attempt": 6,
+          "command": [
+            "lake",
+            "--no-cache",
+            "build",
+            "missions.zeta9.formalization.CoefficientMapConnection"
+          ],
+          "exit_code": 1,
+          "source_sha256": "5e4a4c476c5213d72e7a204800407d9f615416d5279cf6068d52d0f834eb4ea1",
+          "source": "attempt-06\\CoefficientMapConnection.lean",
+          "log": "attempt-06\\compile.log",
+          "log_sha256": "4583026b3c2c4fe088852cb1c005e06c5261b7c821622e0ce762d755bda6dc00",
+          "exit_file": "attempt-06\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "used_for_final_success": false
+        },
+        {
+          "label": "boundary-audit",
+          "attempt": 1,
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "boundary-audit.lean"
+          ],
+          "exit_code": 1,
+          "source": "boundary-audit-attempt-01\\boundary-audit.lean",
+          "source_sha256": "53096954ff550647e213319ed7e602847fdee6b126414ff389896912d583b12e",
+          "log": "boundary-audit-attempt-01\\compile.log",
+          "log_sha256": "144829931d5c46c238641e7b6dfa9e14a0b2b0de30ab7e5b9ea174dd796d28a0",
+          "exit_file": "boundary-audit-attempt-01\\exit.txt",
+          "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+          "native_source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+          "native_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c",
+          "used_for_final_success": false
+        }
+      ]
+    },
+    {
+      "name": "failed_UTF8_record_gate_excluded",
+      "pass": true,
+      "evidence": {
+        "command": [
+          "python",
+          "verification/formalization-coefficient-map-connection-2026-10-04/finalize.py"
+        ],
+        "observed_failed_invocations": 2,
+        "actual_exit_codes": [
+          1,
+          1
+        ],
+        "error": "UnicodeDecodeError: gbk codec cannot decode the UTF-8 native source. The author gate had an implicit SOURCE.read_text() encoding.",
+        "retained_original_gate": "retained-finalize-before-utf8-fix.py",
+        "intervening_shell_patch_attempt_exit_code": 1,
+        "intervening_shell_patch_error": "PowerShell quoting ParserError before any file write. Corrected using literal Copy-Item and apply_patch.",
+        "used_for_final_PASS": false,
+        "Lean_replay_repeated": false,
+        "mathematical_source_changed": false
+      }
+    },
+    {
+      "name": "retained_success_and_exit_artifacts_match",
+      "pass": true,
+      "evidence": "All attempt source/log/exit artifacts match; successful attempt5 and final7 objects retained. The early attempt2 object was observed and subsequently overwritten, and is not used as a retained final object."
+    },
+    {
+      "name": "no_R_F_transport_or_irrationality_imported",
+      "pass": true,
+      "evidence": "This batch proves only the connection polynomial kernel and finite system. Actual rational-function transport, F_(n+2)=C(n)F_n, determinant formula and asymptotics are not asserted."
+    }
+  ],
+  "targets": [
+    {
+      "theorem": "connection_homogeneous_kernel_zero",
+      "actual_type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (P q : Polynomial ℚ),\n      q.natDegree ≤ 9 →\n        ZetaNine.CoefficientMapConnection.connectionD n * P.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n              ZetaNine.CoefficientMapConnection.connectionH n q =\n            0 →\n          P = 0 ∧ q = 0",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "connectionLinearMap_bijective",
+      "actual_type": "∀ (n : ℕ), 1 ≤ n → Function.Bijective ⇑(ZetaNine.CoefficientMapConnection.connectionLinearMap n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "connection_original_system_exists_unique",
+      "actual_type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (f : Polynomial ℚ),\n      f.natDegree ≤ 14 →\n        ∃! pq,\n          pq.1.natDegree ≤ 4 ∧\n            pq.2.natDegree ≤ 9 ∧\n              ZetaNine.CoefficientMapConnection.connectionD n *\n                    pq.1.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n                  ZetaNine.CoefficientMapConnection.connectionH n pq.2 =\n                f.comp (ZetaNine.CoefficientMapConnection.connectionU n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "connection_five_systems_unique",
+      "actual_type": "∀ (n : ℕ),\n  1 ≤ n →\n    ∀ (r : Fin 5),\n      ∃! pq,\n        pq.1.natDegree ≤ 4 ∧\n          pq.2.natDegree ≤ 9 ∧\n            ZetaNine.CoefficientMapConnection.connectionD n *\n                  pq.1.comp (ZetaNine.CoefficientMapConnection.connectionU n) +\n                ZetaNine.CoefficientMapConnection.connectionH n pq.2 =\n              (ZetaNine.CoefficientMapConnection.connectionTarget n ↑r).comp\n                (ZetaNine.CoefficientMapConnection.connectionU n)",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "native_definitions": 12,
+  "native_theorems": 27,
+  "native_type_records": 39,
+  "closed_boundary_records": 12,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "final_native_attempt": 7,
+  "final_native_actual_exit_code": 0,
+  "type_audit_actual_exit_code": 0,
+  "boundary_audit_actual_exit_code": 0,
+  "failed_attempts_retained_excluded": [
+    {
+      "attempt": 1,
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapConnection"
+      ],
+      "exit_code": 1,
+      "source_sha256": "ab804038e0dbae18affcd43d1369dd5492ff81054f31da4dd5c5acd603ea89b8",
+      "source": "attempt-01\\CoefficientMapConnection.lean",
+      "log": "attempt-01\\compile.log",
+      "log_sha256": "7bf9bfc064affb185a09bd54c440df2b60703729e0fdde0c6624651303392788",
+      "exit_file": "attempt-01\\exit.txt",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "used_for_final_success": false
+    },
+    {
+      "attempt": 3,
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapConnection"
+      ],
+      "exit_code": 1,
+      "source_sha256": "e365bc60213e0fc27c6a42cd08f293ee2ac89036ed9853fbc1865b06f422ed3c",
+      "source": "attempt-03\\CoefficientMapConnection.lean",
+      "log": "attempt-03\\compile.log",
+      "log_sha256": "fdcbcff2905e5f9daf2cbba8fed42dd25ce132fcdb424dc86bfe434d3ae7ee68",
+      "exit_file": "attempt-03\\exit.txt",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "used_for_final_success": false
+    },
+    {
+      "attempt": 4,
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapConnection"
+      ],
+      "exit_code": 1,
+      "source_sha256": "61f67e68c2fada961a183fb721abb246f908e5ced366d66b99fb615be7011af8",
+      "source": "attempt-04\\CoefficientMapConnection.lean",
+      "log": "attempt-04\\compile.log",
+      "log_sha256": "153fbf10807ea379fc9f24f1360d05d388561d93645c20ae07647ca59b7ffbb5",
+      "exit_file": "attempt-04\\exit.txt",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "used_for_final_success": false
+    },
+    {
+      "attempt": 6,
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapConnection"
+      ],
+      "exit_code": 1,
+      "source_sha256": "5e4a4c476c5213d72e7a204800407d9f615416d5279cf6068d52d0f834eb4ea1",
+      "source": "attempt-06\\CoefficientMapConnection.lean",
+      "log": "attempt-06\\compile.log",
+      "log_sha256": "4583026b3c2c4fe088852cb1c005e06c5261b7c821622e0ce762d755bda6dc00",
+      "exit_file": "attempt-06\\exit.txt",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "used_for_final_success": false
+    },
+    {
+      "label": "boundary-audit",
+      "attempt": 1,
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "boundary-audit.lean"
+      ],
+      "exit_code": 1,
+      "source": "boundary-audit-attempt-01\\boundary-audit.lean",
+      "source_sha256": "53096954ff550647e213319ed7e602847fdee6b126414ff389896912d583b12e",
+      "log": "boundary-audit-attempt-01\\compile.log",
+      "log_sha256": "144829931d5c46c238641e7b6dfa9e14a0b2b0de30ab7e5b9ea174dd796d28a0",
+      "exit_file": "boundary-audit-attempt-01\\exit.txt",
+      "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "native_source_sha256": "098d82f606b5b6fda1e1d08524ef23db3ed3943a90ae109439f5046c031337e8",
+      "native_object_sha256": "0cb6371840c72e1595f2615b10255e6a13b923d92d3d4b6db5b4c03a296d345c",
+      "used_for_final_success": false
+    }
+  ],
+  "failed_record_gate_excluded": {
+    "command": [
+      "python",
+      "verification/formalization-coefficient-map-connection-2026-10-04/finalize.py"
+    ],
+    "observed_failed_invocations": 2,
+    "actual_exit_codes": [
+      1,
+      1
+    ],
+    "error": "UnicodeDecodeError: gbk codec cannot decode the UTF-8 native source. The author gate had an implicit SOURCE.read_text() encoding.",
+    "retained_original_gate": "retained-finalize-before-utf8-fix.py",
+    "intervening_shell_patch_attempt_exit_code": 1,
+    "intervening_shell_patch_error": "PowerShell quoting ParserError before any file write. Corrected using literal Copy-Item and apply_patch.",
+    "used_for_final_PASS": false,
+    "Lean_replay_repeated": false,
+    "mathematical_source_changed": false
+  },
+  "source_or_native_objects_borrowed": false,
+  "only_Mathlib_package_cache_shared": true,
+  "parameter_domain": "natural n>=1; original even n>=2 is a special case",
+  "input_coordinates": "Fin15: P coefficients0..4 followed by q coefficients0..9",
+  "output_coordinates": "even t coefficients0,2,...,28; equivalent to u coefficients0..14, not literally the same matrix entries",
+  "projection_to_full_equation": "actual native reflection+degree theorem, then actual complete ∃! polynomial P,q theorem",
+  "n_zero": "Nat(n-1) truncates to0; written n0 uses signed -1 and has the nonzero q=v^9, P=0 kernel, separately proved in the boundary audit",
+  "actual_F_transport_closed": false,
+  "determinant_formula_closed": false,
+  "irrationality_claimed": false,
+  "root_scope_API_credentials_modified": false,
+  "environment": {
+    "Lean": "4.33.1",
+    "Mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "project": "p",
+    "build_directory": "b"
+  }
+}

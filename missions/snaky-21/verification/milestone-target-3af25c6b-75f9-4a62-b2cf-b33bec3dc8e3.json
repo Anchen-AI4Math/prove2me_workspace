@@ -1,0 +1,36 @@
+{
+  "theorem_id": "c5e790f7-904e-40dd-a7f5-ba72d31e941b",
+  "theorem_name": "OAI.SnakyCertificate.certificate_correct",
+  "theorem_title": null,
+  "status": "Open",
+  "formal_statement": "theorem certificate_correct :\n    TableValid ∧ placementCount = 1837 ∧\n    Output 557 (-1, 0) 118 19 {p | p.1 ≤ -3 ∧ p.2 ≤ -2} ∧\n    Output 595 (-1, 0) 222 27 {p | p.1 = -2 ∧ p.2 ≤ -2} ∧\n    Output 603 (-1, 0) 275 27 {p | p.1 ≤ -3 ∧ p.2 = 0} ∧\n    Output 615 (1, 0) 686 34 {(1, -1)} ∧\n    AllRows := by\n  sorry\n\nend SnakyCertificate\nend OAI\n",
+  "natural_language_statement": "The theorem states that a finite computational certificate for the six-cell \"snaky\" polyomino {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)} in ℤ² holds, as a conjunction of seven facts. The certificate is a table of 610 entries indexed 6 through 615, each a nonempty list of terms (child index, one of 8 axis-swap/reflection orientations, and x and y shifts given by digits minus 4); each row is built recursively, with rows 0 to 5 being base rows (the snaky cells translated so the i-th base point sits at the origin, with the origin removed from the required set A, the full envelope as H, and height 1), and a later row forking the oriented, shifted rows of its children: A is the union of the children's A together with the intersection of their H's, minus the origin; H is the union of the children's H together with the origin; and the height is one plus the maximum child height. The theorem asserts: (1) the table is valid, meaning it has size 610, each entry has the right index, a nonempty term list, and only children with smaller index; (2) the total number of terms over all entries is 1837; (3) row 557 has A = {(-1,0)}, |H| = 118, height 19, and H avoids all points with x ≤ -3 and y ≤ -2; (4) row 595 has A = {(-1,0)}, |H| = 222, height 27, and H avoids all points with x = -2 and y ≤ -2; (5) row 603 has A = {(-1,0)}, |H| = 275, height 27, and H avoids all points with x ≤ -3 and y = 0; (6) row 615 has A = {(1,0)}, |H| = 686, height 34, and H does not contain the point (1,-1); and (7) for every row index below 616, A is a subset of H, the origin lies in H but not in A, and the height is at most 34.",
+  "created_at": "2026-10-07T04:33:23.414197+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyCertificate.lean; bytes 69980..70316\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\nimport Definitions.Def_SnakyCertificate\n\nnamespace OAI\n\nnamespace SnakyCertificate\n\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyCertificate.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "216968cd-0808-47e3-b12e-3d330afc4ef7",
+      "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "reviewer_username": "Community (Bot)",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-07T07:06:53.275973+00:00"
+    },
+    {
+      "audit_id": "507f3385-3cf9-4440-b17a-824e3b88474f",
+      "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "reviewer_username": "wurtle",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-07T07:06:53.515959+00:00"
+    }
+  ],
+  "readback": null
+}

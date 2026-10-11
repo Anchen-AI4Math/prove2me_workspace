@@ -1,0 +1,36 @@
+{
+  "theorem_name": "OAI.PiExponent.tendsto_log_div_of_normalized_pow",
+  "theorem_title": "Sublinear logarithmic growth from positive normalized power growth",
+  "natural_language_statement": "Let f : ℝ → ℝ, d : ℕ, and L : ℝ. If f(H) / H^d tends to L as H tends to +∞ and L > 0, then Real.log(f(H)) / H tends to 0 as H tends to +∞.",
+  "tags": [
+    "asymptotic-analysis",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "explanation": "The positive limit ensures f(H) / H^d is eventually positive, hence f(H) is positive for all sufficiently large H. The logarithm splits as log(f(H) / H^d) + d log(H); the first term has a finite limit and becomes negligible after division by H, while log(H) / H tends to zero.",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexLog.lean#L10-L28",
+    "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexLog",
+    "source_range": {
+      "start": {
+        "col": 0,
+        "line": 10,
+        "normalizedOffset": 148,
+        "offset": 157
+      },
+      "end": {
+        "col": 6,
+        "line": 28,
+        "normalizedOffset": 1038,
+        "offset": 1065
+      }
+    },
+    "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexLog.lean",
+    "original_source_sha256": "53b392c9228651d9e7509d66ef38cc1ef3886f5dae6b031d8e78a2c700d5b5eb",
+    "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexLog.lean",
+    "port_source_sha256": "c7b9263eb07f66e5d98ef258641d5834de3c34e8231e2c86ad60562e2f785061",
+    "facts": "missions/pi-irrationality-measure/verification/sketch-SimplexLog-20261008-041656.log",
+    "facts_sha256": "6f72436f959648f4951a0ec2851bd3e75b0f7f060a535af240c8580b080c8f8f"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "cb29386b-322e-4f04-b438-778cdf32f2b5",
+  "kind": "problem",
+  "theorem_name": "ZetaNine.CoefficientMapTelescoper.actual_weightedR_is_difference",
+  "theorem_title": "The actual weighted rational function is the cumulative telescoper difference",
+  "formal_statement": "theorem ZetaNine.CoefficientMapTelescoper.actual_weightedR_is_difference (n : ℕ) (hn : Even n) (W : ℚ[X])\n    (hstrong : StrongProperMultiplier n W) (hzero : aggregate n W = 0) (t : ℚ)\n    (hregular : ∀ k ≤ n, t + (k : ℚ) ≠ 0) :\n    CoefficientMap.weightedR n W t = telescoper n W t - telescoper n W (t + 1):= by sorry",
+  "natural_language_statement": "Let natural $n$ be even and let $W\\in\\mathbb Q[X]$ satisfy the actual strong bound $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$ and the genuine aggregate $F_n(W)=0$. At every rational regular point $t$ with $t+k\\ne0$ for $0\\le k\\le n$, the actual weighted rational function equals $Q_{n,W}(t)-Q_{n,W}(t+1)$. Q is the actual cumulative local-coefficient function, not an assumed telescoper. These original domain conditions are retained. Without the strong bound, $n=0,W=X^4$ has zero aggregate and empty Q but the actual weighted value at1 is1, so the difference identity fails.",
+  "definitions": "import Definitions.Def_ZetaNine_CoefficientMapTelescoper\n\nset_option autoImplicit false\nopen scoped BigOperators Topology\nopen Finset Polynomial Filter\nopen ZetaNine ZetaNine.CoefficientMapTelescoper ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapAggregate\n",
+  "source": "Zeta(9) actual cumulative telescoper and numerator root factor: missions/zeta9/research/coefficient-map-telescoper-2026-10-04.md. Frozen actual source SHA256 8792e8ba5c6abcbdbe83b0aa4ffa1ab716fd05fac10da7275b86ab2f780fd121. Q is constructed from the genuine local coefficients. No rational-function difference or polynomial factorization is supplied as a premise. Original declaration lines 97–103.",
+  "tags": [
+    "number-theory",
+    "polynomials",
+    "finite-differences",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "23c4b8f3-9745-4ed9-8719-931e672eb5a5",
+  "created_at": "2026-10-04T08:56:34.33447+00:00",
+  "updated_at": "2026-10-04T09:18:33.601176+00:00"
+}

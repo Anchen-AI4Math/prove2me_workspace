@@ -1,0 +1,341 @@
+import Lean
+import Mathlib.Algebra.MvPolynomial.Eval
+import Mathlib.Algebra.Order.Antidiag.FinsuppEquiv
+import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
+import Mathlib.Analysis.Real.Pi.Bounds
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Analysis.SpecialFunctions.Pow.Real
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Analysis.SpecificLimits.Normed
+import Mathlib.RingTheory.PowerSeries.Order
+import Mathlib.RingTheory.PowerSeries.Trunc
+import Mathlib.Tactic
+import Theorems.Thm_OAI_PiExponent_exists_large_log_approximation
+
+section
+
+
+
+namespace OAI
+
+namespace PiExponent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end PiExponent
+
+end OAI
+
+end
+section
+open OAI OAI.PiExponent
+
+
+open Lean Meta in
+run_meta do
+  let requests : Array (String × Lean.Name × String) := #[]
+  let env ← Lean.getEnv
+  let mut rows : Array Lean.Json := #[]
+  let mut actualNames : Array Lean.Name := #[]
+  for (sourceName, userName, expectedKind) in requests do
+    let mut candidates : Array Lean.Name := #[]
+    for (actualName, _) in env.constants.toList do
+      if Lean.privateToUserName? actualName == some userName then
+        if (env.getModuleIdxFor? actualName).isNone then
+          candidates := candidates.push actualName
+    unless candidates.size == 1 do
+      throwError "Expected one OwnModule private binding for {userName}, found {candidates.size}"
+    let actualName := candidates[0]!
+    let some ci := env.find? actualName | throwError "Missing recovered private declaration"
+    let (kind, value, safety) ← match ci with
+      | .thmInfo t => pure ("theorem", t.value, Lean.Json.null)
+      | .defnInfo d => pure ("def", d.value, Lean.toJson (reprStr d.safety))
+      | _ => throwError "Recovered private CI is neither theorem nor definition"
+    unless kind == expectedKind do
+      throwError "Recovered private CI kind differs from source Graph: {actualName}"
+    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||
+        value.hasMVar || value.hasFVar || value.hasLooseBVars then
+      throwError "Recovered private CI type/value is not closed"
+    let axioms ← Lean.collectAxioms actualName
+    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do
+      throwError "Private helper has nonstandard axioms: {actualName}"
+    actualNames := actualNames.push actualName
+    rows := rows.push <| Lean.Json.mkObj [
+      ("sourceGraphName", Lean.toJson sourceName),
+      ("nodeGeneratedName", Lean.toJson userName.toString),
+      ("actualKernelName", Lean.toJson actualName.toString),
+      ("kind", Lean.toJson kind), ("safety", safety),
+      ("ownerKind", Lean.toJson "OwnModule"),
+      ("ownModule", Lean.toJson env.mainModule.toString),
+      ("moduleIndexIsNone", Lean.toJson true),
+      ("levelParams", Lean.toJson (ci.levelParams.map Lean.Name.toString)),
+      ("typeRefs", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),
+      ("valueRefs", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),
+      ("snapshotValueRequired", Lean.toJson (kind == "def")),
+      ("axioms", Lean.toJson (axioms.map Lean.Name.toString))]
+  IO.println ("PI_ISOLATED_PRIVATE_MAP " ++ (Lean.Json.mkObj [
+    ("artifact", Lean.toJson "SnapshotGenerated"),
+    ("ownModule", Lean.toJson env.mainModule.toString),
+    ("rows", Lean.Json.arr rows)]).compress)
+theorem OAI.PiExponent.exists_successive_approximations
+    (nu : ℝ) (hnu : 0 < nu)
+    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,
+      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu))
+    (T : List ℝ → ℝ) :
+    ∃ p : ℕ → ℤ, ∃ q : ℕ → ℕ, ∀ n,
+      2 ≤ q n ∧ p n ≠ 0 ∧
+      |Real.pi - (p n : ℝ) / q n| ≤ (q n : ℝ) ^ (-nu) ∧
+      1 ≤ Nat.ceil (Real.log (q n)) ∧
+      T (((List.range n).reverse).map
+        (fun i => ((Nat.ceil (Real.log (q i))) : ℝ))) <
+          ((Nat.ceil (Real.log (q n))) : ℝ) := by sorry
+theorem solution
+    (nu : ℝ) (hnu : 0 < nu)
+    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,
+      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu))
+    (T : List ℝ → ℝ) :
+    ∃ p : ℕ → ℤ, ∃ q : ℕ → ℕ, ∀ n,
+      2 ≤ q n ∧ p n ≠ 0 ∧
+      |Real.pi - (p n : ℝ) / q n| ≤ (q n : ℝ) ^ (-nu) ∧
+      1 ≤ Nat.ceil (Real.log (q n)) ∧
+      T (((List.range n).reverse).map
+        (fun i => ((Nat.ceil (Real.log (q i))) : ℝ))) <
+          ((Nat.ceil (Real.log (q n))) : ℝ) := open OAI OAI.PiExponent in by
+  classical
+  let wt : ℤ × ℕ → ℝ := fun a => (Nat.ceil (Real.log a.2) : ℝ)
+  let Good : ℤ × ℕ → Prop := fun a =>
+    2 ≤ a.2 ∧ a.1 ≠ 0 ∧
+    |Real.pi - (a.1 : ℝ) / a.2| ≤ (a.2 : ℝ) ^ (-nu) ∧
+    1 ≤ Nat.ceil (Real.log a.2)
+  have hex (L : List (ℤ × ℕ)) :
+      ∃ a : ℤ × ℕ, Good a ∧ T (L.map wt) < wt a := by
+    obtain ⟨p, q, hq, hlog, hp, happ⟩ :=
+      OAI.PiExponent.exists_large_log_approximation nu (max 1 (T (L.map wt))) hnu hbad
+    have hceil : Real.log q ≤ (Nat.ceil (Real.log q) : ℝ) := Nat.le_ceil _
+    have hone : 1 < (Nat.ceil (Real.log q) : ℝ) :=
+      lt_of_le_of_lt (le_max_left _ _) (lt_of_lt_of_le hlog hceil)
+    have hnat : 1 ≤ Nat.ceil (Real.log q) := by exact_mod_cast le_of_lt hone
+    exact ⟨(p, q), ⟨hq, hp, happ, hnat⟩,
+      lt_of_le_of_lt (le_max_right _ _) (lt_of_lt_of_le hlog hceil)⟩
+  let next : List (ℤ × ℕ) → ℤ × ℕ := fun L => (hex L).choose
+  have hnext (L : List (ℤ × ℕ)) : Good (next L) ∧ T (L.map wt) < wt (next L) :=
+    (hex L).choose_spec
+  let hist : ℕ → List (ℤ × ℕ) := Nat.rec [] (fun _ L => next L :: L)
+  let a : ℕ → ℤ × ℕ := fun n => next (hist n)
+  have hhist (n : ℕ) : hist n = (List.range n).reverse.map a := by
+    induction n with
+    | zero => rfl
+    | succ n ih =>
+      change a n :: hist n = (List.range (n + 1)).reverse.map a
+      rw [ih]
+      simp [List.range_succ, List.reverse_append]
+  refine ⟨fun n => (a n).1, fun n => (a n).2, fun n => ?_⟩
+  have hgood : Good (a n) := (hnext (hist n)).1
+  refine ⟨hgood.1, hgood.2.1, hgood.2.2.1, hgood.2.2.2, ?_⟩
+  have hbound := (hnext (hist n)).2
+  have hmap : (hist n).map wt = (List.range n).reverse.map (wt ∘ a) := by
+    rw [hhist, List.map_map]
+  rw [hmap] at hbound
+  exact hbound
+
+end
+open Lean Meta
+
+namespace PiExponentInterfaceSnapshot
+
+partial def levelJson : Level → Json
+  | .zero => Json.arr #[toJson "zero"]
+  | .succ u => Json.arr #[toJson "succ", levelJson u]
+  | .max u v => Json.arr #[toJson "max", levelJson u, levelJson v]
+  | .imax u v => Json.arr #[toJson "imax", levelJson u, levelJson v]
+  | .param n => Json.arr #[toJson "param", toJson n.toString]
+  | .mvar n => Json.arr #[toJson "mvar", toJson n.name.toString]
+
+def binderTag : BinderInfo → String
+  | .default => "explicit"
+  | .implicit => "implicit"
+  | .strictImplicit => "strictImplicit"
+  | .instImplicit => "instance"
+
+-- Keep binder information, constant names, universe levels and de Bruijn
+-- indices. Binder display names and source metadata have no kernel meaning.
+partial def exprJson : Expr → Json
+  | .bvar i => Json.arr #[toJson "bvar", toJson i]
+  | .fvar n => Json.arr #[toJson "fvar", toJson n.name.toString]
+  | .mvar n => Json.arr #[toJson "mvar", toJson n.name.toString]
+  | .sort u => Json.arr #[toJson "sort", levelJson u]
+  | .const n us => Json.arr #[toJson "const", toJson n.toString,
+      Json.arr (us.map levelJson).toArray]
+  | .app f a => Json.arr #[toJson "app", exprJson f, exprJson a]
+  | .lam _ t b bi => Json.arr #[toJson "lambda", toJson (binderTag bi), exprJson t, exprJson b]
+  | .forallE _ t b bi => Json.arr #[toJson "forall", toJson (binderTag bi), exprJson t, exprJson b]
+  | .letE _ t v b nondep => Json.arr #[toJson "let", exprJson t, exprJson v, exprJson b, toJson nondep]
+  | .lit (.natVal n) => Json.arr #[toJson "natLiteral", toJson n]
+  | .lit (.strVal s) => Json.arr #[toJson "stringLiteral", toJson s]
+  | .mdata _ e => exprJson e
+  | .proj n i e => Json.arr #[toJson "projection", toJson n.toString, toJson i, exprJson e]
+
+def exportSnapshot (names : Array Name) (output : String) : MetaM Unit := do
+  let env ← getEnv
+  let mut rows : Array Json := #[]
+  for name in names do
+    let some ci := env.find? name | throwError "Missing interface declaration: {name}"
+    if ci.type.hasMVar || ci.type.hasFVar then
+      throwError "The exported declaration type is not closed: {name}"
+    let value := match ci with
+      | .defnInfo d => some d.value
+      | .thmInfo _ => none
+      | _ => none
+    let typeText ← ppExpr ci.type
+    rows := rows.push <| Json.mkObj [
+      ("name", toJson name.toString),
+      ("levelParams", toJson (ci.levelParams.map Name.toString)),
+      ("type", exprJson ci.type),
+      ("value", value.map exprJson |>.getD Json.null),
+      ("prettyType", toJson typeText.pretty)]
+  IO.FS.writeFile output (Json.arr rows |>.compress)
+
+end PiExponentInterfaceSnapshot
+
+set_option pp.universes true
+set_option pp.fullNames true
+set_option pp.explicit true
+run_meta do
+  PiExponentInterfaceSnapshot.exportSnapshot #[`OAI.PiExponent.exists_successive_approximations, `solution] "missions/pi-irrationality-measure/verification/ap4/n1/generated-type.json"
+#print axioms solution
+
+open Lean Meta in
+run_meta do
+  let requests : Array (String × Lean.Name × String) := #[]
+  let env ← Lean.getEnv
+  let mut rows : Array Lean.Json := #[]
+  let mut actualNames : Array Lean.Name := #[]
+  for (sourceName, userName, expectedKind) in requests do
+    let mut candidates : Array Lean.Name := #[]
+    for (actualName, _) in env.constants.toList do
+      if Lean.privateToUserName? actualName == some userName then
+        if (env.getModuleIdxFor? actualName).isNone then
+          candidates := candidates.push actualName
+    unless candidates.size == 1 do
+      throwError "Expected one OwnModule private binding for {userName}, found {candidates.size}"
+    let actualName := candidates[0]!
+    let some ci := env.find? actualName | throwError "Missing recovered private declaration"
+    let (kind, value, safety) ← match ci with
+      | .thmInfo t => pure ("theorem", t.value, Lean.Json.null)
+      | .defnInfo d => pure ("def", d.value, Lean.toJson (reprStr d.safety))
+      | _ => throwError "Recovered private CI is neither theorem nor definition"
+    unless kind == expectedKind do
+      throwError "Recovered private CI kind differs from source Graph: {actualName}"
+    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||
+        value.hasMVar || value.hasFVar || value.hasLooseBVars then
+      throwError "Recovered private CI type/value is not closed"
+    let axioms ← Lean.collectAxioms actualName
+    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do
+      throwError "Private helper has nonstandard axioms: {actualName}"
+    actualNames := actualNames.push actualName
+    rows := rows.push <| Lean.Json.mkObj [
+      ("sourceGraphName", Lean.toJson sourceName),
+      ("nodeGeneratedName", Lean.toJson userName.toString),
+      ("actualKernelName", Lean.toJson actualName.toString),
+      ("kind", Lean.toJson kind), ("safety", safety),
+      ("ownerKind", Lean.toJson "OwnModule"),
+      ("ownModule", Lean.toJson env.mainModule.toString),
+      ("moduleIndexIsNone", Lean.toJson true),
+      ("levelParams", Lean.toJson (ci.levelParams.map Lean.Name.toString)),
+      ("typeRefs", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),
+      ("valueRefs", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),
+      ("snapshotValueRequired", Lean.toJson (kind == "def")),
+      ("axioms", Lean.toJson (axioms.map Lean.Name.toString))]
+  PiExponentInterfaceSnapshot.exportSnapshot actualNames "missions/pi-irrationality-measure/verification/ap4/n1/generated-inline-types.json"
+
+open Lean Meta in
+run_meta do
+  let requests : Array (String × String) := #[]
+  let env ← Lean.getEnv
+  let mut actualNames : Array Lean.Name := #[]
+  for (graphName, sourceModule) in requests do
+    let names := env.constants.toList.filterMap fun (name, _) =>
+      if name.toString == graphName then some name else none
+    unless names.length == 1 do
+      throwError "Expected one public inline CI for {graphName}, found {names.length}"
+    let actualName := names.head!
+    let some ci := env.find? actualName | throwError "Missing public inline CI"
+    match ci with
+    | .thmInfo _ => pure ()
+    | _ => throwError "Public inline companion is not a theorem: {actualName}"
+    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars then
+      throwError "Public inline type is not closed: {actualName}"
+
+    unless (env.getModuleIdxFor? actualName).isNone do
+      throwError "Generated public inline binding was inherited instead of retained: {actualName}"
+
+    let axioms ← Lean.collectAxioms actualName
+    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do
+      throwError "Public inline helper has nonstandard axioms: {actualName}"
+    actualNames := actualNames.push actualName
+  PiExponentInterfaceSnapshot.exportSnapshot actualNames "missions/pi-irrationality-measure/verification/ap4/n1/generated-public-inline-types.json"
+
+
+namespace FormalLogProofReferenceSnapshot
+
+open Lean Meta
+
+def refs (value : Expr) : Array String :=
+  (value.getUsedConstants.map Name.toString).qsort (fun a b => a < b)
+
+def exportProofRefs (requests : Array Name) (output : String) : MetaM Unit := do
+  let env ← getEnv
+  let mut seen : Array Name := #[]
+  let mut rows : Array Json := #[]
+  for name in requests do
+    if seen.contains name then
+      throwError "Duplicate proof-reference request: {name}"
+    seen := seen.push name
+    unless (env.getModuleIdxFor? name).isNone do
+      throwError "Proof-reference request was inherited instead of declared here: {name}"
+    let some ci := env.find? name | throwError "Missing proof-reference request: {name}"
+    let value ← match ci with
+      | .thmInfo theoremInfo => pure theoremInfo.value
+      | _ => throwError "Proof-reference request is not a theorem: {name}"
+    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars then
+      throwError "Proof-reference theorem type is not closed: {name}"
+    if value.hasMVar || value.hasFVar || value.hasLooseBVars then
+      throwError "Proof-reference theorem value is not closed: {name}"
+    let axioms ← collectAxioms name
+    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do
+      throwError "Proof-reference theorem has nonstandard axioms: {name}"
+    rows := rows.push <| Json.mkObj [
+      ("name", toJson name.toString), ("userName", toJson name.toString),
+      ("kind", toJson "theorem"),
+      ("levelParams", toJson (ci.levelParams.map Name.toString)),
+      ("closedType", toJson true), ("closedValue", toJson true),
+      ("typeRefs", toJson (refs ci.type)), ("valueRefs", toJson (refs value)),
+      ("axioms", toJson (axioms.map Name.toString)),
+      ("owner", Json.mkObj [("kind", toJson "OwnModule"),
+        ("module", toJson env.mainModule.toString)])]
+  IO.FS.writeFile output <| (Json.mkObj [
+    ("schemaVersion", toJson 1), ("probeMainModule", toJson env.mainModule.toString),
+    ("rows", Json.arr rows)]).pretty
+
+end FormalLogProofReferenceSnapshot
+
+open Lean Meta in
+run_meta do
+  FormalLogProofReferenceSnapshot.exportProofRefs #[`solution] "missions/pi-irrationality-measure/verification/ap4/n1/proof-references.json"

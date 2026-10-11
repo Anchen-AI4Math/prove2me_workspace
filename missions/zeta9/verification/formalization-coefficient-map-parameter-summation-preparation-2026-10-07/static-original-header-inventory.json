@@ -1,0 +1,73 @@
+{
+  "role": "UNCOMPILED exact SOURCE text; no Lean parser/kernel evidence",
+  "records": [
+    {
+      "name": "transferMultiplier_natDegree_le",
+      "header": "theorem transferMultiplier_natDegree_le (n : ℕ) (W : ℚ[X]) :\n    (transferMultiplier n W).natDegree ≤ 4"
+    },
+    {
+      "name": "even_add_two",
+      "header": "theorem even_add_two (n : ℕ) (hn : Even n) : Even (n + 2)"
+    },
+    {
+      "name": "exactL_eq_prescribed_actual_output",
+      "header": "theorem exactL_eq_prescribed_actual_output (n : ℕ) (W : ℚ[X]) :\n    exactL n W = prescribedL (aggregate n W)"
+    },
+    {
+      "name": "transfer_actual_five_outputs",
+      "header": "theorem transfer_actual_five_outputs (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    aggregate n (transferMultiplier n W) = aggregate (n + 2) W"
+    },
+    {
+      "name": "transfer_actual_exactL",
+      "header": "theorem transfer_actual_exactL (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    exactL n (transferMultiplier n W) = exactL (n + 2) W"
+    },
+    {
+      "name": "quartic_actual_HasSum_and_absolute",
+      "header": "theorem quartic_actual_HasSum_and_absolute (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    HasSum (actualSeries n W) (exactL n W) ∧\n      Summable (fun t : ℕ => ‖actualSeries n W t‖)"
+    },
+    {
+      "name": "actual_chosen_exactL_transport",
+      "header": "theorem actual_chosen_exactL_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    exactL (n + 2) (X ^ r.val) = exactL n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_HasSum_transport",
+      "header": "theorem actual_chosen_HasSum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (r : Fin 5) :\n    HasSum (actualSeries (n + 2) (X ^ r.val)) (exactL n (connectionP n r)) ∧\n      HasSum (actualSeries n (connectionP n r)) (exactL n (connectionP n r)) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2) (X ^ r.val) t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (connectionP n r) t‖)"
+    },
+    {
+      "name": "actual_chosen_tsum_transport",
+      "header": "theorem actual_chosen_tsum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (r : Fin 5) :\n    (∑' t : ℕ, actualSeries (n + 2) (X ^ r.val) t) =\n      ∑' t : ℕ, actualSeries n (connectionP n r) t"
+    },
+    {
+      "name": "quartic_HasSum_transport",
+      "header": "theorem quartic_HasSum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    HasSum (actualSeries (n + 2) W) (exactL (n + 2) W) ∧\n      HasSum (actualSeries n (transferMultiplier n W)) (exactL (n + 2) W) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2) W t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (transferMultiplier n W) t‖)"
+    },
+    {
+      "name": "quartic_tsum_transport",
+      "header": "theorem quartic_tsum_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    (∑' t : ℕ, actualSeries (n + 2) W t) =\n      ∑' t : ℕ, actualSeries n (transferMultiplier n W) t"
+    },
+    {
+      "name": "transferred_inverseMultiplier_eq",
+      "header": "theorem transferred_inverseMultiplier_eq (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b : Fin 5 → ℚ) :\n    transferMultiplier n (inverseMultiplier (n + 2) (by omega) (even_add_two n hn) b) =\n      inverseMultiplier n hn2 hn b"
+    },
+    {
+      "name": "inverseMultiplier_coordinates_transport",
+      "header": "theorem inverseMultiplier_coordinates_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b : Fin 5 → ℚ) :\n    polynomialCoordinates (inverseMultiplier (n + 2) (by omega) (even_add_two n hn) b)\n        ᵥ* connectionGamma n = polynomialCoordinates (inverseMultiplier n hn2 hn b)"
+    },
+    {
+      "name": "chosen_transferMultiplier_eq_connectionP",
+      "header": "theorem chosen_transferMultiplier_eq_connectionP (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (r : Fin 5) :\n    transferMultiplier n (X ^ r.val) = connectionP n r"
+    },
+    {
+      "name": "selectedIntegerMultiplier_transport",
+      "header": "theorem selectedIntegerMultiplier_transport (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b a : ℤ) :\n    transferMultiplier n\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) =\n      selectedIntegerMultiplier n hn2 hn b a"
+    },
+    {
+      "name": "selectedIntegerMultiplier_parameter_HasSum",
+      "header": "theorem selectedIntegerMultiplier_parameter_HasSum (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    HasSum (actualSeries (n + 2)\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a))\n      ((b : ℝ) + (a : ℝ) * zetaReal 9) ∧\n      HasSum (actualSeries n (selectedIntegerMultiplier n hn2 hn b a))\n        ((b : ℝ) + (a : ℝ) * zetaReal 9) ∧\n      Summable (fun t : ℕ => ‖actualSeries (n + 2)\n        (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) t‖) ∧\n      Summable (fun t : ℕ => ‖actualSeries n (selectedIntegerMultiplier n hn2 hn b a) t‖)"
+    },
+    {
+      "name": "selectedIntegerMultiplier_parameter_tsum",
+      "header": "theorem selectedIntegerMultiplier_parameter_tsum (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    (∑' t : ℕ, actualSeries (n + 2)\n      (selectedIntegerMultiplier (n + 2) (by omega) (even_add_two n hn) b a) t) =\n      ∑' t : ℕ, actualSeries n (selectedIntegerMultiplier n hn2 hn b a) t"
+    }
+  ]
+}

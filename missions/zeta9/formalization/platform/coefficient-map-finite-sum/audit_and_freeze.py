@@ -1,0 +1,182 @@
+"""Author-only offline gate; independent transplantation review remains separate."""
+from pathlib import Path
+import hashlib,json,os,subprocess,sys
+sys.stdout.reconfigure(encoding="utf-8")
+OUT=Path(__file__).resolve().parent;TASK=OUT.parents[2];ROOT=TASK.parents[1];PROJECT=OUT / "project"
+NS="ZetaNine.CoefficientMapFiniteSum";STD={"propext","Classical.choice","Quot.sound"}
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def load(p):return json.loads(p.read_text(encoding="utf-8-sig"))
+def rows(p):return [json.loads(s) for s in p.read_text(encoding="utf-8-sig").splitlines() if s.startswith("{")]
+def write(p,s):p.write_text(s,encoding="utf-8",newline="\n")
+def dump(p,d):write(p,json.dumps(d,ensure_ascii=False,indent=2)+"\n")
+checks=[]
+def check(name,okay,evidence=None):
+    checks.append({"name":name,"pass":bool(okay),"evidence":evidence});assert okay,name
+receipt=load(OUT / "compile-receipt.json");plan=load(OUT / "target-plan.json");prov=load(OUT / "integration-provenance.json")
+check("five_frozen_actual_sources_unchanged",all(sha(TASK / ("formalization/"+n+".lean"))==h for n,h in receipt["source_sha256"].items()),receipt["source_sha256"])
+math_review=TASK / "verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-review.json"
+math=load(math_review)
+check("prior_independent_native_math_review_bound",sha(math_review)=="a4d2cec35a3e9b506aed7a0df0b2afacce4adf07a5b03f42b713b9726b581386" and math["verdict"]=="PASS" and len(math["checks"])==15,{"task_relative":math_review.relative_to(TASK).as_posix(),"sha256":sha(math_review),"is_independent_transplantation_review":False})
+check("all_thirty_eight_actual_author_runs_exit_zero",receipt.get("complete") is True and len(receipt["rows"])==38 and all(r["exit_code"]==0 and sha(OUT / r["log"])==r["log_sha256"] for r in receipt["rows"]),{"runs":len(receipt["rows"]),"native_source_compilation":6,"official_graph_and_parser_and_header_runs":8,"staged_source_builds_including_actual_existing_Definitions":12,"actual_import_reports":11,"toolchain_probe":1})
+env=os.environ.copy();env.pop("LEAN_PATH",None)
+p=subprocess.run(["git","-C",str(ROOT / ".lake/packages/mathlib"),"rev-parse","HEAD"],capture_output=True,env=env)
+write(OUT / "mathlib-revision.log",(p.stdout+p.stderr).decode("utf-8-sig"))
+check("actual_pinned_Lean_Mathlib_environment","version 4.33.1" in (OUT / "toolchain.log").read_text(encoding="utf-8-sig") and p.returncode==0 and p.stdout.decode().strip()=="0df444a360eaa60ab8c11dca51a86af692955474")
+original={r["label"]:r for r in rows(OUT / "types_original.log")}
+contexts=["types_definition"]+[f"types_{i}_{kind}" for i in range(3) for kind in ["solution","reference"]]
+reports={label:{r["label"]:r for r in rows(OUT / (label+".log"))} for label in contexts}
+definitions=[r for r in original.values() if r["value"] is not None]
+comparisons=[]
+for d in definitions:
+    for context,r in reports.items():
+        got=r[d["label"]]
+        comparisons.append({"declaration":d["declaration"],"context":context,"type_equal":got["type"]==d["type"],"value_equal":got["value"]==d["value"],"axioms":got["axioms"]})
+check("all_thirty_six_actual_definition_types_and_values_equal",len(definitions)==36 and len(comparisons)==252 and all(r["type_equal"] and r["value_equal"] and set(r["axioms"])<=STD for r in comparisons),{"Base":9,"Jet":9,"Injectivity":7,"PartialFractions":5,"FiniteSum":4,"HarmonicStability":2,"exact_actual_comparisons":252})
+targets=[]
+for i,t in enumerate(plan["targets"]):
+    full=t["theorem_name"];orig=original[full];sol=reports[f"types_{i}_solution"][full];ref=reports[f"types_{i}_reference"][full]
+    targets.append({"theorem":full,"actual_original_type":orig["type"],"original_solution_reference_type_equal":orig["type"]==sol["type"]==ref["type"],"original_axioms":orig["axioms"],"solution_axioms":sol["axioms"],"reference_axioms":ref["axioms"]})
+check("three_original_Solution_reference_types_exact_no_extra_hypotheses",all(t["original_solution_reference_type_equal"] for t in targets),targets)
+check("complete_solution_endpoints_exact_standard_three_axioms",all(set(t["solution_axioms"])==STD and set(t["original_axioms"])==STD for t in targets),sorted(STD))
+helpers=[rows(OUT / f"helpers_{i}.log") for i in range(3)]
+per=8+len(prov["inline_helper_names"])
+check("all_original_seven_proofs_cross_module_closure_and_wrapper_standard_axioms",all(len(rs)==per and all(set(r["axioms"])<=STD for r in rs) for rs in helpers),{"proofs_per_solution":per,"total_proof_records":3*per,"cross_module_inline_names":prov["inline_helper_names"]})
+check("no_external_Theorems_Solutions_or_native_proof_boundary",not prov["new_external_theorem_boundaries"] and all(not any(line.startswith(("import Theorems.","import Solutions.","import missions.")) for line in (OUT / "staged" / t["local_solution"]).read_text(encoding="utf-8").splitlines()) for t in plan["targets"]))
+check("reference_stubs_explicitly_not_proofs",all("sorryAx" in t["reference_axioms"] for t in targets))
+check("complete_Solutions_have_no_sorry_admit_or_axiom_declaration",all(all(token not in (OUT / "staged" / t["local_solution"]).read_text(encoding="utf-8") for token in ["sorry","admit","axiom "]) for t in plan["targets"]))
+check("actual_source_core_and_Def_lightweight",prov["source_declarations"]==11 and prov["source_defs"]==4 and prov["source_proofs"]==7 and len(prov["definition_facts"])==4)
+req=load(OUT / "problems-request.json");dreq=load(OUT / "definitions-request.json")[0]
+dfields={"definition_name","definition_title","definition","natural_language_statement","source","tags","env","private"};tfields={"theorem_name","theorem_title","formal_statement","natural_language_statement","preamble","source","tags"}
+check("documented_offline_API_fields_only",set(dreq)<=dfields and set(req)=={"problems","env","private"} and all(set(t)<=tfields and t["formal_statement"].endswith(":= by sorry") and len(t["theorem_title"])<=200 for t in req["problems"]),{"schema_reference":"formalization/platform/readback-2026-10-03/api-docs/references/contribute.md","API_called":False})
+check("definition_request_exact_staged_source",dreq["definition"].encode()==(OUT / "staged" / plan["local_definition"]).read_bytes())
+check("proper_finite_identity_retains_actual_rho_one_and_all_Nat_shift_prose",all(text in req["problems"][i]["natural_language_statement"] for i,text in [(0,"strict proper"),(0,"$T=0$"),(1,"simple-pole term"),(1,"retained"),(1,"$\\rho_{0,1}=1$"),(1,"odd/no-simple wrappers"),(2,"$s=0$"),(2,"$T=0$"),(2,"$j=0$")]))
+check("native_independent_finite_only_exact_domains_bound",math["actual_finite_harmonic_identity_closed"] and math["actual_grouped_finite_identity_closed"] and not math["reflection_cancellation_closed"] and not math["rho1_zero_without_added_condition_closed"] and not math["infinite_sum_convergence_closed"] and not math["original_aggregate_F_inverse_closed"] and not math["exact_L_closed"])
+check("four_existing_base_chain_and_one_actual_Harmonic_Def_stage_root_bytes_identical",len(plan["existing_definitions"])==5 and all(sha(ROOT / d["root_relative"])==d["sha256"]==sha(TASK / d["task_relative"])==sha(PROJECT / d["root_relative"]) for d in plan["existing_definitions"]),plan["existing_definitions"])
+check("pure_HarmonicStability_exact_source_no_proof_boundary",prov["pure_HarmonicStability_sha256"]=="5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92" and prov["pure_HarmonicStability_parser_decl_count"]==2 and sha(OUT / "HarmonicStability-oracle-input.lean")==prov["pure_HarmonicStability_parser_normalization"]["parser_normalized_sha256"] and (OUT / "HarmonicStability-oracle-input.lean").read_bytes()==(OUT / "dependencies/Definitions/Def_ZetaNine_HarmonicStability.lean").read_bytes().replace(b"\r\n",b"\n") and math["pure_harmonic_definition"]["same_actual_harmonicPower_body_as_original"] is True)
+
+old_members=0
+for name in ["coefficient-map","coefficient-map-jet","coefficient-map-injectivity","coefficient-map-partial-fractions","coefficient-map-reflection"]:
+    old=TASK / "formalization/platform" / name
+    for line in (old / "SHA256SUMS.txt").read_text(encoding="utf-8-sig").splitlines():
+        h,rel=line.split("  ",1);assert sha(old / rel)==h;old_members+=1
+check("all_687_old_author_frozen_members_unchanged",old_members==687,{"Base_frozen_members":96,"Jet_frozen_members":111,"Injectivity_frozen_members":134,"PartialFractions_frozen_members":174,"Reflection_frozen_members":172,"old_batches_written_by_author":False})
+graph=rows(OUT / "decl_graph.jsonl");byname={g["name"]:g for g in graph}
+sources={n:(TASK / ("formalization/"+n+".lean")).read_bytes() for n in receipt["source_sha256"]}
+check("real_graph_no_axiom_declaration_or_external_boundary",len(graph)==prov["graph_records"] and not any(g["kind"]=="axiom" for g in graph) and not prov["new_external_theorem_boundaries"])
+bridge=""
+for module in ["CoefficientMap","CoefficientMapJet","CoefficientMapInjectivity","CoefficientMapPartialFractions"]:
+    helpers=[f for f in prov["inline_helper_facts"] if f["module"]==module]
+    if not helpers:continue
+    bridge+="open scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine."+module+"\n\n"
+    opens=[r["fact"] for r in prov["bridge_open_context_facts"] if r["module"]==module]
+    for f in opens:bridge+=sources[module][f["span"]["start"]["offset"]:f["span"]["end"]["offset"]].decode()+"\n"
+    if opens:bridge+="\n"
+    for h in helpers:
+        f=h["fact"];bridge+=sources[module][f["declStart"]["offset"]:f["declEnd"]["offset"]].decode()+"\n\n"
+    bridge+="end ZetaNine."+module+"\n\n"
+check("actual_cross_source_proof_spans_exact",bridge.encode()==(OUT / "actual-proof-bridge.lean.inc").read_bytes() and hashlib.sha256(bridge.encode()).hexdigest()==prov["bridge_sha256"])
+source=sources["CoefficientMapFiniteSum"];header_end=prov["header"]["end"]["offset"]
+facts=rows(OUT / "CoefficientMapFiniteSum-sketch_info.jsonl")
+check("exact_FiniteSum_parser_snapshot_selected",{kind:sum(f["kind"]==kind for f in facts) for kind in ["decl","ref","command"]}==prov["source_fact_counts"]and prov["source_fact_counts"]["decl"]==11,"CoefficientMapFiniteSum-sketch_info.jsonl")
+refs=[f for f in facts if f["kind"]=="ref"]
+cuts=[(f["declStart"]["offset"],f["declEnd"]["offset"],b"") for f in prov["definition_facts"]]+[(f["span"]["start"]["offset"],f["span"]["end"]["offset"],b"") for f in prov["deleted_diagnostic_facts"]]+[(0,header_end,b"")]
+def edit(data,edits):
+    edge=len(data)
+    for a,b,v in sorted(set(edits),reverse=True):
+        assert 0<=a<=b<=edge
+        data=data[:a]+v+data[b:];edge=a
+    return data
+stage_replays=[]
+for t in plan["targets"]:
+    full=t["theorem_name"];name=full.split(".")[-1];pr=prov["targets"][full];changes=[]
+    for r in refs:
+        if r["const"]!=full:continue
+        a,b=r["start"]["offset"],r["end"]["offset"]
+        if any(x<=a and b<=y for x,y,_ in cuts):continue
+        old=source[a:b].decode();assert old in [name,full]
+        changes.append((a,b,("checked_"+name if old==name else NS+".checked_"+name).encode()))
+    prefix="import Definitions.Def_ZetaNine_CoefficientMapFiniteSum\nimport Mathlib.Tactic\nimport Mathlib.Algebra.BigOperators.Intervals\n\n"+bridge
+    reconstructed=prefix+"\n"+edit(source,cuts+changes).decode()+"\n\nopen ZetaNine "+NS+" ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.HarmonicStability\n\ntheorem solution"+pr["original_signature"]+":= by\n  exact "+NS+".checked_"+name+" "+t["wrapper_arguments"]+"\n\n#print axioms solution\n"
+    stage_replays.append(reconstructed.encode()==(OUT / "staged" / t["local_solution"]).read_bytes())
+check("complete_original_FiniteSum_proof_core_and_all_three_parser_splices_exact",all(stage_replays) and len(prov["definition_facts"])==4 and len(prov["deleted_diagnostic_facts"])==6,{"original_proofs_retained_per_Sol":7,"new_hypotheses":[]})
+boundary=load(OUT / "stage-boundary-report.json")
+native_boundary=load(TASK / "verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-boundary-types.json")
+native_byname={r["declaration"]:r for r in native_boundary}
+boundary_comparisons=[]
+extra_names={"fs_stage_difference_T_zero","fs_stage_difference_j_zero","fs_stage_difference_s_zero","fs_stage_harmonicPower_s_zero"}
+for r in boundary["records"]:
+    name=r["declaration"].replace(".checked_actual_grouped_finite_identity",".actual_grouped_finite_identity")
+    if name in extra_names:
+        assert set(r["axioms"])<=STD
+        continue
+    orig=native_byname[name]
+    boundary_comparisons.append({"declaration":r["declaration"],"native_type_exact":orig["type"]==r["type"],"native_definition_value_exact":orig["definitionValue"]==r["definitionValue"],"axioms":r["axioms"]})
+check("staged_finite_simple_pole_and_zero_order_shift_boundaries_actual_compile",boundary["exit_code"]==0 and (OUT / "stage-boundary-audit-exit.txt").read_text().strip()=="0" and len(boundary_comparisons)==40 and len(boundary["records"])==44 and extra_names<={r["declaration"] for r in boundary["records"]} and boundary["all_standard_axioms"] and all(r["native_type_exact"] and r["native_definition_value_exact"] for r in boundary_comparisons),{"records":44,"exact_original_native_records":40,"new_all_Nat_shift_boundaries":4,"all_axioms":sorted(STD)})
+
+definition="import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\nimport Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Algebra.BigOperators.Intervals\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace "+NS+"\n\n"
+definition+="\n".join(source[f["span"]["start"]["offset"]:f["span"]["end"]["offset"]].decode() for f in prov["definition_open_context_facts"])+"\n\n"
+definition+="\n\n".join(source[f["declStart"]["offset"]:f["declEnd"]["offset"]].decode() for f in prov["definition_facts"])+"\n\nend "+NS+"\n"
+check("four_actual_Def_spans_and_parser_namespace_context_exact",definition.encode()==(OUT / "staged" / plan["local_definition"]).read_bytes(),{"proofs_in_new_Def":0,"source_defs":4})
+check("fresh_new_native_and_staged_object_cache_not_borrowed",receipt["native_and_staged_objects_borrowed"] is False and len(receipt["resumed_same_fresh_project_actual_successful_steps"])==15 and receipt["resume_snapshot_sha256"]==sha(OUT / "same-fresh-project-resume-snapshot.json") and all(sha(OUT / f["batch_relative"])==f["sha256"] for f in load(OUT / "same-fresh-project-resume-snapshot.json")["files"]),{"project":"project","five_native_source_modules":True,"only_Mathlib_dependency_cache_shared":True})
+
+boundary_attempt=load(OUT / "retained-boundary-zero-inference-failure.json")
+check("excluded_zero_interval_boundary_type_inference_attempt_retained",boundary_attempt["actual_exit_code"]==1 and boundary_attempt["failure_used_for_final_PASS"] is False and sha(OUT / boundary_attempt["retained_log"])==load(OUT / "stage-boundary-report.json.failed-Icc-zero-inference-attempt")["log_sha256"],boundary_attempt)
+syntax_attempt=load(OUT / "retained-python-syntax-failure.json")
+check("excluded_task_local_encoding_syntax_attempt_retained_without_Lean",syntax_attempt["observed_exit_code"]==1 and syntax_attempt["failure_used_for_final_PASS"] is False and (OUT / syntax_attempt["failed_source"]).exists(),syntax_attempt)
+retained_failure=load(OUT / "retained-python-crlf-gate-failure.json")
+check("retained_CRLF_Python_gate_failure_excluded_correct_raw_vs_parser_snapshot",retained_failure["observed_driver_exit_code"]==1 and retained_failure["failure_used_for_final_PASS"] is False and retained_failure["not_a_Lean_failure"] is True,retained_failure)
+copyfiles=[]
+for rel in [plan["local_definition"]]+[t[k] for t in plan["targets"] for k in ["local_solution","local_reference"]]:
+    file=OUT / "staged" / rel;dest=ROOT / rel
+    copyfiles.append({"staged_task_relative":file.relative_to(TASK).as_posix(),"root_relative_destination":rel,"bytes":file.stat().st_size,"sha256":sha(file),"destination_exists_at_author_freeze":dest.exists()})
+    if dest.exists():assert sha(dest)==sha(file),"Existing root differs; parent must resolve without overwrite."
+copyplan={"source_sha256":receipt["source_sha256"]["CoefficientMapFiniteSum"],"sources_sha256":receipt["source_sha256"],"required_existing_Definitions":plan["existing_definitions"],"author_scope":"offline new task-local staged/project only; parent handles installation","overwrite_allowed":False,"files":copyfiles,"scope_build_entrypoints_for_parent":[t["local_solution"].removesuffix(".lean").replace("/",".") for t in plan["targets"]]}
+dump(OUT / "root-copy-plan.json",copyplan)
+dump(OUT / "decl-plan.json",{"selected_public_endpoints":[t["theorem_name"] for t in plan["targets"]],"actual_cross_module_graph_records":prov["graph_records"],"retained_FiniteSum_source_declarations":11,"moved_genuine_Definitions":4,"inline_original_FiniteSum_proofs":7,"actual_cross_module_core_closure":prov["cross_module_core_closure"],"inline_cross_module_helper_names":prov["inline_helper_names"],"generated_records":prov["generated_records"],"generated_helpers_regenerated_from_exact_Definitions":True,"new_external_theorem_boundaries":[]})
+limitations=["The two actual rational finite-sum endpoints retain the actual strict ProperMultiplier condition. All coefficients come from the original weighted formal local series, positive integer sample denominators are automatically regular, and sums are finite.","The grouped public endpoint retains the genuine rho1*harmonicPower1T term. Original conditional no-simple/odd proof wrappers remain inside the exact source core with their explicit actual rho inputs, but are not public selected endpoints and are not used to claim unconditional cancellation.","The harmonic difference endpoint is for all natural s,T,j, including s0,T0,j0, with the exact unchanged existing harmonicPower definition. Empty intervals and s0 are actually recompiled.","n0W=X4 is a genuine strict-proper example with rho1=1, B0=tail0=0, actualR(t)=1/t and finiteL=harmonicPower1T. Strict properness gives no rho1 cancellation or infinite L convergence.","This batch uses five actual sources and the actual pure HarmonicStability Def, with no Reflection, Summation, aggregate, inverse or irrationality input. It contains no infinite sum, prescribed target, denominator-integrality or aggregate inverse claim.","This is an author gate, not an independent transplantation review or platform acceptance. Reference stubs use sorryAx deliberately; complete Solutions and all real inline proofs use only standard axioms. Parent handles root installation/build/publication separately."]
+readme="""# Actual finite harmonic sums offline author batch
+
+Three actual endpoints are staged: actual_finite_harmonic_identity, actual_grouped_finite_identity and harmonic_difference_eq_shifted. The two weighted rational finite identities keep strict ProperMultiplier and the grouped formula retains rho1*H_T. The harmonic difference is for every natural s,T,j including0. All original seven FS proofs are retained, including conditional internal wrappers with their original rho inputs; those wrappers are not selected public endpoints.
+
+Fresh project/cache compiles five actual native source modules and the unchanged pure HarmonicStability Definition. Official Stage1 includes the actual five-source module prefix plus that exact pure Definition module; Stage2 executes six parser snapshots and the leaf header. Four genuine source definitions move by actual declaration spans. All required real cross-source proof helpers and actual namespace-open spans are copied, with no theorem stub or native mission boundary import. Only actual moved defs, header and diagnostics are deleted; selected binding/ref spans are renamed and exact-signature solution wrappers appended.
+
+All36 actual definitions (Base9,Jet9,Inject7,PF5,FS4,Harmonic2) have exact types and values across seven contexts,252 comparisons. Three original/Sol/reference types are exact with no new assumptions. Complete proof records use standard axioms; statement references deliberately contain sorryAx. Four pre-existing Base/Jet/Inject/PF Defs plus the exact Harmonic Def are hash-checked at root and copied into this new project.
+
+Original40 native audit/boundary records are recompiled against the complete staged grouped Solution with exact statement/value equality. Four additional T0/j0/s0/harmonicPower0 checks close all-Nat boundaries. n0X4 remains actual1/t with rho1=1, B=tail=0 and finiteL=H_T; omitting the simple-pole term would be false. No Reflection proof or infinite convergence, exact target L, five-dimensional aggregate inverse or irrationality is imported or inferred.
+
+The pure Harmonic Definition keeps its original CRLF source bytes. Its official Parser.mkInputContext snapshot uses LF; both hashes and the exact CRLF normalization are bound. The initial Python byte-identity gate failure is retained and excluded; 15 actual successful Lean steps resume from this same fresh project with hash checks. The author receipt records actual observed calls/exits/logs. Actual compiled objects and source bytes are bound in the freeze. All old author freezes remain unchanged. No root/scope/API/credential writes. This author PASS is separate from independent transplantation review, supported root task build and platform acceptance.
+"""
+
+write(OUT / "README.md",readme)
+# Bind actual compiled objects, source and observed exit files without changing prior rows.
+objects=[]
+for r in receipt["rows"]:
+    ex=OUT / (r["label"]+"-exit.txt")
+    assert int(ex.read_text().strip())==r["exit_code"]==0
+    r["exit_file"]=ex.name;r["exit_file_sha256"]=sha(ex)
+    if r["command"][:3]==["lake","--no-cache","build"]:
+        module=r["command"][3]
+        obj=PROJECT / ".lake/build/lib/lean" / (module.replace(".","/")+".olean")
+        src=PROJECT / (module.replace(".","/")+".lean")
+        assert obj.exists() and src.exists()
+        r["compiled_object_project_relative"]=obj.relative_to(PROJECT).as_posix();r["compiled_object_sha256"]=sha(obj)
+        r["compiled_source_project_relative"]=src.relative_to(PROJECT).as_posix();r["compiled_source_sha256"]=sha(src)
+        objects.append(obj)
+receipt["observed_exit_files_and_compiled_objects_bound"]=True
+dump(OUT / "compile-receipt.json",receipt)
+# Source/config/oracle/log/request evidence only; never recurse through .lake packages.
+stable=[p for p in OUT.iterdir() if p.is_file() and p.name not in ["author-audit.json","SHA256SUMS.txt","source-manifest.json"]]
+stable+=list((OUT / "staged").rglob("*.lean"))+list((OUT / "dependencies").rglob("*.lean"))+list(dict.fromkeys(objects))
+stable+=list(PROJECT.glob("*.lean"))+[PROJECT / "lake-manifest.json",PROJECT / "lean-toolchain"]
+stable+=[PROJECT / ("missions/zeta9/formalization/"+n+".lean") for n in receipt["source_sha256"]]
+stable+=list((PROJECT / "Definitions").glob("*.lean"))+list((PROJECT / "Solutions").glob("*.lean"))+list((PROJECT / "Theorems").glob("*.lean"))
+stable=list(dict.fromkeys(stable))
+manifest={"schema_version":1,"source_sha256":receipt["source_sha256"],"files":[{"task_relative":p.relative_to(TASK).as_posix(),"batch_relative":p.relative_to(OUT).as_posix(),"bytes":p.stat().st_size,"sha256":sha(p)} for p in sorted(stable)],"existing_definition_dependencies":plan["existing_definitions"],"prior_native_independent_review_sha256":sha(math_review),"old_batches_modified":False}
+dump(OUT / "source-manifest.json",manifest)
+audit={"schema_version":1,"review_role":"author offline source-integration gate; independent review required separately","verdict":"PASS" if all(c["pass"] for c in checks) else "FAIL","source_sha256":receipt["source_sha256"]["CoefficientMapFiniteSum"],"sources_sha256":receipt["source_sha256"],"mathlib_rev":"0df444a360eaa60ab8c11dca51a86af692955474","lean_toolchain":"leanprover/lean4:v4.33.1","checks":checks,"targets":targets,"definition_comparisons":comparisons,"all_proof_records":helpers,"boundary_comparisons":boundary_comparisons,"actual_cross_module_helpers":prov["inline_helper_names"],"limitations":limitations,"platform_published":False,"platform_accepted":False,"root_installed_by_author":False,"independent_transplantation_review_claimed":False,"root_scope_API_credential_writes":False,"stable_files":manifest["files"]}
+dump(OUT / "author-audit.json",audit)
+freeze=stable+[OUT / "source-manifest.json",OUT / "author-audit.json"]
+write(OUT / "SHA256SUMS.txt","".join(sha(p)+"  "+p.relative_to(OUT).as_posix()+"\n" for p in sorted(freeze)))
+for line in (OUT / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines():
+    h,rel=line.split("  ",1);assert sha(OUT / rel)==h
+print(json.dumps({"author_verdict":audit["verdict"],"checks":len(checks),"graph_records":prov["graph_records"],"source_fact_counts":prov["source_fact_counts"],"inline_helpers":prov["inline_helper_names"],"proof_records":3*per,"definition_comparisons":len(comparisons),"frozen_files":len(freeze),"author_audit_sha256":sha(OUT / "author-audit.json"),"copyplan_sha256":sha(OUT / "root-copy-plan.json"),"manifest_sha256":sha(OUT / "source-manifest.json"),"SHA256SUMS_sha256":sha(OUT / "SHA256SUMS.txt")},ensure_ascii=False),flush=True)

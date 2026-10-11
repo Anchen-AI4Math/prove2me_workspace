@@ -1,0 +1,88 @@
+{
+  "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+  "source_unchanged": true,
+  "official_stage1": "formalization/platform/coefficient/extract_decl_graph.lean",
+  "official_stage2": "formalization/platform/coefficient/extract_sketch_info.lean",
+  "changes": [
+    "Only Stage1 import/project/output configuration changed.",
+    "Stage2 output snapshot directory changed; parser command spans added solely for diagnostic removal."
+  ],
+  "rows": [
+    {
+      "label": "original-compile",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\original-compile.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\CoefficientMap.lean",
+      "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+      "log": "original-compile.log",
+      "log_sha256": "f0b920c9005031dab2dbc385a6f295c2ab2a6285ec6d92960f8094d614835293",
+      "wrapper": "original-compile.ps1",
+      "wrapper_sha256": "42116207ae985141e078719a8a5ed8fc9e41239d4fe309d9ecedea2a969042ef",
+      "output": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\build\\original\\missions\\zeta9\\formalization\\CoefficientMap.olean",
+      "output_sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\stage1-extract.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\extract_decl_graph.lean",
+      "source_sha256": "18a0f05597f6af1678b9141d50865a1680e0e5e064809006e5c3cb6b8aa61e8c",
+      "log": "stage1-extract.log",
+      "log_sha256": "ce5edb39e96ab00f1a8a5cdd78bcf807d6b2934b6b7b9cd780508a499751aa8c",
+      "wrapper": "stage1-extract.ps1",
+      "wrapper_sha256": "a5b72ddf13ac9b9129da0f67e2dfc4df20c32d97302814ae9fd80f79b784d2cc",
+      "output": null,
+      "output_sha256": null
+    },
+    {
+      "label": "stage2-extract",
+      "command": [
+        "lake",
+        "env",
+        "pwsh",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map\\stage2-extract.ps1"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+      "exit_code": 0,
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\CoefficientMap.lean",
+      "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+      "oracle_input_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+      "oracle_input_bytes": 11295,
+      "stdout": "sketch_info.jsonl",
+      "stdout_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c",
+      "stderr": "stage2-extract-errors.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wrapper": "stage2-extract.ps1",
+      "wrapper_sha256": "f71fe876f1c43335a5fdaf664e6ae3358732e7555646d2f39a46ecc99ba6e49e",
+      "fact_counts": {
+        "decl": 27,
+        "ref": 92,
+        "command": 45
+      }
+    }
+  ]
+}

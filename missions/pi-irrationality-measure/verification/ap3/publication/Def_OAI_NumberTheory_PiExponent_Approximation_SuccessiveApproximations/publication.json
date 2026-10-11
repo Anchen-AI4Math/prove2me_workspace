@@ -1,0 +1,106 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "c7e688f04adeea57bee61ea4d725a40ffeece530d5a6dd3ab2ce93fb91589a17",
+  "preparation_pins": {
+    "bundle_source_sha256": "a3d7ff665d0e2076ad8476ffe2a899edbdb8cca1107099bf50a4ed2afbf80420",
+    "bundle_manifest_sha256": "46925c98c989a2c7bc2613e5ae78157aa9d07d9cfd755144e97d5b7c0b7dabed",
+    "academic_metadata_sha256": "afdd0c939872aa049bb7b94c8e2bd3aa909caedaf71e7f94fb2bbe2672e5e4d7",
+    "validation_certificate_sha256": "fbc65bdb1fe80bdfec155d5e829c3cf086a6ed95ba7b5fb65aa768bac086e752",
+    "source_owner_witness_sha256": "55fdb942adc50d7f47df597686691980ec592ded873812fc6ea2bf826441ffbd",
+    "stage_manifest_sha256": "56d42bb6a2f9d1ba69e05fb628b8dffa61eee629f38cd395e210fdc012bbc64d",
+    "consumer_script_sha256": "feb5c7409db35d8a20f391146593b6cb99244e3f4e0345861230d84aca37551f",
+    "publisher_script_sha256": "9671044888989924498db9eb9a9d90db58425438e1e8dfb6bc6870a2d5fa12ad",
+    "api_adapter_sha256": "8c7c90d59692d914ed0bf62d05d88204a970d0eb827cde37b862c64e299e00ed"
+  },
+  "publish_intent": {
+    "at_utc": "2026-10-09T09:49:03.092016+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+      "definition_title": "Normalized logarithmic denominator weights",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedLogWeights (q : ℕ → ℕ) : ℕ → ℝ\r\n  | 0 => 1\r\n  | n + 1 => (Nat.ceil (Real.log (q n)) : ℝ)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For any sequence q : ℕ → ℕ, normalizedLogWeights(q) is a function from ℕ to ℝ defined by normalizedLogWeights(q, 0) = 1 and normalizedLogWeights(q, n + 1) = Nat.ceil(log(q(n))), with the natural number ceiling coerced to ℝ. The zero-index value is exactly 1; every successor value is the ceiling of the logarithm of the preceding denominator. This is a definition only: it assumes no positivity condition on q and asserts no existence of an approximating sequence.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L74-L76",
+      "tags": [
+        "openai-pi-exponent-017",
+        "number-theory",
+        "definition"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "c7e688f04adeea57bee61ea4d725a40ffeece530d5a6dd3ab2ce93fb91589a17",
+    "bundle_source_sha256": "a3d7ff665d0e2076ad8476ffe2a899edbdb8cca1107099bf50a4ed2afbf80420",
+    "bundle_manifest_sha256": "46925c98c989a2c7bc2613e5ae78157aa9d07d9cfd755144e97d5b7c0b7dabed",
+    "validation_sha256": "fbc65bdb1fe80bdfec155d5e829c3cf086a6ed95ba7b5fb65aa768bac086e752"
+  },
+  "updated_at_utc": "2026-10-09T09:49:53.841476+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "57606f77-0799-4a8c-a1ac-bb269595e3f9",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/57606f77-0799-4a8c-a1ac-bb269595e3f9 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "fa8d29aeef911a68395d1f814298778f4a31117b9c5de2d52f1ae1cd55b1bfb5"
+  },
+  "job_id": "57606f77-0799-4a8c-a1ac-bb269595e3f9",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "57606f77-0799-4a8c-a1ac-bb269595e3f9",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+      "theorem_title": "Normalized logarithmic denominator weights",
+      "formal_statement": "",
+      "natural_language_statement": "For any sequence q : ℕ → ℕ, normalizedLogWeights(q) is a function from ℕ to ℝ defined by normalizedLogWeights(q, 0) = 1 and normalizedLogWeights(q, n + 1) = Nat.ceil(log(q(n))), with the natural number ceiling coerced to ℝ. The zero-index value is exactly 1; every successor value is the ceiling of the logarithm of the preceding denominator. This is a definition only: it assumes no positivity condition on q and asserts no existence of an approximating sequence.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedLogWeights (q : ℕ → ℕ) : ℕ → ℝ\r\n  | 0 => 1\r\n  | n + 1 => (Nat.ceil (Real.log (q n)) : ℝ)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L74-L76",
+      "tags": [
+        "openai-pi-exponent-017",
+        "number-theory",
+        "definition"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "74cfcd7f-9e25-450a-a16f-f6d00a7187e2",
+      "created_at": "2026-10-09T09:49:05.940145+00:00",
+      "updated_at": "2026-10-09T09:49:19.519299+00:00"
+    }
+  },
+  "definition_id": "74cfcd7f-9e25-450a-a16f-f6d00a7187e2",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "74cfcd7f-9e25-450a-a16f-f6d00a7187e2",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations",
+      "theorem_title": "Normalized logarithmic denominator weights",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For any sequence q : ℕ → ℕ, normalizedLogWeights(q) is a function from ℕ to ℝ defined by normalizedLogWeights(q, 0) = 1 and normalizedLogWeights(q, n + 1) = Nat.ceil(log(q(n))), with the natural number ceiling coerced to ℝ. The zero-index value is exactly 1; every successor value is the ceiling of the logarithm of the preceding denominator. This is a definition only: it assumes no positivity condition on q and asserts no existence of an approximating sequence.",
+      "created_at": "2026-10-09T09:49:18.752209+00:00",
+      "vote_count": 0,
+      "tags": [
+        "definition",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nnoncomputable def normalizedLogWeights (q : ℕ → ℕ) : ℕ → ℝ\r\n  | 0 => 1\r\n  | n + 1 => (Nat.ceil (Real.log (q n)) : ℝ)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L74-L76",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

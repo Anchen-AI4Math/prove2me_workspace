@@ -1,0 +1,282 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.numerator",
+    "definitionValue": "fun n t => (↑n.factorial ^ 7 * ∏ i ∈ Finset.range n, (t - (↑i + 1))) * ∏ i ∈ Finset.range n, (t + ↑n + (↑i + 1))",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.poleProduct",
+    "definitionValue": "fun n t => ∏ k ∈ Finset.range (n + 1), (t + ↑k)",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.actualR",
+    "definitionValue": "fun n t => ZetaNine.CoefficientMap.numerator n t / ZetaNine.CoefficientMap.poleProduct n t ^ 9",
+    "type": "ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+    "definitionValue": "fun n j t => ∏ k ∈ (Finset.range (n + 1)).erase j, (t + ↑k)",
+    "type": "ℕ → ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedR",
+    "definitionValue": "fun n j t => ZetaNine.CoefficientMap.numerator n t / ZetaNine.CoefficientMap.clearedPoleProduct n j t ^ 9",
+    "type": "ℕ → ℕ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+    "definitionValue": "fun n j => ZetaNine.CoefficientMap.clearedR n j (-↑j)",
+    "type": "ℕ → ℕ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.weightedR",
+    "definitionValue": "fun n W t => ZetaNine.CoefficientMap.actualR n t * Polynomial.eval (t * (t + ↑n)) W",
+    "type": "ℕ → Polynomial ℚ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+    "definitionValue": "fun n j W t => ZetaNine.CoefficientMap.clearedR n j t * Polynomial.eval (t * (t + ↑n)) W",
+    "type": "ℕ → ℕ → Polynomial ℚ → ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+    "definitionValue": "fun n j W => ZetaNine.CoefficientMap.clearedWeightedR n j W (-↑j)",
+    "type": "ℕ → ℕ → Polynomial ℚ → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.poleProduct_factor",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (t : ℚ), ZetaNine.CoefficientMap.poleProduct n t = (t + ↑j) * ZetaNine.CoefficientMap.clearedPoleProduct n j t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.poleProduct_ne_zero",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (t : ℚ), (∀ k ≤ n, t + ↑k ≠ 0) → ZetaNine.CoefficientMap.poleProduct n t ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clear_highest_pole",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.actualR n t * (t + ↑j) ^ 9 = ZetaNine.CoefficientMap.clearedR n j t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clear_weighted_highest_pole",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (W : Polynomial ℚ) (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.weightedR n W t * (t + ↑j) ^ 9 = ZetaNine.CoefficientMap.clearedWeightedR n j W t"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.rising_product",
+    "definitionValue": null,
+    "type": "∀ (a n : ℕ), ∏ i ∈ Finset.range n, (↑a + (↑i + 1)) = ↑n.factorial * ↑((a + n).choose n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.falling_product",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ), ∏ k ∈ Finset.range n, (↑k - ↑n) = (-1) ^ n * ↑n.factorial"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_eval",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), j ≤ n → ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) = (-1) ^ j * ↑j.factorial * ↑(n - j).factorial"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.numerator_eval",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMap.numerator n (-↑j) =\n      (-1) ^ n * ↑n.factorial ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMap.leadingPoleCoefficient n j =\n      (-1) ^ (n + j) * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_eq_even",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  Even n →\n    j ≤ n →\n      ZetaNine.CoefficientMap.leadingPoleCoefficient n j =\n        (-1) ^ j * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_ne_zero",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), j ≤ n → ZetaNine.CoefficientMap.leadingPoleCoefficient n j ≠ 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient_is_integer",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), j ≤ n → ∃ z, ZetaNine.CoefficientMap.leadingPoleCoefficient n j = ↑z"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.signed_leadingPoleCoefficient_pos_even",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), Even n → j ≤ n → (-1) ^ j * ZetaNine.CoefficientMap.leadingPoleCoefficient n j > 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.local_coordinate_identity",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ), j ≤ n → ∀ (z : ℚ), (-↑j + z) * (-↑j + z + ↑n) = -↑j * ↑(n - j) + (↑n - 2 * ↑j) * z + z ^ 2"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.clearedWeightedR_local_coordinate",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (W : Polynomial ℚ) (z : ℚ),\n      ZetaNine.CoefficientMap.clearedWeightedR n j W (-↑j + z) =\n        ZetaNine.CoefficientMap.clearedR n j (-↑j + z) * Polynomial.eval (-↑j * ↑(n - j) + (↑n - 2 * ↑j) * z + z ^ 2) W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ∀ (W : Polynomial ℚ),\n      ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j W =\n        (-1) ^ (n + j) * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n) *\n          Polynomial.eval (-↑j * ↑(n - j)) W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  Even n →\n    j ≤ n →\n      ∀ (W : Polynomial ℚ),\n        ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient n j W =\n          (-1) ^ j * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n) *\n            Polynomial.eval (-↑j * ↑(n - j)) W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_actual_leading",
+    "definitionValue": null,
+    "type": "∀ (n j : ℕ),\n  j ≤ n →\n    ZetaNine.CoefficientMap.clearedR n j (-↑j) =\n      (-1) ^ (n + j) * ↑(n.choose j) ^ 9 * ↑((n + j).choose n) * ↑((2 * n - j).choose n)"
+  }
+]

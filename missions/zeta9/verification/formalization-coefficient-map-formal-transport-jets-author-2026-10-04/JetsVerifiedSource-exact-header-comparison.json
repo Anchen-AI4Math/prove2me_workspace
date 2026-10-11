@@ -1,0 +1,178 @@
+{
+  "role": "Actual main compiler source export only; full native author controls still pending",
+  "initial_source": {
+    "task_relative": "formalization/CoefficientMapFormalTransportJets.lean",
+    "bytes": 17428,
+    "sha256": "b081ed2a0c6382d68db5f325e8e8169e0536914cd56b7d52549cb5312f5fe00d"
+  },
+  "actual_final_source": {
+    "task_relative": ".rt/ja1/missions/zeta9/formalization/CoefficientMapFormalTransportJets.lean",
+    "bytes": 17475,
+    "sha256": "ccef5eaf7bad1b86ce8da45401b2ed3d5bb28e55aafc2626a92d4fc2a4cf4c02"
+  },
+  "verified_export": {
+    "task_relative": "verification/formalization-coefficient-map-formal-transport-jets-author-2026-10-04/JetsVerifiedSource.lean",
+    "bytes": 17475,
+    "sha256": "ccef5eaf7bad1b86ce8da45401b2ed3d5bb28e55aafc2626a92d4fc2a4cf4c02"
+  },
+  "initial_shared_source_actually_compiled_successfully": false,
+  "all26_exact_headers_equal": true,
+  "records": [
+    {
+      "name": "pole_factor",
+      "initial_header": "theorem pole_factor (m j : ℕ) (hj : j ≤ m) :\n    polePolynomial m = (X + C (j : ℚ)) * clearedPolePolynomial m j",
+      "actual_final_header": "theorem pole_factor (m j : ℕ) (hj : j ≤ m) :\n    polePolynomial m = (X + C (j : ℚ)) * clearedPolePolynomial m j",
+      "exact_equal": true
+    },
+    {
+      "name": "pole_comp_shift_factor",
+      "initial_header": "theorem pole_comp_shift_factor (m j : ℕ) (hj : j ≤ m) :\n    (polePolynomial m).comp (shiftedVariable j) = X * shiftedClearedDenominator m j",
+      "actual_final_header": "theorem pole_comp_shift_factor (m j : ℕ) (hj : j ≤ m) :\n    (polePolynomial m).comp (shiftedVariable j) = X * shiftedClearedDenominator m j",
+      "exact_equal": true
+    },
+    {
+      "name": "pole_upper",
+      "initial_header": "theorem pole_upper (m : ℕ) :\n    polePolynomial (m + 1) = polePolynomial m * (X + C ((m + 1 : ℕ) : ℚ))",
+      "actual_final_header": "theorem pole_upper (m : ℕ) :\n    polePolynomial (m + 1) = polePolynomial m * (X + C ((m + 1 : ℕ) : ℚ))",
+      "exact_equal": true
+    },
+    {
+      "name": "upper_cleared_denominator",
+      "initial_header": "theorem upper_cleared_denominator (m j : ℕ) (hj : j ≤ m) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedClearedDenominator m j * (shiftedVariable j + C ((m + 1 : ℕ) : ℚ))",
+      "actual_final_header": "theorem upper_cleared_denominator (m j : ℕ) (hj : j ≤ m) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedClearedDenominator m j * (shiftedVariable j + C ((m + 1 : ℕ) : ℚ))",
+      "exact_equal": true
+    },
+    {
+      "name": "shift_successor_comp",
+      "initial_header": "theorem shift_successor_comp (j : ℕ) (hj : 1 ≤ j) :\n    (X + 1 : ℚ[X]).comp (shiftedVariable j) = shiftedVariable (j - 1)",
+      "actual_final_header": "theorem shift_successor_comp (j : ℕ) (hj : 1 ≤ j) :\n    (X + 1 : ℚ[X]).comp (shiftedVariable j) = shiftedVariable (j - 1)",
+      "exact_equal": true
+    },
+    {
+      "name": "lower_cleared_denominator",
+      "initial_header": "theorem lower_cleared_denominator (m j : ℕ) (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedVariable j * shiftedClearedDenominator m (j - 1)",
+      "actual_final_header": "theorem lower_cleared_denominator (m j : ℕ) (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    shiftedClearedDenominator (m + 1) j =\n      shiftedVariable j * shiftedClearedDenominator m (j - 1)",
+      "exact_equal": true
+    },
+    {
+      "name": "upper_whole_actual_series",
+      "initial_header": "theorem upper_whole_actual_series (m j : ℕ) (A : ℚ[X]) (hj : j ≤ m) :\n    numeratorClearedSeries (m + 1) j ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      numeratorClearedSeries m j A",
+      "actual_final_header": "theorem upper_whole_actual_series (m j : ℕ) (A : ℚ[X]) (hj : j ≤ m) :\n    numeratorClearedSeries (m + 1) j ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      numeratorClearedSeries m j A",
+      "exact_equal": true
+    },
+    {
+      "name": "lower_whole_actual_series",
+      "initial_header": "theorem lower_whole_actual_series (m j : ℕ) (A : ℚ[X])\n    (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    numeratorClearedSeries (m + 1) j (X ^ 9 * A.comp (X + 1)) =\n      numeratorClearedSeries m (j - 1) A",
+      "actual_final_header": "theorem lower_whole_actual_series (m j : ℕ) (A : ℚ[X])\n    (hj1 : 1 ≤ j) (hj : j ≤ m + 1) :\n    numeratorClearedSeries (m + 1) j (X ^ 9 * A.comp (X + 1)) =\n      numeratorClearedSeries m (j - 1) A",
+      "exact_equal": true
+    },
+    {
+      "name": "local_zero_of_shift_X_nine",
+      "initial_header": "theorem local_zero_of_shift_X_nine (m j s : ℕ) (A : ℚ[X])\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9)\n    (hA : (X : ℚ[X]) ^ 9 ∣ A.comp (shiftedVariable j)) :\n    numeratorLocalCoefficient m j s A = 0",
+      "actual_final_header": "theorem local_zero_of_shift_X_nine (m j s : ℕ) (A : ℚ[X])\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9)\n    (hA : (X : ℚ[X]) ^ 9 ∣ A.comp (shiftedVariable j)) :\n    numeratorLocalCoefficient m j s A = 0",
+      "exact_equal": true
+    },
+    {
+      "name": "upper_all_actual_jets",
+      "initial_header": "theorem upper_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      if j ≤ m then numeratorLocalCoefficient m j s A else 0",
+      "actual_final_header": "theorem upper_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s ((X + C ((m + 1 : ℕ) : ℚ)) ^ 9 * A) =\n      if j ≤ m then numeratorLocalCoefficient m j s A else 0",
+      "exact_equal": true
+    },
+    {
+      "name": "lower_all_actual_jets",
+      "initial_header": "theorem lower_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s (X ^ 9 * A.comp (X + 1)) =\n      if j = 0 then 0 else numeratorLocalCoefficient m (j - 1) s A",
+      "actual_final_header": "theorem lower_all_actual_jets (m j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ m + 1) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (m + 1) j s (X ^ 9 * A.comp (X + 1)) =\n      if j = 0 then 0 else numeratorLocalCoefficient m (j - 1) s A",
+      "exact_equal": true
+    },
+    {
+      "name": "double_all_actual_jets",
+      "initial_header": "theorem double_all_actual_jets (n j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (n + 2) j s\n      (X ^ 9 * (X + C ((n : ℚ) + 2)) ^ 9 * A.comp (X + 1)) =\n      if 1 ≤ j ∧ j ≤ n + 1 then numeratorLocalCoefficient n (j - 1) s A else 0",
+      "actual_final_header": "theorem double_all_actual_jets (n j s : ℕ) (A : ℚ[X])\n    (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    numeratorLocalCoefficient (n + 2) j s\n      (X ^ 9 * (X + C ((n : ℚ) + 2)) ^ 9 * A.comp (X + 1)) =\n      if 1 ≤ j ∧ j ≤ n + 1 then numeratorLocalCoefficient n (j - 1) s A else 0",
+      "exact_equal": true
+    },
+    {
+      "name": "numeratorClearedSeries_add",
+      "initial_header": "theorem numeratorClearedSeries_add (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A + B) =\n      numeratorClearedSeries m j A + numeratorClearedSeries m j B",
+      "actual_final_header": "theorem numeratorClearedSeries_add (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A + B) =\n      numeratorClearedSeries m j A + numeratorClearedSeries m j B",
+      "exact_equal": true
+    },
+    {
+      "name": "numeratorClearedSeries_sub",
+      "initial_header": "theorem numeratorClearedSeries_sub (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A - B) =\n      numeratorClearedSeries m j A - numeratorClearedSeries m j B",
+      "actual_final_header": "theorem numeratorClearedSeries_sub (m j : ℕ) (A B : ℚ[X]) :\n    numeratorClearedSeries m j (A - B) =\n      numeratorClearedSeries m j A - numeratorClearedSeries m j B",
+      "exact_equal": true
+    },
+    {
+      "name": "numeratorClearedSeries_smul",
+      "initial_header": "theorem numeratorClearedSeries_smul (m j : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorClearedSeries m j (a • A) = a • numeratorClearedSeries m j A",
+      "actual_final_header": "theorem numeratorClearedSeries_smul (m j : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorClearedSeries m j (a • A) = a • numeratorClearedSeries m j A",
+      "exact_equal": true
+    },
+    {
+      "name": "numeratorLocalCoefficient_add",
+      "initial_header": "theorem numeratorLocalCoefficient_add (m j s : ℕ) (A B : ℚ[X]) :\n    numeratorLocalCoefficient m j s (A + B) =\n      numeratorLocalCoefficient m j s A + numeratorLocalCoefficient m j s B",
+      "actual_final_header": "theorem numeratorLocalCoefficient_add (m j s : ℕ) (A B : ℚ[X]) :\n    numeratorLocalCoefficient m j s (A + B) =\n      numeratorLocalCoefficient m j s A + numeratorLocalCoefficient m j s B",
+      "exact_equal": true
+    },
+    {
+      "name": "numeratorLocalCoefficient_smul",
+      "initial_header": "theorem numeratorLocalCoefficient_smul (m j s : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorLocalCoefficient m j s (a • A) = a * numeratorLocalCoefficient m j s A",
+      "actual_final_header": "theorem numeratorLocalCoefficient_smul (m j s : ℕ) (a : ℚ) (A : ℚ[X]) :\n    numeratorLocalCoefficient m j s (a • A) = a * numeratorLocalCoefficient m j s A",
+      "exact_equal": true
+    },
+    {
+      "name": "actual_chosen_all_local_coefficients_transport",
+      "initial_header": "theorem actual_chosen_all_local_coefficients_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (j s : ℕ) (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) j s (X ^ r.val) =\n      extendedOldCoefficient n j s (connectionP n r) +\n        extendedRemainderCoefficient n j s (connectionQ n r) -\n        previousRemainderCoefficient n j s (connectionQ n r)",
+      "actual_final_header": "theorem actual_chosen_all_local_coefficients_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (j s : ℕ) (hj : j ≤ n + 2) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) j s (X ^ r.val) =\n      extendedOldCoefficient n j s (connectionP n r) +\n        extendedRemainderCoefficient n j s (connectionQ n r) -\n        previousRemainderCoefficient n j s (connectionQ n r)",
+      "exact_equal": true
+    },
+    {
+      "name": "actual_chosen_left_boundary_coefficient",
+      "initial_header": "theorem actual_chosen_left_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) 0 s (X ^ r.val) =\n      remainderCoefficient n 0 s (connectionQ n r)",
+      "actual_final_header": "theorem actual_chosen_left_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) 0 s (X ^ r.val) =\n      remainderCoefficient n 0 s (connectionQ n r)",
+      "exact_equal": true
+    },
+    {
+      "name": "actual_chosen_right_boundary_coefficient",
+      "initial_header": "theorem actual_chosen_right_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) (n + 2) s (X ^ r.val) =\n      -remainderCoefficient n (n + 1) s (connectionQ n r)",
+      "actual_final_header": "theorem actual_chosen_right_boundary_coefficient (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    weightedLocalCoefficient (n + 2) (n + 2) s (X ^ r.val) =\n      -remainderCoefficient n (n + 1) s (connectionQ n r)",
+      "exact_equal": true
+    },
+    {
+      "name": "sum_upper_zero_extension",
+      "initial_header": "theorem sum_upper_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j ≤ N then f j else 0) =\n      ∑ j ∈ range (N + 1), f j",
+      "actual_final_header": "theorem sum_upper_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j ≤ N then f j else 0) =\n      ∑ j ∈ range (N + 1), f j",
+      "exact_equal": true
+    },
+    {
+      "name": "sum_lower_zero_extension",
+      "initial_header": "theorem sum_lower_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j = 0 then 0 else f (j - 1)) =\n      ∑ j ∈ range (N + 1), f j",
+      "actual_final_header": "theorem sum_lower_zero_extension (N : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range (N + 2), if j = 0 then 0 else f (j - 1)) =\n      ∑ j ∈ range (N + 1), f j",
+      "exact_equal": true
+    },
+    {
+      "name": "sum_extendedOldCoefficient",
+      "initial_header": "theorem sum_extendedOldCoefficient (n s : ℕ) (P : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedOldCoefficient n j s P) =\n      CoefficientMapFiniteSum.rho n s P",
+      "actual_final_header": "theorem sum_extendedOldCoefficient (n s : ℕ) (P : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedOldCoefficient n j s P) =\n      CoefficientMapFiniteSum.rho n s P",
+      "exact_equal": true
+    },
+    {
+      "name": "sum_extendedRemainderCoefficient",
+      "initial_header": "theorem sum_extendedRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q",
+      "actual_final_header": "theorem sum_extendedRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q",
+      "exact_equal": true
+    },
+    {
+      "name": "sum_previousRemainderCoefficient",
+      "initial_header": "theorem sum_previousRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), previousRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q",
+      "actual_final_header": "theorem sum_previousRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), previousRemainderCoefficient n j s q) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q",
+      "exact_equal": true
+    },
+    {
+      "name": "actual_chosen_all_rho_transport",
+      "initial_header": "theorem actual_chosen_all_rho_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    CoefficientMapFiniteSum.rho (n + 2) s (X ^ r.val) =\n      CoefficientMapFiniteSum.rho n s (connectionP n r)",
+      "actual_final_header": "theorem actual_chosen_all_rho_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    CoefficientMapFiniteSum.rho (n + 2) s (X ^ r.val) =\n      CoefficientMapFiniteSum.rho n s (connectionP n r)",
+      "exact_equal": true
+    }
+  ]
+}

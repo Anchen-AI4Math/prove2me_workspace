@@ -1,5 +1,12 @@
 # ζ(9) Prove2me 私有提案
 
+**当前交接（2026-10-02）：** 用户决定公开这个已有 mission。最新公开首页、源码包、
+里程碑状态核对及实际 API 回读统一放在
+[publication/2026-10-02](../../publication/2026-10-02/README.md)。
+下面的 `Private`、提案数量与数学开放状态是原日期的历史记录；当前数学状态以
+[公开总览](../../PUBLIC_OVERVIEW.md)为准，公开审核状态以此次平台回读为准。
+根目标仍开放，书面已证节点不自动成为平台 Lean 已证节点。
+
 本目录把[本地数学 DAG](../DAG.md)的目标和可独立形式化的归约整理成 Prove2me private mission。平台回读记录在 [proposal-receipt.json](proposal-receipt.json)：提案 ID `06faf23f-00c2-4edf-92ab-1212cdb7d7d6`，mission ID `8195d8fe-059f-4515-92b4-57b585e2bac6`，当前状态 `Private`。数学根节点仍开放。
 
 提案包含一个根定理 `ZetaNine.irrational_zeta_nine`、两条通用归约陈述，以及既有的 Zudilin 四数择一无理定理引用；三项里程碑分别对应该文献结果、两形式无理性准则和抽象指数裕量桥。三份提案 Lean 文件以 `by sorry` 收尾，只是陈述；根定理仍开放。每项新陈述已附独立盲读回。
@@ -53,6 +60,28 @@ min_lt_weighted_average_lt_max`。
 两条根约简：单形式路线 `{一对多式准则(Proved), 指数小非零形式义务(Open)}`、双形式路线
 `{双形式准则(Proved), 指数小独立形式义务(Open)}`，均 `SKETCH_ACCEPTED`。两个开放义务都
 **严格强于**目标且**不等价**（要求固定速率的指数级逼近），因此根仍 `Open`。
+
+## 2026-09-25：公开 mission（ζ(9) 笔记的抽象层）
+
+与上面的 private mission 平行，另有一个**公开** mission 提案
+*Formalize the abstract layer of "Research Notes on ζ(9)" (v0.1)*，提案 ID
+`00d787d8-91c8-45bf-87f0-6a5e9e8bc472`，命名空间 `Zeta9Note.*`（与私有侧 `ZetaNine.*` 隔离），
+可见性 `public`，8 个 item + 7 条里程碑，目标是单形式无理性准则。它只承载**抽象层**——
+八条陈述都不出现 ζ(9)。
+
+本地 8 份 `Sol_Zeta9Note_*.lean` 全部 `lake env lean` 编译通过（含两条归约，先
+`lake build` 了 `Theorems.Thm_Zeta9Note_quadrature_exact_of_moments` 与
+`…_min_lt_weighted_average_lt_max`），公开仓库的合并文件
+`zeta9-research-notes/formalization/Zeta9Note.lean` 也编译通过。8 份证明已提交平台，
+**8/8 `ACCEPTED`，8 条定理全部转为 `Proved`**；回执
+[public-proposal/submissions-receipt.json](public-proposal/submissions-receipt.json)，
+流程与复现命令见 [public-proposal/README.md](public-proposal/README.md)。
+
+提案此刻仍是 `In review`（`mission_id` 为空，等 moderator 批准）。这纠正了此前的一个错误假设：
+脚本原以为 `In review` 期间平台不接受提交，实测 `POST /verify` 照常接受，定理状态也会立刻翻转。
+
+这不改变私有侧的状态：私有根 `ZetaNine.irrational_zeta_nine` 仍 `Open`，两个指数小形式义务
+既未证也不等价于根。
 
 **没有接的**：具体构造（$F_n$、饱和核、Smith 数据、加权面积、同余格极小值）仍无 Lean 定义，
 所以 `V←VA,Q,X`、`VA←VB,Y`、`VB←VC,H,Z` 等算术箭头没有作为平台分解发布；X、VB、VC、VD、S、

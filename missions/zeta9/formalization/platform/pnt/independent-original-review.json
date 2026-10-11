@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-02",
+  "review_kind": "Independent mathematical and original-statement fidelity review",
+  "reviewer": "/root/pnt_statement_independent_review",
+  "verdict": "PASS",
+  "proof_authorship_in_this_review": false,
+  "reviewed_source": {
+    "path": "formalization/PNTTransfer.lean",
+    "sha256": "6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b",
+    "matches_requested_final_source": true
+  },
+  "review_method": {
+    "order": "Read the actual Lean interfaces and proofs first; then compare the original research sections and the MediumPNT evidence.",
+    "independent_exact_source_compile": true,
+    "full_upstream_rebuild_repeated": false,
+    "existing_upstream_replay_hashes_independently_checked": true,
+    "credentials_read": false,
+    "network_calls": false,
+    "platform_writes": false,
+    "shared_scope_or_sources_edited": false,
+    "frozen_payloads_edited": false
+  },
+  "checks": [
+    {
+      "id": "actual_objects",
+      "verdict": "PASS",
+      "evidence": [
+        "Definitions/Def_ZetaNine_HarmonicStability.lean",
+        "formalization/HarmonicPrimeValuation.lean",
+        "formalization/HarmonicAsymptotic.lean",
+        "formalization/PNTTransfer.lean"
+      ],
+      "finding": "harmonicPower s N is exactly the rational sum over j in Icc 1 N of 1/(j:Q)^s. logDen q is Real.log(q.den:Real), the positive reduced Rat denominator, including den(0)=1. The transfer imports these objects; it introduces no substitute harmonic, denominator, theta or psi function."
+    },
+    {
+      "id": "original_section_1",
+      "verdict": "PASS",
+      "finding": "harmonic_scaled_split_prime proves p^s H_N = H_(N/p) + p^s primeRemainder for all p>0. The nonmultiple remainder has denominator coprime to p. The exact denominator valuation theorem retains s>0, p prime, p<=N, N<p^2 and the actual prefix numerator unit condition. It does not assert all large primes are units."
+    },
+    {
+      "id": "fixed_finite_exceptions",
+      "verdict": "PASS",
+      "finding": "harmonicExceptionalProduct s K is the product of the absolute reduced numerators of actual H_1,...,H_K, positive by proved positivity. It depends on fixed s,K and not N. The threshold (K+1)*(max K exceptionalProduct+1) forces every prime in (N/(K+1),N] to exceed both K and the exceptional product. With N/p<=K this implies N<(K+1)*p<=p^2, and the numerator unit condition is derived. The p=19,s=9,k=2 exception is retained rather than assumed away."
+    },
+    {
+      "id": "original_section_2_full_sequence",
+      "verdict": "PASS",
+      "finding": "The lower bound is s*(theta(N)-theta(N/(K+1))) <= logDen(H_N), with the actual prime interval and a proved eventual threshold for each fixed K. In the order-limit proof, for each a<s one first selects a fixed K with s*(1-1/(K+1))>a and then takes N to infinity. The upper bound is the actual reduced denominator divisibility den(H_N)|lcmUpto(N)^s. These produce Tendsto along all natural N atTop to s for every fixed positive natural s. There is no subsequence, finite-range replacement, moving-K assumption, denominator-monotonicity premise, or rationality premise."
+    },
+    {
+      "id": "original_section_3_perturbation",
+      "verdict": "PASS",
+      "finding": "Rat.add_den_dvd and Rat.sub_den_dvd prove both denominator divisibilities. Their logarithmic consequence controls arbitrary numerator cancellation. harmonic_perturbed_log_den_rate retains only s>0 and the actual assumption logDen(r N)/N -> 0 for an arbitrary r:N->Q. The baseline is supplied by the proved harmonic_log_den_rate, not assumed at the final endpoint. In particular r_N=-H_N is not silently admitted under the small-denominator premise when s>0."
+    },
+    {
+      "id": "literal_pnt_transfer",
+      "verdict": "PASS",
+      "finding": "The original imported MediumPNT gives a closed existential positive c and Big-O estimate for actual Chebyshev.psi-id. The transfer proves exp(-c*(log x)^(1/10))->0, hence (psi(x)-x)/x->0 and psi(x)/x->1. Mathlib's proved psi-theta=O(sqrt x), with sqrt x/x->0, gives ThetaPNT. The exact Mathlib identity Chebyshev.psi(N)=log(lcmUpto N), restricted to natural endpoints, gives LcmPNT. Both formerly conditional inputs are thus discharged without PNT axioms or harmonic-growth assumptions."
+    },
+    {
+      "id": "order_nine_double_endpoint",
+      "verdict": "PASS",
+      "finding": "harmonic_nine_double_log_den_rate literally states Tendsto (M:N => logDen(harmonicPower 9 (2*M))/(M:Real)) atTop (nhds 18), with no hypotheses. Positive natural scaling of the full-sequence rate accounts for 9*2=18. This is the precise harmonic baseline used in the right-shifted Mellin note."
+    },
+    {
+      "id": "mellin_use_and_boundary",
+      "verdict": "PASS",
+      "finding": "The Mellin note writes q_(M,D)=H_(2M)^(9)+r and uses |log den(q)-log den(H_(2M))| <= log den(r). Consequently its separately proved small perturbation-denominator condition gives rate 18 for den(q); its separate positive-error bounds then give rate 18 for the primitive form. This review verifies the harmonic baseline and stability step only. PNTTransfer does not formalize all Schur matrix bounds, prove the small-denominator condition for arbitrary moving M,D, or establish a general Mellin obstruction outside the note's stated ranges."
+    },
+    {
+      "id": "kernel_axioms",
+      "verdict": "PASS",
+      "finding": "The fresh independent compilation of the exact PNTTransfer source exits 0, printing thirteen axiom audits including MediumPNT and all unconditional endpoints. Every report contains only propext, Classical.choice and Quot.sound. No sorryAx or project PNT axiom appears."
+    },
+    {
+      "id": "real_upstream_dependency",
+      "verdict": "PASS",
+      "finding": "The import is PrimeNumberTheoremAnd.MediumPNT. The actual local original MediumPNT theorem concludes the required existential error estimate without hypotheses, as separately checked by PNTKernelAudit.lean. All 14 PNT and 9 Architect source hashes independently match the fixed replay manifest; MediumPNT.olean and the closed-statement audit source/log independently match the replay receipt. This reviewer reused that actual compiled cache, and did not repeat its entire 3621-job replay."
+    }
+  ],
+  "endpoints": {
+    "psi_pnt_rate": "No hypotheses; actual Chebyshev.psi(x)/x -> 1 along real atTop.",
+    "theta_pnt": "No hypotheses; literal ThetaPNT.",
+    "lcm_pnt": "No hypotheses; literal LcmPNT.",
+    "harmonic_log_den_rate": "For every s:N and hs:0<s; actual log den(H_N^(s))/N -> s along all natural N.",
+    "harmonic_perturbed_log_den_rate": "For every fixed s>0 and arbitrary r:N->Q, assuming only actual log den(r_N)/N -> 0; actual log den(H_N^(s)+r_N)/N -> s.",
+    "harmonic_nine_double_log_den_rate": "No hypotheses; actual log den(H_(2M)^(9))/M -> 18 along all natural M."
+  },
+  "independent_compile": {
+    "command": "lake env powershell -NoProfile -ExecutionPolicy Bypass -File missions/zeta9/formalization/platform/pnt/independent-original-compile.ps1",
+    "working_directory": "D:\\users\\self_projects\\prove2me_workspace",
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0,
+    "log": "formalization/platform/pnt/independent-original-lean.log",
+    "log_sha256": "273348cacdd28a110712d0e338dc76056b8c3f990bcbc5784b45a4512871b9c4",
+    "exit_file": "formalization/platform/pnt/independent-original-lean-exit.txt",
+    "exit_file_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "script_sha256": "765d6963f5bf306b3bc4a3ea53767d3da48a924a0d7ac88b7a3ffb328d8f3dae",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "upstream_cache": "verification/formalization-pnt-dependency-2026-10-02/project/.lake/build/lib/lean"
+  },
+  "reviewed_hashes": {
+    "formalization/HarmonicAsymptotic.lean": "d5de9615948820367823fed4128cbf7aedea75b3c42b1a1134cc6c4213a30fca",
+    "formalization/HarmonicPrimeValuation.lean": "bb7df45433a3441520c343356548ac2cd279e05a4b10ff59b8dd3a13d13a99fb",
+    "Definitions/Def_ZetaNine_HarmonicStability.lean": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92",
+    "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_den_dvd_lcm_power.lean": "8b06ea276fa3f72bc875500d0ea79e6623f65df0c77c98c68f64ead0d83902ae",
+    "research/harmonic-denominator-stability-2026-10-01.md": "7b6c9c265282d79fa2a332d3f804dbead56df3db3f857c510d50ba661ba576b7",
+    "research/mellin-shift-arithmetic-2026-10-01.md": "1c73489f5c234c8701ab66b55945114c5d9c145ce2926dbf5fa42f53b7d0a873",
+    "verification/formalization-2026-10-02/pnt-transfer-final-receipt.json": "902dba6447d1157302580dcd0b803e623906e9f5e0a712e47a9cbadde6865bce",
+    "verification/formalization-2026-10-02/pnt-transfer-final-lean.log": "759378eba27720e87a0ad4afbe187e0a23fbdcb835f5e5ae4cb6083235b858d6",
+    "verification/formalization-pnt-dependency-2026-10-02/kernel-replay-receipt.json": "5dfff10f11ceccb6f9570f013409bbc228b51db954045c2d275d497a30886a59",
+    "verification/formalization-pnt-dependency-2026-10-02/kernel-source-manifest.json": "d9ae2a022ad3c669ac22cb2cc470ca19ba84ff21aed8634e9e11a5afc477cf24",
+    "verification/formalization-pnt-dependency-2026-10-02/project/PNTKernelAudit.lean": "999f8e0726dc738d7272bad2839a6c09378c2c16605773208cdc3547698ab99e",
+    "verification/formalization-pnt-dependency-2026-10-02/kernel-axiom-audit.log": "5ab6c9c7a33a5bfd87a63731ec87274dfbc2be7c87d36a74be08b472d7abea42",
+    "verification/formalization-pnt-dependency-2026-10-02/project/PrimeNumberTheoremAnd/MediumPNT.lean": "cf60cbb12161448eb22bcabcd877b3cbdb9d4aabb442426f9512612c7633fbc0",
+    "verification/formalization-pnt-dependency-2026-10-02/project/.lake/build/lib/lean/PrimeNumberTheoremAnd/MediumPNT.olean": "b61e03e9e48c54c6c4b0c3ec1c5d4b9243a6b6a5a83833fb92d5c07d8a41281a",
+    "formalization/platform/pnt/medium-pnt-proved-readback.json": "c71db9d9d5a75a21406a3b7228ceefb40339e16dfdb9f62c5c798b4207467279"
+  },
+  "platform_pnt_readback": {
+    "theorem_id": "7cfa31c8-4063-4b52-81fc-8b2f2a59495e",
+    "name": "MediumPNT",
+    "recorded_status": "Proved",
+    "recorded_visibility": "public",
+    "recorded_mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "same_formal_statement": true,
+    "live_readback_performed_by_this_reviewer": false,
+    "proof_evidence_boundary": "The saved platform formal_statement ends with by sorry as a theorem statement stub. This review does not use that stub as a proof; the actual local unchanged-source replay and fresh PNTTransfer compilation supply the kernel evidence."
+  },
+  "findings": [
+    {
+      "severity": "informational",
+      "id": "platform_source_commit_differs",
+      "finding": "The platform readback source URL points to upstream commit f55e85551ac10e96d98262a354cfcaac2825f2da; the actual unchanged local replay is pinned to 55270df807213fc3584523d09e0311d7dc073ff5. The formal PNT statement and Mathlib revision agree. These are not identical source commits, and the readback alone does not establish cross-commit byte equality.",
+      "affects_mathematical_pass": false
+    }
+  ],
+  "unresolved_boundaries": [
+    "The main J condition remains Open; this batch proves no exclusion of eventual fixation of the primitive direction.",
+    "The stronger S condition remains outside this batch.",
+    "No irrationality theorem for zeta(9) is proved by these harmonic denominator rates.",
+    "Arbitrary Mellin parameter regimes still require their actual perturbation denominator estimates and positive-error arguments.",
+    "Mechanical platform payloads have not been reviewed in this original-source report; a separate review is pending their delivery."
+  ],
+  "upstream_provenance": {
+    "repository": "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd",
+    "local_pnt_commit": "55270df807213fc3584523d09e0311d7dc073ff5",
+    "architect_commit": "0f5bc0209ae02a7fb0cfe7d113d4094542cee221",
+    "lean_version": "4.33.1",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "all_23_current_source_hashes_match_recorded_fixed_manifest": true
+  }
+}

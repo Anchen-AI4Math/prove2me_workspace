@@ -1,0 +1,10 @@
+{
+  "theorem_name": "OAI.Snaky21.combination_rule",
+  "theorem_title": "Lemma 3 — sound combination of conditional Snaky claims",
+  "formal_statement": "theorem OAI.Snaky21.combination_rule (p : Cell) (cs : List Card) (hne : cs ≠ []) (hv : ∀ c ∈ cs, Valid c) : Valid (combine p cs) := by sorry",
+  "natural_language_statement": "Let a finite nonempty list of conditional claims be valid for the Snaky game on the integer grid. Each claim specifies required Maker cells, a finite envelope avoiding Breaker, and a positive bound on further actual Maker claims. For any pivot p, form the parent envelope by adjoining p to the union of the child envelopes, and form the required set by deleting p from the union of all child required sets and the intersection of their envelopes. The parent is a valid conditional claim with height one plus the maximum child height. This remains true for arbitrary additional Maker ownership and Breaker cells outside the envelope.",
+  "preamble": "import Definitions.Def_Snaky21Core\nopen OAI.Snaky21 OAI.SnakyPrototype\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Lemma 3, Maker-turn assertion.",
+  "proof_file": "missions/snaky-21/platform/combination-proof.lean",
+  "explanation": "The parent invariant makes its pivot unavailable to Breaker. Maker takes the pivot if it is free, and otherwise takes the explicitly constructed fresh cell. In either case this spends one actual Maker claim and puts every child required cell and the common envelope intersection in Maker ownership. A legal Breaker reply lies outside that intersection, so at least one child envelope survives. Older Breaker cells also avoid the surviving child because its envelope is contained in the parent envelope. The child claim gives victory within its height, and budget monotonicity bounds this by the parent height. The proof treats replacement moves and distant replies without additional restrictions on prior ownership."
+}

@@ -1,0 +1,13 @@
+--- initial-candidate
++++ actual-private-repair-01
+@@ -308,8 +308,8 @@
+     · simp [extendedOldCoefficient, hz]
+     · have hb : 1 ≤ j ∧ j ≤ n + 1 := by omega
+       simp only [extendedOldCoefficient, if_pos hb, if_neg hz]
+-  rw [h, sum_lower_zero_extension]
+-  rfl
++  rw [h]
++  exact sum_lower_zero_extension n (fun j => weightedLocalCoefficient n j s P)
+ 
+ theorem sum_extendedRemainderCoefficient (n s : ℕ) (q : ℚ[X]) :
+     (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q) =

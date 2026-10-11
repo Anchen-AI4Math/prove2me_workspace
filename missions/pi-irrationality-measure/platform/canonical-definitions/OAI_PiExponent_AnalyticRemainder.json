@@ -1,0 +1,23 @@
+{
+  "theorem_id": "1af087c1-f65e-41b5-90e3-ea99fecb6829",
+  "theorem_name": "OAI_PiExponent_AnalyticRemainder",
+  "theorem_title": "Explicit collision and translation error for the fixed determinant family",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For a fixed admissible determinant family, write $M(H)$ for the row count, and let $m$ and $v_0$ be its dimension and row scale. Define\n\n$$Q(H)=(H+1)^{2m}(H/v_0+1),\\qquad s=\\exp(-\\log2/2),$$\n\n$$\\varepsilon_d(H)=\\frac{\\log M(H)+\\log2/4-\\log(1-s)}{H}+\\frac{\\log Q(H)}{H}.$$\n\nFor positive heights, $Q(H)$ majorizes the natural-floor translation count in the pinned source. The first error term is the source's normalized factorial and geometric collision correction. These explicit functions allow the finite determinant estimate and the vanishing-error argument to be treated separately. This definition asserts neither estimate nor convergence.",
+  "created_at": "2026-10-07T19:41:30.829758+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "definition": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nnoncomputable section\nnamespace OAI.PiExponent.DeterminantContradiction\n\n-- Real polynomial majorant of TranslationCountLimit.translationTermCount.\ndef translationEnvelope (m : ℕ) (v H : ℝ) : ℝ :=\n  (H + 1) ^ (2 * m) * (H / v + 1)\n\n-- CollisionExponential.collisionRemainder, plus the translation entropy.\ndef analyticRemainder {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℝ :=\n  (Real.log (actualRowCount d H : ℝ) + Real.log 2 / 4 -\n    Real.log (1 - Real.exp (-Real.log 2 / 2))) / H +\n    Real.log (translationEnvelope d.m d.v0 H) / H\n\nend OAI.PiExponent.DeterminantContradiction\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionExponential.lean (collisionRatio, collisionRemainder); https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/TranslationCountLimit.lean (translationTermCount). Q is the real polynomial upper envelope obtained by replacing each natural floor by its argument at positive heights.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

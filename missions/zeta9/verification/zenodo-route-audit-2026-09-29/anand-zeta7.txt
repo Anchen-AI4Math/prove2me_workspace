@@ -1,0 +1,2617 @@
+ζ(7) is irrational
+Prince Anand
+Abstract
+We prove thatζ(7) is irrational. The proof constructs integer polynomialsQ n of degree 37n
+with
+0< Q n(ζ(7))<exp
+(︁
+−19000n 2)︁
+for all sufficiently largen. These polynomials are rationally normalized Hankel determinants
+attached to a positive moment functional. A positive integral representation gives nonvanishing;
+a logarithmic-energy estimate with respect to an explicit comparison measure gives the real
+bound; localp-adic determinant estimates overZ p[X] control the coefficients after an explicit
+rational normalization. A perturbation estimate also gives|ζ(7)−a/b|> b −270 for every integer
+aand all sufficiently large positive integersb.
+Contents
+1 Introduction 2
+1.1 The main theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.2 Rational approximation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+1.3 The construction and the proof . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+1.4 Organization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2 The determinant construction 5
+2.1 Parameters and notation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.2 The functionalµ X . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+2.3 The matrix and the normalized determinant . . . . . . . . . . . . . . . . . . . . . . . 5
+2.4 Degree . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.5 The positive integral representation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.6 The main polynomial estimates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+3 The local rational functional 9
+3.1 The auxiliary functionalτ X and the pullback identity . . . . . . . . . . . . . . . . . 9
+3.2 Reflection and difference identities . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.3 Completion at a prime . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.4 The distribution formula . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+3.5 Small primes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4 Local estimates for the determinant 17
+4.1 The inner range . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4.2 The outer range . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2.1 The rank decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.2.2 The rank lemma . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.2.3 The outer weights . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+1
+5 Normalization and the prime sum 21
+5.1 The normalization factor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.2 The inner limiting function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.3 The outer limiting function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+5.4 The tail integral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+5.5 The prime-sum bound . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+6 The real determinant 27
+6.1 The external field . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+6.2 The comparison measure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+6.3 Zero-mass logarithmic energy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+6.4 Bound for a general configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+6.5 Andr´ eief’s identity and scaling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+6.6 The real bound . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+A The comparison measure and its elementary bounds 30
+A.1 The sixteen intervals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+A.2 Elementary enclosures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+A.3 The potential inequality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+A.4 Energy and the norm constant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+B Completion of the irrationality proof 33
+B.1 Proof of the main polynomial estimates . . . . . . . . . . . . . . . . . . . . . . . . . 33
+B.2 Proof of the main theorem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+A Exact arithmetic integrals 34
+A.1 Evaluation of the inner integral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+A.2 Evaluation of the outer integral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+A.3 The final rational margins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+B Rational approximation and coefficient height 39
+B.1 The relative matrix norm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+B.2 Proof of the approximation bound . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+B.3 Coefficient height and primitive normalization . . . . . . . . . . . . . . . . . . . . . . 41
+1 Introduction
+Ap´ ery proved in 1978 thatζ(3) is irrational [1]. For higher odd arguments, much of the subsequent
+progress has concerned families of values. Rivoal [11] and Ball–Rivoal [2] proved that infinitely
+many odd zeta values are irrational. Zudilin [13] showed that at least one ofζ(5), ζ(7), ζ(9), ζ(11)
+is irrational. Later work has strengthened the lower bounds for the number of irrational values [7]
+and for the dimension of their rational span [6]. These theorems give information about the family
+as a whole, but do not determine the irrationality of any specified odd zeta value beyondζ(3).
+Forζ(5) itself, Brown and Zudilin [4] constructed an effective infinite sequence of rational
+approximations satisfying 0<|ζ(5)−p/q|< q −0.86. Their construction uses cellular integrals
+and the arithmetic of the associated linear forms. The exponent 0.86 does not by itself imply
+irrationality. To obtain irrationality from approximations of this kind, one needs a decay estimate
+2
+that remains sufficient after the denominators have been cleared. The same comparison between
+real decay and denominator growth governs the polynomial construction used below.
+Recently, Fauzan [5] proved thatζ(5) is irrational by a Hankel-determinant construction with a
+positive moment representation and a logarithmic-energy comparison. The present paper extends
+that argument toζ(7). The two changes in the construction areD 6
+N →D 8
+N in the numerator of
+the entries of the Gram matrix, and the pole functional
+j4(X−H (5)
+j )− 1
+4 + 1
+2j − →j 6(X−H (7)
+j ) + 1
+2j − 1
+6 .
+The rest of the argument follows the same architecture: a positive moment functional, a Hankel-
+type determinant, a positive integral representation, a logarithmic-energy comparison, localp-adic
+estimates, and a rational normalization that makes the determinant integral.
+1.1 The main theorem
+Theorem 1.1.The numberζ(7)is irrational.
+The proof uses integer polynomials of growing degree. For each integerM∈40Z >0 and each
+K∈40Z >0 withK≥200M 2, we construct a rational functionalµ X, anh×hHankel-type matrix
+GK(X) withh= 37K/40, and a polynomial
+QK,M(X) =m K,M FK(X),
+whereF K =S K∆K is a normalized determinant andm K,M is a rational normalization factor
+defined in Section 5.
+Theorem 1.2.For each integerM∈40Z >0 and eachK∈40Z >0 withK≥200M 2, the polynomial
+QK,M belongs toZ[X], has degreeh, and satisfiesQ K,M(ζ(7))>0. For all sufficiently large positive
+integersn,
+0< Q 40n,200(ζ(7))<exp
+(︁
+−19000n 2)︁
+,(1)
+0< Q 40n,100000(ζ(7))<exp
+(︁
+−19000n 2)︁
+.(2)
+The choiceM= 200 suffices for Theorem 1.1. The larger cutoff provides the additional decay
+used in the approximation bound of Corollary 1.3. The proof of Theorem 1.2 is given in Section B.
+1.2 Rational approximation
+Corollary 1.3.There is a positive integerb 0 such that
+⃓⃓⃓ζ(7)− a
+b
+⃓⃓⃓ > b −270
+for everya∈Zand everyb≥b 0.
+The proof is given in Appendix B.
+3
+1.3 The construction and the proof
+The polynomial estimates of Theorem 1.2 imply Theorem 1.1 directly. Indeed, supposeζ(7) =a/b
+witha∈Zandb∈Z >0. Thenb 37nQ40n,200(a/b) is a positive integer. On the other hand, (1) gives
+0< b 37nQ40n,200(a/b)<exp
+(︁
+37nlogb−19000n 2)︁
+,
+and the right-hand side tends to zero asn→ ∞. This is impossible for an integer. Henceζ(7)/∈Q.
+We now describe the construction behindQ K,M. The starting point is aQ-linear functional
+µX on rational functions with simple poles among the negative integer squares{−j 2 :j≥1}.
+Its values on monomialst e are the Bernoulli numbers divided by the appropriate factorial, and
+its values on simple poles 1/(t+j 2) are affine inX, of the formj 6(X−H (7)
+j ) + 1/(2j)−1/6.
+AtX=ζ(7), the functional becomes integration against a positive weightw 7(y). This positive
+integral representation is the source of the nonvanishing of the determinant.
+Applyµ X to the rational functionsD N(t)8ti+j/DK(t) withD m(t) = ∏︁m
+j=1(t+j 2), and form
+theh×hmatrix
+GK(X) =
+[︃
+µX
+(︃DN(t)8ti+j
+DK(t)
+)︃]︃
+0≤i,j<h
+.
+Each entry is affine inX, so ∆ K(X) = detG K(X) is a polynomial inXof degreeh. The matrix
+GK(ζ(7)) is a positive definite Gram matrix, so ∆ K(ζ(7))>0.
+Two distinct estimates complete the proof. First, an arithmetic estimate controls every coeffi-
+cient of ∆ K(X). This is done by reducing top-adic completions at each prime, extendingµ X to a
+completed functionalτ ext
+X on the Tate algebra, and bounding the local determinant valuations in
+a suitable basis. The normalization factorS K (a product of factorials) and the additional factor
+mK,M (a product of prime powers) clear all denominators and make the polynomial integral.
+Second, a real estimate controls the size ofF K(ζ(7)) =S K∆K(ζ(7)). By Andr´ eief’s identity,
+∆K(ζ(7)) is a multiple integral overhvariables, with a squared Vandermonde factor. After scaling,
+the integrand is the exponential of a discrete logarithmic energy associated with an external field
+V(t). Comparing this energy to the equilibrium measureρof massλ= 37/40, we obtain the
+required real bound on theK 2 scale.
+Both estimates are balanced against the normalization factorm K,M, and the final inequality
+lim sup
+K→∞
+K−2 logQ K,M(ζ(7))≤A M + U <0
+follows from the explicit constantsAM (from the prime sum) and U(from the real bound) computed
+in Sections 5 and 6. The negative quadratic decay then yields Theorem 1.2.
+For Corollary 1.3, smallness ofQ K,M(ζ(7)) alone is not enough, since the polynomial could
+vanish at a nearby rational point. We bound the coefficient matrix ofXrelative to the positive
+definite matrixG K(ζ(7)). This preserves positivity under the required perturbation and permits
+the integer argument to be applied at the rational point. The larger fixed cutoffM= 100000
+provides the additional decay for that argument.
+1.4 Organization
+Section 2 defines the matrix and proves its degree and positivity. Section 3 introduces the local
+rational functionalτ X, establishes the completion and distribution formulas, and proves the small-
+prime estimate. Section 4 establishes the inner and outer local estimates for the determinant.
+Section 5 combines the local bounds into a rational normalization and estimates the prime sum.
+Section 6 proves the real bound on the determinant via logarithmic energy. Section B combines the
+4
+two bounds and proves Theorems 1.1 and 1.2. Appendix A contains the comparison measure and
+its elementary bounds. Appendix A contains the exact arithmetic integrals. Appendix B proves
+Corollary 1.3.
+2 The determinant construction
+2.1 Parameters and notation
+Throughout the paper,
+K= 40n, N= 3n, h= 37n, α= 3
+40 , λ= 37
+40 , H= 1 + 3α= 49
+40 .(3)
+Form≥0, set
+Dm(t) =
+m∏︂
+j=1
+(t+j 2), D 0(t) = 1.(4)
+LetH (7)
+j = ∑︁j
+v=1 v−7 forj≥1, andH (7)
+0 = 0. Let (B k)k≥0 denote the Bernoulli numbers, defined
+by
+B0 = 1,
+n∑︂
+k=0
+(︃n+ 1
+k
+)︃
+Bk = 0 (n≥1),
+so thatB 1 =−1/2,B 2 = 1/6,B 3 = 0,B 4 =−1/30,B 5 = 0,B 6 = 1/42, and in generalB 2k+1 = 0
+fork≥1.
+Throughout,v p :Q ×
+p →Zis the normalizedp-adic valuation. For a polynomialA∈Q p[X], we
+writev G
+p (A) for the minimum of thep-adic valuations of its coefficients, withv G
+p (0) = +∞.
+2.2 The functionalµ X
+Definition 2.1.Letµ X be theQ-linear functional on theQ-vector space of rational functions with
+only simple poles among{−j 2 :j≥1}defined by
+µX(te) = (−1)eB2e+2(2e+ 3)(2e+ 4)(2e+ 5)(2e+ 6)(2e+ 7)
+720 (e≥0),(5)
+µX
+(︃ 1
+t+j 2
+)︃
+=j 6(X−H (7)
+j ) + 1
+2j − 1
+6 (j≥1).(6)
+Extended to all such rational functions by polynomial division and simple partial fraction decom-
+position.
+The valuesµ X(te) are independent ofX; the values on the simple poles are affine inX. The
+choice of coefficients in (5)–(6) is dictated by Proposition 2.4: it ensures that atX=ζ(7) the
+functional becomes integration against a positive weightw 7(y).
+2.3 The matrix and the normalized determinant
+Definition 2.2.Define
+GK(X) =
+[︃
+µX
+(︃DN(t)8 ti+j
+DK(t)
+)︃]︃
+0≤i,j<h
+,∆ K(X) = detG K(X).(7)
+5
+Define
+SK = (K!) 2h ·4 h−1
+(N!) 16h ·
+h−1∏︂
+i=1
+((2i)!)2
+, F K =S K∆K.(8)
+For a fixed integerM≥40 andK≥200M 2, letm K,M >0 be the positive rational number defined
+by (61) in Section 5. Define
+QK,M(X) =m K,M FK(X) =m K,M SK∆K(X).(9)
+2.4 Degree
+Lemma 2.3.For everyK∈40Z >0, the determinant∆ K(X)is a polynomial of degree exactlyh,
+with leading coefficient
+[X h]∆K(X) = (−1) h(h−1)/2
+K∏︂
+j=N+1
+j6DN(−j2)7 ̸= 0.(10)
+Consequently, for each fixedM≥40andK≥200M 2, the polynomialQ K,M also has degreeh.
+Proof.SetD tail(t) =D K(t)/DN(t) = ∏︁K
+j=N+1 (t+j 2). The rational function
+Rij(t) = DN(t)8 ti+j
+DK(t) = DN(t)7 ti+j
+Dtail(t)
+has only simple poles, att=−j 2 forN < j≤K, and no other poles. Polynomial division and
+simple partial fraction decomposition give
+Rij(t) =P ij(t) +
+K∑︂
+j′=N+1
+cij,j′
+t+ (j ′)2 ,(11)
+withP ij ∈Q[t] andc ij,j′ ∈Q. The polynomial part contributesµ X(Pij), which is independent of
+X. The simple pole att=−(j ′)2 contributes
+cij,j′ µX
+(︃ 1
+t+ (j ′)2
+)︃
+=c ij,j′
+[︃
+(j′)6(X−H (7)
+j′ ) + 1
+2j′ − 1
+6
+]︃
+,
+which is affine inXwithX-coefficientc ij,j′(j′)6. Hence each entry ofG K(X) is affine inX, and
+GK(X) =A+XB,∆ K(X) = det(A+XB)∈Q[X],
+withA, B∈M h(Q).
+TheX-coefficient matrix is
+Bij =
+K∑︂
+j′=N+1
+(j′)6 Rest=−(j′)2 Rij(t),
+and the residue is
+Rest=−(j′)2 Rij(t) = DN(−(j′)2)7 (−(j′)2)i+j
+D′
+tail(−(j′)2) .
+6
+Settingv a =−a 2 and
+γa = a6 DN(−a2)7
+D′
+tail(−a2) (N < a≤K),
+we obtain
+Bij =
+K∑︂
+a=N+1
+γa vi+j
+a , B=Vdiag(γ a)V T,(12)
+whereV= (v i
+a)0≤i<h, N <a≤K is theh×hVandermonde matrix.
+SinceK−N=hand thev a are distinct,Vis invertible. Its determinant is
+detV=
+∏︂
+N <a<b≤K
+(vb −v a) =
+∏︂
+N <a<b≤K
+(a2 −b 2)̸= 0.(13)
+Furthermore,
+D′
+tail(−a2) =
+∏︂
+N <b≤K
+b̸=a
+(b2 −a 2),
+and each unordered pair{a, b}contributes (b 2 −a 2) from the termD ′
+tail(−a2) and (a 2 −b 2) =
+−(b2 −a 2) from the termD ′
+tail(−b2). Hence
+K∏︂
+a=N+1
+D′
+tail(−a2) = (−1)h(h−1)/2(detV) 2.(14)
+Therefore
+detB= (detV) 2
+K∏︂
+a=N+1
+γa = (−1)h(h−1)/2
+K∏︂
+a=N+1
+a6 DN(−a2)7.(15)
+Each factorD N(−a2) = ∏︁N
+m=1(m2 −a 2) is nonzero becausea > Nandm≤Nimplym 2 < a 2.
+Hence detB̸= 0, and deg ∆ K =h. Multiplication bym K,M SK ̸= 0 preserves the degree.
+2.5 The positive integral representation
+Proposition 2.4.Let
+w7(y) = (2π)6
+360 y7 ∑︂
+ℓ≥1
+ℓ6e−2πℓy, y >0.(16)
+Thenw 7(y)>0for ally >0, and for every rational functionRin the domain ofµ X,
+µζ(7)(R) =
+∫︂∞
+0
+R(y2)w7(y)dy.(17)
+ConsequentlyG K(ζ(7))is positive definite, andQ K,M(ζ(7))>0wheneverm K,M >0.
+Proof.The positivityw 7(y)>0 fory >0 is immediate from the definition.
+Even moments.Fixe≥0. Integrating term by term,
+∫︂∞
+0
+y2ew7(y)dy= (2π)6
+360
+∑︂
+ℓ≥1
+ℓ6
+∫︂∞
+0
+y2e+7e−2πℓy dy.
+7
+The inner integral equals (2e+ 7)!/(2πℓ) 2e+8, so
+∫︂∞
+0
+y2ew7(y)dy= (2e+ 7)!
+360·(2π) 2e+2 ζ(2e+ 2).
+By Euler’s formulaζ(2e+ 2) = (−1) eB2e+2(2π)2e+2/(2(2e+ 2)!), we obtain
+∫︂∞
+0
+y2ew7(y)dy= (−1)eB2e+2 (2e+ 3)(2e+ 4)(2e+ 5)(2e+ 6)(2e+ 7)
+720 ,(18)
+matchingµ X(te) from (5).
+Pole identity.Putf(y) = (e 2πy −1) −1, so that
+w7(y) = (2π)6
+360 y7 ∑︂
+ℓ≥1
+ℓ6e−2πℓy = y7
+360 f (6)(y).
+Six integrations by parts in the integral
+∫︁∞
+0 w7(y)/(y 2 +a 2)dy, using vanishing boundary terms at
+0 and +∞(at zero each boundary product isO(y), at infinity each decays exponentially), give
+∫︂∞
+0
+w7(y)
+y2 +a 2 dy= 1
+360
+∫︂∞
+0
+f(y) d6
+dy6
+(︃ y7
+y2 +a 2
+)︃
+dy.
+A direct computation gives
+1
+360 · d6
+dy6
+(︃ y7
+y2 +a 2
+)︃
+= 2a6 y(7a6 −35a 4y2 + 21a2y4 −y 6)
+(y2 +a 2)7 .
+Indeed, expandingy 7/(y2 +a 2) =y 5 −a 2y3 +a 4y−a 6y/(y 2 +a 2), the polynomial part has degree
+5<6 and therefore vanishes after six differentiations. For the last term, the identity
+d6
+dy6
+(︃ y
+y2 +a 2
+)︃
+=− 720y(7a 6 −35a 4y2 + 21a2y4 −y 6)
+(y2 +a 2)7
+is verified by direct differentiation, giving the claimed expression.
+Hermite’s integral formula for the Hurwitz zeta function ats= 7 (see [10, DLMF 25.11.29])
+reads
+ζ(7, a) = 1
+2a7 + 1
+6a6 + 2
+∫︂∞
+0
+y(7a6 −35a 4y2 + 21a2y4 −y 6)
+(y2 +a 2)7
+dy
+e2πy −1 ,
+valid forℜa >0. Substituting gives
+∫︂∞
+0
+w7(y)
+y2 +a 2 dy=a 6ζ(7, a)− 1
+2a − 1
+6 .(19)
+Ata=j∈Z >0, usingζ(7, j) =ζ(7)−H (7)
+j +j −7, we get
+j6ζ(7, j)− 1
+2j − 1
+6 =j 6(ζ(7)−H (7)
+j ) + 1
+j − 1
+2j − 1
+6 =j 6(ζ(7)−H (7)
+j ) + 1
+2j − 1
+6 ,
+matching (6) atX=ζ(7). By linearity, (17) holds for every rational function in the domain ofµ X.
+Positivity.For a nonzero real polynomialq(t) = ∑︁h−1
+i=0 citi of degree less thanh, the quadratic
+form ofG K(ζ(7)) at the coefficient vectorc= (c 0, . . . , ch−1) is
+cTGK(ζ(7))c=µ ζ(7)
+(︃DN(t)8q(t)2
+DK(t)
+)︃
+=
+∫︂∞
+0
+DN(y2)8q(y 2)2
+DK(y2) w7(y)dy.
+Fory >0,D N(y2)>0,D K(y2)>0,w 7(y)>0, andq(y 2)2 ≥0 withq(y 2)2 >0 except at
+finitely manyy. Hence the integral is strictly positive. ThereforeG K(ζ(7)) is positive definite,
+∆K(ζ(7))>0, andQ K,M(ζ(7)) =m K,M SK∆K(ζ(7))>0.
+8
+2.6 The main polynomial estimates
+The following theorem, proved in Section B, is the technical statement behind Theorems 1.1 and 1.2.
+Theorem 2.5(Main estimates, restated).For each integerM∈40Z >0 and eachK∈40Z >0 with
+K≥200M 2, the polynomialQ K,M of Definition 2.2 belongs toZ[X], has degreeh, and satisfies
+QK,M(ζ(7))>0. Furthermore, for all sufficiently large positive integersn,
+0< Q 40n,200(ζ(7))<exp
+(︁
+−19000n 2)︁
+,(20)
+0< Q 40n,100000(ζ(7))<exp
+(︁
+−19000n 2)︁
+.(21)
+The proof of Theorem 2.5 combines the following ingredients:
+•the degree calculation of Lemma 2.3;
+•the positivity of Proposition 2.4;
+•the integrality statement of Proposition 5.1 in Section 5, which rests on the local estimates
+of Sections 3 and 4;
+•the arithmetic prime-sum estimate of Proposition 5.4 in Section 5;
+•the real bound on the determinant of Proposition 6.3 in Section 6.
+3 The local rational functional
+The arithmetic estimates of Section 4 are made withXindeterminate, so that they apply to every
+coefficient of the determinant. To organize the local analysis, we introduce an auxiliaryQ-linear
+functionalτ X on rational functions of one variable, prove a pullback identity connecting it toµ X,
+and extend it top-adic completions. We then derive a distribution formula by residue class and
+a separate bound for small primes. The treatment follows the structure of [5,§3], with the pole
+functional shifted fromζ(5) toζ(7).
+3.1 The auxiliary functionalτ X and the pullback identity
+For a polynomialP(x) = ∑︁
+k≥0 akxk ∈Q[x], define the linear functional
+L(P) =
+∑︂
+k≥0
+ak Bk,(22)
+where (Bk)k≥0 are the Bernoulli numbers. Define the operator
+τ(P) = L(P (5))
+720 ,(23)
+whereP (5) denotes the fifth derivative ofP. On monomials this is
+τ(x k) =κ k := k(k−1)(k−2)(k−3)(k−4)B k−5
+720 (k≥5), τ(x k) = 0 (k <5).(24)
+For an integerr∈Z, put
+d(r) =
+{︄
+r, r≥0,
+−r−1, r <0. (25)
+9
+Defineτ X on the generating simple poles by
+τX
+(︃ 1
+x−r
+)︃
+=H (7)
+d(r) −X(r∈Z),(26)
+and extendτ X to all rational functions with polynomial part and simple integer poles byQ-linearity
+and partial fraction decomposition.
+Lemma 3.1(Pullback identity).For every rational functionRin the domain ofµ X,
+µX(R) =τ X
+(︁
+x7 R(−x2)
+)︁
+.(27)
+Proof.Both sides areQ-linear inR. It suffices to verify (27) on the spanning set{t e :e≥
+0} ∪ {1/(t+j 2) :j≥1}of the domain ofµ X.
+Monomials.LetR(t) =t e withe≥0. Thenx 7R(−x2) = (−1)ex2e+7, so by (24),
+τ(x 7R(−x2)) = (−1)eκ2e+7 = (−1)eB2e+2 (2e+ 3)(2e+ 4)(2e+ 5)(2e+ 6)(2e+ 7)
+720 ,
+which equalsµ X(te) in (5). Hence (27) holds for monomials.
+Simple poles.LetR(t) = 1/(t+j 2) withj≥1. We havex 7R(−x2) =x 7/(j2−x2). Polynomial
+division inxgives
+x7
+j2 −x 2 =−x 5 −j 2x3 −j 4x− j6
+2
+(︃ 1
+x−j + 1
+x+j
+)︃
+.(28)
+Indeed, using (x−j)(x+j) =−(j 2 −x 2), we have
+1
+x−j + 1
+x+j = 2x
+x2 −j 2 =− 2x
+j2 −x 2 ,
+so the last term of (28) equalsj 6x/(j2 −x 2), and rearranging givesx 7 = (−x5 −j 2x3 −j 4x)(j2 −
+x2) +j 6x, which is verified by expansion.
+Applyτ X to (28). Sinceτ X(xk) =τ(x k) =κ k fork≥5 and 0 fork <5, and sinceτ X(1/(x∓
+j)) =H (7)
+d(±j) −X, we obtain
+τX(x7/(j2 −x 2)) =−κ 5 −j 2κ3 −j 4κ1 − j6
+2
+(︂
+(H (7)
+j −X) + (H (7)
+j−1 −X)
+)︂
+=− 1
+6 − j6
+2
+(︂
+2H (7)
+j −j −7 −2X
+)︂
+=j 6(X−H (7)
+j ) + 1
+2j − 1
+6 ,
+where in the first line we usedκ 5 = 1/6,κ 3 =κ 1 = 0, andH (7)
+j−1 =H (7)
+j −j −7. The result matches
+µX(1/(t+j 2)) in (6). Hence (27) holds for simple poles.
+By linearity, (27) holds for every rational function in the domain ofµ X.
+3.2 Reflection and difference identities
+Two identities forτ X will be used in the proof of the distribution formula.
+Lemma 3.2(Reflection identity).For every polynomialg∈Q[x],
+τX(g(−1−x)) =−τ X(g(x)).(29)
+The identity extends to rational functions with polynomial part and simple integer poles.
+10
+Proof.By linearity, it suffices to considerg(x) =x k.
+Fork <5, both sides vanish, so assumek≥5. We haveg(−1−x) = (−1−x) k = (−1)k(1+x) k.
+Then
+τ(g(−1−x)) = (−1) kτ((1 +x) k) = (−1)k
+L
+(︂
+d5
+dx5 (1 +x) k
+)︂
+720 .
+Since d5
+dx5 (1 +x) k = k!
+(k−5)!(1 +x) k−5, we obtain
+τ((1 +x) k) = k!
+720 (k−5)! L((1 +x) k−5).
+NowL((1 +x) k−5) = ∑︁k−5
+i=0
+(︁k−5
+i
+)︁
+Bi =B k−5(1). We distinguish two cases.
+Casek̸= 6.Thenk−5̸= 1, and by the Bernoulli polynomial identityB n(1) =B n forn̸= 1,
+we haveL((1 +x) k−5) =B k−5. Hence
+τ((1 +x) k) = k!
+(k−5)!
+Bk−5
+720 =κ k.
+Thereforeτ(g(−1−x)) = (−1) kκk. Ifkis odd, (−1) kκk =−κ k =−τ(x k). Ifkis even, then
+Bk−5 = 0 (sincek−5 is odd and̸= 1), soκ k = 0 and (−1) kκk = 0 =−κ k.
+Casek= 6.ThenL((1 +x) 1) =B 0 +B 1 = 1−1/2 = 1/2, so
+τ((1 +x) 6) = 720
+1 · 1
+2·720 = 1
+2 .
+On the other hand,κ 6 = 6·5·4·3·2·B1
+720 = 720·(−1/2)
+720 =− 1
+2, soτ((1+x) 6) =−κ 6. Henceτ(g(−1−x)) =
+τ((1 +x) 6) = 1/2 =−τ(x 6).
+In all cases, (29) holds for monomials, and by linearity for polynomials and rational functions
+with polynomial part and simple integer poles.
+Lemma 3.3(Difference identity).For every polynomialg∈Q[x],
+τX(g(x+ 1)−g(x)) = g(6)(0)
+720 .(30)
+The identity extends to rational functions with polynomial part and simple integer poles that are
+regular atx= 0.
+Proof.By linearity, it suffices to considerg(x) =x k.
+We first prove a general identity forL. For any polynomialh(x) = ∑︁
+j≥0 hjxj, we have
+L(h(x+ 1)−h(x)) =
+∑︂
+j≥0
+hj L((x+ 1) j −x j).
+Using the binomial expansion (x+ 1) j −x j = ∑︁j−1
+i=0
+(︁j
+i
+)︁
+xi,
+L((x+ 1) j −x j) =
+j−1∑︂
+i=0
+(︃j
+i
+)︃
+Bi =B j(1)−B j.
+By the Bernoulli polynomial identityB j(1)−B j = 0 forj≥2,B 1(1)−B 1 = 1, andB 0(1)−B 0 = 0,
+we get
+L((x+ 1) j −x j) =
+{︄
+1, j= 1,
+0, j̸= 1. (31)
+11
+ThereforeL(h(x+ 1)−h(x)) =h 1 =h ′(0), the coefficient ofxinh.
+Applying this withh=g (5):L(g (5)(x+ 1)−g (5)(x)) = (g(5))′(0) =g (6)(0). Hence
+τ(g(x+ 1)−g(x)) = L(g(5)(x+ 1)−g (5)(x))
+720 = g(6)(0)
+720 ,
+proving (30) for polynomials.
+For a simple poleg(x) = 1/(x−r) withr∈Z\ {0}, we have
+g(x+ 1)−g(x) = 1
+x−(r−1) − 1
+x−r ,
+soτ X(g(x+ 1)−g(x)) =H (7)
+d(r−1) −H (7)
+d(r).
+Ifr≥1:d(r) =r,d(r−1) =r−1, soH (7)
+d(r−1) −H (7)
+d(r) =H (7)
+r−1 −H (7)
+r =−r −7. The right-hand
+side of (30) isg (6)(0)/720 = 720/(−r)7/720 =−r −7. The two agree.
+Ifr≤ −1:d(r) =−r−1,d(r−1) =−r, soH (7)
+d(r−1) −H (7)
+d(r) =H (7)
+−r −H (7)
+−r−1 = (−r)−7 =−r −7.
+The right-hand side is againg (6)(0)/720 = 720/(−r)7/720 =−r −7, and the two agree.
+By linearity, (30) extends to rational functions with polynomial part and simple integer poles
+that are regular atx= 0.
+3.3 Completion at a prime
+Fix an odd primep≥7, and letA=Q p⟨z⟩denote the Tate algebra of power seriesf(z) =∑︁
+d≥0 fdzd withf d ∈Q p andv p(fd)→+∞, equipped with the Gauss norm∥f∥= sup d |fd|p. By
+(24), the valuesτ(x d) =κ d define a functional on polynomials; we extendτtoAby
+τ
+⎛
+⎝∑︂
+d≥0
+fdzd
+⎞
+⎠ =
+∑︂
+d≥0
+fd κd.(32)
+Lemma 3.4(von Staudt–Clausen bound forκ d).Letp≥7be an odd prime. For everyd≥0,
+vp(κd)≥ −1. Moreover,κ d ∈Z p ford≤p+ 4.
+Proof.Ford <5,κ d = 0, so the assertion is trivial. Ford≥5,
+κd = d(d−1)(d−2)(d−3)(d−4)B d−5
+720 ,
+andv p(720) = 0 forp≥7. Hencev p(κd)≥v p(Bd−5).
+By the von Staudt–Clausen theorem (DLMF 24.10.1), the denominator ofB d−5 in lowest terms
+is squarefree, and a primepdivides it only ifp−1|d−5; in that casev p(Bd−5) =−1. This proves
+vp(κd)≥ −1.
+Ford≤p+ 4: supposep|denom(B d−5), so thatp−1|d−5. Since 0≤d−5≤p−1, we
+haved−5∈ {0, p−1}. Ifd−5 = 0, thenB 0 = 1∈Z p. Ifd−5 =p−1, thend=p+ 4, and the
+factord−4 =pappears explicitly in the numerator ofκ p+4, cancelling thep −1 fromB p−1. Hence
+κp+4 ∈Z p.
+The functionalτtherefore extends toAwith norm∥τ∥ ≤p: forf∈ A,
+|τ(f)| p ≤sup
+d
+|fd|p ·p=p∥f∥.
+12
+Lemma 3.5(Completion).LetT(z) = ∏︁t
+ν=1(z−r ν), where ther ν ∈Zare pairwise incongruent
+modulopand satisfyd(r ν)< p. LetY∈Z p[X]. For every sequence of polynomialsU j ∈Z p[z]with
+degU 0 ≤p+ 4,
+τ ext
+Y
+⎛
+⎝∑︂
+j≥0
+pjUj(z)
+T(z)
+⎞
+⎠ ∈Z p[X],(33)
+whereτ ext
+Y denotes the extension ofτ X toA ⊕ ⨁︁
+ν Qp ·1/(z−r ν).
+Proof.Polynomial division and partial fraction decomposition inQ p[z] give, for eachj,
+Uj
+T =P j +
+t∑︂
+ν=1
+cj,ν
+z−r ν
+, c j,ν = Uj(rν)
+T ′(rν) .
+The mapU↦→(P,(c ν)ν) fromZ p[z] toZ p[z]⊕⨁︁
+ν Qp has operator norm at most one: the polynomial
+quotient has coefficients inZ p, andv p(cν)≥0 becauseT ′(rν) = ∏︁
+η̸=ν(rν −r η) is ap-unit (by the
+pairwise incongruence hypothesis). The decomposition extends continuously to
+BT =A ⊕
+t⨁︂
+ν=1
+Qp · 1
+z−r ν
+with the maximum norm∥(f,(c ν)ν)∥= max(∥f∥,max ν |cν|p). Uniqueness holds because an analytic
+function cannot cancel a nonzero principal part.
+Define, onB T ,
+τ ext
+Y
+(︄
+f+
+∑︂
+ν
+cν
+z−r ν
+)︄
+=τ(f) +
+∑︂
+ν
+cν (H (7)
+d(rν ) −Y).
+Sinced(r ν)< p, we havev p(H (7)
+d(rν ))≥0 (no multiple ofpoccurs belowp). Together withY∈Z p[X],
+the principal-part values lie inZ p[X]. The analytic part satisfiesτ(f)∈Z p when∥f∥ ≤1, by
+Lemma 3.4.
+For thej= 0 term: the polynomial quotientP 0 has degree at most degU 0 ≤p+ 4. By
+Lemma 3.4,κ d ∈Z p ford≤p+ 4, soτ(P 0)∈Z p.
+Forj≥1: the factorp j times the analytic part loses at most one additional power ofp, which
+is absorbed byp j−1; the principal-part values are already inZ p after multiplying byp j.
+The series converges inB T because each term has an extra factor ofp. Henceτ ext
+Y (∑︁
+j pjUj/T)∈
+Zp[X].
+3.4 The distribution formula
+For the distribution formula we choose a parameterYdepending onXandp:
+Cp =
+p−1∑︂
+a=1
+τ an
+(︃ 1
+x+a/p
+)︃
+, Y=p 7X+C p,(34)
+whereτ an denotes the analytic part ofτapplied to 1/(x+a/p) via the expansion
+τ an
+(︃ 1
+x−s
+)︃
+=− 1
+720
+∑︂
+e≥0
+(e+ 5)!
+e!
+Be
+se+6 (vp(s)<0).(35)
+The formula (35) follows from expanding 1/(x−s) =− ∑︁
+d≥0 xd/sd+1 and applying (24): only the
+termsd≥5 contribute, giving− ∑︁
+e≥0 κe+5/se+6 =− 1
+720
+∑︁
+e≥0
+(e+5)!
+e! Be/se+6.
+13
+Lemma 3.6.For every odd primep≥11, we haveC p ∈p 7Zp.
+Proof.Fora∈ {1, . . . , p−1}, substitutings=−a/pin (35) gives
+τ an
+(︃ 1
+x+a/p
+)︃
+=− 1
+720
+∑︂
+e≥0
+(e+ 5)!
+e! Be (−1)e pe+6
+ae+6 .
+Thee= 0 term is− 5!
+720 B0p6a−6 =− p6
+6a6 . Summing overa,
+p−1∑︂
+a=1
+(︃
+− p6
+6a6
+)︃
+=− p6
+6
+p−1∑︂
+a=1
+a−6.
+Modulop, the sum ∑︁p−1
+a=1 a−6 ≡ ∑︁p−1
+a=1 ap−7 (modp). Forp≥11, we havep−7∈[4, p−11] and
+p−7̸≡0 (modp−1) (since 0< p−7< p−1), so the sum vanishes modulop. Hence thee= 0
+contribution lies inp 7Zp.
+Thee= 1 term is− 6!
+720 B1 ·(−1)·p 7a−7 =− 1
+2 p7a−7 ∈p 7Zp.
+Fore≥2: the coefficient (e+5)!
+e! Be/720 hasp-adic valuation at least−1 by Lemma 3.4, and the
+factorp e+6 ≥p 8 dominates. Hence eache≥2 term lies inp 7Zp.
+ThereforeC p ∈p 7Zp forp≥11.
+Lemma 3.7(Distribution formula).Letp≥11be an odd prime and letY=p 7X+C p withC p
+as in(34). For every rational functiongwith polynomial part and simple integer poles,
+τX(g) =p −6
+p−1∑︂
+a=0
+τ ext
+Y (g(a+pz)).(36)
+Proof.By linearity, it suffices to verify (36) on monomials and on simple poles.
+Polynomials.Forg(x) =x n, the Bernoulli multiplication formula (DLMF 24.4.18),
+p−1∑︂
+a=0
+Bn(x+a/p) =p 1−nBn(px),
+valid for alln≥0. ApplyingLafter five differentiations, both sides of (36) reduce toκ n. The
+distribution formula for polynomials follows; the calculation is identical to theζ(5) case with 3→5
+in the number of differentiations andp −4 →p −6 in the exponent.
+Simple poles.Considerg(x) = 1/x. The right-hand side of (36) is
+p−6
+p−1∑︂
+a=0
+τ ext
+Y
+(︃ 1
+a+pz
+)︃
+.
+Fora= 0:τ ext
+Y (1/(pz)) =p −1τY (1/z) =−p −1Y, sinced(0) = 0 givesτ Y (1/z) =H (7)
+0 −Y=−Y.
+Fora̸= 0: 1/(a+pz) =p −1 ·1/(z+a/p). Sincev p(a/p) =−1<0, we use the analytic expansion
+τ an
+Y (1/(z+a/p)), soτ ext
+Y (1/(a+pz)) =p −1τ an(1/(z+a/p)).
+Therefore
+p−1∑︂
+a=0
+τ ext
+Y
+(︃ 1
+a+pz
+)︃
+=−p −1Y+p −1Cp =p −1(−Y+C p),
+14
+and multiplying byp −6 givesp −7(−Y+C p) =p −7(−(p7X+C p) +C p) =−X. The left-hand side
+of (36) atg= 1/xisτ X(1/x) =H (7)
+0 −X=−X. The two agree.
+General case.The right-hand side of (36) is aQ-linear functionalT(g) on rational functions
+with polynomial part and simple integer poles. By the preceding two paragraphs,Tagrees with
+τX on polynomials and on 1/x. The reflection and difference identities (29) and (30) are satisfied
+byτ X, and one verifies by direct computation thatTsatisfies the same identities: the substitutions
+a↦→p−1−aandx↦→ −1−xshow thatTsatisfies (29), and the translation differenceg(x+1)−g(x)
+telescopes to
+T(g(x+ 1)−g(x)) =p −6τ ext
+1 (g(p(x+ 1))−g(px)) = g(6)(0)
+720 ,
+matching (30). Sinceτ X andTagree on 1/xand satisfy the same reflection and difference identities,
+and the difference identity determines the value at every positive integer pole while reflection
+determines the values at negative integer poles, we concludeT=τ X. This proves (36).
+3.5 Small primes
+For small primes, we use a bound independent of the pole classes.
+Lemma 3.8(Small-prime estimate).LetA∈Q p[x]be a polynomial withA(Z p)⊂Z p anddegA≤
+d. Put
+g(x) = (K!) 2A(x)∏︁
+−K≤r≤K (x−r) .
+Then
+vG
+p (τX(g))≥ −8
+⌊︁
+logp max(2K, d+ 1)
+⌋︁
+−v p(720).(37)
+Proof.Writeg=P+ ∑︁
+r̸=0 cr/(x−r) withPpolynomial andc r = limx→r(x−r)g(x).
+Residue bounds.SetL 0 =⌊log p(2K)⌋. Forr̸= 0,
+cr =± (K!) 2 r A(r)
+(K+r)!(K−r)! .
+By Legendre’s formulav p(m!) = (m−s p(m))/(p−1), the difference 2v p(K!)−v p((K+r)!)−v p((K−
+r)!) is at least−L 0 (at each prime-power level, the discrepancy between the two floor sums is at
+most one). Hencev p(cr)≥ −L 0.
+Polynomial part.Outside the ballsr+p L0+1Zp forr̸= 0,|r| ≤K, counting roots modulo
+eachp j showsv p(g(x))≥ −2L 0. Inside such a ball, its center is the unique root at distance of
+valuation greater thanL 0. Put
+Fr(x) = (K!) 2
+∏︁
+s̸=r(x−s) ,
+with the product over rootss̸=r. The inverse-product expansion givesv p(Fr(x))≥ −L 0 and
+vp(Fr(x)−F r(r))≥v p(x−r)−2L 0. Subtracting the principal part ofA(x)F r(x)/(x−r) and using
+the integer-valued polynomial inequality (see [5,§3.3])
+vp(A(x)−A(y))≥v p(x−y)− ⌊log p max(1, d)⌋(x, y∈Z p),
+we obtain
+P(Z p)⊂p −L0−M0Zp, M 0 = max(L0,⌊log p max(1, d)⌋).
+15
+Application ofτ.For the polynomial partP, whose degree is at mostdand whose values on
+Zp lie inp −L0−M0Zp, we applyτ(P) =L(P (5))/720. The elementary estimate for integer-valued
+polynomials (see [5,§3.3]) gives
+vp(L(P))≥ −L 0 −M 0 −5⌊log p(d+ 1)⌋ −v p(720).
+The factor 5 comes from the five derivatives inτ.
+Pole contributions.For a simple pole atr̸= 0,τ X(1/(x−r)) =H (7)
+d(r) −X. The harmonic
+numberH (7)
+d(r) = ∑︁d(r)
+v=1 v−7 satisfies
+vp(H (7)
+d(r))≥ −7⌊log p d(r)⌋ ≥ −7⌊log p(2K)⌋=−7L 0,
+since each termv −7 withv≤2Kcontributes at most 7⌊log p(2K)⌋to the loss. No hypothesis on
+the relative sizes ofKandpis required. Combined withv p(cr)≥ −L 0, the pole contribution has
+valuation at least−8L 0 −v p(720).
+Conclusion.Combining the polynomial and pole bounds and usingL 0 ≤ ⌊log p max(2K, d+1)⌋
+andM 0 ≤ ⌊log p max(2K, d+ 1)⌋, we obtain
+vG
+p (τX(g))≥ −2⌊log p max(2K, d+ 1)⌋ −5⌊log p(d+ 1)⌋ −v p(720),
+which after absorbing the five-fold term gives (37).
+We apply Lemma 3.8 in the basis that becomes integer-valued under the substitutiont=−x 2.
+Define
+q0(t) = 1, q i(t) = (−1)i2tDi−1(t)
+(2i)! (i≥1), f i(t) =
+(︃DN(t)
+(N!) 2
+)︃4
+qi(t).(38)
+Fori≥1, the identity
+qi(−x2) =
+(︃x+i
+2i
+)︃
++
+(︃x+i−1
+2i
+)︃
+shows thatq i(−x2) is integer-valued. Together with
+DN(−x2)
+(N!) 2 =
+(︃N−x
+N
+)︃(︃N+x
+N
+)︃
+,
+this shows thatf i(−x2) is integer-valued onZ.
+The triangular change of basis{t i} → {f i}has transition determinant
+det(fi/tj) =± 2h−1
+∏︁h−1
+i=1 ((2i)!)
+·(N!) −8h.(39)
+Consequently,
+FK =S K∆K = (K!) 2h det
+[︃
+µX
+(︃fi(t)fj(t)
+DK(t)
+)︃]︃
+0≤i,j<h
+.(40)
+Indeed, the pullback numerator in thef-basis has degree at most 16N+ 4h+ 5. Thus max(2K, d+
+1)≤5K, and Lemma 3.8 gives
+vG
+p (FK)≥ −8h⌊log p(5K)⌋ −hv p(720) for every primep.(41)
+16
+4 Local estimates for the determinant
+We now establish the two localp-adic bounds for the determinant ∆ K. Fix an integerM≥40 and
+a positiveK∈40Z >0 withK≥200M 2. Put
+m= p−1
+2 , m N =
+⌊︃N
+p
+⌋︃
+, m K =
+⌊︃K
+p
+⌋︃
+.(42)
+For 1≤a≤mset
+ℓA(a) = #{1≤j≤A:j≡aorj≡ −a(modp)}.(43)
+The section is divided into the inner rangeK/M < p≤K/3, where a basis with prescribed
+vanishing at the pole classes gives a determinant valuation, and the outer rangeK/3< p≤2h,
+where a rank correction isolates the residue terms from a polynomial correction.
+4.1 The inner range
+Throughout this subsection, assume
+K∈40Z >0, K≥200M 2, K
+M < p≤ K
+3 .(44)
+Thenp >200M≥8000 andp 2 >5K.
+Definition 4.1(Dimension allocation).SetL 0 = 6M+ 10 andb a = 4ℓN(a) for 1≤a≤m. LetT
+andEbe the unique integers satisfying
+mT+E=h−L 0 + 4(N−m N),0≤E < m.(45)
+Order the classes 1≤a≤mby decreasingℓ K(a) (ties broken arbitrarily), and set
+εa =
+{︄
+1,ifais among the firstEclasses in this order,
+0,otherwise, La =T−b a +ε a, Z a =T+ε a.
+The quantitiesL a are nonnegative: from (45) we have 2Hx−21/20< T <2Hxwithx=K/p
+andH= 1 + 3α= 49/40, andb a ≤6ax+ 3 witha≤m < p/2, so thatb a ≤3K/p+ 3. Sincex≤M
+and (2L0 + 6mN)/(p−1)<1/20 follows from (44), we getT−b a >2λx−81/20≥3/2>0, hence
+La ≥1.
+Definition 4.2(E-basis).For 0≤a≤mand 0≤i < L a, define
+Ea,i(t) =
+∏︂
+0≤c≤m
+c̸=a
+(t+c 2)Lc ·(t+a 2)i.(46)
+The factorst+c 2 are pairwise coprime modulop. In the Chinese remainder decomposition of
+Zp[t] by their powers, the polynomialsE a,i form a triangular local basis whose diagonal entries are
+p-adic units; they therefore form aZ p-unimodular basis ofZ p[t]<h.
+Definition 4.3(Half-weights).Define
+wa,i =i+ 4ℓ N(a)− ℓK(a) + 6
+2 ,1≤a≤m,0≤i < L a,(47)
+w0,i = min
+(︃
+2i+ 8m N −m K + 1
+2 ,min
+1≤c≤m
+[︃
+Zc − ℓK(c) + 6
+2
+]︃)︃
+,0≤i < L 0.(48)
+17
+Define
+γin
+p = 2
+m∑︂
+a=0
+La−1∑︂
+i=0
+wa,i.(49)
+Proposition 4.4(Inner estimate).Under(44),v G
+p (∆K)≥γ in
+p .
+Proof.We follow [5, Proposition 4.1] withm= 8 in place ofm= 6. The changes are 6ℓ N →8ℓ N,
+12mN →16m N, and 4→6 in the pole-functional constant, withL 0 = 6M+ 10 andb a = 4ℓN(a).
+For a pole classc∈ {1, . . . , m}with vanishing ordersν i(c), νj(c) of the rowsE a,i, Eb,j att=−c 2,
+the residue valuation is at least
+νi(c) +ν j(c) + 8ℓN(c)−ℓ K(c)−6,(50)
+and at the zero class,
+2νi(0) + 2νj(0) + 16mN −2m K + 1.(51)
+These bounds follow from the same Taylor expansion and distribution formula as in [5,§4.1], with
+the modifications noted above.
+We compare each assigned half-weight to the residue valuation for every pair of rows and every
+source classc.
+Case (i):c=a=b,a≥1.Hereν i(c) =i,ν j(c) =j, and
+residue bound = 8ℓ N(c) +i+j−ℓ K(c)−6 =w a,i +w a,j.
+Equality holds.
+Case (ii):c=a̸=b,a, b≥1.Hereν i(a) =iandν j(a) =L a (sinceE b,j contains the factor
+(t+a 2)La withb̸=a). The residue bound is
+8ℓN(a) +i+L a −ℓ K(a)−6.
+SinceL a =Z a −4ℓ N(a) andj≤L b −1 =Z b −4ℓ N(b)−1, we get
+wb,j ≤Z b −1− ℓK(b) + 6
+2 + 4ℓN(b)−4ℓ N(b) =Z b −1− ℓK(b) + 6
+2 .
+Then
+residue−(w a,i +w b,j)
+≥[8ℓ N(a) +i+L a −ℓ K(a)−6]−
+[︃
+i+ 4ℓ N(a)− ℓK(a) + 6
+2
+]︃
+−
+[︃
+Zb −1− ℓK(b) + 6
+2
+]︃
+= 4ℓN(a) +L a −ℓ K(a)−6 + ℓK(a) + 6
+2 −Z b + 1 + ℓK(b) + 6
+2
+=Z a −ℓ K(a)/2−Z b +ℓ K(b)/2 + 1
+= (Za −Z b) + ℓK(b)−ℓ K(a)
+2 + 1.
+SinceZ a −Z b =ε a −ε b ≥ −1 and the class counts in the inner range differ by at most one,
+ℓK(b)−ℓ K(a)≥ −1, so
+residue−(w a,i +w b,j)≥ −1− 1
+2 + 1 =− 1
+2 .
+18
+When the worst case (εa, εb) = (0,1) occurs, classbwas selected for an extra row, soℓ K(b)≥ℓ K(a);
+this rules out the simultaneous worst case for both bounds and gives a margin≥0.
+Case (iii):c̸=a, b, all≥1.Hereν i(c) =L c,ν j(c) =L c. The residue bound is
+8ℓN(c) + 2Lc −ℓ K(c)−6 = 2Z c −ℓ K(c)−6.
+Sincei≤L a −1 =Z a −4ℓ N(a)−1 andj≤Z b −4ℓ N(b)−1,
+wa,i +w b,j ≤Z a +Z b −2− ℓK(a) +ℓ K(b) + 12
+2 .
+Thus
+residue−(w a,i +w b,j)≥2Z c −Z a −Z b + 2 + ℓK(a) +ℓ K(b)
+2 −ℓ K(c).
+Using 2Z c −Z a −Z b = 2ε c −ε a −ε b ≥ −2 andℓ K(c)≤(ℓ K(a) +ℓ K(b))/2 + 1 (counts differ by
+at most two), we get a margin≥ −2 + 2−1 =−1. When the worst case (2ε c −ε a −ε b) =−2
+occurs, classesaandbwere selected for extras andcwas not; this impliesℓ K(a), ℓK(b)≥ℓ K(c), so
+ℓK(a) +ℓ K(b)≥2ℓ K(c) and the margin becomes≥ −2 + 2 + 0 = 0.
+Case (iv):c= 0.For rows (0, i), (b, j) withb≥1, we haveν i(0) =iandν j(0) =L 0 (since
+Eb,j contains the factor (t+ 0 2)L0 =t L0). The zero-source residue bound is
+2i+ 2L 0 + 16mN −2m K + 1.
+The half-weight of the ordinary row (b, j) in the zero source is bounded below by
+2L0 + 8mN −m K + 1
+2 ≥2(6M+ 10)−M+ 1
+2 = 11M+ 41
+2 >2L b ≥w b,j.
+The first term of the minimum in (48) providesw 0,i ≤2i+ 8m N −m K + 1/2. Hencew 0,i +w b,j ≤
+2i+ 11M+ 41/2 + 2L b, which is dominated by the residue bound forM≥40. For two zero-class
+rows (0, i) and (0, j), we have
+w0,i +w 0,j ≤2i+ 2j+ 16m N −2m K + 1 = residue bound.
+Combining cases (i)–(iv), every entry of theE-basis Gram matrix has valuation at leastw ρ +
+wσ. Every determinant term therefore has valuation at least 2 ∑︁
+a,i wa,i. Since theE-basis is
+Zp-unimodular, we concludev G
+p (∆K)≥γ in
+p .
+4.2 The outer range
+Assume now that
+p≥11, K
+3 < p≤K, p 2 >2K,7N≤2p−2.(52)
+Thenℓ K(a)≤6 for every 1≤a≤m.
+4.2.1 The rank decomposition
+Lete≥0 and consider the polynomial moment
+µ(te) = (−1)eB2e+2(2e+ 3)(2e+ 4)(2e+ 5)(2e+ 6)(2e+ 7)
+720 .
+19
+We claim thatµ(t e) isp-integral fore <3p−4. Indeed, ifp−1∤2e+ 2, the von Staudt–Clausen
+theorem givesv p(B2e+2)≥0, soµ(t e)∈Z p. Ifp−1|2e+ 2, write 2e+ 2 =k(p−1) with
+k≥1. The conditione <3p−4 is equivalent to 2e+ 2<6(p−1), hencek∈ {1,2,3,4,5}. Then
+2e+ 2 +k=k(p−1) +k=kp, so one of the factors 2e+ 3, . . . ,2e+ 7 (namely the one at offsetk)
+is divisible byp. This factor cancels thep −1 fromB 2e+2, givingv p(µ(te))≥0.
+Choosec e ∈Z p withc e ≡pµ(t e) (modp), takingc e = 0 fore <3p−4. Replace each polynomial
+moment byµ 0(te) =µ(t e)−c e/pand leave the simple-pole values unchanged. The matrix then has
+the form
+GK =A+p −1L,(53)
+whereAis integral at every prime. We now bound the rank ofL.
+The polynomial quotient ofD 8
+N ti+j/DK has degree at mosti+j+ 8N−K. ThereforeL ij = 0
+wheneveri+j+ 8N−K <3p−4, i.e.,
+i+j < T:=K−8N+ 3p−4.
+RowiofLvanishes wheneveri+ (h−1)< T, i.e.,i≤T−h. Hence at most max(0,2h−T) rows
+ofLare nonzero, giving
+rankQp L≤r p := min
+(︁
+h,max(0, K+ 6N−3p+ 4)
+)︁
+.(54)
+Indeed, withT=K−8N+ 3p−4 andh= 37K/40,N= 3K/40,
+2h−T= 74K
+40 −K+ 24K
+40 −3p+ 4 = 58K
+40 −3p+ 4 = 29K
+20 −3p+ 4.
+ForK= 40n, this is 58n−3p+ 4.
+4.2.2 The rank lemma
+Lemma 4.5(Rank lemma).LetAandLbeh×hmatrices. Supposev p(Aij)≥w i +w j, where
+thew i are nonpositive half-integers. Letrbe a nonnegative integer and assumeLis integral with
+rankQp L≤r. If exactlyzof the weights are zero, then
+vp det(A+p −1L)≥2
+∑︂
+i
+wi −min(r, z).(55)
+The same assertion holds for the Gauss valuation of polynomial entries.
+Proof.Expand det(A+p −1L) by complementary minors ofL. A term using ak×kminor ofL,
+with row setIand column setJ, contributesp −k times a minor ofA. Its valuation is at least
+2
+∑︂
+i
+wi −k−
+∑︂
+i∈I
+wi −
+∑︂
+j∈J
+wj.
+Terms withk > rvanish (since rankL≤r). Ifw (1) ≥w (2) ≥ · · · ≥w (h) denotes the weights in
+decreasing order, the possible loss is at most
+max
+0≤k≤min(r,h)
+(︄
+k+ 2
+k∑︂
+i=1
+w(i)
+)︄
+.
+Each term increases by 1 at a zero weight and has nonpositive increments after the zero weights.
+Its maximum over 0≤k≤min(r, h) is therefore min(r, z).
+20
+4.2.3 The outer weights
+For a class withℓ=ℓ K(a) poles andδ=1 a≤N, define
+wout
+a,i =
+{︄
+min
+(︁
+0, i+ 4δ− ℓ+6
+2
+)︁
+, i < ℓ−2,
+0, i≥ℓ−2. (56)
+The removed-class costs are
+ℓ 2 3 4 5 6
+cost 0 0 0 1 2 (57)
+for a class of sizeℓ. The unremoved-class cost is 7(ℓ−2).
+Let
+v=K−p⌊K/p⌋, u= max(0, N+v−p+ 1), t p = min(N, v) +u,(58)
+and set
+γout
+p =
+{︄
+−9(K−p) + 8t p −1−min(r p, p−1−N+u), K <2p,
+−9(K−p) + 3 + 16N+ 7t p −min(r p, p+u), K≥2p,
+(59)
+withr p from (54).
+Proposition 4.6(Outer estimate).Under(52),v G
+p (∆K)≥γ out
+p . Forp > K,v G
+p (∆K)≥0.
+Proof.We follow [5, Proposition 4.3 and§4.2] with the modifications: the pole-functional constant
+is 6, the outer leading term is−9(K−p), and the removed-class costs are shifted by two, giving
+(57). The rank correction isr p = min(h,max(0, K+ 6N−3p+ 4)) from (54).
+For an ordinary square classa, we use the rowsP aqa,i where
+qa,i(t) =
+{︄
+(t+a 2)i,0≤i < ℓ−2,
+Ea(t)(t+a 2)i−(ℓ−2), ℓ−2≤i < ℓ−δ,
+withE a the product of the class factors withj > p. Together with the zero-class rows, these form
+aZ p-unimodular basis. Cross-class entries ofAare integral; within a class, if either row index is at
+leastℓ−2, the poles withj > pcancel, and the two remaining pole values ataandp−aare integral
+and congruent modulop. Fori, j < ℓ−2, the residue part has valuation at leasti+j+ 8δ−ℓ−6.
+Applying Lemma 4.5 to the weights (56) and summing over classes yieldsγ out
+p .
+Forp > K, every pole−j 2 hasj≤K < p; the residues arep-integral, and the polynomial
+correction vanishes becauseK+ 6N+ 1<2p. Thusv G
+p (∆K)≥0.
+5 Normalization and the prime sum
+The local estimates of Section 4 give lower bounds forv G
+p (∆K) in the inner and outer ranges,
+together with a crude bound valid at every prime. We now combine these into a positive rational
+factorm K,M for which the productQ K,M =m K,M FK is integral, and estimate the growth ofm K,M
+on theK 2 scale. The prime-sum estimate is the arithmetic input to the final comparison with the
+real bound of Section 6.
+21
+5.1 The normalization factor
+Forp > K, putγ out
+p = 0. For a fixed integerM∈40Z >0 andK≥200M 2, define
+Lp(K, M) =
+⎧
+⎪⎪⎨
+⎪⎪⎩
+−8h
+⌊︁
+logp(5K)
+⌋︁
+−hv p(720), pM≤K,
+vp(SK) +γ in
+p , pM > K,3p≤K,
+vp(SK) +γ out
+p ,3p > K,
+(60)
+withγ in
+p andγ out
+p as in (49) and (59). Define the positive rational number
+mK,M =
+∏︂
+p≤2h
+p−Lp(K,M) .(61)
+Only the primesp≤2henter the product; forp >2hall factorials inS K arep-units and
+the determinant isp-integral by Proposition 4.6 (the casep > K). The exponentsL p(K, M) are
+determined by (49), (59), and the Legendre formula forv p(SK):
+vp(SK) = 2h
+∑︂
+a≥1
+⌊︃K
+pa
+⌋︃
+−16h
+∑︂
+a≥1
+⌊︃N
+pa
+⌋︃
+−2
+h−1∑︂
+i=1
+∑︂
+a≥1
+⌊︃2i
+pa
+⌋︃
++ (h−1)v p(4).(62)
+Proposition 5.1(Integrality).For each integerM∈40Z >0 and eachK∈40Z >0 withK≥
+200M 2, the polynomial
+QK,M =m K,M FK =m K,M SK∆K (63)
+belongs toZ[X].
+Proof.It suffices to showv p(QK,M)≥0 for every primep.
+Casep≤2h.By the definition (61) and (60),
+vp(QK,M) =−L p(K, M) +v p(SK) +v p(∆K).
+ForpM > Kand 3p≤K:L p(K, M) =v p(SK) +γ in
+p , andv p(∆K)≥γ in
+p by Proposition 4.4. Hence
+vp(QK,M)≥0.
+For 3p > K:L p(K, M) =v p(SK) +γ out
+p , andv p(∆K)≥γ out
+p by Proposition 4.6. Hence
+vp(QK,M)≥0.
+ForpM≤K:L p(K, M) =−8h⌊log p(5K)⌋−hv p(720), andv G
+p (FK)≥ −8h⌊log p(5K)⌋−hv p(720)
+by (41). Hencev p(QK,M)≥0.
+Casep >2h.Since 2h= 37K/20 andK≥320000, we havep >37K/20> K, and every fac-
+torialK!, N!,(2i)! is ap-unit, sov p(SK) = 0. Alsop∤m K,M. Andv p(∆K)≥0 by Proposition 4.6.
+Hencev p(QK,M)≥0.
+Conclusion.Every coefficient ofQ K,M ∈Q[X] has nonnegativep-adic valuation for every
+primep, hence is a rational integer.
+5.2 The inner limiting function
+We now express the inner exponents in terms of the variablex=K/p.
+Definition 5.2(Inner limiting functions).Forx≥3 and 0< z <1/2, set
+ℓ(x, z) =⌊x−z⌋+⌊x+z⌋+ 1, b(x, z) = 4ℓ(αx, z), H= 1 + 3α= 49
+40 .(64)
+22
+Put
+T=⌊2Hx⌋, s=Hx− T
+2 , q=⌊2x⌋, n + = 2x−q
+2 .(65)
+Define
+Γ(x) =
+∫︂1/2
+0
+(T−b(x, z))(T+b(x, z)−ℓ(x, z)−7)dz+s(2T−q−7) + (s−n +)+.(66)
+Foru≥0, put
+J(u) =mu− m(m+ 1)
+4 , m=⌊2u⌋.(67)
+Define
+N(x) = 2λx⌊x⌋ −16λx⌊αx⌋ −2J(λx),(68)
+and
+R(x) =−Γ(x)− N(x).(69)
+The function Γ(x) is the continuum limit ofγ in
+p /pin the inner range: the first term is the
+integral approximation to ∑︁
+a
+∑︁
+i wa,i, the second term accounts for the fractional row allocated to
+each class, and the third term for the allocation of the extraErows to classes with largerℓ K. The
+functionN(x) is the continuum limit ofv p(SK)/p.
+The functions Γ(x) andN(x) are bounded and piecewise polynomial on each compact subin-
+terval of [3,∞). For fixedM, uniformly in the inner range,
+γin
+p =pΓ(K/p) +O M(1), v p(SK) =pN(K/p) +O M(1).(70)
+The first formula follows fromℓA(a) =ℓ(A/p, a/p): each interval on which these counts are constant
+has its number of grid points equal to its length timesp, up to an error of at most 2. The second
+formula follows from (62) together withp 2 >5Kand ∑︁h−1
+i=1 ⌊2i/p⌋=pJ(h/p) +O M(1).
+5.3 The outer limiting function
+In the outer range we usey=p/K, so thatyruns over (1/3,2λ) with 2λ= 37/20.
+Definition 5.3(Outer limiting functions).DefineR 0(y) by
+R0(y) = lim
+K→∞
+−γout
+p
+K with p
+K →y,(71)
+and put
+d(y) = (1 + 6α−3y−(1 + 2α−3y) +)+ 1(1/3,1/2)(y).(72)
+Define the outer integral
+Iout =
+∫︂2λ
+1/3
+⎛
+⎝R0(y)−d(y)−2λ⌊1/y⌋+
+7∑︂
+j=1
+(2λ−jy) +
+⎞
+⎠ dy.(73)
+The subtraction ofd(y) in the integrand records the zero-weight restriction in Lemma 4.5. The
+scalar contribution−2λ⌊1/y⌋+ ∑︁7
+j=1(2λ−jy) + comes from the continuum limit of−v p(SK)/K.
+Formula (59) gives−γ out
+p =K(R 0(p/K)−d(p/K)) +O(1) uniformly in the outer range.
+23
+5.4 The tail integral
+We split the inner integral
+∫︁M
+3 R(x)/x3 dxatT= 20. Its bounded part is evaluated exactly in
+Appendix A. For the tailx≥20, we writeR(x) as a linear term with periodic coefficient plus a
+bounded remainder.
+Let
+f={x}, g={αx}, τ={2Hx}, σ={2x}, η={2λx}.(74)
+For 0≤u <1, putd(u) = min(u,1−u) and
+ε(u) =
+{︄
++1,0≤u <1/2,
+−1,1/2< u <1.
+Set
+A(z) =ℓ(x, z)−2x, B(z) =ℓ(αx, z)−2αx.(75)
+Then, away from the measure-zero set wherez=d(f) orz=d(g),
+A(z) =ε(f)
+(︁
+1z<d(f) −2d(f)
+)︁
+, B(z) =ε(g)
+(︁
+1z<d(g) −2d(g)
+)︁
+.(76)
+Consequently ∫︂1/2
+0
+A(z)dz=
+∫︂1/2
+0
+B(z)dz= 0,(77)
+∫︂1/2
+0
+A(z)2 dz=d(f)(1−2d(f)),
+∫︂1/2
+0
+B(z) 2 dz=d(g)(1−2d(g)),(78)
+∫︂1/2
+0
+A(z)B(z)dz=ε(f)ε(g)
+(︁
+min(d(f), d(g))−2d(f)d(g)
+)︁
+.(79)
+Expanding (66) and (68) in terms off, g, τ, σ, ηand using (77) gives
+R(x) =xF(x) +Q(x),(80)
+where
+F(x) = 6λ+ 2λf−16λg,(81)
+Q(x) = τ(τ−σ)−(τ−σ) + +η(1−η)
+2 + 25
+∫︂1/2
+0
+B(z) 2 dz−4
+∫︂1/2
+0
+A(z)B(z)dz.(82)
+The expression (81) for the periodic coefficient is obtained by expanding Γ andNto quadratic order
+and using
+∫︁1/2
+0 A dz=
+∫︁1/2
+0 B dz= 0; the quadratic coefficients cancel and the linear coefficient
+equals 6λ+ 2λf−16λg.
+The elementary bounds 0≤d(u)(1−2d(u))≤1/8 and 0≤min(d(f), d(g))−2d(f)d(g)≤1/8
+give
+−1
+2 ≤Q(x)≤ 25
+8 + 1
+4 = 27
+8 .(83)
+Define the continuous periodic functions
+G(v) =v(1−v)(2v−1),P(x) =−λf(1−f)+ 296
+3 g(1−g),C(x) =− 37
+240 G(f)+ 5920
+27 G(g).
+(84)
+24
+Away from their finitely many breakpoints in a period,
+P ′(x) =F(x) +λ,C ′(x) =P(x)− P,
+where Pdenotes the mean value. Indeed, usingf ′ = 1 andg ′ =α,
+P ′ =−λ(1−2f) + 296α
+3 (1−2g) =−λ+ 2λf+ 8λ−16λg= 7λ+ 2λf−16λg=F+λ,
+and, usingG ′(v) = 6v(1−v)−1,
+C′ =− 37
+240(6f(1−f)−1) + 5920α
+27 (6g(1−g)−1)
+=− 37
+40 f(1−f) + 37
+240 + 296
+3 g(1−g)− 148
+9
+=P(x)− 11729
+720 =P(x)− P.
+The mean ofPis
+P=−λ· 1
+6 + 296
+3 · 1
+6 =− 37
+240 + 148
+9 = 11729
+720 .
+Since max[0,1] |G|= 1/(6
+√
+3),
+|C(x)| ≤ 1
+6
+√
+3
+(︃37
+240 + 5920
+27
+)︃
+<22.
+Two integrations by parts give
+∫︂∞
+T
+R(x)
+x3 dx=− λ
+T − P(T)
+T 2 + P
+T 2 − 2C(T)
+T 3 + 6
+∫︂∞
+T
+C(x)
+x4 dx+
+∫︂∞
+T
+Q(x)
+x3 dx.(85)
+AtT= 20, one hasP(20) = 74/3 andC(20) = 0. IfM∈40Z >0, thenf=g= 0 atx=M, so
+P(M) =C(M) = 0, and ∫︂∞
+M
+R(x)
+x3 dx≥ − λ
+M + 11549
+720M 2 − 44
+M 3 .(86)
+Indeed, using|C(x)|<22 and (83),
+6
+∫︂∞
+M
+C(x)
+x4 dx≥ − 44
+M 3 ,
+∫︂∞
+M
+Q(x)
+x3 dx≥ − 1
+4M 2 ,
+and P −1/4 = 11729/720−180/720 = 11549/720.
+5.5 The prime-sum bound
+Define
+A0 = 9928298118277006344769
+7535670527041937280000 ,(87)
+and put
+B0 =A 0 +I out +
+∫︂20
+3
+R(x)
+x3 dx,(88)
+where the numerical values ofI out and
+∫︁20
+3 R(x)/x3 dxare evaluated in Appendix A. Define
+AM =B 0 + 9λ
+M − 11549
+720M 2 + 44
+M 3 .(89)
+25
+Proposition 5.4(Prime-sum bound).For each fixed integerM∈40Z >0,
+lim sup
+K→∞
+logm K,M
+K2 ≤A M .(90)
+Proof.We combine the local bounds from (60). Write−logm K,M = ∑︁
+p≤2h Lp(K, M) logpand
+separate the sum according to the three branches.
+Small primesp≤
+√
+5K.By (41),
+Lp(K, M)≥ −8h⌊log p(5K)⌋ −hv p(720).
+Summing overp≤
+√
+5K, the total isO(K 3/2 logK) =o(K 2).
+Range
+√
+5K < p≤K/M.Here the crude branch givesL p =−8h⌊log p(5K)⌋ −hv p(720). Since
+5K≤p 2 (because
+√
+5K < p), we have⌊log p(5K)⌋= 1, soL p =−8h−hv p(720). By the prime
+number theorem, ∑︂
+√
+5K<p≤K/M
+Lp logp≈ −8h·θ(K/M)≈ −8h· K
+M .
+Dividing byK 2 and usingh=λK: this contributes−8λ/M+o(1) to−logm K,M /K2, and hence
++8λ/M+o(1) to the upper bound on logm K,M /K2.
+Inner rangeK/M < p≤K/3.By (70),
+Lp =v p(SK) +γ in
+p =pN(K/p) +pΓ(K/p) +O M(1) =−pR(K/p) +O M(1),
+usingR(x) =−Γ(x)− N(x) from (69). By the prime number theorem and partial summation,
+1
+K2
+∑︂
+K/M <p≤K/3
+Lp logp→ −
+∫︂M
+3
+R(x)
+x3 dx.
+TheO M(1) errors contributeO M(K) =o(K 2).
+Outer rangeK/3< p≤2h.In the variabley=p/K,
+Lp =v p(SK) +γ out
+p =−K
+⎛
+⎝R0(y)−d(y)−2λ⌊1/y⌋+
+7∑︂
+j=1
+(2λ−jy) +
+⎞
+⎠ +O(1).
+The prime number theorem gives
+1
+K2
+∑︂
+K/3<p≤2h
+Lp logp→ −
+∫︂2λ
+1/3
+⎛
+⎝R0(y)−d(y)−2λ⌊1/y⌋+
+7∑︂
+j=1
+(2λ−jy) +
+⎞
+⎠ dy=−I out.
+Combining.The upper bound on logm K,M /K2 is the negative of the sum of the contributions
+to−logm K,M /K2:
+lim sup
+K→∞
+logm K,M
+K2 ≤ 8λ
+M +
+∫︂M
+3
+R(x)
+x3 dx+I out.
+Now split
+∫︁M
+3 =
+∫︁20
+3 +
+∫︁M
+20 . Using
+∫︁M
+20 =
+∫︁∞
+20 −
+∫︁∞
+M and (86), we get
+∫︁M
+20 ≤
+∫︁∞
+20 +λ/M−11549/(720M 2)+
+44/M3. Therefore
+lim sup logm K,M
+K2 ≤I out +
+∫︂20
+3
+R(x)
+x3 dx+
+∫︂∞
+20
+R(x)
+x3 dx+ 9λ
+M − 11549
+720M 2 + 44
+M 3 .
+SubstitutingB 0 =A 0 +I out +
+∫︁20
+3 R/x3 dxwithA 0 =
+∫︁∞
+20 R/x3 dxbounded in Appendix A gives
+(89).
+26
+6 The real determinant
+The positive integral representation of Proposition 2.4 expresses ∆ K(ζ(7)) as a multiple integral
+with a squared Vandermonde factor. After scaling, the exponent is a discrete logarithmic energy
+associated with an external fieldV(t). We bound it for every configuration by comparison with an
+explicit measureρof massh/K=λ.
+6.1 The external field
+Define the external field on [0,∞) by
+V(t) = 2π
+√
+t+
+∫︂1
+0
+log(t+u 2)du−8
+∫︂α
+0
+log(t+u 2)du, α= 3
+40 .(91)
+Fora >0, put
+Ja(t) =
+∫︂a
+0
+log(t+u 2)du=alog(t+a 2)−2a+ 2
+√
+tarctan a√
+t .(92)
+ThenV(t) = 2π
+√
+t+J 1(t)−8J α(t).
+For a measureρon [0,∞), write
+U ρ(t) =
+∫︂
+log|t−u|dρ(u), I(ρ) =
+∫︂ ∫︂
+log|t−u|dρ(t)dρ(u).(93)
+6.2 The comparison measure
+Lemma 6.1(Comparison measure).There exists a positive measureρof massλ= 37/40, sup-
+ported in(0,2), such that
+2U ρ(t)−V(t)≤M 0 =− 109
+20 =−5.45 (t≥0).(94)
+The measureρis a sum of sixteen arcsine measures on nested intervals, each of length greater than
+1/225. Moreover, with
+C∗ =−2λ+ 16αλ(1−logα) + 3λ 2 −2λ 2 log(2λ),(95)
+one has
+λM0 −I(ρ) +C ∗ ≤ U= 44
+25 = 1.76.(96)
+The explicit measure, the potential bound (94), and the energy computation are given in Ap-
+pendix A. The numerical maximum of 2U ρ(t)−V(t) is approximately−5.4719 att≈0.2648, so
+the target−5.45 has a positive margin of about 0.02; the rigorous interval-arithmetic certificate is
+supplied in Appendix A.
+6.3 Zero-mass logarithmic energy
+Lemma 6.2(Zero-mass logarithmic energy).Letνbe a finite real signed Borel measure onCwith
+compact support. Supposeν(C) = 0and
+∫︂ ∫︂
+C×C
+|log|z−w||d|ν|(z)d|ν|(w)<∞.
+ThenI(ν)≤0.
+27
+Proof.Fors >0, completing the square gives
+e−s|z−w|2
+= 4s
+π
+∫︂
+C
+e−2s|z−u|2
+e−2s|w−u|2
+dA(u),
+whereAis planar Lebesgue measure. Fubini’s theorem yields
+J(s) :=
+∫︂ ∫︂
+e−s|z−w|2
+dν(z)dν(w) = 4s
+π
+∫︂
+C
+(︃∫︂
+e−2s|z−u|2
+dν(z)
+)︃2
+dA(u)≥0.
+The interchanges are justified by the bounded Gaussian kernel and the finiteness of|ν|.
+For 0< a < b <∞andr >0, put
+La,b(r) = 1
+2
+∫︂b
+a
+e−s −e −sr2
+s ds.
+The identity 1
+2
+∫︁∞
+0
+e−s−e−sr2
+s ds= logrfollows by writinge −s −e −sr2
+=
+∫︁r2
+1 se−sv dvand integrating
+first ins. The integrand has a fixed sign for eachr, so|L a,b(r)| ≤ |logr|, andL a,b(r)→logras
+a↓0 andb↑ ∞.
+The mass-zero condition gives
+∫︂ ∫︂
+La,b(|z−w|)dν(z)dν(w) =− 1
+2
+∫︂b
+a
+J(s)
+s ds≤0.
+The logarithmic integrability assumption implies that the diagonal has zero|ν| ⊗ |ν|measure.
+Dominated convergence now provesI(ν)≤0.
+6.4 Bound for a general configuration
+We apply Lemma 6.2 after regularizing a configurationt 1, . . . , th in [0,∞). Letω i be normalized
+arclength on the circle of radiusϵ >0 centered att i inC, and setσ=K −1 ∑︁h
+i=1 ωi. Sinceh/K=λ,
+the signed measureσ−ρhas mass zero.
+The circle and arcsine measures have continuous finite logarithmic potentials; hence the poten-
+tial ofη=σ+ρis bounded on its compact support. The positive part of the logarithmic kernel is
+also bounded there, so
+∫︁∫︁
+|log|z−w||dη(z)dη(w)<∞. Since|σ−ρ| ≤η, Lemma 6.2 applies.
+A unit arcsine measure on an interval of lengthLassigns at most 4
+√
+2r/(π
+√
+L) to the intersection
+with any interval of radiusr. The circle-average identity (see [12, Example 1.10]) gives
+∫︁
+log|z−
+u|dω i(z) = log max(|ti −u|, ϵ). Integrating the preceding mass bound inryields
+∫︂
+U ρ dωi −U ρ(ti)≤
+∑︂
+j
+8cj
+√
+2ϵ
+π
+√︁
+bj −a j
+≤60 √ϵ,
+usingb j −a j >1/225 and ∑︁
+j cj =λ= 37/40. The same circle-average identity givesI(ω i) = logϵ.
+For the mutual energy, applying it successively to the two circles gives
+∫︂ ∫︂
+log|z−w|dω i(z)dω j(w)≥log max(|t i −t j|, ϵ)≥log|t i −t j|.
+ExpandingI(σ−ρ)≤0 now yields
+2
+∑︂
+i<j
+log|t i −t j| −K
+∑︂
+i
+V(t i)≤(λM 0 −I(ρ))K 2 + 120λK2√ϵ−hlogϵ.(97)
+28
+The inequality includes coincident points by interpreting the left-hand side as−∞.
+A uniform bound on the exponent is not enough on an unbounded domain. We retain an
+integrable factor by changing the field fromV(t) toV(t)−
+√
+t/K. ForK≥2,
+2U ρ(t)−V(t) +
+√
+t
+K ≤M 0 +
+√
+2
+K .(98)
+Fort≤2, this follows from (94). Fort≥2, using the support ofρand log(1 +u)≤u, we obtain
+2U ρ(t)−V(t)≤ 13
+10 logt+ 8α3
+t −2π
+√
+t.(99)
+After adding
+√
+t/K, the right-hand side is decreasing on [2,∞) and its value at 2 is less thanM 0.
+These statements follow from log 2<7/10,π >3, and
+√
+2>7/5.
+Apply (97) with (98) andϵ=K −2. The result is
+2
+∑︂
+i<j
+log|t i −t j| −K
+∑︂
+i
+V(t i) +
+∑︂
+i
+√ti ≤(λM 0 −I(ρ))K 2 + (120 +
+√
+2)h+ 2hlogK.(100)
+6.5 Andr´ eief’s identity and scaling
+Andr´ eief’s integration identity (see [8, eq. (1.7)]), applied to the moment matrix in (7), gives
+∆K(ζ(7)) = 1
+h!
+∫︂
+(0,∞)h
+∏︂
+i<j
+(y2
+i −y 2
+j )2
+h∏︂
+i=1
+DN(y2
+i )8
+DK(y2
+i ) w7(yi)dy i.(101)
+The identity also follows by expanding the two Vandermonde determinants and integrating term
+by term; absolute convergence follows from the exponential decay ofw 7. The elementary bound
+w7(y)≤8192(1 +y) 7e−2πy (y >0) (102)
+follows from the exact evaluation ∑︁
+ℓ≥1 ℓ6qℓ =q(1 + 57q+ 302q 2 + 302q3 + 57q4 +q 5)/(1−q) 7 at
+q=e −2πy and 1−e −u ≥u/(1 +u).
+For 1≤m≤Kandt≥0, monotonicity gives
+0≤
+m∑︂
+j=1
+log(t+ (j/K) 2)−K
+∫︂m/K
+0
+log(t+u 2)du≤2 logK+ 2.(103)
+The difference decreases witht. Att= 0 the bound is the elementary factorial estimate log(m!)≤
+mlogm−m+ logm+ 1.
+In (101), puty i =K √ti. Combining (102) and (103) gives
+∆K(ζ(7))≤ K2h(h+8N−K)+16h (4096e12)h
+h!
+∫︂
+(0,∞)h
+∏︂
+i<j
+(ti −t j)2 ∏︂
+i
+e−KV(t i)t−1/2
+i (1 +√ti)7 dti.(104)
+Since
+∫︁∞
+0 t−1/2(1+
+√
+t)7e−
+√
+t dt <∞, the remaining integral is bounded by applying (100) and then
+integrating ∏︁
+i t−1/2
+i (1 + √ti)7e−√ti.
+29
+6.6 The real bound
+Taking logarithms of (104) and enlarging the linear term gives
+log ∆K(ζ(7))≤2h(h+ 8N−K) logK+ (λM 0 −I(ρ))K 2 + 18hlogK+ 220h.(105)
+The factorial inequalities and summation of log((2i)!) give
+−2
+h−1∑︂
+i=1
+log((2i)!)≤ −2h 2 log(2h) + 3h2 + 4hlog(2h).(106)
+By (62) and the Stirling estimate,
+logS K ≤(2λ−16αλ−2λ 2)K2 logK+C ∗K2 + 6hlogK+ 6h,(107)
+whereC ∗ =−2λ+ 16αλ(1−logα) + 3λ 2 −2λ 2 log(2λ).
+TheK 2 logKterms in (105) and (107) cancel: expanding,
+2h(h+ 8N−K) logK= 2λ(λ+ 8α−1)K 2 logK,
+and usingλ+α= 1,
+2λ(λ+ 8α−1) + (2λ−16αλ−2λ 2) = 0.
+The remaining quadratic coefficient isλM 0 −I(ρ) +C ∗, bounded by U= 44/25 in Lemma 6.1.
+Proposition 6.3(Real bound).For everyK∈40Z >0,
+0< F K(ζ(7)),logF K(ζ(7))≤ U K2 + 24KlogK+ 220K,(108)
+with U= 44/25.
+Proof.Positivity follows from Proposition 2.4: ∆ K(ζ(7))>0 andS K >0, soF K(ζ(7)) =
+SK∆K(ζ(7))>0. The upper bound follows from (105) and (107) by the cancellation ofK 2 logK
+terms and the boundλM 0 −I(ρ) +C ∗ ≤ U= 44/25 of Lemma 6.1. The linear and logarithmic
+terms are absorbed into the displayed constants.
+A The comparison measure and its elementary bounds
+This appendix proves Lemma 6.1. We specify the sixteen arcsine components, bound their potential
+on a rational partition, and evaluate the energy using the nesting of the intervals.
+A.1 The sixteen intervals
+Letω [a,b] denote the probability measure on (a, b) with density 1/(π
+√︁
+(t−a)(b−t)). Define
+ρ=
+16∑︂
+j=1
+cjω[0,Lj ],
+where the endpointsL j and coefficientsc j are given in Table 1. All entries are rational with
+denominator 1012; the table lists the integers 10 12Lj and 1012cj.
+30
+Table 1: The rational arcsine comparison measure forζ(7).
+j 1012Lj 1012cj
+1 870000000000 100000000000
+2 800000000000 80000000000
+3 700000000000 60000000000
+4 600000000000 50000000000
+5 500000000000 50000000000
+6 400000000000 50000000000
+7 300000000000 50000000000
+8 250000000000 50000000000
+9 200000000000 50000000000
+10 150000000000 50000000000
+11 120000000000 50000000000
+12 100000000000 50000000000
+13 80000000000 50000000000
+14 60000000000 50000000000
+15 40000000000 15000000000
+16 20000000000 120000000000
+Direct summation gives ∑︁16
+j=1 cj = 0.925 = 37/40. The intervals are nested: 0< L 16 < L 15 <
+· · ·< L 1 <2, and each lengthL j exceeds 1/225.
+The potential of a unit arcsine measure on [0, L] is
+U ω[0,L](t) =
+⎧
+⎨
+⎩
+log(L/4),0≤t≤L,
+log t−L/2 +
+√︁
+t(t−L)
+2 , t > L.
+(109)
+This follows from substitutingu=L(1 + cosθ)/2 in the defining integral and using the standard
+interval formula (see [12, Example 1.11]).
+Because the intervals are nested, the potential of thej-th component is constant on the union
+of the earlier intervals [0, L j′] withj ′ ≥j+ 1. PuttingS j = ∑︁j
+i=1 ci andS 0 = 0, we obtain
+I(ρ) =
+16∑︂
+j=1
+(S2
+j −S 2
+j−1) log Lj
+4 .(110)
+A.2 Elementary enclosures
+For 1≤x≤2, putz= (x−1)/(x+ 1). Then
+0≤logx−2
+m−1∑︂
+k=0
+z2k+1
+2k+ 1 ≤ 2z2m+1
+(2m+ 1)(1−z 2) .(111)
+For 0≤z≤1/2, ⃓⃓⃓⃓⃓arctanz−
+m−1∑︂
+k=0
+(−1)kz2k+1
+2k+ 1
+⃓⃓⃓⃓⃓ ≤ z2m+1
+2m+ 1 .(112)
+31
+Larger arguments are reduced by arctanx=π/2−arctan(1/x) forx >1, and arctanx=
+2 arctan(x/(1 +
+√
+1 +x 2)) for 0≤x≤1, withπ= 16 arctan(1/5)−4 arctan(1/239). Square
+roots are enclosed by adjacent multiples of 2 −144. In (111) takem= 64, in (112) takem= 80; the
+remainders are less than 2 −144.
+A.3 The potential inequality
+Fort >0, direct integration gives
+V(t) = log(1 +t)−8αlog(t+α 2)−2 + 16α+ 2
+√
+t
+(︃
+π+ arctan 1√
+t −8 arctan α√
+t
+)︃
+.(113)
+At zero,V(0) =−8αlogα−2 + 16α. Write Φ(y) =V(y 2). Then
+Φ′(y) = 2
+(︃
+π+ arctan 1
+y −8 arctan α
+y
+)︃
+,Φ ′′(y) =− 2
+1 +y 2 + 16α
+α2 +y 2 .
+The second derivative changes sign once, aty2 = (8α−α 2)/(1−8α) = 951/640. Since Φ ′(0+) =−7π
+and Φ′(+∞) = 2π,Vhas exactly one minimum.
+Put
+q− = 13415500
+109 , q + = 13415502
+109 .
+The inequalities (112) give Φ ′(√q−)<0<Φ ′(√q+), so the minimum ofVlies betweenq − andq +,
+i.e., atq ∗ ≈0.0134155016. Sinceq ∗ < L 16 = 0.02, the minimum lies strictly below the innermost
+interval ofρ.
+Because the intervals are nested,U ρ is constant on [0, L 16] and strictly increasing on (L 16,∞).
+Its maximum on any interval [l, r] is therefore attained at one of the endpoints, and for intervals
+belowL 16 is equal to the constant value. Forq − ≤t≤q +, a lower bound for (113) is
+V∗ = log(1 +q −)−8αlog(q + +α 2)−2 + 16α+ 2 √q+
+(︃
+π+ arctan 1√q+
+−8 arctan α√q−
+)︃
+.(114)
+For an interval [l, r]⊂[0,2], set
+B(l, r) = 2 max(Uρ(l), U ρ(r))−
+⎧
+⎪⎨
+⎪⎩
+V(r), r≤q −,
+V(l), l≥q +,
+V∗,otherwise.
+(115)
+The preceding monotonicity bounds give 2U ρ(t)−V(t)≤ B(l, r) forl≤t≤r.
+Partition [0,2] as follows. Let
+A0 = 0, A 1 =q −, A 2 =q +, A 2+j =L 17−j (1≤j≤16), A 19+j =L j (1≤j≤16), A 35 = 2,
+so that the breakpoints are
+0< q − < q + < L 16 < L 15 <· · ·< L 1 <2.
+Subdivide the interval [L 1,2] into eight equal pieces. Substitution of (109) and (113) into (115),
+with the rational enclosures of§A.2, gives
+B(l, r)<−5.45 (116)
+for every interval in this partition. The worst endpoint bound beforeL 1 = 0.87 is−5.865 on
+[0.3,0.4], and after subdivision of [L 1,2], the worst bound is−5.689. Fort≥2, the asymptotic
+bound (99) is decreasing and its value at 2 is less than−5.45. This proves (94) on the whole
+half-line.
+32
+A.4 Energy and the norm constant
+Applying (110) to the coefficients of Table 1, we obtain
+I(ρ) =−3.143325089379538. . .
+Direct evaluation ofC ∗ in (95) withα= 3/40,λ= 37/40 gives
+C∗ = 3.649335128751705. . .
+SinceλM 0 =−0.925·5.45 =−5.04125, we obtain
+λM0 −I(ρ) +C ∗ ≤1.751410218131243. . .≤ 44
+25 = 1.76.
+This completes the proof of Lemma 6.1.
+B Completion of the irrationality proof
+We now combine the arithmetic and analytic estimates to prove Theorem 1.2 and deduce Theo-
+rem 1.1. The approximation bound Corollary 1.3 is proved in Appendix B.
+B.1 Proof of the main polynomial estimates
+Proof of Theorem 1.2.FixM∈40Z >0 andK∈40Z >0 withK≥200M 2.
+Integrality.By Proposition 5.1,Q K,M ∈Z[X].
+Degree.By Lemma 2.3, degQ K,M =h= 37K/40.
+Positivity.By Proposition 2.4,Q K,M(ζ(7))>0.
+Decay.Combining Proposition 5.4 and Proposition 6.3,
+lim sup
+K→∞
+K−2 logQ K,M(ζ(7))≤A M + U(M∈40Z >0),(117)
+whereA M is given by (89) and U= 44/25. The exact rational values ofA M at the cutoffsM= 200
+andM= 100000, computed in Appendix A, satisfy
+A200 + U <−11<0,(118)
+A100000 + U <−12<0.(119)
+The exact values are
+A200 =− 18734377106657057108806567
+1362217364503734816000000 ≈ −13.752854423113392,
+A100000 =− 293600425556506260201513776490439
+21284646320370856500000000000000 ≈ −13.79400066777293,
+and their differences with− U=−44/25 are computed in Appendix A; the strict inequalities (118)
+and (119) follow.
+SubstitutingK= 40nin (117) and usingK 2 = 1600n2, we obtain
+lim sup
+n→∞
+n−2 logQ 40n,M(ζ(7))≤1600(A M + U).
+ForM= 200, (118) gives 1600(A 200 + U)<−17600, so the decay is faster than exp(−17000n 2)
+for largen. ForM= 100000, (119) gives 1600(A 100000 + U)<−19200, so the decay is faster than
+exp(−19000n2). This proves (1) and (2).
+33
+B.2 Proof of the main theorem
+Proof of Theorem 1.1.Apply Theorem 1.2 withM= 200. Suppose, for contradiction, thatζ(7) =
+a/bwitha∈Zandb∈Z >0. SinceQ 40n,200 ∈Z[X] has degreeh= 37n, the number
+b37nQ40n,200(a/b)
+is an integer. By the positivity of Theorem 1.2, this integer is positive, hence at least 1.
+On the other hand, the estimate (1) gives
+0< b 37nQ40n,200(a/b)< b 37n exp(−19000n2) = exp(37nlogb−19000n 2).
+For all sufficiently largen, the right-hand side is less than 1. This contradicts the integrality of
+b37nQ40n,200(a/b). Henceζ(7)/∈Q.
+A Exact arithmetic integrals
+We evaluate the bounded integrals appearing in Proposition 5.4 and give the exact rational values
+of the constantsA 200 andA 100000.
+A.1 Evaluation of the inner integral
+The functions (66) and (68) admit a formula using only fractional parts and minima. For 0≤u <1,
+put
+d(u) = min(u,1−u), ε(u) =
+{︄
++1,0≤u <1/2,
+−1,1/2< u <1.
+For every realxwith{x}=f, and for almost everyz∈(0,1/2),
+A(z) =ℓ(x, z)−2x=ε(f)
+(︁
+1z<d(f) −2d(f)
+)︁
+.
+The only possible exception isz=d(f), which does not affect integration. Applying the same
+identity toαxwithg={αx}gives
+∫︂1/2
+0
+B(z) 2 dz=d(g)(1−2d(g)),
+∫︂1/2
+0
+A(z)B(z)dz=ε(f)ε(g)(min(d(f), d(g))−2d(f)d(g)).
+(120)
+Equations (81), (82), and (120) give an explicit rational formula forR(x).
+Let 3 =t 0 < t 1 <· · ·< t s = 20 be the ordered set consisting of the endpoints and allx∈(3,20)
+for whichcxis an integer for some
+c∈
+{︃
+2,2α,2λ,2H,8α,2(1−α),2(1 +α),2(1 + 2α), 9
+20
+}︃
+.
+The coefficient 9
+20 = 2(H−1) is included because the term (s−n +)+ in (66) changes branch at
+s=n +, which corresponds to 2(H−1)x∈Z. There ares= 192 intervals. On each open interval
+(ti, ti+1), all fractional-part choices and all branches of the minima in (120) are fixed. The quadratic
+coefficient inRcancels, soRis affine on each such interval.
+Forl=t i,r=t i+1, put
+xi = 2l+r
+3 , y i = l+ 2r
+3 , a i = R(yi)−R(x i)
+yi −x i
+, b i =R(x i)−a ixi.
+34
+On the interval [t i, ti+1], we haveR(x) =a ix+b i. The exact integral is then the rational sum
+∫︂20
+3
+R(x)
+x3 dx=
+191∑︂
+i=0
+[︃
+ai
+(︃1
+ti
+− 1
+ti+1
+)︃
++ bi
+2
+(︃1
+t2
+i
+− 1
+t2
+i+1
+)︃]︃
+= 120667538150827615739401
+708353029541942104320000 .(121)
+Numerically, this equals 0.17034943470045935. . ..
+Tables 2–4 list the 192 affine pieces (i,[t i, ti+1], ai, bi) used in (121). Each table is split into two
+column-pairs to save space: the left pair covers indicesiin the range indicated by the caption, and
+the right pair coversi+ 96.
+Summing the 192 contributions in (121) gives
+∫︂20
+3
+R(x)
+x3 dx= 120667538150827615739401
+708353029541942104320000 ≈0.17034943470045935. . .
+A.2 Evaluation of the outer integral
+The outer integrand is
+T(y) =R 0(y)−d(y)−2λ⌊1/y⌋+
+7∑︂
+j=1
+(2λ−jy) +.
+With the corrected rank bound (54), the outer integrandT(y) is affine on each of the following
+intervals, where we writeT(y) =b+cy:
+Integrating each affine piece gives
+Iout =
+∫︂2λ
+1/3
+T(y)dy=− 11002997
+720000 ≈ −15.281940277777778.(122)
+A.3 The final rational margins
+Put
+A0 = 9928298118277006344769
+7535670527041937280000 ,
+and define
+B0 =A 0 +I out +
+∫︂20
+3
+R(x)
+x3 dx.
+Numerically,A 0 = 1.3175069269. . .,I out =−15.2819402777. . ., and
+∫︁20
+3 R/x3 dx= 0.1703494347. . .,
+so
+B0 =−13.7940839161. . .
+Define
+AM =B 0 + 9λ
+M − 11549
+720M 2 + 44
+M 3 .
+The values at the two cutoffs are
+A200 =− 18734377106657057108806567
+1362217364503734816000000 ≈ −13.752854423113392,
+A100000 =− 293600425556506260201513776490439
+21284646320370856500000000000000 ≈ −13.79400066777293.
+With U= 44/25, the exact differences are
+−
+(︃
+A200 + 44
+25
+)︃
+>11,−
+(︃
+A100000 + 44
+25
+)︃
+>12,
+verifying the strict inequalities (118) and (119).
+35
+Table 2: The affine pieces ofR(x) =a ix+b i fori= 0, . . . ,31 (left pair) andi= 96, . . . ,127 (right
+pair).
+i [ti, ti+1] ai bi i [ti, ti+1] ai bi
+0 3,70/23 51/20 1 96 80/7,23/2 1/40 −71
+1 70/23,120/37 51/20 1 97 23/2,500/43 41/40 −165/2
+2 120/37,140/43 81/10 −17 98 500/43,35/3 41/40 −165/2
+3 140/43,160/49 81/10 −17 99 35/3,270/23 41/40 −165/2
+4 160/49,10/3 55/8 −13 100 270/23,580/49 41/40 −165/2
+5 10/3,80/23 55/8 −13 101 580/49,440/37 −1/5 −68
+6 80/23,7/2 55/8 −13 102 440/37,12 107/20 −134
+7 7/2,180/49 63/8 −33/2 103 12,520/43 9/2 −146
+8 180/49,160/43 133/20 −12 104 520/43,280/23 1/5 −94
+9 160/43,140/37 47/20 4 105 280/23,600/49 1/5 −94
+10 140/37,90/23 21/5 −3 106 600/49,460/37 −41/40 −79
+11 90/23,4 21/5 −3 107 460/37,25/2 33/40 −102
+12 4,200/49 67/20 −7 108 25/2,540/43 73/40 −229/2
+13 200/49,180/43 17/8 −2 109 540/43,290/23 73/40 −229/2
+14 180/43,160/37 17/8 −2 110 290/23,620/49 73/40 −229/2
+15 160/37,100/23 307/40 −26 111 620/49,480/37 3/5 −99
+16 100/23,40/9 307/40 −26 112 480/37,13 123/20 −171
+17 40/9,220/49 149/20 −25 113 13,560/43 53/10 −184
+18 220/49,9/2 249/40 −39/2 114 560/43,300/23 1 −128
+19 9/2,200/43 289/40 −24 115 300/23,640/49 1 −128
+20 200/43,110/23 117/40 −4 116 640/49,40/3 −9/40 −112
+21 110/23,180/37 117/40 −4 117 40/3,660/49 67/4 −141
+22 180/37,240/49 191/40 −13 118 660/49,310/23 621/40 −249/2
+23 240/49,5 71/20 −7 119 310/23,580/43 621/40 −249/2
+24 5,220/43 27/10 −12 120 580/43,27/2 621/40 −249/2
+25 220/43,120/23 27/10 −12 121 27/2,500/37 661/40 −138
+26 120/23,260/49 27/10 −12 122 500/37,680/49 147/8 −163
+27 260/49,200/37 59/40 −11/2 123 680/49,320/23 343/20 −146
+28 200/37,11/2 281/40 −71/2 124 320/23,600/43 343/20 −146
+29 11/2,240/43 321/40 −41 125 600/43,14 257/20 −86
+30 240/43,130/23 149/40 −17 126 14,520/37 12 −100
+31 130/23,40/7 149/40 −17 127 520/37,100/7 351/20 −178
+36
+Table 3: The affine pieces ofR(x) =a ix+b i fori= 32, . . . ,63 (left pair) andi= 128, . . . ,159
+(right pair).
+i [ti, ti+1] ai bi i [ti, ti+1] ai bi
+32 40/7,220/37 5/2 −10 128 100/7,330/23 653/40 −321/2
+33 220/37,6 87/20 −21 129 330/23,620/43 653/40 −321/2
+34 6,260/43 7/2 −27 130 620/43,29/2 653/40 −321/2
+35 260/43,140/23 7/2 −27 131 29/2,540/37 693/40 −175
+36 140/23,300/49 7/2 −27 132 540/37,720/49 767/40 −202
+37 300/49,240/37 91/40 −39/2 133 720/49,340/23 359/20 −184
+38 240/37,13/2 313/40 −111/2 134 340/23,640/43 359/20 −184
+39 13/2,280/43 353/40 −62 135 640/43,15 273/20 −120
+40 280/43,150/23 181/40 −34 136 15,740/49 64/5 −135
+41 150/23,320/49 181/40 −34 137 740/49,560/37 463/40 −233/2
+42 320/49,20/3 33/10 −26 138 560/37,350/23 137/8 −401/2
+43 20/3,340/49 219/40 −81/2 139 350/23,660/43 137/8 −401/2
+44 340/49,160/23 17/4 −32 140 660/43,31/2 137/8 −401/2
+45 160/23,300/43 17/4 −32 141 31/2,760/49 145/8 −216
+46 300/43,7 17/4 −32 142 760/49,140/9 169/10 −197
+47 7,260/37 17/5 −39 143 140/9,360/23 667/40 −387/2
+48 260/37,360/49 21/4 −52 144 360/23,580/37 667/40 −387/2
+49 360/49,170/23 161/40 −43 145 580/37,680/43 741/40 −445/2
+50 170/23,320/43 161/40 −43 146 680/43,780/49 569/40 −309/2
+51 320/43,15/2 −11/40 −11 147 780/49,16 13 −135
+52 15/2,280/37 29/40 −37/2 148 16,370/23 243/20 −151
+53 280/37,380/49 251/40 −121/2 149 370/23,600/37 243/20 −151
+54 380/49,180/23 101/20 −51 150 600/37,700/43 177/10 −241
+55 180/23,340/43 101/20 −51 151 700/43,800/49 177/10 −241
+56 340/43,8 101/20 −51 152 800/49,33/2 659/40 −221
+57 8,300/37 21/5 −59 153 33/2,380/23 699/40 −475/2
+58 300/37,400/49 121/20 −74 154 380/23,50/3 699/40 −475/2
+59 400/49,190/23 193/40 −64 155 50/3,820/49 699/40 −475/2
+60 190/23,25/3 193/40 −64 156 820/49,720/43 65/4 −217
+61 25/3,360/43 193/40 −64 157 720/43,620/37 239/20 −145
+62 360/43,17/2 21/40 −28 158 620/37,390/23 69/5 −176
+63 17/2,60/7 61/40 −73/2 159 390/23,17 69/5 −176
+37
+Table 4: The affine pieces ofR(x) =a ix+b i fori= 64, . . . ,95 (left pair) andi= 160, . . . ,191
+(right pair).
+i [ti, ti+1] ai bi i [ti, ti+1] ai bi
+64 60/7,320/37 3/10 −26 160 17,120/7 259/20 −193
+65 320/37,200/23 117/20 −74 161 120/7,740/43 469/40 −172
+66 200/23,380/43 117/20 −74 162 740/43,640/37 469/40 −172
+67 380/43,80/9 117/20 −74 163 640/37,400/23 691/40 −268
+68 80/9,440/49 45/8 −72 164 400/23,35/2 691/40 −268
+69 440/49,9 22/5 −61 165 35/2,860/49 731/40 −571/2
+70 9,210/23 71/20 −70 166 860/49,760/43 341/20 −264
+71 210/23,340/37 71/20 −70 167 760/43,160/9 51/4 −188
+72 340/37,400/43 27/5 −87 168 160/9,410/23 501/40 −184
+73 400/43,460/49 11/10 −47 169 410/23,660/37 501/40 −184
+74 460/49,19/2 −1/8 −71/2 170 660/37,880/49 115/8 −217
+75 19/2,220/23 7/8 −45 171 880/49,18 263/20 −195
+76 220/23,360/37 7/8 −45 172 18,780/43 123/10 −213
+77 360/37,420/43 257/40 −99 173 780/43,420/23 123/10 −213
+78 420/43,480/49 257/40 −99 174 420/23,55/3 123/10 −213
+79 480/49,10 26/5 −87 175 55/3,900/49 123/10 −213
+80 10,500/49 87/20 −97 176 900/49,680/37 443/40 −381/2
+81 500/49,440/43 25/8 −169/2 177 680/37,37/2 133/8 −585/2
+82 440/43,380/37 −47/40 −81/2 178 37/2,800/43 141/8 −311
+83 380/37,240/23 27/40 −119/2 179 800/43,430/23 533/40 −231
+84 240/23,21/2 27/40 −119/2 180 430/23,920/49 533/40 −231
+85 21/2,520/49 67/40 −70 181 920/49,700/37 121/10 −208
+86 520/49,460/43 9/20 −57 182 700/37,19 279/20 −243
+87 460/43,400/37 9/20 −57 183 19,820/43 131/10 −262
+88 400/37,250/23 6 −117 184 820/43,440/23 131/10 −262
+89 250/23,11 6 −117 185 440/23,940/49 131/10 −262
+90 11,540/49 103/20 −128 186 940/49,720/37 95/8 −477/2
+91 540/49,100/9 157/40 −229/2 187 720/37,39/2 697/40 −693/2
+92 100/9,480/43 37/10 −112 188 39/2,840/43 737/40 −366
+93 480/43,260/23 −3/5 −64 189 840/43,450/23 113/8 −282
+94 260/23,420/37 −3/5 −64 190 450/23,960/49 113/8 −282
+95 420/37,80/7 5/4 −85 191 960/49,20 129/10 −258
+38
+Table 5: Affine pieces of the outer integrandT(y) =b+cy.
+y-interval b c
+[1/3,37/100] −75/8 8
+[37/100,37/80] −99/8 16
+[37/80,29/60] −569/40 20
+[29/60,1/2] −569/40 20
+[1/2,37/60] −107/10 9
+[37/60,37/40] −251/20 12
+[37/40,77/80] −72/5 14
+[77/80,1] 1 −2
+[1,37/20] −239/20 −2
+B Rational approximation and coefficient height
+We prove Corollary 1.3 by controlling the determinant nearζ(7). The additional input is a relative
+matrix norm estimate, combined with the stronger decay of Theorem 1.2 for the larger cutoff
+M= 100000. We then record a coefficient height bound.
+B.1 The relative matrix norm
+A polynomial that is small and nonzero atζ(7) might vanish at a nearby rational number. To
+exclude this, we use the affine dependence ofG K(X) onXand measure its change relative to the
+positive matrixG K(ζ(7)).
+Putξ=ζ(7),G=G K(ξ), andM K = [X]G K(X). SinceGis positive definite, the real
+symmetric matrix
+BK =G −1/2MKG−1/2
+is defined, with operator norm∥B K∥equal to the spectral radius.
+Proposition B.1.For all sufficiently largeK∈40Z >0,
+∥BK∥ ≤e ρK, ρ= 14301
+1000 .(123)
+Proof.Letqbe a real polynomial of degree less thanh, and writep(t) =q(K 2t). Fix 0< a < b.
+Keeping only the termℓ= 1 in (16), restricting the integral toy=K
+√
+twitha≤t≤b, and
+bounding every factor separately gives
+qTGq≥ A Kcae−F(a,b)K
+∫︂b
+a
+p(t)2 dt,(124)
+whereA K =K 16N−2K+8 and
+ca = (2π)6a3
+720 ,F(a, b) = 2π
+√
+b+ log(1 +b)−8αloga.
+Indeed, the scaled numeratorD N(K2t)8 is at leasta 8N (sinceD N(u)≥u N foru≥0), the denom-
+inator is at most (1 +b) 2K (sinceD K(K2t)≤K 2K(1 +t)K fort≤bandb≤1), and the remaining
+density is at leastc ae−2πK
+√
+b.
+39
+Setu j =j/K. The residue expression forM K gives
+qTMKq=A K
+K∑︂
+j=N+1
+rjp(−u2
+j)2, r j =
+u6
+j
+∏︁N
+ℓ=1(u2
+ℓ −u 2
+j)7
+∏︁
+N <k≤K(u2
+k −u 2
+j) .(125)
+The numerator has absolute value at most one. Sinceu k +u j ≥2αfork̸=j,
+|rj| ≤ (K/(2α))h−1
+(j−N−1)!(K−j)! ≤ (K/α)h−1
+(h−1)! ≤exp{λK(1−log(αλ))}.(126)
+The Legendre expansion ofpon [a, b] gives
+max
+−1≤t≤0
+|p(t)|2 ≤ h2R2h
+b−a
+∫︂b
+a
+p(t)2 dt, Y= 2 +a+b
+b−a ,R=Y+
+√︁
+Y 2 −1.(127)
+For completeness, the transformed argument has absolute value at mostY, and the Laplace integral
+forP j gives|P j(s)| ≤ R j there (DLMF 18.10.5). Cauchy–Schwarz in the orthogonal expansion,
+followed by ∑︁h−1
+j=0 (2j+ 1) =h 2, proves (127).
+Combining (124)–(127) yields
+∥BK∥ ≤ h3
+ca(b−a) eκ(a,b)K, κ(a, b) =F(a, b) +λ(1−log(αλ)) + 2λlogR.
+Takea= 1/18 andb= 1/3. ThenY= 43/5 and
+κ= 2π√
+3 + log 4
+3 + 3
+5 log 18 + 37
+40
+(︃
+1 + log 1600
+111
+)︃
++ 37
+20 log 43 + 4
+√
+114
+5 .
+Numerically,κ= 14.2994124425497. . . <14301/1000 = 14.301. The strict inequality is established
+in Appendix A using the elementary enclosures of§A.2. Its positive margin absorbs the polynomial
+factorh 3/(ca(b−a)) in the bound above, proving (123).
+B.2 Proof of the approximation bound
+Proof of Corollary 1.3.ChooseKproportional to logb. The relative norm bound will preserve
+positivity, while the quadratic decay will outweigh the factorb h. UseM= 100000 and write
+QK =Q K,100000. By Theorem 1.2, for all sufficiently large allowedK,
+0< Q K(ξ)≤e −ϵK2
+, ϵ= 12.(128)
+This follows fromA 100000 + U <−12 (see (119)).
+Letc= 75/4 andN= 270. For a positive integerb, choose
+K= 40
+⌊︃clogb
+40
+⌋︃
+, K≤clogb < K+ 40.
+Then
+ρc= 14301
+1000 · 75
+4 = 1072575
+4000 = 268.14375.
+SinceN= 270> ρc, we haveρc−N=−1.85625<0.
+40
+Supposea∈Zand|a/b−ξ| ≤b −270. Setδ=a/b−ξ. By Proposition B.1 andK≤clogb,
+|δ|∥BK∥ ≤b −270 ·e ρK ≤b −270+ρc =b −1.85625 =e −1.85625 logb .
+SinceK≤clogbimplies logb≥K/c, we have
+|δ|∥BK∥ ≤e −1.85625K/c =e −1.85625·4K/75 =e −0.099K.
+This iso(K −1) asK→ ∞, so all eigenvalues ofI+δB K are positive for sufficiently largeb. Also
+det(I+δB K)≤(1 +|δ|∥B K∥)h ≤exp(h|δ|∥B K∥)→1, so the determinant is at most two.
+The affine dependence ofG K onXgives
+QK(a/b) =Q K(ξ) det(I+δB K).
+SinceQ K ∈Z[X] has degreeh, the numberb hQK(a/b) is a nonzero integer, hence at least one in
+absolute value. Combining with the bound above and using logb <(K+ 40)/c,
+λKlogb−ϵK 2 < λK· K+ 40
+c −12K 2 =
+(︃λ
+c −12
+)︃
+K2 + 40λ
+c K
+=
+(︃37
+750 −12
+)︃
+K2 + 37
+18.75 K=− 8963
+750 K2 + 148
+75 K.
+For all sufficiently largeK, the right-hand side is at most−11K 2. Hence
+0< b hQK(a/b)≤2e −11K2
+<1
+for all sufficiently largeb, contradicting integrality. Therefore|ξ−a/b|> b −270.
+B.3 Coefficient height and primitive normalization
+The relative matrix estimate also controls the coefficients, without any further local argument. Let
+H(Q) be the largest absolute value of a coefficient ofQ. Ifβ 1, . . . , βh are the eigenvalues ofB K,
+then
+QK(X) =Q K(ξ)
+h∏︂
+j=1
+(1 + (X−ξ)β j).
+The elementary boundξ <2 and Proposition B.1 imply
+logH(Q K)≤(λρ−ϵ)K 2 +o(K 2)<2K 2 (129)
+for all sufficiently large allowedK. Indeed,λρ−ϵ= 37
+40 · 14301
+1000 −12 = 13.228−12 = 1.228<2.
+The cutoff enters the explicit normalizing factor, but it can be removed by passing to the
+primitive polynomial. For 0̸=A∈Q[X], let cont Q(A)>0 be the rational number such that
+A/cont Q(A) has integral coefficients with greatest common divisor one. Put
+PK = ∆K/cont Q(∆K).
+For every admissibleK, M, there is a positive integera K,M withQ K,M =a K,M PK. Indeed, a
+rational multiple of a primitive integer polynomial has integer coefficients only when the multiplier
+is a positive integer. ThusP K(ξ)>0, and the upper bounds proved above forQ K,M(ξ) hold for
+PK(ξ) as well.
+41
+References
+[1] R. Ap´ ery,Irrationalit´ e deζ2etζ3, Journ´ ees Arithm´ etiques de Luminy, Ast´ erisque, vol. 61,
+Soci´ et´ e math´ ematique de France, 1979, pp. 11–13.
+[2] K. Ball and T. Rivoal,Irrationalit´ e d’une infinit´ e de valeurs de la fonction zˆ eta aux entiers
+impairs, Invent. Math.146(2001), no. 1, 193–207.
+[3] F. Beukers,A note on the irrationality ofζ(2)andζ(3), Bull. London Math. Soc.11(1979),
+no. 3, 268–272.
+[4] F. Brown and W. Zudilin,On cellular rational approximations toζ(5), arXiv:2210.03391v3,
+2026.
+[5] A. Fauzan,ζ(5)is irrational, preprint, 17 September 2026.
+[6] S. Fischler,Linear independence of odd zeta values using Siegel’s lemma, J. London Math. Soc.
+113(2026), no. 4, e70535, arXiv:2109.10136.
+[7] S. Fischler, J. Sprang, and W. Zudilin,Many odd zeta values are irrational, Compos. Math.
+155(2019), no. 5, 938–952, arXiv:1803.08905.
+[8] P. J. Forrester,Meet Andr´ eief, Bordeaux 1886, and Andreev, Kharkov 1882–1883, Random
+Matrices Theory Appl.8(2019), no. 2, 1930001, arXiv:1806.10411.
+[9] L. Lai, C. Lupu, and J. Sprang,On the irrationality of certainp-adic zeta values, Res. Math.
+Sci.12(2025), 77, arXiv:2505.23088.
+[10] National Institute of Standards and Technology,NIST Digital Library of Mathematical Func-
+tions,https://dlmf.nist.gov/, Release 1.2.8 of 15 September 2026. Chapters 18, 24, 25,
+and 27.
+[11] T. Rivoal,La fonction zˆ eta de Riemann prend une infinit´ e de valeurs irrationnelles aux entiers
+impairs, C. R. Acad. Sci. Paris S´ er. I Math.331(2000), no. 4, 267–270, arXiv:math/0008051.
+[12] E. B. Saff,Logarithmic potential theory with applications to approximation theory, Surv. Ap-
+prox. Theory5(2010), 165–200, arXiv:1010.3760.
+[13] W. Zudilin,One of the numbersζ(5), ζ(7), ζ(9), ζ(11)is irrational, Russian Math. Surveys56
+(2001), no. 4, 774–776.
+[14] W. Zudilin,Arithmetic of linear forms involving odd zeta values, J. Th´ eor. Nombres Bordeaux
+16(2004), no. 1, 251–291, arXiv:math/0206176.
+42

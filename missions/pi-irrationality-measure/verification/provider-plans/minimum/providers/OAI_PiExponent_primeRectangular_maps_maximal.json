@@ -1,0 +1,125 @@
+{
+  "unit": "OAI.NumberTheory.PiExponent.Jets.PrimeTaylorCotangent:419",
+  "source_module": "OAI.NumberTheory.PiExponent.Jets.PrimeTaylorCotangent",
+  "provider_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Jets_PrimeTaylorCotangent",
+  "source_paths": {
+    "port": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Jets/PrimeTaylorCotangent.lean",
+    "original": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Jets/PrimeTaylorCotangent.lean"
+  },
+  "source_hashes": {
+    "port_sha256": "dc0589380e9a718b44fea7490b1973d8474bbecb7f265fb20e28bcf8f83a1c64",
+    "original_sha256": "9a4531ef4a0e5562ba3b5c65af0407cbb08843eef5fa4c1e511dd8e5a035419a"
+  },
+  "command": {
+    "range": {
+      "start": {
+        "col": 0,
+        "line": 16,
+        "normalizedOffset": 404,
+        "offset": 419
+      },
+      "end": {
+        "col": 77,
+        "line": 26,
+        "normalizedOffset": 1091,
+        "offset": 1116
+      }
+    },
+    "name_range": {
+      "end": {
+        "col": 37,
+        "line": 17,
+        "normalizedOffset": 475,
+        "offset": 491
+      },
+      "start": {
+        "col": 8,
+        "line": 17,
+        "normalizedOffset": 446,
+        "offset": 462
+      }
+    },
+    "value_start": {
+      "col": 40,
+      "line": 23,
+      "normalizedOffset": 862,
+      "offset": 884
+    },
+    "byte_length": 697,
+    "sha256": "708b41c796de04a42f4327ec12250b06ea2df8476e971ee4d436f93fb830651c",
+    "utf8": "omit [Fintype ι] [Fintype σ] in\r\ntheorem primeRectangular_maps_maximal\r\n    (tau : Localization.AtPrime Q →+* MvPowerSeries σ Q.ResidueField)\r\n    (hzero : ∀ x, constantCoeff (tau x) = algebraMap (Localization.AtPrime Q) Q.ResidueField x)\r\n    (n : σ → ℕ) (hn : ∀ i, 2 ≤ n i) :\r\n    IsLocalRing.maximalIdeal (Localization.AtPrime Q) ≤\r\n      (rectangularAugmentationIdeal (K := Q.ResidueField) n hn).comap\r\n        (rectangularTaylorAlgHom n tau) := by\r\n  apply rectangularTaylorAlgHom_maps_residueIdeal n (rectangularPositive n hn)\r\n    tau (algebraMap (Localization.AtPrime Q) Q.ResidueField) hzero\r\n  exact le_of_eq (IsLocalRing.ker_residue (R := Localization.AtPrime Q)).symm"
+  },
+  "interface": [
+    {
+      "name": "OAI.PiExponent.primeRectangular_maps_maximal",
+      "user_name": "OAI.PiExponent.primeRectangular_maps_maximal",
+      "kind": "theorem",
+      "is_private": false,
+      "is_instance": false,
+      "type_deps": [
+        "OAI.PiExponentApprox.TransverseMultiplicity.rectangularTaylorAlgHom",
+        "OAI.PiExponentApprox.TransverseMultiplicity.rectangularIdeal",
+        "OAI.PiExponentApprox.TransverseMultiplicity.rectangularAugmentationIdeal",
+        "OAI.PiExponentApprox.TransverseMultiplicity.RectangularRing"
+      ],
+      "value_deps": [
+        "OAI.PiExponentApprox.TransverseMultiplicity.rectangularTaylorAlgHom_maps_residueIdeal",
+        "OAI.PiExponentApprox.TransverseMultiplicity.rectangularPositive"
+      ],
+      "constructors": []
+    }
+  ],
+  "consumers_in_collision_audit": [
+    "OAI.NumberTheory.PiExponent.Ampleness.AdmissibleBlowupMargin:1148",
+    "OAI.NumberTheory.PiExponent.Approximation.OrdinarySliceComparison:438",
+    "OAI.NumberTheory.PiExponent.Geometry.CurveFieldRigidity:810",
+    "OAI.NumberTheory.PiExponent.Geometry.CurveInequality:3152",
+    "OAI.NumberTheory.PiExponent.Geometry.CurveInequality:653",
+    "OAI.NumberTheory.PiExponent.Geometry.WeightedCurveRigidity:1924",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseSliceComparison:4225",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.OrdinaryMultiplicity:2798",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeFrameMultiplicity:415",
+    "OAI.NumberTheory.PiExponent.Main:193"
+  ],
+  "statement_type_evidence": [
+    {
+      "consumer_unit": "OAI.NumberTheory.PiExponent.Jets.PrimeTaylorCotangent:1120",
+      "consumer_theorem": "OAI.PiExponent.prime_rectangular_mapCotangent_surjective",
+      "consumer_type_deps_contains_helper": true,
+      "consumer_value_deps_contains_helper": true,
+      "facts": "missions/pi-irrationality-measure/verification/sketch-PrimeTaylorCotangent-20261008-024834.log",
+      "facts_sha256": "0ce6015feeb0b9dfdcad2e50d10f0efed3b45f533fa160a18f4b1f7972179398",
+      "reference_count": 1
+    }
+  ],
+  "proof_policy": "retain the exact whole source command and its proof; theorem placeholders are forbidden",
+  "lean_validated": false,
+  "publish_ready": false,
+  "provider_name": "OAI.PiExponent.primeRectangular_maps_maximal",
+  "provider_names": [
+    "OAI.PiExponent.primeRectangular_maps_maximal"
+  ],
+  "requested_alias": null,
+  "complete_unit_closure": [
+    "OAI.NumberTheory.PiExponent.Jets.PrimeTaylorCotangent:419",
+    "OAI.NumberTheory.PiExponent.Jets.RectangularCotangent:353",
+    "OAI.NumberTheory.PiExponent.Jets.RectangularCotangent:453",
+    "OAI.NumberTheory.PiExponent.Jets.RectangularCotangent:632",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:12595",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:13630",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:4716",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:646"
+  ],
+  "complete_unit_closure_count": 8,
+  "closure_source_modules": [
+    "OAI.NumberTheory.PiExponent.Jets.PrimeTaylorCotangent",
+    "OAI.NumberTheory.PiExponent.Jets.RectangularCotangent",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity"
+  ],
+  "closure_selected_source_bytes": 2968,
+  "private_constants_in_transitive_statement_type": [],
+  "provider_bundle_imports": [
+    "OAI.NumberTheory.PiExponent.Jets.RectangularCotangent",
+    "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity"
+  ]
+}

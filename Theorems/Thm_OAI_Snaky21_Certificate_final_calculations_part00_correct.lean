@@ -1,0 +1,4 @@
+import Definitions.Def_Snaky21Calc11Part11
+open OAI.Snaky21 OAI.SnakyPrototype OAI.Snaky21.Certificate
+
+theorem OAI.Snaky21.Certificate.final_calculations_part00_correct : (placed 0 (4, 3) card_648 = calc11_card_2299) ∧ (placed 1 (3, 4) card_648 = calc11_card_2300) ∧ (placed 5 (3, 12) card_648 = calc11_card_2301) ∧ (placed 2 (4, 13) card_648 = calc11_card_2302) ∧ (placed 1 (0, 0) card_708 = calc11_card_2303) ∧ (placed 4 (16, 0) card_708 = calc11_card_2304) ∧ (placed 2 (0, 16) card_708 = calc11_card_2305) ∧ (placed 7 (16, 16) card_708 = calc11_card_2306) ∧ (placed 0 (3, 3) card_712 = calc11_card_2307) ∧ (placed 1 (3, 3) card_712 = calc11_card_2308) ∧ (placed 4 (13, 3) card_712 = calc11_card_2309) ∧ (placed 5 (3, 13) card_712 = calc11_card_2310) ∧ (placed 2 (3, 13) card_712 = calc11_card_2311) ∧ (placed 3 (13, 3) card_712 = calc11_card_2312) ∧ (placed 6 (13, 13) card_712 = calc11_card_2313) ∧ (placed 7 (13, 13) card_712 = calc11_card_2314) ∧ True := by sorry

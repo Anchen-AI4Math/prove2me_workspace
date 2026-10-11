@@ -1,0 +1,4 @@
+import missions.zeta9.formalization.ShortZeroCoefficient
+
+#print axioms ZetaNine.ShortZeroCoefficient.A_even_signed_lower
+#print axioms ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even

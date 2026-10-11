@@ -1,5 +1,9 @@
 # ζ(9) 成果整理：证明状态审计（中文摘要）
 
+后续更新（2026-09-28）：本文件保留 9 月 25 日审计快照。其 C3（首轮 `A≠0`）现由
+[新的全参数书面证明](short-zero-coefficient-nonvanishing.md) 关闭，并获得系数下界；
+不代表 `L≠0`、整化衰减或无理性已证。其余缺口见[最新进展](progress-2026-09-28.md)。
+
 2026-09-25。**结论：本轮工作没有任何地方可以声称无理性结果。** 本文是
 [英文 LaTeX 正本](zeta9-proof-state-audit.tex)（`zeta9-proof-state-audit.tex`）的中文提要：
 正本分 **Part I（第一轮）** 与 **Part II（九轮全景 + roadmap + 平台层）**，

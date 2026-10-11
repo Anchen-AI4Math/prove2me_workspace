@@ -19,6 +19,26 @@ python scripts/workspace.py build no-adjacent
 
 平台操作时按需读取 [SKILL.md](SKILL.md) 和相应 `references/` 文档。各任务状态以其交接记录为准。
 
+大型验证数据以 SHA-256 去重、压缩保存在 [证据归档](archives/verification/README.md)，源码和模块路径保持稳定。首次克隆后，运行以下命令恢复证据原路径，再做完整结构检查；也可加 `--mission zeta9` 只恢复指定任务。本地已有文件会核对哈希，内容不同则拒绝覆盖。
+
+```powershell
+python scripts/workspace_data.py restore
+python scripts/workspace.py check
+```
+
+目录职责和本地清理边界见 [工作区结构说明](docs/workspace-layout.md)。Windows 克隆本仓库时建议使用 `git -c core.longpaths=true clone <仓库地址>`，以支持历史验证记录的较长路径。
+
+大型验证数据以 SHA-256 去重、压缩保存在 [证据归档](archives/verification/README.md)，源码和模块路径保持稳定。首次克隆后，运行以下命令恢复证据原路径，再做完整结构检查；也可加 `--mission zeta9` 只恢复指定任务。本地已有文件会核对哈希，内容不同则拒绝覆盖。
+
+```powershell
+python scripts/workspace_data.py restore
+python scripts/workspace.py check
+```
+
+目录职责和本地清理边界见 [工作区结构说明](docs/workspace-layout.md)。Windows 克隆本仓库时建议使用 `git -c core.longpaths=true clone <仓库地址>`，以支持历史验证记录的较长路径。
+
+平台文档已同步至官方 **v0.12.1**（2026-10-07 核对，提交 `306d05a`）。新增 Collections，更新审核、公开任务、分页和字段说明；变更摘要及后续同步方法见 [平台接口更新说明](docs/platform-api-update.md)。此版本号指本地官方文档版本，不代表已完成线上接口集成测试。
+
 ## Quick-start commands
 
 Common natural-language instructions for driving an agent on Prove2.me. Replace each `<placeholder>`.

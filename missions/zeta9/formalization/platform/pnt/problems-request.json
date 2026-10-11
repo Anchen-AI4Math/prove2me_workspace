@@ -1,0 +1,122 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.psi_pnt_rate",
+      "theorem_title": "The actual Chebyshev psi prime-number-theorem rate",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.psi_pnt_rate :\n    Tendsto (fun x : ℝ => Chebyshev.psi x / x) atTop (nhds 1):= by sorry",
+      "natural_language_statement": "The actual Chebyshev function satisfies $\\psi(x)/x\\to1$ as the real variable $x\\to+\\infty$. This theorem has no hypotheses. It derives the limit from the already proved MediumPNT error estimate for the actual $\\psi$, with a positive constant and relative error $\\exp(-c(\\log x)^{1/10})$ tending to zero.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 117–122, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+      "tags": [
+        "number-theory",
+        "asymptotics",
+        "harmonic-numbers",
+        "formalization"
+      ],
+      "explanation": "The unchanged original proof derives psi/x→1 from the genuine MediumPNT estimate. Mathlib's proved psi−theta=O(sqrt x) and psi(N)=log(lcmUpto N) supply both PNT inputs. The harmonic denominator is bounded above by lcmUpto(N)^s, using the complete clearing proof inline. At every fixed finite-block cutoff K, the actual prime valuations force large primes to exponent s in the reduced denominator once finitely many prefix exceptions are excluded. Chebyshev block sums give the lower rate sK/(K+1); letting K increase squeezes the full natural sequence to s. The exact double-endpoint theorem specializes to s=9 and scales by two. Rational addition/subtraction denominator divisibility proves |log den(q+r)−log den(q)|≤log den(r), so the stated small-denominator condition gives the original perturbation endpoint. All native proofs close with only propext, Classical.choice and Quot.sound; the platform version imports the already Proved MediumPNT, whose local statement mirror is explicitly not a proof. No irrationality or J-condition conclusion is claimed.",
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_psi_pnt_rate.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_psi_pnt_rate.lean",
+      "verified_local_theorem": "ZetaNine.HarmonicStability.psi_pnt_rate",
+      "definition_dependencies": [
+        "ZetaNine_HarmonicStability",
+        "ZetaNine_HarmonicPrimeValuation"
+      ],
+      "proved_theorem_dependencies": [
+        {
+          "theorem_name": "MediumPNT",
+          "theorem_id": "7cfa31c8-4063-4b52-81fc-8b2f2a59495e"
+        }
+      ],
+      "proof_size_note": "Actual reachable proof declarations retained byte-for-byte; existing definition declarations, unreachable declarations and parser-recorded imports/diagnostics are removed by exact Lean spans. No mathematical proof is rewritten."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_log_den_rate",
+      "theorem_title": "The reduced generalized harmonic denominator has rate equal to its positive order",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_log_den_rate (s : ℕ) (hs : 0 < s) :\n    Tendsto (fun N : ℕ => logDen (harmonicPower s N) / (N : ℝ))\n      atTop (nhds (s : ℝ)):= by sorry",
+      "natural_language_statement": "For every fixed positive natural number $s$, write $H_N^{(s)}=\\sum_{j=1}^N j^{-s}$ in lowest terms. Then $\\log\\operatorname{den}(H_N^{(s)})/N\\to s$ along all natural $N\\to\\infty$. The only hypothesis is $s>0$. The prime-number-theorem inputs and the harmonic baseline are proved in the complete solution rather than assumed.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 128–133, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+      "tags": [
+        "number-theory",
+        "asymptotics",
+        "harmonic-numbers",
+        "formalization"
+      ],
+      "explanation": "The unchanged original proof derives psi/x→1 from the genuine MediumPNT estimate. Mathlib's proved psi−theta=O(sqrt x) and psi(N)=log(lcmUpto N) supply both PNT inputs. The harmonic denominator is bounded above by lcmUpto(N)^s, using the complete clearing proof inline. At every fixed finite-block cutoff K, the actual prime valuations force large primes to exponent s in the reduced denominator once finitely many prefix exceptions are excluded. Chebyshev block sums give the lower rate sK/(K+1); letting K increase squeezes the full natural sequence to s. The exact double-endpoint theorem specializes to s=9 and scales by two. Rational addition/subtraction denominator divisibility proves |log den(q+r)−log den(q)|≤log den(r), so the stated small-denominator condition gives the original perturbation endpoint. All native proofs close with only propext, Classical.choice and Quot.sound; the platform version imports the already Proved MediumPNT, whose local statement mirror is explicitly not a proof. No irrationality or J-condition conclusion is claimed.",
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_log_den_rate.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_log_den_rate.lean",
+      "verified_local_theorem": "ZetaNine.HarmonicStability.harmonic_log_den_rate",
+      "definition_dependencies": [
+        "ZetaNine_HarmonicStability",
+        "ZetaNine_HarmonicPrimeValuation"
+      ],
+      "proved_theorem_dependencies": [
+        {
+          "theorem_name": "MediumPNT",
+          "theorem_id": "7cfa31c8-4063-4b52-81fc-8b2f2a59495e"
+        }
+      ],
+      "proof_size_note": "Actual reachable proof declarations retained byte-for-byte; existing definition declarations, unreachable declarations and parser-recorded imports/diagnostics are removed by exact Lean spans. No mathematical proof is rewritten."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate",
+      "theorem_title": "The reduced ninth harmonic denominator has rate eighteen at double endpoints",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate :\n    Tendsto (fun M : ℕ => logDen (harmonicPower 9 (2 * M)) / (M : ℝ))\n      atTop (nhds 18):= by sorry",
+      "natural_language_statement": "For the actual rational ninth-order harmonic sum at the double endpoint, $\\log\\operatorname{den}(H_{2M}^{(9)})/M\\to18$ as $M\\to\\infty$ through natural numbers. There are no hypotheses; the factor eighteen is nine times the exact endpoint scaling factor two. This supplies the harmonic denominator baseline in the right-shifted Mellin construction.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 143–147, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+      "tags": [
+        "number-theory",
+        "asymptotics",
+        "harmonic-numbers",
+        "formalization"
+      ],
+      "explanation": "The unchanged original proof derives psi/x→1 from the genuine MediumPNT estimate. Mathlib's proved psi−theta=O(sqrt x) and psi(N)=log(lcmUpto N) supply both PNT inputs. The harmonic denominator is bounded above by lcmUpto(N)^s, using the complete clearing proof inline. At every fixed finite-block cutoff K, the actual prime valuations force large primes to exponent s in the reduced denominator once finitely many prefix exceptions are excluded. Chebyshev block sums give the lower rate sK/(K+1); letting K increase squeezes the full natural sequence to s. The exact double-endpoint theorem specializes to s=9 and scales by two. Rational addition/subtraction denominator divisibility proves |log den(q+r)−log den(q)|≤log den(r), so the stated small-denominator condition gives the original perturbation endpoint. All native proofs close with only propext, Classical.choice and Quot.sound; the platform version imports the already Proved MediumPNT, whose local statement mirror is explicitly not a proof. No irrationality or J-condition conclusion is claimed.",
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_nine_double_log_den_rate.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_nine_double_log_den_rate.lean",
+      "verified_local_theorem": "ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate",
+      "definition_dependencies": [
+        "ZetaNine_HarmonicStability",
+        "ZetaNine_HarmonicPrimeValuation"
+      ],
+      "proved_theorem_dependencies": [
+        {
+          "theorem_name": "MediumPNT",
+          "theorem_id": "7cfa31c8-4063-4b52-81fc-8b2f2a59495e"
+        }
+      ],
+      "proof_size_note": "Actual reachable proof declarations retained byte-for-byte; existing definition declarations, unreachable declarations and parser-recorded imports/diagnostics are removed by exact Lean spans. No mathematical proof is rewritten."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate",
+      "theorem_title": "Small-denominator perturbations preserve the unconditional harmonic denominator rate",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate (s : ℕ) (hs : 0 < s) (r : ℕ → ℚ)\n    (hr : Tendsto (fun N => logDen (r N) / (N : ℝ)) atTop (nhds 0)) :\n    Tendsto (fun N : ℕ => logDen (harmonicPower s N + r N) / (N : ℝ))\n      atTop (nhds (s : ℝ)):= by sorry",
+      "natural_language_statement": "For every fixed positive natural order $s$ and every rational sequence $r_N$ such that $\\log\\operatorname{den}(r_N)/N\\to0$, one has $\\log\\operatorname{den}(H_N^{(s)}+r_N)/N\\to s$. The perturbation is arbitrary subject to its stated sublinear logarithmic denominator condition. The harmonic baseline and prime-number-theorem inputs are proved; they are not extra hypotheses.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 135–141, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+      "tags": [
+        "number-theory",
+        "asymptotics",
+        "harmonic-numbers",
+        "formalization"
+      ],
+      "explanation": "The unchanged original proof derives psi/x→1 from the genuine MediumPNT estimate. Mathlib's proved psi−theta=O(sqrt x) and psi(N)=log(lcmUpto N) supply both PNT inputs. The harmonic denominator is bounded above by lcmUpto(N)^s, using the complete clearing proof inline. At every fixed finite-block cutoff K, the actual prime valuations force large primes to exponent s in the reduced denominator once finitely many prefix exceptions are excluded. Chebyshev block sums give the lower rate sK/(K+1); letting K increase squeezes the full natural sequence to s. The exact double-endpoint theorem specializes to s=9 and scales by two. Rational addition/subtraction denominator divisibility proves |log den(q+r)−log den(q)|≤log den(r), so the stated small-denominator condition gives the original perturbation endpoint. All native proofs close with only propext, Classical.choice and Quot.sound; the platform version imports the already Proved MediumPNT, whose local statement mirror is explicitly not a proof. No irrationality or J-condition conclusion is claimed.",
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_perturbed_log_den_rate.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_perturbed_log_den_rate.lean",
+      "verified_local_theorem": "ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate",
+      "definition_dependencies": [
+        "ZetaNine_HarmonicStability",
+        "ZetaNine_HarmonicPrimeValuation"
+      ],
+      "proved_theorem_dependencies": [
+        {
+          "theorem_name": "MediumPNT",
+          "theorem_id": "7cfa31c8-4063-4b52-81fc-8b2f2a59495e"
+        }
+      ],
+      "proof_size_note": "Actual reachable proof declarations retained byte-for-byte; existing definition declarations, unreachable declarations and parser-recorded imports/diagnostics are removed by exact Lean spans. No mathematical proof is rewritten."
+    }
+  ]
+}

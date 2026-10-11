@@ -1,0 +1,24 @@
+{
+  "theorem_id": "970374db-a705-4462-9ace-d0a494c3672e",
+  "theorem_name": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even",
+  "theorem_title": "Actual weighted highest-pole coefficient at every even order",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient_eq_even (n j : ℕ) (hn : Even n)\n    (hj : j ≤ n) (W : ℚ[X]) :\n    weightedLeadingPoleCoefficient n j W =\n      (-1 : ℚ) ^ j * (n.choose j : ℚ) ^ 9 *\n        ((n + j).choose n : ℚ) * ((2 * n - j).choose n : ℚ) *\n          W.eval (-(j : ℚ) * (n - j : ℕ)):= by sorry",
+  "natural_language_statement": "Let $n,j$ be natural numbers, with $n$ even and $j\\le n$, and let $W\\in\\mathbb Q[X]$ be any rational polynomial. Starting from the actual rational function $R_n(t)=N_n(t)/Q_n(t)^9$, multiply by $W(t(t+n))$. Define its highest cleared-pole value $C^W_{n,j}$ by evaluating $N_n(t)W(t(t+n))/Q_{n,j}(t)^9$ at $t=-j$. Then\n\n$$C^W_{n,j}=(-1)^j\\binom{n}{j}^{9}\\binom{n+j}{n}\\binom{2n-j}{n}\\,W\\bigl(-j(n-j)\\bigr).$$\n\nThis computes the effect of the actual polynomial multiplier on the highest cleared-pole value. The multiplier is arbitrary, including the zero polynomial, and the weighted coefficient can be zero. The statement covers $n=0$ and does not assert a full Laurent expansion, a lower-coefficient map, or an infinite-sum identity.",
+  "created_at": "2026-10-03T15:50:57.956853+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "pole-coefficients",
+    "rational-functions"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_CoefficientMap\n\nset_option autoImplicit false\nopen Finset Polynomial\nopen ZetaNine.CoefficientMap\n",
+  "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Original endpoint declaration lines 260–266.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

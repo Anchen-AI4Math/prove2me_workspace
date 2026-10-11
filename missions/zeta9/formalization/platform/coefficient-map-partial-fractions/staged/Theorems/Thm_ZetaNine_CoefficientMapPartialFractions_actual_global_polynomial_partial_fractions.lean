@@ -1,0 +1,9 @@
+import Definitions.Def_ZetaNine_CoefficientMapPartialFractions
+
+set_option autoImplicit false
+open scoped BigOperators
+open Finset Polynomial
+open ZetaNine ZetaNine.CoefficientMapPartialFractions ZetaNine.CoefficientMapInjectivity
+
+theorem ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions (n : ℕ) (W : ℚ[X])
+    (hproper : ProperMultiplier n W) : weightedNumerator n W = partialNumerator n W:= by sorry

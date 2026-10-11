@@ -1,0 +1,12 @@
+from pathlib import Path
+import hashlib,json,datetime,sys
+sys.stdout.reconfigure(encoding='utf-8')
+p=Path(__file__).resolve().parent;task=p.parents[2]
+source=p/'p/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.lean';obj=task/'.rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.olean';log=p/'build-definition.log'
+r=json.loads((p/'compile-receipt.json').read_text(encoding='utf-8-sig'));row=next(r for r in r['rows'] if r['label']=='build-definition');assert row['exit_code']==0
+start=datetime.datetime.fromisoformat('2026-10-04T06:38:22.256070+08:00').timestamp()
+assert start<=obj.stat().st_mtime<=log.stat().st_mtime
+sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+d={'source_task_relative':source.relative_to(task).as_posix(),'source_sha256':sha(source),'source_bytes':source.stat().st_size,'object_task_relative':obj.relative_to(task).as_posix(),'object_sha256':sha(obj),'actual_build_exit_code':0,'actual_process_id':22152,'actual_process_start_local':'2026-10-04T06:38:22.256070+08:00','actual_process_creation_authority':'Win32_Process.CreationDate read while this exact Definition compile process was running; tool chunk6958da','object_write_utc':datetime.datetime.fromtimestamp(obj.stat().st_mtime,datetime.timezone.utc).isoformat(),'Lake_completed_log_capture_utc':datetime.datetime.fromtimestamp(log.stat().st_mtime,datetime.timezone.utc).isoformat(),'seconds_start_to_object_written':obj.stat().st_mtime-start,'seconds_start_to_Lake_exit_log_capture':log.stat().st_mtime-start,'exact_Wait_Process_exit_timestamp_available':False,'timing_interpretation':'The genuine Lean process elapsed through final object write and successful Lake log capture. Exact process-exit instant was not observed: the later Wait-Process attempt found it already ended. Local timing is not a remote platform timing guarantee.','closed_field_reason':'The actual original LinearEquiv.ofBijective constructor requires the real original_five_dimensional_map_bijective proof. A true151-source-proof closure is embedded as dependency-ordered local have declarations; no bijection/kernel/inverse hypothesis or substitute data is inserted.','additional_Lean_runs':0}
+(p/'definition-compile-time.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(d,ensure_ascii=False))

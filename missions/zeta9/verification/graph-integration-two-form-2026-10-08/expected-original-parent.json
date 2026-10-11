@@ -1,0 +1,43 @@
+{
+  "node_type": "theorem",
+  "theorem_id": "691b1665-f122-47f7-a3e4-2c28a06055f2",
+  "theorem_name": "ZetaNine.exponentially_small_independent_forms_of_zeta_nine",
+  "theorem_title": "Exponentially small independent integer forms in 1 and zeta(9)",
+  "status": "Open",
+  "formal_statement": "namespace ZetaNine\n\ntheorem exponentially_small_independent_forms_of_zeta_nine :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ n : ℕ in Filter.atTop,\n        ∃ b₁ a₁ b₂ a₂ : ℤ,\n          b₁ * a₂ ≠ b₂ * a₁ ∧\n          |(b₁ : ℝ) + (a₁ : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) ∧\n          |(b₂ : ℝ) + (a₂ : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## Exponentially small independent integer forms in $1$ and $\\zeta(9)$\n\nThere is a real constant $c>0$ such that, for all sufficiently large natural numbers\n$n$, there are integers $b_1,a_1,b_2,a_2\\in\\mathbb{Z}$ with\n\n$$b_1a_2\\neq b_2a_1,\\qquad\n\\bigl|b_1+a_1\\,\\zeta(9)\\bigr|<e^{-cn},\\qquad\n\\bigl|b_2+a_2\\,\\zeta(9)\\bigr|<e^{-cn},$$\n\nwhere $\\zeta(9)=\\bigl(\\texttt{riemannZeta}\\,(9:\\mathbb{C})\\bigr).\\mathrm{re}$ and\n$c>0$ is a fixed exponential rate.\n\n**Status: open.** This is the analytic obligation of the mission's main (two-form)\nroute and the child that the goal's two-form reduction imports.\n\n**How the local notes are supposed to supply it.** This is the two-form version of\nthe previous obligation. The open target **J** gives, by the two-dimensional Gauss\nbound for the second successive minimum of the inverse-image lattice, two integer\noutputs whose weighted norms are $\\le e^{(\\tau-\\varepsilon/2)n}$; because the\ninverse image $E_n$ is injective, the two outputs are independent and so the two\nlinear forms are non-proportional. The note-proved uniform analytic decay estimate\nthen makes both values exponentially small with the same rate. Neither the lattice\nstatement nor the decay estimate is formalised concretely here.\n\n**Relation to the goal.** With the proved criterion\n`ZetaNine.irrational_of_two_small_integer_forms` this obligation implies the goal.\nIt is the more demanding of the two published obligations because it requires two\nnon-proportional forms along the **same** sequence of scales, rather than one form\nwith a nonvanishing certificate.\n\n**Note on the missing nonvanishing clause.** Unlike the one-form obligation, this\nstatement does not require either form to be nonzero. That is intentional and\nsufficient: if both forms $b_i+a_i\\,\\zeta(9)$ vanished, then both coefficient vectors\n$(b_i,a_i)$ would lie in the span of $(-x,1)$ with $x=\\zeta(9)$ (a vanishing form\nwith $x=0$ has $b_i=0$ and the vector is again in that span), so\n$b_1a_2-b_2a_1=0$. Independence therefore already forces at least one form to be\nnonzero, which is precisely the hypothesis consumed by the two-form criterion;\nadding a nonvanishing clause would duplicate a consequence.",
+  "created_at": "2026-09-25T02:42:32.712136+00:00",
+  "vote_count": 0,
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/DAG.md section 'J to root' and roadmap/research/arithmetic.md two-dimensional Gauss bound, 2026-09-25",
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "audits": [
+    {
+      "audit_id": "d1ca6053-8c0d-41cf-8f76-0b348f9ab350",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-08T03:40:10.52115+00:00"
+    },
+    {
+      "audit_id": "25420ae4-e488-4df7-af93-15e53b374534",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-08T03:40:10.844014+00:00"
+    }
+  ],
+  "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "created_by_username": "Yuxuan Xu",
+  "deprecated_at": null,
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+  "has_more_children": false,
+  "has_more_parents": false
+}

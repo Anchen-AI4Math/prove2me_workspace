@@ -1,0 +1,24 @@
+{
+  "theorem_id": "31bff972-299f-4bf7-ba2e-eec29a733fd4",
+  "theorem_name": "ZetaNine_CoefficientMapSummation",
+  "theorem_title": "Actual positive weighted rational sequence and odd-zeta linear sum",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Define $z_s=\\Re(\\zeta(s))$ using the actual Mathlib Riemann zeta function. For the genuine weighted rational function $f_{n,W}(t)=R_n(t)W(t(t+n))$, define the actual positive sequence $a_k=f_{n,W}(k+1)$, as a real cast of its rational value. Define $L_n(W)=B_n(W)+\\rho_{n,3}(W)z_3+\\rho_{n,5}(W)z_5+\\rho_{n,7}(W)z_7+\\rho_{n,9}(W)z_9$, where $B$ and $\\rho$ are the genuine finite harmonic constant and actual local coefficient totals from the finite-sum definition chain. These are three actual definitions; no convergence, summability, coefficient cancellation or zeta-series identity is assumed by defining them.",
+  "created_at": "2026-10-03T20:23:00.597558+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "infinite-series",
+    "number-theory",
+    "riemann-zeta"
+  ],
+  "definition": "import Definitions.Def_ZetaNine_CoefficientMapReflection\nimport Definitions.Def_ZetaNine_CoefficientMapFiniteSum\nimport Mathlib.NumberTheory.LSeries.RiemannZeta\nimport Mathlib.Analysis.PSeries\nimport Mathlib.Analysis.Normed.Group.InfiniteSum\nimport Mathlib.Analysis.Normed.Module.FiniteDimension\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMapSummation\n\nopen scoped BigOperators Topology\nopen Finset Polynomial Filter\nopen HarmonicStability CoefficientMapInjectivity CoefficientMapReflection\n\ndef zetaReal (s : ℕ) : ℝ := (riemannZeta (s : ℂ)).re\n\ndef exactL (n : ℕ) (W : ℚ[X]) : ℝ :=\n  (CoefficientMapFiniteSum.constantTerm n W : ℝ) +\n    ((CoefficientMapFiniteSum.rho n 3 W : ℝ) * zetaReal 3 +\n     (CoefficientMapFiniteSum.rho n 5 W : ℝ) * zetaReal 5 +\n     (CoefficientMapFiniteSum.rho n 7 W : ℝ) * zetaReal 7 +\n     (CoefficientMapFiniteSum.rho n 9 W : ℝ) * zetaReal 9)\n\ndef actualSeries (n : ℕ) (W : ℚ[X]) (t : ℕ) : ℝ :=\n  (CoefficientMap.weightedR n W ((t + 1 : ℕ) : ℚ) : ℝ)\n\nend ZetaNine.CoefficientMapSummation\n",
+  "source": "Zeta(9) actual p9,q1,m=n,d0 infinite summation: missions/zeta9/research/coefficient-map-summation-2026-10-04.md. Frozen actual source SHA256 c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d. Actual numerator/pole products, shifted unit-denominator coefficient array, finite harmonic B/rho and actual strong-domain cancellation prove absolute convergence and the actual infinite L.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

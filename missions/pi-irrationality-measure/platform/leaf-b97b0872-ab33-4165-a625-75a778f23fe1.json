@@ -1,0 +1,23 @@
+{
+  "theorem_id": "b97b0872-ab33-4165-a625-75a778f23fe1",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.finite_formalJet_polynomial_approximation",
+  "theorem_title": "Finite polynomial approximation under logarithmic substitution",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.finite_formalJet_polynomial_approximation\n    {m : ℕ} (c : Fin m → ℂ) (S : Finset (Fin (m + 1) → ℕ))\n    (Q : MvPolynomial (Fin (m + 1)) ℂ) :\n    ∃ P : MvPolynomial (Fin (m + 1)) ℂ,\n      ∀ a : ↥ S,\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector a.val)\n          (FormalInterpolation.formalJet c P) =\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector a.val)\n          (Q : MvPowerSeries (Fin (m + 1)) ℂ) := by sorry",
+  "natural_language_statement": "Given any finite set of multivariate formal-series coefficients and any ordinary polynomial Q in the series coordinates, there is a polynomial P in the original variables whose image under the logarithmic substitution has the same selected coefficients as Q. Truncating the inverse logarithmic coordinate change to sufficiently high finite order yields a polynomial preimage with the prescribed finite jet.",
+  "created_at": "2026-10-08T06:29:41.63768+00:00",
+  "vote_count": 0,
+  "tags": [
+    "algebra",
+    "interpolation",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Jets/AlgebraicJetPackets.lean, triangularMap_comp_inverse and formalJet_packet_surjective",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

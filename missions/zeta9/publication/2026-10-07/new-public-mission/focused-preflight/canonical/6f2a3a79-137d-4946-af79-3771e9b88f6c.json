@@ -1,0 +1,23 @@
+{
+  "theorem_id": "6f2a3a79-137d-4946-af79-3771e9b88f6c",
+  "theorem_name": "ZetaNine.mediant_strictly_between_min_and_max",
+  "theorem_title": "Weighted ratio interval contains the ratio of the sums",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem mediant_strictly_between_min_and_max\n    (w a b : Fin 5 → ℝ)\n    (hw : ∀ j : Fin 5, 0 < w j)\n    (hb : ∀ j : Fin 5, 0 < b j)\n    (hnd : ∃ j j' : Fin 5, a j / b j ≠ a j' / b j') :\n    (∃ j : Fin 5,\n        a j / b j < (∑ i : Fin 5, w i * a i) / (∑ i : Fin 5, w i * b i)) ∧\n      (∃ j : Fin 5,\n        (∑ i : Fin 5, w i * a i) / (∑ i : Fin 5, w i * b i) < a j / b j) := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## The weighted ratio interval contains the ratio of the sums\n\nLet $w,a,b:\\{0,1,2,3,4\\}\\to\\mathbb{R}$ with $w_j>0$ and $b_j>0$ for every $j$, and\nsuppose the five ratios $a_j/b_j$ are not all equal. Then the ratio of the weighted\nsums\n\n$$\\rho=\\frac{\\sum_j w_j\\,a_j}{\\sum_j w_j\\,b_j}$$\n\nis strictly between the smallest and the largest sampled ratio:\n\n$$\\exists j,\\ \\frac{a_j}{b_j}<\\rho\n\\qquad\\text{and}\\qquad\n\\exists j,\\ \\rho<\\frac{a_j}{b_j}.$$\n\n**Why.** Write $B=\\sum_j w_jb_j>0$ and reweight by $v_j=w_jb_j/B$. Then every $v_j$ is\nstrictly positive and $\\sum_j v_j=B/B=1$, and a one-line rearrangement gives\n$\\rho=\\sum_j v_j\\,(a_j/b_j)$: the ratio of the sums is a convex combination of the\nsampled ratios. The positive-weight sandwich lemma applied to $(v_j)$ and to\n$r_j=a_j/b_j$ then produces the two strict inequalities.\n\n**Scope.** This is local node **FI** in its invariant form: no normalisation is\nassumed, the conclusion is about the mediant itself. The denominators $b_j$ are\nstrictly positive by hypothesis, so no division by a degenerate local curvature occurs,\nand $B>0$ makes the mediant well-defined. The lemma is a strict-interval statement\nonly — it gives no quantitative separation, no exponential width, and does not decide\nwhether the actual changing first output lies outside the interval.",
+  "created_at": "2026-09-25T03:25:14.432829+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/research/five-point-ratio-window.md, and roadmap/DAG.md section 'Five-sample first direction to root', 2026-09-25",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,3875 @@
+{
+  "schema_version": 1,
+  "review_role": "author offline source-integration gate; independent review required separately",
+  "verdict": "PASS",
+  "source_sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+  "sources_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+  },
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "lean_toolchain": "leanprover/lean4:v4.33.1",
+  "checks": [
+    {
+      "name": "three_frozen_actual_sources_unchanged",
+      "pass": true,
+      "evidence": {
+        "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+        "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+        "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+      }
+    },
+    {
+      "name": "prior_independent_native_math_review_bound",
+      "pass": true,
+      "evidence": {
+        "task_relative": "verification/formalization-coefficient-map-injectivity-2026-10-03/independent-review.json",
+        "sha256": "a271a7c004845f9151f79c7779cea6c451337d65890922fd8a15dae9a5aea747",
+        "is_independent_transplantation_review": false
+      }
+    },
+    {
+      "name": "all_twenty_seven_actual_author_runs_exit_zero",
+      "pass": true,
+      "evidence": {
+        "runs": 27,
+        "native_source_compilation": 1,
+        "official_graph_and_parser_and_header_runs": 5,
+        "staged_source_builds_including_actual_existing_Definitions": 9,
+        "actual_import_reports": 11,
+        "toolchain_probe": 1
+      }
+    },
+    {
+      "name": "actual_pinned_Lean_Mathlib_environment",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "all_twenty_five_actual_definition_types_and_values_equal",
+      "pass": true,
+      "evidence": {
+        "Base": 9,
+        "Jet": 9,
+        "Injectivity": 7,
+        "exact_actual_comparisons": 175
+      }
+    },
+    {
+      "name": "three_original_Solution_reference_types_exact_no_extra_hypotheses",
+      "pass": true,
+      "evidence": [
+        {
+          "theorem": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+          "actual_original_type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+          "actual_original_type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+          "actual_original_type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "complete_solution_endpoints_exact_standard_three_axioms",
+      "pass": true,
+      "evidence": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    {
+      "name": "all_original_eighteen_proofs_cross_module_closure_and_wrapper_standard_axioms",
+      "pass": true,
+      "evidence": {
+        "proofs_per_solution": 26,
+        "total_proof_records": 78,
+        "cross_module_inline_names": [
+          "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+          "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+          "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+          "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity"
+        ]
+      }
+    },
+    {
+      "name": "no_external_Theorems_Solutions_or_native_proof_boundary",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "reference_stubs_explicitly_not_proofs",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "actual_source_core_and_Def_lightweight",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "documented_offline_API_fields_only",
+      "pass": true,
+      "evidence": {
+        "schema_reference": "formalization/platform/readback-2026-10-03/api-docs/references/contribute.md",
+        "API_called": false
+      }
+    },
+    {
+      "name": "definition_request_exact_staged_source",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "properness_full_array_and_n_zero_prose_limits_faithful",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "native_independent_boundary_limits_bound",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "all_207_old_author_frozen_members_unchanged",
+      "pass": true,
+      "evidence": {
+        "Base_frozen_members": 96,
+        "Jet_frozen_members": 111,
+        "old_batches_written_by_author": false
+      }
+    }
+  ],
+  "targets": [
+    {
+      "theorem": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+      "actual_original_type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+      "actual_original_type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+      "actual_original_type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "definition_comparisons": [
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseU",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "all_proof_records": [
+    [
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9).natDegree = 9 * (n + 1)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseU n).natDegree = 2",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseNumerator n).natDegree ≤ 2 * n",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "type": "∀ (n : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier n V →\n      (∀ j ≤ n,\n          ∀ (s : ℕ),\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n                  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V) →\n        W = V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "type": "∀ (n : ℕ), ZetaNine.CoefficientMapInjectivity.baseNumerator n ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "type": "∀ (n j s : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W - V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W -\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    Polynomial.X ^ 9 ∣ ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), ZetaNine.CoefficientMapInjectivity.weightedNumerator n W = 0 → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+        "label": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n).natDegree = n + 1",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+        "type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.checked_all_local_coefficients_zero_implies_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.checked_all_local_coefficients_zero_implies_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).natDegree ≤ 2 * n + 2 * W.natDegree",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "label": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "type": "∀ (a b : ℕ), a ≠ b → IsCoprime ((Polynomial.X + Polynomial.C ↑a) ^ 9) ((Polynomial.X + Polynomial.C ↑b) ^ 9)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W →\n    ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "label": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "type": "∀ (j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedVariable j) = -↑j + z",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j + z)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "type": "∀ (n j : ℕ), PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ),\n  ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedClearedSeries n j W *\n      ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j))",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "solution",
+        "label": "solution",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+        "value": null
+      }
+    ],
+    [
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9).natDegree = 9 * (n + 1)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseU n).natDegree = 2",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseNumerator n).natDegree ≤ 2 * n",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "type": "∀ (n : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier n V →\n      (∀ j ≤ n,\n          ∀ (s : ℕ),\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n                  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V) →\n        W = V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "type": "∀ (n : ℕ), ZetaNine.CoefficientMapInjectivity.baseNumerator n ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "type": "∀ (n j s : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W - V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W -\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    Polynomial.X ^ 9 ∣ ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), ZetaNine.CoefficientMapInjectivity.weightedNumerator n W = 0 → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+        "label": "ZetaNine.CoefficientMapInjectivity.quartic_is_proper",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n).natDegree = n + 1",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.checked_fullLocalCoefficientMap_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.checked_fullLocalCoefficientMap_injective",
+        "type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).natDegree ≤ 2 * n + 2 * W.natDegree",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "label": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "type": "∀ (a b : ℕ), a ≠ b → IsCoprime ((Polynomial.X + Polynomial.C ↑a) ^ 9) ((Polynomial.X + Polynomial.C ↑b) ^ 9)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W →\n    ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "label": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "type": "∀ (j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedVariable j) = -↑j + z",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j + z)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "type": "∀ (n j : ℕ), PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ),\n  ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedClearedSeries n j W *\n      ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j))",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "solution",
+        "label": "solution",
+        "type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+        "value": null
+      }
+    ],
+    [
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_pow_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9).natDegree = 9 * (n + 1)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseU_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseU n).natDegree = 2",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_natDegree_le",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.baseNumerator n).natDegree ≤ 2 * n",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.local_coefficients_injective",
+        "type": "∀ (n : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier n V →\n      (∀ j ≤ n,\n          ∀ (s : ℕ),\n            1 ≤ s →\n              s ≤ 9 →\n                ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n                  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V) →\n        W = V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_pole_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    (Polynomial.X + Polynomial.C ↑j) ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_ne_zero",
+        "type": "∀ (n : ℕ), ZetaNine.CoefficientMapInjectivity.baseNumerator n ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedLocalCoefficient_sub",
+        "type": "∀ (n j s : ℕ) (W V : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W - V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W -\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.zero_local_jet_implies_shifted_numerator_divisibility",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0) →\n    Polynomial.X ^ 9 ∣ ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_zero_implies_multiplier_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), ZetaNine.CoefficientMapInjectivity.weightedNumerator n W = 0 → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.checked_quartic_is_proper",
+        "label": "ZetaNine.CoefficientMapInjectivity.checked_quartic_is_proper",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "label": "ZetaNine.CoefficientMapInjectivity.polePolynomial_natDegree",
+        "type": "∀ (n : ℕ), (ZetaNine.CoefficientMapInjectivity.polePolynomial n).natDegree = n + 1",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+        "label": "ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap_injective",
+        "type": "∀ (n : ℕ), Function.Injective fun W => ZetaNine.CoefficientMapInjectivity.fullLocalCoefficientMap n ↑W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+        "label": "ZetaNine.CoefficientMapInjectivity.all_local_coefficients_zero_implies_zero",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W → W = 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "label": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+        "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_natDegree_le",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).natDegree ≤ 2 * n + 2 * W.natDegree",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "label": "ZetaNine.CoefficientMapInjectivity.pole_factors_coprime",
+        "type": "∀ (a b : ℕ), a ≠ b → IsCoprime ((Polynomial.X + Polynomial.C ↑a) ^ 9) ((Polynomial.X + Polynomial.C ↑b) ^ 9)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "label": "ZetaNine.CoefficientMapInjectivity.weightedNumerator_shift",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W).comp (ZetaNine.CoefficientMapJet.shiftedVariable j) =\n    ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "label": "ZetaNine.CoefficientMapInjectivity.all_zero_jets_imply_full_denominator_divisibility",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapInjectivity.AllLocalCoefficientsZero n W →\n    ZetaNine.CoefficientMapInjectivity.polePolynomial n ^ 9 ∣ ZetaNine.CoefficientMapInjectivity.weightedNumerator n W",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "label": "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+        "type": "∀ (n j : ℕ), ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+        "type": "∀ (j : ℕ) (z : ℚ), Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedVariable j) = -↑j + z",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+        "type": "∀ (n j : ℕ) (z : ℚ),\n  Polynomial.eval z (ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j + z)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+        "type": "∀ (n j : ℕ),\n  PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) =\n    ZetaNine.CoefficientMap.clearedPoleProduct n j (-↑j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "label": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+        "type": "∀ (n j : ℕ), PowerSeries.constantCoeff ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ≠ 0",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ),\n  ZetaNine.CoefficientMapJet.clearedSeries n j * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j)",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "label": "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+        "type": "∀ (n j : ℕ) (W : Polynomial ℚ),\n  ZetaNine.CoefficientMapJet.weightedClearedSeries n j W *\n      ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n    ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j * W.comp (ZetaNine.CoefficientMapJet.localU n j))",
+        "value": null
+      },
+      {
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "declaration": "solution",
+        "label": "solution",
+        "type": "∀ (n : ℕ) (W : Polynomial ℚ), W.natDegree ≤ 4 → ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W",
+        "value": null
+      }
+    ]
+  ],
+  "actual_cross_module_helpers": [
+    "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+    "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+    "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+    "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity"
+  ],
+  "limitations": [
+    "Injectivity is of the complete (n+1)*9 genuine rational formal-jet array on the strict proper polynomial domain. It does not prove injectivity/surjectivity/invertibility of the original five-dimensional aggregate F.",
+    "ProperMultiplier is the exact source condition 2*n+2*W.natDegree<9*(n+1). Quartics satisfy it for all natural n including zero. It only gives strict proper degree/O(1/t), without a stronger O(1/t^2) or rho1=0 claim; n=0,W=X^4 has the actual regular-point weighted function 1/t and local simple-pole coefficient one.",
+    "No analytic convergence, numerical formal-series evaluation, exact infinite L-sum, J or irrationality is asserted. No abstract coefficient arrays or target conclusions are substituted or added as assumptions.",
+    "Reference theorem files intentionally use sorryAx and are statements only. All three complete Solution proofs use exactly standard axioms; actual proof dependencies are source-inlined.",
+    "This is the author's offline gate, not an independent transplantation review or platform acceptance. Source/request/stages are prepared for review and later installation/publication by the parent."
+  ],
+  "platform_published": false,
+  "platform_accepted": false,
+  "root_installed_by_author": false,
+  "independent_transplantation_review_claimed": false,
+  "root_scope_API_credential_writes": false,
+  "stable_files": [
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/actual-proof-bridge.lean.inc",
+      "batch_relative": "actual-proof-bridge.lean.inc",
+      "bytes": 2369,
+      "sha256": "7af09cb08b81ef3ac536694092dfd775adf20b1f5896c1fc48822dffc9aa645e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/audit_and_freeze.py",
+      "batch_relative": "audit_and_freeze.py",
+      "bytes": 15081,
+      "sha256": "39575e9d7618f81da080feee2e1ae8d2c8ed4b5b8cce3e9ccd0cab99684db363"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-0-reference-exit.txt",
+      "batch_relative": "build-0-reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-0-reference.log",
+      "batch_relative": "build-0-reference.log",
+      "bytes": 292,
+      "sha256": "5a1f7d2e6869df6e69b6d2aa179936da5e37650d14eefb44b2aa574e55558f99"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-0-solution-exit.txt",
+      "batch_relative": "build-0-solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-0-solution.log",
+      "batch_relative": "build-0-solution.log",
+      "bytes": 338,
+      "sha256": "9b032254551205117a57c9b5b3d0d071b1d23c5dc5450f0018f39872cb04611c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-1-reference-exit.txt",
+      "batch_relative": "build-1-reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-1-reference.log",
+      "batch_relative": "build-1-reference.log",
+      "bytes": 278,
+      "sha256": "095e68e91746aa7536a105a70e6a06cad40c619c7166b9597778427935da9cf8"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-1-solution-exit.txt",
+      "batch_relative": "build-1-solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-1-solution.log",
+      "batch_relative": "build-1-solution.log",
+      "bytes": 324,
+      "sha256": "b8675524826720e1929ed73899b5e4fed655fa3cc79b2efaa169d93c9758dad3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-2-reference-exit.txt",
+      "batch_relative": "build-2-reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-2-reference.log",
+      "batch_relative": "build-2-reference.log",
+      "bytes": 246,
+      "sha256": "822363a00387d08b5d79ff57c906accf2a88f5e1e1d4fb7145a1c6f6fcac671e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-2-solution-exit.txt",
+      "batch_relative": "build-2-solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-2-solution.log",
+      "batch_relative": "build-2-solution.log",
+      "bytes": 292,
+      "sha256": "ffa965c576162dd721d6e0638176965cc64350a37eacd1387e961f93f3e7de3f"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-CoefficientMap-exit.txt",
+      "batch_relative": "build-CoefficientMap-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-CoefficientMap.log",
+      "batch_relative": "build-CoefficientMap.log",
+      "bytes": 110,
+      "sha256": "fe35820c151fd70a96f4b4b240684331032a1fa33b165b9c11f0d23619db0689"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-CoefficientMapJet-exit.txt",
+      "batch_relative": "build-CoefficientMapJet-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-CoefficientMapJet.log",
+      "batch_relative": "build-CoefficientMapJet.log",
+      "bytes": 113,
+      "sha256": "66d7adf1d3a6485f4aa6047d26df9704c2b5bb3df432a9fc7f991e4e4c78a5a1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-definition-exit.txt",
+      "batch_relative": "build-definition-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-definition.log",
+      "batch_relative": "build-definition.log",
+      "bytes": 121,
+      "sha256": "801d6c9fba23afcb2fe69514ca05dfb3f0645b2ff1bd48d87222ae8793951c19"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-native-exit.txt",
+      "batch_relative": "build-native-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/build-native.log",
+      "batch_relative": "build-native.log",
+      "bytes": 5428,
+      "sha256": "c6c501c080ee7ae198d1df0ac41c74b71a68f74e24bb1f7c0ce11a78c45efcf9"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/CoefficientMap-oracle-input.lean",
+      "batch_relative": "CoefficientMap-oracle-input.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/CoefficientMap-sketch_info.jsonl",
+      "batch_relative": "CoefficientMap-sketch_info.jsonl",
+      "bytes": 27894,
+      "sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/CoefficientMapJet-oracle-input.lean",
+      "batch_relative": "CoefficientMapJet-oracle-input.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/CoefficientMapJet-sketch_info.jsonl",
+      "batch_relative": "CoefficientMapJet-sketch_info.jsonl",
+      "bytes": 36547,
+      "sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/compile-receipt.json",
+      "batch_relative": "compile-receipt.json",
+      "bytes": 13741,
+      "sha256": "46a06863023d5f5643280e89b6322f04fc3d71c112294bf45b5e2742aa11f243"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/decl-plan.json",
+      "batch_relative": "decl-plan.json",
+      "bytes": 6089,
+      "sha256": "ef672d144af0ad2d425e8f16b08600ae05e3865f6650f1c50505e51f86efe8c2"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/decl_graph.jsonl",
+      "batch_relative": "decl_graph.jsonl",
+      "bytes": 44542,
+      "sha256": "9d11c7ee82d44843301ecc80cca4cb4cc360a998259cdb94b40e1e5fce9356e8"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/definitions-request.json",
+      "batch_relative": "definitions-request.json",
+      "bytes": 2992,
+      "sha256": "8821fb34e52ac62ac321523df3a0afb51b7bc259008e44710511ac81513047d5"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/extract_CoefficientMap_sketch.lean",
+      "batch_relative": "extract_CoefficientMap_sketch.lean",
+      "bytes": 9690,
+      "sha256": "919b65aa9c1ae047ced84d29af7d8557ecf2672f3f803657ba7d1044c9431e45"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/extract_CoefficientMapInjectivity_sketch.lean",
+      "batch_relative": "extract_CoefficientMapInjectivity_sketch.lean",
+      "bytes": 9675,
+      "sha256": "10b0c2331c36f22836ae653352765677908756c02848941d360a1b20059d02b6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/extract_CoefficientMapJet_sketch.lean",
+      "batch_relative": "extract_CoefficientMapJet_sketch.lean",
+      "bytes": 9693,
+      "sha256": "267c6c4141dc177516e70295bd543c707021c59ccbaf0c219df29409f9f358ad"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/extract_decl_graph.lean",
+      "batch_relative": "extract_decl_graph.lean",
+      "bytes": 5203,
+      "sha256": "5c53f38e07ebde0f6fb8796ac2bd284be24bcac375bf7a53cca827b1338628e0"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/extract_header.lean",
+      "batch_relative": "extract_header.lean",
+      "bytes": 881,
+      "sha256": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/header_info.jsonl",
+      "batch_relative": "header_info.jsonl",
+      "bytes": 136,
+      "sha256": "fa28891522f32058e7c4275f15ac1893365c06983b028b146919e08085bd16e9"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_0-exit.txt",
+      "batch_relative": "helpers_0-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_0.lean",
+      "batch_relative": "helpers_0.lean",
+      "bytes": 4238,
+      "sha256": "06904a56dcf37b87418a53cce86e1ceb67651de084ee6998daa232ffde00c5e1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_0.log",
+      "batch_relative": "helpers_0.log",
+      "bytes": 10238,
+      "sha256": "9d00ad3782d765795e075105097a87b86f414b194ec4f7a4fa2b824f6f9721ab"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_1-exit.txt",
+      "batch_relative": "helpers_1-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_1.lean",
+      "batch_relative": "helpers_1.lean",
+      "bytes": 4231,
+      "sha256": "897d39bef6adffbe5fa96bef582b0f431ec3990806ca77074d6aa96a327599af"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_1.log",
+      "batch_relative": "helpers_1.log",
+      "bytes": 10169,
+      "sha256": "fd02e6ca16c4bf67fc318f9cb9dab83ede7af1111e4e2611ac9cde5291d2eee3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_2-exit.txt",
+      "batch_relative": "helpers_2-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_2.lean",
+      "batch_relative": "helpers_2.lean",
+      "bytes": 4215,
+      "sha256": "8602ac9c90cd6dcdd851e1fddc6d9eb78faf74727869fbae27e315756c48d8cc"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/helpers_2.log",
+      "batch_relative": "helpers_2.log",
+      "bytes": 10174,
+      "sha256": "aa377760bfdc61848a8142833df4d9d68fd1a6430d384cac6838ec0f269a7e4a"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/integration-provenance.json",
+      "batch_relative": "integration-provenance.json",
+      "bytes": 23477,
+      "sha256": "560d40dc53a1b7269438b0069d2e597b6b697ffe01e4d5bc43aa6cb419c83ac6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/mathlib-revision.log",
+      "batch_relative": "mathlib-revision.log",
+      "bytes": 41,
+      "sha256": "7cf32a824e26133738b30903ed97bc24def8e93db8039483d6bdf7fce7a0efee"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/oracle-input.lean",
+      "batch_relative": "oracle-input.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/prepare_batch.py",
+      "batch_relative": "prepare_batch.py",
+      "bytes": 18483,
+      "sha256": "634913169e13f7b6f0699f30ee588195d39eb1599e6182b23e15705cd61e3c45"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/problems-request.json",
+      "batch_relative": "problems-request.json",
+      "bytes": 5492,
+      "sha256": "efd7c621b7df03f569c88b98fc32874f202998eb7762e12e4cdea8f02ba0dce3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "batch_relative": "project/Definitions/Def_ZetaNine_CoefficientMap.lean",
+      "bytes": 1246,
+      "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "batch_relative": "project/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "bytes": 1268,
+      "sha256": "d7f71b43ed4f4ac8f1994ecf80dad165f4008960f6a304efcd45ebc60342b1b1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+      "batch_relative": "project/Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+      "bytes": 1484,
+      "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/extract_CoefficientMap_sketch.lean",
+      "batch_relative": "project/extract_CoefficientMap_sketch.lean",
+      "bytes": 9690,
+      "sha256": "919b65aa9c1ae047ced84d29af7d8557ecf2672f3f803657ba7d1044c9431e45"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/extract_CoefficientMapInjectivity_sketch.lean",
+      "batch_relative": "project/extract_CoefficientMapInjectivity_sketch.lean",
+      "bytes": 9675,
+      "sha256": "10b0c2331c36f22836ae653352765677908756c02848941d360a1b20059d02b6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/extract_CoefficientMapJet_sketch.lean",
+      "batch_relative": "project/extract_CoefficientMapJet_sketch.lean",
+      "bytes": 9693,
+      "sha256": "267c6c4141dc177516e70295bd543c707021c59ccbaf0c219df29409f9f358ad"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/extract_decl_graph.lean",
+      "batch_relative": "project/extract_decl_graph.lean",
+      "bytes": 5203,
+      "sha256": "5c53f38e07ebde0f6fb8796ac2bd284be24bcac375bf7a53cca827b1338628e0"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/extract_header.lean",
+      "batch_relative": "project/extract_header.lean",
+      "bytes": 881,
+      "sha256": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/helpers_0.lean",
+      "batch_relative": "project/helpers_0.lean",
+      "bytes": 4238,
+      "sha256": "06904a56dcf37b87418a53cce86e1ceb67651de084ee6998daa232ffde00c5e1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/helpers_1.lean",
+      "batch_relative": "project/helpers_1.lean",
+      "bytes": 4231,
+      "sha256": "897d39bef6adffbe5fa96bef582b0f431ec3990806ca77074d6aa96a327599af"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/helpers_2.lean",
+      "batch_relative": "project/helpers_2.lean",
+      "bytes": 4215,
+      "sha256": "8602ac9c90cd6dcdd851e1fddc6d9eb78faf74727869fbae27e315756c48d8cc"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/lake-manifest.json",
+      "batch_relative": "project/lake-manifest.json",
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/lakefile.lean",
+      "batch_relative": "project/lakefile.lean",
+      "bytes": 519,
+      "sha256": "91270b1232284f782716b8e3c27b81fe6c7fbfa53fe5bfaa08a8f48dbddd3a53"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/lean-toolchain",
+      "batch_relative": "project/lean-toolchain",
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/missions/zeta9/formalization/CoefficientMap.lean",
+      "batch_relative": "project/missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "batch_relative": "project/missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/missions/zeta9/formalization/CoefficientMapJet.lean",
+      "batch_relative": "project/missions/zeta9/formalization/CoefficientMapJet.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "batch_relative": "project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "bytes": 12462,
+      "sha256": "e93b3f7a69f319705038534240f62ef9505a444a6f5479bca52a9c7a5c3519ea"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "batch_relative": "project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "bytes": 12441,
+      "sha256": "2b5b764b4cc94899e0b263f573b4bbde09d4360a7051d3b4383c75076d65fa35"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "batch_relative": "project/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "bytes": 12384,
+      "sha256": "8907fa5f837be7ec817aa49522217b19b5d4b406991010a5f8e18c1f7a8188cc"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "batch_relative": "project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "bytes": 380,
+      "sha256": "1348ca486bb32850b21eee96c951e418e5ea253a76a531f4d151cc2c6d29f617"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "batch_relative": "project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "bytes": 383,
+      "sha256": "cd35b69e8c6683b2a35fddfb9f0b417e28749e25d64fc6551e9d851839cbf010"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "batch_relative": "project/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "bytes": 321,
+      "sha256": "399a92041addb6c846c00420c073ca8d40814f85f91f244f13c9a0bc1bccb825"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_0_reference.lean",
+      "batch_relative": "project/types_0_reference.lean",
+      "bytes": 3379,
+      "sha256": "077f87c1079ee58133fb66321389c50d9b7fe9388279915e93d6810c6ed926d6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_0_solution.lean",
+      "batch_relative": "project/types_0_solution.lean",
+      "bytes": 3313,
+      "sha256": "6e2aff9a592591a8efe5832f9c1d71d4aaefe25fb19ac450bb5934d79bf889fd"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_1_reference.lean",
+      "batch_relative": "project/types_1_reference.lean",
+      "bytes": 3358,
+      "sha256": "32ebc978faa4aaf99f024293d644b895c8879726e2d7efe0351f4e1b74478a9e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_1_solution.lean",
+      "batch_relative": "project/types_1_solution.lean",
+      "bytes": 3299,
+      "sha256": "1309b120a16ff0e7ccdec46a298a9723fbbca06c07034e35edf684b752806687"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_2_reference.lean",
+      "batch_relative": "project/types_2_reference.lean",
+      "bytes": 3310,
+      "sha256": "97540301f8188d26c582b59dd78f815fe4e8a923dc9b4496e236b019ef6a13cb"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_2_solution.lean",
+      "batch_relative": "project/types_2_solution.lean",
+      "bytes": 3267,
+      "sha256": "d54cb5d5be90f65e4022df4a110d40087275690c07007862aa6a130b693cd401"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_definition.lean",
+      "batch_relative": "project/types_definition.lean",
+      "bytes": 3179,
+      "sha256": "1bb491b7acba00861f42babbb547e5cd319c3250d4bb14cc4924341305a8e321"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/project/types_original.lean",
+      "batch_relative": "project/types_original.lean",
+      "bytes": 3609,
+      "sha256": "7e2af645640b06402075e1ff4165d16a61fa1028c563be9de9c9d038296162ab"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/README.md",
+      "batch_relative": "README.md",
+      "bytes": 2537,
+      "sha256": "487055c7c4396d16461f287c037b27183a5ed9200d456d26f9f41350cc68dc07"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/root-copy-plan.json",
+      "batch_relative": "root-copy-plan.json",
+      "bytes": 4591,
+      "sha256": "51bc6ae331a1e8b781c4dd8250248e4bed8e7c5092bb50db5bcd73f4423cf9c3"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/sketch_info.jsonl",
+      "batch_relative": "sketch_info.jsonl",
+      "bytes": 32436,
+      "sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage1-extract-exit.txt",
+      "batch_relative": "stage1-extract-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage1-extract.log",
+      "batch_relative": "stage1-extract.log",
+      "bytes": 22,
+      "sha256": "1b6cd29f9ff656ceca13e8851e1e94cad1c18cbdf0e97a9098389acc883318d1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMap-exit.txt",
+      "batch_relative": "stage2-CoefficientMap-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMap-stderr.log",
+      "batch_relative": "stage2-CoefficientMap-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMap.log",
+      "batch_relative": "stage2-CoefficientMap.log",
+      "bytes": 27894,
+      "sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapInjectivity-exit.txt",
+      "batch_relative": "stage2-CoefficientMapInjectivity-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapInjectivity-stderr.log",
+      "batch_relative": "stage2-CoefficientMapInjectivity-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapInjectivity.log",
+      "batch_relative": "stage2-CoefficientMapInjectivity.log",
+      "bytes": 32436,
+      "sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapJet-exit.txt",
+      "batch_relative": "stage2-CoefficientMapJet-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapJet-stderr.log",
+      "batch_relative": "stage2-CoefficientMapJet-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-CoefficientMapJet.log",
+      "batch_relative": "stage2-CoefficientMapJet.log",
+      "bytes": 36547,
+      "sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-header-exit.txt",
+      "batch_relative": "stage2-header-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-header-stderr.log",
+      "batch_relative": "stage2-header-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/stage2-header.log",
+      "batch_relative": "stage2-header.log",
+      "bytes": 136,
+      "sha256": "fa28891522f32058e7c4275f15ac1893365c06983b028b146919e08085bd16e9"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "batch_relative": "staged/Definitions/Def_ZetaNine_CoefficientMapInjectivity.lean",
+      "bytes": 1268,
+      "sha256": "d7f71b43ed4f4ac8f1994ecf80dad165f4008960f6a304efcd45ebc60342b1b1"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "batch_relative": "staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "bytes": 12462,
+      "sha256": "e93b3f7a69f319705038534240f62ef9505a444a6f5479bca52a9c7a5c3519ea"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "batch_relative": "staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "bytes": 12441,
+      "sha256": "2b5b764b4cc94899e0b263f573b4bbde09d4360a7051d3b4383c75076d65fa35"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "batch_relative": "staged/Solutions/Sol_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "bytes": 12384,
+      "sha256": "8907fa5f837be7ec817aa49522217b19b5d4b406991010a5f8e18c1f7a8188cc"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "batch_relative": "staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_all_local_coefficients_zero_implies_zero.lean",
+      "bytes": 380,
+      "sha256": "1348ca486bb32850b21eee96c951e418e5ea253a76a531f4d151cc2c6d29f617"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "batch_relative": "staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_fullLocalCoefficientMap_injective.lean",
+      "bytes": 383,
+      "sha256": "cd35b69e8c6683b2a35fddfb9f0b417e28749e25d64fc6551e9d851839cbf010"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "batch_relative": "staged/Theorems/Thm_ZetaNine_CoefficientMapInjectivity_quartic_is_proper.lean",
+      "bytes": 321,
+      "sha256": "399a92041addb6c846c00420c073ca8d40814f85f91f244f13c9a0bc1bccb825"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/target-plan.json",
+      "batch_relative": "target-plan.json",
+      "bytes": 1865,
+      "sha256": "c69ccdc97804e0565ecee904187c600087b60d3366400b3d9c7e3104f64d80af"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/toolchain-exit.txt",
+      "batch_relative": "toolchain-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/toolchain.log",
+      "batch_relative": "toolchain.log",
+      "bytes": 104,
+      "sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_reference-exit.txt",
+      "batch_relative": "types_0_reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_reference.lean",
+      "batch_relative": "types_0_reference.lean",
+      "bytes": 3379,
+      "sha256": "077f87c1079ee58133fb66321389c50d9b7fe9388279915e93d6810c6ed926d6"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_reference.log",
+      "batch_relative": "types_0_reference.log",
+      "bytes": 8598,
+      "sha256": "d33118631daa9edad1034be321d07c12d014682f802358ddcc8eef4e18c5b58f"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_solution-exit.txt",
+      "batch_relative": "types_0_solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_solution.lean",
+      "batch_relative": "types_0_solution.lean",
+      "bytes": 3313,
+      "sha256": "6e2aff9a592591a8efe5832f9c1d71d4aaefe25fb19ac450bb5934d79bf889fd"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_0_solution.log",
+      "batch_relative": "types_0_solution.log",
+      "bytes": 8521,
+      "sha256": "2bdb2b282b18e6a5864e893977da5beaf17f203821a25f36c60b8ef7d67af005"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_reference-exit.txt",
+      "batch_relative": "types_1_reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_reference.lean",
+      "batch_relative": "types_1_reference.lean",
+      "bytes": 3358,
+      "sha256": "32ebc978faa4aaf99f024293d644b895c8879726e2d7efe0351f4e1b74478a9e"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_reference.log",
+      "batch_relative": "types_1_reference.log",
+      "bytes": 8515,
+      "sha256": "095eec5720492d4d34717a95ec9d0d328bd742eccc168401601278075eb97b70"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_solution-exit.txt",
+      "batch_relative": "types_1_solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_solution.lean",
+      "batch_relative": "types_1_solution.lean",
+      "bytes": 3299,
+      "sha256": "1309b120a16ff0e7ccdec46a298a9723fbbca06c07034e35edf684b752806687"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_1_solution.log",
+      "batch_relative": "types_1_solution.log",
+      "bytes": 8445,
+      "sha256": "0ffa795ddf75c7ae48c1910cd95f6134b41ae04252dc9d201aab5632b46621be"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_reference-exit.txt",
+      "batch_relative": "types_2_reference-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_reference.lean",
+      "batch_relative": "types_2_reference.lean",
+      "bytes": 3310,
+      "sha256": "97540301f8188d26c582b59dd78f815fe4e8a923dc9b4496e236b019ef6a13cb"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_reference.log",
+      "batch_relative": "types_2_reference.log",
+      "bytes": 8488,
+      "sha256": "143732481eae360f2c22df9116fe5c4cb15c88993d892349cc963c25eddeca85"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_solution-exit.txt",
+      "batch_relative": "types_2_solution-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_solution.lean",
+      "batch_relative": "types_2_solution.lean",
+      "bytes": 3267,
+      "sha256": "d54cb5d5be90f65e4022df4a110d40087275690c07007862aa6a130b693cd401"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_2_solution.log",
+      "batch_relative": "types_2_solution.log",
+      "bytes": 8434,
+      "sha256": "7260d1818d628055672cd4b4548897633218a3835826e111a5b55a4c3381038c"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_definition-exit.txt",
+      "batch_relative": "types_definition-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_definition.lean",
+      "batch_relative": "types_definition.lean",
+      "bytes": 3179,
+      "sha256": "1bb491b7acba00861f42babbb547e5cd319c3250d4bb14cc4924341305a8e321"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_definition.log",
+      "batch_relative": "types_definition.log",
+      "bytes": 8155,
+      "sha256": "3aea8b53c81e6fdd542bb51a153cddecb2d9686f4e9c450baef32f9f9a61e011"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_original-exit.txt",
+      "batch_relative": "types_original-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_original.lean",
+      "batch_relative": "types_original.lean",
+      "bytes": 3609,
+      "sha256": "7e2af645640b06402075e1ff4165d16a61fa1028c563be9de9c9d038296162ab"
+    },
+    {
+      "task_relative": "formalization/platform/coefficient-map-injectivity/types_original.log",
+      "batch_relative": "types_original.log",
+      "bytes": 9261,
+      "sha256": "b153b692023884b43445fddd13ab6e519aaeff7e5b70eab72f0652335a58dc3c"
+    }
+  ]
+}

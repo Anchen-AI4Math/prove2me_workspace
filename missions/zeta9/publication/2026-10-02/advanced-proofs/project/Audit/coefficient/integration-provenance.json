@@ -1,0 +1,214 @@
+{
+  "source": "missions/zeta9/formalization/ShortZeroCoefficient.lean",
+  "source_sha256": "9bf18387c4a51dd6dca03ecf197fc1cd85337fabf5b1d3421e2302e452347dbc",
+  "source_bytes": 43665,
+  "oracle_input_bytes": 42783,
+  "oracle_input_sha256": "719a4ddbf3752d5a0c03ee1607e8101f54dc995542410926c995c4c21b708eef",
+  "position_source": "Official extract_decl_graph.lean and extract_sketch_info.lean, actually executed under Lean 4.33.1; every byte span addresses the persisted actual oracle input",
+  "stage1_declarations": 145,
+  "stage2_declarations": 104,
+  "stage2_references": 578,
+  "extractor_api_patches": [
+    {
+      "change": "Persist Parser.mkInputContext.inputString with IO.FS.writeBinFile",
+      "reason": "Lean Parser.mkInputContext defaults normalizeLineEndings=true and calls crlfToLf; its actual input removes 882 CRLF bytes. The original source hash is retained separately and no mathematical tokens change."
+    }
+  ],
+  "regex_mathematical_source_position_queries": false,
+  "definition_selected_from_exact_stage2_decl_spans": [
+    {
+      "declEnd": {
+        "col": 64,
+        "line": 331,
+        "offset": 13796
+      },
+      "declStart": {
+        "col": 0,
+        "line": 329,
+        "offset": 13606
+      },
+      "docstring": {
+        "end": {
+          "col": 80,
+          "line": 329,
+          "offset": 13686
+        },
+        "start": {
+          "col": 0,
+          "line": 329,
+          "offset": 13606
+        }
+      },
+      "kind": "decl",
+      "nameText": "weightedCoeff",
+      "privateTok": null,
+      "valKind": "simple",
+      "valStart": {
+        "col": 38,
+        "line": 330,
+        "offset": 13729
+      }
+    },
+    {
+      "declEnd": {
+        "col": 33,
+        "line": 336,
+        "offset": 14008
+      },
+      "declStart": {
+        "col": 0,
+        "line": 333,
+        "offset": 13798
+      },
+      "docstring": {
+        "end": {
+          "col": 85,
+          "line": 333,
+          "offset": 13883
+        },
+        "start": {
+          "col": 0,
+          "line": 333,
+          "offset": 13798
+        }
+      },
+      "kind": "decl",
+      "nameText": "A",
+      "privateTok": null,
+      "valKind": "simple",
+      "valStart": {
+        "col": 20,
+        "line": 334,
+        "offset": 13908
+      }
+    }
+  ],
+  "targets": {
+    "ZetaNine.ShortZeroCoefficient.A_even_signed_lower": {
+      "stage2_declaration_fact": {
+        "declEnd": {
+          "col": 65,
+          "line": 923,
+          "offset": 38583
+        },
+        "declStart": {
+          "col": 0,
+          "line": 919,
+          "offset": 38245
+        },
+        "docstring": {
+          "end": {
+            "col": 79,
+            "line": 919,
+            "offset": 38324
+          },
+          "start": {
+            "col": 0,
+            "line": 919,
+            "offset": 38245
+          }
+        },
+        "kind": "decl",
+        "nameText": "A_even_signed_lower",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 71,
+          "line": 922,
+          "offset": 38515
+        }
+      },
+      "stage2_target_reference_facts": [
+        {
+          "const": "ZetaNine.ShortZeroCoefficient.A_even_signed_lower",
+          "end": {
+            "col": 27,
+            "line": 920,
+            "offset": 38352
+          },
+          "kind": "ref",
+          "start": {
+            "col": 8,
+            "line": 920,
+            "offset": 38333
+          }
+        }
+      ],
+      "name_rename": {
+        "ZetaNine.ShortZeroCoefficient.A_even_signed_lower": "ZetaNine.ShortZeroCoefficient.checked_A_even_signed_lower"
+      },
+      "deleted_definition_spans": [
+        [
+          13606,
+          13796
+        ],
+        [
+          13798,
+          14008
+        ]
+      ],
+      "solution_sha256": "a39e1005f68df42f24076401e483318e43dd4378b950cd0beeacc9355a35d747",
+      "reference_sha256": "f84e6cd4ae56cd8aa6a9dfac978efd2c3775af2932d40875547bfe587f674100",
+      "formal_statement_sha256": "de95f657b3f89db57253bdd37e2d3d417ce0b3abf0afc8db8a627e4cf89fbc4c",
+      "extra_top_level_solution_binders": []
+    },
+    "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even": {
+      "stage2_declaration_fact": {
+        "declEnd": {
+          "col": 22,
+          "line": 950,
+          "offset": 39680
+        },
+        "declStart": {
+          "col": 0,
+          "line": 946,
+          "offset": 39508
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "A_ne_zero_of_even",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 62,
+          "line": 946,
+          "offset": 39574
+        }
+      },
+      "stage2_target_reference_facts": [
+        {
+          "const": "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even",
+          "end": {
+            "col": 25,
+            "line": 946,
+            "offset": 39533
+          },
+          "kind": "ref",
+          "start": {
+            "col": 8,
+            "line": 946,
+            "offset": 39516
+          }
+        }
+      ],
+      "name_rename": {
+        "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even": "ZetaNine.ShortZeroCoefficient.checked_A_ne_zero_of_even"
+      },
+      "deleted_definition_spans": [
+        [
+          13606,
+          13796
+        ],
+        [
+          13798,
+          14008
+        ]
+      ],
+      "solution_sha256": "8c5a375d01a3cc380cd8b8413ed160ddfd49567a3548fdf54f39ed21c6b765a7",
+      "reference_sha256": "d693d65994c1cb351f09c77fdb74e5748baf63d13813ed00df590b4e5ee69a27",
+      "formal_statement_sha256": "bce2316e5bc3d1881a942f35830c6d5b457460252925736d8ad38b02a24937e5",
+      "extra_top_level_solution_binders": []
+    }
+  },
+  "shared_definition_sha256": "aed0ca97b8ba6102dc7c3af6de25cf72cb84a5dfe40eb73ad3b805fcdf592d8a"
+}

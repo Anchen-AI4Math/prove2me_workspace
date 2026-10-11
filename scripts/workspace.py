@@ -54,7 +54,12 @@ def lake_environment():
 
 
 def build_mission(mission, dry_run=False):
-    targets = build_targets(read_scope(mission['slug']))
+    scope = read_scope(mission['slug'])
+    targets = build_targets(scope)
+    # Explicit module targets support nested proof libraries on Windows, where
+    # Lake does not recognize slash-separated nested source targets.
+    if scope.get('module_target_syntax', False):
+        targets = ['+' + p[:-5].replace('/', '.') for p in targets]
     if not targets:
         print('No registered build target for this research/maintenance task. See its handoff.')
         return 0

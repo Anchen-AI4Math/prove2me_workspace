@@ -1,0 +1,19 @@
+{
+  "source": "verification/TypedSnapshotCore.inc",
+  "source_sha256": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+  "output": "verification/TypeOnlyTheoremSnapshotCore.inc",
+  "output_sha256": "09716404d45acbbaf2728a2071042f7e4a1d08b8b5058692a71211ae6e465951",
+  "edit": {
+    "offset": 2198,
+    "original": "      | .thmInfo t => some t.value",
+    "replacement": "      | .thmInfo _ => none"
+  },
+  "preserved": [
+    "closed kernel types",
+    "all universe/binder information",
+    "ordinary definition values"
+  ],
+  "theorem_values": null,
+  "lean_validated": false,
+  "why": "Proof values are not part of theorem interface equality. Actual compiler and axiom checks certify the proof; serializing them can expand a short source proof to hundreds of MB."
+}

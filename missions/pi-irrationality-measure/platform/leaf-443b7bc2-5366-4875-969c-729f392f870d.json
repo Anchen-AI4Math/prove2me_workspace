@@ -1,0 +1,23 @@
+{
+  "theorem_id": "443b7bc2-5366-4875-969c-729f392f870d",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.eventual_packet_degree_reduction",
+  "theorem_title": "Eventual weighted-degree reduction preserving logarithmic packets",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.eventual_packet_degree_reduction\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) :\n    ∃ R : ℚ, 0 < R ∧ ∀ᶠ n : ℕ in atTop,\n      ∀ P : MvPolynomial (Fin (d.m + 1)) ℂ,\n        ∃ Q : FormalInterpolation.WeightedPolynomial d.w0\n          (MatrixArithmetic.logWeights (finiteDenominators d)) ((n : ℝ) * (R : ℝ)),\n          ∀ ρ : Row d ((n : ℝ) * (R : ℝ)),\n            FormalInterpolation.packetMap d ((n : ℝ) * (R : ℝ)) Q ρ =\n              MvPowerSeries.coeff (InterpolationMatrix.exponentVector ρ.2.val)\n                (FormalInterpolation.formalJet\n                  (fun i => (ρ.1.val : ℂ) * MatrixArithmetic.rationalCenters\n                    (finiteNumerators d) (finiteDenominators d) i) P) := by sorry",
+  "natural_language_statement": "Fix $\\nu>2$ and an admissible determinant family $d$. There is a positive rational scale $R$ such that, at every sufficiently large natural multiple $H=nR$, every polynomial $P$ has a polynomial representative $Q$ whose monomials have column weight at most $H$ and whose recorded formal logarithmic jet coefficients agree with those of $P$ at every center and every strict row index.\n\nThe scale and eventual threshold are uniform over all polynomials $P$. This states a weighted degree reduction in the finite jet quotient; it does not supply interpolation of arbitrary packets without the separate algebraic interpolation lemma.\n\n**Formalization note.** This is an adapted polynomial representative consequence of the source's geometric restriction surjectivity and eventual support bound. The intended proof lifts the jet quotient class of $P$ to a global section and takes its affine coefficient polynomial. The open obligation includes that geometric lifting argument; it must be proved from the blowup geometry and section bounds, independently of eventual packet interpolation or its right-inverse formulation.",
+  "created_at": "2026-10-08T04:49:25.720243+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleMatrixGeometry.lean#L20-L44, eventual_packets_of_eventual_jetRestriction; Approximation/WeightedGlobalSectionBound.lean, eventual_admissible_supportBound; Jets/AdmissibleJetSurjectivity.lean, eventual_jetRestriction_surjective; Jets/AdmissibleJetPackets.lean, formalPackets_surjective_of_jetRestriction. Adapted polynomial representative interface.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

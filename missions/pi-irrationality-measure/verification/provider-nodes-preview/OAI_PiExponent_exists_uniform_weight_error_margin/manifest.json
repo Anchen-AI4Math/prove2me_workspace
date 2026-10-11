@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "variant": "all-shared-public-provider-nodes-preview",
+  "node": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236",
+  "theorem_name": "OAI.PiExponent.exists_uniform_weight_error_margin",
+  "source_graph_name": "OAI.PiExponent.exists_uniform_weight_error_margin",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_components": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+      "source_sha256": "b3bf8453c0816835902670015c46f138faa636d2bdb7290ead8aa8ce6d026415",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-WeightErrorMargin-20261008-000633.log",
+      "facts_sha256": "4c93bc769567802619c046fd1a7b4e631ed11c7d30704d8ad26853ef893149bb",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+      "original_source_sha256": "b76595598194e525a5652cfb07430c5cb8835d12e1f5892934223afa0e320a37"
+    }
+  ],
+  "component_order": [
+    "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin"
+  ],
+  "definition_dependency_witnesses": [],
+  "definition_certificates": [],
+  "child_nodes": {},
+  "child_dependency_witnesses": {},
+  "imports": [
+    "Lean",
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+    "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+    "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.RingTheory.PowerSeries.Order",
+    "Mathlib.RingTheory.PowerSeries.Trunc",
+    "Mathlib.Tactic"
+  ],
+  "whole_import_closure_inventory": {
+    "nodes": [
+      "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236"
+    ],
+    "definitions": [],
+    "public_bindings": {
+      "OAI.PiExponent.exists_uniform_weight_error_margin": [
+        {
+          "name": "OAI.PiExponent.exists_uniform_weight_error_margin",
+          "source_graph_name": "OAI.PiExponent.exists_uniform_weight_error_margin",
+          "unit": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236",
+          "provider_kind": "node",
+          "provider": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236",
+          "elaboration_only": false
+        }
+      ],
+      "OAI.PiExponent.exists_weight_error_margin": [
+        {
+          "name": "OAI.PiExponent.exists_weight_error_margin",
+          "source_graph_name": "OAI.PiExponent.exists_weight_error_margin",
+          "unit": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:91",
+          "provider_kind": "node",
+          "provider": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236",
+          "elaboration_only": false
+        }
+      ],
+      "OAI.PiExponent.reciprocal_sum_le_common_bound": [
+        {
+          "name": "OAI.PiExponent.reciprocal_sum_le_common_bound",
+          "source_graph_name": "OAI.PiExponent.reciprocal_sum_le_common_bound",
+          "unit": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:804",
+          "provider_kind": "node",
+          "provider": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:1236",
+          "elaboration_only": false
+        }
+      ]
+    },
+    "collisions": {},
+    "includes_elaboration_only_helpers": true,
+    "actual_environment_validated": false,
+    "planned_source_witness_only": true
+  },
+  "preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\ntheorem exists_weight_error_margin\r\n    (m : ℕ) (Λ S ε : ℝ) (_hΛ : 0 < Λ) (_hS : 0 ≤ S) (hε : 0 < ε) :\r\n    ∃ X : ℝ, 1 ≤ X ∧ ∀ wstar : ℝ, X < wstar →\r\n      Λ * (m : ℝ) / wstar + S / wstar < ε := by\r\n  refine ⟨max 1 ((Λ * (m : ℝ) + S) / ε), le_max_left _ _, ?_⟩\r\n  intro wstar hwstar\r\n  have hwpos : 0 < wstar :=\r\n    lt_of_lt_of_le zero_lt_one (le_of_lt (lt_of_le_of_lt (le_max_left _ _) hwstar))\r\n  have hquot : (Λ * (m : ℝ) + S) / ε < wstar :=\r\n    lt_of_le_of_lt (le_max_right _ _) hwstar\r\n  have hnum : Λ * (m : ℝ) + S < ε * wstar := by\r\n    simpa only [mul_comm] using (div_lt_iff₀ hε).mp hquot\r\n  rw [← add_div]\r\n  exact (div_lt_iff₀ hwpos).mpr hnum\r\n\r\ntheorem reciprocal_sum_le_common_bound\r\n    (m : ℕ) (w : Fin m → ℝ) (wstar : ℝ) (hwpos : 0 < wstar)\r\n    (hw : ∀ i, wstar ≤ w i) :\r\n    (∑ i : Fin m, 1 / w i) ≤ (m : ℝ) / wstar := by\r\n  calc\r\n    (∑ i : Fin m, 1 / w i) ≤ ∑ _i : Fin m, 1 / wstar := by\r\n      apply Finset.sum_le_sum\r\n      intro i _\r\n      exact one_div_le_one_div_of_le hwpos (hw i)\r\n    _ = (m : ℝ) / wstar := by simp [div_eq_mul_inv]\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent\n\n\nopen Lean Meta in\nrun_meta do\n  let requests : Array (String × Lean.Name × String) := #[]\n  let env ← Lean.getEnv\n  let mut rows : Array Lean.Json := #[]\n  let mut actualNames : Array Lean.Name := #[]\n  for (sourceName, userName, expectedKind) in requests do\n    let mut candidates : Array Lean.Name := #[]\n    for (actualName, _) in env.constants.toList do\n      if Lean.privateToUserName? actualName == some userName then\n        if (env.getModuleIdxFor? actualName).isNone then\n          candidates := candidates.push actualName\n    unless candidates.size == 1 do\n      throwError \"Expected one OwnModule private binding for {userName}, found {candidates.size}\"\n    let actualName := candidates[0]!\n    let some ci := env.find? actualName | throwError \"Missing recovered private declaration\"\n    let (kind, value, safety) ← match ci with\n      | .thmInfo t => pure (\"theorem\", t.value, Lean.Json.null)\n      | .defnInfo d => pure (\"def\", d.value, Lean.toJson (reprStr d.safety))\n      | _ => throwError \"Recovered private CI is neither theorem nor definition\"\n    unless kind == expectedKind do\n      throwError \"Recovered private CI kind differs from source Graph: {actualName}\"\n    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||\n        value.hasMVar || value.hasFVar || value.hasLooseBVars then\n      throwError \"Recovered private CI type/value is not closed\"\n    let axioms ← Lean.collectAxioms actualName\n    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do\n      throwError \"Private helper has nonstandard axioms: {actualName}\"\n    actualNames := actualNames.push actualName\n    rows := rows.push <| Lean.Json.mkObj [\n      (\"sourceGraphName\", Lean.toJson sourceName),\n      (\"nodeGeneratedName\", Lean.toJson userName.toString),\n      (\"actualKernelName\", Lean.toJson actualName.toString),\n      (\"kind\", Lean.toJson kind), (\"safety\", safety),\n      (\"ownerKind\", Lean.toJson \"OwnModule\"),\n      (\"ownModule\", Lean.toJson env.mainModule.toString),\n      (\"moduleIndexIsNone\", Lean.toJson true),\n      (\"levelParams\", Lean.toJson (ci.levelParams.map Lean.Name.toString)),\n      (\"typeRefs\", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),\n      (\"valueRefs\", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),\n      (\"snapshotValueRequired\", Lean.toJson (kind == \"def\")),\n      (\"axioms\", Lean.toJson (axioms.map Lean.Name.toString))]\n  IO.println (\"PI_ISOLATED_PRIVATE_MAP \" ++ (Lean.Json.mkObj [\n    (\"artifact\", Lean.toJson \"Thm\"),\n    (\"ownModule\", Lean.toJson env.mainModule.toString),\n    (\"rows\", Lean.Json.arr rows)]).compress)\n",
+  "mathematical_preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\ntheorem exists_weight_error_margin\r\n    (m : ℕ) (Λ S ε : ℝ) (_hΛ : 0 < Λ) (_hS : 0 ≤ S) (hε : 0 < ε) :\r\n    ∃ X : ℝ, 1 ≤ X ∧ ∀ wstar : ℝ, X < wstar →\r\n      Λ * (m : ℝ) / wstar + S / wstar < ε := by\r\n  refine ⟨max 1 ((Λ * (m : ℝ) + S) / ε), le_max_left _ _, ?_⟩\r\n  intro wstar hwstar\r\n  have hwpos : 0 < wstar :=\r\n    lt_of_lt_of_le zero_lt_one (le_of_lt (lt_of_le_of_lt (le_max_left _ _) hwstar))\r\n  have hquot : (Λ * (m : ℝ) + S) / ε < wstar :=\r\n    lt_of_le_of_lt (le_max_right _ _) hwstar\r\n  have hnum : Λ * (m : ℝ) + S < ε * wstar := by\r\n    simpa only [mul_comm] using (div_lt_iff₀ hε).mp hquot\r\n  rw [← add_div]\r\n  exact (div_lt_iff₀ hwpos).mpr hnum\r\n\r\ntheorem reciprocal_sum_le_common_bound\r\n    (m : ℕ) (w : Fin m → ℝ) (wstar : ℝ) (hwpos : 0 < wstar)\r\n    (hw : ∀ i, wstar ≤ w i) :\r\n    (∑ i : Fin m, 1 / w i) ≤ (m : ℝ) / wstar := by\r\n  calc\r\n    (∑ i : Fin m, 1 / w i) ≤ ∑ _i : Fin m, 1 / wstar := by\r\n      apply Finset.sum_le_sum\r\n      intro i _\r\n      exact one_div_le_one_div_of_le hwpos (hw i)\r\n    _ = (m : ℝ) / wstar := by simp [div_eq_mul_inv]\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent\n\n",
+  "solution_preamble": "import Lean\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\ntheorem exists_weight_error_margin\r\n    (m : ℕ) (Λ S ε : ℝ) (_hΛ : 0 < Λ) (_hS : 0 ≤ S) (hε : 0 < ε) :\r\n    ∃ X : ℝ, 1 ≤ X ∧ ∀ wstar : ℝ, X < wstar →\r\n      Λ * (m : ℝ) / wstar + S / wstar < ε := by\r\n  refine ⟨max 1 ((Λ * (m : ℝ) + S) / ε), le_max_left _ _, ?_⟩\r\n  intro wstar hwstar\r\n  have hwpos : 0 < wstar :=\r\n    lt_of_lt_of_le zero_lt_one (le_of_lt (lt_of_le_of_lt (le_max_left _ _) hwstar))\r\n  have hquot : (Λ * (m : ℝ) + S) / ε < wstar :=\r\n    lt_of_le_of_lt (le_max_right _ _) hwstar\r\n  have hnum : Λ * (m : ℝ) + S < ε * wstar := by\r\n    simpa only [mul_comm] using (div_lt_iff₀ hε).mp hquot\r\n  rw [← add_div]\r\n  exact (div_lt_iff₀ hwpos).mpr hnum\r\n\r\ntheorem reciprocal_sum_le_common_bound\r\n    (m : ℕ) (w : Fin m → ℝ) (wstar : ℝ) (hwpos : 0 < wstar)\r\n    (hw : ∀ i, wstar ≤ w i) :\r\n    (∑ i : Fin m, 1 / w i) ≤ (m : ℝ) / wstar := by\r\n  calc\r\n    (∑ i : Fin m, 1 / w i) ≤ ∑ _i : Fin m, 1 / wstar := by\r\n      apply Finset.sum_le_sum\r\n      intro i _\r\n      exact one_div_le_one_div_of_le hwpos (hw i)\r\n    _ = (m : ℝ) / wstar := by simp [div_eq_mul_inv]\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n\nend\nsection\nopen OAI OAI.PiExponent\n\n\nopen Lean Meta in\nrun_meta do\n  let requests : Array (String × Lean.Name × String) := #[]\n  let env ← Lean.getEnv\n  let mut rows : Array Lean.Json := #[]\n  let mut actualNames : Array Lean.Name := #[]\n  for (sourceName, userName, expectedKind) in requests do\n    let mut candidates : Array Lean.Name := #[]\n    for (actualName, _) in env.constants.toList do\n      if Lean.privateToUserName? actualName == some userName then\n        if (env.getModuleIdxFor? actualName).isNone then\n          candidates := candidates.push actualName\n    unless candidates.size == 1 do\n      throwError \"Expected one OwnModule private binding for {userName}, found {candidates.size}\"\n    let actualName := candidates[0]!\n    let some ci := env.find? actualName | throwError \"Missing recovered private declaration\"\n    let (kind, value, safety) ← match ci with\n      | .thmInfo t => pure (\"theorem\", t.value, Lean.Json.null)\n      | .defnInfo d => pure (\"def\", d.value, Lean.toJson (reprStr d.safety))\n      | _ => throwError \"Recovered private CI is neither theorem nor definition\"\n    unless kind == expectedKind do\n      throwError \"Recovered private CI kind differs from source Graph: {actualName}\"\n    if ci.type.hasMVar || ci.type.hasFVar || ci.type.hasLooseBVars ||\n        value.hasMVar || value.hasFVar || value.hasLooseBVars then\n      throwError \"Recovered private CI type/value is not closed\"\n    let axioms ← Lean.collectAxioms actualName\n    unless axioms.all (fun n => n == `propext || n == `Classical.choice || n == `Quot.sound) do\n      throwError \"Private helper has nonstandard axioms: {actualName}\"\n    actualNames := actualNames.push actualName\n    rows := rows.push <| Lean.Json.mkObj [\n      (\"sourceGraphName\", Lean.toJson sourceName),\n      (\"nodeGeneratedName\", Lean.toJson userName.toString),\n      (\"actualKernelName\", Lean.toJson actualName.toString),\n      (\"kind\", Lean.toJson kind), (\"safety\", safety),\n      (\"ownerKind\", Lean.toJson \"OwnModule\"),\n      (\"ownModule\", Lean.toJson env.mainModule.toString),\n      (\"moduleIndexIsNone\", Lean.toJson true),\n      (\"levelParams\", Lean.toJson (ci.levelParams.map Lean.Name.toString)),\n      (\"typeRefs\", Lean.toJson (ci.type.getUsedConstants.map Lean.Name.toString)),\n      (\"valueRefs\", Lean.toJson (value.getUsedConstants.map Lean.Name.toString)),\n      (\"snapshotValueRequired\", Lean.toJson (kind == \"def\")),\n      (\"axioms\", Lean.toJson (axioms.map Lean.Name.toString))]\n  IO.println (\"PI_ISOLATED_PRIVATE_MAP \" ++ (Lean.Json.mkObj [\n    (\"artifact\", Lean.toJson \"Sol\"),\n    (\"ownModule\", Lean.toJson env.mainModule.toString),\n    (\"rows\", Lean.Json.arr rows)]).compress)\n",
+  "formal_statement": "theorem OAI.PiExponent.exists_uniform_weight_error_margin\r\n    (m : ℕ) (Λ S ε : ℝ) (hΛ : 0 < Λ) (hS : 0 ≤ S) (hε : 0 < ε) :\r\n    ∃ X : ℝ, 1 ≤ X ∧ ∀ (wstar : ℝ) (w : Fin m → ℝ),\r\n      X < wstar → (∀ i, wstar ≤ w i) →\r\n      Λ * (∑ i : Fin m, 1 / w i) + S / wstar < ε := by sorry\n\nend\n",
+  "solution_fragment": "theorem solution\r\n    (m : ℕ) (Λ S ε : ℝ) (hΛ : 0 < Λ) (hS : 0 ≤ S) (hε : 0 < ε) :\r\n    ∃ X : ℝ, 1 ≤ X ∧ ∀ (wstar : ℝ) (w : Fin m → ℝ),\r\n      X < wstar → (∀ i, wstar ≤ w i) →\r\n      Λ * (∑ i : Fin m, 1 / w i) + S / wstar < ε := open OAI OAI.PiExponent in by\r\n  obtain ⟨X, hX, hmargin⟩ := OAI.PiExponent.exists_weight_error_margin m Λ S ε hΛ hS hε\r\n  refine ⟨X, hX, ?_⟩\r\n  intro wstar w hwstar hw\r\n  have hwpos : 0 < wstar := lt_trans zero_lt_one (lt_of_le_of_lt hX hwstar)\r\n  have hsum := OAI.PiExponent.reciprocal_sum_le_common_bound m w wstar hwpos hw\r\n  have hscaled := mul_le_mul_of_nonneg_left hsum hΛ.le\r\n  have hsmall := hmargin wstar hwstar\r\n  calc\r\n    Λ * (∑ i : Fin m, 1 / w i) + S / wstar\r\n        ≤ Λ * ((m : ℝ) / wstar) + S / wstar := add_le_add hscaled le_rfl\r\n    _ = Λ * (m : ℝ) / wstar + S / wstar := by rw [mul_div_assoc]\r\n    _ < ε := hsmall\n",
+  "top_level_literal_theorem_solution": true,
+  "restored_target_context": {
+    "preamble": "section\nopen OAI OAI.PiExponent\n",
+    "closing": "\nend\n",
+    "namespace_opens": [
+      "OAI",
+      "OAI.PiExponent"
+    ],
+    "source_scope_frames": [
+      {
+        "kind": "namespace",
+        "name": "OAI",
+        "source_range": {
+          "end": {
+            "col": 13,
+            "line": 3,
+            "normalizedOffset": 61,
+            "offset": 63
+          },
+          "start": {
+            "col": 0,
+            "line": 3,
+            "normalizedOffset": 48,
+            "offset": 50
+          }
+        },
+        "source_text": "namespace OAI"
+      },
+      {
+        "kind": "namespace",
+        "name": "PiExponent",
+        "source_range": {
+          "end": {
+            "col": 20,
+            "line": 5,
+            "normalizedOffset": 83,
+            "offset": 87
+          },
+          "start": {
+            "col": 0,
+            "line": 5,
+            "normalizedOffset": 63,
+            "offset": 67
+          }
+        },
+        "source_text": "namespace PiExponent"
+      }
+    ],
+    "context_commands": [],
+    "literal_root_binding": true,
+    "validated": false,
+    "pending": [
+      "actual namespace elaboration",
+      "original/generated kernel type equality",
+      "actual attribute/provider dependencies",
+      "solution axiom audit"
+    ]
+  },
+  "scope_closing": "\nend\n",
+  "restored_local_instances": [],
+  "node_generated_names": [],
+  "source_to_generated_private_kernel_names": null,
+  "private_ci_comparison_policy": {
+    "map_required": "source Graph private Name to actual generated CI Name from certified per-artifact environment maps",
+    "type_comparison": "structural kernel Expr JSON with explicit constant Name mapping and universe binder name normalization only",
+    "def_value_comparison": "complete structural kernel Expr JSON; required nonnull for every def/abbrev source and generated row",
+    "theorem_value_comparison": "proof value null; CI type/closed proof/Std3 required",
+    "pretty_string_rewriting_forbidden": true,
+    "validated": false
+  },
+  "public_inline_ci_requests": [
+    {
+      "source_graph_name": "OAI.PiExponent.reciprocal_sum_le_common_bound",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+      "source_unit": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:804",
+      "generated_name": "OAI.PiExponent.reciprocal_sum_le_common_bound",
+      "source_command_range": {
+        "start": {
+          "col": 0,
+          "line": 22,
+          "normalizedOffset": 783,
+          "offset": 804
+        },
+        "end": {
+          "col": 51,
+          "line": 31,
+          "normalizedOffset": 1202,
+          "offset": 1232
+        }
+      },
+      "generated_companion": false
+    },
+    {
+      "source_graph_name": "OAI.PiExponent.exists_weight_error_margin",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+      "source_unit": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:91",
+      "generated_name": "OAI.PiExponent.exists_weight_error_margin",
+      "source_command_range": {
+        "start": {
+          "col": 0,
+          "line": 7,
+          "normalizedOffset": 85,
+          "offset": 91
+        },
+        "end": {
+          "col": 36,
+          "line": 20,
+          "normalizedOffset": 781,
+          "offset": 800
+        }
+      },
+      "generated_companion": false
+    }
+  ],
+  "private_map_log_marker": "PI_ISOLATED_PRIVATE_MAP ",
+  "kernel_name_mapping_validated": false,
+  "elaboration_only_helpers": [],
+  "source_edits": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+      "edits": [
+        {
+          "start": 1236,
+          "end": 2132,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 2136,
+          "end": 2594,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 0,
+          "end": 46,
+          "replacement": "",
+          "reason": "rewrite parser import command"
+        }
+      ],
+      "retained_units": [
+        "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:804",
+        "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin:91"
+      ]
+    }
+  ],
+  "statement_edits": [
+    {
+      "start": 1244,
+      "end": 1278,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 49
+    },
+    {
+      "start": 1528,
+      "end": 2132,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 1244,
+      "end": 1278,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    },
+    {
+      "start": 1568,
+      "end": 1594,
+      "reason": "rewrite authority-bound project reference to generated FQN",
+      "replacement_bytes": 41
+    },
+    {
+      "start": 1762,
+      "end": 1792,
+      "reason": "rewrite authority-bound project reference to generated FQN",
+      "replacement_bytes": 45
+    }
+  ],
+  "project_reference_rewrites": [
+    {
+      "start": 1568,
+      "end": 1594,
+      "replacement": "OAI.PiExponent.exists_weight_error_margin",
+      "reason": "rewrite authority-bound project reference to generated FQN"
+    },
+    {
+      "start": 1762,
+      "end": 1792,
+      "replacement": "OAI.PiExponent.reciprocal_sum_le_common_bound",
+      "reason": "rewrite authority-bound project reference to generated FQN"
+    }
+  ],
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "snapshot_core": "verification/TypeOnlyTheoremSnapshotCore.inc",
+  "snapshot_core_sha256": "09716404d45acbbaf2728a2071042f7e4a1d08b8b5058692a71211ae6e465951",
+  "runtime_sha256": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+  "input_hashes": {
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/ast-wrapper-inventory.json": "6a5ea692fc8c8fd5287745e7a60810c32167a3798c3f48b1d441a06247e754fc",
+    "verification/ast-import-inventory.json": "4f82a967597d15f3b612e4e77d5366131733416ed4190099c56309ac21696c64",
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+    "verification/platform-unit-plan-preview.json": "88af9043c744322193c4778b54b70a21eb07d1c91004c7deaf1aeff6af7fd213",
+    "verification/platform-artifact-plan-preview.json": "d33f69043eb6559831f31c2fa84a7dcd8295233627669d781032eb99b3ed4ad9",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "8c6220a1af995ea3b041e5fe4a15e66d8400f820db1741df6b219a693843ee31",
+    "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "cf34f7073c45f91b8ae8614587b9ce9f5d356958dbb1465896a752e206c24d2f",
+    "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "4bcaaac041c3eab62680aa6c814d9bed8744dfbbc7c33629ec7b9ff364b20a3f",
+    "scripts/generate_platform_provider_bundles.py": "b260970bd2f61f123e50bdfe4fd7367ae4d50177122172e192c796bf41f2beae",
+    "scripts/plan_platform_units_providers.py": "45b1b56ec0b14ecf01a4aef30519a67d8501785e4607376d83e63ea08329f2bd"
+  },
+  "implementation_sha256": {
+    "generate_platform_provider_nodes.py": "1413ccd0ba934a71a867981ead0efac238608e3f9030b05ccc4e83638666b565",
+    "generate_platform_provider_bundles.py": "b260970bd2f61f123e50bdfe4fd7367ae4d50177122172e192c796bf41f2beae",
+    "generate_platform_nodes.py": "5a2309a4d487d30c7d1c056a4f22431bcad51dbfd193f6cb44495879570e08f7",
+    "generate_platform_bundles.py": "286cd7b18284d43c3393f23883a1e72b09c4f02d7fe4f2521bed7d0fccb18436",
+    "restore_node_context.py": "97d802196838ccbfed33742f1309cd4902e1a67b0263abbd4fbab93f17e00406",
+    "private_inline_binding.py": "187a73bfb156f3aabd2cbab15157891686f597b290992f6de44b1439b8952a52",
+    "private_node_binding.py": "53ab1a835acfa39e6cfa8d737e6c6118fdacfe1ff7ec8000db5e9cd15d6a6e1c",
+    "platform_statement.py": "05deaa1e37d8c3ce753c8d6238b5735dc6e7ac75409636a58b7368fd264b1d50",
+    "span_edits.py": "f0c2ffab90469dc63b678ee84eabb2c04c5fcbb7385a9592ef615ef4f681b9c6",
+    "plan_platform_units_providers.py": "45b1b56ec0b14ecf01a4aef30519a67d8501785e4607376d83e63ea08329f2bd"
+  },
+  "inline_type_json_outputs": {
+    "original": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/original-inline-types.json",
+    "generated": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/generated-inline-types.json"
+  },
+  "public_inline_type_json_outputs": {
+    "original": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/original-public-inline-types.json",
+    "generated": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/generated-public-inline-types.json"
+  },
+  "provisional": true,
+  "validated": false,
+  "submission_ready": false,
+  "full_tree_ready": false,
+  "theorem_proof_values_exported": false,
+  "lean_started": false,
+  "api_used": false,
+  "pending": [
+    "actual imported Def OLeans and exact certificates",
+    "actual child node statements and certificates",
+    "four exact files compiled within 300 seconds",
+    "actual private CI maps, types and proofStd",
+    "original/generated kernel types with only universe-name normalization",
+    "publication flow review"
+  ],
+  "outputs_sha256": {
+    "Thm_OAI_PiExponent_exists_uniform_weight_error_margin.lean": "957ec69a50deebf1827f2023ffd2d7a777dd3dc57f89d4b726d5e4c0c229c45c",
+    "Sol_OAI_PiExponent_exists_uniform_weight_error_margin.lean": "602d56a47e1bced1360ad41a908d02fc69e25bc621ed5897ec18357682a37446",
+    "SnapshotOriginal.lean": "78c3785e84d3664e872db5abf568df995633f7fc122b39a793d351cfaf9f1054",
+    "SnapshotGenerated.lean": "d94f4065134431ec15b07ad40c6cc54a46fe8006d6a12e6318085be89ffb206b"
+  },
+  "statement": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/Thm_OAI_PiExponent_exists_uniform_weight_error_margin.lean",
+  "solution": "missions/pi-irrationality-measure/verification/provider-nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin/Sol_OAI_PiExponent_exists_uniform_weight_error_margin.lean",
+  "statement_sha256": "957ec69a50deebf1827f2023ffd2d7a777dd3dc57f89d4b726d5e4c0c229c45c",
+  "solution_sha256": "602d56a47e1bced1360ad41a908d02fc69e25bc621ed5897ec18357682a37446",
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "78c3785e84d3664e872db5abf568df995633f7fc122b39a793d351cfaf9f1054",
+    "SnapshotGenerated.lean": "d94f4065134431ec15b07ad40c6cc54a46fe8006d6a12e6318085be89ffb206b"
+  }
+}

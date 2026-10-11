@@ -1,0 +1,113 @@
+{
+  "state": "PURE_METADATA_PLAN_NOT_READY_TO_POST",
+  "created_at_utc": "2026-10-08T14:55:45.493279+00:00",
+  "new_mission_id": "5eb457c6-bc3b-4f51-852a-c5d29fb77c53",
+  "root_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+  "required_ENV": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "new_definition_registrations": 0,
+  "new_problem_registrations": 0,
+  "new_milestones_required": 0,
+  "operation_order": "bottom up: Kernel verify/poll/decomposition, then Matrix verify/poll/decomposition, finally root graph readback",
+  "steps": [
+    {
+      "label": "kernel",
+      "target": {
+        "theorem_id": "bbc02826-16b1-4012-ac43-0462f90498df",
+        "theorem_name": "ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_actual_HasSum_and_absolute",
+        "formal_statement": "theorem ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_actual_HasSum_and_absolute (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n)\n    (b : Fin 5 → ℚ) :\n    HasSum (fun t : ℕ => (CoefficientMap.weightedR n (inverseMultiplier n hn2 hn b)\n      ((t + 1 : ℕ) : ℚ) : ℝ)) (prescribedL b) ∧\n    Summable (fun t : ℕ => ‖(CoefficientMap.weightedR n (inverseMultiplier n hn2 hn b)\n      ((t + 1 : ℕ) : ℚ) : ℝ)‖):= by sorry",
+        "preamble": "import Definitions.Def_ZetaNine_CoefficientMapKernelBridge\n\nset_option autoImplicit false\nopen scoped BigOperators Topology\nopen Finset Polynomial Filter\nopen ZetaNine ZetaNine.CoefficientMapKernelBridge ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapReflection ZetaNine.CoefficientMapAggregate\n",
+        "visibility": "public",
+        "status": "Proved",
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+      },
+      "candidate_source": {
+        "task_relative": "verification/graph-integration-two-form-2026-10-08/modular-matrix-kernel-summation-source/KernelHasSumGraphSource.lean",
+        "bytes": 3711,
+        "sha256": "2c3c45d0ee59c64122b1eda5a5f498b09065579be21aabae5a9f4ccbce6c2edf"
+      },
+      "source_state": "UNCOMPILED candidate; missing global solution; kernel also requires explicit Reflection namespace",
+      "request": {
+        "method": "POST",
+        "path": "/verify",
+        "content_type": "multipart/form-data",
+        "fields": {
+          "theorem_id": "bbc02826-16b1-4012-ac43-0462f90498df",
+          "proof_type": "prove",
+          "explanation": "This reduction identifies the reusable analytic children of the actual five-output inverse sum theorem.\n\nFor an even $n\\ge2$ and an arbitrary rational output vector $b\\in\\mathbb Q^5$, let $W$ be the genuine inverse multiplier. The proof establishes $\\deg W\\le4$ from its actual coordinate-polynomial definition and restores $F_n(W)=b$ using the actual inverse equivalence. This implies the required strong-proper degree condition.\n\nThe public theorem `ZetaNine.CoefficientMapSummation.actualSeries_hasSum_exactL` then gives the sum of the actual weighted rational series as $L_n(W)$. Restoring all five actual aggregate coordinates identifies this value with the prescribed constant and odd-zeta linear combination. Independently, `ZetaNine.CoefficientMapSummation.actualSeries_norm_summable` gives absolute convergence for the same true series. The two conclusions are precisely the existing parent statement.\n\nThe imported children are already Proved. This submission records a genuine modular decomposition, introduces no new Open child, and claims no inverse-height, integer-polynomial or lattice-margin estimate.",
+          "file": "exact independently compiled self-contained global-solution bytes, not yet prepared"
+        }
+      },
+      "env_argument": "absent: verify inherits target mathlib_rev",
+      "expected_terminal_submission_status": "ACCEPTED",
+      "expected_decomposition_children": [
+        "25ed8da5-f069-4864-95b4-3701e2ddec47",
+        "e202eaff-c82b-4d8b-b7a2-8b2896798987"
+      ],
+      "readback_operations": [
+        {
+          "method": "GET",
+          "path": "/verify?submission_id=<actual returned UUID>"
+        },
+        {
+          "method": "GET",
+          "path": "/theorems/bbc02826-16b1-4012-ac43-0462f90498df/decompositions"
+        }
+      ]
+    },
+    {
+      "label": "matrix",
+      "target": {
+        "theorem_id": "bb7477e4-5539-4015-b8cf-9bad57e1c8a0",
+        "theorem_name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute",
+        "formal_statement": "theorem ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    HasSum (fun t : ℕ => (CoefficientMap.weightedR n (selectedIntegerMultiplier n hn2 hn b a)\n      ((t + 1 : ℕ) : ℚ) : ℝ))\n        ((b : ℝ) + (a : ℝ) * CoefficientMapSummation.zetaReal 9) ∧\n    Summable (fun t : ℕ => ‖(CoefficientMap.weightedR n (selectedIntegerMultiplier n hn2 hn b a)\n      ((t + 1 : ℕ) : ℚ) : ℝ)‖):= by sorry",
+        "preamble": "import Definitions.Def_ZetaNine_CoefficientMapMatrix\n\nset_option autoImplicit false\nopen scoped BigOperators Matrix\nopen Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge\n",
+        "visibility": "public",
+        "status": "Proved",
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+      },
+      "candidate_source": {
+        "task_relative": "verification/graph-integration-two-form-2026-10-08/modular-matrix-kernel-summation-source/MatrixHasSumGraphSource.lean",
+        "bytes": 1706,
+        "sha256": "60c95647ea8a79698b8cc5c1f4075c38ad5cc1058a96e09f4e26d9385f5ed167"
+      },
+      "source_state": "UNCOMPILED candidate; missing global solution; kernel also requires explicit Reflection namespace",
+      "request": {
+        "method": "POST",
+        "path": "/verify",
+        "content_type": "multipart/form-data",
+        "fields": {
+          "theorem_id": "bb7477e4-5539-4015-b8cf-9bad57e1c8a0",
+          "proof_type": "prove",
+          "explanation": "This reduction specializes the actual arbitrary five-output inverse sum theorem to the selected integer output.\n\nApply the public theorem `ZetaNine.CoefficientMapKernelBridge.inverseMultiplier_actual_HasSum_and_absolute` to the output vector $(b,0,0,0,a)$. Its genuine inverse multiplier is definitionally the selected rational quartic. In the prescribed constant and odd-zeta linear combination, the three intermediate coefficients vanish, so the value is exactly $b+a\\zeta(9)$. The proof retains the full actual weighted rational sequence and its absolute summability.\n\nThe child is already Proved; this expresses the mathematical specialization as a platform dependency. It does not assert that the rational polynomial coefficients are integers, that the resulting form is nonzero, or that its height is exponentially small.",
+          "file": "exact independently compiled self-contained global-solution bytes, not yet prepared"
+        }
+      },
+      "env_argument": "absent: verify inherits target mathlib_rev",
+      "expected_terminal_submission_status": "ACCEPTED",
+      "expected_decomposition_children": [
+        "bbc02826-16b1-4012-ac43-0462f90498df"
+      ],
+      "readback_operations": [
+        {
+          "method": "GET",
+          "path": "/verify?submission_id=<actual returned UUID>"
+        },
+        {
+          "method": "GET",
+          "path": "/theorems/bb7477e4-5539-4015-b8cf-9bad57e1c8a0/decompositions"
+        }
+      ]
+    }
+  ],
+  "before_write_requirements": [
+    "append/preserve self-contained global solution sources and fix explicit Reflection namespace",
+    "fresh actual author plus independent compile of the exact eventual upload bytes and canonical complete target types",
+    "all declared imported child uses checked from full proof values; no parent self import",
+    "authenticated current target and child public/env/type readback by Root",
+    "freeze operations wire hashes and source proofs in a dedicated modular source/pin gate; current A/two/one-only gate cannot accept new labels",
+    "new business POST once; unknown result stops batch and documented own submission history reconciles before retry"
+  ],
+  "current_api_calls": 0,
+  "current_Lean_calls": 0,
+  "current_credential_reads": 0
+}

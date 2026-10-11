@@ -1,0 +1,22 @@
+{
+  "theorem_id": "84aa3fa2-09a3-4b89-af10-e9e55edca8af",
+  "theorem_name": "matrix_det_norm_le_prod_row_sum",
+  "theorem_title": "Determinant bounded by the product of row sums",
+  "status": "Proved",
+  "formal_statement": "theorem matrix_det_norm_le_prod_row_sum\n    {idx : Type*} [Fintype idx] [DecidableEq idx] (A : Matrix idx idx Complex) :\n    norm A.det <= Finset.prod Finset.univ (fun i : idx =>\n      Finset.sum Finset.univ (fun j : idx => norm (A i j))) := by sorry",
+  "natural_language_statement": "For every finite square complex matrix, the absolute value of its determinant is at most the product of the sums of absolute values along its rows. This reusable estimate controls determinants from rowwise bounds.",
+  "created_at": "2026-10-07T19:49:27.96284+00:00",
+  "vote_count": 0,
+  "tags": [
+    "linear-algebra",
+    "matrix-analysis"
+  ],
+  "preamble": "import Mathlib.Analysis.Complex.Basic\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+  "source": "Hadamard determinant inequality; follows from the Leibniz expansion.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,110 @@
+{
+  "stage": "COMPLETE_PROOF_BODY_SOURCE_ONLY_WAITING_ROOT_LEAN_GRANT",
+  "created_at": "2026-10-08T13:24:48.418626+00:00",
+  "actual_helper_count": 10,
+  "complete_helpers": [
+    {
+      "name": "ZetaNine.GraphBridge.one_selectedMultiplier_degree_le",
+      "complete_header": "theorem one_selectedMultiplier_degree_le (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    (selectedIntegerMultiplier n hn2 hn b a).natDegree ≤ 4",
+      "proof_arguments": "n hn2 hn b a"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_selectedMultiplier_height_eq_inverseNorm",
+      "complete_header": "theorem one_selectedMultiplier_height_eq_inverseNorm\n    (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ) :\n    weightedCoefficientHeight n (selectedIntegerMultiplier n hn2 hn b a) =\n      selectedInverseWeightedNorm n b a",
+      "proof_arguments": "n hn2 hn b a"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_actualR_zero_of_pos_le",
+      "complete_header": "theorem one_actualR_zero_of_pos_le (n k : ℕ) (hk : 1 ≤ k) (hkn : k ≤ n) :\n    CoefficientMap.actualR n (k : ℚ) = 0",
+      "proof_arguments": "n k hk hkn"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_actualR_pos_above_n",
+      "complete_header": "theorem one_actualR_pos_above_n (n k : ℕ) (hk : n < k) :\n    0 < CoefficientMap.actualR n (k : ℚ)",
+      "proof_arguments": "n k hk"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_real_mapped_eval",
+      "complete_header": "theorem one_real_mapped_eval (W : ℚ[X]) (t : ℚ) :\n    ((W.eval t : ℚ) : ℝ) = (W.map (Rat.castHom ℝ)).eval (t : ℝ)",
+      "proof_arguments": "W t"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_actualWeighted_tail_term",
+      "complete_header": "theorem one_actualWeighted_tail_term (n : ℕ) (W : ℚ[X]) (j : ℕ) :\n    actualWeightedSequence n W (j + n) =\n      (CoefficientMap.actualR n ((j + n + 1 : ℕ) : ℚ) : ℝ) *\n        (W.map (Rat.castHom ℝ)).eval\n          (((j + n + 1 : ℕ) : ℝ) * (((j + n + 1 : ℕ) : ℝ) + n))",
+      "proof_arguments": "n W j"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_actualWeighted_head_zero",
+      "complete_header": "theorem one_actualWeighted_head_zero (n : ℕ) (W : ℚ[X]) :\n    (∑ m ∈ range n, actualWeightedSequence n W m) = 0",
+      "proof_arguments": "n W"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_actualWeighted_tail_center_le",
+      "complete_header": "theorem one_actualWeighted_tail_center_le (n j : ℕ) :\n    ((n : ℝ) + 1) * (2 * (n : ℝ) + 1) ≤\n      (((j + n + 1 : ℕ) : ℝ) * (((j + n + 1 : ℕ) : ℝ) + n))",
+      "proof_arguments": "n j"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_selected_actual_form_pos",
+      "complete_header": "theorem one_selected_actual_form_pos (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ)\n    (hcoeff : ∀ i : ℕ, 0 ≤\n      (Polynomial.taylor (((n : ℝ) + 1) * (2 * (n : ℝ) + 1))\n        ((selectedIntegerMultiplier n hn2 hn b a).map (Rat.castHom ℝ))).coeff i)\n    (hsample : 0 < ((selectedIntegerMultiplier n hn2 hn b a).map (Rat.castHom ℝ)).eval\n      (((n : ℝ) + 2) * ((n : ℝ) + 2 + (n : ℝ)))) :\n    0 < (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re",
+      "proof_arguments": "n hn2 hn b a hcoeff hsample"
+    },
+    {
+      "name": "ZetaNine.GraphBridge.one_small_forms_of_selected_inverse_positive_cone_margin",
+      "complete_header": "theorem one_small_forms_of_selected_inverse_positive_cone_margin\n    (hshort : SelectedInversePositiveConeMargin) :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ m : ℕ in atTop,\n        ∃ b a : ℤ,\n          (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re ≠ 0 ∧\n          |(b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (m : ℝ)))",
+      "proof_arguments": "hshort"
+    }
+  ],
+  "actual_Lean_calls": 0,
+  "actual_API_calls": 0,
+  "credential_reads": 0,
+  "complete_helper_source_contains_sorry": true,
+  "open_catalog_only_sorry": true,
+  "parent_sketch_needs_full_helper_inline_for_platform": true,
+  "boundary_controls": 7,
+  "common_actual_norm": "ZetaNine.GraphBridge.selectedInverseWeightedNorm",
+  "required_theorem_modules": [
+    "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product",
+    "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute",
+    "Theorems.Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one",
+    "Theorems.Thm_ZetaNine_taylor_sign_implies_kernel_sum_pos",
+    "Theorems.Thm_ZetaNine_GraphBridge_selected_inverse_positive_cone_margin"
+  ],
+  "preserved_old_pure_design": true,
+  "source_bindings": [
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/Def_ZetaNine_GraphBridge_OneForm.lean",
+      "bytes": 1170,
+      "sha256": "e341555f4a67a3e7a5235ea5b0123cb1bbf4ad1abaefbf9019dfbe18a3501214"
+    },
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/Thm_ZetaNine_GraphBridge_selected_inverse_positive_cone_margin.lean",
+      "bytes": 273,
+      "sha256": "3154ebfaefa2c6280275b1d000326cd8b0a3d4cd7b87f8b58f5629eb50229a8e"
+    },
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/OneFormBridgeSource.lean",
+      "bytes": 10326,
+      "sha256": "8700ad11700e14ac3f407b9b79019711012437250e2a1db9bd3aab9fcc0d826e"
+    },
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/OneFormParentSketchSource.lean",
+      "bytes": 661,
+      "sha256": "455edf6938cba83d4fca9bf40e3adff571434029bb35f5a8f1625cef6d17dc92"
+    },
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/OneFormBridgeTypeAudit.lean",
+      "bytes": 4557,
+      "sha256": "9280b16a2744fe8a1d8241c709eafc7a2265bfb6674617335121c83fb9e5ce07"
+    },
+    {
+      "task_relative": "verification/graph-integration-one-form-2026-10-08/complete-type-inventory.json",
+      "bytes": 3634,
+      "sha256": "ce118875333d1b65211e887b3ed81bb265b5b5a6cfa8a9d75c59eac15b47bd66"
+    },
+    {
+      "task_relative": "verification/graph-integration-two-form-2026-10-08/Def_ZetaNine_GraphBridge_TwoForm.lean",
+      "bytes": 1157,
+      "sha256": "de6fd1a1322e3083ee0fe2d99d4fda8f060c2d8b68599b2e373e73c8647b9bac"
+    }
+  ]
+}

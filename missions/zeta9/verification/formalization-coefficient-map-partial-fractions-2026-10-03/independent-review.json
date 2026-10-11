@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS",
+  "scope_verdict": "PASS_ACTUAL_FINITE_GLOBAL_PARTIAL_FRACTIONS_IN_PROPER_REGULAR_DOMAIN_ONLY",
+  "review_role": "Independent mathematical and Lean reviewer; another agent authored PF",
+  "checked_at": "2026-10-03T15:55:36.842639+00:00",
+  "source": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+  "source_sha256": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+  "sources_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+  },
+  "environment": {
+    "lean_toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "checks": [
+    {
+      "name": "all_four_frozen_sources_unchanged",
+      "pass": true,
+      "detail": {
+        "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+        "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+        "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+        "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+      }
+    },
+    {
+      "name": "author_twenty_member_freeze_unchanged",
+      "pass": true,
+      "detail": {
+        "manifest_sha256": "61b04645de44038ed16e623390f4623df2e9c1ebd6eb19a32e3173f2fc56ce68",
+        "author_receipt_sha256": "a422a5d3b6d5ddaaa1a26ac8e468266331b08ac78ec3788707db2e131809075d"
+      }
+    },
+    {
+      "name": "fresh_independent_four_native_builds_and_two_type_audits",
+      "pass": true,
+      "detail": {
+        "receipt": "independent-compile-receipt.json",
+        "observed_exits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fresh_cache": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build",
+        "native_objects": {
+          "independent-native-CoefficientMap": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790",
+          "independent-native-CoefficientMapJet": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160",
+          "independent-native-CoefficientMapInjectivity": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc",
+          "independent-native-CoefficientMapPartialFractions": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+        }
+      }
+    },
+    {
+      "name": "all_actual_source_types_and_definition_values_reproduced",
+      "pass": true,
+      "detail": {
+        "source_defs": 5,
+        "source_proofs": 27,
+        "author_closed_statements_replayed": 7,
+        "independent_closed_boundary_statements": 19,
+        "definition_values": {
+          "ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial": "fun n j => ∏ k ∈ (Finset.range (n + 1)).erase j, (Polynomial.X + Polynomial.C ↑k)",
+          "ZetaNine.CoefficientMapPartialFractions.localTruncation": "fun n j W => (PowerSeries.trunc 9) (ZetaNine.CoefficientMapJet.weightedClearedSeries n j W)",
+          "ZetaNine.CoefficientMapPartialFractions.partialBlock": "fun n j W =>\n  ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 *\n    (ZetaNine.CoefficientMapPartialFractions.localTruncation n j W).comp (Polynomial.X + Polynomial.C ↑j)",
+          "ZetaNine.CoefficientMapPartialFractions.partialNumerator": "fun n W =>\n  ∑ j ∈ Finset.range (n + 1),\n    ∑ s ∈ Finset.Icc 1 9,\n      Polynomial.C (ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W) *\n          ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 *\n        (Polynomial.X + Polynomial.C ↑j) ^ (9 - s)",
+          "ZetaNine.CoefficientMapPartialFractions.candidateClearedSeries": "fun n j W =>\n  ↑((ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).comp\n        (ZetaNine.CoefficientMapJet.shiftedVariable j)) *\n    (↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9)⁻¹"
+        },
+        "exact_types_and_values_equal_frozen_author_report": true
+      }
+    },
+    {
+      "name": "all_final_native_and_import_axioms_standard_three_only",
+      "pass": true,
+      "detail": {
+        "standard_axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "native_printed_targets": 39,
+        "actual_import_records": 90,
+        "final_sorryAx": false
+      }
+    },
+    {
+      "name": "actual_finite_numerator_denominator_and_coefficients",
+      "pass": true,
+      "detail": "The polynomial numerator is frozen baseNumerator*W.comp(baseU), with baseU=X(X+n). partialNumerator takes only n,W and uses the actual weightedLocalCoefficient double sum over j=0..n,s=1..9. candidateClearedSeries uses the genuine shifted cleared denominator. No arbitrary coefficient array or global decomposition assumption is supplied."
+    },
+    {
+      "name": "actual_nine_term_truncation_reindexing",
+      "pass": true,
+      "detail": "PowerSeries.trunc9 retains exactly coefficients k=0..8. The bijection k->s=9-k with inverse s->9-s sends range9 to Icc1 9 and restores 9-(9-k)=k. Thus each block uses the exact actual coefficient attached to the power (X+j)^(9-s), including the simple-pole order s=1."
+    },
+    {
+      "name": "own_block_nine_jets_from_true_denominator_identity",
+      "pass": true,
+      "detail": "The shifted own block is D_j(z)^9*T_j(z). The actual weightedClearedSeries times the same D_j^9 is the genuine shifted weighted numerator. X^9 divides the series minus its truncation by coeff_trunc. Multiplication and polynomial coefficient transfer give the exact shifted own-block difference divisible by X^9; no final global PF theorem is used here."
+    },
+    {
+      "name": "other_blocks_and_full_candidate_match_every_pole",
+      "pass": true,
+      "detail": "For j<=n and i!=j, the erased product B_i contains X+j, so its ninth power divides the ith block. Shifting to j turns this into X^9 divisibility. Splitting the finite sum into the own block and all erased other blocks proves X^9 divides the shifted actual-minus-candidate difference at every pole."
+    },
+    {
+      "name": "inverse_shift_and_pairwise_coprime_full_denominator",
+      "pass": true,
+      "detail": "Composing with X+j inverts X-j and turns the shifted divisor into (X+j)^9. Distinct actual pole factors are pairwise coprime by the frozen Injectivity proof; Finset.prod_dvd_of_coprime therefore gives polePolynomial^9 dividing the complete actual-minus-candidate polynomial. This conclusion is valid without properness."
+    },
+    {
+      "name": "candidate_formal_first_nine_coefficients_are_actual",
+      "pass": true,
+      "detail": "The candidate divides its shifted polynomial numerator by the same actual unit denominator. The X^9-divisible numerator difference remains divisible after multiplication by the actual inverse. Hence its first nine coefficients vanish, giving candidate_first_nine_coefficients and candidate_local_coefficients without properness or a PF hypothesis. Formal power-series coefficient reasoning is not numerical evaluation of an infinite series."
+    },
+    {
+      "name": "strict_proper_degree_eliminates_residual_polynomial",
+      "pass": true,
+      "detail": "For j<=n, degree B_j=n, truncation degree<=8, and shift degree1, so every block and its finite sum have natDegree<=9n+8. Actual weighted numerator degree<=2n+2 natDegree W<9(n+1). The difference has degree bounded by their maximum. Degree divisibility is applied only under a temporary difference!=0 hypothesis, avoiding the zero-polynomial convention, and contradicts degree polePolynomial^9=9(n+1). The resulting actual polynomial equality has only the proper premise."
+    },
+    {
+      "name": "actual_regular_Q_evaluation_and_each_term_division",
+      "pass": true,
+      "detail": "polePolynomial.eval equals the actual pole product and is nonzero from every t+k!=0 for natural k<=n. Its factorization at j is (t+j)*B_j(t). For 1<=s<=9, exponent (9-s)+s=9, so each candidate term divided by Q(t)^9 equals actual c_j,s/(t+j)^s. Both denominators are explicitly proved nonzero. Evaluating the proved polynomial identity yields exactly the actual finite weightedR double sum at rational regular points."
+    },
+    {
+      "name": "faithful_main_closed_types_and_original_integer_quartics",
+      "pass": true,
+      "detail": "Independent explicit closed restatements spell out both full sums and preserve precisely the proper-degree condition and regular-point quantifier. Quartic validity is independently restated for all n, with the original Even n,n>=2,Z[X] regime checked through the coefficientwise map. No PF equality, coefficient family, reflection, or inverse-map premise is added."
+    },
+    {
+      "name": "independent_n_zero_simple_pole_and_nonproper_counterexamples",
+      "pass": true,
+      "detail": "At n=0,W=X^4, properness holds, the actual s=1 coefficient and its total are 1, actual weightedR=1/t at t!=0, and the actual global sum also equals1/t. The two-degree-gap condition fails. At n=0,W=X^5, all nine local coefficients and partialNumerator vanish, but the actual numerator is nonzero and the regular t=1 function is1 while the double sum is0. Strict properness is therefore essential."
+    },
+    {
+      "name": "finite_global_PF_without_extra_analytic_or_aggregate_claims",
+      "pass": true,
+      "detail": "Finite global polynomial partial fractions and the rational regular-point identity are now closed in the exact proper domain. This does not supply rho1=0, a uniform stronger O(1/t^2) conclusion for every proper W, infinite summation/convergence/exact L, reflection or higher aggregate cancellation, denominator integrality, the five-dimensional aggregate F inverse, J, or irrationality. The n=0 quartic example specifically prevents conflating the weaker strict-proper condition with the stronger degree gap."
+    }
+  ],
+  "source_definitions": 5,
+  "source_theorems": 27,
+  "proper_domain": "2*n + 2*W.natDegree < 9*(n+1)",
+  "rational_point_domain": "t:Q and forall k:N, k<=n -> t+(k:Q)!=0",
+  "main_target_types": {
+    "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_polynomial_partial_fractions",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapInjectivity.weightedNumerator n W =\n      ZetaNine.CoefficientMapPartialFractions.partialNumerator n W"
+    },
+    "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.weightedR n W t =\n          ∑ j ∈ Finset.range (n + 1),\n            ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+    }
+  },
+  "boundary_examples": {
+    "pf_ind_n_zero_X_four_proper": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_four_proper",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4)"
+    },
+    "pf_ind_n_zero_X_four_simple_coefficient": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_four_simple_coefficient",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    "pf_ind_n_zero_total_simple_coefficient": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_total_simple_coefficient",
+      "definitionValue": null,
+      "type": "∑ j ∈ Finset.range 1, ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 j 1 (Polynomial.X ^ 4) = 1"
+    },
+    "pf_ind_n_zero_X_four_actual_simple_pole": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_four_actual_simple_pole",
+      "definitionValue": null,
+      "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"
+    },
+    "pf_ind_n_zero_X_four_not_two_degree_gap": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_four_not_two_degree_gap",
+      "definitionValue": null,
+      "type": "¬2 * 0 + 2 * (Polynomial.X ^ 4).natDegree + 2 ≤ 9 * (0 + 1)"
+    },
+    "pf_ind_n_zero_X_four_actual_global_sum": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_four_actual_global_sum",
+      "definitionValue": null,
+      "type": "∀ (t : ℚ),\n  t ≠ 0 →\n    ∑ j ∈ Finset.range 1,\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 j s (Polynomial.X ^ 4) / (t + ↑j) ^ s =\n      1 / t"
+    },
+    "pf_ind_n_zero_X_five_not_proper": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_X_five_not_proper",
+      "definitionValue": null,
+      "type": "¬ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 5)"
+    },
+    "pf_ind_n_zero_nonproper_polynomial_failure": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_nonproper_polynomial_failure",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapInjectivity.weightedNumerator 0 (Polynomial.X ^ 5) ≠\n  ZetaNine.CoefficientMapPartialFractions.partialNumerator 0 (Polynomial.X ^ 5)"
+    },
+    "pf_ind_n_zero_nonproper_regular_point_failure": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "pf_ind_n_zero_nonproper_regular_point_failure",
+      "definitionValue": null,
+      "type": "(∀ k ≤ 0, 1 + ↑k ≠ 0) ∧\n  ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 5) 1 ≠\n    ∑ j ∈ Finset.range 1,\n      ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient 0 j s (Polynomial.X ^ 5) / (1 + ↑j) ^ s"
+    }
+  },
+  "actual_type_records": {
+    "author_replay": 39,
+    "independent_audit": 51,
+    "independent_additional_statements": 19
+  },
+  "findings": [
+    {
+      "severity": "information",
+      "name": "Finite PF retains a possible nonzero total simple-pole coefficient",
+      "detail": "n=0,W=X^4 has total simple-pole coefficient1 and exact actual finite PF=1/t; stronger uniform decay, rho1 cancellation and L convergence are not claimed."
+    },
+    {
+      "severity": "information",
+      "name": "Strict properness excludes a real polynomial remainder",
+      "detail": "n=0,W=X^5 is outside the proper domain; all actual jets and candidate vanish but actual rational value at regular t=1 is1, so removing properness is false."
+    }
+  ],
+  "retained_failed_audit_attempt": {
+    "exit_code": 1,
+    "source": "independent-boundary-audit.lean.before-regular-binder-fix",
+    "log": "independent-boundary-audit.log.before-regular-binder-fix",
+    "receipt": "independent-compile-receipt.json.before-regular-binder-fix",
+    "reason": "Only supplemental review binder type inference; fixed by explicitly declaring k:Nat. Frozen authors' source and replay were successful already."
+  },
+  "actual_global_polynomial_PF_closed": true,
+  "actual_global_regular_Q_PF_closed": true,
+  "arbitrary_coefficient_or_PF_hypotheses": [],
+  "rho1_zero_closed": false,
+  "uniform_stronger_O_one_over_t_squared_closed": false,
+  "infinite_sum_convergence_closed": false,
+  "exact_L_closed": false,
+  "reflection_cancellation_closed": false,
+  "denominator_integrality_closed": false,
+  "original_aggregate_F_injectivity_closed": false,
+  "original_aggregate_F_inverse_closed": false,
+  "J_closed": false,
+  "irrationality_closed": false,
+  "root_scope_API_credentials_writes": false,
+  "author_freeze_sources_platform_batches_modified": false,
+  "stable_files": [
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Domain.lean",
+      "bytes": 3402,
+      "sha256": "d88b3387c360b0b1c4194169c5548a94d9a6dc9438a41ff66c52f25f27827a22"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/RingTheory/Coprime/Lemmas.lean",
+      "bytes": 13807,
+      "sha256": "43ee466d1b10804e7f95d40afabc9f74b94a90c8805824ec48e5620dd4ef9cef"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/RingTheory/PowerSeries/Basic.lean",
+      "bytes": 32265,
+      "sha256": "cf7714dcad63b75c04f8818990eab31761dd4a67c151c24b77bb56b7c7571ee9"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/RingTheory/PowerSeries/Trunc.lean",
+      "bytes": 8680,
+      "sha256": "440b6185d107b55df6449f05a8ade2e01294e15d27621f1779b545dd2cd224ab"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.compile-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.compile-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.compile.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.compile.log",
+      "bytes": 1681,
+      "sha256": "7f92e841757bc8c9ee86d891cb0a62c114c421fb805b073ff503961eb3284414"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+      "bytes": 18065,
+      "sha256": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "research/coefficient-map-partial-fractions-2026-10-03.md",
+      "root_relative": "missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md",
+      "bytes": 3269,
+      "sha256": "aa878b78bf78998534a243a7b22ed77cc7f0da051ccedf9f02aba0549ee359c6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "bytes": 4493,
+      "sha256": "e60a70590ea9daabf35e2c581c1146cef0cf824d03e47d622bda295324e2d9a8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "bytes": 7397,
+      "sha256": "c15cc9b3e545095c944db689aca5140723603fb63119697f47d81749d1dedcfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "bytes": 5288,
+      "sha256": "154d424b057232f3763654f29aaf6c7a3efcb9ae69dd8faa6a6c6f169c6f8b3c"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "bytes": 8884,
+      "sha256": "a422a5d3b6d5ddaaa1a26ac8e468266331b08ac78ec3788707db2e131809075d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/freeze_partial_fractions.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/freeze_partial_fractions.py",
+      "bytes": 8846,
+      "sha256": "57008792ee5d386a6e678fdae285e36b08409976c233af46b2e96454f4e190e9"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay.log",
+      "bytes": 15372,
+      "sha256": "b126a2706dc891f40bb675e167c53be81c8e441401183c76e1b6d6dd71304f6d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-author-type-replay.ps1",
+      "bytes": 407,
+      "sha256": "5966c9666146965ef2a97a09c918be7ddc221f8aa3242360bb658e0909915674"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit-exit.txt.before-regular-binder-fix",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit-exit.txt.before-regular-binder-fix",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.lean",
+      "bytes": 11085,
+      "sha256": "1ca01d6db874b32f6392c40f1dec19a9404305634a3cf45211e91e1108cd9277"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.lean.before-regular-binder-fix",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.lean.before-regular-binder-fix",
+      "bytes": 11057,
+      "sha256": "ac640787aa2ed3939d515606a15f3edf47e7ded3e70bb850c4776273b29f62c8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.log",
+      "bytes": 18734,
+      "sha256": "5b78907fde30ae247e8a7df27d40ef280c4711c3376431078303bdd15ca9b667"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.log.before-regular-binder-fix",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.log.before-regular-binder-fix",
+      "bytes": 20074,
+      "sha256": "cd5a233137b64b3b45be0cf34ae9266f5cf3b0673009d0a1bccea40d0e9ac723"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-audit.ps1",
+      "bytes": 423,
+      "sha256": "2f694f7d1f1318d703f7ac45101e7e5fb49c4acdbe0e369c152baa43dd4f4d2b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-boundary-types.json",
+      "bytes": 22105,
+      "sha256": "c9eee9a76bb39774f4f930a89348cdde15bede39d893dc39b21a5a2043b4fc72"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-build.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-build.py",
+      "bytes": 3542,
+      "sha256": "a1a8764dd6dc4637109f99f737d65c4bb7e67bca55bd1fa291e28e10ff6a5b66"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-compile-receipt.json",
+      "bytes": 8627,
+      "sha256": "1cc21a4aa1ebbebceb518e3c51bb30d4946556a5b09ba450afab4d9f7ac11d18"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-compile-receipt.json.before-regular-binder-fix",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-compile-receipt.json.before-regular-binder-fix",
+      "bytes": 8627,
+      "sha256": "5c70fbf26a4f22bd6d2080ce3cf61a04eb27aa579b7ba783a04d80bd0d3ab22e"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap.log",
+      "bytes": 933,
+      "sha256": "f0b920c9005031dab2dbc385a6f295c2ab2a6285ec6d92960f8094d614835293"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMap.ps1",
+      "bytes": 555,
+      "sha256": "2535a04efe4f9099d3927dea462105f17c189bec2a7a33330c6255914e516ada"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity.log",
+      "bytes": 1198,
+      "sha256": "6ea6ccdba6c56226d4dece522c0450c3ae3fbe6ed24b4193c779f1766c169367"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapInjectivity.ps1",
+      "bytes": 577,
+      "sha256": "fd5cdb3fdfb6bd9c4a2496313288d7e8b973e66d0edd400a3559e5b56297b1fe"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet.log",
+      "bytes": 1222,
+      "sha256": "b9ea2bad281c3f8c011e062f877fca9ccc10b6600425c4b7c483c2f7250f00d8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapJet.ps1",
+      "bytes": 561,
+      "sha256": "520e599d92a571a7aa6b3355c8a6084b150ea8629d60a5158ce80958408e87ce"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions.log",
+      "bytes": 1645,
+      "sha256": "fc52c42281adc8d5d520db8b77511fcc9079656ee74304802da6ef505350114f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-native-CoefficientMapPartialFractions.ps1",
+      "bytes": 587,
+      "sha256": "3afa5d26da0b1ef7d130c1dd769f715c83e8d46d4a80dbb26646d430967d373e"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-original-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-original-types.json",
+      "bytes": 17951,
+      "sha256": "ffc37ea2349804d1a9c52bd68c5be64c47bc029fa99b4286c17f3e91da923842"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-review.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-review.log",
+      "bytes": 1064,
+      "sha256": "3fc86e09e127b7e24bb13875a1ce9247bed851f2ecd832a32aa7dcffec61d23f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-review.md",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent-review.md",
+      "bytes": 2890,
+      "sha256": "a6621b8ad4674c6abc8f9a72281a499ab35ef07e60df85003f6632b0c88598f1"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent_review.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/independent_review.py",
+      "bytes": 18060,
+      "sha256": "9d36e61bf5fc9b70d803ecd0484aededd61205600967305799d721ef0da6ac17"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/SHA256SUMS.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/SHA256SUMS.txt",
+      "bytes": 2642,
+      "sha256": "61b04645de44038ed16e623390f4623df2e9c1ebd6eb19a32e3173f2fc56ce68"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit.lean",
+      "bytes": 6630,
+      "sha256": "d22e89c8a3cfb4959b5f90426c8b75510c232963c966e4794e3bcf02a244ec9b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-audit.log",
+      "bytes": 15411,
+      "sha256": "058a37f397904b44ce8a3078e6af8841c573ee238848d8fcb00508100dcc2e66"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-report.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/type-report.json",
+      "bytes": 17951,
+      "sha256": "ffc37ea2349804d1a9c52bd68c5be64c47bc029fa99b4286c17f3e91da923842"
+    }
+  ]
+}

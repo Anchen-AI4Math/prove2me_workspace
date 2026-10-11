@@ -1,0 +1,88 @@
+"""Reconstruct a native alias from fixed staged bytes, not author objects."""
+from pathlib import Path
+import json,hashlib
+OUT=Path(__file__).resolve().parent;BATCH=OUT.parent;TASK=OUT.parents[3];ROOT=TASK.parents[1]
+PROJECT=OUT/"project"
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def load(p):return json.loads(p.read_text(encoding="utf-8-sig"))
+def write(p,d):p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+controls={"author-audit.json":"f7062cfecbbe14e5d36e69165e159630f4e090bbe1989b5d79ddc9bae2435ddf",
+    "root-copy-plan.json":"defc8a43e447894f4024a70abc7e551738f15e20dcad220870d0984d79b4366d",
+    "source-manifest.json":"31154c1e15ac51aefab507df0067c94432599c8ccadf7bf95bd063b9481ab651",
+    "SHA256SUMS.txt":"43cdcb1650722dd4ceb92d068e4ff23b9d7b59f707fe0901028f6e7a59796c83"}
+assert all(sha(BATCH/n)==h for n,h in controls.items())
+for r in load(BATCH/"source-manifest.json")["files"]:
+    p=TASK/r["task_relative"];assert sha(p)==r["sha256"] and p.stat().st_size==r["bytes"]
+write(OUT/"frozen-controls.json",{"status":"PARENT_FROZEN_AUTHOR_HANDOFF","controls":controls,"root_build_pending":True})
+ns="ZetaNine.CoefficientMapAggregate";alias="ZetaNine.CoefficientMapAggregateValueComparison"
+stage=BATCH/"staged/Definitions/Def_ZetaNine_CoefficientMapAggregate.lean"
+assert sha(stage)=="ef491f5136c5a98d976ff9faf73df3b65393bb2caf50772dccafd213c8302079"
+s=stage.read_text(encoding="utf-8")
+old="import Definitions.Def_ZetaNine_CoefficientMapSummation"
+assert s.count(old)==1
+s=s.replace(old,"import missions.zeta9.formalization.CoefficientMapAggregate").replace(ns,alias)
+p=PROJECT/"NativeValueComparisonDefinition.lean";p.write_text(s,encoding="utf-8")
+assert sha(p)=="4187ed313d634e9a85f284f67835d63f4543487eee01e359dbc3f68adeda0fc8"
+assert p.read_bytes()==(BATCH/"native-value-comparison-definition.lean").read_bytes()
+names=["aggregate","coordinatePolynomial","polynomialCoordinates","aggregateLinearMap","coordinateLinearMap","quarticAggregateLinearMap"]
+code='''import NativeValueComparisonDefinition
+import Lean
+open Lean Meta
+set_option autoImplicit false
+set_option pp.fullNames true
+set_option pp.universes false
+set_option pp.proofs true
+
+'''
+for n in names:
+    code+="theorem agg_review_native_value_"+n+"_eq : "+alias+"."+n+" = "+ns+"."+n+" := rfl\n\n"
+code+="theorem agg_review_native_data_aggregate (n : Nat) (W : Polynomial Rat) :\n  "+alias+".aggregateLinearMap n W = "+ns+".aggregate n W := rfl\n\n"
+code+="theorem agg_review_native_data_coordinate (a : Fin 5 → Rat) :\n  "+alias+".coordinateLinearMap a = "+ns+".coordinatePolynomial a := rfl\n\n"
+code+="theorem agg_review_native_data_quartic (n : Nat) (a : Fin 5 → Rat) :\n  "+alias+".quarticAggregateLinearMap n a = "+ns+".aggregate n ("+ns+".coordinatePolynomial a) := rfl\n\n"
+code+="private def remapActualDataName (n : Name) : Name :=\n"
+for i,n in enumerate(names):
+    code+=("  if " if i==0 else "  else if ")+"n == `"+ns+"."+n+" then `"+alias+"."+n+"\n"
+code+="  else n\n\nrun_meta do\n  for (name,aliasName) in ["+", ".join("(`"+ns+"."+n+", `"+alias+"."+n+")" for n in names)+"] do\n"
+code+='''    let ci ← getConstInfo name
+    let ai ← getConstInfo aliasName
+    let .defnInfo d := ci | throwError "Native is not a definition"
+    let .defnInfo a := ai | throwError "Alias is not a definition"
+    let typeEq ← isDefEq d.type a.type
+    let valueEq ← isDefEq d.value a.value
+    unless typeEq && valueEq do throwError "Actual whole definition mismatch: {name}"
+    let remapped := d.value.replace fun e => match e with
+      | .const n ls =>
+          let m := remapActualDataName n
+          if m == n then none else some (.const m ls)
+      | _ => none
+    let typ ← ppExpr d.type
+    let orig ← ppExpr d.value
+    let alt ← ppExpr a.value
+    let axs ← Lean.collectAxioms aliasName
+    IO.println (Json.mkObj [("kind", Json.str "actual_native_whole_kernel_value"),
+      ("declaration", Json.str name.toString), ("alias_declaration", Json.str aliasName.toString),
+      ("type", Json.str typ.pretty), ("type_kernel_equal", toJson typeEq),
+      ("full_value_kernel_equal", toJson valueEq), ("pp_proofs", toJson true),
+      ("original_raw_value", Json.str orig.pretty), ("alias_raw_value", Json.str alt.pretty),
+      ("original_full_expr_repr", Json.str (reprStr d.value)),
+      ("alias_full_expr_repr", Json.str (reprStr a.value)),
+      ("raw_expression_equal_after_data_name_remap", toJson (remapped == a.value)),
+      ("axioms", toJson (axs.toList.map Name.toString))]).compress
+'''
+proofnames=["agg_review_native_value_"+n+"_eq" for n in names]+["agg_review_native_data_aggregate","agg_review_native_data_coordinate","agg_review_native_data_quartic"]
+code+="  for name in ["+", ".join("`"+n for n in proofnames)+"] do\n"
+code+='''    let ci ← getConstInfo name
+    let typ ← ppExpr ci.type
+    let axs ← Lean.collectAxioms name
+    IO.println (Json.mkObj [("kind", Json.str "rfl_whole_or_data_equality"),
+      ("declaration", Json.str name.toString), ("type", Json.str typ.pretty),
+      ("axioms", toJson (axs.toList.map Name.toString))]).compress
+'''
+(OUT/"independent-native-value-comparison.lean").write_text(code,encoding="utf-8")
+write(OUT/"alias-reconstruction.json",{"status":"SOURCE_PREPARED_PENDING_ACTUAL_KERNEL_RUN",
+    "staged_Def_sha256":sha(stage),"native_alias_source_sha256":sha(p),"mapping":{ns+"."+n:alias+"."+n for n in names},
+    "namespace_only_data_and_formal_type_reference_remap":True,"header_import_changed_to_actual_native_source":True,
+    "source_bodies_from_fixed_staged_Def":True,"pp_proofs":True,"ordinary_raw_comparison_count_expected":322,
+    "context_propagation_expected":21,"direct_native_kernel_calls_expected":6,"whole_rfl_expected":6,"data_rfl_expected":3,
+    "twenty_one_direct_native_kernel_calls_claimed":False,"independent_PASS_claimed":False})
+print("Actual Aggregate alias source independently reconstructed: six definitions; kernel audit prepared.")

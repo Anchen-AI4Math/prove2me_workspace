@@ -1,0 +1,23 @@
+{
+  "theorem_id": "e5bcddcb-3925-4391-91fe-bc8e6284a6ec",
+  "theorem_name": "ZetaNine.EightfoldZeros.first_n_derivative_sum_zero",
+  "theorem_title": "Eightfold zeros eliminate the first n derivative terms",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.EightfoldZeros.first_n_derivative_sum_zero (n r : ℕ) (hr : r < 8) :\n    (∑ k ∈ Finset.range n, iteratedDeriv r (repairFunction n) ((k + 1 : ℕ) : ℝ)) = 0 := by sorry",
+  "natural_language_statement": "For the explicit repaired function $R_n^*$, every integer derivative order $0\\le r<8$ satisfies\n\n$$\\sum_{j=1}^{n}(R_n^*)^{(r)}(j)=0.$$\n\nThis holds for every natural $n$, including the empty sum at $n=0$. The derivatives are genuine iterated real derivatives of the rational function. In particular the first $n$ leakage terms of the seventh-derivative series vanish exactly. The theorem does not assert convergence, eventual nonvanishing, decay or irrationality.",
+  "created_at": "2026-10-02T14:34:29.909568+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "zeta-function"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_EightfoldZeros\nimport Mathlib.Algebra.Polynomial.Derivative\nimport Mathlib.Algebra.Polynomial.Div\nimport Mathlib.Analysis.Calculus.ContDiff.Polynomial\nimport Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas\nimport Mathlib.Tactic.FunProp\nimport Mathlib.Tactic.NormNum\nopen scoped BigOperators\nopen ZetaNine.EightfoldZeros\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/new-linear-form-route-repair-2026-10-02.md, opening unnumbered definition of R*_n and the following endpoint-zero paragraph.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

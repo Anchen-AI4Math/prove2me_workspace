@@ -1,0 +1,87 @@
+{
+  "API_used": false,
+  "Lean_started": false,
+  "artifact_kind": "ap5-n3-exact-source-ast-command",
+  "exact_source_ast_reconstructed": true,
+  "facts": "verification/sketch-SuccessiveApproximations-20261007-235252.log",
+  "facts_sha256": "e6575c3b5db0ca918f55a6d08c6fc7e54aa040a1327c7f8ba132e1df6ccc0ab5",
+  "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean",
+  "original_source_sha256": "46a69bc973c68ecf8bae47d7ea07b9c5de0005b137ad402c5a88f76768c9d906",
+  "port_source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean",
+  "port_source_sha256": "2b8f0980ff2809d8ba5bc799b51531f98ba973eb96a20a5eb194c6c7906bc5c1",
+  "raw_command_range": {
+    "end": 6673,
+    "start": 5926
+  },
+  "raw_command_sha256": "bc09d2bc078ee3252e48869f16e105c78b47b956cef739fed664865c9a67b081",
+  "raw_command_utf8": "theorem exists_normalized_successive_approximations\r\n    (nu X D : ℝ) (hnu : 0 < nu)\r\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\r\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\r\n    ∃ p : ℕ → ℤ, ∃ q : ℕ → ℕ, ∃ x : ℕ → ℝ,\r\n      x 0 = 1 ∧\r\n      (∀ n, x (n + 1) = (Nat.ceil (Real.log (q n)) : ℝ)) ∧\r\n      (∀ n, 2 ≤ q n ∧ p n ≠ 0 ∧\r\n        |Real.pi - (p n : ℝ) / q n| ≤ (q n : ℝ) ^ (-nu) ∧\r\n        1 ≤ Nat.ceil (Real.log (q n)) ∧ X < x (n + 1)) ∧\r\n      (∀ i, 1 ≤ x i) ∧\r\n      (∀ i, 0 < i → D * (∏ j ∈ Finset.range i, x j) < x i) := by\r\n  exact exists_normalized_selection_of_selector nu X D\r\n    (exists_successive_approximations nu hnu hbad)",
+  "schema_version": 1,
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations",
+  "source_unit": {
+    "category": "inline",
+    "definition_command": false,
+    "deprivate": false,
+    "direct_unit_dependencies": [
+      "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations:164",
+      "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations:4368"
+    ],
+    "docstring": null,
+    "end": {
+      "col": 50,
+      "line": 147,
+      "normalizedOffset": 6527,
+      "offset": 6673
+    },
+    "graph_kinds": [
+      "theorem"
+    ],
+    "graph_names": [
+      "OAI.PiExponent.exists_normalized_successive_approximations"
+    ],
+    "id": "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations:5926",
+    "is_instance_command": false,
+    "is_local_instance": false,
+    "local_modifier_ranges": [],
+    "module": "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations",
+    "nameRange": {
+      "end": {
+        "col": 51,
+        "line": 134,
+        "normalizedOffset": 5844,
+        "offset": 5977
+      },
+      "start": {
+        "col": 8,
+        "line": 134,
+        "normalizedOffset": 5801,
+        "offset": 5934
+      }
+    },
+    "nameText": "exists_normalized_successive_approximations",
+    "names": [
+      "OAI.PiExponent.exists_normalized_successive_approximations"
+    ],
+    "private": false,
+    "privateTok": null,
+    "promotion_reasons": [],
+    "proof_lines": 2,
+    "reachable_names": [
+      "OAI.PiExponent.exists_normalized_successive_approximations"
+    ],
+    "source_sha256": "2b8f0980ff2809d8ba5bc799b51531f98ba973eb96a20a5eb194c6c7906bc5c1",
+    "start": {
+      "col": 0,
+      "line": 134,
+      "normalizedOffset": 5793,
+      "offset": 5926
+    },
+    "valueStart": {
+      "col": 59,
+      "line": 145,
+      "normalizedOffset": 6416,
+      "offset": 6560
+    }
+  },
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L134-L147"
+}

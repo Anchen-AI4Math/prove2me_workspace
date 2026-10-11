@@ -1,0 +1,1036 @@
+{
+  "schema": "zeta9-local-theorem-dag-v1",
+  "scope": "local mathematical research; selected statements mirrored in a live private Prove2me mission; note proofs are not Lean-verified",
+  "root_id": "Z9.R",
+  "threshold": {
+    "numerator": 2641,
+    "denominator": 250,
+    "decimal": "10.564"
+  },
+  "conventions": {
+    "parameters": "even integers n >= 2; p=9, m=n, deg W <= 4",
+    "norm": "weighted Euclidean norm with coordinate weights (1,n^2,n^4,n^6,n^8)",
+    "modulus": "g_n = gcd(N_n,d_n^2), d_n=lcm(1,...,n), N_n=s2_n/s1_n",
+    "baseline": "B_n=[log(D_n/s1_n)+(1/2)log Delta_n-(1/2)log g_n]/n",
+    "shape": "sigma_n=[(1/2)log(g_n Delta_n)-log mu1(Lambda_g_n)]/n",
+    "area": "Delta_n=covolume of the saturated low-zeta kernel K_n in the weighted norm"
+  },
+  "nodes": [
+    {
+      "id": "Z9.R",
+      "type": "theorem",
+      "status": "open",
+      "title": "Irrationality of zeta(9)",
+      "statement": "The real number zeta(9) is irrational.",
+      "obstacle": "No uniform asymptotic control of the second independent integer form is proved."
+    },
+    {
+      "id": "Z9.J",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinite subsequence with exponential margin",
+      "statement": "There exist epsilon>0 and infinitely many even n>=2 such that B_n+sigma_n <= 10.564-epsilon.",
+      "obstacle": "Need to rule out eventual stabilization of the actual primitive first-output direction; finite direction changes and the new exact area exponent do not establish this.",
+      "known_equivalence": "Under the now-proved V and actual polynomial-denominator connection, J is equivalent to irrationality, to liminf sigma_n=0, and to infinitely many primitive first-output direction changes. No one of these open conditions is proved.",
+      "evidence": [
+        {
+          "path": "../research/shape-direction-2026-09-29.md",
+          "section": "Polynomial transport and equivalence, not a proof of J"
+        }
+      ],
+      "rational_branch": "For every fixed (b,a) with a nonzero, log(h_n/q_n)=o(n). If zeta(9) is rational, B_n+sigma_n tends to alpha=0.5 log A > tau and liminf sigma_n > 0.33493507; this is compatible with all proved bounds."
+    },
+    {
+      "id": "Z9.CP",
+      "type": "theorem",
+      "status": "open",
+      "title": "Critical second-minimum polynomial margin",
+      "statement": "With alpha=-f_*, T_n=n^5 exp(alpha n), Z_n=sum_(k>n)R_n(k), and lambda2_n the weighted second minimum of Z^2 E_n W_n, liminf over even n of lambda2_n/T_n is zero. Equivalently, by the proved kernel asymptotic, liminf lambda2_n Z_n=0.",
+      "obstacle": "The inverse-area spectral upper bound and Smith lattice formulas do not control the first lattice direction relative to Xi_n Z_n; no infinite sequence with this critical second-minimum margin is proved.",
+      "next_step": "research/critical-polynomial-margin.md",
+      "new_structure": "Actual second mode is now proved nonzero. Complete-output minima have exact rational/irrational conditional exponent branches; no branch is selected unconditionally.",
+      "evidence": [
+        {
+          "path": "../research/diophantine-normal-form-2026-09-29.md",
+          "section": "Exact ellipse and conditional minima dichotomy"
+        }
+      ]
+    },
+    {
+      "id": "Z9.T",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinitely many positive full-lattice first directions",
+      "statement": "For infinitely many even n, at least one nonzero shortest vector z E_n of the integer-output lattice Z^2 E_n has its coefficient polynomial in the Taylor cone at u0=(n+1)(2n+1): all five Taylor coefficients have one weak sign.",
+      "obstacle": "The first vector has a real root in (u0,infinity) at frozen n=24 and n=192; finite positive cases do not establish infinitely many positive first directions."
+    },
+    {
+      "id": "Z9.TS",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinitely many saddle-signed full-lattice first directions",
+      "statement": "There exists a fixed A>0 and infinitely many sufficiently large even n such that at least one shortest nonzero integer-output vector z_n E_n has a coefficient polynomial P_n whose sampled values P_n(k(k+n)) have one weak sign for every integer k>n with |k/n-x_*|<=A(log n)/sqrt(n), where x_* is the unique positive-kernel saddle.",
+      "obstacle": "The uniform signed-saddle lemma proves nonvanishing once the sign condition holds, but no infinite sequence of moving shortest integer directions satisfying it is known."
+    },
+    {
+      "id": "Z9.T5",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinitely many five-sample-signed first directions",
+      "statement": "For infinitely many sufficiently large even n, at least one shortest nonzero vector z_n E_n of the full integer-output lattice has a coefficient polynomial P_n whose five values P_n(k_(n,j)(k_(n,j)+n)), j=-2,-1,0,1,2, have one weak sign, where k_(n,j)=floor(n x_*+j sqrt(n/a)+1/2), a=-f''(x_*) and x_* is the unique positive-kernel saddle.",
+      "obstacle": "The five-point cubature gives nonvanishing whenever this sign condition holds, but no infinite arithmetic theorem controls the moving shortest lattice direction at these five prescribed points."
+    },
+    {
+      "id": "Z9.FD",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinite endpoint-denominator height criterion",
+      "statement": "For infinitely many sufficiently large even n, [lambda1(E_n) ||(1,0)E_n W_n||_2 / Xi_n] (h_n-ell_n) min(Q_-,Q_+) <= 1, where ell_n=P_-/Q_- and h_n=P_+/Q_+ are the reduced five-sample rational endpoints with positive denominators, Xi_n=area(Z^2 E_n W_n), and lambda1(E_n) is the weighted first minimum.",
+      "obstacle": "The five-sample width contracts exponentially, but no uniform upper bound for the reduced endpoint denominators and actual first-vector height proves this product condition on an infinite sequence.",
+      "next_step": "../research/endpoint-height-after-cone-2026-09-29.md"
+    },
+    {
+      "id": "Z9.TG",
+      "type": "theorem",
+      "status": "open",
+      "title": "Infinitely many positive partial-lattice first directions",
+      "statement": "For infinitely many even n, at least one shortest nonzero v_n in Lambda_{g_n} has a nonzero coefficient polynomial whose five Taylor coefficients at u0=(n+1)(2n+1) have one weak sign.",
+      "obstacle": "The five frozen g_n Gauss first directions have one sign, but no infinite subsequence or eventual sign theorem is known."
+    },
+    {
+      "id": "Z9.V",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Arithmetic-volume exponent",
+      "statement": "limsup as even n tends to infinity of B_n is strictly less than 10.564.",
+      "evidence": [
+        {
+          "path": "../research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "../verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "../research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "../research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "../research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "verification_boundary": "Written proof and exact local certificates, independently cross-reviewed on 2026-09-29; not Lean-checked. S, J and irrationality remain open.",
+      "latest_bound": "limsup B_n < 10.22921877; margin > 0.33478123."
+    },
+    {
+      "id": "Z9.VA",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Excess-prime arithmetic exponent",
+      "statement": "limsup as even n tends to infinity of log(N_n/g_n)/(2n) is strictly below 10.564-(1/4)log(3711015000), where g_n=gcd(N_n,d_n^2).",
+      "evidence": [
+        {
+          "path": "../research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "../verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "../research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "../research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "../research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "verification_boundary": "Written proof and exact local certificates, independently cross-reviewed on 2026-09-29; not Lean-checked. S, J and irrationality remain open.",
+      "latest_bound": "limsup log(N_n/g_n)/n < 9.44134962."
+    },
+    {
+      "id": "Z9.VB",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Small- and large-prime error budget",
+      "statement": "With E_n=sum_{p<=n}(v_p(N_n)-11 floor(log_p n))_+ log p and H_n=sum_{p>n}v_p(N_n) log p, limsup as even n tends to infinity of (E_n+H_n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9.",
+      "evidence": [
+        {
+          "path": "../research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "../verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "../research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "../research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "../research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "verification_boundary": "Written proof and exact local certificates, independently cross-reviewed on 2026-09-29; not Lean-checked. S, J and irrationality remain open."
+    },
+    {
+      "id": "Z9.VC",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Intermediate-prime excess budget",
+      "statement": "Let E_mid(n)=sum over primes sqrt(7n/2)<p<=n of (v_p(N_n)-11)_+ log p. Then limsup as even n tends to infinity of E_mid(n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9-1/2 (approximately 0.61071437).",
+      "evidence": [
+        {
+          "path": "../research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "../verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "../research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "../research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "../research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "verification_boundary": "Written proof and exact local certificates, independently cross-reviewed on 2026-09-29; not Lean-checked. S, J and irrationality remain open.",
+      "latest_bound": "limsup E_mid/n < 0.10661775."
+    },
+    {
+      "id": "Z9.VD",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Discounted intermediate-prime budget",
+      "statement": "Define U_n=sum_{p<=n} min((11a_p-v_p(N_n))_+,9a_p) log p with a_p=floor(log_p n). Then limsup as even n tends to infinity of (E_mid(n)-U_n)/n is strictly below 2*10.564-(1/2)log(3711015000)-9-1/2.",
+      "evidence": [
+        {
+          "path": "../research/vc-closure-2026-09-29.md",
+          "section": "Exact sharp-block integration and arithmetic-volume consequence"
+        },
+        {
+          "path": "../verification/vc-budget-2026-09-29/certificate.json",
+          "section": "Exact rational budget and certified logarithm comparison"
+        },
+        {
+          "path": "../research/all-even-models-2026-09-29.md",
+          "section": "All positive even fixed models, exact invariant cone and Jacobi"
+        },
+        {
+          "path": "../research/odd-model-connection-2026-09-29.md",
+          "section": "All positive odd fixed models, new exact connection and invariant cone"
+        },
+        {
+          "path": "../research/all-block-arithmetic-2026-09-29.md",
+          "section": "All fixed blocks, signed envelope, fixed-direction deficit, and rational-branch compensation"
+        }
+      ],
+      "verification_boundary": "Written proof and exact local certificates, independently cross-reviewed on 2026-09-29; not Lean-checked. S, J and irrationality remain open.",
+      "latest_bound": "limsup (E_mid-U_n)/n < -0.05865038."
+    },
+    {
+      "id": "Z9.S",
+      "type": "theorem",
+      "status": "open",
+      "title": "Subexponential congruence-lattice shape defect",
+      "statement": "As even n tends to infinity, sigma_n tends to 0; equivalently log(mu1(Lambda_g_n)/sqrt(g_n Delta_n))=o(n).",
+      "obstacle": "Must exclude every primitive kernel direction that is exponentially shorter after its exact congruence multiplier; finite Gauss reductions do not suffice.",
+      "next_step": "research/shape-obligation.md"
+    },
+    {
+      "id": "Z9.F",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Full formal coefficient map and inverse image",
+      "statement": "For every even n>=2, F_n is invertible over Q. For each integer output (b,a), the inverse image w=(b,a)S F_n^{-1} gives the exact form L_n(w)=b+a zeta(9), with lower odd-zeta coefficients zero.",
+      "evidence": [
+        {
+          "path": "../round5/research/arithmetic.md",
+          "section": "5-6"
+        },
+        {
+          "path": "../round7/research/connection.md",
+          "section": "1"
+        }
+      ]
+    },
+    {
+      "id": "Z9.A",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Uniform positive-moment exponential bound",
+      "statement": "For every even n and every rational coefficient vector w of degree at most four, |L_n(w)| <= exp((-10.564+o(1))n) sum_{r=0}^4 |w_r| n^(2r), where the o(1) is uniform in w.",
+      "evidence": [
+        {
+          "path": "../round7/research/analytic.md",
+          "section": "1"
+        },
+        {
+          "path": "../round7/verification/analytic-exponent.json",
+          "section": "exact rational interval certificate"
+        }
+      ]
+    },
+    {
+      "id": "Z9.G",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Smith image and second-minimum bound",
+      "statement": "For every even n>=2 and divisor g of N_n, Z^2 E_n=(D_n/s2_n)Lambda_N_n and lambda2(E_n) <= (2/sqrt(3))(D_n/s1_n)Delta_n/mu1(Lambda_g), all in the same weighted Euclidean norm.",
+      "evidence": [
+        {
+          "path": "../round7/research/arithmetic.md",
+          "section": "1"
+        }
+      ]
+    },
+    {
+      "id": "Z9.P",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Two independent integer forms criterion",
+      "statement": "If on infinitely many indices two Q-linearly independent integer pairs (b_i,a_i) have both |b_i+a_i zeta(9)| tending to zero, then zeta(9) is irrational.",
+      "evidence": [
+        {
+          "path": "../round6/research/analytic.md",
+          "section": "5"
+        }
+      ]
+    },
+    {
+      "id": "Z9.TP",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Positive one-form criterion and first-vector lift",
+      "statement": "A nonzero integer-output coefficient polynomial with one weak sign in its five Taylor coefficients at u0 has a strictly nonzero positive-kernel sum. If such integer-output vectors have weighted norm at most exp((10.564-epsilon)n) for infinitely many even n, then zeta(9) is irrational. A shortest v_n in Lambda_{g_n} lifts to z_n E_n=(D_n/(s1_n g_n))v_n with log norm/n=B_n-sigma_n.",
+      "evidence": [
+        {
+          "path": "research/shape-or-j-next.md",
+          "section": "positive-kernel proof and exact Smith lift"
+        }
+      ]
+    },
+    {
+      "id": "Z9.TA",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Eventual positivity of the two-step Taylor connection",
+      "statement": "The exact normalized Taylor transfer H_n satisfies H_n H_(n+2) -> H^2 with all 25 entries of H^2 strictly positive. Consequently every fixed real output (b,a) with b+a zeta(9) nonzero has all five Taylor coefficients eventually of that output sign. In particular the two coordinate Taylor rows are eventually positive, and their min-max ratio intervals contain zeta(9), strictly nest along each residue class modulo four, and satisfy limsup log(interval width)/n <= (1/2)log(|lambda2|/lambda1)<-10.1109, where lambda1 and lambda2 are the two largest-modulus roots of the proven limiting connection polynomial.",
+      "evidence": [
+        {
+          "path": "research/taylor-connection-next.md",
+          "section": "exact connection, positive square, Doeblin contraction and moment proof"
+        },
+        {
+          "path": "research/taylor-window-rate.md",
+          "section": "Perron coordinate lower growth and exterior-square upper growth"
+        },
+        {
+          "path": "verification/check_taylor_transfer.py",
+          "section": "exact limiting matrix conjugacy and positive square audit"
+        },
+        {
+          "path": "verification/check_taylor_window_rate.py",
+          "section": "exact rational exponential bound for displayed decimal rate"
+        }
+      ]
+    },
+    {
+      "id": "Z9.SP",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Uniform signed-saddle nonvanishing lemma",
+      "statement": "For every predetermined positive window sequence h_n tending to zero with n h_n^2/log n tending to infinity, every sufficiently large even n, and every nonzero real quartic q, one weak sign of q(k(k+n)/n^2) at all k>n with |k/n-x_*|<=h_n forces its infinite positive-kernel sum to be strictly nonzero with that sign. In particular h_n=A(log n)/sqrt(n) for any fixed A>0 is valid. Consequently an infinite sequence of exponentially short integer outputs with this sampled sign proves irrationality of zeta(9).",
+      "evidence": [
+        {
+          "path": "research/full-lattice-sign-next.md",
+          "section": "uniform Stirling, five-sample interpolation and infinite-tail proof"
+        },
+        {
+          "path": "verification/check_signed_saddle_samples.py",
+          "section": "two finite full-lattice signed-sum certificates"
+        }
+      ]
+    },
+    {
+      "id": "Z9.GC",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Gaussian saddle moments and sharp constant window",
+      "statement": "For the actual positive kernel R_n(k), the normalized moments of the affine-in-y saddle coordinate s_(n,k)=sqrt(a n)(k(k+n)/n^2-y_*)/(2x_*+1), orders 0 through 4, converge to (1,0,1,0,3). Let A_c=sqrt(3/a), where a=-f''(x_*) and 0.095251<A_c<0.095252. For each fixed A>A_c, every sufficiently large even n and every nonzero real quartic q with one weak sign at all actual samples |k/n-x_*|<=A/sqrt(n) has a strictly same-sign full infinite positive-kernel sum. For each 0<A<A_c there are moving rational quartics that are positive throughout this continuous window but have negative full sum. The equality case is not asserted.",
+      "evidence": [
+        {
+          "path": "research/moving-short-sign-next.md",
+          "section": "Gaussian moment limit, compactness, sharp counterexamples and rational threshold"
+        },
+        {
+          "path": "verification/check_gaussian_five_point.py",
+          "section": "exact rational threshold and limiting moment checks"
+        }
+      ]
+    },
+    {
+      "id": "Z9.FQ",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Eventually positive exact five-sample cubature",
+      "statement": "For all sufficiently large even n, choose k_(n,j)=floor(n x_*+j sqrt(n/a)+1/2) for j=-2,...,2. There are five strictly positive weights omega_(n,j), summing to one and independent of q, such that for every real quartic q the exact identity sum_(k>n) R_n(k) q(k(k+n)/n^2)=Z_n sum_(j=-2)^2 omega_(n,j) q(k_(n,j)(k_(n,j)+n)/n^2) holds. Thus weak agreement of the five signs for any nonzero moving quartic forces a strictly same-sign complete infinite sum.",
+      "evidence": [
+        {
+          "path": "research/moving-short-sign-next.md",
+          "section": "section 6, finite Vandermonde inverse and positive limiting weights"
+        },
+        {
+          "path": "verification/check_gaussian_five_point.py",
+          "section": "exact limiting five-node Gaussian moments"
+        }
+      ]
+    },
+    {
+      "id": "Z9.GO",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Abstract geometry alone does not force five-sample signs",
+      "statement": "For every sufficiently large even n there is a rank-two integer polynomial lattice whose every nonzero vector has both a positive and a negative value among the three prescribed samples k_(n,-2), k_(n,0), k_(n,2). After common integer scaling, its weighted first-minimum logarithmic rate and weighted-area logarithmic half-rate both tend to 5, below the established corresponding upper bounds. This is an abstract counterexample to a geometry-only implication, not a counterexample for the actual E_n output lattice.",
+      "evidence": [
+        {
+          "path": "research/five-point-geometry-obstruction.md",
+          "section": "three-point sign contradiction and exact weighted-area bounds"
+        }
+      ]
+    },
+    {
+      "id": "Z9.FI",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Strict five-sample ratio interval and slope criterion",
+      "statement": "For all sufficiently large even n, the five rational sample ratios r_(n,j)=q_(n,(0,1))(y_(n,j))/q_(n,(1,0))(y_(n,j)) have positive denominators and define a nondegenerate interval ell_n=min_j r_(n,j)<zeta(9)<h_n=max_j r_(n,j), strictly inside the Taylor coefficient ratio interval. Its width has limsup logarithmic rate below -10.1109. For every nonzero integer output (b,a), five-sample weak sign agreement is equivalent to a=0 or -b/a outside the open interval (ell_n,h_n); strict sign agreement uses the closed interval. This does not prove the infinite shortest-vector condition T5.",
+      "evidence": [
+        {
+          "path": "research/five-point-ratio-window.md",
+          "section": "strict positive cubature average, Taylor convexity, and endpoint criterion"
+        }
+      ]
+    },
+    {
+      "id": "Z9.FO",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Uniform approximation by every first output",
+      "statement": "Let A=lambda_1>0 and B=|lambda_2| be the top two eigenvalue moduli of the actual limiting Taylor connection, and delta=(1/4)log(A/B)>5.05545. For every epsilon in (0,delta), all sufficiently large even n, and every weighted first output (b,a) of Z^2 E_n, a is nonzero and |b+a zeta(9)|<=exp(-(delta-epsilon)n); consequently |-b/a-zeta(9)| obeys the same bound. If zeta(9)=c/d is rational in lowest terms, every sufficiently late first output is exactly one of +/−(-c,d).",
+      "evidence": [
+        {
+          "path": "research/t5-transfer-next.md",
+          "section": "sections 1-2, positive moment column, Perron lower bound, Hermite upper bound, and rationality lock"
+        }
+      ]
+    },
+    {
+      "id": "Z9.FC",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Exact five-endpoint denominators and integer gap",
+      "statement": "For all sufficiently large even n, put A_n=d_n^9 F_n, C_n=S adj(A_n), and Ctilde_n=C_n/delta4star_n. At each of the five sample integers t_(n,j), the ratio r_(n,j)=Ctilde_A v(t)/Ctilde_B v(t) has reduced denominator Q_(n,j)=|Ctilde_B v(t)|/gcd(|Ctilde_B v(t)|,|Ctilde_A v(t)|). If an integer output (b,a), a!=0, has slope -b/a strictly inside (ell_n,h_n), then |a|(h_n-ell_n)>1/min(Q_-,Q_+). Every first output also satisfies |a|<=lambda1(E_n)||(1,0)E_n W_n||_2/Xi_n. Hence the product condition in FD at any eligible n forces every first output to have weak one-sign values at all five samples.",
+      "evidence": [
+        {
+          "path": "research/t5-arithmetic-next.md",
+          "section": "sections 1-2, adjugate endpoint formula, integer separation, and exterior-product height bound"
+        }
+      ]
+    },
+    {
+      "id": "Z9.FM",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Same-limit rational connection can fail five-sample sign",
+      "statement": "For every sufficiently large even n, a rational full-rank alternative Taylor connection can be constructed with the actual five prescribed sample nodes, a strictly positive exact five-node cubature, positive moment column, eventually positive two-step transfer, and the same limiting spectrum H and inverse-area upper exponent as the actual construction, but with rational output value theta and eventual first outputs exactly +/−(-c,d) mixed-sign at the five samples. It is an obstruction only to a proof using those structural consequences alone; it does not preserve the exact actual finite-parameter connection C(n).",
+      "evidence": [
+        {
+          "path": "research/t5-transfer-next.md",
+          "section": "section 3, rational alternative connection and eventual zero-relation first output"
+        }
+      ]
+    },
+    {
+      "id": "Z9.XL",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Exact actual inverse-area exponent and uniform first-output height bound",
+      "statement": "For the actual recurrence, lim log(Xi_n)/(2n)=(1/4)log(A B), where A and -B are the two dominant eigenvalues of G. The exact rational invariant cone holds for all real n>=20 and contains the actual F20 wedge. Every complete output lattice first vector (b,a) satisfies limsup log(max(1,abs(a)))/n <= (1/4)log(A/B) < 5.05562. Combined with the proved arithmetic bound, limsup B_n < 10.394861.",
+      "evidence": [
+        {
+          "path": "../research/exterior-cone-2026-09-29.md",
+          "section": "All-parameter rational cone, projective contraction and dominant exterior eigenvalue"
+        },
+        {
+          "path": "../verification/exterior-cone-2026-09-29/certificate.json",
+          "section": "Exact coefficient positivity, original F20 wedge and logarithm intervals"
+        },
+        {
+          "path": "research/inverse-area-lower-next.md",
+          "section": "sections 1-4, Perron growth, inverse-block lower bound, positive-moment angle, and height consequence"
+        }
+      ]
+    },
+    {
+      "id": "Z9.CM",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Critical second-minimum irrationality equivalence",
+      "statement": "For the actual positive kernel and full output lattice, Z_n is asymptotic to C_Z n^(-5)exp(f_*n), both fixed coordinate rows have norm Theta(n^5 exp(-f_*n)), and zeta(9) is irrational if and only if lambda2_n=o(n^5 exp(-f_*n)), if and only if liminf lambda2_n/[n^5 exp(-f_*n)]=0. Equivalently, lambda1_n/(Xi_n Z_n) tends to infinity. Under rationality zeta(9)=c/d in lowest terms, liminf lambda2_n/[n^5 exp(-f_*n)]>=1/(d C_Z ||v_*||)>0; the unique late first direction is +/−(-c,d), lambda1_n lambda2_n/Xi_n tends to one, and lambda1_n/(Xi_n Z_n) stays bounded above and below by positive constants. This is a criterion and does not establish its open short-vector hypothesis.",
+      "evidence": [
+        {
+          "path": "research/critical-polynomial-margin.md",
+          "section": "sections 1-3, positive moment row bounds, rank-one collapse, Diophantine dichotomy, and Minkowski comparison"
+        }
+      ]
+    },
+    {
+      "id": "Z9.M",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Determinant and minor-gcd identities",
+      "statement": "For every even n>=2, det F_n=((3n/2)!(7n/2)!)/(7n((n/2)!)^10). With A_n=d_n^9 F_n and minor gcds delta3_n,delta4star_n, N_n=|det A_n|delta3_n/(delta4star_n)^2 and N_n divides d_n^45 d_(7n/2)^8.",
+      "evidence": [
+        {
+          "path": "../round7/research/connection.md",
+          "section": "5"
+        },
+        {
+          "path": "../round7/research/arithmetic.md",
+          "section": "5"
+        }
+      ]
+    },
+    {
+      "id": "Z9.C",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Weighted area of a saturated integer kernel",
+      "statement": "For every full-rank integer L in Z^(5x3), any saturated row basis K of ker_Z(L^T), and every positive diagonal W, Delta(KW)^2=(prod_i w_i)^2 det(L^T W^(-2)L)/delta3(L)^2, where delta3(L) is the gcd of all 3x3 minors.",
+      "evidence": [
+        {
+          "path": "research/weighted-kernel-area.md",
+          "section": "Theorem and Smith-Jacobi-Cauchy-Binet proof"
+        },
+        {
+          "path": "verification/finite-audit.json",
+          "section": "five exact finite regression checks"
+        }
+      ]
+    },
+    {
+      "id": "Z9.Q",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Smith-content cancellation of the volume baseline",
+      "statement": "For every even n>=2, with Xi_n the weighted area of E_n=S F_n^(-1), B_n=[log Xi_n+log(N_n/g_n)]/(2n), and D_n/s1_n=q_n delta3_n/delta4star_n independently of the positive common denominator D_n.",
+      "evidence": [
+        {
+          "path": "research/volume-cancellation.md",
+          "section": "Exact Smith and inverse-area proof"
+        }
+      ]
+    },
+    {
+      "id": "Z9.X",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Uniform inverse-image area exponent bound",
+      "statement": "For all even n tending to infinity, limsup log(Xi_n)/(2n) <= (1/4)log rho(exterior_square(G)) < (1/4)log(3711015000), where G is the proven weighted connection limit.",
+      "evidence": [
+        {
+          "path": "research/inverse-area-rate.md",
+          "section": "Exterior-square block-product proof"
+        },
+        {
+          "path": "verification/check_inverse_area_roots.py",
+          "section": "exact rational root sign certificate"
+        },
+        {
+          "path": "research/inverse-area-audit.md",
+          "section": "independent proof audit and sharper rational root intervals"
+        },
+        {
+          "path": "../round7/research/connection.md",
+          "section": "weighted connection"
+        },
+        {
+          "path": "../round8/research/limit-obstruction.md",
+          "section": "characteristic polynomial"
+        }
+      ]
+    },
+    {
+      "id": "Z9.Y",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Prime-budget inequality",
+      "statement": "For every even n>=2, log(N_n/g_n)<=9 log d_n+E_n+H_n, with E_n and H_n as in Z9.VB; the standard prime number theorem gives log d_n/n->1.",
+      "evidence": [
+        {
+          "path": "research/arithmetic-prime-budget.md",
+          "section": "exact valuation inequality and PNT deduction"
+        },
+        {
+          "path": "verification/finite-audit.json",
+          "section": "five exact finite regressions"
+        }
+      ]
+    },
+    {
+      "id": "Z9.YD",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Exact prime-discount identity",
+      "statement": "For every even n>=2, log(N_n/g_n)=9 log d_n+E_n+H_n-U_n, with U_n as in Z9.VD. For arbitrary finite valuations the pointwise truncated-subtraction identity holds; its finite weighted form has a locally compiled Lean proof, which does not formalize the concrete zeta(9) data.",
+      "evidence": [
+        {
+          "path": "research/prime-discount-identity.md",
+          "section": "three-case exact valuation proof"
+        },
+        {
+          "path": "platform/solutions/Sol_ZetaNine_finite_prime_discount.lean",
+          "section": "compiled abstract weighted identity"
+        }
+      ]
+    },
+    {
+      "id": "Z9.H",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Translation-trace large-prime window",
+      "statement": "For every even n>=8 and every prime p>n, v_p(N_n)<=floor(3n/(2p)). Consequently the p>n prime budget H_n is at most theta(3n/2)-theta(n), and limsup H_n/n<=1/2.",
+      "evidence": [
+        {
+          "path": "research/prime-valuation-attack.md",
+          "section": "finite-field translation trace and minor-gcd proof"
+        },
+        {
+          "path": "verification/check_prime_valuation_attack.py",
+          "section": "independent finite exact cross-check"
+        },
+        {
+          "path": "verification/prime-valuation-attack-audit.json",
+          "section": "finite trace and valuation certificate"
+        }
+      ]
+    },
+    {
+      "id": "Z9.Z",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Sublinear small-prime excess",
+      "statement": "For every even n>=4, the contribution of primes p<=sqrt(7n/2) to E_n is at most 42 floor(sqrt(7n/2)) log(7n/2), hence is o(n).",
+      "evidence": [
+        {
+          "path": "research/prime-valuation-attack.md",
+          "section": "uniform small-prime truncation bound"
+        }
+      ]
+    },
+    {
+      "id": "Z9.I",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Intermediate-prime merged-pole bound",
+      "statement": "For every even n>=2 and prime sqrt(7n/2)<p<=n, write m=floor(n/p), K=7m+9, and define the merged-pole moments M_{a,k}(W) as in the evidence for every integer polynomial W of degree<=4. Every M_{a,k}(W) lies in p^(7m) Z_(p); if p>K, 1<=k<=K, and (k-1)p<7n, then sum over a mod p of M_{a,k}(W) lies in p^(7m+1) Z_(p). Also v_p(N_n)<=30+D_np-5h_np<=38, where D_np is the exact determinant valuation residual and h_np=1 if 3(n mod p)>=2p-1 and 0 otherwise. Consequently for fixed H>1 the contribution to E_mid from p<=n/H has limsup rate at most 27/H.",
+      "evidence": [
+        {
+          "path": "research/intermediate-prime-attack.md",
+          "section": "CRT merged-pole proof, local valuation bound, and precise finite diagnostics"
+        }
+      ]
+    },
+    {
+      "id": "Z9.L",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Primitive-direction congruence formula",
+      "statement": "For even n>=2 and g dividing N_n, mu1(Lambda_g)=min over primitive z in Z^2 of [g/gcd(g,(z U_n^(-1))_1)] ||z K_n||; this includes the first-coordinate-zero case.",
+      "evidence": [
+        {
+          "path": "../round7/research/arithmetic.md",
+          "section": "2"
+        }
+      ]
+    },
+    {
+      "id": "Z9.LC",
+      "type": "theorem",
+      "status": "proved-in-notes",
+      "title": "Intrinsic local congruence slope",
+      "statement": "For every even n>=2 and divisor g of N_n, M_n=J_n/s1_n is integral with Smith factors (1,N_n), and Lambda_g={zK_n:zM_n=0 mod g}. A primitive direction has multiplier g/gcd(g,content(zM_n)); for each p^e|g the local condition is one dot product against any column of M_n containing a p-adic unit. Globally Lambda_g is the row lattice generated by the rows of gI_2 and adj(M_n), then multiplied by K_n.",
+      "evidence": [
+        {
+          "path": "research/shape-advance.md",
+          "section": "intrinsic matrix and local-column proof"
+        },
+        {
+          "path": "research/shape-or-j-next.md",
+          "section": "Smith-coordinate proof of the global adjugate generator"
+        }
+      ]
+    }
+  ],
+  "reductions": [
+    {
+      "id": "Z9.RED.R",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.J",
+        "Z9.F",
+        "Z9.A",
+        "Z9.G",
+        "Z9.P"
+      ],
+      "status": "mathematical-bridge-checked",
+      "proof": "DAG.md#j-to-root"
+    },
+    {
+      "id": "Z9.RED.R.CRITICAL",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.CP",
+        "Z9.CM"
+      ],
+      "status": "mathematical-bridge-checked",
+      "proof": "DAG.md#critical-second-minimum-route-to-root",
+      "qualification": "CP is the still-open critical lattice estimate; CM is a proved equivalence that does not by itself establish irrationality."
+    },
+    {
+      "id": "Z9.RED.R.POS",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.T",
+        "Z9.TP",
+        "Z9.X",
+        "Z9.A",
+        "Z9.F"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#full-lattice-positive-direction-to-root",
+      "qualification": "T is an open infinite sign assertion; the proven area bound alone only yields one short vector."
+    },
+    {
+      "id": "Z9.RED.R.SADDLE",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.TS",
+        "Z9.SP",
+        "Z9.X",
+        "Z9.A",
+        "Z9.F"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#saddle-signed-first-direction-to-root",
+      "qualification": "SP controls every tail and proves nonvanishing, while TS is an open infinite sign assertion for moving short lattice vectors."
+    },
+    {
+      "id": "Z9.RED.R.FIVE",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.T5",
+        "Z9.FQ",
+        "Z9.X",
+        "Z9.A",
+        "Z9.F"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#five-sample-first-direction-to-root",
+      "qualification": "Exact positive cubature proves nonvanishing after five signs are known; T5 remains an open infinite assertion about moving shortest lattice vectors."
+    },
+    {
+      "id": "Z9.RED.R.GPOS",
+      "parent": "Z9.R",
+      "children": [
+        "Z9.TG",
+        "Z9.TP",
+        "Z9.V",
+        "Z9.A",
+        "Z9.F"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#partial-lattice-positive-direction-to-root",
+      "qualification": "TG and V together bypass S; five positive first vectors do not imply TG."
+    },
+    {
+      "id": "Z9.RED.J",
+      "parent": "Z9.J",
+      "children": [
+        "Z9.V",
+        "Z9.S"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#v-and-s-to-j",
+      "qualification": "V and S are stronger than J; failure of either does not refute J."
+    },
+    {
+      "id": "Z9.RED.T5",
+      "parent": "Z9.T5",
+      "children": [
+        "Z9.TS"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#five-sample-first-direction-to-root",
+      "qualification": "The five predetermined samples eventually lie in every fixed A log(n)/sqrt(n) saddle window; TS is stronger than T5."
+    },
+    {
+      "id": "Z9.RED.T5.DENOM",
+      "parent": "Z9.T5",
+      "children": [
+        "Z9.FD",
+        "Z9.FC"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#endpoint-denominator-route-to-five-sample-sign",
+      "qualification": "FD is a sufficient infinite arithmetic criterion, not necessary for T5; FC proves only the pointwise integer-gap bridge."
+    },
+    {
+      "id": "Z9.RED.V",
+      "parent": "Z9.V",
+      "children": [
+        "Z9.VA",
+        "Z9.Q",
+        "Z9.X"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#arithmetic-criterion-to-v",
+      "qualification": "VA is a sufficient arithmetic strengthening; its failure does not refute V or J."
+    },
+    {
+      "id": "Z9.RED.VA",
+      "parent": "Z9.VA",
+      "children": [
+        "Z9.VB",
+        "Z9.Y"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#prime-budget-to-arithmetic-criterion",
+      "qualification": "VB is a sufficient prime-valuation budget; its failure does not refute VA."
+    },
+    {
+      "id": "Z9.RED.VA.DISCOUNT",
+      "parent": "Z9.VA",
+      "children": [
+        "Z9.VD",
+        "Z9.YD",
+        "Z9.H",
+        "Z9.Z",
+        "Z9.Y"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#discounted-prime-criterion",
+      "qualification": "VD retains exact valuation discounts and is weaker than VC; it remains open."
+    },
+    {
+      "id": "Z9.RED.VB",
+      "parent": "Z9.VB",
+      "children": [
+        "Z9.VC",
+        "Z9.H",
+        "Z9.Z"
+      ],
+      "status": "sufficient-strengthening-checked",
+      "proof": "DAG.md#intermediate-prime-criterion",
+      "qualification": "VC is a sufficient intermediate-prime strengthening; its failure does not refute VB."
+    }
+  ],
+  "research_inputs": [
+    {
+      "parent": "Z9.V",
+      "input": "Z9.M",
+      "role": "proved structural input; not a complete reduction"
+    },
+    {
+      "parent": "Z9.V",
+      "input": "Z9.C",
+      "role": "proved weighted-area identity; not a complete reduction"
+    },
+    {
+      "parent": "Z9.S",
+      "input": "Z9.L",
+      "role": "proved exact minimum formula; not a lower bound"
+    },
+    {
+      "parent": "Z9.S",
+      "input": "Z9.LC",
+      "role": "proved intrinsic local-slope formula; not a lower bound"
+    },
+    {
+      "parent": "Z9.VC",
+      "input": "Z9.I",
+      "role": "proved intermediate-prime coarse bound; not a complete reduction"
+    },
+    {
+      "parent": "Z9.VD",
+      "input": "Z9.I",
+      "role": "proved intermediate-prime coarse bound; not a complete reduction"
+    },
+    {
+      "parent": "Z9.TG",
+      "input": "Z9.LC",
+      "role": "proved intrinsic congruence generator; not a complete reduction"
+    },
+    {
+      "parent": "Z9.T",
+      "input": "Z9.TA",
+      "role": "fixed-output eventual positivity; not a complete reduction for moving shortest vectors"
+    },
+    {
+      "parent": "Z9.TG",
+      "input": "Z9.TA",
+      "role": "fixed-output eventual positivity; not a complete reduction for moving shortest vectors"
+    },
+    {
+      "parent": "Z9.TS",
+      "input": "Z9.TA",
+      "role": "fixed-output eventual positivity; not a complete reduction for moving shortest vectors"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.TA",
+      "role": "fixed-output eventual positivity; not a complete reduction for moving shortest vectors"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.GO",
+      "role": "abstract geometry-only obstruction; not a complete reduction for the actual lattice"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.FI",
+      "role": "exact five-ratio slope reformulation; not a complete reduction for moving shortest vectors"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.FO",
+      "role": "all first slopes approximate zeta; not a complete reduction for open-window avoidance"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.FM",
+      "role": "same-limit rational model obstruction; not a complete reduction for the actual finite connection"
+    },
+    {
+      "parent": "Z9.T5",
+      "input": "Z9.XL",
+      "role": "actual area lower and height upper rates; not a complete reduction for endpoint denominator control"
+    },
+    {
+      "parent": "Z9.V",
+      "input": "Z9.XL",
+      "role": "actual inverse-area lower rate; not a complete reduction for the arithmetic volume upper rate"
+    }
+  ],
+  "proof_dependencies": [
+    {
+      "parent": "Z9.H",
+      "dependency": "Z9.M",
+      "role": "determinant and minor-gcd identities used by the completed trace proof"
+    },
+    {
+      "parent": "Z9.Z",
+      "dependency": "Z9.M",
+      "role": "uniform valuation bound used by the completed small-prime proof"
+    },
+    {
+      "parent": "Z9.LC",
+      "dependency": "Z9.L",
+      "role": "Smith congruence lattice used by the completed intrinsic reformulation"
+    },
+    {
+      "parent": "Z9.I",
+      "dependency": "Z9.M",
+      "role": "determinant and minor-gcd identities used by the completed local bound"
+    },
+    {
+      "parent": "Z9.FQ",
+      "dependency": "Z9.GC",
+      "role": "Gaussian moment limit supplies the positive limiting five-point weights"
+    },
+    {
+      "parent": "Z9.FI",
+      "dependency": "Z9.FQ",
+      "role": "exact positive cubature supplies the strict zeta interval"
+    },
+    {
+      "parent": "Z9.FI",
+      "dependency": "Z9.TA",
+      "role": "eventual Taylor row positivity and exponential width bound"
+    },
+    {
+      "parent": "Z9.FO",
+      "dependency": "Z9.TA",
+      "role": "positive moments and each Perron coordinate lower exponent"
+    },
+    {
+      "parent": "Z9.FO",
+      "dependency": "Z9.X",
+      "role": "weighted Hermite bound from the actual inverse-area upper exponent"
+    },
+    {
+      "parent": "Z9.FC",
+      "dependency": "Z9.FI",
+      "role": "positive denominators and exact open five-sample interval"
+    },
+    {
+      "parent": "Z9.FC",
+      "dependency": "Z9.M",
+      "role": "mixed fourth-minor content identifies the primitive adjugate rows"
+    },
+    {
+      "parent": "Z9.XL",
+      "dependency": "Z9.TA",
+      "role": "positive moment column and Perron coordinate growth"
+    },
+    {
+      "parent": "Z9.XL",
+      "dependency": "Z9.FC",
+      "role": "exterior-product first-output height inequality"
+    },
+    {
+      "parent": "Z9.CM",
+      "dependency": "Z9.F",
+      "role": "full-rank integer output map and exact values"
+    },
+    {
+      "parent": "Z9.CM",
+      "dependency": "Z9.TA",
+      "role": "eventual positivity of both fixed Taylor rows"
+    },
+    {
+      "parent": "Z9.CM",
+      "dependency": "Z9.GC",
+      "role": "positive kernel mass asymptotic and moment concentration"
+    },
+    {
+      "parent": "Z9.CM",
+      "dependency": "Z9.X",
+      "role": "area upper exponent forces normalized coordinate rows to coalesce"
+    }
+  ]
+}

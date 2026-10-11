@@ -1,0 +1,23 @@
+{
+  "theorem_id": "a84d3a7d-1b2f-4849-ae5c-a67b725395e8",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.finite_polynomial_coefficient_interpolation",
+  "theorem_title": "Finite coefficient interpolation by a polynomial",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.finite_polynomial_coefficient_interpolation\n    {m : ℕ} (S : Finset (Fin (m + 1) → ℕ)) :\n    ∀ y : ↥ S → ℂ, ∃ Q : MvPolynomial (Fin (m + 1)) ℂ,\n      ∀ a : ↥ S,\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector a.val)\n          (Q : MvPowerSeries (Fin (m + 1)) ℂ) = y a := by sorry",
+  "natural_language_statement": "For a finite set of exponent vectors, every assignment of complex coefficients is realized by the corresponding coefficients of an ordinary polynomial, viewed as a multivariate formal power series. The witness is a finite sum of the assigned values times their monomials.",
+  "created_at": "2026-10-08T06:29:43.450481+00:00",
+  "vote_count": 0,
+  "tags": [
+    "algebra",
+    "interpolation",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Jets/AlgebraicJetPackets.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

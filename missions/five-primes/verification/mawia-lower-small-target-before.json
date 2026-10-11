@@ -1,0 +1,23 @@
+{
+  "theorem_id": "5cb6180b-3a9f-47fa-ae12-241767b2ba05",
+  "theorem_name": "TaoFivePrimes.mawia_reciprocal_sum_lower_bound_small",
+  "theorem_title": "Mawia small-range reciprocal-prime lower bound",
+  "status": "Open",
+  "formal_statement": "namespace TaoFivePrimes\ntheorem mawia_reciprocal_sum_lower_bound_small (x : ℝ) (hx : 2 ≤ x) (hsmall : x ≤ 10 ^ 8) :\n    Real.log (Real.log x) +\n        (Real.eulerMascheroniConstant +\n          ∑' p : Nat.Primes, (Real.log (1 - 1 / (p : ℝ)) + 1 / (p : ℝ))) -\n        4 / (Real.log x) ^ 3 ≤\n      ∑ p ∈ Nat.primesLE ⌊x⌋₊, 1 / (p : ℝ) := by\n  sorry\nend TaoFivePrimes",
+  "natural_language_statement": "For every real x with 2 ≤ x ≤ 10^8, the reciprocal-prime sum through x is at least the logarithmic main term plus the Meissel–Mertens constant minus 4/(log x)^3.",
+  "created_at": "2026-09-25T14:25:27.367978+00:00",
+  "vote_count": 0,
+  "tags": [
+    "analytic-number-theory",
+    "mertens-theorem",
+    "primes"
+  ],
+  "preamble": "import Mathlib",
+  "source": "R. Mawia, “Explicit estimates for some summatory functions of primes,” Integers 17 (2017), Theorem 10.12.30 (Mawia reciprocal-prime estimate; source given on the parent theorem as section 2).",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

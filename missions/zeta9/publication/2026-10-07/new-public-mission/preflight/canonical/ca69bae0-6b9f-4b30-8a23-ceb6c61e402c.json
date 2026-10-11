@@ -1,0 +1,23 @@
+{
+  "theorem_id": "ca69bae0-6b9f-4b30-8a23-ceb6c61e402c",
+  "theorem_name": "ZetaNine.five_sample_sign_forces_nonzero",
+  "theorem_title": "Five-sample one-sign test forces non-vanishing",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem five_sample_sign_forces_nonzero\n    (L : Polynomial ℝ →ₗ[ℝ] ℝ) (y w : Fin 5 → ℝ)\n    (hy : Function.Injective y)\n    (hw : ∀ j : Fin 5, 0 < w j)\n    (hmom : ∀ m : ℕ, m ≤ 4 →\n      L ((Polynomial.X : Polynomial ℝ) ^ m) = ∑ j : Fin 5, w j * (y j) ^ m)\n    (p : Polynomial ℝ) (hpdeg : p.natDegree ≤ 4) (hp : p ≠ 0)\n    (hsign : (∀ j : Fin 5, 0 ≤ p.eval (y j)) ∨ (∀ j : Fin 5, p.eval (y j) ≤ 0)) :\n    L p ≠ 0 := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## A five-sample one-sign test forces non-vanishing\n\nLet $L$ be a real linear functional on $\\mathbb{R}[X]$, let $y,w:\\{0,1,2,3,4\\}\\to\\mathbb{R}$\nbe five nodes and five weights, and assume\n\n1. the five nodes are distinct ($y$ injective);\n2. every weight is strictly positive, $w_j>0$;\n3. $L$ agrees with the rule on the moments of degrees zero through four,\n   $L(X^m)=\\sum_j w_j\\,y_j^m$ for $0\\le m\\le 4$.\n\nThen for every nonzero polynomial $p$ of degree at most four whose five sampled values\n$p(y_j)$ are **weakly of one sign** — either $p(y_j)\\ge0$ for all $j$, or\n$p(y_j)\\le0$ for all $j$ — one has $L(p)\\ne0$.\n\n**Why.** Hypothesis 3 is exactly the moment-matching condition of the exact quadrature\ncore, so $L(p)=\\sum_j w_j\\,p(y_j)$. Every summand has the sign required at its node.\nIf $L(p)$ vanished, the sum of identically signed terms would vanish, forcing every\nsummand to vanish; since $w_j\\ne0$ this gives $p(y_j)=0$ at five distinct nodes. A\nnonzero polynomial of degree at most four cannot have five distinct roots. This is\nthe point where the \"no need to inspect the sign between the sampled points\" claim of\nthe five-sample criterion is made precise.\n\n**Scope.** This is the exact composition of local nodes **FQ** and **TP**: FQ supplies\nthe cubature identity, the root count supplies the exclusion of a vanishing quartic,\nand the strict positivity of the weights converts \"weak sign\" into \"strict\nnon-vanishing\". It is stated for abstract data. It does **not** assert that the\nweights of the actual construction are strictly positive — that is the analytic\nGaussian-moment input GC — and it does **not** assert that any actual moving shortest\noutput passes the five-sample test, which is the open target T5. Zero values at\nsampled nodes are allowed, so no hypothesis excludes a single vanishing sample; what\nis excluded is simultaneous vanishing at all five.",
+  "created_at": "2026-09-25T03:25:15.547385+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/research/moving-short-sign-next.md sections 5-6 and roadmap/DAG.md node TP, 2026-09-25",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

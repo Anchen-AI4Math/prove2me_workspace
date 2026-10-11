@@ -1,0 +1,980 @@
+{
+  "name": "Irrationality of ζ(9): coefficient map and weighted lattice",
+  "description": "## Motivation and history\n\nThe **Riemann zeta function** at a real number $s>1$ is the convergent series\n$\\zeta(s)=\\sum_{k=1}^{\\infty}k^{-s}$. Number theorists studying its special values\ndistinguish between proving that a family contains irrational numbers and\ndetermining the arithmetic nature of one specified member. This mission asks\nfor a proof that $\\zeta(9)$ is irrational. The target remains unproved in this\ndevelopment; the supporting results below do not close it.\n\nTwo landmarks explain the distinction:\n\n- **2000:** Rivoal proved that infinitely many odd zeta values are irrational,\n  through a dimension bound for their rational span.\n  [Rivoal's paper](https://arxiv.org/abs/math/0008051).\n- **2002; published 2004:** Zudilin proved that at least one of\n  $\\zeta(5),\\zeta(7),\\zeta(9),\\zeta(11)$ is irrational. This disjunction does\n  not identify $\\zeta(9)$.\n  [Zudilin's paper](https://arxiv.org/abs/math/0206176).\n- **2026, this development:** explicit coefficient maps, weighted lattices,\n  arithmetic estimates, and alternative constructions were assembled in\n  [research notes and source supplements](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n  Separately, a saved 4 October audit recorded 51 supporting proofs as\n  Accepted and public Proved. This is a dated supporting checkpoint, not an\n  irrationality proof.\n\n## Setting\n\nAn **integer linear form** in the target value is $b+a\\zeta(9)$, where\n$a,b\\in\\mathbb Z$. It is useful for irrationality only when its actual value\nis nonzero and tends to zero along an infinite sequence. A pair is\n**primitive** when $\\gcd(|a|,|b|)=1$; its direction identifies $(b,a)$ with\n$(-b,-a)$.\n\nThe principal construction uses even integers $n\\ge2$ and the rational function\n\n$$R_n(t)=(n!)^7\n  \\frac{\\prod_{i=1}^{n}(t-i)(t+n+i)}\n       {\\prod_{j=0}^{n}(t+j)^9}.$$\n\nFor a polynomial $W(X)=\\sum_{r=0}^{4}w_rX^r$ with rational coefficients, set\n$u_n(t)=t(t+n)$ and $L_n(W)=\\sum_{k=1}^{\\infty}R_n(k)W(u_n(k))$.\nIts actual **partial fractions** and **harmonic sums** determine rational coefficients\nin the exact identity\n\n$$L_n(W)=B_n(W)+\\rho_{3,n}(W)\\zeta(3)+\\rho_{5,n}(W)\\zeta(5)\n                   +\\rho_{7,n}(W)\\zeta(7)+\\rho_{9,n}(W)\\zeta(9).$$\n\nThe **coefficient map** sends $W$ to this ordered row of five rational\ncoefficients. The **matrix** $F_n$ has row $r$ equal to the coefficient row of\n$X^r$, for $0\\le r\\le4$. These are coefficients constructed from the actual\nrational function; their definition does not assume independence of odd zeta\nvalues. The map is bijective over $\\mathbb Q$ for every even $n\\ge2$ in the\ncompleted supporting theorem *The actual five-dimensional rational coefficient\nmap is bijective*. This later theorem is separate from the dated source\npackages.\n\nThe **integer-output lattice** consists of the rational polynomial-coordinate\nrows\n\n$$\\mathcal L_n=\\{(b,0,0,0,a)F_n^{-1}:a,b\\in\\mathbb Z\\}.$$\n\nIts **weighted norm** is the Euclidean norm after multiplying coordinates by\n$(1,n^2,n^4,n^6,n^8)$. A shortest nonzero row has a primitive integer output;\na fixed convention resolves ties. An integer output can have a rational\npolynomial preimage. Integer polynomial coefficients and their denominator\ncost require additional arithmetic statements.\n\n## Formalization targets\n\nThe stable goal is\n\n$$\\boxed{\\zeta(9)\\notin\\mathbb Q.}$$\n\nThe goal imposes no chosen decay constant or prescribed construction. The\ncoefficient-map route supplies supporting targets; a complete independent\nconstruction of nonzero integer linear forms tending to zero would also\nsettle the goal.\n\nThe **joint-margin condition J** in the research notes asks for a fixed\npositive exponent margin on infinitely many even indices in the actual\nweighted-lattice and arithmetic diagnostics. It remains mathematically open.\nUnder the written volume and transport results, it is an equivalent exit to\nthe target and to failure of eventual fixation of the shortest primitive\noutput direction. The stronger **shape condition S** is sufficient with the\nwritten volume estimate; it is not an additional necessary hurdle.\n[Precise conditions and dependencies](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n\n## Significance\n\nA complete proof would determine the arithmetic nature of one specified odd\nzeta value. The formal development also produces reusable links between\nrational-function coefficients, absolutely convergent series, polynomial\ninverse images, and primitive integer outputs.\n\nCompleted machine-checked supporting stages include harmonic-denominator\nclearing and stability, finite-prime arithmetic, the actual short-zero\ncoefficient's signed lower bound and nonvanishing, and unconditional harmonic\ndenominator rates using an actual prime-number-theorem dependency.\nThe coefficient route has complete proofs of highest-pole identities, all\nnine local orders, full local-array injectivity, global partial fractions,\nreflection and cancellation, finite harmonic identities, absolute summability,\nand the exact infinite linear form. Its genuine aggregate map is bijective\nover rational quartics for even $n\\ge2$, with a unique rational preimage of\nevery rational target. The actual fifteen-coordinate connection system also\nhas unique polynomial solutions for every $n\\ge1$. The supporting results\n*The actual inverse multiplier has its prescribed sum and absolute convergence*\nand *The five original connection systems have unique bounded rational solutions*\nstate these later conclusions with their exact domains.\n\nThe 7 October 2026 authenticated readback reconfirmed the 51 complete accepted\nsupporting proofs and their public Proved statements. The irrationality goal\nremained Open. The three separately published explicit-matrix statements were\nalso Open; local Matrix proofs and completed kernel-and-inverse results do not\nimply platform acceptance of those separate statements. These are statuses of\nexisting supporting results, not a completion count for this new mission.\n\nPublic supplements provide independently rebuilt sources for nine complete\nproofs and for the later coefficient-sign and unconditional denominator-rate\ndevelopments. Each package records its precise scope and standard foundational\naxioms. They do not contain a proof of the root goal.\n[Nine-proof supplement](https://github.com/Anchen0823/zeta9-research-notes/releases/download/research-2026-10-02/zeta9-formal-proofs-2026-10-02.zip),\n[advanced source supplement](https://github.com/Anchen0823/zeta9-research-notes/releases/download/research-2026-10-02/zeta9-advanced-proofs-2026-10-02.zip),\n[independent source-package review](https://github.com/Anchen0823/zeta9-research-notes/releases/download/research-2026-10-02/ADVANCED-PROOFS-INDEPENDENT-REVIEW.json).\n\n## Difficulty\n\nSmall real values alone do not settle irrationality: an integer form may be\nexactly zero. Under a rationality assumption, the shortest primitive output\ncan eventually follow the unique integer zero relation. The existing volume\nand approximation estimates do not exclude that behavior. Finite changes of\ndirection, large matrix determinants, or a few certified small nonzero forms\ndo not establish the required infinite assertion.\n[Direction frontier and boundaries](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n\nAlternative routes retain different gaps. Growing-dimensional positive Gram\nconstructions have positive exponentially decreasing real errors but lack\ncontrol of the full reduced denominators. A differentiated rational-sum\nconstruction isolates $\\zeta(9)$ but has polynomial endpoint leakage; its\neightfold-zero repair removes that leakage and still needs eventual\nnonvanishing, the actual analytic rate, and primitive-content estimates.\nThese are alternatives, not conditions that must all be solved.\n[Alternative constructions and exact boundaries](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n\n## Formalization scope\n\nThe Lean goal applies `Irrational` to the real part of Mathlib's complex\n`riemannZeta` at $9$. The coefficient construction fixes rational quartics,\nthe output order $(B,\\rho_3,\\rho_5,\\rho_7,\\rho_9)$, and even $n\\ge2$ for\nthe inverse and infinite identity. Connection results retain their own\n$n\\ge1$ domain and regular-point hypotheses. Saturated integer kernels,\npositive common denominators, **Smith factors**, primitive normalization, weighted\nnorms, and shortest nonzero vectors must use the actual objects in the notes.\nAn arbitrary replacement map, zero witness, or hypothesis already asserting\nthe required transport or infinite margin cannot discharge these targets.\n\nFour principal formalization work packages remain:\n\n1. **Parameter transport:** complete the genuine five-output and infinite-sum\n   transport. Proved polynomial connection systems and rational-function\n   differences do not alone constitute this result; the proposed full output\n   assembly is not yet a verified theorem.\n2. **Integer normalization, heights, and content:** prove the actual integral\n   structures and denominator bounds. Rational bijectivity of $F_n$ does not\n   supply those arithmetic bounds.\n3. **Uniform analytic estimates A:** formalize the written moment asymptotics,\n   infinite-tail bounds, and error estimates uniform in varying quartic\n   coefficients. Elementary phase lemmas alone do not establish this package.\n4. **Arithmetic volume estimates V:** formalize the written prime budgets,\n   Smith data, saturated-kernel geometry, and resulting volume asymptotics.\n   The written volume proof does not establish J.\n\nThese four packages distinguish remaining Lean work from the separate missing\nmathematical input for J. Rational matrices, integer modules, formal power\nseries, summability, asymptotic analysis, and geometry of numbers are reusable\ninfrastructure. Faithful formalizations, independent audits, and new\nmathematical approaches are welcome.\n[Written research record](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n\n## Selected references\n\n- T. Rivoal, *La fonction zêta de Riemann prend une infinité de valeurs\n  irrationnelles aux entiers impairs*, C. R. Acad. Sci. Paris Sér. I Math.\n  331 (2000), 267–270. [arXiv:math/0008051](https://arxiv.org/abs/math/0008051).\n- W. Zudilin, *Arithmetic of linear forms involving odd zeta values*,\n  Journal de Théorie des Nombres de Bordeaux 16 (2004), 251–291;\n  preprint 2002. [arXiv:math/0206176](https://arxiv.org/abs/math/0206176).\n- *Zeta(9) research notes, source, and verification records*, research archive,\n  2 October 2026, with separately dated formal proof supplements.\n  [Public release](https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02).\n",
+  "mission_type": "OpenProblem",
+  "field_ids": [
+    "e76e77ab-38dd-426d-a533-0b37fb6dbabc"
+  ],
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "root_theorem_id": "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+  "reference_order": [
+    "8aaaa1e7-befc-4a25-a4f5-26c37740eb40",
+    "365148c0-a3da-4c9e-be31-9f99ca5605ac",
+    "37ba0a3d-3bd9-4bce-85b8-4f85c9e9586f",
+    "a57d441d-db5c-46db-b2f7-c52197d21c72",
+    "39d7d208-ec83-47a7-af52-066c32893c39",
+    "f0f5ed09-0e3c-48af-b45b-f53a12ecf11f",
+    "50eafaec-696e-4a0f-809d-bd988c671e52",
+    "b49898b0-a988-42c3-9ddb-8e3e25f22ca8",
+    "11984167-2e2e-490b-948a-9f691338b59e",
+    "d6f831ba-b521-4cb1-9009-b3cbeafcd4a8",
+    "7735a339-5a83-4d33-8bda-12daefbcd63a",
+    "be5ae0fc-5c67-4931-bce7-c840f5151c7b",
+    "46306e7b-9adc-43aa-925d-1e9ee80c56a6",
+    "31bff972-299f-4bf7-ba2e-eec29a733fd4",
+    "0efd92c6-d434-4ba6-a512-c2371ad46b79",
+    "0793cee6-359e-4b09-8b08-d89d12dbe7f3",
+    "c7863012-af24-4701-9c51-6a46db9af05b",
+    "81dc9962-744c-4b2c-b4c2-2a67fb50ec61",
+    "523f37b8-ae98-406c-a3f7-43aa8e002dd7",
+    "a925cba9-6bcf-4296-940d-3886687da227",
+    "207cc87c-ecbb-4be0-ab87-a1c3c0c0293f",
+    "cbb9cc51-c34d-4c25-9c61-dd4bc0e969e1",
+    "d6b0eb73-e1ad-4005-8f8a-ecd61ad35127",
+    "8496d3a0-3b92-4a68-a56d-d972e0df20a2",
+    "0f7bb5e3-be14-422d-a555-d89ed96e171f",
+    "c1147ec6-b702-4ce3-86a6-04aaf358e544",
+    "a8a15e54-0fca-4932-b4ea-171e7d02fc03",
+    "443fb397-e2df-48a0-941c-0617ca84f5f1",
+    "60c1cf49-6b01-448c-b38a-88dc2fcb8ba0",
+    "691b1665-f122-47f7-a3e4-2c28a06055f2",
+    "ca69bae0-6b9f-4b30-8a23-ceb6c61e402c",
+    "ce7cd721-4855-4529-9818-750413cf71e6",
+    "6f2a3a79-137d-4946-af79-3771e9b88f6c",
+    "59100b91-97e3-427e-9154-301ad5bd6c43",
+    "17f19266-744f-4790-b31a-e7c5c18ca549",
+    "b3c67d4e-0f05-484e-b795-af057457788e",
+    "e5bcddcb-3925-4391-91fe-bc8e6284a6ec",
+    "f7ecff96-0cec-4e14-949e-054bfeedde67",
+    "220d4d7b-4e0c-4780-a2d9-2b3cd0680cf2",
+    "d2029496-11e6-49e5-b207-b18c2b5cf8fb",
+    "88f03ef4-6450-42cd-97d3-24e924ee4e1c",
+    "d1e6ecea-242f-412b-b0b2-fc517132c9b3",
+    "e154a4ca-96a1-4257-b8a1-3a83e98f4111",
+    "dbbbbec1-10e9-4f66-a0a7-b9f9cf1cdf48",
+    "50a9559f-7576-411d-a592-fc2f2527b1cd",
+    "2ccce2b3-fbf8-419b-9ad4-52a6c527fd25",
+    "a4d7220e-a967-499d-a96b-5d020a46e1d3",
+    "6c9f6988-64e9-43e9-9ee6-6ecc0e61d8ac",
+    "490b871a-06b7-49c4-9053-05de764299d5",
+    "ca2e0aab-8e1d-4199-980c-edc10cd4eabb",
+    "f7fc231d-18a3-4968-91f0-54f8ace0c892",
+    "970374db-a705-4462-9ace-d0a494c3672e",
+    "064cbef1-f817-40cb-b85b-29a79a5d5611",
+    "3c3fe37c-b5a4-4ecc-b741-18ddee5254de",
+    "3b41126b-9a8a-409c-bd06-e840790f686b",
+    "6d9445a4-3353-476d-a21f-6a1875fda71d",
+    "1c1a796f-fcd9-49fa-b57b-721bbdf48ef6",
+    "ca673a47-8c42-4909-8ab2-9384503415ec",
+    "20e45c17-4aac-4a4c-86cb-45f107407ff5",
+    "0a3beccc-45c4-43dd-a023-16d5c4a9d849",
+    "d6bef8c0-d9cf-418e-ba46-2332ecca0c10",
+    "6c193bd2-e727-4992-8957-82c250a0b45c",
+    "b40f468c-1d43-46e1-a0fe-bb59afc285e7",
+    "8a1d6ae0-325a-4d46-acd5-448bcf59814c",
+    "500f3668-d61c-42c7-adee-61ab5c3f742c",
+    "497fe537-7be9-4fad-8984-43229aafb166",
+    "dc845325-063a-4a97-a4e7-86453335e09a",
+    "e202eaff-c82b-4d8b-b7a2-8b2896798987",
+    "25ed8da5-f069-4864-95b4-3701e2ddec47",
+    "2de22270-2e72-4a2a-8279-109158a6bc9d",
+    "a06430dc-7541-40b3-b39c-d194c8e0a8a5",
+    "e2ff238b-b15f-4892-8a65-1350390813ae",
+    "410070f2-459b-4933-9498-2e30e32cc87a",
+    "698c5170-0bc3-479a-a014-bdc3dc5d4e4a",
+    "6d601e77-6dc4-4529-9542-673ee50ebbc2",
+    "968f781f-c1a2-42aa-b0a4-be1ff3dbb93b",
+    "23c4b8f3-9745-4ed9-8719-931e672eb5a5",
+    "41d3c1e3-8972-4ea6-ad46-a5946ba63923",
+    "9e49b2d8-4a51-4bfd-b449-d665b5e5fc6d",
+    "940b61e1-e00a-4909-928d-1d640e6c909c",
+    "ce238b53-8b97-42f6-ac2e-191364bf4a42",
+    "bbc02826-16b1-4012-ac43-0462f90498df",
+    "3df1ff96-5fcc-4d2e-8fc9-c673dcf4f4f4",
+    "711fc0b7-42af-4494-8765-c95a3aa449c6",
+    "37ff9673-ea18-4954-8859-e711491af165",
+    "3e15df20-1023-4b72-95ab-1ad07c34b3e5",
+    "134e564c-4327-43b0-9ecd-e7d08fa133ec",
+    "bb7477e4-5539-4015-b8cf-9bad57e1c8a0"
+  ],
+  "milestones": [
+    {
+      "theorem_id": "a925cba9-6bcf-4296-940d-3886687da227",
+      "milestone_title": "Zudilin's four-value disjunction",
+      "milestone_description": "Formalize the established result that at least one of ζ(5), ζ(7), ζ(9), ζ(11) is irrational. It is a historical lower bound on what the current methods identify and does not imply the single-value mission goal. This item reuses the platform's existing published theorem.",
+      "source_milestone_id": "6f00a114-218a-45e6-bb7a-4c5def3068c4"
+    },
+    {
+      "theorem_id": "207cc87c-ecbb-4be0-ab87-a1c3c0c0293f",
+      "milestone_title": "Two-form irrationality criterion",
+      "milestone_description": "Formalize the note-proved criterion converting arbitrarily small values of two independent integer forms into irrationality. In the proposed ζ(9) route, this criterion is applied only after the second-minimum and analytic estimates produce those two forms.",
+      "source_milestone_id": "4aadf9a6-0c18-4a13-847f-a43f311ea240"
+    },
+    {
+      "theorem_id": "cbb9cc51-c34d-4c25-9c61-dd4bc0e969e1",
+      "milestone_title": "Abstract volume and shape margin bridge",
+      "milestone_description": "Formalize the checked logical step from an eventual volume rate strictly below 10.564 and vanishing shape defect to a uniform positive margin. The concrete V and S estimates remain open mathematical research targets, not hypotheses established by this milestone.",
+      "source_milestone_id": "9ee37a0a-0169-46cc-81d5-8c64ddf2839b"
+    },
+    {
+      "theorem_id": "d6b0eb73-e1ad-4005-8f8a-ecd61ad35127",
+      "milestone_title": "Q2. Logarithmic volume cancellation",
+      "milestone_description": "Assuming positive real D,s,N,g,Xi and Delta=(s^2 N/D^2)Xi, prove log(D/s)+(1/2)log Delta-(1/2)log g=(log Xi+log(N/g))/2. This is only the abstract algebraic core of local node Q.",
+      "source_milestone_id": "834075fe-8dff-4a8a-b727-bb5507bb4404"
+    },
+    {
+      "theorem_id": "8496d3a0-3b92-4a68-a56d-d972e0df20a2",
+      "milestone_title": "Y1. Finite weighted prime budget",
+      "milestone_description": "For finite indices i, nonnegative integer valuations v_i,a_i, and nonnegative weights w_i, prove sum (v_i-2a_i)_+ w_i <= 9 sum a_i w_i + sum (v_i-11a_i)_+ w_i. This is the formalizable finite core of local node Y.",
+      "source_milestone_id": "7758d857-6210-4308-b907-c7e7eb32fb53"
+    },
+    {
+      "theorem_id": "0f7bb5e3-be14-422d-a555-d89ed96e171f",
+      "milestone_title": "YD. Exact finite prime discount",
+      "milestone_description": "For arbitrary finite natural valuations v_i,a_i and real weights w_i, prove the exact identity sum_i (v_i-2a_i)_+ w_i + sum_i min((11a_i-v_i)_+,9a_i) w_i = 9 sum_i a_i w_i + sum_i (v_i-11a_i)_+ w_i. The linked Lean proof covers this abstract finite identity only; the concrete zeta(9) substitution is local mathematical work.",
+      "source_milestone_id": "243ff6c5-4e9b-4381-8883-da79963e8d04"
+    },
+    {
+      "theorem_id": "c1147ec6-b702-4ce3-86a6-04aaf358e544",
+      "milestone_title": "TP2. One-form irrationality criterion",
+      "milestone_description": "If for every epsilon>0 a real x admits a nonzero integer form b+a*x with absolute value below epsilon, then x is irrational. This is the formalised criterion half of local node TP: it turns a supply of small nonzero integer forms in 1 and x into irrationality of x, with no independence hypothesis. It is a proved general statement about an arbitrary real number; the concrete zeta(9) construction and the one-sign nonvanishing certificate remain part of the open targets T, TG, TS and T5.",
+      "source_milestone_id": "39413516-250c-4036-b004-ce901187ad99"
+    },
+    {
+      "theorem_id": "a8a15e54-0fca-4932-b4ea-171e7d02fc03",
+      "milestone_title": "TP1. Positive-kernel sign core",
+      "milestone_description": "For a strictly positive kernel R, sampling map u and polynomial p, if every sampling point satisfies u(k)>=u0, every Taylor coefficient of p at u0 is nonnegative, the weighted series is summable and p is positive at one sample, then the complete weighted sum is strictly positive. This is the formalised positive-kernel half of local node TP: it rules out a vanishing sum once a one-sign Taylor certificate is available. It is stated for abstract data and does not assert that any concrete moving first output of the zeta(9) construction carries such a sign.",
+      "source_milestone_id": "862e3882-a402-4c02-92a0-9294440464bb"
+    },
+    {
+      "theorem_id": "443fb397-e2df-48a0-941c-0617ca84f5f1",
+      "milestone_title": "FQ1. Exact quadrature from the first five moments",
+      "milestone_description": "If a linear functional on the real polynomials and a five-node rule with weights agree on the moments of degrees zero through four, then they agree on every polynomial of degree at most four. This is the exact algebraic core of local node FQ: it is the general moment-matching step behind the five-sample cubature identity on the actual positive kernel. It does not assert that the actual weights are strictly positive, which is the analytic Gaussian-moment input, and it does not prove the open infinite five-sample sign assertion T5.",
+      "source_milestone_id": "8b259b41-be6d-4655-8381-6f49dc4baa94"
+    },
+    {
+      "theorem_id": "60c1cf49-6b01-448c-b38a-88dc2fcb8ba0",
+      "milestone_title": "R1. One-form route obligation",
+      "milestone_description": "There is a real c>0 such that, for every sufficiently large natural n, there exist integers b,a with 0 < |b+a Re(riemannZeta(9))| < exp(-c n). The published statement places no bound on b or a and does not require them to come from the coefficient-map or weighted-lattice construction. The index n labels only the error threshold. Producing these forms with the actual construction and its denominator, height and nonvanishing controls is a separate concrete obligation; this unrestricted existence statement is not claimed to be strictly stronger than irrationality.",
+      "source_milestone_id": "392712a2-ecc7-49d6-8dc1-902209ba84e2"
+    },
+    {
+      "theorem_id": "691b1665-f122-47f7-a3e4-2c28a06055f2",
+      "milestone_title": "R2. Two-form route obligation",
+      "milestone_description": "There is a real c>0 such that, for every sufficiently large natural n, there exist integers b1,a1,b2,a2 with b1*a2 != b2*a1 and both |bi+ai Re(riemannZeta(9))| < exp(-c n). The determinant condition requires independent integer coefficient pairs. No coefficient-height or prescribed-lattice condition occurs in the published statement. Its unrestricted existence formulation must be distinguished from constructing the actual weighted-lattice outputs with the required arithmetic and analytic controls; it is not claimed to be strictly stronger than the irrationality goal.",
+      "source_milestone_id": "d367b07f-c4ad-4083-a280-79745c9d8227"
+    },
+    {
+      "theorem_id": "ca69bae0-6b9f-4b30-8a23-ceb6c61e402c",
+      "milestone_title": "TP3. Five-sample nonvanishing certificate",
+      "milestone_description": "For a real linear functional L on R[X], five distinct nodes y, five strictly positive weights w and moment agreement L(X^m)=sum_j w_j y_j^m for 0<=m<=4, every nonzero polynomial of degree at most four whose five sampled values are weakly of one sign satisfies L(p)!=0. This is the exact composition of local nodes FQ and TP: FQ supplies the cubature identity, the root count excludes a vanishing quartic, and positivity of the weights converts weak sign into strict non-vanishing. It does not assert that the actual weights are positive (that is the Gaussian-moment input GC) nor that any actual moving output passes the test (open target T5).",
+      "source_milestone_id": "445505b6-aad1-4223-8d3d-d105f3908ccb"
+    },
+    {
+      "theorem_id": "ce7cd721-4855-4529-9818-750413cf71e6",
+      "milestone_title": "FI1. Positive-weight sandwich",
+      "milestone_description": "If w_j>0, sum_j w_j=1 and the vector r is not constant, then the weighted average S=sum_j w_j r_j is strictly above some sampled value and strictly below another. This is the ordering heart of local node FI; the non-constancy hypothesis is the abstract counterpart of the rank-two non-degeneracy of the inverse image. The lemma says nothing about the width of the interval, the exponential contraction rate, or whether the moving first output avoids it.",
+      "source_milestone_id": "e741a784-8db8-48de-a144-6109da2ff5f3"
+    },
+    {
+      "theorem_id": "6f2a3a79-137d-4946-af79-3771e9b88f6c",
+      "milestone_title": "FI2. Weighted-mediant ratio interval",
+      "milestone_description": "With w_j>0, b_j>0 and not all ratios a_j/b_j equal, the mediant (sum_j w_j a_j)/(sum_j w_j b_j) lies strictly between the smallest and the largest sampled ratio. This is local node FI in its invariant (normalisation-free) form and is the reformulation that turns the open five-sample sign target T5 into a statement about the rational slope of the changing first output. No width or separation is asserted.",
+      "source_milestone_id": "193809a6-8a32-4d86-a210-f4df235b5adc"
+    },
+    {
+      "theorem_id": "59100b91-97e3-427e-9154-301ad5bd6c43",
+      "milestone_title": "TA1. Positive-cone step of the Taylor transfer",
+      "milestone_description": "For a real 5x5 matrix M with all entries strictly positive and a nonzero vector v>=0 entrywise, every coordinate of Mv is strictly positive. This isolates the cone step of local node TA: the note's one-step Taylor transfer has mixed signs and fails to preserve the cone, while the two-step transfer H_n H_(n+2) is eventually strictly positive and the same lemma applied to that product gives the two-step statement. It does not formalise the limit matrix, the eventual positivity of the actual two-step transfer, or the -10.1109 width rate.",
+      "source_milestone_id": "aa671b0f-27b7-4aee-8bbc-016e320abe58"
+    },
+    {
+      "theorem_id": "17f19266-744f-4790-b31a-e7c5c18ca549",
+      "milestone_title": "Equation (5) — Primitive-row Gram content",
+      "milestone_description": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every minor $u_iv_j-u_jv_i$. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$, $R=\\langle v,v\\rangle$ and $D_\\Delta=(TR-C^2)/\\Delta^2$. Then\n\n$$\\gcd(T,C)\\mid \\Delta D_\\Delta.$$\n\nPrimitivity means that the coordinates of $u$ admit an integral Bézout combination equal to one. The theorem covers every finite dimension and every nonzero common minor divisor, including the exterior content. It does not assume squarefreeness, linear independence or nondegeneracy modulo any prime.",
+      "source_milestone_id": "3c088dee-3a0c-4182-b320-dc512b72f320"
+    },
+    {
+      "theorem_id": "b3c67d4e-0f05-484e-b795-af057457788e",
+      "milestone_title": "Equation (6) — Center denominator divisor",
+      "milestone_description": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every exterior minor. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$ and $D_\\Delta=(T\\langle v,v\\rangle-C^2)/\\Delta^2$. For any integers $a\\ne0$ and $b$, the center $\\xi=bC/(aT)$ satisfies\n\n$$\\frac{T}{\\gcd(T,b\\Delta D_\\Delta)}\\mid\\operatorname{den}(\\xi).$$\n\nPrimitivity guarantees $T>0$. Neither coprimality of $a,b$ nor primitiveness of $v$ is required. For primitive row reductions and their content ratio this is the computable divisor in equation (6). It asserts an exact denominator divisor, not the still-unproved exponential growth needed for the irrationality route.",
+      "source_milestone_id": "600e3466-4d2d-4d66-800e-415d37533b13"
+    },
+    {
+      "theorem_id": "e5bcddcb-3925-4391-91fe-bc8e6284a6ec",
+      "milestone_title": "Opening endpoint statement — Eightfold derivative cancellation",
+      "milestone_description": "For the explicit repaired function $R_n^*$, every integer derivative order $0\\le r<8$ satisfies\n\n$$\\sum_{j=1}^{n}(R_n^*)^{(r)}(j)=0.$$\n\nThis holds for every natural $n$, including the empty sum at $n=0$. The derivatives are genuine iterated real derivatives of the rational function. In particular the first $n$ leakage terms of the seventh-derivative series vanish exactly. The theorem does not assert convergence, eventual nonvanishing, decay or irrationality.",
+      "source_milestone_id": "da72a564-6abc-499d-8f72-658657690eec"
+    },
+    {
+      "theorem_id": "f7ecff96-0cec-4e14-949e-054bfeedde67",
+      "milestone_title": "Theorem 1, clearing bound — Harmonic denominator lcm power",
+      "milestone_description": "Let $s,N$ be any natural numbers, $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$, and $L_N=\\operatorname{lcm}(1,\\ldots,N)$, with $L_0=1$. Then\n\n$$\\operatorname{den}(H_N^{(s)})\\mid L_N^s.$$\n\nThe result concerns the reduced denominator of the actual harmonic sum. It includes $s=0$ and $N=0$ and supplies the finite clearing bound used in the arithmetic argument. It makes no lower-bound or asymptotic prime-distribution assertion.",
+      "source_milestone_id": "47f616bb-5d22-49bc-b976-9ed27e75f721"
+    },
+    {
+      "theorem_id": "220d4d7b-4e0c-4780-a2d9-2b3cd0680cf2",
+      "milestone_title": "Lemma 2, limit consequence — Normalized denominator error",
+      "milestone_description": "Let $h_i,r_i$ be arbitrary rational families along a filter and let $s_i\\ge0$ be a real scale. If $\\ell(r_i)/s_i\\to0$, then\n\n$$\\frac{\\ell(h_i+r_i)-\\ell(h_i)}{s_i}\\longrightarrow0.$$\n\nNo limiting rate or sign condition is assumed for $h_i$. Here $\\ell$ is the logarithm of the actual reduced denominator. This is the unconditional stability mechanism; it does not prove the separate harmonic prime-number-theorem baseline.\n\n**Formalization Note.** The statement also permits zero scale, using Lean's total real division convention $x/0=0$. On strictly positive scales it is the ordinary mathematical quotient. The harmonic application uses scale $N$, which is positive eventually.",
+      "source_milestone_id": "6d787fd8-9f7f-4bd4-819e-90aa98566c9e"
+    },
+    {
+      "theorem_id": "d2029496-11e6-49e5-b207-b18c2b5cf8fb",
+      "milestone_title": "Corollary 3, stability step — Transfer of an established rate",
+      "milestone_description": "Let $h_i,r_i$ be rational families along a filter, let $s_i\\ge0$, and let $\\alpha\\in\\mathbb R$. If $\\ell(h_i)/s_i\\to\\alpha$ and $\\ell(r_i)/s_i\\to0$, then\n\n$$\\frac{\\ell(h_i+r_i)}{s_i}\\longrightarrow\\alpha.$$\n\nThe conclusion transfers an already established baseline rate; that baseline is an explicit hypothesis, not a new axiom. Applied to generalized harmonic sums it is the stability part of the original corollary, and leaves their PNT-dependent baseline proof as a separate task.\n\n**Formalization Note.** The statement also permits zero scale, using Lean's total real division convention $x/0=0$. On strictly positive scales it is the ordinary mathematical quotient. The harmonic application uses scale $N$, which is positive eventually.",
+      "source_milestone_id": "3f7226d5-ea0d-4c66-9228-c08cf0357518"
+    },
+    {
+      "theorem_id": "88f03ef4-6450-42cd-97d3-24e924ee4e1c",
+      "milestone_title": "Finite prime blocks — Product divisor of the harmonic denominator",
+      "milestone_description": "Let $s>0$, $K,N\\ge0$, and let $S$ be a finite set of primes. Put $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ and\n\n$$E_{s,K}=\\prod_{k=1}^{K}\\left|\\operatorname{num}(H_k^{(s)})\\right|.$$\n\nSuppose every $p\\in S$ satisfies\n\n$$p\\le N,\\qquad \\lfloor N/p\\rfloor\\le K,\\qquad K<p,\\qquad E_{s,K}<p.$$\n\nThen the full finite prime-power product divides the reduced positive harmonic denominator:\n\n$$\\prod_{p\\in S}p^s\\mid\\operatorname{den}(H_N^{(s)}).$$\n\nAll hypotheses refer to the actual finite harmonic prefixes. The explicit exception bound is a sufficient way to exclude their numerator prime factors; it is not a claim that every large prime is automatically a unit. The theorem supplies finite arithmetic and does not assert any asymptotic prime count or denominator growth rate.",
+      "source_milestone_id": "53c67347-f0da-4267-a8f5-7034f15fa3fa"
+    },
+    {
+      "theorem_id": "d1e6ecea-242f-412b-b0b2-fc517132c9b3",
+      "milestone_title": "Finite prime blocks — Actual harmonic log denominator lower bound",
+      "milestone_description": "Let $s>0$, $K,N\\ge0$, and let $S$ be a finite set of primes. With $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ and $E_{s,K}=\\prod_{k=1}^{K}|\\operatorname{num}(H_k^{(s)})|$, suppose every $p\\in S$ satisfies\n\n$$p\\le N,\\qquad \\lfloor N/p\\rfloor\\le K,\\qquad K<p,\\qquad E_{s,K}<p.$$\n\nThen\n\n$$s\\sum_{p\\in S}\\log p\\le\\log\\operatorname{den}(H_N^{(s)}).$$\n\nHere the denominator is fully reduced and positive. The finite inequality holds for every admitted finite prime set, including the empty set. It is the arithmetic lower bound before applying the prime number theorem; no asymptotic prime-distribution or full-sequence denominator-rate statement is part of the conclusion.",
+      "source_milestone_id": "d9eb62c4-3403-42fe-b0b5-d855961c0d71"
+    },
+    {
+      "theorem_id": "e154a4ca-96a1-4257-b8a1-3a83e98f4111",
+      "milestone_title": "Finite prime blocks — Exact exponent with the actual unit prefix",
+      "milestone_description": "Let $s>0$ and $N\\ge0$, and let $p$ be prime with $p\\le N<p^2$. If $p$ does not divide the reduced numerator of the actual prefix $H_{\\lfloor N/p\\rfloor}^{(s)}$, then\n\n$$v_p\\!\\left(\\operatorname{den}(H_N^{(s)})\\right)=s,\\qquad H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}.$$\n\nThe numerator-unit condition is essential. For example, $H_2^{(9)}=513/512$ has a factor $19$ in its numerator, and for $N=38,p=19$ the actual denominator exponent is eight instead of nine. The theorem concerns the exact reduced positive denominator for each admitted parameter; it does not invoke the prime number theorem.",
+      "source_milestone_id": "ff0bbe6b-debc-4c85-b136-7e1619f3e0c7"
+    },
+    {
+      "theorem_id": "dbbbbec1-10e9-4f66-a0a7-b9f9cf1cdf48",
+      "milestone_title": "C3 — Genuine coefficient signed lower bound for every even degree",
+      "milestone_description": "For every pair of natural numbers $d,m$, the actual highest coefficient $A_{2d,m}$ of the original short-zero construction satisfies\n\n$$(-1)^{m+d}A_{2d,m}\\ge28\\binom{2d}{d}\\binom{3d}{d}\\binom{d+m}{m}^{14}>0.$$\n\nThe theorem covers all even degrees $n=2d$, including $n=0$, and every $m\\ge0$. In particular it applies to every even $n\\ge2$ in the original analytic parameter domain $14m\\le3n+1$. The product $\\binom{2d}{d}\\binom{3d}{d}$ is $(3d)!/(d!)^3$, so this is the fully explicit bound in section 6. No positivity, gamma expansion or nonvanishing assumption is imposed on the coefficient. This concerns the finite coefficient $A$, and does not assert nonvanishing or decay of $A\\zeta(9)+B$.",
+      "source_milestone_id": "8a046cad-15cc-483e-9a33-26b48c604d10"
+    },
+    {
+      "theorem_id": "50a9559f-7576-411d-a592-fc2f2527b1cd",
+      "milestone_title": "C3 — Genuine short-zero coefficient nonvanishing for all even degrees",
+      "milestone_description": "For every even natural number $n$ and every natural number $m$, the exact finite coefficient\n\n$$A_{n,m}=28\\sum_{j=0}^{n}(-1)^{m+j}\\binom{n}{j}^{3}\\binom{j+m}{m}^{7}\\binom{n-j+m}{m}^{7}$$\n\nis nonzero. This includes degree zero and, in particular, closes the original C3 coefficient-nonvanishing claim for every even $n\\ge2$ with $14m\\le3n+1$. The only hypothesis is evenness of $n$; no real-root property, gamma expansion, positivity identity or coefficient lower bound is assumed. It does not assert $A_{n,m}\\zeta(9)+B_{n,m}\\ne0$.",
+      "source_milestone_id": "02c2a241-cd19-4bdc-93b2-360b6f44123c"
+    },
+    {
+      "theorem_id": "2ccce2b3-fbf8-419b-9ad4-52a6c527fd25",
+      "milestone_title": "PNT transfer — Actual Chebyshev psi normalized rate",
+      "milestone_description": "The actual Chebyshev function satisfies $\\psi(x)/x\\to1$ as the real variable $x\\to+\\infty$. This theorem has no hypotheses. It derives the limit from the already proved MediumPNT error estimate for the actual $\\psi$, with a positive constant and relative error $\\exp(-c(\\log x)^{1/10})$ tending to zero.",
+      "source_milestone_id": "746585c9-a367-475b-8266-c66249510cfc"
+    },
+    {
+      "theorem_id": "a4d7220e-a967-499d-a96b-5d020a46e1d3",
+      "milestone_title": "Theorem 1 — Unconditional actual harmonic denominator rate",
+      "milestone_description": "For every fixed positive natural number $s$, write $H_N^{(s)}=\\sum_{j=1}^N j^{-s}$ in lowest terms. Then $\\log\\operatorname{den}(H_N^{(s)})/N\\to s$ along all natural $N\\to\\infty$. The only hypothesis is $s>0$. The prime-number-theorem inputs and the harmonic baseline are proved in the complete solution rather than assumed.",
+      "source_milestone_id": "fd54ad0c-de79-4df4-a0bd-ef471d33b300"
+    },
+    {
+      "theorem_id": "6c9f6988-64e9-43e9-9ee6-6ecc0e61d8ac",
+      "milestone_title": "Mellin harmonic baseline — Ninth-order doubled denominator rate eighteen",
+      "milestone_description": "For the actual rational ninth-order harmonic sum at the double endpoint, $\\log\\operatorname{den}(H_{2M}^{(9)})/M\\to18$ as $M\\to\\infty$ through natural numbers. There are no hypotheses; the factor eighteen is nine times the exact endpoint scaling factor two. This supplies the harmonic denominator baseline in the right-shifted Mellin construction.",
+      "source_milestone_id": "211099fc-1e21-4b63-b5fd-a1d5d3136b39"
+    },
+    {
+      "theorem_id": "490b871a-06b7-49c4-9053-05de764299d5",
+      "milestone_title": "Corollary 3 — Unconditional harmonic baseline under small-denominator perturbations",
+      "milestone_description": "For every fixed positive natural order $s$ and every rational sequence $r_N$ such that $\\log\\operatorname{den}(r_N)/N\\to0$, one has $\\log\\operatorname{den}(H_N^{(s)}+r_N)/N\\to s$. The perturbation is arbitrary subject to its stated sublinear logarithmic denominator condition. The harmonic baseline and prime-number-theorem inputs are proved; they are not extra hypotheses.",
+      "source_milestone_id": "d92bb82c-7848-4a47-b778-90dd62f1bc51"
+    },
+    {
+      "theorem_id": "ca2e0aab-8e1d-4199-980c-edc10cd4eabb",
+      "milestone_title": "Z9.F finite entry — Actual rational-function pole clearance",
+      "milestone_description": "Let $n,j$ be natural numbers with $j\\le n$. Define $N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i)$, $Q_n(t)=\\prod_{k=0}^{n}(t+k)$ and $R_n(t)=N_n(t)/Q_n(t)^9$. Let $Q_{n,j}$ omit the factor $t+j$, and write $\\widetilde R_{n,j}=N_n/Q_{n,j}^9$. At every rational point $t$ satisfying $t+k\\ne0$ for all $0\\le k\\le n$,\n\n$$R_n(t)(t+j)^9=\\widetilde R_{n,j}(t).$$\n\nThis identifies the actual cleared expression on the regular domain. It is a finite clearing identity; evaluation of the uncleared rational function at a pole is not used as a coefficient.",
+      "source_milestone_id": "2598c292-40a5-4d6b-afe1-fa472ec7341c"
+    },
+    {
+      "theorem_id": "f7fc231d-18a3-4968-91f0-54f8ace0c892",
+      "milestone_title": "Z9.F finite entry — Genuine highest-pole integer formula",
+      "milestone_description": "For natural numbers $n,j$ with $j\\le n$, let $C_{n,j}$ be the value at $t=-j$ of the actual cleared expression $N_n(t)/Q_{n,j}(t)^9$, where $N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i)$ and $Q_{n,j}(t)=\\prod_{0\\le k\\le n,\\ k\\ne j}(t+k)$. Then\n\n$$C_{n,j}=(-1)^{n+j}\\binom{n}{j}^{9}\\binom{n+j}{n}\\binom{2n-j}{n}.$$\n\nThe coefficient is defined by the original products and clearing operation; this identity computes that value. It covers both endpoint poles $j=0,n$ and the case $n=0$, without a parity assumption.",
+      "source_milestone_id": "b101f9d2-45cb-4e6e-b6df-6d28ab10580b"
+    },
+    {
+      "theorem_id": "970374db-a705-4462-9ace-d0a494c3672e",
+      "milestone_title": "Z9.F finite entry — Actual weighted highest-pole multiplier",
+      "milestone_description": "Let $n,j$ be natural numbers, with $n$ even and $j\\le n$, and let $W\\in\\mathbb Q[X]$ be any rational polynomial. Starting from the actual rational function $R_n(t)=N_n(t)/Q_n(t)^9$, multiply by $W(t(t+n))$. Define its highest cleared-pole value $C^W_{n,j}$ by evaluating $N_n(t)W(t(t+n))/Q_{n,j}(t)^9$ at $t=-j$. Then\n\n$$C^W_{n,j}=(-1)^j\\binom{n}{j}^{9}\\binom{n+j}{n}\\binom{2n-j}{n}\\,W\\bigl(-j(n-j)\\bigr).$$\n\nThis computes the effect of the actual polynomial multiplier on the highest cleared-pole value. The multiplier is arbitrary, including the zero polynomial, and the weighted coefficient can be zero. The statement covers $n=0$ and does not assert a full Laurent expansion, a lower-coefficient map, or an infinite-sum identity.",
+      "source_milestone_id": "34d52943-3d41-4f79-b991-310f45c29c05"
+    },
+    {
+      "theorem_id": "064cbef1-f817-40cb-b85b-29a79a5d5611",
+      "milestone_title": "Z9.F local model — Uniqueness of the genuine cleared formal series",
+      "milestone_description": "For any natural numbers $n,j$, let $T_j(z)=z-j$, $N_{n,j}(z)=n!^7\\prod_{i=1}^{n}(T_j(z)-i)\\prod_{i=1}^{n}(T_j(z)+n+i)$ and $D_{n,j}(z)=\\prod_{0\\le k\\le n,\\ k\\ne j}(T_j(z)+k)$. Let $S_{n,j}=N_{n,j}(D_{n,j}^9)^{-1}$ in $\\mathbb Q[[z]]$. For every formal power series $S\\in\\mathbb Q[[z]]$,\n\n$$S D_{n,j}^9=N_{n,j}\\quad\\Longrightarrow\\quad S=S_{n,j}.$$\n\nThe actual denominator has nonzero constant coefficient, so this is the unique formal local quotient of the genuine shifted products. The uniqueness statement holds for all natural $j$; its application to a pole of the original rational function uses $j\\le n$. No numerical evaluation or analytic convergence of the formal series is asserted.",
+      "source_milestone_id": "2ea4a205-b9d0-4cee-b8aa-d303c2678599"
+    },
+    {
+      "theorem_id": "3c3fe37c-b5a4-4ecc-b741-18ddee5254de",
+      "milestone_title": "Z9.F local model — All nine actual weighted coefficient convolutions",
+      "milestone_description": "Let $n,j,s$ be natural numbers with $j\\le n$ and $1\\le s\\le9$, and let $W\\in\\mathbb Q[X]$ be arbitrary. From the actual shifted numerator $N_{n,j}$ and erased-factor denominator $D_{n,j}$, define $S_{n,j}=N_{n,j}(D_{n,j}^9)^{-1}\\in\\mathbb Q[[z]]$. Set $U_{n,j}(z)=-j(n-j)+(n-2j)z+z^2$, $c_{n,j,\\ell}=[z^{9-\\ell}]S_{n,j}$ and $c^W_{n,j,s}=[z^{9-s}](S_{n,j}W(U_{n,j}))$. Then\n\n$$c^W_{n,j,s}=\\sum_{\\ell=s}^{9}c_{n,j,\\ell}[z^{\\ell-s}]W\\bigl(-j(n-j)+(n-2j)z+z^2\\bigr).$$\n\nEvery coefficient is extracted from the genuine formal quotient. The identity covers all nine local orders, all natural $n$ including zero, and all polynomial multipliers including zero. It supplies a local finite convolution; it does not assert a global partial-fraction formula, a full aggregate coefficient map, or its inverse.",
+      "source_milestone_id": "8c38d285-3685-4522-8bcb-5e75603edb1d"
+    },
+    {
+      "theorem_id": "3b41126b-9a8a-409c-bd06-e840790f686b",
+      "milestone_title": "Z9.F local model — Exact integer-polynomial multiplier convolution",
+      "milestone_description": "Let $n,j,s$ be natural numbers with $j\\le n$ and $1\\le s\\le9$, and let $W\\in\\mathbb Z[X]$ be arbitrary. Put $U^{\\mathbb Z}_{n,j}(z)=-j(n-j)+(n-2j)z+z^2\\in\\mathbb Z[z]$, and let $\\overline W\\in\\mathbb Q[X]$ be the coefficientwise image of $W$. Define the actual formal quotient $S_{n,j}=N_{n,j}(D_{n,j}^9)^{-1}$ from the shifted finite products and set $c_{n,j,\\ell}=[z^{9-\\ell}]S_{n,j}$, $c^{\\overline W}_{n,j,s}=[z^{9-s}](S_{n,j}\\overline W(U_{n,j}))$. Then\n\n$$c^{\\overline W}_{n,j,s}=\\sum_{\\ell=s}^{9}c_{n,j,\\ell}\\,\\iota\\!\\left([z^{\\ell-s}]W(U^{\\mathbb Z}_{n,j}(z))\\right),$$\n\nwhere $\\iota:\\mathbb Z\\to\\mathbb Q$ is the natural inclusion. The multiplier coefficients inside $\\iota$ are integers, while the actual local coefficients $c_{n,j,\\ell}$ remain rational and need not be integers. This applies in particular to integer quartic multipliers. Arbitrary-degree local validity does not imply the degree constraints or convergence needed for an infinite-sum application.",
+      "source_milestone_id": "1f2e60a3-739d-4696-a5c8-119ee57bc32b"
+    },
+    {
+      "theorem_id": "6d9445a4-3353-476d-a21f-6a1875fda71d",
+      "milestone_title": "Z9.F local array — Zero genuine coefficients force the proper multiplier to vanish",
+      "milestone_description": "Let $n\\ge0$ be natural and $W\\in\\mathbb Q[X]$. Assume $2n+2\\deg W<9(n+1)$. Take the actual coefficients $c^W_{n,j,s}=[z^{9-s}](N_{n,j}(D_{n,j}^{9})^{-1}W((z-j)(z-j+n)))$ in $\\mathbb Q[[z]]$, where $N_{n,j}$ and $D_{n,j}$ are the genuine shifted numerator and erased pole-factor denominator. If $c^W_{n,j,s}=0$ for every $0\\le j\\le n$ and $1\\le s\\le9$, then $$W=0.$$ This is the zero-kernel criterion for the complete actual local array in the strict proper domain. It does not concern only five aggregated zeta/constant outputs or assert their injectivity.",
+      "source_milestone_id": "84d118d2-fbb2-4f34-adc1-3892633d4674"
+    },
+    {
+      "theorem_id": "1c1a796f-fcd9-49fa-b57b-721bbdf48ef6",
+      "milestone_title": "Z9.F local array — Injectivity of the complete actual pole-coefficient array",
+      "milestone_description": "For every natural $n$, restrict rational polynomials $W$ to $2n+2\\deg W<9(n+1)$ and send them to the complete array of actual formal-jet coefficients $$(c^W_{n,j,s})_{0\\le j\\le n,\\ 1\\le s\\le9}.$$ This map is injective: two multipliers in that domain with identical complete arrays are equal. Every coefficient is taken from the genuine shifted-product formal quotient, not abstract data. No surjectivity, inverse of the original five-dimensional aggregate F, or exact infinite L-sum is claimed.",
+      "source_milestone_id": "c4c34087-253b-4c35-bfa3-abc33a63768f"
+    },
+    {
+      "theorem_id": "ca673a47-8c42-4909-8ab2-9384503415ec",
+      "milestone_title": "Z9.F local array — Every quartic multiplier satisfies strict properness",
+      "milestone_description": "For every natural $n$, including zero, and every $W\\in\\mathbb Q[X]$ with natural degree at most four, $$2n+2\\deg W<9(n+1).$$ Thus every rational quartic multiplier satisfies the strict proper-degree condition for the complete local-array injectivity result. Strict properness gives only at most order $1/t$ decay, without analytic summability or stronger asymptotic cancellation. At $n=0$, $W=X^4$ meets this condition and the actual weighted rational function is $1/t$ on its regular domain, so a simple pole remains possible.",
+      "source_milestone_id": "afc1528c-b44f-4512-b831-a084dedd2016"
+    },
+    {
+      "theorem_id": "20e45c17-4aac-4a4c-86cb-45f107407ff5",
+      "milestone_title": "Z9.F global PF — The actual candidate reconstructs every genuine local coefficient",
+      "milestone_description": "Let $n,j,s$ be natural numbers, $j\\le n$, $1\\le s\\le9$, and let $W\\in\\mathbb Q[X]$ be arbitrary. Let $c^W_{n,j,s}$ be the actual coefficient of $z^{9-s}$ in the genuine weighted local formal quotient. Construct $P_n^W$ from these actual coefficients by $\\sum_{i=0}^{n}\\sum_{r=1}^{9}c^W_{n,i,r}(D^*_{n,i})^9(X+i)^{9-r}$, where $D^*_{n,i}=\\prod_{k\\ne i}(X+k)$. Its cleared candidate local series satisfies\n\n$$[z^{9-s}]\\bigl(P_n^W(z-j)(D_{n,j}(z)^9)^{-1}\\bigr)=c^W_{n,j,s}.$$\n\nThis is a genuine all-nine local coefficient match. It needs neither strict properness nor a global partial-fraction identity as an assumption. It remains valid when the multiplier is outside the proper domain.",
+      "source_milestone_id": "1c89dc35-6f30-48ab-a729-0d2a3473eee4"
+    },
+    {
+      "theorem_id": "0a3beccc-45c4-43dd-a023-16d5c4a9d849",
+      "milestone_title": "Z9.F global PF — Exact actual polynomial partial-fraction identity",
+      "milestone_description": "For any natural $n$ and $W\\in\\mathbb Q[X]$, assume the strict proper-degree condition $2n+2\\operatorname{natdeg}W<9(n+1)$. With $N_n(X)=n!^7\\prod_{i=1}^{n}(X-i)(X+n+i)$, $U_n(X)=X(X+n)$ and the actual formal local coefficients $c^W_{n,j,s}$, one has\n\n$$N_n(X)W(U_n(X))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}c^W_{n,j,s}\\left(\\prod_{0\\le k\\le n,\\ k\\ne j}(X+k)\\right)^9(X+j)^{9-s}.$$\n\nThis is an exact polynomial identity for the actual numerator and actual local coefficient candidate, including $n=0$. Strict properness is essential: at $n=0,W=X^5$ the actual numerator is $X^{10}$ while the nine-order candidate is zero, so the identity would fail without the condition.",
+      "source_milestone_id": "3509a6be-1481-49a0-afd0-d6ae745a337b"
+    },
+    {
+      "theorem_id": "d6bef8c0-d9cf-418e-ba46-2332ecca0c10",
+      "milestone_title": "Z9.F global PF — Actual global partial fractions at regular rational points",
+      "milestone_description": "Let $n\\ge0$ be natural, $W\\in\\mathbb Q[X]$, and assume $2n+2\\operatorname{natdeg}W<9(n+1)$. Set $R_n(t)=n!^7\\prod_{i=1}^{n}(t-i)(t+n+i)/(\\prod_{k=0}^{n}(t+k))^9$, and take $c^W_{n,j,s}$ from its actual weighted local formal quotient. At every rational $t$ with $t+k\\ne0$ for all $0\\le k\\le n$,\n\n$$R_n(t)W(t(t+n))=\\sum_{j=0}^{n}\\sum_{s=1}^{9}\\frac{c^W_{n,j,s}}{(t+j)^s}.$$\n\nThis is a finite exact partial-fraction equality at regular rational points. It does not assert infinite-sum convergence, vanishing of the simple-pole total, exact L, or injectivity/invertibility of the original aggregate F. At $n=0,W=X^4$ properness allows the simple pole $1/t$; $W=X^5$ is outside the proper domain.",
+      "source_milestone_id": "fa265d78-865c-4471-9a7b-8401ca5cbbeb"
+    },
+    {
+      "theorem_id": "6c193bd2-e727-4992-8957-82c250a0b45c",
+      "milestone_title": "Z9.F reflection — Signs of the genuine reflected local coefficients",
+      "milestone_description": "Let $n,j,s$ be natural numbers, assume $n$ is even, $j\\le n$, $1\\le s\\le9$, and take any $W\\in\\mathbb Q[X]$. The genuine local formal coefficients of the actual weighted rational function satisfy\n\n$$c^W_{n,n-j,s}=(-1)^{s+1}c^W_{n,j,s}.$$\n\nThis follows from actual numerator/denominator reflection and the unit-denominator formal series identity, without properness, arbitrary coefficient data or a global coefficient-reflection hypothesis. The Even n condition is retained; no assertion for odd n is made.",
+      "source_milestone_id": "136731dc-3e6c-46df-b682-bcf6ef722f6e"
+    },
+    {
+      "theorem_id": "b40f468c-1d43-46e1-a0fe-bb59afc285e7",
+      "milestone_title": "Z9.F reflection — Actual even-order totals vanish for even n",
+      "milestone_description": "Let $n,s$ be natural numbers with $n$ even, $s$ even and $1\\le s\\le9$, and take any $W\\in\\mathbb Q[X]$. The total of the actual local coefficients satisfies\n\n$$\\rho_{n,s}(W)=\\sum_{j=0}^{n}c^W_{n,j,s}=0.$$\n\nNo properness premise is needed. This includes $s=2,4,6,8$ and $n=0$. For $n=0,W=X^4$ all four even-order totals vanish, but the actual simple-pole total is one; this theorem does not claim that it vanishes.",
+      "source_milestone_id": "856a5d45-3f1e-4688-9810-d4cfe573212e"
+    },
+    {
+      "theorem_id": "8a1d6ae0-325a-4d46-acd5-448bcf59814c",
+      "milestone_title": "Z9.F reflection — Strong degree gap cancels the actual simple-pole total",
+      "milestone_description": "For any natural $n$ and $W\\in\\mathbb Q[X]$, assume the genuine stronger degree condition $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$. Then the actual simple-pole coefficient total vanishes:\n\n$$\\rho_{n,1}(W)=\\sum_{j=0}^{n}c^W_{n,j,1}=0.$$\n\nThis uses the actual finite global polynomial partial-fraction identity and its coefficient at degree $9n+8$. It does not require Even n: every rational quartic is StrongProper for $n\\ge1$, including $n=1$. Strict properness alone is insufficient: $n=0,W=X^4$ is proper but not StrongProper, with actual function $1/t$ and $\\rho_{0,1}=1$. No infinite L-sum, convergence or original five-dimensional aggregate F inverse follows from this finite theorem.",
+      "source_milestone_id": "420f0a3b-4c15-4a3e-b867-47786de58b39"
+    },
+    {
+      "theorem_id": "500f3668-d61c-42c7-adee-61ab5c3f742c",
+      "milestone_title": "Z9.F finite sum — Actual rational family has the exact finite harmonic identity",
+      "milestone_description": "Let $n,T$ be natural numbers and $W\\in\\mathbb Q[X]$. Assume the actual strict proper-degree condition $2n+2\\operatorname{natdeg}W<9(n+1)$. Then\n\n$$L_{n,T}(W)=\\sum_{j=0}^n\\sum_{s=1}^9c^W_{n,j,s}(H_{T+j}^{(s)}-H_j^{(s)}).$$\n\nEvery $c^W_{n,j,s}$ is extracted from the actual weighted local formal series. The genuine global rational partial fractions apply at every positive integer $t$, whose denominators $t+j$ are nonzero; only finite sums are exchanged. This includes $T=0$ and does not assume arbitrary coefficients, reflection, an infinite sum or convergence.",
+      "source_milestone_id": "67462884-408d-4a6c-8872-3608961b55f5"
+    },
+    {
+      "theorem_id": "497fe537-7be9-4fad-8984-43229aafb166",
+      "milestone_title": "Z9.F finite sum — Genuine constant, coefficient totals and shifted tail",
+      "milestone_description": "For natural $n,T$ and $W\\in\\mathbb Q[X]$, under the same actual strict proper condition $2n+2\\operatorname{natdeg}W<9(n+1)$, the genuine finite sum satisfies\n\n$$L_{n,T}(W)=B_n(W)+\\sum_{s=1}^9\\rho_{n,s}(W)H_T^{(s)}+E_{n,T}(W).$$\n\nThe simple-pole term $\\rho_{n,1}(W)H_T^{(1)}$ is retained. No cancellation premise is introduced. For $n=0,W=X^4$, strict properness holds, $\\rho_{0,1}=1$, $B_0=E_{0,T}=0$, and the actual finite sum is $H_T^{(1)}$. Therefore strict properness alone does not imply simple-pole cancellation or infinite L convergence. The separately conditional odd/no-simple wrappers are not submitted as public endpoints.",
+      "source_milestone_id": "f0b99100-bc15-459b-a6a0-dec19f15ff0a"
+    },
+    {
+      "theorem_id": "dc845325-063a-4a97-a4e7-86453335e09a",
+      "milestone_title": "Z9.F finite sum — Exact generalized harmonic shift difference",
+      "milestone_description": "For every natural order $s$, cutoff $T$ and shift $j$, the existing actual finite harmonic numbers obey\n\n$$H_{T+j}^{(s)}-H_T^{(s)}=\\sum_{k=1}^j\\frac1{(T+k)^s}.$$\n\nThere is no restriction $s\\ge1$: this includes $s=0$, as well as $T=0$ and $j=0$. Empty finite intervals give zero and all terms use the existing rational harmonicPower definition. No properness, coefficient, reflection or convergence hypothesis is required.",
+      "source_milestone_id": "8045ad33-d528-4519-9ffd-8fc5f53d3840"
+    },
+    {
+      "theorem_id": "e202eaff-c82b-4d8b-b7a2-8b2896798987",
+      "milestone_title": "Z9.F infinite sum — Actual strong-proper rational family is absolutely summable",
+      "milestone_description": "For every natural $n$ and $W\\in\\mathbb Q[X]$ with $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$, the genuine weighted sequence on positive natural arguments is absolutely summable: $\\sum_{k\\ge0}|f_{n,W}(k+1)|<\\infty$. No Even n premise is required. The actual simple-pole coefficient total is proved zero from the stronger degree gap; its simple-pole terms are grouped into convergent differences. There is no supplied summability or cancellation hypothesis. Strict properness alone is insufficient: $n=0,W=X^4$ gives the divergent harmonic sequence.",
+      "source_milestone_id": "35b04d3b-1846-4765-afe9-e3ad2df556ed"
+    },
+    {
+      "theorem_id": "25ed8da5-f069-4864-95b4-3701e2ddec47",
+      "milestone_title": "Z9.F infinite sum — Genuine HasSum to the exact odd-zeta linear form",
+      "milestone_description": "Let $n$ be even and $W\\in\\mathbb Q[X]$ satisfy $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$. Then the actual positive rational sequence has genuine HasSum to $B_n(W)+\\rho_{n,3}(W)\\Re\\zeta(3)+\\rho_{n,5}(W)\\Re\\zeta(5)+\\rho_{n,7}(W)\\Re\\zeta(7)+\\rho_{n,9}(W)\\Re\\zeta(9)$. Both summability and actual rho cancellations are proved, without additional rho/summability/zeta inputs. The specialization $n=0,W=X^3$ gives the actual zeta3 series. In contrast, $n=0,W=X^4$ is outside the strong domain: its totalized Lean tsum is0 but it has no HasSum to any real number.",
+      "source_milestone_id": "8b92b17c-038c-4a03-93d8-fde095fbfb32"
+    },
+    {
+      "theorem_id": "2de22270-2e72-4a2a-8279-109158a6bc9d",
+      "milestone_title": "Z9.F infinite sum — Original even integer-quartic L identity",
+      "milestone_description": "For every even integer $n\\ge2$ and integer polynomial $W\\in\\mathbb Z[X]$ with degree at most4, cast its coefficients to $\\mathbb Q$ and form the original actual p9,q1,m=n,d0 weighted rational function. The genuine sequence on positive natural arguments has HasSum to its exact $B+\\rho_3\\Re\\zeta(3)+\\rho_5\\Re\\zeta(5)+\\rho_7\\Re\\zeta(7)+\\rho_9\\Re\\zeta(9)$ linear form. The stronger degree bound is proved from the stated quartic/even-n domain. Integer W is not a claim that every rational local coefficient or full linear form is an integer. General parameters, inverse denominator heights, a small nonzero integer-form sequence, J and irrationality are separate obligations.",
+      "source_milestone_id": "242ec8ca-c2f7-4884-b3ec-7c88a9ca6a2d"
+    },
+    {
+      "theorem_id": "a06430dc-7541-40b3-b39c-d194c8e0a8a5",
+      "milestone_title": "Z9.F shift degree — Exact coefficient of the genuine polynomial difference",
+      "milestone_description": "For every natural $n$ and nonzero rational polynomial $H$ of natural degree $d$, the coefficient of $X^{d+10}$ in the actual $D_n(H)$ equals $(7n-2-d)\\operatorname{LC}(H)$. This identity needs only $H\\ne0$; no positivity, parity, degree-gap, monicity or preassigned operator relation is assumed. The degree-$d+11$ terms cancel in the actual polynomial calculation.",
+      "source_milestone_id": "ddc710e2-2e44-48ad-883c-ec36137659ab"
+    },
+    {
+      "theorem_id": "e2ff238b-b15f-4892-8a65-1350390813ae",
+      "milestone_title": "Z9.F shift degree — Actual operator degree in the nonresonant domain",
+      "milestone_description": "Let $n\\ge1$ and let nonzero $H\\in\\mathbb Q[X]$ satisfy $d=\\operatorname{natdeg}H\\le7n-3$. Then $d+10\\le\\operatorname{natdeg}D_n(H)$. The exact coefficient is proved nonzero from these original inequalities. No parity or monicity premise is added. The bound matters: $n=1,H=X^5$ lies outside it and has vanishing coefficient of $X^{15}$ although $D_1(X^5)(1)=-1152$.",
+      "source_milestone_id": "98737ac0-70fb-4330-b058-6367c1edb549"
+    },
+    {
+      "theorem_id": "410070f2-459b-4933-9498-2e30e32cc87a",
+      "milestone_title": "Z9.F shift degree — Low operator degree forces the quotient to vanish",
+      "milestone_description": "Let $n\\ge1$ and $H\\in\\mathbb Q[X]$ satisfy $\\operatorname{natdeg}H\\le7n-3$ and $\\operatorname{natdeg}D_n(H)\\le8$. Then $H=0$. No nonzero-input premise or kernel equation is assumed: the original low operator degree and quotient degree bound yield a contradiction if $H\\ne0$. Zero input, constant input and the $n=1,X^5$ resonance are preserved by exact boundary checks. These polynomial facts do not by themselves state a rational telescoper relationship, coefficient-map inverse or zeta irrationality.",
+      "source_milestone_id": "a0f4cd5a-dc5e-4d8c-bb06-63be745c84d5"
+    },
+    {
+      "theorem_id": "698c5170-0bc3-479a-a014-bdc3dc5d4e4a",
+      "milestone_title": "Z9.F aggregate — Additivity of the actual five outputs",
+      "milestone_description": "Let $n$ be any natural number and let $W,V\\in\\mathbb Q[X]$. For the actual aggregate\n\n$$F_n(W)=(B_n(W),\\rho_{n,3}(W),\\rho_{n,5}(W),\\rho_{n,7}(W),\\rho_{n,9}(W)),$$\n\nwhere every coefficient is extracted from the genuine weighted formal local series and $B_n$ is the finite negative harmonic constant, one has\n\n$$F_n(W+V)=F_n(W)+F_n(V).$$\n\nThe equality is of all five rational coordinates, with pointwise addition. It holds for arbitrary rational polynomials and includes $n=0$ and zero polynomials, without an evenness, degree, properness or cancellation hypothesis.",
+      "source_milestone_id": "47042e78-2907-45f0-943d-bbafdfc24ee5"
+    },
+    {
+      "theorem_id": "6d601e77-6dc4-4529-9542-673ee50ebbc2",
+      "milestone_title": "Z9.F aggregate — Exact recovery from genuine quartic coordinates",
+      "milestone_description": "Let $W\\in\\mathbb Q[X]$ have natural degree at most four. Write $\\pi(W)_i=[X^i]W$ for $0\\le i\\le4$, and define $C(a)=\\sum_{i=0}^4 a_iX^i$ for a rational five-coordinate vector $a$. Then\n\n$$C(\\pi(W))=W.$$\n\nThis recovers the actual polynomial from its five coefficients, including the zero polynomial, constants and nonmonic quartics. The degree bound is essential. It is a statement about quartic coordinates and does not assert that the aggregate $F_n$ has an inverse.",
+      "source_milestone_id": "99be1855-11ee-46e5-9ecb-79a5a46c154b"
+    },
+    {
+      "theorem_id": "968f781f-c1a2-42aa-b0a4-be1ff3dbb93b",
+      "milestone_title": "Z9.F aggregate — Actual zero outputs cancel all coefficient totals",
+      "milestone_description": "Let $n$ be an even natural number, and let $W\\in\\mathbb Q[X]$ satisfy the actual stronger degree bound\n\n$$2n+2\\operatorname{natdeg}(W)+2\\le9(n+1).$$\n\nAssume the genuine five-output aggregate vanishes, $F_n(W)=0$, with coordinates $B_n(W),\\rho_{n,3}(W),\\rho_{n,5}(W),\\rho_{n,7}(W),\\rho_{n,9}(W)$. Then, for every natural order $s$ with $1\\le s\\le9$,\n\n$$\\rho_{n,s}(W)=\\sum_{j=0}^n c^W_{n,j,s}=0.$$\n\nThese are the actual totals of the weighted local coefficients. Evenness and the stronger degree bound are retained. The conclusion concerns nine totals, not the individual local coefficient array, and it does not infer $W=0$. Strict properness alone would not suffice: $n=0,W=X^4$ has $F_0(X^4)=0$ but $\\rho_{0,1}=1$; it is proper and fails the stronger bound.",
+      "source_milestone_id": "4cd8c754-248e-496c-bd00-b559dba65cc8"
+    },
+    {
+      "theorem_id": "23c4b8f3-9745-4ed9-8719-931e672eb5a5",
+      "milestone_title": "Z9.F telescoper — Genuine weighted rational function is a cumulative difference",
+      "milestone_description": "Let natural $n$ be even and let $W\\in\\mathbb Q[X]$ satisfy the actual strong bound $2n+2\\operatorname{natdeg}W\\le9(n+1)-2$ and the genuine aggregate $F_n(W)=0$. At every rational regular point $t$ with $t+k\\ne0$ for $0\\le k\\le n$, the actual weighted rational function equals $Q_{n,W}(t)-Q_{n,W}(t+1)$. Q is the actual cumulative local-coefficient function, not an assumed telescoper. These original domain conditions are retained. Without the strong bound, $n=0,W=X^4$ has zero aggregate and empty Q but the actual weighted value at1 is1, so the difference identity fails.",
+      "source_milestone_id": "fa8f0edd-528d-4251-b310-a9767ffeb7df"
+    },
+    {
+      "theorem_id": "41d3c1e3-8972-4ea6-ad46-a5946ba63923",
+      "milestone_title": "Z9.F telescoper — Actual cleared rational representation",
+      "milestone_description": "For every $n\\ge1$, rational polynomial $W$ and rational $t$ regular at every $t+k$, $0\\le k<n$, the actual cumulative rational function equals $P_{n,W}(t)/M_n(t)^9$. Both the numerator and denominator are defined from the actual local coefficients and pole products. No Even n, strong bound, zero aggregate or preassigned rational identity is needed for this original endpoint.",
+      "source_milestone_id": "906f29cf-f9e6-4b86-86cd-48c2ae7aa61d"
+    },
+    {
+      "theorem_id": "9e49b2d8-4a51-4bfd-b449-d665b5e5fc6d",
+      "milestone_title": "Z9.F telescoper — Actual root divisibility and quotient degree bound",
+      "milestone_description": "Let $n\\ge1$ be even, and let rational $W$ satisfy the actual strong bound and genuine $F_n(W)=0$. There exists rational polynomial $H$ such that the actual numerator $P_{n,W}=P_{0,n}H$ and $\\operatorname{natdeg}H\\le7n-3$. The actual $P_{0,n}$ has $2n+2$ distinct nodes $1,\\ldots,n+1,-n,\\ldots,-2n$. Their vanishing and divisibility are proved from the actual telescoper, regular nodes and finite/infinite sum identities; they are not extra assumptions. The zero-numerator case is included. Kernel triviality, inverse bounds and irrationality are separate results.",
+      "source_milestone_id": "91f6fbae-961f-4c08-9a2b-09c6f046221f"
+    },
+    {
+      "theorem_id": "940b61e1-e00a-4909-928d-1d640e6c909c",
+      "milestone_title": "Z9.F original kernel — Actual rational quartic kernel vanishes for even n>=2",
+      "milestone_description": "Let n>=2 be even and W be a rational polynomial of natural degree at most4. If its genuine aggregate F_n(W) is zero, then W is zero. The true rational telescoper, infinitely many positive regular evaluation points, polynomial identity and shift-degree obstruction are proved internally; none is an extra premise.",
+      "source_milestone_id": "940fed94-4875-4d98-a29c-08e897046dbf"
+    },
+    {
+      "theorem_id": "ce238b53-8b97-42f6-ac2e-191364bf4a42",
+      "milestone_title": "Z9.F original inverse — Genuine five-output map is bijective for even n>=2",
+      "milestone_description": "For each even n>=2 the original five-dimensional rational aggregate map on quartic coordinates is bijective. Injectivity follows from the actual quartic kernel result, then finite dimensionality gives surjectivity. No determinant, rank, bijection or inverse assumption is added.",
+      "source_milestone_id": "507860e7-980d-4905-98e5-f77f8e1fff37"
+    },
+    {
+      "theorem_id": "bbc02826-16b1-4012-ac43-0462f90498df",
+      "milestone_title": "Z9.F original inverse — Prescribed rational target has actual absolute HasSum",
+      "milestone_description": "For each even n>=2 and b:Fin5->Rat, the actual inverse rational quartic multiplier produces a HasSum of the actual weightedR at positive integers with value prescribedL(b), and its absolute norms are Summable. The input b contains the rational constant and zeta3,5,7,9 coefficients. This is the original genuine HasSum, not a totalized tsum identity. Integer inverse coefficients, height bounds and irrationality remain unproved here.",
+      "source_milestone_id": "c152662f-5a66-4bb0-afe6-369b24e5b884"
+    },
+    {
+      "theorem_id": "3df1ff96-5fcc-4d2e-8fc9-c673dcf4f4f4",
+      "milestone_title": "Z9 connection — Original polynomial homogeneous kernel vanishes for n>=1",
+      "milestone_description": "For every n>=1, rational polynomials P,q with natDegree(q)<=9 satisfying the actual homogeneous identity D_n P(u_n)+H_n(q)=0 must both vanish. No P-degree bound or preassigned kernel conclusion is assumed. The tenfold root argument retains n>=1; the written signed n=0 system has a nonzero kernel.",
+      "source_milestone_id": "fd45ae5b-1575-4da4-b663-57c9fe3d47f3"
+    },
+    {
+      "theorem_id": "711fc0b7-42af-4494-8765-c95a3aa449c6",
+      "milestone_title": "Z9 connection — Genuine fifteen-coordinate connection map is bijective",
+      "milestone_description": "For every n>=1, the genuine rational linear map from the five P coefficients and ten q coefficients to the fifteen even t coefficients of D_n P(u_n)+H_n(q) is bijective. Reflection recovers the whole polynomial. These even t coordinates are triangularly equivalent to the paper u coordinates; identical matrix entries are not asserted.",
+      "source_milestone_id": "5ad01f5c-65f1-4741-86a2-6953cb07f085"
+    },
+    {
+      "theorem_id": "37ff9673-ea18-4954-8859-e711491af165",
+      "milestone_title": "Z9 connection — Five original right-side systems have unique rational solutions",
+      "milestone_description": "For every n>=1 and r=0,...,4, there exists exactly one rational polynomial pair P,q of natural degrees at most four and nine satisfying the full original polynomial identity with the genuine scaled three-factor Z_n(u)(u-n-1)^r target. Rational-function, HasSum and five-output parameter transport are separate results.",
+      "source_milestone_id": "5574feca-45a4-4acf-91dd-85b73e1180ba"
+    },
+    {
+      "theorem_id": "3e15df20-1023-4b72-95ab-1ad07c34b3e5",
+      "milestone_title": "Z9.F — Actual five-output matrix is nonsingular for even n≥2",
+      "milestone_description": "For every even natural number n≥2, the matrix whose monomial rows are the actual constant/rho3/rho5/rho7/rho9 coefficient outputs has nonzero determinant. This is the actual rational-function coefficient matrix, with the specified row convention; it does not assert the result for odd n or n=0.",
+      "source": "formalization/platform/coefficient-map-matrix"
+    },
+    {
+      "theorem_id": "134e564c-4327-43b0-9ecd-e7d08fa133ec",
+      "milestone_title": "Z9.F — Selected rational quartic coefficients equal (b,a) S F inverse",
+      "milestone_description": "For even n≥2 and integer target values b,a, the coefficients of the selected rational quartic with actual output (b,0,0,0,a) are exactly (b,a) times the two-row selection matrix times the actual F inverse. The preimage is rational; neither integral polynomial coefficients nor a height or denominator bound is asserted.",
+      "source": "formalization/platform/coefficient-map-matrix"
+    },
+    {
+      "theorem_id": "bb7477e4-5539-4015-b8cf-9bad57e1c8a0",
+      "milestone_title": "Z9.F — Selected actual rational function has absolute sum b+a ζ(9)",
+      "milestone_description": "For even n≥2 and integers b,a, the genuine weighted rational function belonging to the selected rational quartic is absolutely summable on positive natural arguments and has sum b+a times the real part of riemannZeta at 9. The target preserves the exact chosen multiplier and output order; it does not claim nonvanishing or integer polynomial coefficients.",
+      "source": "formalization/platform/coefficient-map-matrix"
+    }
+  ],
+  "counts": {
+    "definitions": 18,
+    "goal": 1,
+    "milestones": 69,
+    "currently_proved_supporting_theorems": 64
+  },
+  "bindings": [
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/summary.json",
+      "sha256": "45f456bda78fd6f6b3320ee7417e8fa3172c895dfe0e59cf31e761cb6d36c98d",
+      "bytes": 423
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical-index.json",
+      "sha256": "a4753d63a306e1851776fcff0a0f263b16778858a8404ecfe4833fcb210ae233",
+      "bytes": 18698
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/content/mission-introduction.md",
+      "sha256": "fb6ef9d075285b10412cd9f3eed278a35c1636524a34b796bd187f89280820dc",
+      "bytes": 10809
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/8aaaa1e7-befc-4a25-a4f5-26c37740eb40.json",
+      "sha256": "468eaf9d17cd844fa47f9069a787eff05e02e300a3231bc1a763c40d456cba5c",
+      "bytes": 3431
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/365148c0-a3da-4c9e-be31-9f99ca5605ac.json",
+      "sha256": "5d1d0eaa9112e130732cdb0ca92f2a2d003b66dd4e5064aed48cc9fc0c0e63b9",
+      "bytes": 6776
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/37ba0a3d-3bd9-4bce-85b8-4f85c9e9586f.json",
+      "sha256": "0b6027dd8a3a29b02b868caa3ac32c043ea247a95cd3911b5ee1087a9961d065",
+      "bytes": 1752
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/a57d441d-db5c-46db-b2f7-c52197d21c72.json",
+      "sha256": "c5cc78f6da1d54abb7056bf996c9257f7e079d7732c2e6fc61aaf3f951c64cbd",
+      "bytes": 2934
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/39d7d208-ec83-47a7-af52-066c32893c39.json",
+      "sha256": "a5afc68e8d94f6660ec925587d10fa50c6ff335a82cfdc8ff4cea71aa17cbb7f",
+      "bytes": 1961
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/f0f5ed09-0e3c-48af-b45b-f53a12ecf11f.json",
+      "sha256": "5bf0197ce4352d02d7d5e9b763cdfea9b6b1286d827f42dbb12db5682d164734",
+      "bytes": 2158
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/50eafaec-696e-4a0f-809d-bd988c671e52.json",
+      "sha256": "a3bcae133b9734981c7cf9d8e8b4e51a053df5b3f0f2a71b0674286ef415114c",
+      "bytes": 1984
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/b49898b0-a988-42c3-9ddb-8e3e25f22ca8.json",
+      "sha256": "7321a0fc122d9a2051cc369553c204dac90323bcce257bab5408a39839e36dd5",
+      "bytes": 4046
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/11984167-2e2e-490b-948a-9f691338b59e.json",
+      "sha256": "5e255679380e33b94c892e5b8df9f0f72b55bebdd7c5e0bbaabad6062a684bee",
+      "bytes": 2074
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/d6f831ba-b521-4cb1-9009-b3cbeafcd4a8.json",
+      "sha256": "1e26403648a0711dfe3de84ca4a667b67cfd1de513af16dfc7b8b2a1e2febea2",
+      "bytes": 3255
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/7735a339-5a83-4d33-8bda-12daefbcd63a.json",
+      "sha256": "03d115ef3a9e70c02944947cc1878f46af465e4575d5395f53fad60ac836f28d",
+      "bytes": 3123
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/be5ae0fc-5c67-4931-bce7-c840f5151c7b.json",
+      "sha256": "f6750e847de842bdd55c5e7492c863568f1add83067aa714c38b54371da86fff",
+      "bytes": 2908
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/46306e7b-9adc-43aa-925d-1e9ee80c56a6.json",
+      "sha256": "f948e1fb00a86189f661c37e5a5adb0c657f594d4d2c02025b481e3c6d10bf02",
+      "bytes": 2627
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/31bff972-299f-4bf7-ba2e-eec29a733fd4.json",
+      "sha256": "24f40d42e145d24662b3035b952ea5f8d3bf1590bae3d24477a5bd0e745a718e",
+      "bytes": 2884
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/0efd92c6-d434-4ba6-a512-c2371ad46b79.json",
+      "sha256": "4d031e106b792d5dcd950eb8fafce89747e0c7fa3ef5d6e34963acc79b215f7a",
+      "bytes": 7100
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/0793cee6-359e-4b09-8b08-d89d12dbe7f3.json",
+      "sha256": "b699b049914e44db2616b48fb16a3c1ab486dd785ef6e7afc6b933685302431e",
+      "bytes": 2796
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/c7863012-af24-4701-9c51-6a46db9af05b.json",
+      "sha256": "c6d36ad861f594b910d569973676518538e2e4a5ee89ae3e34b1aff810cc0bfe",
+      "bytes": 127992
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/81dc9962-744c-4b2c-b4c2-2a67fb50ec61.json",
+      "sha256": "227ad5e0d1284d24278d83aa5629bf03694d65807a3ee6203696ed175d359d8b",
+      "bytes": 2109
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/523f37b8-ae98-406c-a3f7-43aa8e002dd7.json",
+      "sha256": "9f6c47228ee354edeffac5e92616f6df28a9a583819e8d895e9f0b9e47df1439",
+      "bytes": 1367
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/a925cba9-6bcf-4296-940d-3886687da227.json",
+      "sha256": "dc5f112f517c5a206cb0feae4be0c05f3457a5c0de2e3fae76d18d85c5c18bf2",
+      "bytes": 3062
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/207cc87c-ecbb-4be0-ab87-a1c3c0c0293f.json",
+      "sha256": "d5ea0b9b0051ce992685eaa7020905aadf2ad8684ff4d4fe2fe2d09f27d69fd9",
+      "bytes": 1890
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/cbb9cc51-c34d-4c25-9c61-dd4bc0e969e1.json",
+      "sha256": "c99ef2cb2901682c7c23d36c656529a4518846ca96ecbfc1b6f719a586aebafb",
+      "bytes": 2209
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/d6b0eb73-e1ad-4005-8f8a-ecd61ad35127.json",
+      "sha256": "0588592c81f2b0730124c74fb7a46a2f4ac9aae35118f3e4efdfaba9b2942b1b",
+      "bytes": 1588
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/8496d3a0-3b92-4a68-a56d-d972e0df20a2.json",
+      "sha256": "5c329a81c2444dae9aadf7770ecfb7c36f9914ae409d7f346509bf1669cf81f3",
+      "bytes": 1651
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/0f7bb5e3-be14-422d-a555-d89ed96e171f.json",
+      "sha256": "dd9bcc36c206fc159e1eca31cb8440c8f7706e060a28f94650cb13bf072a7b2d",
+      "bytes": 1748
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/c1147ec6-b702-4ce3-86a6-04aaf358e544.json",
+      "sha256": "1babdc512b8a3fd67454375e787a0e17d0648ae9cc1385fb55a1ce8c5801493c",
+      "bytes": 2502
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/a8a15e54-0fca-4932-b4ea-171e7d02fc03.json",
+      "sha256": "a7ecb4469daddc9c6810450f7bf3784b6998ebf9fa3a34f687fd76ee06830ff2",
+      "bytes": 3148
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/443fb397-e2df-48a0-941c-0617ca84f5f1.json",
+      "sha256": "d46210971bc38218ecb309d9b1bb5fe9abaf45d6f6fe5d72dc5dd3a2c381a5de",
+      "bytes": 3069
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/60c1cf49-6b01-448c-b38a-88dc2fcb8ba0.json",
+      "sha256": "73c1e3e35f15c73463272a056e0139ae4686abf1211fb85ecb038ced8ba085c5",
+      "bytes": 3595
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/691b1665-f122-47f7-a3e4-2c28a06055f2.json",
+      "sha256": "6f5312a3f7949d93fd846d6cca4b28c916bd00103de0d40b727bde8a14d55782",
+      "bytes": 3571
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/ca69bae0-6b9f-4b30-8a23-ceb6c61e402c.json",
+      "sha256": "0855437b24362618efb32cbd5ea99412c7628fc9b5fb91a9e9f0b1f4393c71a1",
+      "bytes": 3240
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/ce7cd721-4855-4529-9818-750413cf71e6.json",
+      "sha256": "ced902e44a07aaec439d143ac5a3860f984c05df9a75e6f24ee12f66fa34d50b",
+      "bytes": 2644
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/6f2a3a79-137d-4946-af79-3771e9b88f6c.json",
+      "sha256": "6de6793fb3b2025b61d2acedb1148ffd3f85667a0355a7c4ed809242c67db941",
+      "bytes": 2648
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/59100b91-97e3-427e-9154-301ad5bd6c43.json",
+      "sha256": "0ef0c0f8d0a58b532a68e30e2d2713cc1c29ad59e9828e89050e6294a6ae5d43",
+      "bytes": 2532
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/17f19266-744f-4790-b31a-e7c5c18ca549.json",
+      "sha256": "b39c9c4532af78246aa4d6b59dedd0c21d9aed45e5e3b1c03a7cea7060a5404f",
+      "bytes": 1991
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/b3c67d4e-0f05-484e-b795-af057457788e.json",
+      "sha256": "f55e0f65adec256399157844193c6fa2ffe5d3f47fe2af2f730ee8537a622ba4",
+      "bytes": 2292
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/e5bcddcb-3925-4391-91fe-bc8e6284a6ec.json",
+      "sha256": "6daf9ad7898c3d7fe8cd90ea69bb6119610e4ec7e9d59c5cdedb30a49b275637",
+      "bytes": 1911
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/f7ecff96-0cec-4e14-949e-054bfeedde67.json",
+      "sha256": "9447fa6633cd0b096434728e5641ef0c25dc4c8f16202256d8aed9536f732aff",
+      "bytes": 1803
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/220d4d7b-4e0c-4780-a2d9-2b3cd0680cf2.json",
+      "sha256": "1db7e94c43b1e60c110595ff3eb0cc5f888b08d054e15e7d1b68c49654882848",
+      "bytes": 2287
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/d2029496-11e6-49e5-b207-b18c2b5cf8fb.json",
+      "sha256": "98ece16c24e0122df82eb2fde2ccd4a5bbb5926d753c9833d0efd7cbb2c6766a",
+      "bytes": 2392
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/88f03ef4-6450-42cd-97d3-24e924ee4e1c.json",
+      "sha256": "812f6521860bba650b7f35a502bbc397246dada66333058470ba9746c0eb0ea8",
+      "bytes": 2342
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/d1e6ecea-242f-412b-b0b2-fc517132c9b3.json",
+      "sha256": "885416633c602d1cce4a89f436a992463006d2abd0fb7b67fee3c2b7d6d39f64",
+      "bytes": 2274
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/e154a4ca-96a1-4257-b8a1-3a83e98f4111.json",
+      "sha256": "5576f4d98435016404b5d437decc17ada6ded64d86a13e3f039edba65c9e425c",
+      "bytes": 2125
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/dbbbbec1-10e9-4f66-a0a7-b9f9cf1cdf48.json",
+      "sha256": "c7fe60c922cbdede6cfbd2e15052d678b981b9c3c11c053fde8795c6f0b64a56",
+      "bytes": 2262
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/50a9559f-7576-411d-a592-fc2f2527b1cd.json",
+      "sha256": "9c11a5daf90eb093469c417c5e3fdb76281a33984b56343a671c61079a877387",
+      "bytes": 1969
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/2ccce2b3-fbf8-419b-9ad4-52a6c527fd25.json",
+      "sha256": "caab81dac26390c201a443c6a76e633fcc2822a61cce177b6fa6dc944eb1a8db",
+      "bytes": 1712
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/a4d7220e-a967-499d-a96b-5d020a46e1d3.json",
+      "sha256": "645c8e271265ce9d37c67251355cda2f22ccaaf29dfca4b786b642ef933839fe",
+      "bytes": 1839
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/6c9f6988-64e9-43e9-9ee6-6ecc0e61d8ac.json",
+      "sha256": "011fccf2f7339007b59e3ac7d7a0b0e5a1ae167c264636a1a5039641a87bf8a6",
+      "bytes": 1856
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/490b871a-06b7-49c4-9053-05de764299d5.json",
+      "sha256": "8a28981ae4d8e3d54d1b2cc58dae775f47d1bc6185f5c6671af74df3d30790cb",
+      "bytes": 2006
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/ca2e0aab-8e1d-4199-980c-edc10cd4eabb.json",
+      "sha256": "90fcb71fc5921a762aa2e18ad5e19c59022665c4485d49242791c3f825f2fcd7",
+      "bytes": 2070
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/f7fc231d-18a3-4968-91f0-54f8ace0c892.json",
+      "sha256": "2f73165ec336f396784e2338e3db1d5fd0359b904ed7039582d830a165ff2ecf",
+      "bytes": 2113
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/970374db-a705-4462-9ace-d0a494c3672e.json",
+      "sha256": "2d258e7d340f02518359829c88438c714ba5f029e680f32a2126718c605031f9",
+      "bytes": 2432
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/064cbef1-f817-40cb-b85b-29a79a5d5611.json",
+      "sha256": "fbfd2e4178075ba43508b539a3ea117f88225fb07a1ace8f2cf311aa356ff1fb",
+      "bytes": 2471
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/3c3fe37c-b5a4-4ecc-b741-18ddee5254de.json",
+      "sha256": "3842bffe7eb4feea64cfe82a893ce6908590bb2371b5c8a486141a744377558a",
+      "bytes": 2709
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/3b41126b-9a8a-409c-bd06-e840790f686b.json",
+      "sha256": "40cb14d467aa8b3f55f3b60b49f03cb045b063ed369dfc00cb03c620e83c2c6f",
+      "bytes": 2891
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/6d9445a4-3353-476d-a21f-6a1875fda71d.json",
+      "sha256": "6d123b4b5765200a41976dc13864539a1c67790be1b90424cd372816df835536",
+      "bytes": 2147
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/1c1a796f-fcd9-49fa-b57b-721bbdf48ef6.json",
+      "sha256": "1d45d41e71b7dd33110571ae98ebbf6bf022b517035d42f228c2cfa71605ea6c",
+      "bytes": 2087
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/ca673a47-8c42-4909-8ab2-9384503415ec.json",
+      "sha256": "4bb0f97bc33a5efb0394abd4f2e9637aafcf09637805484ddb3871bc108487d2",
+      "bytes": 2029
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/20e45c17-4aac-4a4c-86cb-45f107407ff5.json",
+      "sha256": "e2009899d04b4f0f75e92b8fdc203dab14719883e235894e0f61858a1c7022f0",
+      "bytes": 2387
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/0a3beccc-45c4-43dd-a023-16d5c4a9d849.json",
+      "sha256": "1cc2e961fa79fce57fb948563279f76b574cf5d4361f867a678b4cfa97f1679a",
+      "bytes": 2292
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/d6bef8c0-d9cf-418e-ba46-2332ecca0c10.json",
+      "sha256": "caa83151802c0103b555e3ac8933ee1ee9dbd694730ad1fdff06f8bed0e054ca",
+      "bytes": 2494
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/6c193bd2-e727-4992-8957-82c250a0b45c.json",
+      "sha256": "d4bf8bb613e4d562ba45705b39f655574bcd6c748299fe74830fa6acb9fdbe4e",
+      "bytes": 2276
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/b40f468c-1d43-46e1-a0fe-bb59afc285e7.json",
+      "sha256": "a6edd1a767e200bc91ca7d9262f7aab0c6973697b49aff2f41db1b3733128e8a",
+      "bytes": 2033
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/8a1d6ae0-325a-4d46-acd5-448bcf59814c.json",
+      "sha256": "d4b95fbf059a3b4547372ae9c2e3dbead9ab545d800c8871a780db4d5bcbb33a",
+      "bytes": 2315
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/500f3668-d61c-42c7-adee-61ab5c3f742c.json",
+      "sha256": "fc684a7fe99086f066a15e5c286b87248694885cf69f3cc6326fee9f8856c05c",
+      "bytes": 2337
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/497fe537-7be9-4fad-8984-43229aafb166.json",
+      "sha256": "f8ad4dea2ada941fdb66760bfed9624bfd022b9c996bfa5ef5e0126c52e9e63d",
+      "bytes": 2352
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/dc845325-063a-4a97-a4e7-86453335e09a.json",
+      "sha256": "2fc7618f0b1cc7347e148bb2c9fd92a2076de909620f50895499850529050775",
+      "bytes": 2079
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/e202eaff-c82b-4d8b-b7a2-8b2896798987.json",
+      "sha256": "b874c38d21f7379a99285f1c0ea7b1dc0d17ead89d34de8814ae8a15d62cf6f9",
+      "bytes": 2237
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/25ed8da5-f069-4864-95b4-3701e2ddec47.json",
+      "sha256": "3f636a3e519235ca4c7add238b5af30756865adc7d96e6334e0bde8179ec9c53",
+      "bytes": 2277
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/2de22270-2e72-4a2a-8279-109158a6bc9d.json",
+      "sha256": "7413b079395e4d17607ee8116a762bc8c41193d17f4193a36be73370bfc30271",
+      "bytes": 2480
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/a06430dc-7541-40b3-b39c-d194c8e0a8a5.json",
+      "sha256": "821a7a99722d241429595d4681ff127a5677fbf46c512adb10fe684c7609c91d",
+      "bytes": 1860
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/e2ff238b-b15f-4892-8a65-1350390813ae.json",
+      "sha256": "c125f5f1fb7e61b7ada6bc0c1b7b50e4f6348dae4bc82e4472724f17fc511660",
+      "bytes": 1868
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/410070f2-459b-4933-9498-2e30e32cc87a.json",
+      "sha256": "9857bc5a9062f119cea2ad07496125342fd5a08dd123069a90c66bd868eecdf0",
+      "bytes": 2013
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/698c5170-0bc3-479a-a014-bdc3dc5d4e4a.json",
+      "sha256": "068227faf332510d9327bbcbfb0715388211aa59ed20e5ea6479cdc09e5671ce",
+      "bytes": 2221
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/6d601e77-6dc4-4529-9542-673ee50ebbc2.json",
+      "sha256": "320890c323bc3bf9ad1d7ae6a52398473dfe9acae8412950178f86b891b66074",
+      "bytes": 2154
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/968f781f-c1a2-42aa-b0a4-be1ff3dbb93b.json",
+      "sha256": "0b9d71e45685242d83e18ec7d2fc320c6fb27cd2a5daa8c0b9bec0c92086efaf",
+      "bytes": 2577
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/23c4b8f3-9745-4ed9-8719-931e672eb5a5.json",
+      "sha256": "baffc6f362ae22ae7915b684c1caf3d1f3569fd1324f7ac09a91cabb83435f59",
+      "bytes": 2357
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/41d3c1e3-8972-4ea6-ad46-a5946ba63923.json",
+      "sha256": "98b30cc385bd93e8f960f02fc40f155c82053b7de1e248edd98f4e49fd3c2044",
+      "bytes": 2117
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/9e49b2d8-4a51-4bfd-b449-d665b5e5fc6d.json",
+      "sha256": "082a898b1b39f3f153b37ab46536d70252d30a2ecf4dae34537f39e5ed28fa62",
+      "bytes": 2341
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/940b61e1-e00a-4909-928d-1d640e6c909c.json",
+      "sha256": "6661359c17cc0df3cf3d152399adbcf2ed196bb91a9712120c75ad4c29651796",
+      "bytes": 1944
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/ce238b53-8b97-42f6-ac2e-191364bf4a42.json",
+      "sha256": "1064ac9edf8d1c11a89249619acfc743231ac5a95ad55f14fa43d2bb9d311094",
+      "bytes": 1900
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/bbc02826-16b1-4012-ac43-0462f90498df.json",
+      "sha256": "c7224951dd9bc24de383e071557bfb79dbd6bbb7d142e2b6ba9dba5b8ccfb355",
+      "bytes": 2324
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/3df1ff96-5fcc-4d2e-8fc9-c673dcf4f4f4.json",
+      "sha256": "3991dd07f315a240a1e05489b054a5b6640d3d1812da359f67d371f365663987",
+      "bytes": 1533
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/711fc0b7-42af-4494-8765-c95a3aa449c6.json",
+      "sha256": "c780616c7b946a641f6aabad187c31738bf2d3f96e1d4e3d73e9de68dd0dddfa",
+      "bytes": 1469
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/37ff9673-ea18-4954-8859-e711491af165.json",
+      "sha256": "5f9a8b77fe27f1e0c8982b8d8d8253fefd038f65571d8169bae3e72084f0e140",
+      "bytes": 1647
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/3e15df20-1023-4b72-95ab-1ad07c34b3e5.json",
+      "sha256": "b75ae3a5762bce2395a496c52d97426e30bf1d21700ef1d71f2fc2d6ed6a7ce7",
+      "bytes": 1436
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/134e564c-4327-43b0-9ecd-e7d08fa133ec.json",
+      "sha256": "6873d637d50a96f8dc4a12bf92b091855f0d6d14bc2acfbe6954eb37f79baf47",
+      "bytes": 1651
+    },
+    {
+      "path": "publication/2026-10-07/new-public-mission/focused-preflight/canonical/bb7477e4-5539-4015-b8cf-9bad57e1c8a0.json",
+      "sha256": "4433815dca0fd16c37c55ac59f417d91796f9891697cae8f1220119e6ba002df",
+      "bytes": 1919
+    }
+  ]
+}

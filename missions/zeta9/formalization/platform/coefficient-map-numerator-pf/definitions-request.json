@@ -1,0 +1,15 @@
+[
+  {
+    "definition_name": "ZetaNine_CoefficientMapNumeratorPF",
+    "definition_title": "Actual arbitrary numerator jets and reconstruction",
+    "definition": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_CoefficientMap\nimport Definitions.Def_ZetaNine_CoefficientMapJet\nimport Definitions.Def_ZetaNine_CoefficientMapInjectivity\nimport Definitions.Def_ZetaNine_CoefficientMapPartialFractions\nimport Mathlib.Data.Matrix.Basic\nimport Mathlib.Tactic\n\n\n\n\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMapFormalTransportData\n\nopen CoefficientMapJet CoefficientMapInjectivity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-- Genuine formal jet for an arbitrary numerator, not an abstract array. -/\ndef numeratorClearedSeries (m j : ℕ) (A : ℚ[X]) : PowerSeries ℚ :=\n  ((A.comp (shiftedVariable j) : ℚ[X]) : PowerSeries ℚ) *\n    ((shiftedClearedDenominator m j : PowerSeries ℚ) ^ 9)⁻¹\n\ndef numeratorLocalCoefficient (m j s : ℕ) (A : ℚ[X]) : ℚ :=\n  PowerSeries.coeff (9 - s) (numeratorClearedSeries m j A)\n\n\n\n\n\n\n\n\n\n/- Planned universal theorem, NOT YET PROVED OR COMPILED:\n\nweightedLocalCoefficient (n+2) j s (X^r.val) =\n  extendedOldCoefficient n j s (connectionP n r) +\n  extendedRemainderCoefficient n j s (connectionQ n r) -\n  previousRemainderCoefficient n j s (connectionQ n r)\n\nfor n>=1, j<=n+2 and 1<=s<=9.  From this derive all nine rho\nrelations and the rational constant correction, then the actual row matrix\nidentity F_(n+2) = connectionGamma n * F_n for Even n>=2.\n-/\n\nend ZetaNine.CoefficientMapFormalTransportData\n\n\n\n\n\nset_option autoImplicit false\nset_option maxHeartbeats 2000000\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMapNumeratorPartialFractions\n\nopen CoefficientMapInjectivity CoefficientMapPartialFractions\nopen CoefficientMapFormalTransportData\n\ndef numeratorLocalTruncation (m j : ℕ) (A : ℚ[X]) : ℚ[X] :=\n  PowerSeries.trunc 9 (numeratorClearedSeries m j A)\n\ndef numeratorPartialBlock (m j : ℕ) (A : ℚ[X]) : ℚ[X] :=\n  clearedPolePolynomial m j ^ 9 *\n    (numeratorLocalTruncation m j A).comp (X + C (j : ℚ))\n\ndef numeratorPartialNumerator (m : ℕ) (A : ℚ[X]) : ℚ[X] :=\n  ∑ j ∈ range (m + 1), ∑ s ∈ Icc 1 9,\n    C (numeratorLocalCoefficient m j s A) *\n      clearedPolePolynomial m j ^ 9 * (X + C (j : ℚ)) ^ (9 - s)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ZetaNine.CoefficientMapNumeratorPartialFractions\n\n\n\n\n\n\n\n\n\n\n\n",
+    "natural_language_statement": "Five actual pure definitions: cleared local power series, their local coefficients, truncation, partial blocks and reconstructed numerator. No abstract coefficient or PF existence assumption.",
+    "source": "Frozen actual native source SHA256 2dd97638ab3fbc86124db40b78ef2f38fd7536c630d0240cb33fb4f35f8ffc77",
+    "tags": [
+      "number-theory",
+      "formalization"
+    ],
+    "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "private": false
+  }
+]

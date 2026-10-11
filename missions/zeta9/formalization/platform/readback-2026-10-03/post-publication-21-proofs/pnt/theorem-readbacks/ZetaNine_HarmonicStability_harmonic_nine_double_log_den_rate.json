@@ -1,0 +1,24 @@
+{
+  "theorem_id": "6c9f6988-64e9-43e9-9ee6-6ecc0e61d8ac",
+  "theorem_name": "ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate",
+  "theorem_title": "The reduced ninth harmonic denominator has rate eighteen at double endpoints",
+  "status": "Proved",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate :\n    Tendsto (fun M : ℕ => logDen (harmonicPower 9 (2 * M)) / (M : ℝ))\n      atTop (nhds 18):= by sorry",
+  "natural_language_statement": "For the actual rational ninth-order harmonic sum at the double endpoint, $\\log\\operatorname{den}(H_{2M}^{(9)})/M\\to18$ as $M\\to\\infty$ through natural numbers. There are no hypotheses; the factor eighteen is nine times the exact endpoint scaling factor two. This supplies the harmonic denominator baseline in the right-shifted Mellin construction.",
+  "created_at": "2026-10-03T14:05:47.148988+00:00",
+  "vote_count": 0,
+  "tags": [
+    "asymptotics",
+    "formalization",
+    "harmonic-numbers",
+    "number-theory"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 143–147, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

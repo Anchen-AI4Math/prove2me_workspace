@@ -7,6 +7,10 @@ Modes:
   --check   verify every local solution against its draft statement (no network writes)
   --submit  post each proof to its theorem (idempotent; records submission ids)
   --poll    read back the recorded submission statuses
+
+The compiled theorems exist as soon as the human clicks "Submit Proposal", i.e. while the
+proposal is still `In review` and `mission_id` is empty. Submitting at that point is therefore
+possible but only on request: pass `--allow-pre-approval` (optionally with `--only Z9N.XXX`).
 """
 from __future__ import annotations
 
@@ -77,12 +81,14 @@ def check() -> None:
         raise SystemExit(1)
 
 
-def submit() -> None:
+def submit(allow_pre_approval: bool = False, only: str | None = None) -> None:
     check()
     receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
-    if not receipt.get("mission_id"):
+    if not receipt.get("mission_id") and not allow_pre_approval:
         raise RuntimeError("Mission is not live yet (mission_id is empty). "
-                           "Wait for moderator approval, then re-run --status first.")
+                           "Wait for moderator approval, then re-run --status first; "
+                           "or pass --allow-pre-approval to post onto the compiled "
+                           "theorems while the proposal is still in review.")
     theorem_ids = receipt.get("local_theorem_ids", {})
     missing = [k for k, v in theorem_ids.items() if not v]
     if missing:
@@ -92,6 +98,8 @@ def submit() -> None:
     data = load()
     for item in SPEC["draft_items"]:
         local_id = item["local_id"]
+        if only and local_id != only:
+            continue
         short_name = item["theorem_name"].split(".")[-1]
         entry = data["items"].setdefault(local_id, {})
         if entry.get("submission_id"):
@@ -144,9 +152,12 @@ def main() -> None:
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--submit", action="store_true")
     parser.add_argument("--poll", action="store_true")
+    parser.add_argument("--allow-pre-approval", action="store_true")
+    parser.add_argument("--only", default=None,
+                        help="submit a single local id, e.g. Z9N.CONE")
     args = parser.parse_args()
     if args.submit:
-        submit()
+        submit(args.allow_pre_approval, args.only)
     elif args.poll:
         poll()
     elif args.check:

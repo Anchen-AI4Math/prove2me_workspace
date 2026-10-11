@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "provider_root": "verification/ap2",
+  "batch": "s",
+  "frozen_all_shared_plan_unchanged": true,
+  "reports": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean",
+      "source_sha256": "ab3b88b666523efa2ef806141f7a78de8b2406fc7516a0d001849c33b49baaf9",
+      "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean",
+      "original_source_sha256": "6cb0dbe1d14b3b2f1b4ac564a90a3569516759474e753f0ccb7bb12d44a59f4f",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparation-20261008-000700.log",
+      "facts_sha256": "71f21cc4c7f9b655c1f7076ebc8de57c2f3096cd167d4d4f7afd62b4716e7213",
+      "output": "missions/pi-irrationality-measure/verification/ap2/s/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_WeightSeparation.lean",
+      "output_sha256": "f1188aac6817248cfb46d142c2408d8a2d010c8945070d50f9ab41cc99042825",
+      "selected_units": [
+        "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation:328",
+        "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation:434",
+        "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation:4666",
+        "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation:551"
+      ],
+      "imports": [
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Data.Real.Basic",
+        "Mathlib.Tactic.GCongr",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "elaboration_only_helpers": [],
+      "renames": [],
+      "kept_local_instances": [],
+      "source_skeleton_preserved": true,
+      "full_definition_proofs_preserved": true,
+      "independent_byte_reconstruction_equal": true,
+      "source_unchanged": true,
+      "provisional": true,
+      "validated": false,
+      "submission_ready": false,
+      "pending": [
+        "strict compilation within 300 seconds",
+        "standard axiom audit",
+        "definition and consumer kernel type comparison"
+      ],
+      "input_hashes": {
+        "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+        "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+        "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+        "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+        "scripts/generate_namespace_context_providers.py": "5887e585b899b4a3c07499f55e4766a2694ad6c279ae70b2138e885b6e6dbead",
+        "scripts/generate_platform_provider_bundles.py": "b260970bd2f61f123e50bdfe4fd7367ae4d50177122172e192c796bf41f2beae",
+        "scripts/plan_platform_units_providers.py": "45b1b56ec0b14ecf01a4aef30519a67d8501785e4607376d83e63ea08329f2bd",
+        "scripts/stage_admissible_provider.py": "4f211086d03121b7c16ff11f6e34ffb78cd4e46401523920a0c560fab4b1f806",
+        "verification/ast-import-inventory.json": "4f82a967597d15f3b612e4e77d5366131733416ed4190099c56309ac21696c64",
+        "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+        "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+        "verification/ast-wrapper-inventory.json": "6a5ea692fc8c8fd5287745e7a60810c32167a3798c3f48b1d441a06247e754fc",
+        "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "verification/extraction-state.json": "ae7ed8045f5f97d7f0cb7d20ba2bb3ad54cac7d9e024e80d104d4d08420f61fc",
+        "verification/platform-artifact-plan-preview.json": "d33f69043eb6559831f31c2fa84a7dcd8295233627669d781032eb99b3ed4ad9",
+        "verification/platform-unit-plan-preview.json": "88af9043c744322193c4778b54b70a21eb07d1c91004c7deaf1aeff6af7fd213",
+        "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "cf34f7073c45f91b8ae8614587b9ce9f5d356958dbb1465896a752e206c24d2f",
+        "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "8c6220a1af995ea3b041e5fe4a15e66d8400f820db1741df6b219a693843ee31",
+        "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "4bcaaac041c3eab62680aa6c814d9bed8744dfbbc7c33629ec7b9ff364b20a3f",
+        "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276",
+        "verification/shared-source-snapshot/provider-subset/provider-subset-validation.json": "d91c3b0a03d74bbc704276cf479a6503e8c3962d53d48c3eeae1f5c2c2ccd17a"
+      },
+      "edits": [
+        {
+          "start": 679,
+          "end": 1001,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 1005,
+          "end": 4662,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 4817,
+          "end": 5958,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 0,
+          "end": 53,
+          "reason": "rewrite parser import command",
+          "replacement": "import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring"
+        },
+        {
+          "start": 55,
+          "end": 85,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 87,
+          "end": 115,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 117,
+          "end": 149,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 151,
+          "end": 177,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 179,
+          "end": 252,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        }
+      ],
+      "engine_output_removed": true,
+      "provider_plan": "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json",
+      "provider_plan_sha256": "8c6220a1af995ea3b041e5fe4a15e66d8400f820db1741df6b219a693843ee31",
+      "provider_artifact_plan": "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json",
+      "provider_artifact_plan_sha256": "cf34f7073c45f91b8ae8614587b9ce9f5d356958dbb1465896a752e206c24d2f",
+      "provider_variant": "all-shared-public",
+      "accepted_generator_logic_reused": true,
+      "accepted_outputs_untouched": true,
+      "preview_only": true,
+      "lean_started": false,
+      "api_used": false,
+      "capture_observations": {
+        "extraction_state": {
+          "path": "verification/extraction-state.json",
+          "sha256_at_capture": "ae7ed8045f5f97d7f0cb7d20ba2bb3ad54cac7d9e024e80d104d4d08420f61fc",
+          "stage2_entries_at_capture": 875,
+          "complete_at_capture": true,
+          "dependency": false,
+          "reason": "selected per-module source/facts are exact dependencies"
+        },
+        "live_import_inventory": {
+          "path": null,
+          "written": false,
+          "dependency": false,
+          "reason": "rebuilt in memory; existing inventory untouched"
+        }
+      },
+      "import_provenance": [
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean",
+          "source_sha256": "ab3b88b666523efa2ef806141f7a78de8b2406fc7516a0d001849c33b49baaf9",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparation-20261008-000700.log",
+          "facts_sha256": "71f21cc4c7f9b655c1f7076ebc8de57c2f3096cd167d4d4f7afd62b4716e7213"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparationProducts",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparationProducts.lean",
+          "source_sha256": "659a0b41c4e9e07a7b3049be4cb8719ce7c0c1a25102a40735a6a134a355edc0",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparationProducts-20261008-000739.log",
+          "facts_sha256": "b3a53cae52b57ed0f1adb84c265b8f730bf1e8bac4fa158c4fdfc1fe8452d50f"
+        }
+      ]
+    },
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean",
+      "source_sha256": "1fe91e90b79724f0c77eda10339a017285e280f9c1d669906c664723db25f0d1",
+      "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean",
+      "original_source_sha256": "01b0c8deb657a062a60ed0cfe932b667ce45d874487e81176764620565885af2",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-AdmissibleParameters-20261007-224720.log",
+      "facts_sha256": "059d6cb8a67c0cf29b26ff7ddb80b0c1c3842f27717ce77599ac8a98ddcd5d87",
+      "output": "missions/pi-irrationality-measure/verification/ap2/s/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters.lean",
+      "output_sha256": "6a0f1366cd4af5fe993c59cc76c1ecf72089eb26b839be9f98940597fdf08125",
+      "selected_units": [
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12604",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12784",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:12936",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:13093",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:2327",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:552",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:939",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9489",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9601",
+        "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters:9818"
+      ],
+      "imports": [
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+        "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+        "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+        "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+        "Mathlib.Algebra.Order.Floor.Semiring",
+        "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+        "Mathlib.Analysis.Real.Pi.Bounds",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.Data.Nat.Factorial.Basic",
+        "Mathlib.Data.Real.Basic",
+        "Mathlib.RingTheory.PowerSeries.Order",
+        "Mathlib.RingTheory.PowerSeries.Trunc",
+        "Mathlib.Tactic",
+        "Mathlib.Tactic.FieldSimp",
+        "Mathlib.Tactic.GCongr",
+        "Mathlib.Tactic.Linarith",
+        "Mathlib.Tactic.NormNum",
+        "Mathlib.Tactic.Positivity",
+        "Mathlib.Tactic.Ring"
+      ],
+      "elaboration_only_helpers": [],
+      "renames": [],
+      "kept_local_instances": [],
+      "source_skeleton_preserved": true,
+      "full_definition_proofs_preserved": true,
+      "independent_byte_reconstruction_equal": true,
+      "source_unchanged": true,
+      "provisional": true,
+      "validated": false,
+      "submission_ready": false,
+      "pending": [
+        "strict compilation within 300 seconds",
+        "standard axiom audit",
+        "definition and consumer kernel type comparison"
+      ],
+      "input_hashes": {
+        "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+        "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+        "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+        "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+        "scripts/generate_namespace_context_providers.py": "5887e585b899b4a3c07499f55e4766a2694ad6c279ae70b2138e885b6e6dbead",
+        "scripts/generate_platform_provider_bundles.py": "b260970bd2f61f123e50bdfe4fd7367ae4d50177122172e192c796bf41f2beae",
+        "scripts/plan_platform_units_providers.py": "45b1b56ec0b14ecf01a4aef30519a67d8501785e4607376d83e63ea08329f2bd",
+        "scripts/stage_admissible_provider.py": "4f211086d03121b7c16ff11f6e34ffb78cd4e46401523920a0c560fab4b1f806",
+        "verification/ast-import-inventory.json": "4f82a967597d15f3b612e4e77d5366131733416ed4190099c56309ac21696c64",
+        "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+        "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+        "verification/ast-wrapper-inventory.json": "6a5ea692fc8c8fd5287745e7a60810c32167a3798c3f48b1d441a06247e754fc",
+        "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "verification/extraction-state.json": "ae7ed8045f5f97d7f0cb7d20ba2bb3ad54cac7d9e024e80d104d4d08420f61fc",
+        "verification/platform-artifact-plan-preview.json": "d33f69043eb6559831f31c2fa84a7dcd8295233627669d781032eb99b3ed4ad9",
+        "verification/platform-unit-plan-preview.json": "88af9043c744322193c4778b54b70a21eb07d1c91004c7deaf1aeff6af7fd213",
+        "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "cf34f7073c45f91b8ae8614587b9ce9f5d356958dbb1465896a752e206c24d2f",
+        "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "8c6220a1af995ea3b041e5fe4a15e66d8400f820db1741df6b219a693843ee31",
+        "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "4bcaaac041c3eab62680aa6c814d9bed8744dfbbc7c33629ec7b9ff364b20a3f",
+        "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276",
+        "verification/shared-source-snapshot/provider-subset/provider-subset-validation.json": "d91c3b0a03d74bbc704276cf479a6503e8c3962d53d48c3eeae1f5c2c2ccd17a"
+      },
+      "edits": [
+        {
+          "start": 726,
+          "end": 935,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 1102,
+          "end": 1597,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 1601,
+          "end": 2323,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 4510,
+          "end": 9380,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 10045,
+          "end": 10332,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 10336,
+          "end": 10642,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 10646,
+          "end": 11446,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 11450,
+          "end": 11973,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 11977,
+          "end": 12600,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 13177,
+          "end": 13603,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 13607,
+          "end": 13821,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 13825,
+          "end": 14125,
+          "reason": "subtract unselected declaration command",
+          "replacement": ""
+        },
+        {
+          "start": 0,
+          "end": 46,
+          "reason": "rewrite parser import command",
+          "replacement": "import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_WeightSeparation\nimport Definitions.Def_OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension\nimport Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Data.Nat.Factorial.Basic\nimport Mathlib.Data.Real.Basic\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring"
+        },
+        {
+          "start": 48,
+          "end": 107,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 109,
+          "end": 163,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 165,
+          "end": 238,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 240,
+          "end": 306,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 308,
+          "end": 373,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 375,
+          "end": 448,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        },
+        {
+          "start": 450,
+          "end": 507,
+          "reason": "rewrite parser import command",
+          "replacement": ""
+        }
+      ],
+      "engine_output_removed": true,
+      "provider_plan": "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json",
+      "provider_plan_sha256": "8c6220a1af995ea3b041e5fe4a15e66d8400f820db1741df6b219a693843ee31",
+      "provider_artifact_plan": "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json",
+      "provider_artifact_plan_sha256": "cf34f7073c45f91b8ae8614587b9ce9f5d356958dbb1465896a752e206c24d2f",
+      "provider_variant": "all-shared-public",
+      "accepted_generator_logic_reused": true,
+      "accepted_outputs_untouched": true,
+      "preview_only": true,
+      "lean_started": false,
+      "api_used": false,
+      "capture_observations": {
+        "extraction_state": {
+          "path": "verification/extraction-state.json",
+          "sha256_at_capture": "ae7ed8045f5f97d7f0cb7d20ba2bb3ad54cac7d9e024e80d104d4d08420f61fc",
+          "stage2_entries_at_capture": 875,
+          "complete_at_capture": true,
+          "dependency": false,
+          "reason": "selected per-module source/facts are exact dependencies"
+        },
+        "live_import_inventory": {
+          "path": null,
+          "written": false,
+          "dependency": false,
+          "reason": "rebuilt in memory; existing inventory untouched"
+        }
+      },
+      "import_provenance": [
+        {
+          "module": "OAI.NumberTheory.PiExponent.Analysis.DimensionLimits",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/DimensionLimits.lean",
+          "source_sha256": "25abcb10165890a64fce08bf1f36492cd4b4f5031dc206d1f1b841f1baa7d66f",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-DimensionLimits-20261007-223436.log",
+          "facts_sha256": "c431defdda2a5966dfcc5ea6b7fd5014b5253273866aab3a0ca929fc712762be"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean",
+          "source_sha256": "1fe91e90b79724f0c77eda10339a017285e280f9c1d669906c664723db25f0d1",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-AdmissibleParameters-20261007-224720.log",
+          "facts_sha256": "059d6cb8a67c0cf29b26ff7ddb80b0c1c3842f27717ce77599ac8a98ddcd5d87"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.ApproximationSelection",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/ApproximationSelection.lean",
+          "source_sha256": "9ffafee741b78b41ce4ee0010cc785314a691e4a8330a928585394525ee04665",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-ApproximationSelection-20261007-225543.log",
+          "facts_sha256": "08b5d9dc75995b06e5dd6c6ebcc1d10a5bb5ae01ae0ea823fd1176d054c48c49"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.Parameters",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean",
+          "source_sha256": "ccb272a7b009a24da61d4ff7af33b98202b5fe234adbe4937f382ddce371b6b8",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-Parameters-20261007-233853.log",
+          "facts_sha256": "a1354d871842fcc5047993aaa207d88cee706d509e95b7afe7237bf51e0f5a41"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.Sigma",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/Sigma.lean",
+          "source_sha256": "9cafa04e8043842aa90f4760b94cbcb0f4cde83f6a652e5829fbd2cf56bd3c85",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-Sigma-20261007-235226.log",
+          "facts_sha256": "2b5602058ed8591a77c8e133015e00d1ade67460bfb13d472cab8764c33311d4"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean",
+          "source_sha256": "2b8f0980ff2809d8ba5bc799b51531f98ba973eb96a20a5eb194c6c7906bc5c1",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-SuccessiveApproximations-20261007-235252.log",
+          "facts_sha256": "e6575c3b5db0ca918f55a6d08c6fc7e54aa040a1327c7f8ba132e1df6ccc0ab5"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightErrorMargin",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightErrorMargin.lean",
+          "source_sha256": "b3bf8453c0816835902670015c46f138faa636d2bdb7290ead8aa8ce6d026415",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightErrorMargin-20261008-000633.log",
+          "facts_sha256": "4c93bc769567802619c046fd1a7b4e631ed11c7d30704d8ad26853ef893149bb"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparation",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean",
+          "source_sha256": "ab3b88b666523efa2ef806141f7a78de8b2406fc7516a0d001849c33b49baaf9",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparation-20261008-000700.log",
+          "facts_sha256": "71f21cc4c7f9b655c1f7076ebc8de57c2f3096cd167d4d4f7afd62b4716e7213"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparationConstant",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparationConstant.lean",
+          "source_sha256": "d07718ea98817e03e695f713da567940595dd52900b23834e7f8d9562a275b98",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparationConstant-20261008-000720.log",
+          "facts_sha256": "8ddc58481935da8e0ae17dfb107ce68743defebf759a3c772963a200175a6677"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.Approximation.WeightSeparationProducts",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparationProducts.lean",
+          "source_sha256": "659a0b41c4e9e07a7b3049be4cb8719ce7c0c1a25102a40735a6a134a355edc0",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-WeightSeparationProducts-20261008-000739.log",
+          "facts_sha256": "b3a53cae52b57ed0f1adb84c265b8f730bf1e8bac4fa158c4fdfc1fe8452d50f"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.CoreImports",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/CoreImports.lean",
+          "source_sha256": "9f9840acfeb19cd0b0b951762c953dd3be914221356683af4acf1274db641c4c",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-CoreImports-20261008-010219.log",
+          "facts_sha256": "cfbe2771499f31495a9c23c9fa664ef65e624ef416a24c364a39b3f0b87e75f4"
+        },
+        {
+          "module": "OAI.NumberTheory.PiExponent.LocalAlgebra.Dimension",
+          "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/Dimension.lean",
+          "source_sha256": "ee41f2935c1758113c447fa509f86e1f69051cd6574729046b4ee37aed1c930a",
+          "facts": "missions/pi-irrationality-measure/verification/sketch-Dimension-20261008-030107.log",
+          "facts_sha256": "92e72178591b24087f4eea14f3323651e742af615126795dd135fac8a847f067"
+        }
+      ]
+    }
+  ],
+  "structure_row_count": 49,
+  "provider_ci_count": 58,
+  "weight_ci_count": 4,
+  "provider_command": "python scripts/preflight_staged_module.py ap2/s/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters.lean --root ap2/s --imports-manifest ap2/s/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/structural-bundle-imports.json --emit-olean --timeout-seconds 300",
+  "generated_stage": {
+    "status": "pending-provider-olean",
+    "lean_started": false,
+    "source_module": "OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters",
+    "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "rows": 49,
+    "snapshot": "verification/ap2/s/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/SnapshotGeneratedStructural.lean",
+    "snapshot_sha256": "219c32fe0be675fae27237375b2f7f666a90da8ba5e0b40d04965ab7ad871c19",
+    "provenance": "verification/ap2/s/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/structural-generated-provenance.json",
+    "provenance_sha256": "fbdac418409c64d25f6efdc555d43a7fb912074bd0cae05820cd34cedfd093de",
+    "imports_manifest": null,
+    "preflight_command": null
+  },
+  "lean_started": false,
+  "api_used": false,
+  "validated": false
+}

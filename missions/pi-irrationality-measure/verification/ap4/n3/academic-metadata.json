@@ -1,0 +1,12 @@
+{
+  "tags": [
+    "openai-pi-exponent-017",
+    "number-theory",
+    "rational-approximation"
+  ],
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L134-L147",
+  "theorem_title": "Normalized successive approximations under a uniform power-law hypothesis",
+  "natural_language_statement": "Let $\\nu>0$ and $X,D\\in\\mathbb R$. Assume that for every natural number $Q$ there are an integer $p$ and a natural number $q$ with $Q\\le q$ and $|\\pi-p/q|\\le q^{-\\nu}$. Then there are sequences of integer numerators $p_n$, natural denominators $q_n$, and real weights $x_n$ such that\n\n$$x_0=1,\\quad x_{n+1}=\\lceil\\log q_n\\rceil,\\quad q_n\\ge2,\\quad p_n\\ne0,\\quad |\\pi-p_n/q_n|\\le q_n^{-\\nu},\\quad 1\\le\\lceil\\log q_n\\rceil,\\quad X<x_{n+1},$$\n\nand $D\\prod_{j<i}x_j<x_i$ for each $i>0$. The uniform approximation property is a hypothesis, not an unconditional conclusion about \\pi.",
+  "explanation": "First construct successive approximants whose logarithmic ceiling weights exceed any prescribed function of their finite history. Then apply the selector normalization with threshold $\\max\\{X,D\\prod_{j<i}x_j\\}$, using the exact finite-product identity for the normalized weight sequence. This transfers the uniform approximation bound while enforcing both the requested lower margin and the strict product-growth condition. The proof uses the stated uniform hypothesis throughout."
+}

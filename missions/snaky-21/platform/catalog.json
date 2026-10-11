@@ -1,0 +1,10 @@
+{
+  "theorem_name": "OAI.Snaky21.Certificate.catalog_correct",
+  "theorem_title": "Proposition 5 — 728 numbered cards and the uniform height bound",
+  "formal_statement": "theorem OAI.Snaky21.Certificate.catalog_correct : numberedCards.length = 728 ∧ (numberedCards.map (fun c => decide (0 < c.height ∧ c.height ≤ 21))).all id = true := by sorry",
+  "preamble": "import Definitions.Def_Snaky21Catalog\nopen OAI.Snaky21.Certificate\n",
+  "natural_language_statement": "The numbered-card list for the fixed 21-move Snaky certificate has exactly 728 entries, including the six bases, and every entry has positive height at most 21. This assertion concerns the explicit finite reconstruction data only; validity as game claims is proved separately.",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Proposition 5: the six bases and 722 numbered data lines, with all heights at most 21.",
+  "proof_file": "missions/snaky-21/platform/catalog-proof.lean",
+  "explanation": "Kernel reduction checks the literal list length and the positive height bound for every entry, including all nonbase numbered rows. This finite-data statement is separate from the game semantics and uses no external computation oracle."
+}

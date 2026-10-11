@@ -1,0 +1,17 @@
+[
+  {
+    "definition_name": "ZetaNine_CoefficientMap",
+    "definition_title": "Actual rational function and cleared highest-pole coefficient",
+    "definition": "import Mathlib.Algebra.Polynomial.Eval.Defs\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Data.Nat.Choose.Cast\nimport Mathlib.Data.Nat.Factorial.BigOperators\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine.CoefficientMap\n\ndef numerator (n : ℕ) (t : ℚ) : ℚ :=\n  (n.factorial : ℚ) ^ 7 *\n    (∏ i ∈ range n, (t - ((i : ℚ) + 1))) *\n    (∏ i ∈ range n, (t + n + ((i : ℚ) + 1)))\n\ndef poleProduct (n : ℕ) (t : ℚ) : ℚ :=\n  ∏ k ∈ range (n + 1), (t + k)\n\ndef actualR (n : ℕ) (t : ℚ) : ℚ := numerator n t / poleProduct n t ^ 9\n\ndef clearedPoleProduct (n j : ℕ) (t : ℚ) : ℚ :=\n  ∏ k ∈ (range (n + 1)).erase j, (t + k)\n\ndef clearedR (n j : ℕ) (t : ℚ) : ℚ :=\n  numerator n t / clearedPoleProduct n j t ^ 9\n\ndef leadingPoleCoefficient (n j : ℕ) : ℚ := clearedR n j (-(j : ℚ))\n\ndef weightedR (n : ℕ) (W : ℚ[X]) (t : ℚ) : ℚ :=\n  actualR n t * W.eval (t * (t + n))\n\ndef clearedWeightedR (n j : ℕ) (W : ℚ[X]) (t : ℚ) : ℚ :=\n  clearedR n j t * W.eval (t * (t + n))\n\ndef weightedLeadingPoleCoefficient (n j : ℕ) (W : ℚ[X]) : ℚ :=\n  clearedWeightedR n j W (-(j : ℚ))\n\nend ZetaNine.CoefficientMap\n",
+    "natural_language_statement": "Let $n,j$ be natural numbers and let $t$ be rational. The actual numerator and pole product are\n\n$$N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i),\\qquad Q_n(t)=\\prod_{k=0}^{n}(t+k),\\qquad R_n(t)=\\frac{N_n(t)}{Q_n(t)^9}.$$\n\nLet $Q_{n,j}(t)$ be the product over $0\\le k\\le n$ with $k\\ne j$, and set $\\widetilde R_{n,j}(t)=N_n(t)/Q_{n,j}(t)^9$ and $C_{n,j}=\\widetilde R_{n,j}(-j)$. For a rational polynomial $W$, the actual weighted function is $R_n(t)W(t(t+n))$; its cleared expression and highest cleared-pole value are defined by multiplying $\\widetilde R_{n,j}$ by the same polynomial evaluation and then evaluating at $t=-j$.\n\nThese finite-product constructions provide the interface for clearing a pole and computing the actual highest coefficient. No binomial coefficient closed formula is used as a definition. The unmodified rational division operations are total; a pole coefficient uses the cleared expression, not $R_n(-j)$.",
+    "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Definition declarations are the exact original Lean parser spans.",
+    "tags": [
+      "number-theory",
+      "rational-functions",
+      "finite-products",
+      "formalization"
+    ],
+    "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "private": false
+  }
+]

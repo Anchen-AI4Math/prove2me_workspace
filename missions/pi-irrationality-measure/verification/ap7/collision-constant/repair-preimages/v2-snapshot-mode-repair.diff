@@ -1,0 +1,8 @@
+--- scripts/certify_collision_constant_provider_existing_v2.py@59795f2ed64c799ae91caf35739df4610cd25569b119d86f593d71b21b08a04f
++++ scripts/certify_collision_constant_provider_existing_v2.py@a624897e92891f62605d4197bc10315bcad122361fd414edd23c2d1d496e8d8b
+@@ snapshot mode gate @@
+-        context.fail(data.get("emit_olean") is not False
++        context.fail(data.get("mode") != "modecheck"
+                      or data.get("output_olean") is not None
+                      or data.get("output_olean_sha256") is not None,
+                      "Snapshot unexpectedly emitted an OLean: " + filename)

@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "d367b2a4882371d05cb62467fd2051b6b2d124b84f1c1be18fd6b088ea84b0b0",
+  "publish_intent": {
+    "at_utc": "2026-10-09T08:44:46.794529+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+      "definition_title": "Geometric weights and separated growth",
+      "definition": "import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\ndef geometricDegreeWeight (w0 : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then w0 else x i\r\n\r\ndef geometricJetWeight (v0 theta : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then v0 else x i / theta\r\n\r\ndef weightSeparationFactor (m : ℕ) (C w0 v0 theta : ℝ) : ℝ :=\r\n  C * (max 1 (max v0 (1 / theta) / min w0 1)) ^ (m + 1)\r\n\r\n\r\n\r\n\r\n\r\ndef SeparatedWeightGrowth (m : ℕ) (D : ℝ) (x : ℕ → ℝ) : Prop :=\r\n  ∀ i, 0 < i → i ≤ m → D * (∏ j ∈ Finset.range i, x j) < x i\r\n\r\n\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "Let $w_0,v_0,\\theta\\in\\mathbb{R}$, let $x:\\mathbb{N}\\to\\mathbb{R}$, and let $i,m\\in\\mathbb{N}$. The degree weight is $w_0$ at index $0$ and $x(i)$ at every other index. The jet weight is $v_0$ at index $0$ and $x(i)/\\theta$ at every other index. For $C,w_0,v_0,\\theta\\in\\mathbb{R}$ and $m\\in\\mathbb{N}$, the separation factor is\n\n$$\nC\\left(\\max\\left\\{1,\\frac{\\max\\{v_0,1/\\theta\\}}{\\min\\{w_0,1\\}}\\right\\}\\right)^{m+1}.\n$$\n\nFinally, $\\mathrm{SeparatedWeightGrowth}(m,D,x)$ means that for every integer $i$ with $0<i\\le m$,\n\n$$\nD\\prod_{j=0}^{i-1}x(j)<x(i).\n$$\n\nThese are four definitions: the two index-dependent weights, the separation factor, and the separated-growth predicate. They impose no positivity or existence hypotheses by themselves; such assumptions must be supplied where later results use them.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean#L14-L108",
+      "tags": [
+        "number-theory",
+        "rational-approximation",
+        "weighted-estimates",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "d367b2a4882371d05cb62467fd2051b6b2d124b84f1c1be18fd6b088ea84b0b0",
+    "bundle_source_sha256": "f1188aac6817248cfb46d142c2408d8a2d010c8945070d50f9ab41cc99042825",
+    "bundle_manifest_sha256": "7420e7b68068126ebfe74955d0858690256a3b427a5446a8063f9156436b243a",
+    "validation_sha256": "82940ed662e22b240f2f6a34deaabdc2c3eba5bd3fe40ad408efa3e4ba2a5123"
+  },
+  "updated_at_utc": "2026-10-09T08:45:47.779633+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "db75e6af-102c-494d-b718-87a26e35892a",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/db75e6af-102c-494d-b718-87a26e35892a until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "9d4ed3b06efd392b38489eb7cedd2664da93eb75b75211548fba5a46e7bde87b"
+  },
+  "job_id": "db75e6af-102c-494d-b718-87a26e35892a",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "db75e6af-102c-494d-b718-87a26e35892a",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+      "theorem_title": "Geometric weights and separated growth",
+      "formal_statement": "",
+      "natural_language_statement": "Let $w_0,v_0,\\theta\\in\\mathbb{R}$, let $x:\\mathbb{N}\\to\\mathbb{R}$, and let $i,m\\in\\mathbb{N}$. The degree weight is $w_0$ at index $0$ and $x(i)$ at every other index. The jet weight is $v_0$ at index $0$ and $x(i)/\\theta$ at every other index. For $C,w_0,v_0,\\theta\\in\\mathbb{R}$ and $m\\in\\mathbb{N}$, the separation factor is\n\n$$\nC\\left(\\max\\left\\{1,\\frac{\\max\\{v_0,1/\\theta\\}}{\\min\\{w_0,1\\}}\\right\\}\\right)^{m+1}.\n$$\n\nFinally, $\\mathrm{SeparatedWeightGrowth}(m,D,x)$ means that for every integer $i$ with $0<i\\le m$,\n\n$$\nD\\prod_{j=0}^{i-1}x(j)<x(i).\n$$\n\nThese are four definitions: the two index-dependent weights, the separation factor, and the separated-growth predicate. They impose no positivity or existence hypotheses by themselves; such assumptions must be supplied where later results use them.",
+      "definitions": "import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\ndef geometricDegreeWeight (w0 : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then w0 else x i\r\n\r\ndef geometricJetWeight (v0 theta : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then v0 else x i / theta\r\n\r\ndef weightSeparationFactor (m : ℕ) (C w0 v0 theta : ℝ) : ℝ :=\r\n  C * (max 1 (max v0 (1 / theta) / min w0 1)) ^ (m + 1)\r\n\r\n\r\n\r\n\r\n\r\ndef SeparatedWeightGrowth (m : ℕ) (D : ℝ) (x : ℕ → ℝ) : Prop :=\r\n  ∀ i, 0 < i → i ≤ m → D * (∏ j ∈ Finset.range i, x j) < x i\r\n\r\n\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean#L14-L108",
+      "tags": [
+        "number-theory",
+        "rational-approximation",
+        "weighted-estimates",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "18191872-ab9e-4020-bab8-ad80da015219",
+      "created_at": "2026-10-09T08:44:49.598267+00:00",
+      "updated_at": "2026-10-09T08:44:59.363821+00:00"
+    }
+  },
+  "definition_id": "18191872-ab9e-4020-bab8-ad80da015219",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "18191872-ab9e-4020-bab8-ad80da015219",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_WeightSeparation",
+      "theorem_title": "Geometric weights and separated growth",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Let $w_0,v_0,\\theta\\in\\mathbb{R}$, let $x:\\mathbb{N}\\to\\mathbb{R}$, and let $i,m\\in\\mathbb{N}$. The degree weight is $w_0$ at index $0$ and $x(i)$ at every other index. The jet weight is $v_0$ at index $0$ and $x(i)/\\theta$ at every other index. For $C,w_0,v_0,\\theta\\in\\mathbb{R}$ and $m\\in\\mathbb{N}$, the separation factor is\n\n$$\nC\\left(\\max\\left\\{1,\\frac{\\max\\{v_0,1/\\theta\\}}{\\min\\{w_0,1\\}}\\right\\}\\right)^{m+1}.\n$$\n\nFinally, $\\mathrm{SeparatedWeightGrowth}(m,D,x)$ means that for every integer $i$ with $0<i\\le m$,\n\n$$\nD\\prod_{j=0}^{i-1}x(j)<x(i).\n$$\n\nThese are four definitions: the two index-dependent weights, the separation factor, and the separated-growth predicate. They impose no positivity or existence hypotheses by themselves; such assumptions must be supplied where later results use them.",
+      "created_at": "2026-10-09T08:44:58.376277+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "rational-approximation",
+        "weighted-estimates"
+      ],
+      "definition": "import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\ndef geometricDegreeWeight (w0 : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then w0 else x i\r\n\r\ndef geometricJetWeight (v0 theta : ℝ) (x : ℕ → ℝ) (i : ℕ) : ℝ :=\r\n  if i = 0 then v0 else x i / theta\r\n\r\ndef weightSeparationFactor (m : ℕ) (C w0 v0 theta : ℝ) : ℝ :=\r\n  C * (max 1 (max v0 (1 / theta) / min w0 1)) ^ (m + 1)\r\n\r\n\r\n\r\n\r\n\r\ndef SeparatedWeightGrowth (m : ℕ) (D : ℝ) (x : ℕ → ℝ) : Prop :=\r\n  ∀ i, 0 < i → i ≤ m → D * (∏ j ∈ Finset.range i, x j) < x i\r\n\r\n\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/WeightSeparation.lean#L14-L108",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

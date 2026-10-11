@@ -1,0 +1,55 @@
+"""Serial genuine native alias/type/kernel audit in the independent cache."""
+from pathlib import Path
+import hashlib,json,subprocess,sys
+sys.stdout.reconfigure(encoding="utf-8")
+OUT=Path(__file__).resolve().parent;BATCH=OUT.parent;TASK=OUT.parents[3];ROOT=TASK.parents[1]
+PROJECT=OUT/"project";NATIVE=OUT/"cache/n"
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def load(p):return json.loads(p.read_text(encoding="utf-8-sig"))
+def write(p,d):p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+controls=load(OUT/"frozen-controls.json")["controls"]
+def fixed():
+    assert all(sha(BATCH/n)==h for n,h in controls.items())
+    for r in load(BATCH/"source-manifest.json")["files"]:
+        p=TASK/r["task_relative"];assert sha(p)==r["sha256"] and p.stat().st_size==r["bytes"]
+fixed()
+extract=load(OUT/"actual-extraction-receipt.json")
+assert extract["complete"] and len(extract["rows"])==11 and all(r["exit_code"]==0 for r in extract["rows"])
+prior=load(OUT/"native-alias-audit-receipt.json")
+assert len(prior["rows"])==1 and prior["rows"][0]["exit_code"]==0
+rows=prior["rows"]
+r=rows[0]
+assert sha(ROOT/r["source_root_relative"])==r["source_sha256"]
+for name,key in [("log","log_sha256"),("exit_file","exit_file_sha256"),("wrapper","wrapper_sha256")]:
+    assert sha(OUT/r[name])==r[key]
+assert r["lean_working_directory"]==str(PROJECT) and r["cache"]=="cache/n"
+
+def run(label,source,output=None):
+    wrapper=OUT/(label+".ps1")
+    cmd=f'$env:LEAN_NUM_THREADS = "1"\n$env:LEAN_PATH = "{NATIVE.as_posix()};" + $env:LEAN_PATH + ";{PROJECT.as_posix()}"\nSet-Location -LiteralPath "{PROJECT.as_posix()}"\n& lean '
+    if output:output.parent.mkdir(parents=True,exist_ok=True);cmd+='-o "'+output.as_posix()+'" '
+    cmd+='"'+source.as_posix()+'"\nexit $LASTEXITCODE\n';wrapper.write_text(cmd,encoding="utf-8")
+    invocation=["lake","env","pwsh","-NoProfile","-ExecutionPolicy","Bypass","-File",str(wrapper)]
+    p=subprocess.run(invocation,cwd=ROOT,capture_output=True)
+    log=OUT/(label+".log");log.write_bytes(p.stdout+p.stderr)
+    ex=OUT/(label+"-exit.txt");ex.write_text(str(p.returncode)+"\n",encoding="utf-8")
+    rows.append({"label":label,"command":invocation,"lake_env_working_directory":str(ROOT),"lean_working_directory":str(PROJECT),
+        "exit_code":p.returncode,"source_root_relative":source.relative_to(ROOT).as_posix(),"source_sha256":sha(source),
+        "log":log.name,"log_sha256":sha(log),"exit_file":ex.name,"exit_file_sha256":sha(ex),
+        "wrapper":wrapper.name,"wrapper_sha256":sha(wrapper),"cache":"cache/n",
+        "output":output.relative_to(OUT).as_posix() if output else None,"output_sha256":sha(output) if output and output.exists() else None})
+    write(OUT/"native-alias-audit-receipt.json",{"rows":rows,"complete":False,"actual_native_kernel_environment":True,
+        "native_and_staged_objects_borrowed":False,"root_scope_API_credentials_writes":False})
+    print(label+": exit "+str(p.returncode),flush=True);fixed()
+    if p.returncode:print(log.read_text(encoding="utf-8-sig"),flush=True)
+    assert p.returncode==0,"Actual failure evidence retained"
+print("Guarded resume: actual embedded-type oracle exit0 bound to this same independent project/cache.",flush=True)
+p=subprocess.run([sys.executable,str(OUT/"configure_alias.py")],cwd=TASK,capture_output=True)
+(OUT/"alias-reconstruction-python.log").write_bytes(p.stdout+p.stderr)
+(OUT/"alias-reconstruction-python-exit.txt").write_text(str(p.returncode)+"\n",encoding="utf-8")
+assert p.returncode==0,(p.stdout+p.stderr).decode("utf-8")
+run("native-value-alias-build",PROJECT/"NativeValueComparisonDefinition.lean",NATIVE/"NativeValueComparisonDefinition.olean")
+run("independent-native-value-comparison",OUT/"independent-native-value-comparison.lean")
+write(OUT/"native-alias-audit-receipt.json",{"rows":rows,"complete":True,"actual_native_kernel_environment":True,
+    "native_and_staged_objects_borrowed":False,"root_scope_API_credentials_writes":False})
+assert len(rows)==3 and all(r["exit_code"]==0 for r in rows)

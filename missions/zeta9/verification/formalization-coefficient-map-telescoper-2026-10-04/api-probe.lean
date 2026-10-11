@@ -1,0 +1,10 @@
+import missions.zeta9.formalization.CoefficientMapAggregate
+import Mathlib.Algebra.Polynomial.Taylor
+#print Fin.prod_univ_eq_prod_range
+#print Polynomial.nextCoeff
+#print Polynomial.coeff_mul_add_add
+#check Polynomial.mul_coeff_one
+#check Polynomial.reverse_mul
+#check Polynomial.nextCoeff_C_mul
+#check Polynomial.hasseDeriv_coeff
+#check Polynomial.coeff_mul

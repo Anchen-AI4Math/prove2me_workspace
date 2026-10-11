@@ -1,0 +1,151 @@
+{
+  "role": "Author full-definition expectation source reuse",
+  "records": [
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.connectionPair",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def connectionPair (n : ℕ) (r : Fin 5) : ℚ[X] × ℚ[X] :=\n  if hn : 1 ≤ n then\n    Classical.choose (connection_five_systems_unique n hn r).exists\n  else (0, 0)\n\n",
+      "expected_source_block": "def expected_connectionPair (n : ℕ) (r : Fin 5) : ℚ[X] × ℚ[X] :=\n  if hn : 1 ≤ n then\n    Classical.choose (connection_five_systems_unique n hn r).exists\n  else (0, 0)\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.connectionP",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def connectionP (n : ℕ) (r : Fin 5) : ℚ[X] := (connectionPair n r).1\n\n",
+      "expected_source_block": "def expected_connectionP (n : ℕ) (r : Fin 5) : ℚ[X] := (connectionPair n r).1\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.connectionQ",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def connectionQ (n : ℕ) (r : Fin 5) : ℚ[X] := (connectionPair n r).2\n\n",
+      "expected_source_block": "def expected_connectionQ (n : ℕ) (r : Fin 5) : ℚ[X] := (connectionPair n r).2\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.connectionGamma",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def connectionGamma (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun r l => (connectionP n r).coeff l.val\n\n/-- True cancellation numerator for Q(t), with denominator\n    ((t-1) polePolynomial_n(t))^9.  The positive roots are 2,...,n+1. -/\n",
+      "expected_source_block": "def expected_connectionGamma (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun r l => (connectionP n r).coeff l.val\n\n/-- True cancellation numerator for Q(t), with denominator\n    ((t-1) polePolynomial_n(t))^9.  The positive roots are 2,...,n+1. -/\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.remainderNumerator",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def remainderNumerator (n : ℕ) (q : ℚ[X]) : ℚ[X] :=\n  C ((n.factorial : ℚ) ^ 7) *\n    (∏ i ∈ range n, (X - C ((i : ℚ) + 2))) *\n    (∏ i ∈ range n, (X + C ((n : ℚ) + (i : ℚ) + 1))) *\n    q.comp (connectionV n)\n\n",
+      "expected_source_block": "def expected_remainderNumerator (n : ℕ) (q : ℚ[X]) : ℚ[X] :=\n  C ((n.factorial : ℚ) ^ 7) *\n    (∏ i ∈ range n, (X - C ((i : ℚ) + 2))) *\n    (∏ i ∈ range n, (X + C ((n : ℚ) + (i : ℚ) + 1))) *\n    q.comp (connectionV n)\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.shiftedRemainderNumerator",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def shiftedRemainderNumerator (n : ℕ) (q : ℚ[X]) : ℚ[X] :=\n  (remainderNumerator n q).comp (X + 1)\n\n/-- Genuine formal jet for an arbitrary numerator, not an abstract array. -/\n",
+      "expected_source_block": "def expected_shiftedRemainderNumerator (n : ℕ) (q : ℚ[X]) : ℚ[X] :=\n  (remainderNumerator n q).comp (X + 1)\n\n/-- Genuine formal jet for an arbitrary numerator, not an abstract array. -/\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.numeratorClearedSeries",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def numeratorClearedSeries (m j : ℕ) (A : ℚ[X]) : PowerSeries ℚ :=\n  ((A.comp (shiftedVariable j) : ℚ[X]) : PowerSeries ℚ) *\n    ((shiftedClearedDenominator m j : PowerSeries ℚ) ^ 9)⁻¹\n\n",
+      "expected_source_block": "def expected_numeratorClearedSeries (m j : ℕ) (A : ℚ[X]) : PowerSeries ℚ :=\n  ((A.comp (shiftedVariable j) : ℚ[X]) : PowerSeries ℚ) *\n    ((shiftedClearedDenominator m j : PowerSeries ℚ) ^ 9)⁻¹\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.numeratorLocalCoefficient",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def numeratorLocalCoefficient (m j s : ℕ) (A : ℚ[X]) : ℚ :=\n  PowerSeries.coeff (9 - s) (numeratorClearedSeries m j A)\n\n",
+      "expected_source_block": "def expected_numeratorLocalCoefficient (m j s : ℕ) (A : ℚ[X]) : ℚ :=\n  PowerSeries.coeff (9 - s) (numeratorClearedSeries m j A)\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.remainderCoefficient",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def remainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  numeratorLocalCoefficient (n + 1) j s (shiftedRemainderNumerator n q)\n\n",
+      "expected_source_block": "def expected_remainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  numeratorLocalCoefficient (n + 1) j s (shiftedRemainderNumerator n q)\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.extendedOldCoefficient",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def extendedOldCoefficient (n j s : ℕ) (P : ℚ[X]) : ℚ :=\n  if 1 ≤ j ∧ j ≤ n + 1 then weightedLocalCoefficient n (j - 1) s P else 0\n\n",
+      "expected_source_block": "def expected_extendedOldCoefficient (n j s : ℕ) (P : ℚ[X]) : ℚ :=\n  if 1 ≤ j ∧ j ≤ n + 1 then weightedLocalCoefficient n (j - 1) s P else 0\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.extendedRemainderCoefficient",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def extendedRemainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  if j ≤ n + 1 then remainderCoefficient n j s q else 0\n\n",
+      "expected_source_block": "def expected_extendedRemainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  if j ≤ n + 1 then remainderCoefficient n j s q else 0\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFormalTransportData.previousRemainderCoefficient",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFormalTransportData.lean",
+      "source_sha256": "ae9f4eab8efecd88aaae5d4b13da7ba4bed7db89bbf257d3b0645e1b8584fb27",
+      "exact_definition_source_block": "def previousRemainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  if j = 0 then 0 else extendedRemainderCoefficient n (j - 1) s q\n\n/- Planned universal theorem, NOT YET PROVED OR COMPILED:\n\nweightedLocalCoefficient (n+2) j s (X^r.val) =\n  extendedOldCoefficient n j s (connectionP n r) +\n  extendedRemainderCoefficient n j s (connectionQ n r) -\n  previousRemainderCoefficient n j s (connectionQ n r)\n\nfor n>=1, j<=n+2 and 1<=s<=9.  From this derive all nine rho\nrelations and the rational constant correction, then the actual row matrix\nidentity F_(n+2) = connectionGamma n * F_n for Even n>=2.\n-/\n\n",
+      "expected_source_block": "def expected_previousRemainderCoefficient (n j s : ℕ) (q : ℚ[X]) : ℚ :=\n  if j = 0 then 0 else extendedRemainderCoefficient n (j - 1) s q\n\n/- Planned universal theorem, NOT YET PROVED OR COMPILED:\n\nweightedLocalCoefficient (n+2) j s (X^r.val) =\n  extendedOldCoefficient n j s (connectionP n r) +\n  extendedRemainderCoefficient n j s (connectionQ n r) -\n  previousRemainderCoefficient n j s (connectionQ n r)\n\nfor n>=1, j<=n+2 and 1<=s<=9.  From this derive all nine rho\nrelations and the rational constant correction, then the actual row matrix\nidentity F_(n+2) = connectionGamma n * F_n for Even n>=2.\n-/\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFiniteSum.rho",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFiniteSum.lean",
+      "source_sha256": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97",
+      "exact_definition_source_block": "def rho (n s : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ j ∈ range (n + 1), CoefficientMapJet.weightedLocalCoefficient n j s W\n\n",
+      "expected_source_block": "def expected_rho (n s : ℕ) (W : ℚ[X]) : ℚ :=\n  ∑ j ∈ range (n + 1), CoefficientMapJet.weightedLocalCoefficient n j s W\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapFiniteSum.lean",
+      "source_sha256": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97",
+      "exact_definition_source_block": "def constantTerm (n : ℕ) (W : ℚ[X]) : ℚ :=\n  -(∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n    CoefficientMapJet.weightedLocalCoefficient n j s W * harmonicPower s j)\n\n",
+      "expected_source_block": "def expected_constantTerm (n : ℕ) (W : ℚ[X]) : ℚ :=\n  -(∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n    CoefficientMapJet.weightedLocalCoefficient n j s W * harmonicPower s j)\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapAggregate.aggregate",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapAggregate.lean",
+      "source_sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+      "exact_definition_source_block": "def aggregate (n : ℕ) (W : ℚ[X]) (i : Fin 5) : ℚ :=\n  match i.val with\n  | 0 => CoefficientMapFiniteSum.constantTerm n W\n  | 1 => CoefficientMapFiniteSum.rho n 3 W\n  | 2 => CoefficientMapFiniteSum.rho n 5 W\n  | 3 => CoefficientMapFiniteSum.rho n 7 W\n  | _ => CoefficientMapFiniteSum.rho n 9 W\n\n",
+      "expected_source_block": "def expected_aggregate (n : ℕ) (W : ℚ[X]) (i : Fin 5) : ℚ :=\n  match i.val with\n  | 0 => CoefficientMapFiniteSum.constantTerm n W\n  | 1 => CoefficientMapFiniteSum.rho n 3 W\n  | 2 => CoefficientMapFiniteSum.rho n 5 W\n  | 3 => CoefficientMapFiniteSum.rho n 7 W\n  | _ => CoefficientMapFiniteSum.rho n 9 W\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapAggregate.aggregateLinearMap",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapAggregate.lean",
+      "source_sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+      "exact_definition_source_block": "def aggregateLinearMap (n : ℕ) : ℚ[X] →ₗ[ℚ] (Fin 5 → ℚ) where\n  toFun := aggregate n\n  map_add' := aggregate_add n\n  map_smul' := aggregate_smul n\n\n",
+      "expected_source_block": "def expected_aggregateLinearMap (n : ℕ) : ℚ[X] →ₗ[ℚ] (Fin 5 → ℚ) where\n  toFun := aggregate n\n  map_add' := aggregate_add n\n  map_smul' := aggregate_smul n\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapAggregate.lean",
+      "source_sha256": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+      "exact_definition_source_block": "def quarticAggregateLinearMap (n : ℕ) : (Fin 5 → ℚ) →ₗ[ℚ] (Fin 5 → ℚ) :=\n  (aggregateLinearMap n).comp coordinateLinearMap\n\n",
+      "expected_source_block": "def expected_quarticAggregateLinearMap (n : ℕ) : (Fin 5 → ℚ) →ₗ[ℚ] (Fin 5 → ℚ) :=\n  (aggregateLinearMap n).comp coordinateLinearMap\n\n",
+      "expectation_is_author_source_reuse": true
+    },
+    {
+      "actual": "ZetaNine.CoefficientMapMatrix.actualFMatrix",
+      "source": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\.rt\\oa1\\missions\\zeta9\\formalization\\CoefficientMapMatrix.lean",
+      "source_sha256": "a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "exact_definition_source_block": "def actualFMatrix (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun i j => aggregate n (X ^ i.val) j\n\n",
+      "expected_source_block": "def expected_actualFMatrix (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun i j => aggregate n (X ^ i.val) j\n\n",
+      "expectation_is_author_source_reuse": true
+    }
+  ],
+  "complete_definition_count": 18,
+  "independent_review_claimed": false
+}

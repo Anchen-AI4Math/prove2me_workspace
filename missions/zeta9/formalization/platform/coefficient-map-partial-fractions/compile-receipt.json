@@ -1,0 +1,421 @@
+{
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapPartialFractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-native.log",
+      "log_sha256": "f84e4e7d1b2057b81db4f37ed226e4f65893eb59e42bf96b6e81c5fd28aec5da"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "b7e272e40726fa8294e811b5a9656509e98078102d6846f5d3149e5b2fbc2f07"
+    },
+    {
+      "label": "stage2-CoefficientMap",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMap_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMap.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-CoefficientMapJet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapJet_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapJet.log",
+      "log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "label": "stage2-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapInjectivity_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapInjectivity.log",
+      "log_sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "label": "stage2-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapPartialFractions_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapPartialFractions.log",
+      "log_sha256": "ce926ada1f8f998d6e80876e2906cd9d40bd3c9fa17ff9ab8d058637e611249d"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapPartialFractions.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "98ab8e4aeca2f5dd3a6065205bf3d7f39644bcf553597ae1933325b83b59b430"
+    },
+    {
+      "label": "build-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMap.log",
+      "log_sha256": "0fe818be80c01184ea2a9a512bf654abacadb1af2b164a6545075103e867ce5b"
+    },
+    {
+      "label": "build-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapJet.log",
+      "log_sha256": "5e100a0d37de3e85ddc8c3998d6e697aa1394a35b0d1648e5b7767201ec87048"
+    },
+    {
+      "label": "build-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-CoefficientMapInjectivity.log",
+      "log_sha256": "d2e7fb41734371c9db1cd8ca41d0528222be892b766413b743d033c2cd4a507d"
+    },
+    {
+      "label": "build-definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapPartialFractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-definition.log",
+      "log_sha256": "4e89cc2175e9c209a460569aea1c1bd7d306c9c30cc3663679556ad27e5a9971"
+    },
+    {
+      "label": "build-0-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapPartialFractions_candidate_local_coefficients"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-0-solution.log",
+      "log_sha256": "e2933977dc3011249dc4459ebbd362151077a466d95ceda39d6981eadaf5b6f9"
+    },
+    {
+      "label": "build-0-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapPartialFractions_candidate_local_coefficients"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-0-reference.log",
+      "log_sha256": "d8c5ac842db658be86de87e19444fba9418f5d0eed5cf1852fbb918b93b5372f"
+    },
+    {
+      "label": "build-1-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapPartialFractions_actual_global_polynomial_partial_fractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-1-solution.log",
+      "log_sha256": "cd36035f34e1a893d418240a21560c8b945bea98f8d024e2b9e07fdafa75fb18"
+    },
+    {
+      "label": "build-1-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapPartialFractions_actual_global_polynomial_partial_fractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-1-reference.log",
+      "log_sha256": "6c6b9b1491f28d395952c14798135c0cc008df6f9925229b3a5642b7423cf83a"
+    },
+    {
+      "label": "build-2-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapPartialFractions_actual_global_partial_fractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-2-solution.log",
+      "log_sha256": "63c8a47c02e463783446936b6fe0be136b71de5e3bb8870b020489f6c0aa371f"
+    },
+    {
+      "label": "build-2-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapPartialFractions_actual_global_partial_fractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "build-2-reference.log",
+      "log_sha256": "b1cefec86dad0e27974cbbd516013ecb2852cb2553500d1a18678e010880dd03"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "889842d70a253b416c6018e6f1bca05cab25da89da5bb5577af68cc5b0d429e3"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "5652c572d87e6611b24152c589d3c7f1a7008b7024a73986f76afd1d969f5641"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "4f785c3ffd3d7c0ef71dbe6390d6e80bcf385688c6c98e6b243712ca54814806"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "7969d6d96ff84225836e66725c21b125f22889e3c4eff76d021d76992b9fa9cb"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "44794a8d1f2b4518e8b7ad566b7696d9b8813f89b83c5d0bdffd3306b222d6dc"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "8ec235cb3918af8479651db7ed4702477b44a72583290f3d0a3f6d8908b978dd"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "3106e9c3e73f13705e3566fdc7eaacd038d25f9d51d0b404f044e47d4b3d13c7"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "1ab8ef210565bda3983af8e7b8d4426ac30f916f0cb740a65b0a82dd1584ec14"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "a47bbd3c1b63386d2db0d00857d3e9fdcf35e2d7a92e35abbeb99f41d0d05670"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "9620f455e7dc74229d4862bf681be2abf65b7ed1dac331c63f7a9ee691f4b9de"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-partial-fractions\\project",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "104528c7d35a8813046a85c1fe7d991deaa69499ca88fe4e7e6c144cfef19bcb"
+    }
+  ],
+  "retained_failed_attempt": "retained-failed-attempt.json",
+  "resumed_same_project_successful_steps": [
+    "toolchain",
+    "build-native",
+    "stage1-extract",
+    "stage2-CoefficientMap",
+    "stage2-CoefficientMapJet",
+    "stage2-CoefficientMapInjectivity",
+    "stage2-CoefficientMapPartialFractions",
+    "stage2-header",
+    "build-CoefficientMap",
+    "build-CoefficientMapJet",
+    "build-CoefficientMapInjectivity",
+    "build-definition"
+  ],
+  "complete": true,
+  "native_and_staged_objects_borrowed": false
+}

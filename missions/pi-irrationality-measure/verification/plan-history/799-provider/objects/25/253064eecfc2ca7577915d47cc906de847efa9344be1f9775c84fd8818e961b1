@@ -1,0 +1,767 @@
+{
+  "schema_version": 1,
+  "variant": "all-shared-public",
+  "basis": "frozen 799-module preview only",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "input_hashes": {
+    "verification/platform-unit-plan-preview.json": "0c7cfb50e1cdff2285e12fd06ddd761e8dddb88ed9fd1b0c3898884e72090430",
+    "verification/platform-artifact-plan-preview.json": "07d545d9919a358a56de18d6dd64444a90c1de1be642ec16d67354069d3a2294",
+    "verification/ast-unit-inventory.json": "b5061a3e42a7a66bdbd978344767ec5db6991d684ce785e3b281f900f065e506",
+    "verification/ast-scope-inventory.json": "d9df5bfb5074bff700b77a23eafb464130f31d6540eb1564c070274b13d93bbf",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/inline-provider-collision-audit.json": "3ad990e8de02fd0de572a326ab8b549a2d9703d16271e02460ba4999adb38de7",
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "verification/source-integrity.json": "61be2cd854653d3821568a4a2cf44d5929514f8d7ffacd6f7cf6742631b6fec0",
+    "verification/validated-port-manifest.json": "a54ff345f689861b158423bf735958a8b0af2979bff24302478d4d1a3982c984",
+    "missions/pi-irrationality-measure/verification/sketch-FormalLogTruncation-20261007-223910.log": "59bf6b39630930bc0137ae4d3ea482679f75e9ba60a0ec2cf9bb91e896461be6",
+    "missions/pi-irrationality-measure/verification/sketch-CurveRegularEuler-20261008-001828.log": "a3a681bbad89ec3dfe9e6a9b1cb21efdc30dd8df37cc000ef6f85c97bb71ab72",
+    "missions/pi-irrationality-measure/verification/sketch-GeneralCartierDegreeLength-20261008-014443.log": "522978e29c123552fcec83db3ad429131938094885fc310dcc9fdba22fcce498",
+    "missions/pi-irrationality-measure/verification/sketch-PrimeTaylorCotangent-20261008-024834.log": "0ce6015feeb0b9dfdcad2e50d10f0efed3b45f533fa160a18f4b1f7972179398"
+  },
+  "fixed_plan_checks": {
+    "fresh_unit_plan_equals_frozen": true,
+    "fresh_artifact_plan_equals_frozen": true,
+    "independent_collision_recomputation_matches_84_nodes": true,
+    "units": 5335,
+    "nodes": 312
+  },
+  "invariants": {
+    "whole_command_atomicity": true,
+    "complete_direct_dependency_closure": true,
+    "definitions_dependencies_closed": true,
+    "definition_dag_acyclic": true,
+    "node_dag_acyclic": true,
+    "source_target_not_absorbed": true,
+    "unresolved_cross_module_private_definition_edges": 0,
+    "theorem_proofs_retained": true,
+    "theorem_placeholders_in_definitions_allowed": false
+  },
+  "metrics": {
+    "category_counts": {
+      "definition": 1738,
+      "definition_embedded": 2423,
+      "inline": 970,
+      "node": 204
+    },
+    "category_delta": {
+      "definition": 1,
+      "definition_embedded": 580,
+      "inline": -473,
+      "node": -108
+    },
+    "provider_root_units": 325,
+    "provider_root_names": 326,
+    "provider_root_source_modules": 138,
+    "provider_root_proof_lines": {
+      "sum": 1382,
+      "max": 10,
+      "over_10": 0
+    },
+    "complete_unit_closure": 2492,
+    "complete_closure_source_modules": 348,
+    "newly_promoted_units": 581,
+    "newly_promoted_source_modules": 170,
+    "newly_promoted_definition_commands": 1,
+    "newly_embedded_theorem_commands": 580,
+    "newly_promoted_private_commands": 9,
+    "newly_promoted_private_units": [
+      "OAI.NumberTheory.PiExponent.Approximation.GeneratorsSectionCover:498",
+      "OAI.NumberTheory.PiExponent.Approximation.RegularSectionChoice:3196",
+      "OAI.NumberTheory.PiExponent.Cohomology.CartierMixedEuler:444",
+      "OAI.NumberTheory.PiExponent.Cohomology.EulerSupportDimension:1586",
+      "OAI.NumberTheory.PiExponent.Cohomology.EulerSupportDimension:1770",
+      "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistAcyclicity:645",
+      "OAI.NumberTheory.PiExponent.Geometry.CurveProductFormula:4431",
+      "OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole:338",
+      "OAI.NumberTheory.PiExponent.Geometry.SectionCartierRegular:306"
+    ],
+    "absorbed_existing_nodes": 108,
+    "absorbed_existing_node_units": [
+      "OAI.NumberTheory.PiExponent.Ampleness.AmpleAllPowersGeneration:407",
+      "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:2229",
+      "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:4787",
+      "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:596",
+      "OAI.NumberTheory.PiExponent.Analysis.AlgebraicLogarithmicObstruction:1970",
+      "OAI.NumberTheory.PiExponent.Analysis.AlgebraicLogarithmicObstruction:3098",
+      "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:5661",
+      "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:6447",
+      "OAI.NumberTheory.PiExponent.Analysis.LogTailAnalytic:6271",
+      "OAI.NumberTheory.PiExponent.Analysis.LogarithmicObstruction:7453",
+      "OAI.NumberTheory.PiExponent.Approximation.ClosedRestrictionTensor:10382",
+      "OAI.NumberTheory.PiExponent.Approximation.ClosedRestrictionTensor:2718",
+      "OAI.NumberTheory.PiExponent.Approximation.ClosedRestrictionTensor:4685",
+      "OAI.NumberTheory.PiExponent.Approximation.ClosedRestrictionTensor:7361",
+      "OAI.NumberTheory.PiExponent.Approximation.FullSupportNilpotence:990",
+      "OAI.NumberTheory.PiExponent.Approximation.GeneratorsSectionCover:2266",
+      "OAI.NumberTheory.PiExponent.Approximation.GeneratorsSectionCover:5345",
+      "OAI.NumberTheory.PiExponent.Approximation.PersistentComponents:1413",
+      "OAI.NumberTheory.PiExponent.Approximation.PersistentComponents:2699",
+      "OAI.NumberTheory.PiExponent.Approximation.PersistentComponents:364",
+      "OAI.NumberTheory.PiExponent.Approximation.RectangularVolume:2104",
+      "OAI.NumberTheory.PiExponent.Approximation.RegularSectionChoice:3522",
+      "OAI.NumberTheory.PiExponent.Approximation.RegularSectionChoice:5324",
+      "OAI.NumberTheory.PiExponent.Approximation.RegularSectionChoice:563",
+      "OAI.NumberTheory.PiExponent.Approximation.RegularSectionMono:367",
+      "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:3766",
+      "OAI.NumberTheory.PiExponent.Approximation.SerrePowerDescent:1974",
+      "OAI.NumberTheory.PiExponent.Cohomology.AmpleCohomologyFinite:628",
+      "OAI.NumberTheory.PiExponent.Cohomology.AmpleLineCohomology:379",
+      "OAI.NumberTheory.PiExponent.Cohomology.CartierEulerPair:5624",
+      "OAI.NumberTheory.PiExponent.Cohomology.CartierMixedEuler:1064",
+      "OAI.NumberTheory.PiExponent.Cohomology.CartierMixedEuler:3529",
+      "OAI.NumberTheory.PiExponent.Cohomology.CechHigher:13923",
+      "OAI.NumberTheory.PiExponent.Cohomology.CechHigher:16187",
+      "OAI.NumberTheory.PiExponent.Cohomology.CechHigher:6794",
+      "OAI.NumberTheory.PiExponent.Cohomology.EulerSupportDimension:3422",
+      "OAI.NumberTheory.PiExponent.Cohomology.EulerSupportDimension:400",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCech:16656",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechBound:3454",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechBound:4908",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechBound:6753",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechExactness:1366",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechExactness:3397",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedCechRecovery:113",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedFreeCech:3996",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedFreeCech:5493",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedFreeCech:8591",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedH0:6045",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialCech:3095",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialCech:5155",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialLaurent:12567",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialLaurent:13847",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialLaurent:4568",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedPolynomialLaurent:9546",
+      "OAI.NumberTheory.PiExponent.Cohomology.GradedSerreVanishing:466",
+      "OAI.NumberTheory.PiExponent.Cohomology.LineCohomologyDimension:856",
+      "OAI.NumberTheory.PiExponent.Cohomology.MixedEulerAmpleDimension:400",
+      "OAI.NumberTheory.PiExponent.Cohomology.MixedEulerCartierAmple:493",
+      "OAI.NumberTheory.PiExponent.Cohomology.NoetherianAmpleSerreVanishing:661",
+      "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveMonomialCechHigher:6519",
+      "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistAcyclicity:3992",
+      "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:1993",
+      "OAI.NumberTheory.PiExponent.Cohomology.TupleCechBound:2499",
+      "OAI.NumberTheory.PiExponent.Geometry.CurveContactSum:522",
+      "OAI.NumberTheory.PiExponent.Geometry.CurveProductFormula:4972",
+      "OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole:22478",
+      "OAI.NumberTheory.PiExponent.Geometry.FiniteNormalizationGrowth:8844",
+      "OAI.NumberTheory.PiExponent.Geometry.IntegralCurveExistence:2696",
+      "OAI.NumberTheory.PiExponent.Geometry.PlaceCenteredBranch:1810",
+      "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceFinite:731",
+      "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceSerre:1394",
+      "OAI.NumberTheory.PiExponent.Jets.AlgebraicJetPackets:3502",
+      "OAI.NumberTheory.PiExponent.Jets.CotangentGeneration:807",
+      "OAI.NumberTheory.PiExponent.Jets.DVRBranchJet:1168",
+      "OAI.NumberTheory.PiExponent.Jets.FilteredLength:1642",
+      "OAI.NumberTheory.PiExponent.Jets.FormalBranchOrderRational:1872",
+      "OAI.NumberTheory.PiExponent.Jets.FormalBranchOrderRational:292",
+      "OAI.NumberTheory.PiExponent.Jets.GradedGeneration:671",
+      "OAI.NumberTheory.PiExponent.Jets.JetGeometry:6508",
+      "OAI.NumberTheory.PiExponent.Jets.JetGeometry:7291",
+      "OAI.NumberTheory.PiExponent.Jets.NormalBasisProducts:1557",
+      "OAI.NumberTheory.PiExponent.Jets.NormalBasisProducts:2513",
+      "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:10780",
+      "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:17393",
+      "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity:7443",
+      "OAI.NumberTheory.PiExponent.Jets.TransverseWeightedMultiplicity:1903",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.AffineTranscendenceDimension:354",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.AssociatedPrimeAvoidance:184",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.ClosedPointLocalDimension:1275",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.FibreContact:2129",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.FibreContact:3421",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.IntegralAffineOpenDimension:3620",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalizedFiltrationLength:334",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.ParameterKilledFiniteLength:727",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeHilbertComparison:3126",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeHilbertDegree:1090",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeHilbertDegree:2482",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeHilbertDegree:3294",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeHilbertDimension:1489",
+      "OAI.NumberTheory.PiExponent.LocalAlgebra.SerreDimensionShift:2567",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1506",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:2826",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:392",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:5000",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:9837",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexFloor:372",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexUnweighted:2924",
+      "OAI.NumberTheory.PiExponent.Polynomials.SimplexUnweighted:751"
+    ],
+    "nodes_remaining": 204,
+    "node_delta": -108,
+    "definition_bundles": 623,
+    "definition_bundle_delta": 61,
+    "embedded_theorem_proof_lines": {
+      "sum": 4588,
+      "max": 66,
+      "over_10": 125,
+      "over_40": 4
+    },
+    "definition_selected_source_bytes": {
+      "total": 2180121,
+      "delta": 384623,
+      "max_bundle": {
+        "source_module": "OAI.NumberTheory.PiExponent.Cohomology.FiniteCoverCohomology",
+        "bytes": 52660
+      },
+      "max_delta_bundle": {
+        "source_module": "OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity",
+        "bytes": 11748
+      },
+      "bundles_over_25000": 2,
+      "bundles_over_50000": 1,
+      "bundles_over_100000": 0
+    },
+    "node_source_components": {
+      "max": 57,
+      "p95": 6,
+      "base_max": 69,
+      "base_p95": 10
+    },
+    "node_inline_units": {
+      "max": 147,
+      "p95": 22,
+      "base_max": 186,
+      "base_p95": 28
+    },
+    "public_inline_collision_nodes": 0,
+    "public_inline_collision_node_ids": [],
+    "original_shared_public_names_still_inline": 0,
+    "original_shared_public_names_still_inline_detail": {},
+    "cross_module_private_definition_edges": [
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalAffineChart:4154",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalPowerSections:4479",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalRepresentedOpaque:1525",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalAffineChartRestriction:473",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalRepresentedTypes:1508",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalAffineChartRestriction:473",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalTypedRestriction:1531",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalAffineChartRestriction:473",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalTypedTransportNaturality:609",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalTypedTransport:304",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ReesFixedRestriction:1334",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ReesFixedChart:1110",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Ampleness.ReesSectionInclusion:2165",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1941",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.ClosedPushforwardLinear:1852",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.ClosedImmersionSerreTransfer:404",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.ClosedUnitKernel:821",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.InverseFrames:687",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.InverseFrames:2702",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.InverseFrames:4407",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.MixedSectionExtension:401",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.ProjectionFormula:2899",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:649",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:1337",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:1557",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:1794",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:2031",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardSectionComparison:784",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:409",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardSectionComparison:1146",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:409",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardSectionComparison:1492",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:409",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardSectionComparison:1838",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.PushforwardOpenSections:409",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardSectionComparison:2478",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechH1Transfer:359",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.PushforwardTensor:491",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.TensorMixedSection:4448",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.TensorSectionOpen:1189",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Approximation.TwistSectionScalars:363",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.TensorPure:326",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.CechExtFinite:7673",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechZero:2541",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.CechExtFinite:8108",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechZero:2541",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.CechExtFinite:8625",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechZero:2541",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.CurveEuler:6019",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.FiniteCoverCohomology:724",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.CurveTwoAffineVanishing:421",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.SerreVanishing:423",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:1301",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:1714",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:1913",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:2142",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:2429",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechLinear:564",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:2429",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:3188",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:3406",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:4016",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:4289",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:4595",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:5047",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentCechFinite:5430",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentExtFinite:1248",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.CechExtFinite:609",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentExtFinite:1248",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentExtFinite:1870",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentExtFinite:2357",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.LaurentExtFinite:2803",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveCoordinateAcyclicity:1279",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveCoordinateAcyclicity:1279",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveCoordinateAcyclicity:2494",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveEmbeddingCohomologyBound:891",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.ClosedImmersionSerreTransfer:404",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:2250",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:2633",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:2982",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:3655",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:4382",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:4382",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:3723",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ReesProductSchemeChart:1847",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:6886",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalTypedTransport:304",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:2384",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1580",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:2384",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1762",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:3747",
+        "to": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalTypedTransport:304",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:3747",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1580",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:3747",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1762",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:3747",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1941",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:5426",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1941",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechNaturality:5426",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:7338",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechRecovery:4913",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase:1941",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.CurveProductFormula:2356",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole:338",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateOverlapNaturality:798",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateOverlapNaturality:798",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRatios:2593",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRatios:3561",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRatios:4237",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRatios:4755",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRatios:6183",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:775",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:954",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:3914",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:969",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:3914",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:4989",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:969",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateScalars:4989",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:3250",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveFrameNaturality:3586",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveGlobalPolynomials:5894",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveNegativeCoordinates:1099",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveFramedCech:969",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveNegativeCoordinates:1099",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveNegativeFrames:1655",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections:499",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveNegativeScalars:1273",
+        "to": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveTwistCech:370",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSerreTransfer:609",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.ClosedImmersionSerreTransfer:404",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceSerre:1394",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.SerreAssembly:442",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:5082",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:5493",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:5831",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveTupleCharts:6590",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections:906",
+        "target_deprivate": true
+      }
+    ],
+    "new_cross_module_private_definition_edges": [
+      {
+        "from": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveEmbeddingCohomologyBound:891",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.ClosedImmersionSerreTransfer:404",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.CurveProductFormula:2356",
+        "to": "OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole:338",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSerreTransfer:609",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.ClosedImmersionSerreTransfer:404",
+        "target_deprivate": true
+      },
+      {
+        "from": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceSerre:1394",
+        "to": "OAI.NumberTheory.PiExponent.Approximation.SerreAssembly:442",
+        "target_deprivate": true
+      }
+    ],
+    "unresolved_cross_module_private_definition_edges": []
+  },
+  "root_provider_rows": "provider-roots.jsonl",
+  "closure_command_index": "closure-command-index.jsonl",
+  "unit_plan": "platform-unit-plan-provider-variant.json",
+  "artifact_plan": "platform-artifact-plan-provider-variant.json",
+  "accepted_plan_unchanged": true,
+  "preview_only": true,
+  "lean_validated": false,
+  "publish_ready": false,
+  "final_plan_compatible": false,
+  "limitations": [
+    "This variant uses the 799-module preview and must be regenerated after all 875 facts and final plans freeze.",
+    "Selected source bytes measure retained declaration commands, not Lean elaboration time.",
+    "No generated bundle was compiled; the 300-second file budget remains unverified.",
+    "Private proof dependencies remain source-module-local; final generated/source type mapping still requires Lean validation."
+  ],
+  "pending_name_remaps": {
+    "provider_root_names": [],
+    "reason": "All provider roots retain their exact public source names; the two-name reassoc command is kept atomically.",
+    "inherited_deprivate_units": 112,
+    "new_cross_module_private_dependencies": 4
+  }
+}

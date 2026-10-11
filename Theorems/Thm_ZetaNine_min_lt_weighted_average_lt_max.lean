@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Fintype.Fin
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 -- Local mirror of the private platform theorem
 -- ZetaNine.min_lt_weighted_average_lt_max.  The body is a placeholder so that the

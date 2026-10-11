@@ -1,0 +1,23 @@
+{
+  "theorem_id": "d1e6ecea-242f-412b-b0b2-fc517132c9b3",
+  "theorem_name": "ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound",
+  "theorem_title": "Finite prime logarithms bound the actual harmonic log denominator below",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_finite_prime_log_lower_bound (s K N : ℕ) (S : Finset ℕ)\n    (hs : 0 < s)\n    (hS : ∀ p ∈ S, p.Prime ∧ p ≤ N ∧ N / p ≤ K ∧ K < p ∧\n      harmonicExceptionalProduct s K < p) :\n    (s : ℝ) * (∑ p ∈ S, Real.log (p : ℝ)) ≤ logDen (harmonicPower s N) := by sorry",
+  "natural_language_statement": "Let $s>0$, $K,N\\ge0$, and let $S$ be a finite set of primes. With $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$ and $E_{s,K}=\\prod_{k=1}^{K}|\\operatorname{num}(H_k^{(s)})|$, suppose every $p\\in S$ satisfies\n\n$$p\\le N,\\qquad \\lfloor N/p\\rfloor\\le K,\\qquad K<p,\\qquad E_{s,K}<p.$$\n\nThen\n\n$$s\\sum_{p\\in S}\\log p\\le\\log\\operatorname{den}(H_N^{(s)}).$$\n\nHere the denominator is fully reduced and positive. The finite inequality holds for every admitted finite prime set, including the empty set. It is the arithmetic lower bound before applying the prime number theorem; no asymptotic prime-distribution or full-sequence denominator-rate statement is part of the conclusion.",
+  "created_at": "2026-10-02T14:50:24.436977+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "zeta-function"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.NumberTheory.Padics.PadicVal.Basic\nimport Mathlib.Data.Nat.GCD.BigOperators\nimport Mathlib.Tactic\nopen scoped BigOperators\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 1–2, equations (1)–(2) and the finite-prime lower-bound argument preceding equation (3).",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

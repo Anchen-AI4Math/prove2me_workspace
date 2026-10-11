@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "provider-source-subset-windows-drive-normalization-qa",
+  "helper": "scripts/provider_source_subset_cache_windows.py",
+  "helper_sha256": "1d7c2ba78f4777950199cf257cbbafdce06336f909f603ddbf6363baba489b0e",
+  "frozen_consumer_sha256": "402404640aa81f481e707ea22b83cd61ff8f4a5a56b4c874c8f957d094b1ef56",
+  "source_certificate_unchanged_sha256": "d91c3b0a03d74bbc704276cf479a6503e8c3962d53d48c3eeae1f5c2c2ccd17a",
+  "fixtures": {
+    "actual_drive_case_alias_accepted": true,
+    "different_drive_rejected": true,
+    "different_suffix_rejected": true,
+    "relative_path_rejected": true,
+    "nonexistent_same_suffix_alias_rejected": true
+  },
+  "all_fixtures_pass": true,
+  "actual_cache_replay_rows": 2,
+  "normalization_policy": {
+    "platform": "Windows only",
+    "fields": [
+      "shards[*].olean_resolution.dependency_oleans[*].path",
+      "shards[*].olean_resolution.dependency_oleans[*].resolved_search_root"
+    ],
+    "rule": "drive-letter case only; suffix exact; Path.samefile required"
+  }
+}

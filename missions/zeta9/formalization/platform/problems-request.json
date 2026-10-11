@@ -1,0 +1,108 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated",
+      "theorem_title": "Primitive-row Gram content divides the scaled divided determinant",
+      "formal_statement": "theorem ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated {ι : Type*} [Fintype ι] (u v : ι → ℤ) (Δ : ℤ)\n    (hprimitive : ∃ a : ι → ℤ, (∑ i, a i * u i) = 1) (hΔ : Δ ≠ 0)\n    (hminor : ∀ i j, Δ ∣ u i * v j - u j * v i) :\n    (Int.gcd (normSq u) (dot u v) : ℤ) ∣ Δ * saturatedGram u v Δ := by sorry",
+      "natural_language_statement": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every minor $u_iv_j-u_jv_i$. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$, $R=\\langle v,v\\rangle$ and $D_\\Delta=(TR-C^2)/\\Delta^2$. Then\n\n$$\\gcd(T,C)\\mid \\Delta D_\\Delta.$$\n\nPrimitivity means that the coordinates of $u$ admit an integral Bézout combination equal to one. The theorem covers every finite dimension and every nonzero common minor divisor, including the exterior content. It does not assume squarefreeness, linear independence or nondegeneracy modulo any prime.",
+      "preamble": "import Definitions.Def_ZetaNine_GramContent\nimport Mathlib.Data.Int.GCD\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Tactic.Ring\nopen scoped BigOperators\nopen ZetaNine.GramContent\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/direction-arithmetic-next-2026-10-02.md, section 1, equations (1) and (5).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_GramContent_primitive_row_gram_gcd_dvd_scaled_saturated.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_GramContent_primitive_row_gram_gcd_dvd_scaled_saturated.lean",
+      "definition_dependency": "ZetaNine_GramContent",
+      "explanation": "An integral Bézout certificate for $u$ gives an integer $\\lambda$ and an integral row $w$ with $v=\\lambda u+\\Delta w$. Thus the Gram determinant is exactly $\\Delta^2(T\\langle w,w\\rangle-\\langle u,w\\rangle^2)$. Writing $G=\\gcd(T,C)$, the scalar-product identity shows $G\\mid\\Delta\\langle u,w\\rangle$, while $G\\mid T$. Subtracting the two resulting divisible terms yields $G\\mid\\Delta D_\\Delta$. This also proves that the displayed integer division is exact."
+    },
+    {
+      "theorem_name": "ZetaNine.CenterDenominator.primitive_center_denominator_divisor",
+      "theorem_title": "Explicit divisor of the content-adjusted center denominator",
+      "formal_statement": "theorem ZetaNine.CenterDenominator.primitive_center_denominator_divisor {ι : Type*} [Fintype ι] (u v : ι → ℤ) (a b Δ : ℤ)\n    (hprimitive : ∃ c : ι → ℤ, (∑ i, c i * u i) = 1)\n    (ha : a ≠ 0) (hΔ : Δ ≠ 0)\n    (hminor : ∀ i j, Δ ∣ u i * v j - u j * v i) :\n    (normSq u).natAbs /\n        Int.gcd (normSq u) (b * Δ * saturatedGram u v Δ) ∣\n      (Rat.divInt (b * dot u v) (a * normSq u)).den := by sorry",
+      "natural_language_statement": "Let $u,v\\in\\mathbb Z^d$, with $u$ primitive, and let $\\Delta\\ne0$ divide every exterior minor. Put $T=\\langle u,u\\rangle$, $C=\\langle u,v\\rangle$ and $D_\\Delta=(T\\langle v,v\\rangle-C^2)/\\Delta^2$. For any integers $a\\ne0$ and $b$, the center $\\xi=bC/(aT)$ satisfies\n\n$$\\frac{T}{\\gcd(T,b\\Delta D_\\Delta)}\\mid\\operatorname{den}(\\xi).$$\n\nPrimitivity guarantees $T>0$. Neither coprimality of $a,b$ nor primitiveness of $v$ is required. For primitive row reductions and their content ratio this is the computable divisor in equation (6). It asserts an exact denominator divisor, not the still-unproved exponential growth needed for the irrationality route.",
+      "preamble": "import Definitions.Def_ZetaNine_GramContent\nimport Mathlib.Data.Int.GCD\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Tactic.Ring\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Data.Nat.GCD.Basic\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nopen scoped BigOperators\nopen ZetaNine.GramContent\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/direction-arithmetic-next-2026-10-02.md, section 2, equation (6).",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_CenterDenominator_primitive_center_denominator_divisor.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_CenterDenominator_primitive_center_denominator_divisor.lean",
+      "definition_dependency": "ZetaNine_GramContent",
+      "explanation": "Primitivity first gives $T>0$ and the Gram-content divisibility $\\gcd(T,C)\\mid\\Delta D_\\Delta$. Writing the reduced center as $P/Q$, cross multiplication implies $T\\mid bCQ$. An integral Bézout identity for $T,C$ then gives $T\\mid b\\gcd(T,C)Q$, hence $T\\mid b\\Delta D_\\Delta Q$. Dividing out $\\gcd(T,b\\Delta D_\\Delta)$ and using coprimality yields the displayed divisor of $Q$. The denominator content coefficient $a$ never contributes to cancellation of old denominator factors."
+    },
+    {
+      "theorem_name": "ZetaNine.EightfoldZeros.first_n_derivative_sum_zero",
+      "theorem_title": "Eightfold zeros eliminate the first n derivative terms",
+      "formal_statement": "theorem ZetaNine.EightfoldZeros.first_n_derivative_sum_zero (n r : ℕ) (hr : r < 8) :\n    (∑ k ∈ Finset.range n, iteratedDeriv r (repairFunction n) ((k + 1 : ℕ) : ℝ)) = 0 := by sorry",
+      "natural_language_statement": "For the explicit repaired function $R_n^*$, every integer derivative order $0\\le r<8$ satisfies\n\n$$\\sum_{j=1}^{n}(R_n^*)^{(r)}(j)=0.$$\n\nThis holds for every natural $n$, including the empty sum at $n=0$. The derivatives are genuine iterated real derivatives of the rational function. In particular the first $n$ leakage terms of the seventh-derivative series vanish exactly. The theorem does not assert convergence, eventual nonvanishing, decay or irrationality.",
+      "preamble": "import Definitions.Def_ZetaNine_EightfoldZeros\nimport Mathlib.Algebra.Polynomial.Derivative\nimport Mathlib.Algebra.Polynomial.Div\nimport Mathlib.Analysis.Calculus.ContDiff.Polynomial\nimport Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas\nimport Mathlib.Tactic.FunProp\nimport Mathlib.Tactic.NormNum\nopen scoped BigOperators\nopen ZetaNine.EightfoldZeros\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/new-linear-form-route-repair-2026-10-02.md, opening unnumbered definition of R*_n and the following endpoint-zero paragraph.",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_EightfoldZeros_first_n_derivative_sum_zero.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_EightfoldZeros_first_n_derivative_sum_zero.lean",
+      "definition_dependency": "ZetaNine_EightfoldZeros",
+      "explanation": "For each $j\\in\\{1,\\ldots,n\\}$ the numerator has a factor $(t-j)^8$, while every denominator factor is strictly positive at $t=j$. Factor this centered power from the rational function. The remaining quotient is smooth near $j$, and the iterated product rule shows that all derivatives of order below eight vanish there. Summing these individual endpoint identities gives the result. The proof establishes the denominator positivity and factor divisibility for all parameters."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power",
+      "theorem_title": "Actual harmonic denominators divide the finite lcm power",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power (s N : ℕ) :\n    (harmonicPower s N).den ∣ Nat.lcmUpto N ^ s := by sorry",
+      "natural_language_statement": "Let $s,N$ be any natural numbers, $H_N^{(s)}=\\sum_{j=1}^{N}j^{-s}$, and $L_N=\\operatorname{lcm}(1,\\ldots,N)$, with $L_0=1$. Then\n\n$$\\operatorname{den}(H_N^{(s)})\\mid L_N^s.$$\n\nThe result concerns the reduced denominator of the actual harmonic sum. It includes $s=0$ and $N=0$ and supplies the finite clearing bound used in the arithmetic argument. It makes no lower-bound or asymptotic prime-distribution assertion.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Topology.MetricSpace.Pseudo.Lemmas\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nopen scoped BigOperators\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_den_dvd_lcm_power.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_den_dvd_lcm_power.lean",
+      "definition_dependency": "ZetaNine_HarmonicStability",
+      "explanation": "For each $1\\le j\\le N$, the denominator of $j^{-s}$ is $j^s$, which divides $L_N^s$. The reduced denominator of a sum divides the least common multiple of the summands' denominators. Finite induction therefore proves the same common clearing bound for the actual harmonic sum, including all possible numerator cancellations."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.log_den_error_tendsto_zero",
+      "theorem_title": "Subexponential rational perturbations preserve normalized denominator error",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.log_den_error_tendsto_zero {ι : Type*} (l : Filter ι)\n    (h r : ι → ℚ) (scale : ι → ℝ) (hscale : ∀ i, 0 ≤ scale i)\n    (hr : Tendsto (fun i => logDen (r i) / scale i) l (nhds 0)) :\n    Tendsto (fun i => (logDen (h i + r i) - logDen (h i)) / scale i)\n      l (nhds 0) := by sorry",
+      "natural_language_statement": "Let $h_i,r_i$ be arbitrary rational families along a filter and let $s_i\\ge0$ be a real scale. If $\\ell(r_i)/s_i\\to0$, then\n\n$$\\frac{\\ell(h_i+r_i)-\\ell(h_i)}{s_i}\\longrightarrow0.$$\n\nNo limiting rate or sign condition is assumed for $h_i$. Here $\\ell$ is the logarithm of the actual reduced denominator. This is the unconditional stability mechanism; it does not prove the separate harmonic prime-number-theorem baseline.\n\n**Formalization Note.** The statement also permits zero scale, using Lean's total real division convention $x/0=0$. On strictly positive scales it is the ordinary mathematical quotient. The harmonic application uses scale $N$, which is positive eventually.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Topology.MetricSpace.Pseudo.Lemmas\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nopen scoped BigOperators\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_log_den_error_tendsto_zero.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_log_den_error_tendsto_zero.lean",
+      "definition_dependency": "ZetaNine_HarmonicStability",
+      "explanation": "The two denominator divisibilities give $|\\ell(h+r)-\\ell(h)|\\le\\ell(r)$ for every rational $h,r$. Divide by the nonnegative scale and apply the squeeze theorem. The bound follows from actual reduced denominators and hence remains valid after arbitrary numerator cancellation. No baseline convergence assumption is used."
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.log_den_rate_stability",
+      "theorem_title": "Rational perturbations transfer an established denominator growth rate",
+      "formal_statement": "theorem ZetaNine.HarmonicStability.log_den_rate_stability {ι : Type*} (l : Filter ι)\n    (h r : ι → ℚ) (scale : ι → ℝ) (hscale : ∀ i, 0 ≤ scale i) (a : ℝ)\n    (hh : Tendsto (fun i => logDen (h i) / scale i) l (nhds a))\n    (hr : Tendsto (fun i => logDen (r i) / scale i) l (nhds 0)) :\n    Tendsto (fun i => logDen (h i + r i) / scale i) l (nhds a) := by sorry",
+      "natural_language_statement": "Let $h_i,r_i$ be rational families along a filter, let $s_i\\ge0$, and let $\\alpha\\in\\mathbb R$. If $\\ell(h_i)/s_i\\to\\alpha$ and $\\ell(r_i)/s_i\\to0$, then\n\n$$\\frac{\\ell(h_i+r_i)}{s_i}\\longrightarrow\\alpha.$$\n\nThe conclusion transfers an already established baseline rate; that baseline is an explicit hypothesis, not a new axiom. Applied to generalized harmonic sums it is the stability part of the original corollary, and leaves their PNT-dependent baseline proof as a separate task.\n\n**Formalization Note.** The statement also permits zero scale, using Lean's total real division convention $x/0=0$. On strictly positive scales it is the ordinary mathematical quotient. The harmonic application uses scale $N$, which is positive eventually.",
+      "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Topology.MetricSpace.Pseudo.Lemmas\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nopen scoped BigOperators\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+      "tags": [
+        "number-theory",
+        "zeta-function",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_HarmonicStability_log_den_rate_stability.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_HarmonicStability_log_den_rate_stability.lean",
+      "definition_dependency": "ZetaNine_HarmonicStability",
+      "explanation": "The exact logarithmic denominator inequality bounds the distance between the normalized perturbed and unperturbed rates by $\\ell(r_i)/s_i$. This bound tends to zero. Since the unperturbed rate tends to $\\alpha$, the perturbed rate has the same limit. The hypotheses include precisely the baseline rate being transferred and the subexponential denominator condition on the perturbation."
+    }
+  ]
+}

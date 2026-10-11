@@ -1,0 +1,21 @@
+{
+  "id": "0f335691-11d2-496d-99b6-42b119ed845a",
+  "kind": "definition",
+  "theorem_name": "ZetaNine_EightfoldZeros",
+  "theorem_title": "Eightfold-zero repaired rational function",
+  "formal_statement": "",
+  "natural_language_statement": "For $n\\ge0$, define the exact repaired rational function\n\n$$R_n^*(t)=\\frac{(4n)!^2}{n!^8}\\frac{\\prod_{j=1}^n(t-j)^8}{\\prod_{j=0}^{4n}(t+j)^2}.$$\n\nThe definition file contains the scalar prefactor, numerator and denominator polynomials, and their quotient as a real function. The endpoint-zero and derivative theorems are separate proofs. No convergence, sign, asymptotic, content or irrationality assertion is embedded in the definition.",
+  "definitions": "import Mathlib.Algebra.Polynomial.Derivative\nimport Mathlib.Algebra.Polynomial.Div\nimport Mathlib.Analysis.Calculus.ContDiff.Polynomial\nimport Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas\nimport Mathlib.Tactic.FunProp\nimport Mathlib.Tactic.NormNum\n\nset_option autoImplicit false\n\n/-!\nThe explicit eightfold-zero repair from `new-linear-form-route-repair-2026-10-02.md`.\nThe numerator has an eighth-power factor at each positive endpoint `1,...,n`.\nIts derivatives through order seven vanish there, as do the genuine iterated\nreal derivatives of the rational function, whose denominator is nonzero there.\nThis file makes no sign, nonvanishing, asymptotic or irrationality claim.\n-/\n\nnoncomputable section\n\nopen Polynomial\nopen scoped BigOperators\n\nnamespace ZetaNine.EightfoldZeros\n\n/-! ## Construction definitions (the lightweight Definitions layer) -/\n\n/-- The exact scalar prefactor of the repair candidate. -/\ndef repairScale (n : ℕ) : ℝ :=\n  ((Nat.factorial (4 * n) : ℝ) ^ 2) / ((Nat.factorial n : ℝ) ^ 8)\n\n/-- The explicit repair numerator, with one eighth-power factor per endpoint. -/\ndef repairNumerator (n : ℕ) : ℝ[X] :=\n  C (repairScale n) * ∏ j ∈ Finset.range n, (X - C ((j + 1 : ℕ) : ℝ)) ^ 8\n\n/-- Its denominator is exactly `[t(t+1)...(t+4n)]²`. -/\ndef repairDenominator (n : ℕ) : ℝ[X] :=\n  ∏ j ∈ Finset.range (4 * n + 1), (X + C (j : ℝ)) ^ 2\n\n/-- The real rational function `R*_n` in the repair note. -/\ndef repairFunction (n : ℕ) (t : ℝ) : ℝ :=\n  (repairNumerator n).eval t / (repairDenominator n).eval t\n\n\nend ZetaNine.EightfoldZeros\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/new-linear-form-route-repair-2026-10-02.md, opening unnumbered definition of R*_n and the following endpoint-zero paragraph.",
+  "tags": [
+    "number-theory",
+    "zeta-function",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "a57d441d-db5c-46db-b2f7-c52197d21c72",
+  "created_at": "2026-10-02T13:51:18.624227+00:00",
+  "updated_at": "2026-10-02T14:08:42.12696+00:00"
+}

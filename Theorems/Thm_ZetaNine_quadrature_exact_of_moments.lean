@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Algebra.Polynomial.Eval.Algebra
+import Mathlib.Algebra.Polynomial.Degree.Defs
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Fintype.Fin
 
 -- Local mirror of the private platform theorem
 -- ZetaNine.quadrature_exact_of_moments (Proved).  The body is a placeholder so

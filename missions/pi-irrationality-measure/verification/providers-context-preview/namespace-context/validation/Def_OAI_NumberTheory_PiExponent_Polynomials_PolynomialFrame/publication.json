@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "e079714cf7779c62407f61a88e667a0e618bac874cda1f4dc24e7a0b46552cc1",
+  "publish_intent": {
+    "at_utc": "2026-10-08T14:19:22.131977+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+      "definition_title": "Weighted-degree control for polynomial logarithmic and partial derivations",
+      "definition": "import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrameDegree\nimport Mathlib.Algebra.MvPolynomial.PDeriv\nimport Mathlib.Data.Complex.Basic\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\nabbrev FramePolynomial (m : ℕ) := MvPolynomial (Fin (m + 1)) ℂ\r\n\r\ndef logarithmicDerivation (m : ℕ) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  (MvPolynomial.X (0 : Fin (m + 1)) : FramePolynomial m) •\r\n    MvPolynomial.pderiv (R := ℂ) (0 : Fin (m + 1)) +\r\n    ∑ i : Fin m, MvPolynomial.pderiv (R := ℂ) i.succ\r\n\r\ndef polynomialFrame (m : ℕ) (i : Fin (m + 1)) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  if i = 0 then logarithmicDerivation m else MvPolynomial.pderiv i\r\n\r\ntheorem derivation_finset_sum_apply {α : Type*} (m : ℕ) (s : Finset α)\r\n    (D : α → Derivation ℂ (FramePolynomial m) (FramePolynomial m))\r\n    (p : FramePolynomial m) : (∑ a ∈ s, D a) p = ∑ a ∈ s, D a p := by\r\n  classical\r\n  induction s using Finset.induction_on with\r\n  | empty => simp only [Finset.sum_empty, Derivation.zero_apply]\r\n  | @insert a s ha ih =>\r\n      rw [Finset.sum_insert ha, Finset.sum_insert ha, Derivation.add_apply, ih]\r\n\r\n@[simp] theorem logarithmicDerivation_apply (m : ℕ) (p : FramePolynomial m) :\r\n    logarithmicDerivation m p =\r\n      MvPolynomial.X (0 : Fin (m + 1)) * MvPolynomial.pderiv 0 p +\r\n        ∑ i : Fin m, MvPolynomial.pderiv i.succ p := by\r\n  simp only [logarithmicDerivation, Derivation.add_apply, Derivation.smul_apply,\r\n    derivation_finset_sum_apply, smul_eq_mul]\r\n\r\n@[simp] theorem polynomialFrame_zero (m : ℕ) :\r\n    polynomialFrame m 0 = logarithmicDerivation m := by\r\n  simp only [polynomialFrame, ite_true]\r\n\r\n@[simp] theorem polynomialFrame_pos (m : ℕ) (i : Fin (m + 1)) (hi : i ≠ 0) :\r\n    polynomialFrame m i = MvPolynomial.pderiv i := by\r\n  simp only [polynomialFrame, if_neg hi]\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.logarithmicDerivation {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.logarithmicDerivation m p) := by\r\n  rw [logarithmicDerivation_apply]\r\n  apply (hp.X_mul_pderiv 0).add\r\n  exact HasWeightedDegreeLE.sum Finset.univ _\r\n    (fun i _ => hp.pderiv_preserves i.succ (hw i.succ))\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrame {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) (i : Fin (m + 1)) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrame m i p) := by\r\n  by_cases hi : i = 0\r\n  · subst i\r\n    rw [polynomialFrame_zero]\r\n    exact hp.logarithmicDerivation hw\r\n  · rw [polynomialFrame_pos m i hi]\r\n    exact hp.pderiv_preserves i (hw i)\r\n\r\ndef polynomialFrameWord (m : ℕ) (word : List (Fin (m + 1)))\r\n    (p : FramePolynomial m) : FramePolynomial m :=\r\n  word.foldr (fun i q => polynomialFrame m i q) p\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrameWord {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i)\r\n    (word : List (Fin (m + 1))) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrameWord m word p) := by\r\n  induction word with\r\n  | nil => exact hp\r\n  | cons i word ih => exact ih.polynomialFrame hw i\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For polynomials over ℂ in m + 1 variables, FramePolynomial m abbreviates the corresponding multivariate polynomial type. The logarithmicDerivation is the derivation X₀ ∂₀ + ∑ᵢ₌₀^{m−1} ∂ᵢ₊₁, and polynomialFrame selects this derivation at index 0 and the indexed partial derivative at every nonzero index. polynomialFrameWord applies a finite list of these derivations by right fold. For a nonnegative weight function w, each selected derivation and every finite word of them preserves the predicate HasWeightedDegreeLE w N. The bundle also states the action formula for logarithmicDerivation, its special cases for polynomialFrame, and evaluation of a finite sum of derivations.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/PolynomialFrame.lean#L12-L169",
+      "tags": [
+        "polynomial-algebra",
+        "derivations",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "e079714cf7779c62407f61a88e667a0e618bac874cda1f4dc24e7a0b46552cc1",
+    "bundle_source_sha256": "b1026a87b213e941035e1d60bc867ab1f5bbc2f52e79217d4ca04b79f7ce923f",
+    "bundle_manifest_sha256": "5f21725efdc930aa9194b2f99a3b4e282b187ad817fc535ce0f1e8307a57a0fa",
+    "validation_sha256": "be137cae889080050c89ef3294fa92f9ee49f36a77f12fbedffdb420cdc65bdd"
+  },
+  "updated_at_utc": "2026-10-08T14:25:52.177237+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "6f21bc5b-0159-414d-87af-9715f93f3af9",
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/6f21bc5b-0159-414d-87af-9715f93f3af9 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "bd4ead6c78c5e19270459e81f8b5ae64c5c58c45ba326893f1c56ec38b63b914"
+  },
+  "job_id": "6f21bc5b-0159-414d-87af-9715f93f3af9",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "6f21bc5b-0159-414d-87af-9715f93f3af9",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+      "theorem_title": "Weighted-degree control for polynomial logarithmic and partial derivations",
+      "formal_statement": "",
+      "natural_language_statement": "For polynomials over ℂ in m + 1 variables, FramePolynomial m abbreviates the corresponding multivariate polynomial type. The logarithmicDerivation is the derivation X₀ ∂₀ + ∑ᵢ₌₀^{m−1} ∂ᵢ₊₁, and polynomialFrame selects this derivation at index 0 and the indexed partial derivative at every nonzero index. polynomialFrameWord applies a finite list of these derivations by right fold. For a nonnegative weight function w, each selected derivation and every finite word of them preserves the predicate HasWeightedDegreeLE w N. The bundle also states the action formula for logarithmicDerivation, its special cases for polynomialFrame, and evaluation of a finite sum of derivations.",
+      "definitions": "import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrameDegree\nimport Mathlib.Algebra.MvPolynomial.PDeriv\nimport Mathlib.Data.Complex.Basic\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\nabbrev FramePolynomial (m : ℕ) := MvPolynomial (Fin (m + 1)) ℂ\r\n\r\ndef logarithmicDerivation (m : ℕ) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  (MvPolynomial.X (0 : Fin (m + 1)) : FramePolynomial m) •\r\n    MvPolynomial.pderiv (R := ℂ) (0 : Fin (m + 1)) +\r\n    ∑ i : Fin m, MvPolynomial.pderiv (R := ℂ) i.succ\r\n\r\ndef polynomialFrame (m : ℕ) (i : Fin (m + 1)) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  if i = 0 then logarithmicDerivation m else MvPolynomial.pderiv i\r\n\r\ntheorem derivation_finset_sum_apply {α : Type*} (m : ℕ) (s : Finset α)\r\n    (D : α → Derivation ℂ (FramePolynomial m) (FramePolynomial m))\r\n    (p : FramePolynomial m) : (∑ a ∈ s, D a) p = ∑ a ∈ s, D a p := by\r\n  classical\r\n  induction s using Finset.induction_on with\r\n  | empty => simp only [Finset.sum_empty, Derivation.zero_apply]\r\n  | @insert a s ha ih =>\r\n      rw [Finset.sum_insert ha, Finset.sum_insert ha, Derivation.add_apply, ih]\r\n\r\n@[simp] theorem logarithmicDerivation_apply (m : ℕ) (p : FramePolynomial m) :\r\n    logarithmicDerivation m p =\r\n      MvPolynomial.X (0 : Fin (m + 1)) * MvPolynomial.pderiv 0 p +\r\n        ∑ i : Fin m, MvPolynomial.pderiv i.succ p := by\r\n  simp only [logarithmicDerivation, Derivation.add_apply, Derivation.smul_apply,\r\n    derivation_finset_sum_apply, smul_eq_mul]\r\n\r\n@[simp] theorem polynomialFrame_zero (m : ℕ) :\r\n    polynomialFrame m 0 = logarithmicDerivation m := by\r\n  simp only [polynomialFrame, ite_true]\r\n\r\n@[simp] theorem polynomialFrame_pos (m : ℕ) (i : Fin (m + 1)) (hi : i ≠ 0) :\r\n    polynomialFrame m i = MvPolynomial.pderiv i := by\r\n  simp only [polynomialFrame, if_neg hi]\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.logarithmicDerivation {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.logarithmicDerivation m p) := by\r\n  rw [logarithmicDerivation_apply]\r\n  apply (hp.X_mul_pderiv 0).add\r\n  exact HasWeightedDegreeLE.sum Finset.univ _\r\n    (fun i _ => hp.pderiv_preserves i.succ (hw i.succ))\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrame {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) (i : Fin (m + 1)) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrame m i p) := by\r\n  by_cases hi : i = 0\r\n  · subst i\r\n    rw [polynomialFrame_zero]\r\n    exact hp.logarithmicDerivation hw\r\n  · rw [polynomialFrame_pos m i hi]\r\n    exact hp.pderiv_preserves i (hw i)\r\n\r\ndef polynomialFrameWord (m : ℕ) (word : List (Fin (m + 1)))\r\n    (p : FramePolynomial m) : FramePolynomial m :=\r\n  word.foldr (fun i q => polynomialFrame m i q) p\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrameWord {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i)\r\n    (word : List (Fin (m + 1))) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrameWord m word p) := by\r\n  induction word with\r\n  | nil => exact hp\r\n  | cons i word ih => exact ih.polynomialFrame hw i\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/PolynomialFrame.lean#L12-L169",
+      "tags": [
+        "polynomial-algebra",
+        "derivations",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e07adae4-be61-459d-9ddf-444e8f6a176b",
+      "created_at": "2026-10-08T14:19:23.959206+00:00",
+      "updated_at": "2026-10-08T14:19:40.046566+00:00"
+    }
+  },
+  "definition_id": "e07adae4-be61-459d-9ddf-444e8f6a176b",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "e07adae4-be61-459d-9ddf-444e8f6a176b",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame",
+      "theorem_title": "Weighted-degree control for polynomial logarithmic and partial derivations",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For polynomials over ℂ in m + 1 variables, FramePolynomial m abbreviates the corresponding multivariate polynomial type. The logarithmicDerivation is the derivation X₀ ∂₀ + ∑ᵢ₌₀^{m−1} ∂ᵢ₊₁, and polynomialFrame selects this derivation at index 0 and the indexed partial derivative at every nonzero index. polynomialFrameWord applies a finite list of these derivations by right fold. For a nonnegative weight function w, each selected derivation and every finite word of them preserves the predicate HasWeightedDegreeLE w N. The bundle also states the action formula for logarithmicDerivation, its special cases for polynomialFrame, and evaluation of a finite sum of derivations.",
+      "created_at": "2026-10-08T14:19:38.859743+00:00",
+      "vote_count": 0,
+      "tags": [
+        "derivations",
+        "number-theory",
+        "openai-pi-exponent-017",
+        "polynomial-algebra"
+      ],
+      "definition": "import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrameDegree\nimport Mathlib.Algebra.MvPolynomial.PDeriv\nimport Mathlib.Data.Complex.Basic\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentApprox\r\n\r\nnoncomputable section\r\n\r\nabbrev FramePolynomial (m : ℕ) := MvPolynomial (Fin (m + 1)) ℂ\r\n\r\ndef logarithmicDerivation (m : ℕ) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  (MvPolynomial.X (0 : Fin (m + 1)) : FramePolynomial m) •\r\n    MvPolynomial.pderiv (R := ℂ) (0 : Fin (m + 1)) +\r\n    ∑ i : Fin m, MvPolynomial.pderiv (R := ℂ) i.succ\r\n\r\ndef polynomialFrame (m : ℕ) (i : Fin (m + 1)) :\r\n    Derivation ℂ (FramePolynomial m) (FramePolynomial m) :=\r\n  if i = 0 then logarithmicDerivation m else MvPolynomial.pderiv i\r\n\r\ntheorem derivation_finset_sum_apply {α : Type*} (m : ℕ) (s : Finset α)\r\n    (D : α → Derivation ℂ (FramePolynomial m) (FramePolynomial m))\r\n    (p : FramePolynomial m) : (∑ a ∈ s, D a) p = ∑ a ∈ s, D a p := by\r\n  classical\r\n  induction s using Finset.induction_on with\r\n  | empty => simp only [Finset.sum_empty, Derivation.zero_apply]\r\n  | @insert a s ha ih =>\r\n      rw [Finset.sum_insert ha, Finset.sum_insert ha, Derivation.add_apply, ih]\r\n\r\n@[simp] theorem logarithmicDerivation_apply (m : ℕ) (p : FramePolynomial m) :\r\n    logarithmicDerivation m p =\r\n      MvPolynomial.X (0 : Fin (m + 1)) * MvPolynomial.pderiv 0 p +\r\n        ∑ i : Fin m, MvPolynomial.pderiv i.succ p := by\r\n  simp only [logarithmicDerivation, Derivation.add_apply, Derivation.smul_apply,\r\n    derivation_finset_sum_apply, smul_eq_mul]\r\n\r\n@[simp] theorem polynomialFrame_zero (m : ℕ) :\r\n    polynomialFrame m 0 = logarithmicDerivation m := by\r\n  simp only [polynomialFrame, ite_true]\r\n\r\n@[simp] theorem polynomialFrame_pos (m : ℕ) (i : Fin (m + 1)) (hi : i ≠ 0) :\r\n    polynomialFrame m i = MvPolynomial.pderiv i := by\r\n  simp only [polynomialFrame, if_neg hi]\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.logarithmicDerivation {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.logarithmicDerivation m p) := by\r\n  rw [logarithmicDerivation_apply]\r\n  apply (hp.X_mul_pderiv 0).add\r\n  exact HasWeightedDegreeLE.sum Finset.univ _\r\n    (fun i _ => hp.pderiv_preserves i.succ (hw i.succ))\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrame {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i) (i : Fin (m + 1)) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrame m i p) := by\r\n  by_cases hi : i = 0\r\n  · subst i\r\n    rw [polynomialFrame_zero]\r\n    exact hp.logarithmicDerivation hw\r\n  · rw [polynomialFrame_pos m i hi]\r\n    exact hp.pderiv_preserves i (hw i)\r\n\r\ndef polynomialFrameWord (m : ℕ) (word : List (Fin (m + 1)))\r\n    (p : FramePolynomial m) : FramePolynomial m :=\r\n  word.foldr (fun i q => polynomialFrame m i q) p\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem HasWeightedDegreeLE.polynomialFrameWord {m : ℕ}\r\n    {w : Fin (m + 1) → ℝ} {N : ℝ} {p : FramePolynomial m}\r\n    (hp : HasWeightedDegreeLE w N p) (hw : ∀ i, 0 ≤ w i)\r\n    (word : List (Fin (m + 1))) :\r\n    HasWeightedDegreeLE w N (PiExponentApprox.polynomialFrameWord m word p) := by\r\n  induction word with\r\n  | nil => exact hp\r\n  | cons i word ih => exact ih.polynomialFrame hw i\r\n\r\nend\r\nend PiExponentApprox\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/PolynomialFrame.lean#L12-L169",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

@@ -1,0 +1,911 @@
+{
+  "provisional_plan": true,
+  "compile_checked": false,
+  "preamble_and_type_validation_required": true,
+  "fragment_count": 41,
+  "deferred": [],
+  "fragments": [
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AdmissibleBlowupMargin:1148",
+      "name": "OAI.PiExponent.AdmissibleBlowupMargin.uniform_margin_of_affine_curve_data",
+      "statement_sha256": "e1001c3330aa7bda059ae32aecc95bdccfe6cf5445a5fbc36e03711e21454ec3",
+      "formal_statement": "theorem OAI.PiExponent.AdmissibleBlowupMargin.uniform_margin_of_affine_curve_data\r\n    (a : \u2115) (ha : 1 < a) (hample : (((A d).pow a).tensor (J d)).IsAmple)\r\n    (hdata : \u2200 C : IntegralCurve (blowup d),\r\n      (\u00ac \u2203 x : compactification d, Set.range (C.embedding \u226b projection d) \u2286 ({x} : Set _)) \u2192\r\n      (\u2203 c : C.scheme, (C.embedding \u226b projection d) c \u2208 (affineChart d).opensRange) \u2192\r\n      Nonempty (AffineCurveDegreeData d C)) :\r\n    \u2200 C : IntegralCurve (blowup d),\r\n      marginCoefficient a d.sigma *\r\n          (curveDegree (structureMap d) (((A d).pow a).tensor (J d)) C : \u211d) \u2264\r\n        (curveDegree (structureMap d) ((A d).tensor (J d)) C : \u211d) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1156,
+          "end": 1191,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 73
+        },
+        {
+          "start": 1789,
+          "end": 2884,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "5f36108c0b1b92d43095b80d0b3e19b3662f314f8dd3560aedce2b85be7a9435"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleAllPowersGeneration:407",
+      "name": "OAI.PiExponent.AmpleGlobalGeneration.ample_eventual_global_generators",
+      "statement_sha256": "6c1cfe6e6a859fb7fae0732d068e1e98c6b812ce1fa40f4cb338bcbb26cc2c33",
+      "formal_statement": "theorem OAI.PiExponent.AmpleGlobalGeneration.ample_eventual_global_generators [NoetherianSpace X]\r\n    (L : LineBundle X) (hL : L.IsAmple) (M : X.Modules) [M.IsFinitePresentation] :\r\n    \u2203 N : \u2115, \u2200 n \u2265 N,\r\n      \u2203 G : ((moduleTwistFunctor L n).obj M).GeneratingSections, G.IsFiniteType := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 415,
+          "end": 447,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 69
+        },
+        {
+          "start": 666,
+          "end": 2075,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "3d84d05ddfd8fbf2336d39d8eb66b4049c7ddb44312269ef6f255d35dc02a28f"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:596",
+      "name": "OAI.PiExponent.CurveDegree.exists_ample_section_with_zero",
+      "statement_sha256": "b85025656d8acb71557b6a7263bf32397ea78f359d267c7febd1bf3d9caab4f7",
+      "formal_statement": "theorem OAI.PiExponent.CurveDegree.exists_ample_section_with_zero [IsIntegral X]\r\n    (hdim : topologicalKrullDim X = 1) (L : LineBundle X) (hL : L.IsAmple) :\r\n    \u2203 n : \u2115, 0 < n \u2227 \u2203 s : GlobalSections X (L.pow n).sheaf,\r\n      s \u2260 0 \u2227 \u2203 y : X, y \u2209 sectionOpen X s := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 604,
+          "end": 634,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 57
+        },
+        {
+          "start": 850,
+          "end": 1599,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "064cf78e195d3cfe1ddead607529738704209149492207ef9b00543eedc0bb56"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:2229",
+      "name": "OAI.PiExponent.CurveDegree.section_euler_degree_pos",
+      "statement_sha256": "681980ca047ddb747c3fa2ee423b9541d569beb0638dc93417297ef14ba2554e",
+      "formal_statement": "theorem OAI.PiExponent.CurveDegree.section_euler_degree_pos [IsIntegral X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (hdim : topologicalKrullDim X \u2264 1)\r\n    (L : LineBundle X) (s : GlobalSections X L.sheaf) (hs : s \u2260 0)\r\n    (hzero : \u2203 y : X, y \u2209 sectionOpen X s)\r\n    (hfiniteO : \u2200 n \u2264 1,\r\n      letI := Module.compHom (cohomology (structureSheaf X) n) (baseScalars p)\r\n      FiniteDimensional \u2102 (cohomology (structureSheaf X) n))\r\n    (hfiniteL : \u2200 n \u2264 1,\r\n      letI := Module.compHom (cohomology L.sheaf n) (baseScalars p)\r\n      FiniteDimensional \u2102 (cohomology L.sheaf n))\r\n    [Subsingleton (cohomology (structureSheaf X) 2)] :\r\n    0 < eulerCharacteristic p 1 L.sheaf -\r\n      eulerCharacteristic p 1 (structureSheaf X) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2237,
+          "end": 2261,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 51
+        },
+        {
+          "start": 2968,
+          "end": 4783,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "064cf78e195d3cfe1ddead607529738704209149492207ef9b00543eedc0bb56"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleCurveDegreePositive:4787",
+      "name": "OAI.PiExponent.CurveDegree.ample_euler_degree_pos",
+      "statement_sha256": "9e47fa75e8b93bdc1494a86ef472765b8214e976d8bfcd16a5e531bb02449968",
+      "formal_statement": "theorem OAI.PiExponent.CurveDegree.ample_euler_degree_pos [IsIntegral X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (hdim : topologicalKrullDim X = 1)\r\n    (L : LineBundle X) (hL : L.IsAmple)\r\n    (hfinite : FiniteLineCohomology p) :\r\n    0 < eulerCharacteristic p 1 L.sheaf -\r\n      eulerCharacteristic p 1 (structureSheaf X) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 4795,
+          "end": 4817,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 49
+        },
+        {
+          "start": 5105,
+          "end": 5863,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "064cf78e195d3cfe1ddead607529738704209149492207ef9b00543eedc0bb56"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleDivisorDimension:3257",
+      "name": "OAI.PiExponent.NumericalAmpleness.regular_ample_sectionZero_dimension",
+      "statement_sha256": "548cb1c964905ae093b8be9b70d01491c1ed40e2acdc2405411ffa7280c9a763",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.regular_ample_sectionZero_dimension\r\n    [IsNoetherian X] [Nonempty X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (H : LineBundle X) (hH : H.IsAmple)\r\n    (s : GlobalSections X H.sheaf) [Mono s] (d : \u2115)\r\n    (hdim : topologicalKrullDim X = ((d+1 : \u2115) : WithBot \u2115\u221e)) :\r\n    Nonempty (zeroIdeal H s).subscheme \u2227\r\n      topologicalKrullDim (zeroIdeal H s).subscheme = d := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3265,
+          "end": 3300,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 69
+        },
+        {
+          "start": 3660,
+          "end": 4557,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "1a7e962728af773a5841801a94fd00995c20eba555ba740665430f96a93a9f91"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleDivisorDimensionBase:1154",
+      "name": "OAI.PiExponent.NumericalAmpleness.exists_integral_closed_full_dimension",
+      "statement_sha256": "bbd57c479696b954008839815cca4fb4d803cd0ece35d6c214979caffe413d4d",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.exists_integral_closed_full_dimension (X : Scheme.{0})\r\n    (n : \u2115) (hdim : topologicalKrullDim X = n) :\r\n    \u2203 Y : Scheme.{0}, \u2203 i : Y \u27f6 X,\r\n      IsClosedImmersion i \u2227 IsIntegral Y \u2227 topologicalKrullDim Y = n := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1162,
+          "end": 1199,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 71
+        },
+        {
+          "start": 1385,
+          "end": 2112,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "6850411fea31e59180138f5d3a43c963cc99da9330ea9f3e3cf5596b8cadd436"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleDivisorDimensionBase:2145",
+      "name": "OAI.PiExponent.NumericalAmpleness.ample_section_has_zero",
+      "statement_sha256": "e0b68100cc4dfacc51baa2b588cbdbbea7ca1f9f81bfd6c62aa187e781479086",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.ample_section_has_zero\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (H : LineBundle X) (hH : H.IsAmple)\r\n    (s : GlobalSections X H.sheaf) (n : \u2115)\r\n    (hdim : topologicalKrullDim X = n) (hn : 0 < n) :\r\n    \u2203 y : X, y \u2209 sectionOpen X s := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2153,
+          "end": 2175,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 56
+        },
+        {
+          "start": 2412,
+          "end": 3206,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "6850411fea31e59180138f5d3a43c963cc99da9330ea9f3e3cf5596b8cadd436"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleFiniteProjectiveEmbedding:481",
+      "name": "OAI.PiExponent.NumericalAmpleness.ample_finite_projective_embedding",
+      "statement_sha256": "1629beabdc13756babe562bca5af73678c4098bcea66252ae7ef6ea0f1da14b5",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.ample_finite_projective_embedding [Nonempty X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (H : LineBundle X) (hH : H.IsAmple) :\r\n    \u2203 r : \u2115, \u2203 i : X \u27f6 projectiveSpace \u2102 (Fin (r+1)),\r\n      IsClosedImmersion i \u2227 i \u226b polynomialProjectiveProjection \u2102 (Fin (r+1)) = p := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 489,
+          "end": 522,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 67
+        },
+        {
+          "start": 788,
+          "end": 2248,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "fccf5084be1160375246bba83f2f1eafd6620ed4585b820373f2b0b29c29cef2"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmplePositiveTwist:2400",
+      "name": "OAI.PiExponentSeshadri.Geometry.LineBundle.exists_ample_twist",
+      "statement_sha256": "db9608cb25235d350da3932b0b58f2c744cc341a529ce4a91234d07be0bdcb7b",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.Geometry.LineBundle.exists_ample_twist [IsIntegral X] [CompactSpace X]\r\n    (L M : LineBundle X) (hL : L.IsAmple) :\r\n    \u2203 d : \u2115, 0 < d \u2227 ((L.pow d).tensor M).IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2408,
+          "end": 2437,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 61
+        },
+        {
+          "start": 2572,
+          "end": 3439,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "48bd3d6be05336d9a4cf3c093a0df9a5ef6bcfadd57e0a275ffb3713023f98f6"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleSlopeAlgebra:3340",
+      "name": "OAI.PiExponent.NumericalAmpleness.exists_smaller_ample_slope",
+      "statement_sha256": "23dbe4877a3afc9e75b950fa3bdbb4eae1bc76c3bc63d68bb21f66952f6c1b5d",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.exists_smaller_ample_slope [IsIntegral X] [CompactSpace X]\r\n    (L H : LineBundle X) (a b : \u2115) (ha : 0 < a) (hb : 0 < b)\r\n    (hA : (slopeBundle L H a b).IsAmple) :\r\n    \u2203 n : \u2115, 0 < n \u2227 (slopeBundle L H (a*n-1) (b*n)).IsAmple \u2227\r\n      ((a*n-1 : \u2115) : \u211a) / (b*n : \u2115) < (a:\u211a)/b := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3348,
+          "end": 3374,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 60
+        },
+        {
+          "start": 3642,
+          "end": 4352,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "b696d54aa1d59da41401f5a50c370e221d2d4ea5ec705502fa1897c7f54fda63"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleThresholdPolynomial:194",
+      "name": "OAI.PiExponent.NumericalAmpleness.polynomial_pos_at_left_of_margin",
+      "statement_sha256": "b526e4e14be20050170d279b5a2c4e17bc64e0f3ce600a7c1467ee415bbc9178",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.polynomial_pos_at_left_of_margin\r\n    (P : Polynomial \u211d) (d : \u2115) (r \u03b5 b : \u211d) (hr : 0 \u2264 r) (h\u03b5 : 0 < \u03b5)\r\n    (hrb : r < b) (hpositive : 0 < P.eval b)\r\n    (hderivative : \u2200 t : \u211d, r < t \u2192\r\n      (t + \u03b5) * P.derivative.eval t \u2264 (d : \u211d) * P.eval t) :\r\n    0 < P.eval r := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 202,
+          "end": 234,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 66
+        },
+        {
+          "start": 489,
+          "end": 2654,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "3f04ac013fe88087a89c95792ca94dc45f26d50143f1594c26b53d861dbf0dd3"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.AmpleThresholdPolynomial:3082",
+      "name": "OAI.PiExponent.NumericalAmpleness.polynomial_pos_at_boundary_of_rational_margin",
+      "statement_sha256": "44eace1a0d294fec9fd65ba2c9eaf0ddc03f678e89a21b54fda777403d8ec035",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.polynomial_pos_at_boundary_of_rational_margin\r\n    (P : Polynomial \u211d) (d : \u2115) (r \u03b5 : \u211d) (hr : 0 \u2264 r) (h\u03b5 : 0 < \u03b5)\r\n    (hpositive : \u2200 t : \u211a, r < (t:\u211d) \u2192 0 < P.eval (t:\u211d))\r\n    (hderivative : \u2200 t : \u211a, r < (t:\u211d) \u2192\r\n      ((t:\u211d)+\u03b5) * P.derivative.eval (t:\u211d) \u2264 (d:\u211d) * P.eval (t:\u211d)) :\r\n    0 < P.eval r := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3090,
+          "end": 3135,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 79
+        },
+        {
+          "start": 3429,
+          "end": 4193,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "3f04ac013fe88087a89c95792ca94dc45f26d50143f1594c26b53d861dbf0dd3"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetReesReduction:446",
+      "name": "OAI.PiExponent.BlowupJetSurjectivity.eventual_blowup_jetRestriction_surjective_of_affine_recovery",
+      "statement_sha256": "4773bebfe7eae98057f3440be3e1a565b6a35ed19cdb56288df1942a34a56a2d",
+      "formal_statement": "theorem OAI.PiExponent.BlowupJetSurjectivity.eventual_blowup_jetRestriction_surjective_of_affine_recovery\r\n    (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p] [IsLocallyNoetherian X]\r\n    (I : X.IdealSheafData) (A : LineBundle X)\r\n    (hample : LineBundle.IsAmple _ (blowupBundle I A))\r\n    (hrecover : \u2200 U : X.affineOpens, \u2203 N, \u2200 n, N \u2264 n \u2192 Function.Bijective\r\n      ((ExceptionalRecoveryMap.ordinaryMap (PiExponentSeshadri.BlowupGluing.projection I)\r\n        I (PiExponentSeshadri.BlowupGluing.exceptionalLineBundle I)\r\n        (PiExponentSeshadri.BlowupGluing.exceptionalInclusion I)\r\n        (PiExponentSeshadri.BlowupGluing.exceptional_presents I) n).app U.1)) :\r\n    \u2203 N, \u2200 n, N \u2264 n \u2192 Function.Surjective (jetRestriction I A n) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 454,
+          "end": 514,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 97
+        },
+        {
+          "start": 1162,
+          "end": 1994,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "535237613895bbc4607ef2f97a59c25df35d4646bac6ad3db0cceb91bf927ad0"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.BlowupJetSurjectivity:2225",
+      "name": "OAI.PiExponent.BlowupJetSurjectivity.eventual_jetRestriction_surjective_of_ample_comparison",
+      "statement_sha256": "7be744a07402e376158bbfadb203c9cfbee8c45b4d1780a058e90e7bcc9c51a3",
+      "formal_statement": "theorem OAI.PiExponent.BlowupJetSurjectivity.eventual_jetRestriction_surjective_of_ample_comparison\r\n    [IsNoetherian X]\r\n    (f : B \u27f6 X) (p : B \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n    (I : X.IdealSheafData) (A : LineBundle X)\r\n    (F : LineBundle B) (hF : LineBundle.IsAmple B F)\r\n    {J : Type} (U : J \u2192 X.Opens) (hU : \u2200 i, IsAffineOpen (U i))\r\n    (hcover : (\u2a06 i, U i) = \u22a4)\r\n    (hcomparison : \u2203 N, \u2200 n, N \u2264 n \u2192 Nonempty\r\n      (CechH1Transfer.SectionComparison U (fun i => f \u207b\u00b9\u1d41 U i)\r\n        (twistedIdeal I A n) (modulePow B F.sheaf n))) :\r\n    \u2203 N, \u2200 n, N \u2264 n \u2192 Function.Surjective (jetRestriction I A n) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2233,
+          "end": 2287,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 91
+        },
+        {
+          "start": 2839,
+          "end": 3716,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "7713404450b8d96f45e2f77ac908f8783eaf278b49bbc35f3b3b71ed3cfee209"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ComponentAmpleDescent:2059",
+      "name": "OAI.PiExponentSeshadri.ComponentAmpleDescent.isAmple_of_reduced_closed_cover",
+      "statement_sha256": "7dfd702c01841cdd2b4fe05afef0a7313e6bcb6739d85fcfccb1a472c68b1b37",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.ComponentAmpleDescent.isAmple_of_reduced_closed_cover\r\n    (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n    (L H : LineBundle X) (hH : H.IsAmple)\r\n    (I J : X.IdealSheafData) (hcover : I.support \u2294 J.support = \u22a4)\r\n    (hI : (L.pullback I.subscheme\u03b9).IsAmple) (hJ : (L.pullback J.subscheme\u03b9).IsAmple) :\r\n    L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2067,
+          "end": 2098,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 76
+        },
+        {
+          "start": 2373,
+          "end": 3114,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "9f14fb2c02ade4ec1b587c658b290d3730b19a366cddda80a629cbc5a88fc86e"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ComponentAmpleDescentCover:3047",
+      "name": "OAI.PiExponentSeshadri.ComponentAmpleDescent.isAmple_of_eventual_restriction_surjective",
+      "statement_sha256": "d10bd269a1512b089e9e0022582aa92919aaddb7150f9d416af5bdc59f2cd09f",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.ComponentAmpleDescent.isAmple_of_eventual_restriction_surjective\r\n    [NoetherianSpace Y] [NoetherianSpace Z]\r\n    (f : Y \u27f6 X) (g : Z \u27f6 X) (L H : LineBundle X) (hH : H.IsAmple)\r\n    (hcover : Set.range f \u222a Set.range g = Set.univ)\r\n    (hY : (L.pullback f).IsAmple) (hZ : (L.pullback g).IsAmple)\r\n    (hf : \u2203 N : \u2115, \u2200 n \u2265 N, Function.Surjective\r\n      (fun s : GlobalSections X (H.inverse.tensor (L.pow n)).sheaf => pullbackSection f s))\r\n    (hg : \u2203 N : \u2115, \u2200 n \u2265 N, Function.Surjective\r\n      (fun s : GlobalSections X (H.inverse.tensor (L.pow n)).sheaf => pullbackSection g s)) :\r\n    L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3055,
+          "end": 3097,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 87
+        },
+        {
+          "start": 3651,
+          "end": 4252,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "ecd421d4908e76e6ab5de85739840b75ca028cf57a3d4509ab9ba0dfe022ab25"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ComponentAmpleDescentLocal:391",
+      "name": "OAI.PiExponentSeshadri.ComponentAmpleDescent.closedModule_restrict_annihilated",
+      "statement_sha256": "7def74d5418342b200e8c22b56f060fb5ab7ccececfcf2f116079248f27ddde1",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.ComponentAmpleDescent.closedModule_restrict_annihilated [IsReduced X]\r\n    {I J : X.IdealSheafData} (h : I.support \u2294 J.support = \u22a4) (U : X.affineOpens) :\r\n    RingHom.ker (J.subscheme\u03b9 \u2223_ U.1).appTop.hom \u2264\r\n      Module.annihilator \u0393(U.1.toScheme,\u22a4) \u0393((closedModule I).restrict U.1.\u03b9,\u22a4) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 399,
+          "end": 432,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 78
+        },
+        {
+          "start": 680,
+          "end": 1727,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "bbf92e18bc64c3478b6fa07b5de4d6e917f0d826f27fd1fa23439ca4b061fcb4"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ComponentAmpleDescentSupported:413",
+      "name": "OAI.PiExponentSeshadri.ComponentAmpleDescent.eventual_tensor_cohomology_zero_of_closed_pushforward",
+      "statement_sha256": "34d75e2c622a3053694f53294f08dab199473851c2f3742bee07e5712a46d1d7",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.ComponentAmpleDescent.eventual_tensor_cohomology_zero_of_closed_pushforward\r\n    (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n    (f : Y \u27f6 X) [IsClosedImmersion f]\r\n    (M : X.Modules) (N : Y.Modules) [N.IsFinitePresentation]\r\n    (e : (Scheme.Modules.pushforward f).obj N \u2245 M)\r\n    (K L : LineBundle X) (hL : (L.pullback f).IsAmple) :\r\n    \u2203 B : \u2115, \u2200 n \u2265 B, \u2200 q, 0 < q \u2192\r\n      \u2200 x : cohomology (moduleTensor X M (K.tensor (L.pow n)).sheaf) q, x = 0 := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 421,
+          "end": 474,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 98
+        },
+        {
+          "start": 873,
+          "end": 1922,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "4ef9e992efb5f3a5074bd64d23c9549c91532c7658ead4298f28a1794947b275"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ExceptionalChartPullbackValue:1194",
+      "name": "OAI.PiExponent.ExceptionalAffineChart.functionsOnOpenEquiv_pullback",
+      "statement_sha256": "e00724b95128b38a707c9b425ffac80797579eef3d7b1732af647f210eaa8948",
+      "formal_statement": "theorem OAI.PiExponent.ExceptionalAffineChart.functionsOnOpenEquiv_pullback\r\n    (f : Y \u27f6 Spec (CommRingCat.of R))\r\n    (j : Spec (CommRingCat.of A) \u27f6 Y) [IsOpenImmersion j]\r\n    (\u03c6 : R \u2192+* A) (hf : j \u226b f = Spec.map (CommRingCat.ofHom \u03c6)) (r : R) :\r\n    functionsOnOpenEquiv j (Y.presheaf.map (homOfLE le_top).op\r\n      (f.appTop ((Scheme.\u0393SpecIso (CommRingCat.of R)).inv r))) = \u03c6 r := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1202,
+          "end": 1231,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 67
+        },
+        {
+          "start": 1551,
+          "end": 2363,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "db537b30a4f0b8cf97297ff4f50146f27c4947817caadf89daff40a12bb3d371"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.FiniteAffineFrames:229",
+      "name": "OAI.PiExponentSeshadri.Geometry.LineBundle.finite_affine_frame_cover",
+      "statement_sha256": "9da826cf8eefab5589118ba4417e85e37589c9ababd60ca808602b5bc11ee4da",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.Geometry.LineBundle.finite_affine_frame_cover [CompactSpace X] (L : LineBundle X) :\r\n    \u2203 k : \u2115, \u2203 U : Fin k \u2192 X.affineOpens,\r\n      (\u2a06 i, (U i).1) = \u22a4 \u2227\r\n      \u2200 i, Nonempty (L.sheaf.restrict (U i).1.\u03b9 \u2245 structureSheaf (U i).1.toScheme) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 237,
+          "end": 273,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 68
+        },
+        {
+          "start": 486,
+          "end": 1118,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "544950f4fbbf26d4b4faeaf3a29b7c5f0e01d4a92639b9449e61868e89171ec3"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.FiniteReesComparison:1256",
+      "name": "OAI.PiExponent.GeometrySupport.ExceptionalRecoveryMap.eventual_comparison_of_affine_recovery",
+      "statement_sha256": "cbc85972db5b4c23cafd0409ad4f767cb5704156f1ad6dbb3c3a05a000329b69",
+      "formal_statement": "theorem OAI.PiExponent.GeometrySupport.ExceptionalRecoveryMap.eventual_comparison_of_affine_recovery [CompactSpace X] [X.IsSeparated]\r\n    (A : LineBundle X)\r\n    (hrecover : \u2200 U : X.affineOpens, \u2203 N, \u2200 n, N \u2264 n \u2192\r\n      Function.Bijective ((ordinaryMap f I E \u03b9 hE n).app U.1)) :\r\n    \u2203 k : \u2115, \u2203 U : Fin k \u2192 X.affineOpens, (\u2a06 i, (U i).1) = \u22a4 \u2227\r\n      \u2203 N, \u2200 n, N \u2264 n \u2192 Nonempty\r\n        (CechH1Transfer.SectionComparison (fun i => (U i).1)\r\n          (fun i => f \u207b\u00b9\u1d41 (U i).1)\r\n          ((moduleTwistFunctor A n).obj (closedModule (I^n)))\r\n          ((E.tensor (A.pullback f)).pow n).sheaf) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1264,
+          "end": 1302,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 92
+        },
+        {
+          "start": 1831,
+          "end": 3267,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "977e3b828ac22f3cd55dd7bff9142216eaeb9d50f752c45dda9d8aed60999dfe"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.IntegralComponentAmple:338",
+      "name": "OAI.PiExponent.NumericalAmpleness.isAmple_of_integral_closed_restrictions",
+      "statement_sha256": "43bdc0f0be83768bf75a7a1c1e205c55e4a236114f7021f4b5d106fc43cfb0d5",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.isAmple_of_integral_closed_restrictions [IsNoetherian X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (L H : LineBundle X) (hH : H.IsAmple)\r\n    (hints : \u2200 {Y : Scheme.{0}} [IsIntegral Y] (j : Y \u27f6 X) [IsClosedImmersion j],\r\n      (L.pullback j).IsAmple) : L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 346,
+          "end": 385,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 73
+        },
+        {
+          "start": 632,
+          "end": 1662,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "32464b8a37b023a0f07c0cda7c88be5f0a7bfa6de31c122ec3490a38e98b6e40"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.LineAmpleOperations:1711",
+      "name": "OAI.PiExponentSeshadri.Geometry.LineBundle.IsAmple.tensor",
+      "statement_sha256": "d8775bb67142dba4f6c99812031b4a085ff545da031b00b0edefc9e1f7c6cd8a",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.Geometry.LineBundle.IsAmple.tensor {L M : LineBundle X}\r\n    (hL : L.IsAmple) (hM : M.IsAmple) : (L.tensor M).IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1719,
+          "end": 1744,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 57
+        },
+        {
+          "start": 1828,
+          "end": 3200,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "de062b5e822c80fe8cbfc828a4272dc1e3b4482d8939f4e97bb6277e4f3d2207"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.LocalHomogeneousDegrees:215",
+      "name": "OAI.PiExponentJets.W22.homogeneous_degrees_pos_of_local_regular",
+      "statement_sha256": "d66a47e56edc605c17b94e6d13202450474ff4475acf95df80eeeebcbb9c205c",
+      "formal_statement": "theorem OAI.PiExponentJets.W22.homogeneous_degrees_pos_of_local_regular\r\n    (T : Ideal (MvPolynomial \u03c3 k)) [T.IsPrime]\r\n    (gs : List (MvPolynomial \u03c3 k)) (degrees : Fin gs.length \u2192 \u2115)\r\n    (hhom : \u2200 i : Fin gs.length, gs[i].IsHomogeneous (degrees i))\r\n    (hreg : RingTheory.Sequence.IsRegular (Localization.AtPrime T)\r\n      (gs.map (algebraMap (MvPolynomial \u03c3 k) (Localization.AtPrime T)))) :\r\n    \u2200 i, 0 < degrees i := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 223,
+          "end": 263,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 63
+        },
+        {
+          "start": 624,
+          "end": 1684,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "b3a752ee285aea84cd5a62306fc06e4ba61986c97545dbf47984b08ae200b35f"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NakaiAmpleFromSections:2605",
+      "name": "OAI.PiExponent.NumericalAmpleness.isAmple_of_section_cover_of_curveDegree_pos",
+      "statement_sha256": "88d3776a90f6f889d249aad03da106e7a0a61ff7e63f38ac3521b44adfe3e76e",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.isAmple_of_section_cover_of_curveDegree_pos [IsIntegral X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (L : LineBundle X) (d : \u2115) (hdim : topologicalKrullDim X \u2264 d)\r\n    (k : \u2115) (s : Fin k \u2192 GlobalSections X L.sheaf)\r\n    (hs : (\u2a06 z, sectionOpen X (s z)) = \u22a4)\r\n    (hpositive : \u2200 C : IntegralCurve X, 0 < curveDegree p L C) : L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2613,
+          "end": 2656,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 77
+        },
+        {
+          "start": 2980,
+          "end": 4485,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "9189bcc523699d2b916d4aa1e8d6c6ab0550f677bf1e5dff06f5bad9f8bf6836"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NakaiDivisorAmple:2335",
+      "name": "OAI.PiExponent.NumericalAmpleness.eventual_power_section_cover_of_ample_zeroDivisor",
+      "statement_sha256": "7b38bfaeecc081435fb9a4cda0db9f744ede0f9958a5c796961b4bea3e86b803",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.eventual_power_section_cover_of_ample_zeroDivisor\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (L : LineBundle X) (s : GlobalSections X L.sheaf) [Mono s]\r\n    (hfinite : \u2200 n, letI := Module.compHom (cohomology (L.pow n).sheaf 1) (baseScalars p)\r\n      FiniteDimensional \u2102 (cohomology (L.pow n).sheaf 1))\r\n    (hD : (L.pullback (zeroIdeal L s).subscheme\u03b9).IsAmple) :\r\n    \u2203 N, \u2200 n, N \u2264 n \u2192 \u2203 l : \u2115, \u2203 t : Fin l \u2192 GlobalSections X (L.pow (n+1)).sheaf,\r\n      (\u2a06 j, sectionOpen X (t j)) = \u22a4 := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2343,
+          "end": 2392,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 83
+        },
+        {
+          "start": 2872,
+          "end": 3501,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "dc8134b104633cb0c619113ba2442765db8afc1d7a9017231d5da5a8160c6d32"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NakaiEffectivity:2987",
+      "name": "OAI.PiExponent.NumericalAmpleness.exists_power_section_cover_of_euler_growth",
+      "statement_sha256": "a74e66a9ae310c4d201ebbde4ec9e68887c45748f1b4446f5ec8bbfc6f5ac112",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.exists_power_section_cover_of_euler_growth [IsIntegral X]\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (r : \u2115) (i : X \u27f6 ProjectiveO1.projectiveSpace \u2102 (Fin (r+1))) [IsClosedImmersion i]\r\n    (hi : i \u226b PiExponent.polynomialProjectiveProjection \u2102 (Fin (r+1)) = p)\r\n    (H L : LineBundle X) (hH : H.IsAmple) (d : \u2115)\r\n    (hdim : topologicalKrullDim X \u2264 d+1)\r\n    (hlower : \u2200 I : X.IdealSheafData, topologicalKrullDim I.subscheme \u2264 d \u2192\r\n      (L.pullback I.subscheme\u03b9).IsAmple)\r\n    (hgrowth : Tendsto (fun n => eulerCharacteristic p (d+1) (L.pow n).sheaf) atTop atTop) :\r\n    \u2203 a : \u2115, 0 < a \u2227 \u2203 k : \u2115, \u2203 s : Fin k \u2192 GlobalSections X (L.pow a).sheaf,\r\n      (\u2a06 j, sectionOpen X (s j)) = \u22a4 := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2995,
+          "end": 3037,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 76
+        },
+        {
+          "start": 3735,
+          "end": 4913,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "6fe52d4bd8b572d418e80fe989c1b3a410de19bfb56ae6561964fbad1f91068e"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NakaiSectionLifting:310",
+      "name": "OAI.PiExponent.NumericalAmpleness.pullbackSection_surjective_of_unit_surjective",
+      "statement_sha256": "90803a8b4baa4ea5dd2e427f3174f26ceec2d83303fa57262f504c3a3a6cf053",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.pullbackSection_surjective_of_unit_surjective (f : Y \u27f6 X) (L : LineBundle X)\r\n    (h : Function.Surjective (fun s : GlobalSections X L.sheaf =>\r\n      s \u226b PiExponentSeshadri.LineClosedUnit.map f L)) :\r\n    Function.Surjective (fun s : GlobalSections X L.sheaf => pullbackSection f s) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 318,
+          "end": 363,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 79
+        },
+        {
+          "start": 606,
+          "end": 1475,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "1ce48f736dc02105dfd6541b80693602c0ffca81ba1fba72bdd2fcc30fca8608"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NakaiSectionLifting:1479",
+      "name": "OAI.PiExponent.NumericalAmpleness.eventual_cartier_restriction_section_lifting",
+      "statement_sha256": "baa72f4556718fd74049d84f937ef93d1379e1f64709f196e3ea19554e3323a0",
+      "formal_statement": "theorem OAI.PiExponent.NumericalAmpleness.eventual_cartier_restriction_section_lifting\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) (L : LineBundle X)\r\n    (s : GlobalSections X L.sheaf) [Mono s]\r\n    (hfinite : \u2200 n, letI := Module.compHom (cohomology (L.pow n).sheaf 1) (baseScalars p)\r\n      FiniteDimensional \u2102 (cohomology (L.pow n).sheaf 1))\r\n    (hzero : \u2203 N, \u2200 n, N \u2264 n \u2192 \u2200 z :\r\n      cohomology ((Scheme.Modules.pullback (zeroIdeal L s).subscheme\u03b9).obj (L.pow (n+1)).sheaf) 1,\r\n      z = 0) :\r\n    \u2203 N, \u2200 n, N \u2264 n \u2192 Function.Surjective\r\n      (fun t : GlobalSections X (L.pow (n+1)).sheaf =>\r\n        pullbackSection (zeroIdeal L s).subscheme\u03b9 t) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1487,
+          "end": 1531,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 78
+        },
+        {
+          "start": 2121,
+          "end": 3341,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "1ce48f736dc02105dfd6541b80693602c0ffca81ba1fba72bdd2fcc30fca8608"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.NilpotentAmpleDescent:1985",
+      "name": "OAI.PiExponentSeshadri.Geometry.LineBundle.isAmple_of_fullSupport",
+      "statement_sha256": "990edaf9c52af7183a26a6d8b75461ae99a9ed5c37f3097bdc62e573e1cf08ab",
+      "formal_statement": "theorem OAI.PiExponentSeshadri.Geometry.LineBundle.isAmple_of_fullSupport [IsNoetherian X]\r\n    {R : Type} [CommRing R] [IsNoetherianRing R]\r\n    (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n    (I : X.IdealSheafData) (hI : I.support = \u22a4)\r\n    (L : LineBundle X) (hL : (L.pullback I.subscheme\u03b9).IsAmple) : L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1993,
+          "end": 2026,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 65
+        },
+        {
+          "start": 2277,
+          "end": 4163,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "5516dc9481d4e301a917650bb763ad4e76194ca5d9535a60989b1e7e34c8fe47"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ProperAmpleFiniteDimension:2079",
+      "name": "OAI.PiExponent.ProperAmpleFiniteDimension.exists_dimension_bound_of_proper_ample",
+      "statement_sha256": "5c8476b0fc83b92f32f7a98fe631169e1025c819c84000323fea2df92fa6df17",
+      "formal_statement": "theorem OAI.PiExponent.ProperAmpleFiniteDimension.exists_dimension_bound_of_proper_ample {X : Scheme.{0}}\r\n    (p : X \u27f6 Spec (CommRingCat.of \u2102)) [IsProper p]\r\n    (H : LineBundle X) (hH : H.IsAmple) :\r\n    \u2203 d : \u2115, topologicalKrullDim X \u2264 (d : WithBot \u2115\u221e) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 2087,
+          "end": 2125,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 80
+        },
+        {
+          "start": 2307,
+          "end": 2941,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "0f5e9760b0795ff8c481ded7f807d9bff9db3047c86a28a1ba9bec92b3090f79"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReducedComponentAmple:443",
+      "name": "OAI.PiExponent.ReducedComponentAmple.isAmple_of_finite_closed_cover",
+      "statement_sha256": "69527fe65614e935d0242566404dfbbcf403b1b8be8286f42f96512abd860532",
+      "formal_statement": "theorem OAI.PiExponent.ReducedComponentAmple.isAmple_of_finite_closed_cover {\u03b9 : Type*} (s : Finset \u03b9) :\r\n    \u2200 {X : Scheme.{0}} [IsNoetherian X] [IsReduced X]\r\n      (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n      (L H : LineBundle X), H.IsAmple \u2192\r\n      \u2200 I : \u03b9 \u2192 X.IdealSheafData,\r\n      (\u2200 x : X, \u2203 i \u2208 s, x \u2208 (I i).support) \u2192\r\n      (\u2200 i \u2208 s, (L.pullback (I i).subscheme\u03b9).IsAmple) \u2192 L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 451,
+          "end": 481,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 67
+        },
+        {
+          "start": 841,
+          "end": 3527,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "95040cb296dfff419b7ce83cd62dc3b7810f19a31a8602003db10a275cbc0fd3"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReducedComponentAmple:3531",
+      "name": "OAI.PiExponent.ReducedComponentAmple.isAmple_of_reduced_components",
+      "statement_sha256": "ab71db6f9db09cefc8fe7c075820d045259e5b48dae456220803d399cde90c19",
+      "formal_statement": "theorem OAI.PiExponent.ReducedComponentAmple.isAmple_of_reduced_components {X : Scheme.{0}} [IsNoetherian X] [IsReduced X]\r\n    (p : X \u27f6 Spec (CommRingCat.of R)) [IsProper p]\r\n    (L H : LineBundle X) (hH : H.IsAmple)\r\n    (hcomponents : \u2200 C : irreducibleComponents X,\r\n      (L.pullback (CurveCycle.reducedComponent\u03b9 X C)).IsAmple) : L.IsAmple := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3539,
+          "end": 3568,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 66
+        },
+        {
+          "start": 3844,
+          "end": 4704,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "95040cb296dfff419b7ce83cd62dc3b7810f19a31a8602003db10a275cbc0fd3"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReesFixedRestriction:1334",
+      "name": "OAI.PiExponent.ReesFrozenChart.restriction_chart",
+      "statement_sha256": "011e62db9724f5a96d2304b40b3910e5d0b341d52b4b3b0a79b628b2746123bd",
+      "formal_statement": "theorem OAI.PiExponent.ReesFrozenChart.restriction_chart {s t : Finset J} (hs : s.Nonempty) (ht : t.Nonempty) (hst : s \u2286 t) :\r\n    Spec.map (CommRingCat.ofHom (restriction I a hst)) \u226b chart I a hs = chart I a ht := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1342,
+          "end": 1359,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 48
+        },
+        {
+          "start": 1519,
+          "end": 2592,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "92dc913d82a8964655733f05a134fedc2cbc1e595632cf56aea1177f17c6f1bc"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReesPolynomialPresentation:3387",
+      "name": "OAI.PiExponent.ReesPolynomialPresentation.presentation_surjective",
+      "statement_sha256": "b76d8ac13f5c43a6ff0252bb063fa402e4acec43a223365102022887b4d4087e",
+      "formal_statement": "theorem OAI.PiExponent.ReesPolynomialPresentation.presentation_surjective\r\n    (ha : Ideal.span (Set.range fun j => (a j).val) = I) :\r\n    Function.Surjective (presentation I a) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 3395,
+          "end": 3418,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 65
+        },
+        {
+          "start": 3523,
+          "end": 3968,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "e6476e42bea39df3e0b134ebefa56140a0bff59f1b8962c0100eb0f2f3da8afe"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReesPushdown:15281",
+      "name": "OAI.PiExponent.ReesPushdown.eventually_no_power_torsion",
+      "statement_sha256": "18ba176bd54717df4a7642374889babdc7d710b9b99e0cdec12f537961dc2eb3",
+      "formal_statement": "theorem OAI.PiExponent.ReesPushdown.eventually_no_power_torsion [IsNoetherianRing R] (I : Ideal R) :\r\n    \u2203 N : \u2115, \u2200 n \u2265 N, \u2200 x \u2208 I ^ n,\r\n      (\u2203 k : \u2115, \u2200 a \u2208 I ^ k, a * x = 0) \u2192 x = 0 := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 15289,
+          "end": 15316,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 55
+        },
+        {
+          "start": 15461,
+          "end": 16625,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "c91f2499ecbd330213d895e1dec74f6ccfe8a53de128b6c6bfcf86c37b8e0923"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Ampleness.ReesSectionInclusion:4929",
+      "name": "OAI.PiExponent.ReesSectionInclusion.section_inclusion",
+      "statement_sha256": "f524f7a88c77be461df57ebe3518a1c93ca1a5897d03ff87c4d22e896bf40259",
+      "formal_statement": "theorem OAI.PiExponent.ReesSectionInclusion.section_inclusion\r\n    (ha : Ideal.span (Set.range fun j => (a j).val) = I) (n : \u2115)\r\n    (u : freeOpen (affineBlowup I).ringCatSheaf \u22a4 \u27f6 exceptionalPower I n)\r\n    (r : R) (hvalue : HasFrozenValues I a n u r) :\r\n    (idealPowerInclusion (exceptionalLineBundle I) (exceptionalInclusion I) n).app \u22a4\r\n      (freeOpenSectionsEquiv \u22a4 (exceptionalPower I n) u) =\r\n    (projection I).appTop ((Scheme.\u0393SpecIso (CommRingCat.of R)).inv r) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 4937,
+          "end": 4954,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 53
+        },
+        {
+          "start": 5377,
+          "end": 6295,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "5ce74fdd8989f517fb2b963a5dc60dab8426c7b2418093aaed5fef78c7619cde"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:1329",
+      "name": "OAI.PiExponent.AnalyticCollision.norm_normalizedTaylorCoeff_le",
+      "statement_sha256": "d5ed82c59ba045ae73a3cf135e910d52bdd84664bb4baa7b10702d6aeb9e9687",
+      "formal_statement": "theorem OAI.PiExponent.AnalyticCollision.norm_normalizedTaylorCoeff_le {f : \u2102 \u2192 \u2102} {R D : \u211d} (hR : 0 < R)\r\n    (hD : \u2200 z \u2208 Metric.sphere (0 : \u2102) R, \u2016f z\u2016 \u2264 D) (d : \u2115) :\r\n    \u2016normalizedTaylorCoeff f R d\u2016 \u2264 D := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 1337,
+          "end": 1366,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 62
+        },
+        {
+          "start": 1532,
+          "end": 2126,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "ffe4d8d10177f282f0af6909cd00dc8296e4a53c4c69a2d1fd1598885ca9ffa5"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:4161",
+      "name": "OAI.PiExponent.AnalyticCollision.norm_rowTest_le",
+      "statement_sha256": "6c3f0328ea87feb5f2b61da975ae5240a4ea45bd19820cf12e95d0deda906a18",
+      "formal_statement": "theorem OAI.PiExponent.AnalyticCollision.norm_rowTest_le {f : \u2102 \u2192 \u2102} {D : \u211d}\r\n    (hD : \u2200 t \u2208 Metric.sphere (0 : \u2102) (1 / 2), \u2016f t\u2016 \u2264 D) (ell : \u2115) :\r\n    \u2016rowTest ell f\u2016 \u2264 (2 : \u211d) ^ ell * D := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 4169,
+          "end": 4184,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 48
+        },
+        {
+          "start": 4347,
+          "end": 4960,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "ffe4d8d10177f282f0af6909cd00dc8296e4a53c4c69a2d1fd1598885ca9ffa5"
+    },
+    {
+      "unit": "OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision:6573",
+      "name": "OAI.PiExponent.AnalyticCollision.norm_exponentialMonomial_le_exp_budget",
+      "statement_sha256": "cb5b7678fa523b72f0e684fc58770696815e3ebe43964b285e1f534c791bdf2e",
+      "formal_statement": "theorem OAI.PiExponent.AnalyticCollision.norm_exponentialMonomial_le_exp_budget (b h : \u2102) (d A : \u2115)\r\n    {z : \u2102} {R H w0 wstar : \u211d} (hR : 1 \u2264 R) (hH : 0 \u2264 H)\r\n    (hw0 : 0 < w0) (hws : 0 < wstar) (hz : \u2016z\u2016 \u2264 R)\r\n    (hb : \u2016b\u2016 \u2264 (2 : \u211d) ^ A) (hh : \u2016h\u2016 \u2264 H / w0)\r\n    (hd : d \u2264 A) (hA : (A : \u211d) \u2264 H / wstar) :\r\n    \u2016exponentialMonomial b h d z\u2016 \u2264\r\n      Real.exp (H * (R / w0 + Real.log (2 * R) / wstar)) := by sorry",
+      "hoisted_commands": [],
+      "edit_ledger": [
+        {
+          "start": 6581,
+          "end": 6619,
+          "reason": "fully qualified platform binding",
+          "replacement_bytes": 71
+        },
+        {
+          "start": 6987,
+          "end": 7989,
+          "reason": "platform statement placeholder",
+          "replacement_bytes": 11
+        }
+      ],
+      "source_sha256": "ffe4d8d10177f282f0af6909cd00dc8296e4a53c4c69a2d1fd1598885ca9ffa5"
+    }
+  ]
+}

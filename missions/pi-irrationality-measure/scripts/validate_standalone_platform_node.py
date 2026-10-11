@@ -1,0 +1,470 @@
+"""Validate one closed standalone platform node; never publish it.
+
+Only a single source component of ordinary, unchanged public theorems is
+supported. All global planner inputs remain strictly pinned, including the
+append-only extraction state. Hold extraction and regenerate the preview
+before running this program. --check-only performs no compilation or writes.
+"""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+from unittest.mock import patch
+
+import generate_platform_nodes as nodegen
+from generate_independent_node import runtime_pin
+from validate_independent_node import normalize_type
+
+TASK = Path(__file__).resolve().parents[1]
+ROOT = TASK.parents[1]
+DEST = TASK / "verification"
+STD3 = {"propext", "Classical.choice", "Quot.sound"}
+MUTABLE_FIELDS = {"validated", "pending", "validation", "validation_sha256",
+                  "local_standalone_validated"}
+
+
+def read(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def stage_path(value):
+    path = Path(value)
+    if not path.is_absolute():
+        if path.parts and path.parts[0] in {"nodes", "nodes-preview"}:
+            path = DEST / path
+        elif path.parts and path.parts[0] == "verification":
+            path = TASK / path
+        else:
+            path = DEST / "nodes-preview" / path
+    path = path.resolve()
+    if path.parent not in {(DEST / "nodes").resolve(), (DEST / "nodes-preview").resolve()}:
+        raise ValueError("Expected one node directory directly under verification/nodes[-preview]")
+    if not path.is_dir():
+        raise ValueError("Node stage does not exist")
+    return path
+
+
+def strict_inputs(manifest):
+    if not manifest.get("input_hashes"):
+        raise ValueError("Missing complete global input pins")
+    for relative, expected in manifest["input_hashes"].items():
+        path = (TASK / relative).resolve()
+        if not path.is_relative_to(TASK.resolve()) or sha(path) != expected:
+            raise ValueError("Pinned global input changed; hold extraction and regenerate: " + relative)
+    if sha(TASK / "scripts/generate_platform_nodes.py") != manifest["generator_sha256"]:
+        raise ValueError("Node generator changed")
+    if sha(DEST / "TypedSnapshotCore.inc") != manifest["snapshot_core_sha256"]:
+        raise ValueError("Kernel snapshot core changed")
+    if runtime_pin() != manifest["runtime_sha256"]:
+        raise ValueError("Pinned Lean runtime changed")
+    if sha(DEST / "decl_graph.jsonl") != manifest["source_graph_sha256"]:
+        raise ValueError("Source declaration graph changed")
+    for origin in manifest["source_components"]:
+        for field in ("source", "original_source", "facts"):
+            path = (ROOT / origin[field]).resolve()
+            if not path.is_relative_to(TASK.resolve()) or sha(path) != origin[field + "_sha256"]:
+                raise ValueError("Source/AST witness changed: " + origin[field])
+
+
+def reconstruct(generator, key, stage):
+    """Run the pinned generator with all filesystem writes captured in memory.
+
+    Its original AST-coordinate edits and declaration_fragment logic are reused
+    without regenerating or touching any staged output or source witness.
+    """
+    captured = {}
+    original_sha = nodegen.sha
+
+    def capture_bytes(path, data):
+        path = path.resolve()
+        if path.parent != stage or path.name in captured:
+            raise ValueError("Unexpected/duplicate write during in-memory reconstruction")
+        captured[path.name] = bytes(data)
+        return len(data)
+
+    def capture_text(path, text, encoding=None, errors=None, newline=None):
+        return capture_bytes(path, text.encode(encoding or "utf-8", errors or "strict"))
+
+    def captured_sha(path):
+        resolved = path.resolve()
+        if resolved.parent == stage and resolved.name in captured:
+            return hashlib.sha256(captured[resolved.name]).hexdigest()
+        return original_sha(path)
+
+    with patch.object(Path, "write_bytes", capture_bytes), \
+            patch.object(Path, "write_text", capture_text), \
+            patch.object(Path, "mkdir", lambda *args, **kwargs: None), \
+            patch.object(nodegen, "sha", captured_sha):
+        result = generator.generate(key)
+    if (TASK / result["stage"]).resolve() != stage:
+        raise ValueError("Node name/path does not match its plan")
+    expected = json.loads(captured.pop("manifest.json"))
+    expected_files = {Path(expected["statement"]).name, Path(expected["solution"]).name,
+                      "SnapshotOriginal.lean", "SnapshotGenerated.lean"}
+    if set(captured) != expected_files:
+        raise ValueError("Generator did not reconstruct exactly the four expected files")
+    return expected, captured
+
+
+def kernel_closure(graph, seeds):
+    seen, todo = set(), list(seeds)
+    while todo:
+        name = todo.pop()
+        if name in seen or name not in graph:
+            continue
+        seen.add(name)
+        row = graph[name]
+        todo.extend(row["typeDeps"] + row["valueDeps"] + row.get("constructors", []))
+    return seen
+
+
+def closed_declarations(generator, manifest):
+    g, key = generator.g, manifest["node"]
+    plan = g.artifact_plan["nodes"][key]
+    target = g.units[key]
+    module = target["module"]
+    if (manifest["definition_certificates"] or manifest["child_nodes"]
+            or manifest["source_to_platform_constant_names"] or manifest["restored_local_instances"]
+            or plan["definition_modules"] or plan["node_dependencies"]):
+        raise ValueError("Standalone validation rejects Definitions, child nodes, renames and local instances")
+    if (len(manifest["source_components"]) != 1 or set(plan["source_components"]) != {module}
+            or manifest["component_order"] != [module]):
+        raise ValueError("Standalone validation supports one same-file source component only")
+    if (manifest["theorem_name"] != manifest["source_graph_name"]
+            or manifest["source_user_name"] != manifest["source_graph_name"]
+            or not manifest["top_level_literal_theorem_solution"]
+            or manifest["submission_ready"] is not False):
+        raise ValueError("Standalone target must retain its source name and remain submission-unready")
+    if any(name.startswith(("Definitions.", "Theorems.", "Solutions.", "OAI."))
+           for name in manifest["imports"]):
+        raise ValueError("A standalone node must not import project/platform declarations")
+    helper_keys = [item["unit"] for item in manifest["elaboration_only_helpers"]]
+    if len(set(helper_keys)) != len(helper_keys):
+        raise ValueError("Duplicate elaboration helpers")
+    selected_keys = {key, *plan["inline_units"], *helper_keys}
+    selected = [g.units[item] for item in sorted(selected_keys)]
+    for unit in selected:
+        if (unit["module"] != module or unit["private"] or unit["deprivate"]
+                or unit["is_instance_command"] or unit["is_local_instance"]
+                or len(unit["graph_names"]) != 1 or unit["graph_kinds"] != ["theorem"]
+                or unit["id"] in g.names):
+            raise ValueError("Only atomic unchanged public same-file theorem commands are supported")
+    provided = {name for unit in selected for name in unit["graph_names"]}
+    closure = kernel_closure(g.graph, provided)
+    missing = sorted(closure - provided)
+    if missing:
+        # Compiler-generated companions require a parent correspondence that this
+        # narrow validator intentionally does not infer from spelling.
+        raise ValueError("Project kernel dependencies lack an actual retained theorem command: " + str(missing))
+    ledgers = {item["source_module"]: item["edits"] for item in manifest["source_edits"]}
+    if set(ledgers) != {module}:
+        raise ValueError("Source edit ledger has unexpected components")
+    removed = {(item["start"], item["end"]) for item in ledgers[module]
+               if item["reason"] == "subtract unselected declaration command" and item["replacement"] == ""}
+    # Raw inventory commands have no planner ID. Compare their authoritative
+    # complete byte spans, rather than assuming the planner has already joined
+    # an ID onto every command (including unselected commands).
+    actually_kept = {(unit["start"]["offset"], unit["end"]["offset"])
+                     for unit in g.modules[module]["units"]
+                     if (unit["start"]["offset"], unit["end"]["offset"]) not in removed}
+    expected_kept = {(g.units[item]["start"]["offset"], g.units[item]["end"]["offset"])
+                     for item in selected_keys - {key}}
+    if actually_kept != expected_kept:
+        raise ValueError("Actual skeleton declarations do not match the graph's inline/helper declarations")
+    return {"source_module": module, "declarations": sorted(provided),
+            "inline_declarations": sorted(provided - {manifest["source_graph_name"]}),
+            "project_kernel_closure": sorted(closure), "kernel_dependency_coverage_complete": True,
+            "actual_inline_declarations_equal": True}
+
+
+def check_stage(stage, manifest):
+    strict_inputs(manifest)
+    generator = nodegen.NodeGenerator(bool(manifest["provisional"]))
+    if generator.g.input_hashes != manifest["input_hashes"]:
+        raise ValueError("Manifest does not bind the complete current planner input set")
+    closure = closed_declarations(generator, manifest)
+    expected, captured = reconstruct(generator, manifest["node"], stage)
+    if set(manifest) - set(expected) - MUTABLE_FIELDS:
+        raise ValueError("Manifest contains unexpected unbound fields")
+    for field, value in expected.items():
+        if field not in MUTABLE_FIELDS and manifest.get(field) != value:
+            raise ValueError("Manifest differs from exact source/AST reconstruction: " + field)
+    for filename, data in captured.items():
+        if (stage / filename).read_bytes() != data:
+            raise ValueError("Staged bytes differ from exact source/AST reconstruction: " + filename)
+    strict_inputs(manifest)
+    return closure, list(captured)
+
+
+def implementation_pins():
+    names = ["validate_standalone_platform_node.py", "generate_platform_nodes.py",
+             "generate_platform_bundles.py", "generate_independent_node.py",
+             "validate_independent_node.py", "preflight_logged.py", "plan_platform_units.py",
+             "plan_platform_artifacts.py", "platform_statement.py", "rename_bound_constant.py",
+             "rename_anonymous_instance.py", "rewrite_ast_imports.py", "skeleton_subtract.py",
+             "span_edits.py", "validate_ast_facts.py"]
+    return {name: sha(TASK / "scripts" / name) for name in names}
+
+
+def audit_axioms(log_path, name):
+    def standard_name(display):
+        if display in STD3:
+            return display
+        # #print axioms with pp.universes prints an axiom at its own level
+        # parameters. choice and Quot.sound each have exactly one parameter;
+        # propext has none. Accept only that complete, anchored display grammar,
+        # never strip an arbitrary dotted suffix from an unknown axiom name.
+        match = re.fullmatch(r"(Classical\.choice|Quot\.sound)\.\{[A-Za-z_][A-Za-z_0-9']*\}", display)
+        if match:
+            return match.group(1)
+        raise ValueError("Unknown axiom name or unsupported universe display: " + display)
+
+    text = log_path.read_text(encoding="utf-8")
+    # pp.width may wrap the fixed message inside its bracketed axiom list.
+    # Anchor both the message header and the closing bracket, permit only one
+    # target header, and still validate every complete comma-separated token.
+    headers = re.findall(r"^[ \t]*'" + re.escape(name) + r"' depends on axioms:", text, re.MULTILINE)
+    rows = []
+    for match in re.finditer(r"^[ \t]*'([^'\r\n]+)' depends on axioms:[ \t]*\[([^\[\]]*)\][ \t]*$",
+                             text, re.MULTILINE):
+        if match.group(1) != name:
+            continue
+        body = match.group(2).strip()
+        items = body.split(",") if body else []
+        if any(not item.strip() for item in items):
+            raise ValueError("Malformed empty axiom-list token")
+        rows.append({standard_name(item.strip()) for item in items})
+    if len(headers) != 1 or len(rows) != 1 or not rows[0] <= STD3:
+        raise ValueError("Expected one clean standard-three axiom audit for " + name)
+    return sorted(rows[0])
+
+
+def snapshot_project_constants(value, graph_names):
+    found = set()
+    def visit(item):
+        if not isinstance(item, list):
+            return
+        if (len(item) >= 2 and isinstance(item[0], str) and item[0] in {"const", "projection"}
+                and isinstance(item[1], str) and item[1] in graph_names):
+            found.add(item[1])
+        for child in item:
+            visit(child)
+    visit(value)
+    return found
+
+
+def checked_record(stage, manifest, filename, record):
+    log = (ROOT / record["log"]).resolve()
+    if (record["exit_code"] or record["original_exit_code"] or record["timed_out"]
+            or not record["source_unchanged"] or record["mode"] != "verification"
+            or not 0 < record["seconds"] <= 300 or record["timeout_seconds"] != 300
+            or record["runtime_sha256"] != manifest["runtime_sha256"]
+            or (ROOT / record["source"]).resolve() != stage / filename
+            or record["source_sha256"] != sha(stage / filename)
+            or not log.is_relative_to(DEST.resolve()) or sha(log) != record["log_sha256"]):
+        raise ValueError("Stale or failed strict preflight evidence: " + filename)
+
+
+def attempt_bindings(stage, manifest, pins):
+    return {"input_hashes": manifest["input_hashes"], "implementation_sha256": pins,
+            "manifest_sha256": sha(stage / "manifest.json"),
+            **{field: manifest[field] for field in ("runtime_sha256", "statement_sha256", "solution_sha256",
+               "snapshot_sha256", "snapshot_core_sha256", "source_components", "source_graph_sha256",
+               "generator_sha256")}}
+
+
+def existing_compilation(stage, manifest, filenames, pins):
+    path = stage / "compilation-attempt.json"
+    if not path.exists():
+        path = stage / "parser-repair-prior-attempt.json"
+    if not path.exists():
+        raise ValueError("Existing compilation requires a preserved attempt with implementation/JSON pins")
+    attempt = read(path)
+    expected = attempt_bindings(stage, manifest, pins)
+    for field, value in expected.items():
+        if field == "implementation_sha256":
+            old_pins = attempt[field]
+            if set(old_pins) != set(pins):
+                raise ValueError("Preserved compilation implementation set differs")
+            differing = {key for key in pins if old_pins[key] != pins[key]}
+            if differing - {"validate_standalone_platform_node.py"}:
+                raise ValueError("A generating or compiling implementation changed after compilation")
+            if differing:
+                backup = (ROOT / attempt.get("prior_validator_source", "")).resolve()
+                if (attempt.get("capture_scope") != "post-compilation-before-parser-repair"
+                        or backup.parent != stage or sha(backup) != old_pins["validate_standalone_platform_node.py"]
+                        or attempt.get("prior_validator_source_sha256") != sha(backup)):
+                    raise ValueError("Changed parser has no preserved, precisely bound repair lineage")
+        elif attempt.get(field) != value:
+            raise ValueError("Existing compilation is bound to different evidence: " + field)
+    if set(attempt.get("preflights", {})) != set(filenames):
+        raise ValueError("Preserved attempt does not contain all four preflights")
+    records = {}
+    for filename in filenames:
+        record_path = stage / (filename + ".preflight.json")
+        record = read(record_path)
+        if (record != attempt["preflights"][filename]
+                or sha(record_path) != attempt["preflight_record_sha256"][filename]):
+            raise ValueError("Preserved preflight record changed: " + filename)
+        checked_record(stage, manifest, filename, record)
+        records[filename] = record
+    for filename in ("original-type.json", "generated-type.json"):
+        if sha(stage / filename) != attempt["type_json_sha256"][filename]:
+            raise ValueError("Previously exported exact kernel JSON changed: " + filename)
+    return records, {"attempt": path.relative_to(ROOT).as_posix(), "attempt_sha256": sha(path),
+                     "capture_scope": attempt["capture_scope"],
+                     "compiled_implementation_sha256": attempt["implementation_sha256"],
+                     "recertification_implementation_sha256": pins,
+                     "recertification_parser_sha256": pins["validate_standalone_platform_node.py"],
+                     "compilation_reused": True, "new_Lean_compilation_run": False}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("stage", help="Node slug, verification-relative path or absolute node directory")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check-only", action="store_true", help="Check pins/bytes/closure without Lean or writes")
+    mode.add_argument("--certify-existing", action="store_true", help="Certify preserved strict compilation records without running Lean")
+    args = parser.parse_args()
+    stage = stage_path(args.stage)
+    manifest_path = stage / "manifest.json"
+    manifest = read(manifest_path)
+    closure, filenames = check_stage(stage, manifest)
+    pins = implementation_pins()
+    if args.check_only:
+        print(json.dumps({"theorem_name": manifest["theorem_name"], "input_and_exact_bytes_checked": True,
+                          "closure": closure, "compilation_run": False, "validated": False,
+                          "submission_ready": False, "full_tree_ready": False}))
+        return
+    manifest_before_sha = sha(manifest_path)
+    reuse_evidence = None
+    if args.certify_existing:
+        original_manifest_bytes = manifest_path.read_bytes()
+        records, reuse_evidence = existing_compilation(stage, manifest, filenames, pins)
+    else:
+        manifest.update({"validated": False, "local_standalone_validated": False,
+                         "submission_ready": False, "pending": ["standalone local validation in progress"]})
+        manifest.pop("validation", None)
+        manifest.pop("validation_sha256", None)
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+        original_manifest_bytes = manifest_path.read_bytes()
+        # Persist implementation/source pins before the first compiler runs.
+        attempt_path = stage / "compilation-attempt.json"
+        if attempt_path.exists():
+            archive = stage / ("compilation-attempt-" + sha(attempt_path) + ".json")
+            if not archive.exists():
+                archive.write_bytes(attempt_path.read_bytes())
+        attempt = {"at_utc": datetime.now(timezone.utc).isoformat(),
+                   "capture_scope": "before-compilation", **attempt_bindings(stage, manifest, pins),
+                   "preflights": {}, "preflight_record_sha256": {}, "type_json_sha256": {}}
+        attempt_path.write_text(json.dumps(attempt, indent=2) + "\n", encoding="utf-8")
+        # Both snapshots must produce fresh JSON in an executing compilation.
+        for filename in ("original-type.json", "generated-type.json"):
+            (stage / filename).unlink(missing_ok=True)
+        records = {}
+        for filename in filenames:
+            strict_inputs(manifest)
+            if implementation_pins() != pins or manifest_path.read_bytes() != original_manifest_bytes:
+                raise ValueError("Validator/generator/preflight or manifest changed during validation")
+            source = stage / filename
+            latest_path = DEST / "latest-preflight.json"
+            previous_record = latest_path.read_bytes() if latest_path.exists() else None
+            result = subprocess.run([sys.executable, str(TASK / "scripts/preflight_logged.py"),
+                                     "--verification", source.relative_to(DEST).as_posix(),
+                                     "--timeout-seconds", "300"], cwd=ROOT)
+            if not latest_path.exists() or latest_path.read_bytes() == previous_record:
+                raise ValueError("Preflight did not produce a fresh result record: " + filename)
+            record = read(latest_path)
+            log = (ROOT / record["log"]).resolve()
+            if not log.is_relative_to(DEST.resolve()):
+                raise ValueError("Preflight log escapes task verification")
+            record["log_sha256"] = sha(log)
+            records[filename] = record
+            record_path = stage / (filename + ".preflight.json")
+            record_path.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+            attempt["preflights"][filename] = record
+            attempt["preflight_record_sha256"][filename] = sha(record_path)
+            attempt_path.write_text(json.dumps(attempt, indent=2) + "\n", encoding="utf-8")
+            if result.returncode:
+                raise ValueError("Exact staged file compilation failed: " + filename)
+            checked_record(stage, manifest, filename, record)
+        attempt["type_json_sha256"] = {filename: sha(stage / filename)
+                                       for filename in ("original-type.json", "generated-type.json")}
+        attempt_path.write_text(json.dumps(attempt, indent=2) + "\n", encoding="utf-8")
+    check_stage(stage, manifest)
+    if implementation_pins() != pins or manifest_path.read_bytes() != original_manifest_bytes:
+        raise ValueError("Validation implementation or manifest changed")
+    for record in records.values():
+        if sha(ROOT / record["log"]) != record["log_sha256"]:
+            raise ValueError("Preflight evidence changed")
+    original, generated = read(stage / "original-type.json"), read(stage / "generated-type.json")
+    source_name, name = manifest["source_graph_name"], manifest["theorem_name"]
+    if (len(original) != 1 or original[0]["name"] != source_name or len(generated) != 2
+            or {row["name"] for row in generated} != {name, "solution"}):
+        raise ValueError("Kernel snapshots contain unexpected declarations")
+    expected_type = normalize_type(original[0])
+    for row in generated:
+        if (len(row["levelParams"]) != len(original[0]["levelParams"])
+                or normalize_type(row) != expected_type):
+            raise ValueError("Source, target and solution kernel types differ")
+    graph = {json.loads(line)["name"] for line in (DEST / "decl_graph.jsonl").read_bytes().splitlines()}
+    solution_row = next(row for row in generated if row["name"] == "solution")
+    actual_project_refs = snapshot_project_constants(solution_row["type"], graph)
+    actual_project_refs |= snapshot_project_constants(solution_row["value"], graph)
+    if not actual_project_refs <= set(closure["inline_declarations"]):
+        raise ValueError("Generated solution uses an unavailable project declaration or its target stub")
+    axioms = {
+        "source": audit_axioms(ROOT / records["SnapshotOriginal.lean"]["log"], source_name),
+        "snapshot_solution": audit_axioms(ROOT / records["SnapshotGenerated.lean"]["log"], "solution"),
+        "exact_solution": audit_axioms(ROOT / records[Path(manifest["solution"]).name]["log"], "solution")}
+    strict_inputs(manifest)
+    if implementation_pins() != pins or manifest_path.read_bytes() != original_manifest_bytes:
+        raise ValueError("Input/implementation or manifest changed before certification")
+    validation = {"at_utc": datetime.now(timezone.utc).isoformat(), "validated": True,
+                  "local_standalone_validated": True, "submission_ready": False, "full_tree_ready": False,
+                  "provisional": manifest["provisional"], "kernel_types_equal": True,
+                  "standard_axioms_only": True, "axioms": axioms, "closure": closure,
+                  "only_universe_parameter_display_names_normalized": True,
+                  "manifest_sha256_before_validation": manifest_before_sha,
+                  "input_hashes": manifest["input_hashes"], "implementation_sha256": pins,
+                  "source_components": manifest["source_components"],
+                  "source_graph_sha256": manifest["source_graph_sha256"],
+                  "runtime_sha256": manifest["runtime_sha256"],
+                  "generator_sha256": manifest["generator_sha256"],
+                  "statement_sha256": manifest["statement_sha256"],
+                  "solution_sha256": manifest["solution_sha256"],
+                  "snapshot_sha256": manifest["snapshot_sha256"],
+                  "snapshot_core_sha256": manifest["snapshot_core_sha256"],
+                  "original_type_sha256": sha(stage / "original-type.json"),
+                  "generated_type_sha256": sha(stage / "generated-type.json"),
+                  "preflights": records,
+                  "certification_mode": "existing-compilation" if args.certify_existing else "new-compilation",
+                  "recertification": reuse_evidence,
+                  "pretty_types": {"source": original[0]["prettyType"],
+                                   **{row["name"]: row["prettyType"] for row in generated}}}
+    validation_path = stage / "validation.json"
+    validation_path.write_text(json.dumps(validation, indent=2) + "\n", encoding="utf-8")
+    strict_inputs(manifest)
+    manifest.update({"validated": True, "local_standalone_validated": True,
+                     "submission_ready": False,
+                     "validation": validation_path.relative_to(ROOT).as_posix(),
+                     "validation_sha256": sha(validation_path),
+                     "pending": ["publication-flow exact node review and authorization",
+                                 "full-tree generation/validation remains provisional"]})
+    manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"theorem_name": name, "validated": True, "local_standalone_validated": True,
+                      "kernel_types_equal": True, "standard_axioms_only": True,
+                      "submission_ready": False, "full_tree_ready": False,
+                      "max_file_seconds": max(row["seconds"] for row in records.values())}))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,39 @@
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="theorem_id"
+
+a9904f48-a524-4023-b106-063256a5e681
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="proof_type"
+
+prove
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="explanation"
+
+The theorem shows that the stated arithmetic lower bound and analytic/collision upper bound cannot hold simultaneously. It is a self-contained real-inequality step used inside the campaign's determinant contradiction; it introduces no new approximation measure or additional mathematical assumptions.
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="file"; filename="Sol_OAI_PiExponent_determinant_bounds_inconsistent_global.lean"
+Content-Type: text/plain
+
+import Mathlib.Tactic.Linarith
+import Mathlib.Topology.Instances.Real.Lemmas
+
+open Filter Topology
+
+theorem solution
+    (nu theta x b ear ean err collision d : ℝ)
+    (hnu : 1 < nu) (hb0 : 0 ≤ b) (hb : b ≤ theta)
+    (hgap : ear + ean + err < nu * (x - theta) - (1 - theta))
+    (hcollision : 1 + ear + ean + err < collision)
+    (hlower : -(1 - b) - ear ≤ d)
+    (hupper : d ≤ ean + err + max (-collision) (-nu * (x - b))) : False := by
+  have hfirst : ean + err - collision < -(1 - b) - ear := by linarith
+  have hmono :
+      nu * (x - theta) - (1 - theta) ≤ nu * (x - b) - (1 - b) := by
+    nlinarith
+  have hsecond : ean + err - nu * (x - b) < -(1 - b) - ear := by linarith
+  rcases le_total (-collision) (-nu * (x - b)) with h | h
+  · rw [max_eq_right h] at hupper
+    linarith
+  · rw [max_eq_left h] at hupper
+    linarith
+------p2mBoundary7f3a9c2b--

@@ -1,0 +1,10 @@
+{
+  "theorem_name": "OAI.Snaky21.certificate21_correct",
+  "theorem_title": "Proposition 5 — the valid empty-requirement card of height 21",
+  "formal_statement": "theorem OAI.Snaky21.certificate21_correct : Valid card_727 ∧ (card_727.required = ∅ ∧ card_727.height = 21 ∧ card_727.envelope.card = 251 ∧ (∀ x ∈ card_727.envelope, 0 ≤ x.1 ∧ x.1 ≤ 16 ∧ 0 ≤ x.2 ∧ x.2 ≤ 16)) ∧ (numberedCards.length = 728 ∧ (numberedCards.map (fun c => decide (0 < c.height ∧ c.height ≤ 21))).all id = true) := by sorry",
+  "preamble": "import Definitions.Def_Snaky21Catalog\nimport Definitions.Def_Snaky21Data11\nopen OAI.Snaky21 OAI.SnakyPrototype OAI.Snaky21.Certificate\n",
+  "natural_language_statement": "The final numbered card 727 of the fixed 21-move certificate is a valid conditional Snaky claim, its required Maker set is empty, its height is 21, and its finite envelope has exactly 251 cells, all with both coordinates between 0 and 16. The validity is obtained from all numbered cards and their nested combinations, rather than assumed from the finite reconstruction alone.",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Proposition 5, endpoint of the 21-move certificate; Lemmas 3 and 4 supply semantic validity.",
+  "proof_file": "missions/snaky-21/platform/certificate-proof.lean",
+  "explanation": "The preceding blocks reconstruct and prove the validity of every numbered card, including every nested combination, using only earlier claims and the sound conditional-claim calculus. Projecting the last block gives the validity of card 727. Independent kernel reduction of its literal finite data gives the empty required set, height 21, envelope cardinality 251, and coordinate bounds. Empty Maker and Breaker sets satisfy the final card invariant."
+}

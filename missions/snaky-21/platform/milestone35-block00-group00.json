@@ -1,0 +1,10 @@
+{
+  "theorem_name": "OAI.SnakyCertificate.MilestoneChecks.block00_group00_correct",
+  "theorem_title": "35-move certificate: exact rows 0–7",
+  "formal_statement": "theorem OAI.SnakyCertificate.MilestoneChecks.block00_group00_correct : (rowAt 0 = data_0 ∧ Good (rowAt 0) ∧ True) ∧ (rowAt 1 = data_1 ∧ Good (rowAt 1) ∧ True) ∧ (rowAt 2 = data_2 ∧ Good (rowAt 2) ∧ True) ∧ (rowAt 3 = data_3 ∧ Good (rowAt 3) ∧ True) ∧ (rowAt 4 = data_4 ∧ Good (rowAt 4) ∧ True) ∧ (rowAt 5 = data_5 ∧ Good (rowAt 5) ∧ True) ∧ (rowAt 6 = data_6 ∧ Good (rowAt 6) ∧ EntryGood 6) ∧ (rowAt 7 = data_7 ∧ Good (rowAt 7) ∧ EntryGood 7) ∧ True := by sorry",
+  "preamble": "import Definitions.Def_Snaky35Cache00\nopen OAI.SnakyCertificate.MilestoneChecks OAI.SnakyCertificate\n",
+  "natural_language_statement": "The original certificate rows 0 through 7 have their exact required sets, envelopes and heights and the specified subset/origin/height invariants. Nonbase entries have correct indices, nonempty term lists and backward references.",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyCertificate.lean",
+  "proof_file": "missions/snaky-21/platform/milestone35-block00-group00-proof.lean",
+  "explanation": "Use the proved chunk lookup and exact earlier child rows, then check the three fields separately with decide +kernel. Each row and entry predicate is also checked by the kernel. This group has at most eight rows to fit the platform compiler budget. The defining equation of the well-founded rowAt function is explicitly used once for each row. No local Lean process is started on the user's computer."
+}

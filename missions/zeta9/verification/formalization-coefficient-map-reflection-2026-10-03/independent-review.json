@@ -1,0 +1,782 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS",
+  "scope_verdict": "PASS_ACTUAL_P9_M_N_REFLECTION_AND_ORIGINAL_INTEGER_QUARTIC_CANCELLATIONS_ONLY",
+  "review_role": "Independent mathematical and Lean reviewer; another agent authored Reflection",
+  "checked_at": "2026-10-03T16:31:40.805565+00:00",
+  "source": "missions/zeta9/formalization/CoefficientMapReflection.lean",
+  "source_sha256": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707",
+  "sources_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+    "CoefficientMapReflection": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+  },
+  "environment": {
+    "lean_toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "checks": [
+    {
+      "name": "all_five_actual_frozen_sources_unchanged",
+      "pass": true,
+      "detail": {
+        "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+        "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+        "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+        "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+        "CoefficientMapReflection": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+      }
+    },
+    {
+      "name": "author_twenty_three_member_freeze_unchanged",
+      "pass": true,
+      "detail": {
+        "author_manifest_sha256": "8008acf89fc217d73cb1d1af64abbedc53813bcbf443001664d67d5f9f93a920",
+        "author_receipt_sha256": "3f56ab9b0dc6e0b22390c317b8f31c8062b7b6f1616e037915e27a7cdad604bb"
+      }
+    },
+    {
+      "name": "fresh_independent_five_native_builds_and_two_actual_type_audits",
+      "pass": true,
+      "detail": {
+        "receipt": "independent-compile-receipt.json",
+        "observed_exits": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "fresh_cache": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build",
+        "native_objects": {
+          "independent-native-CoefficientMap": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790",
+          "independent-native-CoefficientMapJet": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160",
+          "independent-native-CoefficientMapInjectivity": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc",
+          "independent-native-CoefficientMapPartialFractions": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb",
+          "independent-native-CoefficientMapReflection": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+        }
+      }
+    },
+    {
+      "name": "all_actual_source_types_and_definition_values_reproduced",
+      "pass": true,
+      "detail": {
+        "source_defs": 4,
+        "source_proofs": 30,
+        "author_closed_statements_replayed": 6,
+        "independent_closed_boundary_statements": 25,
+        "exact_types_and_values_equal_author_report": true,
+        "definition_values": {
+          "ZetaNine.CoefficientMapReflection.reflectionVariable": "fun n => -Polynomial.X - Polynomial.C ↑n",
+          "ZetaNine.CoefficientMapReflection.rho": "fun n s W => ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W",
+          "ZetaNine.CoefficientMapReflection.StrongProperMultiplier": "fun n W => 2 * n + 2 * W.natDegree ≤ 9 * (n + 1) - 2",
+          "ZetaNine.CoefficientMapReflection.partialBasis": "fun n j s =>\n  ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j ^ 9 * (Polynomial.X + Polynomial.C ↑j) ^ (9 - s)"
+        }
+      }
+    },
+    {
+      "name": "all_final_axioms_standard_three_without_hidden_proof_holes",
+      "pass": true,
+      "detail": {
+        "native_printed_targets": 50,
+        "actual_import_records": 99,
+        "standard_axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "sorryAx": false
+      }
+    },
+    {
+      "name": "genuine_objects_only_no_extra_cancellation_or_PF_input",
+      "pass": true,
+      "detail": "Reflection imports only actual PartialFractions and its four-source closure. rho sums genuine Jet coefficients j=0..n. reflectionVariable is -X-C(n). StrongProperMultiplier is the explicit stronger degree bound; partialBasis is the actual cleared pole product ninth power times (X+j)^(9-s). No arbitrary coefficient family, reflection equality or PF/cancellation assumption is added."
+    },
+    {
+      "name": "natural_reverse_bijections_and_erased_products",
+      "pass": true,
+      "detail": "On range(n+1), k->n-k is an involutive bijection; natural subtraction is handled with k<=n. The erased version sends the exclusion n-j to j with j<=n. Both product and sum reversal include endpoints0,n, and independent endpoint and polynomial involution tests are closed."
+    },
+    {
+      "name": "actual_numerator_quadratic_and_pole_reflection_signs",
+      "pass": true,
+      "detail": "The two length-n numerator products exchange under -X-n, each contributing (-1)^n; their signs multiply to1. baseU=X(X+n) is invariant, hence so is actual weightedNumerator for every W. The n+1 full pole factors contribute (-1)^(n+1); the n erased pole factors contribute (-1)^n. Actual degree/properness is not needed for these polynomial identities."
+    },
+    {
+      "name": "actual_rational_anti_reflection_and_regular_domain",
+      "pass": true,
+      "detail": "For Even n the full denominator sign is-1, its ninth power is-1, and the actual rational representation yields weightedR(-n-t)=-weightedR(t). The source states this for all rational t in Lean's total division semantics. It also separately proves true regular points are preserved by reversing k to n-k, so the intended regular-domain interpretation is explicit. Odd-n anti-reflection is independently disproved at n=1,W=1,t=2."
+    },
+    {
+      "name": "formal_local_reflection_from_unit_denominator_identity",
+      "pass": true,
+      "detail": "The local coordinate X-(n-j), followed by -X, equals the global reflection followed by X-j. Rescale(-1) agrees with polynomial composition by-X. Under Even n, the shifted cleared denominator is unchanged, as is the actual shifted weighted numerator. Applying rescale to the genuine series-times-denominator^9 identity and cancelling the proven nonzero denominator power gives actual_local_series_reflection for every W and j<=n, without properness or evaluating a series at a numerical point."
+    },
+    {
+      "name": "actual_nine_local_coefficient_sign_and_middle_pole",
+      "pass": true,
+      "detail": "coeff_rescale multiplies coefficient k by(-1)^k. Here k=9-s; on1<=s<=9, (-1)^(9-s)=(-1)^(s+1), and its square is1. Thus the exact reflected actual coefficient is (-1)^(s+1) times the original. The independently closed middle-pole even-order test includes self-paired j=n-j, forcing its actual even coefficient to0 rather than dropping the middle pole."
+    },
+    {
+      "name": "even_aggregate_rho_cancellation_without_degree_assumption",
+      "pass": true,
+      "detail": "Reversing the complete j=0..n sum and applying the actual local sign gives rho=(-1)^(s+1)rho. For Even s in1..9 this is rho=-rho overQ, hence rho=0. The theorem needs Even n and Even s but no proper or strong-proper bound. An independent n=0,W=X^5 outside properness still has rho2=0; n=0,W=X^4 has all four even cancellations while rho1=1."
+    },
+    {
+      "name": "true_partial_numerator_top_coefficient_equals_rho_one",
+      "pass": true,
+      "detail": "Each actual partialBasis is monic. At j<=n its degree is9n+(9-s). Only s=1 reaches the exact top index9n+8 and has coefficient1; every2<=s<=9 has smaller degree and coefficient0. Taking the finite double-sum coefficient therefore gives precisely the sum of actual c_j,1=rho1 for every W, with no proper or parity assumption."
+    },
+    {
+      "name": "stronger_degree_bound_forces_rho_one_without_even_n",
+      "pass": true,
+      "detail": "StrongProperMultiplier is equivalent to2n+2degW+2<=9(n+1). It implies strict properness, enabling the proved actual polynomial PF identity. The actual weighted numerator degree is bounded by2n+2degW<=9n+7, so its coefficient9n+8 vanishes, including W=0 under the natDegree0 convention. Comparing the true PF top coefficient gives rho1=0 without Even n. The independent odd n=1 quartic test confirms this separation; quartics are strong for all n>=1."
+    },
+    {
+      "name": "rho_definition_exactly_matches_independently_replayed_FiniteSum",
+      "pass": true,
+      "detail": {
+        "actual_definition_type_and_value_identical": true,
+        "FiniteSum_imported_by_reflection": false,
+        "independent_FiniteSum_review_sha256": "a4d2cec35a3e9b506aed7a0df0b2afacce4adf07a5b03f42b713b9726b581386",
+        "actual_rho_definition_value": "fun n s W => ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+      }
+    },
+    {
+      "name": "independent_original_integer_quartic_and_necessary_hypothesis_boundaries",
+      "pass": true,
+      "detail": "For original integer quartics, Even n and n>=2 imply all five actual rho cancellations; natDegree_map_le preserves the quartic bound. At n=0,W=X^4: Even n, proper and all even cancellations hold, but rho1=1 and actualR=1/t, and StrongProperMultiplier fails. At n=0,degW<=3 the strong bound and rho1=0 hold; W=0 works for every n. Odd n=1 still has quartic rho1=0, but its anti-reflection equality fails for W=1,t=2. These verify the distinct roles of parity and the stronger degree condition."
+    },
+    {
+      "name": "actual_p9_m_equals_n_cancellation_scope_without_infinite_claims",
+      "pass": true,
+      "detail": "The actual p=9,m=n reflection, local sign, even totals and stronger-degree simple-total cancellation are closed. They supply the genuine cancellations needed by the already reviewed finite-sum conditional bridges on the original Even n>=2 integer-quartic regime. No generalized p/multilayer Eq3, numerical series evaluation, tail limit, infinite Eq4/analytic L convergence/exact L, denominator integrality, five-dimensional aggregate F inverse/injectivity, J or irrationality is established here."
+    }
+  ],
+  "source_definitions": 4,
+  "source_theorems": 30,
+  "stronger_degree_domain": "2*n+2*W.natDegree <= 9*(n+1)-2, equivalent to 2*n+2*W.natDegree+2 <= 9*(n+1)",
+  "local_sign_and_even_rho_domain": "Even n; j<=n; 1<=s<=9; even-rho conclusion additionally Even s; every W:Q[X] without properness",
+  "rho_one_domain": "StrongProperMultiplier n W; no Even n premise",
+  "original_integer_quartic_domain": "n>=2,Even n,W:Z[X],natDegree W<=4",
+  "main_target_types": {
+    "ZetaNine.CoefficientMapReflection.actual_weightedR_reflection": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.actual_weightedR_reflection",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]) (t : ℚ), ZetaNine.CoefficientMap.weightedR n W (-↑n - t) = -ZetaNine.CoefficientMap.weightedR n W t"
+    },
+    "ZetaNine.CoefficientMapReflection.actual_local_series_reflection": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.actual_local_series_reflection",
+      "definitionValue": null,
+      "type": "∀ (n j : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      j ≤ n →\n        (PowerSeries.rescale (-1)) (ZetaNine.CoefficientMapJet.weightedClearedSeries n (n - j) W) =\n          ZetaNine.CoefficientMapJet.weightedClearedSeries n j W"
+    },
+    "ZetaNine.CoefficientMapReflection.local_coefficient_reflection": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.local_coefficient_reflection",
+      "definitionValue": null,
+      "type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      j ≤ n →\n        1 ≤ s →\n          s ≤ 9 →\n            ZetaNine.CoefficientMapJet.weightedLocalCoefficient n (n - j) s W =\n              (-1) ^ (s + 1) * ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+    },
+    "ZetaNine.CoefficientMapReflection.rho_even_order_zero": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.rho_even_order_zero",
+      "definitionValue": null,
+      "type": "∀ (n s : ℕ), Even n → ∀ (W : ℚ[X]), 1 ≤ s → s ≤ 9 → Even s → ZetaNine.CoefficientMapReflection.rho n s W = 0"
+    },
+    "ZetaNine.CoefficientMapReflection.partialNumerator_top_coefficient_is_rho_one": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.partialNumerator_top_coefficient_is_rho_one",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  (ZetaNine.CoefficientMapPartialFractions.partialNumerator n W).coeff (9 * n + 8) =\n    ZetaNine.CoefficientMapReflection.rho n 1 W"
+    },
+    "ZetaNine.CoefficientMapReflection.rho_one_zero_of_strong_proper": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.rho_one_zero_of_strong_proper",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W → ZetaNine.CoefficientMapReflection.rho n 1 W = 0"
+    },
+    "ZetaNine.CoefficientMapReflection.original_integer_quartic_rho_one_zero": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.original_integer_quartic_rho_one_zero",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℤ[X]),\n        W.natDegree ≤ 4 → ZetaNine.CoefficientMapReflection.rho n 1 (Polynomial.map (Int.castRingHom ℚ) W) = 0"
+    }
+  },
+  "boundary_examples": {
+    "refl_ind_original_integer_quartic_all_five": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_original_integer_quartic_all_five",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℤ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapReflection.rho n 1 (Polynomial.map (Int.castRingHom ℚ) W) = 0 ∧\n            ZetaNine.CoefficientMapReflection.rho n 2 (Polynomial.map (Int.castRingHom ℚ) W) = 0 ∧\n              ZetaNine.CoefficientMapReflection.rho n 4 (Polynomial.map (Int.castRingHom ℚ) W) = 0 ∧\n                ZetaNine.CoefficientMapReflection.rho n 6 (Polynomial.map (Int.castRingHom ℚ) W) = 0 ∧\n                  ZetaNine.CoefficientMapReflection.rho n 8 (Polynomial.map (Int.castRingHom ℚ) W) = 0"
+    },
+    "refl_ind_middle_even_local_zero": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_middle_even_local_zero",
+      "definitionValue": null,
+      "type": "∀ (n j s : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      j ≤ n → n - j = j → 1 ≤ s → s ≤ 9 → Even s → ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0"
+    },
+    "refl_ind_odd_n_one_simple_zero": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_odd_n_one_simple_zero",
+      "definitionValue": null,
+      "type": "∀ (W : ℚ[X]), W.natDegree ≤ 4 → ZetaNine.CoefficientMapReflection.rho 1 1 W = 0"
+    },
+    "refl_ind_n_zero_X_four_rho_one": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_n_zero_X_four_rho_one",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapReflection.rho 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    "refl_ind_n_zero_X_four_proper_not_strong": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_n_zero_X_four_proper_not_strong",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n  ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4)"
+    },
+    "refl_ind_n_zero_X_four_actual_simple_pole": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_n_zero_X_four_actual_simple_pole",
+      "definitionValue": null,
+      "type": "∀ (t : ℚ), t ≠ 0 → ZetaNine.CoefficientMap.weightedR 0 (Polynomial.X ^ 4) t = 1 / t"
+    },
+    "refl_ind_n_zero_X_four_even_cancellations": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_n_zero_X_four_even_cancellations",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMapReflection.rho 0 2 (Polynomial.X ^ 4) = 0 ∧\n  ZetaNine.CoefficientMapReflection.rho 0 4 (Polynomial.X ^ 4) = 0 ∧\n    ZetaNine.CoefficientMapReflection.rho 0 6 (Polynomial.X ^ 4) = 0 ∧\n      ZetaNine.CoefficientMapReflection.rho 0 8 (Polynomial.X ^ 4) = 0"
+    },
+    "refl_ind_n_zero_strong_lower_degrees": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_n_zero_strong_lower_degrees",
+      "definitionValue": null,
+      "type": "∀ (W : ℚ[X]),\n  W.natDegree ≤ 3 →\n    ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 W ∧ ZetaNine.CoefficientMapReflection.rho 0 1 W = 0"
+    },
+    "refl_ind_zero_multiplier_strong_every_n": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_zero_multiplier_strong_every_n",
+      "definitionValue": null,
+      "type": "∀ (n : ℕ),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n 0 ∧ ZetaNine.CoefficientMapReflection.rho n 1 0 = 0"
+    },
+    "refl_ind_nonproper_still_even_zero": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_nonproper_still_even_zero",
+      "definitionValue": null,
+      "type": "¬ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 5) ∧\n  ZetaNine.CoefficientMapReflection.rho 0 2 (Polynomial.X ^ 5) = 0"
+    },
+    "refl_ind_odd_n_anti_reflection_fails": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "refl_ind_odd_n_anti_reflection_fails",
+      "definitionValue": null,
+      "type": "ZetaNine.CoefficientMap.weightedR 1 1 (-3) ≠ -ZetaNine.CoefficientMap.weightedR 1 1 2"
+    }
+  },
+  "actual_type_records": {
+    "author_replay": 40,
+    "independent_audit": 59,
+    "independent_additional_statements": 25
+  },
+  "findings": [
+    {
+      "severity": "information",
+      "name": "Different hypotheses discharge different actual cancellations",
+      "detail": "Even n gives the local reflection sign and even-order rho zeros without degree bounds. The stronger two-degree gap gives rho1=0 without Even n. These are real proofs, not imported cancellation hypotheses."
+    },
+    {
+      "severity": "information",
+      "name": "n=0 quartic simple-pole counterexample retained",
+      "detail": "n=0,W=X^4 is proper with all even rho zero but rho1=1 and actual function1/t; it fails the stronger bound. Strict properness alone still does not give rho1=0 or analytic L convergence."
+    }
+  ],
+  "new_reflection_PF_or_cancellation_inputs": [],
+  "actual_rational_reflection_closed": true,
+  "actual_local_series_reflection_closed": true,
+  "actual_local_coefficient_reflection_closed": true,
+  "actual_even_rho_cancellation_closed": true,
+  "actual_rho_one_cancellation_under_stronger_bound_closed": true,
+  "original_integer_quartic_all_five_cancellations_closed": true,
+  "rho_actual_definition_equal_independently_replayed_FiniteSum": true,
+  "FiniteSum_imported": false,
+  "general_p_multilayer_reflection_closed": false,
+  "rho1_zero_from_strict_proper_alone_closed": false,
+  "infinite_sum_Eq4_closed": false,
+  "tail_limit_closed": false,
+  "infinite_L_convergence_closed": false,
+  "exact_L_closed": false,
+  "denominator_integrality_closed": false,
+  "original_aggregate_F_injectivity_closed": false,
+  "original_aggregate_F_inverse_closed": false,
+  "J_closed": false,
+  "irrationality_closed": false,
+  "root_scope_API_credentials_writes": false,
+  "author_freeze_sources_platform_batches_modified": false,
+  "stable_files": [
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Definitions.lean",
+      "bytes": 330,
+      "sha256": "b5e8d2e36ef3da5eb7a5516aa44a0b7dd23a017b304e34fda1c06beb6a406d2e"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Operations.lean",
+      "bytes": 32194,
+      "sha256": "4f44484019afcf09cfa418976e996b4397d9e21e84854adecc60b0c8568dea50"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/RingTheory/PowerSeries/Basic.lean",
+      "bytes": 32265,
+      "sha256": "cf7714dcad63b75c04f8818990eab31761dd4a67c151c24b77bb56b7c7571ee9"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/RingTheory/PowerSeries/NoZeroDivisors.lean",
+      "bytes": 2217,
+      "sha256": "862fbab80b821997557662dff285f75b102720fa4d88047e8da2c6b0b2abe70f"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.lean",
+      "bytes": 11295,
+      "sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03"
+    },
+    {
+      "task_relative": "formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapFiniteSum.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+      "bytes": 6644,
+      "sha256": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+      "bytes": 11327,
+      "sha256": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "bytes": 10033,
+      "sha256": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+      "bytes": 18065,
+      "sha256": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.compile-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.compile-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.compile.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.compile.log",
+      "bytes": 1431,
+      "sha256": "1ea56a3cb28fec2a8d67c20590c5a2afd33479532569d7ff9257632924265405"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.lean",
+      "bytes": 17678,
+      "sha256": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapReflection.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "bytes": 768560,
+      "sha256": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+    },
+    {
+      "task_relative": "research/coefficient-map-reflection-2026-10-03.md",
+      "root_relative": "missions/zeta9/research/coefficient-map-reflection-2026-10-03.md",
+      "bytes": 3748,
+      "sha256": "aa2f3f4005def91a52ed1fcb7f7e7a2d0328adb7a2e6416cb0801e578c394d2b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-2026-10-03/compile-receipt.json",
+      "bytes": 4493,
+      "sha256": "e60a70590ea9daabf35e2c581c1146cef0cf824d03e47d622bda295324e2d9a8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-boundary-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-boundary-types.json",
+      "bytes": 17167,
+      "sha256": "0925f9bf132d028bd42799e7e2fd21f6fa7d94dd511ddc2137c5f0ba2181ffd5"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-review.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-finite-sum-2026-10-03/independent-review.json",
+      "bytes": 44637,
+      "sha256": "a4d2cec35a3e9b506aed7a0df0b2afacce4adf07a5b03f42b713b9726b581386"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-injectivity-2026-10-03/compile-receipt.json",
+      "bytes": 7397,
+      "sha256": "c15cc9b3e545095c944db689aca5140723603fb63119697f47d81749d1dedcfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-jet-2026-10-03/compile-receipt.json",
+      "bytes": 5288,
+      "sha256": "154d424b057232f3763654f29aaf6c7a3efcb9ae69dd8faa6a6c6f169c6f8b3c"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-partial-fractions-2026-10-03/compile-receipt.json",
+      "bytes": 8884,
+      "sha256": "a422a5d3b6d5ddaaa1a26ac8e468266331b08ac78ec3788707db2e131809075d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/compile-receipt.json",
+      "bytes": 9351,
+      "sha256": "3f56ab9b0dc6e0b22390c317b8f31c8062b7b6f1616e037915e27a7cdad604bb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/freeze_reflection.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/freeze_reflection.py",
+      "bytes": 8676,
+      "sha256": "a566d2d2fe608e5b0e3966d85b1231f87b4f522656cb8c3c4c1d4566d5fa3462"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMap.olean",
+      "bytes": 668312,
+      "sha256": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "bytes": 393656,
+      "sha256": "f1bcc7f6482a2b51a80c81d09aad17961d2e3207af1bd29fad624647cb48bdfc"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "bytes": 567792,
+      "sha256": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "bytes": 698776,
+      "sha256": "cadf6155a4a794deb0f48186bebb21a2a6ae7dfcb99be5c982c16aa74fc27adb"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent/build/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "bytes": 768560,
+      "sha256": "832af2b1ba0429edb7fdb1da8598becf71dbded60cbd0f87c0f6262d7fc6b840"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay.log",
+      "bytes": 13701,
+      "sha256": "fd0ee277fb95323f9849be9bcb28a13edd089ed1fed1877a06394439a23c70b9"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-author-type-replay.ps1",
+      "bytes": 393,
+      "sha256": "fa4e418fc45234e172e79d8941d16eda3e68285af3baa4b2c198841ac5f4cf40"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.lean",
+      "bytes": 11509,
+      "sha256": "0f7750912c2ba9475c459193132f3cf2149b2868ba56b02b2a7ebb2d95a77c88"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.log",
+      "bytes": 18868,
+      "sha256": "1eb88ae2d8535f27e31d7ab871c4404f9a07aa382f93d46ce124c97d75b7ded2"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-audit.ps1",
+      "bytes": 409,
+      "sha256": "dc5209832cf71d0f738ab224950a5959f52880da8f426ae048b7bfc6908522f4"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-boundary-types.json",
+      "bytes": 22767,
+      "sha256": "4c2eaf97512a0964cd12f83c2a5d46b52a37afe1068d5c08f9b2c19f1f92aa0f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-build.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-build.py",
+      "bytes": 3642,
+      "sha256": "b64d1e4d0b84e4c381449130cb79a9d52d48efd49d0bd9f461851a0acddba5d8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-compile-receipt.json",
+      "bytes": 10058,
+      "sha256": "e48fca66dfb142344f724867320318fda32ca025b2d8f2bafc932cf53565b115"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap.log",
+      "bytes": 933,
+      "sha256": "f0b920c9005031dab2dbc385a6f295c2ab2a6285ec6d92960f8094d614835293"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMap.ps1",
+      "bytes": 541,
+      "sha256": "edb067704bc291f03ce53fdc42ff49a5d3513393cf041536a1dfaa84ae3e404a"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity.log",
+      "bytes": 1198,
+      "sha256": "6ea6ccdba6c56226d4dece522c0450c3ae3fbe6ed24b4193c779f1766c169367"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapInjectivity.ps1",
+      "bytes": 563,
+      "sha256": "75c05b0bc38a837bc35422832a32f68c2486e43d48048f30e070da4ba04857ff"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet.log",
+      "bytes": 1222,
+      "sha256": "b9ea2bad281c3f8c011e062f877fca9ccc10b6600425c4b7c483c2f7250f00d8"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapJet.ps1",
+      "bytes": 547,
+      "sha256": "a5ee19a0b943579388c5326958135d1bcf3ad042e2fe0e1ab256c17bebab062d"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions.log",
+      "bytes": 1645,
+      "sha256": "fc52c42281adc8d5d520db8b77511fcc9079656ee74304802da6ef505350114f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapPartialFractions.ps1",
+      "bytes": 573,
+      "sha256": "0d0f56b076491c887a26929b1b4c0a0c5c7c74d8c831e77b12946a18c9d3898a"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection.log",
+      "bytes": 1404,
+      "sha256": "8e6d55ede0268232e10959b7bb96e662d84858db344860feacb0d9c776378838"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-native-CoefficientMapReflection.ps1",
+      "bytes": 561,
+      "sha256": "4229780332ce8e4215890535f335dc5de5df9122d865cfc7f215e631488cbb3f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-original-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-original-types.json",
+      "bytes": 16346,
+      "sha256": "b55fa99e629cccf689d48acd599e635143151634ebe29e261612da26c500939f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-review.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-review.log",
+      "bytes": 1186,
+      "sha256": "270f34a04556909824b5cea87f222623671c8531caa6e7701a4076657b98919b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent-review.md",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent-review.md",
+      "bytes": 3543,
+      "sha256": "22ee6c30d30542ae4cd3c9332fac28654b14c9d0e7147c6c0c9488c6bda13b25"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/independent_review.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/independent_review.py",
+      "bytes": 21025,
+      "sha256": "443f3046bcede1f6db6c9ef72a2c5a0e9b70224a96e82117eb9cd7afcd05e9fe"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/SHA256SUMS.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/SHA256SUMS.txt",
+      "bytes": 2957,
+      "sha256": "8008acf89fc217d73cb1d1af64abbedc53813bcbf443001664d67d5f9f93a920"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/type-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/type-audit-exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/type-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/type-audit.lean",
+      "bytes": 6307,
+      "sha256": "5ea3852c7b5cb72bfd3cf51346b9d76b8c41ee04ff5b163075b721808ad03af4"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/type-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/type-audit.log",
+      "bytes": 13741,
+      "sha256": "685766ff116b6067f0c2bd6276cf36352b939ee2266a041c8d52eca1ac472954"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-reflection-2026-10-03/type-report.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-reflection-2026-10-03/type-report.json",
+      "bytes": 16346,
+      "sha256": "b55fa99e629cccf689d48acd599e635143151634ebe29e261612da26c500939f"
+    }
+  ]
+}

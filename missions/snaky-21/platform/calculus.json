@@ -1,0 +1,10 @@
+{
+  "theorem_name": "OAI.Snaky21.claim_calculus",
+  "theorem_title": "Conditional Snaky claim calculus: bases, placements, and composition",
+  "formal_statement": "theorem OAI.Snaky21.claim_calculus : (∀ i : Fin 6, Valid (baseCard i)) ∧ (∀ (r : Fin 8) (t : Cell) (c : Card), Valid c → Valid (placed r t c)) ∧ (∀ (p : Cell) (cs : List Card), cs ≠ [] → (∀ c ∈ cs, Valid c) → Valid (combine p cs)) := by sorry",
+  "preamble": "import Definitions.Def_Snaky21Core\nimport Theorems.Thm_OAI_Snaky21_combination_rule\nopen OAI.Snaky21 OAI.SnakyPrototype\n",
+  "natural_language_statement": "The six one-cell completions of Snaky are valid conditional claims. Every translated, rotated or reflected valid claim remains valid with the same height. The nonempty composition rule of Lemma 3 preserves validity, counting a fresh replacement for an already-owned pivot as one actual Maker claim. Validity is uniform over finite prior ownership with the required Maker cells present and Breaker avoiding the envelope.",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Definition 2, Lemmas 3 and 4, and the placement invariance immediately following Definition 2.",
+  "proof_file": "missions/snaky-21/platform/calculus-proof.lean",
+  "explanation": "The bases either have an already completed target or a free missing cell. The eight orientations form a group of bijections; transporting both ownership sets and moves preserves legality and transports every Snaky target. For arbitrary initial ownership, preimages under the placement recover the original conditional claim. The composition component uses the already verified Lemma 3."
+}

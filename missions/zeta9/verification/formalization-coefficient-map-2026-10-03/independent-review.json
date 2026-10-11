@@ -1,0 +1,156 @@
+{
+  "status": "PASS",
+  "verdict": "PASS_ACTUAL_FINITE_LEADING_POLE_ENTRY_ONLY",
+  "review_role": "Independent mathematical and Lean reviewer; proof source authored and frozen by another agent",
+  "checked_at": "2026-10-03T14:22:05.840013+00:00",
+  "source": "missions/zeta9/formalization/CoefficientMap.lean",
+  "source_sha256": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+  "written_source": "missions/zeta9/round5/research/arithmetic.md",
+  "written_source_sha256": "182db8764ab513f43cd6176688c6be940147766f10f15d30faa2ea1a4dd722be",
+  "written_scope": "Section 1 Eq(1), highest-order part of Eq(5), Section 2 Eq(6), specialized p=9,q=1,m=n",
+  "environment": {
+    "compiler": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "checks": [
+    {
+      "check": "actual Eq(1) specialization",
+      "pass": true,
+      "detail": "p=9,q=1,m=n gives n!^9/(n!)^2=n!^7. The first finite product t-1,...,t-n equals the rising Pochhammer (t-n)_n by reordering; the second is (t+n+1)_n. The pole product is exactly product(k=0..n,t+k)^9."
+    },
+    {
+      "check": "coefficient defined from genuine rational product",
+      "pass": true,
+      "detail": "actualR is numerator/poleProduct^9; clearedR removes exactly the j factor; leadingPoleCoefficient is clearedR evaluated at -j. Its definition contains no closed binomial coefficient formula."
+    },
+    {
+      "check": "regular-point clearing and denominator safety",
+      "pass": true,
+      "detail": "clear_highest_pole assumes j<=n and every t+k !=0, then proves actualR*(t+j)^9=clearedR. The proof factors the pole product and supplies nonzero factor and deleted product. clearedPoleProduct_ne_zero proves the denominator at -j is nonzero, even without j<=n."
+    },
+    {
+      "check": "actual product computation of highest coefficient",
+      "pass": true,
+      "detail": "numerator_eval derives (-1)^n*n!^9*choose(n+j,n)*choose(2n-j,n). clearedPoleProduct_eval derives (-1)^j*j!*(n-j)!. Their ninth-power quotient, factorial nonzero facts and Nat.cast_choose give the formula; it is not a definitional rfl substitution."
+    },
+    {
+      "check": "Eq(6) phase and binomial factors",
+      "pass": true,
+      "detail": "The specialized phase (-1)^(9j+n) equals (-1)^(n+j). Factors are choose(n,j)^9, choose(n+j,n), choose(2n-j,n). The general theorem covers odd n; only the even corollary drops (-1)^n."
+    },
+    {
+      "check": "zero boundary and endpoint signs",
+      "pass": true,
+      "detail": "Independent Lean wrappers prove leadingPoleCoefficient(0,0)=1, (1,0)=-2, (1,1)=2, and (2,1)=-4608. n=0 uses empty numerator/deleted products. At a pole totalized rational division in actualR is not substituted into the clearing identity, whose regularity hypothesis is explicit."
+    },
+    {
+      "check": "unweighted integrality and nonvanishing",
+      "pass": true,
+      "detail": "For every j<=n all three binomial factors are strictly positive, so the actual coefficient is nonzero. Its explicit integer witness is the signed binomial product. The final rfl in the integer proof checks casts after leadingPoleCoefficient_eq has already been proved."
+    },
+    {
+      "check": "even signed positivity",
+      "pass": true,
+      "detail": "For even n, (-1)^j*leadingPoleCoefficient(n,j)>0 follows by squaring the sign and positivity of all three actual binomial factors. No replacement positive coefficient is introduced."
+    },
+    {
+      "check": "actual weighted family and local coordinate",
+      "pass": true,
+      "detail": "weightedR is actualR times W.eval(t*(t+n)); the coordinate t=-j+z is exactly -j(n-j)+(n-2j)z+z^2, with no n^-2 scaling. The weighted regular-point clearing theorem follows from the actual unweighted identity."
+    },
+    {
+      "check": "highest-order part of Eq(5)",
+      "pass": true,
+      "detail": "For every W in Q[X], the highest cleared value is the actual unweighted coefficient multiplied by W(-j(n-j)). This formalizes the highest-order term of Eq(5) and the exact local coordinate identity, not the whole lower-order Taylor convolution."
+    },
+    {
+      "check": "weighted nonvanishing boundary retained",
+      "pass": true,
+      "detail": "The independent Lean audit proves weightedLeadingPoleCoefficient !=0 iff W(-j(n-j)) !=0, using the actual unweighted nonzero theorem. It also proves W=X+1 cancels the highest coefficient at n=2,j=1. A nonzero polynomial W therefore does not by itself give a nonzero highest coefficient."
+    },
+    {
+      "check": "source and definition/type coverage",
+      "pass": true,
+      "detail": "All 27 actual source declarations are covered by the author's imported Lean record, including all nine definition values; a 28th closed actual-product statement is also checked. The independent compile re-elaborates the exact original source bytes and prints the genuine product definitions."
+    },
+    {
+      "check": "actual compiler and axiom evidence",
+      "pass": true,
+      "detail": "Independent lake --no-cache build CoefficientMap and lake env lean ReviewAudit.lean both exit 0 in a separate minimal project. The original eight endpoints and ten review statements have no axioms outside propext, Classical.choice, Quot.sound. No source sorry or own axiom is present."
+    },
+    {
+      "check": "finite exact arithmetic regression",
+      "pass": true,
+      "detail": "Fraction-only independent product evaluation checks 91 local coefficients, 364 regular-point identities and 455 weighted values across 0<=n<=12, 0<=j<=n, including integer and rational polynomials. These finite checks support the implementation and do not replace the universal Lean proof."
+    }
+  ],
+  "source_defects": [],
+  "remaining_obligations": [
+    "All lower-order local Taylor/partial-fraction coefficients and the complete Eq(5) convolution.",
+    "A full partial-fraction decomposition of the actual rational function; formal Laurent-series machinery is not included here.",
+    "Reflection identities, all even coefficient sums and the order-one cancellation needed by the infinite sum.",
+    "Exact L(W)=B(W)+A3*zeta(3)+A5*zeta(5)+A7*zeta(7)+A9*zeta(9), including convergence and constants.",
+    "The actual complete five-dimensional coefficient map F, all-even invertibility and prescribed (b,a) inverse images.",
+    "The infinite small nonzero integer linear forms required for zeta(9) irrationality."
+  ],
+  "full_F_completed": false,
+  "invertibility_completed": false,
+  "exact_infinite_L_completed": false,
+  "irrationality_proved": false,
+  "platform_acceptance_claimed": false,
+  "independent_build_steps": [
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "CoefficientMap"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "ReviewAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "independent_source_axiom_endpoints": 8,
+  "additional_independent_review_statements": 10,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": {},
+  "original_declarations_imported_type_and_definition_records": 27,
+  "author_extra_checked_actual_endpoint_records": 1,
+  "finite_arithmetic": {
+    "status": "PASS",
+    "parameter_range": "0 <= n <= 12; 0 <= j <= n",
+    "local_coefficients_checked": 91,
+    "regular_point_clearings_checked": 364,
+    "weighted_coefficients_checked": 455,
+    "checks_are_finite_regressions_not_the_universal_proof": true
+  },
+  "evidence": {
+    "author_compile_receipt_sha256": "e60a70590ea9daabf35e2c581c1146cef0cf824d03e47d622bda295324e2d9a8",
+    "author_type_report_sha256": "7de3e48b77ed80da51c1b89d4bf15e595d220ec6bb9e81fa5cb8162487efab11",
+    "independent_compile_log": "independent-review/independent-compile.log",
+    "independent_compile_log_sha256": "ed85d798cdf147523008eb78fbbec134186f5da3d7d783cf98fe6d42ce2a4ec7",
+    "independent_compile_receipt": "independent-review/independent-compile-receipt.json",
+    "independent_compile_receipt_sha256": "905a0d9705216c815f37b7fdba0676d0867aa8e107fc088802414bd690b08a2b",
+    "review_audit_source_sha256": "b86c05e2090d734e95e32fdf5c63a3f5cb0237d6f7e99a2e8a806fc4a1d810f8",
+    "exact_arithmetic_sha256": "dd9ba705e3e2fefec81dedcc931e0cf63eae3a4b085dd8892eb3040451fa1041"
+  },
+  "original_source_unchanged": true,
+  "frozen_advanced_zip_unchanged_sha256": "87c7ea2680bda568e8e2b36b82f48dab6910ab9bf92e8b4486471c547792e31c",
+  "proof_source_edits": [],
+  "shared_root_or_scope_edits": [],
+  "advanced_zip_or_sidecar_edits": [],
+  "network_API_credential_operations": false,
+  "review_harness_attempts": "Two failed finite audit-wrapper normalization attempts are preserved under independent-review; only the review wrapper was repaired, and the original proof passed every independent source build."
+}

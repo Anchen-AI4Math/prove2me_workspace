@@ -1,0 +1,30 @@
+{
+  "status": "ACTUAL_OWN_COMPILER_DRIVER_RESIDUAL_QUERY_ZERO",
+  "exit_code": 0,
+  "matched_processes": [],
+  "matched_count": 0,
+  "processes_stopped_or_modified": false,
+  "command": "$selected = @(Get-CimInstance Win32_Process | Where-Object { $_.Name -in @('lean.exe','lake.exe','python.exe','pythonw.exe') -and ($_.CommandLine -match 'PFIndependent' -or ($_.CommandLine -match 'formalization-coefficient-map-numerator-pf-platform-independent-2026-10-07' -and $_.CommandLine -match 'run_(phase1|native_control|staged_controls|lossless_encoder|oracles_and_resolvers)')) } | Select-Object ProcessId,Name,CommandLine); ConvertTo-Json -InputObject $selected -Depth 5 -Compress",
+  "source": {
+    "task_relative": "verification/formalization-coefficient-map-numerator-pf-platform-independent-2026-10-07/terminal_process_inspection.py",
+    "bytes": 1675,
+    "sha256": "b2ff2da41dff81f47300b0ebc9c0443e579518698ea08543434c31a5378e6915"
+  },
+  "evidence": [
+    {
+      "task_relative": "verification/formalization-coefficient-map-numerator-pf-platform-independent-2026-10-07/terminal-process-query/stdout.log",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-numerator-pf-platform-independent-2026-10-07/terminal-process-query/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-numerator-pf-platform-independent-2026-10-07/terminal-process-query/exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    }
+  ]
+}

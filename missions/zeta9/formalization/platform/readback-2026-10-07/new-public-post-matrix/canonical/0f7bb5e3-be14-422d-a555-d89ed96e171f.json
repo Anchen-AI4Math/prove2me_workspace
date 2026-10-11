@@ -1,0 +1,19 @@
+{
+  "theorem_id": "0f7bb5e3-be14-422d-a555-d89ed96e171f",
+  "theorem_name": "ZetaNine.finite_prime_discount",
+  "theorem_title": "Exact finite weighted prime-discount identity",
+  "status": "Proved",
+  "formal_statement": "namespace ZetaNine\n\ntheorem finite_prime_discount\n    {ι : Type*} [DecidableEq ι]\n    (s : Finset ι) (v a : ι → ℕ) (w : ι → ℝ) :\n    (∑ i ∈ s, ((v i - 2 * a i : ℕ) : ℝ) * w i) +\n      (∑ i ∈ s, ((min (11 * a i - v i) (9 * a i) : ℕ) : ℝ) * w i) =\n      9 * ∑ i ∈ s, (a i : ℝ) * w i +\n        ∑ i ∈ s, ((v i - 11 * a i : ℕ) : ℝ) * w i := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "For any finite index set, natural-number values v and a, and arbitrary real weights w, the weighted sum of the truncated exponents (v−2a) plus the weighted sum of min((11a−v),9a) equals nine times the weighted sum of a plus the weighted sum of (v−11a). All natural-number subtractions are truncated at zero. This is the exact finite algebraic identity behind the local ζ(9) prime-discount formula; the theorem does not define its concrete Smith modulus, prime valuations, or asymptotic limit.",
+  "created_at": "2026-09-24T15:26:13.139885+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "preamble": "import Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Data.Real.Basic\n\nopen scoped BigOperators",
+  "source": "Local zeta9 research note, roadmap/research/prime-discount-identity.md, equations (2)-(3), 2026-09-24",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

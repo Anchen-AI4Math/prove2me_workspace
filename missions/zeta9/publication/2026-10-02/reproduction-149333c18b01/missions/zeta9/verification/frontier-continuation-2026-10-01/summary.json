@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-01",
+  "mission": "zeta9",
+  "status": "RESEARCH_ADVANCE_VERIFIED_NOT_IRRATIONALITY_PROOF",
+  "runs": [
+    {
+      "name": "direction-frontier",
+      "script": "scripts/verify_direction_frontier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 10,
+      "additional_checks": {
+        "adjacent_sign": 4,
+        "smith_gcd_toys": 23
+      },
+      "certificate": "verification/direction-frontier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    },
+    {
+      "name": "mellin-unshifted-frontier",
+      "script": "scripts/verify_mellin_unshifted_frontier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 47,
+      "additional_checks": {
+        "unshifted": 24,
+        "shifted": 23
+      },
+      "certificate": "verification/mellin-unshifted-frontier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    },
+    {
+      "name": "pole-dimension-frontier",
+      "script": "scripts/verify_pole_dimension_frontier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 87,
+      "additional_checks": {
+        "good_primes": 61,
+        "collisions": 32
+      },
+      "certificate": "verification/pole-dimension-frontier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    },
+    {
+      "name": "bounded-numerator-barrier",
+      "script": "scripts/verify_bounded_numerator_barrier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 204,
+      "additional_checks": {
+        "good_primes": 469,
+        "collisions": 54
+      },
+      "certificate": "verification/bounded-numerator-barrier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    },
+    {
+      "name": "cluster-pole-frontier",
+      "script": "scripts/verify_cluster_pole_frontier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 20,
+      "additional_checks": {
+        "good_primes": 17,
+        "degree_zero": 2
+      },
+      "certificate": "verification/cluster-pole-frontier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    },
+    {
+      "name": "consecutive-pole-frontier",
+      "script": "scripts/verify_consecutive_pole_frontier.py",
+      "root_run_exit_code": 0,
+      "status": "PASS",
+      "parameter_cases": 181,
+      "additional_checks": {
+        "whole_harmonic_primes": 464,
+        "degree_zero": 20
+      },
+      "certificate": "verification/consecutive-pole-frontier-2026-10-01/certificate.json",
+      "provenance": "Executed by root in this continuation; bounded exact verification, not an asymptotic extrapolation."
+    }
+  ],
+  "parameter_case_checks_with_possible_overlap": 549,
+  "embedded_certificate_source_hash_checks": 13,
+  "new_cluster_theorem": "For fixed h,m,numerator degree; W=o(b), log height=o(b): log primitive value/b - 9*actual degree -> 0. Degree zero gives 1.",
+  "new_consecutive_classification": "For S=1: degree=max(0,min(m,h,2h+4-m)); exact log-rate 9*degree.",
+  "remaining": {
+    "main_route": "J / exclude eventual fixed shortest primitive direction; equivalent to the goal under proved V and transport.",
+    "projection": "Actual Gram gcd/area unboundedness remains unproved.",
+    "Mellin": "Large-prime determinant numerator F and maximal-minor gcd J asymptotics remain unproved.",
+    "square_poles": "Growing complexity, exponential numerator height or broad h<m pole configurations remain outside the new exclusions."
+  },
+  "formal_validation": {
+    "lean_build_executed": false,
+    "dry_run_exit_code": 0,
+    "selected_existing_root_modules": 8,
+    "formal_build_scope_changed": false
+  },
+  "workspace_check": {
+    "exit_code": 1,
+    "task_new_ownership_errors": 0,
+    "existing_other_task_errors": [
+      "ERROR: Unassigned solution: Solutions/Sol_TaoFivePrimes_mertens_tail_upper_bound.lean; add it to a mission scope.json",
+      "ERROR: Unassigned solution: Solutions/Sol_TaoFivePrimes_rosser_schoenfeld_product_log_bound_large_mawia_v2.lean; add it to a mission scope.json"
+    ],
+    "global_pass": false
+  },
+  "external_submission": false,
+  "review_record": "research/frontier-review-2026-10-01.md",
+  "source_and_output_sha256": {
+    "verification/direction-frontier-2026-10-01/certificate.json": "4493950e5a17cb6aff0f6fca0ca49a2bdd062418ea52f44811bfeb32b9d0d49e",
+    "scripts/verify_direction_frontier.py": "afcea606cd1bf401c0cc1d6ac3e0fb3a1e2310b21a9b4da65aff722fef0addf3",
+    "research/direction-frontier-2026-10-01.md": "d29b896736fea13b1cf99c6fb928b26b0c27da75b6975f029aac0cd2314d5791",
+    "verification/mellin-unshifted-frontier-2026-10-01/certificate.json": "fe46a63a991047f62897e9535a8e796817da7ee9300a2822105431311df5a840",
+    "scripts/verify_mellin_unshifted_frontier.py": "d322ccf1ab3f4e5ad91b67c36a4574d01e531b6bd919f1e26585d2acc9538bee",
+    "research/mellin-unshifted-frontier-2026-10-01.md": "abb954e5eeb3cfbdff0e49936cdeca9dc9642d9f7470bd73ff94e13c334a82ae",
+    "verification/pole-dimension-frontier-2026-10-01/certificate.json": "2f936cdd2e80eee118e61e9fe0bca095810e4bb6fbf81743c74fb4ee6be9dd53",
+    "scripts/verify_pole_dimension_frontier.py": "6f2a1e6b2589345848b302c0829ef5f487a8d8da7783963c04ee1cf869654a82",
+    "research/pole-dimension-frontier-2026-10-01.md": "2715b5d5d1c135c776a05644f21b5852cf213280280063ed881b80d03ec1d32a",
+    "verification/bounded-numerator-barrier-2026-10-01/certificate.json": "ea4fa0d14e8d3146d277c460ec9234c19b487ce9282a2d48c935bda3b6e5f5ee",
+    "scripts/verify_bounded_numerator_barrier.py": "27d02ba60c3fb74202a783493e7f9cc1e25a3adb442b3d869cdbaacba4f316fa",
+    "research/bounded-numerator-barrier-2026-10-01.md": "98c33a79b8d7191097d74e4c7b859c61057efc4d5525c4bb6e121fefa390eeef",
+    "verification/cluster-pole-frontier-2026-10-01/certificate.json": "e5613074aad465d14cf78753835b153e2e72175a42720266a0b15e49d42f5449",
+    "scripts/verify_cluster_pole_frontier.py": "5126064aa7a41676f2ce6b683b844b19523ab993e967b83e9538a17ddd72f97c",
+    "research/cluster-pole-frontier-2026-10-01.md": "a9a8f0d607f91bb7251eb5935814bd72f72e3fdcc5bd9f0e1ed86f5d63eb6990",
+    "verification/consecutive-pole-frontier-2026-10-01/certificate.json": "4a0ef64d57f4026ebbfe52708de079063f3559328f8334f9b89eeba63b398780",
+    "scripts/verify_consecutive_pole_frontier.py": "15a886690cf7a0729923b79c3af933fa4a5fcdd5d6c36d18d190ac9c4b6c2eca",
+    "research/consecutive-pole-frontier-2026-10-01.md": "9db4723ae66365c2ae69e9b603c271881a03c078f865513b6954227f04faa9c5",
+    "scope.json": "8a54a3c5781f09434303f5969fe9cecc3a6d5f475300671fdef8fe744c684717",
+    "status.md": "2ed7e987abb9aa386b296a0ce6c668d8218c4518f202c04022d3c92f1ace3a3e",
+    "research/frontier-review-2026-10-01.md": "6ae158cceb956643aad5deb5fc702f8bc90449caed107a6c3e62ec849ad86ca0",
+    "research/progress-2026-10-01-frontier.md": "c62bc41dc98fb64452a5faf4cb20debf33481a871d691197ad48a47d63ae2afd",
+    "verification/frontier-continuation-2026-10-01/README.md": "e3f62c0b3d3a1c0869f22b1c14d9e42c16d5ec2bd3bb78c6515dacfe2a4a1809",
+    "verification/frontier-continuation-2026-10-01/workspace-check.log": "01a8be04d7e8271bbb089327220d24f487ddca4d688419fd1bcead7f081a02bb"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "theorem_id": "aa1f9e5b-ad85-494d-a859-5b0ff5a5e36b",
+  "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_truncated_log_entry_low_index_exp_bound",
+  "theorem_title": "Low-index coefficient estimate for truncated-log interpolation matrices",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_truncated_log_entry_low_index_exp_bound\n    {nu : Real} (d : FixedData nu) (hnu : 0 <= nu)\n    {H : Real} (hH : 0 < H)\n    (rowIdx : Row d H) (colIdx : Column d H) :\n    norm ((InterpolationMatrix.truncatedLogMatrix d.K d.w0 d.v0 d.base.theta\n      (MatrixArithmetic.logWeights (finiteDenominators d)) H\n      (MatrixArithmetic.rationalCenters (finiteNumerators d) (finiteDenominators d))\n      (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0)) rowIdx colIdx) <=\n      Real.exp (H * (d.analyticError + analyticRemainder d H +\n        -nu * ((d.base.A : Real) * (1 - d.base.eta) - actualMean d H) -\n        Real.log (actualRowCount d H : Real) / H)) := by sorry",
+  "natural_language_statement": "Fix an admissible parameter $\\nu\\ge0$, fixed data $d$, and height $H>0$. Let $M_{d,H}$ be the explicitly defined truncated-log interpolation matrix, with its rows and columns indexed by the corresponding weighted simplices. Then every entry satisfies\n\n$$\n\\|M_{d,H}[\\rho,c]\\|\\le \\exp\\!\\left(H\\left( d.\\mathrm{analyticError}+\\mathrm{analyticRemainder}(d,H)-\\nu\\big(A(1-\\eta)-\\mathrm{actualMean}(d,H)\\big)-\\frac{\\log(\\mathrm{actualRowCount}(d,H))}{H}\\right)\\right).\n$$\n\nThis coefficient-level estimate is the analytic input used to bound sums of entries in selected minors of the fixed determinant family.",
+  "created_at": "2026-10-07T21:39:00.492222+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "preamble": "import Definitions.Def_OAI_PiExponent_AnalyticRemainder\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+  "source": "Analytic coefficient sublemma for the fixed determinant family in the irrationality-exponent proof; see https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,23 @@
+{
+  "theorem_id": "60c1cf49-6b01-448c-b38a-88dc2fcb8ba0",
+  "theorem_name": "ZetaNine.exponentially_small_nonzero_forms_of_zeta_nine",
+  "theorem_title": "Exponentially small nonzero integer forms in 1 and zeta(9)",
+  "status": "Open",
+  "formal_statement": "namespace ZetaNine\n\ntheorem exponentially_small_nonzero_forms_of_zeta_nine :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ n : ℕ in Filter.atTop,\n        ∃ b a : ℤ,\n          (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re ≠ 0 ∧\n          |(b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (n : ℝ))) := by sorry\n\nend ZetaNine",
+  "natural_language_statement": "## Exponentially small nonzero integer forms in $1$ and $\\zeta(9)$\n\nThere is a real constant $c>0$ such that, for all sufficiently large natural numbers\n$n$, there are integers $b,a\\in\\mathbb{Z}$ with\n\n$$b+a\\,\\zeta(9)\\neq 0 \\qquad\\text{and}\\qquad \\bigl|b+a\\,\\zeta(9)\\bigr|<e^{-cn},$$\n\nwhere $\\zeta(9)$ denotes $\\operatorname{Re}\\zeta(9)=\\bigl(\\texttt{riemannZeta}\\,(9:\\mathbb{C})\\bigr).\\mathrm{re}$.\n\nEquivalently: the weighted lattice construction must produce a single integer linear\nform in $1$ and $\\zeta(9)$ that is **nonzero** and **exponentially small** along\ninfinitely many scales, with a fixed exponential rate.\n\n**Status: open.** This is the analytic obligation of the one-form route, and the\nchild that the goal's one-form reduction imports.\n\n**How the local notes are supposed to supply it.** The local DAG derives this\nobligation from two independent ingredients. The open target **J** (the exponential\nlattice margin $B_n+\\sigma_n\\le\\tau-\\varepsilon$ along infinitely many even $n$)\nsupplies, through the two-dimensional Gauss bound on the second minimum of the\ninverse-image lattice, a short integer output. The note-proved analytic decay\nestimate then bounds the value of the associated linear form by\n$e^{(-\\tau+o(1))n}$ times the weighted norm of that output, and the two exponential\nfactors combine into a fixed negative rate. The *nonvanishing* half is exactly the\npart that the mission's open one-sign targets supply: a nonzero quartic with one\nweak sign in its five Taylor coefficients at $u_0$ has a strictly nonzero complete\nkernel sum, and the note-proved theorem\n`ZetaNine.taylor_sign_implies_kernel_sum_pos` is the formalised core of that step.\nNeither ingredient is formalised as a concrete statement here, so the obligation is\npublished as an open problem.\n\n**Relation to the goal.** The statement is strictly stronger than irrationality of\n$\\zeta(9)$: with the proved criterion\n`ZetaNine.irrational_of_small_nonzero_integer_forms` it implies the goal. It is\n**not equivalent** to the goal, because a general irrational number need not admit\nexponentially good rational approximations with a fixed rate — such a statement\ndemands the specific construction. Note also that the nonvanishing hypothesis is not\nredundant: without it the zero form would satisfy the smallness condition for a\nrational value as well.",
+  "created_at": "2026-09-25T02:42:30.807762+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality",
+    "number-theory",
+    "zeta-values"
+  ],
+  "preamble": "import Mathlib",
+  "source": "Local zeta9 research note, roadmap/DAG.md section 'J to root' and 'Full lattice positive direction to root', 2026-09-25",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

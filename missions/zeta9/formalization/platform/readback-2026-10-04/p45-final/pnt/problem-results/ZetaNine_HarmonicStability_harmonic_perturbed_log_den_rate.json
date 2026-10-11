@@ -1,0 +1,22 @@
+{
+  "id": "cea185bb-6698-4921-9926-1c6c578f10b3",
+  "kind": "problem",
+  "theorem_name": "ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate",
+  "theorem_title": "Small-denominator perturbations preserve the unconditional harmonic denominator rate",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate (s : ℕ) (hs : 0 < s) (r : ℕ → ℚ)\n    (hr : Tendsto (fun N => logDen (r N) / (N : ℝ)) atTop (nhds 0)) :\n    Tendsto (fun N : ℕ => logDen (harmonicPower s N + r N) / (N : ℝ))\n      atTop (nhds (s : ℝ)):= by sorry",
+  "natural_language_statement": "For every fixed positive natural order $s$ and every rational sequence $r_N$ such that $\\log\\operatorname{den}(r_N)/N\\to0$, one has $\\log\\operatorname{den}(H_N^{(s)}+r_N)/N\\to s$. The perturbation is arbitrary subject to its stated sublinear logarithmic denominator condition. The harmonic baseline and prime-number-theorem inputs are proved; they are not extra hypotheses.",
+  "definitions": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Definitions.Def_ZetaNine_HarmonicPrimeValuation\nimport Mathlib.NumberTheory.Chebyshev\n\nset_option autoImplicit false\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, sections 2 and 3; research/mellin-shift-arithmetic-2026-10-01.md. Original verified Lean source: missions/zeta9/formalization/PNTTransfer.lean, lines 135–141, SHA256 6c56d052ae48b44e76d40e7a08fcfd6ca8d232b5bc7882430bfbf48b85bb2c8b.",
+  "tags": [
+    "number-theory",
+    "asymptotics",
+    "harmonic-numbers",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "490b871a-06b7-49c4-9053-05de764299d5",
+  "created_at": "2026-10-03T13:55:27.050302+00:00",
+  "updated_at": "2026-10-03T14:06:04.523959+00:00"
+}

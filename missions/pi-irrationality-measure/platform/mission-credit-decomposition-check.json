@@ -1,0 +1,52 @@
+{
+  "row_sum_decompositions": {
+    "status": 200,
+    "data": {
+      "decompositions": [
+        {
+          "submission_id": "d30c54b5-dd34-47b2-a8ef-b66778263150",
+          "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+          "created_at": "2026-10-07T20:06:45.953524+00:00",
+          "deprecated_at": null,
+          "deprecated_by": null,
+          "children": [
+            {
+              "theorem_id": "417e9b4d-dd45-46dc-a98c-480d75b268fb",
+              "theorem_name": "matrix_det_norm_le_prod_row_l2",
+              "theorem_title": "Hadamard bound by Euclidean row norms",
+              "status": "Open",
+              "ordinal": 0,
+              "deprecated_at": null,
+              "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "row_l2": {
+    "status": 200,
+    "data": {
+      "theorem_id": "417e9b4d-dd45-46dc-a98c-480d75b268fb",
+      "theorem_name": "matrix_det_norm_le_prod_row_l2",
+      "theorem_title": "Hadamard bound by Euclidean row norms",
+      "status": "Open",
+      "formal_statement": "theorem matrix_det_norm_le_prod_row_l2 {idx : Type*} [Fintype idx] [DecidableEq idx] (A : Matrix idx idx Complex) : norm A.det <= Finset.prod Finset.univ (fun i : idx => Real.sqrt (Finset.sum Finset.univ (fun j : idx => norm (A i j) ^ 2))) := by sorry",
+      "natural_language_statement": "For every finite square complex matrix, the absolute value of its determinant is at most the product of the Euclidean norms of its rows (Hadamard determinant inequality).",
+      "created_at": "2026-10-07T20:02:57.74432+00:00",
+      "vote_count": 0,
+      "tags": [
+        "linear-algebra",
+        "matrix-analysis"
+      ],
+      "preamble": "import Mathlib.Analysis.Complex.Basic\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.Analysis.Real.Sqrt",
+      "source": "Hadamard determinant inequality, rowwise Euclidean norm form",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

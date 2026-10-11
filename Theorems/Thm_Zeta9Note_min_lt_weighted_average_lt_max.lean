@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Fintype.Fin
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 -- Local mirror of the public platform theorem Zeta9Note.min_lt_weighted_average_lt_max.
 -- Placeholder body so that reduction submissions resolve the import locally;

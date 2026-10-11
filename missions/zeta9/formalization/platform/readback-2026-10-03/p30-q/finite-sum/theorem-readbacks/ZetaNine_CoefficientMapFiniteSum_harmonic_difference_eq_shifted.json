@@ -1,0 +1,24 @@
+{
+  "theorem_id": "dc845325-063a-4a97-a4e7-86453335e09a",
+  "theorem_name": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+  "theorem_title": "Exact finite shifted harmonic difference for every natural order",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted (s T j : ℕ) :\n    harmonicPower s (T + j) - harmonicPower s T =\n      ∑ k ∈ Icc 1 j, 1 / ((T : ℚ) + (k : ℚ)) ^ s:= by sorry",
+  "natural_language_statement": "For every natural order $s$, cutoff $T$ and shift $j$, the existing actual finite harmonic numbers obey\n\n$$H_{T+j}^{(s)}-H_T^{(s)}=\\sum_{k=1}^j\\frac1{(T+k)^s}.$$\n\nThere is no restriction $s\\ge1$: this includes $s=0$, as well as $T=0$ and $j=0$. Empty finite intervals give zero and all terms use the existing rational harmonicPower definition. No properness, coefficient, reflection or convergence hypothesis is required.",
+  "created_at": "2026-10-03T20:04:54.635342+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "partial-fractions",
+    "polynomials"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_CoefficientMapFiniteSum\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine ZetaNine.CoefficientMapFiniteSum ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions ZetaNine.HarmonicStability\n",
+  "source": "Zeta(9) actual finite harmonic summation: missions/zeta9/research/coefficient-map-finite-sum-2026-10-03.md. Frozen missions/zeta9/formalization/CoefficientMapFiniteSum.lean SHA256 b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97. Coefficients are the actual weighted formal local jets of the p=9,q=1,m=n rational function, using the genuine finite global partial-fraction identity. Original declaration lines 139–142.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

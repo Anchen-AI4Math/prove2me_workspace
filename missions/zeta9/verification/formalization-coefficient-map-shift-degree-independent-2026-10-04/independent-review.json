@@ -1,0 +1,533 @@
+{
+  "schema_version": 1,
+  "verdict": "PASS",
+  "scope_verdict": "PASS_ACTUAL_POLYNOMIAL_SHIFT_OPERATOR_COEFFICIENT_AND_DEGREE_OBSTRUCTION_ONLY",
+  "review_role": "Independent mathematics reviewer; source author is parent agent",
+  "checked_at": "2026-10-03T18:07:10.922577+00:00",
+  "source": "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+  "source_sha256": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953",
+  "author_frozen_controls": {
+    "source": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953",
+    "receipt": "93595416db563dd9cd8ffb5030455eed1edfe678b392ec64b1bd4930fdb7f853",
+    "manifest": "8918a99aed1d1ab8d75079feaac4996f70f0e96cf66cec2dff713a0454210044",
+    "SHA256SUMS": "88f22efde6ad2e4552c878e55ca09f5247f9ab4ffa567c7d5edc91036808f4c5"
+  },
+  "environment": {
+    "lean_toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474"
+  },
+  "checks": [
+    {
+      "name": "fixed_source_receipt_manifest_SHA_controls_match",
+      "pass": true,
+      "detail": {
+        "source": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953",
+        "receipt": "93595416db563dd9cd8ffb5030455eed1edfe678b392ec64b1bd4930fdb7f853",
+        "manifest": "8918a99aed1d1ab8d75079feaac4996f70f0e96cf66cec2dff713a0454210044",
+        "SHA256SUMS": "88f22efde6ad2e4552c878e55ca09f5247f9ab4ffa567c7d5edc91036808f4c5"
+      }
+    },
+    {
+      "name": "all_27_author_manifest_members_and_28_SHA_entries_unchanged",
+      "pass": true,
+      "detail": {
+        "manifest_members": 27,
+        "SHA_entries_including_manifest": 28
+      }
+    },
+    {
+      "name": "three_actual_fresh_Lean_invocations_exit_zero",
+      "pass": true,
+      "detail": {
+        "source_compile": 1,
+        "author_closed_type_replay": 1,
+        "independent_boundaries": 1,
+        "author_or_root_native_cache_used": false
+      }
+    },
+    {
+      "name": "all_22_author_closed_types_and_3_definition_values_exact",
+      "pass": true,
+      "detail": {
+        "source_defs": 3,
+        "source_proofs": 12,
+        "author_boundaries": 7,
+        "type_and_value_exact": true
+      }
+    },
+    {
+      "name": "all_22_author_and_17_independent_records_only_standard_axioms",
+      "pass": true,
+      "detail": {
+        "allowed_axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "hidden_sorryAx": false
+      }
+    },
+    {
+      "name": "all_3_defs_and_12_proofs_covered_no_holes_or_assumed_operator",
+      "pass": true,
+      "detail": {
+        "full_source_coverage": true
+      }
+    },
+    {
+      "name": "self_contained_imports_only_actual_Mathlib",
+      "pass": true,
+      "detail": {
+        "no_mission_import": true,
+        "no_R_relationship_or_zeta_assumption": true
+      }
+    },
+    {
+      "name": "three_actual_polynomial_operator_definition_values",
+      "pass": true,
+      "detail": {
+        "A": "(X-C(nQ+1))*(X+C nQ)^10",
+        "B": "X^10*(X+C(2*nQ+1))",
+        "operator": "A*H-B*H.comp(X+C1)",
+        "exact_values_replayed": true
+      }
+    },
+    {
+      "name": "actual_eval_translation_and_zero_polynomial_boundary",
+      "pass": true,
+      "detail": "Evaluation is A(t)H(t)-B(t)H(t+1). Zero H gives zero operator/natDegree0; no invalid nonzero degree identity is applied to zero H."
+    },
+    {
+      "name": "degree_zero_and_nonmonic_constants_include_a_zero_and_negative",
+      "pass": true,
+      "detail": "For all rational a including0, coeff10 of operator(Ca)=(7nQ-2)a. Negative and n0 constants checked; H is not assumed monic."
+    },
+    {
+      "name": "next_coefficient_formula_has_actual_nonzero_H_and_degree_bound",
+      "pass": true,
+      "detail": {
+        "actual_source_formula": "coeff(d+10)=(7nQ-2-dQ)*leadingCoeff(H)",
+        "nonzero_conclusion_requires": [
+          "1≤n",
+          "H≠0",
+          "d≤7*n-3"
+        ],
+        "proof": "A/B monic degree11; nextCoeffA=9nQ-1, nextCoeffB=2nQ+1; shift preserves leading coefficient and adds dQ*lcH to nextCoeff; resulting factor positive under bound."
+      }
+    },
+    {
+      "name": "independent_top_cancellation_exact_degree_and_actual_leading_coefficient",
+      "pass": true,
+      "detail": {
+        "all_H_upper_bound": "natDegree(operator H)≤natDegreeH+10",
+        "nonzero_in_source_domain": "exact degree=d+10 and actual leadingCoeff=(7nQ-2-dQ)*lcH",
+        "Mathlib_degree_sub_lt_used_with_verified_equal_degrees_leadingCoefficients": true
+      }
+    },
+    {
+      "name": "low_degree_8_forces_zero_with_source_domain_preserved",
+      "pass": true,
+      "detail": {
+        "required": [
+          "1≤n",
+          "natDegreeH≤7*n-3",
+          "natDegree(operator H)≤8"
+        ],
+        "reason": "nonzero H would have degree≥d+10≥10",
+        "original_even_n_at_least_two_is_only_specialization": true,
+        "no_rational_telescoper_input_assumed": true
+      }
+    },
+    {
+      "name": "resonance_n1_d5_excluded_and_operator_nonzero",
+      "pass": true,
+      "detail": {
+        "resonance": "n1,X5: coeff15=0 and d5>last_allowed4",
+        "actual_operator_eval_at1": -1152,
+        "inference_excluded": "vanishing one coefficient implies zero operator"
+      }
+    },
+    {
+      "name": "last_allowed_n1_and_n2_nonmonic_numeric_boundaries",
+      "pass": true,
+      "detail": {
+        "n1_X4_actual_degree": 14,
+        "n2_7X11_actual_coefficient21": 7
+      }
+    },
+    {
+      "name": "five_actual_source_prints_standard_three_axioms",
+      "pass": true,
+      "detail": {
+        "final_prints": 5,
+        "failed_author_trials_not_used": true
+      }
+    }
+  ],
+  "findings": [
+    {
+      "severity": "information",
+      "code": "POLYNOMIAL_ONLY",
+      "detail": "PASS is for the actual self-contained A/B polynomial operator. No relationship to rational R, telescoper, aggregate kernel/inverse, zeta values or irrationality is inferred from this file."
+    },
+    {
+      "severity": "information",
+      "code": "DEGREE_DOMAIN",
+      "detail": "Nonzero coefficient/degree obstruction retains n≥1, H≠0 and d≤7n−3; low-degree→H0 retains n≥1/d bound and operator degree≤8. No monic H assumption; zero/degree0 handled separately."
+    },
+    {
+      "severity": "information",
+      "code": "RESONANCE",
+      "detail": "At n1,d5=7n−2, target coefficient15 vanishes; this input is outside the allowed d≤4 bound and actual operator eval1 is−1152. Coefficient cancellation is not an operator-zero result."
+    },
+    {
+      "severity": "information",
+      "code": "FAILED_TRIALS",
+      "detail": "Author retains two failed source attempts, excluded from final evidence; type-audit-attempt1 is actual exit0 and is successful evidence. Reviewer top-cancellation first trial needed explicit typed Taylor degree/leading equalities; failed source/log/exit/receipt preserved, temporary elaborator sorryAx excluded. Reviewer finalizer was corrected to compare records_actual within the author structured report. Final17 own records and22 author records allstandard3."
+    }
+  ],
+  "counts": {
+    "fresh_calls": 3,
+    "source_defs": 3,
+    "source_proofs": 12,
+    "author_records": 22,
+    "own_boundaries": 17
+  },
+  "R_operator_relationship_proved_or_assumed": false,
+  "aggregate_kernel_or_inverse_proved_in_source": false,
+  "zeta_or_irrationality_conclusions": false,
+  "new_external_proof_assumptions": [],
+  "root_scope_API_credentials_writes": false,
+  "failed_trials_excluded_from_success_evidence": true,
+  "stable_files": [
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Coeff.lean",
+      "bytes": 14798,
+      "sha256": "62a2086fedccdc0ac3758b1c381cc7ded984b1aab60c4a781aed42c618a7cb12"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Defs.lean",
+      "bytes": 21154,
+      "sha256": "082d4305569124a3ca7aa180b928b82dd939f11c686a3175f09d90863da47b9d"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Lemmas.lean",
+      "bytes": 21313,
+      "sha256": "2ed1f415e70990577e82f74315902a8688c59dd1aa6a8b3eb47d3ad0c06711c7"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Degree/Operations.lean",
+      "bytes": 32194,
+      "sha256": "4f44484019afcf09cfa418976e996b4397d9e21e84854adecc60b0c8568dea50"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Eval/Degree.lean",
+      "bytes": 8933,
+      "sha256": "fbdc33c52dbe4f42548e7a5bc67042794538b922c0b5bee17cd09e4fde8461a0"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/HasseDeriv.lean",
+      "bytes": 9859,
+      "sha256": "e0bc2d2795222fd64f728a31a649d7df64d9457d34855279fc4131a4535cc49f"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Monic.lean",
+      "bytes": 22761,
+      "sha256": "69b79e5b9543324a75a3c93ee631188764e4d0a48b3b50dbe371b57b1ce20461"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Reverse.lean",
+      "bytes": 14258,
+      "sha256": "9558ffecc2a868db6511b85d7806993e3247af5cf4d547d6575504347131e0a7"
+    },
+    {
+      "task_relative": null,
+      "root_relative": ".lake/packages/mathlib/Mathlib/Algebra/Polynomial/Taylor.lean",
+      "bytes": 7884,
+      "sha256": "bea7daa5cf5e6c1d734a9adfbf95732c59fb180d414d7f7562ccd011a3cc6217"
+    },
+    {
+      "task_relative": null,
+      "root_relative": "lake-manifest.json",
+      "bytes": 3659,
+      "sha256": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6"
+    },
+    {
+      "task_relative": null,
+      "root_relative": "lean-toolchain",
+      "bytes": 26,
+      "sha256": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt1-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt1-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt1.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt1.log",
+      "bytes": 1052,
+      "sha256": "f743ffaa9aa81cbb1cbadaadd06f81ce27a147525a9f2cc5d0ca1c85fc0aab63"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt2-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt2-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt2.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt2.log",
+      "bytes": 889,
+      "sha256": "3261033cb26ca74d9ad449dafd0046a3d9f3201fc1203738b64770b18fdacd9e"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt3-exit.txt",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt3-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.compile-attempt3.log",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.compile-attempt3.log",
+      "bytes": 697,
+      "sha256": "1845b3cdabf5b27292588f3520204fdef5388cbbcd25b404750c2690dae192f2"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+      "bytes": 6627,
+      "sha256": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.olean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.olean",
+      "bytes": 379160,
+      "sha256": "1735b8ec5435bac3198bbc2b2e6730ed38d63fd7353899d52450ca927d599682"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.source-attempt1.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.source-attempt1.lean",
+      "bytes": 6515,
+      "sha256": "42ee84a49981b3b6ac8fc0c43f4c32df2aa99b734d459df3ff9824e6fcd97c9f"
+    },
+    {
+      "task_relative": "formalization/CoefficientMapShiftDegree.source-attempt2.lean",
+      "root_relative": "missions/zeta9/formalization/CoefficientMapShiftDegree.source-attempt2.lean",
+      "bytes": 6649,
+      "sha256": "4f1ae3da16b1d9c9f2faf69f73a9dd219c1aa7160caa35413b938d94e5ddd430"
+    },
+    {
+      "task_relative": "research/coefficient-map-shift-degree-2026-10-04.md",
+      "root_relative": "missions/zeta9/research/coefficient-map-shift-degree-2026-10-04.md",
+      "bytes": 1291,
+      "sha256": "373cef320ee308d24e4259660471524eee791b0efd96c0b09e65d78d99efa10b"
+    },
+    {
+      "task_relative": "scripts/freeze_coefficient_map_shift_degree_2026_10_04.py",
+      "root_relative": "missions/zeta9/scripts/freeze_coefficient_map_shift_degree_2026_10_04.py",
+      "bytes": 6934,
+      "sha256": "b3bd82eb6834606f4eab5a44b0fe82193f091d590d2ed0b3c7c8e8f6fe73eb77"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/SHA256SUMS.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/SHA256SUMS.txt",
+      "bytes": 3934,
+      "sha256": "88f22efde6ad2e4552c878e55ca09f5247f9ab4ffa567c7d5edc91036808f4c5"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/compile-receipt.json",
+      "bytes": 2814,
+      "sha256": "93595416db563dd9cd8ffb5030455eed1edfe678b392ec64b1bd4930fdb7f853"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/source-manifest.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/source-manifest.json",
+      "bytes": 7959,
+      "sha256": "8918a99aed1d1ab8d75079feaac4996f70f0e96cf66cec2dff713a0454210044"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit-attempt1-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit-attempt1-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit-attempt1.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit-attempt1.log",
+      "bytes": 6119,
+      "sha256": "d3c95a0a9497c41eb18da4d85775cd84f22d7dbea83b4d8a1396c15de509b913"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/type-audit.lean",
+      "bytes": 3947,
+      "sha256": "0e752fe57006ceb5488170cc5311c6ad731d484b47dfdec65a525d7b46d90de5"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-2026-10-04/type-report.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-2026-10-04/type-report.json",
+      "bytes": 8171,
+      "sha256": "2928b4b78328233dec2b30b2657277adda0e346df3935bcd775d6f05374d08d6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit.lean",
+      "bytes": 6424,
+      "sha256": "58fa6c2ab955803092bce3a318803bf3e7a87688e7707e5a4b19b742c7a329da"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-boundary-audit.log",
+      "bytes": 6224,
+      "sha256": "dcbf64da4897d6ef3df86b5f2fb0e59e4e95416fb7c635b7f16038256587d7f6"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/attempt-01-before-Taylor-context-fix-independent-compile-receipt.json",
+      "bytes": 4332,
+      "sha256": "c00f727317440cc8f960cf3559055846021523b3122a0ac71785668d93ddedcd"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.lean",
+      "bytes": 3947,
+      "sha256": "0e752fe57006ceb5488170cc5311c6ad731d484b47dfdec65a525d7b46d90de5"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.log",
+      "bytes": 6097,
+      "sha256": "66f5eb8e116b0bf15da9162df144674c4ae88b36f8b6459fc9d8703756534392"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/author-type-replay.ps1",
+      "bytes": 424,
+      "sha256": "c21d01b5beeafeb062b00a88ebb4bebce0b6d6aa014f873af7549812e9bf82e9"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/finalize.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/finalize.py",
+      "bytes": 10890,
+      "sha256": "74df2a3573c7c7c3cdaad5f37134563d8a5ab064410fb760dda0b4d1fe87c6ae"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.lean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.lean",
+      "bytes": 6587,
+      "sha256": "cc034f78777f40bd4c47ec91b0813e1559242e4287c454ffd7258f9bb6e973ea"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.log",
+      "bytes": 4520,
+      "sha256": "d767d29a06e28354f7b1c345289cc60cafaf75a0f75d1d6b49d6d8ec6b54288b"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-audit.ps1",
+      "bytes": 432,
+      "sha256": "84c638e55b887e7d99c445a036f65a1ab36b097b1d996c1ea9a4db5d6dbed00a"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-boundary-types.json",
+      "bytes": 5647,
+      "sha256": "e19795a47013b45f5b20d791386a96d172e09e37f651b7a8e606adc1a1f8e44e"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-compile-receipt.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-compile-receipt.json",
+      "bytes": 4332,
+      "sha256": "e054a7441bd86f95bb691e62177084ef0de04a52fa1c300a0b180b84202f5d83"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-original-types.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-original-types.json",
+      "bytes": 7554,
+      "sha256": "87dccb7bcd3f7fd49dc31f67164eb0dd0376e291bf1079a9772e8c006c5c765e"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-review.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-review.log",
+      "bytes": 999,
+      "sha256": "9d871b6d1bfb44fc6f4415864960e3840405b69e164c35607ada8d6080e6ce3a"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-review.md",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/independent-review.md",
+      "bytes": 954,
+      "sha256": "176642652805ed59c63cf732495d0844dc627f847181ef30f97edb287c7a9347"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree-exit.txt",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree-exit.txt",
+      "bytes": 3,
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree.log",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree.log",
+      "bytes": 684,
+      "sha256": "b87e575e4beaef04396db28d6178083032a139d30847a234f39a79754427aad2"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree.ps1",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native-ShiftDegree.ps1",
+      "bytes": 581,
+      "sha256": "d5414d1582a72c411f61204fc873e33b5421556682610ae05e0a6084e1bacc62"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapShiftDegree.olean",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/native/build/missions/zeta9/formalization/CoefficientMapShiftDegree.olean",
+      "bytes": 379160,
+      "sha256": "1735b8ec5435bac3198bbc2b2e6730ed38d63fd7353899d52450ca927d599682"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/replay.py",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/replay.py",
+      "bytes": 3793,
+      "sha256": "29aaf67bc8336bc6ff730e27b7fc88dc2b0f8554570f1ec1031784dd72629f12"
+    },
+    {
+      "task_relative": "verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/retained-finalizer-schema-check.json",
+      "root_relative": "missions/zeta9/verification/formalization-coefficient-map-shift-degree-independent-2026-10-04/retained-finalizer-schema-check.json",
+      "bytes": 475,
+      "sha256": "8aca0fe5617759b4a12e27573f81a288cd817707b5cc2cbb6bfb5036f13aeedb"
+    }
+  ],
+  "hash_exclusions": [
+    "report self",
+    "scope/status",
+    "API/docs/credentials"
+  ]
+}

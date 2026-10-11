@@ -1,0 +1,206 @@
+{
+  "review_date": "2026-10-02",
+  "reviewer": "independent formal statement reviewer; not an author of these five targets",
+  "review_scope": "Current six platform formal target statements and three definition bodies, current research source equations, and CenterDenominator statement fidelity. No credentials, API writes, network or independent compilation used.",
+  "overall_status": "PASS",
+  "formal_statement_changes_required": false,
+  "definition_payload_matches": [
+    {
+      "definition_name": "ZetaNine_GramContent",
+      "local_path": "Definitions/Def_ZetaNine_GramContent.lean",
+      "body_matches_current_shared_definition": true
+    },
+    {
+      "definition_name": "ZetaNine_EightfoldZeros",
+      "local_path": "Definitions/Def_ZetaNine_EightfoldZeros.lean",
+      "body_matches_current_shared_definition": true
+    },
+    {
+      "definition_name": "ZetaNine_HarmonicStability",
+      "local_path": "Definitions/Def_ZetaNine_HarmonicStability.lean",
+      "body_matches_current_shared_definition": true
+    }
+  ],
+  "targets": [
+    {
+      "theorem_name": "ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated",
+      "statement_status": "PASS",
+      "source": "research/direction-arithmetic-next-2026-10-02.md, section 1 equations (1),(5)",
+      "checks": [
+        "Arbitrary finite index type preserves full dimensional statement; empty dimension makes primitive premise impossible, rather than silently specializing to dimension five.",
+        "Primitivity is exactly an integral Bezout certificate equal to one.",
+        "Nonzero Delta is required, but Delta may be any common divisor of every minor; this strengthens the original positive exterior-content statement.",
+        "No independence, squarefreeness or modular nondegeneracy premise introduced; dependent rows give Gram quotient zero and valid divisibility.",
+        "The integer quotient is exact under hypotheses, via v=lambda*u+Delta*w and the Gram determinant identity.",
+        "The conclusion is the actual gcd(T,C) divisor, not a hypothesis assuming that gcd bound."
+      ],
+      "original_documentation_issue": "Any-common-divisor quotient is not generally a saturated Gram determinant. It is saturated only when abs(Delta) is the full exterior content. Qualify the definition and theorem titles and natural-language note; the stable Lean name need not change.",
+      "documentation_issue_status": "RESOLVED"
+    },
+    {
+      "theorem_name": "ZetaNine.CenterDenominator.primitive_center_denominator_divisor",
+      "statement_status": "PASS",
+      "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/direction-arithmetic-next-2026-10-02.md, section 2, equation (6).",
+      "checks": [
+        "Expression normSq(u).natAbs / gcd(normSq(u), b*Delta*D_Delta) divides den(Rat.divInt(b*C,a*T)) exactly matches F|Q when a,b>0 are reduced row-content ratio and Delta is exterior content.",
+        "The formal statement validly generalizes to any signed b, any nonzero a, nonreduced a,b, and any nonzero common minor divisor.",
+        "The redundant T!=0 premise is removed in primitive_center_denominator_divisor by the actual positive square-norm theorem.",
+        "The divisor has actual rational reduced denominator as its conclusion; no content factor, denominator estimate or positivity is hidden in a definition or assumed conclusion.",
+        "Final platform formal signature matches the current standalone theorem exactly, with the implicit finite index type made explicit.",
+        "Natural-language expression uses T rather than natAbs(T), justified by proved primitive T>0.",
+        "Final platform preamble opens only the existing GramContent namespace; the reference module no longer opens CenterDenominator before its declaration."
+      ],
+      "original_preamble_issue": "An open of ZetaNine.CenterDenominator appears before the namespace is defined. Remove that open from the final preamble; only the GramContent namespace is needed for unqualified definitions.",
+      "preamble_issue_status": "RESOLVED"
+    },
+    {
+      "theorem_name": "ZetaNine.EightfoldZeros.first_n_derivative_sum_zero",
+      "statement_status": "PASS",
+      "source": "research/new-linear-form-route-repair-2026-10-02.md, opening unnumbered R*_n display and following endpoint-zero paragraph",
+      "checks": [
+        "Exact factorial scale is (4*n)! squared divided by (n!) to the eighth power.",
+        "Numerator endpoints are j=1,...,n with eighth powers; denominator poles are -j, j=0,...,4*n, with square factors.",
+        "Genuine iterated real derivatives of the quotient are used, not formal polynomial derivatives alone.",
+        "The bound r<8 proves each endpoint zero and includes original seventh-order leakage elimination.",
+        "No smoothness assumption or desired zero conclusion is supplied as a premise; denominator positivity at endpoints is proved in the solution.",
+        "n=0 is a legitimate empty-sum extension. No sign, nonvanishing, decay or irrationality claim follows."
+      ],
+      "original_documentation_issue": "The current source attribute cites equation (3) for the rational-function construction, but equation (3) in the research source is the full primitive scale. Replace with opening unnumbered defining display and endpoint-zero paragraph.",
+      "documentation_issue_status": "RESOLVED"
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power",
+      "statement_status": "PASS",
+      "source": "research/harmonic-denominator-stability-2026-10-01.md, section 2 finite clearing bound",
+      "checks": [
+        "harmonicPower is the actual rational sum over Icc 1 N.",
+        "Rat.den is the reduced positive denominator, including zero denominator convention den(0)=1.",
+        "Nat.lcmUpto N is the actual finite lcm; the denominator divisibility is all-parameter.",
+        "s=0 and N=0 are valid stronger boundary extensions.",
+        "No PNT, denominator lower bound or asymptotic conclusion is assumed or claimed."
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.log_den_error_tendsto_zero",
+      "statement_status": "PASS",
+      "source": "research/harmonic-denominator-stability-2026-10-01.md, section 3 Lemma 2 equation (4)",
+      "checks": [
+        "Arbitrary rational families and filters generalize the source inequality without narrowing original sequences.",
+        "The only limiting input is the perturbation normalized log denominator tends to zero.",
+        "Unperturbed denominator baseline is not assumed in this error theorem.",
+        "Scale may be zero because Lean real division is total with x/0=0; squeeze remains valid."
+      ],
+      "original_documentation_issue": "Add an explicit Formalization Note that normalized expressions use Lean total real division x/0=0 at scale=0; with eventually positive scales this has the usual mathematical meaning.",
+      "documentation_issue_status": "RESOLVED"
+    },
+    {
+      "theorem_name": "ZetaNine.HarmonicStability.log_den_rate_stability",
+      "statement_status": "PASS",
+      "source": "research/harmonic-denominator-stability-2026-10-01.md, section 3 stability step of Corollary 3, based on equation (4)",
+      "checks": [
+        "The established baseline limit is an explicit appropriate rate-transfer premise, not the theorem conclusion in disguise.",
+        "The difference-error theorem plus baseline gives the new limit; arbitrary numerator cancellation remains covered.",
+        "This is only the stability part of Corollary 3. It does not establish harmonic Theorem 1, the PNT-dependent baseline, or the complete harmonic corollary unconditionally.",
+        "Scale=0 is permitted with total division and needs transparent natural-language treatment."
+      ],
+      "original_documentation_issue": "Add the same total-division Formalization Note; retain explicit baseline-unproved boundary.",
+      "documentation_issue_status": "RESOLVED"
+    }
+  ],
+  "center_denominator": {
+    "statement_status": "PASS",
+    "theorem": "ZetaNine.CenterDenominator.primitive_center_denominator_divisor",
+    "source": "research/direction-arithmetic-next-2026-10-02.md, section 2 equation (6)",
+    "checks": [
+      "Expression normSq(u).natAbs / gcd(normSq(u), b*Delta*D_Delta) divides den(Rat.divInt(b*C,a*T)) exactly matches F|Q when a,b>0 are reduced row-content ratio and Delta is exterior content.",
+      "The formal statement validly generalizes to any signed b, any nonzero a, nonreduced a,b, and any nonzero common minor divisor.",
+      "The redundant T!=0 premise is removed in primitive_center_denominator_divisor by the actual positive square-norm theorem.",
+      "The divisor has actual rational reduced denominator as its conclusion; no content factor, denominator estimate or positivity is hidden in a definition or assumed conclusion."
+    ],
+    "compile_record": {
+      "log": "formalization/CenterDenominator.compile.log",
+      "present": true,
+      "recorded_exit_code": 0,
+      "all_four_declaration_axiom_lines_present": true,
+      "recorded_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "missing_or_sorry_axiom_detected": false,
+      "independently_recompiled_by_this_reviewer": false,
+      "qualification": "Existing log covers all four current exported CenterDenominator declarations and ends exit_code=0. The log itself has no invocation timestamp or source digest; this review records current hashes but does not replace fresh build provenance."
+    }
+  },
+  "publication_gate": {
+    "six_core_statements_faithful": true,
+    "reviewed_target_count": 6,
+    "status": "PASS",
+    "documentation_corrections_before_upload": 0,
+    "formal_statement_changes_required": false,
+    "preamble_issue_count": 0,
+    "full_user_goal_completed": false,
+    "remaining_scope": "This independent mathematical statement and source-match gate covers six final payloads. Root must separately verify the final scoped build and platform acceptance. These six cores do not formalize all local research; PNT harmonic baseline, concrete moving-lattice/asymptotic results and other all-parameter results remain separate work. Root irrationality remains Open."
+  },
+  "sha256": {
+    "formalization/platform/definitions-request.json": "680eb90817c71927c61c65ac48e97125fb657aeaae6f5593c7066fb69769d75c",
+    "formalization/platform/problems-request.json": "30489833e7a40aceec42743826f0476d9cbb18015637fea4ca55fba16167bb57",
+    "research/direction-arithmetic-next-2026-10-02.md": "0a77c9a8ff7af190466ea8054777b1981e7173f1bd1f852f694086960b422dc2",
+    "research/harmonic-denominator-stability-2026-10-01.md": "7b6c9c265282d79fa2a332d3f804dbead56df3db3f857c510d50ba661ba576b7",
+    "research/new-linear-form-route-repair-2026-10-02.md": "d2e0f5ac6750226bf30bcd048673894fb1a107c2b571dd8bb805df72c3f632b5",
+    "formalization/GramContent.lean": "f00d5c3d46c7355bdf30bda8a2b61096759aa14480acbdf898f2dfc633b00961",
+    "formalization/EightfoldZeros.lean": "e719c70e852641e8af4672cda082485b4cb124150bcbedea0f27196cb2732d02",
+    "formalization/HarmonicStability.lean": "11b33ed8b40280a437e638bad9af405c8ad896de96076feab487dae0421ccf14",
+    "formalization/CenterDenominator.lean": "d36d45115d7e64c9d714aa620c68d9b27708c8f1422bc222eb3d89b1e333e208",
+    "formalization/CenterDenominator.compile.log": "e83274d251bebd5481e558663666419995a930f9fe52ad468319d1075c5bcf5e",
+    "formalization/ProjectionDenominator.lean": "81b49300558b08adf825bec22611520c9fd0491a18180cc3edeabee0a48fdcef",
+    "scripts/prepare_formalization_2026_10_02.py": "48ac95852fe26f97ace40e203a72fa59e428970d9ccc4d3390bc5e0372d8255d",
+    "Definitions/Def_ZetaNine_GramContent.lean": "0fbb85959f076718ca43a36c0dea12b9ed29903a51617924aa876fa23c2078b9",
+    "Definitions/Def_ZetaNine_EightfoldZeros.lean": "b597a738c747370daeb0abdd28251ef8148f3530f59bbf5c42b0d8c7457453fe",
+    "Definitions/Def_ZetaNine_HarmonicStability.lean": "5ff9d83ca177893db1eb149da985ff29b85dbe83614650a995e28066f9bd3e92",
+    "Solutions/Sol_ZetaNine_CenterDenominator_primitive_center_denominator_divisor.lean": "5fb888a9fc2096a7dfb00c319badef08f5ce798138d0d0fc4e3d30a365235026",
+    "Theorems/Thm_ZetaNine_CenterDenominator_primitive_center_denominator_divisor.lean": "371e0ca563de8191ed5d1957997c634a9d5ee2a527123f4b5f093373f5040d4e",
+    "Solutions/Sol_ZetaNine_GramContent_primitive_row_gram_gcd_dvd_scaled_saturated.lean": "25f176882722d7b200202974aa69df0ce33a570106a49644a6cc41d0d852add0",
+    "Theorems/Thm_ZetaNine_GramContent_primitive_row_gram_gcd_dvd_scaled_saturated.lean": "b86c96dc1ba300a353cad6239e0a584945d1dd6d69e6b0314c1b3a29275eed66",
+    "Solutions/Sol_ZetaNine_EightfoldZeros_first_n_derivative_sum_zero.lean": "717a3b58717ff5c7b6300f84ea6a0a2c7807c96abcb8e9480269f14c46f62f9a",
+    "Theorems/Thm_ZetaNine_EightfoldZeros_first_n_derivative_sum_zero.lean": "8e2678f38cd2bc7428ad19089bafda6a980efda30ef4a956bda1fdc631a95db0",
+    "Solutions/Sol_ZetaNine_HarmonicStability_harmonic_den_dvd_lcm_power.lean": "8b06ea276fa3f72bc875500d0ea79e6623f65df0c77c98c68f64ead0d83902ae",
+    "Theorems/Thm_ZetaNine_HarmonicStability_harmonic_den_dvd_lcm_power.lean": "f0bb98a6d3f1fd02a6f6546e7c3f2bb1dfc996c7c75238eec2248b7ac56d6d67",
+    "Solutions/Sol_ZetaNine_HarmonicStability_log_den_error_tendsto_zero.lean": "fd980fbfc52fd9ee8a6f5fbb11be25e7737db42a61b8c30a0500821f4d4b9fa0",
+    "Theorems/Thm_ZetaNine_HarmonicStability_log_den_error_tendsto_zero.lean": "c10a3cc97095fa5c5ec3619d9029c67892676aaf713d4faed570f863ac5e435c",
+    "Solutions/Sol_ZetaNine_HarmonicStability_log_den_rate_stability.lean": "a8fa1016a1b218eda748c3892ddbfab4587b9177256e75a70e513c1cdcdc2521",
+    "Theorems/Thm_ZetaNine_HarmonicStability_log_den_rate_stability.lean": "e369023715c7d60e6b10fac484d127679352125ff5e32df9d11c1c458d05d750"
+  },
+  "documentation_corrections_verified": [
+    {
+      "issue": "Gram arbitrary-common-divisor quotient terminology",
+      "status": "RESOLVED",
+      "evidence": "Definition and theorem titles now say divided determinant; existing text uses D_Delta and common minor divisor, without claiming arbitrary Delta is full exterior content."
+    },
+    {
+      "issue": "Eightfold rational-function source reference",
+      "status": "RESOLVED",
+      "evidence": "Both definition and theorem source attributes now point to opening unnumbered R*_n definition and endpoint-zero paragraph."
+    },
+    {
+      "issue": "Harmonic zero-scale quotient semantics",
+      "status": "RESOLVED",
+      "evidence": "Both error and rate targets have Formalization Note with x/0=0 and eventual-positive N application."
+    }
+  ],
+  "target_formal_statement_sha256": {
+    "ZetaNine.GramContent.primitive_row_gram_gcd_dvd_scaled_saturated": "3f2950616bb0167ce06deadc0442d2a867bff001c3d3088890beddbaa8d4fa44",
+    "ZetaNine.CenterDenominator.primitive_center_denominator_divisor": "5d64b205c6385544be166fba16463e46bbe49c6a277c2c8c83a95616908ce428",
+    "ZetaNine.EightfoldZeros.first_n_derivative_sum_zero": "fc04333cf8c62e70ca9c4d4ddc08dbe6d28eab63a1fa8a6bfc3a5604c11dffb4",
+    "ZetaNine.HarmonicStability.harmonic_den_dvd_lcm_power": "325f548f5006bf5d5f0c47df4579bec1ae7ebdf3854bbac333c3265e1efaa1ce",
+    "ZetaNine.HarmonicStability.log_den_error_tendsto_zero": "e4ac489bcc9578617423f038fbe7d4eb059df86fc1fcc7e03c47b5552a1c356e",
+    "ZetaNine.HarmonicStability.log_den_rate_stability": "d67df4a98572bd6b9bcb73d641fb237515c50bd650d23e2a074176f71c7a04ce"
+  },
+  "preamble_corrections_verified": [
+    {
+      "theorem": "ZetaNine.CenterDenominator.primitive_center_denominator_divisor",
+      "status": "RESOLVED",
+      "evidence": "Unnecessary pre-declaration open ZetaNine.CenterDenominator removed from JSON preamble and generated Theorems reference module."
+    }
+  ]
+}

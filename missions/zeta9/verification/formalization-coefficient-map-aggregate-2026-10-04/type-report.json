@@ -1,0 +1,322 @@
+[
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate",
+    "definitionValue": "fun n W i =>\n  match ↑i with\n  | 0 => ZetaNine.CoefficientMapFiniteSum.constantTerm n W\n  | 1 => ZetaNine.CoefficientMapFiniteSum.rho n 3 W\n  | 2 => ZetaNine.CoefficientMapFiniteSum.rho n 5 W\n  | 3 => ZetaNine.CoefficientMapFiniteSum.rho n 7 W\n  | x => ZetaNine.CoefficientMapFiniteSum.rho n 9 W",
+    "type": "ℕ → ℚ[X] → Fin 5 → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial",
+    "definitionValue": "fun a => ∑ i, Polynomial.C (a i) * Polynomial.X ^ ↑i",
+    "type": "(Fin 5 → ℚ) → ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.polynomialCoordinates",
+    "definitionValue": "fun W i => W.coeff ↑i",
+    "type": "ℚ[X] → Fin 5 → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_local_coefficient_add",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W + V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W +\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_local_coefficient_smul",
+    "definitionValue": null,
+    "type": "∀ (n j s : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (a • W) =\n    a * ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_rho_add",
+    "definitionValue": null,
+    "type": "∀ (n s : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.rho n s (W + V) =\n    ZetaNine.CoefficientMapFiniteSum.rho n s W + ZetaNine.CoefficientMapFiniteSum.rho n s V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_rho_smul",
+    "definitionValue": null,
+    "type": "∀ (n s : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.rho n s (a • W) = a * ZetaNine.CoefficientMapFiniteSum.rho n s W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_constant_add",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.constantTerm n (W + V) =\n    ZetaNine.CoefficientMapFiniteSum.constantTerm n W + ZetaNine.CoefficientMapFiniteSum.constantTerm n V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.actual_constant_smul",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.constantTerm n (a • W) = a * ZetaNine.CoefficientMapFiniteSum.constantTerm n W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_add",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n (W + V) =\n    ZetaNine.CoefficientMapAggregate.aggregate n W + ZetaNine.CoefficientMapAggregate.aggregate n V"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_smul",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n (a • W) = a • ZetaNine.CoefficientMapAggregate.aggregate n W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregateLinearMap",
+    "definitionValue": "fun n => { toFun := ZetaNine.CoefficientMapAggregate.aggregate n, map_add' := ⋯, map_smul' := ⋯ }",
+    "type": "ℕ → ℚ[X] →ₗ[ℚ] Fin 5 → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_add",
+    "definitionValue": null,
+    "type": "∀ (a b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.coordinatePolynomial (a + b) =\n    ZetaNine.CoefficientMapAggregate.coordinatePolynomial a + ZetaNine.CoefficientMapAggregate.coordinatePolynomial b"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_smul",
+    "definitionValue": null,
+    "type": "∀ (c : ℚ) (a : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.coordinatePolynomial (c • a) =\n    c • ZetaNine.CoefficientMapAggregate.coordinatePolynomial a"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinateLinearMap",
+    "definitionValue": "{ toFun := ZetaNine.CoefficientMapAggregate.coordinatePolynomial,\n  map_add' := ZetaNine.CoefficientMapAggregate.coordinatePolynomial_add,\n  map_smul' := ZetaNine.CoefficientMapAggregate.coordinatePolynomial_smul }",
+    "type": "(Fin 5 → ℚ) →ₗ[ℚ] ℚ[X]"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap",
+    "definitionValue": "fun n => ZetaNine.CoefficientMapAggregate.aggregateLinearMap n ∘ₗ ZetaNine.CoefficientMapAggregate.coordinateLinearMap",
+    "type": "ℕ → (Fin 5 → ℚ) →ₗ[ℚ] Fin 5 → ℚ"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_coeff",
+    "definitionValue": null,
+    "type": "∀ (a : Fin 5 → ℚ) (i : Fin 5), (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).coeff ↑i = a i"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_coeff_above",
+    "definitionValue": null,
+    "type": "∀ (a : Fin 5 → ℚ) (k : ℕ), 5 ≤ k → (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).coeff k = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_natDegree_le",
+    "definitionValue": null,
+    "type": "∀ (a : Fin 5 → ℚ), (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).natDegree ≤ 4"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinates_restore",
+    "definitionValue": null,
+    "type": "∀ (a : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.polynomialCoordinates (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a) = a"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.polynomial_restore",
+    "definitionValue": null,
+    "type": "∀ (W : ℚ[X]),\n  W.natDegree ≤ 4 →\n    ZetaNine.CoefficientMapAggregate.coordinatePolynomial (ZetaNine.CoefficientMapAggregate.polynomialCoordinates W) = W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_injective",
+    "definitionValue": null,
+    "type": "Function.Injective ZetaNine.CoefficientMapAggregate.coordinatePolynomial"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.quartic_aggregate_is_actual",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (a : Fin 5 → ℚ),\n  (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n) a =\n    ZetaNine.CoefficientMapAggregate.aggregate n (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_zero_iff",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W = 0 ↔\n    ZetaNine.CoefficientMapFiniteSum.constantTerm n W = 0 ∧\n      ZetaNine.CoefficientMapFiniteSum.rho n 3 W = 0 ∧\n        ZetaNine.CoefficientMapFiniteSum.rho n 5 W = 0 ∧\n          ZetaNine.CoefficientMapFiniteSum.rho n 7 W = 0 ∧ ZetaNine.CoefficientMapFiniteSum.rho n 9 W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_zero_all_rho",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapFiniteSum.rho n s W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_zero_exactL",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W = 0 → ZetaNine.CoefficientMapSummation.exactL n W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_five_actual_coordinates",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W 0 = ZetaNine.CoefficientMapFiniteSum.constantTerm n W ∧\n    ZetaNine.CoefficientMapAggregate.aggregate n W 1 = ZetaNine.CoefficientMapFiniteSum.rho n 3 W ∧\n      ZetaNine.CoefficientMapAggregate.aggregate n W 2 = ZetaNine.CoefficientMapFiniteSum.rho n 5 W ∧\n        ZetaNine.CoefficientMapAggregate.aggregate n W 3 = ZetaNine.CoefficientMapFiniteSum.rho n 7 W ∧\n          ZetaNine.CoefficientMapAggregate.aggregate n W 4 = ZetaNine.CoefficientMapFiniteSum.rho n 9 W"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_actual_monomial_basis",
+    "definitionValue": null,
+    "type": "∀ (i : Fin 5), ZetaNine.CoefficientMapAggregate.coordinatePolynomial (Pi.single i 1) = Polynomial.X ^ ↑i"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_basis_columns",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ) (i : Fin 5),\n  (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n) (Pi.single i 1) =\n    ZetaNine.CoefficientMapAggregate.aggregate n (Polynomial.X ^ ↑i)"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_n_zero_X_four_aggregate_kernel",
+    "definitionValue": null,
+    "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0 ∧\n  Polynomial.X ^ 4 ≠ 0 ∧\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n      ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4) ∧\n        ZetaNine.CoefficientMapReflection.rho 0 1 (Polynomial.X ^ 4) = 1"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_original_quartic_zero_all_orders",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (s : ℕ),\n              1 ≤ s →\n                s ≤ 9 → ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0"
+  },
+  {
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "declaration": "checked_original_quartic_zero_exact_sum",
+    "definitionValue": null,
+    "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            HasSum (fun t => ↑(ZetaNine.CoefficientMap.weightedR n W ↑(t + 1))) 0"
+  }
+]

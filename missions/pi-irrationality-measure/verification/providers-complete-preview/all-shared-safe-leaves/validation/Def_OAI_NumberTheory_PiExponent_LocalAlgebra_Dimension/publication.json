@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "4824d077027c2d258717cc5b95bdbfc114e68b8e6ffd194587aa11597de21b8e",
+  "publish_intent": {
+    "at_utc": "2026-10-08T13:26:52.754703+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+      "definition_title": "Auxiliary dimension scales and a floor bound",
+      "definition": "import Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnoncomputable section\r\n\r\nopen Filter\r\nopen scoped Topology\r\n\r\nnamespace PiExponent\r\n\r\ndef dimensionK (C : ℝ) (m : ℕ) : ℕ := ⌊C ^ m⌋₊\r\n\r\ndef dimensionW (B : ℝ) (m : ℕ) : ℝ := (B ^ m)⁻¹\r\n\r\ndef dimensionV (theta B C : ℝ) (m : ℕ) : ℝ :=\r\n  2 * (dimensionK C m : ℝ) * theta ^ m * dimensionW B m\r\n\r\ntheorem dimensionK_le (C : ℝ) (hC : 0 ≤ C) (m : ℕ) :\r\n    (dimensionK C m : ℝ) ≤ C ^ m :=\r\n  Nat.floor_le (pow_nonneg hC m)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For real C and a natural number m, dimensionK C m is the natural floor of C^m; dimensionW B m is B^m inverse; and dimensionV theta B C m is 2 times dimensionK C m, theta^m, and dimensionW B m. If C is nonnegative, the real cast of dimensionK C m is at most C^m.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/Dimension.lean#L17-L26",
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "4824d077027c2d258717cc5b95bdbfc114e68b8e6ffd194587aa11597de21b8e",
+    "bundle_source_sha256": "c2906e35f4a1cd3e8060bbe5d92f498bbe6da8ec0ab22fad5e6e3190a862ea6c",
+    "bundle_manifest_sha256": "7e915fa4876a41ad8aa9d91efd785b470198f71c521d77b48adb02b2b5e8d015",
+    "validation_sha256": "16ca45c04b4dcbd7b828d670d5667cd95d88a41304066f2876444c087694f0e2"
+  },
+  "updated_at_utc": "2026-10-08T13:29:49.184872+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "4f684355-6041-451a-82a1-be6f5ec7c855",
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/4f684355-6041-451a-82a1-be6f5ec7c855 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "c480817e2d6b893fa659c2347584b9b2c57905c6fedfbc36fa83ceeff6c79ef6"
+  },
+  "job_id": "4f684355-6041-451a-82a1-be6f5ec7c855",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "4f684355-6041-451a-82a1-be6f5ec7c855",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+      "theorem_title": "Auxiliary dimension scales and a floor bound",
+      "formal_statement": "",
+      "natural_language_statement": "For real C and a natural number m, dimensionK C m is the natural floor of C^m; dimensionW B m is B^m inverse; and dimensionV theta B C m is 2 times dimensionK C m, theta^m, and dimensionW B m. If C is nonnegative, the real cast of dimensionK C m is at most C^m.",
+      "definitions": "import Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnoncomputable section\r\n\r\nopen Filter\r\nopen scoped Topology\r\n\r\nnamespace PiExponent\r\n\r\ndef dimensionK (C : ℝ) (m : ℕ) : ℕ := ⌊C ^ m⌋₊\r\n\r\ndef dimensionW (B : ℝ) (m : ℕ) : ℝ := (B ^ m)⁻¹\r\n\r\ndef dimensionV (theta B C : ℝ) (m : ℕ) : ℝ :=\r\n  2 * (dimensionK C m : ℝ) * theta ^ m * dimensionW B m\r\n\r\ntheorem dimensionK_le (C : ℝ) (hC : 0 ≤ C) (m : ℕ) :\r\n    (dimensionK C m : ℝ) ≤ C ^ m :=\r\n  Nat.floor_le (pow_nonneg hC m)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/Dimension.lean#L17-L26",
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "8275f04b-be5f-4321-beb8-4670cc14cfc0",
+      "created_at": "2026-10-08T13:26:54.835078+00:00",
+      "updated_at": "2026-10-08T13:26:59.904981+00:00"
+    }
+  },
+  "definition_id": "8275f04b-be5f-4321-beb8-4670cc14cfc0",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "8275f04b-be5f-4321-beb8-4670cc14cfc0",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension",
+      "theorem_title": "Auxiliary dimension scales and a floor bound",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For real C and a natural number m, dimensionK C m is the natural floor of C^m; dimensionW B m is B^m inverse; and dimensionV theta B C m is 2 times dimensionK C m, theta^m, and dimensionW B m. If C is nonnegative, the real cast of dimensionK C m is at most C^m.",
+      "created_at": "2026-10-08T13:26:59.133608+00:00",
+      "vote_count": 0,
+      "tags": [
+        "commutative-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\r\n\r\n\r\n\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nnoncomputable section\r\n\r\nopen Filter\r\nopen scoped Topology\r\n\r\nnamespace PiExponent\r\n\r\ndef dimensionK (C : ℝ) (m : ℕ) : ℕ := ⌊C ^ m⌋₊\r\n\r\ndef dimensionW (B : ℝ) (m : ℕ) : ℝ := (B ^ m)⁻¹\r\n\r\ndef dimensionV (theta B C : ℝ) (m : ℕ) : ℝ :=\r\n  2 * (dimensionK C m : ℝ) * theta ^ m * dimensionW B m\r\n\r\ntheorem dimensionK_le (C : ℝ) (hC : 0 ≤ C) (m : ℕ) :\r\n    (dimensionK C m : ℝ) ≤ C ^ m :=\r\n  Nat.floor_le (pow_nonneg hC m)\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent\r\n\r\nend\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/Dimension.lean#L17-L26",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

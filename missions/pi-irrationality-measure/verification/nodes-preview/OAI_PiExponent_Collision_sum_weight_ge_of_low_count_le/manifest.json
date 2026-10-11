@@ -1,0 +1,191 @@
+{
+  "node": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics:6196",
+  "theorem_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+  "source_graph_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+  "source_user_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "source_components": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean",
+      "source_sha256": "978224941ce8a30dd6edb8136100ea51e0a913e3b872b56c32b644ef036513aa",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-CollisionCombinatorics-20261007-223113.log",
+      "facts_sha256": "f76dad7573c61ba51b73afef244d6ed2c43a772c7be59bcccb16b279fd37d334",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean",
+      "original_source_sha256": "85e2ba7f5119ff808b28ab3e17e5a65fc3559101f27a22f0efed6b154a8286aa"
+    }
+  ],
+  "component_order": [
+    "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics"
+  ],
+  "definition_certificates": [],
+  "child_nodes": {},
+  "source_to_platform_constant_names": {},
+  "imports": [
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+    "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+    "Mathlib.Analysis.Complex.CauchyIntegral",
+    "Mathlib.Analysis.Complex.TaylorSeries",
+    "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+    "Mathlib.Analysis.SpecialFunctions.Complex.LogBounds",
+    "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+    "Mathlib.RingTheory.PowerSeries.Log",
+    "Mathlib.RingTheory.PowerSeries.Order",
+    "Mathlib.RingTheory.PowerSeries.Trunc",
+    "Mathlib.Tactic",
+    "Mathlib.Topology.Instances.Matrix"
+  ],
+  "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.Collision\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem cutoff_mul_high_count_le_sum {\u03b9 : Type*}\r\n    (rows : Finset \u03b9) (weight : \u03b9 \u2192 \u211d) (cutoff : \u211d)\r\n    (hnonneg : \u2200 i \u2208 rows, 0 \u2264 weight i) :\r\n    cutoff * ((rows.filter fun i => \u00ac weight i \u2264 cutoff).card : \u211d) \u2264\r\n      \u2211 i \u2208 rows, weight i := by\r\n  classical\r\n  calc\r\n    _ = \u2211 i \u2208 rows.filter (fun i => \u00ac weight i \u2264 cutoff), cutoff := by\r\n      simp [mul_comm]\r\n    _ \u2264 \u2211 i \u2208 rows.filter (fun i => \u00ac weight i \u2264 cutoff), weight i := by\r\n      apply Finset.sum_le_sum\r\n      intro i hi\r\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\r\n    _ \u2264 \u2211 i \u2208 rows, weight i := by\r\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\r\n      intro i hi _\r\n      exact hnonneg i hi\r\n\r\n\r\n\r\nend PiExponent.Collision\r\n\r\nend OAI\r\n\nend\n\nopen scoped BigOperators\n",
+  "formal_statement": "theorem OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le {\u03b9 : Type*}\r\n    (rows : Finset \u03b9) (weight : \u03b9 \u2192 \u211d) {cutoff \u03b7 : \u211d}\r\n    (hcutoff : 0 \u2264 cutoff) (hnonneg : \u2200 i \u2208 rows, 0 \u2264 weight i)\r\n    (hlow : ((rows.filter fun i => weight i \u2264 cutoff).card : \u211d) \u2264\r\n      \u03b7 * rows.card) :\r\n    cutoff * (1 - \u03b7) * rows.card \u2264 \u2211 i \u2208 rows, weight i := by sorry\n",
+  "solution_fragment": "theorem solution {\u03b9 : Type*}\r\n    (rows : Finset \u03b9) (weight : \u03b9 \u2192 \u211d) {cutoff \u03b7 : \u211d}\r\n    (hcutoff : 0 \u2264 cutoff) (hnonneg : \u2200 i \u2208 rows, 0 \u2264 weight i)\r\n    (hlow : ((rows.filter fun i => weight i \u2264 cutoff).card : \u211d) \u2264\r\n      \u03b7 * rows.card) :\r\n    cutoff * (1 - \u03b7) * rows.card \u2264 \u2211 i \u2208 rows, weight i := open OAI OAI.PiExponent OAI.PiExponent.Collision in by\r\n  classical\r\n  have hcard : ((rows.filter fun i => weight i \u2264 cutoff).card : \u211d) +\r\n      ((rows.filter fun i => \u00ac weight i \u2264 cutoff).card : \u211d) = rows.card := by\r\n    exact_mod_cast (Finset.card_filter_add_card_filter_not (s := rows)\r\n      (fun i => weight i \u2264 cutoff))\r\n  have hhigh : (1 - \u03b7) * rows.card \u2264\r\n      ((rows.filter fun i => \u00ac weight i \u2264 cutoff).card : \u211d) := by nlinarith\r\n  calc\r\n    _ = cutoff * ((1 - \u03b7) * rows.card) := by ring\r\n    _ \u2264 cutoff * ((rows.filter fun i => \u00ac weight i \u2264 cutoff).card : \u211d) :=\r\n      mul_le_mul_of_nonneg_left hhigh hcutoff\r\n    _ \u2264 \u2211 i \u2208 rows, weight i := cutoff_mul_high_count_le_sum rows weight cutoff hnonneg",
+  "active_context": "open scoped BigOperators\n",
+  "source_namespace_open_in_proof_term": "open OAI OAI.PiExponent OAI.PiExponent.Collision in",
+  "top_level_literal_theorem_solution": true,
+  "scope_closing": "\n",
+  "restored_local_instances": [],
+  "elaboration_only_helpers": [],
+  "source_edits": [
+    {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics",
+      "edits": [
+        {
+          "start": 133,
+          "end": 799,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 803,
+          "end": 1116,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1120,
+          "end": 1274,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1278,
+          "end": 1662,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 1666,
+          "end": 2604,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 2608,
+          "end": 3029,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 3033,
+          "end": 3288,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 3292,
+          "end": 4617,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 4621,
+          "end": 5102,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 5106,
+          "end": 5424,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 6196,
+          "end": 7240,
+          "replacement": "",
+          "reason": "subtract unselected declaration command"
+        },
+        {
+          "start": 0,
+          "end": 50,
+          "replacement": "",
+          "reason": "rewrite parser import command"
+        }
+      ]
+    }
+  ],
+  "statement_edits": [
+    {
+      "start": 6204,
+      "end": 6233,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 54
+    },
+    {
+      "start": 6546,
+      "end": 7240,
+      "reason": "platform statement placeholder",
+      "replacement_bytes": 11
+    }
+  ],
+  "solution_edits": [
+    {
+      "start": 6204,
+      "end": 6233,
+      "reason": "fully qualified platform binding",
+      "replacement_bytes": 8
+    }
+  ],
+  "project_reference_rewrites": [],
+  "statement": "missions/pi-irrationality-measure/verification/nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/Thm_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean",
+  "statement_sha256": "4b396b6cde06d9866ac0d5db583b236c682eea4bf65119144b27a23d0cbb0e65",
+  "solution": "missions/pi-irrationality-measure/verification/nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/Sol_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.lean",
+  "solution_sha256": "20d63bf2beacd49ed44beb54496f969ccfe1a5733100dc8377d4c3c9532ca6cb",
+  "snapshot_sha256": {
+    "SnapshotOriginal.lean": "b04dcb342e2143fd619ed20274344fdc908157931a3802d7054320ba043ae998",
+    "SnapshotGenerated.lean": "36f1c60cd31f9ff55da4f531d6f889ff4c8f42b0c443c5d1a2466cc292a8d7a3"
+  },
+  "snapshot_core_sha256": "e9405915c383cc1053a037ea9eca5ceb5da93a34ad5d4bdc2e0d987f27019ab5",
+  "runtime_sha256": "2dc0949be9042af8452d49159eec9fd871a21f6ddc3e14698d4590ec43fc5c6d",
+  "input_hashes": {
+    "verification/extraction-state.json": "d9303cbf27f4718755c05c8471eb7bc89e9aef2a4db9263472b7c12ca1f8d720",
+    "verification/ast-unit-inventory.json": "b5061a3e42a7a66bdbd978344767ec5db6991d684ce785e3b281f900f065e506",
+    "verification/ast-scope-inventory.json": "d9df5bfb5074bff700b77a23eafb464130f31d6540eb1564c070274b13d93bbf",
+    "verification/ast-wrapper-inventory.json": "f4f66678c84741dc8ea08b15c02c36135eb395aa3ca827d1501e53e4ac7b00d4",
+    "verification/ast-import-inventory.json": "bbf09a327e2fef3f970f44a84e35e4d088a93e4cd2cdf660cef268bc5667f2e3",
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+    "verification/platform-unit-plan-preview.json": "0c7cfb50e1cdff2285e12fd06ddd761e8dddb88ed9fd1b0c3898884e72090430",
+    "verification/platform-artifact-plan-preview.json": "07d545d9919a358a56de18d6dd64444a90c1de1be642ec16d67354069d3a2294",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4"
+  },
+  "generator_sha256": "5a2309a4d487d30c7d1c056a4f22431bcad51dbfd193f6cb44495879570e08f7",
+  "provisional": true,
+  "validated": true,
+  "submission_ready": false,
+  "pending": [
+    "publication-flow exact node review and authorization",
+    "full-tree generation/validation remains provisional"
+  ],
+  "local_standalone_validated": true,
+  "validation": "missions/pi-irrationality-measure/verification/nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/validation.json",
+  "validation_sha256": "984b957da4a3139f8bd804b9084d27f878323b8ee4f550902922ea1493810088"
+}

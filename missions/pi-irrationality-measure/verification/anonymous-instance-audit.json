@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "module": "OAI.NumberTheory.PiExponent.Ampleness.ReesProductSchemeChart",
+  "source": "port/lean/OAI/NumberTheory/PiExponent/Ampleness/ReesProductSchemeChart.lean",
+  "source_sha256": "51582c92b9a857068b765c5bb54b0ac55b8a5f7f7615b1f86069df2cc94c1ac3",
+  "source_command": {
+    "range": {
+      "start_line": 46,
+      "end_line": 47,
+      "start_offset": 1847,
+      "end_offset": 1948
+    },
+    "text": "private local instance (q : I) : IsOpenImmersion ((chartCover I).f q) := ...",
+    "name_text": null,
+    "name_range": null,
+    "private_token_range": [1847, 1854],
+    "local_modifier_range": [1855, 1860],
+    "parser_instance_keyword_range": [1861, 1869],
+    "proposed_binding_insertion_offset": 1869,
+    "graph_names": [
+      "_private.OAI.NumberTheory.PiExponent.Ampleness.ReesProductSchemeChart.0.OAI.PiExponent.ReesProductPowerSections.instIsOpenImmersionFChartCover"
+    ],
+    "graph_kinds": ["theorem"],
+    "graph_private": true,
+    "graph_is_instance": false,
+    "ast_is_instance_command": true,
+    "ast_is_local_instance": true
+  },
+  "stage2": {
+    "fact_count": 195,
+    "facts_sha256": "a3e2fa1579f22de3b4108bcaba385e85fe9dfa89488277b5ff17fdc7db68540c",
+    "preflight_exit_code": 0,
+    "preflight_timed_out": false,
+    "preflight_timeout_seconds": 300,
+    "preflight_seconds": 44.80018389999168,
+    "source_unchanged": true
+  },
+  "consumers": [
+    {
+      "name": "OAI.PiExponent.ReesProductPowerSections.chartMorphism_opensRange",
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.ReesProductSchemeChart",
+      "uses_in_type_deps": true,
+      "uses_in_value_deps": true
+    },
+    {
+      "name": "OAI.PiExponent.ReesSheafCechBase.tupleOpen_eq",
+      "module": "OAI.NumberTheory.PiExponent.Cohomology.ReesSheafCechBase",
+      "uses_in_type_deps": false,
+      "uses_in_value_deps": true
+    }
+  ],
+  "planner_effect": {
+    "definition_command": true,
+    "instance_root": true,
+    "statement_needed": true,
+    "private_unit_is_deprivate": true,
+    "reason": "The private declaration occurs in the typeDeps of a public theorem, so an imported theorem type needs a stable externally accessible declaration name. The planner also promotes every instance command to an instance root and deprivates private units used by statement_needed or instance roots."
+  },
+  "conclusion": "Do not keep this command private and anonymous in the split platform tree. Preserve its local instance behavior, remove the private modifier, and expose a stable declaration name; rewrite references to that public name. The current Parser inventories identify the anonymous instance command and its source range but provide no nameRange. Add a Parser-authoritative optional-instance binding insertion position; for this command it is immediately after the instance keyword at source byte offset 1869, before the existing space and binder. Do not infer the insertion point by searching raw source text."
+}

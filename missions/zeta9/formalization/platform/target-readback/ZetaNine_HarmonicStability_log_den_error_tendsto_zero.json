@@ -1,0 +1,23 @@
+{
+  "theorem_id": "220d4d7b-4e0c-4780-a2d9-2b3cd0680cf2",
+  "theorem_name": "ZetaNine.HarmonicStability.log_den_error_tendsto_zero",
+  "theorem_title": "Subexponential rational perturbations preserve normalized denominator error",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.HarmonicStability.log_den_error_tendsto_zero {ι : Type*} (l : Filter ι)\n    (h r : ι → ℚ) (scale : ι → ℝ) (hscale : ∀ i, 0 ≤ scale i)\n    (hr : Tendsto (fun i => logDen (r i) / scale i) l (nhds 0)) :\n    Tendsto (fun i => (logDen (h i + r i) - logDen (h i)) / scale i)\n      l (nhds 0) := by sorry",
+  "natural_language_statement": "Let $h_i,r_i$ be arbitrary rational families along a filter and let $s_i\\ge0$ be a real scale. If $\\ell(r_i)/s_i\\to0$, then\n\n$$\\frac{\\ell(h_i+r_i)-\\ell(h_i)}{s_i}\\longrightarrow0.$$\n\nNo limiting rate or sign condition is assumed for $h_i$. Here $\\ell$ is the logarithm of the actual reduced denominator. This is the unconditional stability mechanism; it does not prove the separate harmonic prime-number-theorem baseline.\n\n**Formalization Note.** The statement also permits zero scale, using Lean's total real division convention $x/0=0$. On strictly positive scales it is the ordinary mathematical quotient. The harmonic application uses scale $N$, which is positive eventually.",
+  "created_at": "2026-10-02T14:34:48.642606+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "zeta-function"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_HarmonicStability\nimport Mathlib.Data.Rat.Lemmas\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Topology.MetricSpace.Pseudo.Lemmas\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nopen scoped BigOperators\nopen Filter\nopen ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,2475 @@
+{
+  "schema_version": 1,
+  "review_role": "independent offline Jet source integration review",
+  "reviewed_at_utc": "2026-10-03T15:37:10.540224+00:00",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "Jet_and_Base_frozen_sources_and_independent_parser_snapshots_exact",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "independent_cross_module_Stage1_graph_matches_actual_author_graph",
+      "pass": true,
+      "evidence": {
+        "cross_module_environment_records": 65,
+        "Jet_records": 37,
+        "Base_records": 28
+      }
+    },
+    {
+      "name": "independent_Jet_Stage2_all_actual_decl_ref_command_spans_match",
+      "pass": true,
+      "evidence": {
+        "decl": 28,
+        "ref": 141,
+        "command": 47
+      }
+    },
+    {
+      "name": "independent_Base_Stage2_actual_spans_match_frozen_cross_module_dependency",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "actual_Lean_parseHeader_reexecuted_and_exact",
+      "pass": true,
+      "evidence": [
+        {
+          "end": {
+            "col": 51,
+            "line": 4,
+            "offset": 193
+          },
+          "kind": "header",
+          "start": {
+            "col": 0,
+            "line": 1,
+            "offset": 0
+          },
+          "syntaxKind": "Lean.Parser.Module.header"
+        }
+      ]
+    },
+    {
+      "name": "deleted_header_is_exactly_native_Base_and_three_actual_Mathlib_imports",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "cross_module_graph_contains_no_axiom_or_new_opaque_premise",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "Jet_source_core_is_nine_defs_nineteen_proofs_generated_nine_not_source",
+      "pass": true,
+      "evidence": {
+        "generated_declarations": [
+          "ZetaNine.CoefficientMapJet.weightedClearedSeries.eq_1",
+          "ZetaNine.CoefficientMapJet.localCoefficient.eq_1",
+          "ZetaNine.CoefficientMapJet.integerLocalU.eq_1",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator.eq_1",
+          "ZetaNine.CoefficientMapJet.weightedLocalCoefficient.eq_1",
+          "ZetaNine.CoefficientMapJet.shiftedNumerator.eq_1",
+          "ZetaNine.CoefficientMapJet.localU.eq_1",
+          "ZetaNine.CoefficientMapJet.shiftedVariable.eq_1",
+          "ZetaNine.CoefficientMapJet.clearedSeries.eq_1"
+        ]
+      }
+    },
+    {
+      "name": "true_cross_module_proof_closure_is_exactly_original_denominator_nonzero",
+      "pass": true,
+      "evidence": {
+        "closure": [
+          "ZetaNine.CoefficientMap.clearedPoleProduct",
+          "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+          "ZetaNine.CoefficientMap.clearedR",
+          "ZetaNine.CoefficientMap.clearedWeightedR",
+          "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+          "ZetaNine.CoefficientMap.numerator",
+          "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+          "ZetaNine.CoefficientMapJet.actual_local_rational_expression",
+          "ZetaNine.CoefficientMapJet.actual_weighted_local_rational_expression",
+          "ZetaNine.CoefficientMapJet.clearedSeries",
+          "ZetaNine.CoefficientMapJet.clearedSeries_constant",
+          "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+          "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+          "ZetaNine.CoefficientMapJet.coefficient_convolution",
+          "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+          "ZetaNine.CoefficientMapJet.integerLocalU",
+          "ZetaNine.CoefficientMapJet.integerLocalU_map",
+          "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+          "ZetaNine.CoefficientMapJet.localCoefficient",
+          "ZetaNine.CoefficientMapJet.localCoefficient_nine",
+          "ZetaNine.CoefficientMapJet.localU",
+          "ZetaNine.CoefficientMapJet.localU_eq",
+          "ZetaNine.CoefficientMapJet.localU_eval",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+          "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+          "ZetaNine.CoefficientMapJet.shiftedNumerator",
+          "ZetaNine.CoefficientMapJet.shiftedNumerator_eval",
+          "ZetaNine.CoefficientMapJet.shiftedVariable",
+          "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+          "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+          "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+          "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+          "ZetaNine.CoefficientMapJet.weightedLocalCoefficient_nine"
+        ],
+        "Base_helpers": [
+          "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero"
+        ]
+      }
+    },
+    {
+      "name": "Base_inline_bridge_exactly_reconstructed_original_proof_parser_bytes",
+      "pass": true,
+      "evidence": {
+        "sha256": "5d6f56c7754ee9d5e2a648f35c8d3daee7f68b94c9f91b2425869bfae9aad718"
+      }
+    },
+    {
+      "name": "nine_actual_Jet_Def_spans_no_lemma_or_closed_formula_replacement",
+      "pass": true,
+      "evidence": {
+        "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2"
+      }
+    },
+    {
+      "name": "definition_request_body_matches_actual_reconstructed_Def",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "exactly_ten_parser_certified_print_diagnostics_removed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "exact_three_endpoints_and_pinned_public_offline_request",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "clearedSeries_unique_full_solution_exact_independent_splice_of_original_proofs_and_header",
+      "pass": true,
+      "evidence": {
+        "solution_sha256": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+        "rename_spans": [
+          [
+            5132,
+            5152
+          ]
+        ],
+        "Jet_proofs_retained": 19,
+        "Base_proof_inlined": 1,
+        "native_or_Theorems_or_Solutions_imports_added": false,
+        "Mathlib_Tactic_restores_actual_transitive_original_import": true
+      }
+    },
+    {
+      "name": "clearedSeries_unique_reference_request_original_signature_no_added_assumptions",
+      "pass": true,
+      "evidence": {
+        "actual_original_signature": " (n j : ℕ) (S : PowerSeries ℚ)\n    (hS : S * (shiftedClearedDenominator n j : PowerSeries ℚ) ^ 9 =\n      (shiftedNumerator n j : PowerSeries ℚ)) : S = clearedSeries n j "
+      }
+    },
+    {
+      "name": "coefficient_convolution_explicit_full_solution_exact_independent_splice_of_original_proofs_and_header",
+      "pass": true,
+      "evidence": {
+        "solution_sha256": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+        "rename_spans": [
+          [
+            8401,
+            8433
+          ]
+        ],
+        "Jet_proofs_retained": 19,
+        "Base_proof_inlined": 1,
+        "native_or_Theorems_or_Solutions_imports_added": false,
+        "Mathlib_Tactic_restores_actual_transitive_original_import": true
+      }
+    },
+    {
+      "name": "coefficient_convolution_explicit_reference_request_original_signature_no_added_assumptions",
+      "pass": true,
+      "evidence": {
+        "actual_original_signature": " (n j s : ℕ) (hj : j ≤ n)\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9) (W : ℚ[X]) :\n    weightedLocalCoefficient n j s W =\n      ∑ l ∈ Finset.Icc s 9, localCoefficient n j l *\n        (W.comp (C (-(j : ℚ) * (n - j : ℕ)) +\n          C ((n : ℚ) - 2 * j) * X + X ^ 2)).coeff (l - s) "
+      }
+    },
+    {
+      "name": "integer_coefficient_convolution_full_solution_exact_independent_splice_of_original_proofs_and_header",
+      "pass": true,
+      "evidence": {
+        "solution_sha256": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+        "rename_spans": [
+          [
+            8800,
+            8831
+          ]
+        ],
+        "Jet_proofs_retained": 19,
+        "Base_proof_inlined": 1,
+        "native_or_Theorems_or_Solutions_imports_added": false,
+        "Mathlib_Tactic_restores_actual_transitive_original_import": true
+      }
+    },
+    {
+      "name": "integer_coefficient_convolution_reference_request_original_signature_no_added_assumptions",
+      "pass": true,
+      "evidence": {
+        "actual_original_signature": " (n j s : ℕ) (hj : j ≤ n)\n    (hs1 : 1 ≤ s) (hs9 : s ≤ 9) (W : ℤ[X]) :\n    weightedLocalCoefficient n j s (W.map (Int.castRingHom ℚ)) =\n      ∑ l ∈ Finset.Icc s 9, localCoefficient n j l *\n        ((W.comp (integerLocalU n j)).coeff (l - s) : ℚ) "
+      }
+    },
+    {
+      "name": "all_111_author_frozen_members_hash_verified",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "frozen_author_control_hashes_exact",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "two_author_failed_attempts_retained_not_erased",
+      "pass": true,
+      "evidence": [
+        {
+          "label": "Initial isolated native import layout",
+          "exit_code": 1,
+          "evidence": "original-compile.log.before-cache-layout-fix",
+          "explanation": "Lean's first existing module hierarchy shadowed the later genuine Base object; an exact hash-bound Base object copy in the same task-local hierarchy fixed resolution."
+        },
+        {
+          "label": "Header oracle adapter field access",
+          "exit_code": 1,
+          "evidence": "header_info.jsonl.before-raw-fix",
+          "explanation": "Lean Parser.parseHeader returns TSyntax; source-range access must use header.raw. Final actual header parser run exits zero."
+        }
+      ]
+    },
+    {
+      "name": "independent_26_actual_main_runs_all_exit_zero_and_logs_bound",
+      "pass": true,
+      "evidence": {
+        "actual_runs": 26,
+        "fresh_native_sources": 2,
+        "fresh_Base_Definition": 1,
+        "fresh_Jet_modules": 7,
+        "actual_oracles": 4,
+        "actual_import_reports": 11,
+        "toolchain_probe": 1,
+        "native_or_staged_olean_cache_borrowed": false,
+        "pinned_Mathlib_dependency_artifacts_only": true,
+        "maximum_simultaneous_review_Lean_processes": 2
+      }
+    },
+    {
+      "name": "final_full_cross_module_parser_replay_exit_zero_earlier_narrow_filter_preserved",
+      "pass": true,
+      "evidence": {
+        "reason": "Independent initial namespace filter ZetaNine.CoefficientMapJet omitted eleven actual Base references. The original author filter ZetaNine is required to include the genuine cross-module closure; no author or mathematical source changed.",
+        "initial_filter": "ZetaNine.CoefficientMapJet",
+        "initial_Lean_exit_code": 0,
+        "initial_refs": 130,
+        "initial_facts": "sketch_info.jsonl.before-namespace-filter-fix",
+        "initial_fact_sha256": "d5c0e41e2b46438c2d1a7913cdebf0d3a52d8a94d47200c16cf32d57aec25f9e",
+        "validation_exit_code": 1,
+        "validation_log_sha256": "433ba5040f88e2e1aabcd12f673747cac354d434aecdf4dc7de84ae7dc558d17",
+        "corrected_command": [
+          "lake",
+          "env",
+          "lean",
+          "--run",
+          "extract_sketch_info.lean",
+          "missions/zeta9/formalization/CoefficientMapJet.lean",
+          "ZetaNine"
+        ],
+        "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+        "corrected_Lean_exit_code": 0,
+        "final_fact_counts": {
+          "decl": 28,
+          "ref": 141,
+          "command": 47
+        },
+        "final_facts_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+        "corrected_log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+      }
+    },
+    {
+      "name": "actual_Lean_4_33_1_and_local_pinned_Mathlib_verified",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "nine_Jet_plus_nine_Base_actual_Def_types_values_match_in_all_imports",
+      "pass": true,
+      "evidence": {
+        "original_actual_definitions": 18,
+        "comparison_contexts": 7,
+        "exact_full_name_type_value_comparisons": 126
+      }
+    },
+    {
+      "name": "three_original_solution_reference_statements_equal_without_extra_hypotheses",
+      "pass": true,
+      "evidence": [
+        {
+          "theorem": "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+          "actual_original_type": "∀ (n j : ℕ) (S : PowerSeries ℚ),\n  S * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n      ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j) →\n    S = ZetaNine.CoefficientMapJet.clearedSeries n j",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+          "actual_original_type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : Polynomial ℚ),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                (W.comp\n                      (Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X +\n                        Polynomial.X ^ 2)).coeff\n                  (l - s)",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        {
+          "theorem": "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+          "actual_original_type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : Polynomial ℤ),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (Polynomial.map (Int.castRingHom ℚ) W) =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                ↑((W.comp (ZetaNine.CoefficientMapJet.integerLocalU n j)).coeff (l - s))",
+          "original_solution_reference_type_equal": true,
+          "original_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "solution_axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "reference_axioms": [
+            "propext",
+            "sorryAx",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "three_complete_solution_proofs_exactly_standard_three_axioms",
+      "pass": true,
+      "evidence": {
+        "axioms": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    {
+      "name": "each_Solution_all_nineteen_Jet_proofs_Base_nonzero_and_wrapper_no_extra_axioms",
+      "pass": true,
+      "evidence": {
+        "actual_proof_records": 63,
+        "per_context": "19 original Jet proofs, the genuine Base clearedPoleProduct_ne_zero proof, one solution wrapper"
+      }
+    },
+    {
+      "name": "reference_stubs_intentionally_sorryAx_Solutions_no_theorem_or_mission_import",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_original_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_definition_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_0_solution_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_0_reference_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_1_solution_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_1_reference_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_2_solution_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "types_2_reference_author_PP_type_value_report_independently_recomputed",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "integer_W_does_not_force_integral_c_actual_product_recurrence_recomputed",
+      "pass": true,
+      "evidence": {
+        "n": 2,
+        "j": 0,
+        "s": 8,
+        "integer_W": "1",
+        "actual_N_constant_and_linear": [
+          "3072",
+          "-2816"
+        ],
+        "actual_D_constant_and_linear": [
+          "2",
+          "3"
+        ],
+        "actual_D9_constant_and_linear": [
+          "512",
+          "6912"
+        ],
+        "clearedSeries_coeff_zero": "6",
+        "localCoefficient_2_0_8": "-173/2",
+        "integer": false,
+        "identity": "512*c1+6912*6=-2816",
+        "source_of_series_identity": "genuine transplanted clearedSeries_denominator_identity, independently imported and standard-axiom checked",
+        "check_kind": "mathematical exact rational product/quotient recurrence; not an additional Lean theorem"
+      }
+    },
+    {
+      "name": "offline_definition_and_problem_payloads_only_documented_fields",
+      "pass": true,
+      "evidence": {
+        "local_schema": "formalization/platform/readback-2026-10-03/api-docs/references/contribute.md",
+        "definition_list_is_one_offline_request_record": true,
+        "API_accessed": false
+      }
+    },
+    {
+      "name": "public_prose_faithful_unique_all_j_convolution_bounds_formal_only_integer_multiplier_scope",
+      "pass": true,
+      "evidence": null
+    },
+    {
+      "name": "seven_installed_Jet_root_files_and_required_Base_Def_exact_frozen_bytes",
+      "pass": true,
+      "evidence": {
+        "installed_Jet_files": [
+          {
+            "path": "Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+            "exists": true,
+            "bytes": 1484,
+            "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+            "expected": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2"
+          },
+          {
+            "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean",
+            "exists": true,
+            "bytes": 8954,
+            "sha256": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+            "expected": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c"
+          },
+          {
+            "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean",
+            "exists": true,
+            "bytes": 405,
+            "sha256": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e",
+            "expected": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e"
+          },
+          {
+            "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean",
+            "exists": true,
+            "bytes": 9086,
+            "sha256": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+            "expected": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993"
+          },
+          {
+            "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean",
+            "exists": true,
+            "bytes": 527,
+            "sha256": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a",
+            "expected": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a"
+          },
+          {
+            "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean",
+            "exists": true,
+            "bytes": 9062,
+            "sha256": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+            "expected": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3"
+          },
+          {
+            "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean",
+            "exists": true,
+            "bytes": 503,
+            "sha256": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72",
+            "expected": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72"
+          }
+        ],
+        "required_Base_Def": {
+          "root_relative": "Definitions/Def_ZetaNine_CoefficientMap.lean",
+          "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+        }
+      }
+    },
+    {
+      "name": "parent_scoped_build_observed_exit_zero_and_source_install_receipt_present",
+      "pass": true,
+      "evidence": {
+        "root_build_is_parent_observed_separate_integration_check": true
+      }
+    },
+    {
+      "name": "111_author_freeze_hashes_unchanged_after_all_independent_runs",
+      "pass": true,
+      "evidence": null
+    }
+  ],
+  "sha256": {
+    "Definitions/Def_ZetaNine_CoefficientMap.lean": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff",
+    "Definitions/Def_ZetaNine_CoefficientMapJet.lean": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+    "Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+    "Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+    "Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+    "Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e",
+    "Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a",
+    "Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72",
+    "formalization/CoefficientMap.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "formalization/CoefficientMapJet.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "formalization/platform/coefficient-map-jet/README.md": "2726ee78edfeebf080dc090f761e2676bf9068d418cbce58971cfec3a2d14b37",
+    "formalization/platform/coefficient-map-jet/SHA256SUMS.txt": "e02c356dcefe9c702277a7e28231619f6d51eddd1cb35dca22097a8fbe47bc73",
+    "formalization/platform/coefficient-map-jet/audit_and_freeze.py": "ee81b5563d1bb9b83ead3a324f3b36c2e9fbf7cf51d40761e699a669e49fb9e9",
+    "formalization/platform/coefficient-map-jet/author-audit.json": "a2b03ceb4e2ac3d2c4bc062f32cd8dcbac73b68bc0799802e886365eed6f3345",
+    "formalization/platform/coefficient-map-jet/base-proof-bridge.lean.inc": "5d6f56c7754ee9d5e2a648f35c8d3daee7f68b94c9f91b2425869bfae9aad718",
+    "formalization/platform/coefficient-map-jet/build-0-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-0-reference.log": "02d2cfdad9f93213149d365041475a06fae98525977e2659147c75598f414959",
+    "formalization/platform/coefficient-map-jet/build-0-reference.ps1": "c3f5f1ee6385337af80b729d1bee679f39e5f29653b045a4f727ef4f692cbc90",
+    "formalization/platform/coefficient-map-jet/build-0-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-0-solution.log": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617",
+    "formalization/platform/coefficient-map-jet/build-0-solution.ps1": "2f54e809509d1b40d50166d15307c606c1f83cc9f6f31f644b40a2be423177ab",
+    "formalization/platform/coefficient-map-jet/build-1-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-1-reference.log": "36abaa3f553a8ec6bd6a502ddc9cf3a2b72b778841654d39b5ecec489192c795",
+    "formalization/platform/coefficient-map-jet/build-1-reference.ps1": "2d643c143c1b57edc9e4921bc33d5049a162d710fbaade3e91efba3dd7412bed",
+    "formalization/platform/coefficient-map-jet/build-1-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-1-solution.log": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617",
+    "formalization/platform/coefficient-map-jet/build-1-solution.ps1": "9fa531cc6c7df4f88954e34a6acc4ffcf9e79b82c816181451888e8af649284a",
+    "formalization/platform/coefficient-map-jet/build-2-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-2-reference.log": "a7489821ff8c81f82eb72c777caf8331d6aae726bf628fee47c98269de6c755a",
+    "formalization/platform/coefficient-map-jet/build-2-reference.ps1": "3f4b6d9acf65033f427d4c4302712b9d436816aa1a08f468cf3014cdeca1032a",
+    "formalization/platform/coefficient-map-jet/build-2-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-2-solution.log": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617",
+    "formalization/platform/coefficient-map-jet/build-2-solution.ps1": "feb313b167e12144d0c31e26678d684a208d2c34329f52833f1bc792cbba3a3d",
+    "formalization/platform/coefficient-map-jet/build-definition-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/build-definition.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/build-definition.ps1": "5477a3735635994eb2c61ec7ec1c4ac742720622a425a39220f99bf6200b8cd0",
+    "formalization/platform/coefficient-map-jet/build/original/missions/zeta9/formalization/CoefficientMap.olean": "05d497e0e0a226c9bd50463e9d6857c158957a76f3a2a70c3707147bc9a41790",
+    "formalization/platform/coefficient-map-jet/build/original/missions/zeta9/formalization/CoefficientMapJet.olean": "3bc7c03493c8d20ace957484b5fb529b94fe7311217b0d0e60e88ee6a85d2160",
+    "formalization/platform/coefficient-map-jet/build/staged/Definitions/Def_ZetaNine_CoefficientMap.olean": "9a6236dc25afeb3f5dbebe75504fd6284fbb7370e91b9182e26014bbcfc88515",
+    "formalization/platform/coefficient-map-jet/build/staged/Definitions/Def_ZetaNine_CoefficientMapJet.olean": "d0bcc02229ce887b43cf6d893ff183cbe1a4ffeee41ddd57e5ad34564b215719",
+    "formalization/platform/coefficient-map-jet/build/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.olean": "7991cf0765049eee39c4b0b726741ecf272feb6312f8db7c902cbf6b249b2a9a",
+    "formalization/platform/coefficient-map-jet/build/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.olean": "f81f771130f4bb72d420ba9c8b1da4777402636be8131e78f1a81b3c5cbe02d2",
+    "formalization/platform/coefficient-map-jet/build/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.olean": "51e246a4bd059aa46c5ee44320e4907f8f9636dc89d26f7f61641bcc8cbf3dab",
+    "formalization/platform/coefficient-map-jet/build/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.olean": "ae1f8039c0c6e792160bd500a98a6e1f38cbb650a6a5f1c6f858094c11d9965d",
+    "formalization/platform/coefficient-map-jet/build/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.olean": "5306a38034887c2b4cd10ae1e64f858962adb6edaa804909d08c194a5d87b96a",
+    "formalization/platform/coefficient-map-jet/build/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.olean": "53978943b0e3fb959444b524ff93d3ff34ece9166e11bfca4fd91da2ac757515",
+    "formalization/platform/coefficient-map-jet/compile_staged.py": "7d07a7f608ddb1e32150b4bf692650dcafec30426f78a6ea02219ea951e67aa0",
+    "formalization/platform/coefficient-map-jet/decl-plan.json": "b139753396544ef97516624d3da63629e3cc8f9490f775c1968fbe51929c46d0",
+    "formalization/platform/coefficient-map-jet/decl_graph.jsonl": "9935c2122db0d4ff4b437ba2d1410fd6ec63303299cd77780e190a392b0998eb",
+    "formalization/platform/coefficient-map-jet/definitions-request.json": "6c17d6dbd57d21cae307ee59d9a3df8dd178b80b9e5534b860e43ef23ddc8da4",
+    "formalization/platform/coefficient-map-jet/extract_decl_graph.lean": "728513cb09291e03646b720feb1757184ce92008c697201a32446eded3f8b1ef",
+    "formalization/platform/coefficient-map-jet/extract_header.lean": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677",
+    "formalization/platform/coefficient-map-jet/extract_sketch_info.lean": "471d45aca725d913c33fa16f8b0e7b93fd9892be5cf73460df3beedfa285c7d6",
+    "formalization/platform/coefficient-map-jet/header_info.jsonl": "54d3d293683200fe0f6acccc936dea10d2fd2e127ded3504f454c1358772b0af",
+    "formalization/platform/coefficient-map-jet/header_info.jsonl.before-raw-fix": "03f92b502d2d6a5bb429b397f7d9f8422ebef3187b9b484491b63790e52d8527",
+    "formalization/platform/coefficient-map-jet/independent-review/base-oracle-input.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "formalization/platform/coefficient-map-jet/independent-review/base-sketch_info.jsonl": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c",
+    "formalization/platform/coefficient-map-jet/independent-review/build-Base-Definition-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-Base-Definition.log": "d4654f2880906f1aa4eb7ba5280cc8c8366e2aa74320ca6bc8f2a6c9b5bf9c98",
+    "formalization/platform/coefficient-map-jet/independent-review/build-original-CoefficientMap-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-original-CoefficientMap.log": "917bd761b76a4f462f60256b29682274c6a9d13e0c063211c60f4e82349f744a",
+    "formalization/platform/coefficient-map-jet/independent-review/build-original-CoefficientMapJet-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-original-CoefficientMapJet.log": "fc97822e6dc4a3b1865ba94605ac3854201822d5a35396e60c3b431349bfb369",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-0-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-0.log": "683239898b5f3bf23231101c85ed933160d8197beecb1f56a119326e4bbb4311",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-1-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-1.log": "90151f65f8795c054a5f93f62c091833931d9f518001e806678234e0c536f6db",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-2-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-2.log": "e4327379122e95f11efd45e4aa35529c91669fabf1f88d7ba6a2a0c72de40963",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-3-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-3.log": "376a50a36c57663ddd4ec89d822c2b2a6567a74165512fb0c2f4345ed8687b44",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-4-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-4.log": "284aefc29cbee447d88de222d55bcbffd1ae04c1db4cd2854aa02b747b206bba",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-5-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-5.log": "e63fca1dfde2e7d773c8076f1ed54543010be045c81604535e368a4aa5c9fad6",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-6-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/build-staged-6.log": "0927eb390a5f382c02d6523e5ef115b811065d66bb2827d0b3abbd3158fdf465",
+    "formalization/platform/coefficient-map-jet/independent-review/check_reconstruction.py": "e0b9fbec8ab55fa69421052e90851a418971c3d2859b2c112929395baa557a31",
+    "formalization/platform/coefficient-map-jet/independent-review/compile-receipt.json": "a3574f6285dc485064671ab8f05c92476822460a3441b82657fade2788b0e44b",
+    "formalization/platform/coefficient-map-jet/independent-review/correct_parser_prefix.py": "7811b3cab265e659ac41ed51117080f9c5f29b6f29a1b6787ffe3fb9214bb570",
+    "formalization/platform/coefficient-map-jet/independent-review/decl_graph.jsonl": "9935c2122db0d4ff4b437ba2d1410fd6ec63303299cd77780e190a392b0998eb",
+    "formalization/platform/coefficient-map-jet/independent-review/finish_review.py": "c973a1515ebc115c68659d5fc944f15edb7cdc5d3d7101464427986bc55bcdad",
+    "formalization/platform/coefficient-map-jet/independent-review/header_info.jsonl": "54d3d293683200fe0f6acccc936dea10d2fd2e127ded3504f454c1358772b0af",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_0-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_0.log": "21c51053daf4b71109ef1afb955589640659560235f4ecc3e8725ca976e465b0",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_1-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_1.log": "8af06fada20066000b8bd303434febb6be833997f8e15a1143b39bf42d9c61fe",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_2-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/helpers_2.log": "6e4dad8e96315af3144efc7f02bdcfe0f0156fcdbb1f229f91fde99eac2af47d",
+    "formalization/platform/coefficient-map-jet/independent-review/mathlib-revision.log": "7cf32a824e26133738b30903ed97bc24def8e93db8039483d6bdf7fce7a0efee",
+    "formalization/platform/coefficient-map-jet/independent-review/oracle-input.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Definitions/Def_ZetaNine_CoefficientMap.lean": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Definitions/Def_ZetaNine_CoefficientMapJet.lean": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a",
+    "formalization/platform/coefficient-map-jet/independent-review/project/Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72",
+    "formalization/platform/coefficient-map-jet/independent-review/project/extract_base_sketch.lean": "767e8403f7cd825d98c8686c6fe9d0e7bcc90fd7719537d1ff96fdc52590af6f",
+    "formalization/platform/coefficient-map-jet/independent-review/project/extract_decl_graph.lean": "3787357d1476025c5f8a663bbd93571068e81e42cee346dc3cf16d59343a685f",
+    "formalization/platform/coefficient-map-jet/independent-review/project/extract_header.lean": "fd4f094bf3c89ecf3af24b5caa811fb703ed08a208750ac870284987b6c22677",
+    "formalization/platform/coefficient-map-jet/independent-review/project/extract_sketch_info.lean": "10b0c2331c36f22836ae653352765677908756c02848941d360a1b20059d02b6",
+    "formalization/platform/coefficient-map-jet/independent-review/project/helpers_0.lean": "d5f96ad379d770274f26c4e36a570fd68605b98e89173a10b4325f7c82c39172",
+    "formalization/platform/coefficient-map-jet/independent-review/project/helpers_1.lean": "5d60cfe5b876ebc2ef587547d8f030e53b9c35475dc32710a342ae77ada93146",
+    "formalization/platform/coefficient-map-jet/independent-review/project/helpers_2.lean": "3f64fab2fad87ac99797b4f1ee1a82360b7624390b0a905dbd2c35aba96bbd2b",
+    "formalization/platform/coefficient-map-jet/independent-review/project/lake-manifest.json": "226e712aae9fc866ae10f2d0b56356f8b77eb01f1d041d9046b40ea6a85336a6",
+    "formalization/platform/coefficient-map-jet/independent-review/project/lakefile.lean": "121a5b47521f8c40a34ef57a9d07c4c91effa94f4c8ec48bc15a6f189a162c53",
+    "formalization/platform/coefficient-map-jet/independent-review/project/lean-toolchain": "a0ada3782cd088719516bbfdf37b9e7032230e211bf424b85d952ee650c51091",
+    "formalization/platform/coefficient-map-jet/independent-review/project/missions/zeta9/formalization/CoefficientMap.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "formalization/platform/coefficient-map-jet/independent-review/project/missions/zeta9/formalization/CoefficientMapJet.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_0_reference.lean": "6635e2d98a9079ce84710fdfc7e3a85af9eb13e3b2f1fcbd18e2690b6257825f",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_0_solution.lean": "0a407df4709b473aa87adc2248a0ce771201b3c8423978be71efd357e619be41",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_1_reference.lean": "2c2830aeeee793cf7fc3dac7f1018a7fdf3a3199f5e92dbdd0b155e9f46bd482",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_1_solution.lean": "8964a7c9860be6c110fb33487b788a4fbf4fc5aa324ee09b345d8abdec7fa6e1",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_2_reference.lean": "469f9bb0bfa15351bd8bac6ccab62e796ea3eff00ce6356981a551e7d006b633",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_2_solution.lean": "8907d72df2f4e3240dd563678c19add4dd5d8e95727c3155d35b3bf8f56d53f3",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_definition.lean": "cf34fd90686d09bedd789d6548d4b5970519e3a1d187ded0befdca051547f424",
+    "formalization/platform/coefficient-map-jet/independent-review/project/types_original.lean": "80084a6a96b5c5f0c6d3e8933741bb88afb835460c7dc014ce54638b7c98707b",
+    "formalization/platform/coefficient-map-jet/independent-review/rational-lower-coefficient-check.json": "18900118f42771ac6813bf2e10bcfff621dc0299cfb46c7862f27924054b10fe",
+    "formalization/platform/coefficient-map-jet/independent-review/reconstruction-narrow-filter-exit.txt": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "formalization/platform/coefficient-map-jet/independent-review/reconstruction-narrow-filter.log": "433ba5040f88e2e1aabcd12f673747cac354d434aecdf4dc7de84ae7dc558d17",
+    "formalization/platform/coefficient-map-jet/independent-review/reconstruction-report.json": "bff480d75e248669295f0b772a976b79d54c4fa12948aae0168f07cf5f2e4481",
+    "formalization/platform/coefficient-map-jet/independent-review/run_review.py": "a5d5b3528792b1d0fa0491f3fa080ae1dc79da412186ebec51d4dec8ed7ed1fd",
+    "formalization/platform/coefficient-map-jet/independent-review/sketch_info.jsonl": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+    "formalization/platform/coefficient-map-jet/independent-review/sketch_info.jsonl.before-namespace-filter-fix": "d5c0e41e2b46438c2d1a7913cdebf0d3a52d8a94d47200c16cf32d57aec25f9e",
+    "formalization/platform/coefficient-map-jet/independent-review/stage1-extract-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/stage1-extract.log": "4271391e51ccaf923f380bb921cca87a3574c956cf5c52789b6bdc31937c23c7",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-base-extract-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-base-extract-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-base-extract.log": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract-corrected-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract-corrected-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract-corrected.log": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-extract.log": "d5c0e41e2b46438c2d1a7913cdebf0d3a52d8a94d47200c16cf32d57aec25f9e",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-header-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-header-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-header.log": "54d3d293683200fe0f6acccc936dea10d2fd2e127ded3504f454c1358772b0af",
+    "formalization/platform/coefficient-map-jet/independent-review/stage2-prefix-correction-receipt.json": "719bcb473c54ccf419843e1a8695fd63ad03a790de7056a8edf2c04b0ddbe7e7",
+    "formalization/platform/coefficient-map-jet/independent-review/toolchain-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/toolchain.log": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82",
+    "formalization/platform/coefficient-map-jet/independent-review/types_0_reference-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_0_reference.log": "82c5a6247500b581d6244f50c211e5f789be3038a157cfcd9d29f6e46b219158",
+    "formalization/platform/coefficient-map-jet/independent-review/types_0_solution-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_0_solution.log": "d2ea1736c16604419bb294deb763f0f4a00a610e75c29f8e1a406c3e0230b321",
+    "formalization/platform/coefficient-map-jet/independent-review/types_1_reference-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_1_reference.log": "c6f1a5fda4da788e62a4631f0f313a14f556d13c03bc963b04df12ce13b8eb0c",
+    "formalization/platform/coefficient-map-jet/independent-review/types_1_solution-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_1_solution.log": "ad7bf34cb573d2626dcb2cdae889232ed25b71a36c69013df6d07252cb35a6aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_2_reference-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_2_reference.log": "925992fe26062f838d26cc7bb4e366b057a148bf5b0859ddea959a0becd6feb8",
+    "formalization/platform/coefficient-map-jet/independent-review/types_2_solution-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_2_solution.log": "e749abc475c0bd5e64525af5d28acc608354120c5b3556465d96263e21392a91",
+    "formalization/platform/coefficient-map-jet/independent-review/types_definition-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_definition.log": "5e7fe1fc4bf243814853a9eecbd9c547d82dee2e6a568a31fa70f8aef3c4c4fb",
+    "formalization/platform/coefficient-map-jet/independent-review/types_original-exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "formalization/platform/coefficient-map-jet/independent-review/types_original.log": "a97c923ae7c292f02830eb52ddfc5b831373b9241b7f0454861f92e6e97f48ce",
+    "formalization/platform/coefficient-map-jet/integration-provenance.json": "4395ce6b5f2b21d664f9f18dace1970b8814077d56a25ea0c95e3a59dfdac8f5",
+    "formalization/platform/coefficient-map-jet/oracle-execution-receipt.json": "4c4a17144c2f146c245424175bfde3881ef0b11b9bf668986d454d72f4e958ca",
+    "formalization/platform/coefficient-map-jet/oracle-input.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "formalization/platform/coefficient-map-jet/original-compile-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/original-compile-exit.txt.before-cache-layout-fix": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "formalization/platform/coefficient-map-jet/original-compile.log": "b9ea2bad281c3f8c011e062f877fca9ccc10b6600425c4b7c483c2f7250f00d8",
+    "formalization/platform/coefficient-map-jet/original-compile.log.before-cache-layout-fix": "7d88a2a4b8a5d8e5ed74adaf205be00f2bcd488b33b1d37c8a6456b0fd3a381a",
+    "formalization/platform/coefficient-map-jet/original-compile.ps1": "e9ca61fc75d6920920e63571e1096692a106e7b4375b4ef617b18817f943d034",
+    "formalization/platform/coefficient-map-jet/original-compile.ps1.before-cache-layout-fix": "e9ca61fc75d6920920e63571e1096692a106e7b4375b4ef617b18817f943d034",
+    "formalization/platform/coefficient-map-jet/prepare_jet.py": "ebcdcb6ef6565e30eb9485c894d690542a8922003fad7224961d396c6701f464",
+    "formalization/platform/coefficient-map-jet/problems-request.json": "bda3b15ad51df17b3408f977c5c4ec5f14235b461ea3124a98e7e85596bde1c4",
+    "formalization/platform/coefficient-map-jet/root-copy-plan.json": "69972187996b6f673479bdfb3fa4cbefa831cd6b50bbdce1d54665b07d9d812a",
+    "formalization/platform/coefficient-map-jet/root-install-receipt.json": "119f4aab288da9c58b5a8aa377df506538707b76461a908d3c63a0b89579d1e9",
+    "formalization/platform/coefficient-map-jet/run_header.py": "bb871963f5ebabe58c919058f5608e32056b923deaabaa4babde330566386065",
+    "formalization/platform/coefficient-map-jet/run_oracles.py": "e3d46e8bc30870d79010f05fcb8d5e9d4fe87fc1be9b8786f4678c4d4a5411dc",
+    "formalization/platform/coefficient-map-jet/sketch_info.jsonl": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+    "formalization/platform/coefficient-map-jet/stage1-extract-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/stage1-extract.log": "4271391e51ccaf923f380bb921cca87a3574c956cf5c52789b6bdc31937c23c7",
+    "formalization/platform/coefficient-map-jet/stage1-extract.ps1": "7a8c108d5ea5cfdee18a3c5c6b7db5de0c3a0604472cef628f4600f77d4215ce",
+    "formalization/platform/coefficient-map-jet/stage2-extract-errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/stage2-extract-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/stage2-extract.ps1": "c4039a27500ba8fa85034bd8a7e9fab235fb7d5cd72f487109bf4faf0d0050d6",
+    "formalization/platform/coefficient-map-jet/stage2-header-errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/stage2-header-errors.log.before-raw-fix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "formalization/platform/coefficient-map-jet/stage2-header-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/stage2-header-exit.txt.before-raw-fix": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "formalization/platform/coefficient-map-jet/stage2-header.ps1": "75f4a47790a04609bdb4392ebb34923c743082929da96d740f873a703b3978ed",
+    "formalization/platform/coefficient-map-jet/staged-compile-receipt.json": "09967b563b2816da3c4cba5924440fa188d3ac303354689a3e9375915b3919a3",
+    "formalization/platform/coefficient-map-jet/staged/Definitions/Def_ZetaNine_CoefficientMapJet.lean": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+    "formalization/platform/coefficient-map-jet/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+    "formalization/platform/coefficient-map-jet/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+    "formalization/platform/coefficient-map-jet/staged/Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+    "formalization/platform/coefficient-map-jet/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e",
+    "formalization/platform/coefficient-map-jet/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a",
+    "formalization/platform/coefficient-map-jet/staged/Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72",
+    "formalization/platform/coefficient-map-jet/target-plan.json": "bb9f3bb31a928da39f216f457efbf7437da22a550b5a3feb142df25764d74d22",
+    "formalization/platform/coefficient-map-jet/task-build-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/task-build.log": "ab0df884025dba400471d84531d018a9fa7090b9704ae059fe5416e982c6032d",
+    "formalization/platform/coefficient-map-jet/types-0-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-0-reference.log": "82c5a6247500b581d6244f50c211e5f789be3038a157cfcd9d29f6e46b219158",
+    "formalization/platform/coefficient-map-jet/types-0-reference.ps1": "0f540cd42dfa2559bb8c22c4c59a79e7396b8e5353d6b2e3aa56181733bed00b",
+    "formalization/platform/coefficient-map-jet/types-0-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-0-solution.log": "d2ea1736c16604419bb294deb763f0f4a00a610e75c29f8e1a406c3e0230b321",
+    "formalization/platform/coefficient-map-jet/types-0-solution.ps1": "4ed4373f5e565a329d91ea60e034497dfda56d3fe39aa53d3cb584dcaa5b0c09",
+    "formalization/platform/coefficient-map-jet/types-1-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-1-reference.log": "c6f1a5fda4da788e62a4631f0f313a14f556d13c03bc963b04df12ce13b8eb0c",
+    "formalization/platform/coefficient-map-jet/types-1-reference.ps1": "f23d082d720669eeb55f6743a53b21653a1f3523d105a3196d424c8592041912",
+    "formalization/platform/coefficient-map-jet/types-1-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-1-solution.log": "ad7bf34cb573d2626dcb2cdae889232ed25b71a36c69013df6d07252cb35a6aa",
+    "formalization/platform/coefficient-map-jet/types-1-solution.ps1": "88061487b1a4a2f9b623b9e9621bef1ab35b98414947116c9ed533adda39311e",
+    "formalization/platform/coefficient-map-jet/types-2-reference-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-2-reference.log": "925992fe26062f838d26cc7bb4e366b057a148bf5b0859ddea959a0becd6feb8",
+    "formalization/platform/coefficient-map-jet/types-2-reference.ps1": "fbfc7dd4d51b7bac245e98928113a1a129947bca517e13ed8d245ab212b224e4",
+    "formalization/platform/coefficient-map-jet/types-2-solution-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-2-solution.log": "e749abc475c0bd5e64525af5d28acc608354120c5b3556465d96263e21392a91",
+    "formalization/platform/coefficient-map-jet/types-2-solution.ps1": "4bc7313465b39e7266ea0ad11030903f7bf3b9b5f4914fb6bdec243d887de0c7",
+    "formalization/platform/coefficient-map-jet/types-definition-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-definition.log": "5e7fe1fc4bf243814853a9eecbd9c547d82dee2e6a568a31fa70f8aef3c4c4fb",
+    "formalization/platform/coefficient-map-jet/types-definition.ps1": "a7ef87a254181a5df3cd3fc5917fd8d9b2b3a308439424156564a9a3e880d7c5",
+    "formalization/platform/coefficient-map-jet/types-original-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "formalization/platform/coefficient-map-jet/types-original.log": "a97c923ae7c292f02830eb52ddfc5b831373b9241b7f0454861f92e6e97f48ce",
+    "formalization/platform/coefficient-map-jet/types-original.ps1": "ec20e16846bf30138e84661965e6fe0b65233bd51c00b4c7880897e41c895f14",
+    "formalization/platform/coefficient-map-jet/types_0_reference.lean": "6635e2d98a9079ce84710fdfc7e3a85af9eb13e3b2f1fcbd18e2690b6257825f",
+    "formalization/platform/coefficient-map-jet/types_0_solution.lean": "0a407df4709b473aa87adc2248a0ce771201b3c8423978be71efd357e619be41",
+    "formalization/platform/coefficient-map-jet/types_1_reference.lean": "2c2830aeeee793cf7fc3dac7f1018a7fdf3a3199f5e92dbdd0b155e9f46bd482",
+    "formalization/platform/coefficient-map-jet/types_1_solution.lean": "8964a7c9860be6c110fb33487b788a4fbf4fc5aa324ee09b345d8abdec7fa6e1",
+    "formalization/platform/coefficient-map-jet/types_2_reference.lean": "469f9bb0bfa15351bd8bac6ccab62e796ea3eff00ce6356981a551e7d006b633",
+    "formalization/platform/coefficient-map-jet/types_2_solution.lean": "8907d72df2f4e3240dd563678c19add4dd5d8e95727c3155d35b3bf8f56d53f3",
+    "formalization/platform/coefficient-map-jet/types_definition.lean": "cf34fd90686d09bedd789d6548d4b5970519e3a1d187ded0befdca051547f424",
+    "formalization/platform/coefficient-map-jet/types_original.lean": "80084a6a96b5c5f0c6d3e8933741bb88afb835460c7dc014ce54638b7c98707b",
+    "formalization/platform/coefficient-map/author-audit.json": "f5d04a3297e7c28f233fec3b7db822c8b63570dab1b00c910b0c3286490fc1e6",
+    "formalization/platform/coefficient-map/decl_graph.jsonl": "2f35a4ab1642495fa90f487aef92ac80b1f6cabd52671ac463e456ad86512efb",
+    "formalization/platform/coefficient-map/oracle-input.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "formalization/platform/coefficient-map/sketch_info.jsonl": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c",
+    "formalization/platform/coefficient-map/staged/Definitions/Def_ZetaNine_CoefficientMap.lean": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff",
+    "formalization/platform/readback-2026-10-03/api-docs/references/contribute.md": "0c21104fdec143aef4d1dacb208f528b4a1068050a77af642bc1e21cb1471ce1",
+    "verification/formalization-coefficient-map-jet-2026-10-03/independent-review.json": "cec69d6069d2d6c132339464ad03de56f00af59a6491ba2c0f7b5e5d96efa30d"
+  },
+  "findings": [],
+  "targets": [
+    {
+      "theorem": "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+      "actual_original_type": "∀ (n j : ℕ) (S : PowerSeries ℚ),\n  S * ↑(ZetaNine.CoefficientMapJet.shiftedClearedDenominator n j) ^ 9 =\n      ↑(ZetaNine.CoefficientMapJet.shiftedNumerator n j) →\n    S = ZetaNine.CoefficientMapJet.clearedSeries n j",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+      "actual_original_type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : Polynomial ℚ),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                (W.comp\n                      (Polynomial.C (-↑j * ↑(n - j)) + Polynomial.C (↑n - 2 * ↑j) * Polynomial.X +\n                        Polynomial.X ^ 2)).coeff\n                  (l - s)",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "theorem": "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+      "actual_original_type": "∀ (n j s : ℕ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        ∀ (W : Polynomial ℤ),\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (Polynomial.map (Int.castRingHom ℚ) W) =\n            ∑ l ∈ Finset.Icc s 9,\n              ZetaNine.CoefficientMapJet.localCoefficient n j l *\n                ↑((W.comp (ZetaNine.CoefficientMapJet.integerLocalU n j)).coeff (l - s))",
+      "original_solution_reference_type_equal": true,
+      "original_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "solution_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "reference_axioms": [
+        "propext",
+        "sorryAx",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "definition_comparisons": [
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.numerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.poleProduct",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.actualR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedPoleProduct",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.clearedWeightedR",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedVariable",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedNumerator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localU",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.integerLocalU",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.clearedSeries",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.localCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_definition",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_0_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_0_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_1_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_1_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_2_solution",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+      "context": "types_2_reference",
+      "type_equal": true,
+      "value_equal": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "cross_module_proof_closure": [
+    "ZetaNine.CoefficientMap.clearedPoleProduct",
+    "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero",
+    "ZetaNine.CoefficientMap.clearedR",
+    "ZetaNine.CoefficientMap.clearedWeightedR",
+    "ZetaNine.CoefficientMap.leadingPoleCoefficient",
+    "ZetaNine.CoefficientMap.numerator",
+    "ZetaNine.CoefficientMap.weightedLeadingPoleCoefficient",
+    "ZetaNine.CoefficientMapJet.actual_local_rational_expression",
+    "ZetaNine.CoefficientMapJet.actual_weighted_local_rational_expression",
+    "ZetaNine.CoefficientMapJet.clearedSeries",
+    "ZetaNine.CoefficientMapJet.clearedSeries_constant",
+    "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity",
+    "ZetaNine.CoefficientMapJet.clearedSeries_unique",
+    "ZetaNine.CoefficientMapJet.coefficient_convolution",
+    "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit",
+    "ZetaNine.CoefficientMapJet.integerLocalU",
+    "ZetaNine.CoefficientMapJet.integerLocalU_map",
+    "ZetaNine.CoefficientMapJet.integer_coefficient_convolution",
+    "ZetaNine.CoefficientMapJet.localCoefficient",
+    "ZetaNine.CoefficientMapJet.localCoefficient_nine",
+    "ZetaNine.CoefficientMapJet.localU",
+    "ZetaNine.CoefficientMapJet.localU_eq",
+    "ZetaNine.CoefficientMapJet.localU_eval",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero",
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_eval",
+    "ZetaNine.CoefficientMapJet.shiftedNumerator",
+    "ZetaNine.CoefficientMapJet.shiftedNumerator_eval",
+    "ZetaNine.CoefficientMapJet.shiftedVariable",
+    "ZetaNine.CoefficientMapJet.shiftedVariable_eval",
+    "ZetaNine.CoefficientMapJet.weightedClearedSeries",
+    "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity",
+    "ZetaNine.CoefficientMapJet.weightedLocalCoefficient",
+    "ZetaNine.CoefficientMapJet.weightedLocalCoefficient_nine"
+  ],
+  "actual_Base_inline_helper": [
+    "ZetaNine.CoefficientMap.clearedPoleProduct_ne_zero"
+  ],
+  "source_position_counts": {
+    "Stage1_environment": 65,
+    "Base_source": 27,
+    "Base_generated": 1,
+    "Jet_source": 28,
+    "Jet_defs": 9,
+    "Jet_proofs": 19,
+    "Jet_generated": 9,
+    "Jet_Stage2_decl": 28,
+    "Jet_Stage2_ref": 141,
+    "Jet_Stage2_command": 47,
+    "deleted_print_diagnostics": 10
+  },
+  "actual_header_span": {
+    "end": {
+      "col": 51,
+      "line": 4,
+      "offset": 193
+    },
+    "kind": "header",
+    "start": {
+      "col": 0,
+      "line": 1,
+      "offset": 0
+    },
+    "syntaxKind": "Lean.Parser.Module.header"
+  },
+  "fresh_compile": {
+    "main_observed_successful_runs": 26,
+    "corrected_cross_module_parser_observed_exit": 0,
+    "fresh_native_sources": 2,
+    "fresh_Definitions": 2,
+    "fresh_Solutions": 3,
+    "fresh_statement_references": 3,
+    "type_value_reports": 8,
+    "all_proof_helper_reports": 3,
+    "proof_records": 63,
+    "no_native_or_staged_olean_borrowing": true
+  },
+  "author_retained_failed_attempts": [
+    {
+      "label": "Initial isolated native import layout",
+      "exit_code": 1,
+      "evidence": "original-compile.log.before-cache-layout-fix",
+      "explanation": "Lean's first existing module hierarchy shadowed the later genuine Base object; an exact hash-bound Base object copy in the same task-local hierarchy fixed resolution."
+    },
+    {
+      "label": "Header oracle adapter field access",
+      "exit_code": 1,
+      "evidence": "header_info.jsonl.before-raw-fix",
+      "explanation": "Lean Parser.parseHeader returns TSyntax; source-range access must use header.raw. Final actual header parser run exits zero."
+    }
+  ],
+  "independent_parser_filter_correction": {
+    "reason": "Independent initial namespace filter ZetaNine.CoefficientMapJet omitted eleven actual Base references. The original author filter ZetaNine is required to include the genuine cross-module closure; no author or mathematical source changed.",
+    "initial_filter": "ZetaNine.CoefficientMapJet",
+    "initial_Lean_exit_code": 0,
+    "initial_refs": 130,
+    "initial_facts": "sketch_info.jsonl.before-namespace-filter-fix",
+    "initial_fact_sha256": "d5c0e41e2b46438c2d1a7913cdebf0d3a52d8a94d47200c16cf32d57aec25f9e",
+    "validation_exit_code": 1,
+    "validation_log_sha256": "433ba5040f88e2e1aabcd12f673747cac354d434aecdf4dc7de84ae7dc558d17",
+    "corrected_command": [
+      "lake",
+      "env",
+      "lean",
+      "--run",
+      "extract_sketch_info.lean",
+      "missions/zeta9/formalization/CoefficientMapJet.lean",
+      "ZetaNine"
+    ],
+    "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-jet\\independent-review\\project",
+    "corrected_Lean_exit_code": 0,
+    "final_fact_counts": {
+      "decl": 28,
+      "ref": 141,
+      "command": 47
+    },
+    "final_facts_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4",
+    "corrected_log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+  },
+  "actual_rational_lower_coefficient_example": {
+    "n": 2,
+    "j": 0,
+    "s": 8,
+    "integer_W": "1",
+    "actual_N_constant_and_linear": [
+      "3072",
+      "-2816"
+    ],
+    "actual_D_constant_and_linear": [
+      "2",
+      "3"
+    ],
+    "actual_D9_constant_and_linear": [
+      "512",
+      "6912"
+    ],
+    "clearedSeries_coeff_zero": "6",
+    "localCoefficient_2_0_8": "-173/2",
+    "integer": false,
+    "identity": "512*c1+6912*6=-2816",
+    "source_of_series_identity": "genuine transplanted clearedSeries_denominator_identity, independently imported and standard-axiom checked",
+    "check_kind": "mathematical exact rational product/quotient recurrence; not an additional Lean theorem"
+  },
+  "installed_root": [
+    {
+      "path": "Definitions/Def_ZetaNine_CoefficientMapJet.lean",
+      "exists": true,
+      "bytes": 1484,
+      "sha256": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2",
+      "expected": "4941f0b3dae94c6beef98dc2c1504e9eb514a601939a74fa0f1a48fa405a91e2"
+    },
+    {
+      "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean",
+      "exists": true,
+      "bytes": 8954,
+      "sha256": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c",
+      "expected": "8c168ecc6d4185a097958ea41359fab88e46d16f7630140cceee41075e86456c"
+    },
+    {
+      "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_clearedSeries_unique.lean",
+      "exists": true,
+      "bytes": 405,
+      "sha256": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e",
+      "expected": "aac90ff52794f4ae017297f5f3a122ede4a1e947ed004c005463042f0bada92e"
+    },
+    {
+      "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean",
+      "exists": true,
+      "bytes": 9086,
+      "sha256": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993",
+      "expected": "29c97577bf9bcf53e19610bad7aadd1d9cc808c0de7f9aa054a505b25e678993"
+    },
+    {
+      "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_coefficient_convolution_explicit.lean",
+      "exists": true,
+      "bytes": 527,
+      "sha256": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a",
+      "expected": "03c75b25e2a358283685947f04d996a5e05686c32e9497fd7caa4956e4681b2a"
+    },
+    {
+      "path": "Solutions/Sol_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean",
+      "exists": true,
+      "bytes": 9062,
+      "sha256": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3",
+      "expected": "36227fea6bbe2db1cd5415e782e789b63d6c6a98084f208cb361ef3ef9d862a3"
+    },
+    {
+      "path": "Theorems/Thm_ZetaNine_CoefficientMapJet_integer_coefficient_convolution.lean",
+      "exists": true,
+      "bytes": 503,
+      "sha256": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72",
+      "expected": "95d7d6113eef329c4006ea5cbd5a2a5903243292169c20c49bb3a8ec7c8eac72"
+    }
+  ],
+  "required_Base_Definition": {
+    "root_relative": "Definitions/Def_ZetaNine_CoefficientMap.lean",
+    "sha256": "b6d156b04e2cd14511c73ac4c2de12fedc811d6efe85af7341dad060f497edff"
+  },
+  "limitations": [
+    "These are actual formal Q[[z]] coefficients of the genuine shifted-product quotient. No coefficient array, closed formula, or target endpoint is introduced as an assumed premise. The nonzero constant denominator and actual inverse laws justify existence and uniqueness; all natural n,j are allowed for the uniqueness statement.",
+    "The explicit rational/integer convolution needs j<=n and 1<=s<=9 exactly as in the frozen original statement. W is arbitrary and may be zero or cancel local coefficients. Natural 9-s outside that order range is only the total definition convention, not an additional pole-order theorem.",
+    "For W in Z[X], only the coefficients of W.comp(integerLocalU) are integers. The genuine local c values remain rational: n=2,j=0,s=8,W=1 yields -173/2 by exact quotient recurrence. This reported example is a mathematical arithmetic check, not an extra Lean theorem.",
+    "The formal series is not numerically evaluated at z. No analytic convergence, infinite-series summation, full LaurentSeries/RatFunc embedding, global partial-fraction result or degree/growth condition is established by this batch. Separate later task files are not part of its imports or proof closure.",
+    "The original five-dimensional aggregate F map, its inverse/invertibility, exact infinite L identities, J certificate and zeta(9) irrationality remain outside this result. All three Solution proofs are complete standard-axiom proofs; their reference theorem files intentionally contain sorryAx and are never imported by Solutions.",
+    "This is an offline source-integration review. Parent installation and scoped build are hash-bound separately, but no platform publication or acceptance is claimed. Author's two early failed attempts and the review's initial narrow-prefix mismatch are preserved with actual logs and exits."
+  ],
+  "reviewer_root_writes": false,
+  "reviewer_scope_writes": false,
+  "reviewer_frozen_math_source_writes": false,
+  "reviewer_API_calls": false,
+  "credentials_read": false,
+  "platform_publication_claimed": false,
+  "platform_acceptance_claimed": false
+}

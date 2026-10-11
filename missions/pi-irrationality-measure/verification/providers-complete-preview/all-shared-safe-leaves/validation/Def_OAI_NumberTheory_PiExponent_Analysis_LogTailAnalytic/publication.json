@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "2f6ff9a738d17d894d2d8b1cc70b41bca053fe9fcf84e724c3170a9a63c0072c",
+  "publish_intent": {
+    "at_utc": "2026-10-08T13:42:01.451481+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+      "definition_title": "Complex logarithm truncation tail and series identities",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.LogTailAnalytic\r\n\r\nnoncomputable def logTail (T : ℕ) (z : ℂ) : ℂ :=\r\n  Complex.logTaylor T z - Complex.log (1 + z)\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_formal_log {z : ℂ} (hz : ‖z‖ < 1) :\r\n    HasSum (fun n => PowerSeries.coeff n (PowerSeries.log ℂ) * z ^ n)\r\n      (Complex.log (1 + z)) := by\r\n  convert Complex.hasSum_taylorSeries_log hz using 1\r\n  funext n\r\n  by_cases hn : n = 0\r\n  · simp [hn]\r\n  · simp [PowerSeries.coeff_log, hn, map_div₀, map_pow]\r\n    ring\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_coeff_mul {f g : PowerSeries ℂ} {x y z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x)\r\n    (hg : HasSum (fun n => PowerSeries.coeff n g * z ^ n) y) :\r\n    HasSum (fun n => PowerSeries.coeff n (f * g) * z ^ n) (x * y) := by\r\n  have hfn := hf.summable.norm\r\n  have hgn := hg.summable.norm\r\n  have hs := (summable_norm_sum_mul_antidiagonal_of_summable_norm hfn hgn).of_norm.hasSum\r\n  have heq := tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm hfn hgn\r\n  rw [hf.tsum_eq, hg.tsum_eq] at heq\r\n  rw [← heq] at hs\r\n  convert hs using 1 <;> try rfl\r\n  funext n\r\n  rw [PowerSeries.coeff_mul, Finset.sum_mul]\r\n  apply Finset.sum_congr rfl\r\n  intro a ha\r\n  have he : a.1 + a.2 = n := Finset.HasAntidiagonal.mem_antidiagonal.mp ha\r\n  rw [← he, pow_add]\r\n  ring\r\n\r\ntheorem hasSum_coeff_one (z : ℂ) :\r\n    HasSum (fun n => PowerSeries.coeff n (1 : PowerSeries ℂ) * z ^ n) 1 := by\r\n  convert hasSum_ite_eq 0 (1 : ℂ) using 1\r\n  funext n\r\n  by_cases hn : n = 0 <;> simp [PowerSeries.coeff_one, hn]\r\n\r\n theorem hasSum_coeff_pow {f : PowerSeries ℂ} {x z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x) (d : ℕ) :\r\n    HasSum (fun n => PowerSeries.coeff n (f ^ d) * z ^ n) (x ^ d) := by\r\n  induction d with\r\n  | zero => simpa only [pow_zero] using hasSum_coeff_one z\r\n  | succ d hd => simpa only [pow_succ] using hasSum_coeff_mul hd hf\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.LogTailAnalytic\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For T : ℕ and z : ℂ, logTail T z is Complex.logTaylor T z − Complex.log (1 + z). The bundle also identifies the convergent power-series coefficient sum for Complex.log (1 + z) when ‖z‖ < 1, and gives general HasSum rules for coefficients of products, the constant series 1, and powers of a power series.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/LogTailAnalytic.lean#L11-L176",
+      "tags": [
+        "complex-analysis",
+        "power-series",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "2f6ff9a738d17d894d2d8b1cc70b41bca053fe9fcf84e724c3170a9a63c0072c",
+    "bundle_source_sha256": "aa6c8c166ee47d2984102787ef53ce92af30e1ea653665814e4cc7b9c8ac0954",
+    "bundle_manifest_sha256": "b38046e3775613a5d3a2b8cf5f462e9ce5f5b69c49cedf31bc0a9580efdc5d69",
+    "validation_sha256": "2ad59523f287ca298a74fb78ebff60d0f4080c5cbffd350775d3afcb6ff5f530"
+  },
+  "updated_at_utc": "2026-10-08T13:44:17.785951+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "6672456c-ce74-4d15-ac0c-9afc9b7be8da",
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/6672456c-ce74-4d15-ac0c-9afc9b7be8da until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "a49aa3071051bb46cd0cb9c3f22ad0b5ce3533e8210ee068466f4b4f6070cd46"
+  },
+  "job_id": "6672456c-ce74-4d15-ac0c-9afc9b7be8da",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "6672456c-ce74-4d15-ac0c-9afc9b7be8da",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+      "theorem_title": "Complex logarithm truncation tail and series identities",
+      "formal_statement": "",
+      "natural_language_statement": "For T : ℕ and z : ℂ, logTail T z is Complex.logTaylor T z − Complex.log (1 + z). The bundle also identifies the convergent power-series coefficient sum for Complex.log (1 + z) when ‖z‖ < 1, and gives general HasSum rules for coefficients of products, the constant series 1, and powers of a power series.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.LogTailAnalytic\r\n\r\nnoncomputable def logTail (T : ℕ) (z : ℂ) : ℂ :=\r\n  Complex.logTaylor T z - Complex.log (1 + z)\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_formal_log {z : ℂ} (hz : ‖z‖ < 1) :\r\n    HasSum (fun n => PowerSeries.coeff n (PowerSeries.log ℂ) * z ^ n)\r\n      (Complex.log (1 + z)) := by\r\n  convert Complex.hasSum_taylorSeries_log hz using 1\r\n  funext n\r\n  by_cases hn : n = 0\r\n  · simp [hn]\r\n  · simp [PowerSeries.coeff_log, hn, map_div₀, map_pow]\r\n    ring\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_coeff_mul {f g : PowerSeries ℂ} {x y z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x)\r\n    (hg : HasSum (fun n => PowerSeries.coeff n g * z ^ n) y) :\r\n    HasSum (fun n => PowerSeries.coeff n (f * g) * z ^ n) (x * y) := by\r\n  have hfn := hf.summable.norm\r\n  have hgn := hg.summable.norm\r\n  have hs := (summable_norm_sum_mul_antidiagonal_of_summable_norm hfn hgn).of_norm.hasSum\r\n  have heq := tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm hfn hgn\r\n  rw [hf.tsum_eq, hg.tsum_eq] at heq\r\n  rw [← heq] at hs\r\n  convert hs using 1 <;> try rfl\r\n  funext n\r\n  rw [PowerSeries.coeff_mul, Finset.sum_mul]\r\n  apply Finset.sum_congr rfl\r\n  intro a ha\r\n  have he : a.1 + a.2 = n := Finset.HasAntidiagonal.mem_antidiagonal.mp ha\r\n  rw [← he, pow_add]\r\n  ring\r\n\r\ntheorem hasSum_coeff_one (z : ℂ) :\r\n    HasSum (fun n => PowerSeries.coeff n (1 : PowerSeries ℂ) * z ^ n) 1 := by\r\n  convert hasSum_ite_eq 0 (1 : ℂ) using 1\r\n  funext n\r\n  by_cases hn : n = 0 <;> simp [PowerSeries.coeff_one, hn]\r\n\r\n theorem hasSum_coeff_pow {f : PowerSeries ℂ} {x z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x) (d : ℕ) :\r\n    HasSum (fun n => PowerSeries.coeff n (f ^ d) * z ^ n) (x ^ d) := by\r\n  induction d with\r\n  | zero => simpa only [pow_zero] using hasSum_coeff_one z\r\n  | succ d hd => simpa only [pow_succ] using hasSum_coeff_mul hd hf\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.LogTailAnalytic\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/LogTailAnalytic.lean#L11-L176",
+      "tags": [
+        "complex-analysis",
+        "power-series",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "546a529c-9106-4e47-b553-08a191bc6626",
+      "created_at": "2026-10-08T13:42:03.276977+00:00",
+      "updated_at": "2026-10-08T13:42:11.886985+00:00"
+    }
+  },
+  "definition_id": "546a529c-9106-4e47-b553-08a191bc6626",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "546a529c-9106-4e47-b553-08a191bc6626",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic",
+      "theorem_title": "Complex logarithm truncation tail and series identities",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For T : ℕ and z : ℂ, logTail T z is Complex.logTaylor T z − Complex.log (1 + z). The bundle also identifies the convergent power-series coefficient sum for Complex.log (1 + z) when ‖z‖ < 1, and gives general HasSum rules for coefficients of products, the constant series 1, and powers of a power series.",
+      "created_at": "2026-10-08T13:42:11.020296+00:00",
+      "vote_count": 0,
+      "tags": [
+        "complex-analysis",
+        "openai-pi-exponent-017",
+        "power-series"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\r\n\r\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.LogTailAnalytic\r\n\r\nnoncomputable def logTail (T : ℕ) (z : ℂ) : ℂ :=\r\n  Complex.logTaylor T z - Complex.log (1 + z)\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_formal_log {z : ℂ} (hz : ‖z‖ < 1) :\r\n    HasSum (fun n => PowerSeries.coeff n (PowerSeries.log ℂ) * z ^ n)\r\n      (Complex.log (1 + z)) := by\r\n  convert Complex.hasSum_taylorSeries_log hz using 1\r\n  funext n\r\n  by_cases hn : n = 0\r\n  · simp [hn]\r\n  · simp [PowerSeries.coeff_log, hn, map_div₀, map_pow]\r\n    ring\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem hasSum_coeff_mul {f g : PowerSeries ℂ} {x y z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x)\r\n    (hg : HasSum (fun n => PowerSeries.coeff n g * z ^ n) y) :\r\n    HasSum (fun n => PowerSeries.coeff n (f * g) * z ^ n) (x * y) := by\r\n  have hfn := hf.summable.norm\r\n  have hgn := hg.summable.norm\r\n  have hs := (summable_norm_sum_mul_antidiagonal_of_summable_norm hfn hgn).of_norm.hasSum\r\n  have heq := tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm hfn hgn\r\n  rw [hf.tsum_eq, hg.tsum_eq] at heq\r\n  rw [← heq] at hs\r\n  convert hs using 1 <;> try rfl\r\n  funext n\r\n  rw [PowerSeries.coeff_mul, Finset.sum_mul]\r\n  apply Finset.sum_congr rfl\r\n  intro a ha\r\n  have he : a.1 + a.2 = n := Finset.HasAntidiagonal.mem_antidiagonal.mp ha\r\n  rw [← he, pow_add]\r\n  ring\r\n\r\ntheorem hasSum_coeff_one (z : ℂ) :\r\n    HasSum (fun n => PowerSeries.coeff n (1 : PowerSeries ℂ) * z ^ n) 1 := by\r\n  convert hasSum_ite_eq 0 (1 : ℂ) using 1\r\n  funext n\r\n  by_cases hn : n = 0 <;> simp [PowerSeries.coeff_one, hn]\r\n\r\n theorem hasSum_coeff_pow {f : PowerSeries ℂ} {x z : ℂ}\r\n    (hf : HasSum (fun n => PowerSeries.coeff n f * z ^ n) x) (d : ℕ) :\r\n    HasSum (fun n => PowerSeries.coeff n (f ^ d) * z ^ n) (x ^ d) := by\r\n  induction d with\r\n  | zero => simpa only [pow_zero] using hasSum_coeff_one z\r\n  | succ d hd => simpa only [pow_succ] using hasSum_coeff_mul hd hf\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend PiExponent.LogTailAnalytic\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/LogTailAnalytic.lean#L11-L176",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "state": "PURE_SOURCE_UNCOMPILED",
+  "lean_calls": 0,
+  "api_calls": 0,
+  "credential_reads": 0,
+  "mission_id": "5eb457c6-bc3b-4f51-852a-c5d29fb77c53",
+  "parent_theorem_id": "691b1665-f122-47f7-a3e4-2c28a06055f2",
+  "parent_theorem_name": "ZetaNine.exponentially_small_independent_forms_of_zeta_nine",
+  "new_open_child": {
+    "theorem_name": "ZetaNine.GraphBridge.selected_inverse_unbounded_short_independent_pairs",
+    "status": "Open",
+    "statement": "SelectedInverseShortPairMargin",
+    "genuinely_missing": "Two independent integer output pairs with weighted actual inverse-row sizes < exp((tau-delta) k) on unbounded even k. This preserves all arithmetic height/lattice and J obligations; no integer polynomial claim is made."
+  },
+  "dependencies": [
+    {
+      "id": "134e564c-4327-43b0-9ecd-e7d08fa133ec",
+      "name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_coordinates_product",
+      "module": "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product",
+      "use": "Converts actual S F inverse weighted row size to polynomial coefficient size."
+    },
+    {
+      "id": "bb7477e4-5539-4015-b8cf-9bad57e1c8a0",
+      "name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "module": "Theorems.Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "use": "Genuine HasSum identifies actual infinite sum with integer linear form b+a zeta(9)."
+    },
+    {
+      "id": null,
+      "name": "ZetaNine.AnalyticWeightedBound.actual_weighted_uniform_o_one",
+      "module": "Theorems.Thm_ZetaNine_AnalyticWeightedBound_actual_weighted_uniform_o_one",
+      "use": "Actual bound exp((-tau+epsilon k)k) times weighted coefficients, epsilon->0. Root arranges platform publication."
+    }
+  ],
+  "scale_quantifier": "For each target scale n, select an even construction scale k >= max(n,N_epsilon). No eventual-every-even-scale or density strengthening.",
+  "rate": "c=delta/2; epsilon k<delta/2 and k>0 yield strict exp((epsilon k-delta)k)<exp(-delta k/2)<=exp(-delta n/2).",
+  "graph_edges_proposed": [
+    "new_open_child -> parent",
+    "matrix_coordinates -> parent",
+    "matrix_actual_HasSum -> parent",
+    "actual_weighted_uniform_o_one -> parent"
+  ],
+  "safety_boundaries": [
+    "No parent statement copy as open child",
+    "No assumption on small linear form values",
+    "No useless imported graph edges",
+    "No claim about proving J or irrationality",
+    "No API and no shared/scope mutations"
+  ],
+  "source_files": [
+    {
+      "task_relative": "verification/graph-integration-two-form-2026-10-08/Def_ZetaNine_GraphBridge_TwoForm.lean",
+      "bytes": 1157,
+      "sha256": "de6fd1a1322e3083ee0fe2d99d4fda8f060c2d8b68599b2e373e73c8647b9bac"
+    },
+    {
+      "task_relative": "verification/graph-integration-two-form-2026-10-08/SketchedParentSource.lean",
+      "bytes": 6373,
+      "sha256": "1113f24b8d16c5bf56b5404ccf1a8511cc06f5a67db97e85f272b6358ced5d95"
+    },
+    {
+      "task_relative": "verification/graph-integration-two-form-2026-10-08/Thm_ZetaNine_GraphBridge_selected_inverse_unbounded_short_independent_pairs.lean",
+      "bytes": 308,
+      "sha256": "486c65f0a6ab6d88fb73d52bf000755e899670fd8b3b8d79c56e6143d68281b7"
+    },
+    {
+      "task_relative": "verification/graph-integration-two-form-2026-10-08/TwoFormBridgeSource.lean",
+      "bytes": 5523,
+      "sha256": "d3fcff0efa0c8844e0dc0d1c26d268c839a6e881bce351a12e59a915bed10548"
+    }
+  ],
+  "parent_sketch": "verification/graph-integration-two-form-2026-10-08/SketchedParentSource.lean",
+  "graph_is_sketch_not_root_proof": true
+}

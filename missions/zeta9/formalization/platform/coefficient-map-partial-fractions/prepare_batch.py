@@ -1,0 +1,213 @@
+"""Actual Lean oracle-driven offline author batch; writes only under this batch."""
+from pathlib import Path
+import hashlib,json,os,subprocess,sys
+sys.stdout.reconfigure(encoding="utf-8")
+OUT=Path(__file__).resolve().parent
+TASK=OUT.parents[2]
+ROOT=TASK.parents[1]
+PROJECT=OUT / "project"
+BASE=TASK / "formalization/platform/coefficient-map"
+JET=TASK / "formalization/platform/coefficient-map-jet"
+INJ=TASK / "formalization/platform/coefficient-map-injectivity"
+REV="0df444a360eaa60ab8c11dca51a86af692955474"
+NS="ZetaNine.CoefficientMapPartialFractions"
+EXPECTED={"CoefficientMap":"e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03","CoefficientMapJet":"e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a","CoefficientMapInjectivity":"ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095","CoefficientMapPartialFractions":"eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a"}
+DEFS=["clearedPolePolynomial","localTruncation","partialBlock","partialNumerator","candidateClearedSeries"]
+TARGETS=["candidate_local_coefficients","actual_global_polynomial_partial_fractions","actual_global_partial_fractions"]
+ARGS=["n j s W hj hs1 hs9","n W hproper","n W hproper t hregular"]
+MATHLIB=["Mathlib.RingTheory.PowerSeries.Trunc"]
+
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def digest(b):return hashlib.sha256(b).hexdigest()
+def write(p,s):
+    p.parent.mkdir(parents=True,exist_ok=True)
+    p.write_bytes(s if isinstance(s,bytes) else s.encode("utf-8"))
+def dump(p,d):write(p,json.dumps(d,ensure_ascii=False,indent=2)+"\n")
+def rows(p):return [json.loads(s) for s in p.read_text(encoding="utf-8-sig").splitlines() if s.startswith("{")]
+def edit(data,edits):
+    edge=len(data)
+    for a,b,v in sorted(set(edits),reverse=True):
+        assert 0<=a<=b<=edge
+        data=data[:a]+v+data[b:];edge=a
+    return data
+env=os.environ.copy();env.pop("LEAN_PATH",None)
+previous=json.loads((OUT / "compile-receipt.json.before-namespace-context-fix").read_text(encoding="utf-8-sig"))
+previous_rows={r["label"]:r for r in previous["rows"] if r["exit_code"]==0}
+receipt={"role":"author offline batch","source_sha256":EXPECTED,"root_writes":False,"API_calls":False,"rows":[]}
+def run(label,args,stdout_file=None):
+    if label in previous_rows:
+        old=previous_rows[label]
+        assert old["command"]==args and old["log_sha256"]==sha(OUT / old["log"])
+        receipt["rows"].append(old)
+        dump(OUT / "compile-receipt.json",receipt)
+        print(label+": earlier fresh same-project exit 0 preserved",flush=True)
+        return
+    p=subprocess.run(args,cwd=PROJECT,env=env,capture_output=True)
+    log=OUT / (label+".log");write(log,p.stdout+p.stderr);write(OUT / (label+"-exit.txt"),str(p.returncode)+"\n")
+    if stdout_file:write(OUT / stdout_file,p.stdout);write(OUT / (label+"-stderr.log"),p.stderr)
+    receipt["rows"].append({"label":label,"command":args,"working_directory":str(PROJECT),"exit_code":p.returncode,"log":log.name,"log_sha256":sha(log)})
+    dump(OUT / "compile-receipt.json",receipt)
+    print(label+": exit "+str(p.returncode),flush=True)
+    for n,h in EXPECTED.items():assert sha(TASK / ("formalization/"+n+".lean"))==h
+    if p.returncode:print(log.read_text(encoding="utf-8-sig"),flush=True)
+    assert p.returncode==0
+
+PROJECT.mkdir(parents=True,exist_ok=True)
+write(PROJECT / "lakefile.lean",f'''import Lake
+open Lake DSL
+package zeta9PartialFractionsOfflineAuthor
+require mathlib from git "https://github.com/leanprover-community/mathlib4.git" @ "{REV}"
+lean_lib Native where
+  roots := #[`missions.zeta9.formalization.CoefficientMapPartialFractions]
+  globs := #[.one `missions.zeta9.formalization.CoefficientMap, .one `missions.zeta9.formalization.CoefficientMapJet, .one `missions.zeta9.formalization.CoefficientMapInjectivity, .one `missions.zeta9.formalization.CoefficientMapPartialFractions]
+lean_lib Definitions
+lean_lib Solutions
+lean_lib Theorems
+''')
+for name in ["lake-manifest.json","lean-toolchain"]:write(PROJECT / name,(ROOT / name).read_bytes())
+(PROJECT / ".lake").mkdir(exist_ok=True)
+if not (PROJECT / ".lake/packages").exists():
+    p=subprocess.run(["cmd","/c","mklink","/J",str(PROJECT / ".lake/packages"),str(ROOT / ".lake/packages")],capture_output=True)
+    assert p.returncode==0,(p.stdout+p.stderr).decode(errors="replace")
+for n,h in EXPECTED.items():
+    assert sha(TASK / ("formalization/"+n+".lean"))==h
+    write(PROJECT / ("missions/zeta9/formalization/"+n+".lean"),(TASK / ("formalization/"+n+".lean")).read_bytes())
+existing_defs=[]
+for batch,name in [(BASE,"CoefficientMap"),(JET,"CoefficientMapJet"),(INJ,"CoefficientMapInjectivity")]:
+    rel="Definitions/Def_ZetaNine_"+name+".lean"
+    write(PROJECT / rel,(batch / "staged" / rel).read_bytes())
+    existing_defs.append({"root_relative":rel,"sha256":sha(batch / "staged" / rel),"task_relative":(batch / "staged" / rel).relative_to(TASK).as_posix()})
+
+g=(JET / "extract_decl_graph.lean").read_text(encoding="utf-8-sig")
+g=g.replace("import missions.zeta9.formalization.CoefficientMapJet","import missions.zeta9.formalization.CoefficientMapPartialFractions")
+g=g.replace("missions/zeta9/formalization/platform/coefficient-map-jet/decl_graph.jsonl","../decl_graph.jsonl")
+write(OUT / "extract_decl_graph.lean",g);write(PROJECT / "extract_decl_graph.lean",g)
+s=(JET / "extract_sketch_info.lean").read_text(encoding="utf-8-sig")
+old="missions/zeta9/formalization/platform/coefficient-map-jet/oracle-input.lean"
+assert s.count(old)==1
+for name in EXPECTED:
+    snapshot="oracle-input.lean" if name.endswith("PartialFractions") else name+"-oracle-input.lean"
+    code=s.replace(old,"../"+snapshot)
+    write(OUT / ("extract_"+name+"_sketch.lean"),code);write(PROJECT / ("extract_"+name+"_sketch.lean"),code)
+write(OUT / "extract_header.lean",(JET / "extract_header.lean").read_bytes());write(PROJECT / "extract_header.lean",(JET / "extract_header.lean").read_bytes())
+run("toolchain",["lake","env","lean","--version"])
+run("build-native",["lake","--no-cache","build","missions.zeta9.formalization.CoefficientMapPartialFractions"])
+run("stage1-extract",["lake","env","lean","extract_decl_graph.lean"])
+for name in EXPECTED:
+    facts="sketch_info.jsonl" if name.endswith("PartialFractions") else name+"-sketch_info.jsonl"
+    run("stage2-"+name,["lake","env","lean","--run","extract_"+name+"_sketch.lean","missions/zeta9/formalization/"+name+".lean","ZetaNine"],facts)
+run("stage2-header",["lake","env","lean","--run","extract_header.lean","missions/zeta9/formalization/CoefficientMapPartialFractions.lean"],"header_info.jsonl")
+
+sources={n:(OUT / ("oracle-input.lean" if n.endswith("PartialFractions") else n+"-oracle-input.lean")).read_bytes() for n in EXPECTED}
+for n in EXPECTED:assert sources[n]==(TASK / ("formalization/"+n+".lean")).read_bytes()
+source=sources["CoefficientMapPartialFractions"]
+graph=rows(OUT / "decl_graph.jsonl");byname={g["name"]:g for g in graph}
+facts={n:rows(OUT / ("sketch_info.jsonl" if n.endswith("PartialFractions") else n+"-sketch_info.jsonl")) for n in EXPECTED}
+assert not any(g["kind"]=="axiom" for g in graph)
+def declaration(full):
+    g=byname[full];module=g["module"].split(".")[-1]
+    ds=[f for f in facts[module] if f["kind"]=="decl" and f["declStart"]["line"]<=g["startLine"]<=f["declEnd"]["line"]]
+    assert g["startLine"]>0 and len(ds)==1 and ds[0]["valStart"] is not None
+    return ds[0]
+def closure(seed):
+    reached=set();work=list(seed)
+    while work:
+        name=work.pop()
+        if name in reached:continue
+        reached.add(name);work.extend(byname[name]["typeDeps"]+byname[name]["valueDeps"])
+    return reached
+core=[g for g in graph if g["module"].endswith(".CoefficientMapPartialFractions") and g["startLine"]>0]
+assert len(core)==32 and sum(g["kind"]=="def" for g in core)==5 and sum(g["kind"]=="theorem" for g in core)==27
+reached=closure([g["name"] for g in core]+[g["name"] for g in graph if g["isInstance"]])
+bridge="";bridge_facts=[];helper_names=[]
+for module in ["CoefficientMap","CoefficientMapJet","CoefficientMapInjectivity"]:
+    hs=sorted([byname[n] for n in reached if byname[n]["module"].endswith("."+module) and byname[n]["kind"]=="theorem" and byname[n]["startLine"]>0],key=lambda g:g["startLine"])
+    if not hs:continue
+    bridge+="open scoped BigOperators\nopen Finset Polynomial\n\nnamespace ZetaNine."+module+"\n\n"
+    for g in hs:
+        f=declaration(g["name"]);bridge_facts.append({"module":module,"name":g["name"],"fact":f});helper_names.append(g["name"])
+        bridge+=sources[module][f["declStart"]["offset"]:f["declEnd"]["offset"]].decode()+"\n\n"
+    bridge+="end ZetaNine."+module+"\n\n"
+write(OUT / "actual-proof-bridge.lean.inc",bridge)
+def_facts=[declaration(NS+"."+n) for n in DEFS]
+defpath="Definitions/Def_ZetaNine_CoefficientMapPartialFractions.lean"
+definition="import Definitions.Def_ZetaNine_CoefficientMapInjectivity\n"+"\n".join("import "+m for m in MATHLIB)+"\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators\nopen Finset Polynomial\n\nnamespace "+NS+"\n\n"
+definition+="\n\n".join(source[f["declStart"]["offset"]:f["declEnd"]["offset"]].decode() for f in def_facts)+"\n\nend "+NS+"\n"
+write(OUT / "staged" / defpath,definition);write(PROJECT / defpath,definition)
+header=rows(OUT / "header_info.jsonl")[0];he=header["end"]["offset"]
+assert header["start"]["offset"]==0 and source[:he].decode().strip().splitlines()==["import missions.zeta9.formalization.CoefficientMapInjectivity"]+["import "+m for m in MATHLIB]
+fs=facts["CoefficientMapPartialFractions"];refs=[f for f in fs if f["kind"]=="ref"]
+diagnostics=[f for f in fs if f["kind"]=="command" and f["syntaxKind"]=="Lean.Parser.Command.printAxioms"]
+cuts=[(f["declStart"]["offset"],f["declEnd"]["offset"],b"") for f in def_facts]+[(f["span"]["start"]["offset"],f["span"]["end"]["offset"],b"") for f in diagnostics]+[(0,he,b"")]
+preamble="import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial\nopen ZetaNine "+NS+" ZetaNine.CoefficientMapInjectivity\n"
+solheader="import Definitions.Def_ZetaNine_CoefficientMapPartialFractions\nimport Mathlib.Tactic\n"+"\n".join("import "+m for m in MATHLIB)+"\n\n"+bridge
+origin="Zeta(9) actual finite global partial-fraction research: missions/zeta9/research/coefficient-map-partial-fractions-2026-10-03.md. Frozen Lean source missions/zeta9/formalization/CoefficientMapPartialFractions.lean, SHA256 "+EXPECTED["CoefficientMapPartialFractions"]+". The original actual Base/Jet/Injectivity finite products and local formal coefficients are used throughout."
+definition_nl=r"""For natural $n,j$ and $W\in\mathbb Q[X]$, let $D^*_{n,j}(t)=\prod_{0\le k\le n,\ k\ne j}(t+k)$ and let $S^W_{n,j}$ be the actual weighted local formal quotient imported from the genuine shifted products. Set $T_{n,j}^W=\operatorname{trunc}_{<9}S^W_{n,j}$ and $B_{n,j}^W=(D^*_{n,j})^9T^W_{n,j}(X+j)$. Using the actual coefficients $c^W_{n,j,s}=[z^{9-s}]S^W_{n,j}$, define
+
+$$P_n^W=\sum_{j=0}^{n}\sum_{s=1}^{9}c^W_{n,j,s}(D^*_{n,j})^9(X+j)^{9-s}.$$
+
+Define the candidate cleared local series by $P_n^W(z-j)(D_{n,j}(z)^9)^{-1}$ in $\mathbb Q[[z]]$. These five definitions construct a candidate from the genuine local coefficients; neither a global partial-fraction conclusion nor an arbitrary coefficient array is assumed. The complete identity with the actual weighted numerator is a subsequent theorem on the strict proper domain."""
+
+dump(OUT / "definitions-request.json",[{"definition_name":"ZetaNine_CoefficientMapPartialFractions","definition_title":"Actual finite partial-fraction numerator and local candidate series","definition":definition,"natural_language_statement":definition_nl,"source":origin,"tags":["number-theory","polynomials","formal-power-series","partial-fractions"],"env":REV,"private":False}])
+titles=["The actual partial-fraction candidate matches every local coefficient","Exact global polynomial identity from actual local coefficients","Actual finite global partial fractions at every regular rational point"]
+naturals=[r"""Let $n,j,s$ be natural numbers, $j\le n$, $1\le s\le9$, and let $W\in\mathbb Q[X]$ be arbitrary. Let $c^W_{n,j,s}$ be the actual coefficient of $z^{9-s}$ in the genuine weighted local formal quotient. Construct $P_n^W$ from these actual coefficients by $\sum_{i=0}^{n}\sum_{r=1}^{9}c^W_{n,i,r}(D^*_{n,i})^9(X+i)^{9-r}$, where $D^*_{n,i}=\prod_{k\ne i}(X+k)$. Its cleared candidate local series satisfies
+
+$$[z^{9-s}]\bigl(P_n^W(z-j)(D_{n,j}(z)^9)^{-1}\bigr)=c^W_{n,j,s}.$$
+
+This is a genuine all-nine local coefficient match. It needs neither strict properness nor a global partial-fraction identity as an assumption. It remains valid when the multiplier is outside the proper domain.""",r"""For any natural $n$ and $W\in\mathbb Q[X]$, assume the strict proper-degree condition $2n+2\operatorname{natdeg}W<9(n+1)$. With $N_n(X)=n!^7\prod_{i=1}^{n}(X-i)(X+n+i)$, $U_n(X)=X(X+n)$ and the actual formal local coefficients $c^W_{n,j,s}$, one has
+
+$$N_n(X)W(U_n(X))=\sum_{j=0}^{n}\sum_{s=1}^{9}c^W_{n,j,s}\left(\prod_{0\le k\le n,\ k\ne j}(X+k)\right)^9(X+j)^{9-s}.$$
+
+This is an exact polynomial identity for the actual numerator and actual local coefficient candidate, including $n=0$. Strict properness is essential: at $n=0,W=X^5$ the actual numerator is $X^{10}$ while the nine-order candidate is zero, so the identity would fail without the condition.""",r"""Let $n\ge0$ be natural, $W\in\mathbb Q[X]$, and assume $2n+2\operatorname{natdeg}W<9(n+1)$. Set $R_n(t)=n!^7\prod_{i=1}^{n}(t-i)(t+n+i)/(\prod_{k=0}^{n}(t+k))^9$, and take $c^W_{n,j,s}$ from its actual weighted local formal quotient. At every rational $t$ with $t+k\ne0$ for all $0\le k\le n$,
+
+$$R_n(t)W(t(t+n))=\sum_{j=0}^{n}\sum_{s=1}^{9}\frac{c^W_{n,j,s}}{(t+j)^s}.$$
+
+This is a finite exact partial-fraction equality at regular rational points. It does not assert infinite-sum convergence, vanishing of the simple-pole total, exact L, or injectivity/invertibility of the original aggregate F. At $n=0,W=X^4$ properness allows the simple pole $1/t$; $W=X^5$ is outside the proper domain.""" ]
+
+targets=[];problems=[];provtargets={}
+for i,n in enumerate(TARGETS):
+    full=NS+"."+n;d=declaration(full);a,v=d["declStart"]["offset"],d["valStart"]["offset"]
+    rs=[r for r in refs if r["const"]==full];bindings=[r for r in rs if a<=r["start"]["offset"]<v];assert len(bindings)==1
+    bs,be=bindings[0]["start"]["offset"],bindings[0]["end"]["offset"];assert source[bs:be].decode()==n
+    sig=source[be:v].decode();renames=[]
+    for r in rs:
+        x,y=r["start"]["offset"],r["end"]["offset"]
+        if any(ca<=x and y<=cb for ca,cb,_ in cuts):continue
+        old=source[x:y].decode();assert old in [n,full]
+        renames.append((x,y,("checked_"+n if old==n else NS+".checked_"+n).encode()))
+    solution=solheader+"\n"+edit(source,cuts+renames).decode()+"\n\nopen ZetaNine "+NS+" ZetaNine.CoefficientMapInjectivity\n\ntheorem solution"+sig+":= by\n  exact "+NS+".checked_"+n+" "+ARGS[i]+"\n\n#print axioms solution\n"
+    fe=[(bs-a,be-a,full.encode())]
+    if d["docstring"]:
+        ds=d["docstring"];fe.append((ds["start"]["offset"]-a,ds["end"]["offset"]-a,b""))
+    formal=edit(source[a:v],fe).decode().strip()+":= by sorry"
+    solpath="Solutions/Sol_ZetaNine_CoefficientMapPartialFractions_"+n+".lean";refpath="Theorems/Thm_ZetaNine_CoefficientMapPartialFractions_"+n+".lean"
+    reference=preamble+"\n"+formal+"\n"
+    for rel,text in [(solpath,solution),(refpath,reference)]:write(OUT / "staged" / rel,text);write(PROJECT / rel,text)
+    problems.append({"theorem_name":full,"theorem_title":titles[i],"formal_statement":formal,"natural_language_statement":naturals[i],"preamble":preamble,"source":origin+f" Original declaration lines {d['declStart']['line']}–{d['declEnd']['line']}.","tags":["number-theory","polynomials","partial-fractions","formalization"]})
+    targets.append({"theorem_name":full,"local_solution":solpath,"local_reference":refpath,"wrapper_arguments":ARGS[i]})
+    provtargets[full]={"declaration_fact":d,"binding_fact":bindings[0],"target_refs":rs,"rename_spans":[[x,y] for x,y,_ in renames],"original_signature":sig,"extra_hypotheses":[],"solution_sha256":digest(solution.encode()),"reference_sha256":digest(reference.encode())}
+dump(OUT / "problems-request.json",{"env":REV,"private":False,"problems":problems})
+dump(OUT / "target-plan.json",{"definition":"ZetaNine_CoefficientMapPartialFractions","local_definition":defpath,"targets":targets,"existing_definitions":existing_defs})
+dump(OUT / "integration-provenance.json",{"sources_sha256":EXPECTED,"actual_source_position_authority":"Actually executed official cross-module declaration metaprogram, all four actual Lean parser/ref oracles and Parser.parseHeader; no regex mathematical source-position queries.","graph_records":len(graph),"source_declarations":len(core),"source_defs":5,"source_proofs":27,"generated_records":[g for g in graph if g["module"].endswith(".CoefficientMapPartialFractions") and g["startLine"]==0],"source_fact_counts":{k:sum(f["kind"]==k for f in fs) for k in ["decl","ref","command"]},"header":header,"definition_facts":def_facts,"cross_module_core_closure":sorted(reached),"inline_helper_names":helper_names,"inline_helper_facts":bridge_facts,"bridge_sha256":digest(bridge.encode()),"deleted_diagnostic_facts":diagnostics,"targets":provtargets,"new_external_theorem_boundaries":[]})
+
+template=(JET / "types_original.lean").read_text(encoding="utf-8-sig").split('  emit "')[0]
+all_defs=[g["name"] for g in graph if g["kind"]=="def" and g["startLine"]>0]
+assert len(all_defs)==30
+def report(filename,module,names):
+    code=template.replace("import missions.zeta9.formalization.CoefficientMapJet","import "+module)+"".join(f'  emit "{label}" `{name}\n' for label,name in names)
+    write(OUT / filename,code);write(PROJECT / filename,code)
+report("types_original.lean","missions.zeta9.formalization.CoefficientMapPartialFractions",[(n,n) for n in all_defs+[NS+"."+t for t in TARGETS]])
+report("types_definition.lean",defpath.removesuffix(".lean").replace("/","."),[(n,n) for n in all_defs])
+for i,t in enumerate(targets):
+    for kind,key,name in [("solution","local_solution","solution"),("reference","local_reference",t["theorem_name"])]:
+        report(f"types_{i}_{kind}.lean",t[key].removesuffix(".lean").replace("/","."),[(n,n) for n in all_defs]+[(t["theorem_name"],name)])
+    proofnames=[g["name"] for g in core if g["kind"]=="theorem"]+helper_names+["solution"]
+    proofnames=[NS+".checked_"+TARGETS[i] if n==t["theorem_name"] else n for n in proofnames]
+    report(f"helpers_{i}.lean",t["local_solution"].removesuffix(".lean").replace("/","."),[(n,n) for n in proofnames])
+for d in existing_defs:run("build-"+d["root_relative"].split("Def_ZetaNine_")[1].removesuffix(".lean"),["lake","--no-cache","build",d["root_relative"].removesuffix(".lean").replace("/",".")])
+run("build-definition",["lake","--no-cache","build",defpath.removesuffix(".lean").replace("/",".")])
+for i,t in enumerate(targets):
+    for kind in ["solution","reference"]:run(f"build-{i}-{kind}",["lake","--no-cache","build",t["local_"+kind].removesuffix(".lean").replace("/",".")])
+for filename in ["types_original.lean","types_definition.lean"]+[f"types_{i}_{k}.lean" for i in range(3) for k in ["solution","reference"]]+[f"helpers_{i}.lean" for i in range(3)]:run(filename.removesuffix(".lean"),["lake","env","lean",filename])
+receipt["retained_failed_attempt"]="retained-failed-attempt.json";receipt["resumed_same_project_successful_steps"]=list(previous_rows);receipt["complete"]=True;receipt["native_and_staged_objects_borrowed"]=False;dump(OUT / "compile-receipt.json",receipt)
+print(json.dumps({"complete":True,"observed_runs":len(receipt['rows']),"source_declarations":32,"actual_defs":5,"original_proofs":27,"cross_module_helpers":helper_names},ensure_ascii=False),flush=True)

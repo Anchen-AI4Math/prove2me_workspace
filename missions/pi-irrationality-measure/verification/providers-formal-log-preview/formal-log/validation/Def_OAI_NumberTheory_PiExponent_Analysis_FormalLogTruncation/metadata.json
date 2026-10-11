@@ -1,0 +1,129 @@
+{
+  "definition_title": "Truncated formal logarithmic jets and weighted substitutions",
+  "natural_language_statement": "Let R be a commutative ring and let m be a natural number. Given power series tail_i with zero constant coefficient, the declarations define the substitution of the multivariate power-series variables by X_0 and X_{i+1} + tail_i, together with its induced R-algebra endomorphism. They give the action of this map on the generators and on univariate series in X_0, prove that tails s and t with s_i + t_i = 0 induce inverse maps, and package the resulting algebra equivalence. For nonnegative rational weights, they establish finite-product closure for rational weighted ideals, preservation of weighted-ideal membership under substitutions whose variable images meet the corresponding weight bounds, membership of each coordinate variable at its own weight, and preservation under the stated shift-map bounds. Equality of the coefficient packets below a rational threshold is equivalent to the difference of the two series belonging to the corresponding rational weighted ideal. Over ℂ, logTail T is the formal logarithm minus its truncation at T; its constant coefficient and all coefficients of degree less than T vanish. The map truncatedFormalJet sends X_0 to 1 + X_0 and each remaining frame variable to c_i + X_{i+1} plus the lifted truncation of the formal logarithm at T_i.",
+  "explanation": "This bundle supplies the formal-series algebra used to separate a finite logarithmic jet from its high-order tail and to transport weighted-order conditions through coordinate substitutions. The shift equivalence records exactly when two tail substitutions cancel, while the coefficient-packet criterion identifies agreement below a rational weight threshold with weighted-ideal control of the difference. The logarithmic-tail declarations give the vanishing below the chosen truncation threshold, and truncatedFormalJet records the corresponding polynomial-frame substitution. The statements are conditional on the zero-constant-coefficient and weight hypotheses listed above.",
+  "declarations": [
+    "OAI.PiExponent.FormalLogTruncation.logTail",
+    "OAI.PiExponent.FormalLogTruncation.logTail_constantCoeff",
+    "OAI.PiExponent.FormalLogTruncation.coeff_logTail_eq_zero",
+    "OAI.PiExponent.FormalLogTruncation.truncatedFormalJet",
+    "OAI.PiExponent.FormalLogTruncation.shiftVars",
+    "OAI.PiExponent.FormalLogTruncation.shiftVars_hasSubst",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_X_zero",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_X_succ",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_toMvPowerSeries",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_apply",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_inverse",
+    "OAI.PiExponent.FormalLogTruncation.shiftEquiv",
+    "OAI.PiExponent.FormalLogTruncation.rationalWeightedIdeal_prod",
+    "OAI.PiExponent.FormalLogTruncation.subst_mem_rationalWeightedIdeal",
+    "OAI.PiExponent.FormalLogTruncation.X_mem_rationalWeightedIdeal",
+    "OAI.PiExponent.FormalLogTruncation.shiftMap_mem_rationalWeightedIdeal",
+    "OAI.PiExponent.FormalLogTruncation.rationalCoefficientPacket_eq_iff"
+  ],
+  "tags": [
+    "formal-power-series",
+    "weighted-ideals",
+    "jets",
+    "commutative-algebra",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L45-L306",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_FormalLogTruncation",
+  "selected_source_units": [
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:12228",
+      "start_line": 269,
+      "end_line": 270
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:12375",
+      "start_line": 272,
+      "end_line": 274
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:12577",
+      "start_line": 276,
+      "end_line": 278
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:13808",
+      "start_line": 302,
+      "end_line": 306
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:1560",
+      "start_line": 45,
+      "end_line": 47
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:1754",
+      "start_line": 49,
+      "end_line": 58
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:2212",
+      "start_line": 60,
+      "end_line": 63
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:2463",
+      "start_line": 65,
+      "end_line": 69
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:2680",
+      "start_line": 71,
+      "end_line": 75
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:2948",
+      "start_line": 77,
+      "end_line": 82
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:3738",
+      "start_line": 89,
+      "end_line": 91
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:3955",
+      "start_line": 93,
+      "end_line": 110
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:4823",
+      "start_line": 112,
+      "end_line": 122
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:5661",
+      "start_line": 130,
+      "end_line": 144
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:6447",
+      "start_line": 146,
+      "end_line": 169
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:7566",
+      "start_line": 171,
+      "end_line": 180
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:7928",
+      "start_line": 182,
+      "end_line": 194
+    },
+    {
+      "id": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation:8700",
+      "start_line": 196,
+      "end_line": 205
+    }
+  ]
+}

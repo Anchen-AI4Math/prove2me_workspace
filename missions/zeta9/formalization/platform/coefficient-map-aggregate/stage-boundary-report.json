@@ -1,0 +1,966 @@
+{
+  "exit_code": 0,
+  "records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial",
+      "definitionValue": "fun a => ∑ i, Polynomial.C (a i) * Polynomial.X ^ ↑i",
+      "kind": "native_exact_boundary",
+      "type": "(Fin 5 → ℚ) → ℚ[X]"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_constant_smul",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.constantTerm n (a • W) = a * ZetaNine.CoefficientMapFiniteSum.constantTerm n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinates_restore",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (a : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.polynomialCoordinates (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a) = a"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_rho_smul",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n s : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.rho n s (a • W) = a * ZetaNine.CoefficientMapFiniteSum.rho n s W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_injective",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "Function.Injective ZetaNine.CoefficientMapAggregate.coordinatePolynomial"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.polynomialCoordinates",
+      "definitionValue": "fun W i => W.coeff ↑i",
+      "kind": "native_exact_boundary",
+      "type": "ℚ[X] → Fin 5 → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_add",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (a b : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.coordinatePolynomial (a + b) =\n    ZetaNine.CoefficientMapAggregate.coordinatePolynomial a + ZetaNine.CoefficientMapAggregate.coordinatePolynomial b"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_smul",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (c : ℚ) (a : Fin 5 → ℚ),\n  ZetaNine.CoefficientMapAggregate.coordinatePolynomial (c • a) =\n    c • ZetaNine.CoefficientMapAggregate.coordinatePolynomial a"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_coeff",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (a : Fin 5 → ℚ) (i : Fin 5), (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).coeff ↑i = a i"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregate",
+      "definitionValue": "fun n W i =>\n  match ↑i with\n  | 0 => ZetaNine.CoefficientMapFiniteSum.constantTerm n W\n  | 1 => ZetaNine.CoefficientMapFiniteSum.rho n 3 W\n  | 2 => ZetaNine.CoefficientMapFiniteSum.rho n 5 W\n  | 3 => ZetaNine.CoefficientMapFiniteSum.rho n 7 W\n  | x => ZetaNine.CoefficientMapFiniteSum.rho n 9 W",
+      "kind": "native_exact_boundary",
+      "type": "ℕ → ℚ[X] → Fin 5 → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_coeff_above",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (a : Fin 5 → ℚ) (k : ℕ), 5 ≤ k → (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).coeff k = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregateLinearMap",
+      "definitionValue": "fun n => { toFun := ZetaNine.CoefficientMapAggregate.aggregate n, map_add' := ⋯, map_smul' := ⋯ }",
+      "kind": "native_exact_boundary",
+      "type": "ℕ → ℚ[X] →ₗ[ℚ] Fin 5 → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial_natDegree_le",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (a : Fin 5 → ℚ), (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a).natDegree ≤ 4"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.polynomial_restore",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (W : ℚ[X]),\n  W.natDegree ≤ 4 →\n    ZetaNine.CoefficientMapAggregate.coordinatePolynomial (ZetaNine.CoefficientMapAggregate.polynomialCoordinates W) = W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap",
+      "definitionValue": "fun n => ZetaNine.CoefficientMapAggregate.aggregateLinearMap n ∘ₗ ZetaNine.CoefficientMapAggregate.coordinateLinearMap",
+      "kind": "native_exact_boundary",
+      "type": "ℕ → (Fin 5 → ℚ) →ₗ[ℚ] Fin 5 → ℚ"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.quartic_aggregate_is_actual",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (a : Fin 5 → ℚ),\n  (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n) a =\n    ZetaNine.CoefficientMapAggregate.aggregate n (ZetaNine.CoefficientMapAggregate.coordinatePolynomial a)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_rho_add",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n s : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.rho n s (W + V) =\n    ZetaNine.CoefficientMapFiniteSum.rho n s W + ZetaNine.CoefficientMapFiniteSum.rho n s V"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.checked_aggregate_zero_all_rho",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (s : ℕ), 1 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapFiniteSum.rho n s W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_zero_exactL",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W = 0 → ZetaNine.CoefficientMapSummation.exactL n W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_constant_add",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapFiniteSum.constantTerm n (W + V) =\n    ZetaNine.CoefficientMapFiniteSum.constantTerm n W + ZetaNine.CoefficientMapFiniteSum.constantTerm n V"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_smul",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n (a • W) = a • ZetaNine.CoefficientMapAggregate.aggregate n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_zero_iff",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W = 0 ↔\n    ZetaNine.CoefficientMapFiniteSum.constantTerm n W = 0 ∧\n      ZetaNine.CoefficientMapFiniteSum.rho n 3 W = 0 ∧\n        ZetaNine.CoefficientMapFiniteSum.rho n 5 W = 0 ∧\n          ZetaNine.CoefficientMapFiniteSum.rho n 7 W = 0 ∧ ZetaNine.CoefficientMapFiniteSum.rho n 9 W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_local_coefficient_smul",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n j s : ℕ) (a : ℚ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (a • W) =\n    a * ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.actual_local_coefficient_add",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n j s : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s (W + V) =\n    ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W +\n      ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s V"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.aggregate_add",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n (W + V) =\n    ZetaNine.CoefficientMapAggregate.aggregate n W + ZetaNine.CoefficientMapAggregate.aggregate n V"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapAggregate.coordinateLinearMap",
+      "definitionValue": "{ toFun := ZetaNine.CoefficientMapAggregate.coordinatePolynomial,\n  map_add' := ZetaNine.CoefficientMapAggregate.coordinateLinearMap._proof_1,\n  map_smul' := ZetaNine.CoefficientMapAggregate.coordinateLinearMap._proof_2 }",
+      "kind": "native_exact_boundary",
+      "type": "(Fin 5 → ℚ) →ₗ[ℚ] ℚ[X]"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_five_actual_coordinates",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W 0 = ZetaNine.CoefficientMapFiniteSum.constantTerm n W ∧\n    ZetaNine.CoefficientMapAggregate.aggregate n W 1 = ZetaNine.CoefficientMapFiniteSum.rho n 3 W ∧\n      ZetaNine.CoefficientMapAggregate.aggregate n W 2 = ZetaNine.CoefficientMapFiniteSum.rho n 5 W ∧\n        ZetaNine.CoefficientMapAggregate.aggregate n W 3 = ZetaNine.CoefficientMapFiniteSum.rho n 7 W ∧\n          ZetaNine.CoefficientMapAggregate.aggregate n W 4 = ZetaNine.CoefficientMapFiniteSum.rho n 9 W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_actual_monomial_basis",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (i : Fin 5), ZetaNine.CoefficientMapAggregate.coordinatePolynomial (Pi.single i 1) = Polynomial.X ^ ↑i"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_basis_columns",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (i : Fin 5),\n  (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n) (Pi.single i 1) =\n    ZetaNine.CoefficientMapAggregate.aggregate n (Polynomial.X ^ ↑i)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_n_zero_X_four_aggregate_kernel",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0 ∧\n  Polynomial.X ^ 4 ≠ 0 ∧\n    ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n      ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4) ∧\n        ZetaNine.CoefficientMapReflection.rho 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_original_quartic_zero_all_orders",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            ∀ (s : ℕ),\n              1 ≤ s →\n                s ≤ 9 → ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "checked_original_quartic_zero_exact_sum",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ),\n  2 ≤ n →\n    Even n →\n      ∀ (W : ℚ[X]),\n        W.natDegree ≤ 4 →\n          ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n            HasSum (fun t => ↑(ZetaNine.CoefficientMap.weightedR n W ↑(t + 1))) 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_actual_B_negative_harmonic",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W 0 =\n    -∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W * ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_actual_five_odd_coordinates",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n W 1 =\n      ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 3 W ∧\n    ZetaNine.CoefficientMapAggregate.aggregate n W 2 =\n        ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 5 W ∧\n      ZetaNine.CoefficientMapAggregate.aggregate n W 3 =\n          ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 7 W ∧\n        ZetaNine.CoefficientMapAggregate.aggregate n W 4 =\n          ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 9 W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_general_rational_linearity",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (a b : ℚ) (W V : ℚ[X]),\n  ZetaNine.CoefficientMapAggregate.aggregate n (a • W + b • V) =\n    a • ZetaNine.CoefficientMapAggregate.aggregate n W + b • ZetaNine.CoefficientMapAggregate.aggregate n V"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_zero_all_n",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ), ZetaNine.CoefficientMapAggregate.aggregate n 0 = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_coordinate_zero",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial 0 = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_roundtrip_zero",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial (ZetaNine.CoefficientMapAggregate.polynomialCoordinates 0) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_roundtrip_nonmonic",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.coordinatePolynomial\n    (ZetaNine.CoefficientMapAggregate.polynomialCoordinates (Polynomial.C 3 * Polynomial.X ^ 4 + Polynomial.C 7)) =\n  Polynomial.C 3 * Polynomial.X ^ 4 + Polynomial.C 7"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_basis",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (i : Fin 5), ZetaNine.CoefficientMapAggregate.coordinatePolynomial (Pi.single i 1) = Polynomial.X ^ ↑i"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_quartic_restoration_kernel",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  W.natDegree ≤ 4 →\n    (ZetaNine.CoefficientMapAggregate.aggregate n W = 0 ↔\n      (ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap n)\n          (ZetaNine.CoefficientMapAggregate.polynomialCoordinates W) =\n        0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_hasSum_zero_strong_even",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          HasSum (fun k => ↑(ZetaNine.CoefficientMap.weightedR n W ↑(k + 1))) 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_all_rho_zero_strong_even",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapAggregate.aggregate n W = 0 →\n          ∀ (s : ℕ),\n            1 ≤ s → s ≤ 9 → ∑ j ∈ Finset.range (n + 1), ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_series",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapJet.weightedClearedSeries 0 0 W = ↑(W.comp (Polynomial.X ^ 2))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_harmonic_constant",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (W : ℚ[X]), ZetaNine.CoefficientMapAggregate.aggregate 0 W 0 = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_four_odd_rho",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (s : ℕ), 2 ≤ s → s ≤ 9 → ZetaNine.CoefficientMapFiniteSum.rho 0 s (Polynomial.X ^ 4) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_four_F_zero",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_four_rho1",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapFiniteSum.rho 0 1 (Polynomial.X ^ 4) = 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_four_proper_not_strong",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapInjectivity.ProperMultiplier 0 (Polynomial.X ^ 4) ∧\n  ¬ZetaNine.CoefficientMapReflection.StrongProperMultiplier 0 (Polynomial.X ^ 4)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_actual_F_not_injective",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "¬Function.Injective (ZetaNine.CoefficientMapAggregate.aggregate 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_quartic_F_nonzero_kernel",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "(ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap 0) (Pi.single 4 1) = 0 ∧ Pi.single 4 1 ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_three_output",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 3) = Pi.single 1 1"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_X_four_actual_sequence",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (k : ℕ), ZetaNine.CoefficientMapSummation.actualSeries 0 (Polynomial.X ^ 4) k = 1 / (↑k + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "agg_ind_n_zero_F_zero_does_not_give_HasSum",
+      "definitionValue": null,
+      "kind": "native_exact_boundary",
+      "type": "∀ (L : ℝ),\n  ZetaNine.CoefficientMapAggregate.aggregate 0 (Polynomial.X ^ 4) = 0 ∧\n    ¬HasSum (ZetaNine.CoefficientMapSummation.actualSeries 0 (Polynomial.X ^ 4)) L"
+    }
+  ],
+  "extra_helper_records": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapInjectivity.baseNumerator_eval",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.baseNumerator n) = ZetaNine.CoefficientMap.numerator n t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (t : ℚ),\n  Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) = ZetaNine.CoefficientMap.poleProduct n t"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_ne_zero",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (t : ℚ), (∀ k ≤ n, t + ↑k ≠ 0) → Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ≠ 0"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.polePolynomial_eval_factor",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n j : ℕ) (t : ℚ),\n  j ≤ n →\n    Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) =\n      (t + ↑j) * Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_weighted_rational_representation",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]) (t : ℚ),\n  ZetaNine.CoefficientMap.weightedR n W t =\n    Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.weightedNumerator n W) /\n      Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.partial_term_division",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n j s : ℕ) (W : ℚ[X]) (t : ℚ),\n  j ≤ n →\n    1 ≤ s →\n      s ≤ 9 →\n        (∀ k ≤ n, t + ↑k ≠ 0) →\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n                  Polynomial.eval t (ZetaNine.CoefficientMapPartialFractions.clearedPolePolynomial n j) ^ 9 *\n                (t + ↑j) ^ (9 - s) /\n              Polynomial.eval t (ZetaNine.CoefficientMapInjectivity.polePolynomial n) ^ 9 =\n            ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapPartialFractions.actual_global_partial_fractions",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ∀ (t : ℚ),\n      (∀ k ≤ n, t + ↑k ≠ 0) →\n        ZetaNine.CoefficientMap.weightedR n W t =\n          ∑ j ∈ Finset.range (n + 1),\n            ∑ s ∈ Finset.Icc 1 9, ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W / (t + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonicPower_succ",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s T : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + 1) = ZetaNine.HarmonicStability.harmonicPower s T + 1 / ↑(T + 1) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.shifted_harmonic_sum",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s T j : ℕ),\n  ∑ t ∈ Finset.Icc 1 T, 1 / (↑t + ↑j) ^ s =\n    ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_finite_harmonic_identity",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ∑ j ∈ Finset.range (n + 1),\n        ∑ s ∈ Finset.Icc 1 9,\n          ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W *\n            (ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s j)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n      ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n          ∑ s ∈ Finset.Icc 1 9,\n            ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n        ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_no_simple_pole",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n        ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n            ∑ s ∈ Finset.Icc 2 9,\n              ZetaNine.CoefficientMapFiniteSum.rho n s W * ZetaNine.HarmonicStability.harmonicPower s T +\n          ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.actual_grouped_finite_identity_odd",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ZetaNine.CoefficientMapFiniteSum.rho n 1 W = 0 →\n      ZetaNine.CoefficientMapFiniteSum.rho n 2 W = 0 →\n        ZetaNine.CoefficientMapFiniteSum.rho n 4 W = 0 →\n          ZetaNine.CoefficientMapFiniteSum.rho n 6 W = 0 →\n            ZetaNine.CoefficientMapFiniteSum.rho n 8 W = 0 →\n              ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n                ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n                    (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                          ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                        ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                      ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n                  ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapFiniteSum.harmonic_difference_eq_shifted",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s T j : ℕ),\n  ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T =\n    ∑ k ∈ Finset.Icc 1 j, 1 / (↑T + ↑k) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapReflection.quartic_is_strong_proper",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ), 1 ≤ n → ∀ (W : ℚ[X]), W.natDegree ≤ 4 → ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actual_finite_odd_identity",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        ZetaNine.CoefficientMapFiniteSum.finiteL n T W =\n          ZetaNine.CoefficientMapFiniteSum.constantTerm n W +\n              (ZetaNine.CoefficientMapFiniteSum.rho n 3 W * ZetaNine.HarmonicStability.harmonicPower 3 T +\n                    ZetaNine.CoefficientMapFiniteSum.rho n 5 W * ZetaNine.HarmonicStability.harmonicPower 5 T +\n                  ZetaNine.CoefficientMapFiniteSum.rho n 7 W * ZetaNine.HarmonicStability.harmonicPower 7 T +\n                ZetaNine.CoefficientMapFiniteSum.rho n 9 W * ZetaNine.HarmonicStability.harmonicPower 9 T) +\n            ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.sum_Icc_eq_sum_range_successor",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (T : ℕ) (f : ℕ → ℝ), ∑ t ∈ Finset.Icc 1 T, f t = ∑ t ∈ Finset.range T, f (t + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.harmonicPower_cast",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s T : ℕ), ↑(ZetaNine.HarmonicStability.harmonicPower s T) = ∑ t ∈ Finset.Icc 1 T, 1 / ↑t ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.harmonicPower_cast_eq_range",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s T : ℕ), 1 ≤ s → ↑(ZetaNine.HarmonicStability.harmonicPower s T) = ∑ t ∈ Finset.range (T + 1), 1 / ↑t ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.zetaReal_eq_tsum",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s : ℕ), 1 < s → ZetaNine.CoefficientMapSummation.zetaReal s = ∑' (t : ℕ), 1 / ↑t ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.harmonicPower_tendsto_zeta",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s : ℕ),\n  1 < s →\n    Filter.Tendsto (fun T => ↑(ZetaNine.HarmonicStability.harmonicPower s T)) Filter.atTop\n      (nhds (ZetaNine.CoefficientMapSummation.zetaReal s))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.shifted_reciprocal_tendsto_zero",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s k : ℕ), 1 ≤ s → Filter.Tendsto (fun T => 1 / (↑T + ↑k) ^ s) Filter.atTop (nhds 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.harmonic_fixed_tail_tendsto_zero",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (s j : ℕ),\n  1 ≤ s →\n    Filter.Tendsto\n      (fun T => ↑(ZetaNine.HarmonicStability.harmonicPower s (T + j) - ZetaNine.HarmonicStability.harmonicPower s T))\n      Filter.atTop (nhds 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actual_shiftedTail_tendsto_zero",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  Filter.Tendsto (fun T => ↑(ZetaNine.CoefficientMapFiniteSum.shiftedTail n T W)) Filter.atTop (nhds 0)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actual_finiteL_tendsto_exactL",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        Filter.Tendsto (fun T => ↑(ZetaNine.CoefficientMapFiniteSum.finiteL n T W)) Filter.atTop\n          (nhds (ZetaNine.CoefficientMapSummation.exactL n W))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.simple_pole_difference_identity",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (t : ℝ), 0 < t → ∀ (j : ℕ), 1 / (t + ↑j) - 1 / t = -↑j / (t * (t + ↑j))"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.simple_pole_difference_summable",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (j : ℕ), Summable fun t => 1 / (↑t + 1 + ↑j) - 1 / (↑t + 1)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.shifted_high_order_summable",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (j s : ℕ), 2 ≤ s → Summable fun t => 1 / (↑t + 1 + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actualSeries_eq_principal_parts",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapInjectivity.ProperMultiplier n W →\n    ∀ (t : ℕ),\n      ZetaNine.CoefficientMapSummation.actualSeries n W t =\n        ∑ j ∈ Finset.range (n + 1),\n          ∑ s ∈ Finset.Icc 1 9, ↑(ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W) / (↑t + 1 + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actualSeries_eq_cancelled_principal_parts",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n    ∀ (t : ℕ),\n      ZetaNine.CoefficientMapSummation.actualSeries n W t =\n        ∑ j ∈ Finset.range (n + 1),\n            ↑(ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j 1 W) * (1 / (↑t + 1 + ↑j) - 1 / (↑t + 1)) +\n          ∑ j ∈ Finset.range (n + 1),\n            ∑ s ∈ Finset.Icc 2 9, ↑(ZetaNine.CoefficientMapJet.weightedLocalCoefficient n j s W) / (↑t + 1 + ↑j) ^ s"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actualSeries_summable",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ) (W : ℚ[X]),\n  ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n    Summable (ZetaNine.CoefficientMapSummation.actualSeries n W)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actualSeries_partial_sums",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n T : ℕ) (W : ℚ[X]),\n  ∑ t ∈ Finset.range T, ZetaNine.CoefficientMapSummation.actualSeries n W t =\n    ↑(ZetaNine.CoefficientMapFiniteSum.finiteL n T W)"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "declaration": "ZetaNine.CoefficientMapSummation.actualSeries_hasSum_exactL",
+      "definitionValue": null,
+      "kind": "boundary_only_genuine_helper",
+      "type": "∀ (n : ℕ),\n  Even n →\n    ∀ (W : ℚ[X]),\n      ZetaNine.CoefficientMapReflection.StrongProperMultiplier n W →\n        HasSum (ZetaNine.CoefficientMapSummation.actualSeries n W) (ZetaNine.CoefficientMapSummation.exactL n W)"
+    }
+  ],
+  "all_standard_axioms": true,
+  "log_sha256": "66ff164886ce307ee57aeae27f76438bf9decb92718b22cb9738653350b5b059"
+}

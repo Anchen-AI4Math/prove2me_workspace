@@ -1,0 +1,64 @@
+{
+  "theorem_name": "OAI.PiExponent.FormalLogTruncation.shiftMap_truncatedFormalJet",
+  "theorem_title": "The logarithmic-tail shift sends the truncated jet to the formal jet",
+  "natural_language_statement": "Let m be a natural number, let c : Fin m → ℂ, let T : Fin m → ℕ, and let P be a polynomial in m variables over ℂ. Applying shiftMap with the coordinatewise formal-logarithm tails logTail(T(i)) and their zero constant coefficients to truncatedFormalJet(c, T, P) yields formalJet(c, P). The equality holds in multivariate formal power series and does not rely on analytic convergence.",
+  "tags": [
+    "formal-power-series",
+    "formal-logarithm",
+    "formal-jet",
+    "shift-map",
+    "truncated-logarithm",
+    "openai-pi-exponent-017"
+  ],
+  "explanation": "The truncated jet substitutes the finite truncations of the formal logarithm into the polynomial variables. The shiftMap adds the corresponding tails, with zero constant coefficient, to those coordinates. The proof reduces equality of the algebra homomorphisms to their values on the polynomial generators; the zero-coordinate generator is fixed, and each remaining generator is converted using the lift-series identity and the formal-logarithm definition. This is an identity of formal power series, not a convergence or numerical approximation result.",
+  "source_witness": {
+    "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+    "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L308-L329",
+    "source_command_witness": {
+      "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+      "source_graph_name": "OAI.PiExponent.FormalLogTruncation.shiftMap_truncatedFormalJet",
+      "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+      "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+      "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+      "port_command_range": {
+        "start": 14165,
+        "end": 15370
+      },
+      "original_command_range": {
+        "start": 13874,
+        "end": 15058
+      },
+      "port_command_sha256": "059d5b661462f7f1efcbe31206eec7cabaa9aaaa89c4003960cad5cd92650818",
+      "original_command_sha256": "731145f164af4ac29b8ffe53625e4e36b7542a06ec032a07d8b14b3cbb788e3a",
+      "port_and_original_command_bytes_equal": false,
+      "port_kernel_type_actual_source_snapshot_verified": true,
+      "original_command_boundaries_from_full_file_equal_line_correspondence": true
+    },
+    "inline_support_witnesses": [
+      {
+        "source_graph_name": "OAI.PiExponent.FormalLogTruncation.shiftMap_liftSeries",
+        "source_module": "OAI.NumberTheory.PiExponent.Analysis.FormalLogTruncation",
+        "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean#L84-L87",
+        "port_source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "port_source_sha256": "20e49216cfa361238d1e9e696f86e0c83aae7c0184cd53443cd8279884dd05c6",
+        "port_command_range": {
+          "start": 3424,
+          "end": 3734
+        },
+        "port_command_sha256": "da08f77f4a3e4d5bc4d68ca4095f767018d21fbb9a1454cfe381a98c968e91e1",
+        "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean",
+        "original_source_sha256": "7eb9e1776b00b6a60189001048a09eaa72315243438fa8613586dc41642ad55e",
+        "original_command_range": {
+          "start": 3352,
+          "end": 3659
+        },
+        "original_command_sha256": "b7c24a172cfd8bf2d3f580a4554258c0d5548bfbb20386f62884889a3f3df638",
+        "port_and_original_command_bytes_equal": false,
+        "purpose": "Referenced by the source proof of shiftMap_truncatedFormalJet to rewrite shiftMap applied to the lifted logarithm series."
+      }
+    ],
+    "facts": "missions/pi-irrationality-measure/verification/sketch-FormalLogTruncation-20261007-223910.log",
+    "facts_sha256": "59bf6b39630930bc0137ae4d3ea482679f75e9ba60a0ec2cf9bb91e896461be6"
+  }
+}

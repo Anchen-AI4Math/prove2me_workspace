@@ -1,0 +1,23 @@
+{
+  "theorem_id": "37ba0a3d-3bd9-4bce-85b8-4f85c9e9586f",
+  "theorem_name": "ZetaNine_CoefficientMapShiftDegree",
+  "theorem_title": "Actual rational polynomial shift difference operator",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For natural $n$, define actual rational polynomials $A_n=(X-(n+1))(X+n)^{10}$, $B_n=X^{10}(X+2n+1)$ and the actual linear shift difference $D_n(H)=A_nH-B_nH(X+1)$. These are three genuine polynomial definitions with no degree, kernel, rational-function or inverse premise.",
+  "created_at": "2026-10-03T21:52:16.793713+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "polynomials"
+  ],
+  "definition": "import Mathlib.Algebra.Polynomial.Taylor\nimport Mathlib.Algebra.Polynomial.Reverse\n\nset_option autoImplicit false\nnoncomputable section\nnamespace ZetaNine.CoefficientMapShiftDegree\n\nopen Polynomial\n\ndef shiftA (n : ℕ) : ℚ[X] := (X - C ((n : ℚ) + 1)) * (X + C (n : ℚ)) ^ 10\n\ndef shiftB (n : ℕ) : ℚ[X] := X ^ 10 * (X + C (2 * (n : ℚ) + 1))\n\ndef shiftDifference (n : ℕ) (H : ℚ[X]) : ℚ[X] :=\n  shiftA n * H - shiftB n * H.comp (X + C 1)\n\nend ZetaNine.CoefficientMapShiftDegree\n",
+  "source": "Zeta(9) actual polynomial shift operator: missions/zeta9/research/coefficient-map-shift-degree-2026-10-04.md. Frozen source SHA256 96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953. The relationship to the rational telescoper is proved separately; it is not an input to these polynomial endpoints.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

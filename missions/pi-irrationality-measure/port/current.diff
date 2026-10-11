@@ -1,0 +1,3517 @@
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\AffineFunctionFieldCompatibility.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\AffineFunctionFieldCompatibility.lean
+@@ -73,6 +73,8 @@
+         StructureSheaf.toStalk A (genericPoint (Spec (.of A))) b := by
+       exact congrArg (fun h => h b)
+         (StructureSheaf.toStalk_stalkSpecializes (R := A) (genericPoint_specializes q))
++    let : Algebra A ((structurePresheafInCommRingCat A).stalk q) :=
++      StructureSheaf.stalkAlgebra A q
+     have ht : (Spec.stalkIso (.of A) q).hom (StructureSheaf.toStalk A q b) =
+         algebraMap A (Localization.AtPrime q.asIdeal) b :=
+       (StructureSheaf.stalkIso A q).symm.commutes b
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\AmpleThresholdPolynomial.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\AmpleThresholdPolynomial.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.Analysis.Calculus.Deriv.Polynomial
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\BlowupSchemeExt.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\BlowupSchemeExt.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\CoherentAffineFinite.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\CoherentAffineFinite.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+@@ -139,8 +139,8 @@
+   let A (r : t) := Γ(Spec R, PrimeSpectrum.basicOpen r.val)
+   let P (r : t) := Γ(M, PrimeSpectrum.basicOpen r.val)
+   let (r : t) : Algebra R (A r) := StructureSheaf.openAlgebra (R := R) (op (PrimeSpectrum.basicOpen r.val))
+-  let (r : t) : IsLocalization.Away r.val (A r) := inferInstanceAs
+-    (IsLocalization.Away r.val ((Spec.structureSheaf R).obj.obj (op (PrimeSpectrum.basicOpen r.val))))
++  let (r : t) : IsLocalization.Away r.val (A r) :=
++    StructureSheaf.IsLocalization.to_basicOpen (R := R) r.val
+   let (r : t) : Module (A r) (P r) :=
+     (M.val.obj (op (PrimeSpectrum.basicOpen r.val))).isModule
+   let (r : t) : Module R (P r) :=
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\CurveBlowupImageBase.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\CurveBlowupImageBase.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Ampleness.NumericalAmpleness
+ import OAI.NumberTheory.PiExponent.Geometry.CurveFunctionFieldCompatibility
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\ExceptionalCurveDegree.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\ExceptionalCurveDegree.lean
+@@ -450,7 +450,7 @@
+       z hz hgeneric p k hcenter
+     change (idealDivisor f hf I π J ι hJ g hg p : ℚ) = _
+     rw [idealDivisor_apply]
+-    simpa only [CurveContactFamily.contact, dite_eq_left hp', I, k] using h
++    simpa only [CurveContactFamily.contact, dif_pos hp', I, k] using h
+   have hsum : D.sum (fun _ n => (n : ℚ)) =
+       R * ∑ p ∈ P, CurveContactFamily.contact hres hfinite z c hz v p := by
+     rw [D.sum_of_support_subset hsupport (fun _ n => (n : ℚ)) (by simp)]
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\NefAmple.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\NefAmple.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\ProperAmpleFiniteDimension.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\ProperAmpleFiniteDimension.lean
+@@ -1,5 +1,6 @@
+ import OAI.NumberTheory.PiExponent.Ampleness.NoetherianAmpleProjectiveSections
+ import OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceBasics
++import Mathlib.RingTheory.KrullDimension.Polynomial
+ 
+ namespace OAI
+ 
+@@ -38,7 +39,7 @@
+   let := MvPolynomial.gradedAlgebra (R := K) (σ := σ)
+   change topologicalKrullDim (ProjectiveSpectrum (PolyGrade K σ)) ≤ _
+   have h := projectiveSpectrum_dimension_le (PolyGrade K σ)
+-  simpa only [MvPolynomial.ringKrullDim_of_isNoetherianRing_of_finite,
++  simpa only [MvPolynomial.ringKrullDim_of_isNoetherianRing,
+     ringKrullDim_eq_zero_of_field, zero_add] using h
+ 
+ theorem closedImmersion_dimension_le {X Y : Scheme} (i : X ⟶ Y)
+--- source/lean/OAI\NumberTheory\PiExponent\Ampleness\ReesPushdown.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Ampleness\ReesPushdown.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+@@ -59,7 +59,7 @@
+ 
+ lemma piece_coeff_ne {n m : ℕ} (hnm : n ≠ m) (p : piece I n) :
+     ((p : reesAlgebra I) : R[X]).coeff m = 0 := by
+-  rw [(mem_piece I n p.val).mp p.property, coeff_monomial, ite_eq_right hnm]
++  rw [(mem_piece I n p.val).mp p.property, coeff_monomial, if_neg hnm]
+ 
+ lemma components_of_piece (n : ℕ) (p : piece I n) :
+     components I p.val = DirectSum.of (fun n => piece I n) n p := by
+@@ -107,7 +107,7 @@
+   mul_mem {i j} {a b} ha hb := by
+     change (a : R[X]) * b = monomial (i+j) (((a : R[X]) * b).coeff (i+j))
+     rw [(mem_piece I i a).mp ha, (mem_piece I j b).mp hb,
+-      monomial_mul_monomial, coeff_monomial, ite_eq_left rfl]
++      monomial_mul_monomial, coeff_monomial, if_pos rfl]
+ 
+ instance grading : GradedAlgebra (piece I) where
+   toGradedMonoid := gradedMonoid I
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\AnalyticAggregate.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\AnalyticAggregate.lean
+@@ -38,7 +38,7 @@
+   rw [Fintype.card_pi]
+   calc
+     _ ≤ ∏ _r : Row d H, translationTermCount d.m d.v0 H := by
+-      apply Finset.prod_le_prod
++      apply Finset.prod_le_prod'
+       intro r _
+       exact MatrixTranslation.row_term_count (fixedWeights d) H d.v0
+         (fun i => by change 1 ≤ MatrixArithmetic.logWeights (finiteDenominators d) i
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\AnalyticCollision.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\AnalyticCollision.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
++import Mathlib.Analysis.Real.Pi.Bounds
+ 
+ namespace OAI
+ 
+@@ -80,7 +81,7 @@
+       apply Finset.sum_le_sum
+       intro σ _
+       calc
+-        _ ≤ ∏ _index : ι, |D| := Finset.prod_le_prod₀
++        _ ≤ ∏ _index : ι, |D| := Finset.prod_le_prod
+           (fun index _ => norm_nonneg _) (fun index _ => (hA (σ index) index).trans (le_abs_self D))
+         _ = D ^ Fintype.card ι := by simp [abs_of_nonneg hD]
+     _ = _ := by simp [Fintype.card_perm]
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionCombinatorics.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionCombinatorics.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionLimit.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionLimit.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ import OAI.NumberTheory.PiExponent.Analysis.FiniteDeterminantCollision
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionOccupancy.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\CollisionOccupancy.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\FiniteDeterminantCollision.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\FiniteDeterminantCollision.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ import OAI.NumberTheory.PiExponent.Analysis.CollisionGeometricSum
+ 
+ namespace OAI
+@@ -40,7 +40,7 @@
+       apply Finset.sum_le_sum
+       intro σ _
+       calc
+-        _ ≤ ∏ _index : ι, |D| := Finset.prod_le_prod₀
++        _ ≤ ∏ _index : ι, |D| := Finset.prod_le_prod
+           (fun index _ => norm_nonneg _)
+           (fun index _ => (hA (σ index) index).trans (le_abs_self D))
+         _ = D ^ Fintype.card ι := by simp [abs_of_nonneg hD]
+@@ -85,7 +85,7 @@
+       ‖(∏ i, B i (f i)) * Matrix.det (fun i j => C (group i) (f i) j)‖ ≤
+         Q * (s * s) ^ (∑ i, (f i : ℕ)) := by
+     have hbp : (∏ i, ‖B i (f i)‖) ≤ ∏ i, L i * (s * s) ^ (f i : ℕ) :=
+-      Finset.prod_le_prod₀ (fun i _ => norm_nonneg _) (fun i _ => hB i (f i))
++      Finset.prod_le_prod (fun i _ => norm_nonneg _) (fun i _ => hB i (f i))
+     have hcp := norm_det_le_factorial_mul_pow
+       (fun i j => C (group i) (f i) j) hD (fun i j => hC _ _ _)
+     rw [norm_mul, norm_prod]
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\FiniteSpacing.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\FiniteSpacing.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ 
+ namespace OAI
+ 
+@@ -41,8 +41,9 @@
+       field_simp
+       nlinarith
+     push_cast
+-    convert add_le_add ih hterm using 1
+-    ring
++    have hden : (N : ℝ) + 1 + 1 = (N : ℝ) + 2 := by ring
++    rw [hden]
++    linarith
+ 
+ theorem sum_inv_succ_sq_le_two (N : ℕ) :
+     (∑ k ∈ Finset.range N, 1 / ((k : ℝ) + 1) ^ 2) ≤ 2 := by
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\FormalLogTruncation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\FormalLogTruncation.lean
+@@ -20,7 +20,7 @@
+   rw [FormalLogJet.coeff_liftSeries]
+   change (if d.tail = 0 then PowerSeries.coeff (d 0) f else 0) = coeff d (rename e f)
+   by_cases ht : d.tail = 0
+-  · rw [ite_eq_left ht]
++  · rw [if_pos ht]
+     have hd : d = Finsupp.single 0 (d 0) := by
+       calc
+         d = Finsupp.cons (d 0) d.tail := (Finsupp.cons_tail d).symm
+@@ -30,7 +30,7 @@
+       rfl
+     conv_rhs => rw [hd, ← he, coeff_embDomain_rename]
+     rfl
+-  · rw [ite_eq_right ht]
++  · rw [if_neg ht]
+     symm
+     apply coeff_rename_eq_zero
+     rintro ⟨x, hx⟩
+@@ -210,7 +210,7 @@
+   intro p
+   refine ⟨fun d => if hd : Finsupp.weight v d < H then p ⟨d,hd⟩ else 0, ?_⟩
+   funext d
+-  exact dite_eq_left d.property
++  exact dif_pos d.property
+ 
+ theorem packet_surjective_comp_equiv {σ α : Type*} (v : σ → ℚ)
+     (hv : ∀ i, 0 ≤ v i) (H : ℚ)
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\HilbertSeries.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\HilbertSeries.lean
+@@ -29,12 +29,12 @@
+   rw [sub_mul, one_mul, map_sub, PowerSeries.coeff_X_pow_mul']
+   simp only [coeff_sectionHilbertSeries]
+   by_cases hdn : d ≤ n
+-  · rw [ite_eq_left hdn]
++  · rw [if_pos hdn]
+     have h := regular_hilbert_step I hI f hf hreg (n-d)
+     rw [Nat.sub_add_cancel hdn] at h
+     apply eq_sub_of_add_eq
+     exact_mod_cast h
+-  · rw [ite_eq_right hdn, sub_zero]
++  · rw [if_neg hdn, sub_zero]
+     exact congrArg (fun m : ℕ => (m : ℤ))
+       (hilbert_step_of_degree_lt I hI f hf (Nat.lt_of_not_ge hdn))
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\LiteralAnalyticSummand.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\LiteralAnalyticSummand.lean
+@@ -166,7 +166,7 @@
+       (-nu * ((∑ r, indexWeight d (f r).1) - (actualRowCount d H : ℝ) * H * actualMean d H) +
+         (actualRowCount d H : ℝ) * H * d.translationError) := by
+   rw [norm_prod]
+-  apply (Finset.prod_le_prod₀ (fun r _ => norm_nonneg _) (fun r _ => norm_choiceScalar_le d hnu r (f r))).trans
++  apply (Finset.prod_le_prod (fun r _ => norm_nonneg _) (fun r _ => norm_choiceScalar_le d hnu r (f r))).trans
+   rw [← Real.exp_sum]
+   apply le_of_eq
+   congr 1
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\LogTailAnalytic.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\LogTailAnalytic.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.AnalysisImports
+ import OAI.NumberTheory.PiExponent.Analysis.AnalyticCollision
+ import OAI.NumberTheory.PiExponent.Approximation.RowTranslation
+ 
+@@ -62,7 +62,7 @@
+     (hT : ∀ i ∈ s, 1 ≤ T i) {z : ℂ} (hz : ‖z‖ ≤ 1 / 2) :
+     ‖∏ i ∈ s, logTail (T i) z ^ d i‖ ≤ 1 := by
+   rw [norm_prod]
+-  apply Finset.prod_le_one₀
++  apply Finset.prod_le_one
+   · intro i hi
+     positivity
+   · intro i hi
+@@ -129,10 +129,9 @@
+ theorem hasSum_formal_logTail (T : ℕ) {z : ℂ} (hz : ‖z‖ < 1) :
+     HasSum (fun n => PowerSeries.coeff n
+       (RowTranslation.tail T (PowerSeries.log ℂ)) * z ^ n) (logTail T z) := by
+-  convert (hasSum_trunc_log T z).sub (hasSum_formal_log hz) using 1
+-  · funext n
+-    simp only [RowTranslation.tail, map_sub, sub_mul]
+-  · rfl
++  convert (hasSum_trunc_log T z).sub (hasSum_formal_log hz) using 1 <;> try rfl
++  funext n
++  simp only [RowTranslation.tail, map_sub, sub_mul]
+ 
+ theorem hasFPowerSeriesAt_logTail (T : ℕ) :
+     HasFPowerSeriesAt (logTail T)
+@@ -154,7 +153,7 @@
+   have heq := tsum_mul_tsum_eq_tsum_sum_antidiagonal_of_summable_norm hfn hgn
+   rw [hf.tsum_eq, hg.tsum_eq] at heq
+   rw [← heq] at hs
+-  convert hs using 1
++  convert hs using 1 <;> try rfl
+   funext n
+   rw [PowerSeries.coeff_mul, Finset.sum_mul]
+   apply Finset.sum_congr rfl
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\PeriodAnalytic.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\PeriodAnalytic.lean
+@@ -130,7 +130,7 @@
+   rw [Complex.norm_natCast]
+   have h : (∏ i, (a i).choose (A i) : ℕ) ≤ 2 ^ (∑ i, a i) := by
+     calc
+-      _ ≤ ∏ i, 2 ^ a i := Finset.prod_le_prod (fun i _ => Nat.choose_le_two_pow _ _)
++      _ ≤ ∏ i, 2 ^ a i := Finset.prod_le_prod' (fun i _ => Nat.choose_le_two_pow _ _)
+       _ = _ := Finset.prod_pow_eq_pow_sum _ _ _
+   exact_mod_cast h
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Analysis\RegularSequenceSeries.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Analysis\RegularSequenceSeries.lean
+@@ -38,7 +38,7 @@
+       (PiExponentSiegel.W20.prefixIdeal_homogeneous rs degrees hhom n)
+       (rs[n]'hlt) hh hr]
+     rw [ih hn', Finset.prod_range_succ]
+-    simp only [degreeAt, dite_eq_left hlt]
++    simp only [degreeAt, dif_pos hlt]
+     ac_rfl
+ 
+ theorem degree_factors_mul_invOneSubPow (D : ℕ → ℕ) (m : ℕ) :
+--- source/lean/OAI\NumberTheory\PiExponent\AnalysisImports.lean
++++ port/lean/OAI\NumberTheory\PiExponent\AnalysisImports.lean
+@@ -0,0 +1,9 @@
++-- Required analytic interfaces, without importing unrelated Mathlib fields.
++import OAI.NumberTheory.PiExponent.CoreImports
++import Mathlib.Analysis.Complex.CauchyIntegral
++import Mathlib.Analysis.Complex.TaylorSeries
++import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
++import Mathlib.Analysis.SpecialFunctions.Complex.LogBounds
++import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
++import Mathlib.Topology.Instances.Matrix
++import Mathlib.RingTheory.PowerSeries.Log
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\AddEquivSignedSum.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\AddEquivSignedSum.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\AdditiveKernelTransport.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\AdditiveKernelTransport.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\AdmissibleDeterminantSequences.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\AdmissibleDeterminantSequences.lean
+@@ -0,0 +1,32 @@
++import OAI.NumberTheory.PiExponent.Approximation.DeterminantSequences
++import OAI.NumberTheory.PiExponent.Approximation.AdmissibleMatrixGeometry
++import OAI.NumberTheory.PiExponent.Analysis.AnalyticAggregate
++
++namespace OAI.PiExponent
++
++open Filter Topology DeterminantContradiction
++
++/-- The exact scalar sequence obligation currently open in the bound-two campaign.
++Its witnesses come from interpolation minors, rather than from the eventual-bound
++theorem, so the proof does not depend on the platform node which consumes it. -/
++theorem pi_approximation_determinant_sequences
++    (nu : ℝ) (hnu : 2 < nu)
++    (hbad : ∀ Q : ℕ, ∃ (p : ℤ) (q : ℕ),
++      Q ≤ q ∧ |Real.pi - (p : ℝ) / (q : ℝ)| ≤ (q : ℝ) ^ (-nu)) :
++    ∃ theta x ear ean collisionLimit : ℝ,
++      ∃ b d err collision : ℕ → ℝ,
++        ear + ean < nu * (x - theta) - (1 - theta) ∧
++        1 + ear + ean < collisionLimit ∧
++        Tendsto err atTop (𝓝 0) ∧
++        Tendsto collision atTop (𝓝 collisionLimit) ∧
++        (∀ᶠ n in atTop, 0 ≤ b n) ∧
++        (∀ᶠ n in atTop, b n ≤ theta) ∧
++        (∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n) ∧
++        (∀ᶠ n in atTop,
++          d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) := by
++  obtain ⟨data⟩ := exists_admissible_parameters nu Arithmetic.lcmConstant collisionConstant
++    hnu Arithmetic.lcmConstant_pos collisionConstant_pos hbad
++  exact determinant_sequences_of_fixed_data AdmissibleMatrixInterpolation.globalInterpolation
++    LiteralAnalytic.analyticAggregate nu hnu data
++
++end OAI.PiExponent
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\AdmissibleParameters.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\AdmissibleParameters.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ import OAI.NumberTheory.PiExponent.Approximation.Parameters
+ import OAI.NumberTheory.PiExponent.Approximation.Sigma
+ import OAI.NumberTheory.PiExponent.Approximation.SuccessiveApproximations
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\ApproximationCenters.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\ApproximationCenters.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\ApproximationSelection.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\ApproximationSelection.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
++import Mathlib.Analysis.Real.Pi.Bounds
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\Arithmetic.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\Arithmetic.lean
+@@ -160,7 +160,7 @@
+   · simp [hk0]
+   obtain ⟨m, hm⟩ := dvd_lcmUpto_of_pos_le (Nat.pos_of_ne_zero hk0) hk
+   refine ⟨((-1 : GaussianInt) ^ (k + 1)) * (m : GaussianInt), ?_⟩
+-  rw [PowerSeries.coeff_log, ite_eq_right hk0, hm]
++  rw [PowerSeries.coeff_log, if_neg hk0, hm]
+   have hkC : (k : ℂ) ≠ 0 := by exact_mod_cast hk0
+   simp only [map_mul, map_pow, map_neg, map_one, map_natCast, map_div₀, Nat.cast_mul]
+   field_simp
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\ClosedImmersionSerreTransfer.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\ClosedImmersionSerreTransfer.lean
+@@ -1,4 +1,5 @@
+ import OAI.NumberTheory.PiExponent.Approximation.ClosedPushforwardCoherent
++import Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\CocycleTensor.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\CocycleTensor.lean
+@@ -40,7 +40,7 @@
+       rw [mul_mul_mul_comm, Units.mul_inv, one_mul]⟩
+ 
+ def inverseProductMap (c : Cocycle U) :
+-    PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf)
++    PresheafOfModules.Monoidal.tensorObj (R := X.presheaf)
+       (presheaf c) (presheaf c.inverse) ⟶ presheaf (Cocycle.one (U := U)) where
+   app V := ModuleCat.MonoidalCategory.tensorLift (inverseProduct c V.unop)
+     (by intros; apply Subtype.ext; funext p; exact add_mul _ _ _)
+@@ -126,18 +126,18 @@
+     (modulePresheafRestrict (U i).ι).map (inverseProductMap c) ≫
+       (chartPresheafFrame (Cocycle.one (U := U)) i).hom =
+     (modulePresheafTensorRestrict (U i) (presheaf c) (presheaf c.inverse)).hom ≫
+-      PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := (U i).toScheme.presheaf)
++      PresheafOfModules.Monoidal.tensorHom (R := (U i).toScheme.presheaf)
+         (chartPresheafFrame c i).hom (chartPresheafFrame c.inverse i).hom ≫
+       (by
+         let : MonoidalCategory (PresheafOfModules (U i).toScheme.ringCatSheaf.obj) :=
+-          PresheafOfModulesOfCommRing.monoidalCategory (R := (U i).toScheme.presheaf)
++          PresheafOfModules.monoidalCategory (R := (U i).toScheme.presheaf)
+         exact (λ_ (structureSheaf (U i).toScheme).val).hom) := by
+   let : MonoidalCategory (PresheafOfModules (U i).toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := (U i).toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := (U i).toScheme.presheaf)
+   let l := (modulePresheafRestrict (U i).ι).map (inverseProductMap c) ≫
+     (chartPresheafFrame (Cocycle.one (U := U)) i).hom
+   let r := (modulePresheafTensorRestrict (U i) (presheaf c) (presheaf c.inverse)).hom ≫
+-    PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := (U i).toScheme.presheaf)
++    PresheafOfModules.Monoidal.tensorHom (R := (U i).toScheme.presheaf)
+       (chartPresheafFrame c i).hom (chartPresheafFrame c.inverse i).hom ≫
+     (λ_ (structureSheaf (U i).toScheme).val).hom
+   change l = r
+@@ -145,7 +145,9 @@
+   apply ModuleCat.hom_ext
+   apply LinearMap.ext
+   intro z
+-  induction z using TensorProduct.inductionOn with
++  induction z using TensorProduct.induction_on with
++  | zero =>
++      exact ((l.app V).hom.map_zero).trans ((r.app V).hom.map_zero).symm
+   | tmul s t => rfl
+   | add a b ha hb =>
+       exact ((l.app V).hom.map_add a b).trans
+@@ -154,7 +156,7 @@
+ lemma inverseProductMap_restrict_isIso (c : Cocycle U) (i : ι) :
+     IsIso ((modulePresheafRestrict (U i).ι).map (inverseProductMap c)) := by
+   let : MonoidalCategory (PresheafOfModules (U i).toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := (U i).toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := (U i).toScheme.presheaf)
+   let e := modulePresheafTensorRestrict (U i) (presheaf c) (presheaf c.inverse) ≪≫
+     tensorIso (chartPresheafFrame c i) (chartPresheafFrame c.inverse i) ≪≫
+       λ_ (structureSheaf (U i).toScheme).val
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\CocycleTensorIso.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\CocycleTensorIso.lean
+@@ -13,11 +13,11 @@
+     [IsIso ((modulePresheafRestrict W.ι).map f)]
+     [IsIso ((modulePresheafRestrict W.ι).map g)] :
+     IsIso ((modulePresheafRestrict W.ι).map
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f g)) := by
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f g)) := by
+   let R := modulePresheafRestrict W.ι
+   let : MonoidalCategory (PresheafOfModules W.toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := W.toScheme.presheaf)
+-  have hh : IsIso (R.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f g) ≫
++    PresheafOfModules.monoidalCategory (R := W.toScheme.presheaf)
++  have hh : IsIso (R.map (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f g) ≫
+       (modulePresheafTensorRestrict W P' Q').hom) := by
+     rw [modulePresheafTensorRestrict_natural]
+     change IsIso (_ ≫ (R.map f ⊗ₘ R.map g))
+@@ -30,9 +30,9 @@
+ 
+ def cocycleTensorComparison (c d : Cocycle U) (hcover : ⊤ ≤ ⨆ i, U i) :
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf)
++      (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf)
+         (presheaf c) (presheaf d)) ≅ moduleTensor X (sheaf c) (sheaf d) := by
+-  let f := PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++  let f := PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+     ((adj X).unit.app (presheaf c)) ((adj X).unit.app (presheaf d))
+   have ht : IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map f) := by
+     apply sheafification_isIso_of_chart f hcover
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\CoherentTwistPresentation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\CoherentTwistPresentation.lean
+@@ -167,8 +167,8 @@
+     (C := PresheafOfModules (X.presheaf ⋙ forget₂ CommRingCat RingCat))
+     (D := PresheafOfModules
+       ((U.ι.opensFunctor.op ⋙ X.presheaf) ⋙ forget₂ CommRingCat RingCat))
+-    (mC := PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf))
+-    (mD := PresheafOfModulesOfCommRing.monoidalCategory
++    (mC := PresheafOfModules.monoidalCategory (R := X.presheaf))
++    (mD := PresheafOfModules.monoidalCategory
+       (R := U.ι.opensFunctor.op ⋙ X.presheaf))
+     (modulePresheafRestrict U.ι)
+     (PresheafOfModules.pushforward₀OfCommRingCat U.ι.opensFunctor X.presheaf)
+@@ -177,8 +177,8 @@
+     (C := PresheafOfModules (X.presheaf ⋙ forget₂ CommRingCat RingCat))
+     (D := PresheafOfModules
+       ((U.ι.opensFunctor.op ⋙ X.presheaf) ⋙ forget₂ CommRingCat RingCat))
+-    (mC := PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf))
+-    (mD := PresheafOfModulesOfCommRing.monoidalCategory
++    (mC := PresheafOfModules.monoidalCategory (R := X.presheaf))
++    (mD := PresheafOfModules.monoidalCategory
+       (R := U.ι.opensFunctor.op ⋙ X.presheaf))
+     (modulePresheafRestrict U.ι)
+     (PresheafOfModules.pushforward₀OfCommRingCat U.ι.opensFunctor X.presheaf)
+@@ -188,10 +188,10 @@
+     {M N P Q : PresheafOfModules X.ringCatSheaf.obj}
+     (f : M ⟶ N) (g : P ⟶ Q) :
+     (modulePresheafRestrict U.ι).map
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f g) ≫
++        (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f g) ≫
+       (modulePresheafTensorRestrict U N Q).hom =
+     (modulePresheafTensorRestrict U M P).hom ≫
+-      PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++      PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+         ((modulePresheafRestrict U.ι).map f) ((modulePresheafRestrict U.ι).map g) := by
+   dsimp only [modulePresheafTensorRestrict, Iso.trans_hom, Iso.symm_hom,
+     Functor.Monoidal.μIso_inv, tensorIso_hom]
+@@ -212,8 +212,8 @@
+   let S : PresheafOfModules U.toScheme.ringCatSheaf.obj ⥤ U.toScheme.Modules :=
+     PresheafOfModules.sheafification (𝟙 U.toScheme.ringCatSheaf.obj)
+   let e : K ⋙ R ≅ Rpre ⋙ S := moduleSheafificationRestrict U.ι
+-  let h := PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f.val g.val
+-  let k := PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++  let h := PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f.val g.val
++  let k := PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+     (Rpre.map f.val) (Rpre.map g.val)
+   let a := (modulePresheafTensorRestrict U M.val P.val).hom
+   let b := (modulePresheafTensorRestrict U N.val Q.val).hom
+@@ -248,7 +248,7 @@
+     moduleTensorMap f (𝟙 (structureSheaf X)) ≫ (moduleTensorRightUnit N).hom =
+       (moduleTensorRightUnit M).hom ≫ f := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let S : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   let adj := PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf)
+@@ -437,9 +437,9 @@
+ 
+ def moduleTensorComm (M N : X.Modules) : moduleTensor X M N ≅ moduleTensor X N M := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let : SymmetricCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.symmetricCategory (R := X.presheaf)
++    PresheafOfModules.symmetricCategory (R := X.presheaf)
+   exact (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso (β_ M.val N.val)
+ 
+ def moduleTwistUnitIso (L : LineBundle X) : ∀ n : ℕ,
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\DeterminantContradiction.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\DeterminantContradiction.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ import OAI.NumberTheory.PiExponent.Approximation.AdmissibleParameters
+ import OAI.NumberTheory.PiExponent.Approximation.Comparison
+ import OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\DeterminantSequences.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\DeterminantSequences.lean
+@@ -0,0 +1,56 @@
++import OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction
++
++namespace OAI.PiExponent
++
++noncomputable section
++open Filter Topology DeterminantContradiction
++
++/-- Sample cofinal interpolation heights and their nonzero minors to obtain the
++scalar sequence interface used by the campaign's current open leaf. -/
++theorem determinant_sequences_of_fixed_data
++    (hgeometry : GlobalInterpolationStatement) (hanalytic : AnalyticAggregateStatement)
++    (nu : ℝ) (hnu : 2 < nu) (data : FixedData nu) :
++    ∃ theta x ear ean collisionLimit : ℝ,
++      ∃ b d err collision : ℕ → ℝ,
++        ear + ean < nu * (x - theta) - (1 - theta) ∧
++        1 + ear + ean < collisionLimit ∧
++        Tendsto err atTop (𝓝 0) ∧
++        Tendsto collision atTop (𝓝 collisionLimit) ∧
++        (∀ᶠ n in atTop, 0 ≤ b n) ∧
++        (∀ᶠ n in atTop, b n ≤ theta) ∧
++        (∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n) ∧
++        (∀ᶠ n in atTop,
++          d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) := by
++  classical
++  obtain ⟨error, herror, hupper⟩ := hanalytic nu hnu data
++  choose H hH hsurj using fun n : ℕ => hgeometry nu hnu data ((n : ℝ) + 1)
++  have hgrowth : Tendsto H atTop atTop := by
++    apply tendsto_atTop.mpr
++    intro bound
++    refine eventually_atTop.mpr ⟨Nat.ceil bound, fun n hn => ?_⟩
++    have hcast : bound ≤ (n : ℝ) := (Nat.le_ceil bound).trans (by exact_mod_cast hn)
++    linarith [hH n]
++  have hpositive (n : ℕ) : 0 < H n := by
++    have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
++    linarith [hH n]
++  choose selection hinjective hdet using fun n : ℕ =>
++    InterpolationMatrix.exists_full_row_minor_of_surjective (actualMatrix data (H n))
++      (hsurj n)
++  have hminor (n : ℕ) : (actualMinor data (H n) (selection n)).det ≠ 0 := hdet n
++  refine ⟨(data.base.theta : ℝ), (data.base.A : ℝ) * (1 - data.base.eta),
++    data.arithmeticError, data.analyticError, DeterminantContradiction.collisionLimit data,
++    (fun n => actualMean data (H n)),
++    (fun n => Real.log ‖(actualMinor data (H n) (selection n)).det‖ /
++      ((actualRowCount data (H n) : ℝ) * H n)),
++    (fun n => error (H n)), (fun n => collisionRate data (H n)),
++    data.error_sum_lt_gap, data.collision_exceeds_error_sum,
++    herror.comp hgrowth, (tendsto_collisionRate data).comp hgrowth, ?_, ?_, ?_, ?_⟩
++  · exact Eventually.of_forall fun n => (actualMean_bounds data (H n) (hpositive n)).1
++  · exact Eventually.of_forall fun n => (actualMean_bounds data (H n) (hpositive n)).2
++  · exact Eventually.of_forall fun n =>
++      actual_minor_arithmetic_lower_bound data (H n) (hpositive n) (selection n) (hminor n)
++  · filter_upwards [hgrowth.eventually hupper] with n hn
++    exact hn (selection n) (hminor n)
++
++end
++end OAI.PiExponent
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\Exponent.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\Exponent.lean
+@@ -1,4 +1,6 @@
+ import OAI.NumberTheory.PiExponent.Statement
++import Mathlib.NumberTheory.DiophantineApproximation.Basic
++import Mathlib.Analysis.Real.Pi.Irrational
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\FormalMatrixBridge.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\FormalMatrixBridge.lean
+@@ -44,10 +44,10 @@
+     exact Finsupp.cons_eq_single_succ_iff i
+   simp only [hd]
+   by_cases ht : Finsupp.single i 1 = d.tail
+-  · rw [ite_eq_left ht]
++  · rw [if_pos ht]
+     have ht' : d.tail = Finsupp.single i 1 := ht.symm
+     simp only [ht', true_and, Polynomial.coeff_one]
+-  · rw [ite_eq_right ht, Polynomial.coeff_zero]
++  · rw [if_neg ht, Polynomial.coeff_zero]
+     have ht' : ¬ d.tail = Finsupp.single i 1 := Ne.symm ht
+     simp only [ht', false_and, ite_false]
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\FrameTensorPowers.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\FrameTensorPowers.lean
+@@ -19,7 +19,7 @@
+     moduleTensorMap f g ≫ (moduleTensorUnit (structureSheaf X)).hom =
+       (moduleTensorUnit (structureSheaf X)).hom ≫ (f ≫ g) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   let G : X.Modules ⥤ PresheafOfModules X.ringCatSheaf.obj :=
+@@ -61,7 +61,7 @@
+     moduleTensorMap (𝟙 (structureSheaf X)) g ≫ (moduleTensorUnit N).hom =
+       (moduleTensorUnit M).hom ≫ g := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   let G : X.Modules ⥤ PresheafOfModules X.ringCatSheaf.obj :=
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\GeneratorsSectionCover.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\GeneratorsSectionCover.lean
+@@ -26,7 +26,7 @@
+ 
+ @[simp] theorem free_inclusion_projection {ι : Type} [DecidableEq ι] (i j : ι) :
+     schemeInclusion j ≫ freeProjection (X := X) i = if j = i then 𝟙 _ else 0 := by
+-  exact Sigma.ι_comp_desc (C := X.Modules) (f := fun _ : ι => O X) _ _
++  exact Sigma.ι_desc (C := X.Modules) (f := fun _ : ι => O X) _ _
+ 
+ theorem free_sum_projection_inclusion {ι : Type} [Fintype ι] [DecidableEq ι] :
+     (∑ i : ι, freeProjection (X := X) i ≫ schemeInclusion i) =
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\GlobalSectionClearing.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\GlobalSectionClearing.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\InterpolationMatrix.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\InterpolationMatrix.lean
+@@ -1,4 +1,5 @@
+ import OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting
++import Mathlib.RingTheory.PowerSeries.Log
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\LinePowerLaws.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\LinePowerLaws.lean
+@@ -57,7 +57,7 @@
+     {P Q : PresheafOfModules X.ringCatSheaf.obj} (f : P ⟶ Q) (L : LineBundle X)
+     [IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map f)] :
+     IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f (𝟙 L.sheaf.val))) := by
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f (𝟙 L.sheaf.val))) := by
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   apply PiExponent.NumericalAmpleness.isIso_of_locally_isIso
+@@ -69,7 +69,7 @@
+   let S : PresheafOfModules U.toScheme.ringCatSheaf.obj ⥤ U.toScheme.Modules :=
+     PresheafOfModules.sheafification (𝟙 U.toScheme.ringCatSheaf.obj)
+   let : MonoidalCategory (PresheafOfModules U.toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := U.toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := U.toScheme.presheaf)
+   have hf : IsIso (S.map (R.map f)) := by
+     apply (NatIso.isIso_map_iff (moduleSheafificationRestrict U.ι) f).mp
+     change IsIso ((Scheme.Modules.restrictFunctor U.ι).map (F.map f))
+@@ -81,7 +81,7 @@
+   have ht : IsIso (S.map ((R.map f) ⊗ₘ 𝟙 (R.obj L.sheaf.val))) :=
+     TensorLocalization.map_tensor_right_unit S (R.map f) ep
+   apply (NatIso.isIso_map_iff (moduleSheafificationRestrict U.ι) _).mpr
+-  let g := PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f (𝟙 L.sheaf.val)
++  let g := PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f (𝟙 L.sheaf.val)
+   change IsIso (S.map (R.map g))
+   have heq := modulePresheafTensorRestrict_natural U f (𝟙 L.sheaf.val)
+   let : IsIso (S.map (modulePresheafTensorRestrict U P L.sheaf.val).hom) :=
+@@ -92,13 +92,13 @@
+       (modulePresheafTensorRestrict U Q L.sheaf.val).hom)) := by
+     erw [heq, S.map_comp]
+     have ht' : IsIso (S.map
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++        (PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+           (R.map f) (R.map (𝟙 L.sheaf.val)))) := by
+       rw [R.map_id]
+       exact ht
+     exact (inferInstance : IsIso (C := U.toScheme.Modules)
+       (S.map (modulePresheafTensorRestrict U P L.sheaf.val).hom ≫ S.map
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++        (PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+           (R.map f) (R.map (𝟙 L.sheaf.val)))))
+   erw [S.map_comp] at hcomp
+   exact (isIso_comp_right_iff (C := U.toScheme.Modules) _ _).mp hcomp
+@@ -113,11 +113,11 @@
+     {P Q : PresheafOfModules X.ringCatSheaf.obj} (f : P ⟶ Q) (L : LineBundle X)
+     [IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map f)] :
+     IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) (𝟙 L.sheaf.val) f)) := by
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) (𝟙 L.sheaf.val) f)) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let : SymmetricCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.symmetricCategory (R := X.presheaf)
++    PresheafOfModules.symmetricCategory (R := X.presheaf)
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   have : IsIso (F.map (f ⊗ₘ 𝟙 L.sheaf.val)) := sheafification_tensor_right_isIso f L
+@@ -133,7 +133,7 @@
+ def sheafificationTensorRight (P : PresheafOfModules X.ringCatSheaf.obj)
+     (L : LineBundle X) :
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) P L.sheaf.val) ≅
++      (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) P L.sheaf.val) ≅
+     moduleTensor X ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj P)
+       L.sheaf := by
+   let F := PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+@@ -141,15 +141,15 @@
+   have : IsIso (F.map η) :=
+     isIso_of_comp_hom_eq_id _
+       ((PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).left_triangle_components P)
+-  let ht : IsIso (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom
++  let ht : IsIso (F.map (PresheafOfModules.Monoidal.tensorHom
+       (R := X.presheaf) η (𝟙 L.sheaf.val))) := sheafification_tensor_right_isIso η L
+-  exact @asIso _ _ _ _ (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++  exact @asIso _ _ _ _ (F.map (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+     η (𝟙 L.sheaf.val))) ht
+ 
+ def sheafificationTensorLeft (P : PresheafOfModules X.ringCatSheaf.obj)
+     (L : LineBundle X) :
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val P) ≅
++      (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val P) ≅
+     moduleTensor X L.sheaf
+       ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj P) := by
+   let F := PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+@@ -157,16 +157,16 @@
+   have : IsIso (F.map η) :=
+     isIso_of_comp_hom_eq_id _
+       ((PresheafOfModules.sheafificationAdjunction (𝟙 X.ringCatSheaf.obj)).left_triangle_components P)
+-  let ht : IsIso (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom
++  let ht : IsIso (F.map (PresheafOfModules.Monoidal.tensorHom
+       (R := X.presheaf) (𝟙 L.sheaf.val) η)) := sheafification_tensor_left_isIso η L
+-  exact @asIso _ _ _ _ (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++  exact @asIso _ _ _ _ (F.map (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+     (𝟙 L.sheaf.val) η)) ht
+ 
+ def lineTensorAssoc (L M N : LineBundle X) :
+     moduleTensor X (moduleTensor X L.sheaf M.sheaf) N.sheaf ≅
+       moduleTensor X L.sheaf (moduleTensor X M.sheaf N.sheaf) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   exact (sheafificationTensorRight (L.sheaf.val ⊗ M.sheaf.val) N).symm ≪≫
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
+       (α_ L.sheaf.val M.sheaf.val N.sheaf.val) ≪≫
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\LinePullback.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\LinePullback.lean
+@@ -1,4 +1,5 @@
+ import OAI.NumberTheory.PiExponent.Geometry.LineBundleTensor
++import Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\MatrixTranslationBounds.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\MatrixTranslationBounds.lean
+@@ -17,7 +17,7 @@
+     (hε : ∀ i, ‖ε i‖ ≤ Real.exp (C - ν * w i)) :
+     (∏ i, ‖ε i‖ ^ e i) ≤ Real.exp (∑ i, (e i : ℝ) * (C - ν * w i)) := by
+   rw [Real.exp_sum]
+-  apply Finset.prod_le_prod₀ (fun i hi => by positivity)
++  apply Finset.prod_le_prod (fun i hi => by positivity)
+   intro i hi
+   rw [Real.exp_nat_mul]
+   exact pow_le_pow_left₀ (norm_nonneg _) (hε i) _
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\ModuleLinePowerLaws.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\ModuleLinePowerLaws.lean
+@@ -13,10 +13,10 @@
+ def lineTensorPresheafRestrictFrame (L : LineBundle X) (N : X.Modules)
+     (U : X.Opens) (e : L.sheaf.restrict U.ι ≅ structureSheaf U.toScheme) :
+     (modulePresheafRestrict U.ι).obj
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val) ≅
++      (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val) ≅
+         (N.restrict U.ι).val := by
+   let : MonoidalCategory (PresheafOfModules U.toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := U.toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := U.toScheme.presheaf)
+   let ep : (modulePresheafRestrict U.ι).obj L.sheaf.val ≅
+       𝟙_ (PresheafOfModules U.toScheme.ringCatSheaf.obj) :=
+     (SheafOfModules.forget _).mapIso e
+@@ -27,8 +27,8 @@
+     (U : X.Opens) (e : L.sheaf.restrict U.ι ≅ structureSheaf U.toScheme) :
+     IsIso ((modulePresheafRestrict U.ι).map
+       ((adj X).unit.app
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val))) := by
+-  let P := PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val
++        (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val))) := by
++  let P := PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val
+   let R : PresheafOfModules X.ringCatSheaf.obj ⥤
+       PresheafOfModules U.toScheme.ringCatSheaf.obj := modulePresheafRestrict U.ι
+   have hη : IsIso ((adj U.toScheme).unit.app (R.obj P)) :=
+@@ -49,16 +49,16 @@
+ lemma sheafification_tensor_left_line_unit_isIso (M : X.Modules) (L : LineBundle X)
+     (N : X.Modules) :
+     IsIso ((PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) (𝟙 M.val)
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) (𝟙 M.val)
+         ((adj X).unit.app
+-          (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val)))) := by
+-  let P := PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val
++          (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val)))) := by
++  let P := PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.val
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules :=
+     PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   let η := (adj X).unit.app P
+   let Q := (F ⋙ SheafOfModules.forget X.ringCatSheaf ⋙
+     PresheafOfModules.restrictScalars (𝟙 X.ringCatSheaf.obj)).obj P
+-  let g := PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) (𝟙 M.val) η
++  let g := PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) (𝟙 M.val) η
+   apply PiExponent.NumericalAmpleness.isIso_of_locally_isIso
+   intro x
+   obtain ⟨U,hx,⟨e⟩⟩ := L.locallyRankOne x
+@@ -68,7 +68,7 @@
+   let S : PresheafOfModules U.toScheme.ringCatSheaf.obj ⥤ U.toScheme.Modules :=
+     PresheafOfModules.sheafification (𝟙 U.toScheme.ringCatSheaf.obj)
+   let : MonoidalCategory (PresheafOfModules U.toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := U.toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := U.toScheme.presheaf)
+   have : IsIso (R.map η) := lineTensorPresheaf_unit_restrict_isIso L N U e
+   apply (NatIso.isIso_map_iff (moduleSheafificationRestrict U.ι) g).mpr
+   change IsIso (S.map (R.map g))
+@@ -81,36 +81,36 @@
+       (modulePresheafTensorRestrict U M.val Q).hom)) := by
+     erw [heq, S.map_comp]
+     have ht : IsIso (S.map
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++      (PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+         (R.map (𝟙 M.val)) (R.map η))) := by
+       rw [R.map_id]
+       change IsIso (S.map ((𝟙 (R.obj M.val)) ⊗ₘ (R.map η)))
+       infer_instance
+     exact (inferInstance : IsIso (C := U.toScheme.Modules)
+       (S.map (modulePresheafTensorRestrict U M.val P).hom ≫ S.map
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := U.toScheme.presheaf)
++        (PresheafOfModules.Monoidal.tensorHom (R := U.toScheme.presheaf)
+           (R.map (𝟙 M.val)) (R.map η))))
+   erw [S.map_comp] at hcomp
+   exact (isIso_comp_right_iff (C := U.toScheme.Modules) _ _).mp hcomp
+ 
+ def sheafificationTensorLeftLinePair (M : X.Modules) (L N : LineBundle X) :
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.sheaf.val)) ≅
++      (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) M.val
++        (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.sheaf.val)) ≅
+     moduleTensor X M (moduleTensor X L.sheaf N.sheaf) := by
+-  let P := PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.sheaf.val
++  let P := PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) L.sheaf.val N.sheaf.val
+   let F := PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+   let η := (adj X).unit.app P
+-  let ht : IsIso (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom
++  let ht : IsIso (F.map (PresheafOfModules.Monoidal.tensorHom
+       (R := X.presheaf) (𝟙 M.val) η)) := sheafification_tensor_left_line_unit_isIso M L N.sheaf
+-  exact @asIso _ _ _ _ (F.map (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++  exact @asIso _ _ _ _ (F.map (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+     (𝟙 M.val) η)) ht
+ 
+ def moduleLineTensorAssoc (M : X.Modules) (L N : LineBundle X) :
+     moduleTensor X (moduleTensor X M L.sheaf) N.sheaf ≅
+       moduleTensor X M (moduleTensor X L.sheaf N.sheaf) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   exact (sheafificationTensorRight (M.val ⊗ L.sheaf.val) N).symm ≪≫
+     (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
+       (α_ M.val L.sheaf.val N.sheaf.val) ≪≫
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\OpenBaseChange.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\OpenBaseChange.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\OrdinaryComponentRigidity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\OrdinaryComponentRigidity.lean
+@@ -1,6 +1,7 @@
+ import OAI.NumberTheory.PiExponent.Approximation.GenericFibreRigidity
+ import OAI.NumberTheory.PiExponent.Jets.OrdinaryDerivativeIdeals
+ import OAI.NumberTheory.PiExponent.Jets.PrimeNormalCotangent
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\Parameters.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\Parameters.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\PersistentComponents.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\PersistentComponents.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\RectangularVolume.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\RectangularVolume.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+@@ -70,7 +70,7 @@
+   have hkR : (0 : ℝ) < k := by exact_mod_cast hk
+   have hp : (∏ i, T / ((k : ℝ) * κ i)) ≤
+       ∏ i, (rectangularCutoff κ T i : ℝ) := by
+-    apply Finset.prod_le_prod₀
++    apply Finset.prod_le_prod
+     · intro i hi
+       exact (div_pos hT (mul_pos hkR (hκ i))).le
+     · intro i hi
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\RowTranslation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\RowTranslation.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+@@ -253,7 +253,7 @@
+     (∏ i, (a i).choose (β i) * (a i - β i).choose (d i)) ≤
+       4 ^ (∑ i, a i) := by
+   calc
+-    _ ≤ ∏ i, 4 ^ a i := Finset.prod_le_prod (fun i hi => choose_product_le_four_pow _ _ _)
++    _ ≤ ∏ i, 4 ^ a i := Finset.prod_le_prod' (fun i hi => choose_product_le_four_pow _ _ _)
+     _ = _ := Finset.prod_pow_eq_pow_sum _ _ _
+ 
+ theorem card_bounded_indices_le (a : σ → ℕ) (H : ℕ) (ha : ∀ i, a i ≤ H) :
+@@ -261,7 +261,7 @@
+   rw [Fintype.card_pi]
+   simp only [Fintype.card_fin]
+   calc
+-    _ ≤ ∏ _i : σ, (H + 1) := Finset.prod_le_prod (fun i hi => Nat.add_le_add_right (ha i) 1)
++    _ ≤ ∏ _i : σ, (H + 1) := Finset.prod_le_prod' (fun i hi => Nat.add_le_add_right (ha i) 1)
+     _ = _ := by simp
+ 
+ abbrev RowChoices (S : Finset (σ →₀ ℕ)) (β : σ →₀ ℕ) (s : ℕ) :=
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\Sigma.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\Sigma.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\SuccessiveApproximations.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\SuccessiveApproximations.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ import OAI.NumberTheory.PiExponent.Approximation.ApproximationSelection
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\TensorMixedSection.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\TensorMixedSection.lean
+@@ -19,7 +19,7 @@
+       (pure (L.tensor M).sheaf N.sheaf U (pure L.sheaf M.sheaf U l m) n) =
+       pure L.sheaf (M.tensor N).sheaf U l (pure M.sheaf N.sheaf U m n) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let P := L.sheaf.val ⊗ M.sheaf.val
+   let Q := M.sheaf.val ⊗ N.sheaf.val
+   let F : PresheafOfModules X.ringCatSheaf.obj ⥤ X.Modules := PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)
+@@ -29,7 +29,7 @@
+   have hr : (sheafificationTensorRight P N).hom.val.app (op U) v =
+       pure (L.tensor M).sheaf N.sheaf U (pure L.sheaf M.sheaf U l m) n := by
+     have h := (adj X).unit.naturality
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+         ((adj X).unit.app P) (𝟙 N.sheaf.val))
+     exact (congrArg (fun q => q.app (op U) ((l ⊗ₜ[Γ(X,U)] m) ⊗ₜ[Γ(X,U)] n)) h).symm
+   have ha : (F.map (α_ L.sheaf.val M.sheaf.val N.sheaf.val).hom).val.app (op U) v =
+@@ -42,7 +42,7 @@
+         (l ⊗ₜ[Γ(X,U)] (m ⊗ₜ[Γ(X,U)] n))) =
+       pure L.sheaf (M.tensor N).sheaf U l (pure M.sheaf N.sheaf U m n) := by
+     have h := (adj X).unit.naturality
+-      (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf)
++      (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf)
+         (𝟙 L.sheaf.val) ((adj X).unit.app Q))
+     exact (congrArg (fun q => q.app (op U) (l ⊗ₜ[Γ(X,U)] (m ⊗ₜ[Γ(X,U)] n))) h).symm
+   change a.hom.val.app (op U) _ = _
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\TensorPure.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\TensorPure.lean
+@@ -17,7 +17,7 @@
+     Module Γ(X, U) (P.obj (op U)) := (P.obj (op U)).isModule
+ 
+ abbrev presheaf (M N : X.Modules) :=
+-  PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val
++  PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) M.val N.val
+ 
+ abbrev adj (X : Scheme.{0}) :=
+   PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf) (𝟙 X.ringCatSheaf.obj)
+@@ -62,7 +62,7 @@
+     (moduleTensorMap f g).app U (pure M N U m n) =
+       pure P Q U (f.app U m) (g.app U n) := by
+   have h := (adj X).unit.naturality
+-    (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f.val g.val)
++    (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f.val g.val)
+   exact (congrArg (fun q => q.app (op U) (m ⊗ₜ[Γ(X,U)] n)) h).symm
+ 
+ lemma hom_ext {M N P : X.Modules} {f g : moduleTensor X M N ⟶ P}
+@@ -179,7 +179,7 @@
+ lemma unit_pure (M : X.Modules) (U : X.Opens) (a : Γ(X,U)) (m : M.val.obj (op U)) :
+     (moduleTensorUnit M).hom.app U (pure (structureSheaf X) M U a m) = a • m := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   have h := ((adj X).homEquiv _ _).apply_symm_apply (λ_ M.val).hom
+   change (adj X).homEquiv _ M (moduleTensorUnit M).hom = (λ_ M.val).hom at h
+   exact congrArg (fun q => q.app (op U) (a ⊗ₜ[Γ(X,U)] m)) h
+@@ -187,7 +187,7 @@
+ lemma right_unit_pure (M : X.Modules) (U : X.Opens) (m : M.val.obj (op U)) (a : Γ(X,U)) :
+     (moduleTensorRightUnit M).hom.app U (pure M (structureSheaf X) U m a) = a • m := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   have h := ((adj X).homEquiv _ _).apply_symm_apply (ρ_ M.val).hom
+   change (adj X).homEquiv _ M (moduleTensorRightUnit M).hom = (ρ_ M.val).hom at h
+   exact congrArg (fun q => q.app (op U) (m ⊗ₜ[Γ(X,U)] a)) h
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\TwistPowerSection.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\TwistPowerSection.lean
+@@ -13,9 +13,9 @@
+     (m : Γ(M,U)) (n : Γ(N,U)) :
+     (moduleTensorComm M N).hom.app U (pure M N U m n) = pure N M U n m := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   let : SymmetricCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.symmetricCategory (R := X.presheaf)
++    PresheafOfModules.symmetricCategory (R := X.presheaf)
+   have h := (adj X).unit.naturality (β_ M.val N.val).hom
+   exact (congrArg (fun q => q.app (op U) (m ⊗ₜ[Γ(X,U)] n)) h).symm
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedCompactificationImmersion.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedCompactificationImmersion.lean
+@@ -1,5 +1,6 @@
+ import OAI.NumberTheory.PiExponent.Approximation.WeightedCompactification
+ import OAI.NumberTheory.PiExponent.Polynomials.SurjectiveGradedMap
++import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Functor
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedSectionOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedSectionOrder.lean
+@@ -111,7 +111,7 @@
+     simp only [Units.val_div_eq_div_val, Units.val_mk0]
+     exact coordinate_coefficient_image y s a ha hya hspan b hb
+   rw [hu, WeightedCurveDegree.integerOrder_div, length_quotient_span_eq_addVal hc] at hi
+-  simpa only [WeightedPolynomialPole.coordinateOrder, dite_eq_right hyb, dite_eq_right hya] using hi.symm
++  simpa only [WeightedPolynomialPole.coordinateOrder, dif_neg hyb, dif_neg hya] using hi.symm
+ 
+ theorem exists_constant_section_zero_euler_eq_weighted_pole
+     [IsDiscreteValuationRing A] [Algebra ℂ A]
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedSliceDegree.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightedSliceDegree.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightErrorMargin.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightErrorMargin.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparation.lean
+@@ -1,5 +1,5 @@
+ import Mathlib.Algebra.Order.BigOperators.Ring.Finset
+-import Mathlib.Basic.Real.Basic
++import Mathlib.Data.Real.Basic
+ import Mathlib.Tactic.GCongr
+ import Mathlib.Tactic.Positivity
+ import Mathlib.Tactic.Ring
+@@ -49,14 +49,14 @@
+     · subst i
+       simp only [geometricDegreeWeight, hx0, mul_one]
+       exact min_le_left _ _
+-    · simp only [geometricDegreeWeight, ite_eq_right hi]
++    · simp only [geometricDegreeWeight, if_neg hi]
+       exact mul_le_of_le_one_left (le_of_lt (hxpos i)) (min_le_right _ _)
+   have hjet (i : ℕ) : geometricJetWeight v0 theta x i ≤ R * x i := by
+     by_cases hi : i = 0
+     · subst i
+       simp only [geometricJetWeight, hx0, mul_one]
+       exact le_max_left _ _
+-    · simp only [geometricJetWeight, ite_eq_right hi]
++    · simp only [geometricJetWeight, if_neg hi]
+       calc
+         x i / theta = (1 / theta) * x i := by ring
+         _ ≤ R * x i := mul_le_mul_of_nonneg_right (le_max_right _ _)
+@@ -66,7 +66,7 @@
+     calc
+       _ = ∏ i ∈ A, (L * x i) := by
+         rw [Finset.prod_mul_distrib, Finset.prod_const]
+-      _ ≤ _ := Finset.prod_le_prod₀ (fun i _ => mul_nonneg (le_of_lt hL)
++      _ ≤ _ := Finset.prod_le_prod (fun i _ => mul_nonneg (le_of_lt hL)
+         (le_of_lt (hxpos i))) (fun i _ => hdeg i)
+   have hjetnonneg (i : ℕ) : 0 ≤ geometricJetWeight v0 theta x i := by
+     unfold geometricJetWeight
+@@ -76,7 +76,7 @@
+   have hjetprod : (∏ i ∈ B, geometricJetWeight v0 theta x i) ≤
+       R ^ B.card * (∏ i ∈ B, x i) := by
+     calc
+-      _ ≤ ∏ i ∈ B, (R * x i) := Finset.prod_le_prod₀
++      _ ≤ ∏ i ∈ B, (R * x i) := Finset.prod_le_prod
+         (fun i _ => hjetnonneg i) (fun i _ => hjet i)
+       _ = _ := by rw [Finset.prod_mul_distrib, Finset.prod_const]
+   have hRle : R ≤ T * L := (div_le_iff₀ hL).mp (le_max_right _ _)
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparationConstant.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparationConstant.lean
+@@ -1,4 +1,4 @@
+-import Mathlib.Basic.Real.Basic
++import Mathlib.Data.Real.Basic
+ import Mathlib.Data.Nat.Factorial.Basic
+ import Mathlib.Tactic.Linarith
+ import Mathlib.Tactic.NormNum
+--- source/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparationProducts.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Approximation\WeightSeparationProducts.lean
+@@ -1,6 +1,6 @@
+ import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+ import Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset
+-import Mathlib.Basic.Real.Basic
++import Mathlib.Data.Real.Basic
+ 
+ namespace OAI
+ 
+@@ -17,12 +17,12 @@
+     intro j hj
+     exact Finset.mem_range.mpr (hB j hj)
+   have hprodB : (∏ j ∈ B, x j) ≤ ∏ j ∈ Finset.range i, x j :=
+-    Finset.prod_le_prod_of_subset_of_one_le₀ hsub
++    Finset.prod_le_prod_of_subset_of_one_le hsub
+       (fun j _ => hxnonneg j) (fun j _ _ => hx j)
+   have hprodA : x i ≤ ∏ j ∈ A, x j := by
+     have hsubA : ({i} : Finset ℕ) ⊆ A := Finset.singleton_subset_iff.mpr hiA
+     simpa only [Finset.prod_singleton] using
+-      (Finset.prod_le_prod_of_subset_of_one_le₀ hsubA
++      (Finset.prod_le_prod_of_subset_of_one_le hsubA
+         (fun j _ => hxnonneg j) (fun j _ _ => hx j))
+   exact lt_of_lt_of_le
+     (lt_of_le_of_lt (mul_le_mul_of_nonneg_left hprodB hD.le) hgrowth) hprodA
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\CurveEuler.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\CurveEuler.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.FiniteCoverCohomology
+ import OAI.NumberTheory.PiExponent.Geometry.LineBundleTensor
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\CurveZeroEuler.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\CurveZeroEuler.lean
+@@ -1,6 +1,7 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.CurveEuler
+ import OAI.NumberTheory.PiExponent.Geometry.CurveLocalOrder
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+@@ -42,8 +43,10 @@
+       (structureSheaf (Spec (CommRingCat.of B))) = (Module.finrank ℂ B : ℤ) := by
+   let : (structureSheaf (Spec (CommRingCat.of B))).IsQuasicoherent :=
+     (isQuasicoherent_iff_isIso_fromTildeΓ _).mpr (by
+-      change IsIso (Scheme.Modules.fromTildeΓ (SheafOfModules.unit (Spec (CommRingCat.of B)).ringCatSheaf))
+-      infer_instance)
++      change IsIso (Scheme.Modules.fromTildeΓ (R := CommRingCat.of B)
++        (SheafOfModules.unit (Spec (CommRingCat.of B)).ringCatSheaf))
++      exact (isIso_fromTildeΓ_iff (R := CommRingCat.of B)).mpr
++        ⟨ModuleCat.of (CommRingCat.of B) B, ⟨tildeSelf (R := CommRingCat.of B)⟩⟩)
+   rw [affine_eulerCharacteristic]
+   let : Module ℂ Γ(structureSheaf (Spec (CommRingCat.of B)), ⊤) :=
+     Module.compHom _ (baseScalars (algebraStructureMap B))
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerDifferencePolynomial.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerDifferencePolynomial.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerExact.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerExact.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.CurveEuler
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerPolynomialInterpolation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\EulerPolynomialInterpolation.lean
+@@ -5,6 +5,22 @@
+ namespace PiExponent.NumericalAmpleness
+ noncomputable section
+ open scoped BigOperators
++
++-- The source Mathlib revision allows k ≤ n+d; the platform revision exposes
++-- only the k ≤ n case. Keep the missing small-n case using its original proof.
++private theorem preHilbertPoly_diagonal_eval (k n : ℕ) :
++    (Polynomial.preHilbertPoly ℚ k k).eval (n : ℚ) = (n.choose k : ℚ) := by
++  rcases le_or_gt k n with h | h
++  · simpa only [Nat.sub_add_cancel h] using
++      Polynomial.preHilbertPoly_eq_choose_sub_add ℚ k h
++  · rw [Nat.choose_eq_zero_of_lt h]
++    have hz : (ascPochhammer ℚ k).eval ((n : ℚ) - k + 1) = 0 := by
++      apply (ascPochhammer_eval_eq_zero_iff _ _).mpr
++      refine ⟨k - n - 1, by omega, ?_⟩
++      rw [Nat.sub_sub, Nat.cast_sub (by omega : n + 1 ≤ k)]
++      push_cast
++      ring
++    simp [Polynomial.preHilbertPoly, hz]
+ 
+ def newtonPolynomial (f : ℕ → ℤ) (d : ℕ) : Polynomial ℚ :=
+   ∑ k ∈ Finset.range (d+1),
+@@ -30,8 +46,7 @@
+   simp only [newtonPolynomial, Polynomial.eval_finsetSum, Polynomial.eval_mul, Polynomial.eval_C]
+   apply Finset.sum_congr rfl
+   intro k _
+-  rw [Polynomial.preHilbertPoly_eq_choose_add_sub ℚ k (Nat.le_add_left k n)]
+-  simp only [Nat.add_sub_cancel]
++  rw [preHilbertPoly_diagonal_eval]
+   ring
+ 
+ end
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteCoverCohomology.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteCoverCohomology.lean
+@@ -1,4 +1,14 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.Order.CompactlyGenerated.Basic
++import Mathlib.Algebra.Category.ModuleCat.EnoughInjectives
++import Mathlib.Topology.Sheaves.Flasque
++import Mathlib.Topology.Sheaves.MayerVietoris
++import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
++import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.HasExt
++import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Square
++import Mathlib.Algebra.Homology.DerivedCategory.Ext.MapBijective
++import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
++import Mathlib.Algebra.Homology.DerivedCategory.Ext.ExtClass
+ 
+ namespace OAI
+ 
+@@ -29,7 +39,7 @@
+     (h : N ≤ adicTorsion I M) :
+     ∃ n : ℕ, N ≤ Submodule.torsionBySet R M ((I ^ n : Ideal R) : Set R) := by
+   classical
+-  obtain ⟨s, hs⟩ := IsCompactElement.exists_finset_of_le_iSup
++  obtain ⟨s, hs⟩ := CompleteLattice.IsCompactElement.exists_finset_of_le_iSup (Submodule R M)
+     ((Submodule.fg_iff_compact N).mp hN)
+     (fun n : ℕ => Submodule.torsionBySet R M ((I ^ n : Ideal R) : Set R)) h
+   refine ⟨s.sup id, hs.trans (iSup_le fun n => iSup_le fun hn => ?_)⟩
+@@ -496,6 +506,7 @@
+   intro U s t h
+   apply Subtype.ext
+   funext x
++  letI := x.1.isPrime
+   apply LocalizedModule.map_injective x.1.asIdeal.primeCompl f.hom
+     ((ModuleCat.mono_iff_injective f).mp inferInstance)
+   exact congrFun (congrArg Subtype.val h) x
+@@ -963,6 +974,7 @@
+       change mapFrom F e _ _ (x.comp hS.extClass rfl) =
+         (mapFrom F e _ _ x).comp (hS.map F).extClass rfl
+       rw [mapFrom_comp, Ext.mapExactFunctor_extClass]
++      try rfl
+ 
+ end ExtSectionComparison
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteLineEuler.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteLineEuler.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.CohomologyIso
+ import OAI.NumberTheory.PiExponent.Cohomology.FiniteSupportCohomology
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteSupportCohomology.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteSupportCohomology.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.FiniteCurveZeros
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteZeroEuler.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\FiniteZeroEuler.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.CurveZeroEuler
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\FreeCechResolution.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\FreeCechResolution.lean
+@@ -1,4 +1,5 @@
+ import OAI.NumberTheory.PiExponent.Cohomology.FiniteCoverCohomology
++import Mathlib.AlgebraicTopology.ExtraDegeneracy
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedCechBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedCechBound.lean
+@@ -87,11 +87,11 @@
+   classical
+   by_cases he : tupleSet t = s
+   · subst s
+-    simp only [assemble, dite_eq_left hs, rid]
++    simp only [assemble, dif_pos hs, rid]
+   · have hlt : (tupleSet t).card < k := by
+       rw [← hs]
+       exact Finset.card_lt_card (Finset.ssubset_iff_subset_ne.mpr ⟨ht, he⟩)
+-    rw [assemble, dite_eq_right (ne_of_lt hlt), map_zero]
++    rw [assemble, dif_neg (ne_of_lt hlt), map_zero]
+     symm
+     have hnot : ¬ s ⊆ tupleSet t := fun h => he (Finset.Subset.antisymm ht h)
+     obtain ⟨j, hj, hjt⟩ := Finset.not_subset.mp hnot
+@@ -108,7 +108,7 @@
+   intro i _
+   have hle := Finset.card_le_card (tupleSet_comp_subset t i.succAbove)
+   have hne : (tupleSet (t ∘ i.succAbove)).card ≠ k := by omega
+-  simp only [assemble, dite_eq_right hne, map_zero, smul_zero]
++  simp only [assemble, dif_neg hne, map_zero, smul_zero]
+ 
+ variable [Fintype J]
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedCechRecovery.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedCechRecovery.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedH0.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedH0.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Polynomials.GradedSerre
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedPolynomialLaurent.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\GradedPolynomialLaurent.lean
+@@ -139,7 +139,7 @@
+ omit [Fintype J] in
+ @[simp] theorem polynomialToGroupAlgebra_coefficient (p : MvPolynomial J R) (b : J →₀ ℕ) :
+     (polynomialToGroupAlgebra p).coeff (natExponentHom b) = p.coeff b :=
+-  Finsupp.mapDomain_apply_of_injective natExponentHom_injective p.coeff b
++  Finsupp.mapDomain_apply natExponentHom_injective (AddMonoidAlgebra.coeff p) b
+ 
+ theorem polynomialToGroupAlgebra_support {d : ℤ} (p : MvPolynomial J R)
+     (hp : p.IsWeightedHomogeneous (1 : J → ℤ) d) (a : J → ℤ)
+@@ -187,7 +187,7 @@
+       sum_productExponent, nsmul_eq_mul, Pi.mul_apply, Pi.natCast_apply, ← Finset.mul_sum] at hd
+     omega
+   · intro j hj
+-    simpa only [Pi.add_apply, Pi.smul_apply, productExponent_apply, ite_eq_right hj,
++    simpa only [Pi.add_apply, Pi.smul_apply, productExponent_apply, if_neg hj,
+       smul_zero, add_zero] using hn j
+ 
+ def pieceToLaurent (s : Finset J) (d : ℤ) : Piece (R := R) s d →+ Laurent J R d :=
+@@ -237,7 +237,7 @@
+     intro j
+     by_cases hj : j ∈ s
+     · simpa [Pi.add_apply, Pi.smul_apply, nsmul_eq_mul, productExponent_apply, hj] using hnn j
+-    · simpa only [Pi.add_apply, Pi.smul_apply, productExponent_apply, ite_eq_right hj,
++    · simpa only [Pi.add_apply, Pi.smul_apply, productExponent_apply, if_neg hj,
+         smul_zero, add_zero] using ha j hj
+   refine ⟨n, Finsupp.equivFunOnFinite.symm (fun j => ((a + n • productExponent s) j).toNat), ?_⟩
+   funext j
+@@ -287,7 +287,7 @@
+     _ = ∑ a ∈ p.support, Finsupp.single a (p a) := by
+       apply Finset.sum_congr rfl
+       intro a ha
+-      simp only [dite_eq_left ha, hz]
++      simp only [dif_pos ha, hz]
+     _ = p := p.sum_single
+ 
+ omit [Fintype J] in
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\PencilCohomologyLaurent.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\PencilCohomologyLaurent.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\ProjectiveLaurentVertex.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\ProjectiveLaurentVertex.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.ProjectiveMonomialCech
+ 
+ namespace OAI
+@@ -110,6 +110,7 @@
+   classical
+   simp [vertexLaurent, vertexPolynomialEquiv, Finsupp.extendDomain_apply,
+     encode_regular, exponentEquiv]
++  rfl
+ 
+ theorem mem_supported_iff_regular (i : ι) (d : ℤ) (p : Laurent ι R d) :
+     p ∈ Finsupp.supported R R (VertexMonomialSet i d) ↔ RegularOn {i} p := by
+@@ -476,7 +477,7 @@
+     _ = ∑ a ∈ p.support, Finsupp.single a (p a) := by
+       apply Finset.sum_congr rfl
+       intro a ha
+-      simp only [dite_eq_left ha, hz]
++      simp only [dif_pos ha, hz]
+     _ = p := p.sum_single
+ end PiExponent.GeometrySupport.ProjectiveLaurentVertex
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Cohomology\TupleCechBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Cohomology\TupleCechBound.lean
+@@ -34,7 +34,7 @@
+     (t : Fin (q + 1) → {j : J // j ≠ p}) :
+     extend p c (Subtype.val ∘ t) = c t := by
+   classical
+-  simp only [extend, Function.comp_apply, dite_eq_left (fun i => (t i).property)]
++  simp only [extend, Function.comp_apply, dif_pos (fun i => (t i).property)]
+ 
+ lemma differential_extend_pullback (p : J) {q : ℕ}
+     (c : Cochain {j : J // j ≠ p} A q)
+--- source/lean/OAI\NumberTheory\PiExponent\CoreImports.lean
++++ port/lean/OAI\NumberTheory\PiExponent\CoreImports.lean
+@@ -0,0 +1,13 @@
++-- A smaller import closure for the arithmetic/analytic core on Mathlib 0df444a.
++-- No new mathematical declarations; source theorem statements are preserved.
++import Mathlib.Tactic
++import Mathlib.Analysis.SpecialFunctions.Pow.Real
++import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
++import Mathlib.Analysis.SpecialFunctions.Log.Basic
++import Mathlib.Analysis.SpecificLimits.Basic
++import Mathlib.Analysis.SpecificLimits.Normed
++import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
++import Mathlib.Algebra.Order.Antidiag.FinsuppEquiv
++import Mathlib.Algebra.MvPolynomial.Eval
++import Mathlib.RingTheory.PowerSeries.Order
++import Mathlib.RingTheory.PowerSeries.Trunc
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\BirationalValuationStalk.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\BirationalValuationStalk.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CartierDegreeLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CartierDegreeLength.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Approximation.LinePullback
+ import OAI.NumberTheory.PiExponent.Cohomology.EulerExact
+ import OAI.NumberTheory.PiExponent.Cohomology.FiniteLineEuler
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CartierSequence.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CartierSequence.lean
+@@ -91,7 +91,10 @@
+   let T := ShortComplex.mk (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom)
+     (IdealModule.structureMap (I.subschemeι ∣_ U.1)) hzero
+   let ee : S ≅ T := ShortComplex.isoMk e d (LineClosedUnit.frame I.subschemeι N U.1 d)
+-    (by simp [S,T]) (by
++    (by
++      change e.hom ≫ (e.inv ≫ (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom) =
++        (Scheme.Modules.restrictFunctor U.1.ι).map φ ≫ d.hom
++      exact e.hom_inv_id_assoc _) (by
+       change d.hom ≫ IdealModule.structureMap (I.subschemeι ∣_ U.1) =
+         (Scheme.Modules.restrictFunctor U.1.ι).map (LineClosedUnit.map I.subschemeι N) ≫ _
+       rw [← LineClosedUnit.framed_map I.subschemeι N U.1 d]
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentMultiplicity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentMultiplicity.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.IntegralCurveExistence
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentRigidity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentRigidity.lean
+@@ -1,6 +1,7 @@
+ import OAI.NumberTheory.PiExponent.Approximation.GenericNormalRigidity
+ import OAI.NumberTheory.PiExponent.Geometry.CurveContact
+ import OAI.NumberTheory.PiExponent.Jets.PrimeNormalCotangent
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentStalks.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveComponentStalks.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveContactFamily.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveContactFamily.lean
+@@ -83,7 +83,7 @@
+     (p : NormalizedPlace ℂ E) (hp : p ∈ places hfinite z c hz) :
+     0 < contact hres hfinite z c hz v p := by
+   let := hres p
+-  simpa only [contact, dite_eq_left hp] using
++  simpa only [contact, dif_pos hp] using
+     PlaceCenteredBranch.logContact_pos p z (c (center hfinite z c hz p hp))
+       (centered hfinite z c hz p hp) (nonconstant z _ hz) v hv
+ 
+@@ -97,7 +97,7 @@
+     (p : NormalizedPlace ℂ E) : 0 ≤ contact hres hfinite z c hz v p := by
+   by_cases hp : p ∈ places hfinite z c hz
+   · exact (contact_pos hres hfinite z c hz v hv p hp).le
+-  · simp only [contact, dite_eq_right hp, le_refl]
++  · simp only [contact, dif_neg hp, le_refl]
+ 
+ theorem logWord_order_lower
+     (hres : ∀ p : NormalizedPlace ℂ E,
+@@ -119,7 +119,7 @@
+   have h := PlaceCenteredBranch.logWord_field_order_lower p z
+     (c (center hfinite z c hz p hp)) (centered hfinite z c hz p hp)
+     (nonconstant z _ hz) v hv H F (hF _) word hne
+-  simpa only [contact, dite_eq_left hp] using h
++  simpa only [contact, dif_pos hp] using h
+ 
+ theorem contact_one
+     (hres : ∀ p : NormalizedPlace ℂ E,
+@@ -139,7 +139,7 @@
+         (fun i => v i.succ) := by
+   let := hres p
+   dsimp only [contact]
+-  rw [dite_eq_left hp]
++  rw [dif_pos hp]
+   exact PlaceCenteredBranch.logContact_one p x _
+       (centered hfinite (fibre x) c hz p hp) (nonconstant _ _ hz) v
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveContactSum.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveContactSum.lean
+@@ -140,7 +140,7 @@
+   by_cases hc : c = 0
+   · simp [hc, coordinateOrder]
+   have hm : algebraMap ℂ E c ≠ 0 := (map_ne_zero_iff _ (algebraMap ℂ E).injective).mpr hc
+-  rw [coordinateOrder, dite_eq_right hm]
++  rw [coordinateOrder, dif_neg hm]
+   exact CurveProductFormula.placeOrder_constant_eq_zero p c hc
+ 
+ def coordinateOrderDivisor {E : Type*} [Field E] [Algebra ℂ E]
+@@ -159,10 +159,10 @@
+   classical
+   by_cases ht : Transcendental ℂ f
+   · let := hfinite f ht
+-    simp only [coordinateOrderDivisor, dite_eq_left ht, CurveProductFormula.principalDivisor_apply,
+-      coordinateOrder, dite_eq_right ht.ne_zero]
++    simp only [coordinateOrderDivisor, dif_pos ht, CurveProductFormula.principalDivisor_apply,
++      coordinateOrder, dif_neg ht.ne_zero]
+     rfl
+-  · rw [coordinateOrderDivisor, dite_eq_right ht]
++  · rw [coordinateOrderDivisor, dif_neg ht]
+     obtain ⟨c,rfl⟩ := exists_constant_of_isAlgebraic f (not_not.mp ht)
+     exact (coordinateOrder_constant_eq_zero p c).symm
+ 
+@@ -172,7 +172,7 @@
+   classical
+   by_cases ht : Transcendental ℂ f
+   · let := hfinite f ht
+-    rw [coordinateOrderDivisor, dite_eq_left ht]
++    rw [coordinateOrderDivisor, dif_pos ht]
+     exact CurveProductFormula.principalDivisor_degree_zero f ht
+   · simp [coordinateOrderDivisor, ht]
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveCycleLengths.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveCycleLengths.lean
+@@ -1,5 +1,6 @@
+ import OAI.NumberTheory.PiExponent.Geometry.CurveComponentCutLengths
+ import OAI.NumberTheory.PiExponent.Geometry.CurveComponentIncidence
++import Mathlib.Data.ENat.BigOperators
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveLocalOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveLocalOrder.lean
+@@ -1,6 +1,7 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.WeightedCurveDegree
+ import OAI.NumberTheory.PiExponent.Jets.IntrinsicLength
++import Mathlib.RingTheory.RamificationInertia.Ramification
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveModelPlaces.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveModelPlaces.lean
+@@ -311,7 +311,7 @@
+     (hp : 0 ≤ p.valuation f) :
+     placePoint f hf p = zeroChartInclusion f hf
+       ⟨parameterValuationCenter f hf p.valuation p.constants_nonneg hp, inferInstance⟩ := by
+-  simp only [placePoint, dite_eq_left hp]
++  simp only [placePoint, dif_pos hp]
+ 
+ theorem placePoint_eq_infinity
+     {F E : Type u} [Field F] [Field E] [Algebra F E]
+@@ -323,7 +323,7 @@
+   by_cases h : 0 ≤ p.valuation f
+   · rw [placePoint_eq_zero f hf p h]
+     exact center_images_eq f hf p h hp
+-  · simp only [placePoint, dite_eq_right h]
++  · simp only [placePoint, dif_neg h]
+ 
+ theorem placePoint_ne_genericPoint
+     {F E : Type u} [Field F] [CharZero F] [Field E] [Algebra F E]
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveMorphismFinite.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveMorphismFinite.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.AlgebraicGeometry.ZariskisMainTheorem
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveNormalizationModel.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveNormalizationModel.lean
+@@ -4,6 +4,7 @@
+ import Mathlib.AlgebraicGeometry.Limits
+ import Mathlib.AlgebraicGeometry.Normalization
+ import OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole
++import OAI.NumberTheory.PiExponent.VersionCompatibility
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveNormalizationOverlap.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveNormalizationOverlap.lean
+@@ -74,7 +74,9 @@
+     | none =>
+       refine ⟨z, ?_⟩
+       have he : fj = Limits.WalkingSpan.Hom.snd := Subsingleton.elim _ _
+-      simpa only [he, Limits.span_map_snd] using hzj
++      rw [he] at hzj
++      change (infinityOverlap f hf) z = x at hzj
++      exact hzj
+     | some k =>
+       cases k with
+       | left =>
+@@ -100,7 +102,9 @@
+     | none =>
+       refine ⟨z, ?_⟩
+       have he : fi = Limits.WalkingSpan.Hom.fst := Subsingleton.elim _ _
+-      simpa only [he, Limits.span_map_fst] using hzi
++      rw [he] at hzi
++      change (zeroOverlap f hf) z = x at hzi
++      exact hzi
+     | some k =>
+       cases k with
+       | left =>
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurvePlaceCenter.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurvePlaceCenter.lean
+@@ -52,9 +52,9 @@
+     centerMorphism f hf p (IsLocalRing.closedPoint (PlaceValuationRing.ring p)) =
+       placePoint f hf p := by
+   by_cases hp : 0 ≤ p.valuation f
+-  · simp only [centerMorphism, placePoint, dite_eq_left hp]
++  · simp only [centerMorphism, placePoint, dif_pos hp]
+     rfl
+-  · simp only [centerMorphism, placePoint, dite_eq_right hp]
++  · simp only [centerMorphism, placePoint, dif_neg hp]
+     rfl
+ 
+ theorem centerMorphism_generic_of_regular
+@@ -64,7 +64,7 @@
+     (p : NormalizedPlace F E) (hp : 0 ≤ p.valuation f) :
+     Spec.map (CommRingCat.ofHom (algebraMap (PlaceValuationRing.ring p) E)) ≫
+       centerMorphism f hf p = parameterCurveGenericPoint f hf := by
+-  rw [centerMorphism, dite_eq_left hp, ← Category.assoc, ← Spec.map_comp,
++  rw [centerMorphism, dif_pos hp, ← Category.assoc, ← Spec.map_comp,
+     ← CommRingCat.ofHom_comp, parameterCurveGenericPoint_eq_zeroChart]
+   rfl
+ 
+@@ -77,7 +77,7 @@
+       centerMorphism f hf p = parameterCurveGenericPoint f hf := by
+   by_cases hp : 0 ≤ p.valuation f
+   · exact centerMorphism_generic_of_regular f hf p hp
+-  · rw [centerMorphism, dite_eq_right hp, ← Category.assoc, ← Spec.map_comp,
++  · rw [centerMorphism, dif_neg hp, ← Category.assoc, ← Spec.map_comp,
+       ← CommRingCat.ofHom_comp, parameterCurveGenericPoint_eq_infinityChart]
+     rfl
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveProductFormula.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveProductFormula.lean
+@@ -1,5 +1,6 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveValuationCenter
++import OAI.NumberTheory.PiExponent.VersionCompatibility
+ 
+ namespace OAI
+ 
+@@ -91,6 +92,15 @@
+     [FiniteDimensional (IntermediateField.adjoin F {f}) E] (p : NormalizedPlace F E) :
+     principalDivisor f hf p = placeOrder p (Units.mk0 f hf.ne_zero) := rfl
+ 
++private theorem zeroPoleOrder_eq_of_finite
++    {F E : Type*} [Field F] [CharZero F] [IsAlgClosed F] [Field E] [Algebra F E]
++    (f : E) (hf : Transcendental F f)
++    [FiniteDimensional (IntermediateField.adjoin F {f}) E]
++    [FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E] :
++    parameterZeroOrder f hf = parameterZeroOrder f⁻¹ (transcendental_inverse f hf) := by
++  rw [parameterZeroOrder_eq_length, parameterZeroOrder_eq_length,
++    parameterZeroLength_eq_degree, parameterZeroLength_eq_degree, parameter_inverse_degree_eq]
++
+ theorem principalDivisor_degree_zero
+     {F E : Type*} [Field F] [CharZero F] [IsAlgClosed F] [Field E] [Algebra F E]
+     (f : E) (hf : Transcendental F f)
+@@ -134,7 +144,7 @@
+       _ = _ := congrArg Neg.neg (sum_positiveOrders_eq f⁻¹ (transcendental_inverse f hf))
+   change parameterZeroOrder f hf + (∑ p ∈ positivePlaces f⁻¹ (transcendental_inverse f hf),
+     placeOrder p z) = 0
+-  rw [hi, zero_pole_order_eq]
++  rw [hi, zeroPoleOrder_eq_of_finite]
+   exact add_neg_cancel _
+ 
+ theorem valuation_constant_eq_zero
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveStalkGluing.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveStalkGluing.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.AlgebraicGeometry.SpreadingOut
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveValuationCenter.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveValuationCenter.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveZeroPole
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.DVRValuationUnique
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\CurveZeroPole.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\CurveZeroPole.lean
+@@ -1,5 +1,7 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveLocalOrder
++import Mathlib.NumberTheory.FunctionField
++import Mathlib.RingTheory.RamificationInertia.Basic
+ 
+ namespace OAI
+ 
+@@ -7,6 +9,13 @@
+ open scoped BigOperators Polynomial nonZeroDivisors
+ 
+ namespace PiExponent.CurveZeroPole
++
++private theorem transcendental_ne_zero {F E : Type*} [Field F] [Field E]
++    [Algebra F E] {f : E} (hf : Transcendental F f) : f ≠ 0 := by
++  intro h
++  apply hf
++  rw [h]
++  exact isAlgebraic_zero
+ 
+ def fiberDegree {R : Type*} [CommRing R] (S : Type*) [CommRing S]
+     [Algebra R S] [Algebra.QuasiFinite R S] (p : Ideal R) : ℕ :=
+@@ -452,7 +461,7 @@
+     parameterZeroOrder f hf =
+       ∑ q : parameterZeroPlaces f hf,
+         WeightedCurveDegree.integerOrder (parameterPlaceValuation f hf q)
+-          (Units.mk0 f hf.ne_zero) := by
++          (Units.mk0 f (transcendental_ne_zero hf)) := by
+   let := parameterAlgebra f hf
+   let := parameterPolynomialAlgebra f hf
+   let := parameter_scalarTower f hf
+@@ -468,39 +477,104 @@
+   change parameterEmbedding f hf RatFunc.X = f
+   exact parameterEmbedding_X f hf
+ 
++private theorem sum_integerOrder_inverse {ι K : Type*} [Fintype ι] [Field K]
++    (v : ι → AddValuation K (WithTop ℤ)) (x : Kˣ) :
++    (∑ i, WeightedCurveDegree.integerOrder (v i) x⁻¹) =
++      -(∑ i, WeightedCurveDegree.integerOrder (v i) x) := by
++  rw [← Finset.sum_neg_distrib]
++  exact Finset.sum_congr rfl fun i _ => WeightedCurveDegree.integerOrder_inv (v i) x
++
++private theorem parameterZeroOrder_eq_sum_fintype
++    {F E : Type*} [Field F] [CharZero F] [Field E] [Algebra F E]
++    (g : E) (hg : Transcendental F g)
++    [FiniteDimensional (IntermediateField.adjoin F {g}) E]
++    [hplaces : Fintype (parameterZeroPlaces g hg)] :
++    parameterZeroOrder g hg =
++      ∑ q : parameterZeroPlaces g hg,
++        WeightedCurveDegree.integerOrder (parameterPlaceValuation g hg q)
++          (Units.mk0 g (transcendental_ne_zero hg)) := by
++  have h : hplaces = parameterZeroPlacesFintype g hg := Subsingleton.elim _ _
++  cases h
++  exact parameterZeroOrder_eq_sum g hg
++
++private theorem parameterPlaceSum_inverse
++    {F E : Type*} [Field F] [CharZero F] [Field E] [Algebra F E]
++    (g : E) (hg : Transcendental F g)
++    [FiniteDimensional (IntermediateField.adjoin F {g}) E]
++    [Fintype (parameterZeroPlaces g hg)] :
++    (∑ q : parameterZeroPlaces g hg,
++      WeightedCurveDegree.integerOrder
++        (parameterPlaceValuation g hg q)
++        (Units.mk0 g (transcendental_ne_zero hg))⁻¹) = -parameterZeroOrder g hg := by
++  have hs := sum_integerOrder_inverse
++    (fun q : parameterZeroPlaces g hg => parameterPlaceValuation g hg q)
++    (Units.mk0 g (transcendental_ne_zero hg))
++  have he := parameterZeroOrder_eq_sum_fintype g hg
++  exact hs.trans (congrArg (fun z : ℤ => -z) he.symm)
++
++private theorem inverseParameter_finite
++    {F E : Type*} [Field F] [Field E] [Algebra F E] (f : E)
++    [FiniteDimensional (IntermediateField.adjoin F {f}) E] :
++    FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E :=
++  (adjoin_inverse_eq (F := F) f).symm ▸ inferInstance
++
++private theorem zeroPoleOrder_eq_of_finite
++    {F E : Type*} [Field F] [CharZero F] [IsAlgClosed F] [Field E] [Algebra F E]
++    (f : E) (hf : Transcendental F f)
++    [FiniteDimensional (IntermediateField.adjoin F {f}) E]
++    [FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E] :
++    parameterZeroOrder f hf = parameterZeroOrder f⁻¹ (transcendental_inverse f hf) := by
++  rw [parameterZeroOrder_eq_length, parameterZeroOrder_eq_length,
++    parameterZeroLength_eq_degree, parameterZeroLength_eq_degree, parameter_inverse_degree_eq]
++
++private theorem sum_zero_and_pole_orders_of_order_eq
++    {F E : Type*} [Field F] [CharZero F] [Field E] [Algebra F E]
++    (f : E) (hf : Transcendental F f)
++    [FiniteDimensional (IntermediateField.adjoin F {f}) E]
++    [FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E]
++    [Fintype (parameterZeroPlaces f hf)]
++    [Fintype (parameterZeroPlaces f⁻¹ (transcendental_inverse f hf))]
++    (heq : parameterZeroOrder f hf = parameterZeroOrder f⁻¹ (transcendental_inverse f hf)) :
++    (∑ q : parameterZeroPlaces f hf,
++      WeightedCurveDegree.integerOrder (parameterPlaceValuation f hf q)
++        (Units.mk0 f (transcendental_ne_zero hf))) +
++    (∑ q : parameterZeroPlaces f⁻¹ (transcendental_inverse f hf),
++      WeightedCurveDegree.integerOrder
++        (parameterPlaceValuation f⁻¹ (transcendental_inverse f hf) q)
++        (Units.mk0 f (transcendental_ne_zero hf))) = 0 := by
++  have hinv : (Units.mk0 f (transcendental_ne_zero hf) : Eˣ) =
++      (Units.mk0 f⁻¹ (transcendental_ne_zero (transcendental_inverse f hf)))⁻¹ := by
++    ext
++    simp
++  have hi := (congrArg (fun x : Eˣ =>
++    ∑ q : parameterZeroPlaces f⁻¹ (transcendental_inverse f hf),
++      WeightedCurveDegree.integerOrder
++        (parameterPlaceValuation f⁻¹ (transcendental_inverse f hf) q) x) hinv).trans
++    (parameterPlaceSum_inverse f⁻¹ (transcendental_inverse f hf))
++  have hz := (parameterZeroOrder_eq_sum_fintype f hf).symm
++  exact (congrArg₂ (fun a b : ℤ => a + b) hz hi).trans
++    ((congrArg (fun z : ℤ => parameterZeroOrder f hf + -z) heq.symm).trans (add_neg_cancel _))
++
+ theorem sum_zero_and_pole_orders_eq_zero
+     {F E : Type*} [Field F] [CharZero F] [IsAlgClosed F] [Field E] [Algebra F E]
+     (f : E) (hf : Transcendental F f)
+     [FiniteDimensional (IntermediateField.adjoin F {f}) E] :
+     letI : FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E :=
+-      (adjoin_inverse_eq (F := F) f).symm ▸ inferInstance
++      inverseParameter_finite (F := F) f
+     letI := parameterZeroPlacesFintype f hf
+     letI := parameterZeroPlacesFintype f⁻¹ (transcendental_inverse f hf)
+     (∑ q : parameterZeroPlaces f hf,
+       WeightedCurveDegree.integerOrder (parameterPlaceValuation f hf q)
+-        (Units.mk0 f hf.ne_zero)) +
++        (Units.mk0 f (transcendental_ne_zero hf))) +
+     (∑ q : parameterZeroPlaces f⁻¹ (transcendental_inverse f hf),
+       WeightedCurveDegree.integerOrder
+         (parameterPlaceValuation f⁻¹ (transcendental_inverse f hf) q)
+-        (Units.mk0 f hf.ne_zero)) = 0 := by
++        (Units.mk0 f (transcendental_ne_zero hf))) = 0 := by
+   let : FiniteDimensional (IntermediateField.adjoin F {f⁻¹}) E :=
+-    (adjoin_inverse_eq (F := F) f).symm ▸ inferInstance
++    inverseParameter_finite (F := F) f
+   let := parameterZeroPlacesFintype f hf
+   let := parameterZeroPlacesFintype f⁻¹ (transcendental_inverse f hf)
+-  have hinv : (Units.mk0 f hf.ne_zero : Eˣ) =
+-      (Units.mk0 f⁻¹ (transcendental_inverse f hf).ne_zero)⁻¹ := by
+-    ext
+-    simp
+-  have hi : (∑ q : parameterZeroPlaces f⁻¹ (transcendental_inverse f hf),
+-      WeightedCurveDegree.integerOrder
+-        (parameterPlaceValuation f⁻¹ (transcendental_inverse f hf) q)
+-        (Units.mk0 f hf.ne_zero)) = -parameterZeroOrder f⁻¹ (transcendental_inverse f hf) := by
+-    rw [parameterZeroOrder_eq_sum, ← Finset.sum_neg_distrib]
+-    apply Finset.sum_congr rfl
+-    intro q _
+-    rw [hinv, WeightedCurveDegree.integerOrder_inv]
+-  rw [← parameterZeroOrder_eq_sum, hi, zero_pole_order_eq]
+-  exact add_neg_cancel _
++  exact sum_zero_and_pole_orders_of_order_eq f hf (zeroPoleOrder_eq_of_finite f hf)
+ 
+ end PiExponent.CurveZeroPole
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\FiniteCurveZeros.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\FiniteCurveZeros.lean
+@@ -1,6 +1,7 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.FiniteZeroEuler
+ import OAI.NumberTheory.PiExponent.Geometry.LineBundleCoherent
++import Mathlib.AlgebraicGeometry.ZariskisMainTheorem
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\GeneralCartierDegreeLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\GeneralCartierDegreeLength.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Approximation.LinePullback
+ import OAI.NumberTheory.PiExponent.Cohomology.EulerExact
+ import OAI.NumberTheory.PiExponent.Cohomology.EulerSupportDimension
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\IntegralCurveExistence.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\IntegralCurveExistence.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Ampleness.NumericalAmpleness
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\LineBundleTensor.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\LineBundleTensor.lean
+@@ -1,4 +1,6 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.Algebra.Category.ModuleCat.Presheaf.Monoidal
++import Mathlib.Algebra.Category.ModuleCat.Presheaf.PushforwardZeroMonoidal
+ 
+ namespace OAI
+ 
+@@ -19,7 +21,7 @@
+ 
+ def moduleTensor (M N : X.Modules) : X.Modules :=
+   (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).obj
+-    (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M.val N.val)
++    (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) M.val N.val)
+ 
+ def modulePow (M : X.Modules) : ℕ → X.Modules
+   | 0 => SheafOfModules.unit X.ringCatSheaf
+@@ -171,12 +173,12 @@
+ def modulePresheafTensorRestrict (U : X.Opens)
+     (M N : PresheafOfModules X.ringCatSheaf.obj) :
+     (modulePresheafRestrict U.ι).obj
+-        (PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := X.presheaf) M N) ≅
+-      PresheafOfModulesOfCommRing.Monoidal.tensorObj (R := U.toScheme.presheaf)
++        (PresheafOfModules.Monoidal.tensorObj (R := X.presheaf) M N) ≅
++      PresheafOfModules.Monoidal.tensorObj (R := U.toScheme.presheaf)
+         ((modulePresheafRestrict U.ι).obj M)
+         ((modulePresheafRestrict U.ι).obj N) := by
+   letI : MonoidalCategory (PresheafOfModules U.toScheme.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := U.toScheme.presheaf)
++    PresheafOfModules.monoidalCategory (R := U.toScheme.presheaf)
+   exact (modulePresheafRestrictOpensIso U).app _ ≪≫
+     (Functor.Monoidal.μIso
+       (PresheafOfModules.pushforward₀OfCommRingCat U.ι.opensFunctor X.presheaf) M N).symm ≪≫
+@@ -199,14 +201,14 @@
+ def moduleTensorIso {M N P Q : X.Modules} (e : M ≅ N) (f : P ≅ Q) :
+     moduleTensor X M P ≅ moduleTensor X N Q := by
+   letI : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   exact (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso
+     (tensorIso ((SheafOfModules.forget _).mapIso e) ((SheafOfModules.forget _).mapIso f))
+ 
+ def moduleTensorUnit (M : X.Modules) :
+     moduleTensor X (structureSheaf X) M ≅ M := by
+   letI : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   exact (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso (λ_ M.val) ≪≫
+     (asIso (PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf)
+       (𝟙 X.ringCatSheaf.obj)).counit).app M
+@@ -227,12 +229,12 @@
+ def moduleTensorMap {M N P Q : X.Modules} (f : M ⟶ N) (g : P ⟶ Q) :
+     moduleTensor X M P ⟶ moduleTensor X N Q :=
+   (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+-    (PresheafOfModulesOfCommRing.Monoidal.tensorHom (R := X.presheaf) f.val g.val)
++    (PresheafOfModules.Monoidal.tensorHom (R := X.presheaf) f.val g.val)
+ 
+ @[simp] lemma moduleTensorMap_id (M N : X.Modules) :
+     moduleTensorMap (𝟙 M) (𝟙 N) = 𝟙 (moduleTensor X M N) := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   change (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+     ((𝟙 M.val) ⊗ₘ (𝟙 N.val)) = _
+   rw [id_tensorHom_id]
+@@ -242,7 +244,7 @@
+     (f : M ⟶ N) (g : N ⟶ P) (h : Q ⟶ R) (k : R ⟶ T) :
+     moduleTensorMap (f ≫ g) (h ≫ k) = moduleTensorMap f h ≫ moduleTensorMap g k := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   change (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).map
+     ((f.val ≫ g.val) ⊗ₘ (h.val ≫ k.val)) = _
+   rw [← tensorHom_comp_tensorHom]
+@@ -312,7 +314,7 @@
+ def moduleTensorRightUnit (M : X.Modules) :
+     moduleTensor X M (structureSheaf X) ≅ M := by
+   let : MonoidalCategory (PresheafOfModules X.ringCatSheaf.obj) :=
+-    PresheafOfModulesOfCommRing.monoidalCategory (R := X.presheaf)
++    PresheafOfModules.monoidalCategory (R := X.presheaf)
+   exact (PresheafOfModules.sheafification (𝟙 X.ringCatSheaf.obj)).mapIso (ρ_ M.val) ≪≫
+     (asIso (PresheafOfModules.sheafificationAdjunction (R := X.ringCatSheaf)
+       (𝟙 X.ringCatSheaf.obj)).counit).app M
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\PlaceCenteredBranch.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\PlaceCenteredBranch.lean
+@@ -52,7 +52,7 @@
+     intro h
+     apply hne
+     rw [← lift_aeval p z c hc f, h, map_zero]
+-  rw [coordinateOrder, dite_eq_right hne, valuation_eq_fractionAddValuation p]
++  rw [coordinateOrder, dif_neg hne, valuation_eq_fractionAddValuation p]
+   have hu : Units.mk0 (MvPolynomial.aeval z f) hne =
+       Units.mk0 (algebraMap (ring p) E (MvPolynomial.aeval (lift p z c hc) f))
+         ((map_ne_zero_iff _ (IsFractionRing.injective (ring p) E)).mpr hn) := by
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\PlaceLocalRing.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\PlaceLocalRing.lean
+@@ -3,6 +3,7 @@
+ import OAI.NumberTheory.PiExponent.Geometry.PlaceValuationRing
+ import OAI.NumberTheory.PiExponent.Jets.DVRBranch
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.ParameterResidueField
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCharts.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCharts.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCoordinateFiniteValues.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCoordinateFiniteValues.lean
+@@ -66,7 +66,7 @@
+             (restrictSection (SectionOpens.isoOpen (s i)).ι (s j.val)))) := by
+   apply (coordinateFiniteRingEquiv M s k hc f hf i a).injective
+   rw [RingEquiv.apply_symm_apply, coordinateFiniteRingEquiv_coordinate,
+-    chartToPoly_coordinate, dite_eq_right j.property]
++    chartToPoly_coordinate, dif_neg j.property]
+ 
+ def coordinateFiniteTransition (i j : σ) (a : Finset (ChartVariables i))
+     (b : Finset (ChartVariables j))
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCoordinateTransitions.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveCoordinateTransitions.lean
+@@ -52,7 +52,7 @@
+   · subst j
+     simp only [dite_true, map_one, sub_self]
+     rfl
+-  · rw [dite_eq_right hji, overlapToFull_X]
++  · rw [dif_neg hji, overlapToFull_X]
+ 
+ lemma coordinateFiniteTransition_X_full (i j : σ) (a : Finset (ChartVariables i))
+     (b : Finset (ChartVariables j))
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveFramedAtlas.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveFramedAtlas.lean
+@@ -28,7 +28,7 @@
+       (atlasOfFramedSections k s V f b hb).morphism := by
+   apply U.hom_ext
+   intro i
+-  apply (V.pullback₁ (U.f i)).hom_ext
++  apply Scheme.Cover.hom_ext (V.pullback₁ (U.f i))
+   intro j
+   change V.I₀ at j
+   change pullback.fst (U.f i) (V.f j) ≫ (U.f i ≫ _) =
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveLatticeOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveLatticeOrder.lean
+@@ -32,7 +32,7 @@
+     exact coordinate_coefficient_image y Finset.univ a (Finset.mem_univ a) hya hspan
+       b (Finset.mem_univ b)
+   rw [hu, WeightedCurveDegree.integerOrder_div, length_quotient_span_eq_addVal hc] at hi
+-  simpa only [WeightedPolynomialPole.coordinateOrder, dite_eq_right hyb, dite_eq_right hya] using hi.symm
++  simpa only [WeightedPolynomialPole.coordinateOrder, dif_neg hyb, dif_neg hya] using hi.symm
+ 
+ theorem exists_frame_coordinate_orders
+     (k : R →+* A) (y : σ → K) (a : σ) (hya : y a ≠ 0)
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveMonomialFinite.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\ProjectiveMonomialFinite.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.ProjectiveMonomialCechHigher
+ 
+ namespace OAI
+@@ -20,9 +20,10 @@
+   calc
+     d = ∑ j, a.val j := a.property.symm
+     _ ≤ a.val i := by
+-      simpa using Finset.sum_le_sum_of_subset_of_nonpos
+-        (f := a.val) (show ({i} : Finset ι) ⊆ Finset.univ by simp)
+-        (fun j _ _ => le_of_lt (ha j))
++      have hrest : ∑ j ∈ Finset.univ.erase i, a.val j ≤ 0 :=
++        Finset.sum_nonpos (fun j _ => le_of_lt (ha j))
++      have hsum := Finset.sum_erase_add Finset.univ a.val (Finset.mem_univ i)
++      linarith
+ 
+ instance allNegative_finite (d : ℤ) : Finite {a : Monomial ι d // AllNegative a} := by
+   let f : {a : Monomial ι d // AllNegative a} → (ι → Set.Icc d 0) :=
+@@ -126,7 +127,7 @@
+       have hpivot (a : Monomial ι d) (ha : ¬ AllNegative a) : 0 ≤ a.val (pivot a) := by
+         have hex : ∃ i, 0 ≤ a.val i := by
+           simpa only [AllNegative, not_forall, not_lt] using ha
+-        simp only [pivot, dite_eq_left hex]
++        simp only [pivot, dif_pos hex]
+         exact Classical.choose_spec hex
+       refine ⟨contraction pivot c, ?_, ?_⟩
+       · intro t a ha k hk
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\SupportedSheaf.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\SupportedSheaf.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.Topology.Sheaves.Flasque
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\WeightedCurveDegree.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\WeightedCurveDegree.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Geometry\WeightedLocalSheaf.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Geometry\WeightedLocalSheaf.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.LineBundleTensor
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.WeightedLocalLattice
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\BranchContactIdeal.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\BranchContactIdeal.lean
+@@ -1,5 +1,6 @@
+ import OAI.NumberTheory.PiExponent.Jets.BranchContact
+ import OAI.NumberTheory.PiExponent.Jets.DVRBranch
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\CommutingTaylor.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\CommutingTaylor.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\CompactJetPolynomial.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\CompactJetPolynomial.lean
+@@ -96,7 +96,7 @@
+   | @insert j s hj ih =>
+     rw [Finset.prod_insert hj, PrimeSpectrum.zeroLocus_mul,
+       zeroLocus_powerIdeal (c j) G hG e he, ih]
+-    simp
++    simp [Set.image_insert_eq]
+ 
+ theorem zeroLocus_prod_powerIdeal {J : Type*} [Fintype J]
+     (c : J → Fin m → k) (G : Fin m → Polynomial k)
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\CotangentGeneration.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\CotangentGeneration.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.GradedGeneration
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchExpansion.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchExpansion.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchJet.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchJet.lean
+@@ -1,6 +1,7 @@
+ import OAI.NumberTheory.PiExponent.Jets.BranchContact
+ import OAI.NumberTheory.PiExponent.Jets.DVRBranch
+ import OAI.NumberTheory.PiExponent.Jets.FormalBranchEvaluation
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\DVRBranchOrder.lean
+@@ -15,7 +15,7 @@
+     rw [map_zero, PowerSeries.order_zero, IsDiscreteValuationRing.addVal_zero]
+   · obtain ⟨n, u, rfl⟩ := IsDiscreteValuationRing.eq_unit_mul_pow_irreducible ha hπ
+     rw [map_mul, map_pow, hφπ, PowerSeries.order_mul, PowerSeries.order_X_pow,
+-      PowerSeries.order_zero_of_isUnit (u.isUnit.map φ), zero_add,
++      PowerSeries.order_zero_of_unit (u.isUnit.map φ), zero_add,
+       IsDiscreteValuationRing.addVal_def' u hπ]
+ 
+ theorem injective (φ : A →+* PowerSeries C) (π : A)
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\FilteredLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\FilteredLength.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\FormalBranchOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\FormalBranchOrder.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\FormalJetDerivatives.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\FormalJetDerivatives.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.JetGeometry
+ 
+ namespace OAI
+@@ -13,7 +13,7 @@
+ theorem pderiv_mem_rationalWeightedIdeal (v : σ → ℚ) (hv : ∀ i, 0 ≤ v i)
+     (H : ℚ) (f : MvPowerSeries σ R)
+     (hf : f ∈ rationalWeightedIdeal v hv H) (i : σ) :
+-    pderiv i f ∈ rationalWeightedIdeal v hv (H - v i) := by
++    pderiv R i f ∈ rationalWeightedIdeal v hv (H - v i) := by
+   intro d hd
+   rw [coeff_pderiv, hf, zero_mul]
+   rw [map_add, Finsupp.weight_single, one_nsmul]
+@@ -22,20 +22,20 @@
+ theorem mul_pderiv_mem_rationalWeightedIdeal (v : σ → ℚ) (hv : ∀ i, 0 ≤ v i)
+     (H : ℚ) (f g : MvPowerSeries σ R)
+     (hf : f ∈ rationalWeightedIdeal v hv H) (i : σ) :
+-    g * pderiv i f ∈ rationalWeightedIdeal v hv (H - v i) :=
++    g * pderiv R i f ∈ rationalWeightedIdeal v hv (H - v i) :=
+   (rationalWeightedIdeal v hv (H - v i)).mul_mem_left g
+     (pderiv_mem_rationalWeightedIdeal v hv H f hf i)
+ 
+ def jetFrame (m : ℕ) (i : Fin (m + 1)) :
+     Derivation R (MvPowerSeries (Fin (m + 1)) R) (MvPowerSeries (Fin (m + 1)) R) :=
+-  if i = 0 then (1 + X (0 : Fin (m + 1)) : MvPowerSeries (Fin (m+1)) R) • pderiv 0 else pderiv i
++  if i = 0 then (1 + X (0 : Fin (m + 1)) : MvPowerSeries (Fin (m+1)) R) • pderiv R 0 else pderiv R i
+ 
+ @[simp] theorem jetFrame_zero (m : ℕ) (f : MvPowerSeries (Fin (m + 1)) R) :
+-    jetFrame m 0 f = (1 + X 0) * pderiv 0 f := by
++    jetFrame m 0 f = (1 + X 0) * pderiv R 0 f := by
+   simp [jetFrame, Derivation.smul_apply, smul_eq_mul]
+ 
+ @[simp] theorem jetFrame_pos (m : ℕ) (i : Fin (m + 1)) (hi : i ≠ 0)
+-    (f : MvPowerSeries (Fin (m + 1)) R) : jetFrame m i f = pderiv i f := by
++    (f : MvPowerSeries (Fin (m + 1)) R) : jetFrame m i f = pderiv R i f := by
+   simp [jetFrame, hi]
+ 
+ theorem jetFrame_mem_rationalWeightedIdeal {m : ℕ}
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\FormalLogJet.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\FormalLogJet.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.FormalJetDerivatives
+ import OAI.NumberTheory.PiExponent.Polynomials.PolynomialFrame
+ 
+@@ -32,7 +32,7 @@
+   simp [liftSeries]
+ 
+ theorem pderiv_zero_liftSeries (m : ℕ) (f : PowerSeries R) :
+-    pderiv 0 (liftSeries m f) = liftSeries m (PowerSeries.derivative f) := by
++    pderiv R 0 (liftSeries m f) = liftSeries m (PowerSeries.derivative R f) := by
+   ext d
+   rw [coeff_pderiv, coeff_liftSeries, coeff_liftSeries, PowerSeries.coeff_derivative]
+   have ht : (d + Finsupp.single (0 : Fin (m+1)) 1).tail = d.tail := by
+@@ -42,7 +42,7 @@
+   split_ifs <;> simp_all
+ 
+ theorem pderiv_succ_liftSeries (m : ℕ) (i : Fin m) (f : PowerSeries R) :
+-    pderiv i.succ (liftSeries m f) = 0 := by
++    pderiv R i.succ (liftSeries m f) = 0 := by
+   ext d
+   rw [coeff_pderiv, coeff_liftSeries, coeff_zero]
+   have ht : (d + Finsupp.single i.succ 1).tail ≠ 0 := by
+@@ -55,11 +55,19 @@
+   liftSeries m (PowerSeries.log ℂ)
+ 
+ @[simp] theorem pderiv_succ_formalLog (m : ℕ) (i : Fin m) :
+-    pderiv i.succ (formalLog m) = 0 := pderiv_succ_liftSeries m i _
++    pderiv ℂ i.succ (formalLog m) = 0 := pderiv_succ_liftSeries m i _
++
++private theorem derivative_log_mul_one_add_X :
++    PowerSeries.derivative ℂ (PowerSeries.log ℂ) * (1 + PowerSeries.X) = 1 := by
++  rw [PowerSeries.deriv_log, mul_add, mul_one]
++  ext n
++  cases n with
++  | zero => simp
++  | succ n => simp [PowerSeries.coeff_succ_mul_X, pow_succ]
+ 
+ theorem one_add_X_mul_pderiv_formalLog (m : ℕ) :
+-    (1 + X 0) * pderiv 0 (formalLog m) = 1 := by
+-  have h := congrArg (liftSeries m) (PowerSeries.derivative_log_mul_one_add_X (A := ℂ))
++    (1 + X 0) * pderiv ℂ 0 (formalLog m) = 1 := by
++  have h := congrArg (liftSeries m) derivative_log_mul_one_add_X
+   rw [map_mul, map_add, map_one, liftSeries_X] at h
+   rw [formalLog, pderiv_zero_liftSeries, mul_comm]
+   exact h
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\GradedGeneration.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\GradedGeneration.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.FilteredLength
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\IntrinsicLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\IntrinsicLength.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\JetGeometry.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\JetGeometry.lean
+@@ -119,7 +119,7 @@
+   change coeff d.val (f a) = packet d
+   rw [hzero]
+   change (if hd : Finsupp.weight w d.val < N then packet ⟨d.val, hd⟩ else 0) = packet d
+-  simp only [dite_eq_left d.property]
++  simp only [dif_pos d.property]
+ 
+ theorem coefficientPacket_surjective_of_coordinatePowerIdeal {α : Type*}
+     (w e : σ → ℕ) (R₀ : ℕ) (he : ∀ i, R₀ ≤ e i * w i)
+@@ -239,7 +239,7 @@
+   change coeff d.val (f a) = packet d
+   rw [hzero]
+   change (if hd : Finsupp.weight v d.val < n * H then packet ⟨d.val, hd⟩ else 0) = packet d
+-  simp only [dite_eq_left d.property]
++  simp only [dif_pos d.property]
+ 
+ theorem rationalCoefficientPackets_surjective_of_coordinatePowerIdeal {α J : Type*}
+     (v : σ → ℚ) (hv : ∀ i, 0 ≤ v i) (e : σ → ℕ) (H : ℚ)
+@@ -263,7 +263,7 @@
+   change coeff d.val (f a j) = packets j d
+   rw [hzero]
+   change (if hd : Finsupp.weight v d.val < n * H then packets j ⟨d.val, hd⟩ else 0) = packets j d
+-  simp only [dite_eq_left d.property]
++  simp only [dif_pos d.property]
+ 
+ end
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\NormalBasisProducts.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\NormalBasisProducts.lean
+@@ -84,7 +84,7 @@
+   have h := rectangular_factor_le_constant m k sigma hsigma hkm
+   have hp : 0 ≤ ∏ i, kappa i := Finset.prod_nonneg (fun i _ => hkappa i)
+   have hh := mul_le_mul_of_nonneg_right h hp
+-  convert hh using 1
++  convert hh using 1 <;> try rfl
+   simp only [div_eq_mul_inv, mul_pow, mul_inv_rev, inv_pow, inv_inv]
+   ring
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\NormalBasisRigidity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\NormalBasisRigidity.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\NormalFrameBasis.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\NormalFrameBasis.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.NormalBasisRigidity
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryDerivativeIdeals.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryDerivativeIdeals.lean
+@@ -1,5 +1,5 @@
+ import Mathlib.Algebra.MvPolynomial.PDeriv
+-import Mathlib.Basic.Complex.Basic
++import Mathlib.Data.Complex.Basic
+ import OAI.NumberTheory.PiExponent.Approximation.WeightedSliceDegree
+ import OAI.NumberTheory.PiExponent.Jets.DerivativeIdeals
+ 
+@@ -31,7 +31,7 @@
+   · apply MvPolynomial.ext
+     intro d
+     simp only [MvPolynomial.coeff_pderiv, Finsupp.add_apply,
+-      Finsupp.single_apply, ite_eq_right hij, ite_eq_right (Ne.symm hij), add_zero]
++      Finsupp.single_apply, if_neg hij, if_neg (Ne.symm hij), add_zero]
+     rw [show d + Finsupp.single i 1 + Finsupp.single j 1 =
+       d + Finsupp.single j 1 + Finsupp.single i 1 by ac_rfl]
+     ring
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryDVRBranchJet.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryDVRBranchJet.lean
+@@ -1,6 +1,7 @@
+ import OAI.NumberTheory.PiExponent.Jets.BranchContact
+ import OAI.NumberTheory.PiExponent.Jets.DVRBranch
+ import OAI.NumberTheory.PiExponent.Jets.OrdinaryBranchEvaluation
++import Mathlib.Analysis.Complex.Polynomial.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryJetDerivatives.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\OrdinaryJetDerivatives.lean
+@@ -9,9 +9,9 @@
+ 
+ theorem formalJet_pderiv {n : ℕ} (c : Fin n → ℂ) (i : Fin n)
+     (p : MvPolynomial (Fin n) ℂ) :
+-    formalJet c (MvPolynomial.pderiv i p) = MvPowerSeries.pderiv i (formalJet c p) := by
++    formalJet c (MvPolynomial.pderiv i p) = MvPowerSeries.pderiv ℂ i (formalJet c p) := by
+   apply FormalLogJet.derivation_map_of_X (formalJet c) (MvPolynomial.pderiv i)
+-    (MvPowerSeries.pderiv i) _ p
++    (MvPowerSeries.pderiv ℂ i) _ p
+   intro j
+   by_cases hij : i = j
+   · subst j
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\RectangularCotangent.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\RectangularCotangent.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import Mathlib.RingTheory.MvPowerSeries.Derivative
+ import OAI.NumberTheory.PiExponent.Jets.TransverseMultiplicity
+ 
+@@ -50,7 +50,7 @@
+       constantCoeff f * coeff (Finsupp.single i 1) g +
+         constantCoeff g * coeff (Finsupp.single i 1) f := by
+   have hh := congrArg (constantCoeff : MvPowerSeries σ K →+* K)
+-    ((MvPowerSeries.pderiv i).leibniz f g)
++    ((MvPowerSeries.pderiv K i).leibniz f g)
+   simpa only [smul_eq_mul, map_add, map_mul,
+     ← coeff_zero_eq_constantCoeff_apply, coeff_pderiv, zero_add,
+     Finsupp.zero_apply, Nat.cast_zero, zero_add, mul_one] using hh
+@@ -73,7 +73,7 @@
+     have hne : e.val ≠ d.val := by
+       intro he
+       exact hde (Subtype.ext he.symm)
+-    simp only [coeff_monomial, ite_eq_right hne]
++    simp only [coeff_monomial, if_neg hne]
+   · intro h
+     exact (h (Finset.mem_univ e)).elim
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\TaylorRectangular.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\TaylorRectangular.lean
+@@ -147,7 +147,7 @@
+     _ = ∏ i : Fin k, δ / ((k : ℝ) * cost (B i)) := by
+       simp [Finset.prod_div_distrib, Finset.prod_mul_distrib]
+     _ ≤ ∏ i : Fin k, (costRectangle m k B cost δ i : ℝ) := by
+-      apply Finset.prod_le_prod₀ (fun i _ => div_nonneg hδ (mul_pos hkR (hc i)).le)
++      apply Finset.prod_le_prod (fun i _ => div_nonneg hδ (mul_pos hkR (hc i)).le)
+       intro i hi
+       simpa [costRectangle] using
+         (Nat.lt_floor_add_one (δ / ((k : ℝ) * cost (B i)))).le
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\TransverseMultiplicity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\TransverseMultiplicity.lean
+@@ -55,7 +55,7 @@
+   refine ⟨f, ?_⟩
+   funext d
+   change (if hd : ∀ i, d.val i < n i then packet ⟨d.val, hd⟩ else 0) = packet d
+-  simp only [dite_eq_left d.property]
++  simp only [dif_pos d.property]
+   exact congrArg packet (Subtype.ext rfl)
+ 
+ def rectangularQuotientCoefficients (n : σ → ℕ) :
+@@ -364,10 +364,10 @@
+       constantCoeff f * coeff (Finsupp.single i 1) g +
+       constantCoeff g * coeff (Finsupp.single i 1) f := by
+   have h (p : MvPowerSeries σ K) :
+-      constantCoeff (MvPowerSeries.pderiv i p) = coeff (Finsupp.single i 1) p := by
++      constantCoeff (MvPowerSeries.pderiv K i p) = coeff (Finsupp.single i 1) p := by
+     rw [← coeff_zero_eq_constantCoeff_apply, MvPowerSeries.coeff_pderiv]
+     simp
+-  rw [← h, (MvPowerSeries.pderiv i).leibniz]
++  rw [← h, (MvPowerSeries.pderiv K i).leibniz]
+   simp only [smul_eq_mul, map_add, map_mul, h]
+ 
+ omit [Fintype σ] [DecidableEq σ] in
+--- source/lean/OAI\NumberTheory\PiExponent\Jets\TransverseWeightedMultiplicity.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Jets\TransverseWeightedMultiplicity.lean
+@@ -81,7 +81,7 @@
+     m k sigma hsigma hkm
+   have hp : 0 ≤ ∏ i, kappa i := Finset.prod_nonneg (fun i _ => hkappa i)
+   have hh := mul_le_mul_of_nonneg_right h hp
+-  convert hh using 1
++  convert hh using 1 <;> try rfl
+   simp only [div_eq_mul_inv, mul_pow, mul_inv_rev, inv_pow, inv_inv]
+   ring
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\AffineLocalRegularBezout.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\AffineLocalRegularBezout.lean
+@@ -90,10 +90,10 @@
+   have hprod : (∏ i ∈ Finset.range hs.length, degreeAt degrees i) ≤ D ^ gs.length := by
+     calc
+       _ ≤ ∏ _i ∈ Finset.range hs.length, D := by
+-        apply Finset.prod_le_prod
++        apply Finset.prod_le_prod'
+         intro i hi
+         have hi' : i < hs.length := Finset.mem_range.mp hi
+-        simp only [degreeAt,dite_eq_left hi',degrees]
++        simp only [degreeAt,dif_pos hi',degrees]
+         exact hdegree _ (List.getElem_mem _)
+       _ = D ^ gs.length := by simp only [Finset.prod_const,Finset.card_range,hs,List.length_map]
+   calc
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\AssociatedPrimeAvoidance.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\AssociatedPrimeAvoidance.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ColonHilbertStep.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ColonHilbertStep.lean
+@@ -75,11 +75,11 @@
+   rw [map_add, PowerSeries.coeff_X_pow_mul']
+   simp only [coeff_sectionHilbertSeries]
+   by_cases hdn : d ≤ n
+-  · rw [ite_eq_left hdn]
++  · rw [if_pos hdn]
+     have h := colon_hilbert_step I hI f hf (n-d)
+     rw [Nat.sub_add_cancel hdn] at h
+     exact_mod_cast h.symm
+-  · rw [ite_eq_right hdn, add_zero]
++  · rw [if_neg hdn, add_zero]
+     exact congrArg (fun m : ℕ => (m : ℤ))
+       (hilbert_step_of_degree_lt I hI f hf (Nat.lt_of_not_ge hdn)).symm
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CompleteIntersectionComponentBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CompleteIntersectionComponentBound.lean
+@@ -36,7 +36,7 @@
+   apply Finset.prod_ne_zero_iff.mpr
+   intro i hi
+   have hi' := Finset.mem_range.mp hi
+-  simp only [degreeAt, dite_eq_left hi']
++  simp only [degreeAt, dif_pos hi']
+   exact Nat.ne_of_gt (PiExponentSiegel.W20.regular_homogeneous_degrees_pos
+     rs degrees hhom hreg ⟨i, hi'⟩)
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CompleteIntersectionHilbert.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CompleteIntersectionHilbert.lean
+@@ -99,9 +99,9 @@
+   rw [regular_sequence_section_dimension_sum hσ rs degrees hhom hreg hlen]
+   calc
+     _ ≤ ∏ _i ∈ Finset.range rs.length, D := by
+-      apply Finset.prod_le_prod
++      apply Finset.prod_le_prod'
+       intro i hi
+-      simpa only [degreeAt, dite_eq_left (Finset.mem_range.mp hi)] using
++      simpa only [degreeAt, dif_pos (Finset.mem_range.mp hi)] using
+         hD ⟨i, Finset.mem_range.mp hi⟩
+     _ = _ := by simp
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ComponentMultiplicityBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ComponentMultiplicityBound.lean
+@@ -52,7 +52,7 @@
+     if hi : i < n then actualMultiplicity (P ⟨i, hi⟩) (hP ⟨i, hi⟩) D else 0
+   have hUstep : ∀ i < n, U i = U (i+1) + V i := by
+     intro i hi
+-    simp only [U, V, dite_eq_left hi]
++    simp only [U, V, dif_pos hi]
+     exact actualMultiplicity_cyclic_step (J i) (J (i+1)) (hJ i) (hJ (i+1))
+       (f i) (hdata i hi).2.1 (hdata i hi).2.2.2.2 (hP ⟨i, hi⟩) D (hPdeg ⟨i, hi⟩)
+   have hUzero : U 0 = actualMultiplicity I hI D :=
+@@ -83,11 +83,11 @@
+   apply Finset.sum_le_sum
+   intro i hi
+   have hin : i < n := Finset.mem_range.mp hi
+-  simp only [V, dite_eq_left hin]
++  simp only [V, dif_pos hin]
+   by_cases heq : (J i).colon {f i} = Q
+-  · rw [ite_eq_left heq, one_mul]
++  · rw [if_pos heq, one_mul]
+     exact le_of_eq (actualMultiplicity_congr (hP ⟨i, hin⟩) hQhom heq D).symm
+-  · rw [ite_eq_right heq, zero_mul]
++  · rw [if_neg heq, zero_mul]
+     exact actualMultiplicity_nonneg (P ⟨i, hin⟩) (hP ⟨i, hin⟩) D (hPdeg ⟨i, hin⟩)
+ 
+ end PiExponentJets.W22
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ComponentMultiplicitySum.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ComponentMultiplicitySum.lean
+@@ -19,19 +19,19 @@
+   · obtain ⟨a, ha⟩ := hex
+     have hsum : (∑ b, if P = Q b then W b else 0) = W a := by
+       rw [Finset.sum_eq_single a]
+-      · simp only [ite_eq_left ha]
++      · simp only [if_pos ha]
+       · intro b _ hba
+         have hb : P ≠ Q b := by
+           intro hb
+           exact hba (hQinj (hb.symm.trans ha))
+-        exact ite_eq_right hb
++        exact if_neg hb
+       · intro hnot
+         exact False.elim (hnot (Finset.mem_univ a))
+     rw [hsum, hmatch a ha]
+   · have hzero : (∑ a, if P = Q a then W a else 0) = 0 := by
+       apply Finset.sum_eq_zero
+       intro a _
+-      exact ite_eq_right (fun ha => hex ⟨a, ha⟩)
++      exact if_neg (fun ha => hex ⟨a, ha⟩)
+     rw [hzero]
+     exact hV
+ 
+@@ -90,7 +90,7 @@
+     if hi : i < n then actualMultiplicity (P ⟨i, hi⟩) (hP ⟨i, hi⟩) D else 0
+   have hUstep : ∀ i < n, U i = U (i+1) + V i := by
+     intro i hi
+-    simp only [U, V, dite_eq_left hi]
++    simp only [U, V, dif_pos hi]
+     exact actualMultiplicity_cyclic_step (J i) (J (i+1)) (hJ i) (hJ (i+1))
+       (f i) (hdata i hi).2.1 (hdata i hi).2.2.2.2 (hP ⟨i, hi⟩) D (hPdeg ⟨i, hi⟩)
+   have hUzero : U 0 = actualMultiplicity I hI D :=
+@@ -131,12 +131,12 @@
+   intro i hi
+   have hin : i < n := Finset.mem_range.mp hi
+   have hnonneg : 0 ≤ V i := by
+-    simp only [V, dite_eq_left hin]
++    simp only [V, dif_pos hin]
+     exact actualMultiplicity_nonneg (P ⟨i, hin⟩) (hP ⟨i, hin⟩) D (hPdeg ⟨i, hin⟩)
+   apply distinct_selected_factor_weight_le Q hQinj ((J i).colon {f i})
+     (fun a => actualMultiplicity (Q a) (hQhom a) D) (V i) hnonneg
+   intro a heq
+-  simp only [V, dite_eq_left hin]
++  simp only [V, dif_pos hin]
+   exact (actualMultiplicity_congr (hP ⟨i, hin⟩) (hQhom a) heq D).symm
+ 
+ end PiExponentJets.W22
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ConeRegularSequence.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\ConeRegularSequence.lean
+@@ -102,7 +102,7 @@
+   let := affineLocalToConeLocal_flat k σ P
+   let : IsLocalHom (algebraMap (Localization.AtPrime P)
+       (Localization.AtPrime (conePrime k σ P))) :=
+-    ((IsLocalRing.local_hom_TFAE _).out 1 3).mpr
++    ((IsLocalRing.local_hom_TFAE _).out 0 2).mpr
+       (affineLocalToConeLocal_map_maximalIdeal k σ P).le
+   exact Module.FaithfullyFlat.of_flat_of_isLocalHom
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateContactBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateContactBound.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveContactSum
+ import OAI.NumberTheory.PiExponent.Geometry.PlaceCenteredBranch
+ import OAI.NumberTheory.PiExponent.Jets.OrdinaryAuxiliaryJet
+@@ -32,7 +32,7 @@
+       Ideal (MvPowerSeries ι K)) := by
+   classical
+   intro d hd
+-  rw [MvPowerSeries.coeff_X, ite_eq_right]
++  rw [MvPowerSeries.coeff_X, if_neg]
+   intro he
+   subst d
+   simp [Finsupp.weight_single] at hd
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateFiniteSlice.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateFiniteSlice.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Approximation.WeightedSliceDegree
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.PrimeResidueAlgebraEquiv
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateSliceLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateSliceLength.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Approximation.WeightedSliceDegree
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.LocalLengthTransport
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.QuotientLengthEquivalence
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateTranscendenceBasis.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\CoordinateTranscendenceBasis.lean
+@@ -144,7 +144,7 @@
+   ext m
+   by_cases hm : m = 0
+   · subst m; simp
+-  · rw [coeff_C, ite_eq_right (Ne.symm hm)]
++  · rw [coeff_C, if_neg (Ne.symm hm)]
+     have hex : ∃ i, m i ≠ 0 := by
+       by_contra! h
+       apply hm
+@@ -156,7 +156,7 @@
+     have hpos : 0 < ((m - Finsupp.single i 1 : ι →₀ ℕ) i) + 1 := by omega
+     have hn : ((((m - Finsupp.single i 1 : ι →₀ ℕ) i) : C) + 1) ≠ 0 := by
+       exact_mod_cast (Nat.ne_of_gt hpos)
+-    rw [AddMonoidAlgebra.coeff_zero, Finsupp.zero_apply] at hc
++    rw [MvPolynomial.coeff_zero] at hc
+     exact (mul_eq_zero.mp hc).resolve_right hn
+ 
+ theorem algebraicIndependent_of_pderiv_kernel (x : ι → E)
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\DVRValuationUnique.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\DVRValuationUnique.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveLocalOrder
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\FiniteFromClosedFibers.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\FiniteFromClosedFibers.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.AlgebraicGeometry.ZariskisMainTheorem
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\IdealFiniteGenerators.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\IdealFiniteGenerators.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\IdealModule.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\IdealModule.lean
+@@ -1,4 +1,7 @@
+ import OAI.NumberTheory.PiExponent.Approximation.FrameSections
++import Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree
++import Mathlib.Topology.Sheaves.LocallySurjective
++import Mathlib.Topology.Sheaves.Abelian
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalComponentDegree.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalComponentDegree.lean
+@@ -53,7 +53,7 @@
+   by_cases hPQ : P = Q
+   · subst P
+     simpa only [ite_true] using localized_prime_factor_length_one Q
+-  · rw [ite_eq_right hPQ]
++  · rw [if_neg hPQ]
+     exact localized_prime_factor_length_zero P Q
+       (prime_not_le_of_ne_minimal I P Q hQ hIP hPQ)
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalIntersectionMinimalSum.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalIntersectionMinimalSum.lean
+@@ -16,7 +16,7 @@
+       if P ∈ S then w P else 0 := by
+   classical
+   by_cases hp : P ∈ S
+-  · rw [ite_eq_left hp]
++  · rw [if_pos hp]
+     calc
+       (∑ Q : S, if P = Q.val then w Q.val else 0) =
+           (if P = P then w P else 0) := by
+@@ -28,8 +28,8 @@
+             exact Subtype.ext h.symm
+           simp only [hne', ↓reduceIte]
+         · simp
+-      _ = w P := ite_eq_left rfl
+-  · rw [ite_eq_right hp]
++      _ = w P := if_pos rfl
++  · rw [if_neg hp]
+     apply Finset.sum_eq_zero
+     intro Q hQ
+     have hne : P ≠ Q.val := fun h => hp (h.symm ▸ Q.property)
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalIntersectionPrimeFiltration.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalIntersectionPrimeFiltration.lean
+@@ -54,7 +54,7 @@
+       apply congrArg s
+       apply Fin.ext
+       exact min_eq_left (Nat.succ_le_of_lt hi)
+-    simpa only [f, dite_eq_left hi, generators, hleft, hright] using (hd ⟨i, hi⟩).choose_spec
++    simpa only [f, dif_pos hi, generators, hleft, hright] using (hd ⟨i, hi⟩).choose_spec
+ 
+ theorem exists_cyclic_filtration_all_local_counts :
+     ∃ (n : ℕ) (J : ℕ → Ideal A) (f : ℕ → A),
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalizedAlgebraEvaluation.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalizedAlgebraEvaluation.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalSectionOrder.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\LocalSectionOrder.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.CurveZeroEuler
+ import OAI.NumberTheory.PiExponent.Polynomials.FrameCoefficients
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\MultiplicityCycles.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\MultiplicityCycles.lean
+@@ -32,9 +32,9 @@
+     if RetainedMinimalPrime.toComponent hI v hv Q = RetainedMinimalPrime.toComponent hI v hv P
+       then actualLocalLength I Q.val else 0) = _
+   rw [Finset.sum_eq_single P]
+-  · exact ite_eq_left rfl
++  · exact if_pos rfl
+   · intro Q _ hQP
+-    exact ite_eq_right (fun heq => hQP (RetainedMinimalPrime.toComponent_injective hI v hv heq))
++    exact if_neg (fun heq => hQP (RetainedMinimalPrime.toComponent_injective hI v hv heq))
+   · intro hnot
+     exact False.elim (hnot (Finset.mem_univ P))
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\PrimeHilbertDimension.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\PrimeHilbertDimension.lean
+@@ -50,7 +50,7 @@
+   have hc : StrictMono c := by
+     intro p q hpq
+     obtain ⟨hpq', x, hxq, hxp⟩ := SetLike.lt_iff_le_and_exists.mp (show p.asIdeal < q.asIdeal from hpq)
+-    exact Ideal.under_lt_under_of_integral_mem_sdiff hpq' ⟨hxq, hxp⟩
++    exact Ideal.comap_lt_comap_of_integral_mem_sdiff hpq' ⟨hxq, hxp⟩
+       (Algebra.IsIntegral.isIntegral x)
+   have hs : Function.Surjective c := by
+     intro p
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RamifiedLocalization.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RamifiedLocalization.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.RingTheory.Localization.AtPrime.Extension
+ 
+ namespace OAI
+ 
+@@ -18,9 +19,22 @@
+     (hunique : ∀ Q : Ideal S, Q.IsPrime → p ≤ Q.under R → Q = P) :
+     IsLocalization.AtPrime Sₚ P := by
+   let M := Algebra.algebraMapSubmonoid S p.primeCompl
+-  have hmapmax : (P.map (algebraMap S Sₚ)).IsMaximal :=
+-    IsLocalization.isMaximal_of_isMaximal_disjoint M Sₚ P
+-      (Ideal.disjoint_primeCompl_of_liesOver P p)
++  have hmapmax : (P.map (algebraMap S Sₚ)).IsMaximal := by
++    have hprime := IsLocalization.isPrime_of_isPrime_disjoint M Sₚ P
++      (inferInstance : P.IsPrime) (Ideal.disjoint_primeCompl_of_liesOver P p)
++    apply Ideal.isMaximal_def.mpr
++    refine ⟨hprime.ne_top, ?_⟩
++    intro J hPJ
++    by_contra hJ
++    have hu : J.under S ≠ ⊤ := by
++      intro h
++      apply hJ
++      rw [← IsLocalization.map_under M Sₚ J, h, Ideal.map_top]
++    have hP : P = J.under S :=
++      (inferInstance : P.IsMaximal).eq_of_le hu (Ideal.map_le_iff_le_comap.mp hPJ.le)
++    have hJle : J ≤ P.map (algebraMap S Sₚ) := by
++      rw [← IsLocalization.map_under M Sₚ J, ← hP]
++    exact (not_lt_of_ge hJle) hPJ
+   have huniqueMax : ∀ Q : Ideal Sₚ, Q.IsMaximal → Q = P.map (algebraMap S Sₚ) := by
+     intro Q hQ
+     let : Q.IsMaximal := hQ
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RamifiedLocalLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RamifiedLocalLength.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
++import Mathlib.RingTheory.LocalRing.Length
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RetainedIntersectionCycles.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\RetainedIntersectionCycles.lean
+@@ -76,11 +76,11 @@
+   apply Finset.sum_le_sum
+   intro a _
+   by_cases h : C.component a = P
+-  · simp only [ite_eq_left h]
++  · simp only [if_pos h]
+     have hc : (0 : ℚ) ≤ C.coefficient a := Nat.cast_nonneg _
+     have hd := (C.component a).hilbertDegree_ge_one
+     nlinarith
+-  · simp only [ite_eq_right h, Nat.cast_zero]
++  · simp only [if_neg h, Nat.cast_zero]
+     exact mul_nonneg (Nat.cast_nonneg _) (le_trans (by norm_num)
+       (C.component a).hilbertDegree_ge_one)
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\SeparablePointLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\SeparablePointLength.lean
+@@ -1,5 +1,6 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.LocalAlgebra.WeightedBezout
++import Mathlib.RingTheory.LocalRing.Length
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\SerreDimensionShift.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\SerreDimensionShift.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\TriangularLocalParameters.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\TriangularLocalParameters.lean
+@@ -171,7 +171,7 @@
+     (q.comap (MvPolynomial.C : A →+* MvPolynomial (Fin j) A)).IsMaximal := by
+   rw [← @Ideal.mk_ker _ _ q, RingHom.ker_eq_comap_bot, Ideal.comap_comap]
+   let := (Ideal.bot_quotient_isMaximal_iff _).mpr (inferInstance : q.IsMaximal)
+-  exact Ideal.isMaximal_comap_of_isIntegral_of_isMaximal _
++  exact Ideal.isMaximal_comap_of_isIntegral_of_isMaximal' _
+     (MvPolynomial.quotient_mk_comp_C_isIntegral_of_isJacobsonRing q) ⊥
+ 
+ def firstCoordinateContraction : Ideal (Polynomial K) :=
+--- source/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\WeightedLocalLattice.lean
++++ port/lean/OAI\NumberTheory\PiExponent\LocalAlgebra\WeightedLocalLattice.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Geometry.CurveLocalOrder
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\GradedSerre.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\GradedSerre.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Cohomology.ProjectiveMonomialCechHigher
+ import OAI.NumberTheory.PiExponent.Polynomials.ShiftedFreeGrading
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\GradedSubring.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\GradedSubring.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousComponentLength.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousComponentLength.lean
+@@ -51,7 +51,7 @@
+       apply congrArg s
+       apply Fin.ext
+       exact min_eq_left (Nat.succ_le_of_lt hi)
+-    simpa only [f, d, dite_eq_left hi, degrees, generators, hleft, hright] using
++    simpa only [f, d, dif_pos hi, degrees, generators, hleft, hright] using
+       And.intro (s.step ⟨i, hi⟩).1 hfi
+ 
+ theorem exists_homogeneous_component_length_count
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousListHistory.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousListHistory.lean
+@@ -157,7 +157,7 @@
+       exact (homogeneousListPrefix_succ gs degrees hhom j hjlt).symm
+     have hs := ActualRegularCutHistory.step (ih (by omega)) F
+     rw [hnext] at hs
+-    simpa only [Finset.prod_range_succ, degreeAt, dite_eq_left hjlt] using hs
++    simpa only [Finset.prod_range_succ, degreeAt, dif_pos hjlt] using hs
+ 
+ theorem homogeneous_local_regular_bezout
+     (T : Ideal (MvPolynomial σ k)) [T.IsPrime] (v : σ) (hv : MvPolynomial.X v ∉ T)
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousSubmoduleGrading.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\HomogeneousSubmoduleGrading.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\MixedSlopePolynomial.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\MixedSlopePolynomial.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\NatToIntGrading.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\NatToIntGrading.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\NestedPolynomialSwap.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\NestedPolynomialSwap.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+@@ -18,11 +18,11 @@
+   classical
+   induction p using MvPolynomial.induction_on' with
+   | add p q hp hq =>
+-    simp only [map_add, AddMonoidAlgebra.coeff_add, Finsupp.add_apply, hp, hq]
++    simp only [map_add, MvPolynomial.coeff_add, hp, hq]
+   | monomial d a =>
+     induction a using MvPolynomial.induction_on' with
+     | add a e ha he =>
+-      simpa only [map_add, AddMonoidAlgebra.coeff_add, Finsupp.add_apply]
++      simpa only [map_add, MvPolynomial.coeff_add]
+         using congrArg₂ (· + ·) ha he
+     | monomial e r =>
+       have hs : MvPolynomial.commAlgEquiv R σ τ
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialCumulative.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialCumulative.lean
+@@ -24,8 +24,8 @@
+   intro j hj
+   have hj0 : j ≠ 0 := by omega
+   simp only [powerPrefixPolynomial, coeff_C_mul, coeff_sub,
+-    Polynomial.coeff_bernoulli, ite_eq_right (by omega : ¬j ≤ d + 1),
+-    coeff_C, ite_eq_right hj0, sub_zero, mul_zero]
++    Polynomial.coeff_bernoulli, if_neg (by omega : ¬j ≤ d + 1),
++    coeff_C, if_neg hj0, sub_zero, mul_zero]
+ 
+ theorem powerPrefixPolynomial_top_coefficient (d : ℕ) :
+     (powerPrefixPolynomial d).coeff (d + 1) = (d + 1 : ℚ)⁻¹ := by
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialFrame.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialFrame.lean
+@@ -1,5 +1,5 @@
+ import Mathlib.Algebra.MvPolynomial.PDeriv
+-import Mathlib.Basic.Complex.Basic
++import Mathlib.Data.Complex.Basic
+ import Mathlib.Tactic.Ring
+ import OAI.NumberTheory.PiExponent.Polynomials.PolynomialFrameDegree
+ 
+@@ -43,7 +43,7 @@
+ 
+ @[simp] theorem polynomialFrame_pos (m : ℕ) (i : Fin (m + 1)) (hi : i ≠ 0) :
+     polynomialFrame m i = MvPolynomial.pderiv i := by
+-  simp only [polynomialFrame, ite_eq_right hi]
++  simp only [polynomialFrame, if_neg hi]
+ 
+ theorem polynomial_pderiv_commute (m : ℕ) (i j : Fin (m + 1))
+     (p : FramePolynomial m) :
+@@ -55,7 +55,7 @@
+   · apply MvPolynomial.ext
+     intro d
+     simp only [MvPolynomial.coeff_pderiv, Finsupp.add_apply,
+-      Finsupp.single_apply, ite_eq_right hij, ite_eq_right (Ne.symm hij),
++      Finsupp.single_apply, if_neg hij, if_neg (Ne.symm hij),
+       add_zero]
+     rw [show d + Finsupp.single i 1 + Finsupp.single j 1 =
+       d + Finsupp.single j 1 + Finsupp.single i 1 by ac_rfl]
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialFrameDegree.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialFrameDegree.lean
+@@ -1,5 +1,5 @@
+ import Mathlib.Algebra.MvPolynomial.PDeriv
+-import Mathlib.Basic.Complex.Basic
++import Mathlib.Data.Complex.Basic
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialGrowthRanks.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialGrowthRanks.lean
+@@ -61,7 +61,7 @@
+ @[simp] theorem polynomialGrowth_eval (d n : ℕ) :
+     (polynomialGrowth d).eval (n : ℚ) = ((n + d).choose d : ℚ) := by
+   simpa [polynomialGrowth] using
+-    Polynomial.preHilbertPoly_eq_choose_add_sub ℚ d (k := 0) (n := n) (Nat.zero_le (n + d))
++    Polynomial.preHilbertPoly_eq_choose_sub_add ℚ d (k := 0) (n := n) (Nat.zero_le n)
+ 
+ theorem polynomialGrowth_eval_finrank (k : Type*) [Field k] (d n : ℕ) :
+     (polynomialGrowth d).eval (n : ℚ) =
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialNormalNonzero.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialNormalNonzero.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Jets.PolynomialTangentDifferential
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialPoleBound.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PolynomialPoleBound.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ import OAI.NumberTheory.PiExponent.Polynomials.PolynomialFrameDegree
+ 
+ namespace OAI
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PowerCoverBasis.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PowerCoverBasis.lean
+@@ -30,10 +30,10 @@
+   | monomial a c =>
+     induction q using MvPolynomial.induction_on' with
+     | monomial b d =>
+-      simp only [powerSubstitution_monomial, MvPolynomial.monomial_mul_monomial,
++      simp only [powerSubstitution_monomial, MvPolynomial.monomial_mul,
+         decompositionAddEquiv_monomial]
+       rw [add_comm (scale w a) b, quotient_add_scale w hw, residue_add_scale]
+-      simp [Finsupp.smul_single, smul_eq_mul, MvPolynomial.monomial_mul_monomial, add_comm]
++      simp [Finsupp.smul_single, smul_eq_mul, MvPolynomial.monomial_mul, add_comm]
+     | add q r hq hr =>
+       simp only [mul_add, map_add, smul_add, hq, hr]
+   | add p r hp hr =>
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\PowerCoverExponents.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\PowerCoverExponents.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\ShiftedFreeGrading.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\ShiftedFreeGrading.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexFloor.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexFloor.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexRationalWeights.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexRationalWeights.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexUnweighted.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\SimplexUnweighted.lean
+@@ -1,4 +1,5 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
++import Mathlib.Analysis.SpecialFunctions.Choose
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\SurjectiveGradedMap.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\SurjectiveGradedMap.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.ProjectImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\WeightedMonomialPole.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\WeightedMonomialPole.lean
+@@ -43,7 +43,7 @@
+ theorem coordinateOrder_pow (v : AddValuation K (WithTop ℤ))
+     (x : K) (hx : x ≠ 0) (n : ℕ) :
+     coordinateOrder v (x ^ n) = (n : ℤ) * coordinateOrder v x := by
+-  rw [coordinateOrder, dite_eq_right (pow_ne_zero n hx), coordinateOrder, dite_eq_right hx]
++  rw [coordinateOrder, dif_neg (pow_ne_zero n hx), coordinateOrder, dif_neg hx]
+   have hu : Units.mk0 (x ^ n) (pow_ne_zero n hx) = (Units.mk0 x hx) ^ n := by
+     apply Units.ext
+     rfl
+--- source/lean/OAI\NumberTheory\PiExponent\Polynomials\WeightedPolynomialPole.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Polynomials\WeightedPolynomialPole.lean
+@@ -19,7 +19,7 @@
+ @[simp] theorem realValuation_of_ne_zero (v : AddValuation K (WithTop ℤ))
+     (x : K) (hx : x ≠ 0) :
+     realValuation v x = ((coordinateOrder v x : ℝ) : WithTop ℝ) := by
+-  rw [coordinateOrder, dite_eq_right hx, realValuation_apply]
++  rw [coordinateOrder, dif_neg hx, realValuation_apply]
+   have h : v x = (integerOrder v (Units.mk0 x hx) : WithTop ℤ) :=
+     (coe_integerOrder v (Units.mk0 x hx)).symm
+   rw [h, WithTop.map_coe]
+--- source/lean/OAI\NumberTheory\PiExponent\ProjectImports.lean
++++ port/lean/OAI\NumberTheory\PiExponent\ProjectImports.lean
+@@ -0,0 +1,227 @@
++-- Specific Mathlib interfaces used by the source project, on the platform pin.
++-- No mathematical declarations are introduced here.
++import Mathlib.Algebra.Algebra.Hom.Rat
++import Mathlib.Algebra.BigOperators.Fin
++import Mathlib.Algebra.BigOperators.Group.Finset.Basic
++import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
++import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
++import Mathlib.Algebra.BigOperators.Intervals
++import Mathlib.Algebra.Category.ModuleCat.Ext.HasExt
++import Mathlib.Algebra.Field.Equiv
++import Mathlib.Algebra.Group.ForwardDiff
++import Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences
++import Mathlib.Algebra.Homology.HomologicalComplex
++import Mathlib.Algebra.Homology.ShortComplex.ModuleCat
++import Mathlib.Algebra.Module.LocalizedModule.IsLocalization
++import Mathlib.Algebra.Module.LocalizedModule.Submodule
++import Mathlib.Algebra.Module.SnakeLemma
++import Mathlib.Algebra.Module.Submodule.Equiv
++import Mathlib.Algebra.Module.Submodule.RestrictScalars
++import Mathlib.Algebra.Module.Submodule.Union
++import Mathlib.Algebra.Module.Torsion.Basic
++import Mathlib.Algebra.MvPolynomial.Basic
++import Mathlib.Algebra.MvPolynomial.Degrees
++import Mathlib.Algebra.MvPolynomial.Equiv
++import Mathlib.Algebra.MvPolynomial.Eval
++import Mathlib.Algebra.MvPolynomial.PDeriv
++import Mathlib.Algebra.Order.Antidiag.FinsuppEquiv
++import Mathlib.Algebra.Order.BigOperators.Group.Finset
++import Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset
++import Mathlib.Algebra.Order.BigOperators.Ring.Finset
++import Mathlib.Algebra.Order.Floor.Semiring
++import Mathlib.Algebra.Order.Group.Defs
++import Mathlib.Algebra.Order.Group.Int
++import Mathlib.Algebra.Order.Round
++import Mathlib.Algebra.Polynomial.Degree.Lemmas
++import Mathlib.Algebra.Polynomial.Degree.SmallDegree
++import Mathlib.Algebra.Polynomial.Derivation
++import Mathlib.Algebra.Polynomial.Div
++import Mathlib.Algebra.Polynomial.Eval.Coeff
++import Mathlib.Algebra.Polynomial.Eval.Subring
++import Mathlib.Algebra.Polynomial.FieldDivision
++import Mathlib.Algebra.Polynomial.Laurent
++import Mathlib.Algebra.Polynomial.Roots
++import Mathlib.Algebra.Polynomial.Taylor
++import Mathlib.Algebra.Regular.Defs
++import Mathlib.Algebra.Ring.GeomSum
++import Mathlib.AlgebraicGeometry.Artinian
++import Mathlib.AlgebraicGeometry.FunctionField
++import Mathlib.AlgebraicGeometry.Gluing
++import Mathlib.AlgebraicGeometry.IdealSheaf.Basic
++import Mathlib.AlgebraicGeometry.IdealSheaf.Functorial
++import Mathlib.AlgebraicGeometry.Limits
++import Mathlib.AlgebraicGeometry.Modules.Tilde
++import Mathlib.AlgebraicGeometry.Morphisms.Affine
++import Mathlib.AlgebraicGeometry.Morphisms.Finite
++import Mathlib.AlgebraicGeometry.Morphisms.FiniteType
++import Mathlib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant
++import Mathlib.AlgebraicGeometry.Morphisms.Separated
++import Mathlib.AlgebraicGeometry.Noetherian
++import Mathlib.AlgebraicGeometry.Normalization
++import Mathlib.AlgebraicGeometry.OpenImmersion
++import Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper
++import Mathlib.AlgebraicGeometry.Stalk
++import Mathlib.AlgebraicGeometry.ValuativeCriterion
++import Mathlib.Analysis.Asymptotics.SpecificAsymptotics
++import Mathlib.Analysis.Complex.CauchyIntegral
++import Mathlib.Analysis.Complex.TaylorSeries
++import Mathlib.Analysis.Convex.Cone.Basic
++import Mathlib.Analysis.Normed.Group.InfiniteSum
++import Mathlib.Analysis.Normed.Group.Rat
++import Mathlib.Analysis.Polynomial.Basic
++import Mathlib.Analysis.Real.Pi.Bounds
++import Mathlib.Analysis.Real.Pi.Irrational
++import Mathlib.Analysis.SpecialFunctions.Choose
++import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
++import Mathlib.Analysis.SpecialFunctions.Complex.LogBounds
++import Mathlib.Analysis.SpecialFunctions.Log.Basic
++import Mathlib.Analysis.SpecialFunctions.Pow.Real
++import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
++import Mathlib.Analysis.SpecificLimits.Basic
++import Mathlib.Analysis.SpecificLimits.Normed
++import Mathlib.CategoryTheory.Abelian.Projective.Ext
++import Mathlib.Data.Complex.Basic
++import Mathlib.Data.Fin.Tuple.Basic
++import Mathlib.Data.Finset.Interval
++import Mathlib.Data.Finsupp.Basic
++import Mathlib.Data.Finsupp.Multiset
++import Mathlib.Data.Finsupp.SMulWithZero
++import Mathlib.Data.Finsupp.Weight
++import Mathlib.Data.Fintype.BigOperators
++import Mathlib.Data.Fintype.Option
++import Mathlib.Data.Nat.Choose.Sum
++import Mathlib.Data.Nat.Factorial.Basic
++import Mathlib.Data.Nat.Init
++import Mathlib.Data.Real.Basic
++import Mathlib.Data.Sym.Card
++import Mathlib.FieldTheory.AlgebraicClosure
++import Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra
++import Mathlib.FieldTheory.IntermediateField.Adjoin.Basic
++import Mathlib.FieldTheory.IntermediateField.Adjoin.Defs
++import Mathlib.FieldTheory.SeparablyGenerated
++import Mathlib.LinearAlgebra.Basis.Prod
++import Mathlib.LinearAlgebra.Dimension.Constructions
++import Mathlib.LinearAlgebra.Dimension.DivisionRing
++import Mathlib.LinearAlgebra.Dimension.Finrank
++import Mathlib.LinearAlgebra.Dimension.RankNullity
++import Mathlib.LinearAlgebra.Dimension.StrongRankCondition
++import Mathlib.LinearAlgebra.DirectSum.Finite
++import Mathlib.LinearAlgebra.Dual.Defs
++import Mathlib.LinearAlgebra.Dual.Lemmas
++import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
++import Mathlib.LinearAlgebra.Finsupp.LinearCombination
++import Mathlib.LinearAlgebra.Finsupp.Supported
++import Mathlib.LinearAlgebra.FreeModule.Finite.Basic
++import Mathlib.LinearAlgebra.Isomorphisms
++import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
++import Mathlib.LinearAlgebra.Prod
++import Mathlib.LinearAlgebra.Quotient.Basic
++import Mathlib.Logic.Equiv.Sum
++import Mathlib.NumberTheory.BernoulliPolynomials
++import Mathlib.NumberTheory.Chebyshev
++import Mathlib.NumberTheory.Real.Irrational
++import Mathlib.NumberTheory.Zsqrtd.GaussianInt
++import Mathlib.Order.Minimal
++import Mathlib.RingTheory.AdjoinRoot
++import Mathlib.RingTheory.AlgebraicIndependent.Basic
++import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
++import Mathlib.RingTheory.Coprime.Lemmas
++import Mathlib.RingTheory.Derivation.Basic
++import Mathlib.RingTheory.Etale.Field
++import Mathlib.RingTheory.Etale.Kaehler
++import Mathlib.RingTheory.FiniteType
++import Mathlib.RingTheory.Finiteness.Basic
++import Mathlib.RingTheory.Finiteness.Prod
++import Mathlib.RingTheory.Flat.Basic
++import Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra
++import Mathlib.RingTheory.Flat.Localization
++import Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal
++import Mathlib.RingTheory.GradedAlgebra.Homogeneous.Maps
++import Mathlib.RingTheory.GradedAlgebra.Radical
++import Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness
++import Mathlib.RingTheory.Ideal.AssociatedPrime.Localization
++import Mathlib.RingTheory.Ideal.Colon
++import Mathlib.RingTheory.Ideal.Cotangent
++import Mathlib.RingTheory.Ideal.GoingDown
++import Mathlib.RingTheory.Ideal.GoingUp
++import Mathlib.RingTheory.Ideal.KrullsHeightTheorem
++import Mathlib.RingTheory.Ideal.Maps
++import Mathlib.RingTheory.Ideal.Maximal
++import Mathlib.RingTheory.Ideal.MinimalPrime.Localization
++import Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian
++import Mathlib.RingTheory.Ideal.Operations
++import Mathlib.RingTheory.Ideal.Prime
++import Mathlib.RingTheory.Ideal.Quotient.Basic
++import Mathlib.RingTheory.Ideal.Quotient.Defs
++import Mathlib.RingTheory.Ideal.Quotient.Operations
++import Mathlib.RingTheory.Ideal.Span
++import Mathlib.RingTheory.IntegralClosure.GoingDown
++import Mathlib.RingTheory.Jacobson.Ring
++import Mathlib.RingTheory.KrullDimension.Field
++import Mathlib.RingTheory.KrullDimension.LocalRing
++import Mathlib.RingTheory.KrullDimension.NonZeroDivisors
++import Mathlib.RingTheory.KrullDimension.Polynomial
++import Mathlib.RingTheory.KrullDimension.Regular
++import Mathlib.RingTheory.KrullDimension.Zero
++import Mathlib.RingTheory.LaurentSeries
++import Mathlib.RingTheory.Length
++import Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic
++import Mathlib.RingTheory.LocalRing.Quotient
++import Mathlib.RingTheory.LocalRing.ResidueField.Basic
++import Mathlib.RingTheory.LocalRing.ResidueField.Defs
++import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
++import Mathlib.RingTheory.LocalRing.ResidueField.Instances
++import Mathlib.RingTheory.LocalRing.RingHom.Basic
++import Mathlib.RingTheory.Localization.AtPrime.Basic
++import Mathlib.RingTheory.Localization.FractionRing
++import Mathlib.RingTheory.Localization.Ideal
++import Mathlib.RingTheory.Localization.LocalizationLocalization
++import Mathlib.RingTheory.Localization.Submodule
++import Mathlib.RingTheory.MvPolynomial.Basic
++import Mathlib.RingTheory.MvPolynomial.Homogeneous
++import Mathlib.RingTheory.MvPolynomial.Localization
++import Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous
++import Mathlib.RingTheory.MvPowerSeries.Derivative
++import Mathlib.RingTheory.MvPowerSeries.Equiv
++import Mathlib.RingTheory.MvPowerSeries.Inverse
++import Mathlib.RingTheory.MvPowerSeries.Order
++import Mathlib.RingTheory.MvPowerSeries.Substitution
++import Mathlib.RingTheory.NoetherNormalization
++import Mathlib.RingTheory.Noetherian.Nilpotent
++import Mathlib.RingTheory.OrderOfVanishing.Noetherian
++import Mathlib.RingTheory.Polynomial.Basic
++import Mathlib.RingTheory.Polynomial.HilbertPoly
++import Mathlib.RingTheory.Polynomial.Quotient
++import Mathlib.RingTheory.Polynomial.RationalRoot
++import Mathlib.RingTheory.Polynomial.UniqueFactorization
++import Mathlib.RingTheory.PowerSeries.Basic
++import Mathlib.RingTheory.PowerSeries.Log
++import Mathlib.RingTheory.PowerSeries.Order
++import Mathlib.RingTheory.PowerSeries.Trunc
++import Mathlib.RingTheory.PowerSeries.WellKnown
++import Mathlib.RingTheory.PrincipalIdealDomain
++import Mathlib.RingTheory.Regular.Flat
++import Mathlib.RingTheory.Regular.RegularSequence
++import Mathlib.RingTheory.RegularLocalRing.Polynomial
++import Mathlib.RingTheory.SimpleModule.Basic
++import Mathlib.RingTheory.Smooth.Basic
++import Mathlib.RingTheory.Spectrum.Prime.Topology
++import Mathlib.RingTheory.TensorProduct.Quotient
++import Mathlib.RingTheory.Trace.Defs
++import Mathlib.SetTheory.Cardinal.ToNat
++import Mathlib.Tactic
++import Mathlib.Tactic.Abel
++import Mathlib.Tactic.Choose
++import Mathlib.Tactic.Conv
++import Mathlib.Tactic.Convert
++import Mathlib.Tactic.FieldSimp
++import Mathlib.Tactic.GCongr
++import Mathlib.Tactic.Linarith
++import Mathlib.Tactic.LinearCombination
++import Mathlib.Tactic.NormNum
++import Mathlib.Tactic.Positivity
++import Mathlib.Tactic.Ring
++import Mathlib.Topology.Algebra.InfiniteSum.ENNReal
++import Mathlib.Topology.Algebra.InfiniteSum.Real
++import Mathlib.Topology.Instances.Matrix
++import Mathlib.Topology.Instances.Real.Lemmas
+--- source/lean/OAI\NumberTheory\PiExponent\Statement.lean
++++ port/lean/OAI\NumberTheory\PiExponent\Statement.lean
+@@ -1,4 +1,4 @@
+-import Mathlib
++import OAI.NumberTheory.PiExponent.CoreImports
+ 
+ namespace OAI
+ 
+--- source/lean/OAI\NumberTheory\PiExponent\VersionCompatibility.lean
++++ port/lean/OAI\NumberTheory\PiExponent\VersionCompatibility.lean
+@@ -0,0 +1,14 @@
++import Mathlib.RingTheory.Algebraic.Basic
++
++/- Minimal backport of the newer Mathlib interface used by family 017.
++   This module remains inside the OAI import closure for graph extraction. -/
++namespace Transcendental
++
++theorem ne_zero {R A : Type*} [CommRing R] [Nontrivial R] [Ring A]
++    [Algebra R A] {x : A} (hx : Transcendental R x) : x ≠ 0 := by
++  intro h
++  apply hx
++  rw [h]
++  exact isAlgebraic_zero
++
++end Transcendental

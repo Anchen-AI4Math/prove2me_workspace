@@ -30,6 +30,7 @@ python scripts/workspace.py check
 | `missions/<slug>/papers/` | 按任务归属的论文；其他任务复用时链接原副本 |
 | `referpaper/README.md` | 旧路径导航，PDF 已迁入对应任务 |
 | `docs/history/`、`.workbuddy/memory/`、`release/` | 历史与归档，不作新任务的默认上下文 |
+| `archives/verification/` | 大型原始验证数据的去重压缩对象与路径、大小、SHA-256 索引；按需恢复 |
 | `tmp/` | 临时探针，不参与构建 |
 
 ## 构建边界
@@ -38,7 +39,7 @@ python scripts/workspace.py check
 
 - `sources` 是源码导航范围；`build` 是构建入口，两者用途不同。
 - 空构建清单表示研究/维护任务尚无登记目标，不表示验证通过。
-- `zeta9` 当前只登记根目录的定理镜像；构建成功也不是这些定理已证明的证据。
+- 构建中可能包含定理声明镜像；其构建成功不能单独证明对应数学目标已经解决，须以任务交接中的证明与公理审计为准。
 - 原始平台 payload、失败实验、发布 staging 和大型 `SondowRosserMiddle*` 数值证书不默认构建；需要时显式选择和验证。
 - 全量审计仍可显式运行 `lake build Solutions`；环境冒烟测试为 `lake build Solutions/SmokeTest.lean`。
 - 工具优先使用本机已经安装的固定版本 Lake，避免 elan 启动器的自更新网络检查。
@@ -51,7 +52,19 @@ python scripts/workspace.py check
 
 新增脚本放 `missions/<slug>/scripts/`，通过脚本位置定位仓库根目录，不依赖调用者的工作目录。新增平台源码继续使用原模块路径，以免破坏 import、提交脚本和已有证据。
 
+## 数据归档与清理
+
+源码、任务交接、原始证明与验证结论都纳入版本管理。大型 JSON、JSONL 和原始字节快照按内容 SHA-256 去重，以 gzip 保存到 `archives/verification/objects/`；`index.json` 记录每个原路径、大小和哈希。任务内 `.gitignore` 的托管区块仅忽略清单列出的精确原路径，本机原文件保留。首次克隆后运行 `python scripts/workspace_data.py restore` 恢复，再运行结构检查；加 `--mission <slug>` 可仅恢复一个任务。
+
+`python scripts/workspace_data.py verify` 会流式解压并验证全部归档对象。恢复拒绝覆盖不同内容，不运行 Lean 或平台请求。新归档使用 `python scripts/workspace_data.py pack --mission <slug>`，仅选择该任务未跟踪且至少 1 MiB 的数据文件，保留原文件；证明源码不会被此命令打包。
+
+共享工具链配置 `lean-toolchain`、`lakefile.lean`、`lake-manifest.json` 纳入版本管理；`.lake/`、Python 字节码、Lean 编译产物和虚拟环境留在本地。`tmp/` 可能仍有文档引用的探针和研究源码，不整目录删除。发布目录中明确标记私有的 `AUTHOR_REVIEW.md` 和可由 ZIP 恢复的 `staging/` 不推送。
+
+日常清理只删除已确认可重建的缓存和空临时日志，不删除冻结验证记录或改变证明文件字节。Snaky 的本地资源限制继续以其 `AGENTS.md` 为准。
+
 ## 整理记录
+
+2026-10-11：补齐大型证据的压缩归档与无损恢复入口，完善缓存和私有发布材料的忽略规则，修复五素数任务的两份源码归属，修复任务导航表格。保留既有任务状态、研究源码与全部 Lean 模块路径；未进行全量 Lean 审计。详细清理结果见 [清理记录](workspace-cleanup-2026-10-11.json)。
 
 2026-09-27：补齐任务索引，增加 18 个任务的上下文与构建清单，取消默认全量构建。根目录的 Zudilin 说明和 HTML 移至 `missions/zudilin/research/`；根目录临时 Lean 探针移至 `tmp/`。既有未提交证明、历史记录、发布目录和缓存均保留。
 

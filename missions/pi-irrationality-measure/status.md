@@ -1,0 +1,98 @@
+# π 无理性度 campaign
+
+更新：2026-10-09。本任务仍 active，平台最终根尚未由本次移植完成。
+
+## 已验证基础
+
+固定 OpenAI math source commit `adc7f1241b42e322a6451854ab7e4b4c146bf78a`。原 source、port、SHA 清单和版本差异保留，共享 Lean 4.33.1 / Mathlib `0df444a360eaa60ab8c11dca51a86af692955474` 未变。
+
+原完整 Main、无理性度上界2及平台 UpperBound(2) 桥接已本地构建并通过标准公理审计。当前13-root任务构建已真实通过，三个新增Sol首次分别25/38/38秒、Std3；完整保留日志的缓存构建28.69秒/exit0，见 `verification/latest-build.json` / `build-20261008-110747.log`。旧10-root证据另存 `verification/build-before-13-root-registration.json`。新增专属Lake任务库入口没有改变Lean/Mathlib版本；精确配置变更及运行环境兼容审计在 `verification/stage-root-registration.json` / `stage-root-runtime-transition.json`。
+
+## 平台实际阶段成果
+
+- matrix_det_norm_le_prod_row_sum：既有 ACCEPTED/Proved。
+- log_norm_sum_le：theorem `10a08e49-5f89-4055-a254-59882a447190`，proof `47177dbc-2588-4b46-a504-378c9b473eb9`，ACCEPTED/Proved。
+- Collision.sum_weight_ge_of_low_count_le：theorem `84999320-3725-4c17-b1cb-428d9f92f6cc`，proof `78ad72fd-0fdd-44e6-93c7-f0e607baa6fa`，ACCEPTED/Proved，四项本地预检最长89.19秒、types相等、Std3。证据 `verification/nodes-preview/OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le/publication.json`。
+- Definitions Analysis_Collision：`e7e8f0df-8e23-43cf-aaac-4464d5084082`，PUBLISHED/公开内容回读一致。首次实际上传LF正文与原混合CRLF生成文件另作补验，59.96/28.92秒，types+values相同、Std3；见该stage `uploaded-variant-validation.json`。未来publisher直接使用原始UTF8字节。
+- Definitions Analysis_AnalyticCollision：`82d606c5-f704-4255-8948-696d425a76a1`，PUBLISHED/精确原字节回读一致；三个本地预检最长64.35秒、types+values相同、Std3。两个Def的完整证据在 `verification/definition-validation/`。
+- Definitions LocalAlgebra_LocalizedComponent：`bdec8e94-fc3a-4f5a-9aef-c76bd32695d0`，PUBLISHED/完整411字节源码公开回读一致，job `a6fc45ef-2ef8-4dab-8863-72fd1da57cc9`。包含public theorem `OAI.PiExponentJets.W22.radical_mem_minimalPrimes`的真实proved body，三次预检23.43/57.15/64.47秒，types相等、Std3。新type-only exporter真实使用成功，theorem values=null。证据在 `verification/providers-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent/`。
+- Definitions Ampleness_NefAmple：`7b2ba88f-d5b5-4096-aa3c-fbc4922e8508`，PUBLISHED/完整10804字节源码公开回读一致，job `d18a9e09-d74d-4a6f-9d34-aaffcbe0f434`。包含public theorem `OAI.PiExponent.NefAmple.combination_denominator_pos`，三项检查35.20/140.16/135.09秒，types相等、Std3；完整875计划下首个发布。证据 `verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Ampleness_NefAmple/`。
+- Definitions LocalAlgebra_QuotientLengthEquivalence：`c81fa9b0-7469-4540-9950-03f3b0c00fe0`，PUBLISHED/完整619字节源码公开回读一致，job `667c5fc4-6313-4382-b3b9-d66658b183f1`。包含public theorem `OAI.PiExponentJets.W22.length_eq_of_semilinear_bijective`；22.32/37.86/32.10秒，types相等、Std3。证据在新complete stage相应validation目录。
+
+用户已明确回复“上传到prove2me都允许”，授权本任务Prove2Me公开上传，记录 `platform/publication-authorization-20261008.json`。先前具体payload自动审批拒绝已由此授权解决。所有提案保持Draft，网站正式审核/提交仍交用户。
+
+新增已发布：Arithmetic `6b1ef300-c311-4ddb-b85c-8d588035e79f`（711B，36.94/24.11秒，2声明类型/完整定义值/Std3相等）；Dimension `8275f04b-be5f-4321-beb8-4670cc14cfc0`（784B，13.24/24.57秒，4声明核对相等）。两者均服务器PUBLISHED且原UTF8正文公开回读一致。
+
+随后 RegularDegreePositivity `a29dd57c-8717-4d8c-af09-06f49aa293b0`、PolynomialFrameDegree `bd2a23e6-ab71-41f7-b9eb-6e31c7fd0cf5`、SimplexFloor `267bbaee-7627-4f89-805d-0230294e25ff`、SimplexUnweighted `30610836-78a0-4b0b-92e7-bbe4d6ff4312`、LogTailAnalytic `546a529c-9106-4e47-b553-08a191bc6626` 均已PUBLISHED/完整源码精确回读。SimplexLog直接Main子节点 `OAI.PiExponent.tendsto_log_div_of_normalized_pow`（theorem `8b1c0341-2978-4a9d-8acc-8a5e3538cbda`，proof `43b585ea-75ce-438e-b485-11d72ec49ee8`）已ACCEPTED/Proved；4项本地检查最长39.05秒、三份类型相等、Std3。累计12个Definition包、4个Accepted/Proved证明；精确发布清单、终态与记录哈希见 `verification/verified-stage-progress.json`。
+
+## 主根路线与剩余工作
+
+固定 `platform/upload-route.json`：原 `OAI.PiExponent.pi_eventual_lower_bound` → 既有目标 `e717eef2-11b1-4b14-9789-65f52c0502e1` → campaign根 `406736ed-98ce-4177-b97f-24de96ba4188`。六个 Statement 定义复用已kernel/AST验证；不混入三个不同/未经复用认证的社区适配模块。三个冲突公共theorem使用同namespace `_source017`计划，尚待实际重 elaboration/type检查。
+
+Stage2权威提取已875/875、complete=true（terminal44649）。Main自身135.24秒通过。四索引和两base preview plans现已刷新至全部875模块、6853声明命令、unmatched=0、pending AST owners=0；暂定624 Definitions/344 nodes，两DAG均无环。799原始输入及provider变体和第三个已公开Def完整证据已精确归档 `verification/plan-history/799-publication/`、`799-provider/`（后者1825逻辑文件、1823内容对象、366202179字节，逐对象SHA复核通过）。新runtime SHA为 `ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef`，旧2dc runtime保留、证书不改写；两个既有Def的精确历史运行环境兼容复核已通过 `verification/runtime-transition-certificate.json`。
+
+共享原始类型证书加速实现已作真实6-row pilot，179.39秒；4个已有认证row交叉比较通过，theorem proof value不导出、Std3，root原名/owner正确。`verification/shared-source-snapshot/pilot/pilot-validation.json`仅799-plan历史pilot，不是完整最终certificate。全量必须待facts/plan冻结，并逐shard≤300秒，超限确定性拆分。
+
+完整875 all-shared-public provider方案把357公共名字所属356个原子命令纳入proved Definition闭包，closure2742 units、新promotion652 units；Python重算97处重名为0、node344→224、685 Definition bundles。3个statement-required helpers同时成为public provider。全部29个独立辅助包已生成到隔离的 `verification/providers-complete-preview/`，已有公开LocalizedComponent被排除且旧证据逐文件无变化；仅已实际通过编译/类型/公理的包可上传。新API支持实际private theorem/def/abbrev名字采集，尚待全部Lean验证。新作用域恢复器构造与单个带section真实source-only probe54.59秒/type相等/Std3仍为作用域证据，不是平台闭包证书。
+
+共享原始CI目录覆盖5786个权威AST units、6148个Graph names，357/357 provider roots、4867/4867 provider definitions names、29/29候选包的174/174声明均覆盖。49个full source-only shards仍未编译。当前另有精确174声明的source-subset exporter真实30.94秒通过，完整证书 `verification/shared-source-snapshot/provider-subset/provider-subset-validation.json` 已核实；范围明确partial、source-only、platform_ready=false，不能当作6148个KernelCI全部已导出。可选两阶段validator每次重验实际source证书，再检查生成Def与generated snapshot，普通旧三阶段证书字典保持不变。旧4558-owner/36-shard方案仅保存于 `verification/shared-source-snapshot/attempt1-incomplete-artifact-owners/`，不作验证结果。
+
+独立fast generated snapshot已避免每个公开名字都遍历整个env常量表，保留精确Name roundtrip、public标记、实际module owner与闭合CI/完整Def值/Std3检查。Arithmetic、Dimension的两阶段实际编译和最终kernel核对已通过且已发布。RegularDegreePositivity（37.12/35.02秒）、PolynomialFrameDegree（24.97/29.49秒）与SimplexFloor已通过本地两阶段认证，按优先主根分支继续上传。Windows上传进程与沙箱Python对同一C盘路径产生c/C差异，另加隔离回放helper，仅在后缀逐字一致、盘符等价、samefile成立时规范化两个OLean路径字段；原174源证书/producer/实际Lean证据字节保留，旧fast证书前像归档。已发布Nef/Quotient与冻结producer均未修改。
+
+FormalLog命名空间扩展隔离于 `verification/providers-context-preview`：唯一新的上下文边是FormalLogJet→真实FormalJetDerivatives，依据原open的AST精确字节范围274–310；不添加空namespace。源34CI快照实际40.15秒、生成34CI快照54.26秒通过，类型/完整Def值/Std3相等。PolynomialFrame、JetGeometry、FormalJetDerivatives、FormalLogJet分别26.82/25.07/41.11/39.83秒生成OLean成功，全部PUBLISHED且原UTF8正文公开精确回读。平台id依次为 `e07adae4-be61-459d-9ddf-444e8f6a176b`、`fda7b02a-d3a2-4063-a182-f9c5fcdc34ec`、`a3a88285-ee83-4acc-b371-b5e93ff4f2d5`、`1c1891c5-a421-41c2-ae74-60eb1cde1271`。旧29包及174证据保留。
+
+参数结构走独立74CI完整Kernel元数据补充（Parameters25+Admissible49），包含归纳类型/构造器全部字段和recursor每条rule的ctor/nfields/完整rhs。首次68.97秒失败材料21文件逐对象归档；修正后source74实际56.55秒通过并认证。Parameters生成包45.21秒、生成结构快照33.71秒通过，25CI的类型、9个完整Def值、Ind/Ctor/Rec完整元数据及Std3全部相等。证书 `provider-validation-structural.json` SHA `8b2ac14792ee70c941243f57b6345e9efbb9cfd941785ad674cfc8e667c41939`。Parameters已PUBLISHED、原UTF8精确回读，id `fc417d07-f2ff-44a4-9f9b-c476904bc720`，job `95c2becd-5d0e-4dbb-a9f9-e5712f997838`。Admissible49目前仅source-side实际认证，生成provider尚未认证。
+
+FormalLogTruncation已追加发布1个Def、18个公开声明，六模块65公开名import闭包无重名。原始18CI与正式equation API同次42.90秒、Def生成31.96秒、生成18CI快照129.15秒、生成equation API82.04秒均实际通过。source18证书SHA `cfa02c450d7ca524bcc70511783604cf9b225bfb9e5b753a02496ae7fc2cb552`；生成provider证书SHA `54f420c92dbd91f58b4143eef1d70be209a9ab20ec964ac89953a37aef5a8e17`；正式API方程配对证书SHA `aa61a7f0b4854577f978588ece7345013220b79b2d3359db0583bc8d7a6207eb`，原/生成eq均ImportedModule、getter与逆primary精确相同、类型与Std3相等、primary完整Def值相等。平台PUBLISHED、原UTF8完整精确回读，id `3eb1ecf4-c3d2-4bf7-bd1d-4634d53984f4`，job `8d2d0ec3-01ca-43fa-aaf2-6e8b39b870d5`。
+
+当前累计18个Definition包、7个ACCEPTED/Proved证明，精确终态及记录SHA见 `verification/verified-stage-progress.json`。FormalLog第一个节点已在短路径 `verification/flp3/f1` 完成四项实际预检（最长27.65秒）、类型与Std3认证，certificate SHA `8eb5c54f6298f8717736d335718613d58db3a320f3e022a4d88fb509bd8f9eef`。平台theorem `6a63ca41-070c-4b8a-86e1-dc41228ab921` 已公开发布，对应提交 `fdd3e549-4921-432a-80a9-53b1e4fb46c1` 已ACCEPTED且精确目标新鲜回读Proved；publication record SHA `430f9b8414dbc2d7932b4048ebe80efdc57b06c32272494c497edb3df2599f6c`。只读poll保留既有POST intent与preparation，原record精确归档。旧长路径尝试、保留字修正及发布前guard修正的输入与失败日志均保留，不改写历史证据。
+
+真实proved child模块 `verification/flp3/c1` 已通过emitter与imported snapshot，最长114.75秒，certificate SHA `cab80c614ffa0c63d53b9e75e8ec247128d2e1f7a1f27a776e99662032fde9ad`。第二节点 `flp3/f2` 的四项预检最长81.46秒，successor certificate SHA `0ea655a3c17277cffa04478a11f4f9a914dfd5d8278d3fdfac2b9e56f3eef6c9` 已只读重验。第三节点 `flp3/f3` 四项实际编译最长40.85秒；三个额外自动生成CI经独立源/生成探针认证，最长44.52秒，extra certificate SHA `25ccb3a101dacae35bfaa8fa97f992e0adf639ff9327f35afa5cdd13cc3e7dc1`。完整node certificate SHA `aba980bb4e90fdf533205de5d70f15d453800a525c21947148e27f1ea8747725` 已只读重验，旧consumer字典/列表错误尝试保留，新consumer只修正严格认证后的三名字映射。
+
+两个successor均已公开发布、own证明ACCEPTED，并且精确公开目标新鲜回读Proved。f2 theorem `bc74060f-2602-42a2-ab0a-7435517bae27`，proof `4f54c75a-6ac6-409a-8da5-3f016779cd13`。f3 theorem `9e8a05d9-eb6a-4e92-92d2-640defa3421c`，proof `d1bf8788-830c-4f74-92c6-3dbbf427fa1b`。发布器保留durable POST意图、原UTF8 payload与statement/preamble回读；GET-only fastpoll复核完整输入哈希和精确回执，不重查整张证明图、不重新POST。本地proved child `flp3/c2` 已完整认证，证书SHA `72e7d4e55d446a0b9540070696bae3ff3291b9fa9559c99bb5691843471fd32c`，实际编译最长56.78秒。本地proved child `flp3/c3` 已完整认证，证书SHA `74b5ab9d0c24a3fd6dbdde6d312157a0881b4f2bccd2e02d255acc20957429c0`，实际编译最长69.11秒。
+
+第四节点 `formalLog_packets_surjective_iff_truncated` 已完成四项实际编译（43.92/41.38/50.91/42.55秒）、原/生成类型与Std3认证，完整证书 `verification/flp3/f4/final-node-validation.json` SHA `18a7340491d8f7ea2e763e4667c39567a682b198e43f26e2255ae90061d45f85`。五个实际inline辅助证明与两个已接受父证明覆盖全部实际proof references。真实rfl辅助声明 `shiftEquiv_apply` 仅按原AST字节5444–5637、proof5631–5637、Graph isPrivate=false及AST privateTok=null作精确shape正规化；原证明字节保留。自动方程 `shiftMap.eq_1` 仍由正式方程证书提供，未复制或捏造AST。源witness还精确记录了 `rationalCoefficientPacket_surjective` 末行已有版本适配（`dite_eq_left` → `dif_pos`）；两侧完整命令和其余对应行保留。节点own proof已Accepted，精确公开回读Proved：theorem `392720f4-8ae0-4851-bce6-4c313070d1c0`、proof `5b154af4-229a-4c83-a36f-3e943cab9c25`、job `025a2f38-4c7c-4174-b139-af1dc0a67633`，publication SHA `4a5e206471358b944c32a896029dba854e486829ab8ee5361465859af57854c1`。网络GET重试未重复POST，两个父证明新鲜Accepted/Proved gate通过。
+
+参数分支的新隔离stage `verification/ap2` 已完成62项CI完整认证：Admissible49项结构CI加9项额外CI、WeightSeparation4项定义。结构完整元数据/recursor全部rule RHS、类型、完整Def值及Std3均相等；两个provider emitter16.21/42.74秒、额外13CI源/生成探针56.77/47.15秒、生成结构快照57.45秒全部通过。完整证书 `verification/ap2/complete-validation.json` SHA `82940ed662e22b240f2f6a34deaabdc2c3eba5bd3fe40ad408efa3e4ba2a5123`，结构证书SHA `c8204f22adc3c1ff5b4b70c570d21b5de57a61363a4ecbbc4bb42c72b63a61f7`；源74证书与冻结消费者字节保持不变。实际provider编译采用complete manifest，结构consumer manifest仅三个catalog字段不同，独立精确桥接复用真实sidecar并保持原first-search OLean验证。上传进程的C/c大小写仅影响两个被动replay说明，独立包装严格检查有限schema、samefile及SHA，其余完整报告必须相等。
+
+WeightSeparation已PUBLISHED，id `18191872-ab9e-4020-bab8-ad80da015219`，job `db75e6af-102c-494d-b718-87a26e35892a`，933字节原UTF8精确公开回读。AdmissibleParameters已PUBLISHED，id `9a1363ab-9f46-43e5-8f21-ce4ab0379046`，job `a0f4348d-08d1-453e-9f85-5cef9c6df272`，完整原UTF8精确公开回读。发布证据均在 `verification/ap2/publication/`。最新计数与所有精确own Accepted/公开Proved回执见权威清单 `verification/verified-stage-progress.json`；不计入仅生成或本地编译的候选。
+
+参数选择分支三个independent singleton闭包叶子已各完成四项实际预检、原/生成/solution类型相等和Std3：`exists_large_log_approximation` 最长52.28秒，theorem `10b40ea4-71eb-4ac0-a8af-a5fc040e0189`、proof `ef2a6b35-3f47-4e3b-a868-c3c9c4d49248`；`exists_rational_parameters` 最长46.67秒，theorem `f9c8b6c8-e057-4aea-81a3-afe672c9c7e4`、proof `1b4b557a-fe44-4c25-8298-0cd1963dcc14`；`exists_small_rational_sigma` 最长51.97秒，theorem `65a1e0c8-2ccf-48b8-b28e-589eec73910f`、proof `f40e2d1c-fb5e-4123-94f8-37e096adc39b`。三者均own Accepted且精确公开回读Proved，raw源码、初始metadata归档及API证据在各自 `verification/independent/` stage中。
+
+`exists_uniform_weight_error_margin` 的独立同文件三个公开theorem闭包已通过旧standalone四项实际编译，最长46.06秒、核类型与Std3检查通过，validation SHA `58a5e3ca6f0eb81d23cf6ebf7e2604c04560b5c7d02e55c746d1a0fe2038e11a`。stage `verification/nodes-preview/OAI_PiExponent_exists_uniform_weight_error_margin` 已own Accepted、精确公开回读Proved，theorem `37f56c07-4dea-4b47-918f-e67fb2624044`、proof `9299ed7b-7e88-4ec8-8a0f-fdbceec122e7`、job `cd01f276-17f2-4555-b008-1ac07f98f165`。另一个 provider-nodes-preview版本只保留未编译候选。当前累计20个公开Definition包、12个own Accepted/公开Proved证明。`exists_dimension_margin` provider-node仍只生成、未编译。下一条实际依赖链是 SuccessiveApproximations 的 `normalizedLogWeights` 定义，以及 `exists_successive_approximations` → `exists_normalized_selection_of_selector` → `exists_normalized_successive_approximations` 的独立证明；Definition不能替代这些尚未Proved的theorem。normalizedLogWeights新候选stage `verification/ap3` 不在旧174 source证书范围内，将使用新的实际source/generated单CI探针核对，目前尚未编译。
+
+新provider/Node生成器保留旧Accepted材料。Main的lazy `shiftMap.eq_1` source-side正式Lean API探针91.17秒为历史证据；新的源/生成配对正式方程证书已随FormalLogTruncation认证并发布。Cech source command provenance现已实际认证：Original54.61秒、Prefix44.12秒、Command42.75秒，Actual Name集合差与复制prefix私有CI均类型/完整Def值对应、Std3，见 `verification/command-emission-probe/command-provenance-validation.json`。这仅是source-side关联，generated alias的真实验证及作用域放置仍待完成。旧runner只写latest的记录缺口已由独立wrapper真实重跑/记录补齐，原875提取producer未改。FormalLogJet旧失败证据保留；所需PolynomialFrame provider与FormalJetDerivatives namespace依赖已实际补齐并发布。
+
+两个最终路线目标已于2026-10-09在新增证明Accepted后重新live只读核对，均Open：`verification/root-platform-status-20261009-after-twelve-proofs.json`。本任务最终平台证明尚未完成。
+
+## 恢复与检查
+
+2026-10-09最新阶段累计21个Definition包公开PUBLISHED、12个own Accepted且精确目标回读Proved；本轮新增WeightSeparation、AdmissibleParameters和SuccessiveApproximations三个Def包，以及FormalLog f4、三个singleton参数选择叶子、统一权重误差界五个证明。所有生成文件预检均在300秒内，未改变共享Lean/Mathlib版本。主根仍未闭合，goal保持active，proposal保持Draft。
+
+归一化权重 `normalizedLogWeights` 的 `verification/ap3` 现已三项实际编译并认证：provider58.90秒、source/Main单CI探针70.11秒、generated单CI探针32.18秒，类型/完整Def值/Std3相等，certificate `verification/ap3/s/probes/provider-validation.json` SHA `fbc65bdb1fe80bdfec155d5e829c3cf086a6ed95ba7b5fb65aa768bac086e752`。原generic owner没有family标注、request含两个额外metadata字段，新的限定单Name/schema包装逐字验证后只作字段投影及singleton分组，冻结consumer与编译输入不改。重建器实际输出路径仅在原generate方法内导入临时目录，读入完整原图仍使用原verification路径；旧失败诊断/重复预览和所有源码均保留。PUBLISHED id `74cfcd7f-9e25-450a-a16f-f6d00a7187e2`，job `57606f77-0799-4a8c-a1ac-bb269595e3f9`，790字节原UTF8正文公开精确回读，发布证据在 `verification/ap3/publication/`。此定义不在旧174 source证书范围内，未借用其覆盖。
+
+下一批：已生成未编译的 `exists_dimension_margin`（provider-nodes-preview），接着 `exists_successive_approximations` → `exists_normalized_selection_of_selector` → `exists_normalized_successive_approximations`。三个新singleton已Accepted，但后续本地parent编译仍须用真实proved child模块，不能把平台sorry占位当Std3证明。完成这条链与维数误差界后推进 `exists_admissible_parameters_source017` 的实际重 elaboration/类型核对；三个计划源名冲突改写仍未全量验证。所有进度以 `verification/verified-stage-progress.json` 精确发布记录为准。
+
+先读 `verification/run-state.json`；metadata已terminal，当前编译handle以run-state为准，后续保持单个Lean compiler。构建命令在根执行 `python scripts/workspace.py build pi-irrationality-measure`，当前13roots已通过。每个生成文件≤300秒；Definitions不能导入sorry theorem；Sol必须顶层literal theorem solution且不引用自身target。完整staged链需类型/名字/公理/实际输入审计后拓扑上传，不能把preview当证明。全root还未闭合，goal仍active。
+
+最近workspace check只有两个既有TaoFivePrimes未归属Solutions，不属于本任务；后续仍须按要求check，仅处理本任务问题。共享lakefile新增Snaky21导致过一次旧提取配置保护中断，精确版本/路径不变审计 `verification/lakefile-change-audit.json` 已完成；源与Mathlib未改。
+
+2026-10-09阶段更新：权威清单 `verification/verified-stage-progress.json` 当前累计21个公开Definition包、16个own Accepted且精确公开回读Proved的证明。新增最小权重存在性（theorem `30d83fa5-620d-4059-a909-387ac02d2401`）、维数误差界（`934503da-4fa7-48b1-8fa9-559f735875b7`）、逐次逼近存在性（`4aba3255-1221-4afe-8855-017030ee3311`）和归一化选择器（`70770615-f641-4c27-b499-56d5c6cd07dd`）。所有本地实际预检均在单文件300秒内；维数节点七个内联辅助证明和三个实际自动生成CI也已认证。
+
+归一化选择器首次statement job `20caafb9-8460-4916-952f-913540eea6c2` 已知FAILED：上传preamble遗漏了本地已恢复的零项化简引理。失败payload、源码、日志与证书保持不变。隔离重试 `verification/ap4/n2z/publication-wire-1` 从实际编译通过的Thm源码重建preamble，逐字确认preamble加声明等于已验证文件；新job `54d54ee6-58a0-4187-bd6c-d01c76fa2161` 已Accepted/Proved。后续发布同样须检查实际wire拼装字节，而不能仅凭Sol或本地快照通过。
+
+下一批在 `verification/ap5`：两个已Accepted序列节点的真实proved child模块、归一化逐次逼近节点和参数存在性节点。尚无ap5实际编译证书，候选不计入平台完成数。源Main及平台定义桥接已本地验证，最终平台主根仍未闭合；goal保持active，提案保持Draft。用户已授权本任务内容上传Prove2Me，不重复询问上传授权。
+
+2026-10-09后续阶段：权威清单累计21个Definition包、18个own Accepted/公开Proved证明。归一化逐次逼近 `verification/ap5/n3` 的五项实际检查最长20.19秒，type等同且Std3，exact wire与modecheck的Thm逐字相同；theorem `ac557e0f-57d3-4ea8-816a-1ae5b1c6fee6`、proof `911799fc-7bd3-40c2-a674-9f899f8224be` 已Accepted/Proved。参数存在性隔离重试 `verification/ap5/p1j` 的四项实际检查最长56.73秒；源/helper/target/solution type等同，Std3，四个task-relative依赖路径的限定只读桥接保留原消费者报告并认证。theorem `ee7f5876-ef98-4f15-ba69-401d7b11dc72`、proof `370aa267-cd8c-4179-ae54-18f84961a1d3` 已Accepted/Proved。旧p1 JSON输出路径失败材料、归档递归生成的重复副本清理记录、发布前接口契约修正的源码与空记录均保留；共享预检器已恢复原SHA，Lean/Mathlib版本不变。
+
+`verification/ap6/c1` 统一误差界、`ap6/c2` 最小权重及 `ap6/c4e` 归一化逐次逼近的真实proved child模块已认证；前两者限定映射各两条经哈希核验的旧workspace-relative日志路径，原消费者与全部kernel/owner/Std3检查保持不变。c4e三个实际检查最长24.60秒，旧c4保留字export失败记录保持原样。维数c3源快照首次错误导入DimensionLimits，隔离c3e修正实际模块/逐Name owner；参数child c5已纯生成，实际认证仍待完成。固定两个主根在 `verification/root-platform-status-20261009-after-eighteen-proofs.json` 新鲜回读均为Open；scope已登记两份新证明。workspace check仍仅报告两个既有其他任务TaoFivePrimes文件未归属，日志 `verification/workspace-check-20261009-after-ap5.log`，本任务无归属错误。goal active，最终提案Draft。
+
+历史status完整保留 `verification/status-history-before-20261008.md` 和 `verification/status-before-current-stage-upload-20261008.md`。
+
+2026-10-09 AP6/AP7 阶段：六个参数构造子节点的真实 proved child 模块均已认证，权威路径和 OLean 哈希在 `verification/run-state.json` 的 `admissible_actual_children`。完整 `exists_admissible_parameters_source017` 原始构造证明已通过四项实际编译（94.50/68.38/33.95/49.95 秒）；17 个原始辅助声明逐项类型相等，额外四个私有 CI 与已认证的 `dimensionV._proof_1` 形成精确五项闭包，额外探针最长 104.17 秒，公理均限于 Std3。证书 `verification/ap6/a1/source017f/a1-validation-v3.json` SHA `d6ed32c972faab7e91de93537a3748d7e5e12fe8e448f1b1d9417a0d77f54ce1`。公开 theorem `fdcbce8c-d9e6-43dd-8587-cfe865e6e78a`、own proof `6498ced8-b768-42b7-b33b-051abf9db3e5` 已 Accepted/Proved；原始条件命题未削弱。source017e 缺失 Parameters 方法的失败、source017f 原消费者缺失私有 CI 的失败、extra-ci-v2 保留字失败及其原输入均保留，冻结源库、预检器和原消费者未改。
+
+AP7 碰撞常数 Definition 包只包含源 `collisionConstant = Real.log 2 / 4` 及其正性证明；三项实际编译最长 84.74 秒，类型、完整定义值与 Std3 配对通过。平台 id `e2fb211d-ec5e-4e02-8107-f1abdd9dcaf4`，job `3f37842b-b891-4c54-987b-beac50c46a43` 已 PUBLISHED，公开 UTF8 源码精确回读。Arithmetic 原有已计数包的旧任务也已只读刷新为 PUBLISHED，保留旧 publication 字节；不重复计数。权威清单目前 22 个 Definition、19 个 own Accepted/公开 Proved 证明。
+
+下一条直接依赖 `determinant_bounds_inconsistent` 的顶层 global solution 已在 `verification/ap7/determinant-bounds-global-v2` 完成四项实际编译（16.53/17.87/22.56/23.80 秒），完整源/生成类型和证明项相等，零私有辅助 CI，Std3；证书 `node-validation-v2.json` SHA `3a21502e575ac6299c3a7eb2026b6fe88c7ad498e663d17665dcf5c4bb0f11a9`。旧 namespaced solution 和失败 generated snapshot/OLean 保留；global solution 使用新模块名，避免覆盖旧证据。目标 wire 仍为原 545 字节文件，准备命令中重复 verification 前缀的实际调用修正单独记录。当前正按 `publication-v3` 的持久化意图上传验证，尚未计入 Accepted 数。最终两个固定目标最新只读状态见 `verification/root-platform-status-20261009-after-nineteen-proofs.json`，仍均 Open；goal active，最终提案 Draft。
+
+AP7 后续回执已闭合：`determinant_bounds_inconsistent` theorem `a9904f48-a524-4023-b106-063256a5e681`，publish job `2f6f21f1-02ef-4d92-bd5d-6760682cb2af`，own proof `041a843f-a431-4119-83a1-854254a4be50` 已 Accepted/公开 Proved。发布和验证均保留单次 POST 的持久化意图，原 UTF8 target/preamble 精确回读。权威清单现在为 22 个公开 Definition、20 个 own Accepted/公开 Proved 证明，无待解决上传。最终两个固定目标在 `verification/root-platform-status-20261009-after-twenty-proofs.json` 新鲜回读仍均 Open。scope 登记 global solution，最新 workspace check 仅两个既有其他任务 TaoFivePrimes 文件未归属，日志 `verification/workspace-check-20261009-after-ap7-global.log`，本任务错误为零。下一候选为 `OAI.PiExponent.InterpolationMatrix.exists_full_row_minor_of_surjective`（Source AST 6080–7616，135–166 行），当前只作精确源图/现有证据筛选，尚未生成或编译；队列 `verification/ap7/next-after-comparison.json`。继续实际证明迁移；goal active，最终提案 Draft。

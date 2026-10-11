@@ -1,0 +1,42 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "private": false,
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_polynomial_partial_fractions",
+      "theorem_title": "Actual numerator polynomial partial fractions",
+      "formal_statement": "theorem ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_polynomial_partial_fractions (m : ℕ) (A : ℚ[X])\n    (hproper : A.natDegree < 9 * (m + 1)) : A = numeratorPartialNumerator m A:= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapNumeratorPF\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial ZetaNine ZetaNine.CoefficientMapNumeratorPartialFractions ZetaNine.CoefficientMapFormalTransportData ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions\n",
+      "natural_language_statement": "For every natural m and rational polynomial A of degree less than 9(m+1), the polynomial numerator reconstructed from its actual first nine local jets equals A.",
+      "source": "Frozen actual native source SHA256 2dd97638ab3fbc86124db40b78ef2f38fd7536c630d0240cb33fb4f35f8ffc77",
+      "tags": [
+        "number-theory",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_global_partial_fractions",
+      "theorem_title": "Actual numerator global partial fractions",
+      "formal_statement": "theorem ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_global_partial_fractions (m : ℕ) (A : ℚ[X])\n    (hproper : A.natDegree < 9 * (m + 1)) (t : ℚ)\n    (hregular : ∀ k ≤ m, t + (k : ℚ) ≠ 0) :\n    A.eval t / (polePolynomial m).eval t ^ 9 =\n      ∑ j ∈ range (m + 1), ∑ s ∈ Icc 1 9,\n        numeratorLocalCoefficient m j s A / (t + (j : ℚ)) ^ s:= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapNumeratorPF\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial ZetaNine ZetaNine.CoefficientMapNumeratorPartialFractions ZetaNine.CoefficientMapFormalTransportData ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions\n",
+      "natural_language_statement": "For every natural m and rational polynomial A of degree less than 9(m+1), its rational function has the full actual jet partial fraction expansion at every rational regular point t.",
+      "source": "Frozen actual native source SHA256 2dd97638ab3fbc86124db40b78ef2f38fd7536c630d0240cb33fb4f35f8ffc77",
+      "tags": [
+        "number-theory",
+        "formalization"
+      ]
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_local_coefficients_injective",
+      "theorem_title": "Actual numerator injective partial fractions",
+      "formal_statement": "theorem ZetaNine.CoefficientMapNumeratorPartialFractions.actual_numerator_local_coefficients_injective (m : ℕ) (A B : ℚ[X])\n    (hA : A.natDegree < 9 * (m + 1)) (hB : B.natDegree < 9 * (m + 1))\n    (heq : ∀ j ≤ m, ∀ s, 1 ≤ s → s ≤ 9 →\n      numeratorLocalCoefficient m j s A = numeratorLocalCoefficient m j s B) : A = B:= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapNumeratorPF\n\nset_option autoImplicit false\nopen scoped BigOperators\nopen Finset Polynomial ZetaNine ZetaNine.CoefficientMapNumeratorPartialFractions ZetaNine.CoefficientMapFormalTransportData ZetaNine.CoefficientMapInjectivity ZetaNine.CoefficientMapPartialFractions\n",
+      "natural_language_statement": "For every natural m and two rational polynomials of degree less than 9(m+1), equality of all actual local coefficients at poles j<=m and orders 1..9 implies equality of the polynomials.",
+      "source": "Frozen actual native source SHA256 2dd97638ab3fbc86124db40b78ef2f38fd7536c630d0240cb33fb4f35f8ffc77",
+      "tags": [
+        "number-theory",
+        "formalization"
+      ]
+    }
+  ]
+}

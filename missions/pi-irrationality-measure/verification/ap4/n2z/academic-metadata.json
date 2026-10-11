@@ -1,0 +1,12 @@
+{
+  "tags": [
+    "openai-pi-exponent-017",
+    "number-theory",
+    "rational-approximation"
+  ],
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/SuccessiveApproximations.lean#L97-L132",
+  "theorem_title": "Normalize a selector sequence and obtain product growth",
+  "natural_language_statement": "Let $\\nu,X,D\\in\\mathbb R$. Suppose that for every threshold rule $T$ on finite lists there are integer numerators $p_n$ and natural denominators $q_n$ such that, for every $n$, $q_n\\ge2$, $p_n\\ne0$, $|\\pi-p_n/q_n|\\le q_n^{-\\nu}$, and the logarithmic ceiling weights satisfy $1\\le\\lceil\\log q_n\\rceil$ and exceed $T$ applied to the earlier weights in reverse order. Then there are sequences $p_n,q_n,x_n$ with $x_0=1$ and $x_{n+1}=\\lceil\\log q_n\\rceil$ for which\n\n$$x_i\\ge1,\\quad X<x_{n+1},\\quad D\\prod_{j<i}x_j<x_i\\quad(i>0),$$\n\nwhile every pair $(p_n,q_n)$ retains the same power-law approximation, nonzero-numerator, denominator, and positive-weight conditions. The selector hypothesis is part of the result. This normalization packages the uniform lower margin and multiplicative separation into a sequence that can be reused when later admissibility constraints depend on accumulated weights. No sign restrictions on $X$ or $D$ are required.",
+  "explanation": "Apply the selector with threshold equal to the maximum of $X$ and $D$ times the product of the supplied history. Define $x_0=1$ and let each later $x$ value be the ceiling logarithm of the corresponding denominator. The selector's first inequalities give the approximation, positivity, and $X$ margin. The product identity for normalized logarithmic weights converts the history product in the selector condition into $\\prod_{j<i}x_j$, yielding the strict product growth. No sign assumptions on $X$ or $D$ are needed for this implication."
+}

@@ -1,0 +1,24 @@
+{
+  "theorem_id": "ca2e0aab-8e1d-4199-980c-edc10cd4eabb",
+  "theorem_name": "ZetaNine.CoefficientMap.clear_highest_pole",
+  "theorem_title": "Clearing the actual highest pole at every regular point",
+  "status": "Open",
+  "formal_statement": "theorem ZetaNine.CoefficientMap.clear_highest_pole (n j : ℕ) (hj : j ≤ n) (t : ℚ)\n    (ht : ∀ k ≤ n, t + (k : ℚ) ≠ 0) :\n    actualR n t * (t + j) ^ 9 = clearedR n j t:= by sorry",
+  "natural_language_statement": "Let $n,j$ be natural numbers with $j\\le n$. Define $N_n(t)=n!^7\\prod_{i=1}^{n}(t-i)\\prod_{i=1}^{n}(t+n+i)$, $Q_n(t)=\\prod_{k=0}^{n}(t+k)$ and $R_n(t)=N_n(t)/Q_n(t)^9$. Let $Q_{n,j}$ omit the factor $t+j$, and write $\\widetilde R_{n,j}=N_n/Q_{n,j}^9$. At every rational point $t$ satisfying $t+k\\ne0$ for all $0\\le k\\le n$,\n\n$$R_n(t)(t+j)^9=\\widetilde R_{n,j}(t).$$\n\nThis identifies the actual cleared expression on the regular domain. It is a finite clearing identity; evaluation of the uncleared rational function at a pole is not used as a coefficient.",
+  "created_at": "2026-10-03T15:50:43.370176+00:00",
+  "vote_count": 0,
+  "tags": [
+    "formalization",
+    "number-theory",
+    "pole-coefficients",
+    "rational-functions"
+  ],
+  "preamble": "import Definitions.Def_ZetaNine_CoefficientMap\n\nset_option autoImplicit false\nopen Finset Polynomial\nopen ZetaNine.CoefficientMap\n",
+  "source": "Zeta(9) research notes: missions/zeta9/research/coefficient-map-finite-entry-2026-10-03.md (actual product definitions and highest cleared-pole coefficient); underlying missions/zeta9/round5/research/arithmetic.md, equations (1), (5), and (6), specialized to p=9, one layer q=1, m=n. Frozen verified Lean source missions/zeta9/formalization/CoefficientMap.lean, SHA256 e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03. Original endpoint declaration lines 75–85.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

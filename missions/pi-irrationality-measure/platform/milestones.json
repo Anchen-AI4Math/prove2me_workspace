@@ -1,0 +1,150 @@
+{
+  "mission_id": "d7ce6393-5f06-4635-baa4-569d057ba37c",
+  "pagination": {
+    "limit": 100,
+    "offset": 0,
+    "total": 10
+  },
+  "milestones": [
+    {
+      "id": "1bc0f8c2-2f04-415e-b391-1386e494385b",
+      "title": "Family 017: π has irrationality exponent 2",
+      "milestone_description": "OpenAI's selected statement OAI.PiExponent.main: for every real $\\nu>2$, some integer $Q\\ge2$ makes $q^{-\\nu}\\le|\\pi-p/q|$ hold for all integers $p,q$ with $q\\ge Q$; and the real supremum of positive exponents admitting infinitely many distinct rational approximations $r$ with reduced denominator $d(r)\\ge2$ and $0<|\\pi-r|<d(r)^{-\\nu}$ is $2$. [Exact source](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean).",
+      "sort_order": 0,
+      "completed": false,
+      "theorem": {
+        "id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+        "theorem_name": "OAI.PiExponent.main",
+        "status": "Open"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T06:19:53.094126+00:00"
+    },
+    {
+      "id": "3c295858-8b8e-4313-9d56-b5d4d48d514a",
+      "title": "Bounded-denominator rational approximations form a finite set",
+      "milestone_description": "For every real number $x$ and natural number $N$, the set of rational numbers whose reduced denominator is at most $N$ and whose distance from $x$ is less than $1$ is finite:\n$$\\{r\\in\\mathbb Q:r.\\mathrm{den}\\le N,\\ |x-r|<1\\}.\\mathrm{Finite}.$$\nThis supplies the finite exceptional set needed when replacing eventual denominator bounds by finiteness statements about rational approximations.",
+      "sort_order": 1,
+      "completed": true,
+      "theorem": {
+        "id": "6a1e361b-a076-4905-946e-fcbbffca3403",
+        "theorem_name": "OAI.PiExponent.finite_rat_den_le_abs_sub_lt_one",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:01:44.337275+00:00"
+    },
+    {
+      "id": "33f4a667-e2cc-49bb-b58b-a1e273b88c26",
+      "title": "Equivalent natural and integer denominator formulations",
+      "milestone_description": "For every real number $x$, the eventual lower bound at every exponent $\\nu>2$ is equivalent whether its threshold and denominators are natural numbers or integers. In both formulations the threshold is at least $2$, the numerator is an arbitrary integer, and the bound is uniform in the numerator:\n$$q^{-\\nu}\\le |x-p/q|\\qquad(q\\ge Q).$$\nThis conversion preserves the non-strict approximation inequality and allows results using integer denominators to be reused with natural denominator statements.",
+      "sort_order": 2,
+      "completed": true,
+      "theorem": {
+        "id": "f6226cea-1cdb-4891-8f38-f628fef25206",
+        "theorem_name": "OAI.PiExponent.eventualLowerBound_iff_integer",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:03:05.953896+00:00"
+    },
+    {
+      "id": "b018e8a4-2a17-4aff-a2c3-51a8b4fbde8b",
+      "title": "An eventual lower bound gives irrationality exponent two",
+      "milestone_description": "Let $x$ be an irrational real number. Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le |x-p/q|$ for every integer $p$ and natural $q\\ge Q$. Then the irrationality exponent defined by the shared approximation predicates is exactly $2$:\n$$\\mu(x)=2.$$\nThe exponent is the real supremum of positive exponents admitting infinitely many distinct rational approximations with reduced denominator at least $2$ and strictly positive error below $q^{-\\nu}$. The upper estimate uses the assumed eventual bound; the lower estimate uses irrationality and Dirichlet approximation.",
+      "sort_order": 3,
+      "completed": true,
+      "theorem": {
+        "id": "733008a0-daa2-4420-858d-db732aa4313d",
+        "theorem_name": "OAI.PiExponent.irrationalityExponent_eq_two_of_eventualLowerBound",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:04:30.529058+00:00"
+    },
+    {
+      "id": "10d8acc4-1311-44b9-ac53-864321d27626",
+      "title": "No arbitrarily large exceptional denominators gives an eventual bound",
+      "milestone_description": "Let $x$ be a real number. Assume that for each real exponent $\\nu>2$, it is false that every natural threshold $Q$ admits integers $p$ and natural denominators $q\\ge Q$ with $|x-p/q|\\le q^{-\\nu}$. Then for each $\\nu>2$ there is a natural threshold $Q\\ge2$ such that all integers $p$ and natural $q\\ge Q$ satisfy $q^{-\\nu}\\le |x-p/q|$. This turns an obstruction to arbitrarily large exceptional denominators into the uniform eventual lower bound used by the irrationality-exponent criterion.",
+      "sort_order": 4,
+      "completed": true,
+      "theorem": {
+        "id": "70796608-c268-4f4e-bf52-5e69e3ec9ec0",
+        "theorem_name": "OAI.PiExponent.eventualLowerBound_of_not_unbounded_approximations",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:05:23.396106+00:00"
+    },
+    {
+      "id": "cf10878a-dd3c-435f-9b4d-5a44886caf45",
+      "title": "Eventual lower bounds make better-than-quadratic approximations finite",
+      "milestone_description": "Let $x$ be a real number satisfying the shared eventual lower-bound predicate, and let $\\nu>2$ be real. Then only finitely many rational numbers $r$ with reduced denominator at least $2$ satisfy $0<|x-r|<r.\\mathrm{den}^{-\\nu}$. The hypothesis provides a bound uniform over all integer numerators and all sufficiently large natural denominators.",
+      "sort_order": 5,
+      "completed": true,
+      "theorem": {
+        "id": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+        "theorem_name": "OAI.PiExponent.finite_goodRationalApproximations_of_eventualLowerBound",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:08:51.810721+00:00"
+    },
+    {
+      "id": "e02b1452-63b3-4d3b-96ee-783769c2cb58",
+      "title": "Every irrational real has infinitely many approximations at exponent two",
+      "milestone_description": "For every irrational real number $x$, the exponent $2$ belongs to the set of approximation exponents: there are infinitely many distinct rational numbers $r$ whose reduced denominator is at least $2$ and whose approximation error satisfies $0<|x-r|<r.\\mathrm{den}^{-2}$. This records the Dirichlet lower bound in the shared irrationality-exponent definitions.",
+      "sort_order": 6,
+      "completed": true,
+      "theorem": {
+        "id": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+        "theorem_name": "OAI.PiExponent.two_mem_approximationExponents",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:08:52.302203+00:00"
+    },
+    {
+      "id": "aca2ccd5-1ae0-400d-8da4-4946c5f6b507",
+      "title": "The eventual approximation bound for pi implies irrationality exponent two",
+      "milestone_description": "Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le|\\pi-p/q|$ for every integer numerator $p$ and natural denominator $q\\ge Q$. Then the irrationality exponent of $\\pi$, defined as the real supremum of the positive approximation exponents in the shared definitions, equals $2$. The eventual bound is an explicit hypothesis of this implication.",
+      "sort_order": 7,
+      "completed": true,
+      "theorem": {
+        "id": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+        "theorem_name": "OAI.PiExponent.pi_irrationalityExponent_eq_two_of_eventualLowerBound",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:10:26.301978+00:00"
+    },
+    {
+      "id": "6d729959-8c12-486b-9083-3959517c748d",
+      "title": "Polynomial obstruction to a logarithmic antiderivative",
+      "milestone_description": "Let $K$ be a field of characteristic zero, let $P,Q\\in K[X]$ be coprime with $Q\\ne0$, and let $c\\in K$ be nonzero. Then\n$$X(P'Q-PQ')\\ne cQ^2.$$\nEquivalently, the indicated polynomial identity cannot describe a rational antiderivative of a nonzero scalar multiple of $1/X$.",
+      "sort_order": 8,
+      "completed": true,
+      "theorem": {
+        "id": "0b0e4d52-57f4-485f-8b69-517c7689f3fd",
+        "theorem_name": "OAI.PiExponent.polynomial_logarithmic_equation_impossible",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:29:32.655981+00:00"
+    },
+    {
+      "id": "023079cb-45ac-4bc9-b7ec-d96be87c23ac",
+      "title": "A finite algebraic extension cannot supply a logarithmic antiderivative",
+      "milestone_description": "Let $K$ have characteristic zero and let $E$ be a finite-dimensional extension of $K(X)$ in a compatible tower over $K$. Let $d$ and $D$ be compatible $K$-derivations of $K(X)$ and $E$, with $d(X)=1$. For every $x\\in E$ and nonzero $c\\in K$, $D(x)$ is not the image of $c/X$ in $E$. Thus passing to this finite extension does not remove the simple-pole obstruction.",
+      "sort_order": 9,
+      "completed": true,
+      "theorem": {
+        "id": "900d5323-eb75-4496-883d-ee33484a3867",
+        "theorem_name": "OAI.PiExponent.finite_extension_derivation_ne_simple_pole",
+        "status": "Proved"
+      },
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_at": "2026-10-07T07:29:33.260257+00:00"
+    }
+  ]
+}

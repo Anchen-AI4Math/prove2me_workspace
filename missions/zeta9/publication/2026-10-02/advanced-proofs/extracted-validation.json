@@ -1,0 +1,185 @@
+{
+  "status": "PASS",
+  "archive_sha256": "87c7ea2680bda568e8e2b36b82f48dab6910ab9bf92e8b4486471c547792e31c",
+  "extracted_payload_verifier_exit": 0,
+  "extracted_payload_verifier_output": "{\"status\": \"PASS\", \"payload_members_checked\": 80, \"manifest_self_hash_omitted\": true, \"network_operations\": false}",
+  "steps": [
+    {
+      "source": "Audit/Kernel.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit/Kernel.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "source": "Audit/C3Signed.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit/C3Signed.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "source": "Audit/C3Nonzero.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit/C3Nonzero.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "source": "Audit/NativeC3.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit/NativeC3.lean"
+      ],
+      "exit_code": 0
+    },
+    {
+      "source": "Audit/PNT.lean",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "Audit/PNT.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "audit_log_sha256": "3c21b61d10e86d1622f480770d2ea887a863579e41c6a7c011ddfc881da68592",
+  "required_axiom_reports": {
+    "MediumPNT": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.ExternalPNT.checked_medium_pnt": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.ShortZeroCoefficient.A_even_signed_lower": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.ShortZeroCoefficient.A_ne_zero_of_even": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_c3_signed_lower": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_c3_nonzero": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.psi_pnt_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.theta_pnt": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.lcm_pnt": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.harmonic_log_den_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.harmonic_perturbed_log_den_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.HarmonicStability.harmonic_nine_double_log_den_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_psi_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_harmonic_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_perturbed_harmonic_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.AdvancedAudit.checked_nine_double_harmonic_rate": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ]
+  },
+  "missing_reports": [],
+  "unexpected_axioms": {},
+  "required_axiom_declarations": 16,
+  "import_artifact_reuse": "Exact verified artifacts from this same advanced source project; no upstream proof recompiled during this extraction check",
+  "cache_or_binary_in_archive": false,
+  "network_API_credential_operations": false,
+  "platform_acceptance_claimed": false
+}

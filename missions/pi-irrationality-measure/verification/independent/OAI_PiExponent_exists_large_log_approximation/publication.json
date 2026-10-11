@@ -1,0 +1,120 @@
+{
+  "theorem_name": "OAI.PiExponent.exists_large_log_approximation",
+  "metadata_sha256": "2c776e8f83803cbb90343bb4499aaa8d3dc9df610dc4f9790a5d3dfe24a920bb",
+  "publish_payload_sha256": "a0a45bf4b4911b3db2a70a8442d5823cdccf3c01e53b4196eda53161d2048035",
+  "publish_intent": {
+    "at_utc": "2026-10-09T08:57:33.271800+00:00",
+    "statement_sha256": "beba3afc964b849e889e8a56a70b5e2b7e4a6123224ad3e13c81e4865b43cfb8",
+    "payload": {
+      "problems": [
+        {
+          "theorem_name": "OAI.PiExponent.exists_large_log_approximation",
+          "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+          "formal_statement": "theorem OAI.PiExponent.exists_large_log_approximation\r\n    (nu X : ℝ) (hnu : 0 < nu)\r\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\r\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\r\n    ∃ p : ℤ, ∃ q : ℕ,\r\n      2 ≤ q ∧ X < Real.log q ∧ p ≠ 0 ∧\r\n        |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu) := by sorry",
+          "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/ApproximationSelection.lean#L8-L31",
+          "theorem_title": "Large-denominator approximation under a uniform power-law approximation hypothesis",
+          "natural_language_statement": "Let ν and X be real numbers with ν > 0. Assume that for every natural number Q there are an integer p and a natural number q such that Q ≤ q and |π − p/q| ≤ q^(−ν). Then there are an integer p and a natural number q with 2 ≤ q, X < log q, p ≠ 0, and |π − p/q| ≤ q^(−ν). The approximation hypothesis is part of the theorem's assumptions; this statement does not assert unconditionally that such approximations exist.",
+          "tags": [
+            "openai-pi-exponent-017",
+            "number-theory",
+            "rational-approximation"
+          ]
+        }
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "a0a45bf4b4911b3db2a70a8442d5823cdccf3c01e53b4196eda53161d2048035"
+  },
+  "updated_at_utc": "2026-10-09T09:00:25.350777+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "9480aa50-8b11-4873-bb1b-cdf3d5bfd18b",
+          "name": "OAI.PiExponent.exists_large_log_approximation"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "job_id": "9480aa50-8b11-4873-bb1b-cdf3d5bfd18b",
+  "last_publish_verdict": {
+    "id": "9480aa50-8b11-4873-bb1b-cdf3d5bfd18b",
+    "kind": "problem",
+    "theorem_name": "OAI.PiExponent.exists_large_log_approximation",
+    "theorem_title": "Large-denominator approximation under a uniform power-law approximation hypothesis",
+    "formal_statement": "theorem OAI.PiExponent.exists_large_log_approximation\r\n    (nu X : ℝ) (hnu : 0 < nu)\r\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\r\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\r\n    ∃ p : ℤ, ∃ q : ℕ,\r\n      2 ≤ q ∧ X < Real.log q ∧ p ≠ 0 ∧\r\n        |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu) := by sorry",
+    "natural_language_statement": "Let ν and X be real numbers with ν > 0. Assume that for every natural number Q there are an integer p and a natural number q such that Q ≤ q and |π − p/q| ≤ q^(−ν). Then there are an integer p and a natural number q with 2 ≤ q, X < log q, p ≠ 0, and |π − p/q| ≤ q^(−ν). The approximation hypothesis is part of the theorem's assumptions; this statement does not assert unconditionally that such approximations exist.",
+    "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/ApproximationSelection.lean#L8-L31",
+    "tags": [
+      "openai-pi-exponent-017",
+      "number-theory",
+      "rational-approximation"
+    ],
+    "visibility": "public",
+    "status": "PUBLISHED",
+    "error_message": "",
+    "theorem_id": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189",
+    "created_at": "2026-10-09T08:57:36.122892+00:00",
+    "updated_at": "2026-10-09T08:57:48.958982+00:00"
+  },
+  "theorem_id": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189",
+      "theorem_name": "OAI.PiExponent.exists_large_log_approximation",
+      "theorem_title": "Large-denominator approximation under a uniform power-law approximation hypothesis",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_large_log_approximation\r\n    (nu X : ℝ) (hnu : 0 < nu)\r\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\r\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\r\n    ∃ p : ℤ, ∃ q : ℕ,\r\n      2 ≤ q ∧ X < Real.log q ∧ p ≠ 0 ∧\r\n        |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu) := by sorry",
+      "natural_language_statement": "Let ν and X be real numbers with ν > 0. Assume that for every natural number Q there are an integer p and a natural number q such that Q ≤ q and |π − p/q| ≤ q^(−ν). Then there are an integer p and a natural number q with 2 ≤ q, X < log q, p ≠ 0, and |π − p/q| ≤ q^(−ν). The approximation hypothesis is part of the theorem's assumptions; this statement does not assert unconditionally that such approximations exist.",
+      "created_at": "2026-10-09T08:57:48.04589+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "rational-approximation"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/ApproximationSelection.lean#L8-L31",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-09T08:58:42.185429+00:00",
+    "solution_sha256": "92b03d2719271770e6ecd94a4a5cd5c1f6d58c1fcc58cb74bd1b78f435c5c9df",
+    "theorem_id": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189",
+    "multipart_sha256": "4d4c8cd0e29bf83f74acddaf4c841e72c2ef0af6e02d2421729bc0b29e23a193"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "ef2a6b35-3f47-4e3b-a868-c3c9c4d49248",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "ef2a6b35-3f47-4e3b-a868-c3c9c4d49248",
+  "last_verify_verdict": {
+    "id": "ef2a6b35-3f47-4e3b-a868-c3c9c4d49248",
+    "theorem_id": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189",
+    "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "10b40ea4-71eb-4ac0-a8af-a5fc040e0189/418b0711-62a5-416a-ba5d-876ae8758fe3/ef2a6b35-3f47-4e3b-a868-c3c9c4d49248.lean",
+    "created_at": "2026-10-09T08:58:45.036996+00:00",
+    "updated_at": "2026-10-09T08:59:52.34747+00:00"
+  },
+  "confirmed_proved": true
+}

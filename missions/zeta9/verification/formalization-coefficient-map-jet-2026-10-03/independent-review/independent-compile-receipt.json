@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "source_sha256": {
+    "CoefficientMap.lean": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet.lean": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a"
+  },
+  "compiler": "Lean (version 4.33.1, x86_64-w64-windows-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "steps": [
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMap"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapJet"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "JetReviewAudit.lean"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "log_sha256": "f83f3de5faeb825206bb14ec0f31cd472f6b131de67a044e50ff7293b4ba9820",
+  "required_axiom_reports": {
+    "ZetaNine.CoefficientMapJet.actual_local_rational_expression": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.actual_weighted_local_rational_expression": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.shiftedClearedDenominator_constant_ne_zero": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.clearedSeries_denominator_identity": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.clearedSeries_unique": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.weightedClearedSeries_denominator_identity": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.localCoefficient_nine": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.weightedLocalCoefficient_nine": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.coefficient_convolution_explicit": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJet.integer_coefficient_convolution": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.exists_unique_actual_series": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.weighted_series_is_actual_quotient": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.exists_unique_weighted_actual_series": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.actual_weighted_regular_bridge": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.all_orders_actual_convolution": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.all_orders_integer_W_convolution": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.integer_multiplier_coefficients": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.zero_boundary_series": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.zero_boundary_lower_coefficients": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ],
+    "ZetaNine.CoefficientMapJetIndependentReview.zero_boundary_top_coefficient": [
+      [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    ]
+  },
+  "missing_reports": [],
+  "unexpected_axioms": {},
+  "finite_arithmetic": {
+    "status": "PASS",
+    "parameter_range": "0 <= n <= 8; 0 <= j <= n; 1 <= s <= 9",
+    "local_parameter_pairs": 45,
+    "all_order_weighted_coefficients": 2025,
+    "integer_multiplier_coefficients": 540,
+    "regular_weighted_bridges": 675,
+    "method": "Independent exact rational polynomial products and formal quotient recurrence; no float or proof-source coefficient arrays",
+    "finite_checks_are_not_the_universal_proof": true
+  },
+  "original_sources_unchanged": true,
+  "dependency_reuse": "Exact pinned Mathlib packages only; both actual task sources were copied byte-for-byte and recompiled in this independent project",
+  "PNT_or_external_task_binary_cache_reused": false,
+  "source_root_scope_frozen_package_edits": [],
+  "network_API_credential_operations": false
+}

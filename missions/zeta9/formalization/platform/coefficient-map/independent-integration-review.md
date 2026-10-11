@@ -1,0 +1,15 @@
+# Independent CoefficientMap integration review
+
+PASS. The independently re-executed Lean declaration and parser/reference oracles match the frozen facts, and an independent byte-span reconstruction reproduces all seven staged files exactly. Stage1 has 28 environment records: 27 actual source declarations plus the generated clearedPoleProduct.eq_1. Stage2 has 27 declarations, 92 references and 45 commands. Nine genuine definition spans move unchanged into the lightweight Definition; eight diagnostic spans are removed; every Solution retains all 18 original mathematical proofs, with only the selected binding and resolved references renamed.
+
+An isolated new project compiled the exact original source, the Definition, all three complete Solutions and all three reference statements. Both oracles, eight original/definition/solution/reference type-value imports and three all-helper imports also exited zero, with one Lean process at a time. No original or staged olean was borrowed. Only pinned Mathlib dependency artifacts were reused. Actual Lean 4.33.1 and the local Mathlib commit 0df444a360eaa60ab8c11dca51a86af692955474 were verified.
+
+All nine definition types and values match the original in every imported context (63 exact comparisons). Each solution type is identical to the original and reference type, without extra hypotheses. The three complete solution wrappers have exactly propext, Classical.choice and Quot.sound; all 57 helper/wrapper records have no other axiom. Reference statements intentionally contain sorryAx and are never imported by a Solution.
+
+Eight additional independently compiled statements check the original regular domain, erased denominator nonzero, full unweighted/weighted signatures, unweighted integrality/nonzero, n=0 and W cancellation. A nonzero polynomial W=X+1 cancels the weighted highest coefficient at n=2,j=1. The arbitrary-W theorem correctly permits this.
+
+This batch establishes the finite highest cleared-pole entry. Full Laurent expansion, lower partial fractions, the original aggregated F/inverse/invertibility, exact infinite L-sums, J and irrationality remain outside it. The report verifies all 96 frozen hashes and binds original/request/staged/oracle/build evidence plus all seven parent's installed root files. Reviewer writes are confined to the new review files; frozen author/source/root/scope files are unchanged. No API or credentials were accessed and no platform publication or acceptance is asserted.
+
+Machine-readable result: independent-integration-review.json. Detailed independent compile receipt, reconstructed span report and boundary/type/helper logs: independent-review/. The source-only Definition and three complete proofs are exactly the frozen staged bytes and the installed root bytes.
+
+The first additional boundary-review wrapper attempt had two local invocation/simplification errors. Its source, error log and exit 1 are preserved. The corrected wrapper compiles with exit 0 and standard axioms. The exact original/staged source builds, oracles and eleven type/helper imports all succeeded on their first independent run.

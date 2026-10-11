@@ -1,0 +1,23 @@
+{
+  "theorem_id": "7769fb08-f620-4843-aa1f-9ade31c94fa5",
+  "theorem_name": "OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_packetMap",
+  "theorem_title": "Realize formal packets by actual matrix columns",
+  "status": "Open",
+  "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_packetMap\n    {nu : ℝ} (d : FixedData nu) (H : ℚ)\n    (P : FormalInterpolation.WeightedPolynomial d.w0\n      (MatrixArithmetic.logWeights (finiteDenominators d)) (H : ℝ)) :\n    ∃ x : Column d (H : ℝ) → ℂ,\n      ∀ ρ : Row d (H : ℝ),\n        (actualMatrix d (H : ℝ)).mulVecLin x ρ =\n          FormalInterpolation.packetMap d (H : ℝ) P ρ := by sorry",
+  "natural_language_statement": "For an admissible determinant family and a weighted polynomial P, the finite coefficient vector of P in the weighted monomial basis can be chosen so that applying the actual matrix to that vector reproduces, row by row, the formal logarithmic packet map of P. This is the coefficient-transfer step from formal jets to the concrete truncated matrix.",
+  "created_at": "2026-10-07T19:49:27.535989+00:00",
+  "vote_count": 0,
+  "tags": [
+    "irrationality-measure",
+    "number-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/FormalMatrixBridge.lean and Approximation/AdmissibleMatrixInterpolation.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "candidate": "all-shared-public-plus-mixed-atomic-command",
+  "base_provider_plan": "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json",
+  "base_provider_plan_sha256": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+  "base_provider_artifact_plan": "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json",
+  "base_provider_artifact_plan_sha256": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+  "overlay_root_units": [
+    "OAI.NumberTheory.PiExponent.Geometry.ProjectiveLineCharts:4219"
+  ],
+  "promotion_delta": {
+    "root_units": 1,
+    "closure_units": 28,
+    "new_units": 1,
+    "new_unit_ids": [
+      "OAI.NumberTheory.PiExponent.Geometry.ProjectiveLineCharts:4219"
+    ],
+    "new_source_bytes": 560,
+    "absorbed_nodes": [
+      "OAI.NumberTheory.PiExponent.Geometry.ProjectiveLineCharts:4219"
+    ],
+    "new_private_units": [],
+    "new_deprivate_units": [],
+    "nodes_after": 203,
+    "definition_bundles_after": 623,
+    "definition_dag_acyclic": true,
+    "node_dag_acyclic": true
+  },
+  "source_and_facts_provenance": [
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveLineCharts",
+      "unit": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveLineCharts:4219",
+      "whole_command_range": {
+        "start": {
+          "col": 0,
+          "line": 105,
+          "normalizedOffset": 4115,
+          "offset": 4219
+        },
+        "end": {
+          "col": 42,
+          "line": 117,
+          "normalizedOffset": 4663,
+          "offset": 4779
+        }
+      },
+      "graph_names": [
+        "OAI.PiExponent.ProjectiveLine.chartMap_structureMap",
+        "OAI.PiExponent.ProjectiveLine.chartMap_structureMap_assoc"
+      ],
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveLineCharts.lean",
+      "source_sha256": "5dd2ba8372286837d8c8095e787dc9ffb2121de021194ed07c590e0e9b2e43a6",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveLineCharts-20261008-020620.log",
+      "facts_sha256": "c73c0aff8d3d29e2f95e9677767fee89e5e3e055c271e992c2b222a77e05a3ce"
+    }
+  ],
+  "atomicity_policy": "Promote each full parser command; do not split generated or @[reassoc] companions.",
+  "global_plan_modified": false,
+  "candidate_applied": false,
+  "validated": false,
+  "pending": [
+    "generate isolated provider bundle",
+    "<=300s Lean preflight",
+    "type-only theorem snapshot comparison",
+    "Std3 axiom audit"
+  ],
+  "residual_risk_audit": "verification/provider-plans/all-shared-public/residual-risk-audit.json",
+  "residual_risk_audit_sha256": "14c706ebf581c9369730f77bed43e0a669810d6b887c120b08e37d15fe03c104",
+  "lean_started": false
+}

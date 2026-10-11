@@ -1,0 +1,44 @@
+--- retained-raw-audit-actually-failed
++++ private-lossless-DAG-audit-with-kernel-comparison
+@@ -1,3 +1,4 @@
++import IndependentExprDagV3
+ import missions.zeta9.formalization.CoefficientMapFormalTransportJets
+ import Lean
+ set_option autoImplicit false
+@@ -153,6 +154,8 @@
+ open Lean Meta
+ set_option pp.fullNames true
+ set_option pp.proofs true
++set_option maxHeartbeats 0
++set_option maxRecDepth 20000
+ run_meta do
+   for (actual,expected) in [(`ZetaNine.CoefficientMapFormalTransportJets.pole_factor, `JetsAuthorExpected.expected_pole_factor), (`ZetaNine.CoefficientMapFormalTransportJets.pole_comp_shift_factor, `JetsAuthorExpected.expected_pole_comp_shift_factor), (`ZetaNine.CoefficientMapFormalTransportJets.pole_upper, `JetsAuthorExpected.expected_pole_upper), (`ZetaNine.CoefficientMapFormalTransportJets.upper_cleared_denominator, `JetsAuthorExpected.expected_upper_cleared_denominator), (`ZetaNine.CoefficientMapFormalTransportJets.shift_successor_comp, `JetsAuthorExpected.expected_shift_successor_comp), (`ZetaNine.CoefficientMapFormalTransportJets.lower_cleared_denominator, `JetsAuthorExpected.expected_lower_cleared_denominator), (`ZetaNine.CoefficientMapFormalTransportJets.upper_whole_actual_series, `JetsAuthorExpected.expected_upper_whole_actual_series), (`ZetaNine.CoefficientMapFormalTransportJets.lower_whole_actual_series, `JetsAuthorExpected.expected_lower_whole_actual_series), (`ZetaNine.CoefficientMapFormalTransportJets.local_zero_of_shift_X_nine, `JetsAuthorExpected.expected_local_zero_of_shift_X_nine), (`ZetaNine.CoefficientMapFormalTransportJets.upper_all_actual_jets, `JetsAuthorExpected.expected_upper_all_actual_jets), (`ZetaNine.CoefficientMapFormalTransportJets.lower_all_actual_jets, `JetsAuthorExpected.expected_lower_all_actual_jets), (`ZetaNine.CoefficientMapFormalTransportJets.double_all_actual_jets, `JetsAuthorExpected.expected_double_all_actual_jets), (`ZetaNine.CoefficientMapFormalTransportJets.numeratorClearedSeries_add, `JetsAuthorExpected.expected_numeratorClearedSeries_add), (`ZetaNine.CoefficientMapFormalTransportJets.numeratorClearedSeries_sub, `JetsAuthorExpected.expected_numeratorClearedSeries_sub), (`ZetaNine.CoefficientMapFormalTransportJets.numeratorClearedSeries_smul, `JetsAuthorExpected.expected_numeratorClearedSeries_smul), (`ZetaNine.CoefficientMapFormalTransportJets.numeratorLocalCoefficient_add, `JetsAuthorExpected.expected_numeratorLocalCoefficient_add), (`ZetaNine.CoefficientMapFormalTransportJets.numeratorLocalCoefficient_smul, `JetsAuthorExpected.expected_numeratorLocalCoefficient_smul), (`ZetaNine.CoefficientMapFormalTransportJets.actual_chosen_all_local_coefficients_transport, `JetsAuthorExpected.expected_actual_chosen_all_local_coefficients_transport), (`ZetaNine.CoefficientMapFormalTransportJets.actual_chosen_left_boundary_coefficient, `JetsAuthorExpected.expected_actual_chosen_left_boundary_coefficient), (`ZetaNine.CoefficientMapFormalTransportJets.actual_chosen_right_boundary_coefficient, `JetsAuthorExpected.expected_actual_chosen_right_boundary_coefficient), (`ZetaNine.CoefficientMapFormalTransportJets.sum_upper_zero_extension, `JetsAuthorExpected.expected_sum_upper_zero_extension), (`ZetaNine.CoefficientMapFormalTransportJets.sum_lower_zero_extension, `JetsAuthorExpected.expected_sum_lower_zero_extension), (`ZetaNine.CoefficientMapFormalTransportJets.sum_extendedOldCoefficient, `JetsAuthorExpected.expected_sum_extendedOldCoefficient), (`ZetaNine.CoefficientMapFormalTransportJets.sum_extendedRemainderCoefficient, `JetsAuthorExpected.expected_sum_extendedRemainderCoefficient), (`ZetaNine.CoefficientMapFormalTransportJets.sum_previousRemainderCoefficient, `JetsAuthorExpected.expected_sum_previousRemainderCoefficient), (`ZetaNine.CoefficientMapFormalTransportJets.actual_chosen_all_rho_transport, `JetsAuthorExpected.expected_actual_chosen_all_rho_transport)] do
+     let .thmInfo a ← getConstInfo actual | throwError "Actual source declaration is not a theorem: {actual}"
+@@ -164,11 +167,24 @@
+     let allowed : List Name := [`propext, `Classical.choice, `Quot.sound]
+     unless aa.toList.all allowed.contains && ba.toList.all allowed.contains do
+       throwError "Nonstandard source/expected axioms: {actual}"
++    let sourceDag ← ofExcept (IndependentLosslessExprDagV1.persistedRoundTrip a.type a.value)
++    let expectedDag ← ofExcept (IndependentLosslessExprDagV1.persistedRoundTrip b.type b.value)
++    let (sourceType,sourceValue) ← ofExcept (IndependentLosslessExprDagV1.decode sourceDag)
++    let (expectedType,expectedValue) ← ofExcept (IndependentLosslessExprDagV1.decode expectedDag)
++    let sourceTypeEqual := Expr.equal a.type sourceType
++    let sourceValueEqual := Expr.equal a.value sourceValue
++    let expectedTypeEqual := Expr.equal b.type expectedType
++    let expectedValueEqual := Expr.equal b.value expectedValue
++    unless sourceTypeEqual && sourceValueEqual && expectedTypeEqual && expectedValueEqual do
++      throwError "Lossless original theorem/expected theorem expression reconstruction failed: {actual}"
+     IO.println (Json.mkObj [("kind",Json.str "actual_complete_source_expected_type"),
+       ("declaration",Json.str actual.toString),("expected",Json.str expected.toString),
+-      ("full_source_type_expression_repr",Json.str (reprStr a.type)),
+-      ("full_expected_type_expression_repr",Json.str (reprStr b.type)),
+-      ("full_source_proof_expression_repr",Json.str (reprStr a.value)),
++      ("full_source_type_and_proof_expression_dag",sourceDag),
++      ("full_expected_type_and_proof_expression_dag",expectedDag),
++      ("source_type_reconstructed_Expr_equal",toJson sourceTypeEqual),
++      ("source_proof_reconstructed_Expr_equal",toJson sourceValueEqual),
++      ("expected_type_reconstructed_Expr_equal",toJson expectedTypeEqual),
++      ("expected_proof_reconstructed_Expr_equal",toJson expectedValueEqual),
+       ("type_kernel_equal",toJson same),
+       ("source_axioms",toJson (aa.toList.map Name.toString)),
+       ("expected_axioms",toJson (ba.toList.map Name.toString))]).compress

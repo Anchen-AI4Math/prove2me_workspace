@@ -1,4 +1,4 @@
-import Mathlib
+import Mathlib.NumberTheory.Real.Irrational
 
 -- Local mirror of the private platform theorem
 -- ZetaNine.irrational_of_two_small_integer_forms (Proved).  Not a proved

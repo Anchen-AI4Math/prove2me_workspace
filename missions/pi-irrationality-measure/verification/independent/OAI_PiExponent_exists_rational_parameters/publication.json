@@ -1,0 +1,120 @@
+{
+  "theorem_name": "OAI.PiExponent.exists_rational_parameters",
+  "metadata_sha256": "1124336b90dc5e5eb1df57c0b7d498f54db01a7ddfa1489d3ca85b14277a7a54",
+  "publish_payload_sha256": "c05b506374701a1a029202f041854f71c9a0edd6a1766d1d3583867597f7fab1",
+  "publish_intent": {
+    "at_utc": "2026-10-09T09:00:59.929430+00:00",
+    "statement_sha256": "55c129c3018d53005b6e2faadd2073e9745310fef1696f7b1f50d6747111e690",
+    "payload": {
+      "problems": [
+        {
+          "theorem_name": "OAI.PiExponent.exists_rational_parameters",
+          "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+          "formal_statement": "theorem OAI.PiExponent.exists_rational_parameters (ν : ℝ) (hν : 2 < ν) :\r\n    ∃ θ A B C : ℚ,\r\n      0 < (θ : ℝ) ∧ (θ : ℝ) < A ∧ (A : ℝ) < B ∧ (B : ℝ) < 1 ∧\r\n      ν * ((A : ℝ) - θ) > 1 - θ ∧\r\n      1 < (C : ℝ) ∧ (B : ℝ) < 1 / C ∧\r\n      (B : ℝ) < C * θ ∧ (C : ℝ) * θ < 1 := by sorry",
+          "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L7-L69",
+          "theorem_title": "Rational parameter selection for exponents above two",
+          "natural_language_statement": "For every real ν > 2, there exist rational numbers θ, A, B, and C such that, when viewed as real numbers, 0 < θ < A < B < 1, ν(A − θ) > 1 − θ, 1 < C, B < 1/C, B < Cθ, and Cθ < 1.",
+          "tags": [
+            "openai-pi-exponent-017",
+            "number-theory",
+            "parameter-selection"
+          ]
+        }
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "c05b506374701a1a029202f041854f71c9a0edd6a1766d1d3583867597f7fab1"
+  },
+  "updated_at_utc": "2026-10-09T09:05:48.759358+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "c451c2e0-38dd-4ecb-8a05-6a7341c235ab",
+          "name": "OAI.PiExponent.exists_rational_parameters"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "job_id": "c451c2e0-38dd-4ecb-8a05-6a7341c235ab",
+  "last_publish_verdict": {
+    "id": "c451c2e0-38dd-4ecb-8a05-6a7341c235ab",
+    "kind": "problem",
+    "theorem_name": "OAI.PiExponent.exists_rational_parameters",
+    "theorem_title": "Rational parameter selection for exponents above two",
+    "formal_statement": "theorem OAI.PiExponent.exists_rational_parameters (ν : ℝ) (hν : 2 < ν) :\r\n    ∃ θ A B C : ℚ,\r\n      0 < (θ : ℝ) ∧ (θ : ℝ) < A ∧ (A : ℝ) < B ∧ (B : ℝ) < 1 ∧\r\n      ν * ((A : ℝ) - θ) > 1 - θ ∧\r\n      1 < (C : ℝ) ∧ (B : ℝ) < 1 / C ∧\r\n      (B : ℝ) < C * θ ∧ (C : ℝ) * θ < 1 := by sorry",
+    "natural_language_statement": "For every real ν > 2, there exist rational numbers θ, A, B, and C such that, when viewed as real numbers, 0 < θ < A < B < 1, ν(A − θ) > 1 − θ, 1 < C, B < 1/C, B < Cθ, and Cθ < 1.",
+    "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L7-L69",
+    "tags": [
+      "openai-pi-exponent-017",
+      "number-theory",
+      "parameter-selection"
+    ],
+    "visibility": "public",
+    "status": "PUBLISHED",
+    "error_message": "",
+    "theorem_id": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4",
+    "created_at": "2026-10-09T09:01:02.705404+00:00",
+    "updated_at": "2026-10-09T09:01:11.817465+00:00"
+  },
+  "theorem_id": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4",
+      "theorem_name": "OAI.PiExponent.exists_rational_parameters",
+      "theorem_title": "Rational parameter selection for exponents above two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_rational_parameters (ν : ℝ) (hν : 2 < ν) :\r\n    ∃ θ A B C : ℚ,\r\n      0 < (θ : ℝ) ∧ (θ : ℝ) < A ∧ (A : ℝ) < B ∧ (B : ℝ) < 1 ∧\r\n      ν * ((A : ℝ) - θ) > 1 - θ ∧\r\n      1 < (C : ℝ) ∧ (B : ℝ) < 1 / C ∧\r\n      (B : ℝ) < C * θ ∧ (C : ℝ) * θ < 1 := by sorry",
+      "natural_language_statement": "For every real ν > 2, there exist rational numbers θ, A, B, and C such that, when viewed as real numbers, 0 < θ < A < B < 1, ν(A − θ) > 1 − θ, 1 < C, B < 1/C, B < Cθ, and Cθ < 1.",
+      "created_at": "2026-10-09T09:01:10.943986+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "parameter-selection"
+      ],
+      "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\n\n\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L7-L69",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-09T09:04:09.686807+00:00",
+    "solution_sha256": "8a8093a7c9524d33508dffd63a0d48fdd0335363d2b4a5eec3e53337f0720706",
+    "theorem_id": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4",
+    "multipart_sha256": "3efcbfdfd648c0d3ae2d1813271d5eb5b7118350eec2e30550a9c14ff9adafae"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "1b4b557a-fe44-4c25-8298-0cd1963dcc14",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "1b4b557a-fe44-4c25-8298-0cd1963dcc14",
+  "last_verify_verdict": {
+    "id": "1b4b557a-fe44-4c25-8298-0cd1963dcc14",
+    "theorem_id": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4",
+    "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+    "status": "ACCEPTED",
+    "error_message": "",
+    "file_path": "f9c8b6c8-e057-4aea-81a3-afe672c9c7e4/418b0711-62a5-416a-ba5d-876ae8758fe3/1b4b557a-fe44-4c25-8298-0cd1963dcc14.lean",
+    "created_at": "2026-10-09T09:04:12.561464+00:00",
+    "updated_at": "2026-10-09T09:05:04.270685+00:00"
+  },
+  "confirmed_proved": true
+}

@@ -1,0 +1,143 @@
+{
+  "source_module": "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_LocalAlgebra_LocalComponentDegree",
+  "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalComponentDegree.lean",
+  "source_sha256": "d0ce0c4870622c9f27ccee0ec4d600b719eaccd1177ce1b39a4d78eb7c8202f4",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalComponentDegree.lean",
+  "original_source_sha256": "017d169daa347eff842d9469ea9972934948e56dd6a5ef9e049a5936c3b4283b",
+  "facts": "missions/pi-irrationality-measure/verification/sketch-LocalComponentDegree-20261008-063258.log",
+  "facts_sha256": "3c1b67e8b545f1c0a753b64f571f59c403876cea355c6c399782a040e6a30cdf",
+  "output": "missions/pi-irrationality-measure/verification/providers-preview/all-shared-safe-leaves/Definitions/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_LocalComponentDegree.lean",
+  "output_sha256": "b78e5dcaa17582d3a2e6d1d014a1057b83fac7ac0eee18bfc336bb222fc73172",
+  "selected_units": [
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree:1140",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree:1651",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree:1889",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree:391",
+    "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree:830"
+  ],
+  "imports": [
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.LinearAlgebra.Quotient.Basic",
+    "Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness",
+    "Mathlib.RingTheory.Ideal.MinimalPrime.Localization",
+    "Mathlib.RingTheory.Length",
+    "Mathlib.RingTheory.SimpleModule.Basic"
+  ],
+  "elaboration_only_helpers": [],
+  "renames": [],
+  "kept_local_instances": [],
+  "source_skeleton_preserved": true,
+  "full_definition_proofs_preserved": true,
+  "independent_byte_reconstruction_equal": true,
+  "source_unchanged": true,
+  "provisional": true,
+  "validated": false,
+  "submission_ready": false,
+  "pending": [
+    "strict compilation within 300 seconds",
+    "standard axiom audit",
+    "definition and consumer kernel type comparison"
+  ],
+  "input_hashes": {
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+    "scripts/generate_platform_provider_bundles.py": "64e489619c64bed6648b830b1d442443bdae2a2ea676fd14ede40eb09832263e",
+    "scripts/plan_platform_units_providers.py": "43c4232b632d6e8d648a879ad4e6868a1055f35217f5400a86b1fc05168e2829",
+    "verification/ast-import-inventory.json": "bbf09a327e2fef3f970f44a84e35e4d088a93e4cd2cdf660cef268bc5667f2e3",
+    "verification/ast-scope-inventory.json": "d9df5bfb5074bff700b77a23eafb464130f31d6540eb1564c070274b13d93bbf",
+    "verification/ast-unit-inventory.json": "b5061a3e42a7a66bdbd978344767ec5db6991d684ce785e3b281f900f065e506",
+    "verification/ast-wrapper-inventory.json": "f4f66678c84741dc8ea08b15c02c36135eb395aa3ca827d1501e53e4ac7b00d4",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/inline-provider-collision-audit.json": "3ad990e8de02fd0de572a326ab8b549a2d9703d16271e02460ba4999adb38de7",
+    "verification/platform-artifact-plan-preview.json": "07d545d9919a358a56de18d6dd64444a90c1de1be642ec16d67354069d3a2294",
+    "verification/platform-unit-plan-preview.json": "0c7cfb50e1cdff2285e12fd06ddd761e8dddb88ed9fd1b0c3898884e72090430",
+    "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+    "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+    "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "253064eecfc2ca7577915d47cc906de847efa9344be1f9775c84fd8818e961b1"
+  },
+  "edits": [
+    {
+      "start": 2438,
+      "end": 3493,
+      "reason": "subtract unselected declaration command",
+      "replacement": ""
+    },
+    {
+      "start": 0,
+      "end": 58,
+      "reason": "rewrite parser import command",
+      "replacement": "import Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.LinearAlgebra.Quotient.Basic\nimport Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness\nimport Mathlib.RingTheory.Ideal.MinimalPrime.Localization\nimport Mathlib.RingTheory.Length\nimport Mathlib.RingTheory.SimpleModule.Basic"
+    },
+    {
+      "start": 60,
+      "end": 117,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    },
+    {
+      "start": 119,
+      "end": 151,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    },
+    {
+      "start": 153,
+      "end": 197,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    },
+    {
+      "start": 199,
+      "end": 263,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    }
+  ],
+  "engine_output_removed": true,
+  "provider_plan": "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json",
+  "provider_plan_sha256": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+  "provider_artifact_plan": "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json",
+  "provider_artifact_plan_sha256": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+  "provider_variant": "all-shared-public",
+  "accepted_generator_logic_reused": true,
+  "accepted_outputs_untouched": true,
+  "preview_only": true,
+  "lean_started": false,
+  "api_used": false,
+  "capture_observations": {
+    "extraction_state": {
+      "path": "verification/extraction-state.json",
+      "sha256_at_capture": "31e848bf5981ddc5d5fea95a98dfcf53795a9e626085763442dfe1fc48ba81d7",
+      "stage2_entries_at_capture": 869,
+      "complete_at_capture": false,
+      "dependency": false,
+      "reason": "Append-only extraction progress outside a bundle's project import closure does not alter that bundle."
+    },
+    "live_import_inventory": {
+      "path": "verification/providers-preview/live-import-inventory.json",
+      "sha256_at_capture": "c31ef70529ef8625eb4bf7a49e60703790b0c53a4a90a4cc43a344ce3ce1cd21",
+      "dependency": false,
+      "reason": "Per-bundle source/facts import provenance below is the exact dependency set."
+    }
+  },
+  "import_provenance": [
+    {
+      "module": "OAI.NumberTheory.PiExponent.LocalAlgebra.FiltrationLength",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/FiltrationLength.lean",
+      "source_sha256": "987b8bd42ec91e57f4d1a13ad8afbb8d5aec965d20246d00eb83935d6ac61fb7",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FiltrationLength-20261008-030230.log",
+      "facts_sha256": "468e936b79de1f937b76dde19b9915d3461be66df138efa4b71249be40977cc1"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.LocalAlgebra.LocalComponentDegree",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/LocalComponentDegree.lean",
+      "source_sha256": "d0ce0c4870622c9f27ccee0ec4d600b719eaccd1177ce1b39a4d78eb7c8202f4",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LocalComponentDegree-20261008-063258.log",
+      "facts_sha256": "3c1b67e8b545f1c0a753b64f571f59c403876cea355c6c399782a040e6a30cdf"
+    }
+  ]
+}

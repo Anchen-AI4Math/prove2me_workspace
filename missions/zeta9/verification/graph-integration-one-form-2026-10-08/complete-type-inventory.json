@@ -1,0 +1,52 @@
+[
+  {
+    "name": "ZetaNine.GraphBridge.one_selectedMultiplier_degree_le",
+    "complete_header": "theorem one_selectedMultiplier_degree_le (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    (selectedIntegerMultiplier n hn2 hn b a).natDegree ≤ 4",
+    "proof_arguments": "n hn2 hn b a"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_selectedMultiplier_height_eq_inverseNorm",
+    "complete_header": "theorem one_selectedMultiplier_height_eq_inverseNorm\n    (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ) :\n    weightedCoefficientHeight n (selectedIntegerMultiplier n hn2 hn b a) =\n      selectedInverseWeightedNorm n b a",
+    "proof_arguments": "n hn2 hn b a"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_actualR_zero_of_pos_le",
+    "complete_header": "theorem one_actualR_zero_of_pos_le (n k : ℕ) (hk : 1 ≤ k) (hkn : k ≤ n) :\n    CoefficientMap.actualR n (k : ℚ) = 0",
+    "proof_arguments": "n k hk hkn"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_actualR_pos_above_n",
+    "complete_header": "theorem one_actualR_pos_above_n (n k : ℕ) (hk : n < k) :\n    0 < CoefficientMap.actualR n (k : ℚ)",
+    "proof_arguments": "n k hk"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_real_mapped_eval",
+    "complete_header": "theorem one_real_mapped_eval (W : ℚ[X]) (t : ℚ) :\n    ((W.eval t : ℚ) : ℝ) = (W.map (Rat.castHom ℝ)).eval (t : ℝ)",
+    "proof_arguments": "W t"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_actualWeighted_tail_term",
+    "complete_header": "theorem one_actualWeighted_tail_term (n : ℕ) (W : ℚ[X]) (j : ℕ) :\n    actualWeightedSequence n W (j + n) =\n      (CoefficientMap.actualR n ((j + n + 1 : ℕ) : ℚ) : ℝ) *\n        (W.map (Rat.castHom ℝ)).eval\n          (((j + n + 1 : ℕ) : ℝ) * (((j + n + 1 : ℕ) : ℝ) + n))",
+    "proof_arguments": "n W j"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_actualWeighted_head_zero",
+    "complete_header": "theorem one_actualWeighted_head_zero (n : ℕ) (W : ℚ[X]) :\n    (∑ m ∈ range n, actualWeightedSequence n W m) = 0",
+    "proof_arguments": "n W"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_actualWeighted_tail_center_le",
+    "complete_header": "theorem one_actualWeighted_tail_center_le (n j : ℕ) :\n    ((n : ℝ) + 1) * (2 * (n : ℝ) + 1) ≤\n      (((j + n + 1 : ℕ) : ℝ) * (((j + n + 1 : ℕ) : ℝ) + n))",
+    "proof_arguments": "n j"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_selected_actual_form_pos",
+    "complete_header": "theorem one_selected_actual_form_pos (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ)\n    (hcoeff : ∀ i : ℕ, 0 ≤\n      (Polynomial.taylor (((n : ℝ) + 1) * (2 * (n : ℝ) + 1))\n        ((selectedIntegerMultiplier n hn2 hn b a).map (Rat.castHom ℝ))).coeff i)\n    (hsample : 0 < ((selectedIntegerMultiplier n hn2 hn b a).map (Rat.castHom ℝ)).eval\n      (((n : ℝ) + 2) * ((n : ℝ) + 2 + (n : ℝ)))) :\n    0 < (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re",
+    "proof_arguments": "n hn2 hn b a hcoeff hsample"
+  },
+  {
+    "name": "ZetaNine.GraphBridge.one_small_forms_of_selected_inverse_positive_cone_margin",
+    "complete_header": "theorem one_small_forms_of_selected_inverse_positive_cone_margin\n    (hshort : SelectedInversePositiveConeMargin) :\n    ∃ c : ℝ, 0 < c ∧\n      ∀ᶠ m : ℕ in atTop,\n        ∃ b a : ℤ,\n          (b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re ≠ 0 ∧\n          |(b : ℝ) + (a : ℝ) * (riemannZeta (9 : ℂ)).re| <\n            Real.exp (-(c * (m : ℝ)))",
+    "proof_arguments": "hshort"
+  }
+]

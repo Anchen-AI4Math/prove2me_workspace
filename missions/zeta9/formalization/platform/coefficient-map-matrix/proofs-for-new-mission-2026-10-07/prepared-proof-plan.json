@@ -1,0 +1,94 @@
+{
+  "new_proposal_id": "19653cff-d481-498a-a717-10630d1ca1b7",
+  "name": "Irrationality of ζ（9）",
+  "source_sha256": "a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+  "author_checks": 33,
+  "author_bound_files_rehashed": 1543,
+  "independent_checks": 49,
+  "independent_bound_files_rehashed": 3488,
+  "independent_report_sha256": "d86385c79cf9b56457323f8d8fcf9d6d15cff9336cd8b998a6c6ee9b8dbb7110",
+  "definitions": [
+    {
+      "definition_name": "ZetaNine_CoefficientMapMatrix",
+      "definition_title": "The actual monomial-row F matrix and selected rational inverse",
+      "definition": "import Definitions.Def_ZetaNine_CoefficientMapKernelBridge\nimport Mathlib.LinearAlgebra.Matrix.NonsingularInverse\n\nset_option autoImplicit false\nnoncomputable section\nopen scoped BigOperators Matrix\nopen Polynomial\n\nnamespace ZetaNine.CoefficientMapMatrix\n\nopen CoefficientMapAggregate CoefficientMapKernelBridge\n\ndef actualFMatrix (n : ℕ) : Matrix (Fin 5) (Fin 5) ℚ :=\n  fun i j => aggregate n (X ^ i.val) j\n\n/-- The genuine two selected output directions are B and rho9. -/\ndef selectionMatrix : Matrix (Fin 2) (Fin 5) ℚ :=\n  fun i j => if i = 0 then (if j = 0 then 1 else 0) else (if j = 4 then 1 else 0)\n\ndef selectedIntegerPair (b a : ℤ) : Fin 2 → ℚ :=\n  fun i => if i = 0 then (b : ℚ) else (a : ℚ)\n\ndef selectedIntegerOutput (b a : ℤ) : Fin 5 → ℚ :=\n  fun j => if j = 0 then (b : ℚ) else if j = 4 then (a : ℚ) else 0\n\ndef selectedIntegerMultiplier (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) (b a : ℤ) : ℚ[X] :=\n  inverseMultiplier n hn2 hn (selectedIntegerOutput b a)\n\nend ZetaNine.CoefficientMapMatrix\n",
+      "natural_language_statement": "Define the genuine F monomial rows and five actual output columns, the two selected integer directions B and rho9, and their actual rational inverse multiplier on Even n>=2. All five original Definition values remain fixed; no invertibility or sum premise is added.",
+      "source": "Actual frozen native CoefficientMapMatrix SHA256 a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "tags": [
+        "number-theory",
+        "linear-algebra",
+        "formalization"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false,
+      "local_path": "Definitions/Def_ZetaNine_CoefficientMapMatrix.lean"
+    }
+  ],
+  "problems": [
+    {
+      "theorem_name": "ZetaNine.CoefficientMapMatrix.actualFMatrix_det_ne_zero",
+      "theorem_title": "The actual monomial-row matrix has nonzero determinant",
+      "formal_statement": "theorem ZetaNine.CoefficientMapMatrix.actualFMatrix_det_ne_zero (n : ℕ) (hn2 : 2 ≤ n) (hn : Even n) :\n    (actualFMatrix n).det ≠ 0:= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapMatrix\n\nset_option autoImplicit false\nopen scoped BigOperators Matrix\nopen Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge\n",
+      "natural_language_statement": "For every even n>=2 the actual monomial-row, formal-output-column F matrix has nonzero rational determinant. Its invertibility is derived from the original aggregate kernel and bijection proofs; no determinant or invertibility premise is assumed.",
+      "source": "Actual frozen native CoefficientMapMatrix source SHA256 a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "tags": [
+        "number-theory",
+        "linear-algebra",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero.lean",
+      "explanation": "The actual matrix has monomial rows and the genuine constant/rho3/rho5/rho7/rho9 output columns. Its row action equals the original quartic aggregate map. The independently proved bijection for even n>=2 makes the determinant a unit and hence nonzero. The standard column-action matrix is its transpose."
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_coordinates_product",
+      "theorem_title": "The actual selected rational multiplier has row inverse coordinates",
+      "formal_statement": "theorem ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_coordinates_product (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    polynomialCoordinates (selectedIntegerMultiplier n hn2 hn b a) =\n      selectedIntegerPair b a ᵥ* (selectionMatrix * (actualFMatrix n)⁻¹):= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapMatrix\n\nset_option autoImplicit false\nopen scoped BigOperators Matrix\nopen Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge\n",
+      "natural_language_statement": "For every even n>=2 and integers b,a, the actual inverse multiplier for the output (b,0,0,0,a) has rational quartic coordinates equal to (b,a) times the actual selection matrix S times the actual F inverse. No integer polynomial inverse or integral coefficient claim is made.",
+      "source": "Actual frozen native CoefficientMapMatrix source SHA256 a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "tags": [
+        "number-theory",
+        "linear-algebra",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product.lean",
+      "explanation": "For integer target values b and a, form the actual output (b,0,0,0,a). The coefficients of the selected rational quartic multiplier are exactly (b,a) times the two-row selection matrix times the actual F inverse. The multiplier is rational; this proof does not establish integer coefficients or denominator bounds."
+    },
+    {
+      "theorem_name": "ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute",
+      "theorem_title": "The selected integer output has its genuine sum and absolute convergence",
+      "formal_statement": "theorem ZetaNine.CoefficientMapMatrix.selectedIntegerMultiplier_actual_HasSum_and_absolute (n : ℕ) (hn2 : 2 ≤ n)\n    (hn : Even n) (b a : ℤ) :\n    HasSum (fun t : ℕ => (CoefficientMap.weightedR n (selectedIntegerMultiplier n hn2 hn b a)\n      ((t + 1 : ℕ) : ℚ) : ℝ))\n        ((b : ℝ) + (a : ℝ) * CoefficientMapSummation.zetaReal 9) ∧\n    Summable (fun t : ℕ => ‖(CoefficientMap.weightedR n (selectedIntegerMultiplier n hn2 hn b a)\n      ((t + 1 : ℕ) : ℚ) : ℝ)‖):= by sorry",
+      "preamble": "import Definitions.Def_ZetaNine_CoefficientMapMatrix\n\nset_option autoImplicit false\nopen scoped BigOperators Matrix\nopen Polynomial ZetaNine ZetaNine.CoefficientMapMatrix ZetaNine.CoefficientMapAggregate ZetaNine.CoefficientMapKernelBridge\n",
+      "natural_language_statement": "For every even n>=2 and integers b,a, the actual selected rational quartic multiplier has a genuine HasSum of weightedR at all positive integers, equal to b+a*zetaReal(9), and its absolute norms are Summable. Both conclusions are derived from the complete actual source proof closure, with no HasSum or summability premise.",
+      "source": "Actual frozen native CoefficientMapMatrix source SHA256 a4bf1766c8bbcc1f2f83af27594ba10b3dfcd4e55058f10ccc4d4b25cb9c6d99",
+      "tags": [
+        "number-theory",
+        "linear-algebra",
+        "formalization"
+      ],
+      "local_solution": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute.lean",
+      "local_reference": "Theorems/Thm_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute.lean",
+      "explanation": "The actual selected rational quartic has outputs (b,0,0,0,a). Its genuine weighted rational function on positive natural arguments has sum b+a*zetaReal(9) and is absolutely summable. zetaReal is the real part of the actual Riemann zeta function. The assumptions are precisely even n>=2 and integer target values b,a."
+    }
+  ],
+  "proof_inputs": [
+    {
+      "root_relative": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_actualFMatrix_det_ne_zero.lean",
+      "sha256": "3c0cc26b95f73821c6822f60c5ee9f23473100e3166f76e5a51978e7a804c165",
+      "bytes": 102944
+    },
+    {
+      "root_relative": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_coordinates_product.lean",
+      "sha256": "0395ae683e9211bcd33528fe0cdbe5e53a7fcdfd14fc2c03feb2066f81df12b8",
+      "bytes": 103099
+    },
+    {
+      "root_relative": "Solutions/Sol_ZetaNine_CoefficientMapMatrix_selectedIntegerMultiplier_actual_HasSum_and_absolute.lean",
+      "sha256": "591685f7a189f2d238e4d03d7f3b20ce3f66d753731dab8801f2f6cafe900889",
+      "bytes": 103304
+    }
+  ]
+}

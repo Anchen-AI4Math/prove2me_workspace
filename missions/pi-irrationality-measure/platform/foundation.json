@@ -1,0 +1,29 @@
+{
+  "theorems": [
+    {
+      "theorem_id": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "theorem_name": "PiIrrationality_UpperBound",
+      "theorem_title": "Upper bounds for the irrationality measure of π",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real number $B$, PiIrrationality.UpperBound $B$ expresses $\\mu(\\pi)\\le B$: for every real $\\varepsilon>0$ there is a natural number $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{B+\\varepsilon}<|\\pi-p/q|$. The threshold is uniform over $p$ and $q$.",
+      "created_at": "2026-10-01T05:22:24.314989+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic\n\nnamespace PiIrrationality\n\n/-- The epsilon formulation of an upper bound on the irrationality measure of pi.\nThe threshold may depend on the positive epsilon, but is uniform in p and q. -/\ndef UpperBound (B : ℝ) : Prop :=\n  ∀ ε : ℝ, 0 < ε →\n    ∃ Q : ℕ,\n      ∀ (p : ℤ) (q : ℕ), 0 < q → Q ≤ q →\n        1 / (q : ℝ) ^ (B + ε) <\n          |Real.pi - (p : ℝ) / (q : ℝ)|\n\nend PiIrrationality\n",
+      "source": "The epsilon characterization of C_7a in https://teorth.github.io/optimizationproblems/constants/7a.html . Related fixed-exponent Lean predicate: https://github.com/AxiomMath/gdm-formal-conjectures/blob/main/BorweinSineSeries/problem.lean . This definition uses the epsilon characterization, which gives the standard upper-bound meaning at the endpoint.",
+      "tags": [
+        "diophantine-approximation",
+        "irrationality",
+        "number-theory",
+        "pi"
+      ],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+    }
+  ],
+  "total": 1
+}

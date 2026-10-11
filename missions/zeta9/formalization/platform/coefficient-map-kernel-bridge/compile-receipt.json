@@ -1,0 +1,1915 @@
+{
+  "source_project_task_relative": "formalization/platform/coefficient-map-kernel-bridge/p",
+  "fresh_build_task_relative": ".rt/k1/b",
+  "native_and_staged_objects_borrowed": false,
+  "role": "author offline batch",
+  "source_sha256": {
+    "CoefficientMap": "e055780f1abf389593fbccba2194fc52ee85108bbb4593439c32230944b3ab03",
+    "CoefficientMapJet": "e50e11c0afd2eaac1d5c58c412e5e59bc5c2068c9826063eacee8dc88fc1735a",
+    "CoefficientMapInjectivity": "ebe9b9c275a34fac348837e377e2e26246e9a762889c462420b43535e9055095",
+    "CoefficientMapPartialFractions": "eb0b8d54cd29ddaaa9404ee26a704bb6a47e8306741c49a6bba9b7232231f61a",
+    "CoefficientMapReflection": "8fbc53b9d9c33a61e1cf8208f89cd30dd3c6793fc32aad1cad1c51286747f707",
+    "CoefficientMapFiniteSum": "b3ede123541d6c0eb306915d93f743979b1090c34bc4df332ab6e9da07033f97",
+    "CoefficientMapSummation": "c207e8fec1358e86afd61d39853a498c9758555286b7774e5f5d7809495e876d",
+    "CoefficientMapAggregate": "e538a7310f81ce9ab6c5e07d4b8bd64bb70be7a899e28f085a2c8506a4ff2299",
+    "CoefficientMapTelescoper": "8792e8ba5c6abcbdbe83b0aa4ffa1ab716fd05fac10da7275b86ab2f780fd121",
+    "CoefficientMapShiftDegree": "96efe64f218c07a9d941136af1b4a0874bca9627c01be262c53e4445e0876953",
+    "CoefficientMapKernelBridge": "1ec15a46ae656bb0be0de0eb44afeca3144a7223a84eecf161693be25205bedb"
+  },
+  "root_writes": false,
+  "API_calls": false,
+  "rows": [
+    {
+      "label": "toolchain",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "toolchain.log",
+      "log_sha256": "89c79d9c5b24343255f93bb0203ae89e6b8715c652def77008a34f37656c9c82"
+    },
+    {
+      "label": "build-native",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "missions.zeta9.formalization.CoefficientMapKernelBridge"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-native.log",
+      "log_sha256": "61d3a1909c42b2c15bbd146e196d226050ab78aae7b506f927dc5624900d1b79"
+    },
+    {
+      "label": "native-control-NativeKernelAuthorControl",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "NativeKernelAuthorControl"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "native-control-NativeKernelAuthorControl.log",
+      "log_sha256": "bbf09bb1025d6154813cb2cd92d74031628c23c53fd5b5024cf171e7cb1b9863"
+    },
+    {
+      "label": "native-control-NativeKernelIndependentControl",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "NativeKernelIndependentControl"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "native-control-NativeKernelIndependentControl.log",
+      "log_sha256": "8ca353f82dcc8ac2adeb57f7760f8534d4818948a80c0c89cc7aa8bde111a365"
+    },
+    {
+      "label": "stage1-extract",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "extract_decl_graph.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage1-extract.log",
+      "log_sha256": "4b0390e49137a0ffb095f8418e94c41c05aafc4010d247c198c370d4f5b8a6c4"
+    },
+    {
+      "label": "stage2-CoefficientMap",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMap_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMap.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMap.log",
+      "log_sha256": "cf9c6a149db3ef2b7d21d6f1be5822f548412f50fdcab16d7aa64426e20a6c3c"
+    },
+    {
+      "label": "stage2-CoefficientMapJet",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapJet_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapJet.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapJet.log",
+      "log_sha256": "297191020f4dbf6b3a930d6df5abd067f6cf1eea1d991f1815bd3268d81b1fa4"
+    },
+    {
+      "label": "stage2-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapInjectivity_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapInjectivity.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapInjectivity.log",
+      "log_sha256": "682f5bd16975ad21c04df0cbcc2d063c783b4893e6b11762a6c9eeee184da695"
+    },
+    {
+      "label": "stage2-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapPartialFractions_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapPartialFractions.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapPartialFractions.log",
+      "log_sha256": "ce926ada1f8f998d6e80876e2906cd9d40bd3c9fa17ff9ab8d058637e611249d"
+    },
+    {
+      "label": "stage2-CoefficientMapReflection",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapReflection_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapReflection.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapReflection.log",
+      "log_sha256": "aace7d9c2e02b8fb516859a56a477b8b03be3f21a6772021c170220cb19edfde"
+    },
+    {
+      "label": "stage2-CoefficientMapFiniteSum",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapFiniteSum_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapFiniteSum.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapFiniteSum.log",
+      "log_sha256": "48f51f47d71fe234bda336dbc3c353bce75df9126c8987dfd2d0199f45ba15eb"
+    },
+    {
+      "label": "stage2-CoefficientMapSummation",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapSummation_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapSummation.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapSummation.log",
+      "log_sha256": "67d671e33a4ac456ff442b4cbfdd7381b304e097a4bf21f76af9bfecf4ff575e"
+    },
+    {
+      "label": "stage2-CoefficientMapAggregate",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapAggregate_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapAggregate.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapAggregate.log",
+      "log_sha256": "edbb0f0f3b5e355c5fc1b7a89242880b4477d09ca170796901e434e636ec5c9f"
+    },
+    {
+      "label": "stage2-CoefficientMapTelescoper",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapTelescoper_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapTelescoper.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapTelescoper.log",
+      "log_sha256": "2898ace14574305de3385fa0e7d29eaf31b7c7189973557f005b387b76eac9c5"
+    },
+    {
+      "label": "stage2-CoefficientMapShiftDegree",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapShiftDegree_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapShiftDegree.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapShiftDegree.log",
+      "log_sha256": "79736d36dffa372c4e01ab53030f084b8cdf43ae27b6bb813e3250bdeb134abd"
+    },
+    {
+      "label": "stage2-CoefficientMapKernelBridge",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_CoefficientMapKernelBridge_sketch.lean",
+        "missions/zeta9/formalization/CoefficientMapKernelBridge.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-CoefficientMapKernelBridge.log",
+      "log_sha256": "41187989f215383ba1f60b14b735d9478d41ffe61fa1bf55dde091c3a58ceec0"
+    },
+    {
+      "label": "stage2-Def_ZetaNine_HarmonicStability",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_Def_ZetaNine_HarmonicStability_sketch.lean",
+        "Definitions/Def_ZetaNine_HarmonicStability.lean",
+        "ZetaNine"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-Def_ZetaNine_HarmonicStability.log",
+      "log_sha256": "be2346bf05ab06cb022f7d4ebda1b70d4245e05214524d3ea251416202d35d69"
+    },
+    {
+      "label": "stage2-header",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "--run",
+        "extract_header.lean",
+        "missions/zeta9/formalization/CoefficientMapKernelBridge.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "stage2-header.log",
+      "log_sha256": "842db4458fab21aae3a17bae17a5a279beffcdf77c2942df9c14665a71a15ad8"
+    },
+    {
+      "label": "build-CoefficientMap",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMap"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMap.log",
+      "log_sha256": "d4654f2880906f1aa4eb7ba5280cc8c8366e2aa74320ca6bc8f2a6c9b5bf9c98"
+    },
+    {
+      "label": "build-CoefficientMapJet",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapJet"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapJet.log",
+      "log_sha256": "6104375d7b72aa28ae615338ed87ec79669916e7aef96d0276532dd115325a28"
+    },
+    {
+      "label": "build-CoefficientMapInjectivity",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapInjectivity"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapInjectivity.log",
+      "log_sha256": "56d06da8a76ef493a1414c74e0d2c643a19e0407376a6cfb7fc57c578a99d9a2"
+    },
+    {
+      "label": "build-CoefficientMapPartialFractions",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapPartialFractions"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapPartialFractions.log",
+      "log_sha256": "759f1b0a93ff02a3bb1d9cba979b7825c59f577acb84b4caf47acb017f551c0a"
+    },
+    {
+      "label": "build-CoefficientMapReflection",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapReflection"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapReflection.log",
+      "log_sha256": "626fdaa5ef4ac71b8e0b1a7e8cc2d55f9350074f8cfb7c1e28b1e572ab834024"
+    },
+    {
+      "label": "build-CoefficientMapFiniteSum",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapFiniteSum"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapFiniteSum.log",
+      "log_sha256": "f3f4171b91874b70c89a5a141391a1f7a44ac9ea0a13bcba4c3dc10b9672f9db"
+    },
+    {
+      "label": "build-CoefficientMapSummation",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapSummation"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapSummation.log",
+      "log_sha256": "965496be66e8ffbbca30b758be0ddb1b91407abc0a5efd9f351f803754b77693"
+    },
+    {
+      "label": "build-CoefficientMapAggregate",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapAggregate"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapAggregate.log",
+      "log_sha256": "7e7d18255f1d19639aeadfd7c9809119a2e146a90b11ab5c8aa18a64aa5829f5"
+    },
+    {
+      "label": "build-CoefficientMapTelescoper",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapTelescoper"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapTelescoper.log",
+      "log_sha256": "4758fcb18c9f52b295afc5b6e3ebb95e0b6b4be6256c91f5a67d51d82ac22507"
+    },
+    {
+      "label": "build-CoefficientMapShiftDegree",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapShiftDegree"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-CoefficientMapShiftDegree.log",
+      "log_sha256": "2e3b000bfb800f699bf5ccbff7b850112e1ca5a859acf24caa9eed651b3afc31"
+    },
+    {
+      "label": "build-HarmonicStability",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_HarmonicStability"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-HarmonicStability.log",
+      "log_sha256": "c2bb4d1e4f7389a63095c3452da2d3b06d8acfdae64c9985863215b601f6a7e3"
+    },
+    {
+      "label": "build-definition",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Definitions.Def_ZetaNine_CoefficientMapKernelBridge"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-definition.log",
+      "log_sha256": "72e4746a470cc935398bd9cbc9e4fa94131e2925119112f9048ef1113b447a62"
+    },
+    {
+      "label": "build-0-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-0-solution.log",
+      "log_sha256": "b0b0a1303e315224d6bd8b46b9ccc7cf94163fbe2b91396bbf515e9845bb2bc7"
+    },
+    {
+      "label": "build-0-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-0-reference.log",
+      "log_sha256": "e19707c81ce672bf1aa69774a4addef3169492b51bd3f272eac336ee8e2a430d"
+    },
+    {
+      "label": "build-1-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-1-solution.log",
+      "log_sha256": "0abdb7d4bc9210d594fb8bc2a4e11c8bfecd3370e22f66ff3043a334161cf192"
+    },
+    {
+      "label": "build-1-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-1-reference.log",
+      "log_sha256": "c09c8eb9ebed287035cef0263ed9d5ee9c4e0b5fd70220e9c7b454b69e7373d6"
+    },
+    {
+      "label": "build-2-solution",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Solutions.Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-2-solution.log",
+      "log_sha256": "5ae2078b41eb15dd416044fe0320cbc021428f01188721c73fa0e6c14adcf785"
+    },
+    {
+      "label": "build-2-reference",
+      "command": [
+        "lake",
+        "--no-cache",
+        "build",
+        "Theorems.Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "build-2-reference.log",
+      "log_sha256": "5801107d653078a7066e13a017c61dd09d5a5187c9394c4c6089d1aad114c831"
+    },
+    {
+      "label": "types_original",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_original.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_original.log",
+      "log_sha256": "b5e136dc9a6d504c7c316918ee3c8da5d8f156b9b85ad3a4acfc5b4f521c1647"
+    },
+    {
+      "label": "types_definition",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_definition.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_definition.log",
+      "log_sha256": "88d9afb36f962953bdb4ebb273e1092e6860c6617ce5a4769317cebe913ba965"
+    },
+    {
+      "label": "types_0_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_0_solution.log",
+      "log_sha256": "c2c9636aad11d6fcd8b574328b50d3e5cada9dc65cc1086b57975c8ce3819743"
+    },
+    {
+      "label": "types_0_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_0_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_0_reference.log",
+      "log_sha256": "eed9393c68bce579ea4e05c4bdef612de7ac3243b63b8767539bee9226ece896"
+    },
+    {
+      "label": "types_1_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_1_solution.log",
+      "log_sha256": "fd81c4002d3feda6f453e2520f0ffc289cbc62d86d1615b5d66b1954c69a07cb"
+    },
+    {
+      "label": "types_1_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_1_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_1_reference.log",
+      "log_sha256": "5a5cb4a7deb732ecf9316c826ac079896f89c12e520204d697fc1decce6fe337"
+    },
+    {
+      "label": "types_2_solution",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_solution.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_2_solution.log",
+      "log_sha256": "5ae0ba1ccafe9605dbbef1001982b3ae2baf7e7d804dc8aea95cafee432cc894"
+    },
+    {
+      "label": "types_2_reference",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "types_2_reference.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "types_2_reference.log",
+      "log_sha256": "331e7094ccbf91367c7d6824a4c252099c81f8cf3e09e5493b188aa3192bd13b"
+    },
+    {
+      "label": "helpers_0",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_0.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "helpers_0.log",
+      "log_sha256": "d2ff7ab99f0a8507c8a8494d24a2cb4bfd4b592172f874def1197defa6ed6c1d"
+    },
+    {
+      "label": "helpers_1",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_1.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "helpers_1.log",
+      "log_sha256": "696c62d8f2ed37bf6e5b92305e7775e7c8ec94e4c2a7d8e0f949660fd8240b64"
+    },
+    {
+      "label": "helpers_2",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "helpers_2.lean"
+      ],
+      "working_directory": "D:\\users\\self_projects\\prove2me_workspace\\missions\\zeta9\\formalization\\platform\\coefficient-map-kernel-bridge\\p",
+      "exit_code": 0,
+      "log": "helpers_2.log",
+      "log_sha256": "86d2ca92c7080fad5bd558f065b635d67d6677bd55bb6874361461a772e395f4"
+    }
+  ],
+  "fresh_main_cache_bindings": [
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMap.c",
+      "sha256": "455209c8e69f6835f8ff63295904c8cecb2c714815310ad494c5fd7665af81be",
+      "bytes": 32375
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMap.c.hash",
+      "sha256": "4631d1d414a0e3153b6ed6cc2f262632db2c283a99fb164dca7302b5231af353",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMap.setup.json",
+      "sha256": "60ebabe685e1ef44aedfaa859104d393cf3f72aeb095b9b6903220b237b7a9ee",
+      "bytes": 894616
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapAggregate.c",
+      "sha256": "cf86858eff22030ac1c4bcd4869e3f1e0623cd5bd0732c0d0bbd83d8be6196ba",
+      "bytes": 8461
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapAggregate.c.hash",
+      "sha256": "be15b82f586370dfb1c1332740f4595bbb3e0adcd15dae5c1f6f4f70a1d889d5",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapAggregate.setup.json",
+      "sha256": "25adecf83ebaac12066403fa269519bacb5f5a18c6d6b840cda785b91f1683ea",
+      "bytes": 2524556
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.c",
+      "sha256": "8d0e660937eee8e43b3d28306bcd5f90524e11552580549c4fe98057fa14aa58",
+      "bytes": 4716
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.c.hash",
+      "sha256": "0202c06f880d58acea8c4da3409421c837605beb7afed282d8c85df5051535cc",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.setup.json",
+      "sha256": "956ca0141fbf6dc308debee6686b22a8895a77b06cf0f42942b7bc6904c91ba3",
+      "bytes": 1659065
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapInjectivity.c",
+      "sha256": "9a7041d5e3bdb0df8e4af890e43344f7d3c30e01413c309a009a62531c0efacf",
+      "bytes": 2646
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapInjectivity.c.hash",
+      "sha256": "4e3ac956ec72764ced68d643d563f5ace8bd957badea99e8a8b973d641bae190",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapInjectivity.setup.json",
+      "sha256": "783e1d5e800eb1abd4be03965f9b71ed4a26c198768129230699e177d55b614d",
+      "bytes": 1357392
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapJet.c",
+      "sha256": "ad621ccb7ec5a0a6e9210e5f547463c9e9d2da3eb652de569a01599116e69216",
+      "bytes": 2358
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapJet.c.hash",
+      "sha256": "c0640327ab61fc8e600d2b95257320faa4bcf2dd4accef43eace85f22cafa422",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapJet.setup.json",
+      "sha256": "1cfcc2ec33b6de0e003a95dc1c1a6d57bd7f653c8d70716340d8ddf0b638fc69",
+      "bytes": 1357191
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.c",
+      "sha256": "152e685771c1c5e4177c166ef7a92d3510d158587dafd7c3db845f7fac3c7db1",
+      "bytes": 24256
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.c.hash",
+      "sha256": "af19d35e7f424305ed68bd44fe553edb0145c1113affbb1fa36c961a40e7b8b8",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.setup.json",
+      "sha256": "12cd9af977bf494b758b8b4d19e5dce868caf23f0ff812bacc6777e54e7b9436",
+      "bytes": 2937706
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.c",
+      "sha256": "59af0eca63994cbe53e08a0ebae5e166bcd7d791a7e61b84177e2bb90130935c",
+      "bytes": 1834
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.c.hash",
+      "sha256": "9edc529ef34a6c1cb06eb63da0c4a2cc00b4b2e1bf65c96bcab255a0fec5a2a5",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.setup.json",
+      "sha256": "03dc402b188dfe0e9a75dc014ddbfb65d619ee8500fd8a79bf9ac041c107506e",
+      "bytes": 1358414
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapReflection.c",
+      "sha256": "019d78f1c3fce92d8f6a60195169fedfc6f0d18a1a4756505a77e426e8b02ab1",
+      "bytes": 1562
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapReflection.c.hash",
+      "sha256": "e76a8f827d2c781b0edf1663bb6be5d2253d88c7b8f91c68a1a09e4687505d2a",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapReflection.setup.json",
+      "sha256": "1dc8fdd0c3e2fd1b859abba80ddfe632ed090ad16e349c720140c45aed32179a",
+      "bytes": 1358627
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.c",
+      "sha256": "e94b0d07c7b5e3697b4432074d484cf86e9501d3dfcc08d62fe7558a3dfaf493",
+      "bytes": 1717
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.c.hash",
+      "sha256": "dcb4b0fda05173ad579c8dad9c0be25af2f8a00f9ef50745ffc8f46972ee1218",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.setup.json",
+      "sha256": "066074ab769ee801bc4d03ecb04e694c6f28a9dc876e0f3f4573e9caa591e93f",
+      "bytes": 1048968
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapSummation.c",
+      "sha256": "fe760b3994eaef140893ed698bd011b899e7a0e3fd3e15b6692272b9895ea28f",
+      "bytes": 4961
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapSummation.c.hash",
+      "sha256": "6922e54e0e334ee3d74a437c139cd005bdb69f2977c368f4f905a73ba50e44c9",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapSummation.setup.json",
+      "sha256": "c996ff1ee37c20871d7d09b0909c501ed11ef7ccb5604548f72e92a0b6a66c28",
+      "bytes": 2524351
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapTelescoper.c",
+      "sha256": "a25c6509553088873cbab019ca530065eddae09afc3312cc5940bca0d6ec2420",
+      "bytes": 5905
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapTelescoper.c.hash",
+      "sha256": "c14e88e8b00bc3a87c8e0c544732980daae13e088a30e8634bc71a9601a45d54",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_CoefficientMapTelescoper.setup.json",
+      "sha256": "8788fb142a2bafc729431365f8395c9bc60ca48d8fcf42591971d30b216b1b43",
+      "bytes": 2524762
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_HarmonicStability.c",
+      "sha256": "e83a4e9dd8f06826b3e0ab099b66f7170a5d703a9ec8686a7044f974ecd0812a",
+      "bytes": 9118
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_HarmonicStability.c.hash",
+      "sha256": "d8d67014fe651144995929a183a982451fdabb346f8c6b07edacf30a5c655dca",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Definitions/Def_ZetaNine_HarmonicStability.setup.json",
+      "sha256": "e9ec42137797b9c4688e01e19417c93cf44b7fd5c0296b1f808aa258207b38af",
+      "bytes": 1496259
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMap.c",
+      "sha256": "f85952dc77f0156d01ea1c15f0d45cd8a1661415779cc45548611590280f8790",
+      "bytes": 24086
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMap.c.hash",
+      "sha256": "d4d4cd80d48a0f07e15cc6b8bb92e23de0a7f11a8f3a187f6ba8d41fc433a09d",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMap.setup.json",
+      "sha256": "06f3157faa4651f2e6a156ff41f4e06917a869627d255d18b303ee7882fe60a9",
+      "bytes": 2363427
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapAggregate.c",
+      "sha256": "f618cb37a856d892fc16843c93ba11fa082e59bf363655cae4ebf35361bd83c6",
+      "bytes": 8023
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapAggregate.c.hash",
+      "sha256": "340a1d6f1d2befcff94736a58f60a2c30b1c8014bd8c8ef37ce60a6dbbb6b5c0",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapAggregate.setup.json",
+      "sha256": "f19581a7617e5c8723b8cb5550a537e6a86f1aded8052575482058e00e4593fe",
+      "bytes": 2937156
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapFiniteSum.c",
+      "sha256": "18498761e351fb81af817daa5abb9c9053294f0bb50d92198a4a036e58b58ca8",
+      "bytes": 4722
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapFiniteSum.c.hash",
+      "sha256": "406777ade82bad2f7045d6b890d13691ef915b0f6a3339b15d67c84c624dac94",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapFiniteSum.setup.json",
+      "sha256": "08bfa36014ebc2bcb422feea80a154dcb675d3cce225055cb06e77c968723274",
+      "bytes": 2374234
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapInjectivity.c",
+      "sha256": "051cd94c832ec7679b511d0b930bb1c82697bbbb863f6ca4513118d266c755b5",
+      "bytes": 2660
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapInjectivity.c.hash",
+      "sha256": "d39f5cf24ccf17eb12fb8aabd0255ed5f8873db641042129017cbda199cc77b1",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapInjectivity.setup.json",
+      "sha256": "7bc797eb5896e6cbfca1c1383f913b2f2b7d7fd14f0246914a195020a7062045",
+      "bytes": 2372787
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapJet.c",
+      "sha256": "f7098913e85c850509db0eb4f962704d3dcaaf8ea26eaa4ec3cc3079a4bf07a0",
+      "bytes": 2372
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapJet.c.hash",
+      "sha256": "27d0f318410838a3c23e4d85673f1db4fe56ed5ae33c716bf4325801b9dc7952",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapJet.setup.json",
+      "sha256": "9baae291bf9c27d04676e371275f59bbdeeb20504414ba8e78969289a77fd6ab",
+      "bytes": 2372576
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapKernelBridge.c",
+      "sha256": "0949142e7ca8ca94cee6258977edfa43b07e64232a133a61eaac1b0cc2c4609f",
+      "bytes": 10654
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapKernelBridge.c.hash",
+      "sha256": "8a2c1c78493deefa194eefc02ae73db058eb6fdecbc9e36eedd3a2d65818600d",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapKernelBridge.setup.json",
+      "sha256": "5683b45b4f9493b9c68470635bb6f2c933431f9234e622daa8d7005b2baa49b0",
+      "bytes": 2937810
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapPartialFractions.c",
+      "sha256": "d0b6c171a788e1b645fe081b90bf7495fcb93690b89ed12f90d16231dc669c48",
+      "bytes": 1848
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapPartialFractions.c.hash",
+      "sha256": "1011a3e521f86c62d72bb97dd67110d42c5965b8ce775c32fc0f8284354d2a96",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapPartialFractions.setup.json",
+      "sha256": "9b6ae36d14a8b7bdec65db247927d7f22b7b81d1d7f409d40f1493ccf1f206b1",
+      "bytes": 2373819
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapReflection.c",
+      "sha256": "92cde9dba4890797efababb5490d6e9e74107178d2f614090faea510f5d405e0",
+      "bytes": 1576
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapReflection.c.hash",
+      "sha256": "7acd97e073dbdc2c1bbe289b03d4b59eecae165c3fcb55025255288da8fa62d0",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapReflection.setup.json",
+      "sha256": "951a36573cbbfefc28218c3cfcf5480a6a5a3a08181664874fcf27151d154fc6",
+      "bytes": 2374042
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapShiftDegree.c",
+      "sha256": "a85c0ba07d8a95b388cb8137f4b37eb64e7241f3ee444a6239b82995067c0b68",
+      "bytes": 1932
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapShiftDegree.c.hash",
+      "sha256": "a4fe9c9da0d613a30f7da499afeb13a7e2b67a3e521d2b2d0f6aa2c33918dc29",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapShiftDegree.setup.json",
+      "sha256": "81778b17495eaa8cccfd3af69193ff0ffa1a68d4631513b1b47898af374e0f17",
+      "bytes": 2363438
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapSummation.c",
+      "sha256": "d116d72d92ebaa39c297740d28aac36750236fd7445b8d6590ba72cb1c98c8f7",
+      "bytes": 4983
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapSummation.c.hash",
+      "sha256": "e7ba52e4b6737324b5128a70270256a82c3de3f81741dadd4327a3a76874a3c0",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapSummation.setup.json",
+      "sha256": "ff3d26521d45876949a9b08e7b641e39e871902349e1605f2e142666aa90b916",
+      "bytes": 2936941
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapTelescoper.c",
+      "sha256": "def9b989657f08b881cadc7f3f932675e379cb5e9ea665d1a2e9621735c9b99f",
+      "bytes": 8922
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapTelescoper.c.hash",
+      "sha256": "3161ec0b236c725cba6798bf942690088c59296ab9b9e6c39082c57c0b187e8e",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/missions/zeta9/formalization/CoefficientMapTelescoper.setup.json",
+      "sha256": "046ccfa718e1ec23887b2386df8596d801abd84dadaf30dfd54d5916f6106698",
+      "bytes": 2937372
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelAuthorControl.c",
+      "sha256": "4ad7d0472e93f37841880807832244eecf65bd31981cfc1000b1855ca526bdf0",
+      "bytes": 1671
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelAuthorControl.c.hash",
+      "sha256": "eefe13b27c35b350adfab211d8935db781663cd999b309f7e35261dcfc175638",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelAuthorControl.setup.json",
+      "sha256": "00f00f2e7a22bfe1a1832b7cddc167be581a5b24ce75f33375323eb45b069e69",
+      "bytes": 2938001
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelIndependentControl.c",
+      "sha256": "06f298dd47c2d72be9760900aaa6ec458a4b6f10db9ebdad6f6546a9565fb8b0",
+      "bytes": 6392
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelIndependentControl.c.hash",
+      "sha256": "d194cf9147890af58296c1d6ea86d13cea778f8b93cb342afaae999cb5e3c97e",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/NativeKernelIndependentControl.setup.json",
+      "sha256": "727b4c29c8ea429d0078dede0c4c84bd5176485812baa0cd2f059b7f8875aa81",
+      "bytes": 2938006
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.c",
+      "sha256": "90f80d8829605c5ca041e03bbc66a9173dce04d5ee4580a7bfc8734f3a63a17c",
+      "bytes": 6849
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.c.hash",
+      "sha256": "fbac506b4d9933b7a51ed36ed86b4421c6a2d433f3bfa7da6d5d095eb88b22d9",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.setup.json",
+      "sha256": "32777f8d55bfd1709d059069bad6ddc755a56f1b069d728ee723de2503c13a80",
+      "bytes": 2937961
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.c",
+      "sha256": "ca7a3dff56a4b10c92590f0fd1b6295647cfa3b5f3ab48585aa62148a9b433a0",
+      "bytes": 6819
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.c.hash",
+      "sha256": "7c456d00f2df4fa883a3ec82b8503da4e301810ba0f1fb2be058f853976f7135",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.setup.json",
+      "sha256": "1d58cb95ef5d07abb572995de607a6ad233f7b9a9902f61af4cb5b027230409c",
+      "bytes": 2937956
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.c",
+      "sha256": "a6ba3a8b5f09c164473c5db09209dffbbf6a576eb60026e0e4124116cd7b4160",
+      "bytes": 6813
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.c.hash",
+      "sha256": "995d77891b0f6b5aa0fe55c8bf6b823b12e7f3dfcd7bbb643920f13f65ef4e0e",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.setup.json",
+      "sha256": "12eb79697ac92da3426945c2f717d4ad0ec02852c26823b822035cc6dfef32bd",
+      "bytes": 2937955
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.c",
+      "sha256": "980a185a9f5612af3818089f40c6cb4b4a4e591ac5cb81b1d6c0f9a44a421451",
+      "bytes": 1643
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.c.hash",
+      "sha256": "d04414a9dd981a30100c2b159606c1cd98243a3c2875fe8520c649fba5b36681",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.setup.json",
+      "sha256": "e25f08e2c4430cd98b37483f3a6acb9c46195d7fd8b7cf59426428fc5608fddd",
+      "bytes": 2937960
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.c",
+      "sha256": "2b5e3ddd3e1ec3c8b7d053b8e639a37c40510280b0eeeacfddba371659e8b911",
+      "bytes": 1633
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.c.hash",
+      "sha256": "3c2948763c634cf29a88b841124679df243868bf9f8a685d77bc5e059ef75a3a",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.setup.json",
+      "sha256": "2d09fa41eae7dd35be9158969d3fa65098e0548d5a23837a526bafae793c9a30",
+      "bytes": 2937955
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.c",
+      "sha256": "c720dcd07c3d33f032f8a881a57d79a62708ab1b09fcfee1c2a92c09ce5ef639",
+      "bytes": 1631
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.c.hash",
+      "sha256": "237f6fff5d1152800540982abe7c12072ff9037c108a59ffb9a40ca212f43b49",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/ir/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.setup.json",
+      "sha256": "56e3fa35db83f43149d4d52da38d51e606229ece4bf068df63904367e12eb720",
+      "bytes": 2937954
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMap.ilean",
+      "sha256": "f3ca3dede63fce55576d030541f4999c197e287a51e6e60394a5803a8fc05606",
+      "bytes": 5682
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMap.ilean.hash",
+      "sha256": "3fa81fe1c608b357fa09a0b75823fce829f097707f1a28bf16ef7fc1f6fdf13d",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMap.olean",
+      "sha256": "95269559f9ea6a817114d193dc03a3845c64abd6b9c42db86b4ae01c934456ac",
+      "bytes": 93536
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMap.olean.hash",
+      "sha256": "ca4c668821f1eca6ea49a23f74b4360d8004c16885e710bb3a4cc6d0e59b9393",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMap.trace",
+      "sha256": "8f0a91796f0b8d749f57f8b54c9c6bbb41cdf05cbc68c62ed1f2a5fab5c39486",
+      "bytes": 3733
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapAggregate.ilean",
+      "sha256": "8ce6e64f9bc2040feb6d82c30abc9349d1e17fdb28b9d4dfcc990d6becdd4e33",
+      "bytes": 13779
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapAggregate.ilean.hash",
+      "sha256": "c3188d9803eb368bea847e0bcfe97ef921b92d8970c19d55d97902138024f8ed",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapAggregate.olean",
+      "sha256": "18672f061b883c8db23baa4544e6ad1ade8d8f3186d40feb55c7e0ed73b35d45",
+      "bytes": 303616
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapAggregate.olean.hash",
+      "sha256": "3f9294613b4d8cc17bcebb362e8bb622f85c6dfb5e1a23e9edfa12bee355f830",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapAggregate.trace",
+      "sha256": "8acdaa5726ad903949ded3f90cb152f709313d4edb2b2d420ed5be124f2cc77e",
+      "bytes": 3949
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.ilean",
+      "sha256": "695598884bce2d9ae26a4bcb2b78dd260a811d6ec264651bfc916a7d15dbd6ea",
+      "bytes": 3705
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.ilean.hash",
+      "sha256": "017fcd87293664fcd1c037122d51c001520c8c3cd9e17cc7c4781ab683bb805c",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.olean",
+      "sha256": "9abbb9327484f4d7c13f8a33ec45594083769279a4940efc3a0f7670b3aa1eb1",
+      "bytes": 23392
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.olean.hash",
+      "sha256": "b781595303835a745e788fef3998de5f673ca0a27e33fe715890c7c3feb73b5f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapFiniteSum.trace",
+      "sha256": "0cf7ccee0dbe72b991a7ab205ad0bfaf40cecbd3a5ad6c02b1476dd1908339ed",
+      "bytes": 3670
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapInjectivity.ilean",
+      "sha256": "72fdaa298827b6cced1064da480c097ee2513b4901dd5720f732b5c99a2d63dc",
+      "bytes": 6624
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapInjectivity.ilean.hash",
+      "sha256": "b58632b16f99a3402f7787df4019a924717538219441a1f1f2a8f67667311a3f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapInjectivity.olean",
+      "sha256": "918effc17592cb70c8f1343a5f8f5ea6c65c6d58558e239162394c69e078a0bd",
+      "bytes": 24960
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapInjectivity.olean.hash",
+      "sha256": "a684e1b5f8edf65364e87eba06b95d7f8c3261f270993c74fbde4f3b0a194ea8",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapInjectivity.trace",
+      "sha256": "e1f45a0b9429bc9b9cc17aba7e42b1235a2a1cb6c58144e439198f1e67591aab",
+      "bytes": 4040
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapJet.ilean",
+      "sha256": "df4c43fed9e2fa8f444ff4fad21fb256cba76e22216431f89596ee2c6384c4d2",
+      "bytes": 7834
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapJet.ilean.hash",
+      "sha256": "c8dd2a3041188133be10ea340ad714e4421551fd341b27d9eb90549ed9b0b6c0",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapJet.olean",
+      "sha256": "ac1a108ccba5432a9bd33145e9ea765178eb6b89caaddb461323257cadaec8ad",
+      "bytes": 33368
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapJet.olean.hash",
+      "sha256": "e19f07c4fd85fd395a79eca9de8ec4cb0e2be183c924302d5a1ad7f0df28c370",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapJet.trace",
+      "sha256": "9099ce9c91708288cacbfc1cf8758eade188abb7a9fef6b5ad43af34ebacca63",
+      "bytes": 3794
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.ilean",
+      "sha256": "99c3cc8851565024a7eadb7f42aec38e4a8dfd9c84f8925dab0b80f2bd4cd7b8",
+      "bytes": 262898
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.ilean.hash",
+      "sha256": "5e3b1cf16a9c7845ce9923e1bb3d3d043a5a13df6f66505839e8faaafa8ff28c",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.olean",
+      "sha256": "5e377041b1240bb92df479b008bdde6670b895903b5a63d347549d48d6723af7",
+      "bytes": 7395320
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.olean.hash",
+      "sha256": "61c2a0b857310a4fa344c664ce4f46a2ef46eabf6ff2b96a5c709bba5cf0dbfb",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapKernelBridge.trace",
+      "sha256": "95f027eb038485851a5b0da92ff5fad1f6d91edb6eaec2391cf44617c10baa2f",
+      "bytes": 7670
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.ilean",
+      "sha256": "6b24e5628ad06de909a5681dea2df0c66f2087bf6c8e0dc8edcff6e529038543",
+      "bytes": 6655
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.ilean.hash",
+      "sha256": "aa94a003fcaec6cb9936c998718b1b29635c849de8cdb96bb7bd76dbdd94cd3f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.olean",
+      "sha256": "4eaa2a624479a7ce4299c63a31a54e888402a9387bbc64dd19d9ddf388afa22c",
+      "bytes": 25872
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.olean.hash",
+      "sha256": "cafeab5938dcd423d79baaead59fce70c348abb0a544d38888db2744906d7f03",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapPartialFractions.trace",
+      "sha256": "923bd9ae38462d3c64cb4d1f137d83682a0f28bae340ace1e182c820bdf46cf3",
+      "bytes": 3501
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapReflection.ilean",
+      "sha256": "815746227f8c60a60b19b9461f6095f445da4a46efc5509037276f4d9d3003b8",
+      "bytes": 3452
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapReflection.ilean.hash",
+      "sha256": "1517a140673f103ce245e374ceaf6eb6f95392312d45ad095f8d3dbf5deeefd1",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapReflection.olean",
+      "sha256": "4600cf5b145e84b0af96fd21ab089ae8b30a17217664007faa02ea3aa758a4f2",
+      "bytes": 19664
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapReflection.olean.hash",
+      "sha256": "c92dde224948ce0e709b4705a97280efc6e39c4d6030ed35939128b75e6523d5",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapReflection.trace",
+      "sha256": "d45c0fa85bcd28bb3fb461e5237efdb9845dfd1709b8085217118786c77d53b3",
+      "bytes": 3277
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.ilean",
+      "sha256": "df18d02f2527ecc67522be45cce904bf99e2fcb5edb5f446d1b866ff6879b5dc",
+      "bytes": 2889
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.ilean.hash",
+      "sha256": "edf690dbba7a466e26baa2973f3451a9cc45afaaebcb9d6cd2c004d13f136613",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.olean",
+      "sha256": "2aa1a0c98f6816375fd496976d4adfaf143a04e73ff5212a34c9e2be96dad718",
+      "bytes": 15808
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.olean.hash",
+      "sha256": "4843f51903e888b05a94107bc0a53756210184cfcb31c535fac6ea8496908173",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapShiftDegree.trace",
+      "sha256": "0af3141decba372f047447d8234dd0c3a5599311168a58bf83ce99aecb47c4ac",
+      "bytes": 3421
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapSummation.ilean",
+      "sha256": "3c3351cc2a1cee10f29d70829cdf86cc64dd30690e2c3fcd5b0f1251342142d3",
+      "bytes": 4066
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapSummation.ilean.hash",
+      "sha256": "af3f0d921d221e246fc534943a6c2b6adb39ee484f753004441402de78e448c6",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapSummation.olean",
+      "sha256": "4073ffb8a38a1a72dbf5ff46c7fb7c70b2121e60fbbfa50e6755af3bf7436a4c",
+      "bytes": 20920
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapSummation.olean.hash",
+      "sha256": "5225a694d6f9b74a47f067a61876e13710d8f9ec96028ee1b29e872eb72dcc26",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapSummation.trace",
+      "sha256": "5e8a260e73cc1b8b531ff30c4b20e0dffd8d56c26ab9b49c88b4b02af905523a",
+      "bytes": 4249
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapTelescoper.ilean",
+      "sha256": "9bf026bf1a5106c87330d8dfed23e373d21abac59463fb335a35a98d348f229b",
+      "bytes": 5814
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapTelescoper.ilean.hash",
+      "sha256": "5668617c9320196b0cc0d250a24b1b5dbc5ebfa63671acf9b453b00af484461f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapTelescoper.olean",
+      "sha256": "f5b0516d3a8201f97b6a7bd24dc97ec02ffd3d5a7910b2c03520155e6ebaa378",
+      "bytes": 43088
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapTelescoper.olean.hash",
+      "sha256": "22cb70ee6305d9839c017ed25ca7a7035b84f863d0aaa34f7c86126c6cdbcc9f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_CoefficientMapTelescoper.trace",
+      "sha256": "9e6cbcf6b0cb1919ae178b893186371c542b5b701dcc4c60d724ff11b92cc994",
+      "bytes": 3263
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.ilean",
+      "sha256": "ccaa2941106cb0d6a93c6abdaa3391931490d54be699133cd9b81098db7c4d1c",
+      "bytes": 1908
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.ilean.hash",
+      "sha256": "282c28276a256cae5517fa47e8e9ec060d8320dc96ddfeb6bb733d8fd95e35e1",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.olean",
+      "sha256": "e07fa5726ae030d8f3f02156fab376e4e74b94cec8a9ee9edbc1f9361cb10d2c",
+      "bytes": 29624
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.olean.hash",
+      "sha256": "1fda9781456fa48fe7c43cbd87d263452b0ad710ed08e223aebf0b248a8545cd",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Definitions/Def_ZetaNine_HarmonicStability.trace",
+      "sha256": "4188ea2662251f8b4e37ec6e315bed75e268acd7b2ed199e56def6ec2160659b",
+      "bytes": 3604
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMap.ilean",
+      "sha256": "abf5c5c6b0d7e08e0dd2a748feed0971ff4704d62f012cf59359842b1cc73960",
+      "bytes": 39789
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMap.ilean.hash",
+      "sha256": "02cb875990e3409473d21230c0730cf658141633830c9fe1d8583ab41533116f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMap.olean",
+      "sha256": "06323de2780250c1acdd374069a3b9d1bdafe26c67e86b2c9251ec588aa328bf",
+      "bytes": 668424
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMap.olean.hash",
+      "sha256": "6beeca6ddfacb6b9d7b5da91ca04aa0d235a78967e9a20c69719124ca83cc883",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMap.trace",
+      "sha256": "0fd6718330652691887041fa36c5f477025af7d8c746b18904252d539005e4a1",
+      "bytes": 5618
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapAggregate.ilean",
+      "sha256": "cfb054c0d7ef39d838b2f564a515864bce8f562799f52b4ff31c09138a03d965",
+      "bytes": 32019
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapAggregate.ilean.hash",
+      "sha256": "5a0ab003aaf793872758e02cbc0e188c8b2b07617feac3aa4ac77ba9dec3dfe0",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapAggregate.olean",
+      "sha256": "2378cf6565bf21a4214251689f6f2b38b969c48847899a7eea8175b731d3b2bc",
+      "bytes": 484072
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapAggregate.olean.hash",
+      "sha256": "eef013e5ad6d6bf232e202eea8def37a8e539c1d0258b91b8c0fd5e806646b22",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapAggregate.trace",
+      "sha256": "8518bf28ae9d9a7bfd9960da5ccecaeea36954ac5f0749f656d54d790a265b71",
+      "bytes": 5016
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapFiniteSum.ilean",
+      "sha256": "ae6e6fcbc893f27dc19badd1d5a76fd56a41c53cdc3788b0dea92dba16c286e4",
+      "bytes": 23208
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapFiniteSum.ilean.hash",
+      "sha256": "acfbe50e85b87128fd488fd482ac7c641d72a8f218f559ab8f46c219fed18d19",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapFiniteSum.olean",
+      "sha256": "fa551ec7297449b4955d9f68abb625c535c7f91a3b6e6f8a8d88df931667aa4a",
+      "bytes": 260528
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapFiniteSum.olean.hash",
+      "sha256": "7e03bcadc24b1727be687e45c65f8444f835088db48d3d93891ca2fc2775ef39",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapFiniteSum.trace",
+      "sha256": "77436ded67bfdab81d4f4de332791d98434efb3b40c649779e1544093c2efef9",
+      "bytes": 5129
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapInjectivity.ilean",
+      "sha256": "c38f32e3caf19b427cfaff133064ac0e975a3a0374fa1d9e50f763289f34bba5",
+      "bytes": 48710
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapInjectivity.ilean.hash",
+      "sha256": "06f42bf06f77ca28de8a0389e99eecb5f01327368070d57e024a694af1b99fe1",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapInjectivity.olean",
+      "sha256": "220830f105c89b50c5f0e218cac2082eec9baa570f3f4a450a287b350ffbd2d8",
+      "bytes": 393768
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapInjectivity.olean.hash",
+      "sha256": "f693222f859616411ab6b24a260f8351dd304454838f79cb619cd3a8d2e05da7",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapInjectivity.trace",
+      "sha256": "afef9db3370c7fd339e403fa2f92a0b90dd955e2b93561b5a463dbff356c397d",
+      "bytes": 6267
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapJet.ilean",
+      "sha256": "75719d9ec5017bdccf6c2106a90e6f5d168bcc54bf4fd2f149c68f0943387eeb",
+      "bytes": 39150
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapJet.ilean.hash",
+      "sha256": "d831ef6408db400952cc734a661915368d297e7a79e96c5b1bcd70ace76e5864",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapJet.olean",
+      "sha256": "1cdc29860ff059c04b4692f3358f10bc9f3abb8dac35735e936e014fdd362e43",
+      "bytes": 567904
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapJet.olean.hash",
+      "sha256": "b60c3520d385a3fc645341181b55369c0bd093843b481e14fc8c42c5f3fc874b",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapJet.trace",
+      "sha256": "87080dcee05c598060519e053f09f989b298a25f65e8ebe51541f2b0c9a92f01",
+      "bytes": 6067
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapKernelBridge.ilean",
+      "sha256": "7fd0e05369c9f314d7676c2a521c633c196f520ee85742a1ce640a3115df3b20",
+      "bytes": 71201
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapKernelBridge.ilean.hash",
+      "sha256": "58d0ee1e1d8704daf4f51bfc916eb22ea24b07fd888ec6956155516182017a9c",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapKernelBridge.olean",
+      "sha256": "3a51d92b4ab1fa1285e41b89c2a6f2ac19f5b99b1f6922713ae29c52af13499c",
+      "bytes": 4362336
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapKernelBridge.olean.hash",
+      "sha256": "e0e8e3d1e6a6d37de5018c7db95a1909af022b8f19456ceaf51548d6100c9f75",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapKernelBridge.trace",
+      "sha256": "5e90e97f60aec4936d75865c8da9d9c3ebb763abadf7a5cb545c4d2d200e887e",
+      "bytes": 7862
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapPartialFractions.ilean",
+      "sha256": "02e12125aa03b7c153518c45a0811ae032acbd0599a00ce859d7d8229315c71a",
+      "bytes": 79266
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapPartialFractions.ilean.hash",
+      "sha256": "02f8b6c5d7fe04fb0dc01cc9cd964bff936343979752012bef4671fb958e8ee3",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapPartialFractions.olean",
+      "sha256": "9ef29ce225c52a3e5c8c2aec03e328f9bffd89452d8a0eb9f5db8d2e8a13f465",
+      "bytes": 698888
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapPartialFractions.olean.hash",
+      "sha256": "fb9e3294c873ffaf03bfd8a630d5f9598ac42afada9273c1dde7dd853737d43b",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapPartialFractions.trace",
+      "sha256": "2087b1540c42c454e52830e746abfa618c5c56f25ea6dd4ed64ef6b2e1d26bbf",
+      "bytes": 6569
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapReflection.ilean",
+      "sha256": "4b27e1572fa48fc920652581f6b3d870b5dad2344f04bcff60ecd6db7bc1139e",
+      "bytes": 73432
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapReflection.ilean.hash",
+      "sha256": "87550a6f3d7c57d92dd9e1a2bc874afb6f005c50e7cf20b27a83c32b2cb4d2c2",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapReflection.olean",
+      "sha256": "19b114f14c97710da60612cef8e2acb6b9bae30de50789684df788a0a42c61d9",
+      "bytes": 768672
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapReflection.olean.hash",
+      "sha256": "84b4b0b0f372d0d6a6f9fe34094447b940d4851df7e045891139987d2c28c454",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapReflection.trace",
+      "sha256": "54f18026660f472a1ee761cf8408656c28c19696ef9781ca2b91bf6facd8951d",
+      "bytes": 5917
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapShiftDegree.ilean",
+      "sha256": "f28b3154d39ca59094161f12133838d59deeb538c6734240ce0cea2c9b341dc2",
+      "bytes": 32625
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapShiftDegree.ilean.hash",
+      "sha256": "98e5ba1986e925a92e522443efc452e34f561cceb8ee87cbbc1d4bfd85a32650",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapShiftDegree.olean",
+      "sha256": "390e559c93066478f444cd411f258f3bc468a69d1a7d5bd827b8624d1951d9e5",
+      "bytes": 379272
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapShiftDegree.olean.hash",
+      "sha256": "4fc956931e6024bb282fb60ffe67783be69ee584518653d39795dc422d554333",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapShiftDegree.trace",
+      "sha256": "77f78a7af2bd11023b6250f3317bfcb9daadfa9b4231903336636e14a174fc7e",
+      "bytes": 4815
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapSummation.ilean",
+      "sha256": "0407362b6ac4cc95cf1142e8955257ad319d69e9c6b6b5debfe738928615bd42",
+      "bytes": 61073
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapSummation.ilean.hash",
+      "sha256": "a4a70f0119a3509dfdfd4bf544085e240a5b4d9fa34e898ab45914dbf1813b7a",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapSummation.olean",
+      "sha256": "7a1971f34e29047f73960d28cdabb3bd3180147dc74fc09984035c7e838517b2",
+      "bytes": 524192
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapSummation.olean.hash",
+      "sha256": "b9112478cdd599212483ac308952adf66d1096c2a3f80981934252755d5fb92d",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapSummation.trace",
+      "sha256": "def170daa223d603dfb3fa0afae51dbe2fe8795f869aa326d0be2ea06e40218f",
+      "bytes": 7070
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapTelescoper.ilean",
+      "sha256": "efadcfd59b9758329751eabdd4312c5e3251c8f60a138ed8f0b1d02593af84d1",
+      "bytes": 73881
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapTelescoper.ilean.hash",
+      "sha256": "de84939323f4a5e007dcf1dcfe4acebf17bc9e6c6b3d1657640bcc7d120f5e77",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapTelescoper.olean",
+      "sha256": "8dd9b271a84a86997e1597afd96cc8fcc254a66072640973ac71ca5e0ad700bf",
+      "bytes": 1182112
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapTelescoper.olean.hash",
+      "sha256": "35aadc4a2ba660eedb3ee7280ec5e549782eefbae1d771e57f95a66a8b6e7204",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/missions/zeta9/formalization/CoefficientMapTelescoper.trace",
+      "sha256": "ec1b4964d4d18901153ae0155938e6e5d89719eb0bf24055dbe7b2f5c54df2e2",
+      "bytes": 6849
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelAuthorControl.ilean",
+      "sha256": "945be7b79f59f46ac9b9249cc6b86c204635426a8370428ab315dd54cb81ca87",
+      "bytes": 22629
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelAuthorControl.ilean.hash",
+      "sha256": "71c32c4e4b24e349346a23f1b94f69e70f1b653610b896d47511f90e2fe88fa2",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelAuthorControl.olean",
+      "sha256": "3bc8c7da1219c0ed2bab7eabc4e7779b9de49eea0f1bbdd1078ca38145476d2c",
+      "bytes": 145792
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelAuthorControl.olean.hash",
+      "sha256": "f4233f8467766f8e9d36af6c039748e9f16d21bc4acbae75387177d7d94a548e",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelAuthorControl.trace",
+      "sha256": "e0cbb2697821e329bf3d9fedb34b85e8234faa7e30f3dad119dd3ad8aa1a0249",
+      "bytes": 18980
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelIndependentControl.ilean",
+      "sha256": "77d1802f290a4cbab6504ce2f03da76cd2cfa41cb7a8c079385ffd450856d1fb",
+      "bytes": 43940
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelIndependentControl.ilean.hash",
+      "sha256": "95954db335d44cfdd1db7357a6276dfe5b4dac0512ccb9724f5cf1e506d70588",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelIndependentControl.olean",
+      "sha256": "b42ebb8ed34132b1cd89472487fd80661803991c710de4524a044003952d13dd",
+      "bytes": 456152
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelIndependentControl.olean.hash",
+      "sha256": "e562712c8b2b58043638e77f75bf2032915f92844fa956d996dde64c32345ebd",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/NativeKernelIndependentControl.trace",
+      "sha256": "17424f2b370ee703d2dbeb94c226f0aff85218504d96fb5a8b5544ca76dc555b",
+      "bytes": 26626
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.ilean",
+      "sha256": "fff72a78bc93f0b64f5f14b02afdab0f51fb9b2d0276bf5cbf3433a2f91b1d21",
+      "bytes": 386584
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.ilean.hash",
+      "sha256": "d47b35a6634b9b9bbf740bc31e7ee5c6d8b5c2487648d0e149a6d1e43e582eb4",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.olean",
+      "sha256": "da73e9dcabab48d1d494d0c9e076bb57b28c94d092e1f3903297f010899fb859",
+      "bytes": 7379280
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.olean.hash",
+      "sha256": "12247af72d54e5ddf07523c9bac6cbfa7aa973d3c507bb7b8f7eb150bae51140",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.trace",
+      "sha256": "6da637e2280b473a7bf824a1138cbae95ee3ccd0212f5b1e6d176d6eddf6c15c",
+      "bytes": 3935
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.ilean",
+      "sha256": "2580fc7bff76eee2b80e6066bdd37967c19f408679191db937594685caeca6d9",
+      "bytes": 385166
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.ilean.hash",
+      "sha256": "8fae6c9314560c88525def58234a97318d23bfe31701e824cfa1cd1c87cc11e1",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.olean",
+      "sha256": "5b1a90e3e8450d055e293be6b16a6a326ae3f8e2deaa4309bd16c343f38faa0a",
+      "bytes": 7378928
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.olean.hash",
+      "sha256": "40742b1e243367f36e6adf8961d085cd91f4b5e04dfe41029c2ae3e4246327bb",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.trace",
+      "sha256": "fe57def930a589e2c23fd17e5da0addf9194883bef692b43f66092537648f9f0",
+      "bytes": 3895
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.ilean",
+      "sha256": "ffc978c0a1b6c33c1846576fa2b8fac47c39679713fbeec5f8f7c2ca385d6eeb",
+      "bytes": 385434
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.ilean.hash",
+      "sha256": "362a10ca1093f22bfd37f3f423fdbf7a50d494f3a6121d98eb1940948f2c6931",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.olean",
+      "sha256": "1b6e8618a08b809ed675fc8d6c0604156eaa46fa176547918be96f38aeccc938",
+      "bytes": 7379056
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.olean.hash",
+      "sha256": "abe310ece45feeb823b213b8699ee61e5d9b5008cf114efdc23427be8bef79ba",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Solutions/Sol_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.trace",
+      "sha256": "78228fbc640b48f85f9cbc0a12f7a4ec467d05d7a6e5069e9c5d87b13dfadc2d",
+      "bytes": 3887
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.ilean",
+      "sha256": "2ca7912dc6e2d9d4c95c8973993f1e9ef38067919b6be2dc73888933158bd236",
+      "bytes": 3657
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.ilean.hash",
+      "sha256": "2cec154bd01b4a75ce596224f5a8e7802bb79cdb54eda111499e8e5a3f317a0f",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.olean",
+      "sha256": "564c6f1d38e12786707a27e05ec7e226f061f8000e17e1d6228e655ef11a6ff1",
+      "bytes": 17480
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.olean.hash",
+      "sha256": "3b449e9bd06042186e02dd41999006b23fcfb97020404dda3f2e049e88da59a3",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_inverseMultiplier_actual_HasSum_and_absolute.trace",
+      "sha256": "4f3cc57e1f71d5429f8fab6656ec610cd062dc0346c26d1a675367250ccdb331",
+      "bytes": 3747
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.ilean",
+      "sha256": "6363e557a8902007f09de6c6e33143692727134c4530ee4c3410e614b5f5bd7a",
+      "bytes": 1498
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.ilean.hash",
+      "sha256": "e91c7ef783d6ff8a7643486481666892df264890d08e3ae2c8c2c84e3e69f6e7",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.olean",
+      "sha256": "bf051ee4b5c7467b16ee2e7bbeaa295a26c10b26e86e7a9aa9b8acccd0f65427",
+      "bytes": 14968
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.olean.hash",
+      "sha256": "4ebbdf5842c6d82cb973b496eaf768710cf661a290e7fd3f72619c896a025b45",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_five_dimensional_map_bijective.trace",
+      "sha256": "d86106d71c9ed4bd5ecea6cc0b02f09922ae871032c3db90139a4bddf017555f",
+      "bytes": 3707
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.ilean",
+      "sha256": "2bf023aa7ef3a111e738f57c37e70fcd5d735f3a93cbac16f560a7f785026e39",
+      "bytes": 1663
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.ilean.hash",
+      "sha256": "7a47c0601572369019fecf5912fb505325304175e7015d30d4d2cb7a4c33bc19",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.olean",
+      "sha256": "0f021a1f45c53f5881f119a4d8bc5dd26768bdd528c13a3133ba0c91f94b2e7d",
+      "bytes": 14216
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.olean.hash",
+      "sha256": "5f681ca79f5f8dd5a03ff75f0ba95b60cb8831edbae5e0fa5fd9e7e9a293a18b",
+      "bytes": 16
+    },
+    {
+      "task_relative": ".rt/k1/b/lib/lean/Theorems/Thm_ZetaNine_CoefficientMapKernelBridge_original_quartic_aggregate_kernel_zero.trace",
+      "sha256": "af9f2fa6e4f3aa37ef69b1c5bb271b77d7971c28f935b2131a5092cb613ed8f9",
+      "bytes": 3699
+    }
+  ],
+  "complete": true
+}

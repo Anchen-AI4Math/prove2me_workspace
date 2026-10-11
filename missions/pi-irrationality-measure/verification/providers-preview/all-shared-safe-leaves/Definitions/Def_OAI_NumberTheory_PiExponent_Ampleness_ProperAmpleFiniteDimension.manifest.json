@@ -1,0 +1,798 @@
+{
+  "source_module": "OAI.NumberTheory.PiExponent.Ampleness.ProperAmpleFiniteDimension",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Ampleness_ProperAmpleFiniteDimension",
+  "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/ProperAmpleFiniteDimension.lean",
+  "source_sha256": "0f5e9760b0795ff8c481ded7f807d9bff9db3047c86a28a1ba9bec92b3090f79",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "original_source": "missions/pi-irrationality-measure/source/lean/OAI/NumberTheory/PiExponent/Ampleness/ProperAmpleFiniteDimension.lean",
+  "original_source_sha256": "80c979c332d895a9a1222d67d071a4f2372dc0fb8448d67e67095664b2487703",
+  "facts": "missions/pi-irrationality-measure/verification/sketch-ProperAmpleFiniteDimension-20261007-220805.log",
+  "facts_sha256": "acbda75e33c1d4d61073870df7f3c4f0d20d1898d22a31be6d4aac1a0b285c3e",
+  "output": "missions/pi-irrationality-measure/verification/providers-preview/all-shared-safe-leaves/Definitions/Def_OAI_NumberTheory_PiExponent_Ampleness_ProperAmpleFiniteDimension.lean",
+  "output_sha256": "cd8c2d387fb24c057c82bb5426f8e781eae1d62a3a3bba01ffcd2c05e473f5e2",
+  "selected_units": [
+    "OAI.NumberTheory.PiExponent.Ampleness.ProperAmpleFiniteDimension:1879",
+    "OAI.NumberTheory.PiExponent.Ampleness.ProperAmpleFiniteDimension:540"
+  ],
+  "imports": [
+    "Mathlib.Algebra.Algebra.Hom.Rat",
+    "Mathlib.Algebra.BigOperators.Fin",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Piecewise",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Sigma",
+    "Mathlib.Algebra.BigOperators.Intervals",
+    "Mathlib.Algebra.Category.ModuleCat.EnoughInjectives",
+    "Mathlib.Algebra.Category.ModuleCat.Ext.HasExt",
+    "Mathlib.Algebra.Category.ModuleCat.Presheaf.Monoidal",
+    "Mathlib.Algebra.Category.ModuleCat.Presheaf.PushforwardZeroMonoidal",
+    "Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree",
+    "Mathlib.Algebra.Field.Equiv",
+    "Mathlib.Algebra.Group.ForwardDiff",
+    "Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives",
+    "Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences",
+    "Mathlib.Algebra.Homology.DerivedCategory.Ext.ExtClass",
+    "Mathlib.Algebra.Homology.DerivedCategory.Ext.MapBijective",
+    "Mathlib.Algebra.Homology.HomologicalComplex",
+    "Mathlib.Algebra.Homology.ShortComplex.ModuleCat",
+    "Mathlib.Algebra.Module.LocalizedModule.IsLocalization",
+    "Mathlib.Algebra.Module.LocalizedModule.Submodule",
+    "Mathlib.Algebra.Module.SnakeLemma",
+    "Mathlib.Algebra.Module.Submodule.Equiv",
+    "Mathlib.Algebra.Module.Submodule.RestrictScalars",
+    "Mathlib.Algebra.Module.Submodule.Union",
+    "Mathlib.Algebra.Module.Torsion.Basic",
+    "Mathlib.Algebra.MvPolynomial.Basic",
+    "Mathlib.Algebra.MvPolynomial.Degrees",
+    "Mathlib.Algebra.MvPolynomial.Equiv",
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.MvPolynomial.PDeriv",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+    "Mathlib.Algebra.Order.BigOperators.Group.Finset",
+    "Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset",
+    "Mathlib.Algebra.Order.BigOperators.Ring.Finset",
+    "Mathlib.Algebra.Order.Floor.Semiring",
+    "Mathlib.Algebra.Order.Group.Defs",
+    "Mathlib.Algebra.Order.Group.Int",
+    "Mathlib.Algebra.Order.Round",
+    "Mathlib.Algebra.Polynomial.Degree.Lemmas",
+    "Mathlib.Algebra.Polynomial.Degree.SmallDegree",
+    "Mathlib.Algebra.Polynomial.Derivation",
+    "Mathlib.Algebra.Polynomial.Div",
+    "Mathlib.Algebra.Polynomial.Eval.Coeff",
+    "Mathlib.Algebra.Polynomial.Eval.Subring",
+    "Mathlib.Algebra.Polynomial.FieldDivision",
+    "Mathlib.Algebra.Polynomial.Laurent",
+    "Mathlib.Algebra.Polynomial.Roots",
+    "Mathlib.Algebra.Polynomial.Taylor",
+    "Mathlib.Algebra.Regular.Defs",
+    "Mathlib.Algebra.Ring.GeomSum",
+    "Mathlib.AlgebraicGeometry.Artinian",
+    "Mathlib.AlgebraicGeometry.FunctionField",
+    "Mathlib.AlgebraicGeometry.Gluing",
+    "Mathlib.AlgebraicGeometry.IdealSheaf.Basic",
+    "Mathlib.AlgebraicGeometry.IdealSheaf.Functorial",
+    "Mathlib.AlgebraicGeometry.Limits",
+    "Mathlib.AlgebraicGeometry.Modules.Tilde",
+    "Mathlib.AlgebraicGeometry.Morphisms.Affine",
+    "Mathlib.AlgebraicGeometry.Morphisms.Finite",
+    "Mathlib.AlgebraicGeometry.Morphisms.FiniteType",
+    "Mathlib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant",
+    "Mathlib.AlgebraicGeometry.Morphisms.Separated",
+    "Mathlib.AlgebraicGeometry.Noetherian",
+    "Mathlib.AlgebraicGeometry.Normalization",
+    "Mathlib.AlgebraicGeometry.OpenImmersion",
+    "Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper",
+    "Mathlib.AlgebraicGeometry.Stalk",
+    "Mathlib.AlgebraicGeometry.ValuativeCriterion",
+    "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+    "Mathlib.Analysis.Complex.CauchyIntegral",
+    "Mathlib.Analysis.Complex.TaylorSeries",
+    "Mathlib.Analysis.Convex.Cone.Basic",
+    "Mathlib.Analysis.Normed.Group.InfiniteSum",
+    "Mathlib.Analysis.Normed.Group.Rat",
+    "Mathlib.Analysis.Polynomial.Basic",
+    "Mathlib.Analysis.Real.Pi.Bounds",
+    "Mathlib.Analysis.Real.Pi.Irrational",
+    "Mathlib.Analysis.SpecialFunctions.Choose",
+    "Mathlib.Analysis.SpecialFunctions.Complex.Analytic",
+    "Mathlib.Analysis.SpecialFunctions.Complex.LogBounds",
+    "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives",
+    "Mathlib.CategoryTheory.Abelian.GrothendieckCategory.HasExt",
+    "Mathlib.CategoryTheory.Abelian.Projective.Ext",
+    "Mathlib.CategoryTheory.Limits.Preserves.Shapes.Square",
+    "Mathlib.Data.Complex.Basic",
+    "Mathlib.Data.Fin.Tuple.Basic",
+    "Mathlib.Data.Finset.Interval",
+    "Mathlib.Data.Finsupp.Basic",
+    "Mathlib.Data.Finsupp.Multiset",
+    "Mathlib.Data.Finsupp.SMulWithZero",
+    "Mathlib.Data.Finsupp.Weight",
+    "Mathlib.Data.Fintype.BigOperators",
+    "Mathlib.Data.Fintype.Option",
+    "Mathlib.Data.Nat.Choose.Sum",
+    "Mathlib.Data.Nat.Factorial.Basic",
+    "Mathlib.Data.Nat.Init",
+    "Mathlib.Data.Real.Basic",
+    "Mathlib.Data.Sym.Card",
+    "Mathlib.FieldTheory.AlgebraicClosure",
+    "Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra",
+    "Mathlib.FieldTheory.IntermediateField.Adjoin.Basic",
+    "Mathlib.FieldTheory.IntermediateField.Adjoin.Defs",
+    "Mathlib.FieldTheory.SeparablyGenerated",
+    "Mathlib.LinearAlgebra.Basis.Prod",
+    "Mathlib.LinearAlgebra.Dimension.Constructions",
+    "Mathlib.LinearAlgebra.Dimension.DivisionRing",
+    "Mathlib.LinearAlgebra.Dimension.Finrank",
+    "Mathlib.LinearAlgebra.Dimension.RankNullity",
+    "Mathlib.LinearAlgebra.Dimension.StrongRankCondition",
+    "Mathlib.LinearAlgebra.DirectSum.Finite",
+    "Mathlib.LinearAlgebra.Dual.Defs",
+    "Mathlib.LinearAlgebra.Dual.Lemmas",
+    "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas",
+    "Mathlib.LinearAlgebra.Finsupp.LinearCombination",
+    "Mathlib.LinearAlgebra.Finsupp.Supported",
+    "Mathlib.LinearAlgebra.FreeModule.Finite.Basic",
+    "Mathlib.LinearAlgebra.Isomorphisms",
+    "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+    "Mathlib.LinearAlgebra.Prod",
+    "Mathlib.LinearAlgebra.Quotient.Basic",
+    "Mathlib.Logic.Equiv.Sum",
+    "Mathlib.NumberTheory.BernoulliPolynomials",
+    "Mathlib.NumberTheory.Chebyshev",
+    "Mathlib.NumberTheory.Real.Irrational",
+    "Mathlib.NumberTheory.Zsqrtd.GaussianInt",
+    "Mathlib.Order.CompactlyGenerated.Basic",
+    "Mathlib.Order.Minimal",
+    "Mathlib.RingTheory.AdjoinRoot",
+    "Mathlib.RingTheory.AlgebraicIndependent.Basic",
+    "Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis",
+    "Mathlib.RingTheory.Coprime.Lemmas",
+    "Mathlib.RingTheory.Derivation.Basic",
+    "Mathlib.RingTheory.Etale.Field",
+    "Mathlib.RingTheory.Etale.Kaehler",
+    "Mathlib.RingTheory.FiniteType",
+    "Mathlib.RingTheory.Finiteness.Basic",
+    "Mathlib.RingTheory.Finiteness.Prod",
+    "Mathlib.RingTheory.Flat.Basic",
+    "Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra",
+    "Mathlib.RingTheory.Flat.Localization",
+    "Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal",
+    "Mathlib.RingTheory.GradedAlgebra.Homogeneous.Maps",
+    "Mathlib.RingTheory.GradedAlgebra.Radical",
+    "Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness",
+    "Mathlib.RingTheory.Ideal.AssociatedPrime.Localization",
+    "Mathlib.RingTheory.Ideal.Colon",
+    "Mathlib.RingTheory.Ideal.Cotangent",
+    "Mathlib.RingTheory.Ideal.GoingDown",
+    "Mathlib.RingTheory.Ideal.GoingUp",
+    "Mathlib.RingTheory.Ideal.KrullsHeightTheorem",
+    "Mathlib.RingTheory.Ideal.Maps",
+    "Mathlib.RingTheory.Ideal.Maximal",
+    "Mathlib.RingTheory.Ideal.MinimalPrime.Localization",
+    "Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian",
+    "Mathlib.RingTheory.Ideal.Operations",
+    "Mathlib.RingTheory.Ideal.Prime",
+    "Mathlib.RingTheory.Ideal.Quotient.Basic",
+    "Mathlib.RingTheory.Ideal.Quotient.Defs",
+    "Mathlib.RingTheory.Ideal.Quotient.Operations",
+    "Mathlib.RingTheory.Ideal.Span",
+    "Mathlib.RingTheory.IntegralClosure.GoingDown",
+    "Mathlib.RingTheory.Jacobson.Ring",
+    "Mathlib.RingTheory.KrullDimension.Field",
+    "Mathlib.RingTheory.KrullDimension.LocalRing",
+    "Mathlib.RingTheory.KrullDimension.NonZeroDivisors",
+    "Mathlib.RingTheory.KrullDimension.Polynomial",
+    "Mathlib.RingTheory.KrullDimension.Regular",
+    "Mathlib.RingTheory.KrullDimension.Zero",
+    "Mathlib.RingTheory.LaurentSeries",
+    "Mathlib.RingTheory.Length",
+    "Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic",
+    "Mathlib.RingTheory.LocalRing.Quotient",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Basic",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Defs",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Ideal",
+    "Mathlib.RingTheory.LocalRing.ResidueField.Instances",
+    "Mathlib.RingTheory.LocalRing.RingHom.Basic",
+    "Mathlib.RingTheory.Localization.AtPrime.Basic",
+    "Mathlib.RingTheory.Localization.FractionRing",
+    "Mathlib.RingTheory.Localization.Ideal",
+    "Mathlib.RingTheory.Localization.LocalizationLocalization",
+    "Mathlib.RingTheory.Localization.Submodule",
+    "Mathlib.RingTheory.MvPolynomial.Basic",
+    "Mathlib.RingTheory.MvPolynomial.Homogeneous",
+    "Mathlib.RingTheory.MvPolynomial.Localization",
+    "Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous",
+    "Mathlib.RingTheory.MvPowerSeries.Derivative",
+    "Mathlib.RingTheory.MvPowerSeries.Equiv",
+    "Mathlib.RingTheory.MvPowerSeries.Inverse",
+    "Mathlib.RingTheory.MvPowerSeries.Order",
+    "Mathlib.RingTheory.MvPowerSeries.Substitution",
+    "Mathlib.RingTheory.NoetherNormalization",
+    "Mathlib.RingTheory.Noetherian.Nilpotent",
+    "Mathlib.RingTheory.OrderOfVanishing.Noetherian",
+    "Mathlib.RingTheory.Polynomial.Basic",
+    "Mathlib.RingTheory.Polynomial.HilbertPoly",
+    "Mathlib.RingTheory.Polynomial.Quotient",
+    "Mathlib.RingTheory.Polynomial.RationalRoot",
+    "Mathlib.RingTheory.Polynomial.UniqueFactorization",
+    "Mathlib.RingTheory.PowerSeries.Basic",
+    "Mathlib.RingTheory.PowerSeries.Log",
+    "Mathlib.RingTheory.PowerSeries.Order",
+    "Mathlib.RingTheory.PowerSeries.Trunc",
+    "Mathlib.RingTheory.PowerSeries.WellKnown",
+    "Mathlib.RingTheory.PrincipalIdealDomain",
+    "Mathlib.RingTheory.Regular.Flat",
+    "Mathlib.RingTheory.Regular.RegularSequence",
+    "Mathlib.RingTheory.RegularLocalRing.Polynomial",
+    "Mathlib.RingTheory.SimpleModule.Basic",
+    "Mathlib.RingTheory.Smooth.Basic",
+    "Mathlib.RingTheory.Spectrum.Prime.Topology",
+    "Mathlib.RingTheory.TensorProduct.Quotient",
+    "Mathlib.RingTheory.Trace.Defs",
+    "Mathlib.SetTheory.Cardinal.ToNat",
+    "Mathlib.Tactic",
+    "Mathlib.Tactic.Abel",
+    "Mathlib.Tactic.Choose",
+    "Mathlib.Tactic.Conv",
+    "Mathlib.Tactic.Convert",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.GCongr",
+    "Mathlib.Tactic.Linarith",
+    "Mathlib.Tactic.LinearCombination",
+    "Mathlib.Tactic.NormNum",
+    "Mathlib.Tactic.Positivity",
+    "Mathlib.Tactic.Ring",
+    "Mathlib.Topology.Algebra.InfiniteSum.ENNReal",
+    "Mathlib.Topology.Algebra.InfiniteSum.Real",
+    "Mathlib.Topology.Instances.Matrix",
+    "Mathlib.Topology.Instances.Real.Lemmas",
+    "Mathlib.Topology.Sheaves.Flasque",
+    "Mathlib.Topology.Sheaves.MayerVietoris"
+  ],
+  "elaboration_only_helpers": [],
+  "renames": [],
+  "kept_local_instances": [],
+  "source_skeleton_preserved": true,
+  "full_definition_proofs_preserved": true,
+  "independent_byte_reconstruction_equal": true,
+  "source_unchanged": true,
+  "provisional": true,
+  "validated": false,
+  "submission_ready": false,
+  "pending": [
+    "strict compilation within 300 seconds",
+    "standard axiom audit",
+    "definition and consumer kernel type comparison"
+  ],
+  "input_hashes": {
+    "platform/definition-reuse-candidates.json": "ec494861e3b4173ba23546f5804368cf29089225d3a3231df9017a356c832318",
+    "platform/deprivate-name-overrides.json": "b5d455c65b44d11e03c7226c2fb1bde4c28dc89c6a2e25888cae2259cbb8a95b",
+    "platform/source-theorem-name-overrides.json": "5684707de34d6a5f03600840550bb52315fbad2f851c303697b5f2333b333a69",
+    "platform/upload-route.json": "8eb858ab2e5a05f99a04dd51d3d0edb416fa166d25ba00d769e65909edac9607",
+    "scripts/generate_platform_provider_bundles.py": "64e489619c64bed6648b830b1d442443bdae2a2ea676fd14ede40eb09832263e",
+    "scripts/plan_platform_units_providers.py": "43c4232b632d6e8d648a879ad4e6868a1055f35217f5400a86b1fc05168e2829",
+    "verification/ast-import-inventory.json": "bbf09a327e2fef3f970f44a84e35e4d088a93e4cd2cdf660cef268bc5667f2e3",
+    "verification/ast-scope-inventory.json": "d9df5bfb5074bff700b77a23eafb464130f31d6540eb1564c070274b13d93bbf",
+    "verification/ast-unit-inventory.json": "b5061a3e42a7a66bdbd978344767ec5db6991d684ce785e3b281f900f065e506",
+    "verification/ast-wrapper-inventory.json": "f4f66678c84741dc8ea08b15c02c36135eb395aa3ca827d1501e53e4ac7b00d4",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/inline-provider-collision-audit.json": "3ad990e8de02fd0de572a326ab8b549a2d9703d16271e02460ba4999adb38de7",
+    "verification/platform-artifact-plan-preview.json": "07d545d9919a358a56de18d6dd64444a90c1de1be642ec16d67354069d3a2294",
+    "verification/platform-unit-plan-preview.json": "0c7cfb50e1cdff2285e12fd06ddd761e8dddb88ed9fd1b0c3898884e72090430",
+    "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+    "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+    "verification/provider-plans/all-shared-public/provider-plan-manifest.json": "253064eecfc2ca7577915d47cc906de847efa9344be1f9775c84fd8818e961b1"
+  },
+  "edits": [
+    {
+      "start": 667,
+      "end": 1140,
+      "reason": "subtract unselected declaration command",
+      "replacement": ""
+    },
+    {
+      "start": 1144,
+      "end": 1389,
+      "reason": "subtract unselected declaration command",
+      "replacement": ""
+    },
+    {
+      "start": 1405,
+      "end": 1875,
+      "reason": "subtract unselected declaration command",
+      "replacement": ""
+    },
+    {
+      "start": 2079,
+      "end": 2941,
+      "reason": "subtract unselected declaration command",
+      "replacement": ""
+    },
+    {
+      "start": 0,
+      "end": 78,
+      "reason": "rewrite parser import command",
+      "replacement": "import Mathlib.Algebra.Algebra.Hom.Rat\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.BigOperators.Group.Finset.Sigma\nimport Mathlib.Algebra.BigOperators.Intervals\nimport Mathlib.Algebra.Category.ModuleCat.EnoughInjectives\nimport Mathlib.Algebra.Category.ModuleCat.Ext.HasExt\nimport Mathlib.Algebra.Category.ModuleCat.Presheaf.Monoidal\nimport Mathlib.Algebra.Category.ModuleCat.Presheaf.PushforwardZeroMonoidal\nimport Mathlib.Algebra.Category.ModuleCat.Sheaf.PullbackFree\nimport Mathlib.Algebra.Field.Equiv\nimport Mathlib.Algebra.Group.ForwardDiff\nimport Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives\nimport Mathlib.Algebra.Homology.DerivedCategory.Ext.ExactSequences\nimport Mathlib.Algebra.Homology.DerivedCategory.Ext.ExtClass\nimport Mathlib.Algebra.Homology.DerivedCategory.Ext.MapBijective\nimport Mathlib.Algebra.Homology.HomologicalComplex\nimport Mathlib.Algebra.Homology.ShortComplex.ModuleCat\nimport Mathlib.Algebra.Module.LocalizedModule.IsLocalization\nimport Mathlib.Algebra.Module.LocalizedModule.Submodule\nimport Mathlib.Algebra.Module.SnakeLemma\nimport Mathlib.Algebra.Module.Submodule.Equiv\nimport Mathlib.Algebra.Module.Submodule.RestrictScalars\nimport Mathlib.Algebra.Module.Submodule.Union\nimport Mathlib.Algebra.Module.Torsion.Basic\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.MvPolynomial.Degrees\nimport Mathlib.Algebra.MvPolynomial.Equiv\nimport Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.MvPolynomial.PDeriv\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Algebra.Order.Group.Defs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Round\nimport Mathlib.Algebra.Polynomial.Degree.Lemmas\nimport Mathlib.Algebra.Polynomial.Degree.SmallDegree\nimport Mathlib.Algebra.Polynomial.Derivation\nimport Mathlib.Algebra.Polynomial.Div\nimport Mathlib.Algebra.Polynomial.Eval.Coeff\nimport Mathlib.Algebra.Polynomial.Eval.Subring\nimport Mathlib.Algebra.Polynomial.FieldDivision\nimport Mathlib.Algebra.Polynomial.Laurent\nimport Mathlib.Algebra.Polynomial.Roots\nimport Mathlib.Algebra.Polynomial.Taylor\nimport Mathlib.Algebra.Regular.Defs\nimport Mathlib.Algebra.Ring.GeomSum\nimport Mathlib.AlgebraicGeometry.Artinian\nimport Mathlib.AlgebraicGeometry.FunctionField\nimport Mathlib.AlgebraicGeometry.Gluing\nimport Mathlib.AlgebraicGeometry.IdealSheaf.Basic\nimport Mathlib.AlgebraicGeometry.IdealSheaf.Functorial\nimport Mathlib.AlgebraicGeometry.Limits\nimport Mathlib.AlgebraicGeometry.Modules.Tilde\nimport Mathlib.AlgebraicGeometry.Morphisms.Affine\nimport Mathlib.AlgebraicGeometry.Morphisms.Finite\nimport Mathlib.AlgebraicGeometry.Morphisms.FiniteType\nimport Mathlib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant\nimport Mathlib.AlgebraicGeometry.Morphisms.Separated\nimport Mathlib.AlgebraicGeometry.Noetherian\nimport Mathlib.AlgebraicGeometry.Normalization\nimport Mathlib.AlgebraicGeometry.OpenImmersion\nimport Mathlib.AlgebraicGeometry.ProjectiveSpectrum.Proper\nimport Mathlib.AlgebraicGeometry.Stalk\nimport Mathlib.AlgebraicGeometry.ValuativeCriterion\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.Convex.Cone.Basic\nimport Mathlib.Analysis.Normed.Group.InfiniteSum\nimport Mathlib.Analysis.Normed.Group.Rat\nimport Mathlib.Analysis.Polynomial.Basic\nimport Mathlib.Analysis.Real.Pi.Bounds\nimport Mathlib.Analysis.Real.Pi.Irrational\nimport Mathlib.Analysis.SpecialFunctions.Choose\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives\nimport Mathlib.CategoryTheory.Abelian.GrothendieckCategory.HasExt\nimport Mathlib.CategoryTheory.Abelian.Projective.Ext\nimport Mathlib.CategoryTheory.Limits.Preserves.Shapes.Square\nimport Mathlib.Data.Complex.Basic\nimport Mathlib.Data.Fin.Tuple.Basic\nimport Mathlib.Data.Finset.Interval\nimport Mathlib.Data.Finsupp.Basic\nimport Mathlib.Data.Finsupp.Multiset\nimport Mathlib.Data.Finsupp.SMulWithZero\nimport Mathlib.Data.Finsupp.Weight\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Option\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Factorial.Basic\nimport Mathlib.Data.Nat.Init\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.Sym.Card\nimport Mathlib.FieldTheory.AlgebraicClosure\nimport Mathlib.FieldTheory.IntermediateField.Adjoin.Algebra\nimport Mathlib.FieldTheory.IntermediateField.Adjoin.Basic\nimport Mathlib.FieldTheory.IntermediateField.Adjoin.Defs\nimport Mathlib.FieldTheory.SeparablyGenerated\nimport Mathlib.LinearAlgebra.Basis.Prod\nimport Mathlib.LinearAlgebra.Dimension.Constructions\nimport Mathlib.LinearAlgebra.Dimension.DivisionRing\nimport Mathlib.LinearAlgebra.Dimension.Finrank\nimport Mathlib.LinearAlgebra.Dimension.RankNullity\nimport Mathlib.LinearAlgebra.Dimension.StrongRankCondition\nimport Mathlib.LinearAlgebra.DirectSum.Finite\nimport Mathlib.LinearAlgebra.Dual.Defs\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.FiniteDimensional.Lemmas\nimport Mathlib.LinearAlgebra.Finsupp.LinearCombination\nimport Mathlib.LinearAlgebra.Finsupp.Supported\nimport Mathlib.LinearAlgebra.FreeModule.Finite.Basic\nimport Mathlib.LinearAlgebra.Isomorphisms\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.LinearAlgebra.Prod\nimport Mathlib.LinearAlgebra.Quotient.Basic\nimport Mathlib.Logic.Equiv.Sum\nimport Mathlib.NumberTheory.BernoulliPolynomials\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.Real.Irrational\nimport Mathlib.NumberTheory.Zsqrtd.GaussianInt\nimport Mathlib.Order.CompactlyGenerated.Basic\nimport Mathlib.Order.Minimal\nimport Mathlib.RingTheory.AdjoinRoot\nimport Mathlib.RingTheory.AlgebraicIndependent.Basic\nimport Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis\nimport Mathlib.RingTheory.Coprime.Lemmas\nimport Mathlib.RingTheory.Derivation.Basic\nimport Mathlib.RingTheory.Etale.Field\nimport Mathlib.RingTheory.Etale.Kaehler\nimport Mathlib.RingTheory.FiniteType\nimport Mathlib.RingTheory.Finiteness.Basic\nimport Mathlib.RingTheory.Finiteness.Prod\nimport Mathlib.RingTheory.Flat.Basic\nimport Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra\nimport Mathlib.RingTheory.Flat.Localization\nimport Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal\nimport Mathlib.RingTheory.GradedAlgebra.Homogeneous.Maps\nimport Mathlib.RingTheory.GradedAlgebra.Radical\nimport Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness\nimport Mathlib.RingTheory.Ideal.AssociatedPrime.Localization\nimport Mathlib.RingTheory.Ideal.Colon\nimport Mathlib.RingTheory.Ideal.Cotangent\nimport Mathlib.RingTheory.Ideal.GoingDown\nimport Mathlib.RingTheory.Ideal.GoingUp\nimport Mathlib.RingTheory.Ideal.KrullsHeightTheorem\nimport Mathlib.RingTheory.Ideal.Maps\nimport Mathlib.RingTheory.Ideal.Maximal\nimport Mathlib.RingTheory.Ideal.MinimalPrime.Localization\nimport Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian\nimport Mathlib.RingTheory.Ideal.Operations\nimport Mathlib.RingTheory.Ideal.Prime\nimport Mathlib.RingTheory.Ideal.Quotient.Basic\nimport Mathlib.RingTheory.Ideal.Quotient.Defs\nimport Mathlib.RingTheory.Ideal.Quotient.Operations\nimport Mathlib.RingTheory.Ideal.Span\nimport Mathlib.RingTheory.IntegralClosure.GoingDown\nimport Mathlib.RingTheory.Jacobson.Ring\nimport Mathlib.RingTheory.KrullDimension.Field\nimport Mathlib.RingTheory.KrullDimension.LocalRing\nimport Mathlib.RingTheory.KrullDimension.NonZeroDivisors\nimport Mathlib.RingTheory.KrullDimension.Polynomial\nimport Mathlib.RingTheory.KrullDimension.Regular\nimport Mathlib.RingTheory.KrullDimension.Zero\nimport Mathlib.RingTheory.LaurentSeries\nimport Mathlib.RingTheory.Length\nimport Mathlib.RingTheory.LocalRing.MaximalIdeal.Basic\nimport Mathlib.RingTheory.LocalRing.Quotient\nimport Mathlib.RingTheory.LocalRing.ResidueField.Basic\nimport Mathlib.RingTheory.LocalRing.ResidueField.Defs\nimport Mathlib.RingTheory.LocalRing.ResidueField.Ideal\nimport Mathlib.RingTheory.LocalRing.ResidueField.Instances\nimport Mathlib.RingTheory.LocalRing.RingHom.Basic\nimport Mathlib.RingTheory.Localization.AtPrime.Basic\nimport Mathlib.RingTheory.Localization.FractionRing\nimport Mathlib.RingTheory.Localization.Ideal\nimport Mathlib.RingTheory.Localization.LocalizationLocalization\nimport Mathlib.RingTheory.Localization.Submodule\nimport Mathlib.RingTheory.MvPolynomial.Basic\nimport Mathlib.RingTheory.MvPolynomial.Homogeneous\nimport Mathlib.RingTheory.MvPolynomial.Localization\nimport Mathlib.RingTheory.MvPolynomial.WeightedHomogeneous\nimport Mathlib.RingTheory.MvPowerSeries.Derivative\nimport Mathlib.RingTheory.MvPowerSeries.Equiv\nimport Mathlib.RingTheory.MvPowerSeries.Inverse\nimport Mathlib.RingTheory.MvPowerSeries.Order\nimport Mathlib.RingTheory.MvPowerSeries.Substitution\nimport Mathlib.RingTheory.NoetherNormalization\nimport Mathlib.RingTheory.Noetherian.Nilpotent\nimport Mathlib.RingTheory.OrderOfVanishing.Noetherian\nimport Mathlib.RingTheory.Polynomial.Basic\nimport Mathlib.RingTheory.Polynomial.HilbertPoly\nimport Mathlib.RingTheory.Polynomial.Quotient\nimport Mathlib.RingTheory.Polynomial.RationalRoot\nimport Mathlib.RingTheory.Polynomial.UniqueFactorization\nimport Mathlib.RingTheory.PowerSeries.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.RingTheory.PowerSeries.WellKnown\nimport Mathlib.RingTheory.PrincipalIdealDomain\nimport Mathlib.RingTheory.Regular.Flat\nimport Mathlib.RingTheory.Regular.RegularSequence\nimport Mathlib.RingTheory.RegularLocalRing.Polynomial\nimport Mathlib.RingTheory.SimpleModule.Basic\nimport Mathlib.RingTheory.Smooth.Basic\nimport Mathlib.RingTheory.Spectrum.Prime.Topology\nimport Mathlib.RingTheory.TensorProduct.Quotient\nimport Mathlib.RingTheory.Trace.Defs\nimport Mathlib.SetTheory.Cardinal.ToNat\nimport Mathlib.Tactic\nimport Mathlib.Tactic.Abel\nimport Mathlib.Tactic.Choose\nimport Mathlib.Tactic.Conv\nimport Mathlib.Tactic.Convert\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.LinearCombination\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\nimport Mathlib.Topology.Algebra.InfiniteSum.ENNReal\nimport Mathlib.Topology.Algebra.InfiniteSum.Real\nimport Mathlib.Topology.Instances.Matrix\nimport Mathlib.Topology.Instances.Real.Lemmas\nimport Mathlib.Topology.Sheaves.Flasque\nimport Mathlib.Topology.Sheaves.MayerVietoris"
+    },
+    {
+      "start": 80,
+      "end": 145,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    },
+    {
+      "start": 146,
+      "end": 197,
+      "reason": "rewrite parser import command",
+      "replacement": ""
+    }
+  ],
+  "engine_output_removed": true,
+  "provider_plan": "verification/provider-plans/all-shared-public/platform-unit-plan-provider-variant.json",
+  "provider_plan_sha256": "6c6786266bb28e71fd5d5346d148a53de4a59521f09da4dd0a7d95081e4e17d8",
+  "provider_artifact_plan": "verification/provider-plans/all-shared-public/platform-artifact-plan-provider-variant.json",
+  "provider_artifact_plan_sha256": "fc36ba1c21c5df3f190724141297da0c19fc66f83f49c96888c1ad1c26dc6eca",
+  "provider_variant": "all-shared-public",
+  "accepted_generator_logic_reused": true,
+  "accepted_outputs_untouched": true,
+  "preview_only": true,
+  "lean_started": false,
+  "api_used": false,
+  "capture_observations": {
+    "extraction_state": {
+      "path": "verification/extraction-state.json",
+      "sha256_at_capture": "31e848bf5981ddc5d5fea95a98dfcf53795a9e626085763442dfe1fc48ba81d7",
+      "stage2_entries_at_capture": 869,
+      "complete_at_capture": false,
+      "dependency": false,
+      "reason": "Append-only extraction progress outside a bundle's project import closure does not alter that bundle."
+    },
+    "live_import_inventory": {
+      "path": "verification/providers-preview/live-import-inventory.json",
+      "sha256_at_capture": "c31ef70529ef8625eb4bf7a49e60703790b0c53a4a90a4cc43a344ce3ce1cd21",
+      "dependency": false,
+      "reason": "Per-bundle source/facts import provenance below is the exact dependency set."
+    }
+  },
+  "import_provenance": [
+    {
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.AmpleCommonDegree",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/AmpleCommonDegree.lean",
+      "source_sha256": "4c0a2a6af677ea82243add53d83c057b28994c026ae95d28f504866ed4f33b69",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-AmpleCommonDegree-20261007-212401.log",
+      "facts_sha256": "3166387cfd7c2f8faa9f140cfb64bb1ff8472080495eefa67613653dce03804a"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.AmpleProjectiveSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/AmpleProjectiveSections.lean",
+      "source_sha256": "c16c1e1b89bf4be04971697e8971ffdc722109755d1f4ec3f6b41bfadd3f3854",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-AmpleProjectiveSections-20261007-212926.log",
+      "facts_sha256": "663e389daa50e01f5a604816b7abca546a9618836ff33df1678326cfe66ebd79"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.CoherentAffineFinite",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/CoherentAffineFinite.lean",
+      "source_sha256": "158158b18f67dda7cc722d6849d16678ec1edb5a58c3ac8424e535b7ddba8ade",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-CoherentAffineFinite-20261007-213939.log",
+      "facts_sha256": "8f7135b982ce60f9509bbe40b9068bc2f518a32985aef2251dcf4defc6a23a67"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.NoetherianAmpleProjectiveSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/NoetherianAmpleProjectiveSections.lean",
+      "source_sha256": "9097e7128d14b78c487f5dce7dcfe906e314fa41f147831374f84f537db2a055",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-NoetherianAmpleProjectiveSections-20261007-220608.log",
+      "facts_sha256": "37f20d98e4f143a0df6ae706c0a443d4970d0f1be607c84989174b5f16ccf2f2"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Ampleness.ProperAmpleFiniteDimension",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Ampleness/ProperAmpleFiniteDimension.lean",
+      "source_sha256": "0f5e9760b0795ff8c481ded7f807d9bff9db3047c86a28a1ba9bec92b3090f79",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProperAmpleFiniteDimension-20261007-220805.log",
+      "facts_sha256": "acbda75e33c1d4d61073870df7f3c4f0d20d1898d22a31be6d4aac1a0b285c3e"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.CoherentTwistPresentation",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/CoherentTwistPresentation.lean",
+      "source_sha256": "b81f069286284a1a06395f9a5fe4574b7418d8fe61a94091be81b2818ec1a850",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-CoherentTwistPresentation-20261007-230620.log",
+      "facts_sha256": "1499bb3cc3244ec14e833e365aac1c5bb806c17f78e20f04330105d25d8b9593"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.FrameSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/FrameSections.lean",
+      "source_sha256": "99839f4eb33086f7ad5e3ebc9d3bab6d6745dc9dc09b01bf673e7590069953d1",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FrameSections-20261007-231531.log",
+      "facts_sha256": "5c11fdd44abc048958a62943ca94305e99afbfdb240e95e142d5551c2b3b2a23"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.FrameSubopens",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/FrameSubopens.lean",
+      "source_sha256": "46e652aa55dba09e8b7c80aa261d8c458cc956900e780f2d260267a8a4b844f1",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FrameSubopens-20261007-231606.log",
+      "facts_sha256": "8366635998c102273c0e944a6afbd756fd210b64f261523a67fe3aa8e7d86a12"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.FrameTensorPowers",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/FrameTensorPowers.lean",
+      "source_sha256": "59ec15152f3657dd19ef04f1399de896de14baedd94004106af8ea0ce9bbad14",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FrameTensorPowers-20261007-231708.log",
+      "facts_sha256": "c441fc2c7b139ec640d43301f6adf7002d0d91ae11c3fb2e491607d3150ca8dd"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.GlobalSectionClearing",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/GlobalSectionClearing.lean",
+      "source_sha256": "4ae33c705263099efef695fb3fa68b250df84a4d5db2abd46fbe7b8759a626b6",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-GlobalSectionClearing-20261007-232032.log",
+      "facts_sha256": "4baff1b38a92384d467f74488cf3395d7932a5b917e05c73b56a60ec73e4193b"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.IntegralLineSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/IntegralLineSections.lean",
+      "source_sha256": "036e8812426187346858591c7b9b353460cc16a843eca73ada73b2c09e0ece51",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-IntegralLineSections-20261007-232212.log",
+      "facts_sha256": "3629e4d0b17cc5213d12f09755dbbfcf44cecf57dc58b1605e9ca56ca745faa6"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.LinePowerLaws",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/LinePowerLaws.lean",
+      "source_sha256": "4e547a8fb98e331f0b46c6f447d90e4d55567da33f2960f5fd4b06e6464ceea6",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LinePowerLaws-20261007-232601.log",
+      "facts_sha256": "625d8fe442d91575fd1bcbdefe5a7c9b8619af609b8ed16b8b5b1a1cb9ef295b"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.LinePullback",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/LinePullback.lean",
+      "source_sha256": "2d5f57fcf4121b673e5b813a74b1628db2651188e5e9114f10236a40dc3b8991",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LinePullback-20261007-232636.log",
+      "facts_sha256": "14b82dfe8ee8c5f74ada1389e37762f3081076ab34650c8749427dd01c5e8684"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.LinePullbackPowers",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/LinePullbackPowers.lean",
+      "source_sha256": "c0fc08ca7d6c43f5d7fd21780282661f7cc70374bedcccda6557c5d04bd2f028",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LinePullbackPowers-20261007-232701.log",
+      "facts_sha256": "bccda083dc980dbe3d10d819d6f21fdc1a4aaaebbe4bec41d716533a6ae935eb"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.NoetherianPowerExtension",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/NoetherianPowerExtension.lean",
+      "source_sha256": "33cb53d0ce61392a59ecd0d2f35ed162ec0f2f485a525c99ced1f213d7193bce",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-NoetherianPowerExtension-20261007-233421.log",
+      "facts_sha256": "4d3a2e885795205c7e4d8013d851370023f81e0d71949f76b9850a0d0a9f4932"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.OpenBaseChange",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/OpenBaseChange.lean",
+      "source_sha256": "fd2b250820f2177b0d6162fcb37f1ea524d3a9267de9575e99928a6c4cdfaebe",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-OpenBaseChange-20261007-233705.log",
+      "facts_sha256": "dec2ff9fd7ddbbeb84c4d16e0766f875c4e252cf14894dfd4da2b22f984ebea9"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.PowerSectionExtension",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/PowerSectionExtension.lean",
+      "source_sha256": "ac1688b519004f43ccac66ee05e7507c0098bc831aac25ba34e0af28f6414dd6",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-PowerSectionExtension-20261007-234126.log",
+      "facts_sha256": "5a978c0007136289b0925910fe701d15a21092153c01eedbabdc91145f2cbca3"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.PushforwardTensor",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/PushforwardTensor.lean",
+      "source_sha256": "af612a4f234efb901a72e43e86fc65dfdf92dc0f74dfee72222be1c33c6bea9f",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-PushforwardTensor-20261007-234330.log",
+      "facts_sha256": "bb6ce9a2f74aa5d692aed5b4c65e5e0788c7ddf62f0b29249fb01343d1998a29"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.SectionOpens",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/SectionOpens.lean",
+      "source_sha256": "5e9067e79b649f8d2b82d6e8de792224a3974cd71288fe60aa09a19983cbea4b",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-SectionOpens-20261007-234757.log",
+      "facts_sha256": "cbf276e990cd6d637a617f86a0b943ff0031471ffffefa18187c48c986f791ee"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.SectionPowerFrames",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/SectionPowerFrames.lean",
+      "source_sha256": "e943f67d1ba17875e6d6ec6884851aaea6ef93a02c907dc4f73fc59770d58ca5",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-SectionPowerFrames-20261007-234826.log",
+      "facts_sha256": "487be57fab5fd6ce72f01e122c3ebd7f30ededb7920536b46c05ff2e353011e4"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.SectionPowerOpens",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/SectionPowerOpens.lean",
+      "source_sha256": "9c76b6cacf225e71c9cee6c8e532046d0859fa7b367242453246cc33e2ccc2ef",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-SectionPowerOpens-20261007-234910.log",
+      "facts_sha256": "6c36c70690dac2cbdbd87f5ad9be2eccdeae19ee3997b3eb0eddf699a39a9823"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TensorMixedSection",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TensorMixedSection.lean",
+      "source_sha256": "077d9b95ccc6060bdbf58248100ab8956f3c45b7fb7c3fdd2627147f7634e61e",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TensorMixedSection-20261007-235318.log",
+      "facts_sha256": "5c78e316e5c8d857beafc1b50c2bd6d16ff414d0885adfd5be663429a1563b68"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TensorOpenBaseChange",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TensorOpenBaseChange.lean",
+      "source_sha256": "afcf99484f8a1a473d8cf60df9b71b1c19ed4a47ed68a6982c3e3a8760ce97fb",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TensorOpenBaseChange-20261007-235357.log",
+      "facts_sha256": "8cc2f900bb372808f06a0ab69226becdec7a9b889a1c565fbe906eb513037597"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TensorPowerRestriction",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TensorPowerRestriction.lean",
+      "source_sha256": "c395f2582133a8dc54d9060f21832bd0f95e7e693c61e943a835638d3a850ad8",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TensorPowerRestriction-20261007-235502.log",
+      "facts_sha256": "eff81fe9bdce9cb2740d7d44b62426d036ed75398863b4b8a26faf283bccfdd1"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TensorPure",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TensorPure.lean",
+      "source_sha256": "3f21b86a1ec39560102b2cb06c4fc63ad3dea22683780f672d7eefa550c1bbd8",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TensorPure-20261007-235547.log",
+      "facts_sha256": "1e06698fd1aa1e405d050edc1a7c6800fe439c4e326acf3912eddefc0d7690ac"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TensorSectionOpen",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TensorSectionOpen.lean",
+      "source_sha256": "ecfe906874fab7710d3a2dd7331c50c16ef1fd1910cfa7febe47ecd2191d38ec",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TensorSectionOpen-20261007-235632.log",
+      "facts_sha256": "295091ef1caea8e7747338ac6ab25ff13ec24ba05ed1e27b9635a42b1626ef51"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TwistGlobalExtension",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TwistGlobalExtension.lean",
+      "source_sha256": "06c08fafda615ccfde8d1e5bf70889a8e47fdc164aa17a9c893335ba0200c280",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistGlobalExtension-20261007-235701.log",
+      "facts_sha256": "8f692a581bbb4e339a9a9781e87c6bb4985c011c58e6896d105086e0cdf1413b"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TwistPowerSection",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TwistPowerSection.lean",
+      "source_sha256": "c663be70094b01b667602c081eee5758856813869118a3dc5176893a46179edb",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistPowerSection-20261007-235741.log",
+      "facts_sha256": "652a2fc198cc6a94c5bd132ffa9e550b5e93d32ef2377d76b38d997fce97c3d5"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TwistSectionClearing",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TwistSectionClearing.lean",
+      "source_sha256": "407a32f5d3eac9bcc7baacc24488e5255d8c00a44b398280955dcf761f739a92",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistSectionClearing-20261007-235852.log",
+      "facts_sha256": "ad93086266d2cfb51cb56d37f427e16ed3e77bf77e989ae2cbe1e5990c71bab3"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TwistSectionScalars",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TwistSectionScalars.lean",
+      "source_sha256": "349dddc812772710e55c8866404ecd358e6784e1bdedc86302db3fd111bbb49b",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistSectionScalars-20261007-235959.log",
+      "facts_sha256": "9a469cce6a81354e194ab641aeb0656b2ec6147df534f2f30dadec06ea2e8442"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Approximation.TwistSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Approximation/TwistSections.lean",
+      "source_sha256": "0f83c25738b8e1efb257de37b602cf82db4068f4632ddbcae6ff9966bd8fa848",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistSections-20261007-235928.log",
+      "facts_sha256": "f026058df247ef84f38f58ac54bb769972f8217eae612faf61f66b15b52a97cd"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Cohomology.CurveEuler",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Cohomology/CurveEuler.lean",
+      "source_sha256": "c25f7e23b480d3db1a94eec8890d8b4eb4ebead04e5f318cd4999e487000969b",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-CurveEuler-20261008-001630.log",
+      "facts_sha256": "593dea7baf0bd438564df19e1a52ea4c4244d447ba72045d9c329421f6ef5395"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Cohomology.FiniteCoverCohomology",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Cohomology/FiniteCoverCohomology.lean",
+      "source_sha256": "ef4feeca2728ff0bb2172c69daf27f77c4991399d854996bf6c13c4a2fed0187",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FiniteCoverCohomology-20261008-002700.log",
+      "facts_sha256": "3d505b51ae688324edee45bc7ded4bebc7ee3969a86d0d40c5897391752f7a96"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveLaurentVertex",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Cohomology/ProjectiveLaurentVertex.lean",
+      "source_sha256": "5d2449b32fb5b3aeaaea791e43096be8113f96db589e09e966d71590426535f0",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveLaurentVertex-20261008-005546.log",
+      "facts_sha256": "9df95f29cde0ebb409ac78a30fd59d334862147a698bbd536c12d161bde8ab7d"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Cohomology.ProjectiveMonomialCech",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Cohomology/ProjectiveMonomialCech.lean",
+      "source_sha256": "a729a284fe3d392c602c08441577c53b13544535a1163f1d440c1500b36b965c",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveMonomialCech-20261008-005641.log",
+      "facts_sha256": "cb3eab270b6a8e91fb5793a57c18817d116e269b2eb6101f5fbd237e49e028b0"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.LineBundleCoherent",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/LineBundleCoherent.lean",
+      "source_sha256": "e4e3ba472ab140846c2e142e0602a6481db975a3e49c5023a61d39e9f2cb4277",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LineBundleCoherent-20261008-014552.log",
+      "facts_sha256": "d2a8a87fba62aa0f50cd878719f8c17d200424ac7d20c589995473377ae6583e"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.LineBundleGluing",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/LineBundleGluing.lean",
+      "source_sha256": "10717726871391b649d8a913e3498feb390133f59e6fa39409585b4e030e6334",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LineBundleGluing-20261008-014645.log",
+      "facts_sha256": "75086c2b2efe889ddae9e1ca29f0e7902662872980af0cd2284454369cbfff30"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.LineBundleProduct",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/LineBundleProduct.lean",
+      "source_sha256": "185dc5474001ac12d9fbb02deb14a44927c0ebe3a9e0f702acfe50a6d9641558",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LineBundleProduct-20261008-014832.log",
+      "facts_sha256": "8d01057bbbfae02f2db615101672c037dcd11f85bcfdc3fabca6ca15e9002f4d"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.LineBundleTensor",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/LineBundleTensor.lean",
+      "source_sha256": "3cfcc35885bc95d6ab78051aa8f2c6f85bb111df38acdbd9493685cedb8284db",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-LineBundleTensor-20261008-014854.log",
+      "facts_sha256": "4b74080c322fb1c6a9dfc281b2cd41ac7fad06a1cff3e1b0f457ef3f6d1dbccb"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.PolynomialProjectiveStructure",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/PolynomialProjectiveStructure.lean",
+      "source_sha256": "9b9ade1acc98dda62837c8fd48193d5bf1e4afecace9c2dbdcd1a05b9fed9a8c",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-PolynomialProjectiveStructure-20261008-015155.log",
+      "facts_sha256": "40dff3f49a54838c283583c589fc498d4a5a2bc33d011330f7879ff47b6b40e7"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartOverlaps",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveChartOverlaps.lean",
+      "source_sha256": "97a4495a4ff48ea0f124242d336a27065264731bc13289251872adfc7ce61d5f",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveChartOverlaps-20261008-015243.log",
+      "facts_sha256": "472abf367bceabeec7188be783ebde116d9afd8b19062fc3f7041a5d1d5a9e25"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartRingNaturality",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveChartRingNaturality.lean",
+      "source_sha256": "50ab653139f970f58cebff4f9decea93d2abeca6665772d4dd31ce1760ef0044",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveChartRingNaturality-20261008-015311.log",
+      "facts_sha256": "07f23260b7a0354b6ae11e223aa79014538ce3e9041e60954a613b4655f6ec65"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartRingNaturalityCore",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveChartRingNaturalityCore.lean",
+      "source_sha256": "e8a32fcaa1433a6a6b287bad574b35acda68ae4e359e27858e03a3be60a4b681",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveChartRingNaturalityCore-20261008-015338.log",
+      "facts_sha256": "19dcb5b6c4db687bf7e99bbad4ef7de31324b92b9d3c19028f77da39d442c226"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveChartSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveChartSections.lean",
+      "source_sha256": "b289fd7f8140bcd38bc208cc9a92598246defbeba1eedfc81ab84b02854db554",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveChartSections-20261008-015443.log",
+      "facts_sha256": "1a5981cb912e79346815da0fcb6bbba06c9634932ee6a66f59792a65b8fe3ca5"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCharts",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCharts.lean",
+      "source_sha256": "a144497995d80ef394698e3c43ea789fac080b04e4c4b39b1e4452d194632558",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCharts-20261008-015416.log",
+      "facts_sha256": "ba0024a9af4248e649953f7ce86ed40dbfbb61e03b049eb380634bfc127ca67a"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateConstants",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinateConstants.lean",
+      "source_sha256": "cfe69c814d60e3fb3a1ae2439f728506b7df39957b69e232c5a856461553bf8e",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinateConstants-20261008-015552.log",
+      "facts_sha256": "f838470b211ff18a9e8dc25183fbe93f1fe451b71e9d0122802a027cf9dba400"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateFiniteSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinateFiniteSections.lean",
+      "source_sha256": "80bb518d964c0f031f2905ce2297821e4f39daaa7c830ca94bc3384fafc37124",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinateFiniteSections-20261008-015639.log",
+      "facts_sha256": "e21a2862cc1000edecad5f7e875947e3a99c54ba7d6be2596f6011cc7ea2b54f"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateRingNaturality",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinateRingNaturality.lean",
+      "source_sha256": "bdc77354afdd5c4c738c41f46ca0ee1b3b2286d5becef0a3c75b5a804c7ac7b6",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinateRingNaturality-20261008-015843.log",
+      "facts_sha256": "ec8c2d0fe754b5d6c03fd67fe6e5dbd1aebc7cc867a446b6d3287f01215cc151"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinateSections.lean",
+      "source_sha256": "1a4996b3b88e4b59be7f3e9d1842e02047cbe24299165efc9b2049d5606bcbee",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinateSections-20261008-015957.log",
+      "facts_sha256": "2570815bc4da0f9494bb474ee88e03b5d26231c23458c6e92e567d9b0dc4e0f6"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinateValues",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinateValues.lean",
+      "source_sha256": "4af0c17ae95ce83b55130a1d052605ddafaf47e00819e54db18dbebf13222040",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinateValues-20261008-020048.log",
+      "facts_sha256": "009e9eb518f40fc28c7b4c7c15f210824d8f0e4d836fb58c303720e9ae2dd537"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveCoordinates",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveCoordinates.lean",
+      "source_sha256": "cb78a960a7a2d2564739cfc33f228b2bcd071a40af0e1794e9c02d73b44694aa",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveCoordinates-20261008-015908.log",
+      "facts_sha256": "89c6f25715fe1ab9c8b4a12c25d3ee48b0d27c2c48bd2058adc21a828e09fd9f"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveEmbeddingCharts",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveEmbeddingCharts.lean",
+      "source_sha256": "6da5140c64795106ef3467e6d845698fda0401fc18fb0b334f0fca41c37888e3",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveEmbeddingCharts-20261008-020157.log",
+      "facts_sha256": "3e0c2e32977f3ebccf2595c0a357111b5cd8d1bf34641205aa260f78e3d143b7"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveFrameNaturality",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveFrameNaturality.lean",
+      "source_sha256": "7993eafffcdcb21d96b487378d77485375cb23da8fc65dd714a125cdcb7d0ed2",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveFrameNaturality-20261008-020359.log",
+      "facts_sha256": "66db28f908dd9241f9a72fc360de0417a27d4f6fabe0f68cf658d76fe224da82"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveFramedSections",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveFramedSections.lean",
+      "source_sha256": "9617e20d2460830ab293003d3c360934a529597390ba4bca69cfc33771f4d620",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveFramedSections-20261008-020333.log",
+      "facts_sha256": "f531d92a5fdd0b6c16f448a68f198bd844a2fc278f4cebc75f483b63e153e735"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveO1ChartMap",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveO1ChartMap.lean",
+      "source_sha256": "a734376f0e4c7e7f1e0b11e1dd6c68fade3de3dd9c82c431f70fd8578b0abacb",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveO1ChartMap-20261008-020939.log",
+      "facts_sha256": "6167553504d6e614900de015e7c4dcd63045139be8d110943a4cd54298924282"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveRatioCocycle",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveRatioCocycle.lean",
+      "source_sha256": "d0295fa21773588ca2bbf9dc3189afcb9acc804e52d387d7d71c94e9b22e50cd",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveRatioCocycle-20261008-021259.log",
+      "facts_sha256": "a5ef0e287897505a5ebbbd949b98160bd072868adeb9d0dde89404b53a9bd7d1"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.ProjectiveSpaceBasics",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/ProjectiveSpaceBasics.lean",
+      "source_sha256": "3da4dfa11a10d9ca7c5514de343d0fab02104912c7e36d067c41bd07a6be38ab",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectiveSpaceBasics-20261008-021643.log",
+      "facts_sha256": "b0e142222027a7612ab43ebe8cc2432b9fa889507fc16db8681bf280cd1ee751"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Geometry.SheafSectionGluing",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Geometry/SheafSectionGluing.lean",
+      "source_sha256": "6b6be39b72a321b2406f9c0eb7d262d4060c66fd87a33ff774ae61b1290d902c",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-SheafSectionGluing-20261008-022235.log",
+      "facts_sha256": "ecbe9466a343e0a403b77835ea7942f37186828b3ca8b46b506a75b0205c8178"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.LocalAlgebra.FiniteGlobalPresentation",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/FiniteGlobalPresentation.lean",
+      "source_sha256": "5fd14e581a44293978831eeb910214b34e75707f00c2990d0309bbe159d62e5c",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FiniteGlobalPresentation-20261008-030339.log",
+      "facts_sha256": "ba330b3e432d6c612022f2f75091688ae1cda92cdb55d2d397a587d982d7fc5c"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.LocalAlgebra.TwistLocalExtension",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/TwistLocalExtension.lean",
+      "source_sha256": "e211a3b2e1260e96c7e812446d42e123ea43bb2aa12e0577f0cd64e455ca6cf5",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-TwistLocalExtension-20261008-100039.log",
+      "facts_sha256": "aae8f714b670bec4dc0a5aae050962131a13a9c86b0a8ccb5dd1f2288c90f55c"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.FrameCoefficients",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/Polynomials/FrameCoefficients.lean",
+      "source_sha256": "366f40aab1bb3217d3e0e3eb70ffc33af8c42ddf936368f9e3615910fc71d1f8",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-FrameCoefficients-20261008-100919.log",
+      "facts_sha256": "177bb6d7312ad9a45a7f53b7445aaee737210ca76ec63f8fcddd423eb93cc36d"
+    },
+    {
+      "module": "OAI.NumberTheory.PiExponent.ProjectImports",
+      "source": "missions/pi-irrationality-measure/port/lean/OAI/NumberTheory/PiExponent/ProjectImports.lean",
+      "source_sha256": "1fde60e7901c1234920076d0d7874103ff0a82584ebc80bee5994fc55eb3d8ce",
+      "facts": "missions/pi-irrationality-measure/verification/sketch-ProjectImports-20261008-041904.log",
+      "facts_sha256": "50584789115e305a42d67827ae2b351ba4aaf246017a2cdb71ab3bfd8be61331"
+    }
+  ]
+}

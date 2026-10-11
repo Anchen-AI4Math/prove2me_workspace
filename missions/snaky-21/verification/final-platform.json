@@ -1,0 +1,36 @@
+{
+  "theorem_id": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+  "theorem_name": "OAI.SnakyPrototype.snaky_winning_strategy_21_with_legal_states",
+  "theorem_title": null,
+  "status": "Proved",
+  "formal_statement": "theorem snaky_winning_strategy_21_with_legal_states :\n    ∃ σ : Policy Cell,\n      (∀ r M B, σ r M B ∉ M ∧ σ r M B ∉ B) ∧\n      ∀ β : ℕ → Cell, LegalRepliesBeforeFinal σ 21 β ∅ ∅ →\n        HasSnaky (playState σ 21 β ∅ ∅ 21).1 ∧\n        (playState σ 21 β ∅ ∅ 21).1.card = 21 ∧\n        Disjoint (playState σ 21 β ∅ ∅ 21).1 (playState σ 21 β ∅ ∅ 20).2 ∧\n        ∀ k, k < 21 →\n          Disjoint (playState σ 21 β ∅ ∅ k).1 (playState σ 21 β ∅ ∅ k).2 ∧\n          (playState σ 21 β ∅ ∅ k).2.card = k := by\n  sorry\n\nend SnakyPrototype\nend OAI\n",
+  "natural_language_statement": "The theorem states that there is a policy σ for a Maker–Breaker-style placement game on the integer grid ℤ×ℤ, where a policy maps the number r of remaining rounds, the finite set M of cells already claimed by the maker, and the finite set B of cells already claimed by the blocker to a cell, such that σ always proposes a cell lying in neither M nor B, and such that for every blocker reply sequence β : ℕ → ℤ×ℤ that is legal before the final round, the following hold. Play starts from empty sets; at round k (counting from 0) with N = 21, the maker adds σ(21−k, M, B) to M and the blocker adds β(k) to B. Legality means that for every k with k+1 < 21, β(k) is not already in the maker's set, not the maker's cell chosen in that same round, and not already in the blocker's set. Under this legality assumption, the maker's set after 21 rounds contains a copy of the six-cell shape snaky = {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)}, placed by one of the eight rotations or reflections of the grid (as given by the orient map) followed by a translation. That final maker set has exactly 21 cells and is disjoint from the blocker's set after 20 rounds. Moreover, for every k < 21, the maker's and blocker's sets after k rounds are disjoint and the blocker's set has exactly k cells. The blocker's 21st reply is not constrained by the legality condition.",
+  "created_at": "2026-10-07T04:33:23.838799+00:00",
+  "vote_count": 0,
+  "tags": [],
+  "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyTwentyOne.lean; bytes 1586..2177\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\nimport Definitions.Def_SnakyTwentyOne\n\nnamespace OAI\n\nnamespace SnakyPrototype\n\nopen OrdinaryStrategy\n\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyTwentyOne.lean",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "256ee1ed-825e-4577-88dd-b81f23f59b1b",
+      "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "reviewer_username": "Community (Bot)",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-07T07:06:53.275973+00:00"
+    },
+    {
+      "audit_id": "d87bd2fa-e02d-4827-9a34-b061916142d1",
+      "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "reviewer_username": "wurtle",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-07T07:06:53.515959+00:00"
+    }
+  ],
+  "readback": null
+}

@@ -1,0 +1,151 @@
+{
+  "status": "PURE_INDEPENDENT_REVIEW_DESIGN_ONLY; PLATFORM_AUTHOR_NOT_YET_REVIEWED",
+  "role": "platform transplantation independent auditor, not platform author",
+  "current_owner": "parameter_author_recovery_1007",
+  "native_independent_report": {
+    "task_relative": "verification/formalization-analytic-phase-upper-bound-independent-2026-10-07/independent-audit.json",
+    "bytes": 9678405,
+    "sha256": "f487b27f1668432926ad505e4f30a67e41c1abf75ad9690cc2c84369487067cc"
+  },
+  "verified_native_source_exports": [
+    {
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-independent-2026-10-07/native-export/AnalyticPhase.lean",
+      "bytes": 6791,
+      "sha256": "2b53b56f103bc69322c35d18e120c248cc34402fe831b7be86651f584d3bf4bd"
+    },
+    {
+      "task_relative": "verification/formalization-analytic-phase-upper-bound-independent-2026-10-07/native-export/AnalyticPhaseUpperBound.lean",
+      "bytes": 8563,
+      "sha256": "388c2be7c6401e0b0944e5ee9601ddd4f9359f85d05319ce191e6c6a4d0f1635"
+    }
+  ],
+  "native_whole_theorem_headers": {
+    "phaseGap_identity": "theorem phaseGap_identity (x : ℝ) :\n    (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10 =\n    (743876235460997060507 / 100000000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 0 +\n    (109589356802878649457 / 100000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 1 +\n    (10634683646357555663 / 2000000000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 2 +\n    (29280046551142071 / 2500000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 3 +\n    (1524457114482447 / 100000000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 4 +\n    (32277046531191 / 2500000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 5 +\n    (73792828347 / 10000000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 6 +\n    (71169471 / 25000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 7 +\n    (1428963 / 2000 : ℝ) * (x - (101 / 100 : ℝ)) ^ 8 +\n    (1057 / 10 : ℝ) * (x - (101 / 100 : ℝ)) ^ 9 +\n    (7 / 1 : ℝ) * (x - (101 / 100 : ℝ)) ^ 10 :=",
+    "phaseGap_pos": "theorem phaseGap_pos (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    0 < (x - 1) * (x + 1) ^ 10 - (x + 2) * x ^ 10 :=",
+    "phaseRatio_pos": "theorem phaseRatio_pos (x : ℝ) (hx : 1 < x) : 0 < phaseRatio x :=",
+    "phaseRatio_lt_one": "theorem phaseRatio_lt_one (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseRatio x < 1 :=",
+    "phaseSlope_eq_log_ratio": "theorem phaseSlope_eq_log_ratio (x : ℝ) (hx : 1 < x) :\n    phaseSlope x = Real.log (phaseRatio x) :=",
+    "phaseSlope_neg_right": "theorem phaseSlope_neg_right (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phaseSlope x < 0 :=",
+    "hasDerivAt_mul_log_shift": "theorem hasDerivAt_mul_log_shift (x a : ℝ) (ha : x + a ≠ 0) :\n    HasDerivAt (fun y : ℝ => (y + a) * Real.log (y + a))\n      (Real.log (x + a) + 1) x :=",
+    "phase_hasDerivAt": "theorem phase_hasDerivAt (x : ℝ) (hx : 1 < x) :\n    HasDerivAt phase (phaseSlope x) x :=",
+    "deriv_phase": "theorem deriv_phase (x : ℝ) (hx : 1 < x) : deriv phase x = phaseSlope x :=",
+    "phase_strictAntiOn_right": "theorem phase_strictAntiOn_right : StrictAntiOn phase (Ici (101 / 100 : ℝ)) :=",
+    "phase_le_right_endpoint": "theorem phase_le_right_endpoint (x : ℝ) (hx : (101 / 100 : ℝ) ≤ x) :\n    phase x ≤ phase (101 / 100) :=",
+    "upperSlopeConstant_pos": "theorem upperSlopeConstant_pos : 0 < upperSlopeConstant :=",
+    "upperSlopeConstant_eq": "theorem upperSlopeConstant_eq : upperSlopeConstant =\n    (33249125974877255751301 / 10763674952097696180200100 : ℝ) :=",
+    "phaseRatio_small_interval_le": "theorem phaseRatio_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseRatio (1 + u) ≤ upperSlopeConstant / u :=",
+    "phaseSlope_small_interval_le": "theorem phaseSlope_small_interval_le (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) : phaseSlope (1 + u) ≤ Real.log (upperSlopeConstant / u) :=",
+    "phase_one_eq": "theorem phase_one_eq : phase 1 = 3 * Real.log 3 - 20 * Real.log 2 :=",
+    "smoothPhaseGap_one": "theorem smoothPhaseGap_one : smoothPhaseGap 1 = 0 :=",
+    "smoothPhaseGap_hasDerivAt": "theorem smoothPhaseGap_hasDerivAt (x : ℝ) (hx : 1 ≤ x) :\n    HasDerivAt smoothPhaseGap (smoothPhaseSlope x) x :=",
+    "smoothPhaseRatio_pos": "theorem smoothPhaseRatio_pos (x : ℝ) (hx : 1 ≤ x) :\n    0 < smoothPhaseRatio x :=",
+    "smoothPhaseRatio_le_upperSlopeConstant": "theorem smoothPhaseRatio_le_upperSlopeConstant (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseRatio x ≤ upperSlopeConstant :=",
+    "smoothPhaseSlope_eq_log_ratio": "theorem smoothPhaseSlope_eq_log_ratio (x : ℝ) (hx : 1 ≤ x) :\n    smoothPhaseSlope x =\n      Real.log (smoothPhaseRatio x) - Real.log upperSlopeConstant :=",
+    "smoothPhaseSlope_nonpos": "theorem smoothPhaseSlope_nonpos (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseSlope x ≤ 0 :=",
+    "smoothPhaseGap_antitoneOn": "theorem smoothPhaseGap_antitoneOn :\n    AntitoneOn smoothPhaseGap (Icc (1 : ℝ) (101 / 100 : ℝ)) :=",
+    "smoothPhaseGap_le_zero": "theorem smoothPhaseGap_le_zero (x : ℝ)\n    (hx : x ∈ Icc (1 : ℝ) (101 / 100 : ℝ)) :\n    smoothPhaseGap x ≤ 0 :=",
+    "mul_one_add_log_div_le": "theorem mul_one_add_log_div_le (a u : ℝ) (ha : 0 < a) (hu : 0 < u) :\n    u * (1 + Real.log (a / u)) ≤ a :=",
+    "phase_small_interval_identity": "theorem phase_small_interval_identity (u : ℝ) (hu : 0 < u) :\n    phase (1 + u) = phase 1 +\n      u * (1 + Real.log (upperSlopeConstant / u)) + smoothPhaseGap (1 + u) :=",
+    "phase_small_interval_le_one_add_constant": "theorem phase_small_interval_le_one_add_constant (u : ℝ) (hu : 0 < u)\n    (hu1 : u ≤ (1 / 100 : ℝ)) :\n    phase (1 + u) ≤ phase 1 + upperSlopeConstant :=",
+    "phase_global_le_one_add_constant": "theorem phase_global_le_one_add_constant (x : ℝ) (hx : 1 < x) :\n    phase x ≤ phase 1 + upperSlopeConstant :=",
+    "log_two_lower_rational": "theorem log_two_lower_rational : (693147 / 1000000 : ℝ) < Real.log 2 :=",
+    "log_three_upper_rational": "theorem log_three_upper_rational : Real.log 3 < (1098613 / 1000000 : ℝ) :=",
+    "upperSlopeConstant_lt_rational": "theorem upperSlopeConstant_lt_rational :\n    upperSlopeConstant < (309 / 100000 : ℝ) :=",
+    "phase_one_add_constant_lt_certified": "theorem phase_one_add_constant_lt_certified :\n    phase 1 + upperSlopeConstant < (-10564011 / 1000000 : ℝ) :=",
+    "phase_global_lt_certified": "theorem phase_global_lt_certified (x : ℝ) (hx : 1 < x) :\n    phase x < (-10564011 / 1000000 : ℝ) :=",
+    "phase_global_upper_bound": "theorem phase_global_upper_bound :\n    ∀ x : ℝ, 1 < x → phase x ≤ (-2641 / 250 : ℝ) :="
+  },
+  "native_seven_full_definition_bodies": {
+    "phase": "def phase (x : ℝ) : ℝ :=\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\n    (x - 1) * Real.log (x - 1) - 10 * (x + 1) * Real.log (x + 1)",
+    "phaseRatio": "def phaseRatio (x : ℝ) : ℝ := (x + 2) * x ^ 10 / ((x - 1) * (x + 1) ^ 10)",
+    "phaseSlope": "def phaseSlope (x : ℝ) : ℝ :=\n  10 * Real.log x + Real.log (x + 2) - Real.log (x - 1) - 10 * Real.log (x + 1)",
+    "upperSlopeConstant": "def upperSlopeConstant : ℝ := (301 / 100 : ℝ) * (101 / 201 : ℝ) ^ 10",
+    "smoothPhaseGap": "def smoothPhaseGap (x : ℝ) : ℝ :=\n  10 * x * Real.log x + (x + 2) * Real.log (x + 2) -\n    10 * (x + 1) * Real.log (x + 1) - phase 1 -\n      (x - 1) * (1 + Real.log upperSlopeConstant)",
+    "smoothPhaseSlope": "def smoothPhaseSlope (x : ℝ) : ℝ :=\n  10 * Real.log x + Real.log (x + 2) - 10 * Real.log (x + 1) -\n    Real.log upperSlopeConstant",
+    "smoothPhaseRatio": "def smoothPhaseRatio (x : ℝ) : ℝ :=\n  (x + 2) * (x / (x + 1)) ^ 10"
+  },
+  "exact_selected_endpoints": [
+    {
+      "native_name": "ZetaNine.AnalyticPhase.phase_strictAntiOn_right",
+      "complete_original_header": "theorem phase_strictAntiOn_right : StrictAntiOn phase (Ici (101 / 100 : ℝ)) :="
+    },
+    {
+      "native_name": "ZetaNine.AnalyticPhase.phase_global_lt_certified",
+      "complete_original_header": "theorem phase_global_lt_certified (x : ℝ) (hx : 1 < x) :\n    phase x < (-10564011 / 1000000 : ℝ) :="
+    },
+    {
+      "native_name": "ZetaNine.AnalyticPhase.phase_global_upper_bound",
+      "complete_original_header": "theorem phase_global_upper_bound :\n    ∀ x : ℝ, 1 < x → phase x ≤ (-2641 / 250 : ℝ) :="
+    }
+  ],
+  "whole_native_header_count": 34,
+  "whole_native_definition_count": 7,
+  "native_actual_all_auxiliary_names": [
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_1",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_2",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_3",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_4",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_5",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_6",
+    "ZetaNine.AnalyticPhase.mul_one_add_log_div_le._simp_1_7",
+    "ZetaNine.AnalyticPhase.phase._proof_1",
+    "ZetaNine.AnalyticPhase.phase._proof_2",
+    "ZetaNine.AnalyticPhase.phase.eq_1",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_1",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_2",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_3",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_4",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_5",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_6",
+    "ZetaNine.AnalyticPhase.phaseRatio_small_interval_le._simp_1_7",
+    "ZetaNine.AnalyticPhase.phaseSlope.eq_1",
+    "ZetaNine.AnalyticPhase.smoothPhaseGap._proof_1",
+    "ZetaNine.AnalyticPhase.smoothPhaseGap._proof_2",
+    "ZetaNine.AnalyticPhase.smoothPhaseGap.eq_1",
+    "ZetaNine.AnalyticPhase.smoothPhaseSlope.eq_1",
+    "ZetaNine.AnalyticPhase.upperSlopeConstant._proof_1",
+    "ZetaNine.AnalyticPhase.upperSlopeConstant._proof_2",
+    "ZetaNine.AnalyticPhase.upperSlopeConstant._proof_3",
+    "ZetaNine.AnalyticPhase.upperSlopeConstant._proof_4",
+    "ZetaNine.AnalyticPhase.upperSlopeConstant.eq_1"
+  ],
+  "platform_author_owner": "outputs_independent_recovery_1007",
+  "platform_author_staging_read_only_for_this_auditor": true,
+  "platform_author_project": ".rt/apfa1",
+  "independent_project": "Root must grant a distinct fresh project after actual author freeze",
+  "prohibited_proof_object_reuse": [
+    ".rt/api1 objects",
+    ".rt/aph1 objects",
+    ".rt/apfa1 objects",
+    "Root proof objects",
+    "any other agent proof objects"
+  ],
+  "allowed_dependencies": [
+    "pinned intrinsic Lean 4.33.1",
+    "pinned Mathlib environment 0df444a360eaa60ab8c11dca51a86af692955474",
+    "whole verified native SOURCE copied and recompiled personally",
+    "seven exact final platform SOURCE payloads compiled personally"
+  ],
+  "review_requirements": [
+    "Read and personally rehash every actual platform author final binding and every payload, preserving actual failures and source versions",
+    "Inspect all seven payloads: one complete definition bundle, three exact theorem interfaces, three complete solution bodies",
+    "Compile real reachable proof SOURCE closure; no statement mirrors may substitute actual supporting proofs",
+    "Retain all 34 whole native theorem headers and all seven complete definition types and bodies; inspect all actual generated match/equation/public/private helpers rather than a name-prefix estimate",
+    "Independently compare all seven actual definition whole types and values to the original SOURCE, with strict kernel isDefEq and whole-function rfl witnesses",
+    "Retain raw Expr.equal true/false observations; only separately checked proposition-valued generated helper unfolding is permitted, with no binder/metadata/name/universe erasure",
+    "Compare all three submitted whole endpoint types with exact original native foralls and unrestricted real domain x greater than 1 where applicable",
+    "Inspect all complete theorem proof values, generated helper values and definition values with actual inferType and Std3 collection; use lossless field-preserving DAG and actual decode Expr.equal for shared large values",
+    "Record actual canonical object resolution: only own source-built proof objects, pinned packages and intrinsic toolchain; prove absence of author/native/Root object fallback",
+    "Preserve source input bytes, outputs, stdout, stderr, exit and selected paths for every actual call; freeze a complete independently rehashed binding manifest"
+  ],
+  "author_report_exists_claimed": false,
+  "platform_payloads_compiled_claimed": false,
+  "independent_Lean_PASS_claimed": false,
+  "native_PASS_is_not_platform_transplantation_PASS": true,
+  "phase_component_only": true,
+  "complete_Z9_A_height_J_or_irrationality_claimed": false,
+  "Lean_calls": 0,
+  "API_calls": 0,
+  "Root_install_scope_or_mission_writes": 0,
+  "new_public_proposal_id": "19653cff-d481-498a-a717-10630d1ca1b7"
+}

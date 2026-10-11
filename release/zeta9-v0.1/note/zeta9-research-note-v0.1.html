@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Research Notes on &zeta;(9): Constructions, Computations, and Open Problems (v0.1)</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+  :root { --ink:#1a1a1a; --muted:#555; --rule:#ccc; --ok:#0b6b3c; --open:#a01414; --num:#0a4a9c; --heu:#666; }
+  html { font-size: 15px; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: var(--ink);
+         max-width: 760px; margin: 2em auto; padding: 0 1.2em; line-height: 1.55; }
+  h1 { font-size: 1.55rem; text-align: center; margin-bottom: 0.2em; }
+  h2 { font-size: 1.2rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.15em; margin-top: 1.6em; }
+  h3 { font-size: 1.05rem; margin-top: 1.3em; }
+  .author, .date { text-align: center; color: var(--muted); margin: 0.1em 0; }
+  .statusbox { border: 1.5px solid var(--ink); padding: 0.7em 1em; margin: 1.2em 0; font-size: 0.96rem; }
+  .corrbox { border: 1.5px solid var(--open); padding: 0.6em 1em; margin: 1em 0; font-size: 0.95rem; background: #fff7f7; }
+  table { border-collapse: collapse; margin: 0.8em auto; font-size: 0.88rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.25em 0.6em; text-align: left; vertical-align: top; }
+  th { background: #f2f2f2; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag { font-weight: bold; white-space: nowrap; }
+  .R { color: var(--ok); font-weight: bold; } .C { color: var(--ok); font-weight: bold; }
+  .M { color: var(--num); font-weight: bold; } .N { color: var(--num); font-weight: bold; }
+  .H { color: var(--heu); font-weight: bold; } .O { color: var(--open); font-weight: bold; }
+  code { font-family: 'Consolas','Courier New',monospace; font-size: 0.88em; }
+  .small { font-size: 0.9rem; color: var(--muted); }
+  ul.tight li, ol.tight li { margin: 0.25em 0; }
+  @media print {
+    body { max-width: none; margin: 0; font-size: 11.5pt; }
+    h2 { page-break-after: avoid; } table, .statusbox { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Research Notes on &zeta;(9):<br>Constructions, Computations, and Open Problems</h1>
+<p class="author">Yuxuan Xu</p>
+<p class="date">School of Computer Science, Wuhan University, Wuhan, China<br>
+ORCID: 0009-0001-8760-5277</p>
+<p class="date">Version 0.1 &mdash; research notes dated 24&ndash;25 September 2026; compiled 25 September 2026.<br>
+<span class="small">Date of first public release: the date stamped on the Zenodo record (not backdated).</span></p>
+
+<div class="statusbox">
+<strong>Status statement (read first).</strong>
+<strong>This note does not claim a proof of the irrationality of &zeta;(9).</strong>
+No such proof exists in the material described here, conditionally or otherwise.
+The purpose of this version (v0.1) is to make public the concrete constructions,
+the local arguments that <em>are</em> proved (in writing, with the caveats stated),
+the computations that were actually run and archived, and the open problems that remain.
+Every substantial statement carries a status tag:
+<span class="R">R</span> a written proof exists and no error was found on review;
+<span class="C">R*</span> proved conditional on a named standard input (e.g. the prime number theorem);
+<span class="M">M</span> proved only modulo another claim in the same corpus;
+<span class="N">N</span> verified numerically (in places with interval arithmetic) on an explicitly finite range, with no uniformity;
+<span class="H">H</span> heuristic, not a proof step;
+<span class="O">OPEN</span> needed but absent.
+&ldquo;Not formalized&rdquo; is reported as a fact about the state of formal verification, <em>not</em> as a
+logical gap in a written proof; conversely, no statement is claimed to be formally verified unless it is.
+</div>
+
+<h2>1. Aim, scope, and provenance</h2>
+<p>
+These notes record a two-day research effort (24&ndash;25 September 2026) on the irrationality of
+&zeta;(9), carried out in a local workspace and partially mirrored into a private mission on a
+crowdsourced formalization platform. The effort comprises <strong>nine research rounds</strong> (round 1 and
+rounds 2&ndash;9), a <strong>roadmap dependency graph</strong> (40 named nodes) that redirected the programme
+after round 9, and a <strong>platform layer</strong> containing eight theorem-level formal proofs with
+<em>abstract</em> statements. A full proof-state audit of the corpus was prepared on 25 September 2026 and is
+included in the source archive as provenance; the present note is the public-facing distillation of that
+material, with three factual corrections applied (Section 8).</p>
+<p><strong>What is published here.</strong> (i) Two concrete families of constructions producing rational
+linear forms in &zeta;(9) (Part I); (ii) the exact algebra, integrality theorems, valuation formulas and a
+certified analytic <em>upper</em> bound around them; (iii) finite certified computations with archived
+artifacts and reproduction instructions; (iv) the later constructions and the current roadmap with its open
+nodes (Part II); (v) a canonical list of what is missing.</p>
+<p><strong>What is not claimed.</strong> No irrationality statement; no eventual nonvanishing of any linear
+form along an infinite sequence; no decay of any integer primitive form; no asymptotic for any true primitive
+denominator; no formal verification of the note-proved layer. Finite computations are reported as finite
+computations: a value certified at a tested parameter is never presented as a statement about infinitely many
+parameters, and the first success inside a discrete scan is never presented as a minimal threshold or a final
+answer.</p>
+
+<h2>2. Conventions</h2>
+<p class="small">Rising Pochhammer $(x)_r=x(x+1)\cdots(x+r-1)$. Harmonic sums $H_j^{(r)}=\sum_{i=1}^{j}i^{-r}$,
+$H_0^{(r)}=0$. $v_p$ is the $p$-adic valuation; $v_p(n!)=\sum_{k\ge1}\lfloor n/p^k\rfloor$ (Legendre).
+$d_n=\operatorname{lcm}(1,\dots,n)$, so $\log d_n=\psi(n)$ is Chebyshev's $\psi$ (all prime powers; an earlier
+draft wrote $\vartheta$, which was corrected in the source notes). $\{x\}=x-\lfloor x\rfloor$.
+$\zeta(s)=\sum_{k\ge1}k^{-s}$.</p>
+
+<h2>Part I &mdash; The first-round routes (24 September 2026)</h2>
+
+<h2>3. The main construction and its exact algebra</h2>
+<p>For positive even $n$ and $0\le m\le 3n/14$ (the grid uses $m=\alpha n$,
+$\alpha\in\{0,\tfrac1{28},\tfrac1{14},\tfrac3{28},\tfrac17,\tfrac5{28},\tfrac3{14}\}$), define
+$$R_{n,m}(t)=\frac{(n!)^3}{(m!)^{14}}\,\frac{\bigl[(t-m)_m\,(t+n+1)_m\bigr]^{7}}{(t)_{n+1}^{3}},
+\qquad L_{n,m}=\frac1{6!}\sum_{k\ge1}R^{(6)}_{n,m}(k).$$
+$R_{n,m}$ has poles of order $\le3$ exactly at $0,-1,\dots,-n$, zeros of order $7$ at $1,\dots,m$ and
+$-n-m,\dots,-n-1$, and $R_{n,m}(t)=O(t^{-2})$; hence $L_{n,m}$ converges absolutely. <span class="R">[R]</span>
+Partial fractions $R_{n,m}(t)=\sum_{j=0}^{n}\bigl(\tfrac{C_j}{(t+j)^3}+\tfrac{D_j}{(t+j)^2}+\tfrac{E_j}{t+j}\bigr)$
+have the closed form
+$$C_j=(-1)^{m+j}\tbinom{n}{j}^{3}\tbinom{j+m}{m}^{7}\tbinom{n-j+m}{m}^{7}\in\mathbb Z,$$
+with $D_j=C_ju_j$, $E_j=\tfrac{C_j}{2}(u_j^2+v_j)$, where
+$u_j=10H_j-10H_{n-j}-7H_{j+m}+7H_{n-j+m}$ and $v_j=10H_j^{(2)}+10H_{n-j}^{(2)}-7H_{j+m}^{(2)}-7H_{n-j+m}^{(2)}$.
+<span class="R">[R]</span> The coefficient of $t^{-1}$ at infinity vanishes ($\sum_jE_j=0$), and reflection
+$R_{n,m}(-n-t)=-R_{n,m}$ for even $n$ gives $\sum_jD_j=0$; consequently the $\zeta(7)$- and
+$\zeta(8)$-coefficients of the six-derivative sum die exactly and
+$$L_{n,m}=A_{n,m}\zeta(9)+B_{n,m},\qquad
+A_{n,m}=28\sum_{j=0}^n C_j,\quad
+B_{n,m}=-\sum_{j=0}^{n}\bigl(E_jH_j^{(7)}+7D_jH_j^{(8)}+28C_jH_j^{(9)}\bigr)\in\mathbb Q. \quad \text{[R]}$$
+<em>Worked example</em> (recomputed independently for the audit, to the full precision of the archived
+certificate): at $(n,m)=(2,0)$, $C=(1,-8,1)$, $D=(-\tfrac92,0,\tfrac92)$, $E=(12,-24,12)$, $A=-168$,
+$B=176.228515625$, and $L=7.89110563021818797780073476895\ldots$</p>
+
+<h2>4. Integrality and $p$-adic arithmetic</h2>
+<p>Write $d=\operatorname{lcm}(1,\dots,n+m)$ and $G=\gcd_{0\le j\le n}|C_j|$. Two integerization theorems are
+proved in writing:</p>
+<ul class="tight">
+<li><strong>Elementary.</strong> $t_{n,m}A_{n,m},\,t_{n,m}B_{n,m}\in\mathbb Z$ with the raw multiplier
+$t_{n,m}=2d^{9}/G$. <span class="R">[R]</span></li>
+<li><strong>Improved (headline).</strong> For $m\le 3n/14$, $t^{\sharp}_{n,m}A_{n,m}\in\mathbb Z$ and
+$t^{\sharp}_{n,m}B_{n,m}\in\mathbb Z$ with $t^{\sharp}_{n,m}=d_n^{9}/G$; the two multipliers are consistent,
+$t_{n,m}/t^{\sharp}_{n,m}=2(d/d_n)^9$. <span class="R">[R, written]</span>
+The written proof removes the surface factor $2$ via integral binomial Taylor coefficients and lowers the
+harmonic denominator bound from $n+m$ to $n$ by a carry argument on the top prime-power level.
+<em>Caveat:</em> the written proof is a sketch; the carry bookkeeping is its least-protected step. Its
+<em>conclusion</em> (not the proof) was independently re-verified on five parameter pairs up to $n=224$:
+$G$, $d$ recomputed from scratch match the archived records, $t^{\sharp}A,t^{\sharp}B\in\mathbb Z$, and
+$t^{\sharp}/m_{\mathrm{prim}}$ equals the archived integer. <span class="N">[N, five cases]</span></li>
+<li><strong>Minimality.</strong> If $tF\in\mathbb Z[X]$ for a positive rational $t$, then
+$t/m_{\mathrm{prim}}\in\mathbb Z_{&gt;0}$: no clearing convention can shrink an already-computed primitive
+form. <span class="R">[R]</span></li>
+</ul>
+<p>The valuations are exact: $v_p(C_j)=3v_p(n!)+7v_p((j+m)!)+7v_p((n-j+m)!)-10v_p(j!)-10v_p((n-j)!)-14v_p(m!)$,
+and $G\mid C_0=\pm\binom{n+m}{m}^7$. <span class="R">[R]</span> For large primes there is an exact formula:
+if $p^2&gt;n+m$ and $n\ge2m$, then with $r=n\bmod p$, $s=m\bmod p$,
+$$v_p(G)=7\cdot\mathbf 1_{\,r+2s\ge 2p-1}. \qquad \text{[R; re-checked on 216 parameters / 1{,}951 prime terms, 0 failures, N]}$$
+Small primes contribute $o(n)$, and the floor-boundary discrepancy contributes at most
+$7\log(n+2m+1)=o(n)$ <span class="C">[R*, PNT]</span>. Along $m=\alpha n$,
+$$\lim\frac{\log G}{n}=\Gamma(\alpha),\qquad
+\Gamma(\alpha)=7\int_{1}^{\infty}\frac{\mathbf 1_{\{x\}+2\{\alpha x\}\ge2}}{x^{2}}\,dx,\qquad
+\lim\frac{\log t^{\sharp}_{n,m}}{n}=9-\Gamma(\alpha), \quad \text{[R*, PNT]}$$
+with $0\le\Gamma(\alpha)\le14\alpha$ <span class="R">[R]</span>. Rational interval enclosures of
+$\Gamma(\alpha)$ (period decomposition, outward rounding on a $10^{-32}$ grid, explicit tail bound) give, for
+the six grid values, $\Gamma\in[0.14171563,0.14171565],\dots,[0.85210820,0.85210822]$; all six intervals were
+reproduced independently. <span class="N">[N]</span>
+<strong>Boundary:</strong> these are asymptotics of multipliers that were <em>proved valid</em>. Since
+$t^{\sharp}$ is valid, $m_{\mathrm{prim}}\mid t^{\sharp}$, so $9-\Gamma(\alpha)$ is an <em>upper</em> bound for
+$\lim\log m_{\mathrm{prim}}/n$ &mdash; not the cost of the primitive form. The measured finite gaps
+$g_{n,m}=\tfrac1n\log(t^{\sharp}/m_{\mathrm{prim}})$ at $n=224$ are $0.86,0.71,0.71,0.67,0.62,0.74$ and show no
+sign of vanishing; their limit is unknown. Statements of the form &ldquo;cost $\ge 9-14\alpha$&rdquo; are lower
+bounds for an upper bound of the true cost and carry no consequence by themselves.</p>
+
+<h2>5. The contour identity and the analytic upper bound</h2>
+<p>Let $K_7(z)=\sum_{k\in\mathbb Z}(z-k)^{-7}=\tfrac1{6!}\tfrac{d^{6}}{dz^{6}}(\pi\cot\pi z)$. Two exact closed
+forms are used interchangeably in the corpus (both re-verified numerically for this release against a direct
+truncated sum, agreement to $10^{-18}$ at 50-digit working precision):
+$$K_7(z)=\frac{\pi^{7}\bigl[302\cos(\pi z)+57\cos(3\pi z)+\cos(5\pi z)\bigr]}{360\,\sin^{7}(\pi z)}
+\;=\; i\,\frac{(2\pi)^{7}}{720}\sum_{\ell\ge1}\ell^{6}q^{\ell},
+\qquad q=e^{2\pi iz},\ \Im z&gt;0,$$
+where $\sum_{\ell\ge1}\ell^{6}q^{\ell}=\dfrac{q\,(1+57q+302q^{2}+302q^{3}+57q^{4}+q^{5})}{(1-q)^{7}}$ and the
+Eulerian numerator coefficients $1,57,302,302,57,1$ sum to $720=6!$, which is what gives the principal part
+$(z-k)^{-7}$ at each integer. (In the trigonometric form the numerator coefficients $302,57,1$ and the
+denominator are both $360$; the two forms are consistent. See Correction C-I, Section 8.)
+<span class="R">[R]</span></p>
+<p><strong>Exact contour identity.</strong> For $c\in(m,m+1)$, in particular $c=m+\tfrac12$,
+$$L_{n,m}=-\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}R_{n,m}(z)\,K_7(z)\,dz. \qquad \text{[R]}$$
+The orientation sign was re-checked independently by direct numerical contour integration at $(n,m)=(2,0)$:
+$I=-49.5812789531890297\,i$ and $-I/(2\pi i)=L$ to 28 digits. <span class="N">[N, one case]</span></p>
+<p><strong>Phase.</strong> With $z=nw$ and principal branches in the upper half-plane, Stirling summation gives
+the analytic phase
+$$\Phi_\alpha(w)=-14\alpha\log\alpha+10w\log w+7(w{+}1{+}\alpha)\log(w{+}1{+}\alpha)
+-7(w{-}\alpha)\log(w{-}\alpha)-10(w{+}1)\log(w{+}1),$$
+in which the $n\log n$ coefficient cancels exactly (factorial prefactor $3-14\alpha$; products $14\alpha-3$),
+and
+$$\log|R_{n,m}(nw)|=n\,\Re\Phi_\alpha(w)+O_\alpha(\log n)$$
+at leading order &mdash; i.e. $\tfrac1n\log|R_{n,m}(nw)|=\Re\Phi_\alpha(w)+o(1)$.
+<span class="R">[R; scale corrected, see C-II]</span>
+A shifted-Riemann-sum argument ($\delta=1/(2n)$, shift of the line $\Re w=\alpha$ by $\delta$ costing
+$O_\alpha(\log n)$, uniformly in $y\ge0$) upgrades this to a <em>uniform</em> estimate
+$\log|R_{n,m}(m+\tfrac12+iny)|\le n\Re\Phi_\alpha(\alpha+\delta+iy)+O_\alpha(\log n)$; the written argument is
+a sketch with untracked constants, sufficient for a limsup but not for any finite-$n$ statement.
+<span class="M">[M, sketch]</span> Combined with the contour identity, a compact Laplace bound and an
+exponential tail (valid because $14\alpha-3\le0$),
+$$\limsup_{n\to\infty,\ m=\alpha n}\frac{\log|L_{n,m}|}{n}\ \le\ \sup_{y\ge0}H_\alpha(y),
+\qquad H_\alpha(y)=\Re\Phi_\alpha(\alpha+iy)-2\pi y. \quad \text{[M]}$$
+<strong>This is an upper bound on the exponential rate of $|L|$.</strong> The certified bounds on the tested
+parameter grid are positive and therefore do not establish decay. Upper bounds alone do not establish
+nonvanishing or a matching asymptotic formula.</p>
+<p>The derivative has the exact form
+$H'_\alpha(y)=\tfrac{3\pi}{2}-10\arctan\tfrac{y}{\alpha}-7\arctan\tfrac{y}{1+2\alpha}+10\arctan\tfrac{y}{1+\alpha}$,
+with $H'_\alpha(0)=\tfrac{3\pi}{2}$ and $H'_\alpha(\infty)=-2\pi$ <span class="R">[R; re-derived, N-checked to
+$10^{-40}$]</span>. $H''_\alpha$ times the positive product of the three quadratics is a quadratic in $y^2$
+whose constant coefficient is negative, linear coefficient positive, and leading coefficient exactly
+$3-14\alpha$; hence $H'$ has exactly one positive zero, the global maximizer of $H_\alpha$
+<span class="R">[R, shape]</span> <span class="N">[N, per $\alpha$; degenerate leading coefficient at the
+endpoint $\alpha=3/14$, handled by the linear root]</span>. Certified strict upper bounds (maximizer bracketed
+between exact dyadic rationals; $H$ evaluated on the whole bracket with 256-bit Arb balls), reproduced
+independently to 12 digits:</p>
+<table>
+<tr><th>$\alpha$</th><th class="num">1/28</th><th class="num">1/14</th><th class="num">3/28</th><th class="num">1/7</th><th class="num">5/28</th><th class="num">3/14</th></tr>
+<tr><td>$\sup_{y\ge0}H_\alpha &lt;$</td><td class="num">0.671769718688</td><td class="num">1.167676972547</td><td class="num">1.609438937754</td><td class="num">2.021873399673</td><td class="num">2.416195251742</td><td class="num">2.798637880122</td></tr>
+<tr><td>combined bound $\lceil(9-\Gamma)+\sup H\rceil_{6}$</td><td class="num">9.530055</td><td class="num">9.885137</td><td class="num">10.182811</td><td class="num">10.443667</td><td class="num">10.707140</td><td class="num">10.946530</td></tr>
+</table>
+<p class="small">The combined constants add the arithmetic cost $9-\Gamma(\alpha)$ of the proved multiplier to
+the real-side bound, rounded up to 6 decimals; exact rationals are archived. <strong>All are positive: no
+negative exponent appears on any grid point.</strong> They bound a limsup of a sum of two upper bounds and are
+not evidence about the true size of $|L|$ or $|P|$.</p>
+
+<h2>6. Finite certified computations (Part I) and reproduction</h2>
+<p>The first-round grid was pre-registered and executed completely, with no timeouts:
+21 linear-form samples ($n=56,112,224$; six positive ratios plus the $m=0$ control) with exact rational
+$A,B$, exact $d,G$, primitive integer pair, and Arb enclosures certifying $|P_{n,m}(\zeta(9))|&gt;1$ in every
+case (10 positive, 11 negative); 21 Gram samples (&sect;7); 2 regression controls. An independent re-read
+(re-hash, re-gcd, re-evaluation with different evaluation groupings) passed 21/21.
+<span class="N">[N, finite]</span> Measured screening values $\ell_n=\log|P_{n,m}(\zeta(9))|/n$:</p>
+<table>
+<tr><th>$m/n$</th><th class="num">$n=56$</th><th class="num">$n=112$</th><th class="num">$n=224$</th></tr>
+<tr><td>0 (control)</td><td class="num">7.301097</td><td class="num">7.839264</td><td class="num">7.527787</td></tr>
+<tr><td>1/28</td><td class="num">7.919132</td><td class="num">8.527755</td><td class="num">8.273517</td></tr>
+<tr><td>1/14</td><td class="num">8.438666</td><td class="num">9.110458</td><td class="num">8.657046</td></tr>
+<tr><td>3/28</td><td class="num">8.999860</td><td class="num">9.108041</td><td class="num">9.101122</td></tr>
+<tr><td>1/7</td><td class="num">9.117860</td><td class="num">9.324543</td><td class="num">9.337972</td></tr>
+<tr><td>5/28</td><td class="num">9.046996</td><td class="num">9.909189</td><td class="num">9.507511</td></tr>
+<tr><td>3/14</td><td class="num">9.290300</td><td class="num">9.959672</td><td class="num">9.790245</td></tr>
+</table>
+<p>No profile met either pre-registered promotion gate (both larger scales &lt;1, or strictly decreasing
+$\ell_n$), so no $n=448$ run was made. <strong>These are 21 certified finite values, not evidence of a trend:
+along each fixed ratio the three values do not decrease strictly, and nothing here bears on infinitely many
+$n$.</strong> Three further direct-sum certificates ($(s,n,m)=(9,2,0),(9,6,1),(9,10,2)$: truncated Taylor
+expansions of $R(k+x)$ summed in exact rationals, whole-tail control by the integral test, intervals
+excluding zero and overlapping the partial-fraction $\zeta$-expression) cross-check the algebra; the
+$(9,2,0)$ case was reproduced for the audit to 28 digits. <span class="N">[N]</span></p>
+<p><strong>Reproduction.</strong> All scripts and artifacts are in the source archive
+(<code>missions/zeta9/scripts/</code>, <code>missions/zeta9/verification/</code>). The computations used
+Python 3.13 with <code>mpmath</code>, <code>python-flint</code> (Arb) and exact <code>Fraction</code>
+arithmetic; <code>verification/artifact-manifest.json</code> records SHA-256 hashes of scripts, notes and
+evidence. Displayed decimals are for presentation only; the certified objects are the archived rational
+numbers and Arb intervals. Ordinary floating-point values in the notes are <em>not</em> interval-certified
+unless explicitly said to be. The audit's own re-checks (contour orientation, phase data, $\Gamma$
+enclosures, sup-$H$ bounds, improved integerization on five parameters, the large-prime formula on new data)
+are archived with scripts and transcripts in <code>verification/audit-2026-09-25/</code>; they support, but do
+not prove, the classifications above.</p>
+
+<h2>7. The secondary (Gram) route</h2>
+<p>Independently, a positive-weight functional for odd arguments (inherited from an earlier local study of
+odd zeta values) gives, at $s=9$:
+$$w_9(y)=\tfrac{2(2\pi)^8}{8!}\,y^{9}\sum_{\ell\ge1}\ell^{8}e^{-2\pi\ell y},\qquad
+\mu_X(t^{e})=(-1)^eB_{2e+2}\tfrac{(2e+9)!}{8!(2e+2)!},\qquad
+\mu_X\bigl((t+j^2)^{-1}\bigr)=j^{8}\bigl(X-H_j^{(9)}\bigr)-\tfrac18+\tfrac1{2j}.$$
+The functional and the sign of the $+1/(2j)$ term are inherited from the earlier notes (gamma integral,
+Euler's even-zeta formula, Hermite's formula for Hurwitz zeta); they were <em>not</em> re-derived in this
+effort. <span class="R">[R, inherited]</span> With $D_a(t)=\prod_{j=1}^{a}(t+j^{2})$, $h=K-N$, and
+$G_{ij}(X)=\mu_X\!\bigl(D_N(t)^{2q}t^{i+j}/D_K(t)\bigr)$, $\Delta_K(X)=\det G(X)$:
+at $X=\zeta(9)$ the matrix $G$ is positive definite (an integral of a square against a positive weight), and
+a square Vandermonde factorization gives $\deg_X\Delta_K=h$; hence $\Delta_K(\zeta(9))&gt;0$ for every $K$.
+<span class="R">[R, inherited]</span> <strong>This is the only genuine nonvanishing statement in the corpus,
+and it is positivity at finite $K$ &mdash; it says nothing about size relative to the
+denominator.</strong></p>
+<p>On the arithmetic side the corpus has a moment-integrality/rank lemma (for $p\ge11$ the moments are
+$p$-integral for $e&lt;4p-5$; at $e=4p-5$ von Staudt&ndash;Clausen gives valuation exactly $-1$;
+<span class="C">[R*, named inputs]</span>) and a rank bound
+$\min\bigl(h,[K+6N-4p+4]_+\bigr)$ adapted from the $s=7$ pattern. <span class="M">[M]</span> <em>Caveats:</em>
+the index shift was not re-derived and differs by one unit from the $s=7$ pattern (flagged as an unverified
+adaptation, not as an error; no conclusion depends on it), and this is explicitly <strong>not a determinant
+valuation theorem</strong>. A structural remark records that the leading $K^2$ potential-theoretic terms are
+unchanged from $s=7$ to $s=9$ while the prime-by-prime integerization cost is <em>not</em> transferable.
+<span class="H">[H]</span></p>
+<p>Finite Gram evidence: 18 records at $K=40$ plus 3 promoted profiles at $K=80$; all 21 values $&gt;1$;
+$r_K=\log P_K(\zeta(9))/K^{2}$ rises from $K=40$ to $K=80$ in all three promoted profiles
+($1.343774\to1.429423$; $1.387844\to1.432339$; $1.514384\to1.623551$). Regression controls on the two earlier
+odd zeta values reproduce the archived screening values with matching coefficient hashes; one control value
+is the only record below one. Assignment dual certificates covering all denominator primes for the best
+profile at both scales give an extra cost over the primitive multiplier of $\approx1.690479$ ($K=40$) and
+$1.817305$ ($K=80$) after an integer Newton change of basis; the primitive polynomial is unchanged.
+<span class="N">[N, finite; explicitly not used as an asymptotic bound]</span></p>
+
+<h2>8. Corrections applied in this release (v0.1)</h2>
+<div class="corrbox">
+<strong>C-I (R19 coefficient sum).</strong> The internal audit text states that the Eulerian numerator of
+$\sum_\ell \ell^6 q^\ell$ &ldquo;sums to $360$&rdquo;. The coefficients are $1,57,302,302,57,1$ and sum to
+$720=6!$; $720$ is exactly the value required for the principal part $(z-k)^{-7}$, and the displayed formula
+with the prefactor $(2\pi)^7/720$ is correct as written. The separate trigonometric form
+$\pi^7[302\cos\pi z+57\cos3\pi z+\cos5\pi z]/(360\sin^7\pi z)$ has numerator coefficients summing to $360$
+against a denominator $360$ and is self-consistent. Both forms were re-verified numerically against a direct
+sum (agreement $10^{-18}$ at 50-digit precision). <strong>Impact: none on any formula, script or archived
+constant</strong> &mdash; the only script using these identities uses the trigonometric form with the correct
+$360$; the audit prose is wrong, the mathematics is not. The corrected value $720$ is used throughout this
+note.</div>
+<div class="corrbox">
+<strong>C-II (R20/R21 phase scale).</strong> The audit's item R20 writes the Stirling phase as
+&ldquo;$\log|R|=\tfrac1n\Re\Phi_\alpha(w)+O_\alpha(1)$&rdquo;, inconsistent with its own R21 and with the
+source note. The correct scale is $\log|R_{n,m}(nw)|=n\,\Re\Phi_\alpha(w)+O_\alpha(\log n)$, equivalently
+$\tfrac1n\log|R|=\Re\Phi_\alpha(w)+o(1)$; the exact $n\log n$ cancellation ($3-14\alpha$ vs $14\alpha-3$) is
+consistent only with the $n\,\Re\Phi$ scale. <strong>Impact: none downstream</strong> &mdash; the uniform
+estimate and the limsup bound quoted in the audit use the correct scale; only the one-line R20 statement was
+mis-scaled.</div>
+<div class="corrbox">
+<strong>C-III ($f_*$ vs $\tau$ inequality direction).</strong> With $\tau=2641/250=10.564$ and $f_*$ the
+maximum of the round-5&ndash;7 phase function, the certified statement (rational atanh-series bounds,
+independently reproduced) is
+$$-10.564155 &lt; f_* &lt; -10.564,\qquad\text{i.e.}\qquad f_* &lt; -\tau,\ \ -f_* &gt; \tau,$$
+so the proved decay exceeds the required threshold by a margin of
+$-f_*-\tau = 10.5641538\ldots - 10.564 \approx 1.54\times10^{-4}$ per unit $n$. The audit's roadmap paragraph
+(&ldquo;with $-f_* &lt; \tau$ proved&rdquo;) and its gap item G8.7 (&ldquo;the proved statement is
+$-f_* &lt; -\tau$&rdquo;) both state the wrong direction; the source roadmap states $f_* &lt; -\tau$
+correctly, and the numerical margin in the audit is correct. This note uses the correct direction.</div>
+<p><strong>Classification hygiene enforced throughout.</strong> (i) Smallness at finitely many tested
+parameters, nonvanishing at finitely many tested parameters, finite certificates, and statements about
+infinite sequences are four different things and are never conflated here. (ii) &ldquo;Not formalized&rdquo;
+is reported as a formalization-status fact, never as a logical gap in a written proof; conversely no
+statement is called verified unless it is. (iii) The eight platform theorems are <em>abstract</em>; they are
+never cited as evidence that the <em>concrete</em> &zeta;(9) constructions satisfy their hypotheses.
+(iv) First successes inside discrete scans (e.g. the five-point cubature weights, &sect;10) are reported as
+scan results, not as located thresholds.</p>
+
+<h2>Part II &mdash; Later rounds and the current roadmap</h2>
+
+<h2>9. The nine-round arc</h2>
+<p>Rounds 2&ndash;9 (24 September 2026) changed the construction repeatedly. Each entry below is quoted with
+its boundary; the audit contains the full statements.</p>
+<table>
+<tr><th>R</th><th>What changed / headline result</th><th>Boundary</th></tr>
+<tr><td class="tag">2</td><td>Higher-order poles $p\in\{3,5,7,9\}$ with exact cofactor elimination of the other odd
+&zeta; values (seed $(w_1,w_2,w_3,w_6)=(-7776,1701,-224,1)$). <strong>First exponential decay in the corpus</strong>:
+the multi-&zeta; form $F_n=d_n^9L_n\in\mathbb Z+\mathbb Z\zeta(3)+\mathbb Z\zeta(5)+\mathbb Z\zeta(7)+\mathbb Z\zeta(9)$
+satisfies $0&lt;F_n\le e^{(-1.43+o(1))n}$. <span class="R">[R]</span></td>
+<td>The form contains <em>four</em> &zeta; values; decay of the single-&zeta;(9) form after elimination is
+unproved (elimination-matrix rank, $A_9\ne0$, nonvanishing all open). 63 single-&zeta;(9) combinations all
+certified $|P|&gt;1$ <span class="N">[N]</span>.</td></tr>
+<tr><td class="tag">3</td><td>Rational shifts $a/D$ with fixed divisor weights ($D\in\{6,8\}$); weight identities and
+$A=\kappa_D\rho_9&gt;0$ by Lagrange interpolation; tail-branch decay $\lim\tfrac1n\log|L|=f(x_*)&lt;-10.43$.
+<span class="R">[R]</span></td><td>No unified primitive lower bound; 31 primitive records all $&gt;1$
+<span class="N">[N]</span>.</td></tr>
+<tr><td class="tag">4</td><td><strong>All-$n$ nonvanishing of the leading coefficient</strong>
+$\rho_n=\sum_j(-1)^j\binom nj^9\binom{n+j}{n}\binom{2n-j}{n}$: $\operatorname{sgn}(\rho_n)=(-1)^{n/2}$ and
+$\rho_n\ne0$ for <em>all</em> even $n\ge2$, via a finite-degree real-rootedness criterion
+(Borcea&ndash;Br&aacute;nd&eacute;n, Theorem 2) plus Legendre-zero and palindrome-pairing arguments. The
+strongest nonvanishing result in the corpus. <span class="R">[R, conditional on the cited external theorem]</span>
+Also: a modular-$p$ truncated-residue criterion for $v_p(B)=-9$ (2,428 parameter&ndash;prime checks, 4
+exceptions with $v_p(B)=-8$) and a conditional obstruction
+($\liminf\beta_n&gt;3\log2\Rightarrow\liminf\tfrac1n\log|ML|&gt;0$).</td>
+<td>Nonvanishing of the <em>coefficient</em> $\rho_n$, not of the linear form. The uniform weighted density
+of primes with nonzero truncated residues is open; no impossibility is claimed.</td></tr>
+<tr><td class="tag">5</td><td>Integer polynomial weights $W(u)$, $u=t(t+n)$, $\deg\le4$; full-kernel basis and
+fixed-degree reduction; a double-layer stopping criterion ($\Gamma\le33/4\Rightarrow$ net cost $\ge0.75&gt;0$;
+$\Gamma\le 11g(3/22)=4.58656\ldots\Rightarrow$ cost $\ge4.41343\ldots$).</td>
+<td>The criterion concerns <em>this</em> bound pair, not a general impossibility; no unified construction on
+an infinite subsequence.</td></tr>
+<tr><td class="tag">6</td><td>Direction selection by the true primitive multiplier; Smith normal form of the
+$2\times5$ lattice; exact lift theorem $M(W)=1/r$; sufficient criterion
+$\limsup\tfrac1n\log\lambda_{2,n}&lt;10.43\Rightarrow\zeta(9)\notin\mathbb Q$; certified
+$r_n=-5.101469,-5.116920,-5.090410,-5.072782,-5.064944$ at $n=12,24,48,96,192$; at $n=192$:
+$\zeta(9)=a/b\Rightarrow b&gt;10^{422}$. <span class="N">[N, finite]</span></td>
+<td>Uniformity of $\lambda_2$ is open; the criterion is sufficient, not necessary; finite $r_n$ values
+certify nothing about infinitely many $n$.</td></tr>
+<tr><td class="tag">7</td><td>Rational connection $F_{n+2}=C(n)F_n$ for all even $n\ge2$ with exact determinant
+$\det F_n=\frac{(3n/2)!\,(7n/2)!}{7n\,((n/2)!)^{10}}$; $N\mid d_n^{45}d_{7n/2}^{8}$; sharpened real side
+$-10.564155&lt;f_*&lt;-10.564$ (see C-III); five finite scales with weighted $\lambda_2$ upper bounds
+$10.50530,10.44834,10.47973,10.14310,10.27109$, all below $\tau=10.564$.
+<span class="R">[R, connection/det]</span> <span class="N">[N, finite scales]</span>
+A <strong>method-level obstruction</strong>: the full-space transfer norm costs $\ge-f_*$ per unit $n$, so
+this norm route yields no strictly negative net exponent. <span class="R">[R, scoped]</span></td>
+<td>The five finite crossings are finite; the obstruction constrains one norm method, not other mechanisms;
+no infinite-$n$ weighted $\lambda_2$ bound exists.</td></tr>
+<tr><td class="tag">8</td><td>Frozen limit model of the connection recursion: $\mathbb Q$-irreducibility of the
+characteristic polynomial (checked mod 2); no fixed block length yields a rational invariant subspace;
+degree-$\le4$ filters cannot give exponential cancellation; dominant eigenvalue
+$\rho=\exp(-2f_*)=\exp(21.128\ldots)$.</td>
+<td>Obstructions inside a <em>frozen constant</em> model; explicitly not a no-go for the real
+variable-coefficient recursion. Round 8's recommendation to stop same-scale escalation is research
+management, not a theorem.</td></tr>
+<tr><td class="tag">9</td><td>Filters of degree growing with $n$: for $Q\nmid P$,
+$|P(\rho)|\ge a^{-d}\bigl((d+1)HR^{d}\bigr)^{-4}$ with $a=22235661$, $R=3709731751$ (Cauchy bound); sub-linear
+degree, sub-exponential height filters cannot cancel.</td>
+<td>Degree-$\Theta(n)$, height-$\exp(\Theta(n))$ filters remain conceivable if their arithmetic cost is paid;
+the round-7 uniform short-vector bound is still missing.</td></tr>
+</table>
+<p><strong>Reading.</strong> No round after round 1 produced a lower bound for $|L|$ or a uniform statement
+about a primitive denominator, and no round changed the Part-I verdict. Round 2's decay is for a form in four
+&zeta; values; round 4's nonvanishing is for a coefficient; rounds 6&ndash;7's certified values are finite;
+rounds 8&ndash;9 refute classes of <em>arguments</em> inside a frozen model.</p>
+
+<h2>10. The roadmap dependency graph (state of 25 September 2026)</h2>
+<p>After round 9 the programme was redirected into an explicit roadmap working with the $p=9$, $m=n$,
+$\deg W\le4$ family of rounds 5&ndash;7. Objects: the form matrix $F_n$ (rows $u^0,\dots,u^4$,
+$u=t(t+n)$; columns $(B,A_3,A_5,A_7,A_9)$); the column selection $S$ onto $(B,A_9)$; the inverse image
+$E_n=SF_n^{-1}$; the saturated integer kernel basis $K_n$; the common denominator $D_n$ of the primitive
+two-dimensional image with Smith factors $s_{1,n}\mid s_{2,n}$, $N_n=s_{2,n}/s_{1,n}$,
+$g_n=\gcd(N_n,d_n^2)$; weights $\operatorname{diag}(1,n^2,n^4,n^6,n^8)$; the weighted area $\Delta_n$; the
+congruence-lattice first minimum $\mu_n$; the threshold $\tau=2641/250=10.564$ with the certified margin
+$f_*&lt;-\tau$ (C-III). The key exact identity is
+$$B_n+\sigma_n=\frac{\log(D_n/s_{1,n})+\log\Delta_n-\log\mu_n}{n},\qquad
+B_n=\frac{\log(D_n/s_{1,n})+\tfrac12\log\Delta_n-\tfrac12\log g_n}{n},\quad
+\sigma_n=\frac{\tfrac12\log(g_n\Delta_n)-\log\mu_n}{n}.$$</p>
+<p><strong>Node census: 40 nodes, 13 open, 27 note-proved.</strong> &ldquo;Note-proved&rdquo; means a prose
+proof exists in a research note and was read in the audit; <strong>none has a Lean term or a platform
+theorem, and the audit is not a substitute for independent verification of each one.</strong> The 13 open
+nodes include the actual target J (there exist $\varepsilon&gt;0$ and infinitely many even $n$ with
+$B_n+\sigma_n\le\tau-\varepsilon$), the stronger candidates V ($\limsup B_n&lt;\tau$) and S ($\sigma_n\to0$),
+the arithmetic budget chain VA/VB/VC/VD, the geometric sign nodes T5/T/TS/TG, the endpoint criterion FD, and
+the critical-scale node CP. The note-proved nodes include the corpus's <strong>only equivalence</strong>
+(CM: $\zeta(9)\notin\mathbb Q \iff \lambda_{2,n}=o(T_n) \iff \liminf \lambda_{2,n}Z_n=0$, with
+$T_n=n^5e^{\alpha n}$, $\alpha=-f_*$), the uniform kernel decay A ($|L_n(w)|\le e^{(-\tau+o(1))n}\sqrt5\|w\|_{n,2}$),
+the exact volume cancellation Q ($B_n=\frac{\log\Xi_n}{2n}+\frac{\log(N_n/g_n)}{2n}$), the discount identity
+YD, and the geometric lemmas FQ/GC/TA/FI/FC/FO/XL/TP/SP. The proved reductions are one-directional:
+$\mathrm{T5}\wedge\mathrm{FQ}\wedge\mathrm{X}\wedge\mathrm{A}\wedge\mathrm{F}\Rightarrow R$ (likewise with
+T, TS, TG); $\mathrm{CP}+\mathrm{CM}\Rightarrow R$; $V\wedge S\Rightarrow J$; $J\Rightarrow$ CP;
+$\mathrm{FD}+\mathrm{FC}+\mathrm{FI}\Rightarrow\mathrm{T5}$; $VA+Y\Rightarrow V$; $VB+Y\Rightarrow VA$;
+$VC+H+Z\Rightarrow VB$; $VD\Rightarrow VA$. Nothing proves any of the 13 open nodes; V and S are not
+necessary for J.</p>
+<p><strong>Proved negative results (with scopes).</strong> GO (a rank-2 integer polynomial lattice can meet
+the dimension/area/shortness data yet show both signs at three of the five points &mdash; geometry alone
+cannot give T5); FM (a rational connection with the same spectral limit, two-step positivity, the same five
+nodes and exact positive cubature can fail T5 forever &mdash; the spectral limit alone cannot give T5); the
+round-7 spectral obstruction and the round-8/9 filter obstructions (&sect;9). All four refute classes of
+arguments; none is a no-go theorem for the route itself.</p>
+<p><strong>The numerical distance.</strong> V needs $\limsup B_n&lt;\tau$; the proved split
+$\frac{\log\Xi_n}{2n}&lt;\gamma=\frac14\log(3\,711\,015\,000)\approx5.50864282$ plus the open
+$VA$ ($\limsup\frac{\log(N_n/g_n)}{2n}&lt;\tau-\gamma\approx5.05535718$) would give it. The tightest proved
+uniform estimate in that direction is $\limsup(\mathcal E_n^{\mathrm{mid}}-\mathcal U_n)/n&lt;22.337$,
+against a requirement of $0.61071437$ (node VD): a gap of more than a factor of 30, in the direction where
+the proved bound is not small enough. Five finite parameters cross
+($B_n+\sigma_n\approx10.4933,10.4423,10.4767,10.1416,10.2703$ for $n=12,24,48,96,192$, each below $\tau$ by
+$0.07$&ndash;$0.42$); <strong>finite crossings imply nothing</strong>, as the roadmap itself states.</p>
+<p><strong>The FQ/T5 activation finding (new in the audit).</strong> The five designated samples are
+$k_{n,j}=\lfloor nx_*+j\sqrt{n/a}+\tfrac12\rfloor$, $j=-2..2$, with $x_*=1.00297646575489808$ and
+$a=330.65816828687$ (reproduced independently to full displayed precision). Because $\sqrt{n/a}\approx0.055\sqrt n$
+($1/\sqrt a = 0.05499337\ldots$)
+while $n(x_*-1)\approx0.00298n$, the five points become distinct and all exceed $n$ only for $n\gtrsim1686$
+(recomputed on a discrete set of test values: degenerate at $n\le1400$; first fully valid at $n=2000$
+<em>among the tested values</em> &mdash; no minimality over all $n$ is claimed, and a proof for all
+$n\ge n_0$ would need a separate argument with controlled error and floor/rounding estimates). <strong>Every finite parameter ever
+used in the effort ($n\le384$) lies below this threshold, so no finite regression in the corpus exercises FQ
+or T5 at all.</strong> Quantitatively, solving the exact five-point system for the <em>true</em> kernel
+moments gives weights that are not all positive at $n=1000$ and $n=2000$ and are positive at $n=6000$ and
+$n=20000$ (Gaussian-moment control at the same nodes is positive at every tested $n$ and reproduces
+$(1/12,1/6,1/2,1/6,1/12)$ exactly; the true moment deviation decays like $n^{-1/2}$). These finite
+observations do not locate a threshold for positivity at all sufficiently large $n$; the first success in
+this discrete scan is not a located threshold, and the archived computations were not re-run for this
+release. The mechanism is sound and FQ's
+&ldquo;eventually&rdquo; remains plausible as stated; the mission's own finite certificate covers the limit
+constant ($330.658&lt;a&lt;330.659$), not the convergence. <span class="N">[N, finite scan]</span></p>
+
+<h2>11. The platform (formalization) layer</h2>
+<p>The local graph was partially wired into a <strong>private</strong> mission on a crowdsourced
+formalization platform (identifiers deliberately omitted from this public note). Read back from local
+receipts: an open root theorem ($\zeta(9)\notin\mathbb Q$); two accepted root decompositions
+(<code>SKETCH_ACCEPTED</code>, one one-form and one two-form) whose obligations require exponentially small
+nonzero or independent integer forms at a pinned exponential rate. <strong>No claim of strict logical
+strengthening over the root is made here</strong>; establishing such strengthening would require checking
+the precise coefficient, construction, and indexing constraints of the formal statements, which was not
+done for this release. (A child merely asserting &ldquo;there exist small integer forms&rdquo; would be
+equivalent to the root once a criterion is available &mdash; a disguised restatement, not a decomposition;
+the decompositions were designed to avoid at least that failure mode.) And <strong>eight theorem-level
+formal proofs</strong>, all compiled locally with Lean
+4.33.1 / Mathlib and accepted by the platform: two general reductions, three abstract cores (volume
+cancellation, prime budget, prime discount), and three wired lemmas (a one-form irrationality criterion, a
+Taylor-sign lemma, an exact-cubature lemma). <strong>Crucially, all eight have abstract statements.</strong>
+The concrete objects of the roadmap ($F_n$, $K_n$, the Smith data, the weighted areas, the congruence-lattice
+minima) have <em>no Lean definitions</em>; consequently the accepted abstract proofs do <em>not</em>
+discharge the corresponding concrete local nodes, and no arithmetic arrow ($V\leftarrow VA,Q,X$, etc.) was
+published &mdash; deliberately, since a parent with free parameters cannot import a closed child theorem
+without a definition layer. None of the 27 note-proved nodes is Lean-checked. Nothing in this section is
+evidence that the concrete &zeta;(9) constructions have been formally verified.</p>
+
+<h2>12. Open problems (canonical closure list)</h2>
+<p>The items below include mathematical obligations for several alternative routes and, separately,
+formalization tasks. They are <em>not</em> asserted to be jointly necessary for an irrationality proof.
+A complete rigorous written proof does not require prior formalization.</p>
+<h3>12.1 Mathematical obligations</h3>
+<ol class="tight">
+<li><strong>C1.</strong> An asymptotic (or matching lower bound) for the true primitive multiplier
+$m_{\mathrm{prim}}$ of the Part-I family.</li>
+<li><strong>C2.</strong> A lower bound for $|L_{n,m}|$, e.g. a phased saddle main term with non-cancellation
+(including the logarithm-branch issue in $\Phi'_\alpha(w)+2\pi i=0$).</li>
+<li><strong>C3.</strong> $A_{n,m}\ne0$ on the Part-I range (never asserted; certified $|P|&gt;1$ does not
+imply it).</li>
+<li><strong>C4.</strong> The assembly $0&lt;|P_{n,m}(\zeta(9))|\le e^{-cn}$ along an infinite sequence.</li>
+<li><strong>C5.</strong> The Gram-branch package: uniformity of the $O(K\log K)$ terms, an independently
+certified potential constant (the value $M=-1329/200$ used in the earlier local notes is imported and not
+independently certified; its literature source was not re-verified for this release), and the &zeta;(9)
+normalization cost.</li>
+<li><strong>C7.</strong> One of the geometric nodes T5/T/TS/TG/FD (equivalently CP at the critical scale of
+CM).</li>
+<li><strong>C8.</strong> One of the arithmetic nodes J or V$\wedge$S (hence VA, VB, VC or VD), where the
+proved uniform estimate still stands at $22.337$ against a requirement of $0.61071437$.</li>
+<li><strong>C9.</strong> A uniform statement over an infinite parameter set in <em>any</em> of the above
+&mdash; the single ingredient missing in all nine rounds.</li>
+</ol>
+<h3>12.2 Formalization tasks (engineering, not mathematical prerequisites)</h3>
+<ol class="tight">
+<li><strong>C6.</strong> Lean definitions for $F_n$, $K_n$, the Smith data, the weighted area and the
+congruence-lattice minima &mdash; without them the roadmap's obligations cannot even be stated faithfully on
+the platform.</li>
+<li><strong>C7&#8224;.</strong> Formalization of the note-proved geometric layer (the formalization half of
+the original C7).</li>
+<li><strong>C10.</strong> Formal verification of the note-proved layer (27 roadmap nodes plus the Part-I
+proofs); today only eight abstract platform theorems exist.</li>
+</ol>
+
+<h2>13. Limitations and evidence boundaries</h2>
+<ul class="tight">
+<li><strong>No proof in either direction.</strong> The material cannot be combined into a proof that
+&zeta;(9) is irrational, nor that it is rational, nor that this family of constructions fails. The two
+structural reasons: on the main route the analytic side supplies only <em>upper</em> bounds for $|L|$ while
+the arithmetic side controls only <em>denominators</em> (the inequality needed points the other way, and the
+denominator controlled is not the primitive one); in the roadmap every closing statement is a
+for-all/for-infinitely-many statement while the evidence base is five-scale finite certificates. This
+describes the present state of these particular routes; it is <em>not</em> a claim that any route of this
+type must first obtain an exact asymptotic for the true multiplier or a quantitative lower bound for
+$|L|$.</li>
+<li><strong>Status tags are load-bearing.</strong> <span class="R">R</span> means &ldquo;a written proof
+exists and no error was found on review&rdquo; &mdash; review here includes re-derivation of some items and
+scripted re-checks of others, but not machine verification. <span class="C">R*</span> items depend on named
+standard inputs (PNT via $\psi(x)\sim x$; Legendre's formula; von Staudt&ndash;Clausen; Euler's even-zeta
+formula; Borcea&ndash;Br&aacute;nd&eacute;n Theorem 2). <span class="M">M</span> items are sketches or depend
+on other corpus claims (R21's untracked constants; R35's unverified index shift). <span class="N">N</span>
+items are finite. <span class="H">H</span> items are not proof steps.</li>
+<li><strong>Written proofs with flagged weak points.</strong> R8 (improved integerization) is a sketch whose
+conclusion &mdash; not proof &mdash; was re-verified on five parameters; R21's uniformity constants are
+untracked; R35's index shift is an unverified adaptation; the Gram functional (R31/R32) is inherited, not
+re-derived in this effort.</li>
+<li><strong>Finite evidence is finite.</strong> All certified values ($|P|&gt;1$ on 21+21 samples, five-scale
+crossings of $\tau$, the $b&gt;10^{422}$ divisor bound at $n=192$, the cubature-weight scan) are statements
+about the tested parameters only.</li>
+<li><strong>Computations.</strong> Interval-certified objects are the archived Arb balls and exact rationals;
+displayed decimals are presentational. Ordinary floating-point computations in the notes are not strict
+interval certifications. No experiment was re-run for this release beyond the small verification checks
+described in &sect;8 and archived transcripts; where no run record exists, no reproduction is claimed.</li>
+<li><strong>Literature.</strong> Only two external references are load-bearing and both are identified with
+checkable sources (below). The external &zeta;(5) construction used as a regression control in the internal
+notes, and the imported potential constant $M=-1329/200$, were not re-verified for this release and are not
+relied upon by any statement in this note. Claims from informal discussions about other odd zeta values are
+not used as sources.</li>
+</ul>
+
+<h2>14. AI-use disclosure</h2>
+<p>This research was conducted by the author in intensive collaboration with AI assistants (large-language-model
+research and coding agents): they drafted research notes, proposed constructions and proof strategies, wrote
+the computation scripts, ran the independent re-checks archived in <code>verification/audit-2026-09-25/</code>,
+and drafted the internal proof-state audit on which Part II&rsquo;s census is based. The author directed the
+programme, set the research questions, reviewed the outputs, and decided what is published. The scripted
+checks reported in this note are exactly the checks whose scripts and transcripts are archived &mdash; no
+other verification is claimed, by the author or by any tool. In particular, an AI agent&rsquo;s
+&ldquo;no error found&rdquo; is not independent human verification, and it is not presented as such: every
+such item carries the <span class="R">R</span>/<span class="M">M</span> tags with their stated caveats, and the
+closure list in &sect;12 records what remains unproved. AI tools are not authors or contributors. This note
+itself was drafted with AI assistance from the archived sources and reviewed by the author; the three
+corrections in &sect;8 were verified by independent numerical recomputation (scripts archived with this
+release).</p>
+
+<h2>15. References</h2>
+<ol class="tight">
+<li>W. Zudilin, <em>One of the numbers &zeta;(5), &zeta;(7), &zeta;(9), &zeta;(11) is irrational</em>,
+Uspekhi Mat. Nauk 56 (2001); arXiv:math/0104249. Cited for literature scoping only: the present family sits
+in the lineage of derivative linear forms in the central variable with parameters outside the source's
+stated domain, so its common-factor and saddle theorems are <em>not</em> invoked.</li>
+<li>J. Borcea and P. Br&auml;nd&eacute;n, <em>P&oacute;lya&ndash;Schur master theorems for circular domains
+and their boundaries</em>, Ann. of Math. 170 (2009); arXiv:math/0607416. Theorem 2 is the external input to
+the round-4 all-$n$ nonvanishing theorem (&sect;9).</li>
+<li>NIST Digital Library of Mathematical Functions, &sect;18.2 (orthogonal-polynomial zero properties);
+used in round 4.</li>
+<li>Internal sources (archived with this release): the nine rounds' research notes and reports
+(<code>missions/zeta9/</code>), the roadmap graph (<code>roadmap/DAG.md</code>, <code>dag.json</code>), the
+inherited odd-zeta functional notes (<code>missions/zeta7/research/analytic-foundations.md</code>), the
+verification artifacts and audit scripts, and the internal proof-state audit (included as provenance; its
+three corrected misstatements are logged in <code>CHANGELOG.md</code> and in &sect;8 of this note).</li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "id": "eac43a37-f79e-4010-90f8-959ba5c1fbb4",
+  "kind": "definition",
+  "theorem_name": "ZetaNine_HarmonicStability",
+  "theorem_title": "Generalized harmonic sums and actual log denominators",
+  "formal_statement": "",
+  "natural_language_statement": "For a rational number $q$, define $\\ell(q)=\\log\\operatorname{den}(q)$ using its reduced positive denominator, with $\\operatorname{den}(0)=1$. For natural $s,N$, define the actual rational generalized harmonic sum $H_N^{(s)}=\\sum_{j=1}^Nj^{-s}$. These are definitions only; the prime-number-theorem growth rate is not assumed.",
+  "definitions": "import Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Order.Interval.Finset.Nat\n\n/-! Lightweight definition source for the formal integration of\n`HarmonicStability.lean`. It contains only the two actual mathematical\nobjects and no theorem assumptions, prime-number-theorem axiom, or proof.\nThe root agent will install these definitions in the shared Definitions\nmodule and replace the standalone proof file's matching definition block\nby that import. -/\n\nset_option autoImplicit false\n\nopen scoped BigOperators\n\nnamespace ZetaNine.HarmonicStability\n\n/-- Natural logarithm of the reduced positive rational denominator. -/\nnoncomputable def logDen (q : ℚ) : ℝ := Real.log (q.den : ℝ)\n\n/-- The generalized harmonic rational number, including `N=0` and `s=0`. -/\ndef harmonicPower (s N : ℕ) : ℚ :=\n  ∑ j ∈ Finset.Icc 1 N, 1 / (j : ℚ) ^ s\n\nend ZetaNine.HarmonicStability\n",
+  "source": "https://github.com/Anchen0823/zeta9-research-notes/releases/tag/research-2026-10-02; research/harmonic-denominator-stability-2026-10-01.md, section 2 clearing bound and section 3 Lemma 2 / Corollary 3.",
+  "tags": [
+    "number-theory",
+    "zeta-function",
+    "formalization"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "f0f5ed09-0e3c-48af-b45b-f53a12ecf11f",
+  "created_at": "2026-10-02T13:51:19.489464+00:00",
+  "updated_at": "2026-10-02T14:08:38.008555+00:00"
+}

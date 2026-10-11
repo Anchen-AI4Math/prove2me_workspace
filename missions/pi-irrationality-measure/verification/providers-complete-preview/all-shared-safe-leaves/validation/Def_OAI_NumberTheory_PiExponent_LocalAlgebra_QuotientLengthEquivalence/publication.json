@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "d3de3e59521a55bbc987ec6aa64d77c811073a54386d671918a5d96d57acb31a",
+  "publish_intent": {
+    "at_utc": "2026-10-08T12:22:17.686028+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+      "definition_title": "Module length under a bijective semilinear map",
+      "definition": "import Mathlib.RingTheory.Ideal.Quotient.Operations\nimport Mathlib.RingTheory.Length\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\ntheorem length_eq_of_semilinear_bijective\r\n    {R S M N : Type*} [Ring R] [Ring S] [AddCommGroup M] [AddCommGroup N]\r\n    [Module R M] [Module S N]\r\n    (σ : R →+* S) [RingHomSurjective σ]\r\n    (f : M →ₛₗ[σ] N) (hf : Function.Bijective f) :\r\n    Module.length R M = Module.length S N := by\r\n  rw [Module.length, Module.length, WithBot.unbot_inj,\r\n    Order.krullDim_eq_of_orderIso (Submodule.orderIsoMapComapOfBijective f hf)]\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "Let R and S be rings, M an R-module and N an S-module. If sigma : R -> S is a surjective ring homomorphism and f : M -> N is a bijective sigma-semilinear map, then the module length of M over R equals the module length of N over S. No finiteness hypothesis on either length is required.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/QuotientLengthEquivalence.lean#L8-L15",
+      "tags": [
+        "commutative-algebra",
+        "module-theory",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "d3de3e59521a55bbc987ec6aa64d77c811073a54386d671918a5d96d57acb31a",
+    "bundle_source_sha256": "8c9ebaefb98be1c62bf652876e7015371600ae8fc82f235299084c99564fb6fb",
+    "bundle_manifest_sha256": "ed1f44bed107d159cf07ce2ede24a23c24ca8242f8a3de37949bdf3a508a7822",
+    "validation_sha256": "4f7a79261d9af7f634bd403e4e45757d3f12463c3cf68d8ad3b01970a30961f4"
+  },
+  "updated_at_utc": "2026-10-08T12:25:21.160945+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "667c5fc4-6313-4382-b3b9-d66658b183f1",
+      "definition_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/667c5fc4-6313-4382-b3b9-d66658b183f1 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "8be26d3c8013417d4699832bb0f05debc72df580baf8a77a2b996491e59126ee"
+  },
+  "job_id": "667c5fc4-6313-4382-b3b9-d66658b183f1",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "667c5fc4-6313-4382-b3b9-d66658b183f1",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+      "theorem_title": "Module length under a bijective semilinear map",
+      "formal_statement": "",
+      "natural_language_statement": "Let R and S be rings, M an R-module and N an S-module. If sigma : R -> S is a surjective ring homomorphism and f : M -> N is a bijective sigma-semilinear map, then the module length of M over R equals the module length of N over S. No finiteness hypothesis on either length is required.",
+      "definitions": "import Mathlib.RingTheory.Ideal.Quotient.Operations\nimport Mathlib.RingTheory.Length\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\ntheorem length_eq_of_semilinear_bijective\r\n    {R S M N : Type*} [Ring R] [Ring S] [AddCommGroup M] [AddCommGroup N]\r\n    [Module R M] [Module S N]\r\n    (σ : R →+* S) [RingHomSurjective σ]\r\n    (f : M →ₛₗ[σ] N) (hf : Function.Bijective f) :\r\n    Module.length R M = Module.length S N := by\r\n  rw [Module.length, Module.length, WithBot.unbot_inj,\r\n    Order.krullDim_eq_of_orderIso (Submodule.orderIsoMapComapOfBijective f hf)]\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/QuotientLengthEquivalence.lean#L8-L15",
+      "tags": [
+        "commutative-algebra",
+        "module-theory",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "c81fa9b0-7469-4540-9950-03f3b0c00fe0",
+      "created_at": "2026-10-08T12:22:19.475977+00:00",
+      "updated_at": "2026-10-08T12:22:32.415457+00:00"
+    }
+  },
+  "definition_id": "c81fa9b0-7469-4540-9950-03f3b0c00fe0",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "c81fa9b0-7469-4540-9950-03f3b0c00fe0",
+      "theorem_name": "OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence",
+      "theorem_title": "Module length under a bijective semilinear map",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Let R and S be rings, M an R-module and N an S-module. If sigma : R -> S is a surjective ring homomorphism and f : M -> N is a bijective sigma-semilinear map, then the module length of M over R equals the module length of N over S. No finiteness hypothesis on either length is required.",
+      "created_at": "2026-10-08T12:22:31.392492+00:00",
+      "vote_count": 0,
+      "tags": [
+        "commutative-algebra",
+        "module-theory",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.RingTheory.Ideal.Quotient.Operations\nimport Mathlib.RingTheory.Length\r\n\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponentJets.W22\r\n\r\ntheorem length_eq_of_semilinear_bijective\r\n    {R S M N : Type*} [Ring R] [Ring S] [AddCommGroup M] [AddCommGroup N]\r\n    [Module R M] [Module S N]\r\n    (σ : R →+* S) [RingHomSurjective σ]\r\n    (f : M →ₛₗ[σ] N) (hf : Function.Bijective f) :\r\n    Module.length R M = Module.length S N := by\r\n  rw [Module.length, Module.length, WithBot.unbot_inj,\r\n    Order.krullDim_eq_of_orderIso (Submodule.orderIsoMapComapOfBijective f hf)]\r\n\r\n\r\n\r\nend PiExponentJets.W22\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/LocalAlgebra/QuotientLengthEquivalence.lean#L8-L15",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

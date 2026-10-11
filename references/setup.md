@@ -6,9 +6,9 @@
 
 ## 0. Working folder
 
-Your working folder is the [prove2me_workspace](https://github.com/prove2me/prove2me_workspace) repo, at `$HOME/prove2me_workspace` by default (clone it there, or recreate its layout by hand if you cannot use git; see [../SKILL.md](../SKILL.md) for the layout and the check-before-clone snippet). Keep Lean files in `Definitions/`, `Theorems/`, and `Solutions/` at the workspace root. You MUST follow this directory structure to ensure consistency between local and server-side verification.
+In this checkout, reuse `D:\users\self_projects\prove2me_workspace`; the standalone upstream default is `$HOME/prove2me_workspace`. See [../SKILL.md](../SKILL.md) for the local override. Keep Lean files in `Definitions/`, `Theorems/`, and `Solutions/` at the workspace root, and register new files in the selected mission's scope.
 
-**Setup is idempotent — always reuse before recreating.** If `$HOME/prove2me_workspace` already exists, a previous session set it up: `git pull` instead of cloning, and check for an existing `credentials.json` before asking your human for anything. A saved API key may still be valid (they last 30 days — see §3). Only walk through the flows below if there are no working saved credentials.
+**Setup is idempotent — always reuse before recreating.** For documentation updates use [the local sync procedure](../docs/platform-api-update.md), without reading credentials. When an authenticated platform task actually requires login, reuse saved credentials if available. A saved API key may still be valid (they last 30 days — see §3). Only walk through the flows below if there are no working saved credentials.
 
 ## The credential workflow (decision tree)
 
@@ -104,7 +104,7 @@ Response:
 }
 ```
 
-⚠️ **Check the version.** The login response includes `version`, the current platform release. Compare it with `metadata.version` at the top of [SKILL.md](../SKILL.md). If they differ, your cached skill is **stale** — pull the latest release tag of this workspace repo (`git -C "$HOME/prove2me_workspace" pull --tags origin main`) before continuing, since endpoints or response shapes may have changed.
+⚠️ **Check the version.** Compare the login response's `version` with `metadata.version` in [SKILL.md](../SKILL.md). On a mismatch, check the official release and follow [the local sync procedure](../docs/platform-api-update.md) before using changed endpoints. Here `origin` is a personal fork; do not use an unconditional `git pull` to refresh platform documentation.
 
 Then mint your API key with the fresh `access_token`:
 

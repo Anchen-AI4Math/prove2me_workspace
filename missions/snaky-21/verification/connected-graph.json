@@ -1,0 +1,205 @@
+{
+  "root_id": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+      "theorem_name": "OAI.SnakyPrototype.snaky_winning_strategy_21_with_legal_states",
+      "theorem_title": null,
+      "status": "Open",
+      "formal_statement": "theorem snaky_winning_strategy_21_with_legal_states :\n    ∃ σ : Policy Cell,\n      (∀ r M B, σ r M B ∉ M ∧ σ r M B ∉ B) ∧\n      ∀ β : ℕ → Cell, LegalRepliesBeforeFinal σ 21 β ∅ ∅ →\n        HasSnaky (playState σ 21 β ∅ ∅ 21).1 ∧\n        (playState σ 21 β ∅ ∅ 21).1.card = 21 ∧\n        Disjoint (playState σ 21 β ∅ ∅ 21).1 (playState σ 21 β ∅ ∅ 20).2 ∧\n        ∀ k, k < 21 →\n          Disjoint (playState σ 21 β ∅ ∅ k).1 (playState σ 21 β ∅ ∅ k).2 ∧\n          (playState σ 21 β ∅ ∅ k).2.card = k := by\n  sorry\n\nend SnakyPrototype\nend OAI\n",
+      "natural_language_statement": "The theorem states that there is a policy σ for a Maker–Breaker-style placement game on the integer grid ℤ×ℤ, where a policy maps the number r of remaining rounds, the finite set M of cells already claimed by the maker, and the finite set B of cells already claimed by the blocker to a cell, such that σ always proposes a cell lying in neither M nor B, and such that for every blocker reply sequence β : ℕ → ℤ×ℤ that is legal before the final round, the following hold. Play starts from empty sets; at round k (counting from 0) with N = 21, the maker adds σ(21−k, M, B) to M and the blocker adds β(k) to B. Legality means that for every k with k+1 < 21, β(k) is not already in the maker's set, not the maker's cell chosen in that same round, and not already in the blocker's set. Under this legality assumption, the maker's set after 21 rounds contains a copy of the six-cell shape snaky = {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)}, placed by one of the eight rotations or reflections of the grid (as given by the orient map) followed by a translation. That final maker set has exactly 21 cells and is disjoint from the blocker's set after 20 rounds. Moreover, for every k < 21, the maker's and blocker's sets after k rounds are disjoint and the blocker's set has exactly k cells. The blocker's 21st reply is not constrained by the legality condition.",
+      "created_at": "2026-10-07T04:33:23.838799+00:00",
+      "vote_count": 0,
+      "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyTwentyOne.lean; bytes 1586..2177\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\nimport Definitions.Def_SnakyTwentyOne\n\nnamespace OAI\n\nnamespace SnakyPrototype\n\nopen OrdinaryStrategy\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyTwentyOne.lean",
+      "tags": [],
+      "audits": [
+        {
+          "audit_id": "256ee1ed-825e-4577-88dd-b81f23f59b1b",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-07T07:06:53.275973+00:00"
+        },
+        {
+          "audit_id": "d87bd2fa-e02d-4827-9a34-b061916142d1",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T07:06:53.515959+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "900ef069-bf48-4501-afbc-5785e270706f",
+      "theorem_name": "OAI.Snaky21.force_extract",
+      "theorem_title": "A legal positional policy extracted from finite-horizon forcing",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.Snaky21.force_extract (N : ℕ) (hN : 0 < N) (hstart : CanForce N ∅ ∅) :\n    ∃ σ : Policy Cell,\n      (∀ r M B, σ r M B ∉ M ∧ σ r M B ∉ B) ∧\n      ∀ β : ℕ → Cell, LegalRepliesBeforeFinal σ N β ∅ ∅ →\n        HasSnaky (playState σ N β ∅ ∅ N).1 ∧\n        (playState σ N β ∅ ∅ N).1.card = N ∧\n        Disjoint (playState σ N β ∅ ∅ N).1 (playState σ N β ∅ ∅ (N - 1)).2 ∧\n        ∀ k, k < N →\n          Disjoint (playState σ N β ∅ ∅ k).1 (playState σ N β ∅ ∅ k).2 ∧\n          (playState σ N β ∅ ∅ k).2.card = k := by sorry",
+      "natural_language_statement": "For a positive number N, suppose Maker can force a Snaky target within N further actual claims from the empty board, in the finite-horizon forcing relation. There exists one policy depending only on the remaining budget and the two current ownership sets, legal on every finite input. Against every reply sequence legal before the final round, Maker has a target and exactly N cells after its Nth claim, disjoint from the first N−1 Breaker cells. Before that final claim both ownership sets are disjoint and Breaker has made exactly the recorded number of claims. No Nth Breaker reply is assumed legal.",
+      "created_at": "2026-10-08T07:52:17.603975+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_Snaky21Core\nopen OAI.Snaky21 OAI.SnakyPrototype OAI.SnakyPrototype.OrdinaryStrategy\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; The main theorem strategy argument and its fixed-endpoint reformulation; build/strategy.tex, section One strategy against every continuation.",
+      "tags": [],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "9aa200b0-5e32-4b9f-bc67-389947c5b047",
+      "theorem_name": "SnakyTwentyOne",
+      "theorem_title": null,
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "The block sets up a prototype for a maker-breaker style game on the integer grid, together with an abstract strategy-play framework. Cells are pairs of integers, and snaky is the fixed six-cell shape {(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)}. For each of eight indices r, orient r transforms a cell (x,y) by one of the eight maps (x,y), (y,x), (x,−y), (−y,x), (−x,y), (y,−x), (−x,−y), (−y,−x), and placement r t p is orient r p plus a translation t. HasSnaky(M) is the proposition that some orientation index r and translation t exist such that every cell of snaky, after being placed by r and t, lies in the finite set M. For an infinite type α with decidable equality, a Policy is a function taking a remaining-round count and two finite sets (the maker's and the breaker's chosen elements) and returning an element of α. Starting from initial sets M₀ and B₀, playState σ N β M₀ B₀ k gives the pair of sets after k rounds: in round k the maker adds the policy's choice σ(N−k) applied to the current sets, while the breaker adds β k, where β is a fixed sequence of breaker moves. makerAt gives the maker's move at round k. LegalRepliesBeforeFinal says that for every k with k+1<N, the breaker's move β k is neither the maker's new move at that round nor already in the maker's current set, and is not already in the breaker's current set. The block defines these notions only and states no theorem.",
+      "created_at": "2026-10-07T04:33:23.776554+00:00",
+      "vote_count": 0,
+      "definition": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/SnakyTwentyOne.lean; bytes 16..1586\n-- Kind: block; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\n\nnamespace OAI\n\nnamespace SnakyPrototype\nvariable {α : Type*} [DecidableEq α]\nabbrev Cell := ℤ × ℤ\ndef snaky : Finset Cell := {(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (4, 1)}\ndef orient (r : Fin 8) (p : Cell) : Cell :=\n  match r.val with\n  | 0 => (p.1, p.2)\n  | 1 => (p.2, p.1)\n  | 2 => (p.1, -p.2)\n  | 3 => (-p.2, p.1)\n  | 4 => (-p.1, p.2)\n  | 5 => (p.2, -p.1)\n  | 6 => (-p.1, -p.2)\n  | _ => (-p.2, -p.1)\ndef placement (r : Fin 8) (t p : Cell) : Cell := orient r p + t\ndef HasSnaky (M : Finset Cell) : Prop :=\n  ∃ (r : Fin 8) (t : Cell), snaky.image (placement r t) ⊆ M\nend SnakyPrototype\nnamespace SnakyPrototype.OrdinaryStrategy\nvariable {α : Type*} [DecidableEq α] [Infinite α]\nabbrev Policy (α : Type*) := ℕ → Finset α → Finset α → α\ndef playState (σ : Policy α) (N : ℕ) (β : ℕ → α) (M₀ B₀ : Finset α) :\n    ℕ → Finset α × Finset α\n  | 0 => (M₀, B₀)\n  | k + 1 =>\n      let state := playState σ N β M₀ B₀ k\n      (insert (σ (N - k) state.1 state.2) state.1, insert (β k) state.2)\ndef makerAt (σ : Policy α) (N : ℕ) (β : ℕ → α) (M₀ B₀ : Finset α) (k : ℕ) : α :=\n  let state := playState σ N β M₀ B₀ k\n  σ (N - k) state.1 state.2\ndef LegalRepliesBeforeFinal (σ : Policy α) (N : ℕ) (β : ℕ → α)\n    (M₀ B₀ : Finset α) : Prop :=\n  ∀ k, k + 1 < N →\n    β k ∉ insert (makerAt σ N β M₀ B₀ k) (playState σ N β M₀ B₀ k).1 ∧\n    β k ∉ (playState σ N β M₀ B₀ k).2\nend SnakyPrototype.OrdinaryStrategy\n\nnamespace SnakyPrototype\nopen OrdinaryStrategy\n\n\n\nend SnakyPrototype\nend OAI\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/SnakyTwentyOne.lean",
+      "tags": [],
+      "audits": [
+        {
+          "audit_id": "b583ce7c-c64c-4e4c-b4fb-ba7de14a8252",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-07T07:06:53.275973+00:00"
+        },
+        {
+          "audit_id": "e6eceafa-1031-420a-b513-5673725f1e1f",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T07:06:53.515959+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "e4e6d1fa-2900-4c83-a455-ab723ed1409b",
+      "theorem_name": "Snaky21Core",
+      "theorem_title": "Snaky21Core",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Definitions for the finite conditional-claim proof of Snaky in 21 Maker moves. They use the existing integer-grid game and target, and encode the required Maker cells, the Breaker-free envelope, and the bound on actual further Maker claims. The numbered certificate data use the fixed 2026-09-25 source. No game-winning theorem is assumed.",
+      "created_at": "2026-10-08T07:32:41.072604+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_SnakyTwentyOne\n\nnamespace OAI.Snaky21\nopen SnakyPrototype\n\ndef CanForce : ℕ → Finset Cell → Finset Cell → Prop\n  | 0, M, _ => HasSnaky M\n  | n + 1, M, B => ∃ m, m ∉ M ∧ m ∉ B ∧\n      (HasSnaky (insert m M) ∨ ∀ b, b ∉ insert m M → b ∉ B →\n        CanForce n (insert m M) (insert b B))\n\nstructure Card where\n  required : Finset Cell\n  envelope : Finset Cell\n  height : ℕ\n  deriving DecidableEq\n\ndef Valid (c : Card) : Prop :=\n  c.required ⊆ c.envelope ∧ 0 < c.height ∧\n    ∀ M B, c.required ⊆ M → Disjoint B c.envelope →\n      CanForce c.height M B\n\ndef unionRequired (cs : List Card) : Finset Cell :=\n  (cs.map Card.required).foldr (· ∪ ·) ∅\ndef unionEnvelope (cs : List Card) : Finset Cell :=\n  (cs.map Card.envelope).foldr (· ∪ ·) ∅\ndef commonEnvelope : List Card → Finset Cell\n  | [] => ∅\n  | c :: cs => cs.foldr (fun d s => d.envelope ∩ s) c.envelope\ndef maxHeight (cs : List Card) : ℕ :=\n  (cs.map Card.height).foldr max 0\n\ndef combine (p : Cell) (cs : List Card) : Card :=\n  ⟨(unionRequired cs ∪ commonEnvelope cs).erase p,\n    insert p (unionEnvelope cs), 1 + maxHeight cs⟩\n\ndef placed (r : Fin 8) (t : Cell) (c : Card) : Card :=\n  ⟨c.required.image (placement r t), c.envelope.image (placement r t), c.height⟩\n\ndef basePoint (i : Fin 6) : Cell := ![(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)] i\ndef baseCard (i : Fin 6) : Card := ⟨snaky.erase (basePoint i), snaky, 1⟩\n\ndef MoveOK (r : ℕ) (M B : Finset Cell) (m : Cell) : Prop :=\n  m ∉ M ∧ m ∉ B ∧ (HasSnaky (insert m M) ∨\n    ∀ b, b ∉ insert m M → b ∉ B → CanForce (r - 1) (insert m M) (insert b B))\n\ndef freshCell (M B : Finset Cell) : Cell :=\n  (((M ∪ B).sup (fun x => x.1.natAbs) + 1 : ℕ), 0)\n\nnoncomputable def forcePolicy : SnakyPrototype.OrdinaryStrategy.Policy Cell := by\n  classical\n  exact fun r M B => if h : ∃ m, MoveOK r M B m then Classical.choose h else freshCell M B\n\nend OAI.Snaky21\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Definition 2, Lemma 3 and Proposition 5; pinned certificate supplement.",
+      "tags": [],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "edd099bd-3465-472e-8b29-a0b415b92cec",
+      "theorem_name": "OAI.Snaky21.empty_position_force21",
+      "theorem_title": "Proposition 5 — forcing Snaky from the empty position in 21 Maker claims",
+      "status": "Open",
+      "formal_statement": "theorem OAI.Snaky21.empty_position_force21 : CanForce 21 ∅ ∅ := by sorry",
+      "natural_language_statement": "On the infinite integer board, Maker can force Snaky from the empty position with a budget of 21 actual further Maker claims. The recursive forcing predicate quantifies over every legal Breaker response and permits an immediate win. This is the semantic consequence of the empty-requirement, height-21 certificate card in Proposition 5.",
+      "created_at": "2026-10-08T13:06:33.296154+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_Snaky21Core\nopen OAI.Snaky21 OAI.SnakyPrototype\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf; Proposition 5 and the terminal conditional claim of the pinned 21-move certificate.",
+      "tags": [],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "submission_id": "4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "parent_theorem_id": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "This reduction separates the paper's finite-position certificate from policy extraction. The child empty_position_force21 supplies forcing from the empty board with a budget of 21 actual Maker claims. The proved general force_extract theorem constructs a policy depending only on the remaining budget and current ownership sets, with a fresh fallback on arbitrary inputs and after an early win. It proves exactly 21 Maker claims, all required disjointness and Breaker counts, assuming legality of only the first 20 Breaker replies. At initial submission the certificate child remains Open on the platform, so this is a reduction sketch, not a completed mission. The corresponding actual closed Lean proof has already passed local kernel and axiom checks; its finite certificate dependencies are being published sequentially.",
+      "created_at": "2026-10-08T13:06:34.555414+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "900ef069-bf48-4501-afbc-5785e270706f",
+      "target": "sketch-4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "kind": "sketch"
+    },
+    {
+      "source": "9aa200b0-5e32-4b9f-bc67-389947c5b047",
+      "target": "sketch-4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "kind": "sketch"
+    },
+    {
+      "source": "edd099bd-3465-472e-8b29-a0b415b92cec",
+      "target": "sketch-4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-4539ec7f-785b-4d34-80bd-bf1424b36a8c",
+      "target": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+      "kind": "sketch"
+    },
+    {
+      "source": "9aa200b0-5e32-4b9f-bc67-389947c5b047",
+      "target": "29b16242-e6c3-4ee3-b459-3e4a883b9dcc",
+      "kind": "structural"
+    },
+    {
+      "source": "e4e6d1fa-2900-4c83-a455-ab723ed1409b",
+      "target": "900ef069-bf48-4501-afbc-5785e270706f",
+      "kind": "structural"
+    },
+    {
+      "source": "e4e6d1fa-2900-4c83-a455-ab723ed1409b",
+      "target": "edd099bd-3465-472e-8b29-a0b415b92cec",
+      "kind": "structural"
+    },
+    {
+      "source": "9aa200b0-5e32-4b9f-bc67-389947c5b047",
+      "target": "e4e6d1fa-2900-4c83-a455-ab723ed1409b",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

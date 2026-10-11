@@ -1,0 +1,71 @@
+{
+  "verdict": "PASS",
+  "date": "2026-10-02",
+  "lean_version": "4.33.1",
+  "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "pnt_commit": "55270df807213fc3584523d09e0311d7dc073ff5",
+  "architect_commit": "0f5bc0209ae02a7fb0cfe7d113d4094542cee221",
+  "build_command": "lake --no-cache build PrimeNumberTheoremAnd.MediumPNT",
+  "build_exit": 0,
+  "build_jobs": 3621,
+  "explicit_statement_audit_command": "lake env lean PNTKernelAudit.lean",
+  "explicit_statement_audit_exit": 0,
+  "pnt_source_modules": 14,
+  "architect_source_modules": 9,
+  "all_23_source_bytes_equal_fixed_upstream_snapshots": true,
+  "blueprint_attributes_and_comments_preserved": true,
+  "mathematical_source_edits": [],
+  "configuration_adjustments": [
+    {
+      "change": "Declare .one Architect in the isolated Architect library glob, in addition to .submodules Architect.",
+      "reason": "Initial isolated configuration omitted the root module from library membership; lake query Architect:modules listed only eight submodules. The corrected configuration replayed all original Architect sources unchanged.",
+      "first_attempt_log": "kernel-build-attempt1.log"
+    }
+  ],
+  "architect_toolchain_compatibility": {
+    "upstream": "leanprover/lean4:v4.33.0",
+    "actual_replay": "leanprover/lean4:v4.33.1",
+    "all_nine_original_sources_compiled": true
+  },
+  "actual_upstream_target": "MediumPNT",
+  "explicit_closed_statement": "exists c : Real, 0 < c and IsBigO atTop (fun x => Chebyshev.psi x - x) (fun x => x * exp (-c * (log x)^(1/10)))",
+  "extra_assumptions_in_explicit_checked_statement": [],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_reports": [
+    "MediumPNT in its original source build",
+    "MediumPNT in separate imported statement audit",
+    "ZetaNine.ExternalPNT.checked_medium_pnt"
+  ],
+  "sorryAx_found": false,
+  "warnings": "Upstream deprecated Mathlib lemma names only; preserved without source migration.",
+  "dependency_reuse": "Existing exact pinned Mathlib package sources/build cache through a checked directory junction; cache downloading disabled.",
+  "network_or_platform_calls": false,
+  "shared_environment_upgrade": false,
+  "root_zeta_irrationality_closed": false,
+  "hashes": {
+    "project/lakefile.lean": "046b94f93d5516d5e7e0596ed23784e1787ea9ebce07c0cc9226bed83e431780",
+    "project/lake-manifest.json": "11ff53051f5eb3f0cd22e3c38a09577d583ce681e405042b6884dbabdd743ddb",
+    "project/lean-toolchain": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+    "project/PNTKernelAudit.lean": "999f8e0726dc738d7272bad2839a6c09378c2c16605773208cdc3547698ab99e",
+    "kernel-build.log": "a3f07e0136f29b3ee764df9d691d056c4ece8f8a25871f66e121f19f6724e13d",
+    "kernel-build-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "kernel-axiom-audit.log": "5ab6c9c7a33a5bfd87a63731ec87274dfbc2be7c87d36a74be08b472d7abea42",
+    "kernel-axiom-audit-exit.txt": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+    "kernel-source-manifest.json": "d9ae2a022ad3c669ac22cb2cc470ca19ba84ff21aed8634e9e11a5afc477cf24",
+    "external/import-closure.json": "fbb3e6c6a0d15e6259566216da3ea22e858e3677f569ae357d5bf47e16008784",
+    "architect/import-closure.json": "b51952da4ae8bbed6b8104bec6ae4411a0211d69f7c95f80210a62d80c801a7d",
+    "external/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "architect/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "project/licenses/external-LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "project/licenses/architect-LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "project/.lake/build/lib/lean/PrimeNumberTheoremAnd/MediumPNT.olean": "b61e03e9e48c54c6c4b0c3ec1c5d4b9243a6b6a5a83833fb92d5c07d8a41281a"
+  },
+  "licenses_copied_exactly": {
+    "pnt": true,
+    "architect": true
+  }
+}

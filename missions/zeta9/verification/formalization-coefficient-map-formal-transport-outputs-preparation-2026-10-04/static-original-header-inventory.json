@@ -1,0 +1,69 @@
+{
+  "role": "UNCOMPILED exact source text inventory, not graph",
+  "records": [
+    {
+      "name": "weightedR_eval_one_zero",
+      "header": "theorem weightedR_eval_one_zero (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X]) :\n    weightedR n W 1 = 0"
+    },
+    {
+      "name": "quartic_properMultiplier",
+      "header": "theorem quartic_properMultiplier (n : ℕ) (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    ProperMultiplier n W"
+    },
+    {
+      "name": "weighted_boundary_sum_zero",
+      "header": "theorem weighted_boundary_sum_zero (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    (∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n      weightedLocalCoefficient n j s W / (((j + 1 : ℕ) : ℚ) ^ s)) = 0"
+    },
+    {
+      "name": "remainder_boundary_sum_zero",
+      "header": "theorem remainder_boundary_sum_zero (n : ℕ) (hn : 1 ≤ n) (q : ℚ[X])\n    (hq : q.natDegree ≤ 9) :\n    (∑ j ∈ range (n + 2), ∑ s ∈ Icc 1 9,\n      remainderCoefficient n j s q / (((j + 1 : ℕ) : ℚ) ^ s)) = 0"
+    },
+    {
+      "name": "sum_extendedOldCoefficient_harmonic",
+      "header": "theorem sum_extendedOldCoefficient_harmonic (n s : ℕ) (P : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedOldCoefficient n j s P * harmonicPower s j) =\n      ∑ j ∈ range (n + 1), weightedLocalCoefficient n j s P * harmonicPower s (j + 1)"
+    },
+    {
+      "name": "sum_extendedRemainderCoefficient_harmonic",
+      "header": "theorem sum_extendedRemainderCoefficient_harmonic (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q * harmonicPower s j) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q * harmonicPower s j"
+    },
+    {
+      "name": "sum_previousRemainderCoefficient_harmonic",
+      "header": "theorem sum_previousRemainderCoefficient_harmonic (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), previousRemainderCoefficient n j s q * harmonicPower s j) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q * harmonicPower s (j + 1)"
+    },
+    {
+      "name": "sum_harmonic_succ",
+      "header": "theorem sum_harmonic_succ (N s : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range N, f j * harmonicPower s (j + 1)) =\n      (∑ j ∈ range N, f j * harmonicPower s j) +\n        ∑ j ∈ range N, f j / (((j + 1 : ℕ) : ℚ) ^ s)"
+    },
+    {
+      "name": "actual_chosen_harmonic_order_transport",
+      "header": "theorem actual_chosen_harmonic_order_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    (∑ j ∈ range (n + 3), weightedLocalCoefficient (n + 2) j s (X ^ r.val) * harmonicPower s j) =\n      (∑ j ∈ range (n + 1), weightedLocalCoefficient n j s (connectionP n r) * harmonicPower s j) +\n      (∑ j ∈ range (n + 1), weightedLocalCoefficient n j s (connectionP n r) /\n        (((j + 1 : ℕ) : ℚ) ^ s)) -\n      (∑ j ∈ range (n + 2), remainderCoefficient n j s (connectionQ n r) /\n        (((j + 1 : ℕ) : ℚ) ^ s))"
+    },
+    {
+      "name": "actual_chosen_constantTerm_correction",
+      "header": "theorem actual_chosen_constantTerm_correction (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    constantTerm (n + 2) (X ^ r.val) = constantTerm n (connectionP n r) -\n      (∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n        weightedLocalCoefficient n j s (connectionP n r) / (((j + 1 : ℕ) : ℚ) ^ s)) +\n      (∑ j ∈ range (n + 2), ∑ s ∈ Icc 1 9,\n        remainderCoefficient n j s (connectionQ n r) / (((j + 1 : ℕ) : ℚ) ^ s))"
+    },
+    {
+      "name": "actual_chosen_constantTerm_transport",
+      "header": "theorem actual_chosen_constantTerm_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    constantTerm (n + 2) (X ^ r.val) = constantTerm n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_five_output_transport",
+      "header": "theorem actual_chosen_five_output_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    aggregate (n + 2) (X ^ r.val) = aggregate n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_Gamma_row_transport",
+      "header": "theorem actual_chosen_Gamma_row_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    aggregate n (connectionP n r) = connectionGamma n r ᵥ* actualFMatrix n"
+    },
+    {
+      "name": "actual_five_output_matrix_transport",
+      "header": "theorem actual_five_output_matrix_transport (n : ℕ) (hn : 1 ≤ n) :\n    actualFMatrix (n + 2) = connectionGamma n * actualFMatrix n"
+    },
+    {
+      "name": "n_one_five_output_transport",
+      "header": "theorem n_one_five_output_transport (r : Fin 5) :\n    aggregate 3 (X ^ r.val) = aggregate 1 (connectionP 1 r)"
+    },
+    {
+      "name": "n_one_matrix_transport",
+      "header": "theorem n_one_matrix_transport :\n    actualFMatrix 3 = connectionGamma 1 * actualFMatrix 1"
+    }
+  ]
+}

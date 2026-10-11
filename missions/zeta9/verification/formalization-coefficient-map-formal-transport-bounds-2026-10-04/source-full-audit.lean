@@ -1,0 +1,15 @@
+import missions.zeta9.formalization.CoefficientMapFormalTransportBounds
+import Lean
+open Lean Meta
+set_option pp.fullNames true
+set_option pp.proofs true
+run_meta do
+  for name in [`ZetaNine.CoefficientMapFormalTransportData.connectionPair,`ZetaNine.CoefficientMapFormalTransportData.connectionP,`ZetaNine.CoefficientMapFormalTransportData.connectionQ,`ZetaNine.CoefficientMapFormalTransportData.connectionPair_spec,`ZetaNine.CoefficientMapFormalTransportData.connectionGamma,`ZetaNine.CoefficientMapFormalTransportData.remainderNumerator,`ZetaNine.CoefficientMapFormalTransportData.shiftedRemainderNumerator,`ZetaNine.CoefficientMapFormalTransportData.numeratorClearedSeries,`ZetaNine.CoefficientMapFormalTransportData.numeratorLocalCoefficient,`ZetaNine.CoefficientMapFormalTransportData.remainderCoefficient,`ZetaNine.CoefficientMapFormalTransportData.extendedOldCoefficient,`ZetaNine.CoefficientMapFormalTransportData.extendedRemainderCoefficient,`ZetaNine.CoefficientMapFormalTransportData.previousRemainderCoefficient,`ZetaNine.CoefficientMapFormalTransportBounds.connectionP_natDegree_le,`ZetaNine.CoefficientMapFormalTransportBounds.connectionQ_natDegree_le,`ZetaNine.CoefficientMapFormalTransportBounds.chosen_connection_equation,`ZetaNine.CoefficientMapFormalTransportBounds.connectionGamma_row_coordinates,`ZetaNine.CoefficientMapFormalTransportBounds.connectionGamma_restores_P,`ZetaNine.CoefficientMapFormalTransportBounds.connectionP_eq_Gamma_row_sum,`ZetaNine.CoefficientMapFormalTransportBounds.remainderNumerator_eval_two,`ZetaNine.CoefficientMapFormalTransportBounds.shiftedRemainderNumerator_eval_one,`ZetaNine.CoefficientMapFormalTransportBounds.connectionV_natDegree,`ZetaNine.CoefficientMapFormalTransportBounds.remainderNumerator_natDegree_le,`ZetaNine.CoefficientMapFormalTransportBounds.shiftedRemainderNumerator_natDegree_le,`ZetaNine.CoefficientMapFormalTransportBounds.remainderNumerator_degree_nine_bound,`ZetaNine.CoefficientMapFormalTransportBounds.shiftedRemainderNumerator_degree_nine_bound,`ZetaNine.CoefficientMapFormalTransportBounds.remainderNumerator_strict_proper,`ZetaNine.CoefficientMapFormalTransportBounds.shiftedRemainderNumerator_strict_proper,`ZetaNine.CoefficientMapFormalTransportBounds.shiftedRemainderNumerator_below_pole_degree,`ZetaNine.CoefficientMapFormalTransportBounds.chosen_shifted_remainder_degree_bound,`ZetaNine.CoefficientMapFormalTransportBounds.chosen_shifted_remainder_strict_proper,`ZetaNine.CoefficientMapFormalTransportBounds.boundary_n_one_zero,`ZetaNine.CoefficientMapFormalTransportBounds.boundary_n_one_strict_proper] do
+    let ci ← getConstInfo name
+    let axioms ← collectAxioms name
+    let value := match ci with | .defnInfo d => some d.value | _ => none
+    let kind := match ci with | .defnInfo _ => "def" | .thmInfo _ => "theorem" | _ => "other"
+    IO.println (Json.mkObj [("declaration",Json.str name.toString),("kind",Json.str kind),
+      ("full_type_expression_repr",Json.str (reprStr ci.type)),
+      ("full_definition_value_expression_repr",value.map (fun x => Json.str (reprStr x)) |>.getD Json.null),
+      ("axioms",toJson (axioms.toList.map Name.toString))]).compress

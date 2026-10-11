@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "9a2f38e6017ad8e74b2f057fbd9cc522f4d638e1c9bd3a2dfe565fbc75fdc3e8",
+  "publish_intent": {
+    "at_utc": "2026-10-08T14:46:44.505208+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+      "definition_title": "Parameter record for exponent-gapped rational approximants",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\nstructure Parameters (ν : ℝ) where\r\n  theta : ℚ\r\n  A : ℚ\r\n  B : ℚ\r\n  C : ℚ\r\n  eta : ℝ\r\n  theta_pos : 0 < (theta : ℝ)\r\n  theta_lt_A : (theta : ℝ) < A\r\n  A_lt_B : (A : ℝ) < B\r\n  B_lt_one : (B : ℝ) < 1\r\n  approximation_gap : 1 - (theta : ℝ) < ν * ((A : ℝ) - theta)\r\n  one_lt_C : 1 < (C : ℝ)\r\n  B_lt_inv_C : (B : ℝ) < 1 / C\r\n  B_lt_C_theta : (B : ℝ) < (C : ℝ) * theta\r\n  C_theta_lt_one : (C : ℝ) * theta < 1\r\n  eta_pos : 0 < eta\r\n  eta_lt_one : eta < 1\r\n  gap_pos : 0 < ν * ((A : ℝ) * (1 - eta) - theta) - (1 - theta)\r\n\r\n\r\n\r\nnamespace Parameters\r\n\r\nvariable {ν : ℝ} (p : Parameters ν)\r\n\r\ntheorem A_pos : 0 < (p.A : ℝ) := lt_trans p.theta_pos p.theta_lt_A\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend Parameters\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "natural_language_statement": "For a real parameter $\\nu$, the structure $\\mathrm{Parameters}(\\nu)$ stores rational numbers $\\theta,A,B,C$ and a real number $\\eta$ satisfying $0<\\theta<A<B<1$, $1-\\theta<\\nu(A-\\theta)$, $1<C$, $B<1/C$, $B<C\\theta$, $C\\theta<1$, $0<\\eta<1$, and $0<\\nu(A(1-\\eta)-\\theta)-(1-\\theta)$. The staged bundle includes the structure and its generated constructor and recursors, together with the theorem that every $p : \\mathrm{Parameters}(\\nu)$ has $0<(p.A : \\mathbb{R})$. This statement describes the contents of an existing record; it does not assert that such a record exists for every $\\nu$.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L93-L124",
+      "tags": [
+        "number-theory",
+        "rational-approximation",
+        "real-analysis",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "9a2f38e6017ad8e74b2f057fbd9cc522f4d638e1c9bd3a2dfe565fbc75fdc3e8",
+    "bundle_source_sha256": "5cc159d56c790a4016c6efc625cab455cec7a77986ddf52ce21b82c28a46d824",
+    "bundle_manifest_sha256": "1b05da48e0ebb0fcac88546b609759013c5f590f173516fbbb10d07a1050ff4f",
+    "validation_sha256": "8b2ac14792ee70c941243f57b6345e9efbb9cfd941785ad674cfc8e667c41939"
+  },
+  "updated_at_utc": "2026-10-08T14:51:11.307396+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "95c2becd-5d0e-4dbb-a9f9-e5712f997838",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/95c2becd-5d0e-4dbb-a9f9-e5712f997838 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "a30b0920a11223e9cb33eef67b3bf3312ff442be1558b10ee31a72d8c422ec31"
+  },
+  "job_id": "95c2becd-5d0e-4dbb-a9f9-e5712f997838",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "95c2becd-5d0e-4dbb-a9f9-e5712f997838",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+      "theorem_title": "Parameter record for exponent-gapped rational approximants",
+      "formal_statement": "",
+      "natural_language_statement": "For a real parameter $\\nu$, the structure $\\mathrm{Parameters}(\\nu)$ stores rational numbers $\\theta,A,B,C$ and a real number $\\eta$ satisfying $0<\\theta<A<B<1$, $1-\\theta<\\nu(A-\\theta)$, $1<C$, $B<1/C$, $B<C\\theta$, $C\\theta<1$, $0<\\eta<1$, and $0<\\nu(A(1-\\eta)-\\theta)-(1-\\theta)$. The staged bundle includes the structure and its generated constructor and recursors, together with the theorem that every $p : \\mathrm{Parameters}(\\nu)$ has $0<(p.A : \\mathbb{R})$. This statement describes the contents of an existing record; it does not assert that such a record exists for every $\\nu$.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\nstructure Parameters (ν : ℝ) where\r\n  theta : ℚ\r\n  A : ℚ\r\n  B : ℚ\r\n  C : ℚ\r\n  eta : ℝ\r\n  theta_pos : 0 < (theta : ℝ)\r\n  theta_lt_A : (theta : ℝ) < A\r\n  A_lt_B : (A : ℝ) < B\r\n  B_lt_one : (B : ℝ) < 1\r\n  approximation_gap : 1 - (theta : ℝ) < ν * ((A : ℝ) - theta)\r\n  one_lt_C : 1 < (C : ℝ)\r\n  B_lt_inv_C : (B : ℝ) < 1 / C\r\n  B_lt_C_theta : (B : ℝ) < (C : ℝ) * theta\r\n  C_theta_lt_one : (C : ℝ) * theta < 1\r\n  eta_pos : 0 < eta\r\n  eta_lt_one : eta < 1\r\n  gap_pos : 0 < ν * ((A : ℝ) * (1 - eta) - theta) - (1 - theta)\r\n\r\n\r\n\r\nnamespace Parameters\r\n\r\nvariable {ν : ℝ} (p : Parameters ν)\r\n\r\ntheorem A_pos : 0 < (p.A : ℝ) := lt_trans p.theta_pos p.theta_lt_A\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend Parameters\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L93-L124",
+      "tags": [
+        "number-theory",
+        "rational-approximation",
+        "real-analysis",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "fc417d07-f2ff-44a4-9f9b-c476904bc720",
+      "created_at": "2026-10-08T14:46:46.446285+00:00",
+      "updated_at": "2026-10-08T14:46:54.048833+00:00"
+    }
+  },
+  "definition_id": "fc417d07-f2ff-44a4-9f9b-c476904bc720",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "fc417d07-f2ff-44a4-9f9b-c476904bc720",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_Parameters",
+      "theorem_title": "Parameter record for exponent-gapped rational approximants",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real parameter $\\nu$, the structure $\\mathrm{Parameters}(\\nu)$ stores rational numbers $\\theta,A,B,C$ and a real number $\\eta$ satisfying $0<\\theta<A<B<1$, $1-\\theta<\\nu(A-\\theta)$, $1<C$, $B<1/C$, $B<C\\theta$, $C\\theta<1$, $0<\\eta<1$, and $0<\\nu(A(1-\\eta)-\\theta)-(1-\\theta)$. The staged bundle includes the structure and its generated constructor and recursors, together with the theorem that every $p : \\mathrm{Parameters}(\\nu)$ has $0<(p.A : \\mathbb{R})$. This statement describes the contents of an existing record; it does not assert that such a record exists for every $\\nu$.",
+      "created_at": "2026-10-08T14:46:52.917211+00:00",
+      "vote_count": 0,
+      "tags": [
+        "number-theory",
+        "openai-pi-exponent-017",
+        "rational-approximation",
+        "real-analysis"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\r\n\r\nnamespace OAI\r\n\r\nnamespace PiExponent\r\n\r\n\r\n\r\n\r\n\r\nstructure Parameters (ν : ℝ) where\r\n  theta : ℚ\r\n  A : ℚ\r\n  B : ℚ\r\n  C : ℚ\r\n  eta : ℝ\r\n  theta_pos : 0 < (theta : ℝ)\r\n  theta_lt_A : (theta : ℝ) < A\r\n  A_lt_B : (A : ℝ) < B\r\n  B_lt_one : (B : ℝ) < 1\r\n  approximation_gap : 1 - (theta : ℝ) < ν * ((A : ℝ) - theta)\r\n  one_lt_C : 1 < (C : ℝ)\r\n  B_lt_inv_C : (B : ℝ) < 1 / C\r\n  B_lt_C_theta : (B : ℝ) < (C : ℝ) * theta\r\n  C_theta_lt_one : (C : ℝ) * theta < 1\r\n  eta_pos : 0 < eta\r\n  eta_lt_one : eta < 1\r\n  gap_pos : 0 < ν * ((A : ℝ) * (1 - eta) - theta) - (1 - theta)\r\n\r\n\r\n\r\nnamespace Parameters\r\n\r\nvariable {ν : ℝ} (p : Parameters ν)\r\n\r\ntheorem A_pos : 0 < (p.A : ℝ) := lt_trans p.theta_pos p.theta_lt_A\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nend Parameters\r\n\r\nend PiExponent\r\n\r\nend OAI\r\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Parameters.lean#L93-L124",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

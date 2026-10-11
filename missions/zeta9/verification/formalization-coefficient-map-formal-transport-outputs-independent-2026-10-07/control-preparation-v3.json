@@ -1,0 +1,183 @@
+{
+  "status": "PURE_OWN_ORIGINAL_FORALL_CONCRETE_FORMULA_BOUNDARY_CONTROL_PREPARATION",
+  "assertions": {
+    "module": "OutputsIndependentAssertionsV2",
+    "project_relative": "OutputsIndependentAssertionsV2.lean",
+    "source": {
+      "task_relative": ".rt/oi7/OutputsIndependentAssertionsV2.lean",
+      "bytes": 13837,
+      "sha256": "c7c4607e516a3da74f9f05fb62a171e6bdf713e72bd34350718c1110ff2526ee"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-formal-transport-outputs-independent-2026-10-07/OutputsIndependentAssertionsV2.lean",
+      "bytes": 13837,
+      "sha256": "c7c4607e516a3da74f9f05fb62a171e6bdf713e72bd34350718c1110ff2526ee"
+    }
+  },
+  "semantic": {
+    "module": "OutputsIndependentSemanticV3",
+    "project_relative": "OutputsIndependentSemanticV3.lean",
+    "source": {
+      "task_relative": ".rt/oi7/OutputsIndependentSemanticV3.lean",
+      "bytes": 21523,
+      "sha256": "c48dc088520d0d1d750127a83d2815baeef93aa51f5a2fe0d67e3dc1b9017ee0"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-formal-transport-outputs-independent-2026-10-07/OutputsIndependentSemanticV3.lean",
+      "bytes": 21523,
+      "sha256": "c48dc088520d0d1d750127a83d2815baeef93aa51f5a2fe0d67e3dc1b9017ee0"
+    }
+  },
+  "original_exact_headers": [
+    {
+      "name": "weightedR_eval_one_zero",
+      "header": "theorem weightedR_eval_one_zero (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X]) :\n    weightedR n W 1 = 0"
+    },
+    {
+      "name": "quartic_properMultiplier",
+      "header": "theorem quartic_properMultiplier (n : ℕ) (W : ℚ[X]) (hW : W.natDegree ≤ 4) :\n    ProperMultiplier n W"
+    },
+    {
+      "name": "weighted_boundary_sum_zero",
+      "header": "theorem weighted_boundary_sum_zero (n : ℕ) (hn : 1 ≤ n) (W : ℚ[X])\n    (hW : W.natDegree ≤ 4) :\n    (∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n      weightedLocalCoefficient n j s W / (((j + 1 : ℕ) : ℚ) ^ s)) = 0"
+    },
+    {
+      "name": "remainder_boundary_sum_zero",
+      "header": "theorem remainder_boundary_sum_zero (n : ℕ) (hn : 1 ≤ n) (q : ℚ[X])\n    (hq : q.natDegree ≤ 9) :\n    (∑ j ∈ range (n + 2), ∑ s ∈ Icc 1 9,\n      remainderCoefficient n j s q / (((j + 1 : ℕ) : ℚ) ^ s)) = 0"
+    },
+    {
+      "name": "sum_extendedOldCoefficient_harmonic",
+      "header": "theorem sum_extendedOldCoefficient_harmonic (n s : ℕ) (P : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedOldCoefficient n j s P * harmonicPower s j) =\n      ∑ j ∈ range (n + 1), weightedLocalCoefficient n j s P * harmonicPower s (j + 1)"
+    },
+    {
+      "name": "sum_extendedRemainderCoefficient_harmonic",
+      "header": "theorem sum_extendedRemainderCoefficient_harmonic (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), extendedRemainderCoefficient n j s q * harmonicPower s j) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q * harmonicPower s j"
+    },
+    {
+      "name": "sum_previousRemainderCoefficient_harmonic",
+      "header": "theorem sum_previousRemainderCoefficient_harmonic (n s : ℕ) (q : ℚ[X]) :\n    (∑ j ∈ range (n + 3), previousRemainderCoefficient n j s q * harmonicPower s j) =\n      ∑ j ∈ range (n + 2), remainderCoefficient n j s q * harmonicPower s (j + 1)"
+    },
+    {
+      "name": "sum_harmonic_succ",
+      "header": "theorem sum_harmonic_succ (N s : ℕ) (f : ℕ → ℚ) :\n    (∑ j ∈ range N, f j * harmonicPower s (j + 1)) =\n      (∑ j ∈ range N, f j * harmonicPower s j) +\n        ∑ j ∈ range N, f j / (((j + 1 : ℕ) : ℚ) ^ s)"
+    },
+    {
+      "name": "actual_chosen_harmonic_order_transport",
+      "header": "theorem actual_chosen_harmonic_order_transport (n : ℕ) (hn : 1 ≤ n)\n    (r : Fin 5) (s : ℕ) (hs1 : 1 ≤ s) (hs9 : s ≤ 9) :\n    (∑ j ∈ range (n + 3), weightedLocalCoefficient (n + 2) j s (X ^ r.val) * harmonicPower s j) =\n      (∑ j ∈ range (n + 1), weightedLocalCoefficient n j s (connectionP n r) * harmonicPower s j) +\n      (∑ j ∈ range (n + 1), weightedLocalCoefficient n j s (connectionP n r) /\n        (((j + 1 : ℕ) : ℚ) ^ s)) -\n      (∑ j ∈ range (n + 2), remainderCoefficient n j s (connectionQ n r) /\n        (((j + 1 : ℕ) : ℚ) ^ s))"
+    },
+    {
+      "name": "actual_chosen_constantTerm_correction",
+      "header": "theorem actual_chosen_constantTerm_correction (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    constantTerm (n + 2) (X ^ r.val) = constantTerm n (connectionP n r) -\n      (∑ j ∈ range (n + 1), ∑ s ∈ Icc 1 9,\n        weightedLocalCoefficient n j s (connectionP n r) / (((j + 1 : ℕ) : ℚ) ^ s)) +\n      (∑ j ∈ range (n + 2), ∑ s ∈ Icc 1 9,\n        remainderCoefficient n j s (connectionQ n r) / (((j + 1 : ℕ) : ℚ) ^ s))"
+    },
+    {
+      "name": "actual_chosen_constantTerm_transport",
+      "header": "theorem actual_chosen_constantTerm_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    constantTerm (n + 2) (X ^ r.val) = constantTerm n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_five_output_transport",
+      "header": "theorem actual_chosen_five_output_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    aggregate (n + 2) (X ^ r.val) = aggregate n (connectionP n r)"
+    },
+    {
+      "name": "actual_chosen_Gamma_row_transport",
+      "header": "theorem actual_chosen_Gamma_row_transport (n : ℕ) (hn : 1 ≤ n) (r : Fin 5) :\n    aggregate n (connectionP n r) = connectionGamma n r ᵥ* actualFMatrix n"
+    },
+    {
+      "name": "actual_five_output_matrix_transport",
+      "header": "theorem actual_five_output_matrix_transport (n : ℕ) (hn : 1 ≤ n) :\n    actualFMatrix (n + 2) = connectionGamma n * actualFMatrix n"
+    },
+    {
+      "name": "n_one_five_output_transport",
+      "header": "theorem n_one_five_output_transport (r : Fin 5) :\n    aggregate 3 (X ^ r.val) = aggregate 1 (connectionP 1 r)"
+    },
+    {
+      "name": "n_one_matrix_transport",
+      "header": "theorem n_one_matrix_transport :\n    actualFMatrix 3 = connectionGamma 1 * actualFMatrix 1"
+    }
+  ],
+  "original_headers_preserved": true,
+  "related_definition_names": [
+    "ZetaNine.CoefficientMapFormalTransportData.connectionPair",
+    "ZetaNine.CoefficientMapFormalTransportData.connectionP",
+    "ZetaNine.CoefficientMapFormalTransportData.connectionQ",
+    "ZetaNine.CoefficientMapFormalTransportData.connectionGamma",
+    "ZetaNine.CoefficientMapFormalTransportData.remainderNumerator",
+    "ZetaNine.CoefficientMapFormalTransportData.shiftedRemainderNumerator",
+    "ZetaNine.CoefficientMapFormalTransportData.numeratorClearedSeries",
+    "ZetaNine.CoefficientMapFormalTransportData.numeratorLocalCoefficient",
+    "ZetaNine.CoefficientMapFormalTransportData.remainderCoefficient",
+    "ZetaNine.CoefficientMapFormalTransportData.extendedOldCoefficient",
+    "ZetaNine.CoefficientMapFormalTransportData.extendedRemainderCoefficient",
+    "ZetaNine.CoefficientMapFormalTransportData.previousRemainderCoefficient",
+    "ZetaNine.CoefficientMapFiniteSum.rho",
+    "ZetaNine.CoefficientMapFiniteSum.constantTerm",
+    "ZetaNine.CoefficientMapAggregate.aggregate",
+    "ZetaNine.CoefficientMapAggregate.aggregateLinearMap",
+    "ZetaNine.CoefficientMapAggregate.quarticAggregateLinearMap",
+    "ZetaNine.CoefficientMapMatrix.actualFMatrix"
+  ],
+  "boundary_names": [
+    "minimum_B",
+    "minimum_all_coordinates",
+    "minimum_LEFT_matrix",
+    "even_LEFT_matrix",
+    "odd_LEFT_matrix",
+    "maximum_remainder_degree",
+    "excluded_zero_parameter",
+    "empty_harmonic_successor",
+    "maximum_quartic_degree"
+  ],
+  "helper_modules": [
+    "missions.zeta9.formalization.CoefficientMap",
+    "missions.zeta9.formalization.CoefficientMapJet",
+    "missions.zeta9.formalization.CoefficientMapInjectivity",
+    "missions.zeta9.formalization.CoefficientMapPartialFractions",
+    "missions.zeta9.formalization.CoefficientMapReflection",
+    "Definitions.Def_ZetaNine_HarmonicStability",
+    "missions.zeta9.formalization.CoefficientMapFiniteSum",
+    "missions.zeta9.formalization.CoefficientMapSummation",
+    "missions.zeta9.formalization.CoefficientMapAggregate",
+    "missions.zeta9.formalization.CoefficientMapTelescoper",
+    "missions.zeta9.formalization.CoefficientMapShiftDegree",
+    "missions.zeta9.formalization.CoefficientMapKernelBridge",
+    "missions.zeta9.formalization.CoefficientMapConnection",
+    "missions.zeta9.formalization.CoefficientMapParameterShift",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportData",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportBounds",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportNumerators",
+    "missions.zeta9.formalization.CoefficientMapNumeratorPartialFractions",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportJets",
+    "missions.zeta9.formalization.CoefficientMapMatrix",
+    "missions.zeta9.formalization.CoefficientMapFormalTransportOutputs",
+    "OutputsIndependentAssertionsV2"
+  ],
+  "complete_original_forall_pairs": 16,
+  "complete_definition_type_value_pairs": 18,
+  "whole_function_rfl": 18,
+  "typed_boundaries": 9,
+  "all_full_types_and_values_lossless_dag_roundtripped": true,
+  "raw_Expr_equal_is_an_honest_diagnostic_not_an_acceptance_requirement": true,
+  "required_acceptance": "Actual SOURCE compiler, closed Std3, complete kernel isDefEq and whole-function rfl",
+  "finite_scope": "finite B, five outputs, LEFT Gamma for all n>=1; excludes HasSum parameter17/J/height/irrationality",
+  "author_Expectation_SOURCE_or_mathematical_control_reused": false,
+  "independent_PASS_claimed": false,
+  "original_unattempted_semantic_V1": {
+    "module": "OutputsIndependentSemanticV1",
+    "project_relative": "OutputsIndependentSemanticV1.lean",
+    "source": {
+      "task_relative": ".rt/oi7/OutputsIndependentSemanticV1.lean",
+      "bytes": 20324,
+      "sha256": "7bcfdb6587c9c622cb345cee4852fefa709860cf22a75731402d8076d3a66477"
+    },
+    "snapshot": {
+      "task_relative": "verification/formalization-coefficient-map-formal-transport-outputs-independent-2026-10-07/OutputsIndependentSemanticV1.lean",
+      "bytes": 20324,
+      "sha256": "7bcfdb6587c9c622cb345cee4852fefa709860cf22a75731402d8076d3a66477"
+    }
+  },
+  "unattempted_V1_preserved": true,
+  "helper_proofs": "Full closed type lossless roundtrip plus actual proof closure and Std3; huge raw helper proof values are not exported",
+  "helper_definitions": "Full type and value lossless roundtrip, including metadata and generated matcher names",
+  "repair": "First actual assertions compiler call failed only because original unqualified harmonicPower namespace was not opened in independently generated assertion context; private V2 adds open ZetaNine.HarmonicStability. All 16 original theorem headers unchanged and personally compared literally with original shared source and verified source. Semantic private V3 updates imported assertions module and actual helper inventory module accordingly; original source/control files/failure logs untouched.",
+  "whole_failed_assertions_run_preserved": "actual-runs/c025-a01; whole failed run excluded; no assertion object produced",
+  "assertions_header_original_and_verified_literal_comparison": true
+}

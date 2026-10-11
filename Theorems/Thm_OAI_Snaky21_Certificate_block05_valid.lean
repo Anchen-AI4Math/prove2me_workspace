@@ -1,0 +1,7 @@
+-- Exact public interface; reference placeholder, not proof evidence.
+import Definitions.Def_Snaky21Data05
+import Theorems.Thm_OAI_Snaky21_claim_calculus
+import Theorems.Thm_OAI_Snaky21_Certificate_block04_valid
+open OAI.Snaky21 OAI.SnakyPrototype OAI.Snaky21.Certificate
+
+theorem OAI.Snaky21.Certificate.block05_valid : Valid card_320 ∧ Valid card_321 ∧ Valid card_322 ∧ Valid card_323 ∧ Valid card_324 ∧ Valid card_325 ∧ Valid card_326 ∧ Valid card_327 ∧ Valid card_328 ∧ Valid card_329 ∧ Valid card_330 ∧ Valid card_331 ∧ Valid card_332 ∧ Valid card_333 ∧ Valid card_334 ∧ Valid card_335 ∧ Valid card_336 ∧ Valid card_337 ∧ Valid card_338 ∧ Valid card_339 ∧ Valid card_340 ∧ Valid card_341 ∧ Valid card_342 ∧ Valid card_343 ∧ Valid card_344 ∧ Valid card_345 ∧ Valid card_346 ∧ Valid card_347 ∧ Valid card_348 ∧ Valid card_349 ∧ Valid card_350 ∧ Valid card_351 ∧ Valid card_352 ∧ Valid card_353 ∧ Valid card_354 ∧ Valid card_355 ∧ Valid card_356 ∧ Valid card_357 ∧ Valid card_358 ∧ Valid card_359 ∧ Valid card_360 ∧ Valid card_361 ∧ Valid card_362 ∧ Valid card_363 ∧ Valid card_364 ∧ Valid card_365 ∧ Valid card_366 ∧ Valid card_367 ∧ Valid card_368 ∧ Valid card_369 ∧ Valid card_370 ∧ Valid card_371 ∧ Valid card_372 ∧ Valid card_373 ∧ Valid card_374 ∧ Valid card_375 ∧ Valid card_376 ∧ Valid card_377 ∧ Valid card_378 ∧ Valid card_379 ∧ Valid card_380 ∧ Valid card_381 ∧ Valid card_382 ∧ Valid card_383 ∧ True := by sorry
