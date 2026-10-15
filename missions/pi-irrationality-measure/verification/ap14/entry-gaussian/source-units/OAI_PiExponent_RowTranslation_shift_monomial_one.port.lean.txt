@@ -1,0 +1,5 @@
+omit [DecidableEq σ] in
+theorem shift_monomial_one (c : σ → R) (a : σ →₀ ℕ) :
+    shift c (monomial a 1) = ∏ i, (X i + C (c i)) ^ a i := by
+  simp only [shift, eval₂Hom_monomial, map_one, one_mul]
+  exact a.prod_fintype _ (fun i => pow_zero _)

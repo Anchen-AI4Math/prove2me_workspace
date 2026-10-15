@@ -1,0 +1,3905 @@
+{
+  "stage": "classification complete; generation and exact-type validation pending",
+  "public_source_repository": "https://github.com/Anchen0823/three-sum-1960614",
+  "public_source_commit": "8c25c0325de5be4286413f39ca0c9278aad33f52",
+  "source_path_mapping": {
+    "Submission.": "Submission/",
+    "Closed3Sum.": "Submission/Closed3Sum/"
+  },
+  "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+  "declaration_graph_sha256": "69e8356bc4605f609065c23c9221043898a15b409e52681e5556797648461313",
+  "module_receipts": {
+    "Submission.ThreeSum.Balancing": {
+      "module": "Submission.ThreeSum.Balancing",
+      "source_sha256": "f1cf7ba52e6bdc09b2a3908ab762add1627a66633e268fafe2e9d66f5b697f71",
+      "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+      "exit_code": 0,
+      "declaration_count": 6,
+      "facts_path": "missions/3sum-1960614/verification/sketch-oracles/Submission_ThreeSum_Balancing.jsonl",
+      "facts_sha256": "0aed22aa85f591a9544a3b44e659a510bc6098e31ed6be67836dd1e2e4e48e92",
+      "oracle_input_sha256": "f1cf7ba52e6bdc09b2a3908ab762add1627a66633e268fafe2e9d66f5b697f71",
+      "offset_coordinate_system": "UTF-8 bytes after CRLF-to-LF normalization"
+    },
+    "Submission.ThreeSum.Bands": {
+      "module": "Submission.ThreeSum.Bands",
+      "source_sha256": "007e0199a0934cfb5347ffef598589dd28ab4f52c125ebd35bd9a167d36c7cde",
+      "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+      "exit_code": 0,
+      "declaration_count": 14,
+      "facts_path": "missions/3sum-1960614/verification/sketch-oracles/Submission_ThreeSum_Bands.jsonl",
+      "facts_sha256": "21d2719461af16444a1d33605238ada12501101cd3c80be077f864a297467361",
+      "oracle_input_sha256": "007e0199a0934cfb5347ffef598589dd28ab4f52c125ebd35bd9a167d36c7cde",
+      "offset_coordinate_system": "UTF-8 bytes after CRLF-to-LF normalization"
+    },
+    "Submission.ThreeSum.Coloring": {
+      "module": "Submission.ThreeSum.Coloring",
+      "source_sha256": "2b06bde1c46cc2ca125316bfa3e0dad52efd6c5fbae6a382343bbb1269632724",
+      "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+      "exit_code": 0,
+      "declaration_count": 27,
+      "facts_path": "missions/3sum-1960614/verification/sketch-oracles/Submission_ThreeSum_Coloring.jsonl",
+      "facts_sha256": "405d9a978281295b06e3742bdacf48b5f96dce24b9b8088bcd618a071583f59a",
+      "oracle_input_sha256": "2b06bde1c46cc2ca125316bfa3e0dad52efd6c5fbae6a382343bbb1269632724",
+      "offset_coordinate_system": "UTF-8 bytes after CRLF-to-LF normalization"
+    },
+    "Submission.ThreeSum.HashFamily": {
+      "module": "Submission.ThreeSum.HashFamily",
+      "source_sha256": "532cb413565318463ea66af59572ca6135335908fa7ae3b5c951c21cf77b4400",
+      "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+      "exit_code": 0,
+      "declaration_count": 54,
+      "facts_path": "missions/3sum-1960614/verification/sketch-oracles/Submission_ThreeSum_HashFamily.jsonl",
+      "facts_sha256": "650d3216bb4658dacb807b8e519883401d75ed9e3a0995bae981099520f3f9c8",
+      "oracle_input_sha256": "532cb413565318463ea66af59572ca6135335908fa7ae3b5c951c21cf77b4400",
+      "offset_coordinate_system": "UTF-8 bytes after CRLF-to-LF normalization"
+    },
+    "Submission.ThreeSum.Histograms": {
+      "module": "Submission.ThreeSum.Histograms",
+      "source_sha256": "c704b89b64e5f9d4fc9d92b9d788325ca697ca934670cb973d86df1d4cc249b4",
+      "oracle_sha256": "def86ed54b7f80ccc26799e230f452289ad50db06a4522b357d6ffe78f12663b",
+      "exit_code": 0,
+      "declaration_count": 8,
+      "facts_path": "missions/3sum-1960614/verification/sketch-oracles/Submission_ThreeSum_Histograms.jsonl",
+      "facts_sha256": "90c079f73469dee428c7ed9c621a71361f93e15755eabb830517b87a17703136",
+      "oracle_input_sha256": "c704b89b64e5f9d4fc9d92b9d788325ca697ca934670cb973d86df1d4cc249b4",
+      "offset_coordinate_system": "UTF-8 bytes after CRLF-to-LF normalization"
+    }
+  },
+  "classification_counts": {
+    "def-material": 31,
+    "inline-helper": 33,
+    "node": 14
+  },
+  "roots": [
+    "ThreeSum.Histograms.selected_pairMass_bound",
+    "ThreeSum.Bands.tripleOwner_injective",
+    "ThreeSum.HashFamily.oneHot_four_independent",
+    "ThreeSum.HashFamily.trimmed_second_moment",
+    "ThreeSum.Coloring.reduction_correct"
+  ],
+  "units": {
+    "Submission.ThreeSum.Balancing:1423": {
+      "id": "Submission.ThreeSum.Balancing:1423",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 46,
+          "line": 43,
+          "offset": 1616
+        },
+        "declStart": {
+          "col": 0,
+          "line": 41,
+          "offset": 1423
+        },
+        "docstring": {
+          "end": {
+            "col": 74,
+            "line": 41,
+            "offset": 1497
+          },
+          "start": {
+            "col": 0,
+            "line": 41,
+            "offset": 1423
+          }
+        },
+        "kind": "decl",
+        "nameText": "chooseOffset",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 65,
+          "line": 42,
+          "offset": 1567
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "primary": "ThreeSum.Balancing.chooseOffset",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.chooseOffset"
+      ]
+    },
+    "Submission.ThreeSum.Balancing:2071": {
+      "id": "Submission.ThreeSum.Balancing:2071",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 76,
+          "line": 61,
+          "offset": 2414
+        },
+        "declStart": {
+          "col": 0,
+          "line": 56,
+          "offset": 2071
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "chooseOffset_balanced",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 30,
+          "line": 59,
+          "offset": 2281
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Balancing:1618",
+        "Submission.ThreeSum.Balancing:510",
+        "Submission.ThreeSum.Balancing:912"
+      ],
+      "primary": "ThreeSum.Balancing.chooseOffset_balanced",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.chooseOffset_balanced"
+      ]
+    },
+    "Submission.ThreeSum.Balancing:1618": {
+      "id": "Submission.ThreeSum.Balancing:1618",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 46,
+          "line": 54,
+          "offset": 2069
+        },
+        "declStart": {
+          "col": 0,
+          "line": 45,
+          "offset": 1618
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "chooseOffset_le",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 64,
+          "line": 47,
+          "offset": 1788
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "primary": "ThreeSum.Balancing.chooseOffset_le",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 7,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.chooseOffset_le"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:10092": {
+      "id": "Submission.ThreeSum.HashFamily:10092",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 43,
+          "line": 257,
+          "offset": 10510
+        },
+        "declStart": {
+          "col": 0,
+          "line": 251,
+          "offset": 10092
+        },
+        "docstring": {
+          "end": {
+            "col": 78,
+            "line": 251,
+            "offset": 10170
+          },
+          "start": {
+            "col": 0,
+            "line": 251,
+            "offset": 10092
+          }
+        },
+        "kind": "decl",
+        "nameText": "wordEvent_card",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 255,
+          "offset": 10428
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8007",
+        "Submission.ThreeSum.HashFamily:9474",
+        "Submission.ThreeSum.HashFamily:9729"
+      ],
+      "primary": "ThreeSum.HashFamily.wordEvent_card",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.wordEvent_card"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:12279": {
+      "id": "Submission.ThreeSum.HashFamily:12279",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 21,
+          "line": 304,
+          "offset": 12621
+        },
+        "declStart": {
+          "col": 0,
+          "line": 297,
+          "offset": 12279
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "tripleEvent_card",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 300,
+          "offset": 12496
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:10092",
+        "Submission.ThreeSum.HashFamily:4388",
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.tripleEvent_card",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.tripleEvent_card"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:821": {
+      "id": "Submission.ThreeSum.Coloring:821",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 21,
+          "line": 32,
+          "offset": 988
+        },
+        "declStart": {
+          "col": 0,
+          "line": 27,
+          "offset": 821
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "exists_coordinate_ne",
+        "privateTok": {
+          "end": {
+            "col": 7,
+            "line": 27,
+            "offset": 828
+          },
+          "start": {
+            "col": 0,
+            "line": 27,
+            "offset": 821
+          }
+        },
+        "valKind": "simple",
+        "valStart": {
+          "col": 19,
+          "line": 28,
+          "offset": 917
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "_private.Submission.ThreeSum.Coloring.0.ThreeSum.Coloring.exists_coordinate_ne",
+      "is_theorem": true,
+      "private": true,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "_private.Submission.ThreeSum.Coloring.0.ThreeSum.Coloring.exists_coordinate_ne"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:31197": {
+      "id": "Submission.ThreeSum.HashFamily:31197",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 25,
+          "line": 709,
+          "offset": 31435
+        },
+        "declStart": {
+          "col": 0,
+          "line": 706,
+          "offset": 31197
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "trimmedPairEvent_subset",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 78,
+          "line": 708,
+          "offset": 31407
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:30927"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:25784"
+      ],
+      "primary": "ThreeSum.HashFamily.trimmedPairEvent_subset",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.trimmedPairEvent_subset"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6485": {
+      "id": "Submission.ThreeSum.Coloring:6485",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 30,
+          "line": 160,
+          "offset": 6663
+        },
+        "declStart": {
+          "col": 0,
+          "line": 158,
+          "offset": 6485
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "mem_negValues",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 48,
+          "line": 159,
+          "offset": 6627
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:6177"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:5912",
+        "Submission.ThreeSum.Coloring:6177",
+        "Submission.ThreeSum.Coloring:6297"
+      ],
+      "primary": "ThreeSum.Coloring.mem_negValues",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.mem_negValues"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:3311": {
+      "id": "Submission.ThreeSum.Coloring:3311",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 30,
+          "line": 85,
+          "offset": 3410
+        },
+        "declStart": {
+          "col": 0,
+          "line": 84,
+          "offset": 3311
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "indexWord",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 62,
+          "line": 84,
+          "offset": 3377
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:3183"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:3183"
+      ],
+      "primary": "ThreeSum.Coloring.indexWord",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.indexWord"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:789": {
+      "id": "Submission.ThreeSum.HashFamily:789",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 39,
+          "line": 29,
+          "offset": 896
+        },
+        "declStart": {
+          "col": 0,
+          "line": 28,
+          "offset": 789
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "oneHot",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 58,
+          "line": 28,
+          "offset": 854
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.oneHot",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.oneHot"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:1986": {
+      "id": "Submission.ThreeSum.Coloring:1986",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 69,
+          "line": 58,
+          "offset": 2166
+        },
+        "declStart": {
+          "col": 0,
+          "line": 56,
+          "offset": 1986
+        },
+        "docstring": {
+          "end": {
+            "col": 25,
+            "line": 57,
+            "offset": 2089
+          },
+          "start": {
+            "col": 0,
+            "line": 56,
+            "offset": 1986
+          }
+        },
+        "kind": "decl",
+        "nameText": "Parameter",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 25,
+          "line": 58,
+          "offset": 2117
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Coloring.Parameter",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 0,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.Parameter"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:8930": {
+      "id": "Submission.ThreeSum.HashFamily:8930",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 39,
+          "line": 225,
+          "offset": 9156
+        },
+        "declStart": {
+          "col": 0,
+          "line": 221,
+          "offset": 8930
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "hashValue_family",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 78,
+          "line": 223,
+          "offset": 9100
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8587"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8587",
+        "Submission.ThreeSum.HashFamily:8733"
+      ],
+      "primary": "ThreeSum.HashFamily.hashValue_family",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.hashValue_family"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:12623": {
+      "id": "Submission.ThreeSum.HashFamily:12623",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 42,
+          "line": 334,
+          "offset": 14161
+        },
+        "declStart": {
+          "col": 0,
+          "line": 306,
+          "offset": 12623
+        },
+        "docstring": {
+          "end": {
+            "col": 55,
+            "line": 307,
+            "offset": 12753
+          },
+          "start": {
+            "col": 0,
+            "line": 306,
+            "offset": 12623
+          }
+        },
+        "kind": "decl",
+        "nameText": "jointPair_card_le_cube",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 312,
+          "offset": 13035
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:12279",
+        "Submission.ThreeSum.HashFamily:8587",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "primary": "ThreeSum.HashFamily.jointPair_card_le_cube",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 22,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.HashFamily:10092",
+        "Submission.ThreeSum.HashFamily:12279",
+        "Submission.ThreeSum.HashFamily:4388",
+        "Submission.ThreeSum.HashFamily:8007",
+        "Submission.ThreeSum.HashFamily:8733",
+        "Submission.ThreeSum.HashFamily:8930",
+        "Submission.ThreeSum.HashFamily:9729"
+      ],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:1465",
+        "Submission.ThreeSum.HashFamily:5935",
+        "Submission.ThreeSum.HashFamily:6847"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.jointPair_card_le_cube"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:8733": {
+      "id": "Submission.ThreeSum.HashFamily:8733",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 49,
+          "line": 219,
+          "offset": 8928
+        },
+        "declStart": {
+          "col": 0,
+          "line": 216,
+          "offset": 8733
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "hashValue_eq_dotProduct",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 51,
+          "line": 217,
+          "offset": 8861
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8587"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.hashValue_eq_dotProduct",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.hashValue_eq_dotProduct"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6898": {
+      "id": "Submission.ThreeSum.Coloring:6898",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 14,
+          "line": 193,
+          "offset": 7944
+        },
+        "declStart": {
+          "col": 0,
+          "line": 168,
+          "offset": 6898
+        },
+        "docstring": {
+          "end": {
+            "col": 59,
+            "line": 169,
+            "offset": 7035
+          },
+          "start": {
+            "col": 0,
+            "line": 168,
+            "offset": 6898
+          }
+        },
+        "kind": "decl",
+        "nameText": "reduction_correct",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 68,
+          "line": 172,
+          "offset": 7208
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:4495",
+        "Submission.ThreeSum.Coloring:5912",
+        "Submission.ThreeSum.Coloring:6177",
+        "Submission.ThreeSum.Coloring:6665",
+        "Submission.ThreeSum.Coloring:6795"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:4495",
+        "Submission.ThreeSum.Coloring:5476",
+        "Submission.ThreeSum.Coloring:5912",
+        "Submission.ThreeSum.Coloring:6177",
+        "Submission.ThreeSum.Coloring:6297",
+        "Submission.ThreeSum.Coloring:6485",
+        "Submission.ThreeSum.Coloring:6665",
+        "Submission.ThreeSum.Coloring:6795"
+      ],
+      "primary": "ThreeSum.Coloring.reduction_correct",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 21,
+      "classification": "node",
+      "reasons": [
+        "target",
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.Coloring:2458",
+        "Submission.ThreeSum.Coloring:3412",
+        "Submission.ThreeSum.Coloring:3571",
+        "Submission.ThreeSum.Coloring:5476",
+        "Submission.ThreeSum.Coloring:6297",
+        "Submission.ThreeSum.Coloring:6485"
+      ],
+      "child_nodes": [
+        "Submission.ThreeSum.Coloring:990"
+      ],
+      "names": [
+        "ThreeSum.Coloring.reduction_correct"
+      ]
+    },
+    "Submission.ThreeSum.Balancing:510": {
+      "id": "Submission.ThreeSum.Balancing:510",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 65,
+          "line": 19,
+          "offset": 583
+        },
+        "declStart": {
+          "col": 0,
+          "line": 19,
+          "offset": 510
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "correlation",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 42,
+          "line": 19,
+          "offset": 558
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Balancing.correlation",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 0,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.correlation"
+      ]
+    },
+    "Submission.ThreeSum.Histograms:934": {
+      "id": "Submission.ThreeSum.Histograms:934",
+      "module": "Submission.ThreeSum.Histograms",
+      "fact": {
+        "declEnd": {
+          "col": 77,
+          "line": 35,
+          "offset": 1168
+        },
+        "declStart": {
+          "col": 0,
+          "line": 33,
+          "offset": 934
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "pairMass",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 52,
+          "line": 34,
+          "offset": 1080
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Histograms.pairMass",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Histograms.pairMass"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:5935": {
+      "id": "Submission.ThreeSum.HashFamily:5935",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 56,
+          "line": 172,
+          "offset": 6845
+        },
+        "declStart": {
+          "col": 0,
+          "line": 155,
+          "offset": 5935
+        },
+        "docstring": {
+          "end": {
+            "col": 79,
+            "line": 156,
+            "offset": 6084
+          },
+          "start": {
+            "col": 0,
+            "line": 155,
+            "offset": 5935
+          }
+        },
+        "kind": "decl",
+        "nameText": "hashMap_surjective",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 36,
+          "line": 158,
+          "offset": 6201
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:5504"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:5504"
+      ],
+      "primary": "ThreeSum.HashFamily.hashMap_surjective",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 14,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.HashFamily.hashMap_surjective"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:5504": {
+      "id": "Submission.ThreeSum.HashFamily:5504",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 57,
+          "line": 148,
+          "offset": 5791
+        },
+        "declStart": {
+          "col": 0,
+          "line": 144,
+          "offset": 5504
+        },
+        "docstring": {
+          "end": {
+            "col": 55,
+            "line": 145,
+            "offset": 5632
+          },
+          "start": {
+            "col": 0,
+            "line": 144,
+            "offset": 5504
+          }
+        },
+        "kind": "decl",
+        "nameText": "hashMap",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 66,
+          "line": 146,
+          "offset": 5715
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.hashMap",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.hashMap"
+      ]
+    },
+    "Submission.ThreeSum.Histograms:2620": {
+      "id": "Submission.ThreeSum.Histograms:2620",
+      "module": "Submission.ThreeSum.Histograms",
+      "fact": {
+        "declEnd": {
+          "col": 35,
+          "line": 83,
+          "offset": 3428
+        },
+        "declStart": {
+          "col": 0,
+          "line": 71,
+          "offset": 2620
+        },
+        "docstring": {
+          "end": {
+            "col": 75,
+            "line": 72,
+            "offset": 2772
+          },
+          "start": {
+            "col": 0,
+            "line": 71,
+            "offset": 2620
+          }
+        },
+        "kind": "decl",
+        "nameText": "selected_pairMass_bound",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 52,
+          "line": 79,
+          "offset": 3208
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Histograms:573",
+        "Submission.ThreeSum.Histograms:934"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:1423",
+        "Submission.ThreeSum.Balancing:2071",
+        "Submission.ThreeSum.Balancing:510",
+        "Submission.ThreeSum.Histograms:1170",
+        "Submission.ThreeSum.Histograms:573",
+        "Submission.ThreeSum.Histograms:709",
+        "Submission.ThreeSum.Histograms:934"
+      ],
+      "primary": "ThreeSum.Histograms.selected_pairMass_bound",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "node",
+      "reasons": [
+        "target"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.Balancing:1618",
+        "Submission.ThreeSum.Balancing:2071",
+        "Submission.ThreeSum.Balancing:585",
+        "Submission.ThreeSum.Balancing:912",
+        "Submission.ThreeSum.Histograms:1170",
+        "Submission.ThreeSum.Histograms:709"
+      ],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.Histograms.selected_pairMass_bound"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:3183": {
+      "id": "Submission.ThreeSum.Coloring:3183",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 46,
+          "line": 82,
+          "offset": 3309
+        },
+        "declStart": {
+          "col": 0,
+          "line": 81,
+          "offset": 3183
+        },
+        "docstring": {
+          "end": {
+            "col": 75,
+            "line": 81,
+            "offset": 3258
+          },
+          "start": {
+            "col": 0,
+            "line": 81,
+            "offset": 3183
+          }
+        },
+        "kind": "decl",
+        "nameText": "indexWidth",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 27,
+          "line": 82,
+          "offset": 3290
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Coloring.indexWidth",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 0,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.indexWidth"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:16392": {
+      "id": "Submission.ThreeSum.HashFamily:16392",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 56,
+          "line": 401,
+          "offset": 16700
+        },
+        "declStart": {
+          "col": 0,
+          "line": 395,
+          "offset": 16392
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "incidenceCount_mono",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 397,
+          "offset": 16563
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:15753"
+      ],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.incidenceCount_mono",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.incidenceCount_mono"
+      ]
+    },
+    "Submission.ThreeSum.Bands:3896": {
+      "id": "Submission.ThreeSum.Bands:3896",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 69,
+          "line": 104,
+          "offset": 4152
+        },
+        "declStart": {
+          "col": 0,
+          "line": 101,
+          "offset": 3896
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "tripleOwner",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 48,
+          "line": 102,
+          "offset": 4026
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.Bands:1700"
+      ],
+      "primary": "ThreeSum.Bands.tripleOwner",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.tripleOwner"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:990": {
+      "id": "Submission.ThreeSum.Coloring:990",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 47,
+          "line": 54,
+          "offset": 1984
+        },
+        "declStart": {
+          "col": 0,
+          "line": 34,
+          "offset": 990
+        },
+        "docstring": {
+          "end": {
+            "col": 79,
+            "line": 34,
+            "offset": 1069
+          },
+          "start": {
+            "col": 0,
+            "line": 34,
+            "offset": 990
+          }
+        },
+        "kind": "decl",
+        "nameText": "two_coordinates_separate",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 56,
+          "line": 38,
+          "offset": 1284
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:821"
+      ],
+      "primary": "ThreeSum.Coloring.two_coordinates_separate",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 16,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.Coloring:821"
+      ],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.Coloring.two_coordinates_separate"
+      ]
+    },
+    "Submission.ThreeSum.Bands:3636": {
+      "id": "Submission.ThreeSum.Bands:3636",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 72,
+          "line": 99,
+          "offset": 3894
+        },
+        "declStart": {
+          "col": 0,
+          "line": 96,
+          "offset": 3636
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": null,
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 71,
+          "line": 97,
+          "offset": 3784
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:3448"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:3448"
+      ],
+      "primary": "ThreeSum.Bands.instDecidableRelevant",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": true,
+      "proof_lines": 2,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.instDecidableRelevant"
+      ]
+    },
+    "Submission.ThreeSum.Bands:1510": {
+      "id": "Submission.ThreeSum.Bands:1510",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 69,
+          "line": 47,
+          "offset": 1698
+        },
+        "declStart": {
+          "col": 0,
+          "line": 45,
+          "offset": 1510
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": null,
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 42,
+          "line": 46,
+          "offset": 1620
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:1384"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:1384"
+      ],
+      "primary": "ThreeSum.Bands.instDecidableOverlap",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": true,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.instDecidableOverlap"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:11242": {
+      "id": "Submission.ThreeSum.HashFamily:11242",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 69,
+          "line": 271,
+          "offset": 11388
+        },
+        "declStart": {
+          "col": 0,
+          "line": 270,
+          "offset": 11242
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "pairEvent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 65,
+          "line": 270,
+          "offset": 11314
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:8587"
+      ],
+      "primary": "ThreeSum.HashFamily.pairEvent",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.pairEvent"
+      ]
+    },
+    "Submission.ThreeSum.Bands:4154": {
+      "id": "Submission.ThreeSum.Bands:4154",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 9,
+          "line": 146,
+          "offset": 5932
+        },
+        "declStart": {
+          "col": 0,
+          "line": 106,
+          "offset": 4154
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "tripleOwner_injective",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 82,
+          "line": 111,
+          "offset": 4529
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:3448",
+        "Submission.ThreeSum.Bands:3896",
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:1086",
+        "Submission.ThreeSum.Bands:1384",
+        "Submission.ThreeSum.Bands:1700",
+        "Submission.ThreeSum.Bands:1839",
+        "Submission.ThreeSum.Bands:3448",
+        "Submission.ThreeSum.Bands:3896",
+        "Submission.ThreeSum.Bands:747",
+        "Submission.ThreeSum.Bands:843"
+      ],
+      "primary": "ThreeSum.Bands.tripleOwner_injective",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 35,
+      "classification": "node",
+      "reasons": [
+        "target"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.Bands:1086",
+        "Submission.ThreeSum.Bands:1839",
+        "Submission.ThreeSum.Bands:843"
+      ],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.Bands.tripleOwner_injective"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:18028": {
+      "id": "Submission.ThreeSum.HashFamily:18028",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 32,
+          "line": 442,
+          "offset": 18133
+        },
+        "declStart": {
+          "col": 0,
+          "line": 441,
+          "offset": 18028
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "outputMask",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 62,
+          "line": 441,
+          "offset": 18098
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.outputMask",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.outputMask"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:4388": {
+      "id": "Submission.ThreeSum.HashFamily:4388",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 26,
+          "line": 123,
+          "offset": 4812
+        },
+        "declStart": {
+          "col": 0,
+          "line": 115,
+          "offset": 4388
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "oneHot_three_independent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 65,
+          "line": 117,
+          "offset": 4562
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:1465",
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.oneHot_three_independent",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 6,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.oneHot_three_independent"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:1465": {
+      "id": "Submission.ThreeSum.HashFamily:1465",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 28,
+          "line": 68,
+          "offset": 2461
+        },
+        "declStart": {
+          "col": 0,
+          "line": 50,
+          "offset": 1465
+        },
+        "docstring": {
+          "end": {
+            "col": 45,
+            "line": 52,
+            "offset": 1654
+          },
+          "start": {
+            "col": 0,
+            "line": 50,
+            "offset": 1465
+          }
+        },
+        "kind": "decl",
+        "nameText": "three_relation",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 26,
+          "line": 56,
+          "offset": 1866
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:1098",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:898"
+      ],
+      "primary": "ThreeSum.HashFamily.three_relation",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 12,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.HashFamily:1098",
+        "Submission.ThreeSum.HashFamily:898"
+      ],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.HashFamily.three_relation"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:25784": {
+      "id": "Submission.ThreeSum.HashFamily:25784",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 58,
+          "line": 597,
+          "offset": 25936
+        },
+        "declStart": {
+          "col": 0,
+          "line": 596,
+          "offset": 25784
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "bucketSize",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 82,
+          "line": 596,
+          "offset": 25875
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:8587"
+      ],
+      "primary": "ThreeSum.HashFamily.bucketSize",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.bucketSize"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:898": {
+      "id": "Submission.ThreeSum.HashFamily:898",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 22,
+          "line": 36,
+          "offset": 1058
+        },
+        "declStart": {
+          "col": 0,
+          "line": 31,
+          "offset": 898
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "exists_coordinate_ne",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 19,
+          "line": 32,
+          "offset": 988
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.exists_coordinate_ne",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.exists_coordinate_ne"
+      ]
+    },
+    "Submission.ThreeSum.Bands:1086": {
+      "id": "Submission.ThreeSum.Bands:1086",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 27,
+          "line": 40,
+          "offset": 1382
+        },
+        "declStart": {
+          "col": 0,
+          "line": 34,
+          "offset": 1086
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "separated_shift",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 54,
+          "line": 35,
+          "offset": 1219
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "primary": "ThreeSum.Bands.separated_shift",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 5,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.separated_shift"
+      ]
+    },
+    "Submission.ThreeSum.Histograms:573": {
+      "id": "Submission.ThreeSum.Histograms:573",
+      "module": "Submission.ThreeSum.Histograms",
+      "fact": {
+        "declEnd": {
+          "col": 44,
+          "line": 23,
+          "offset": 707
+        },
+        "declStart": {
+          "col": 0,
+          "line": 22,
+          "offset": 573
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "histogram",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 72,
+          "line": 22,
+          "offset": 656
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Histograms.histogram",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Histograms.histogram"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:22016": {
+      "id": "Submission.ThreeSum.HashFamily:22016",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 26,
+          "line": 560,
+          "offset": 24127
+        },
+        "declStart": {
+          "col": 0,
+          "line": 521,
+          "offset": 22016
+        },
+        "docstring": {
+          "end": {
+            "col": 57,
+            "line": 523,
+            "offset": 22225
+          },
+          "start": {
+            "col": 0,
+            "line": 521,
+            "offset": 22016
+          }
+        },
+        "kind": "decl",
+        "nameText": "raw_second_moment",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 47,
+          "line": 532,
+          "offset": 22733
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:18135"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:16702",
+        "Submission.ThreeSum.HashFamily:18135",
+        "Submission.ThreeSum.HashFamily:19884"
+      ],
+      "primary": "ThreeSum.HashFamily.raw_second_moment",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 28,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.HashFamily:10092",
+        "Submission.ThreeSum.HashFamily:1098",
+        "Submission.ThreeSum.HashFamily:11390",
+        "Submission.ThreeSum.HashFamily:11981",
+        "Submission.ThreeSum.HashFamily:14163",
+        "Submission.ThreeSum.HashFamily:19884",
+        "Submission.ThreeSum.HashFamily:4044",
+        "Submission.ThreeSum.HashFamily:8007",
+        "Submission.ThreeSum.HashFamily:8733",
+        "Submission.ThreeSum.HashFamily:8930",
+        "Submission.ThreeSum.HashFamily:898",
+        "Submission.ThreeSum.HashFamily:9729"
+      ],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:12623",
+        "Submission.ThreeSum.HashFamily:16702",
+        "Submission.ThreeSum.HashFamily:4814",
+        "Submission.ThreeSum.HashFamily:5935",
+        "Submission.ThreeSum.HashFamily:6847"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.raw_second_moment"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:6847": {
+      "id": "Submission.ThreeSum.HashFamily:6847",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 33,
+          "line": 194,
+          "offset": 8005
+        },
+        "declStart": {
+          "col": 0,
+          "line": 174,
+          "offset": 6847
+        },
+        "docstring": {
+          "end": {
+            "col": 59,
+            "line": 176,
+            "offset": 7052
+          },
+          "start": {
+            "col": 0,
+            "line": 174,
+            "offset": 6847
+          }
+        },
+        "kind": "decl",
+        "nameText": "linear_fiber_card",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 21,
+          "line": 181,
+          "offset": 7359
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.linear_fiber_card",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 13,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.HashFamily.linear_fiber_card"
+      ]
+    },
+    "Submission.ThreeSum.Bands:843": {
+      "id": "Submission.ThreeSum.Bands:843",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 40,
+          "line": 32,
+          "offset": 1084
+        },
+        "declStart": {
+          "col": 0,
+          "line": 28,
+          "offset": 843
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "interval_unique",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 46,
+          "line": 30,
+          "offset": 1022
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "primary": "ThreeSum.Bands.interval_unique",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.interval_unique"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:2168": {
+      "id": "Submission.ThreeSum.Coloring:2168",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 30,
+          "line": 61,
+          "offset": 2276
+        },
+        "declStart": {
+          "col": 0,
+          "line": 60,
+          "offset": 2168
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "applyColor",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 71,
+          "line": 60,
+          "offset": 2243
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:1986"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:1986"
+      ],
+      "primary": "ThreeSum.Coloring.applyColor",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.applyColor"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:8007": {
+      "id": "Submission.ThreeSum.HashFamily:8007",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 74,
+          "line": 204,
+          "offset": 8498
+        },
+        "declStart": {
+          "col": 0,
+          "line": 196,
+          "offset": 8007
+        },
+        "docstring": {
+          "end": {
+            "col": 74,
+            "line": 196,
+            "offset": 8081
+          },
+          "start": {
+            "col": 0,
+            "line": 196,
+            "offset": 8007
+          }
+        },
+        "kind": "decl",
+        "nameText": "hash_fiber_card",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 38,
+          "line": 202,
+          "offset": 8406
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:5504"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:5935",
+        "Submission.ThreeSum.HashFamily:6847"
+      ],
+      "primary": "ThreeSum.HashFamily.hash_fiber_card",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.hash_fiber_card"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:4495": {
+      "id": "Submission.ThreeSum.Coloring:4495",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 70,
+          "line": 116,
+          "offset": 4745
+        },
+        "declStart": {
+          "col": 0,
+          "line": 113,
+          "offset": 4495
+        },
+        "docstring": {
+          "end": {
+            "col": 58,
+            "line": 114,
+            "offset": 4623
+          },
+          "start": {
+            "col": 0,
+            "line": 113,
+            "offset": 4495
+          }
+        },
+        "kind": "decl",
+        "nameText": "family",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 44,
+          "line": 115,
+          "offset": 4672
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:3183",
+        "Submission.ThreeSum.Coloring:4386"
+      ],
+      "primary": "ThreeSum.Coloring.family",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.family"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:1098": {
+      "id": "Submission.ThreeSum.HashFamily:1098",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 54,
+          "line": 48,
+          "offset": 1463
+        },
+        "declStart": {
+          "col": 0,
+          "line": 42,
+          "offset": 1098
+        },
+        "docstring": {
+          "end": {
+            "col": 69,
+            "line": 42,
+            "offset": 1167
+          },
+          "start": {
+            "col": 0,
+            "line": 42,
+            "offset": 1098
+          }
+        },
+        "kind": "decl",
+        "nameText": "two_relation",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 67,
+          "line": 44,
+          "offset": 1306
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:898"
+      ],
+      "primary": "ThreeSum.HashFamily.two_relation",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.two_relation"
+      ]
+    },
+    "Submission.ThreeSum.Balancing:912": {
+      "id": "Submission.ThreeSum.Balancing:912",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 24,
+          "line": 39,
+          "offset": 1421
+        },
+        "declStart": {
+          "col": 0,
+          "line": 31,
+          "offset": 912
+        },
+        "docstring": {
+          "end": {
+            "col": 77,
+            "line": 31,
+            "offset": 989
+          },
+          "start": {
+            "col": 0,
+            "line": 31,
+            "offset": 912
+          }
+        },
+        "kind": "decl",
+        "nameText": "exists_balanced_offset",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 70,
+          "line": 33,
+          "offset": 1119
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:510",
+        "Submission.ThreeSum.Balancing:585"
+      ],
+      "primary": "ThreeSum.Balancing.exists_balanced_offset",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 6,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.exists_balanced_offset"
+      ]
+    },
+    "Submission.ThreeSum.Bands:747": {
+      "id": "Submission.ThreeSum.Bands:747",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 42,
+          "line": 26,
+          "offset": 841
+        },
+        "declStart": {
+          "col": 0,
+          "line": 25,
+          "offset": 747
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "Separated",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 37,
+          "line": 25,
+          "offset": 788
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Bands.Separated",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.Separated"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6795": {
+      "id": "Submission.ThreeSum.Coloring:6795",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 38,
+          "line": 166,
+          "offset": 6896
+        },
+        "declStart": {
+          "col": 0,
+          "line": 165,
+          "offset": 6795
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "ThreeSetWitness",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 46,
+          "line": 165,
+          "offset": 6843
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Coloring.ThreeSetWitness",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.ThreeSetWitness"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6665": {
+      "id": "Submission.ThreeSum.Coloring:6665",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 54,
+          "line": 163,
+          "offset": 6793
+        },
+        "declStart": {
+          "col": 0,
+          "line": 162,
+          "offset": 6665
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "DistinctZeroSum",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 51,
+          "line": 162,
+          "offset": 6722
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Coloring.DistinctZeroSum",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.DistinctZeroSum"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:24129": {
+      "id": "Submission.ThreeSum.HashFamily:24129",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 30,
+          "line": 588,
+          "offset": 25659
+        },
+        "declStart": {
+          "col": 0,
+          "line": 562,
+          "offset": 24129
+        },
+        "docstring": {
+          "end": {
+            "col": 60,
+            "line": 563,
+            "offset": 24260
+          },
+          "start": {
+            "col": 0,
+            "line": 562,
+            "offset": 24129
+          }
+        },
+        "kind": "decl",
+        "nameText": "raw_second_moment_five",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 572,
+          "offset": 24764
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:18135"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:18135",
+        "Submission.ThreeSum.HashFamily:22016"
+      ],
+      "primary": "ThreeSum.HashFamily.raw_second_moment_five",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 16,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:22016"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.raw_second_moment_five"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:11390": {
+      "id": "Submission.ThreeSum.HashFamily:11390",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 50,
+          "line": 276,
+          "offset": 11557
+        },
+        "declStart": {
+          "col": 0,
+          "line": 273,
+          "offset": 11390
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "pairEvent_eq",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 50,
+          "line": 274,
+          "offset": 11493
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:8587",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "primary": "ThreeSum.HashFamily.pairEvent_eq",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.pairEvent_eq"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:3571": {
+      "id": "Submission.ThreeSum.Coloring:3571",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 70,
+          "line": 99,
+          "offset": 4023
+        },
+        "declStart": {
+          "col": 0,
+          "line": 90,
+          "offset": 3571
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "indexWord_injective",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 72,
+          "line": 90,
+          "offset": 3645
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:3183",
+        "Submission.ThreeSum.Coloring:3311"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:3183",
+        "Submission.ThreeSum.Coloring:3311",
+        "Submission.ThreeSum.Coloring:3412"
+      ],
+      "primary": "ThreeSum.Coloring.indexWord_injective",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 9,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.indexWord_injective"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:2463": {
+      "id": "Submission.ThreeSum.HashFamily:2463",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 36,
+          "line": 98,
+          "offset": 3979
+        },
+        "declStart": {
+          "col": 0,
+          "line": 70,
+          "offset": 2463
+        },
+        "docstring": {
+          "end": {
+            "col": 51,
+            "line": 73,
+            "offset": 2735
+          },
+          "start": {
+            "col": 0,
+            "line": 70,
+            "offset": 2463
+          }
+        },
+        "kind": "decl",
+        "nameText": "four_relation_of_mask_ne",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 79,
+          "offset": 3088
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:1465",
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.four_relation_of_mask_ne",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 19,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:1465"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.four_relation_of_mask_ne"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:34484": {
+      "id": "Submission.ThreeSum.HashFamily:34484",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 101,
+          "line": 780,
+          "offset": 35409
+        },
+        "declStart": {
+          "col": 0,
+          "line": 768,
+          "offset": 34484
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "trimmed_second_moment",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 776,
+          "offset": 35105
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:18135",
+        "Submission.ThreeSum.HashFamily:30927"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:16392",
+        "Submission.ThreeSum.HashFamily:18135",
+        "Submission.ThreeSum.HashFamily:24129",
+        "Submission.ThreeSum.HashFamily:30927",
+        "Submission.ThreeSum.HashFamily:31197"
+      ],
+      "primary": "ThreeSum.HashFamily.trimmed_second_moment",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "node",
+      "reasons": [
+        "target"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.HashFamily:16392",
+        "Submission.ThreeSum.HashFamily:31197"
+      ],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:24129"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.trimmed_second_moment"
+      ]
+    },
+    "Submission.ThreeSum.Bands:1839": {
+      "id": "Submission.ThreeSum.Bands:1839",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 9,
+          "line": 78,
+          "offset": 2871
+        },
+        "declStart": {
+          "col": 0,
+          "line": 52,
+          "offset": 1839
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "overlapOwner_injective",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 68,
+          "line": 55,
+          "offset": 2121
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Bands:1384",
+        "Submission.ThreeSum.Bands:1700",
+        "Submission.ThreeSum.Bands:747"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Bands:1384",
+        "Submission.ThreeSum.Bands:1700",
+        "Submission.ThreeSum.Bands:747",
+        "Submission.ThreeSum.Bands:843"
+      ],
+      "primary": "ThreeSum.Bands.overlapOwner_injective",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 23,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.overlapOwner_injective"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:14163": {
+      "id": "Submission.ThreeSum.HashFamily:14163",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 21,
+          "line": 350,
+          "offset": 14818
+        },
+        "declStart": {
+          "col": 0,
+          "line": 336,
+          "offset": 14163
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "jointPair_card_four",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 341,
+          "offset": 14491
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:10092",
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:4814",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8587",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "primary": "ThreeSum.HashFamily.jointPair_card_four",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 9,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.jointPair_card_four"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:9729": {
+      "id": "Submission.ThreeSum.HashFamily:9729",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 23,
+          "line": 249,
+          "offset": 10090
+        },
+        "declStart": {
+          "col": 0,
+          "line": 242,
+          "offset": 9729
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "wordEvent_eq_linear_fiber",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 92,
+          "line": 245,
+          "offset": 9955
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:5504",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:8587",
+        "Submission.ThreeSum.HashFamily:8930",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "primary": "ThreeSum.HashFamily.wordEvent_eq_linear_fiber",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.wordEvent_eq_linear_fiber"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:15933": {
+      "id": "Submission.ThreeSum.HashFamily:15933",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 49,
+          "line": 385,
+          "offset": 16157
+        },
+        "declStart": {
+          "col": 0,
+          "line": 382,
+          "offset": 15933
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "incidenceCount_eq_sum",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 71,
+          "line": 383,
+          "offset": 16078
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:15753"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:15753"
+      ],
+      "primary": "ThreeSum.HashFamily.incidenceCount_eq_sum",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.incidenceCount_eq_sum"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:2458": {
+      "id": "Submission.ThreeSum.Coloring:2458",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 52,
+          "line": 79,
+          "offset": 3181
+        },
+        "declStart": {
+          "col": 0,
+          "line": 67,
+          "offset": 2458
+        },
+        "docstring": {
+          "end": {
+            "col": 74,
+            "line": 68,
+            "offset": 2604
+          },
+          "start": {
+            "col": 0,
+            "line": 67,
+            "offset": 2458
+          }
+        },
+        "kind": "decl",
+        "nameText": "exists_separating_parameter",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 25,
+          "line": 72,
+          "offset": 2826
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:2168"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:2168",
+        "Submission.ThreeSum.Coloring:990"
+      ],
+      "primary": "ThreeSum.Coloring.exists_separating_parameter",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 7,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.exists_separating_parameter"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:4814": {
+      "id": "Submission.ThreeSum.HashFamily:4814",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 26,
+          "line": 136,
+          "offset": 5393
+        },
+        "declStart": {
+          "col": 0,
+          "line": 125,
+          "offset": 4814
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "oneHot_four_independent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 75,
+          "line": 129,
+          "offset": 5099
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:2463",
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.oneHot_four_independent",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 7,
+      "classification": "node",
+      "reasons": [
+        "target"
+      ],
+      "deprivatize": false,
+      "inline_units": [],
+      "child_nodes": [
+        "Submission.ThreeSum.HashFamily:2463"
+      ],
+      "names": [
+        "ThreeSum.HashFamily.oneHot_four_independent"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:9474": {
+      "id": "Submission.ThreeSum.HashFamily:9474",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 69,
+          "line": 240,
+          "offset": 9727
+        },
+        "declStart": {
+          "col": 0,
+          "line": 237,
+          "offset": 9474
+        },
+        "docstring": {
+          "end": {
+            "col": 67,
+            "line": 237,
+            "offset": 9541
+          },
+          "start": {
+            "col": 0,
+            "line": 237,
+            "offset": 9474
+          }
+        },
+        "kind": "decl",
+        "nameText": "wordEvent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 26,
+          "line": 239,
+          "offset": 9653
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:8587"
+      ],
+      "primary": "ThreeSum.HashFamily.wordEvent",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.wordEvent"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:3412": {
+      "id": "Submission.ThreeSum.Coloring:3412",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 73,
+          "line": 88,
+          "offset": 3569
+        },
+        "declStart": {
+          "col": 0,
+          "line": 87,
+          "offset": 3412
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "index_lt_pow_width",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 74,
+          "line": 87,
+          "offset": 3488
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:3183"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:3183"
+      ],
+      "primary": "ThreeSum.Coloring.index_lt_pow_width",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.index_lt_pow_width"
+      ]
+    },
+    "Submission.ThreeSum.Balancing:585": {
+      "id": "Submission.ThreeSum.Balancing:585",
+      "module": "Submission.ThreeSum.Balancing",
+      "fact": {
+        "declEnd": {
+          "col": 25,
+          "line": 29,
+          "offset": 910
+        },
+        "declStart": {
+          "col": 0,
+          "line": 21,
+          "offset": 585
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "sum_correlation",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 22,
+          "offset": 690
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:510"
+      ],
+      "primary": "ThreeSum.Balancing.sum_correlation",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 7,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Balancing.sum_correlation"
+      ]
+    },
+    "Submission.ThreeSum.Bands:1384": {
+      "id": "Submission.ThreeSum.Bands:1384",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 39,
+          "line": 43,
+          "offset": 1508
+        },
+        "declStart": {
+          "col": 0,
+          "line": 42,
+          "offset": 1384
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "Overlap",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 67,
+          "line": 42,
+          "offset": 1460
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Bands.Overlap",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.Overlap"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6177": {
+      "id": "Submission.ThreeSum.Coloring:6177",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 36,
+          "line": 151,
+          "offset": 6295
+        },
+        "declStart": {
+          "col": 0,
+          "line": 150,
+          "offset": 6177
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "negValues",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 69,
+          "line": 150,
+          "offset": 6256
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:5912"
+      ],
+      "primary": "ThreeSum.Coloring.negValues",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.negValues"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:19884": {
+      "id": "Submission.ThreeSum.HashFamily:19884",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 9,
+          "line": 519,
+          "offset": 22014
+        },
+        "declStart": {
+          "col": 0,
+          "line": 479,
+          "offset": 19884
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "joint_pair_charge",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 72,
+          "line": 486,
+          "offset": 20354
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:18135"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:11981",
+        "Submission.ThreeSum.HashFamily:12623",
+        "Submission.ThreeSum.HashFamily:14163",
+        "Submission.ThreeSum.HashFamily:18028",
+        "Submission.ThreeSum.HashFamily:18135",
+        "Submission.ThreeSum.HashFamily:898"
+      ],
+      "primary": "ThreeSum.HashFamily.joint_pair_charge",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 33,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.joint_pair_charge"
+      ]
+    },
+    "Submission.ThreeSum.Bands:3448": {
+      "id": "Submission.ThreeSum.Bands:3448",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 67,
+          "line": 94,
+          "offset": 3634
+        },
+        "declStart": {
+          "col": 0,
+          "line": 92,
+          "offset": 3448
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "Relevant",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 29,
+          "line": 93,
+          "offset": 3558
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Bands.Relevant",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.Relevant"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:5476": {
+      "id": "Submission.ThreeSum.Coloring:5476",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 76,
+          "line": 142,
+          "offset": 5910
+        },
+        "declStart": {
+          "col": 0,
+          "line": 136,
+          "offset": 5476
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "family_separates",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 48,
+          "line": 138,
+          "offset": 5637
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:4495"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:2168",
+        "Submission.ThreeSum.Coloring:2458",
+        "Submission.ThreeSum.Coloring:3183",
+        "Submission.ThreeSum.Coloring:3311",
+        "Submission.ThreeSum.Coloring:3571",
+        "Submission.ThreeSum.Coloring:4386",
+        "Submission.ThreeSum.Coloring:4495"
+      ],
+      "primary": "ThreeSum.Coloring.family_separates",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 4,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.family_separates"
+      ]
+    },
+    "Submission.ThreeSum.Bands:1700": {
+      "id": "Submission.ThreeSum.Bands:1700",
+      "module": "Submission.ThreeSum.Bands",
+      "fact": {
+        "declEnd": {
+          "col": 56,
+          "line": 50,
+          "offset": 1837
+        },
+        "declStart": {
+          "col": 0,
+          "line": 49,
+          "offset": 1700
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "overlapOwner",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 65,
+          "line": 49,
+          "offset": 1776
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Bands.overlapOwner",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Bands.overlapOwner"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:6297": {
+      "id": "Submission.ThreeSum.Coloring:6297",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 15,
+          "line": 156,
+          "offset": 6483
+        },
+        "declStart": {
+          "col": 0,
+          "line": 153,
+          "offset": 6297
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "mem_values",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 54,
+          "line": 155,
+          "offset": 6462
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:5912"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:5912"
+      ],
+      "primary": "ThreeSum.Coloring.mem_values",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.mem_values"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:4044": {
+      "id": "Submission.ThreeSum.HashFamily:4044",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 26,
+          "line": 113,
+          "offset": 4386
+        },
+        "declStart": {
+          "col": 0,
+          "line": 106,
+          "offset": 4044
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "oneHot_two_independent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 107,
+          "offset": 4168
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:1098",
+        "Submission.ThreeSum.HashFamily:789"
+      ],
+      "primary": "ThreeSum.HashFamily.oneHot_two_independent",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 6,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.oneHot_two_independent"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:4386": {
+      "id": "Submission.ThreeSum.Coloring:4386",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 28,
+          "line": 111,
+          "offset": 4493
+        },
+        "declStart": {
+          "col": 0,
+          "line": 110,
+          "offset": 4386
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "colorIndex",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 74,
+          "line": 110,
+          "offset": 4462
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:3183"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Coloring:1986",
+        "Submission.ThreeSum.Coloring:2168",
+        "Submission.ThreeSum.Coloring:3183",
+        "Submission.ThreeSum.Coloring:3311"
+      ],
+      "primary": "ThreeSum.Coloring.colorIndex",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.colorIndex"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:8587": {
+      "id": "Submission.ThreeSum.HashFamily:8587",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 17,
+          "line": 214,
+          "offset": 8731
+        },
+        "declStart": {
+          "col": 0,
+          "line": 212,
+          "offset": 8587
+        },
+        "docstring": {
+          "end": {
+            "col": 62,
+            "line": 212,
+            "offset": 8649
+          },
+          "start": {
+            "col": 0,
+            "line": 212,
+            "offset": 8587
+          }
+        },
+        "kind": "decl",
+        "nameText": "hashValue",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 52,
+          "line": 213,
+          "offset": 8709
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.hashValue",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.hashValue"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:16702": {
+      "id": "Submission.ThreeSum.HashFamily:16702",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 31,
+          "line": 432,
+          "offset": 17854
+        },
+        "declStart": {
+          "col": 0,
+          "line": 403,
+          "offset": 16702
+        },
+        "docstring": {
+          "end": {
+            "col": 49,
+            "line": 404,
+            "offset": 16823
+          },
+          "start": {
+            "col": 0,
+            "line": 403,
+            "offset": 16702
+          }
+        },
+        "kind": "decl",
+        "nameText": "sum_incidenceCount_sq",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 43,
+          "line": 407,
+          "offset": 16975
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:15753"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:15753",
+        "Submission.ThreeSum.HashFamily:15933"
+      ],
+      "primary": "ThreeSum.HashFamily.sum_incidenceCount_sq",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 25,
+      "classification": "node",
+      "reasons": [
+        "11-40 lines and documented"
+      ],
+      "deprivatize": false,
+      "inline_units": [
+        "Submission.ThreeSum.HashFamily:15933"
+      ],
+      "child_nodes": [],
+      "names": [
+        "ThreeSum.HashFamily.sum_incidenceCount_sq"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:15753": {
+      "id": "Submission.ThreeSum.HashFamily:15753",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 51,
+          "line": 380,
+          "offset": 15931
+        },
+        "declStart": {
+          "col": 0,
+          "line": 378,
+          "offset": 15753
+        },
+        "docstring": {
+          "end": {
+            "col": 60,
+            "line": 378,
+            "offset": 15813
+          },
+          "start": {
+            "col": 0,
+            "line": 378,
+            "offset": 15753
+          }
+        },
+        "kind": "decl",
+        "nameText": "incidenceCount",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 55,
+          "line": 379,
+          "offset": 15875
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.HashFamily.incidenceCount",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.incidenceCount"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:30927": {
+      "id": "Submission.ThreeSum.HashFamily:30927",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 71,
+          "line": 704,
+          "offset": 31195
+        },
+        "declStart": {
+          "col": 0,
+          "line": 700,
+          "offset": 30927
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "trimmedPairEvent",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 26,
+          "line": 702,
+          "offset": 31076
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:25784"
+      ],
+      "primary": "ThreeSum.HashFamily.trimmedPairEvent",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.trimmedPairEvent"
+      ]
+    },
+    "Submission.ThreeSum.Histograms:709": {
+      "id": "Submission.ThreeSum.Histograms:709",
+      "module": "Submission.ThreeSum.Histograms",
+      "fact": {
+        "declEnd": {
+          "col": 6,
+          "line": 31,
+          "offset": 932
+        },
+        "declStart": {
+          "col": 0,
+          "line": 25,
+          "offset": 709
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "sum_histogram",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 56,
+          "line": 26,
+          "offset": 850
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Histograms:573"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Histograms:573"
+      ],
+      "primary": "ThreeSum.Histograms.sum_histogram",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 5,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Histograms.sum_histogram"
+      ]
+    },
+    "Submission.ThreeSum.Histograms:1170": {
+      "id": "Submission.ThreeSum.Histograms:1170",
+      "module": "Submission.ThreeSum.Histograms",
+      "fact": {
+        "declEnd": {
+          "col": 18,
+          "line": 62,
+          "offset": 2268
+        },
+        "declStart": {
+          "col": 0,
+          "line": 37,
+          "offset": 1170
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "correlation_histograms",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 48,
+          "line": 40,
+          "offset": 1463
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.Balancing:510",
+        "Submission.ThreeSum.Histograms:573",
+        "Submission.ThreeSum.Histograms:934"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.Balancing:510",
+        "Submission.ThreeSum.Histograms:573",
+        "Submission.ThreeSum.Histograms:934"
+      ],
+      "primary": "ThreeSum.Histograms.correlation_histograms",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 22,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Histograms.correlation_histograms"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:11981": {
+      "id": "Submission.ThreeSum.HashFamily:11981",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 21,
+          "line": 295,
+          "offset": 12277
+        },
+        "declStart": {
+          "col": 0,
+          "line": 288,
+          "offset": 11981
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "pairEvent_card",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 34,
+          "line": 290,
+          "offset": 12142
+        }
+      },
+      "type_units": [
+        "Submission.ThreeSum.HashFamily:11242"
+      ],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:10092",
+        "Submission.ThreeSum.HashFamily:11242",
+        "Submission.ThreeSum.HashFamily:11390",
+        "Submission.ThreeSum.HashFamily:4044",
+        "Submission.ThreeSum.HashFamily:789",
+        "Submission.ThreeSum.HashFamily:9474"
+      ],
+      "primary": "ThreeSum.HashFamily.pairEvent_card",
+      "is_theorem": true,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 5,
+      "classification": "inline-helper",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.pairEvent_card"
+      ]
+    },
+    "Submission.ThreeSum.Coloring:5912": {
+      "id": "Submission.ThreeSum.Coloring:5912",
+      "module": "Submission.ThreeSum.Coloring",
+      "fact": {
+        "declEnd": {
+          "col": 53,
+          "line": 148,
+          "offset": 6175
+        },
+        "declStart": {
+          "col": 0,
+          "line": 144,
+          "offset": 5912
+        },
+        "docstring": {
+          "end": {
+            "col": 38,
+            "line": 145,
+            "offset": 6022
+          },
+          "start": {
+            "col": 0,
+            "line": 144,
+            "offset": 5912
+          }
+        },
+        "kind": "decl",
+        "nameText": "values",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 13,
+          "line": 147,
+          "offset": 6119
+        }
+      },
+      "type_units": [],
+      "value_units": [],
+      "primary": "ThreeSum.Coloring.values",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 1,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.Coloring.values"
+      ]
+    },
+    "Submission.ThreeSum.HashFamily:18135": {
+      "id": "Submission.ThreeSum.HashFamily:18135",
+      "module": "Submission.ThreeSum.HashFamily",
+      "fact": {
+        "declEnd": {
+          "col": 54,
+          "line": 446,
+          "offset": 18333
+        },
+        "declStart": {
+          "col": 0,
+          "line": 444,
+          "offset": 18135
+        },
+        "docstring": null,
+        "kind": "decl",
+        "nameText": "badPartners",
+        "privateTok": null,
+        "valKind": "simple",
+        "valStart": {
+          "col": 63,
+          "line": 444,
+          "offset": 18203
+        }
+      },
+      "type_units": [],
+      "value_units": [
+        "Submission.ThreeSum.HashFamily:18028"
+      ],
+      "primary": "ThreeSum.HashFamily.badPartners",
+      "is_theorem": false,
+      "private": false,
+      "is_instance": false,
+      "proof_lines": 2,
+      "classification": "def-material",
+      "reasons": [],
+      "deprivatize": false,
+      "names": [
+        "ThreeSum.HashFamily.badPartners"
+      ]
+    }
+  },
+  "node_topological_order": [
+    "Submission.ThreeSum.Bands:4154",
+    "Submission.ThreeSum.Coloring:990",
+    "Submission.ThreeSum.HashFamily:1465",
+    "Submission.ThreeSum.HashFamily:16702",
+    "Submission.ThreeSum.HashFamily:5935",
+    "Submission.ThreeSum.HashFamily:6847",
+    "Submission.ThreeSum.Histograms:2620",
+    "Submission.ThreeSum.Coloring:6898",
+    "Submission.ThreeSum.HashFamily:12623",
+    "Submission.ThreeSum.HashFamily:2463",
+    "Submission.ThreeSum.HashFamily:4814",
+    "Submission.ThreeSum.HashFamily:22016",
+    "Submission.ThreeSum.HashFamily:24129",
+    "Submission.ThreeSum.HashFamily:34484"
+  ],
+  "context_reference_roots": [],
+  "preserved_structural_declarations": [],
+  "source_generated": false,
+  "platform_uploaded": false
+}

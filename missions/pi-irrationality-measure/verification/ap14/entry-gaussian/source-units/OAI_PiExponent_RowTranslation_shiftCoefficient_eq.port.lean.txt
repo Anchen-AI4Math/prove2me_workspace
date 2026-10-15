@@ -1,0 +1,35 @@
+theorem shiftCoefficient_eq (c : σ → R) (β a : σ →₀ ℕ) :
+    shiftCoefficient c β a = ∏ i, ((a i).choose (β i) : R) * c i ^ (a i - β i) := by
+  classical
+  rw [shiftCoefficient, shift_monomial_one, shifted_product_expansion, coeff_sum]
+  simp only [coeff_C_mul, coeff_monomial]
+  by_cases h : ∀ i, β i ≤ a i
+  · let b₀ : ∀ i, Fin (a i + 1) := fun i => ⟨β i, Nat.lt_succ_of_le (h i)⟩
+    have hidx : multiIndex (fun i => (b₀ i : ℕ)) = β := by ext i; simp [b₀]
+    rw [Finset.sum_eq_single b₀]
+    · simp [hidx, b₀]
+    · intro b hb hne
+      have hidx' : multiIndex (fun i => (b i : ℕ)) ≠ β := by
+        intro he
+        apply hne
+        funext i
+        apply Fin.ext
+        have hi := congrArg (fun d : σ →₀ ℕ => d i) he
+        simpa [b₀] using hi
+      simp [hidx']
+    · simp
+  · push Not at h
+    obtain ⟨i, hi⟩ := h
+    have hright : (∏ j, ((a j).choose (β j) : R) * c j ^ (a j - β j)) = 0 := by
+      apply Finset.prod_eq_zero (Finset.mem_univ i)
+      simp [Nat.choose_eq_zero_of_lt hi]
+    rw [hright]
+    apply Finset.sum_eq_zero
+    intro b hb
+    have hidx : multiIndex (fun j => (b j : ℕ)) ≠ β := by
+      intro he
+      have hi' := congrArg (fun d : σ →₀ ℕ => d i) he
+      have hbi : (b i : ℕ) = β i := by simpa using hi'
+      have hlt := (b i).isLt
+      omega
+    simp [hidx]

@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.query_word_le",
+    "theorem_title": "The query word bound fits its uniform envelope",
+    "natural_language_statement": "For every natural input size $n$, evaluate the local half-size $h(n)$, block count $J(n)$, and band width $g(n)$ at their executable values. Then $$\\operatorname{queryWord}(h(n),J(n),g(n))\\le\\operatorname{queryEnvelope}(n).$$\n\nBounds the actual query arithmetic independently of stored absolute pointers. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the actual query arithmetic independently of stored absolute pointers. The executable half-size, block count, and band width are substituted into the actual query arithmetic requirement."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.source_span_le_magnitude",
+    "theorem_title": "A cubic magnitude bound for a source-bank span",
+    "natural_language_statement": "For natural input size $n$, let $h,J$ be its executable half-size and block count, and let $M(n)$ be the specified magnitude envelope. Then $$\\operatorname{span}(h,J,2hJ)\\le100(M(n)+1)^3.$$\n\nControls the relative extent of a complete occurrence-source bank. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls the relative extent of a complete occurrence-source bank. The cubic estimate controls the full retained bank extent at the source cutoff $2hJ$, including both stage families."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.scaled_extent_le",
+    "theorem_title": "The scaled allocation extent fits its polynomial part",
+    "natural_language_statement": "At every natural input size $n$, $$\\operatorname{scaledExtent}(n)\\le\\operatorname{polynomialPart}(n).$$ Both functions are the explicit shared reporting-bank resource expressions.\n\nBounds the scaled allocation extent in the common resource envelope. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the scaled allocation extent in the common resource envelope. The relative scaled extent is dominated before it is added to absolute starting addresses in the allocation argument."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_scalars_le",
+    "theorem_title": "Scalar controls of a wanted record fit the wanted envelope",
+    "natural_language_statement": "Let $n,K\\in\\mathbb N$ with $K\\le J$, where $h,J$ are the executable half-size and block count at size $n$. Write $m(h,J)$ for the global modulus, $c(h,J)$ for the source cutoff, $p_h$ for the local prime, and $b_h$ for its bucket cap. Then $$J+464h+K+m(h,J)+c(h,J)+p_h+b_h+1024\\le\\operatorname{wantedEnvelope}(n).$$\n\nCollects the numeric controls passed to one physical wanted query. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Collects the numeric controls passed to one physical wanted query. The sum includes block width, traversal depth, global modulus, source cutoff, local prime, and bucket cap."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.output_count_le_magnitude",
+    "theorem_title": "The complete output count fits a squared magnitude envelope",
+    "natural_language_statement": "For natural size $n$, let $h,J$ be the executable local half-size and block count, and let $L(h)$ be the number of local output records used by the decoder. Then $$L(h)^J\\le M(n)^2,$$ where $M$ is the specified magnitude envelope.\n\nBounds the actual global output index range. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the actual global output index range. The squared magnitude envelope bounds the complete decoder index range while retaining separate records with equal keys."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_decoder_word_le",
+    "theorem_title": "A quartic word bound for wanted decoding",
+    "natural_language_statement": "Let $n,N\\in\\mathbb N$ and suppose $N\\le3M(n)^3$, where $M$ is the reporting magnitude envelope. With the prescribed decoding numerator bound and executable local parameters, $$\\operatorname{decoderWord}\\le1000(M(n)+1)^4.$$\n\nControls all integers used by the binary wanted-label decoder. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls all integers used by the binary wanted-label decoder. The allowed incidence-count bound is used together with the prescribed numerator bound to control every decoding integer."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_terminal_word_le",
+    "theorem_title": "A quadratic word bound for terminal reporting",
+    "natural_language_statement": "At natural input size $n$, evaluate terminal reporting at the executable local half-size and block count. Its exact word requirement satisfies $$\\operatorname{terminalWord}\\le100(M(n)+1)^2,$$ where $M$ is the reporting magnitude envelope.\n\nPlaces terminal arithmetic inside the common polynomial word budget. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Places terminal arithmetic inside the common polynomial word budget. The actual terminal word function is evaluated at the executable local parameters and bounded by a quadratic envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_terminal_cells_le",
+    "theorem_title": "A quadratic cell bound for terminal reporting",
+    "natural_language_statement": "At natural input size $n$, terminal reporting from relative work base zero, evaluated at the executable local half-size and block count, satisfies $$\\operatorname{terminalSpace}(0)\\le20(M(n)+1)^2.$$ Here $M$ is the reporting magnitude envelope.\n\nBounds reusable terminal scratch independently of its absolute placement. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds reusable terminal scratch independently of its absolute placement. The zero-based extent can be translated to an arbitrary work pointer without changing its relative quadratic bound."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_representation_cap_le",
+    "theorem_title": "The representation cap fits a squared magnitude envelope",
+    "natural_language_statement": "For natural size $n$ and its executable half-size $h$ and block count $J$, $$\\operatorname{representationCap}(h,J)\\le M(n)^2,$$ where $M$ is the reporting magnitude envelope.\n\nBounds the representation multiplicity used by the dense threshold. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the representation multiplicity used by the dense threshold. The multiplicity bound is later multiplied by the selected false score to form the physical dense threshold."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankRows.Done.append",
+    "theorem_title": "Appending one constructed shared-bank row",
+    "natural_language_statement": "Suppose the first $q$ shared reporting-bank rows are valid in memory $\\mu$. Let valid occurrence and independent band indices have flat rank $q$, and suppose their complete new row is built in $\\nu$ at its designated metadata and payload addresses. Assume $\\nu$ preserves all cells below the new payload except its $5K$ metadata cells, and the full metadata slab ends before the payload base. Then the first $q+1$ rows are valid in $\\nu$.\n\nSupplies the invariant step for the flat shared-bank construction loop. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Supplies the invariant step for the flat shared-bank construction loop. The preservation premise protects old rows while the exact next ranked occurrence-and-band row is added."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.expansion_le_layer",
+    "theorem_title": "Positive expansion is charged to one query layer",
+    "natural_language_statement": "Let $h,J,k,t\\in\\mathbb N$, with $k<J$ and $t$ at most half the next residual size $r_{k+1}$. If $G_h$ is the local group size, then $$\\operatorname{expandTime}(h,J,k,t)+200\\le\\operatorname{overhead}(h,J)G_h\\binom{r_{k+1}}t.$$\n\nCharges concrete child expansion to the combinatorial layer budget. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Charges concrete child expansion to the combinatorial layer budget. The group-size factor accounts for all children, and the binomial factor covers each child query layer."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.Stored.of_kept",
+    "theorem_title": "Complete source-bank data survive later writes",
+    "natural_language_statement": "Let complete source-band bank data be stored in memory $\\mu$. Suppose $\\nu$ agrees with $\\mu$ below address $b$, the entire occurrence-row array ends before the bank base, and the bank finish is at most $b$. Then the same source functions, sizes, band width, local parameters, cutoff, modulus, and shift satisfy the stored predicate in $\\nu$.\n\nRetains bank headers, source stages, and occurrence ordering during subsequent allocations. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains bank headers, source stages, and occurrence ordering during subsequent allocations. The preserved cutoff covers the whole bank, and the occurrence rows remain before the bank base throughout later writes."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandHostCosts.space_le_encoderCount",
+    "theorem_title": "Source-host storage is charged to encoder count",
+    "natural_language_statement": "Let $n>0$, original source lengths $N_L,N_R\\le n$, base address $b$, and natural controls $p,U,D$. Using the executable band width and local parameters, the exact source-host space is at most $$b+(29+J+F(n))E(n)+\\lfloor\\log_2(S(n)+1)\\rfloor+\\max(\\lfloor\\log_2(U+1)\\rfloor+2,\\lfloor\\log_2(p+D+1)\\rfloor+2)+16,$$ where $J$ is block count, $F$ storage factor, $E$ encoder count, and $S$ schedule count.\n\nKeeps the absolute base affine while bounding the constructed source payload. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Keeps the absolute base affine while bounding the constructed source payload. The encoder-count term controls persistent banks while the remaining explicit logarithms cover reusable arithmetic scratch."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Switch.actual_switch_certified",
+    "theorem_title": "Certification of the actual integer switching choice",
+    "natural_language_statement": "Let input size $n$ have positive inner size $\\mu$, and let $j$ be no greater than its terminal depth. Set $a=j/J$ using the executable block count $J$, and $t=s/r$ using the actual integer switch $s$ and residual size $r$. With fixed box saving $b$, band shift $\\beta$, entropy ratio $\\rho$, binary entropy $H$, and entropy-loss function $\\gamma$, $$0\\le t\\le\\tfrac12,\\qquad b\\le2\\beta-a+(1-a)\\gamma(t),$$ $$ (1-a)H(t)<\\rho(1+b-2\\beta)+\\frac{9\\rho}{\\mu}.$$\n\nConnects the rounded executable switch to the certified analytic inequalities. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects the rounded executable switch to the certified analytic inequalities. The statement retains both the box-saving inequality and the entropy bound with its finite $9\\rho/\\mu$ rounding slack."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.actual_separation",
+    "theorem_title": "Generated auxiliary primes separate actual nonzero differences",
+    "natural_language_statement": "Let the encoded-color pipeline retain its normalized lists $A,B,C$ and original input $x:\\operatorname{Fin}(n)\\to\\mathbb Z$. Assume uniform readiness at fixed exponent $k$ and $|x_i|\\le n^k$ for every original index. Every nonzero difference belonging to the exact original owner-incidence product family is not divisible by some prime in the actually generated auxiliary pool.\n\nInstantiates the dense-guard separation property for real retained input differences. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Instantiates the dense-guard separation property for real retained input differences. The original magnitude bound and the readiness condition are applied to the exact retained owner-incidence differences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.representationBound_log_rate",
+    "theorem_title": "Logarithmic growth of the representation bound",
+    "natural_language_statement": "For the executable representation bound $R(n)$ and fixed parameters $\\varepsilon,\\kappa$, $$\\lim_{n\\to\\infty}\\frac{\\log R(n)}{\\log n}=\\varepsilon\\kappa.$$\n\nIdentifies the multiplicity exponent used in mass and dense-guard accounting. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Identifies the multiplicity exponent used in mass and dense-guard accounting. The representation multiplicity is assigned exponent $\\varepsilon\\kappa$ for use in the mass and threshold estimates."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.WantedPairs.mem_pairs",
+    "theorem_title": "Exact membership in the constructed wanted-pair list",
+    "natural_language_statement": "Let actual stored right buckets represent a residue-key function on $N_R$ indices, with all right keys below $M$, and let the $N_L$ left keys also be below $M$. Then $$ (i,j)\\in\\operatorname{pairs}\\iff i<N_L\\land j<N_R\\land q_R(j)=q_L(i).$$\n\nEstablishes exact soundness and completeness of the physical residue join. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Establishes exact soundness and completeness of the physical residue join. The actual stored buckets provide both directions of the residue-equality characterization for original index pairs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.WantedPairs.row_segment",
+    "theorem_title": "An appended wanted row is the specified memory segment",
+    "natural_language_statement": "Let right-index buckets be stored correctly for a key function on $N_R$ indices, with all keys below $M$, and suppose the selected left key is below $M$. If the new memory writes each matching row as the interleaved left index and the corresponding stored right index, starting after the previous pairs, then that output interval is exactly the cell encoding of the specified wanted row.\n\nConnects the append loop to the logical pair-list representation. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects the append loop to the logical pair-list representation. The two cells written for each match are precisely the left index and the corresponding stored right index."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.emod_meets",
+    "theorem_title": "Correctness and cost of signed remainder",
+    "natural_language_statement": "Let program $P$ contain the concrete remainder body at index $p$. Under its precondition for execution limits, modulus $M$, magnitude bound $V$, and scratch base $f$, and for $|x|\\le V$, the procedure returns $$r=x\\bmod M$$ within its specified $\\operatorname{emodTime}(|x|,M)$ bound and preserves every cell below $f$.\n\nProvides the checked signed modular arithmetic used by hashing and bucket construction. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides the checked signed modular arithmetic used by hashing and bucket construction. The returned value is the signed integer remainder, with its exact time bound and preservation of the input prefix."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Ends.pass",
+    "theorem_title": "A bounded memory-writing pass",
+    "natural_language_statement": "Let a Light pass run $n$ rounds with counter local $c$, length local $x$, destination local $y$, and expression $e$. Suppose each round safely evaluates $e$ to the specified value $f(j)$ in the partially written memory; the final frame and memory satisfy $Q$; addresses fit the word bound; the output interval fits space; and $x,y\\ne c$. If $$n(\\operatorname{cost}(e)+12)+6\\le T,$$ the pass reaches $Q$ within $T$ steps.\n\nGives the exact costed rule for array-writing scans. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Gives the exact costed rule for array-writing scans. The per-round evaluation invariant identifies every written value, and the displayed bound charges expression evaluation and loop overhead."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.powTable_ends",
+    "theorem_title": "Construction of a power-table segment",
+    "natural_language_statement": "Let $d,L,b\\in\\mathbb N$ be destination, length, and base. Assume addresses fit the word bound, $d+L$ fits space, and every power $b^j$ for $j\\le L$ fits the word limit. From the prescribed frame, the power-table body ends within its specified time, stores the exact length-$L$ list of powers at $d$, and changes no memory outside those $L$ cells. The other initial locals may be arbitrary.\n\nSupplies internally computed powers for enumeration, decoding, and binary search. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Supplies internally computed powers for enumeration, decoding, and binary search. The resulting segment and outside-memory equality let later enumeration routines use actual computed powers safely."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Wrap.topSolves",
+    "theorem_title": "A task solver yields a top-level program",
+    "natural_language_statement": "Let a wrapper connect problem $Q$ to a Light task in decision/output mode $\\delta$. Suppose a program solves that task with natural time $T_n(n,U)$ and polynomial resource needs. Let real time $T(n,u)$ dominate $T_n(n,U)$ whenever $n,U\\ge1$ and $U\\le u$. For every fixed $k\\in\\mathbb N$, appending the wrapper body gives a program solving the final input layout on $U=n^k$, with bound $$\\max(T(n,U),0)+\\operatorname{extra}(k)$$ and suitable natural resource constants.\n\nConnects the task interface to the final problem layout, including the size-zero wrapper behavior. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects the task interface to the final problem layout, including the size-zero wrapper behavior. The appended caller handles zero size and computes the fixed polynomial magnitude before invoking the task solver."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.perTriple_powerBound",
+    "theorem_title": "Power bound for the per-triple arithmetic budget",
+    "natural_language_statement": "For each fixed magnitude exponent $k\\in\\mathbb N$, the explicit per-triple budget $A_k(n)$ satisfies $$\\operatorname{PowerBound}\\!\\left(A_k,\\frac85\\varepsilon(E+\\tfrac12)\\right).$$ Here $\\varepsilon,E$ are the fixed analytic parameters.\n\nPlaces the actual arithmetic-stage charge in the runtime exponent ledger. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Places the actual arithmetic-stage charge in the runtime exponent ledger. The concrete per-triple budget is assigned the arithmetic ledger exponent for each fixed input-magnitude exponent."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.CostLedger.prefixBoxes_log_bound",
+    "theorem_title": "Finite logarithmic bound for prefix boxes",
+    "natural_language_statement": "Let input size $n$ have positive inner size $\\mu$, and let depth $j$ be at most terminal depth. With fixed parameters $E$, band shift $\\beta$, and box saving $b$, $$\\log B_{\\mathrm{prefix}}(n,j)\\le\\mu\\log2\\,(2E+2\\beta-b).$$\n\nBounds every actual depth-dependent prefix-box term by the certified common exponent. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds every actual depth-dependent prefix-box term by the certified common exponent. The inequality is uniform over every executable depth up to terminal depth, with no uncharged depth-dependent factor."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.CostLedger.queryTerms_log_bound",
+    "theorem_title": "Finite logarithmic bound for query terms",
+    "natural_language_statement": "Let input size $n$ have positive inner size $\\mu$, and let $j$ be at most terminal depth. With entropy ratio $\\rho$, box saving $b$, and band shift $\\beta$, $$\\log Q(n,j)\\le\\mu\\log2\\,\\rho(1+b-2\\beta)+9\\rho\\log2,$$ where $Q$ is the exact query-term ledger count.\n\nRetains the finite rounding slack when bounding executable sparse queries. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains the finite rounding slack when bounding executable sparse queries. The additive $9\\rho\\log2$ term preserves the integer-switch rounding loss in the finite logarithmic estimate."
+  }
+]

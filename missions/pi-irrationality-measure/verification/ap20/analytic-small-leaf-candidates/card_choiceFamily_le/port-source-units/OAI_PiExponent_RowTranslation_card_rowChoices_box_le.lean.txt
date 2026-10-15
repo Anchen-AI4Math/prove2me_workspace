@@ -1,0 +1,9 @@
+theorem card_rowChoices_box_le (S : Finset (σ →₀ ℕ)) (β : σ →₀ ℕ) (s H : ℕ)
+    (ha : ∀ a ∈ S, ∀ i, a i ≤ H)
+    (hS : S.card ≤ (H + 1) ^ Fintype.card σ) :
+    Fintype.card (RowChoices S β s) ≤ (H + 1) ^ (2 * Fintype.card σ) * (s + 1) := by
+  calc
+    _ ≤ S.card * (H + 1) ^ Fintype.card σ * (s + 1) := card_rowChoices_le S β s H ha
+    _ ≤ (H + 1) ^ Fintype.card σ * (H + 1) ^ Fintype.card σ * (s + 1) :=
+      Nat.mul_le_mul_right _ (Nat.mul_le_mul_right _ hS)
+    _ = _ := by rw [← pow_add]; congr 2; omega

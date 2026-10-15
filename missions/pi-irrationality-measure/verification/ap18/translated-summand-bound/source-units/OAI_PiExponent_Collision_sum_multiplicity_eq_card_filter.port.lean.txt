@@ -1,0 +1,5 @@
+theorem sum_multiplicity_eq_card_filter {ι κ : Type*} [DecidableEq κ]
+    (rows : Finset ι) (groups : Finset κ) (group : ι → κ) :
+    ∑ a ∈ groups, multiplicity rows group a =
+      (rows.filter fun i => group i ∈ groups).card := by
+  exact Finset.sum_card_fiberwise_eq_card_filter rows groups group

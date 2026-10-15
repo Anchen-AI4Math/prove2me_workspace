@@ -1,0 +1,15 @@
+{
+  "id": "87d19bf9-bae2-44fc-88e8-c9f718b3a5c5",
+  "theorem_id": "d1109787-35e7-431f-8ddd-c620c1188885",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:17:42.936105+00:00",
+  "updated_at": "2026-10-15T07:20:49.062252+00:00",
+  "explanation": "Retains bank headers, source stages, and occurrence ordering during subsequent allocations. The preserved cutoff covers the whole bank, and the occurrence rows remain before the bank base throughout later writes.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.Stored.of_kept",
+  "theorem_title": "Complete source-bank data survive later writes",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.Stored.of_kept {\u03bc \u03bd : \u2115 \u2192 \u2124} {fL fR : \u2115 \u2192 \u2124}\n    {base NL NR g h J cut occ bound : \u2115} {p shift : \u2124}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.Stored \u03bc fL fR base NL NR g h J cut occ p shift)\n    (K : _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd bound) (hocc : occ+_root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalog.count h J*J \u2264 base)\n    (hb : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish base NL NR g h J cut \u2264 bound) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.Stored \u03bd fL fR base NL NR g h J cut occ p shift := by sorry",
+  "theorem_natural_language_statement": "Let complete source-band bank data be stored in memory $\\mu$. Suppose $\\nu$ agrees with $\\mu$ below address $b$, the entire occurrence-row array ends before the bank base, and the bank finish is at most $b$. Then the same source functions, sizes, band width, local parameters, cutoff, modulus, and shift satisfy the stored predicate in $\\nu$.\n\nRetains bank headers, source stages, and occurrence ordering during subsequent allocations. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

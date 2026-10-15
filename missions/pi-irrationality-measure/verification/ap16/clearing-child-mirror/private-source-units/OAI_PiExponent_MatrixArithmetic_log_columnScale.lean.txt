@@ -1,0 +1,7 @@
+private theorem log_columnScale {m : ℕ} {q : Fin m → ℕ} (hq : ∀ i, 0 < q i)
+    (a : Fin m → ℕ) :
+    Real.log (columnScale q a) = ∑ i, (a i : ℝ) * Real.log (q i) := by
+  rw [columnScale, Real.log_prod (by
+    intro i hi
+    exact pow_ne_zero _ (by exact_mod_cast (hq i).ne'))]
+  simp only [Real.log_pow]

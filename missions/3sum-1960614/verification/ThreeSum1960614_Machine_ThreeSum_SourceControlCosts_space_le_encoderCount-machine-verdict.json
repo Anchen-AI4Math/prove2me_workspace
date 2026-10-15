@@ -1,0 +1,15 @@
+{
+  "id": "59678851-2a52-4f01-aafb-6800bd9b6d0e",
+  "theorem_id": "f838143f-30b5-4804-bd5e-3a8701f0a214",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:46:44.867587+00:00",
+  "updated_at": "2026-10-15T07:49:14.88642+00:00",
+  "explanation": "Bounds complete source-control storage while keeping the base address affine. The explicit encoder multiplier includes both the source-bank storage and the compact-width control tables.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceControlCosts.space_le_encoderCount",
+  "theorem_title": "Source-control storage fits the encoder envelope",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceControlCosts.space_le_encoderCount {base NL NR n p U D : \u2115} (hn : 0 < n) (hNL : NL \u2264 n) (hNR : NR \u2264 n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceControlsHost.space base NL NR (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) p\n      (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) U D \u2264\n      base+(29+_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)+_root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.storageFactor n+\n          (232*_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n+1)^2+(232*_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n+1))*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n+\n        Nat.log 2 (_root_.ThreeSum1960614.Machine.ThreeSum.TrimScales.scheduleCount n+1)+\n        max (Nat.log 2 (U+1)+2) (Nat.log 2 (p+D+1)+2)+19 := by sorry",
+  "theorem_natural_language_statement": "Let $n>0$ and $N_L,N_R\\le n$, with natural base $b$ and arithmetic controls $p,U,D$. Evaluate the source-control host at the executable band and local parameters. Its required final address is bounded by $b$ plus encoder count times $$29+J+F(n)+(232\\mu(n)+1)^2+(232\\mu(n)+1),$$ plus $\\lfloor\\log_2(S(n)+1)\\rfloor+\\max(\\lfloor\\log_2(U+1)\\rfloor+2,\\lfloor\\log_2(p+D+1)\\rfloor+2)+19$, where $J,F,S$ are block count, storage factor, and schedule count.\n\nBounds complete source-control storage while keeping the base address affine. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

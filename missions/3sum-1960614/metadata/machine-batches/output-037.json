@@ -1,0 +1,156 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalKeyRow.Procs.meets",
+    "theorem_title": "Execution of one signed local-key row",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be Light limits, program, depth and memory. A literal procedure-closure record identifies the local-key wrapper and all its callees. Fix width $L$, $n$ masks $m_i<2^L$, coefficient maps $w_F,w_T:\\mathbb N\\to\\mathbb N$ bounded by $U$, their correctly stored rows and mask list, and free base $f$ after all three arrays. Suppose addresses fit words, the explicit local-key word and space budgets fit, and $d+L+2$ is allowed. The call returns $f+L$ and writes\n\n$$\\nu(f+L+i)=E(w_T,0,L,m_i)-E(w_F,0,L,m_i)\\quad(i<n),$$\n\nwhere $E(u,v,L,m)$ sums $v_j$ at set bits and $u_j$ at unset bits. It meets its specified time and preserves every cell below $f$.\n\nThis realizes the signed local-key list in the same physical mask order as the global encoding.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This realizes the signed local-key list in the same physical mask order as the global encoding. The difference of the two one-hot evaluations is written once for each original mask without reordering incidences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskBitTable.meets",
+    "theorem_title": "Execution of the complete mask-bit table",
+    "natural_language_statement": "Let $L,n\\in\\mathbb N$, mask list $m_i<2^L$, source base $a$, table base $b$, scratch $w$, and $\\lambda,P,d,\\mu$ limits, program, depth and memory be given. Suppose the wrapper, bit-row, powers and recursive erasure bodies occur in $P$; the source list is correct in $\\mu$; addresses fit words; $a+n\\le b$; $b+nL\\le w$; $w+L+1$ fits memory; $2^{L+1}$ fits a word; and $d+L+2$ is allowed. Then it writes\n\n$$\\nu(b+iL+j)=\\operatorname{bit}_j(m_i)\\quad(i<n,\\ j<L),$$\n\nmeets its stated time and preserves cells below $w$ outside the table.\n\nThis constructs literal Boolean support rows used by all-pairs retained-edge testing.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs literal Boolean support rows used by all-pairs retained-edge testing. Each row contains every coordinate bit of its stored mask and is laid out at the exact row-major address."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOutputDecode.Procs.meets",
+    "theorem_title": "Execution of complete output-record decoding",
+    "natural_language_statement": "Let $T,M\\ge1$, $k\\le V$ and $J,U\\in\\mathbb N$. Suppose a length-$M$ mask table $f(s)\\le U$ is stored in memory $\\mu$ before output base $b$, with $b+2J\\le w$ before scratch. Let $\\lambda,P,d$ be run limits, program and depth, and let the literal procedure record identify the output decoder and its division/digit callees. Assume addresses fit words, the exact decoder space and word budgets fit and $d+2$ is strictly below the call limit. For the forward base-$TM$ digits $z_j$ of $k$, the procedure writes\n\n$$\\nu(b+j)=\\lfloor z_j/M\\rfloor,\\qquad\\nu(b+J+j)=f(z_j\\bmod M),$$\n\nreturns the occurrence-only radix-$T$ code, meets its stated time and preserves cells below $b$.\n\nThis connects every physical global output to its original occurrence and mask rows.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This connects every physical global output to its original occurrence and mask rows. Its two output arrays recover schedule occurrences and the original layer masks while accumulating the occurrence-only code."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightPascal.build_meets",
+    "theorem_title": "Execution of complete Pascal-table construction",
+    "natural_language_statement": "Let $L,b\\in\\mathbb N$, $\\mu$ an initial memory and $\\lambda,P,d$ limits, program and depth. Suppose the program contains the Pascal builder, fill, row and linear-array bodies at the stated indices. Assume addresses fit words, the complete Pascal-table reservation at $b$ fits memory, $2^{L+1}$ fits a word and $d+1$ is strictly below the depth limit. The call constructs the exact Pascal coefficient table through width $L$, satisfies its prescribed build-time budget and changes no cell outside that table reservation.\n\nThis makes every binomial lookup in compact subset addressing follow from constructed memory.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This makes every binomial lookup in compact subset addressing follow from constructed memory. The routine constructs all required binomial coefficients from its own fill and row-update procedures."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightPrimePool.Procs.meets",
+    "theorem_title": "Execution of the exact candidate-prime pool",
+    "natural_language_statement": "Let $y>0$, free base $f$, memory $\\mu$, and $\\lambda,P,d$ limits, program and depth be given. Suppose the literal procedure-closure record identifies the pool builder, primality tester and remainder routine. Assume addresses fit words, the stated pool space and word budgets fit and $d+1$ is strictly below the depth limit. The call writes every prime in\n\n$$y<p\\le4y$$\n\nexactly once in increasing order at $f$, returns the exact list length, meets its specified time and preserves every cell below $f$.\n\nThis constructs the concrete prime candidates used by deterministic selection and modular false-count contraction.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs the concrete prime candidates used by deterministic selection and modular false-count contraction."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightQueryEnumeration.meets",
+    "theorem_title": "Execution of a query-restricted subset layer",
+    "natural_language_statement": "Let $Q\\subseteq\\operatorname{Fin}(W)$ and $t\\le|Q|+1$ be a requested layer. Suppose $P$ contains the query wrapper, selected-power builder, powers, erasure and recursive enumeration bodies. Let $b,w$ be output and scratch bases in memory $\\mu$. Assume addresses fit words, $w+2W+2$ fits memory, $2^{W+1}$ fits a word, $b+\\binom{|Q|}{t}\\le w$ and $d+W+2$ is allowed. Then the program writes precisely the ordered masks of the $t$-subsets of $Q$, returns\n\n$$\\binom{|Q|}{t},$$\n\nestablishes the selected-coordinate weight table, meets its prescribed time and preserves cells below $w$ outside the output.\n\nThis supplies the physical sparse-query leaves without scanning unrelated coordinates or subsets.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies the physical sparse-query leaves without scanning unrelated coordinates or subsets. The emitted layer consists exactly of the prescribed-cardinality subsets of the actual query coordinate set."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightRadixKeys.meets",
+    "theorem_title": "Execution of the complete ordered radix-key product",
+    "natural_language_statement": "Let a nonempty integer list $X$ be stored at source $s$, with $|x|\\le U$ for each $x\\in X$, and let $p$ be a natural radix. Suppose $P$ contains the recursive key-product, radix-row and affine bodies, addresses fit words and $s+|X|\\le b$. For every block count $J$, memory $\\mu$ storing $X$, and depth $d$, assume the exact key-product space and word budgets fit and $d+J+2$ is allowed. The procedure writes the ordered J-fold radix-key list, preceded by its count $|X|^J$, and returns the address of that count cell. It meets its stated time and preserves all cells below $b$.\n\nThis builds the full ordered global-key enumeration, retaining equal values at distinct positions.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This builds the full ordered global-key enumeration, retaining equal values at distinct positions. The exact list length is stored beside the ordered key list, providing a physical header for later joins."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightRawAKeys.meets",
+    "theorem_title": "Execution of all three guarded A-key lifts",
+    "natural_language_statement": "Let integer list $X$ with $|x|\\le U$ be stored at source $s$, positive modulus $p$, and free base $f$ after the source. Let $\\lambda,P,d$ be run limits, program and depth. Suppose $P$ contains the lift wrapper, signed-residue, affine and remainder bodies; addresses fit words; the stated lift space and word budgets fit; and $d+2$ is allowed. The call returns $f$ and writes the exact three guarded residue lifts of every original position, in lift-major order, within its stated time, preserving all cells below $f$.\n\nThis retains every original A incidence in the raw wanted-label domain.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This retains every original A incidence in the raw wanted-label domain. Lift-major order keeps each original position in every guarded residue row, including repeated input values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingBucketTest.meets",
+    "theorem_title": "Execution of independent-flag bucket testing",
+    "natural_language_statement": "Let original arrays $L,R$ of lengths $N_L,N_R$, key maps $c_L,c_R<M$ and their correct contiguous bucket stores be retained before scratch $w$ in memory $\\mu$. Fix residues $r_L,r_R<M$, flags $\\phi_L,\\phi_R\\le1$ and integer A value $a$. Assume addresses fit words, all originals and $a$ fit words, every $a+L_i$ fits a word, $N_LN_R$ fits a word, $w+4$ fits memory and $d+2$ is allowed. Suppose the program contains bucket-test, selector, pair and row bodies. It returns the exact count of original pairs from the flagged residue buckets satisfying $R_j=a+L_i$, within the selected-product time, changing only four scratch cells.\n\nThis checks the original equation while independent endpoint flags restrict each physical fiber.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This checks the original equation while independent endpoint flags restrict each physical fiber. The four scratch cells hold selected bucket headers; all original arrays and retained transforms remain below scratch."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingPositiveMasks.program_meets",
+    "theorem_title": "Gathered positive masks equal the original next-prefix list",
+    "natural_language_statement": "Let $I$ be a finite raw-incidence set over finite decidable types, $w$ a wanted label and $u$ a prefix at depth $k<J$, with microblock parameter $h$. Suppose memory stores the exact selected positive-child indices and the full ordered child left/right mask rows. Let $t$ be the selected-index length and $G(h)$ the full child count. Assume all index, source and two output segments fit memory; outputs are disjoint from each other and the index row; the left output is disjoint from both source rows and the right output from its right source; addresses fit words; $2^{J\\cdot464h+1}$ fits a word; and a nested call is allowed. The paired gather writes exactly the left/right masks of the original positive-child prefix list, in order, within its $t$-dependent time and changes only those output intervals.\n\nThis identifies the actual packed positive arrays with the combinatorial next frontier.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This identifies the actual packed positive arrays with the combinatorial next frontier. Both endpoint arrays enumerate precisely the selected positive children in their original recursive order."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightResidueHistogram.meets",
+    "theorem_title": "Execution of a padded signed-residue histogram",
+    "natural_language_statement": "Let $p>0$, capacity $C\\ge p$, $n$ signed inputs bounded by $U$, and multiplier $c\\in\\mathbb Z$ with $|c|\\le1$ be given. Suppose memory $\\mu$ stores inputs at $s$, a histogram destination of length $C$ and source both end before code scratch, and the $n$ code cells end before remainder scratch $w$. Assume addresses fit words, $w+\\lfloor\\log_2(U+1)\\rfloor+2$ fits memory, $4U+4p+16$ fits a word and $d+1$ is strictly below the call limit. With wrapper, residue, remainder, histogram and fill bodies present, the procedure writes the exact histogram of $(c x_i)\\bmod p$, padded with zeros to capacity $C$, meets its stated time and preserves cells below the code base outside that destination.\n\nThis constructs the correlation histograms used by deterministic common-offset selection.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs the correlation histograms used by deterministic common-offset selection. The padded vector includes every signed residue incidence, including repeated values, and zeroes the unused capacity."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketBuild.Procs.meets",
+    "theorem_title": "Execution of complete contiguous source-bucket construction",
+    "natural_language_statement": "Let $N,M\\in\\mathbb N$, code map $c_i<M$ for $i<N$, and key, histogram, offset, cursor and flat-index bases be given. Suppose keys are correct in memory $\\mu$, keys and histograms are disjoint and end before offsets, the $M+1$ offset cells end before cursors, and the $M$ cursor cells end before the final length-$N$ index array. Assume that final array fits memory, addresses fit words and $d+1$ is strictly below the depth limit. A literal closure record identifies all bucket-building bodies. The procedure constructs the exact contiguous bucket storage and histogram, meets its stated $(N,M)$ time, preserves all cells below the histogram base and changes none outside the interval from that base through the flat array.\n\nThis produces physical original-index fibers from actual code arrays without externally supplied buckets.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This produces physical original-index fibers from actual code arrays without externally supplied buckets."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceHistogram.Procs.meets",
+    "theorem_title": "Execution of a two-modulus original-source histogram",
+    "natural_language_statement": "Let $p,m>0$, input count $n$, original magnitude bound $U$, shift bound $D$, and shift $\\delta\\in\\mathbb Z$ satisfy $|\\delta|\\le D$. Suppose memory $\\mu$ stores the original source at $s$ with $|\\mu(s+i)|\\le U$. Source and histogram end before code scratch, which ends before remainder scratch. Assume addresses fit words, the explicit source-residue space and word budgets fit and $d+1$ is strictly below the depth limit. A literal closure record identifies the key, remainder, histogram and fill procedures. The wrapper writes\n\n$$k_i=((\\mu(s+i)\\bmod p)+\\delta)\\bmod m$$\n\nas its code array, and counts each code exactly in the length-$m$ histogram. It meets its stated time and preserves cells below the code base outside the histogram.\n\nThis connects source histograms directly to original signed values and the common carry offset.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This connects source histograms directly to original signed values and the common carry offset. The two modular reductions are executed before the histogram counts, so each original incidence contributes exactly once."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceOccurrenceArray.meets",
+    "theorem_title": "Execution of the complete occurrence-code row array",
+    "natural_language_statement": "Let $N,J,m,b,w\\in\\mathbb N$ with $m\\ge1$ and let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Suppose the wrapper, digit decoder and division bodies occur in $P$; addresses fit words; $b+NJ\\le w$; the digit decoder’s explicit space bound for magnitude $N$ and word bound for $(N,m,J)$ fit; and $d+2$ is strictly below the depth limit. The procedure writes\n\n$$\\nu(b+iJ+j)=\\operatorname{digit}_{m,J}(i,j)\\qquad(i<N,\\ j<J),$$\n\nwhere digits are in forward block order. It meets its stated $(N,J)$ time and preserves all cells below $b$.\n\nThis constructs the occurrence-index arrays needed by reusable source banks.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs the occurrence-index arrays needed by reusable source banks. Every row is the forward radix expansion of its physical occurrence code and has exactly the prescribed block width."
+  }
+]

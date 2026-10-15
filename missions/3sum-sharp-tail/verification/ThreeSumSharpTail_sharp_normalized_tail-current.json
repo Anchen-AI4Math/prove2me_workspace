@@ -1,0 +1,45 @@
+{
+  "theorem_id": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+  "theorem_name": "ThreeSumSharpTail.sharp_normalized_tail",
+  "theorem_title": "Sharp normalized binomial tail",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.sharp_normalized_tail (c m : ℕ) (hc : 10 < c) (hm : 1 ≤ m)\n    (θ : ℝ) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    ((∑ d ∈ Finset.Icc (⌈θ * (m : ℝ)⌉₊) m, ThreeSumSharpTail.boxCount c m d : ℕ) : ℝ) /\n        (ThreeSumSharpTail.boxCount c m 0 : ℝ) ≤\n      ((c : ℝ) * m + 1) / (1 - 9 / ((c : ℝ) - 1)) *\n        Real.rpow ((4 : ℝ) ^ m) (-ThreeSumSharpTail.sharpSaving c θ) := by sorry",
+  "natural_language_statement": "Let $c>10$ and $m\\ge1$ be integers, $0<\\theta<0.9$, $L=cm$, $D=4^m$, $t=\\lceil\\theta m\\rceil$, $\\beta_d=\\binom L{m-d}9^{L-m+d}$ and $M=\\beta_0$. Then $$\\frac1M\\sum_{d=t}^{m}\\beta_d\\le\\frac{cm+1}{1-9/(c-1)}D^{-\\gamma_*(c,\\theta)}.$$ The ceiling is part of the statement; $t=m$ is included.",
+  "created_at": "2026-10-13T14:53:19.799419+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Lemma 3.2",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "9695e307-8b16-492c-b722-73492244e5fd",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-13T20:30:08.028625+00:00"
+    },
+    {
+      "audit_id": "ec087853-006d-4b4a-9e3d-7676a691b56b",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-13T20:30:08.35446+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "For every pair of natural numbers $c,m$ with $c>10$ and $m\\ge1$, and every real $\\theta$ with $0<\\theta<9/10$, let $L=\\lceil\\theta m\\rceil$; in this range the natural-number ceiling used in the statement is the ordinary ceiling and $1\\le L\\le m$. Define $H(x)=-x\\log x-(1-x)\\log(1-x)$, with the total real logarithm taking value $0$ at $0$ and the natural logarithm of the absolute value at a negative argument, and put $S=[cH(1/c)-cH((1-\\theta)/c)-\\theta\\log9]/\\log4$. Then $\\displaystyle \\frac{\\sum_{d=L}^{m}\\binom{cm}{m-d}9^{cm-m+d}}{\\binom{cm}{m}9^{cm-m}}\\le\\frac{cm+1}{1-9/(c-1)}(4^m)^{-S}$. The sum includes both endpoints and is first formed as a natural number before being cast to the reals; every displayed division and the power with exponent $-S$ are real operations. The count used in the code is defined for arbitrary natural arguments by $\\binom{cm}{\\max(m-d,0)}9^{\\max(cm-m,0)+d}$, but on the stated summation range no subtraction truncates. The denominator count and $1-9/(c-1)$ are strictly positive here. The cases $m=0$, $c\\le10$, $\\theta=0$, and $\\theta=9/10$ are not asserted.",
+    "model": "gpt-6",
+    "created_at": "2026-10-13T14:53:23.594969+00:00"
+  }
+}

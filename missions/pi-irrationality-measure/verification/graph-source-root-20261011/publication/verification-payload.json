@@ -1,0 +1,11 @@
+{
+  "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+  "proof_type": "prove",
+  "explanation": "This is the original OpenAI source reduction. The conditional determinant theorem proves PiEventualLowerBound from the original global interpolation and analytic aggregate statements. The root solution supplies those two source statements to the original consequence theorem. All three imported children remain Open, so this submission is intentionally a SKETCH_ACCEPTED reduction and not a closed proof.",
+  "file": {
+    "filename": "Sol_OAI_PiExponent_pi_eventual_lower_bound_source_root_graph.lean",
+    "source": "verification/graph-source-root-20261011/Solutions/Sol_OAI_PiExponent_pi_eventual_lower_bound_source_root_graph.lean",
+    "sha256": "2233b20c1dfb1aeb59082b3db7c34725c32dbbc009ece7d99839e846c21cf0b1",
+    "utf8": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\nimport Theorems.Thm_OAI_PiExponent_DeterminantContradiction_piEventualLowerBound_of_interpolation_and_analytic_aggregate\nimport Theorems.Thm_OAI_PiExponent_AdmissibleMatrixInterpolation_globalInterpolation\nimport Theorems.Thm_OAI_PiExponent_LiteralAnalytic_analyticAggregate\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\ntheorem solution : PiEventualLowerBound :=\n  DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate\n    AdmissibleMatrixInterpolation.globalInterpolation LiteralAnalytic.analyticAggregate\n"
+  }
+}

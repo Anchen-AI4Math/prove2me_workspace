@@ -1,0 +1,303 @@
+{
+  "instructions": "Draft metadata only; never edit Lean code, mathematical scope, names or source links. Return a JSON array with one entry for each input name. Each theorem needs theorem_title, natural_language_statement, tags and explanation. Each definition needs definition_title, natural_language_statement and tags. Write academic English with valid KaTeX, explain every variable and hypothesis, include the main formula where useful, and add a role paragraph in the complete deterministic integer 3SUM runtime proof. A Lean dump or generic upload notice is not an explanation. Preserve attribution and distinguish the independent fixed-model bound from a universal 3SUM lower bound. Use the common tag 3sum-1960614. Do not claim a new speed record or priority. Read references/contribute.md for contributor principles.",
+  "batch": 29,
+  "items": [
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.cell_le",
+      "original_decl": "ThreeSum.SharedReportingBankResourceBounds.cell_le",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingBankResourceBounds.lean#L75-L90",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.cell_le {h J k cut : ℕ} (hk : k < _root_.ThreeSum.SharedReportingBankHeader.levels J) : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLayout.cellSize h J k cut ≤ _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.cellBound h J := by sorry",
+      "original_type": "∀ {h J k cut : Nat},\n  @LT.lt.{0} Nat instLTNat k (ThreeSum.SharedReportingBankHeader.levels J) →\n    @LE.le.{0} Nat instLENat (ThreeSum.SharedReportingBankLayout.cellSize h J k cut)\n      (ThreeSum.SharedReportingBankResourceBounds.cellBound h J)",
+      "children": [
+        "ThreeSum.LightRadixKeys.space_bound",
+        "ThreeSum.SubsetAddress.enumerateLayer_nodup"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.query_scratch",
+      "original_decl": "ThreeSum.SharedReportingBankResourceBounds.query_scratch",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingBankResourceBoundsQuery.lean#L77-L128",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.query_scratch {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {report h J NB NC g s i j k maskBase work : ℕ}\n    (hk : k ≤ _root_.ThreeSum.LightSwitchDepth.depth J)\n    (hmasks : maskBase+_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.queryMaskSpan h J ≤ work)\n    (hspace : work+_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.queryWorkSpan h J ≤ lim.space)\n    (hword : (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.queryWord h J g : ℤ) ≤ lim.word) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostLevelData.Scratch lim h J k\n      (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankAccess.levelCatalog report h J NB NC g s i j k)\n      (_root_.ThreeSum.BandRawA.finiteBandPositions NB g i).card\n      (_root_.ThreeSum.BandRawA.finiteBandPositions NC g j).card maskBase work := by sorry",
+      "original_type": "∀ {lim : Light.Limits} {report h J NB NC g s i j k maskBase work : Nat},\n  @LE.le.{0} Nat instLENat k (ThreeSum.LightSwitchDepth.depth J) →\n    @LE.le.{0} Nat instLENat\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) maskBase\n          (ThreeSum.SharedReportingBankResourceBounds.queryMaskSpan h J))\n        work →\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) work\n            (ThreeSum.SharedReportingBankResourceBounds.queryWorkSpan h J))\n          lim.space →\n        @LE.le.{0} Int Int.instLEInt\n            (@Nat.cast.{0} Int instNatCastInt (ThreeSum.SharedReportingBankResourceBounds.queryWord h J g)) lim.word →\n          ThreeSum.ReportingHostLevelData.Scratch lim h J k\n            (ThreeSum.SharedReportingBankAccess.levelCatalog report h J NB NC g s i j k)\n            (@Finset.card.{0} (Fin NB) (ThreeSum.BandRawA.finiteBandPositions NB g i))\n            (@Finset.card.{0} (Fin NC) (ThreeSum.BandRawA.finiteBandPositions NC g j)) maskBase work",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLevels.candidates_nonempty",
+        "ThreeSum.SubsetAddress.enumerateLayer_nodup"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.components",
+      "original_decl": "ThreeSum.SharedReportingBankResourceBounds.components",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingBankResourceBoundsScales.lean#L68-L107",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.components (n : ℕ) : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.Components n := by sorry",
+      "original_type": "∀ (n : Nat), ThreeSum.SharedReportingBankResourceBounds.Components n",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.rounds_bound"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_selected_ends",
+      "original_decl": "ThreeSum.SharedReportingBankResourceBounds.wanted_selected_ends",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingBankResourceBoundsWantedAccess.lean#L72-L122",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_selected_ends {pair bank cover srcB srcC NB NC g h J cut occ i j code stop : ℕ}\n    (hg : 0<g) (hi : i<_root_.ThreeSum.BandPartition.size NB g) (hj : j<_root_.ThreeSum.BandPartition.size NC g)\n    (hk : code<_root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalog.count h J)\n    (hsrcB : srcB+NB≤stop) (hsrcC : srcC+NC≤stop)\n    (hpair : _root_.ThreeSum.SourceBandPairData.next pair NB NC g (_root_.ThreeSum1960614.Machine.ThreeSum.BlockSourceEncoding.modulus h J)≤stop)\n    (hbank : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish bank NB NC g h J cut≤stop)\n    (hocc : occ+_root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalog.count h J*J≤bank)\n    (hcover : _root_.ThreeSum1960614.Machine.ThreeSum.LightCoverKeyData.keyEnd cover h J≤stop) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds (_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostSourceSelectionStored.retained pair bank cover NB NC g h J cut occ i j code)\n      pair bank cover srcB srcC i j code h J cut stop := by sorry",
+      "original_type": "∀ {pair bank cover srcB srcC NB NC g h J cut occ i j code stop : Nat},\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) g →\n    @LT.lt.{0} Nat instLTNat i (ThreeSum.BandPartition.size NB g) →\n      @LT.lt.{0} Nat instLTNat j (ThreeSum.BandPartition.size NC g) →\n        @LT.lt.{0} Nat instLTNat code (ThreeSum.LightBlockSourceCatalog.count h J) →\n          @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) srcB NB) stop →\n            @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) srcC NC) stop →\n              @LE.le.{0} Nat instLENat\n                  (ThreeSum.SourceBandPairData.next pair NB NC g (ThreeSum.BlockSourceEncoding.modulus h J)) stop →\n                @LE.le.{0} Nat instLENat (ThreeSum.SourceBandBankData.finish bank NB NC g h J cut) stop →\n                  @LE.le.{0} Nat instLENat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) occ\n                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                          (ThreeSum.LightBlockSourceCatalog.count h J) J))\n                      bank →\n                    @LE.le.{0} Nat instLENat (ThreeSum.LightCoverKeyData.keyEnd cover h J) stop →\n                      ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds\n                        (ThreeSum.ReportingHostSourceSelectionStored.retained pair bank cover NB NC g h J cut occ i j\n                          code)\n                        pair bank cover srcB srcC i j code h J cut stop",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.source_bounds"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead_powerBound",
+      "original_decl": "ThreeSum.SharedReportingCosts.overhead_powerBound",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingCostBounds.lean#L47-L62",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead_powerBound : _root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead 0 := by sorry",
+      "original_type": "ThreeSum.StageBounds.PowerBound ThreeSum.SharedReportingCosts.overhead\n  (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero))",
+      "children": [
+        "ThreeSum.Scales.natSqrt_ratio_tendsto_zero",
+        "ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound.add_same"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time_le_boxes",
+      "original_decl": "ThreeSum.SharedReportingCosts.time_le_boxes",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedReportingCosts.lean#L63-L110",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time_le_boxes {n k : ℕ} (hk : k ≤ _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.blocks n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time n k ≤ _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.prefixBoxes n k := by sorry",
+      "original_type": "∀ {n k : Nat},\n  @LE.le.{0} Nat instLENat k (ThreeSum.SharedReportingCosts.blocks n) →\n    @LE.le.{0} Nat instLENat (ThreeSum.SharedReportingCosts.time n k)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ThreeSum.SharedReportingCosts.overhead n)\n        (ThreeSum.CostLedger.prefixBoxes n k))",
+      "children": [
+        "ThreeSum.LayerCounts.edgeSet_card",
+        "ThreeSum.LightRadixKeys.time_bound",
+        "ThreeSum.LightReportingSuffixCatalogSetup.time_bound",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.local_count_le_search",
+        "ThreeSum.SubsetAddress.enumerationWork_bound"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.terminal_charge_le",
+      "original_decl": "ThreeSum.SharedTraversalCosts.terminal_charge_le",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedTraversalCostBounds.lean#L108-L150",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.terminal_charge_le (h J K : ℕ) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.charge h J K+240 ≤\n      31000*(_root_.ThreeSum.SharedTraversalCosts.size h J)^2*2^((J-K)*(2*h)) := by sorry",
+      "original_type": "∀ (h J K : Nat),\n  @LE.le.{0} Nat instLENat\n    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n      (ThreeSum.ReportingHostTerminalFrontier.charge h J K)\n      (@OfNat.ofNat.{0} Nat (nat_lit 240) (instOfNatNat (nat_lit 240))))\n    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 31000) (instOfNatNat (nat_lit 31000)))\n        (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n          (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid)))\n          (ThreeSum.SharedTraversalCosts.size h J) (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))))\n      (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n        (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid)))\n        (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) J K)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) h))))",
+      "children": [
+        "ThreeSum.SubsetAddress.enumerationWork_bound"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initial_le_layer",
+      "original_decl": "ThreeSum.SharedTraversalCosts.initial_le_layer",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedTraversalCostBounds.lean#L188-L214",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initial_le_layer {h J K : ℕ} (D : ℕ → _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostLevelData.Catalog) (hK : K ≤ J)\n    (ht : (D 0).t ≤ _root_.ThreeSum.LightBlockQuery.residualSize h J 0/2) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initialUnit h J D K ≤ _root_.ThreeSum.SharedTraversalCosts.overhead h J*(_root_.ThreeSum.LightBlockQuery.residualSize h J 0).choose (D 0).t := by sorry",
+      "original_type": "∀ {h J K : Nat} (D : Nat → ThreeSum.ReportingHostLevelData.Catalog),\n  @LE.le.{0} Nat instLENat K J →\n    @LE.le.{0} Nat instLENat (D (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))).t\n        (@HDiv.hDiv.{0, 0, 0} Nat Nat Nat (@instHDiv.{0} Nat Nat.instDiv)\n          (ThreeSum.LightBlockQuery.residualSize h J (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))) →\n      @LE.le.{0} Nat instLENat (ThreeSum.SharedTraversalCosts.initialUnit h J D K)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ThreeSum.SharedTraversalCosts.overhead h J)\n          ((ThreeSum.LightBlockQuery.residualSize h J\n                (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))).choose\n            (D (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))).t))",
+      "children": [
+        "ThreeSum.LightReportingSuffixQuery.time_bound"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget",
+      "original_decl": "ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SharedTraversalDispatchCosts.lean#L61-L87",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget {time mass : ℕ → ℕ} {c n k threshold count : ℕ}\n    (hzero : time 0 ≤ 30)\n    (hstep : ∀ i, time (i+1) ≤ time i+(_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scaledOverhead n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.queryTerms n 0+_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scalarOverhead c n)+\n      if threshold < _root_.ThreeSum.SharedTraversalCosts.prefixMass mass i+mass i then 0 else\n        mass i*(_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scaledOverhead n*(_root_.ThreeSum.CostLedger.microPartitions n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.allQueryTerms n+_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices n)))\n    (hcount : count ≤ _root_.ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.wantedBudget n)\n    (hthreshold : threshold ≤ _root_.ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.falseBudget k n*_root_.ThreeSum1960614.Machine.ThreeSum.TrimScales.representationBound n) :\n    time count ≤ _root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.dispatchBudget c k n := by sorry",
+      "original_type": "∀ {time mass : Nat → Nat} {c n k threshold count : Nat},\n  @LE.le.{0} Nat instLENat (time (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))\n      (@OfNat.ofNat.{0} Nat (nat_lit 30) (instOfNatNat (nat_lit 30))) →\n    (∀ (i : Nat),\n        @LE.le.{0} Nat instLENat\n          (time\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) i\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (time i)\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (ThreeSum.SharedTraversalCosts.scaledOverhead n)\n                  (ThreeSum.CostLedger.queryTerms n (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))))\n                (ThreeSum.SharedTraversalCosts.scalarOverhead c n)))\n            (@ite.{1} Nat\n              (@LT.lt.{0} Nat instLTNat threshold\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (ThreeSum.SharedTraversalCosts.prefixMass mass i) (mass i)))\n              (threshold.decLt\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (ThreeSum.SharedTraversalCosts.prefixMass mass i) (mass i)))\n              (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (mass i)\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (ThreeSum.SharedTraversalCosts.scaledOverhead n)\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (ThreeSum.CostLedger.microPartitions n) (ThreeSum.CostLedger.allQueryTerms n))\n                    (ThreeSum.StageBounds.terminalChoices n))))))) →\n      @LE.le.{0} Nat instLENat count (ThreeSum.UniformStageBounds.wantedBudget n) →\n        @LE.le.{0} Nat instLENat threshold\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (ThreeSum.UniformStageBounds.falseBudget k n) (ThreeSum.TrimScales.representationBound n)) →\n          @LE.le.{0} Nat instLENat (time count) (ThreeSum.SharedTraversalCosts.dispatchBudget c k n)",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLevels.candidates_nonempty",
+        "ThreeSum.SharedTraversalCosts.prefix_time_le"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBankLayout.bank_of_kept",
+      "original_decl": "ThreeSum.SourceBandBankLayout.bank_of_kept",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBandBankLayout.lean#L53-L72",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandBankLayout.bank_of_kept {β γ : Type*} [Fintype β] [Fintype γ] [DecidableEq β] [DecidableEq γ]\n    {h J base count cut i bound : ℕ} {μ ν : ℕ → ℤ} {p shift : ℤ}\n    {B : Finset β} {b : β → ℤ} {A : Finset γ} {a : γ → ℤ} {q : _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.GlobalOutput h J}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceBatch.BankAt μ base count cut i p shift B b A a q)\n    (hi : i < count) (K : _root_.ThreeSum1960614.Machine.Light.Kept μ ν bound) (hb : _root_.ThreeSum.LightBlockSourceBatchLayout.work base count (J*(464*h)) cut ≤ bound) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceBatch.BankAt ν base count cut i p shift B b A a q := by sorry",
+      "original_type": "∀ {β : Type u_1} {γ : Type u_2} [inst : Fintype.{u_1} β] [inst_1 : Fintype.{u_2} γ] [inst_2 : DecidableEq.{u_1 + 1} β]\n  [inst_3 : DecidableEq.{u_2 + 1} γ] {h J base count cut i bound : Nat} {μ ν : Nat → Int} {p shift : Int}\n  {B : Finset.{u_1} β} {b : β → Int} {A : Finset.{u_2} γ} {a : γ → Int} {q : ThreeSum.GlobalEncoding.GlobalOutput h J},\n  @ThreeSum.LightBlockSourceBatch.BankAt.{u_1, u_2} β γ inst inst_1 inst_2 inst_3 h J μ base count cut i p shift B b A a\n      q →\n    @LT.lt.{0} Nat instLTNat i count →\n      Light.Kept μ ν bound →\n        @LE.le.{0} Nat instLENat\n            (ThreeSum.LightBlockSourceBatchLayout.work base count\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) J\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 464) (instOfNatNat (nat_lit 464))) h))\n              cut)\n            bound →\n          @ThreeSum.LightBlockSourceBatch.BankAt.{u_1, u_2} β γ inst inst_1 inst_2 inst_3 h J ν base count cut i p shift\n            B b A a q",
+      "children": [
+        "ThreeSum.SubsetAddress.layerRank_lt"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount",
+      "original_decl": "ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBandBanksCosts.lean#L103-L136",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount {G n : ℕ} (hG : G ≤ _root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.bandCount n) :\n    G*_root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankLayout.span (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) ≤\n      _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.storageFactor n*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n := by sorry",
+      "original_type": "∀ {G n : Nat},\n  @LE.le.{0} Nat instLENat G (ThreeSum.CostLedger.bandCount n) →\n    @LE.le.{0} Nat instLENat\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) G\n        (ThreeSum.SourceBandBankLayout.span (ThreeSum.Scales.microHalf (ThreeSum.Scales.inputBits n))\n          (ThreeSum.Scales.blockCount (ThreeSum.Scales.inputBits n)) (ThreeSum.Scales.mu n)))\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (ThreeSum.SourceBandBanksCosts.storageFactor n)\n        (ThreeSum.StageBounds.encoderCount n))",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.BlockSourceCatalogCosts.catalogCells_le_encoderCount",
+        "ThreeSum.LocalCoverBounds.pow_le_choose_mul"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandCosts.time_le_encoderCount",
+      "original_decl": "ThreeSum.SourceBandCosts.time_le_encoderCount",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBandCosts.lean#L126-L140",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandCosts.time_le_encoderCount {N n p U D : ℕ} (hN : N ≤ n) :\n    _root_.ThreeSum.LightSourceBandSetup.time N (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) p\n      (_root_.ThreeSum1960614.Machine.ThreeSum.BlockSourceEncoding.modulus (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n))) U D ≤\n      (1016*(Nat.log 2 (U+1)+Nat.log 2 (p+D+1)+1)+1946)*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n+560 := by sorry",
+      "original_type": "∀ {N n p U D : Nat},\n  @LE.le.{0} Nat instLENat N n →\n    @LE.le.{0} Nat instLENat\n      (ThreeSum.LightSourceBandSetup.time N (ThreeSum.BandScales.bandSize n) p\n        (ThreeSum.BlockSourceEncoding.modulus (ThreeSum.Scales.microHalf (ThreeSum.Scales.inputBits n))\n          (ThreeSum.Scales.blockCount (ThreeSum.Scales.inputBits n)))\n        U D)\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 1016) (instOfNatNat (nat_lit 1016)))\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                  (Nat.log (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) U\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n                  (Nat.log (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) p D)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))))\n                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n            (@OfNat.ofNat.{0} Nat (nat_lit 1946) (instOfNatNat (nat_lit 1946))))\n          (ThreeSum.StageBounds.encoderCount n))\n        (@OfNat.ofNat.{0} Nat (nat_lit 560) (instOfNatNat (nat_lit 560))))",
+      "children": [
+        "ThreeSum.LocalCoverBounds.pow_le_choose_mul"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Data.transfer",
+      "original_decl": "ThreeSum.SourceBandPairData.Data.transfer",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBandPairData.lean#L37-L59",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Data.transfer {μ ν : ℕ → ℤ} {fL fR : ℕ → ℤ} {base NL NR g p m : ℕ} {shift : ℤ}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Data μ fL fR base NL NR g p m shift) (hm : 0 < m)\n    (K : ∀ a, _root_.ThreeSum.SourceBandPairData.leftBase base ≤ a → ν a=μ a) : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Data ν fL fR base NL NR g p m shift := by sorry",
+      "original_type": "∀ {μ ν fL fR : Nat → Int} {base NL NR g p m : Nat} {shift : Int},\n  ThreeSum.SourceBandPairData.Data μ fL fR base NL NR g p m shift →\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m →\n      (∀ (a : Nat), @LE.le.{0} Nat instLENat (ThreeSum.SourceBandPairData.leftBase base) a → @Eq.{1} Int (ν a) (μ a)) →\n        ThreeSum.SourceBandPairData.Data ν fL fR base NL NR g p m shift",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.SourceBandData.At.transfer"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Stored.of_kept",
+      "original_decl": "ThreeSum.SourceBandPairData.Stored.of_kept",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBandPairData.lean#L61-L76",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Stored.of_kept {μ ν : ℕ → ℤ} {fL fR : ℕ → ℤ}\n    {base NL NR g p m bound : ℕ} {shift : ℤ}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Stored μ fL fR base NL NR g p m shift) (hm : 0 < m)\n    (K : _root_.ThreeSum1960614.Machine.Light.Kept μ ν bound) (hb : _root_.ThreeSum.SourceBandPairData.next base NL NR g m ≤ bound) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Stored ν fL fR base NL NR g p m shift := by sorry",
+      "original_type": "∀ {μ ν fL fR : Nat → Int} {base NL NR g p m bound : Nat} {shift : Int},\n  ThreeSum.SourceBandPairData.Stored μ fL fR base NL NR g p m shift →\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m →\n      Light.Kept μ ν bound →\n        @LE.le.{0} Nat instLENat (ThreeSum.SourceBandPairData.next base NL NR g m) bound →\n          ThreeSum.SourceBandPairData.Stored ν fL fR base NL NR g p m shift",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.SourceBandData.At.transfer"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored.mem_bucketList",
+      "original_decl": "ThreeSum.SourceBuckets.Stored.mem_bucketList",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceBuckets.lean#L152-L168",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored.mem_bucketList {μ : ℕ → ℤ} {key : ℕ → ℕ} {N M offsets flat r i : ℕ}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored μ key N M offsets flat) (hkey : ∀ i < N, key i < M) (hr : r < M) :\n    i ∈ _root_.ThreeSum.SourceBuckets.bucketList μ flat (_root_.ThreeSum.SourceBuckets.offset key N r) (_root_.ThreeSum.LightHistogram.count key r N) ↔ i < N ∧ key i = r := by sorry",
+      "original_type": "∀ {μ : Nat → Int} {key : Nat → Nat} {N M offsets flat r i : Nat},\n  ThreeSum.SourceBuckets.Stored μ key N M offsets flat →\n    (∀ (i : Nat), @LT.lt.{0} Nat instLTNat i N → @LT.lt.{0} Nat instLTNat (key i) M) →\n      @LT.lt.{0} Nat instLTNat r M →\n        Iff\n          (@Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat)\n            (ThreeSum.SourceBuckets.bucketList μ flat (ThreeSum.SourceBuckets.offset key N r)\n              (ThreeSum.LightHistogram.count key r N))\n            i)\n          (And (@LT.lt.{0} Nat instLTNat i N) (@Eq.{1} Nat (key i) r))",
+      "children": [
+        "ThreeSum.SourceBuckets.position_injective",
+        "ThreeSum.SourceBuckets.position_bucket_iff"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep",
+      "original_decl": "ThreeSum.SourceFiniteData.Normalized.keep",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/SourceFiniteRetention.lean#L9-L53",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep {μ ν : ℕ → ℤ} {av ae bv be cv ce tables rec vals g n bound : ℕ}\n    {hg : 0 < g} {originalA originalB originalC A B C : List ℤ}\n    {hsA : A.Pairwise (· < ·)} {hsB : B.Pairwise (· < ·)} {hsC : C.Pairwise (· < ·)} {r : ℤ}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized μ av ae bv be cv ce tables rec vals g hg originalA originalB originalC A B C hsA hsB hsC r)\n    (hk : _root_.ThreeSum1960614.Machine.Light.Kept μ ν bound)\n    (hA : originalA.length ≤ n) (hB : originalB.length ≤ n) (hC : originalC.length ≤ n)\n    (hav : av+n ≤ bound) (hae : ae+2+2*n ≤ bound)\n    (hbv : bv+n ≤ bound) (hbe : be+2+2*n ≤ bound)\n    (hcv : cv+n ≤ bound) (hce : ce+2+2*n ≤ bound)\n    (htables : tables+_root_.ThreeSum.ColorBandBounds.count n g ≤ bound)\n    (hrecords : rec+4*_root_.ThreeSum.ColorBandBounds.count n g ≤ bound)\n    (hcatalog : _root_.ThreeSum.LightBandRawA.space vals (_root_.ThreeSum.ColorBandBounds.count n g) g ≤ bound) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized ν av ae bv be cv ce tables rec vals g hg originalA originalB originalC A B C hsA hsB hsC r := by sorry",
+      "original_type": "∀ {μ ν : Nat → Int} {av ae bv be cv ce tables rec vals g n bound : Nat}\n  {hg : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) g}\n  {originalA originalB originalC A B C : List.{0} Int}\n  {hsA : @List.Pairwise.{0} Int (fun x1 x2 => @LT.lt.{0} Int Int.instLTInt x1 x2) A}\n  {hsB : @List.Pairwise.{0} Int (fun x1 x2 => @LT.lt.{0} Int Int.instLTInt x1 x2) B}\n  {hsC : @List.Pairwise.{0} Int (fun x1 x2 => @LT.lt.{0} Int Int.instLTInt x1 x2) C} {r : Int},\n  ThreeSum.SourceFiniteData.Normalized μ av ae bv be cv ce tables rec vals g hg originalA originalB originalC A B C hsA\n      hsB hsC r →\n    Light.Kept μ ν bound →\n      @LE.le.{0} Nat instLENat (@List.length.{0} Int originalA) n →\n        @LE.le.{0} Nat instLENat (@List.length.{0} Int originalB) n →\n          @LE.le.{0} Nat instLENat (@List.length.{0} Int originalC) n →\n            @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) av n) bound →\n              @LE.le.{0} Nat instLENat\n                  (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                    (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ae\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                    (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) n))\n                  bound →\n                @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) bv n) bound →\n                  @LE.le.{0} Nat instLENat\n                      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) be\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) n))\n                      bound →\n                    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) cv n)\n                        bound →\n                      @LE.le.{0} Nat instLENat\n                          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) ce\n                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                            (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                              (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) n))\n                          bound →\n                        @LE.le.{0} Nat instLENat\n                            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) tables\n                              (ThreeSum.ColorBandBounds.count n g))\n                            bound →\n                          @LE.le.{0} Nat instLENat\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) rec\n                                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                                  (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n                                  (ThreeSum.ColorBandBounds.count n g)))\n                              bound →\n                            @LE.le.{0} Nat instLENat\n                                (ThreeSum.LightBandRawA.space vals (ThreeSum.ColorBandBounds.count n g) g) bound →\n                              ThreeSum.SourceFiniteData.Normalized ν av ae bv be cv ce tables rec vals g hg originalA\n                                originalB originalC A B C hsA hsB hsC r",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.LightBandPreprocessing.Represents.keep",
+        "ThreeSum1960614.Machine.ThreeSum.LightBandRawAColor.tables_keep"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices_log_rate",
+      "original_decl": "ThreeSum.StageBounds.terminalChoices_log_rate",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/StageBounds.lean#L178-L191",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices_log_rate :\n    Tendsto (fun n : ℕ => Real.log (_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices n : ℝ) / Real.log n) atTop\n      (𝓝 (_root_.ThreeSum1960614.Machine.ThreeSum.Parameters.epsilon * (1 - _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.terminalFraction))) := by sorry",
+      "original_type": "@Filter.Tendsto.{0, 0} Nat Real\n  (fun n =>\n    @HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))\n      (Real.log (@Nat.cast.{0} Real Real.instNatCast (ThreeSum.StageBounds.terminalChoices n)))\n      (Real.log (@Nat.cast.{0} Real Real.instNatCast n)))\n  (@Filter.atTop.{0} Nat Nat.instPreorder)\n  (@nhds.{0} Real\n    (@UniformSpace.toTopologicalSpace.{0} Real (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))\n    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul) ThreeSum.Parameters.epsilon\n      (@HSub.hSub.{0, 0, 0} Real Real Real (@instHSub.{0} Real Real.instSub)\n        (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne))\n        ThreeSum.Parameters.terminalFraction)))",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.Switch.terminal_fraction_exact"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.StoredReporting.positivePrefix_valid",
+      "original_decl": "ThreeSum.StoredReporting.positivePrefix_valid",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/StoredReporting.lean#L79-L96",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.StoredReporting.positivePrefix_valid {h J k : ℕ} (I : Finset (_root_.ThreeSum1960614.Machine.ThreeSum.RawIncidences.RawItem h J α β γ))\n    (w : _root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.Wanted h J α) (pre : List (Finset (Fin (464 * h)))) (hk : k ≤ J)\n    (hp : 0 < _root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.prefixQuery I w k pre) : _root_.ThreeSum1960614.Machine.ThreeSum.StoredReporting.ValidPrefix w.2.2 k pre := by sorry",
+      "original_type": "∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} [Fintype.{u_1} α] [Fintype.{u_2} β] [Fintype.{u_3} γ]\n  [inst : DecidableEq.{u_1 + 1} α] [DecidableEq.{u_2 + 1} β] [DecidableEq.{u_3 + 1} γ] {h J k : Nat}\n  (I : Finset.{max (max u_3 u_2) u_1} (ThreeSum.RawIncidences.RawItem.{u_1, u_2, u_3} h J α β γ))\n  (w : ThreeSum.RawReporting.Wanted.{u_1} h J α)\n  (pre :\n    List.{0}\n      (Finset.{0}\n        (Fin\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 464) (instOfNatNat (nat_lit 464))) h)))),\n  @LE.le.{0} Nat instLENat k J →\n    @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0)))\n        (@ThreeSum.RawReporting.prefixQuery.{u_1, u_2, u_3} α β γ inst h J I w k pre) →\n      @ThreeSum.StoredReporting.ValidPrefix h J\n        (@Prod.snd.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n          (ThreeSum.GlobalEncoding.GlobalOutput h J)\n          (@Prod.snd.{u_1, 0} α\n            (Prod.{0, 0} (Fin (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))\n              (ThreeSum.GlobalEncoding.GlobalOutput h J))\n            w))\n        k pre",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.RawReporting.partitionWord_length"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResources.poly_need",
+      "original_decl": "ThreeSum.ThreeSumFastResources.poly_need",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ThreeSumFastResources.lean#L101-L117",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResources.poly_need : _root_.ThreeSum1960614.Machine.Light.PolyNeed _root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResources.need := by sorry",
+      "original_type": "Light.PolyNeed ThreeSum.ThreeSumFastResources.need",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.PolynomialResources.pair_polyBound_of_powerBound",
+        "ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound.add_same"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.localLength_log_rate",
+      "original_decl": "ThreeSum.TrimScales.localLength_log_rate",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/TrimScales.lean#L201-L223",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.TrimScales.localLength_log_rate :\n    Tendsto (fun h : ℕ => Real.log (_root_.ThreeSum1960614.Machine.ThreeSum.TrimScales.localLength h : ℝ) / ((2 * h : ℝ) * Real.log 2))\n      atTop (𝓝 0) := by sorry",
+      "original_type": "@Filter.Tendsto.{0, 0} Nat Real\n  (fun h =>\n    @HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))\n      (Real.log (@Nat.cast.{0} Real Real.instNatCast (ThreeSum.TrimScales.localLength h)))\n      (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)\n        (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)\n          (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯))\n          (@Nat.cast.{0} Real Real.instNatCast h))\n        (Real.log (@OfNat.ofNat.{0} Real (nat_lit 2) (@instOfNatAtLeastTwo.{0} Real (nat_lit 2) Real.instNatCast ⋯)))))\n  (@Filter.atTop.{0} Nat Nat.instPreorder)\n  (@nhds.{0} Real\n    (@UniformSpace.toTopologicalSpace.{0} Real (@PseudoMetricSpace.toUniformSpace.{0} Real Real.pseudoMetricSpace))\n    (@OfNat.ofNat.{0} Real (nat_lit 0) (@Zero.toOfNat0.{0} Real Real.instZero)))",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.TrimScales.localPrime_sq_le_power"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.WantedPairs.pairs_nodup",
+      "original_decl": "ThreeSum.WantedPairs.pairs_nodup",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/WantedPairs.lean#L86-L100",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.WantedPairs.pairs_nodup {μ : ℕ → ℤ} {offsets flat NR NL M : ℕ} {left right : ℕ → ℕ}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored μ right NR M offsets flat) (hl : ∀ a < NL, left a < M)\n    (hr : ∀ b < NR, right b < M) : (_root_.ThreeSum.WantedPairs.pairs μ offsets flat left NL).Nodup := by sorry",
+      "original_type": "∀ {μ : Nat → Int} {offsets flat NR NL M : Nat} {left right : Nat → Nat},\n  ThreeSum.SourceBuckets.Stored μ right NR M offsets flat →\n    (∀ (a : Nat), @LT.lt.{0} Nat instLTNat a NL → @LT.lt.{0} Nat instLTNat (left a) M) →\n      (∀ (b : Nat), @LT.lt.{0} Nat instLTNat b NR → @LT.lt.{0} Nat instLTNat (right b) M) →\n        @List.Nodup.{0} (Prod.{0, 0} Nat Nat) (ThreeSum.WantedPairs.pairs μ offsets flat left NL)",
+      "children": [
+        "ThreeSum.SourceBuckets.position_injective",
+        "ThreeSum.SourceBuckets.position_bucket_iff"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label_injective",
+      "original_decl": "ThreeSum.WantedRecordOrder.label_injective",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/WantedRecordOrder.lean#L69-L88",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label_injective {xs : List ℤ} {h J i i' j j' : ℕ}\n    (hi : i < 3*xs.length) (hi' : i' < 3*xs.length)\n    (hj : j < _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J) (hj' : j' < _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J)\n    (he : _root_.ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label h J i j hi=_root_.ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label h J i' j' hi') : i=i' ∧ j=j' := by sorry",
+      "original_type": "∀ {xs : List.{0} Int} {h J i i' j j' : Nat}\n  (hi :\n    @LT.lt.{0} Nat instLTNat i\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) (@List.length.{0} Int xs)))\n  (hi' :\n    @LT.lt.{0} Nat instLTNat i'\n      (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n        (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))) (@List.length.{0} Int xs))),\n  @LT.lt.{0} Nat instLTNat j (ThreeSum.LightGuardedWanted.totalKeys h J) →\n    @LT.lt.{0} Nat instLTNat j' (ThreeSum.LightGuardedWanted.totalKeys h J) →\n      @Eq.{1} (ThreeSum.RawReporting.Wanted.{0} h J (Fin (@List.length.{0} Int xs)))\n          (@ThreeSum.WantedRecordOrder.label xs h J i j hi) (@ThreeSum.WantedRecordOrder.label xs h J i' j' hi') →\n        And (@Eq.{1} Nat i i') (@Eq.{1} Nat j j')",
+      "children": [
+        "ThreeSum.RadixKeyLists.tuples_nodup",
+        "ThreeSum.SubsetAddress.enumerateLayer_nodup"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct",
+      "original_decl": "Light.Compiler.compileProgram_correct",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSumApsp/Lang/Compiler/WholeProgram.lean#L217-L263",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {P : _root_.ThreeSum1960614.Machine.Light.Program} {p0 : ℕ} {dec : Bool} {μ : ℕ → ℤ}\n    {i j : ℤ} {σ' : _root_.ThreeSum1960614.Machine.Light.State} {c : ℕ} {m : ℤ → BitVec W}\n    (h : _root_.ThreeSum1960614.Machine.Light.Exec lim P 0 (_root_.ThreeSum1960614.Machine.Light.mainStmt p0) ⟨_root_.Light.frame [0, i, j], μ⟩ σ' c)\n    (hfit : _root_.ThreeSum1960614.Machine.Light.Compiler.Fits W lim (_root_.ThreeSum1960614.Machine.Light.Compiler.dispPos P dec) (_root_.ThreeSum1960614.Machine.Light.Compiler.stackCells P lim)) (hm : _root_.ThreeSum1960614.Machine.Light.Compiler.Input lim μ i j m) :\n    ∃ m' : ℤ → BitVec W, _root_.EndStatement.exec (_root_.ThreeSum1960614.Machine.Light.compileProgram P p0 dec) (_root_.ThreeSum1960614.Machine.Light.ramSteps P dec c) 0 m\n        = some (_root_.Light.verdictOf dec (σ'.loc 0), m') ∧ _root_.ThreeSum1960614.Machine.Light.Compiler.Outcome lim P dec m σ' m' := by sorry",
+      "original_type": "∀ {W : Nat} {lim : Light.Limits} {P : Light.Program} {p0 : Nat} {dec : Bool} {μ : Nat → Int} {i j : Int}\n  {σ' : Light.State} {c : Nat} {m : Int → BitVec W},\n  Light.Exec lim P (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) (Light.mainStmt p0)\n      {\n        loc :=\n          Light.frame\n            (@List.cons.{0} Int (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))\n              (@List.cons.{0} Int i (@List.cons.{0} Int j (@List.nil.{0} Int)))),\n        mem := μ }\n      σ' c →\n    Light.Compiler.Fits W lim (Light.Compiler.dispPos P dec) (Light.Compiler.stackCells P lim) →\n      @Light.Compiler.Input W lim μ i j m →\n        @Exists.{1} (Int → BitVec W) fun m' =>\n          And\n            (@Eq.{1} (Option.{0} (Prod.{0, 0} Bool (Int → BitVec W)))\n              (@EndStatement.exec W (Light.compileProgram P p0 dec) (Light.ramSteps P dec c)\n                (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) m)\n              (@Option.some.{0} (Prod.{0, 0} Bool (Int → BitVec W))\n                (@Prod.mk.{0, 0} Bool (Int → BitVec W)\n                  (Light.verdictOf dec (σ'.loc (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))))) m')))\n            (@Light.Compiler.Outcome W lim P dec m σ' m')",
+      "children": [
+        "ThreeSum1960614.Machine.Light.Compiler.effects_argsCode",
+        "ThreeSum1960614.Machine.Light.Compiler.effects_newFrame",
+        "ThreeSum1960614.Machine.Light.Compiler.steps_setVar",
+        "ThreeSum1960614.Machine.Light.Compiler.steps_start",
+        "ThreeSum1960614.Machine.Light.Compiler.rel_startMem",
+        "ThreeSum1960614.Machine.Light.Exec.bounded",
+        "ThreeSum1960614.Machine.Light.Exec.mem_outside"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.Light.Emod.table_ends",
+      "original_decl": "Light.Emod.table_ends",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSumApsp/Lang/Lib/Emod.lean#L129-L165",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.Light.Emod.table_ends (F : _root_.ThreeSum1960614.Machine.Light.Emod.Pre lim Mo V fr) (haV : a ≤ V) :\n    _root_.ThreeSum1960614.Machine.Light.Ends lim P d _root_.ThreeSum1960614.Machine.Light.emodTable ⟨_root_.Light.frame [x, Mo, fr, a, 0, Mo], μ⟩ (19 * _root_.Light.emodRounds a Mo + 6) fun σ' =>\n      ∃ μ', σ' = ⟨_root_.Light.frame [x, Mo, fr, a, _root_.Light.emodRounds a Mo, ((Mo * 2 ^ _root_.Light.emodRounds a Mo : ℕ) : ℤ)], μ'⟩ ∧\n        _root_.ThreeSum1960614.Machine.Light.Emod.Table μ μ' Mo fr (_root_.Light.emodRounds a Mo) := by sorry",
+      "original_type": "∀ {lim : Light.Limits} {P : Light.Program} {d : Nat} {μ : Nat → Int} {x : Int} {Mo V fr a : Nat},\n  Light.Emod.Pre lim Mo V fr →\n    @LE.le.{0} Nat instLENat a V →\n      Light.Ends lim P d Light.emodTable\n        {\n          loc :=\n            Light.frame\n              (@List.cons.{0} Int x\n                (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt Mo)\n                  (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt fr)\n                    (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt a)\n                      (@List.cons.{0} Int (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))\n                        (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt Mo) (@List.nil.{0} Int))))))),\n          mem := μ }\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n          (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n            (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19))) (Light.emodRounds a Mo))\n          (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n        fun σ' =>\n        @Exists.{1} (Nat → Int) fun μ' =>\n          And\n            (@Eq.{1} Light.State σ'\n              {\n                loc :=\n                  Light.frame\n                    (@List.cons.{0} Int x\n                      (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt Mo)\n                        (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt fr)\n                          (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt a)\n                            (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt (Light.emodRounds a Mo))\n                              (@List.cons.{0} Int\n                                (@Nat.cast.{0} Int instNatCastInt\n                                  (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) Mo\n                                    (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n                                      (@instHPow.{0, 0} Nat Nat\n                                        (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid)))\n                                      (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2)))\n                                      (Light.emodRounds a Mo))))\n                                (@List.nil.{0} Int))))))),\n                mem := μ' })\n            (Light.Emod.Table μ μ' Mo fr (Light.emodRounds a Mo))",
+      "children": [
+        "ThreeSum1960614.Machine.Light.Ends.while"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.Light.Emod.reduce_ends",
+      "original_decl": "Light.Emod.reduce_ends",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSumApsp/Lang/Lib/Emod.lean#L167-L211",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.Light.Emod.reduce_ends (F : _root_.ThreeSum1960614.Machine.Light.Emod.Pre lim Mo V fr) (haV : a ≤ V) {μ' : ℕ → ℤ} {t : ℤ}\n    (tab : _root_.ThreeSum1960614.Machine.Light.Emod.Table μ μ' Mo fr (_root_.Light.emodRounds a Mo)) :\n    _root_.ThreeSum1960614.Machine.Light.Ends lim P d _root_.ThreeSum1960614.Machine.Light.emodReduce ⟨_root_.Light.frame [x, Mo, fr, a, _root_.Light.emodRounds a Mo, t], μ'⟩\n      (24 * _root_.Light.emodRounds a Mo + 4) fun σ' => σ' = ⟨_root_.Light.frame [x, Mo, fr, (a % Mo : ℕ), 0, t], μ'⟩ := by sorry",
+      "original_type": "∀ {lim : Light.Limits} {P : Light.Program} {d : Nat} {μ : Nat → Int} {x : Int} {Mo V fr a : Nat},\n  Light.Emod.Pre lim Mo V fr →\n    @LE.le.{0} Nat instLENat a V →\n      ∀ {μ' : Nat → Int} {t : Int},\n        Light.Emod.Table μ μ' Mo fr (Light.emodRounds a Mo) →\n          Light.Ends lim P d Light.emodReduce\n            {\n              loc :=\n                Light.frame\n                  (@List.cons.{0} Int x\n                    (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt Mo)\n                      (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt fr)\n                        (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt a)\n                          (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt (Light.emodRounds a Mo))\n                            (@List.cons.{0} Int t (@List.nil.{0} Int))))))),\n              mem := μ' }\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n              (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                (@OfNat.ofNat.{0} Nat (nat_lit 24) (instOfNatNat (nat_lit 24))) (Light.emodRounds a Mo))\n              (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4))))\n            fun σ' =>\n            @Eq.{1} Light.State σ'\n              {\n                loc :=\n                  Light.frame\n                    (@List.cons.{0} Int x\n                      (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt Mo)\n                        (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt fr)\n                          (@List.cons.{0} Int\n                            (@Nat.cast.{0} Int instNatCastInt\n                              (@HMod.hMod.{0, 0, 0} Nat Nat Nat (@instHMod.{0} Nat Nat.instMod) a Mo))\n                            (@List.cons.{0} Int (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0)))\n                              (@List.cons.{0} Int t (@List.nil.{0} Int))))))),\n                mem := μ' }",
+      "children": [
+        "ThreeSum1960614.Machine.Light.Ends.while"
+      ]
+    }
+  ],
+  "source_repository": "https://github.com/Anchen0823/three-sum-1960614",
+  "source_commit": "8c25c0325de5be4286413f39ca0c9278aad33f52"
+}

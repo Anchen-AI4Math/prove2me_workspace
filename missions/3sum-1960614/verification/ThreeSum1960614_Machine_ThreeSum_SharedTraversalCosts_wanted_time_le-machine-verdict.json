@@ -1,0 +1,15 @@
+{
+  "id": "2275225a-2b0b-4e61-a151-e2dbf088ef00",
+  "theorem_id": "ebfb1843-fa7b-4c15-b9d7-4c4d0d7da23d",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:55:51.363373+00:00",
+  "updated_at": "2026-10-15T07:58:22.686187+00:00",
+  "explanation": "Retains the actual dense-guard condition in the execution cost. The initialization charge is always retained, while traversal is charged only when the actual counter comparison allows that branch.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.wanted_time_le",
+  "theorem_title": "Guard-sensitive bound for one wanted traversal",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.wanted_time_le {h J K NL NR old threshold : \u2115} (p : \u2115) (shift : \u2124)\n    (A : Finset \u03b1) (B : Finset \u03b2) (C : Finset \u03b3)\n    (a : \u03b1 \u2192 \u2124) (b : \u03b2 \u2192 \u2124) (c : \u03b3 \u2192 \u2124) (left right : \u2115 \u2192 \u2124)\n    (eL : Fin NL \u2243 B) (eR : Fin NR \u2243 C)\n    (hvL : \u2200 i : Fin NL, left i.val=b (eL i))\n    (hvR : \u2200 i : Fin NR, right i.val=c (eR i))\n    (w : _root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.Wanted h J \u03b1) (D : \u2115 \u2192 _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostLevelData.Catalog) (hK : K \u2264 J)\n    (hkey : w.1 \u2208 A \u2227 _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.globalModulus h J \u2223\n      (a w.1%(p : \u2124)+_root_.ThreeSum.RawIncidences.lift w.2.1*(p : \u2124)+shift)-_root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.globalKey w.2.2) :\n    let I := _root_.ThreeSum1960614.Machine.ThreeSum.RawIncidences.rawOn h J (p : \u2124) shift (A \u00d7\u02e2 (B \u00d7\u02e2 C)) a b c\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWanted.time p shift left right NL NR old threshold I w D K \u2264\n      _root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initialUnit h J D K+\n        (if threshold < old+_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostFrontierLayout.rootMass I w then 0 else _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostFrontierLayout.rootMass I w*_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.searchUnit h J D K) := by sorry",
+  "theorem_natural_language_statement": "Let actual left and right arrays be value-preserving enumerations of finite source sets $B,C$. Fix a wanted label from $A$ satisfying the exact lifted-key divisibility condition, a catalog family $D$, and depth $K\\le J$. Let $m$ be its raw root mass, $o$ the previous cumulative mass, and $q$ the threshold. Then $$T_{\\mathrm{wanted}}\\le I(h,J,D,K)+\\begin{cases}0&q<o+m,\\\\mS(h,J,D,K)&q\\ge o+m,\\end{cases}$$ where $I,S$ are the specified initialization and search units.\n\nRetains the actual dense-guard condition in the execution cost. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

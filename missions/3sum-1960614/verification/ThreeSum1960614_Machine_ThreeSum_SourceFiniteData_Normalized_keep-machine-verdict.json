@@ -1,0 +1,15 @@
+{
+  "id": "3efafdb5-1902-416e-9bc9-43b472bddcc5",
+  "theorem_id": "7651dac9-c883-4faa-835d-4f3537105f0f",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:50:17.596864+00:00",
+  "updated_at": "2026-10-15T07:52:13.092988+00:00",
+  "explanation": "Retains the original normalized witnesses throughout later source and reporting construction. The same sorted lists and membership witnesses remain available after all writes outside their explicitly reserved regions.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep",
+  "theorem_title": "Normalized source data survive writes beyond their allocation",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep {\u03bc \u03bd : \u2115 \u2192 \u2124} {av ae bv be cv ce tables rec vals g n bound : \u2115}\n    {hg : 0 < g} {originalA originalB originalC A B C : List \u2124}\n    {hsA : A.Pairwise (\u00b7 < \u00b7)} {hsB : B.Pairwise (\u00b7 < \u00b7)} {hsC : C.Pairwise (\u00b7 < \u00b7)} {r : \u2124}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized \u03bc av ae bv be cv ce tables rec vals g hg originalA originalB originalC A B C hsA hsB hsC r)\n    (hk : _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd bound)\n    (hA : originalA.length \u2264 n) (hB : originalB.length \u2264 n) (hC : originalC.length \u2264 n)\n    (hav : av+n \u2264 bound) (hae : ae+2+2*n \u2264 bound)\n    (hbv : bv+n \u2264 bound) (hbe : be+2+2*n \u2264 bound)\n    (hcv : cv+n \u2264 bound) (hce : ce+2+2*n \u2264 bound)\n    (htables : tables+_root_.ThreeSum.ColorBandBounds.count n g \u2264 bound)\n    (hrecords : rec+4*_root_.ThreeSum.ColorBandBounds.count n g \u2264 bound)\n    (hcatalog : _root_.ThreeSum.LightBandRawA.space vals (_root_.ThreeSum.ColorBandBounds.count n g) g \u2264 bound) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized \u03bd av ae bv be cv ce tables rec vals g hg originalA originalB originalC A B C hsA hsB hsC r := by sorry",
+  "theorem_natural_language_statement": "Let normalized strictly sorted lists $A,B,C$ and their original color-class lists be represented in memory $\\mu$ by the normalized-source predicate, for positive band width $g$. Assume each original list has length at most $n$. If $\\nu$ agrees with $\\mu$ below $b$, and every value segment, endpoint header, owner table, four-cell owner record array, and packed raw-$A$ catalog satisfies the displayed end bound at $b$, then the same normalized-source predicate holds in $\\nu$.\n\nRetains the original normalized witnesses throughout later source and reporting construction. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "a62fe677-cdca-46e2-87d2-beafb0ebd2f2",
+  "theorem_id": "826f24bb-ce89-4b7e-aced-a985638c0de7",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:17:40.265107+00:00",
+  "updated_at": "2026-10-15T07:20:04.067814+00:00",
+  "explanation": "Builds normalized bands from original values while retaining membership semantics. The prepared contract retains original-list membership while the actual endpoint header supplies the computed band count.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Procs.meets",
+  "theorem_title": "Correct sorted-band preprocessing from an original list",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Procs.meets {pMain src values endpoints work g d : \u2115}\n    {\u03bc : \u2115 \u2192 \u2124} {original : List \u2124} (R : _root_.ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Procs P pMain)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hg : 0 < g)\n    (hsrc : src+original.length \u2264 values) (hvalues : values+original.length \u2264 endpoints)\n    (hendpoints : endpoints+2+2*original.length \u2264 work)\n    (hspace : _root_.ThreeSum.LightSortedBands.space work original.length \u2264 lim.space)\n    (hword : ((original.length+g+2 : \u2115) : \u2124) \u2264 lim.word)\n    (hd : d+original.length+Nat.clog 2 original.length+3 \u2264 lim.depth)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src original) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,original.length,g,values,endpoints,work] \u03bc (_root_.ThreeSum.LightSortedBands.time original.length)\n      (fun r \u03bc' => r = \u03bc' (endpoints+1) \u2227 _root_.ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Prepared \u03bc' values endpoints g original \u2227\n        \u2200 a, a < work \u2192 (a < src \u2228 src+original.length \u2264 a) \u2192\n          (a < values \u2228 values+original.length \u2264 a) \u2192\n          (a < endpoints \u2228 endpoints+2+2*original.length \u2264 a) \u2192 \u03bc' a = \u03bc a) := by sorry",
+  "theorem_natural_language_statement": "Let an integer list $L$ be stored at the source and let band width $g>0$. Assume ordered source, normalized-value, endpoint-header, and scratch reservations; the stated space and numeric word bounds; address representability; and depth sufficient for normalization and endpoint construction. The procedure produces the exact prepared sorted-band representation of $L$, returns the stored band count, meets its stated time, and preserves cells below scratch outside the three reserved source/value/header regions.\n\nBuilds normalized bands from original values while retaining membership semantics. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

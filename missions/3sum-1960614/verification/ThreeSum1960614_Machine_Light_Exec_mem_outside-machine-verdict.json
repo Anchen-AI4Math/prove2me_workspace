@@ -1,0 +1,15 @@
+{
+  "id": "517cca6f-8817-40a1-9d79-7b585146dadb",
+  "theorem_id": "924255d1-4e77-4d68-9e90-48172742fc91",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:10:18.561726+00:00",
+  "updated_at": "2026-10-15T09:11:56.796891+00:00",
+  "explanation": "Each store is confined to the allowed memory range; compose this property through execution. This memory invariant justifies treating all cells beyond the permitted light memory range as unchanged.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Exec.mem_outside",
+  "theorem_title": "Execution leaves out-of-range memory unchanged",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Exec.mem_outside {s : _root_.ThreeSum1960614.Machine.Light.Stmt} {\u03c3 \u03c3' : _root_.ThreeSum1960614.Machine.Light.State} {c : \u2115} (h : _root_.ThreeSum1960614.Machine.Light.Exec lim P d s \u03c3 \u03c3' c) (a : \u2115)\n    (ha : lim.space \u2264 a) : \u03c3'.mem a = \u03c3.mem a := by sorry",
+  "theorem_natural_language_statement": "If statement $s$ executes from $\\sigma$ to $\\sigma'$ under limits $L$, program $P$, and depth $d$, then every address $a\\ge L.\\mathrm{space}$ satisfies $\\sigma'.\\mathrm{mem}(a)=\\sigma.\\mathrm{mem}(a)$.\n\nThis memory invariant justifies treating all cells beyond the permitted light memory range as unchanged.",
+  "theorem_status": "Proved"
+}

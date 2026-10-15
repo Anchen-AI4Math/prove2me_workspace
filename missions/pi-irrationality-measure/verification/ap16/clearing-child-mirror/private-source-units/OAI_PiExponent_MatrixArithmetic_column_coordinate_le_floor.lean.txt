@@ -1,0 +1,13 @@
+private theorem column_coordinate_le_floor {m : ℕ} {w0 H : ℝ} {w : Fin m → ℝ}
+    (hw0 : 0 < w0) (hw : ∀ i, 0 < w i)
+    (c : PiExponent.InterpolationMatrix.Column w0 w H) (i : Fin m) :
+    c.1 i.succ ≤ ⌊H / w i⌋₊ := by
+  apply Nat.le_floor
+  apply (le_div_iff₀ (hw i)).mpr
+  have hs : w i * (c.1 i.succ : ℝ) ≤
+      ∑ j, w j * (c.1 j.succ : ℝ) :=
+    Finset.single_le_sum (fun j hj => mul_nonneg (hw j).le (Nat.cast_nonneg (c.1 j.succ)))
+      (Finset.mem_univ i)
+  have h0 : 0 ≤ w0 * (c.1 0 : ℝ) := mul_nonneg hw0.le (Nat.cast_nonneg _)
+  have hb := PiExponent.InterpolationMatrix.column_weight_le hw0 hw c
+  nlinarith only [hs, h0, hb]

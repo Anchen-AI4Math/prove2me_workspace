@@ -34,5 +34,9 @@ python scripts/workspace.py build <slug>
 | combinatorics | [Binary strings with no adjacent ones](no-adjacent/status.md) | [no-adjacent](no-adjacent/AGENTS.md) |
 | approximation-algorithms | [Karmarkar-Karp II: geometric grouping](kk-bin-packing/status.md) | [kk-bin-packing](kk-bin-packing/AGENTS.md) |
 | combinatorics | [Snaky in 21 Maker moves](snaky-21/status.md) | [snaky-21](snaky-21/AGENTS.md) |
+| probability | [Zipf distribution: finite laws and infinite extension](zipf/status.md) | [zipf](zipf/AGENTS.md) |
 
 平台状态以各任务的带日期证据为准。新增任务需登记 `index.json`、`scope.json`、`AGENTS.md` 与本目录导航，再运行 `python scripts/workspace.py check`。
+
+- [3SUM sharp-tail draft](3sum-sharp-tail/status.md) — [agent instructions](3sum-sharp-tail/AGENTS.md)
+- [3SUM 1.960614 quartic-switch mission](3sum-1960614/status.md) — [agent instructions](3sum-1960614/AGENTS.md)

@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.global_keys_space_bound",
+    "theorem_title": "Global key construction fits a cubic space envelope",
+    "natural_language_statement": "For free base $f$ and input length $n$, the actual global-key constructor at the scheduled local size and block count needs at most $$f+10\\operatorname{scale}(n)^3$$ memory cells.\n\nThis cubic bound supplies the finite space requirement for constructing all global output keys in the selected-color pipeline.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This cubic bound supplies the finite space requirement for constructing all global output keys in the selected-color pipeline."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.Stored.of_kept",
+    "theorem_title": "The full stored pipeline survives a protected-memory update",
+    "natural_language_statement": "Let memory $\\mu$ store the complete selected-color pipeline for original input $x$, size $n$, and strictly increasing normalized lists $A,B,C$. If $\\nu$ agrees with $\\mu$ below a stop address at least eight cells beyond the pipeline finish, the same complete stored-pipeline predicate holds in $\\nu$.\n\nThis preservation theorem allows later reporter scratch updates while keeping the complete selected-color pipeline available.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This preservation theorem allows later reporter scratch updates while keeping the complete selected-color pipeline available."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.prime_core_word_bound",
+    "theorem_title": "Prime-core words fit a sixth-power envelope",
+    "natural_language_statement": "For input length $n$ and value bound $U$, the actual prime-core word requirement at the schedule maximum modulus, three source-length bounds $n$, band size, record count, radix, and prime window is at most $$5000\\operatorname{scale}(n)^6+4U.$$\n\nThis word estimate covers the executed prime-core arithmetic under the common selected-color magnitude scale.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This word estimate covers the executed prime-core arithmetic under the common selected-color magnitude scale."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.source_scratch_le",
+    "theorem_title": "Retained source scratch fits a quadratic scale envelope",
+    "natural_language_statement": "At the scheduled local size and block count for input length $n$, the retained-source host with zero workspace origin requires at most $$10\\operatorname{scale}(n)^2$$ cells.\n\nThis scratch estimate bounds retained source construction independently of its absolute allocation base.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This scratch estimate bounds retained source construction independently of its absolute allocation base."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.source_controls_word_le",
+    "theorem_title": "Source-control words fit a cubic scale envelope",
+    "natural_language_statement": "For input length $n$, with the actual local size, block count, and total block-size cutoff, $$\\operatorname{sourceControlWord}(n)\\le200\\operatorname{scale}(n)^3.$$\n\nThis estimate ensures the computed occurrence count, compact capacity, and bank stride fit the selected-color word budget.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This estimate ensures the computed occurrence count, compact capacity, and bank stride fit the selected-color word budget."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.stage_depth_bound",
+    "theorem_title": "Encoded-color stage depth fits a cubic scale envelope",
+    "natural_language_statement": "For input length $n$, its actual radix and finite incidence cap, the encoded-color stage depth is at most $$20\\operatorname{scale}(n)^3.$$\n\nThis depth estimate bounds the complete stage recursion in terms of the common finite schedule scale.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This depth estimate bounds the complete stage recursion in terms of the common finite schedule scale."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.initial_query_eventually_le",
+    "theorem_title": "The initial query count has the entropy exponent",
+    "natural_language_statement": "For every real slack $\\delta>0$, eventually $$\\operatorname{queryTerms}(n,0)\\le n^{\\varepsilon H(\\theta_0)+\\delta},$$ where $\\varepsilon$, initial threshold $\\theta_0$, and entropy function $H$ are the fixed schedule data.\n\nThis eventual bound accounts for the initial reporting query through its precise entropy exponent and arbitrary positive slack.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This eventual bound accounts for the initial reporting query through its precise entropy exponent and arbitrary positive slack."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.bandCount_log_rate",
+    "theorem_title": "Logarithmic rate of the number of bands",
+    "natural_language_statement": "As $n\\to\\infty$, $$\\frac{\\log(\\operatorname{bandCount}(n))}{\\log n}\\longrightarrow1-\\varepsilon(E+s),$$ where $E$ and $s$ are the fixed entropy-scale constant and band shift.\n\nThis rate determines how many actual bands enter the owner, weighted-score, and source-bank construction charges.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This rate determines how many actual bands enter the owner, weighted-score, and source-bank construction charges."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightArray.linear_bounded_meets",
+    "theorem_title": "Computing a bounded linear combination of two arrays",
+    "natural_language_statement": "Let two length-$n$ stored integer arrays have absolute values at most $U$ and let $|c|\\le1$. Suppose each array and the destination fit memory, both sources satisfy the forward-scan safety condition relative to destination, addresses fit words, and $2U$ fits a word. The installed linear body writes $a_i+cb_i$ in its stated time and changes only the destination window.\n\nThis array contract implements the bounded additions and subtractions required by polynomial multiplication.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This array contract implements the bounded additions and subtractions required by polynomial multiplication."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandCandidatesTable.meets",
+    "theorem_title": "Constructing a rectangular table of band-candidate records",
+    "natural_language_statement": "Let a stored natural matrix $f(i,j)$ have dimensions $m,n$, with dimensions and entries at most $U$. Suppose the mode-specific table, row, and cell procedures are installed, source precedes destination, $4mn$ output cells fit, $U+10$ and addresses fit words, and the call depth is available. The table program writes every four-cell record $\\operatorname{make}(\\mathrm{mode},i,j,f(i,j))$ at row-major offset $4(in+j)$ within its stated time, changing only the output table.\n\nThis table contract constructs all physical candidate records from the stored rectangular owner data.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This table contract constructs all physical candidate records from the stored rectangular owner data."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandPartition.meets",
+    "theorem_title": "Constructing both endpoints of every band",
+    "natural_language_statement": "For a stored length-$n$ integer array $f$ and positive band size $g$, assume quotient, lower-endpoint, and upper-endpoint helpers are installed, source precedes destination, $2n$ output cells fit, $n+g+2$ and addresses fit words, and one call level is available. The program returns the exact band count and writes each lower endpoint $f(\\operatorname{start}(g,i))$ and upper endpoint $f(\\operatorname{stop}(n,g,i)-1)$ in its stated time.\n\nThis partition contract computes both physical endpoints rather than assuming access to abstract band boundaries.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This partition contract computes both physical endpoints rather than assuming access to abstract band boundaries."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawARow.meets",
+    "theorem_title": "Writing one physical original-incidence row",
+    "natural_language_statement": "Assume copy and fill helpers and the row body are installed. A length-$n$ source precedes ordered value, owner, and position arrays; all extents and the original start plus $n$ fit memory, and addresses fit words. With one call level available, the procedure copies every source value and writes the constant owner and successive original positions, changing only those three output windows within the row-time bound.\n\nThis row contract retains physical input indices even when several original integers have equal values.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This row contract retains physical input indices even when several original integers have equal values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandTable.meets",
+    "theorem_title": "Constructing the full band-lookup matrix",
+    "natural_language_statement": "Let stored integer arrays $f,g$ have lengths $n_X,n_Y$ and values bounded by $U$. Let stored endpoint arrays of length $m$ have nondecreasing lower endpoints, with $m<2^W$, and let a width-$W$ power table be stored. Under the ordered layout, sign $|s|\\le1$, word, query, helper, and depth bounds, the table procedure writes every semantic lookup row value at row-major offset $in_Y+j$, changing only the matrix destination within its stated time.\n\nThis matrix contract supplies every actual pairwise band lookup used by the owner-record enumeration.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This matrix contract supplies every actual pairwise band lookup used by the owner-record enumeration."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockCoefficients.meets",
+    "theorem_title": "Constructing positional block coefficient rows",
+    "natural_language_statement": "For $J$ blocks of width $L$, radix $p\\ge1$, and selected occurrence map into $M$ coefficient pairs bounded by $U$, suppose the occurrence and coefficient arrays satisfy their read predicates. Under ordered output arrays and scratch, installed power and scale helpers, word and space bounds, and a call level, the program writes the exact flattened positional coefficient rows, stores the radix power table, and preserves memory below the first output array within the stated time.\n\nThis coefficient contract implements positional hashing across selected local maps without supplying an encoding oracle.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This coefficient contract implements positional hashing across selected local maps without supplying an encoding oracle."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockMasks.meets",
+    "theorem_title": "Packing all block masks into indexed coordinates",
+    "natural_language_statement": "Let $J$ stored width-$L$ row masks represent subsets $R_i$. Suppose source and destination arrays are disjoint before scratch, its $L+1$ power cells fit, $2^{JL+1}$ and addresses fit words, and the power helper and depth bound hold. The program writes every packed row mask and returns the mask of their flattened indexed-coordinate set, changing only the output and scratch within its stated time.\n\nThis packing contract links stored per-block row masks to the compact indexed coordinates used by reporting queries.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This packing contract links stored per-block row masks to the compact indexed coordinates used by reporting queries."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalogProgram.time_bound",
+    "theorem_title": "The complete source catalog has a compact-capacity time bound",
+    "natural_language_statement": "For dimensions $h,J$ and cutoff $c\\le464hJ$, $$\\operatorname{catalogTime}(h,J,c)\\le(\\operatorname{count}(h,J)+1)F(h,J)(\\operatorname{downsetCap}(464hJ,c)+1),$$ where $F$ is the explicit catalog-program factor.\n\nThis bound charges all retained occurrence catalogs while preserving their actual compact-capacity factor.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This bound charges all retained occurrence catalogs while preserving their actual compact-capacity factor."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightColorArray.meets",
+    "theorem_title": "Computing the full physical color array",
+    "natural_language_statement": "For coloring parameter $p$ of width $W$ and length $n\\le2^W$, suppose the color, erase, and power helpers are installed and the destination precedes power scratch. If the stated memory, word, and depth bounds hold, the program writes the exact color of every physical index, constructs the power table, and changes only destination and scratch within its stated time.\n\nThis color-array contract provides the actual per-index colors consumed by original-input color filtering.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This color-array contract provides the actual per-index colors consumed by original-input color filtering."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightColorScan.Procs.meets",
+    "theorem_title": "Executing the finite short-circuit color scan",
+    "natural_language_statement": "Let $x$ be the original length-$n$ input and suppose every concrete color call, given its exact six-field row and preserved prior memory, decides that color witness in time $T$ and depth allowance $D$. For $t$ within the finite width-$W$ color-family count, assume the decoder placement, six-cell space, control-word bound, and depth $d+t+D+3$. The scan returns a Boolean equivalent to the finite scan hit predicate for $t$ colors, preserves earlier memory, and meets its declared time.\n\nThis scan contract composes concrete per-color decisions into the finite short-circuit search over coloring parameters.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This scan contract composes concrete per-color decisions into the finite short-circuit search over coloring parameters."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightCoverScores.meets",
+    "theorem_title": "Computing all negative active-cover scores",
+    "natural_language_statement": "Let a stored Boolean matrix have $r$ rows and $c$ columns, and let a stored Boolean active vector have length $c$. Suppose both precede the $r$-cell output, all extents fit, addresses and one fit words, and the dot-product helper and call depth are available. The score program writes the negative of each exact active-row score in its stated time, changing only the output array.\n\nThese score values are the concrete inputs to the minimum selection in the executed greedy local-cover construction.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. These score values are the concrete inputs to the minimum selection in the executed greedy local-cover construction."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightCoverUpdate.meets",
+    "theorem_title": "Removing covered positions from a Boolean active vector",
+    "natural_language_statement": "Let disjoint stored Boolean arrays $u,a$ of length $n$ represent a cover row and active vector. Suppose their extents and addresses fit and one fits a word. The installed update body writes $$a'_j=a_j(1-u_j)$$ in its stated time, changing only the active-vector array.\n\nThis Boolean update implements removal of the newly covered active columns in the greedy-cover invariant.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This Boolean update implements removal of the newly covered active columns in the greedy-cover invariant."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightDownsetEnumerationSetup.meets",
+    "theorem_title": "Enumerating a compact subset downset with its power table",
+    "natural_language_statement": "For width $L$ and cutoff $c\\le L$, suppose the power and recursive enumeration helpers are installed, compact destination precedes scratch, the $L+1$ power cells fit, $2^{L+1}$ and addresses fit words, and depth $d+L+2$ is allowed. The procedure writes the exact ordered downset enumeration and power table, returns its capacity, and changes only destination and scratch within its stated time.\n\nThis setup contract provides the literal compact mask enumeration consumed by source construction and subset transforms.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This setup contract provides the literal compact mask enumeration consumed by source construction and subset transforms."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.Procs.meets",
+    "theorem_title": "Computing and storing the five global sizes",
+    "natural_language_statement": "For natural controls $C,p\\ge1$, block count $J$, total size $\\mu$, and destination $o$, suppose the global-size helper placement and word bound hold, five output cells fit, addresses fit words, and a call level is available. The program writes the exact five size values, returns $p^J$, and changes only the output record within its stated time.\n\nThis initializer contract computes global output counts and radix powers as actual machine values.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This initializer contract computes global output counts and radix powers as actual machine values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightHistogram.histogram_meets",
+    "theorem_title": "Constructing the exact histogram of physical keys",
+    "natural_language_statement": "Let a stored length-$n$ natural key array have every key below $p$. Suppose source and the $p$-cell destination are disjoint, both fit memory, addresses fit words, and the histogram and fill helpers and call depth are available. The program writes the exact multiplicity of each residue in its stated time, changing only the histogram cells.\n\nThis histogram contract counts physical input positions, preserving the multiplicity of equal-valued original entries.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This histogram contract counts physical input positions, preserving the multiplicity of equal-valued original entries."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.Procs.meets",
+    "theorem_title": "Writing the twelve local-cover metadata fields",
+    "natural_language_statement": "For local size $h$, cover base $b$, and twelve-cell header destination $o$ with $o+12\\le b$, assume the metadata placement, cover-layout space and setup-word bounds, word-sized addresses, and depth $d+2$. The procedure writes the exact metadata list, returns the layout-defined next free address, and changes only the header within its stated time.\n\nThis metadata contract stores the exact layout pointers read by the remaining local-cover and source programs.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This metadata contract stores the exact layout pointers read by the remaining local-cover and source programs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverSchedule.indices_map",
+    "theorem_title": "Selected candidate indices reproduce the exact local schedule",
+    "natural_language_statement": "For every natural local size $h$, mapping the finite selected-index list through its candidate decoder gives exactly the local hash schedule: $$\\operatorname{map}(\\operatorname{candidate}_h,\\operatorname{indices}_h)=\\operatorname{localSchedule}(h).$$\n\nThis list equality identifies the executed greedy candidate indices with the finite local schedule used by the semantic proof.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This list equality identifies the executed greedy candidate indices with the finite local schedule used by the semantic proof."
+  }
+]

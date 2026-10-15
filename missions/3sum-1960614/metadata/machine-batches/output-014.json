@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle027",
+    "definition_title": "Wanted-record decoding, occurrence source banks, and suffix catalogs",
+    "natural_language_statement": "This bundle connects physical wanted-pair indices to their original combinatorial labels. A valid left index $i<3N$ determines an input position $i\\bmod N$ and one of three lifts $\\lfloor i/N\\rfloor$; the right index identifies an unchanged global output record. Membership in the wanted family is the corresponding exact modular divisibility condition. Stored interleaved pair cells retain both indices, including distinct positions with equal integer keys.\n\nFor natural local scale $h$ and block count $J$, source-bank rows follow the big-endian radix expansion of their physical index. There are $s_h^J$ occurrence rows, where $s_h$ is the local schedule size. The batch and catalog programs construct both retained suffix-source families once per occurrence row and preserve the original-band histograms and cover data. Their stored predicates identify every bank's two source-stage tables and header pointers.\n\nA suffix catalog is a contiguous family of box tables indexed by actual pairs of prefix masks. Its setup computes its own table stride, and its query host computes the local query mask and lifting factor from a power table. The wanted decoder reads a stored pair, recovers the left position and lift, decodes all output rows, and stores the occurrence-only bank index. Coverage interfaces connect actual emitted pairs back to the guarded wanted labels.\n\nThe shared prefix-key interface represents a length-$k$ prefix as $k$ ordered disjoint balanced row pairs. It constructs the corresponding global left and right masks and source functions for finite source sets and integer-valued inputs. Explicit time and word functions retain the costs of decoding and bank construction.\n\nThese definitions preserve the exact occurrence and output ordering needed to share source banks and suffix tables across reporting queries in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "reporting",
+      "source-banks",
+      "radix-encoding"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle028",
+    "definition_title": "Shared prefix products, packed lookup keys, and retained band banks",
+    "natural_language_statement": "This bundle defines the physical catalogs used to share reporting preprocessing. The local pair-row program enumerates each balanced left subset and every disjoint balanced right subset. A common Cartesian tuple list supplies both positional mask arrays, retaining separate records when one projection happens to coincide. The prefix-order interface maps this exact tuple order to the semantic left and right global prefix sets.\n\nThe prefix-catalog program constructs both mask arrays, reads their actual count, and builds all corresponding shrinking-suffix box tables. For $h,k\\in\\mathbb N$, its count is the $k$th power of the number of local ordered disjoint balanced pairs. Source-catalog cost definitions count two stage families per original band and occurrence vector, with decoder and loop overhead included.\n\nThe original-band pair constructor reads normalized $B,C$ lengths and counts, builds the two source catalogs using zero and selected shifts, and constructs an empty histogram row. A band-bank step selects one common band's retained histograms and constructs every occurrence bank. Stored bank data retain the header, all bank tables, and the big-endian occurrence rows; exact span and finish functions describe their memory layout.\n\nFor a bit width $W$, a catalog count $N$, masks $\\ell_i,r_i$, and original position $i$, the packing pass stores\n$$((\\ell_i+2^W r_i)(N+1)+i).$$\nThe sorted-lookup program builds its own power table, performs a binary search for the requested pair-key interval, and uses binary remainder to recover the original catalog position. Thus lookup uses the stored sorted keys while preserving the original record identity.\n\nThese definitions supply concrete shared-prefix preprocessing and logarithmic catalog access for the deterministic integer 3SUM reporting algorithm, together with the retained original-source bank layout and explicit construction costs.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "reporting",
+      "binary-search",
+      "memory-layout"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+private theorem sum_ceil_truncation_div_le {ι : Type*} (s : Finset ι)
+    (w : ι → ℝ) (F v : ℝ) (hF : 0 ≤ F) (hv : 0 < v) (hw : ∀ i ∈ s, 0 < w i) :
+    (∑ i ∈ s, (⌈F * w i / v⌉₊ : ℝ) / w i) ≤
+      F * s.card / v + ∑ i ∈ s, 1 / w i := by
+  calc
+    _ ≤ ∑ i ∈ s, (F * w i / v + 1) / w i := by
+      apply Finset.sum_le_sum
+      intro i hi
+      apply div_le_div_of_nonneg_right _ (hw i hi).le
+      exact (Nat.ceil_lt_add_one (div_nonneg (mul_nonneg hF (hw i hi).le) hv.le)).le
+    _ = ∑ i ∈ s, (F / v + 1 / w i) := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      field_simp [(hw i hi).ne', hv.ne']
+    _ = _ := by rw [Finset.sum_add_distrib, Finset.sum_const]; simp; ring

@@ -1,0 +1,4 @@
+private theorem column_weight_le {m : ℕ} {w0 H : ℝ} {w : Fin m → ℝ}
+    (hw0 : 0 < w0) (hw : ∀ i, 0 < w i) (c : Column w0 w H) :
+    w0 * (c.1 0 : ℝ) + ∑ i, w i * (c.1 i.succ : ℝ) ≤ H :=
+  (column_mem_iff hw0 hw c.1).mp c.2

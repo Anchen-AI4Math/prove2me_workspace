@@ -1,0 +1,24 @@
+{
+  "path": "/theorems/93d4cca7-9afc-4fe0-9461-cd45c00698df/submissions",
+  "fetched_at": "2026-10-11T13:30:09.889410+00:00",
+  "data": {
+    "submissions": [
+      {
+        "id": "5fa950e9-811f-44ac-adeb-d6a15042a43f",
+        "theorem_id": "93d4cca7-9afc-4fe0-9461-cd45c00698df",
+        "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "username": "Yuxuan Xu",
+        "status": "ACCEPTED",
+        "error_message": "",
+        "file_path": "93d4cca7-9afc-4fe0-9461-cd45c00698df/418b0711-62a5-416a-ba5d-876ae8758fe3/5fa950e9-811f-44ac-adeb-d6a15042a43f.lean",
+        "created_at": "2026-10-11T12:59:43.802773+00:00",
+        "updated_at": "2026-10-11T13:00:58.89409+00:00",
+        "accepted_at": "2026-10-11T13:00:58.89409+00:00",
+        "vote_count": 0,
+        "explanation": "For every decimal digit $1\\leq d\\leq9$, the finite Zipf law with exponent $1$ satisfies\n\n$$\n\\lim_{N\\to\\infty}\\sum_{\\substack{1\\leq k\\leq N\\\\\\operatorname{leadingDigit}(k)=d}}\n\\frac{1}{kH_N}=\\log_{10}(1+1/d).\n$$\n\nThe proof groups the reciprocal weights into complete decimal blocks, then controls an arbitrary endpoint between two successive powers of ten.\n\nThe integers with first digit $d$ in the $j$th block form exactly the interval\n\n$$\n[d10^j,(d+1)10^j).\n$$\n\nIts reciprocal weight is the difference\n\n$$\nB_j=H_{(d+1)10^j-1}-H_{d10^j-1}.\n$$\n\nThe Euler–Mascheroni limit states that $H_n-\\log(n+1)$ tends to the same constant for all sequences of indices tending to infinity. Applying it at the two block endpoints cancels that constant. The logarithmic difference is independent of $j$, so\n\n$$\nB_j\\longrightarrow c=\\log(d+1)-\\log d.\n$$\n\nLet $A_M$ be the reciprocal weight of all first-digit-$d$ integers below $10^M$. The exact block partition gives $A_M=\\sum_{j<M}B_j$. Cesàro convergence and the same harmonic-number limit yield\n\n$$\n\\frac{A_M}{M}\\longrightarrow c,\\qquad\n\\frac{H_{10^M-1}}{M}\\longrightarrow\\log10.\n$$\n\nThese limits persist when a cutoff index is increased from $M$ to $M+1$ while the scaling denominator remains $M$.\n\nFor an arbitrary $N$, set $M=\\lfloor\\log_{10}(N+1)\\rfloor$. Both the digit weight and the harmonic normalizer increase with their cutoff. They therefore give the probability bounds\n\n$$\n\\frac{A_M}{H_{10^{M+1}-1}}\n\\leq\\sum_{\\substack{1\\leq k\\leq N\\\\\\operatorname{leadingDigit}(k)=d}}\\frac1{kH_N}\n\\leq\\frac{A_{M+1}}{H_{10^M-1}}.\n$$\n\nAs $N$ tends to infinity, so does $M$. Both bounds converge to $c/\\log10=\\log_{10}(1+1/d)$, proving the required limit for all cutoffs.\n",
+        "deprecated_at": null
+      }
+    ],
+    "total": 1
+  }
+}

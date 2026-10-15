@@ -1,0 +1,17 @@
+theorem column_log_cost_le_H {m : ℕ} {w0 H : ℝ} (q : Fin m → ℕ)
+    (hq : ∀ i, 2 ≤ q i) (hw0 : 0 < w0)
+    (c : PiExponent.InterpolationMatrix.Column w0
+      (fun i => (⌈Real.log (q i : ℝ)⌉₊ : ℝ)) H) :
+    (∑ i, (c.1 i.succ : ℝ) * Real.log (q i : ℝ)) ≤ H := by
+  have hb := PiExponent.InterpolationMatrix.column_weight_le hw0
+    (fun i => ceil_log_weight_pos (hq i)) c
+  have hc := PiExponent.Arithmetic.column_log_cost_le Finset.univ
+    (fun i => c.1 i.succ) q
+  have h0 : 0 ≤ w0 * (c.1 0 : ℝ) := mul_nonneg hw0.le (Nat.cast_nonneg _)
+  calc
+    _ ≤ ∑ i, (c.1 i.succ : ℝ) * (⌈Real.log (q i : ℝ)⌉₊ : ℝ) := hc
+    _ = ∑ i, (⌈Real.log (q i : ℝ)⌉₊ : ℝ) * (c.1 i.succ : ℝ) := by
+      apply Finset.sum_congr rfl
+      intro i hi
+      exact mul_comm _ _
+    _ ≤ H := by linarith

@@ -1,0 +1,23 @@
+{
+  "theorem_id": "c97e3863-1ded-4a34-8abc-a6403021ba3e",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_BinaryPrefixes",
+  "theorem_title": "Binary prefix and remainder update formulas",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For natural numbers $L,\\ell$ and an integer $z$, define a prefix and a scaled remainder by\n\n$$Q_\\ell(z)=\\left\\lfloor\\frac{z}{2^\\ell}\\right\\rfloor,\\qquad R_{L,\\ell}(z)=(z\\bmod2^\\ell)2^{L\\mathbin{\\dot-}\\ell},$$\n\nwhere $L\\mathbin{\\dot-}\\ell=\\max\\{L-\\ell,0\\}$ is natural-number subtraction. For integers $P,q,r$, the one-step update functions are\n\n$$q'=\\begin{cases}2q,&2r<P,\\\\2q+1,&2r\\ge P,\\end{cases}\\qquad\nr'=\\begin{cases}2r,&2r<P,\\\\2r-P,&2r\\ge P.\\end{cases}$$\n\nThese functions expose the prefix-and-remainder arithmetic used to append a binary digit without a machine shift instruction. Their relation to successive prefixes under the relevant bounds is a later theorem.\n\nReferences:\n\n1. [Source formalization, lines 30–40](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/BinaryPrefixes.lean#L30-L40).",
+  "created_at": "2026-10-06T07:36:41.974079+00:00",
+  "vote_count": 0,
+  "tags": [
+    "binary-representation",
+    "integer-arithmetic",
+    "word-ram"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# The prefixes of a binary representation, one bit at a time\n\nThe prefixes `⌊z/2^ℓ⌋` of a number `0 ≤ z < 2^L` are computed without division, from the level\n`ℓ = L` down to `ℓ = 0`.  Next to the prefix `q = ⌊z/2^ℓ⌋` (`prefQ`) one keeps the rest of the\nnumber, moved to the top: `r = (z mod 2^ℓ) 2^(L-ℓ) < 2^L` (`prefR`).  One step doubles `r`; if the\nresult reaches `2^L`, then the next bit of `z` is 1 (`pref_step`).  The bit is the binary digit\nnumber `ℓ` of `z` (`testBit_iff_shift`).  One step on lists of numbers is `zipWith_shiftQ` and\n`map_shiftR`.\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp\n\n/-! ## Prefixes, one bit at a time -/\n\n/-- The prefix `⌊z/2^ℓ⌋`. -/\ndef prefQ (ℓ : ℕ) (z : ℤ) : ℤ := z / 2 ^ ℓ\n\n/-- The rest `z mod 2^ℓ`, moved to the top of `L` bits. -/\ndef prefR (L ℓ : ℕ) (z : ℤ) : ℤ := z % 2 ^ ℓ * 2 ^ (L - ℓ)\n\n/-- The new prefix after one step: the old one with the next bit appended. -/\ndef shiftQ (P q r : ℤ) : ℤ := if 2 * r < P then 2 * q else 2 * q + 1\n\n/-- The new rest after one step. -/\ndef shiftR (P r : ℤ) : ℤ := if 2 * r < P then 2 * r else 2 * r - P\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-! ## The lists of the prefixes and of the rests -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/BinaryPrefixes.lean#L30-L40",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

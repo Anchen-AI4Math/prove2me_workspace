@@ -1,0 +1,24 @@
+{
+  "theorem_id": "d4f5408d-d8e0-4a71-b60e-4f505890100b",
+  "theorem_name": "ThreeSumApsp.Spec.mem_nineStrs",
+  "theorem_title": "Membership in the bounded-nine string enumeration",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumApsp.Spec.mem_nineStrs : ∀ {n lo hi : Nat} (l : List.{0} Nat),\n  Iff\n    (@Membership.mem.{0, 0} (List.{0} Nat) (List.{0} (List.{0} Nat)) (@List.instMembership.{0} (List.{0} Nat))\n      (ThreeSumApsp.Spec.nineStrs n lo hi) l)\n    (And (@Eq.{1} Nat (@List.length.{0} Nat l) n)\n      (And\n        (∀ (d : Nat),\n          @Membership.mem.{0, 0} Nat (List.{0} Nat) (@List.instMembership.{0} Nat) l d →\n            @LT.lt.{0} Nat instLTNat d (@OfNat.ofNat.{0} Nat (nat_lit 10) (instOfNatNat (nat_lit 10))))\n        (And\n          (@LE.le.{0} Nat instLENat lo\n            (@List.count.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) l))\n          (@LE.le.{0} Nat instLENat\n            (@List.count.{0} Nat (@instBEqOfDecidableEq.{0} Nat instDecidableEqNat)\n              (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9))) l)\n            hi)))) := by\n  sorry\n",
+  "natural_language_statement": "For natural numbers $n,\\mathrm{lo},\\mathrm{hi}$ and a list $s$ of natural-number digits, membership in the source enumeration is characterized exactly by\n\n$$s\\in\\operatorname{nineStrs}(n,\\mathrm{lo},\\mathrm{hi})\\iff |s|=n\\ \\land\\ (\\forall d\\in s,\\ d<10)\\ \\land\\ \\mathrm{lo}\\le\\#_9(s)\\le\\mathrm{hi},$$\n\nwhere $\\#_9(s)$ counts occurrences of the digit $9$. This proves that the recursive enumeration produces exactly the required strings, including when the bounds are inconsistent or exceed the string length.\n\nReferences:\n\n1. [Source formalization](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L94-L110).",
+  "created_at": "2026-10-06T07:56:16.90634+00:00",
+  "vote_count": 0,
+  "tags": [
+    "combinatorics",
+    "enumeration",
+    "formal-math-source",
+    "truly-subcubic-apsp"
+  ],
+  "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Spec_Sec4_Theorem30_NineStrings\nimport Mathlib.Algebra.BigOperators.Intervals\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Data.List.Range\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Logic.Function.Iterate\nimport Mathlib.Order.Interval.Finset.Nat\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\n\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L94-L110",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

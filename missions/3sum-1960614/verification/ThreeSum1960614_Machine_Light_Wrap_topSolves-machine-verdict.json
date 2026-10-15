@@ -1,0 +1,15 @@
+{
+  "id": "2e043afc-057a-40ed-838c-bde11bb10cad",
+  "theorem_id": "43a2792f-9329-4be1-b458-0eb925ed0517",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:15:19.221218+00:00",
+  "updated_at": "2026-10-15T09:17:20.369907+00:00",
+  "explanation": "Connects the task interface to the final problem layout, including the size-zero wrapper behavior. The appended caller handles zero size and computes the fixed polynomial magnitude before invoking the task solver.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Wrap.topSolves",
+  "theorem_title": "A task solver yields a top-level program",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Wrap.topSolves (w : _root_.ThreeSum1960614.Machine.Light.Wrap Q task dec) {T : \u2115 \u2192 \u211d \u2192 \u211d} {P : _root_.ThreeSum1960614.Machine.Light.Program} {p : \u2115} {Tn : \u2115 \u2192 \u2115 \u2192 \u2115}\n    {need : \u2115 \u2192 \u2115 \u2192 _root_.ThreeSum1960614.Machine.Light.Need} (hpoly : _root_.ThreeSum1960614.Machine.Light.PolyNeed need) (hsol : _root_.ThreeSum1960614.Machine.Light.Solves task P p Tn need)\n    (hT : \u2200 (n U : \u2115) (u : \u211d), 1 \u2264 n \u2192 1 \u2264 U \u2192 (U : \u211d) \u2264 u \u2192 (Tn n U : \u211d) \u2264 T n u) (\u03ba : \u2115) :\n    \u2203 s k : \u2115, _root_.ThreeSum1960614.Machine.Light.ProgramSolves (_root_.ThreeSumApsp.WordRam.ofEnd Q) (P ++ [_root_.ThreeSum1960614.Machine.Light.topBody \u03ba p w.args dec]) P.length dec s k\n      (fun x => x.U = x.n ^ \u03ba) fun x => max (T x.n x.U) 0 + w.extra \u03ba := by sorry",
+  "theorem_natural_language_statement": "Let a wrapper connect problem $Q$ to a Light task in decision/output mode $\\delta$. Suppose a program solves that task with natural time $T_n(n,U)$ and polynomial resource needs. Let real time $T(n,u)$ dominate $T_n(n,U)$ whenever $n,U\\ge1$ and $U\\le u$. For every fixed $k\\in\\mathbb N$, appending the wrapper body gives a program solving the final input layout on $U=n^k$, with bound $$\\max(T(n,U),0)+\\operatorname{extra}(k)$$ and suitable natural resource constants.\n\nConnects the task interface to the final problem layout, including the size-zero wrapper behavior. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

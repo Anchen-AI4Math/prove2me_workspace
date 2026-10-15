@@ -1,0 +1,1108 @@
+{
+  "encoding_bound": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.encoding_bound",
+      "theorem_title": "Encoding cost bound from the binomial entropy certificate",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.encoding_bound (c m : ℕ) (hc : 10 < c) (hm : 1 ≤ m) :\n    (10 : ℝ) ^ (c * m) / Real.sqrt (ThreeSumSharpTail.boxCount c m 0 : ℝ) ≤\n      Real.sqrt (c * m + 1 : ℝ) * (4 ^ m : ℝ) ^ ThreeSumSharpTail.encodingExponent c := by sorry",
+      "natural_language_statement": "For every integer c>10 and m>=1, the encoding factor 10^(cm)/sqrt(M) is at most sqrt(cm+1) times (4^m)^A(c), where M is the exact baseline box count choose(cm,m)*9^(cm-m). This is the pointwise encoding inequality used to show eventual tile fit and absorb preprocessing overheads. The proof uses the lower binomial entropy bound and exact exponential algebra; it makes no program-runtime conclusion by itself.",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Section 4, equation encodingbound.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "7186a5b5-e549-4ff7-bfa8-03563a77b6e1",
+          "name": "ThreeSumSharpTail.encoding_bound"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "7186a5b5-e549-4ff7-bfa8-03563a77b6e1",
+    "theorem_id": "3b79d171-3aa3-478e-b660-5e9673953c1f",
+    "job": {
+      "id": "7186a5b5-e549-4ff7-bfa8-03563a77b6e1",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.encoding_bound",
+      "theorem_title": "Encoding cost bound from the binomial entropy certificate",
+      "formal_statement": "theorem ThreeSumSharpTail.encoding_bound (c m : ℕ) (hc : 10 < c) (hm : 1 ≤ m) :\n    (10 : ℝ) ^ (c * m) / Real.sqrt (ThreeSumSharpTail.boxCount c m 0 : ℝ) ≤\n      Real.sqrt (c * m + 1 : ℝ) * (4 ^ m : ℝ) ^ ThreeSumSharpTail.encodingExponent c := by sorry",
+      "natural_language_statement": "For every integer c>10 and m>=1, the encoding factor 10^(cm)/sqrt(M) is at most sqrt(cm+1) times (4^m)^A(c), where M is the exact baseline box count choose(cm,m)*9^(cm-m). This is the pointwise encoding inequality used to show eventual tile fit and absorb preprocessing overheads. The proof uses the lower binomial entropy bound and exact exponential algebra; it makes no program-runtime conclusion by itself.",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Section 4, equation encodingbound.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "3b79d171-3aa3-478e-b660-5e9673953c1f",
+      "created_at": "2026-10-13T17:10:31.639022+00:00",
+      "updated_at": "2026-10-13T17:10:56.913654+00:00"
+    },
+    "proof_submission_id": "b1cabd15-9bd9-4a10-954d-8e3557d72598",
+    "proof_status": "ACCEPTED"
+  },
+  "retained_tiles_cost": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.retained_tiles_cost",
+      "theorem_title": "Sharp-tail bound for the actual all-tiles routine step count",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSPSource_RemainingDefinitions\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators",
+      "formal_statement": "theorem ThreeSumSharpTail.retained_tiles_cost (c m nB : ℕ) (hc : 10 < c) (hm : 1 ≤ m)\n    (θ : ℝ) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    (Light.Sec4.tAllTiles (c * m) m ⌈θ * (m : ℝ)⌉₊ nB : ℝ) ≤\n      1600 * ((c : ℝ) * m + 1) *\n        ((nB : ℝ) ^ 2 * (((m : ℝ) + 1) *\n          ((ThreeSumSharpTail.boxCount c m 0 : ℝ) *\n            (((c : ℝ) * m + 1) / (1 - 9 / ((c : ℝ) - 1)) *\n              Real.rpow ((4 : ℝ) ^ m) (-ThreeSumSharpTail.sharpSaving c θ)) + 1)) +\n          nB + 1) := by sorry",
+      "natural_language_statement": "Bounds the published natural-number time function tAllTiles at L=cm and t=ceil(theta*m). The bound counts the lengths of the star-box lists actually traversed by the routine, uses their exact binomial enumeration formula, and applies the sharp normalized tail. The bound holds for every number of bands, with explicit constant 1600 and all loop overheads included. Tile-fit, encoding, compiler and reduction costs must still be composed before claiming the final word-RAM runtime.",
+      "source": "Yuxuan Xu, same manuscript, Sections 2.1 and 4, equations unrelaxed and boxcost; actual tTile/tAllTiles time functions from anthropics/formal-math 3sum-apsp, commit e1a4e6508154ea59f030480661590a9fe3018011, ThreeSumApsp/Programs/Sec4/Theorem30/Contracts.lean and ThreeSumApsp/Spec/Sec4/Theorem30/StarBoxes.lean.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "4e817318-6605-4b92-b1dc-57c5af961716",
+          "name": "ThreeSumSharpTail.retained_tiles_cost"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "4e817318-6605-4b92-b1dc-57c5af961716",
+    "theorem_id": "e6820e04-c05a-4cda-b5b6-9f719509a14c",
+    "job": {
+      "id": "4e817318-6605-4b92-b1dc-57c5af961716",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.retained_tiles_cost",
+      "theorem_title": "Sharp-tail bound for the actual all-tiles routine step count",
+      "formal_statement": "theorem ThreeSumSharpTail.retained_tiles_cost (c m nB : ℕ) (hc : 10 < c) (hm : 1 ≤ m)\n    (θ : ℝ) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    (Light.Sec4.tAllTiles (c * m) m ⌈θ * (m : ℝ)⌉₊ nB : ℝ) ≤\n      1600 * ((c : ℝ) * m + 1) *\n        ((nB : ℝ) ^ 2 * (((m : ℝ) + 1) *\n          ((ThreeSumSharpTail.boxCount c m 0 : ℝ) *\n            (((c : ℝ) * m + 1) / (1 - 9 / ((c : ℝ) - 1)) *\n              Real.rpow ((4 : ℝ) ^ m) (-ThreeSumSharpTail.sharpSaving c θ)) + 1)) +\n          nB + 1) := by sorry",
+      "natural_language_statement": "Bounds the published natural-number time function tAllTiles at L=cm and t=ceil(theta*m). The bound counts the lengths of the star-box lists actually traversed by the routine, uses their exact binomial enumeration formula, and applies the sharp normalized tail. The bound holds for every number of bands, with explicit constant 1600 and all loop overheads included. Tile-fit, encoding, compiler and reduction costs must still be composed before claiming the final word-RAM runtime.",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSPSource_RemainingDefinitions\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators",
+      "source": "Yuxuan Xu, same manuscript, Sections 2.1 and 4, equations unrelaxed and boxcost; actual tTile/tAllTiles time functions from anthropics/formal-math 3sum-apsp, commit e1a4e6508154ea59f030480661590a9fe3018011, ThreeSumApsp/Programs/Sec4/Theorem30/Contracts.lean and ThreeSumApsp/Spec/Sec4/Theorem30/StarBoxes.lean.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e6820e04-c05a-4cda-b5b6-9f719509a14c",
+      "created_at": "2026-10-13T17:19:20.766422+00:00",
+      "updated_at": "2026-10-13T17:20:21.191784+00:00"
+    },
+    "proof_submission_id": "dcd1e74a-6555-4d51-a0c9-4436d946291b",
+    "proof_status": "ACCEPTED"
+  },
+  "pruned_encoding_comparison": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_encoding_comparison",
+      "theorem_title": "Pruned encoding exponent is bounded by the original encoding exponent",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_encoding_comparison (c : ℝ) (hc : 1 < c) :\n    ((c / 2) * ThreeSumSharpTail.entropy (1 / c) + (c - 1) * Real.log 3) / Real.log 4\n      ≤ ThreeSumSharpTail.encodingExponent c := by sorry",
+      "natural_language_statement": "For every real c>1, the exponent ((c/2)H(1/c)+(c-1)log(3))/log(4) is at most A(c). Consequently the strict thinness assumption in the sharp-tail certificate also satisfies the encoding assumption of the parameterized pruned program interface. This comparison follows from the weighted log inequality H(p)+(1-p)log(9)<=log(10).",
+      "source": "Derived auxiliary inequality for Xu, same manuscript, Section 4, encodingbound; the pruned exponent Apruned is defined in the existing platform module APSP299791_Defs4, source ThreeSumApsp/Pruned/Costs.lean at formal-math commit 27a2fa4bab32. It is not an additional theorem claimed in the manuscript.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "9727ff4f-002b-4c0a-bd99-e21638931d84",
+          "name": "ThreeSumSharpTail.pruned_encoding_comparison"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "9727ff4f-002b-4c0a-bd99-e21638931d84",
+    "theorem_id": "e8e4e1a1-9f72-4d34-918e-23238f797f5c",
+    "job": {
+      "id": "9727ff4f-002b-4c0a-bd99-e21638931d84",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_encoding_comparison",
+      "theorem_title": "Pruned encoding exponent is bounded by the original encoding exponent",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_encoding_comparison (c : ℝ) (hc : 1 < c) :\n    ((c / 2) * ThreeSumSharpTail.entropy (1 / c) + (c - 1) * Real.log 3) / Real.log 4\n      ≤ ThreeSumSharpTail.encodingExponent c := by sorry",
+      "natural_language_statement": "For every real c>1, the exponent ((c/2)H(1/c)+(c-1)log(3))/log(4) is at most A(c). Consequently the strict thinness assumption in the sharp-tail certificate also satisfies the encoding assumption of the parameterized pruned program interface. This comparison follows from the weighted log inequality H(p)+(1-p)log(9)<=log(10).",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Derived auxiliary inequality for Xu, same manuscript, Section 4, encodingbound; the pruned exponent Apruned is defined in the existing platform module APSP299791_Defs4, source ThreeSumApsp/Pruned/Costs.lean at formal-math commit 27a2fa4bab32. It is not an additional theorem claimed in the manuscript.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e8e4e1a1-9f72-4d34-918e-23238f797f5c",
+      "created_at": "2026-10-13T17:37:56.490733+00:00",
+      "updated_at": "2026-10-13T17:38:16.06399+00:00"
+    },
+    "proof_submission_id": "0b950f89-e89c-4a9a-8902-4bf571f2c5d8",
+    "proof_status": "ACCEPTED"
+  },
+  "rational_theta_certificate": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.rational_theta_certificate",
+      "theorem_title": "Rational switch parameter preserving strict certificate margins",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSumSharpTail",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_theta_certificate (c : ℕ) (θ : ℝ) (a s : ℚ)\n    (hc : 10 < c) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (henc : (a : ℝ) * (encodingExponent c + sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - queryExponent θ) :\n    ∃ η : ℚ, 0 < (η : ℝ) ∧ (η : ℝ) < 9 / 10 ∧\n      (a : ℝ) * (encodingExponent c + sharpSaving c (η : ℝ)) < 1 ∧\n      (s : ℝ) < sharpSaving c (η : ℝ) ∧\n      (s : ℝ) < 1 / 2 - queryExponent (η : ℝ) := by sorry",
+      "natural_language_statement": "Fix an integer c>10, real theta in (0,9/10), and rational a,s. If a(A(c)+Gamma(c,theta))<1, s<Gamma(c,theta), and s<1/2-q(theta), then there is a rational eta in (0,9/10) satisfying the same three strict inequalities. This gives a finite rational switch parameter for the program while preserving the encoding, preprocessing and query margins.",
+      "source": "Derived parameter selection lemma for Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis, Sections 3-4. Continuity and rational density justify the finite program implementation of the real switch parameter.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "e76ca7ee-0a7b-4f2d-9bdb-10eb5aefcea8",
+          "name": "ThreeSumSharpTail.rational_theta_certificate"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "e76ca7ee-0a7b-4f2d-9bdb-10eb5aefcea8",
+    "theorem_id": "d73bb009-45ef-4d29-a264-1b5aaa5ffb59",
+    "job": {
+      "id": "e76ca7ee-0a7b-4f2d-9bdb-10eb5aefcea8",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.rational_theta_certificate",
+      "theorem_title": "Rational switch parameter preserving strict certificate margins",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_theta_certificate (c : ℕ) (θ : ℝ) (a s : ℚ)\n    (hc : 10 < c) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (henc : (a : ℝ) * (encodingExponent c + sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - queryExponent θ) :\n    ∃ η : ℚ, 0 < (η : ℝ) ∧ (η : ℝ) < 9 / 10 ∧\n      (a : ℝ) * (encodingExponent c + sharpSaving c (η : ℝ)) < 1 ∧\n      (s : ℝ) < sharpSaving c (η : ℝ) ∧\n      (s : ℝ) < 1 / 2 - queryExponent (η : ℝ) := by sorry",
+      "natural_language_statement": "Fix an integer c>10, real theta in (0,9/10), and rational a,s. If a(A(c)+Gamma(c,theta))<1, s<Gamma(c,theta), and s<1/2-q(theta), then there is a rational eta in (0,9/10) satisfying the same three strict inequalities. This gives a finite rational switch parameter for the program while preserving the encoding, preprocessing and query margins.",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSumSharpTail",
+      "source": "Derived parameter selection lemma for Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis, Sections 3-4. Continuity and rational density justify the finite program implementation of the real switch parameter.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "d73bb009-45ef-4d29-a264-1b5aaa5ffb59",
+      "created_at": "2026-10-13T17:48:56.918091+00:00",
+      "updated_at": "2026-10-13T17:49:27.037444+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "32121d9a-351d-4fab-8ca2-5f6e2bca140a",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "32121d9a-351d-4fab-8ca2-5f6e2bca140a",
+    "proof_status": "ACCEPTED"
+  },
+  "pruned_cost_certificate": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_cost_certificate",
+      "theorem_title": "Sharp-tail certificate bounds the exact pruned preprocessing and query costs",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_pruned_encoding_comparison\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSumApsp\nopen ThreeSumSharpTail",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_cost_certificate (c : ℕ) (θ : ℝ) (a s : ℚ)\n    (hc : 10 < c) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (ha0 : 0 < a)\n    (henc : (a : ℝ) * (encodingExponent c + sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - queryExponent θ) :\n    ∃ C m₀, 0 ≤ C ∧ ∀ D₀ N m : ℕ,\n      2 ≤ D₀ → (D₀ : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      m = ⌈Real.logb 4 (D₀ : ℝ)⌉₊ → m₀ ≤ m →\n      sqrtKN0 (levelsOf (c : ℝ) m) m ≤ N ∧\n      cost8p (levelsOf (c : ℝ) m) m (switchOf θ m) N ≤\n        C * ((N : ℝ) ^ 2 * Real.log (D₀ : ℝ) ^ 2 / (D₀ : ℝ) ^ (s : ℝ)) ∧\n      costQuery (levelsOf (c : ℝ) m) m (switchOf θ m) ≤\n        C * ((D₀ : ℝ) ^ (1 / 2 - (s : ℝ)) * Real.log (D₀ : ℝ)) := by sorry",
+      "natural_language_statement": "Let c>10 be an integer, theta in (0,9/10), and a>0,s rational. Under a(A(c)+Gamma(c,theta))<1, s<Gamma(c,theta), and s<1/2-q(theta), there exist C>=0 and a threshold m0 such that for every D>=2 with D<=N^a and m=ceil(log_4 D)>=m0 the tile fits, cost8p<=C N^2 (log D)^2/D^s, and costQuery<=C D^(1/2-s) log D. The quantities are the existing pruned program cost functions, with the exact binomial tail retained.",
+      "source": "Derived interface transfer for Xu, same manuscript, Sections 3-4. Uses the existing complete CorollaryP.costs proof in ThreeSumApsp/Pruned/Costs.lean at commit 27a2fa4bab32 and the proved pruned encoding comparison. Actual finite program correctness and reductions remain separate obligations.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "7c866a9c-c899-4b78-89dd-e7a0b8991e85",
+          "name": "ThreeSumSharpTail.pruned_cost_certificate"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "7c866a9c-c899-4b78-89dd-e7a0b8991e85",
+    "theorem_id": "e5befbc8-a6d9-4a15-b637-3d5c6b6ddddf",
+    "job": {
+      "id": "7c866a9c-c899-4b78-89dd-e7a0b8991e85",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_cost_certificate",
+      "theorem_title": "Sharp-tail certificate bounds the exact pruned preprocessing and query costs",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_cost_certificate (c : ℕ) (θ : ℝ) (a s : ℚ)\n    (hc : 10 < c) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (ha0 : 0 < a)\n    (henc : (a : ℝ) * (encodingExponent c + sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - queryExponent θ) :\n    ∃ C m₀, 0 ≤ C ∧ ∀ D₀ N m : ℕ,\n      2 ≤ D₀ → (D₀ : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      m = ⌈Real.logb 4 (D₀ : ℝ)⌉₊ → m₀ ≤ m →\n      sqrtKN0 (levelsOf (c : ℝ) m) m ≤ N ∧\n      cost8p (levelsOf (c : ℝ) m) m (switchOf θ m) N ≤\n        C * ((N : ℝ) ^ 2 * Real.log (D₀ : ℝ) ^ 2 / (D₀ : ℝ) ^ (s : ℝ)) ∧\n      costQuery (levelsOf (c : ℝ) m) m (switchOf θ m) ≤\n        C * ((D₀ : ℝ) ^ (1 / 2 - (s : ℝ)) * Real.log (D₀ : ℝ)) := by sorry",
+      "natural_language_statement": "Let c>10 be an integer, theta in (0,9/10), and a>0,s rational. Under a(A(c)+Gamma(c,theta))<1, s<Gamma(c,theta), and s<1/2-q(theta), there exist C>=0 and a threshold m0 such that for every D>=2 with D<=N^a and m=ceil(log_4 D)>=m0 the tile fits, cost8p<=C N^2 (log D)^2/D^s, and costQuery<=C D^(1/2-s) log D. The quantities are the existing pruned program cost functions, with the exact binomial tail retained.",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_pruned_encoding_comparison\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSumApsp\nopen ThreeSumSharpTail",
+      "source": "Derived interface transfer for Xu, same manuscript, Sections 3-4. Uses the existing complete CorollaryP.costs proof in ThreeSumApsp/Pruned/Costs.lean at commit 27a2fa4bab32 and the proved pruned encoding comparison. Actual finite program correctness and reductions remain separate obligations.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "e5befbc8-a6d9-4a15-b637-3d5c6b6ddddf",
+      "created_at": "2026-10-13T17:52:41.526397+00:00",
+      "updated_at": "2026-10-13T17:53:34.539054+00:00"
+    },
+    "proof_request_status": "REQUEST_PREPARED",
+    "proof_submission_id": "4d26284b-72e5-4610-ac64-8629366f320c",
+    "proof_status": "ACCEPTED"
+  },
+  "cost_regime_solve_3sum": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.cost_regime_solve_3sum",
+      "theorem_title": "Finite pruned program cost regime implies the 3SUM exponent",
+      "preamble": "import Definitions.Def_APSP299791_Defs4\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.cost_regime_solve_3sum\n    (G : Light.Sec4.RatParams) (a s r : ℚ)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hsHalf : s < 1 / 2)\n    (hcost : ∃ C : ℝ, 0 ≤ C ∧ ∀ N D : ℕ,\n      1 ≤ D → (D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      Light.Sec4.CostsWithinP G C N D\n        ((N : ℝ) ^ 2 * (Real.log D + 1) ^ 2 / (D : ℝ) ^ (s : ℝ))\n        ((D : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log D + 1)))\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : ℝ) / 2 < 3 - (a : ℝ) * s / 2)\n    (hbuild : 2 + (a : ℝ) * (1 + (s : ℝ) / 2) < 3 - (a : ℝ) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "Fix the finite rational parameters G of the published pruned program, and rational a,s,r with 0<a<1 and 0<s<1/2. Suppose a uniform CostsWithinP certificate holds whenever 1<=D<=N^a, with preprocessing bound N^2(log D+1)^2/D^s and query bound D^(1/2-s)(log D+1). If the prime-selection and instance-construction exponents are strictly below 3-as/2, then integer 3SUM is solved on the word RAM in O(n^r) for every r>2-as/4. The conclusion uses the exact shared EndStatement model, including finite programs and all sufficiently large word widths.",
+      "source": "Algorithmic interface lemma derived from Xu, same manuscript, Sections 3-4, composed with the verified 3sum-apsp pruned program and parameterized all-edges/Exact-Triangle/3SUM reductions. This remaining semantic bridge is a separate open proof obligation, not an additional runtime hypothesis in the original certificate.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "dc1f948b-8b75-45c3-bc55-dcb4059d66fe",
+          "name": "ThreeSumSharpTail.cost_regime_solve_3sum"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "dc1f948b-8b75-45c3-bc55-dcb4059d66fe",
+    "theorem_id": "421030db-0ca7-4fd3-af76-166d00b6be18",
+    "job": {
+      "id": "dc1f948b-8b75-45c3-bc55-dcb4059d66fe",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.cost_regime_solve_3sum",
+      "theorem_title": "Finite pruned program cost regime implies the 3SUM exponent",
+      "formal_statement": "theorem ThreeSumSharpTail.cost_regime_solve_3sum\n    (G : Light.Sec4.RatParams) (a s r : ℚ)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hsHalf : s < 1 / 2)\n    (hcost : ∃ C : ℝ, 0 ≤ C ∧ ∀ N D : ℕ,\n      1 ≤ D → (D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      Light.Sec4.CostsWithinP G C N D\n        ((N : ℝ) ^ 2 * (Real.log D + 1) ^ 2 / (D : ℝ) ^ (s : ℝ))\n        ((D : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log D + 1)))\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : ℝ) / 2 < 3 - (a : ℝ) * s / 2)\n    (hbuild : 2 + (a : ℝ) * (1 + (s : ℝ) / 2) < 3 - (a : ℝ) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "Fix the finite rational parameters G of the published pruned program, and rational a,s,r with 0<a<1 and 0<s<1/2. Suppose a uniform CostsWithinP certificate holds whenever 1<=D<=N^a, with preprocessing bound N^2(log D+1)^2/D^s and query bound D^(1/2-s)(log D+1). If the prime-selection and instance-construction exponents are strictly below 3-as/2, then integer 3SUM is solved on the word RAM in O(n^r) for every r>2-as/4. The conclusion uses the exact shared EndStatement model, including finite programs and all sufficiently large word widths.",
+      "definitions": "import Definitions.Def_APSP299791_Defs4\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Algorithmic interface lemma derived from Xu, same manuscript, Sections 3-4, composed with the verified 3sum-apsp pruned program and parameterized all-edges/Exact-Triangle/3SUM reductions. This remaining semantic bridge is a separate open proof obligation, not an additional runtime hypothesis in the original certificate.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "421030db-0ca7-4fd3-af76-166d00b6be18",
+      "created_at": "2026-10-13T17:54:40.663551+00:00",
+      "updated_at": "2026-10-13T17:55:04.507694+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "5a8578d3-cb3d-486b-9224-93424d75083f",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "5a8578d3-cb3d-486b-9224-93424d75083f",
+    "proof_status": "ACCEPTED"
+  },
+  "pruned_program_correct": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_program_correct",
+      "theorem_title": "Pruned offline program correctness for arbitrary rational parameters",
+      "preamble": "import Definitions.Def_APSP299791_Defs5\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_program_correct (G : Light.Sec4.RatParams) : ∀ lim,\n    Light.Sec4.OfflineSpec32P lim (Light.Sec4.program31P G) Light.Sec4.cShared30 G := by sorry",
+      "natural_language_statement": "For every finite rational parameter record G, the published program31P(G) satisfies OfflineSpec32P at every machine limit. It executes the specified preprocessing and queries on the actual stored matrices and selected entries, with the declared step counts. This is the generic correctness interface of the pruned program; asymptotic cost regimes, word-size polynomial bounds and the 3SUM reduction are separate conclusions.",
+      "source": "Reusable generic portion of the ACCEPTED proof of Light.Sec4.allInstancesP_programP, submission 50de6837-5a9a-4f1f-ab1f-e9cff8fc270a. ThreeSumApsp/Pruned/Program31P.lean and related choosing-parameter specifications at formal-math commit 27a2fa4bab32. The preprocessing, query and offline procedure proofs are generic in G; the later fixed-parameter wrapper is excluded.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "88186201-0915-4600-9c6e-4dcf13e16aff",
+          "name": "ThreeSumSharpTail.pruned_program_correct"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "88186201-0915-4600-9c6e-4dcf13e16aff",
+    "theorem_id": "765788f5-2182-4f3d-881f-3a88a041c891",
+    "job": {
+      "id": "88186201-0915-4600-9c6e-4dcf13e16aff",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_program_correct",
+      "theorem_title": "Pruned offline program correctness for arbitrary rational parameters",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_program_correct (G : Light.Sec4.RatParams) : ∀ lim,\n    Light.Sec4.OfflineSpec32P lim (Light.Sec4.program31P G) Light.Sec4.cShared30 G := by sorry",
+      "natural_language_statement": "For every finite rational parameter record G, the published program31P(G) satisfies OfflineSpec32P at every machine limit. It executes the specified preprocessing and queries on the actual stored matrices and selected entries, with the declared step counts. This is the generic correctness interface of the pruned program; asymptotic cost regimes, word-size polynomial bounds and the 3SUM reduction are separate conclusions.",
+      "definitions": "import Definitions.Def_APSP299791_Defs5\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Reusable generic portion of the ACCEPTED proof of Light.Sec4.allInstancesP_programP, submission 50de6837-5a9a-4f1f-ab1f-e9cff8fc270a. ThreeSumApsp/Pruned/Program31P.lean and related choosing-parameter specifications at formal-math commit 27a2fa4bab32. The preprocessing, query and offline procedure proofs are generic in G; the later fixed-parameter wrapper is excluded.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "765788f5-2182-4f3d-881f-3a88a041c891",
+      "created_at": "2026-10-13T18:02:18.664296+00:00",
+      "updated_at": "2026-10-13T18:02:44.76651+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "c87d844a-9aec-48b0-b5da-b623f5c29b03",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "c87d844a-9aec-48b0-b5da-b623f5c29b03",
+    "proof_status": "ACCEPTED"
+  },
+  "rational_cost_regime": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.rational_cost_regime",
+      "theorem_title": "Finite rational parameters realizing the sharp-tail cost regime",
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_pruned_cost_certificate\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 1000000\nopen ThreeSumApsp Light.Sec4",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_cost_regime\n    (c : ℕ) (η a s : ℚ) (hc : 10 < c)\n    (hη0 : 0 < η) (hη9 : η < 9 / 10)\n    (ha0 : 0 < a) (ha1 : (a : ℝ) < 1)\n    (hs0 : 0 < s) (hs5 : (s : ℝ) < 1 / 2)\n    (henc : (a : ℝ) * (ThreeSumSharpTail.encodingExponent c +\n      ThreeSumSharpTail.sharpSaving c (η : ℝ)) < 1)\n    (hprep : (s : ℝ) < ThreeSumSharpTail.sharpSaving c (η : ℝ))\n    (hquery : (s : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent (η : ℝ)) :\n    ∃ G : Light.Sec4.RatParams, ∃ C : ℝ, 0 ≤ C ∧\n      ∀ N D₀ : ℕ, 1 ≤ D₀ → (D₀ : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n        Light.Sec4.CostsWithinP G C N D₀\n          ((N : ℝ) ^ 2 * (Real.log (D₀ : ℝ) + 1) ^ 2 / (D₀ : ℝ) ^ (s : ℝ))\n          ((D₀ : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log (D₀ : ℝ) + 1)) := by sorry",
+      "natural_language_statement": "For integer c>10 and rational eta,a,s satisfying the strict encoding, preprocessing and query inequalities, with 0<a<1 and 0<s<1/2, there are a finite rational parameter record G and a uniform constant C>=0 such that CostsWithinP holds for every 1<=D<=N^a. The preprocessing bound is N^2(log D+1)^2/D^s and the query bound is D^(1/2-s)(log D+1). The record represents c exactly and eta by its integer numerator and denominator, and includes a fixed threshold for the bounded-size cases.",
+      "source": "Derived finite-parameter interface for Xu, same manuscript, Sections 3-4. It consumes the proved pruned cost certificate and the actual RatParams/CostsWithinP definitions of the published pruned program.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "078d8cae-f99e-462c-8c26-e7cfecef6b96",
+          "name": "ThreeSumSharpTail.rational_cost_regime"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "078d8cae-f99e-462c-8c26-e7cfecef6b96",
+    "theorem_id": "3edaf29a-0559-4471-b17a-a4f9bc203272",
+    "job": {
+      "id": "078d8cae-f99e-462c-8c26-e7cfecef6b96",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.rational_cost_regime",
+      "theorem_title": "Finite rational parameters realizing the sharp-tail cost regime",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_cost_regime\n    (c : ℕ) (η a s : ℚ) (hc : 10 < c)\n    (hη0 : 0 < η) (hη9 : η < 9 / 10)\n    (ha0 : 0 < a) (ha1 : (a : ℝ) < 1)\n    (hs0 : 0 < s) (hs5 : (s : ℝ) < 1 / 2)\n    (henc : (a : ℝ) * (ThreeSumSharpTail.encodingExponent c +\n      ThreeSumSharpTail.sharpSaving c (η : ℝ)) < 1)\n    (hprep : (s : ℝ) < ThreeSumSharpTail.sharpSaving c (η : ℝ))\n    (hquery : (s : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent (η : ℝ)) :\n    ∃ G : Light.Sec4.RatParams, ∃ C : ℝ, 0 ≤ C ∧\n      ∀ N D₀ : ℕ, 1 ≤ D₀ → (D₀ : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n        Light.Sec4.CostsWithinP G C N D₀\n          ((N : ℝ) ^ 2 * (Real.log (D₀ : ℝ) + 1) ^ 2 / (D₀ : ℝ) ^ (s : ℝ))\n          ((D₀ : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log (D₀ : ℝ) + 1)) := by sorry",
+      "natural_language_statement": "For integer c>10 and rational eta,a,s satisfying the strict encoding, preprocessing and query inequalities, with 0<a<1 and 0<s<1/2, there are a finite rational parameter record G and a uniform constant C>=0 such that CostsWithinP holds for every 1<=D<=N^a. The preprocessing bound is N^2(log D+1)^2/D^s and the query bound is D^(1/2-s)(log D+1). The record represents c exactly and eta by its integer numerator and denominator, and includes a fixed threshold for the bounded-size cases.",
+      "definitions": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_pruned_cost_certificate\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 1000000\nopen ThreeSumApsp Light.Sec4",
+      "source": "Derived finite-parameter interface for Xu, same manuscript, Sections 3-4. It consumes the proved pruned cost certificate and the actual RatParams/CostsWithinP definitions of the published pruned program.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "3edaf29a-0559-4471-b17a-a4f9bc203272",
+      "created_at": "2026-10-13T18:20:58.496685+00:00",
+      "updated_at": "2026-10-13T18:21:57.24421+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "c07f7f9e-790c-472a-a9b6-23e9c94e74b2",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "c07f7f9e-790c-472a-a9b6-23e9c94e74b2",
+    "proof_status": "ACCEPTED"
+  },
+  "pruned_offline_steps": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_offline_steps",
+      "theorem_title": "Uniform bound for the actual pruned offline routine step count",
+      "preamble": "import Definitions.Def_APSP299791_Defs4\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_offline_steps (G : Light.Sec4.RatParams)\n    (C : ℝ) (hC : 0 ≤ C) (c0 k : ℕ) :\n    ∃ A : ℝ, ∀ N D : ℕ, ∀ tp tq : ℝ, ∀ w : ℕ,\n      Light.Sec4.CostsWithinP G C N D tp tq →\n        (Light.Sec4.tOffline32P c0 G N D w : ℝ) + (k : ℝ) ≤ A * (tp + (w : ℝ) * tq) := by sorry",
+      "natural_language_statement": "For every rational parameter record G, nonnegative cost constant C, and fixed setup constants c0,k, there is a uniform constant A such that CostsWithinP(G,C,N,D,Tp,Tq) implies tOffline32P(c0,G,N,D,w)+k <= A(Tp+w Tq) for every number w of queries. The natural step-count function includes preprocessing, parameter setup and the complete query loop. No additional asymptotic cost hypothesis is assumed.",
+      "source": "Reusable generic cost proof from the ACCEPTED TrulySubquadratic3SUM.exactTriangleUniform_9261_5000000 source, submission 45d9b962-dd72-4a1f-a54c-8186be3ae4ec, ThreeSumApsp/Pruned/CostsP.lean at source commit 27a2fa4bab32. Actual enumeration and time-function proof bodies are included; the existing proved enumeration/order statements are reused.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "777e0106-bdbf-463a-918a-c74d4af7aed3",
+          "name": "ThreeSumSharpTail.pruned_offline_steps"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "777e0106-bdbf-463a-918a-c74d4af7aed3",
+    "theorem_id": "12a2aa24-6365-42c3-8835-5550f7ef729e",
+    "job": {
+      "id": "777e0106-bdbf-463a-918a-c74d4af7aed3",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_offline_steps",
+      "theorem_title": "Uniform bound for the actual pruned offline routine step count",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_offline_steps (G : Light.Sec4.RatParams)\n    (C : ℝ) (hC : 0 ≤ C) (c0 k : ℕ) :\n    ∃ A : ℝ, ∀ N D : ℕ, ∀ tp tq : ℝ, ∀ w : ℕ,\n      Light.Sec4.CostsWithinP G C N D tp tq →\n        (Light.Sec4.tOffline32P c0 G N D w : ℝ) + (k : ℝ) ≤ A * (tp + (w : ℝ) * tq) := by sorry",
+      "natural_language_statement": "For every rational parameter record G, nonnegative cost constant C, and fixed setup constants c0,k, there is a uniform constant A such that CostsWithinP(G,C,N,D,Tp,Tq) implies tOffline32P(c0,G,N,D,w)+k <= A(Tp+w Tq) for every number w of queries. The natural step-count function includes preprocessing, parameter setup and the complete query loop. No additional asymptotic cost hypothesis is assumed.",
+      "definitions": "import Definitions.Def_APSP299791_Defs4\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Reusable generic cost proof from the ACCEPTED TrulySubquadratic3SUM.exactTriangleUniform_9261_5000000 source, submission 45d9b962-dd72-4a1f-a54c-8186be3ae4ec, ThreeSumApsp/Pruned/CostsP.lean at source commit 27a2fa4bab32. Actual enumeration and time-function proof bodies are included; the existing proved enumeration/order statements are reused.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "12a2aa24-6365-42c3-8835-5550f7ef729e",
+      "created_at": "2026-10-13T18:36:56.551459+00:00",
+      "updated_at": "2026-10-13T18:37:19.584086+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "15e77869-3dcd-4b25-8a86-29d77e5b1b08",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "15e77869-3dcd-4b25-8a86-29d77e5b1b08",
+    "proof_status": "ACCEPTED"
+  },
+  "uniform_three_sum_transfer": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.uniform_three_sum_transfer",
+      "theorem_title": "Uniform Exact Triangle exponent transfers to integer 3SUM",
+      "preamble": "import Definitions.Def_APSPSource_PaperStatements\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_ThreeSumSource_ReductionClaims",
+      "formal_statement": "theorem ThreeSumSharpTail.uniform_three_sum_transfer (δ : ℝ) (r : ℚ) (e : ℕ)\n    (hδ : δ ≤ 1) (hr : 2 - δ / 2 < (r : ℝ))\n    (hu : ThreeSumApsp.Claim.ExactTriangleUniform Light.lightModel δ e) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "For any real saving delta<=1, rational r>2-delta/2, and natural logarithmic degree e, a uniform Exact Triangle solver in the actual light model implies EndStatement.ThreeSum.SolvedInTime r. The conclusion includes the original word-RAM finite-program and all-sufficient-word-width semantics. The five existing proved reduction and realization interfaces are actual dependencies.",
+      "source": "Generic reduction and asymptotic proof bodies extracted from ACCEPTED TrulySubquadratic3SUM.threeSum_1999074, submission 7d7091ea-6717-4422-b336-026472ef8a11; the numerical specialization is excluded. Composes CH20 and VW13 Theorem 4.3 with the actual light-model realization and shared EndStatement interface.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "05f489a9-5311-469f-a4ba-16e4fea49f1d",
+          "name": "ThreeSumSharpTail.uniform_three_sum_transfer"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "05f489a9-5311-469f-a4ba-16e4fea49f1d",
+    "theorem_id": "87e1ae72-5579-4a7e-b1a8-501649499458",
+    "job": {
+      "id": "05f489a9-5311-469f-a4ba-16e4fea49f1d",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.uniform_three_sum_transfer",
+      "theorem_title": "Uniform Exact Triangle exponent transfers to integer 3SUM",
+      "formal_statement": "theorem ThreeSumSharpTail.uniform_three_sum_transfer (δ : ℝ) (r : ℚ) (e : ℕ)\n    (hδ : δ ≤ 1) (hr : 2 - δ / 2 < (r : ℝ))\n    (hu : ThreeSumApsp.Claim.ExactTriangleUniform Light.lightModel δ e) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "For any real saving delta<=1, rational r>2-delta/2, and natural logarithmic degree e, a uniform Exact Triangle solver in the actual light model implies EndStatement.ThreeSum.SolvedInTime r. The conclusion includes the original word-RAM finite-program and all-sufficient-word-width semantics. The five existing proved reduction and realization interfaces are actual dependencies.",
+      "definitions": "import Definitions.Def_APSPSource_PaperStatements\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_ThreeSumSource_ReductionClaims",
+      "source": "Generic reduction and asymptotic proof bodies extracted from ACCEPTED TrulySubquadratic3SUM.threeSum_1999074, submission 7d7091ea-6717-4422-b336-026472ef8a11; the numerical specialization is excluded. Composes CH20 and VW13 Theorem 4.3 with the actual light-model realization and shared EndStatement interface.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "87e1ae72-5579-4a7e-b1a8-501649499458",
+      "created_at": "2026-10-13T18:52:07.574982+00:00",
+      "updated_at": "2026-10-13T18:54:01.829785+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "48c7ce78-8c45-44e0-b1d9-ae2595267ec7",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "48c7ce78-8c45-44e0-b1d9-ae2595267ec7",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_call_balance": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_call_balance",
+      "theorem_title": "Full dimension host call factors preserve the desired saving",
+      "preamble": "import Mathlib\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_call_balance (D n g s : ℝ)\n    (hD : 1 ≤ D) (_hn : 1 ≤ n) (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : D ^ (s / 2) ≤ g) (hgHi : g ≤ 2 * D ^ (s / 2))\n    (hbuild : D ^ (1 + s) ≤ n) :\n    g / D ^ s ≤ 2 * D ^ (-s / 2) ∧\n    g * D ^ (1 / 2 - s) / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g * D ≤ 2 * n * D ^ (-s / 2) ∧\n    1 / g ≤ D ^ (-s / 2) := by sorry",
+      "natural_language_statement": "If D,n>=1, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), and D^(1+s)<=n, then the full dimension preprocessing, query, overhead, construction and scan factors are bounded respectively by 2D^(-s/2), 2D^(-s/2), 2D^(-s/2), 2nD^(-s/2), and D^(-s/2). This is an elementary real-power balance lemma, without any additional program or runtime assumption.",
+      "source": "Derived auxiliary algebraic bounds for Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis, Sections 3-4, composed with the full-D Theorem 17 host.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "cc874668-3559-42af-9e6c-b3ff23128fa4",
+          "name": "ThreeSumSharpTail.full_d_call_balance"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "cc874668-3559-42af-9e6c-b3ff23128fa4",
+    "theorem_id": "bc896139-6061-43b1-8210-c82908eab334",
+    "job": {
+      "id": "cc874668-3559-42af-9e6c-b3ff23128fa4",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_call_balance",
+      "theorem_title": "Full dimension host call factors preserve the desired saving",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_call_balance (D n g s : ℝ)\n    (hD : 1 ≤ D) (_hn : 1 ≤ n) (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : D ^ (s / 2) ≤ g) (hgHi : g ≤ 2 * D ^ (s / 2))\n    (hbuild : D ^ (1 + s) ≤ n) :\n    g / D ^ s ≤ 2 * D ^ (-s / 2) ∧\n    g * D ^ (1 / 2 - s) / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g * D ≤ 2 * n * D ^ (-s / 2) ∧\n    1 / g ≤ D ^ (-s / 2) := by sorry",
+      "natural_language_statement": "If D,n>=1, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), and D^(1+s)<=n, then the full dimension preprocessing, query, overhead, construction and scan factors are bounded respectively by 2D^(-s/2), 2D^(-s/2), 2D^(-s/2), 2nD^(-s/2), and D^(-s/2). This is an elementary real-power balance lemma, without any additional program or runtime assumption.",
+      "definitions": "import Mathlib\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Derived auxiliary algebraic bounds for Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis, Sections 3-4, composed with the full-D Theorem 17 host.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "bc896139-6061-43b1-8210-c82908eab334",
+      "created_at": "2026-10-13T18:52:08.511763+00:00",
+      "updated_at": "2026-10-13T18:52:18.767281+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "31ec78a9-611f-4cd8-8aed-e502f4a1eb4f",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "31ec78a9-611f-4cd8-8aed-e502f4a1eb4f",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_call_total": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_call_total",
+      "theorem_title": "All full dimension oracle calls have the desired saving",
+      "preamble": "import Mathlib\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_balance\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_call_total (n D g s C C' t w : ℝ)\n    (hD : 1 ≤ D) (hn : 1 ≤ n) (hs : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : D ^ (s / 2) ≤ g) (hgHi : g ≤ 2 * D ^ (s / 2))\n    (hbuild : D ^ (1 + s) ≤ n) (hC : 0 ≤ C) (hC' : 0 ≤ C')\n    (_hw0 : 0 ≤ w) (hw : w ≤ n ^ 2 / Real.sqrt D)\n    (ht : t ≤ C *\n      (n ^ 2 * (Real.log D + 1) ^ 2 / D ^ s +\n        w * D ^ (1 / 2 - s) * (Real.log D + 1) + n * D + w + 1)) :\n    4 * n * g * (t + C' * n ^ 2 / Real.sqrt D) ≤\n      (64 * C + 8 * C') *\n        (n ^ 3 * D ^ (-s / 2) * (Real.log D + 1) ^ 2) := by sorry",
+      "natural_language_statement": "Under the full-D parameter bounds and D^(1+s)<=n, a call with preprocessing n^2(log D+1)^2/D^s, query time D^(1/2-s)(log D+1), and nD+w+1 overhead, with w<=n^2/sqrt(D), has total 4ng call-and-answer-reading cost at most (64C+8Cprime)n^3 D^(-s/2)(log D+1)^2. Both cost constants are nonnegative and all loop overheads are counted.",
+      "source": "Derived elementary full-D runtime inequality for Xu, same manuscript, Sections 3-4; uses the proved full_d_call_balance.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "82bbb00d-2792-4a7e-840e-abb9b9a15e83",
+          "name": "ThreeSumSharpTail.full_d_call_total"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "82bbb00d-2792-4a7e-840e-abb9b9a15e83",
+    "theorem_id": "6ea522e3-51f4-495c-a590-edd3b31d37e7",
+    "job": {
+      "id": "82bbb00d-2792-4a7e-840e-abb9b9a15e83",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_call_total",
+      "theorem_title": "All full dimension oracle calls have the desired saving",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_call_total (n D g s C C' t w : ℝ)\n    (hD : 1 ≤ D) (hn : 1 ≤ n) (hs : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : D ^ (s / 2) ≤ g) (hgHi : g ≤ 2 * D ^ (s / 2))\n    (hbuild : D ^ (1 + s) ≤ n) (hC : 0 ≤ C) (hC' : 0 ≤ C')\n    (_hw0 : 0 ≤ w) (hw : w ≤ n ^ 2 / Real.sqrt D)\n    (ht : t ≤ C *\n      (n ^ 2 * (Real.log D + 1) ^ 2 / D ^ s +\n        w * D ^ (1 / 2 - s) * (Real.log D + 1) + n * D + w + 1)) :\n    4 * n * g * (t + C' * n ^ 2 / Real.sqrt D) ≤\n      (64 * C + 8 * C') *\n        (n ^ 3 * D ^ (-s / 2) * (Real.log D + 1) ^ 2) := by sorry",
+      "natural_language_statement": "Under the full-D parameter bounds and D^(1+s)<=n, a call with preprocessing n^2(log D+1)^2/D^s, query time D^(1/2-s)(log D+1), and nD+w+1 overhead, with w<=n^2/sqrt(D), has total 4ng call-and-answer-reading cost at most (64C+8Cprime)n^3 D^(-s/2)(log D+1)^2. Both cost constants are nonnegative and all loop overheads are counted.",
+      "definitions": "import Mathlib\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_balance\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "Derived elementary full-D runtime inequality for Xu, same manuscript, Sections 3-4; uses the proved full_d_call_balance.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "6ea522e3-51f4-495c-a590-edd3b31d37e7",
+      "created_at": "2026-10-13T19:10:51.53806+00:00",
+      "updated_at": "2026-10-13T19:11:16.900097+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "a6c3eb9a-5e6b-437d-b5f7-656e3d01b4a8",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "a6c3eb9a-5e6b-437d-b5f7-656e3d01b4a8",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_extra_total": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_extra_total",
+      "theorem_title": "Full dimension scan, prime and construction costs preserve the saving",
+      "preamble": "import Definitions.Def_APSPSource_ThreeSumApsp_Sec3_Parameters\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_balance\nimport Mathlib\nopen ThreeSumApsp",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_extra_total (n D g : ℕ) (a s κ C : ℝ)\n    (hn : 3 ≤ n) (hD : 1 ≤ D) (hDa : (D : ℝ) ≤ (n : ℝ) ^ a)\n    (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : (D : ℝ) ^ (s / 2) ≤ g) (hgHi : (g : ℝ) ≤ 2 * (D : ℝ) ^ (s / 2))\n    (hbuild : a * (1 + s) ≤ 1)\n    (hprime : Real.logb 2 7 + 3 * a / 2 ≤ 3 - a * s / 2)\n    (hκ : 1 ≤ κ) (hC : 0 ≤ C) :\n    C * (termScans n g κ + termPrime strassen n D + termBuild n D g) ≤\n      4 * C * (κ * ((n : ℝ) ^ 3 * (D : ℝ) ^ (-s / 2) * Real.log n ^ 2)) := by sorry",
+      "natural_language_statement": "For n>=3, 1<=D<=n^a, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), a(1+s)<=1 and log_2(7)+3a/2<=3-as/2, the actual scan, prime-selection and instance-construction time functions of the full-D host are bounded by 4C kappa n^3 D^(-s/2) log^2 n whenever C>=0 and kappa>=1.",
+      "source": "Derived bound for the actual termScans, termPrime and termBuild functions in the pinned full-D Theorem 17 interface. The certificate strict prime/build margins imply its hypotheses.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "0cf0e4a8-d188-4865-aec2-66c908581394",
+          "name": "ThreeSumSharpTail.full_d_extra_total"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "0cf0e4a8-d188-4865-aec2-66c908581394",
+    "theorem_id": "82d81272-5461-43d6-a2ad-99bbc5f46c95",
+    "job": {
+      "id": "0cf0e4a8-d188-4865-aec2-66c908581394",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_extra_total",
+      "theorem_title": "Full dimension scan, prime and construction costs preserve the saving",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_extra_total (n D g : ℕ) (a s κ C : ℝ)\n    (hn : 3 ≤ n) (hD : 1 ≤ D) (hDa : (D : ℝ) ≤ (n : ℝ) ^ a)\n    (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : (D : ℝ) ^ (s / 2) ≤ g) (hgHi : (g : ℝ) ≤ 2 * (D : ℝ) ^ (s / 2))\n    (hbuild : a * (1 + s) ≤ 1)\n    (hprime : Real.logb 2 7 + 3 * a / 2 ≤ 3 - a * s / 2)\n    (hκ : 1 ≤ κ) (hC : 0 ≤ C) :\n    C * (termScans n g κ + termPrime strassen n D + termBuild n D g) ≤\n      4 * C * (κ * ((n : ℝ) ^ 3 * (D : ℝ) ^ (-s / 2) * Real.log n ^ 2)) := by sorry",
+      "natural_language_statement": "For n>=3, 1<=D<=n^a, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), a(1+s)<=1 and log_2(7)+3a/2<=3-as/2, the actual scan, prime-selection and instance-construction time functions of the full-D host are bounded by 4C kappa n^3 D^(-s/2) log^2 n whenever C>=0 and kappa>=1.",
+      "definitions": "import Definitions.Def_APSPSource_ThreeSumApsp_Sec3_Parameters\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_balance\nimport Mathlib\nopen ThreeSumApsp",
+      "source": "Derived bound for the actual termScans, termPrime and termBuild functions in the pinned full-D Theorem 17 interface. The certificate strict prime/build margins imply its hypotheses.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "82d81272-5461-43d6-a2ad-99bbc5f46c95",
+      "created_at": "2026-10-13T19:10:52.431952+00:00",
+      "updated_at": "2026-10-13T19:11:20.555984+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "ec958595-b630-4f22-9c93-4929400c9b32",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "ec958595-b630-4f22-9c93-4929400c9b32",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_parameter_host": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_parameter_host",
+      "theorem_title": "Full dimension Exact Triangle host for arbitrary rational power parameters",
+      "preamble": "import Definitions.Def_APSP299791_Defs5",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_parameter_host (a b c e : ℕ) (hb : 1 ≤ b) (he : 1 ≤ e)\n    (hab : a ≤ b) (hce : 2 * c ≤ e) :\n    ThreeSumApsp.Claim.Theorem_17 Light.lightModel ThreeSumApsp.strassen\n      (fun n => ThreeSumApsp.paramDr a b n)\n      (fun n => ThreeSumApsp.paramGr c e (ThreeSumApsp.paramDr a b n)) ∧\n      (∀ n, ThreeSumApsp.paramDr a b n = ⌊(n : ℝ) ^ ((a : ℝ) / b)⌋₊) ∧\n      (∀ D, 1 ≤ D → ThreeSumApsp.paramGr c e D = ⌈(D : ℝ) ^ ((c : ℝ) / e)⌉₊) := by sorry",
+      "natural_language_statement": "For natural a,b,c,e with b,e>=1, a<=b and 2c<=e, the actual light-model full dimension host satisfies Theorem 17 for D(n)=floor(n^(a/b)) and g(n)=ceil(D(n)^(c/e)). The theorem also supplies these exact floor and ceiling identities. The host is assembled from finite rational-parameter routines, actual Exact Triangle program correctness, and polynomial word, cell and depth needs. No middle-dimension or fixed-parameter result is assumed.",
+      "source": "Generic assembly and parameter-procedure proofs from the accepted full-D Exact Triangle and claim_aeUniform_mid source snapshots; uses the existing Proved et17_spec and obeysBound17_hostTime interfaces, while excluding the fixed numerical conclusions.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "17c3412d-db42-449e-abe4-002429a91fa0",
+          "name": "ThreeSumSharpTail.full_d_parameter_host"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "17c3412d-db42-449e-abe4-002429a91fa0",
+    "theorem_id": "ae24ddcb-1040-45db-98cb-67eb67701653",
+    "job": {
+      "id": "17c3412d-db42-449e-abe4-002429a91fa0",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_parameter_host",
+      "theorem_title": "Full dimension Exact Triangle host for arbitrary rational power parameters",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_parameter_host (a b c e : ℕ) (hb : 1 ≤ b) (he : 1 ≤ e)\n    (hab : a ≤ b) (hce : 2 * c ≤ e) :\n    ThreeSumApsp.Claim.Theorem_17 Light.lightModel ThreeSumApsp.strassen\n      (fun n => ThreeSumApsp.paramDr a b n)\n      (fun n => ThreeSumApsp.paramGr c e (ThreeSumApsp.paramDr a b n)) ∧\n      (∀ n, ThreeSumApsp.paramDr a b n = ⌊(n : ℝ) ^ ((a : ℝ) / b)⌋₊) ∧\n      (∀ D, 1 ≤ D → ThreeSumApsp.paramGr c e D = ⌈(D : ℝ) ^ ((c : ℝ) / e)⌉₊) := by sorry",
+      "natural_language_statement": "For natural a,b,c,e with b,e>=1, a<=b and 2c<=e, the actual light-model full dimension host satisfies Theorem 17 for D(n)=floor(n^(a/b)) and g(n)=ceil(D(n)^(c/e)). The theorem also supplies these exact floor and ceiling identities. The host is assembled from finite rational-parameter routines, actual Exact Triangle program correctness, and polynomial word, cell and depth needs. No middle-dimension or fixed-parameter result is assumed.",
+      "definitions": "import Definitions.Def_APSP299791_Defs5",
+      "source": "Generic assembly and parameter-procedure proofs from the accepted full-D Exact Triangle and claim_aeUniform_mid source snapshots; uses the existing Proved et17_spec and obeysBound17_hostTime interfaces, while excluding the fixed numerical conclusions.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "ae24ddcb-1040-45db-98cb-67eb67701653",
+      "created_at": "2026-10-13T19:10:53.352027+00:00",
+      "updated_at": "2026-10-13T19:11:18.000421+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "b465eeec-7c94-467e-9cdc-21f9e339cb6d",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "b465eeec-7c94-467e-9cdc-21f9e339cb6d",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_explicit_time": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_explicit_time",
+      "theorem_title": "Generic full dimension costs give the explicit Exact Triangle exponent",
+      "preamble": "import Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_total\nimport Theorems.Thm_ThreeSumSharpTail_full_d_extra_total\nimport Mathlib\nopen ThreeSumApsp Filter",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_explicit_time (M : DetTimeModel) (a s : ℝ) (D g : ℕ → ℕ)\n    (ha0 : 0 < a) (ha1 : a ≤ 1) (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hDfloor : ∀ n, D n = ⌊(n : ℝ) ^ a⌋₊)\n    (hgceil : ∀ n, 1 ≤ D n → g n = ⌈(D n : ℝ) ^ (s / 2)⌉₊)\n    (hprime : Real.logb 2 7 + 3 * a / 2 ≤ 3 - a * s / 2)\n    (hbuild : a * (1 + s) ≤ 1)\n    (h17 : Claim.Theorem_17 M strassen D g)\n    (hlop : ∃ (C : ℝ) (Td : ℕ → ℕ → ℕ → ℝ), 0 ≤ C ∧ M.lopDetect Td ∧\n      ∀ n d w : ℕ, 1 ≤ d → (d : ℝ) ≤ (n : ℝ) ^ a →\n        Td n d w ≤ C * ((n : ℝ) ^ 2 * (Real.log d + 1) ^ 2 / (d : ℝ) ^ s +\n          (w : ℝ) * (d : ℝ) ^ (1 / 2 - s) * (Real.log d + 1) + (n : ℝ) * d + w + 1)) :\n    ∃ n₀, Claim.Theorem_19_explicitAt M (a * s / 2) 2 n₀ := by sorry",
+      "natural_language_statement": "Let 0<a<=1, 0<=s<=1/2, D(n)=floor(n^a), g(n)=ceil(D(n)^(s/2)), and suppose the actual model has the full-D Theorem 17 host and Lop detection with preprocessing n^2(log D+1)^2/D^s, query D^(1/2-s)(log D+1), and nD+w+1 overhead on D<=n^a. If a(1+s)<=1 and log_2(7)+3a/2<=3-as/2, then one actual Exact Triangle solver has time O(kappa n^(3-as/2) log^2 n) from some fixed size onward, uniformly in kappa>=1 and input weight magnitude u<=n^kappa.",
+      "source": "Generic full-D Theorem 19 deduction for Xu, same manuscript, Sections 3-4. Includes floor/ceiling effects and all host terms; reuses the proved full-D call and extra-cost bounds.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "00d9f4e0-84a0-4e7f-b453-e79185d5f37d",
+          "name": "ThreeSumSharpTail.full_d_explicit_time"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "00d9f4e0-84a0-4e7f-b453-e79185d5f37d",
+    "theorem_id": "b7b75205-3d84-4d1e-8313-846ecda2467d",
+    "job": {
+      "id": "00d9f4e0-84a0-4e7f-b453-e79185d5f37d",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_explicit_time",
+      "theorem_title": "Generic full dimension costs give the explicit Exact Triangle exponent",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_explicit_time (M : DetTimeModel) (a s : ℝ) (D g : ℕ → ℕ)\n    (ha0 : 0 < a) (ha1 : a ≤ 1) (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hDfloor : ∀ n, D n = ⌊(n : ℝ) ^ a⌋₊)\n    (hgceil : ∀ n, 1 ≤ D n → g n = ⌈(D n : ℝ) ^ (s / 2)⌉₊)\n    (hprime : Real.logb 2 7 + 3 * a / 2 ≤ 3 - a * s / 2)\n    (hbuild : a * (1 + s) ≤ 1)\n    (h17 : Claim.Theorem_17 M strassen D g)\n    (hlop : ∃ (C : ℝ) (Td : ℕ → ℕ → ℕ → ℝ), 0 ≤ C ∧ M.lopDetect Td ∧\n      ∀ n d w : ℕ, 1 ≤ d → (d : ℝ) ≤ (n : ℝ) ^ a →\n        Td n d w ≤ C * ((n : ℝ) ^ 2 * (Real.log d + 1) ^ 2 / (d : ℝ) ^ s +\n          (w : ℝ) * (d : ℝ) ^ (1 / 2 - s) * (Real.log d + 1) + (n : ℝ) * d + w + 1)) :\n    ∃ n₀, Claim.Theorem_19_explicitAt M (a * s / 2) 2 n₀ := by sorry",
+      "natural_language_statement": "Let 0<a<=1, 0<=s<=1/2, D(n)=floor(n^a), g(n)=ceil(D(n)^(s/2)), and suppose the actual model has the full-D Theorem 17 host and Lop detection with preprocessing n^2(log D+1)^2/D^s, query D^(1/2-s)(log D+1), and nD+w+1 overhead on D<=n^a. If a(1+s)<=1 and log_2(7)+3a/2<=3-as/2, then one actual Exact Triangle solver has time O(kappa n^(3-as/2) log^2 n) from some fixed size onward, uniformly in kappa>=1 and input weight magnitude u<=n^kappa.",
+      "definitions": "import Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_total\nimport Theorems.Thm_ThreeSumSharpTail_full_d_extra_total\nimport Mathlib\nopen ThreeSumApsp Filter",
+      "source": "Generic full-D Theorem 19 deduction for Xu, same manuscript, Sections 3-4. Includes floor/ceiling effects and all host terms; reuses the proved full-D call and extra-cost bounds.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "b7b75205-3d84-4d1e-8313-846ecda2467d",
+      "created_at": "2026-10-13T19:24:31.070821+00:00",
+      "updated_at": "2026-10-13T19:25:23.960252+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "fb5f8d00-c360-4baf-b18b-4678342b5700",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "fb5f8d00-c360-4baf-b18b-4678342b5700",
+    "proof_status": "ACCEPTED"
+  },
+  "rational_power_representation": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.rational_power_representation",
+      "theorem_title": "Finite exponent data and an exact integer-power regime test",
+      "preamble": "import Mathlib",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_power_representation (a s : ℚ) (ha0 : 0 < a) (ha1 : a < 1)\n    (hs0 : 0 < s) (hsHalf : s < 1 / 2) :\n    ∃ A B c e : ℕ, 1 ≤ B ∧ 1 ≤ e ∧ A ≤ B ∧ 2 * c ≤ e ∧\n      (A : ℝ) / B = (a : ℝ) ∧ (c : ℝ) / e = (s : ℝ) / 2 ∧\n      ∀ N D : ℕ, 1 ≤ N → 1 ≤ D →\n        ((D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) ↔ D ^ B ≤ N ^ A) := by sorry",
+      "natural_language_statement": "For rational 0<a<1 and 0<s<1/2 there are natural A,B,c,e with positive denominators, A<=B, 2c<=e, A/B=a and c/e=s/2. For every N,D>=1, D<=N^a holds exactly when D^B<=N^A. This gives finite integer exponent data both for the host parameters and for an exact program branch, without numerical approximation.",
+      "source": "Elementary rational-arithmetic and real-power interface for the finite full-D program realization of the sharp-tail certificate.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "7eb29874-44c0-4047-9a32-9b0fd7f8f348",
+          "name": "ThreeSumSharpTail.rational_power_representation"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "7eb29874-44c0-4047-9a32-9b0fd7f8f348",
+    "theorem_id": "ef54131f-d900-4e4a-976a-4a0d5a5fbe32",
+    "job": {
+      "id": "7eb29874-44c0-4047-9a32-9b0fd7f8f348",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.rational_power_representation",
+      "theorem_title": "Finite exponent data and an exact integer-power regime test",
+      "formal_statement": "theorem ThreeSumSharpTail.rational_power_representation (a s : ℚ) (ha0 : 0 < a) (ha1 : a < 1)\n    (hs0 : 0 < s) (hsHalf : s < 1 / 2) :\n    ∃ A B c e : ℕ, 1 ≤ B ∧ 1 ≤ e ∧ A ≤ B ∧ 2 * c ≤ e ∧\n      (A : ℝ) / B = (a : ℝ) ∧ (c : ℝ) / e = (s : ℝ) / 2 ∧\n      ∀ N D : ℕ, 1 ≤ N → 1 ≤ D →\n        ((D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) ↔ D ^ B ≤ N ^ A) := by sorry",
+      "natural_language_statement": "For rational 0<a<1 and 0<s<1/2 there are natural A,B,c,e with positive denominators, A<=B, 2c<=e, A/B=a and c/e=s/2. For every N,D>=1, D<=N^a holds exactly when D^B<=N^A. This gives finite integer exponent data both for the host parameters and for an exact program branch, without numerical approximation.",
+      "definitions": "import Mathlib",
+      "source": "Elementary rational-arithmetic and real-power interface for the finite full-D program realization of the sharp-tail certificate.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "ef54131f-d900-4e4a-976a-4a0d5a5fbe32",
+      "created_at": "2026-10-13T19:24:31.918553+00:00",
+      "updated_at": "2026-10-13T19:24:42.833771+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "f0112faa-c165-4c4c-a22c-da3083fc8b78",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "f0112faa-c165-4c4c-a22c-da3083fc8b78",
+    "proof_status": "ACCEPTED"
+  },
+  "full_d_uniformize": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.full_d_uniformize",
+      "theorem_title": "Thresholded full dimension Exact Triangle time extends to every size",
+      "preamble": "import Definitions.Def_APSP299791_Defs5",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_uniformize (δ : ℝ) (e n₀ : ℕ)\n    (hδ0 : 0 ≤ δ) (hδ1 : δ ≤ 1)\n    (hex : ThreeSumApsp.Claim.Theorem_19_explicitAt Light.lightModel δ e n₀) :\n    ThreeSumApsp.Claim.ExactTriangleUniform Light.lightModel δ e := by sorry",
+      "natural_language_statement": "For any 0<=delta<=1, natural logarithmic degree and threshold, an actual light-model ExplicitAt solver implies ExactTriangleUniform with the same saving and logarithmic degree. A finite choice program selects the new solver for large sizes and an existing correct solver for bounded small sizes, preserving native polynomial resources and all-size correctness.",
+      "source": "Generic ChooseBySize and monotone-time assembly from accepted Exact Triangle source. The small-size solver is used only on a fixed bounded domain; the large-size exponent comes from the supplied new ExplicitAt proof.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "32901ce8-819a-4b7c-832e-074aeb8fc3ce",
+          "name": "ThreeSumSharpTail.full_d_uniformize"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "32901ce8-819a-4b7c-832e-074aeb8fc3ce",
+    "theorem_id": "c66b236f-cbfe-4988-b4a1-70cb9d1d65cc",
+    "job": {
+      "id": "32901ce8-819a-4b7c-832e-074aeb8fc3ce",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.full_d_uniformize",
+      "theorem_title": "Thresholded full dimension Exact Triangle time extends to every size",
+      "formal_statement": "theorem ThreeSumSharpTail.full_d_uniformize (δ : ℝ) (e n₀ : ℕ)\n    (hδ0 : 0 ≤ δ) (hδ1 : δ ≤ 1)\n    (hex : ThreeSumApsp.Claim.Theorem_19_explicitAt Light.lightModel δ e n₀) :\n    ThreeSumApsp.Claim.ExactTriangleUniform Light.lightModel δ e := by sorry",
+      "natural_language_statement": "For any 0<=delta<=1, natural logarithmic degree and threshold, an actual light-model ExplicitAt solver implies ExactTriangleUniform with the same saving and logarithmic degree. A finite choice program selects the new solver for large sizes and an existing correct solver for bounded small sizes, preserving native polynomial resources and all-size correctness.",
+      "definitions": "import Definitions.Def_APSP299791_Defs5",
+      "source": "Generic ChooseBySize and monotone-time assembly from accepted Exact Triangle source. The small-size solver is used only on a fixed bounded domain; the large-size exponent comes from the supplied new ExplicitAt proof.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "c66b236f-cbfe-4988-b4a1-70cb9d1d65cc",
+      "created_at": "2026-10-13T20:29:47.961708+00:00",
+      "updated_at": "2026-10-13T20:30:13.610742+00:00"
+    },
+    "proof_response": {
+      "submission_id": "bce75b4a-1650-4a2f-9256-7ace6ff7f8cc",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_status": "ACCEPTED",
+    "proof_attempts": [
+      {
+        "id": "e00cc694-047b-4721-9788-a8679ef8d7bc",
+        "theorem_id": "c66b236f-cbfe-4988-b4a1-70cb9d1d65cc",
+        "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "status": "FAILED",
+        "error_message": "Submission rejected by the soundness guard:\nline 3994: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4004: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4010: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4018: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4023: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4036: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4043: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4048: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4053: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4057: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4068: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4073: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4085: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4091: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4104: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4113: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4131: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4137: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4149: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions\nline 4154: `macro` — custom syntax/elaborator registration — metaprogramming is not supported in submissions",
+        "file_path": "c66b236f-cbfe-4988-b4a1-70cb9d1d65cc/418b0711-62a5-416a-ba5d-876ae8758fe3/e00cc694-047b-4721-9788-a8679ef8d7bc.lean",
+        "created_at": "2026-10-13T20:32:12.23213+00:00",
+        "updated_at": "2026-10-13T20:32:14.411703+00:00"
+      }
+    ],
+    "proof_request_status": "RECEIVED",
+    "proof_submission_id": "bce75b4a-1650-4a2f-9256-7ace6ff7f8cc"
+  },
+  "pruned_program_solves": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_program_solves",
+      "theorem_title": "Polynomial native resources for the arbitrary-parameter pruned program",
+      "preamble": "import Definitions.Def_APSP299791_Defs5",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_program_solves (G : Light.Sec4.RatParams) :\n    ∃ need : List ℕ → Light.Need, Light.PolyNeedN need ∧\n      ∀ (R : Light.Program) (lim : Light.Limits) (fr d : ℕ)\n        (x : Light.ThinInst) (μ : ℕ → ℤ) (C tp tq : ℝ),\n        0 ≤ C → Light.lopCountTask.Pre x μ fr →\n        Light.Sec4.CostsWithinP G C x.N x.D tp tq →\n        (need [x.N, x.D, x.w, x.U]).Ok lim fr d →\n        Light.Meets lim (Light.Sec4.program31P G ++ R) Light.Sec4.Proc.offline32 (d + 1)\n          [x.N, x.D, x.w, x.U, x.x, x.y, x.wi, x.wj, x.out, fr] μ\n          (Light.Sec4.tOffline32P Light.Sec4.cShared30 G x.N x.D x.w)\n          (fun r μ' => Light.lopCountTask.Post x μ fr r μ') := by sorry",
+      "natural_language_statement": "For every rational parameter record G there is a polynomial native Need which, under CostsWithinP and the native Lop-count task precondition, guarantees the actual offline32 Meets specification of program31P G. The conclusion holds for every appended program, free pointer and sufficiently large word, space and depth limits. The runtime is the original natural tOffline32P step count.",
+      "source": "Generic resource and execution assembly from the accepted pruned program source. Uses actual Hyp30 below/top bounds and the proved generic program correctness interface; no fixed numerical parameter specialization is assumed.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "4688a88a-4f8b-4d26-acb5-0687e9d6b41b",
+          "name": "ThreeSumSharpTail.pruned_program_solves"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "4688a88a-4f8b-4d26-acb5-0687e9d6b41b",
+    "theorem_id": "8777def1-6656-496d-a34f-e968a7f53458",
+    "job": {
+      "id": "4688a88a-4f8b-4d26-acb5-0687e9d6b41b",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_program_solves",
+      "theorem_title": "Polynomial native resources for the arbitrary-parameter pruned program",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_program_solves (G : Light.Sec4.RatParams) :\n    ∃ need : List ℕ → Light.Need, Light.PolyNeedN need ∧\n      ∀ (R : Light.Program) (lim : Light.Limits) (fr d : ℕ)\n        (x : Light.ThinInst) (μ : ℕ → ℤ) (C tp tq : ℝ),\n        0 ≤ C → Light.lopCountTask.Pre x μ fr →\n        Light.Sec4.CostsWithinP G C x.N x.D tp tq →\n        (need [x.N, x.D, x.w, x.U]).Ok lim fr d →\n        Light.Meets lim (Light.Sec4.program31P G ++ R) Light.Sec4.Proc.offline32 (d + 1)\n          [x.N, x.D, x.w, x.U, x.x, x.y, x.wi, x.wj, x.out, fr] μ\n          (Light.Sec4.tOffline32P Light.Sec4.cShared30 G x.N x.D x.w)\n          (fun r μ' => Light.lopCountTask.Post x μ fr r μ') := by sorry",
+      "natural_language_statement": "For every rational parameter record G there is a polynomial native Need which, under CostsWithinP and the native Lop-count task precondition, guarantees the actual offline32 Meets specification of program31P G. The conclusion holds for every appended program, free pointer and sufficiently large word, space and depth limits. The runtime is the original natural tOffline32P step count.",
+      "definitions": "import Definitions.Def_APSP299791_Defs5",
+      "source": "Generic resource and execution assembly from the accepted pruned program source. Uses actual Hyp30 below/top bounds and the proved generic program correctness interface; no fixed numerical parameter specialization is assumed.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "8777def1-6656-496d-a34f-e968a7f53458",
+      "created_at": "2026-10-13T20:56:16.255656+00:00",
+      "updated_at": "2026-10-13T20:56:39.048783+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "2fa28e8d-0fae-44e3-a2e4-e366fea0a0d5",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "2fa28e8d-0fae-44e3-a2e4-e366fea0a0d5",
+    "proof_status": "ACCEPTED"
+  },
+  "pruned_lop_detection": {
+    "status": "PUBLISHED",
+    "payload": {
+      "theorem_name": "ThreeSumSharpTail.pruned_lop_detection",
+      "theorem_title": "A native global Lop detector from finite sharp-tail cost parameters",
+      "preamble": "import Definitions.Def_APSP299791_Defs5",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_lop_detection\n    (G : Light.Sec4.RatParams) (a s : ℚ)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hsHalf : s < 1 / 2)\n    (hcost : ∃ C : ℝ, 0 ≤ C ∧ ∀ N D : ℕ,\n      1 ≤ D → (D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      Light.Sec4.CostsWithinP G C N D\n        ((N : ℝ) ^ 2 * (Real.log D + 1) ^ 2 / (D : ℝ) ^ (s : ℝ))\n        ((D : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log D + 1))) :\n    ∃ (C : ℝ) (Td : ℕ → ℕ → ℕ → ℝ), 0 ≤ C ∧ Light.lightModel.lopDetect Td ∧\n      ∀ n d w : ℕ, 1 ≤ d → (d : ℝ) ≤ (n : ℝ) ^ (a : ℝ) →\n        Td n d w ≤ C * ((n : ℝ) ^ 2 * (Real.log d + 1) ^ 2 / (d : ℝ) ^ (s : ℝ) +\n          (w : ℝ) * (d : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log d + 1) + (n : ℝ) * d + w + 1) := by sorry",
+      "natural_language_statement": "Given a finite RatParams record and rational 0<a<1, 0<s<1/2 with CostsWithinP on every 1<=D<=N^a, the actual light model has a global Lop detector. On that regime its time is bounded by a uniform nonnegative constant times preprocessing, all query costs, and ND+w+1 overhead. Outside the regime an actual finite program branch supplies correctness through the brute routine.",
+      "source": "Native ThinInst/TaskN program assembly using an exact integer-power regime test, the arbitrary-parameter pruned resource theorem and actual count-to-detection execution semantics.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ]
+    },
+    "response": {
+      "jobs": [
+        {
+          "job_id": "9d97d794-71f0-41f9-ae40-d461356a782e",
+          "name": "ThreeSumSharpTail.pruned_lop_detection"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "job_id": "9d97d794-71f0-41f9-ae40-d461356a782e",
+    "theorem_id": "5bec0f68-6b2f-4745-923a-e3684afb4554",
+    "job": {
+      "id": "9d97d794-71f0-41f9-ae40-d461356a782e",
+      "kind": "problem",
+      "theorem_name": "ThreeSumSharpTail.pruned_lop_detection",
+      "theorem_title": "A native global Lop detector from finite sharp-tail cost parameters",
+      "formal_statement": "theorem ThreeSumSharpTail.pruned_lop_detection\n    (G : Light.Sec4.RatParams) (a s : ℚ)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hsHalf : s < 1 / 2)\n    (hcost : ∃ C : ℝ, 0 ≤ C ∧ ∀ N D : ℕ,\n      1 ≤ D → (D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      Light.Sec4.CostsWithinP G C N D\n        ((N : ℝ) ^ 2 * (Real.log D + 1) ^ 2 / (D : ℝ) ^ (s : ℝ))\n        ((D : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log D + 1))) :\n    ∃ (C : ℝ) (Td : ℕ → ℕ → ℕ → ℝ), 0 ≤ C ∧ Light.lightModel.lopDetect Td ∧\n      ∀ n d w : ℕ, 1 ≤ d → (d : ℝ) ≤ (n : ℝ) ^ (a : ℝ) →\n        Td n d w ≤ C * ((n : ℝ) ^ 2 * (Real.log d + 1) ^ 2 / (d : ℝ) ^ (s : ℝ) +\n          (w : ℝ) * (d : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log d + 1) + (n : ℝ) * d + w + 1) := by sorry",
+      "natural_language_statement": "Given a finite RatParams record and rational 0<a<1, 0<s<1/2 with CostsWithinP on every 1<=D<=N^a, the actual light model has a global Lop detector. On that regime its time is bounded by a uniform nonnegative constant times preprocessing, all query costs, and ND+w+1 overhead. Outside the regime an actual finite program branch supplies correctness through the brute routine.",
+      "definitions": "import Definitions.Def_APSP299791_Defs5",
+      "source": "Native ThinInst/TaskN program assembly using an exact integer-power regime test, the arbitrary-parameter pruned resource theorem and actual count-to-detection execution semantics.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "5bec0f68-6b2f-4745-923a-e3684afb4554",
+      "created_at": "2026-10-13T21:25:32.65099+00:00",
+      "updated_at": "2026-10-13T21:25:55.053234+00:00"
+    },
+    "proof_request_status": "RECEIVED",
+    "proof_response": {
+      "submission_id": "49135b57-ab3c-4e69-bd0b-28456716f7fb",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    },
+    "proof_submission_id": "49135b57-ab3c-4e69-bd0b-28456716f7fb",
+    "proof_status": "ACCEPTED"
+  }
+}

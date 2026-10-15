@@ -1,0 +1,10 @@
+theorem log_lcm_power_product_le {ι : Type*} (s : Finset ι) (T e : ι → ℕ) :
+    Real.log (∏ i ∈ s, (Nat.lcmUpto (T i) : ℝ) ^ e i) ≤
+      lcmConstant * ∑ i ∈ s, (e i : ℝ) * T i := by
+  rw [Real.log_prod (by intro i hi; exact pow_ne_zero _ (by exact_mod_cast Nat.lcmUpto_ne_zero (T i)))]
+  simp_rw [Real.log_pow]
+  rw [Finset.mul_sum]
+  apply Finset.sum_le_sum
+  intro i hi
+  have h := mul_le_mul_of_nonneg_left (log_lcmUpto_le (T i)) (Nat.cast_nonneg (e i) : (0 : ℝ) ≤ e i)
+  nlinarith only [h]

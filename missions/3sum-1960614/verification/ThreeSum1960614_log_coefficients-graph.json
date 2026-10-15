@@ -1,0 +1,447 @@
+{
+  "root_id": "79325a7a-1b88-453b-867d-581dbb95566f",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "23685129-7595-4605-accf-6de4710e077b",
+      "theorem_name": "ThreeSum1960614.integer_schedule",
+      "theorem_title": "Least integer quartic switch and uniform rounding bounds",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.integer_schedule (J s j : ℕ)\n    (hJ : 0 < J) (hs : 0 < s) (heven : Even s) (hj : j < J)\n    (hlevel : (j : ℝ) / J ≤ tau) :\n    ∃ q : ℕ, 0 < q ∧ q ≤ ((J - j) * s) / 2 ∧ clearedSwitch J s j q ∧\n      (∀ k < q, ¬ clearedSwitch J s j k) ∧\n      threshold ((j : ℝ) / J) ≤ phi ((q : ℝ) / ((J - j) * s)) ∧\n      phi ((q : ℝ) / ((J - j) * s)) <\n        threshold ((j : ℝ) / J) + 9 / ((J - j) * s) ∧\n      saving ≤ 2 * beta - (j : ℝ) / J +\n        (1 - (j : ℝ) / J) * gamma 232 ((q : ℝ) / ((J - j) * s)) ∧\n      (1 - (j : ℝ) / J) * entropy ((q : ℝ) / ((J - j) * s)) <\n        rho * (1 + v) + 9 * rho / (J * s) := by sorry",
+      "natural_language_statement": "For arbitrary positive natural block count $J$, positive even microblock size $s$, and level $0\\le j<J$ with $j/J\\le13/20$, let $r=(J-j)s$ and $\\mu=Js$. There exists a positive least integer $q\\le r/2$ satisfying the cleared integer comparison, and every smaller natural number fails it. This same $q$ satisfies $K\\le P(q/r)<K+9/r$ for $K=(v+j/J)/(1-j/J)$. It also satisfies $S\\le2b-j/J+(1-j/J)\\gamma_{232}(q/r)$ and $(1-j/J)H(q/r)<\\rho(1+v)+9\\rho/\\mu$. No divisibility of $J$ is needed for these per-level bounds; positivity and evenness make $r/2$ an integer and every real denominator nonzero.",
+      "created_at": "2026-10-14T05:08:34.601986+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 4.2–4.3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "theorem_name": "ThreeSum1960614_Analysis",
+      "theorem_title": "Entropy, quartic integer switch, twelve costs and fixed-expansion model",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines binary entropy in bits $H(t)$, $E_c=(c/2)H(1/c)$, $\\kappa_c=2cH(1/(2c))-cH(1/c)-1$, and $\\gamma_c(t)=cH(1/c)-cH((1-t)/c)$ for natural expansion $c$. The quartic is $P(t)=7.85174904t+0.72447023t^2+0.24044466t^3+0.12022459t^4$, with its polynomial derivative. The fixed rational parameters are $e=0.203889696$, $b=-0.062656016$, $S=0.193175570$, $\\theta=0.040409899$, $\\tau=13/20$, $\\rho=0.27905030$, and $u=0.17200068185091493$. The principal cost cap is $1.96061388$ and the campaign target is the rational $1.960614$.\n\nThe ledger lists all twelve source costs in their source order. `costs` instantiates them at the fixed parameters and $c=232$. The natural-number predicate `clearedSwitch` is the degree-four integer comparison of Section 4.2, with $v=S-2b=159243801/500000000$. `ModelFeasible` describes the relaxed fixed-expansion real cost model, including its whole-interval entropy inequality and all twelve charges. It is not a model of arbitrary 3SUM algorithms. Total logarithms, division and natural subtraction are unrestricted in these definitions; theorem hypotheses delimit the intended domains. The shared machine and decision-problem definitions are imported unchanged.",
+      "created_at": "2026-10-14T05:06:31.105618+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnoncomputable section\n\nnamespace ThreeSum1960614\n\nnoncomputable def entropy (t : ℝ) : ℝ := Real.binEntropy t / Real.log 2\nnoncomputable def E (c : ℕ) : ℝ := (c : ℝ) / 2 * entropy (1 / c)\nnoncomputable def kappa (c : ℕ) : ℝ :=\n  2 * c * entropy (1 / (2 * c)) - c * entropy (1 / c) - 1\nnoncomputable def gamma (c : ℕ) (t : ℝ) : ℝ :=\n  c * entropy (1 / c) - c * entropy ((1 - t) / c)\ndef phi (t : ℝ) : ℝ :=\n  (785174904 * t + 72447023 * t ^ 2 + 24044466 * t ^ 3 + 12022459 * t ^ 4) / 100000000\ndef phiDeriv (t : ℝ) : ℝ :=\n  (785174904 + 2 * 72447023 * t + 3 * 24044466 * t ^ 2 + 4 * 12022459 * t ^ 3) / 100000000\ndef epsilon : ℝ := 203889696 / 1000000000\ndef beta : ℝ := -(62656016 / 1000000000)\ndef saving : ℝ := 193175570 / 1000000000\ndef theta : ℝ := 40409899 / 1000000000\ndef tau : ℝ := 13 / 20\ndef rho : ℝ := 2790503 / 10000000\ndef tangentPoint : ℝ := 17200068185091493 / 100000000000000000\ndef principal : ℝ := 196061388 / 100000000\ndef target : ℚ := 1960614 / 1000000\ndef v : ℝ := saving - 2 * beta\ndef threshold (a : ℝ) : ℝ := (v + a) / (1 - a)\ndef ledger (e b S terminal ratio EE kk hh : ℝ) : List ℝ :=\n  [2 * e * EE,\n   1 + e * (EE - b),\n   2 - e * S,\n   2 - e * (1 / 2 + b - hh),\n   2 - e * (1 / 2 - b - kk - ratio * (1 + S - 2 * b)),\n   2 - e * (terminal - 1 / 2 - b - kk),\n   e * (8 / 5) * (EE + 1 / 2),\n   2 + e * (4 / 5 - (2 / 5) * EE - 2 * b),\n   1 + e * (1 / 2 - b),\n   2 - e * (EE + b),\n   2 - 2 * e * (EE + b), 1]\nnoncomputable def costs : List ℝ :=\n  ledger epsilon beta saving tau rho (E 232) (kappa 232) (entropy theta)\ndef clearedSwitch (J s j q : ℕ) : Prop :=\n  let r := (J - j) * s\n  500000000 * (J - j) *\n    (785174904 * q * r ^ 3 + 72447023 * q ^ 2 * r ^ 2 +\n     24044466 * q ^ 3 * r + 12022459 * q ^ 4) ≥\n    100000000 * (159243801 * J + 500000000 * j) * r ^ 4\nnoncomputable def ModelFeasible (c : ℕ) (e b S th terminal ratio R : ℝ) : Prop :=\n  0 < e ∧ e < 1 ∧ b < 0 ∧ 0 < S ∧\n  0 ≤ th ∧ th ≤ 1 / 2 ∧ 0 ≤ terminal ∧ terminal < 1 ∧\n  0 < ratio ∧ S - 2 * b ≤ gamma c th ∧\n  (∀ t ∈ Set.Icc (0 : ℝ) (1 / 2), entropy t ≤ ratio * (1 + gamma c t)) ∧\n  ∀ z ∈ ledger e b S terminal ratio (E c) (kappa c) (entropy th), z ≤ R\n\nend ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 1–5 and 7; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "5eadf13c-7877-4753-a08c-3cf8eba024a4",
+      "theorem_name": "ThreeSum1960614.quartic_geometry",
+      "theorem_title": "Quartic derivative and tangent geometry",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.quartic_geometry (t : ℝ) (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    0 < phiDeriv t ∧ phiDeriv t < 9 ∧\n    phi tangentPoint + (t - tangentPoint) * phiDeriv tangentPoint ≤ phi t  := by sorry",
+      "natural_language_statement": "For every real t in the closed interval [0,1/2], the exact expansion-232 quartic has derivative strictly between 0 and 9, and its tangent at the fixed rational point 0.17200068185091493 lies below it. Both endpoints are included. The explicit polynomial and derivative are supplied by the shared analytic definitions.",
+      "created_at": "2026-10-14T05:17:45.083499+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "79325a7a-1b88-453b-867d-581dbb95566f",
+      "theorem_name": "ThreeSum1960614.log_coefficients",
+      "theorem_title": "Exact logarithmic certificate for four switch coefficients",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.log_coefficients :\n    (693147180559945 / 10^15 : ℝ) ≤ Real.log 2 ∧\n    Real.log 2 ≤ (693147180559946 / 10^15 : ℝ) ∧\n    (785174904 / 100000000 : ℝ) * Real.log 2 < Real.log 231 ∧\n    (2 * 72447023 / 100000000 : ℝ) * Real.log 2 ≤ 1 + (1 / 231 : ℝ) ∧\n    (3 * 24044466 / 100000000 : ℝ) * Real.log 2 ≤ (1 - (1 / 231 : ℝ) ^ 2) / 2 ∧\n    (4 * 12022459 / 100000000 : ℝ) * Real.log 2 ≤ (1 + (1 / 231 : ℝ) ^ 3) / 3  := by sorry",
+      "natural_language_statement": "The real natural logarithm of 2 lies between 0.693147180559945 and 0.693147180559946. The four exact rational quartic coefficients obey their respective derivative-series bounds: a1 log(2)<log(231), 2 a2 log(2)<=1+1/231, 3 a3 log(2)<=(1-1/231^2)/2, and 4 a4 log(2)<=(1+1/231^3)/3. These are unconditional exact real inequalities.",
+      "created_at": "2026-10-14T05:17:48.869982+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "theorem_name": "ThreeSum1960614.quartic_switch_bounds",
+      "theorem_title": "Quartic switch validity on the full half interval",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.quartic_switch_bounds (t : ℝ)\n    (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    phi t ≤ gamma 232 t ∧ 0 < phiDeriv t ∧ phiDeriv t < 9 ∧\n    phi tangentPoint + (t - tangentPoint) * phiDeriv tangentPoint ≤ phi t := by sorry",
+      "natural_language_statement": "For every real $0\\le t\\le1/2$, the exact quartic satisfies $P(t)\\le\\gamma_{232}(t)$ and $0<P'(t)<9$. Its tangent at $u=0.17200068185091493$ lies below $P(t)$ throughout the same interval. Both endpoints are included; the conclusion concerns the whole continuum.",
+      "created_at": "2026-10-14T05:07:04.730278+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 2–3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "theorem_name": "ThreeSum1960614.uniform_entropy_bound",
+      "theorem_title": "A uniform entropy bound for the quartic switch",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.uniform_entropy_bound (t : ℝ)\n    (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    entropy t < rho * (1 + phi t) := by sorry",
+      "natural_language_statement": "For every $0\\le t\\le1/2$, including the entropy endpoints, $H(t)<0.27905030(1+P(t))$. The coefficient is exact and the statement covers the full interval, not a finite set of samples.",
+      "created_at": "2026-10-14T05:07:41.371477+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "d7521312-d5b4-4a10-9ef3-e1f391791b04",
+      "theorem_name": "ThreeSum1960614.cleared_switch_equivalence",
+      "theorem_title": "Integer quartic comparison is exactly the analytic threshold test",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.cleared_switch_equivalence (J s j q : ℕ) (hJ : 0 < J) (hs : 0 < s) (hj : j < J) :\n    clearedSwitch J s j q ↔\n      threshold ((j : ℝ) / J) ≤ phi ((q : ℝ) / ((J - j) * s))  := by sorry",
+      "natural_language_statement": "For arbitrary natural J,s,j,q with J>0, s>0 and j<J, the published clearedSwitch integer comparison holds if and only if P(q/((J-j)s)) is at least (v+j/J)/(1-j/J), with v=159243801/500000000 and the exact quartic P. There is no restriction on q beyond being a natural number. The positive-depth hypothesis identifies real subtraction with truncated natural subtraction and makes all cleared denominators positive.",
+      "created_at": "2026-10-14T06:39:25.379424+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.2, comparison (I); certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+      "theorem_name": "ThreeSum1960614.tangent_log_bounds",
+      "theorem_title": "Exact logarithmic bounds for the entropy supporting line",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.tangent_log_bounds :\n    -Real.log (1 - tangentPoint) / Real.log 2 < (272298515211 / 1000000000000 : ℝ) ∧\n    (-Real.log (1 - tangentPoint) - Real.log tangentPoint) / (2 * Real.log 2) <\n      (140590616299 / 100000000000 : ℝ)  := by sorry",
+      "natural_language_statement": "For the exact rational tangent point u=0.17200068185091493, the two real quantities -log(1-u)/log(2) and [-log(1-u)-log(u)]/[2 log(2)] are strictly below 0.272298515211 and 1.40590616299 respectively. These are the values at 0 and 1/2 of the binary-entropy tangent line, with all logarithms natural.",
+      "created_at": "2026-10-14T05:35:09.222154+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "theorem_name": "TrulySubcubicAPSP_SourceSpecification",
+      "theorem_title": "Source word-RAM and problem specifications",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines the concrete deterministic word RAM and the problem specifications used by the source formalization of truly subcubic APSP. The machine has signed finite-width words, arithmetic and memory instructions, conditional jumps, and accept/reject verdicts. Its input convention and step-count predicate specify what it means for one program to solve a problem uniformly over input sizes and sufficiently large logarithmic word widths.\n\nThe problem interfaces include Exact Triangle, min-plus matrix multiplication, and all-pairs shortest paths. APSP instances have no negative-weight closed walks; outputs encode reachability and attained minimum distances. The source's rational-power running-time predicate represents $O(n^r)$ using an integer inequality.\n\nThese declarations provide the original `EndStatement` namespace used by the checked algorithm proofs. They are specifications, with no assumed algorithm-correctness or running-time theorems.\n\nReferences:\n\n1. Josh Alman and Virginia Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs*, source formalization, `EndStatement.lean`.",
+      "created_at": "2026-10-06T05:58:53.088962+00:00",
+      "vote_count": 0,
+      "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\nmodule\n\n/-! Claims of the paper «Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs» (Josh\nAlman, Virginia Vassilevska Williams), about programs of a word RAM defined here. Imports nothing, proves nothing. -/\n\n@[expose] public section\n\nnamespace EndStatement\n\n/-- `i j k` name cells, `l` a position in the program, `[i]` is the word in cell `i`. The only constant is 1. -/\ninductive Instr where\n  | one (i : Int)             -- [i] := 1\n  | add (i j k : Int)         -- [i] := [j] + [k]\n  | sub (i j k : Int)         -- [i] := [j] - [k]\n  | mul (i j k : Int)         -- [i] := [j] * [k]\n  | load (i j : Int)          -- [i] := [[j]]\n  | store (i j : Int)         -- [[i]] := [j]\n  | bltz (i : Int) (l : Nat)  -- if [i] < 0, go to position l\n  | accept\n  | reject\n\n/-- The verdict and the final memory, if `P`, run from position `pc` on memory `m`, halts within `t` steps, the halting\nstep counted; past its end `P` rejects. Addresses are read signed; `bltz` jumps on a negative word; `write` runs on. -/\ndef exec {W : Nat} (P : List Instr) : (t pc : Nat) → (m : Int → BitVec W) → Option (Bool × (Int → BitVec W))\n  | 0, _, _ => none\n  | t + 1, pc, m =>\n    let write (i : Int) (v : BitVec W) := exec P t (pc + 1) fun x => if x = i then v else m x\n    match P.getD pc .reject with\n    | .one i => write i 1\n    | .add i j k => write i (m j + m k)\n    | .sub i j k => write i (m j - m k)\n    | .mul i j k => write i (m j * m k)\n    | .load i j => write i (m (m j).toInt)\n    | .store i j => write (m i).toInt (m j)\n    | .bltz i l => exec P t (if (m i).toInt < 0 then l else pc + 1) m\n    | .accept => some (true, m)\n    | .reject => some (false, m)\n\n/-- The memory at the start: `ws` in cells 0, 1, 2, …, and 0 in every other cell. -/\ndef loadWords (W : Nat) (ws : List Int) : Int → BitVec W :=\n  fun a => if a < 0 then 0 else BitVec.ofInt W (ws.getD a.toNat 0)\n\n/-- `T(n) = O(n^r)`, both sides raised to the power `r.den`: core Lean has no fractional powers. For `r = 1.9992 =\n2499/1250` it says `T(n)^1250 ≤ K n^2499`. -/\ndef BigO (T : Nat → Nat) (r : Rat) : Prop :=\n  ∃ K : Nat, ∀ n ≥ 2, T n ^ r.den ≤ K * n ^ r.num.toNat\n\n/-- `yes`: when to accept (always, if not given). `output`: a condition on the cells after the input, read as signed. -/\nstructure Problem where\n  Instance : Nat → Type\n  input {n : Nat} : Instance n → List Int\n  yes {n : Nat} : Instance n → Prop := fun _ => True\n  output {n : Nat} : Instance n → (Nat → Int) → Prop := fun _ _ => True\n\n/-- One run: with `n` in cell 0 and the input after it, `P` halts within `t` steps with the right verdict and output. -/\ndef Problem.SolvedBy (Q : Problem) {n : Nat} (x : Q.Instance n) (P : List Instr) (W t : Nat) : Prop :=\n  ∃ verdict m, exec P t 0 (loadWords W ((n : Int) :: Q.input x)) = some (verdict, m) ∧\n    (verdict = true ↔ Q.yes x) ∧ Q.output x fun a => (m (1 + (Q.input x).length + a : Nat)).toInt\n\n/-- Theorem 2: «a word RAM with O(log n)-bit words», «all numbers in the input are integers of absolute value\nn^O(1)»: for every `κ`, one `P`, `b`, `T` for all instances, correct at every `W ≥ b(⌊log₂ n⌋ + 1)`. -/\ndef Problem.SolvedInTime (Q : Problem) (r : Rat) : Prop :=\n  ∀ κ : Nat, ∃ (P : List Instr) (b : Nat) (T : Nat → Nat), BigO T r ∧\n    ∀ (n : Nat) (x : Q.Instance n), (∀ a ∈ Q.input x, a.natAbs ≤ n ^ κ) → ∀ W ≥ b * (Nat.log2 n + 1),\n      Q.SolvedBy x P W (T n)\n\ndef rowByRow {n : Nat} (w : Fin n → Fin n → Int) : List Int :=\n  (List.ofFn fun u => List.ofFn fun v => w u v).flatten\n\n/-- Section 3.2: «S(a, b, c) := w(a, b) + w(b, c) + w(a, c). A zero triangle is a triangle … with S(a, b, c) = 0». -/\ndef ExactTriangle : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (wAB, wBC, wAC) => rowByRow wAB ++ rowByRow wBC ++ rowByRow wAC\n  yes := fun (wAB, wBC, wAC) => ∃ a b c, wAB a b + wBC b c + wAC a c = 0\n\n/-- Theorem 19: «ε_T := 0.0017». -/\ndef ε_T : Rat := 0.0017\n\n/-- Theorem 19: «Exact Triangle … can be solved by a deterministic algorithm in … O(n^(3−ε_T)) time». -/\ndef Theorem_19 : Prop :=\n  ExactTriangle.SolvedInTime (3 - ε_T)\n\n/-- Section 1: «Given n numbers, decide whether three of them sum to 0». Three different positions. -/\ndef ThreeSum : Problem where\n  Instance n := Fin n → Int\n  input x := List.ofFn x\n  yes x := ∃ i j k, i ≠ j ∧ j ≠ k ∧ i ≠ k ∧ x i + x j + x k = 0\n\n/-- Theorem 22: «solve 3SUM on n integers of absolute value at most n^ν», in time «O(n^1.9992)». -/\ndef Theorem_22_3SUM : Prop :=\n  ThreeSum.SolvedInTime 1.9992\n\n/-- Output, row by row: entry `(i, j)` is the least of the sums `A i k + B k j`. -/\ndef MinPlusProduct : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (A, B) => rowByRow A ++ rowByRow B\n  output := fun {n} (A, B) out => ∀ i j : Fin n,\n    (∃ k, out (i.val * n + j.val) = A i k + B k j) ∧ ∀ k, out (i.val * n + j.val) ≤ A i k + B k j\n\n/-- Theorem 22: «the (min, +)-product of two n × n integer matrices», in time «O(n^2.99942)». -/\ndef Theorem_22_MinPlus : Prop :=\n  MinPlusProduct.SolvedInTime 2.99942\n\n/-- A path and its total weight; it may repeat vertices. -/\ninductive Path {n : Nat} (w : Fin n → Fin n → Option Int) : Fin n → Fin n → Int → Prop\n  | nil (i : Fin n) : Path w i i 0\n  | cons {i j k : Fin n} {d e : Int} : w i j = some d → Path w j k e → Path w i k (d + e)\n\n/-- Input: the 0/1 matrix of the edges, then the weights, with 0 for no edge. Output, two cells for each `(i, j)`: 1 if\nthere is a path, else 0; then the distance. -/\ndef APSP : Problem where\n  Instance n := {w : Fin n → Fin n → Option Int // ∀ i d, Path w i i d → 0 ≤ d}\n  input := fun ⟨w, _⟩ => rowByRow (fun i j => if (w i j).isSome then 1 else 0) ++ rowByRow fun i j => (w i j).getD 0\n  output := fun {n} ⟨w, _⟩ out => ∀ i j : Fin n,\n    let flag := out (2 * (i.val * n + j.val))\n    let dist := out (2 * (i.val * n + j.val) + 1)\n    (flag = 1 ∧ Path w i j dist ∧ ∀ e, Path w i j e → dist ≤ e) ∨ (flag = 0 ∧ ∀ e, ¬ Path w i j e)\n\n/-- Theorem 22: «APSP on directed n-vertex graphs … and no negative cycles», in time «O(n^2.99942)». -/\ndef Theorem_22_APSP : Prop :=\n  APSP.SolvedInTime 2.99942\n\n/-- `w i j u v`: weight between `u` in part `i` and `v` in part `j`. All `k²` blocks are input; only `i < j` counts. -/\ndef ZeroWeightKClique (k : Nat) : Problem where\n  Instance n := Fin k → Fin k → Fin n → Fin n → Int\n  input w := (List.ofFn fun i => (List.ofFn fun j => rowByRow (w i j)).flatten).flatten\n  yes {n} w := ∃ v : Fin k → Fin n,\n    (List.ofFn fun j => (List.ofFn fun i => if i < j then w i j (v i) (v j) else 0).sum).sum = 0\n\n/-- Corollary 39: «decide in O(n^(k−ε_T⌊k/3⌋)) time whether some k-clique … has total edge weight zero». -/\ndef Corollary_39_ZeroWeight : Prop :=\n  ∀ k ≥ 3, (ZeroWeightKClique k).SolvedInTime (k - ε_T * (k / 3 : Nat))\n\nend EndStatement\n",
+      "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L1-L139",
+      "tags": [
+        "algorithms",
+        "source-specification",
+        "truly-subcubic-apsp",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "98401c42-3a22-4105-8405-f9a760db57a4",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-06T07:22:20.258484+00:00"
+        },
+        {
+          "audit_id": "fdbc3952-7980-41be-b395-11d80ecde6e7",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-06T07:22:28.320861+00:00"
+        },
+        {
+          "audit_id": "3603a12c-33d7-4bb8-b2fc-b2f40c23bdc3",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-09T01:38:57.130988+00:00"
+        },
+        {
+          "audit_id": "fb3b6543-2ac0-407f-a0cb-7736ded2f141",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-13T19:38:11.918622+00:00"
+        },
+        {
+          "audit_id": "fc5812f8-4087-43cb-9535-79f6b1fcbc5b",
+          "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+          "reviewer_username": "Yuxuan Xu",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-13T20:30:08.35446+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-4183abd3-a474-4144-bc56-4c9437464abf",
+      "submission_id": "4183abd3-a474-4144-bc56-4c9437464abf",
+      "parent_theorem_id": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "For the exact quartic $P$ and $\\rho=0.27905030$, the proof establishes\n\n$$H(t)<\\rho(1+P(t))\\qquad(0\\le t\\le1/2).$$\n\nLet $u=0.17200068185091493$ and put\n\n$$A=-\\frac{\\log(1-u)}{\\log2},\\qquad\nB=\\frac{\\log(1-u)-\\log u}{\\log2}.$$\n\nConcavity of binary entropy gives the supporting line $H(t)\\le A+Bt$,\nincluding both entropy endpoints. The geometric child gives\n$P(t)\\ge P(u)+(t-u)P'(u)$ throughout the interval.\n\nThe logarithmic child certifies $A<0.272298515211$ and\n$A+B/2<1.40590616299$. Exact rational computations show that these two\ncaps are strictly below the values at 0 and 1/2 of\n$\\rho[1+P(u)+(t-u)P'(u)]$. Both compared functions are affine in $t$.\nFor $t<1/2$, add their endpoint inequalities with the nonnegative weights\n$1-2t$ and $2t$; the first weight is positive, so the sum is strict. At\n$t=1/2$, use the strict right-endpoint inequality directly.\n\nCombining the entropy upper supporting line, the strict affine comparison,\nand the polynomial lower supporting line proves the conclusion for every\nreal point in the closed interval. The proof imports and actually uses\nthe accepted quartic geometry and tangent-logarithm children; it does not\nreplace the continuum by a sampled grid.\n",
+      "created_at": "2026-10-14T06:20:57.405989+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-4472d78e-20c0-4a4b-b951-fac4ce81e6f5",
+      "submission_id": "4472d78e-20c0-4a4b-b951-fac4ce81e6f5",
+      "parent_theorem_id": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "For every $0\\le t\\le1/2$, the expansion-232 quartic satisfies\n\n$$P(t)\\le\\gamma_{232}(t),\\qquad 0<P'(t)<9,\\qquad\nP(u)+(t-u)P'(u)\\le P(t),$$\n\nwhere $u=0.17200068185091493$. The geometric child supplies the last three\ninequalities. The remaining minorant follows by comparing derivatives.\n\nThe entropy difference has numerator\n\n$$G(t)=(1-t)\\log(1-t)+(231+t)\\log(231+t)-231\\log231,$$\n\nand therefore $\\gamma_{232}(t)=G(t)/\\log2$ and\n$G'(t)=\\log(231+t)-\\log(1-t)$. Both logarithmic arguments remain positive\non the entire closed interval.\n\nFor $x\\ge0$, differentiation of the remainder gives\n\n$$\\log(1+x)\\ge x-x^2/2+x^3/3-x^4/4.$$\n\nThe derivative of the difference is $x^4/(1+x)\\ge0$ and the difference\nvanishes at zero. The positive logarithmic series gives, for $0\\le t<1$,\n\n$$-\\log(1-t)\\ge t+t^2/2+t^3/3+t^4/4.$$\n\nApply the first bound at $x=t/231$. After adding these inequalities and\n$\\log231$, the coefficients through degree three are precisely the\nderivative-series coefficients bounded by the accepted logarithmic child.\nThe fourth-degree remainder is nonnegative because $1-231^{-4}>0$.\nThus $\\log2\\,P'(t)\\le G'(t)$.\n\nThe function $G(t)-\\log2\\,P(t)$ is continuous on the closed interval, has\nnonnegative derivative on its interior, and is zero at the left endpoint.\nIt is nonnegative everywhere on that interval. Dividing by the positive\n$\\log2$ proves the desired minorant, including both endpoints. The argument\nuses the two accepted geometric/logarithmic children through actual theorem\napplications, yielding reusable dependency edges.\n",
+      "created_at": "2026-10-14T05:29:20.483199+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "submission_id": "906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "parent_theorem_id": "23685129-7595-4605-accf-6de4710e077b",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "Let $J,s,j$ be natural numbers with $J>0$, $s>0$ even, $j<J$, and\n$j/J\\le13/20$. Put $r=(J-j)s$, $\\mu=Js$, $a=j/J$, and\n$K=(v+a)/(1-a)$. The proof constructs a least positive integer $q\\le r/2$\nsatisfying the exact cleared comparison and proves\n\n$$K\\le P(q/r)<K+9/r,$$\n\n$$S\\le2b-a+(1-a)\\gamma_{232}(q/r),$$\n\n$$ (1-a)H(q/r)<\\rho(1+v)+9\\rho/\\mu.$$\n\nPositivity makes all denominators nonzero. Since $s$ is even, $r/2$ is an\ninteger. The rational terminal comparison implies $K<P(1/2)$ for every\nallowed level, and the accepted clearing-equivalence child therefore shows\nthat $r/2$ satisfies the integer predicate. The least natural witness is at\nmost that bound; the zero predicate is false because its right-hand side is\nstrictly positive. Every smaller natural number is rejected.\n\nIn particular, the preceding point $(q-1)/r$ is below threshold. Both\nconsecutive points lie in $[0,1/2]$. The quartic child and the mean-value\ninequality give a strict increment below $9/r$, proving the enclosure.\nThe same child supplies $P\\le\\gamma_{232}$, so multiplying the lower\nthreshold comparison by $1-a$ gives the box-saving inequality.\n\nThe uniform-entropy child bounds $H(q/r)$ by $\\rho(1+P(q/r))$.\nMultiplying the upper enclosure by the positive $(1-a)\\rho$ and using\n$r=(1-a)\\mu$ gives the last inequality. The allowance $9\\rho/\\mu$ is\nindependent of the level. This is a universal proof for all admissible\nnatural schedules, and uses an exactly decidable integer predicate; no\nfloating-point or logarithm evaluation is used for choosing $q$.\n",
+      "created_at": "2026-10-14T06:44:35.576965+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-9f5769d8-6a63-4e46-8790-ac9974ca1a99",
+      "submission_id": "9f5769d8-6a63-4e46-8790-ac9974ca1a99",
+      "parent_theorem_id": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "Positive finite atanh sums bound log(2(1-u)) and log(8u) from below. Range reduction expresses these as log(2)+log(1-u) and 3 log(2)+log(u). The already proved log(2) upper bound and two exact rational comparisons give the two strict endpoint bounds.",
+      "created_at": "2026-10-14T05:37:25.143299+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "target": "sketch-906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "kind": "sketch"
+    },
+    {
+      "source": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "target": "sketch-906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "kind": "sketch"
+    },
+    {
+      "source": "d7521312-d5b4-4a10-9ef3-e1f391791b04",
+      "target": "sketch-906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-906cdc01-11bb-4e43-a6b5-d2ba8a25e6b0",
+      "target": "23685129-7595-4605-accf-6de4710e077b",
+      "kind": "sketch"
+    },
+    {
+      "source": "5eadf13c-7877-4753-a08c-3cf8eba024a4",
+      "target": "sketch-4472d78e-20c0-4a4b-b951-fac4ce81e6f5",
+      "kind": "sketch"
+    },
+    {
+      "source": "79325a7a-1b88-453b-867d-581dbb95566f",
+      "target": "sketch-4472d78e-20c0-4a4b-b951-fac4ce81e6f5",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-4472d78e-20c0-4a4b-b951-fac4ce81e6f5",
+      "target": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "kind": "sketch"
+    },
+    {
+      "source": "5eadf13c-7877-4753-a08c-3cf8eba024a4",
+      "target": "sketch-4183abd3-a474-4144-bc56-4c9437464abf",
+      "kind": "sketch"
+    },
+    {
+      "source": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+      "target": "sketch-4183abd3-a474-4144-bc56-4c9437464abf",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-4183abd3-a474-4144-bc56-4c9437464abf",
+      "target": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "kind": "sketch"
+    },
+    {
+      "source": "79325a7a-1b88-453b-867d-581dbb95566f",
+      "target": "sketch-9f5769d8-6a63-4e46-8790-ac9974ca1a99",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-9f5769d8-6a63-4e46-8790-ac9974ca1a99",
+      "target": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+      "kind": "sketch"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "23685129-7595-4605-accf-6de4710e077b",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "23685129-7595-4605-accf-6de4710e077b",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "79325a7a-1b88-453b-867d-581dbb95566f",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "5eadf13c-7877-4753-a08c-3cf8eba024a4",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "d7521312-d5b4-4a10-9ef3-e1f391791b04",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

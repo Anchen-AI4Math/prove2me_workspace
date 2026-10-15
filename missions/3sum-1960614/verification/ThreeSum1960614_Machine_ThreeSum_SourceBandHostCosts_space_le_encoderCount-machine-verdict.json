@@ -1,0 +1,15 @@
+{
+  "id": "2d103131-79a9-455a-9a9b-bc999c8d0211",
+  "theorem_id": "d68d7cb5-de92-4e48-8934-bf60687710e3",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:28:38.718643+00:00",
+  "updated_at": "2026-10-15T07:31:49.229217+00:00",
+  "explanation": "Keeps the absolute base affine while bounding the constructed source payload. The encoder-count term controls persistent banks while the remaining explicit logarithms cover reusable arithmetic scratch.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceBandHostCosts.space_le_encoderCount",
+  "theorem_title": "Source-host storage is charged to encoder count",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandHostCosts.space_le_encoderCount {base NL NR n p U D : \u2115} (hn : 0 < n) (hNL : NL \u2264 n) (hNR : NR \u2264 n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBandHost.space base NL NR (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) p\n      (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) U D \u2264\n      base+(29+_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)+_root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.storageFactor n)*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n+\n        Nat.log 2 (_root_.ThreeSum1960614.Machine.ThreeSum.TrimScales.scheduleCount n+1)+\n        max (Nat.log 2 (U+1)+2) (Nat.log 2 (p+D+1)+2)+16 := by sorry",
+  "theorem_natural_language_statement": "Let $n>0$, original source lengths $N_L,N_R\\le n$, base address $b$, and natural controls $p,U,D$. Using the executable band width and local parameters, the exact source-host space is at most $$b+(29+J+F(n))E(n)+\\lfloor\\log_2(S(n)+1)\\rfloor+\\max(\\lfloor\\log_2(U+1)\\rfloor+2,\\lfloor\\log_2(p+D+1)\\rfloor+2)+16,$$ where $J$ is block count, $F$ storage factor, $E$ encoder count, and $S$ schedule count.\n\nKeeps the absolute base affine while bounding the constructed source payload. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

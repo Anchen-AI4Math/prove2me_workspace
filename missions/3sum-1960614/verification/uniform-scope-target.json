@@ -1,0 +1,28 @@
+{
+  "theorem_id": "bdba84e8-71fd-4c5d-88ce-382200fb1450",
+  "theorem_name": "ThreeSum1960614.uniform_entropy_bound",
+  "theorem_title": "A uniform entropy bound for the quartic switch",
+  "status": "Open",
+  "formal_statement": "theorem ThreeSum1960614.uniform_entropy_bound (t : ℝ)\n    (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    entropy t < rho * (1 + phi t) := by sorry",
+  "natural_language_statement": "For every $0\\le t\\le1/2$, including the entropy endpoints, $H(t)<0.27905030(1+P(t))$. The coefficient is exact and the statement covers the full interval, not a finite set of samples.",
+  "created_at": "2026-10-14T05:07:41.371477+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "# Read-back of ThreeSum1960614.uniform_entropy_bound\n\nFor every real number $t$ such that $0 \\le t \\le \\frac12$, the strict inequality\n$$\n\\frac{-t\\log t-(1-t)\\log(1-t)}{\\log 2}\n<\n\\frac{2790503}{10000000}\n\\left(\n1+\\frac{785174904t+72447023t^2+24044466t^3+12022459t^4}{100000000}\n\\right)\n$$\nholds, where $\\log$ is the real natural logarithm and its total-function value at zero is $\\log 0=0$, so the term $0\\log 0$ is zero. The only hypothesis on $t$ is the inclusive interval condition $0 \\le t \\le \\frac12$; both endpoints are covered. At $t=0$ the assertion is $0<\\frac{2790503}{10000000}$. At $t=\\frac12$ the assertion is $1<\\frac{2790503}{10000000}\\left(1+\\frac{6631298715}{1600000000}\\right)$.\n\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:07:43.961663+00:00"
+  }
+}

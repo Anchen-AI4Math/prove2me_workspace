@@ -1,0 +1,182 @@
+{
+  "quartic_geometry": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.quartic_geometry",
+      "theorem_title": "Quartic derivative and tangent geometry",
+      "formal_statement": "theorem ThreeSum1960614.quartic_geometry (t : ℝ) (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    0 < phiDeriv t ∧ phiDeriv t < 9 ∧\n    phi tangentPoint + (t - tangentPoint) * phiDeriv tangentPoint ≤ phi t  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "For every real t in the closed interval [0,1/2], the exact expansion-232 quartic has derivative strictly between 0 and 9, and its tangent at the fixed rational point 0.17200068185091493 lies below it. Both endpoints are included. The explicit polynomial and derivative are supplied by the shared analytic definitions.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "59748fb3-740a-43f4-b288-1da628b72614",
+    "explanation": "The positive coefficients bound the derivative by its value at the right endpoint. Subtracting the tangent factors as (t-u)^2 times a polynomial with nonnegative coefficients for t,u>=0, establishing the tangent bound.",
+    "theorem_id": "5eadf13c-7877-4753-a08c-3cf8eba024a4",
+    "submission_id": "b590591d-9ce5-45b8-9435-60f9b6a35fd1"
+  },
+  "log_coefficients": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.log_coefficients",
+      "theorem_title": "Exact logarithmic certificate for four switch coefficients",
+      "formal_statement": "theorem ThreeSum1960614.log_coefficients :\n    (693147180559945 / 10^15 : ℝ) ≤ Real.log 2 ∧\n    Real.log 2 ≤ (693147180559946 / 10^15 : ℝ) ∧\n    (785174904 / 100000000 : ℝ) * Real.log 2 < Real.log 231 ∧\n    (2 * 72447023 / 100000000 : ℝ) * Real.log 2 ≤ 1 + (1 / 231 : ℝ) ∧\n    (3 * 24044466 / 100000000 : ℝ) * Real.log 2 ≤ (1 - (1 / 231 : ℝ) ^ 2) / 2 ∧\n    (4 * 12022459 / 100000000 : ℝ) * Real.log 2 ≤ (1 + (1 / 231 : ℝ) ^ 3) / 3  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "The real natural logarithm of 2 lies between 0.693147180559945 and 0.693147180559946. The four exact rational quartic coefficients obey their respective derivative-series bounds: a1 log(2)<log(231), 2 a2 log(2)<=1+1/231, 3 a3 log(2)<=(1-1/231^2)/2, and 4 a4 log(2)<=(1+1/231^3)/3. These are unconditional exact real inequalities.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "3cc1c442-cc66-4751-a123-627eefcb9729",
+    "explanation": "Finite atanh Taylor sums and rigorous remainder bounds enclose log(2). Range reduction log(231)=7 log(2)+log(231/128) gives the linear coefficient bound using a second rational atanh point. The remaining three coefficient comparisons follow from the proved log(2) upper bound and exact rational arithmetic.",
+    "theorem_id": "79325a7a-1b88-453b-867d-581dbb95566f",
+    "submission_id": "9d2086b1-71ae-4420-852e-01a1d1811742"
+  },
+  "tangent_log_bounds": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.tangent_log_bounds",
+      "theorem_title": "Exact logarithmic bounds for the entropy supporting line",
+      "formal_statement": "theorem ThreeSum1960614.tangent_log_bounds :\n    -Real.log (1 - tangentPoint) / Real.log 2 < (272298515211 / 1000000000000 : ℝ) ∧\n    (-Real.log (1 - tangentPoint) - Real.log tangentPoint) / (2 * Real.log 2) <\n      (140590616299 / 100000000000 : ℝ)  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "For the exact rational tangent point u=0.17200068185091493, the two real quantities -log(1-u)/log(2) and [-log(1-u)-log(u)]/[2 log(2)] are strictly below 0.272298515211 and 1.40590616299 respectively. These are the values at 0 and 1/2 of the binary-entropy tangent line, with all logarithms natural.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 2–3; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "2b6050ab-529e-41e2-98a5-d354b676dc08",
+    "explanation": "Positive finite atanh sums bound log(2(1-u)) and log(8u) from below. Range reduction expresses these as log(2)+log(1-u) and 3 log(2)+log(u). The already proved log(2) upper bound and two exact rational comparisons give the two strict endpoint bounds.",
+    "theorem_id": "eb511634-dac7-447e-9fa7-9177b75c8cba",
+    "submission_id": "9f5769d8-6a63-4e46-8790-ac9974ca1a99"
+  },
+  "cleared_switch_equivalence": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.cleared_switch_equivalence",
+      "theorem_title": "Integer quartic comparison is exactly the analytic threshold test",
+      "formal_statement": "theorem ThreeSum1960614.cleared_switch_equivalence (J s j q : ℕ) (hJ : 0 < J) (hs : 0 < s) (hj : j < J) :\n    clearedSwitch J s j q ↔\n      threshold ((j : ℝ) / J) ≤ phi ((q : ℝ) / ((J - j) * s))  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "For arbitrary natural J,s,j,q with J>0, s>0 and j<J, the published clearedSwitch integer comparison holds if and only if P(q/((J-j)s)) is at least (v+j/J)/(1-j/J), with v=159243801/500000000 and the exact quartic P. There is no restriction on q beyond being a natural number. The positive-depth hypothesis identifies real subtraction with truncated natural subtraction and makes all cleared denominators positive.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.2, comparison (I); certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "6363dfed-1f53-4ec1-8e7b-62aa9bc19f92",
+    "explanation": "Rewrite the threshold as (159243801 J+500000000 j)/(500000000(J-j)) and the quartic as its integer degree-four numerator divided by 100000000 r^4, where r=(J-j)s. Both denominators are positive. Cross multiplication therefore preserves the inequality. The natural-to-real cast of the resulting comparison is precisely the published integer predicate. No approximation, floating-point step or logarithm oracle is involved.",
+    "theorem_id": "d7521312-d5b4-4a10-9ef3-e1f391791b04",
+    "submission_id": "2c3fd5c1-739d-4a83-8b9a-74d7c5138590"
+  },
+  "high_precision_logs": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.high_precision_logs",
+      "theorem_title": "Six logarithmic intervals with exact 22-digit rational endpoints",
+      "formal_statement": "theorem ThreeSum1960614.high_precision_logs :\n    ((6931471805599453094172 / 10 ^ 22 : ℝ) ≤ Real.log 2 ∧\n      Real.log 2 ≤ 6931471805599453094173 / 10 ^ 22) ∧\n    ((5947071077466927895143 / 10 ^ 22 : ℝ) ≤ Real.log (29 / 16) ∧\n      Real.log (29 / 16) ≤ 5947071077466927895144 / 10 ^ 22) ∧\n    ((43196611445164148724 / 10 ^ 22 : ℝ) ≤ Real.log (232 / 231) ∧\n      Real.log (232 / 231) ≤ 43196611445164148725 / 10 ^ 22) ∧\n    ((21574981400211907723 / 10 ^ 22 : ℝ) ≤ Real.log (464 / 463) ∧\n      Real.log (464 / 463) ≤ 21574981400211907724 / 10 ^ 22) ∧\n    ((2570554035235070921259 / 10 ^ 22 : ℝ) ≤ Real.log (32 * theta) ∧\n      Real.log (32 * theta) ≤ 2570554035235070921260 / 10 ^ 22) ∧\n    ((6518981167335747474116 / 10 ^ 22 : ℝ) ≤ Real.log (2 * (1 - theta)) ∧\n      Real.log (2 * (1 - theta)) ≤ 6518981167335747474117 / 10 ^ 22)  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "Certifies both endpoints of six exact rational intervals for the natural logarithms of 2, 29/16, 232/231, 464/463, 32 theta, and 2(1-theta), where theta=0.040409899 is the published fixed parameter. Every interval has denominator 10^22 and width 10^(-22). The endpoints are exactly those displayed in the formal statement; no rounding or numerical oracle is a hypothesis.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "c8fe6f86-f796-4322-8698-f8ed3b04ca23",
+    "explanation": "For each positive rational argument y, use z=(y-1)/(y+1), which lies in [0,1). Mathlib bounds log(y) between a finite positive atanh sum and that sum plus a rigorous geometric remainder. Exact rational arithmetic places these endpoints inside the displayed rational interval. The term counts are 26, 24, 5, 5, 18, and 26 respectively. These bounds support the E, kappa, initial-entropy and cost certificates.",
+    "theorem_id": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+    "submission_id": "c980546c-efb4-4e0e-b983-36cd843fbc70"
+  },
+  "encoding_parameter_bounds": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.encoding_parameter_bounds",
+      "theorem_title": "Strict expansion-232 encoding and collision intervals",
+      "formal_statement": "theorem ThreeSum1960614.encoding_parameter_bounds :\n    4648781151243719 / 1000000000000000 < E 232 ∧\n    E 232 < 4648781151243720 / 1000000000000000 ∧\n    1557987216578 / 1000000000000000 < kappa 232 ∧\n    kappa 232 < 1557987216579 / 1000000000000000  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "The fixed expansion-232 entropy constants obey 4.648781151243719 < E(232) < 4.648781151243720 and 0.001557987216578 < kappa(232) < 0.001557987216579, with E and kappa defined in the shared analytic bundle. All four displayed endpoints are exact rationals with denominator 10^15.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "3f10b963-a78c-4641-8634-3556e3887d6c",
+    "explanation": "Expand binary entropy and range-reduce log(232) to 7 log(2)+log(29/16). This gives E=(7 log(2)+log(29/16)+231 log(232/231))/(2 log(2)) and kappa=(463 log(464/463)-231 log(232/231))/log(2). The published 22-digit logarithm intervals and exact sign-directed rational comparisons prove the four strict inequalities.",
+    "theorem_id": "a9706156-d570-4deb-9673-92dc5a793f2a",
+    "submission_id": "03e9ef10-def9-4e26-a45c-499b29ed4a7b"
+  },
+  "initial_entropy_bound": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.initial_entropy_bound",
+      "theorem_title": "Strict initial-threshold binary entropy cap",
+      "formal_statement": "theorem ThreeSum1960614.initial_entropy_bound : entropy theta < (244168414687344 / 1000000000000000 : ℝ)  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "natural_language_statement": "At the exact fixed threshold theta=0.040409899, the normalized binary entropy H(theta) is strictly less than 0.244168414687344. The threshold and cap are exact rationals; no approximate evaluation is assumed.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "20856a3b-682c-408c-b77a-59dd15a57e8c",
+    "explanation": "Expand H(theta)=-[theta log(theta)+(1-theta)log(1-theta)]/log(2). Range reduction uses log(theta)=log(32 theta)-5 log(2) and log(1-theta)=log(2(1-theta))-log(2). The published logarithm upper bound for log(2), lower bounds for both reduced arguments, and an exact rational comparison prove the cap.",
+    "theorem_id": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+    "submission_id": "25a37a8a-a911-4afd-87f5-81ce12d8f7bd"
+  },
+  "executable_scale_rounding": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.executable_scale_rounding",
+      "theorem_title": "Exact finite rounding of the executable block and band schedules",
+      "formal_statement": "theorem ThreeSum1960614.executable_scale_rounding (m : ℕ) :\n    2 ∣ microSize m ∧ 20 ∣ blockCount m ∧\n    (0 < microSize m →\n      0 ≤ epsilon * (m : ℝ) - totalSize m ∧\n      epsilon * (m : ℝ) - totalSize m < 20 * microSize m) ∧\n    0 ≤ (-beta) * (totalSize m : ℝ) - bandExponent m ∧\n    (-beta) * (totalSize m : ℝ) - bandExponent m < 1 ∧\n    0 < bandDivisor m  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule",
+      "natural_language_statement": "For every natural bit parameter $m$, the executable even microblock size $s(m)$ is divisible by two and the block count $J(m)$ by twenty. Whenever $s(m)>0$, the exact total size obeys $0\\le e m-\\mu(m)<20s(m)$. For every $m$, including the zero-size fallback, the natural band exponent $a(m)$ obeys $0\\le(-b)\\mu(m)-a(m)<1$, and the divisor $2^{a(m)}$ is positive. Here $e=0.203889696$ and $b=-0.062656016$ are the fixed exact rational parameters. These are finite statements about actual natural-number quotients, without asymptotic hypotheses.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "cf423a1d-bb81-4af1-a40f-815ec9610ade",
+    "explanation": "The divisibility properties follow directly from the two multiplicative constructors. For blocks, Euclidean division of 203889696 m by 20000000000 s gives a remainder between zero and that divisor. Casting and dividing by 10^9 yields the stated error interval. Euclidean division of 62656016 mu by 10^9 gives the band-exponent interval, including mu=0. The band divisor is a positive power of two.",
+    "theorem_id": "bb028ec9-fde8-44b5-95aa-5450b036437f",
+    "submission_id": "e257a586-5513-44f9-b364-9756720bf87d"
+  },
+  "executable_scale_limits": {
+    "payload": {
+      "theorem_name": "ThreeSum1960614.executable_scale_limits",
+      "theorem_title": "Limits of the actual rounded microblock, total size and band divisor",
+      "formal_statement": "theorem ThreeSum1960614.executable_scale_limits :\n    Tendsto (fun m : ℕ => (microSize m : ℝ) ^ 2 / m) atTop (𝓝 0) ∧\n    Tendsto (fun m : ℕ => (totalSize m : ℝ) / m) atTop (𝓝 epsilon) ∧\n    Tendsto (fun m : ℕ => (bandExponent m : ℝ) / m) atTop (𝓝 ((-beta) * epsilon)) ∧\n    Tendsto (fun m : ℕ => Real.log (bandDivisor m : ℝ) / m) atTop\n      (𝓝 (Real.log 2 * ((-beta) * epsilon)))  := by sorry",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule\nopen Filter\nopen scoped Topology",
+      "natural_language_statement": "As the natural bit parameter $m$ tends to infinity, the executable schedules obey $s(m)^2/m\\to0$, $\\mu(m)/m\\to e$, $a(m)/m\\to(-b)e$, and $\\log(2^{a(m)})/m\\to\\log(2)(-b)e$. Here $s,\\mu,a$ are the actual integer cube-root and quotient schedules, $e=0.203889696$ and $b=-0.062656016$ are exact rationals, and logarithms are natural. The limits incorporate both integer rounding errors. They describe the changed schedule and its overhead scale, while the complete 3SUM program still requires separate operational contracts.",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+    },
+    "job_id": "294fe956-029b-41d3-bd5a-b13dc5460ce9",
+    "explanation": "The even microblock grows to infinity and its cube is at most m, so s^2/m is bounded by 1/s and tends to zero. Hence s/m also tends to zero. The published finite block rounding interval squeezes mu/m between e-20 s/m and e. The band rounding interval similarly squeezes a/m between (-b)mu/m-1/m and (-b)mu/m. Finally log(2^a)=a log(2).",
+    "theorem_id": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+    "submission_id": "c65bd12d-9745-464e-a178-b0de81f01a7e"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "1f363953-9e0c-4e21-a823-7870deef9e1c",
+  "theorem_id": "cf523f2f-3c2f-43c7-8c42-60f695193342",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:28:12.061073+00:00",
+  "updated_at": "2026-10-15T07:31:11.552982+00:00",
+  "explanation": "Turns individual persistent allocation ends into bounds for the selector argument list. Each passed pointer or control is bounded using its own retained allocation end, so absolute addresses need not enter a growth envelope.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds.values",
+  "theorem_title": "Selected source-control values precede their allocation end",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds.values {X : _root_.ThreeSum.ReportingHostSourceSelection.Pointers} {pair bank cover srcB srcC i j code h J cut stop : \u2115}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds X pair bank cover srcB srcC i j code h J cut stop) :\n    \u2200 v\u2208_root_.ThreeSum.ReportingHostSourceSelection.values X srcB srcC code J, v\u2264 stop := by sorry",
+  "theorem_natural_language_statement": "Let $X$ be a source-selection pointer record. Suppose its selected pair, bank, cover, source arrays, occurrence row, maps, histograms, and stage tables satisfy the stated individual end bounds at a natural address $s$. Then every value $v$ passed by the source-selection interface satisfies $$v\\le s.$$\n\nTurns individual persistent allocation ends into bounds for the selector argument list. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

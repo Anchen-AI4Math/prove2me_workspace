@@ -1,0 +1,30 @@
+theorem entry_eq_binomial_product {m : ℕ} (r : Fin m → ℂ)
+    (G : Fin m → Polynomial ℂ) (j s : ℕ) (β : Fin m → ℕ)
+    (h : ℕ) (α : Fin m → ℕ) :
+    entry r G j s β h α =
+      (∏ i, ((α i).choose (β i) : ℂ)) *
+        (((1 + Polynomial.X) ^ h * ∏ i,
+          (Polynomial.C ((j : ℂ) * r i) + G i) ^ (α i - β i)).coeff s) := by
+  classical
+  have hexp := RowTranslation.shiftCoefficient_eq
+    (fun i => Polynomial.C ((j : ℂ) * r i) + G i)
+    (exponentVector β) (exponentVector α)
+  rw [RowTranslation.shiftCoefficient, RowTranslation.shift_monomial_one] at hexp
+  simp only [exponentVector_apply] at hexp
+  have hp : (monomialImage r G j h α).coeff (exponentVector β) =
+      (1 + Polynomial.X) ^ h * ∏ i,
+        ((α i).choose (β i) : Polynomial ℂ) *
+          (Polynomial.C ((j : ℂ) * r i) + G i) ^ (α i - β i) := by
+    rw [monomialImage, MvPolynomial.coeff_C_mul]
+    simpa only [add_comm] using congrArg (fun x => (1 + Polynomial.X) ^ h * x) hexp
+  rw [entry, hp, Finset.prod_mul_distrib]
+  have hc : (∏ i, ((α i).choose (β i) : Polynomial ℂ)) =
+      Polynomial.C (∏ i, ((α i).choose (β i) : ℂ)) := by simp
+  rw [hc]
+  rw [show (1 + Polynomial.X) ^ h *
+      (Polynomial.C (∏ i, ((α i).choose (β i) : ℂ)) *
+        ∏ i, (Polynomial.C ((j : ℂ) * r i) + G i) ^ (α i - β i)) =
+      Polynomial.C (∏ i, ((α i).choose (β i) : ℂ)) *
+        ((1 + Polynomial.X) ^ h *
+          ∏ i, (Polynomial.C ((j : ℂ) * r i) + G i) ^ (α i - β i)) by ring]
+  rw [Polynomial.coeff_C_mul]

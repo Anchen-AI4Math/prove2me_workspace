@@ -1,0 +1,6 @@
+private theorem gaussian_det_norm_one_le {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι GaussianInt) (hA : A.det ≠ 0) :
+    1 ≤ ‖(A.map GaussianInt.toComplex).det‖ := by
+  change 1 ≤ ‖(GaussianInt.toComplex.mapMatrix A).det‖
+  rw [← RingHom.map_det]
+  exact gaussian_norm_one_le A.det hA

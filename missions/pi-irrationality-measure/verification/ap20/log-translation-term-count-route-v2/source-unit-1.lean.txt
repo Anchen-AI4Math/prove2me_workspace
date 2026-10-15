@@ -1,0 +1,18 @@
+theorem tendsto_natFloor_affine_div {a : ℝ} (ha : 0 < a) (b : ℝ) :
+    Tendsto (fun x : ℝ => (⌊a * x + b⌋₊ : ℝ) / x) atTop (𝓝 a) := by
+  have hy : Tendsto (fun x : ℝ => a * x + b) atTop atTop :=
+    tendsto_atTop_add_const_right atTop b (Tendsto.const_mul_atTop ha tendsto_id)
+  have hratio : Tendsto (fun x : ℝ => (a * x + b) / x) atTop (𝓝 a) := by
+    have h : Tendsto (fun x : ℝ => a + b * x⁻¹) atTop (𝓝 (a + b * 0)) :=
+      tendsto_const_nhds.add (tendsto_const_nhds.mul
+      (tendsto_inv_atTop_zero : Tendsto (fun x : ℝ => x⁻¹) atTop (𝓝 0)))
+    simp only [mul_zero, add_zero] at h
+    apply h.congr'
+    filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx
+    field_simp
+  have h := (tendsto_nat_floor_div_atTop.comp hy).mul hratio
+  simp only [one_mul] at h
+  apply h.congr'
+  filter_upwards [hy.eventually (eventually_gt_atTop (0 : ℝ))] with x hx
+  change (⌊a * x + b⌋₊ : ℝ) / (a * x + b) * ((a * x + b) / x) = _
+  field_simp

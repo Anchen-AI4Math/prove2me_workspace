@@ -1,0 +1,827 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap14-row-translation-data-provider-preparation",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+  "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean",
+  "source_sha256": "513c819647405ecce20d25970e1710cd50e26e775dbbe48ac5d99a0bd90fefbe",
+  "original_source_path": "source/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean",
+  "original_source_sha256": "02cc2f4d0ab366fa3807127c47a1c2f5c5feebffc6159f290c18ad9a82932e53",
+  "provided_names": [
+    "OAI.PiExponent.RowTranslation.shift",
+    "OAI.PiExponent.RowTranslation.shiftCoefficient",
+    "OAI.PiExponent.RowTranslation.multiIndex"
+  ],
+  "provider_file": "Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData.lean",
+  "imports": [
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv"
+  ],
+  "exact_source_units": [
+    {
+      "name": "OAI.PiExponent.RowTranslation.shift",
+      "start": 222,
+      "end": 348,
+      "source_lines": [
+        13,
+        14
+      ],
+      "sha256": "8625903bc5d9d48e3795272da137c01ca7b2ceaabaa0d0fa1161d8332e9420b5",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 13,
+          "normalizedOffset": 210,
+          "offset": 222
+        },
+        "end": {
+          "col": 37,
+          "line": 14,
+          "normalizedOffset": 335,
+          "offset": 348
+        },
+        "nameText": "shift",
+        "nameRange": {
+          "end": {
+            "col": 23,
+            "line": 13,
+            "normalizedOffset": 233,
+            "offset": 245
+          },
+          "start": {
+            "col": 18,
+            "line": 13,
+            "normalizedOffset": 228,
+            "offset": 240
+          }
+        },
+        "valueStart": {
+          "col": 76,
+          "line": 13,
+          "normalizedOffset": 293,
+          "offset": 305
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.RowTranslation.shift"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.RowTranslation.shift"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 37,
+            "line": 14,
+            "normalizedOffset": 335,
+            "offset": 348
+          },
+          "start": {
+            "col": 0,
+            "line": 13,
+            "normalizedOffset": 210,
+            "offset": 222
+          }
+        },
+        "namespace": "OAI.PiExponent.RowTranslation",
+        "verified_name": "OAI.PiExponent.RowTranslation.shift",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 3,
+                "normalizedOffset": 61,
+                "offset": 63
+              },
+              "start": {
+                "col": 0,
+                "line": 3,
+                "normalizedOffset": 48,
+                "offset": 50
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "RowTranslation",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "section",
+            "name": "PolynomialShift",
+            "opening": {
+              "end": {
+                "col": 23,
+                "line": 10,
+                "normalizedOffset": 167,
+                "offset": 176
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 144,
+                "offset": 153
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 7,
+                "normalizedOffset": 124,
+                "offset": 130
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 100,
+                "offset": 106
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 17,
+                "line": 8,
+                "normalizedOffset": 142,
+                "offset": 149
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 125,
+                "offset": 132
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.variable",
+            "range": {
+              "end": {
+                "col": 39,
+                "line": 11,
+                "normalizedOffset": 208,
+                "offset": 218
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 168,
+                "offset": 178
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.RowTranslation.shift",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "source_sha256": "513c819647405ecce20d25970e1710cd50e26e775dbbe48ac5d99a0bd90fefbe",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:222",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:222",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "shift",
+        "unit_start_offset": 222,
+        "unit_end_offset": 348,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "f7078d28ae849daef40dc4a03ab4592117179dd459496aa8eeb2dbd42b4cd106",
+        "decl_graph_line": 4699,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-RowTranslation-20261007-234624.log",
+        "stage2_facts_sha256": "584987f2ba26a5ed650ee29aa28e58373672751b35ab639018f3d83d5845f3a0"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.RowTranslation.shift",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.RowTranslation.shift",
+        "startLine": 13,
+        "endLine": 14,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "contexts": [
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "variable {σ R : Type*} [CommSemiring R]"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shiftCoefficient",
+      "start": 1019,
+      "end": 1135,
+      "source_lines": [
+        33,
+        34
+      ],
+      "sha256": "34f5831a4aa7b389e00c9b9daeed3e6bcb766a4ac4abe36e3090f7b769e41179",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 33,
+          "normalizedOffset": 987,
+          "offset": 1019
+        },
+        "end": {
+          "col": 34,
+          "line": 34,
+          "normalizedOffset": 1102,
+          "offset": 1135
+        },
+        "nameText": "shiftCoefficient",
+        "nameRange": {
+          "end": {
+            "col": 34,
+            "line": 33,
+            "normalizedOffset": 1021,
+            "offset": 1053
+          },
+          "start": {
+            "col": 18,
+            "line": 33,
+            "normalizedOffset": 1005,
+            "offset": 1037
+          }
+        },
+        "valueStart": {
+          "col": 66,
+          "line": 33,
+          "normalizedOffset": 1064,
+          "offset": 1096
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.RowTranslation.shiftCoefficient"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.RowTranslation.shiftCoefficient"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 34,
+            "line": 34,
+            "normalizedOffset": 1102,
+            "offset": 1135
+          },
+          "start": {
+            "col": 0,
+            "line": 33,
+            "normalizedOffset": 987,
+            "offset": 1019
+          }
+        },
+        "namespace": "OAI.PiExponent.RowTranslation",
+        "verified_name": "OAI.PiExponent.RowTranslation.shiftCoefficient",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 3,
+                "normalizedOffset": 61,
+                "offset": 63
+              },
+              "start": {
+                "col": 0,
+                "line": 3,
+                "normalizedOffset": 48,
+                "offset": 50
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "RowTranslation",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "section",
+            "name": "PolynomialShift",
+            "opening": {
+              "end": {
+                "col": 23,
+                "line": 10,
+                "normalizedOffset": 167,
+                "offset": 176
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 144,
+                "offset": 153
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 7,
+                "normalizedOffset": 124,
+                "offset": 130
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 100,
+                "offset": 106
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 17,
+                "line": 8,
+                "normalizedOffset": 142,
+                "offset": 149
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 125,
+                "offset": 132
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.variable",
+            "range": {
+              "end": {
+                "col": 39,
+                "line": 11,
+                "normalizedOffset": 208,
+                "offset": 218
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 168,
+                "offset": 178
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.RowTranslation.shiftCoefficient",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "source_sha256": "513c819647405ecce20d25970e1710cd50e26e775dbbe48ac5d99a0bd90fefbe",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:1019",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:1019",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "shiftCoefficient",
+        "unit_start_offset": 1019,
+        "unit_end_offset": 1135,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "c3966b6cd9032c86c56f70ab19acc6bf3d3c0c8a08f1a44f609b7caccc3bb5f2",
+        "decl_graph_line": 1890,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-RowTranslation-20261007-234624.log",
+        "stage2_facts_sha256": "584987f2ba26a5ed650ee29aa28e58373672751b35ab639018f3d83d5845f3a0"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.RowTranslation.shiftCoefficient",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.RowTranslation.shiftCoefficient",
+        "startLine": 33,
+        "endLine": 34,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": [
+          "OAI.PiExponent.RowTranslation.shift"
+        ]
+      },
+      "contexts": [
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "variable {σ R : Type*} [CommSemiring R]"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.multiIndex",
+      "start": 2296,
+      "end": 2392,
+      "source_lines": [
+        68,
+        68
+      ],
+      "sha256": "b3e0a0bce1c9cc2510d39bb97f50230be5676ed7aefe06e4e2dbc15fff52e237",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 68,
+          "normalizedOffset": 2229,
+          "offset": 2296
+        },
+        "end": {
+          "col": 84,
+          "line": 68,
+          "normalizedOffset": 2325,
+          "offset": 2392
+        },
+        "nameText": "multiIndex",
+        "nameRange": {
+          "end": {
+            "col": 28,
+            "line": 68,
+            "normalizedOffset": 2257,
+            "offset": 2324
+          },
+          "start": {
+            "col": 18,
+            "line": 68,
+            "normalizedOffset": 2247,
+            "offset": 2314
+          }
+        },
+        "valueStart": {
+          "col": 50,
+          "line": 68,
+          "normalizedOffset": 2291,
+          "offset": 2358
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.RowTranslation.multiIndex"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.RowTranslation.multiIndex"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 84,
+            "line": 68,
+            "normalizedOffset": 2325,
+            "offset": 2392
+          },
+          "start": {
+            "col": 0,
+            "line": 68,
+            "normalizedOffset": 2229,
+            "offset": 2296
+          }
+        },
+        "namespace": "OAI.PiExponent.RowTranslation",
+        "verified_name": "OAI.PiExponent.RowTranslation.multiIndex",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 3,
+                "normalizedOffset": 61,
+                "offset": 63
+              },
+              "start": {
+                "col": 0,
+                "line": 3,
+                "normalizedOffset": 48,
+                "offset": 50
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "RowTranslation",
+            "opening": {
+              "end": {
+                "col": 35,
+                "line": 5,
+                "normalizedOffset": 98,
+                "offset": 102
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 63,
+                "offset": 67
+              }
+            }
+          },
+          {
+            "kind": "section",
+            "name": "FiniteExpansion",
+            "opening": {
+              "end": {
+                "col": 23,
+                "line": 65,
+                "normalizedOffset": 2156,
+                "offset": 2220
+              },
+              "start": {
+                "col": 0,
+                "line": 65,
+                "normalizedOffset": 2133,
+                "offset": 2197
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 7,
+                "normalizedOffset": 124,
+                "offset": 130
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 100,
+                "offset": 106
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 17,
+                "line": 8,
+                "normalizedOffset": 142,
+                "offset": 149
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 125,
+                "offset": 132
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.variable",
+            "range": {
+              "end": {
+                "col": 67,
+                "line": 66,
+                "normalizedOffset": 2227,
+                "offset": 2292
+              },
+              "start": {
+                "col": 0,
+                "line": 66,
+                "normalizedOffset": 2157,
+                "offset": 2222
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.RowTranslation.multiIndex",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "source_sha256": "513c819647405ecce20d25970e1710cd50e26e775dbbe48ac5d99a0bd90fefbe",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:2296",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation:2296",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "multiIndex",
+        "unit_start_offset": 2296,
+        "unit_end_offset": 2392,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "b3aac1c3795f11100810fae4a6d0bfd4e6c7efc3cbbe706511f311ab771405c9",
+        "decl_graph_line": 1546,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-RowTranslation-20261007-234624.log",
+        "stage2_facts_sha256": "584987f2ba26a5ed650ee29aa28e58373672751b35ab639018f3d83d5845f3a0"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.RowTranslation.multiIndex",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.RowTranslation",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.RowTranslation.multiIndex",
+        "startLine": 68,
+        "endLine": 68,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "contexts": [
+        "open scoped BigOperators",
+        "open MvPolynomial",
+        "variable {σ R : Type*} [Fintype σ] [DecidableEq σ] [CommSemiring R]"
+      ]
+    }
+  ],
+  "source_context_commands": [
+    "open scoped BigOperators",
+    "open MvPolynomial",
+    "section PolynomialShift; variable {σ R : Type*} [CommSemiring R]",
+    "section FiniteExpansion; variable {σ R : Type*} [Fintype σ] [DecidableEq σ] [CommSemiring R]"
+  ],
+  "section_instances_restored_exactly": true,
+  "contains_theorems": false,
+  "own_structures_constructors_recursors": [],
+  "snapshot_schema": "lean-4.33.1-ConstantInfo-complete-v1; complete closed Def types/values; no owned Ind/Ctor/Rec declarations",
+  "published_coverage": "verification/ap14/published27-row-translation-coverage.json",
+  "published_coverage_sha256": "aae15a1ca6c85e370e236e1bfb44258368c57e67c95777b2d7c01869cffe5e82",
+  "input_hashes": {
+    "scripts/stage_row_translation_data_provider.py": "b27a3d2ea06a0e41deb493469a457cba7a61eb8a8379eda75e4a8da4e4b0a68b",
+    "scripts/stage_weighted_simplex_domains_providers.py": "b9d00544fecdcd965fc6eaf2d0d9db4c74d3d6f11a0e7fba42bb98969ad7841e",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean": "513c819647405ecce20d25970e1710cd50e26e775dbbe48ac5d99a0bd90fefbe",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean": "02cc2f4d0ab366fa3807127c47a1c2f5c5feebffc6159f290c18ad9a82932e53",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276",
+    "verification/StructuralKernelSnapshotCore.inc": "b0e9d33b62aaed702066cd358943a3d61e3641ec7e4d464c76bb1809c85ce33d",
+    "verification/lean-runtime.json": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "scripts/validate_namespace_context_providers.py": "fc398f10e2a4403aa1461569e0b9b3d1b6c6efbfad474c0f150d91fcbe8a7dd8",
+    "verification/ap14/published27-row-translation-coverage.json": "aae15a1ca6c85e370e236e1bfb44258368c57e67c95777b2d7c01869cffe5e82",
+    "verification/definition-validation/Def_OAI_NumberTheory_PiExponent_Analysis_AnalyticCollision/publication.json": "7dfb9d804c2e09a194069f1598d0ba30ba07e7ad145a01b5b662ea8865be2275",
+    "verification/definition-validation/Def_OAI_NumberTheory_PiExponent_Analysis_Collision/publication.json": "5efba0e6bea32101b225f8b518bd170170ecca371ea1691bcbef8939ce9ae1e0",
+    "verification/providers-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_LocalizedComponent/publication.json": "cdc742f244431dcfe30d02f0cde096c3a10cd4d4420de7753ad92da621068dea",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Ampleness_NefAmple/publication.json": "9c9337c99aaa25d95a1d2f20ee104d21c8eca31529a03e77f1ad12ba4d0f19c6",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Analysis_LogTailAnalytic/publication.json": "32a881f12c39e2de19905ce35325d6bd4c11d8e7a07eb68042d0aa9f41c99348",
+    "verification/ap7/publication/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json": "e031b6ac1b2c3ba6797640c26ef1efaf0c53c9c7dad0f52fbe9cac2a7165fad8",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/publication.json": "76b8b6c9e4c5a7d0999ccb124b330bf38cdd86bfd349c1fa4683fbbf79b8bdf9",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_Dimension/publication.json": "a65baf768754f5a7e1095e4494219f9fbdb233d02a62812413352321b397a2c1",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_QuotientLengthEquivalence/publication.json": "12c5a39b78582bbb2d46180b22623b750b26c7e9b7dacf507ef24b7f9e636e94",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_LocalAlgebra_RegularDegreePositivity/publication.json": "801b43e1f4a862a8e48f2e35f8cc3f1ec781ae5baae00bd238fcdb85e8796153",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrameDegree/publication.json": "b9a72c417130f7dfff38759547b9926b9a823e5f4f8aab7511416d0f92a1c01c",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor/publication.json": "b621e41818840b034f06de765e689d0e378d9724f86285e4b0897f6e9c5fa921",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexUnweighted/publication.json": "ed4c5dc509de9c5f5b4976c3675b9107988ec96440e96c7b9a189db7cf4b6523",
+    "verification/providers-context-preview/namespace-context/validation/Def_OAI_NumberTheory_PiExponent_Jets_FormalJetDerivatives/publication.json": "9e5295b30ba833f14751943e353ec4d688c50fef401d272d482b25c2eeeb0b67",
+    "verification/providers-context-preview/namespace-context/validation/Def_OAI_NumberTheory_PiExponent_Jets_FormalLogJet/publication.json": "6c96ebe094d6cdee0a5887e449783d84d019477741584da7e058358b4b2e9aa2",
+    "verification/providers-context-preview/namespace-context/validation/Def_OAI_NumberTheory_PiExponent_Jets_JetGeometry/publication.json": "b2f3a17bf0d1569bb8654e86047bf0cea2441ff55fab5616f2771adcb82f7212",
+    "verification/providers-context-preview/namespace-context/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_PolynomialFrame/publication.json": "8f198e1c80097625c711fdb0f6063d4dc3f2609c80528a5ffd7b5cd4400a9546",
+    "verification/providers-formal-log-preview/formal-log/validation/Def_OAI_NumberTheory_PiExponent_Analysis_FormalLogTruncation/publication.json": "395bd75312085ea0ed8cb1073fe6a92e8f69dcdf2db267ddc27d1ccbb61444d7",
+    "verification/ap2/publication/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/publication.json": "7a2ec0b19eff481281fc817f5232f4724db172aad6de92804cb0b84c6f45841e",
+    "verification/ap2/publication/Def_OAI_NumberTheory_PiExponent_Approximation_WeightSeparation/publication.json": "daeee86d7e02a3ee2e368046445407e4202783c077d0a6b9345635de7c087b2d",
+    "verification/ap3/publication/Def_OAI_NumberTheory_PiExponent_Approximation_SuccessiveApproximations/publication.json": "56ea01463b9dc15dc6310f3ae3675257ed93ef4b3488cfcba7f0aecfd9a79e81",
+    "verification/ap7/collision-constant/publication-draft/publication.json": "5aa6bf130f05cd839a9a75aaa5bccb3271bc1d83a879cbd8f4ae63206d637f59",
+    "verification/ap9/simplex/publication/publication.json": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+    "verification/ap9/domains/publication/publication.json": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+    "verification/ap10/interpolation/publication/publication.json": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+    "verification/ap10/arithmetic/publication/publication.json": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+    "verification/ap10/determinant/publication-helper-v2/publication.json": "049252abb53e939d6090af4ad7ecf2e045508411ecda7ab5820523ce0685fe86"
+  },
+  "order": [
+    "Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData.lean",
+    "SourceSnapshot.lean",
+    "GeneratedSnapshot.lean"
+  ],
+  "commands": [
+    "python scripts/preflight_staged_module.py ap14/row-data/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData.lean --root ap14/row-data --imports-manifest ap14/row-data/c1.json --timeout-seconds 300 --emit-olean",
+    "python scripts/preflight_staged_module.py ap14/row-data/SourceSnapshot.lean --root ap14/row-data --imports-manifest ap14/row-data/c2.json --timeout-seconds 300",
+    "python scripts/preflight_staged_module.py ap14/row-data/GeneratedSnapshot.lean --root ap14/row-data --imports-manifest ap14/row-data/c3.json --timeout-seconds 300"
+  ],
+  "expected_provider_olean": "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData.olean",
+  "Lean_started": false,
+  "API_used": false,
+  "validated": false,
+  "submission_ready": false,
+  "proposal_status": "Draft"
+}

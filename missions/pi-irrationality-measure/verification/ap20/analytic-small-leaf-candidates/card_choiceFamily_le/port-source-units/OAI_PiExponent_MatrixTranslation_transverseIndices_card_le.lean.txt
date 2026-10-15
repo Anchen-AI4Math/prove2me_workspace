@@ -1,0 +1,14 @@
+theorem transverseIndices_card_le {m : ℕ} (w : Fin m → ℝ) (H : ℝ)
+    (hw : ∀ i, 1 ≤ w i) :
+    (transverseIndices w H).card ≤ (⌊H⌋₊ + 1) ^ m := by
+  classical
+  let box : Finset (Fin m → ℕ) := Fintype.piFinset (fun _ => Finset.range (⌊H⌋₊ + 1))
+  have hcard : (transverseIndices w H).card ≤ box.card := by
+    apply Finset.card_le_card_of_injOn (fun A : Fin m →₀ ℕ => fun i => A i)
+    · intro A hA
+      apply Fintype.mem_piFinset.mpr
+      intro i
+      exact Finset.mem_range.mpr (Nat.lt_succ_of_le (transverseIndices_coordinate_le w H hw hA i))
+    · intro A hA B hB he
+      exact Finsupp.ext (fun i => congrFun he i)
+  simpa [box, Fintype.card_piFinset] using hcard

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle036",
+    "definition_title": "Shared reporting-bank rows, guarded queries, and the encoded-color pipeline",
+    "natural_language_statement": "This bundle defines the shared reporting-bank layout and the programs that consume it. A bank row is indexed by a schedule-occurrence vector and independent $B,C$ band indices, with $C$ varying fastest. If $S$ is the occurrence-vector count and $n_B,n_C$ are the band counts, the flat constructor executes exactly\n$$S n_B n_C$$\nrounds. A completed-prefix predicate records the catalogs already built, while a stored header records metadata and payload bases, level count, row dimensions, next free address, and the two local combinatorial counts.\n\nThe shared-pair host loads the two independently selected source-stage pointers and builds their reporting levels. The bank loop uses three carry counters to enumerate the row order and preserves all earlier metadata and payloads. Address functions locate any row and depth catalog directly from these dimensions.\n\nFor a single actual wanted record, the guarded reporting program first packs the decoded query masks, queries its root mass, and adds that mass to the running counter. It enters the expensive traversal-and-terminal branch only when the cumulative threshold is not exceeded. The traversal host walks the prescribed partial depth and then invokes exact original-value terminal testing. Its cost function explicitly conditions that branch on the same threshold comparison.\n\nThe encoded-color pipeline executes the selected-color prime stage, constructs wanted records and shared source banks, writes the retained headers, and returns their combined result record. Uniform time, space, word, depth, source-base, and finish-bound functions account for this composition. The false-score definition uses the common modulus selected from the retained normalized arrays, and the wanted-count budget includes all physical $A$ incidences and all three lifts.\n\nThese definitions establish the concrete sharing and guard mechanisms whose costs support the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "reporting",
+      "runtime-analysis",
+      "light-language"
+    ]
+  }
+]

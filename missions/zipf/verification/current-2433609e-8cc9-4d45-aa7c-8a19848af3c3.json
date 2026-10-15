@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+  "fetched_at": "2026-10-11T13:30:04.734820+00:00",
+  "data": {
+    "theorem_id": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+    "theorem_name": "ZipfLaw.zipfPMF_mean",
+    "theorem_title": "Mean of the Zipf distribution: $H_{N,s-1}/H_{N,s}$",
+    "status": "Proved",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_mean (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    ∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k = genHarmonic N (s - 1) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "For $N\\ge1$ and real $s$, the mean rank under the Zipf distribution is\n$$\\sum_{k=1}^{N}k\\,f(k;N,s)=\\frac{H_{N,s-1}}{H_{N,s}} .$$",
+    "created_at": "2026-10-09T21:28:43.198065+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Mean $H_{N,s-1}/H_{N,s}$).",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "2c96df12-1b8f-49f3-80ca-e1014f62efb8",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "2ea96c93-2e6c-49ea-bf8c-db9ce4461455",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and real $s$: $\\sum_{k=1}^{N}k\\cdot\\mathrm{zipfPMF}(N,s,k)=\\mathrm{genHarmonic}(N,s-1)/\\mathrm{genHarmonic}(N,s)$, with $k$ cast to $\\mathbb R$.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:28:44.804733+00:00"
+    }
+  }
+}

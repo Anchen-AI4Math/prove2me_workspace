@@ -1,0 +1,7 @@
+private theorem mem_strictWeightedSimplex {d : ℕ} {w : Fin d → ℝ}
+    (hw : ∀ i, 0 < w i) {H : ℝ} {a : Fin d → ℕ} :
+    a ∈ strictWeightedSimplex w H ↔ ∑ i, w i * (a i : ℝ) < H := by
+  classical
+  simp only [strictWeightedSimplex, Finset.mem_filter, mem_realWeightedSimplex hw,
+    and_iff_right_iff_imp]
+  exact fun h => h.le

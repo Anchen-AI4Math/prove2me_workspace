@@ -1,0 +1,4 @@
+private theorem log_lcmUpto_le (n : ℕ) :
+    Real.log (Nat.lcmUpto n : ℝ) ≤ lcmConstant * n := by
+  rw [← Chebyshev.psi_eq_log_lcmUpto]
+  exact Chebyshev.psi_le_const_mul_self (by positivity)

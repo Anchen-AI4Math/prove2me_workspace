@@ -1,0 +1,346 @@
+Traceback (most recent call last):
+  File "C:\Python314\Lib\urllib\request.py", line 1320, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1386, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1432, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1381, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1141, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1085, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\http\client.py", line 1527, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1082)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 381, in <module>
+    message=step_queued(limit) if limit>1 else step()
+            ~~~~~~~~~~~^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 358, in step_queued
+    verify(record,meta[record['name']]['explanation'])
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 189, in verify
+    status,raw=p2m._request('POST','/verify',token=p2m.get_token(),raw_body=body,ctype=ctype)
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\scripts\p2m_api.py", line 50, in _request
+    with _OPENER.open(req, timeout=120) as resp:
+         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\urllib\request.py", line 487, in open
+    response = self._open(req, data)
+  File "C:\Python314\Lib\urllib\request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Python314\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Python314\Lib\urllib\request.py", line 1368, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\urllib\request.py", line 1323, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1082)>
+Platform: 35/41 definitions published; 159/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 36/41 definitions published; 159/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 36/41 definitions published; 160/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 36/41 definitions published; 168/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 36/41 definitions published; 173/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 37/41 definitions published; 176/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 37/41 definitions published; 182/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 37/41 definitions published; 186/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 37/41 definitions published; 191/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 38/41 definitions published; 193/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount "Compile error in your proof:\nline 814: Type mismatch\n  K + M\nhas type\n  \u2115\nof sort `Type` but is expected to have type\n  Set.IsPWO ?m.45\nof sort `Prop`\nline 814: failed to synthesize instance of type class\n  Membership (\u2115 \u00d7 \u2115) (Set.IsPWO ?m.46 \u2192 ?m.41 \u2192 Finset (?m.41 \u00d7 ?m.41))\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\nline 814: unsolved goals\nL K N M : \u2115\n\u22a2 sorry ()"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightWantedJoin.meets "Compile error in your proof:\nline 932: unsolved goals\ncase zero\n\u03bc : \u2115 \u2192 \u2124\noffsets flat NR M : \u2115\nleft right : \u2115 \u2192 \u2115\nH : SourceBuckets.Stored \u03bc right NR M offsets flat\na\u271d : \u2200 i < 0, left i < M\n\u22a2 pairs \u03bc offsets flat left 0 = []\nline 1027: unsolved goals\nlim : Light.Limits\nP : Light.Program\npMain pRow keys offsets flat NR M dst : \u2115\nhmain : P[pMain]? = some (body pMain pRow)\nhrow : P[pRow]? = some LightWantedRow.body\nleft right : \u2115 \u2192 \u2115\nhright : \u2200 j < NR, right j < M\nd : \u2115\n\u03bc : \u2115 \u2192 \u2124\nhw : \u2191lim.space \u2264 lim.word\nhkeys : keys + 0 \u2264 dst\nhoffsets : offsets + M + 1 \u2264 dst\nhflat : flat + NR \u2264 dst\nhspace : dst + 2 * count left right NR 0 \u2264 lim.space\nhd : d + 0 + 2 \u2264 lim.depth\nhleft : \u2200 i < 0, left i < M\nhread : \u2200 i < 0, \u03bc (keys + i) = \u2191(left i)\nH : SourceBuckets.Stored \u03bc right NR M offsets flat\nx\u271d :\n  \u00acLight.Cond.Holds { loc := frame [\u2191keys, \u2191offsets, \u2191flat, \u21910, \u2191NR, \u2191M, \u2191dst], mem := \u03bc }\n      (Light.Cond.lt (Light.k 0) (Light.v 3))\n\u22a2 Light.Seg \u03bc dst (List.flatMap (fun p => [\u2191p.1, \u2191p.2]) (pairs \u03bc offsets flat left 0))"
+Platform: 38/41 definitions published; 204/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 39/41 definitions published; 211/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Traceback (most recent call last):
+  File "C:\Python314\Lib\urllib\request.py", line 1320, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1386, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1432, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1381, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1141, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Python314\Lib\http\client.py", line 1085, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\http\client.py", line 1527, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 379, in <module>
+    message=step_queued(limit) if limit>1 else step()
+            ~~~~~~~~~~~^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 293, in step_queued
+    readback_cache.update(owner_status_reads(state['items']))
+                          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\machine_queue_reads.py", line 51, in owner_status_reads
+    parts = list(pool.map(collect, [('jobs',jobs),('proofs',proofs)]))
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 645, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 312, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 454, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\concurrent\futures\_base.py", line 396, in __get_result
+    raise self._exception
+  File "C:\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\machine_queue_reads.py", line 27, in collect
+    response = api('GET', endpoint)
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\platform.py", line 20, in api
+    status, raw = p2m._request(method, path, token=p2m.get_token(), data=data)
+                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\scripts\p2m_api.py", line 50, in _request
+    with _OPENER.open(req, timeout=120) as resp:
+         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\urllib\request.py", line 487, in open
+    response = self._open(req, data)
+  File "C:\Python314\Lib\urllib\request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "C:\Python314\Lib\urllib\request.py", line 464, in _call_chain
+    result = func(*args)
+  File "C:\Python314\Lib\urllib\request.py", line 1368, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\urllib\request.py", line 1323, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [WinError 10054] 远程主机强迫关闭了一个现有的连接。>
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Procs.meets "formal statement does not compile: Import parser timed out after 5s"
+Platform: 40/41 definitions published; 221/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 41/41 definitions published; 222/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Platform: 41/41 definitions published; 223/481 proofs accepted; 32 jobs in flight; 0 proofs need source correction
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered "Compile error in your proof:\nline 630: failed to synthesize instance of type class\n  NeZero (Scales.radix n)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\nline 638: failed to synthesize instance of type class\n  NeZero (Scales.radix n)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\nline 627: (deterministic) timeout at `whnf`, maximum number of heartbeats (200000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nline 651: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered__implementation_ac311fd362`\nline 651: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered__implementation_ac311fd362`\nline 651: type of theorem `solution` is not a proposition\n  ?m.1\nline 653: Unknown constant `solution`"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep "Compile error in your proof:\nline 757: unsolved goals\ncase zero\nn g : \u2115\nrs : List Record\n\u22a2 count n g rs 0 = 0\nline 885: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  repA\nof type\n  Light.Seg \u03bc av A \u2227\n    A.length \u2264 originalA.length \u2227\n      (\u2200 (z : \u2124), z \u2208 A \u2194 z \u2208 originalA) \u2227\n        LightHeaderBands.At \u03bc ae A.length (family (fun i => A.getD i 0) A.length g hg \u22ef)\nline 885: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  repB\nof type\n  Light.Seg \u03bc bv B \u2227\n    B.length \u2264 originalB.length \u2227\n      (\u2200 (z : \u2124), z \u2208 B \u2194 z \u2208 originalB) \u2227\n        LightHeaderBands.At \u03bc be B.length (family (fun i => B.getD i 0) B.length g hg \u22ef)\nline 886: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  repC\nof type\n  Light.Seg \u03bc cv C \u2227\n    C.length \u2264 originalC.length \u2227\n      (\u2200 (z : \u2124), z \u2208 C \u2194 z \u2208 originalC) \u2227\n        LightHeaderBands.At \u03bc ce C.length (family (fun i => C.getD i 0) C.length g hg \u22ef)"
+Platform: 41/41 definitions published; 224/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 233/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 237/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 242/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 243/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 245/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 247/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 250/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 253/481 proofs accepted; 32 jobs in flight; 2 proofs need source correction
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.program_meets "Compile error in your proof:\nline 789: unsolved goals\ncase zero\n\u03bc : \u2115 \u2192 \u2124\noffsets flat NR M : \u2115\nleft right : \u2115 \u2192 \u2115\nH : SourceBuckets.Stored \u03bc right NR M offsets flat\na\u271d : \u2200 i < 0, left i < M\n\u22a2 pairs \u03bc offsets flat left 0 = []"
+Platform: 41/41 definitions published; 255/481 proofs accepted; 32 jobs in flight; 3 proofs need source correction
+Platform: 41/41 definitions published; 258/481 proofs accepted; 32 jobs in flight; 3 proofs need source correction
+Platform: 41/41 definitions published; 262/481 proofs accepted; 32 jobs in flight; 3 proofs need source correction
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.incidence_length_le_magnitude "formal statement does not compile: Import parser timed out after 5s"
+Platform: 41/41 definitions published; 270/481 proofs accepted; 32 jobs in flight; 3 proofs need source correction
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightSourceBandSetup.Procs.meets "Compile error in your proof:\nline 434: Unknown identifier `LightSourceBandStep.word`"
+Platform: 41/41 definitions published; 278/481 proofs accepted; 0 verified sketches awaiting children; 32 jobs in flight; 4 proofs need source correction
+Platform: 41/41 definitions published; 284/481 proofs accepted; 0 verified sketches awaiting children; 32 jobs in flight; 4 proofs need source correction
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingSuffixCatalogSetup.program_meets "formal statement does not compile: Import parser timed out after 5s"
+Platform: 41/41 definitions published; 287/481 proofs accepted; 0 verified sketches awaiting children; 32 jobs in flight; 4 proofs need source correction
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightReportingSuffixQueryIndexed.program_meets "Compile error in your proof:\nline 880: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  e \u2265 0\n  d \u2265 0\n  d - e \u2265 1\n  c \u2265 0\n  b \u2265 0\n  b - d \u2264 0\n  b + c - d \u2265 1\n  a \u2265 0\n  a - b - c \u2265 0\n  a - d \u2265 1\n  a - e \u2265 1\nwhere\n a := \u2191W\n b := \u2191offset\n c := \u2191V\n d := \u2191\u2191i\n e := \u2191\u2191((shiftEmbedding offset hfit) \u27e8\u2191i - offset, \u22ef\u27e9)"
+Platform: 41/41 definitions published; 309/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 1 proofs need source correction
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep "Compile error in your proof:\nline 886: don't know how to synthesize implicit argument `hs`\n  @LightBandPreprocessing.Represents.keep \u03bc \u03bd cv ce g bound hg originalC C ?m.367 repC hk\n    (Decidable.byContradiction fun a => keep__implementation_9181522416._proof_7 hC hcv a)\n    (Decidable.byContradiction fun a => keep__implementation_9181522416._proof_8 hC hce a)\ncontext:\n\u03bc \u03bd : \u2115 \u2192 \u2124\nav ae bv be cv ce tables rec vals g n bound : \u2115\nhg : 0 < g\noriginalA originalB originalC A B C : List \u2124\nhsA : List.Pairwise (fun x1 x2 => x1 < x2) A\nhsB : List.Pairwise (fun x1 x2 => x1 < x2) B\nhsC : List.Pairwise (fun x1 x2 => x1 < x2) C\nr : \u2124\nhk : Light.Kept \u03bc \u03bd bound\nhA : originalA.length \u2264 n\nhB : originalB.length \u2264 n\nhC : originalC.length \u2264 n\nhav : av + n \u2264 bound\nhae : ae + 2 + 2 * n \u2264 bound\nhbv : bv + n \u2264 bound\nhbe : be + 2 + 2 * n \u2264 bound\nhcv : cv + n \u2264 bound\nhce : ce + 2 + 2 * n \u2264 bound\nhtables : tables + ColorBandBounds.count n g \u2264 bound\nhrecords : rec + 4 * ColorBandBounds.count n g \u2264 bound\nhcatalog : LightBandRawA.space vals (ColorBandBounds.count n g) g \u2264 bound\nhr : r = \u2191(items A.length g (sortedRecords A B C g hg hsA hsB hsC)).length\nrepA : LightBandPreprocessing.Represents \u03bc av ae g hg origin"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingTerminal.program_meets "formal statement does not compile: line 277: Type mismatch\n  srcL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.41; line 277: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 277: Type mismatch\n  srcR + NR\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.46; line 277: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 278: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 278: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 279: Type mismatch\n  flatL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.73; line 279: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 279: Type mismatch\n  flatR + "
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingTerminalFrontier.program_meets "formal statement does not compile: line 278: Type mismatch\n  srcL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.48; line 278: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 278: Type mismatch\n  srcR + NR\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.53; line 278: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 279: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 279: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 280: Type mismatch\n  flatL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.80; line 280: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 280: Type mismatch\n  flatR + "
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingTerminalStored.program_meets "formal statement does not compile: line 303: Type mismatch\n  srcL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.71; line 303: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 303: Type mismatch\n  srcR + NR\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.76; line 303: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 304: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 304: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 305: Type mismatch\n  flatL + NL\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.103; line 305: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 305: Type mismatch\n  flatR +"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingInitialize.program_meets "formal statement does not compile: line 290: Application type mismatch: The argument\n  slot dst (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.65\nin the application\n  Matroid.IsMinor\n    (slot dst (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1); line 290: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 303: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingInitialize.program_meets`"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingInitializeStored.program_meets "formal statement does not compile: line 269: Application type mismatch: The argument\n  slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.90\nin the application\n  Matroid.IsMinor\n    (slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1); line 269: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 281: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingInitializeStored.program_meets`"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingStoredStep.program_meets "formal statement does not compile: line 321: Application type mismatch: The argument\n  slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) (k + 2)\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.201\nin the application\n  Matroid.IsMinor\n    (slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w)\n      (k + 2)); line 321: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 323: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.243 ?m.244; line 323: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 324: Type mismatch\n  selected + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.249; line 324: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 336: Unknown constant `Thre"
+Platform: 41/41 definitions published; 312/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 313/481 proofs accepted; 5 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 313/481 proofs accepted; 6 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedInitializeSeparated.program_meets "formal statement does not compile: line 286: Application type mismatch: The argument\n  slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.110\nin the application\n  Matroid.IsMinor\n    (slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) 1); line 286: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 303: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingWantedInitializeSeparated.program_meets`"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingLevels.program_meets "formal statement does not compile: line 301: Application type mismatch: The argument\n  slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) (K + 1)\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.192\nin the application\n  Matroid.IsMinor\n    (slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w)\n      (K + 1)); line 301: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 303: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.234 ?m.235; line 303: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 304: Type mismatch\n  selected + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.240; line 304: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 317: Unknown constant `Thre"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedSearch.program_meets "formal statement does not compile: Import parser timed out after 5s"
+Platform: 41/41 definitions published; 315/481 proofs accepted; 5 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 315/481 proofs accepted; 6 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Uploader paused at a safe boundary; stored jobs remain resumable.
+version=0.12.6
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightBandPreprocessing.Procs.meets "Compile error in your proof:\nline 578: Invalid field `transfer`: The environment does not contain `Exists.transfer`, so it is not possible to project the field `transfer` from an expression\n  hPreparedA\nof type\n  \u2203 L,\n    Light.Seg \u03bc\u2081 av L \u2227\n      List.Pairwise (fun x1 x2 => x1 < x2) L \u2227\n        L.length \u2264 originalA.length \u2227\n          (\u2200 (z : \u2124), z \u2208 L \u2194 z \u2208 originalA) \u2227\n            \u03bc\u2081 ae = \u2191L.length \u2227\n              \u03bc\u2081 (ae + 1) = \u2191(size L.length g) \u2227\n                (\u2200 i < size L.length g, \u03bc\u2081 (ae + 2 + i) = L.getD (start g i) 0) \u2227\n                  \u2200 i < size L.length g, \u03bc\u2081 (ae + 2 + L.length + i) = L.getD (stop L.length g i - 1) 0\nline 579: No goals to be solved\nline 616: Invalid field `transfer`: The environment does not contain `Exists.transfer`, so it is not possible to project the field `transfer` from an expression\n  hPreparedA\u2082\nof type\n  \u2203 L,\n    Light.Seg \u03bc\u2082 av L \u2227\n      List.Pairwise (fun x1 x2 => x1 < x2) L \u2227\n        L.length \u2264 originalA.length \u2227\n          (\u2200 (z : \u2124), z \u2208 L \u2194 z \u2208 originalA) \u2227\n            \u03bc\u2082 ae = \u2191L.length \u2227\n              \u03bc\u2082 (ae + 1) = \u2191(size L.length g) \u2227\n                (\u2200 i < size L.length g, \u03bc\u2082 (ae + 2 + i) = L.getD (start g i) 0) \u2227\n                  \u2200"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightBandRawAColor.Procs.meets "Compile error in your proof:\nline 1103: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  hrepA\nof type\n  Light.Seg \u03bd\u2081 av A \u2227\n    A.length \u2264 (classList p x 0 1).length \u2227\n      (\u2200 (z : \u2124), z \u2208 A \u2194 z \u2208 classList p x 0 1) \u2227\n        LightHeaderBands.At \u03bd\u2081 ae A.length (family (fun i => A.getD i 0) A.length g hg \u22ef)\nline 1104: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  hrepB\nof type\n  Light.Seg \u03bd\u2081 bv B \u2227\n    B.length \u2264 (classList p x 1 1).length \u2227\n      (\u2200 (z : \u2124), z \u2208 B \u2194 z \u2208 classList p x 1 1) \u2227\n        LightHeaderBands.At \u03bd\u2081 be B.length (family (fun i => B.getD i 0) B.length g hg \u22ef)\nline 1105: Invalid field `keep`: The environment does not contain `And.keep`, so it is not possible to project the field `keep` from an expression\n  hrepC\nof type\n  Light.Seg \u03bd\u2081 cv C \u2227\n    C.length \u2264 (classList p x 2 (-1)).length \u2227\n      (\u2200 (z : \u2124), z \u2208 C \u2194 z \u2208 classList p x 2 (-1)) \u2227\n        LightHeaderBands.At \u03bd\u2081 ce C.length (family (fun i => C.getD i 0) C.length g hg \u22ef)"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWanted.program_meets "formal statement does not compile: line 314: Application type mismatch: The argument\n  slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J (\u2191p) shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w) (K + 1)\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.192\nin the application\n  Matroid.IsMinor\n    (slot root (ReportingHostFrontierLayout.capacity (RawIncidences.rawOn h J (\u2191p) shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c) w)\n      (K + 1)); line 314: Unknown identifier `asks`\n\nNote: It is not possible to treat `asks` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 316: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.234 ?m.235; line 316: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 317: Type mismatch\n  selected + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Matroid ?m.240; line 317: Unknown identifier `askBase`\n\nNote: It is not possible to treat `askBase` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 331: Type mismatch\n  termin"
+Platform: 41/41 definitions published; 331/481 proofs accepted; 10 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Platform: 41/41 definitions published; 332/481 proofs accepted; 11 verified sketches awaiting children; 32 jobs in flight; 2 proofs need source correction
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecord.program_meets "formal statement does not compile: line 356: Unknown identifier `root_.ThreeSum.BandRawA.valueAt`; line 356: Application type mismatch: The argument\n  globalModulus h J\nhas type\n  \u2124\nbut is expected to have type\n  ?m.42 \u27f6 ?m.43\nin the application\n  AlgebraicGeometry.morphismRestrict (globalModulus h J); line 401: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecord.program_meets`"
+Uploader paused at a safe boundary; stored jobs remain resumable.
+version=0.12.6
+Traceback (most recent call last):
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 399, in <module>
+    message=step_queued(limit) if limit>1 or open_sketch_mode else step()
+            ~~~~~~~~~~~^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 374, in step_queued
+    verify(record,meta[record['name']]['explanation'])
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 175, in verify
+    raise RuntimeError('Reconcile uncertain proof intent before retry: '+record['name'])
+RuntimeError: Reconcile uncertain proof intent before retry: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedDecodeAccess.program_meets_fits
+Platform: 41/41 definitions published; 364/481 proofs accepted; 9 verified sketches awaiting children; 32 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingStoredStep.program_meets "formal statement does not compile: line 323: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.244 ?m.245; line 323: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 336: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingStoredStep.program_meets`"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingLevels.program_meets "formal statement does not compile: line 303: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.235 ?m.236; line 303: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 317: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingLevels.program_meets`"
+Platform: 41/41 definitions published; 364/481 proofs accepted; 9 verified sketches awaiting children; 32 jobs in flight; 0 proofs and 2 publications need attention
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedSearch.program_meets "formal statement does not compile: line 312: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.233 ?m.234; line 312: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 349: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingWantedSearch.program_meets`"
+Source correction required for publication: ThreeSum1960614.Machine.ThreeSum.LightReportingWanted.program_meets "formal statement does not compile: line 316: Type mismatch\n  counts + groupSize h\nhas type\n  \u2115\nbut is expected to have type\n  Graph ?m.235 ?m.236; line 316: Unknown identifier `elected`\n\nNote: It is not possible to treat `elected` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.; line 359: Unknown constant `ThreeSum1960614.Machine.ThreeSum.LightReportingWanted.program_meets`"
+Platform: 41/41 definitions published; 364/481 proofs accepted; 9 verified sketches awaiting children; 32 jobs in flight; 0 proofs and 4 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightReportingInitialize.program_meets "Compile error in your proof:\nline 1129: Application type mismatch: The argument\n  0\nhas type\n  \u2124\nbut is expected to have type\n  Matroid ?m.1041\nin the application\n  Matroid.IsStrictMinor 0\nline 1129: Unknown identifier `ass`\nline 897: unsolved goals\ncase refine_1.refine_1.refine_1.refine_1.refine_1.refine_1.refine_1\nlim : Light.Limits\n\u03b1 : Type u_1\n\u03b2 : Type u_2\n\u03b3 : Type u_3\ninst\u271d\u2075 : Fintype \u03b1\ninst\u271d\u2074 : Fintype \u03b2\ninst\u271d\u00b3 : Fintype \u03b3\ninst\u271d\u00b2 : DecidableEq \u03b1\ninst\u271d\u00b9 : DecidableEq \u03b2\ninst\u271d : DecidableEq \u03b3\n\u03bc : \u2115 \u2192 \u2124\nh J baseL baseR maskBase work dst depth : \u2115\nD : Catalog\npMod shift : \u2124\nA : Finset \u03b1\nB : Finset \u03b2\nC : Finset \u03b3\na : \u03b1 \u2192 \u2124\nb : \u03b2 \u2192 \u2124\nc : \u03b3 \u2192 \u2124\nw : Wanted h J \u03b1\nhkey : w.1 \u2208 A \u2227 globalModulus h J \u2223 a w.1 % pMod + lift w.2.1 * pMod + shift - globalKey w.2.2\nhw : \u2191lim.space \u2264 lim.word\nHS : Sources \u03bc pMod shift B C b c w.2.2 baseL baseR\nHC : Stored \u03bc D \u22ef pMod shift B C b c w.2.2\nHB : Bounds h J 0 D baseL baseR dst\nHW : Scratch lim h J 0 D (#B) (#C) maskBase work\nhd : depth + 2 * LightBlockQuery.width h J + 13 \u2264 lim.depth\nI : Finset (RawIncidences.RawItem h J \u03b1 \u03b2 \u03b3) := RawIncidences.rawOn h J pMod shift (A \u00d7\u02e2 B \u00d7\u02e2 C) a b c\ncap : \u2115 := ReportingHostFrontierLayout.capacity I w\nhout : slot ds"
+Platform: 41/41 definitions published; 370/481 proofs accepted; 7 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.EncodedColorReportingData.report_le_source_allocation "Compile error in your proof:\nline 3083: failed to synthesize instance of type class\n  NeZero (Scales.radix n)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+Platform: 41/41 definitions published; 388/481 proofs accepted; 2 verified sketches awaiting children; 32 jobs in flight; 2 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 394/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 0 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 396/481 proofs accepted; 4 verified sketches awaiting children; 32 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.Light.pow_spec "Compile error in your proof:\nline 133: Unknown identifier `pow_spec`\nline 134: No goals to be solved"
+Platform: 41/41 definitions published; 397/481 proofs accepted; 4 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 405/481 proofs accepted; 1 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 411/481 proofs accepted; 1 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 415/481 proofs accepted; 1 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 418/481 proofs accepted; 2 verified sketches awaiting children; 32 jobs in flight; 1 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.ThreeSumReportingSetupResources.poly_need "Compile error in your proof:\nline 1257: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.magnitude_powerBound.add_same`\nline 1256: unsolved goals\n\u22a2 PowerBound polynomialPart 10242\nline 1269: Invalid field `add_same`: The environment does not contain `Function.add_same`, so it is not possible to project the field `add_same` from an expression\n  hp\nof type\n  \u2200 (d : \u211d), 0 < d \u2192 \u2200\u1da0 (n : \u2115) in atTop, \u2191(polynomialPart n) \u2264 \u2191n ^ (196608 + d)\nline 1365: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.magnitude_powerBound.add_same`"
+Platform: 41/41 definitions published; 421/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 2 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.steps_start "Compile error in your proof:\nline 920: Application type mismatch: The argument\n  bs\nhas type\n  List Stmt\nbut is expected to have type\n  List _root_.Light.Stmt\nin the application\n  length_bodiesCode G bs"
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.rel_startMem "Compile error in your proof:\nline 553: unexpected identifier; expected ')'\nline 550: unsolved goals\nW : \u2115\nm : \u2124 \u2192 BitVec W\ni j : \u2124\nhzero : m cZERO = wd W 0\nhpool : m (cPool (2 * mainFrame)) = wd W \u2191(2 * mainFrame)\nhi : m cARG1 = wd W i\nhj : m cARG2 = wd W j\nF : \u2115\nread : \u2200 a \u2209 MainFrame F, a \u2260 cFP \u2192 effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) a = m a\nzero : effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) cZERO = wd W 0\narg1 : effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) cARG1 = wd W i\narg2 : effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) cARG2 = wd W j\n\u22a2 effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) cARG2 = wd W ?m.167\nline 536: unsolved goals\nW : \u2115\nm : \u2124 \u2192 BitVec W\ni j : \u2124\nhzero : m cZERO = wd W 0\nhpool : m (cPool (2 * mainFrame)) = wd W \u2191(2 * mainFrame)\nhi : m cARG1 = wd W i\nhj : m cARG2 = wd W j\nF : \u2115\nread : \u2200 a \u2209 MainFrame F, a \u2260 cFP \u2192 effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) a = m a\nzero : effects (zeroCode F) (Function.update m cFP (wd W (cStack mainFrame))) cZERO = wd W 0\narg1 : effects (zeroCode F) (Function.update m cFP ("
+Platform: 41/41 definitions published; 425/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 3 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.effects_newFrame "Compile error in your proof:\nline 569: unexpected identifier; expected ')'\nline 566: unsolved goals\ncase succ.inr\nW : \u2115\nZ : Sizes W\nn q' : \u2115\nm : \u2124 \u2192 BitVec W\nhNFP : m cNFP = wd W (cStack q')\nF' : \u2115\nih :\n  (\u2200 i < F', m (cPool (2 * i)) = wd W \u2191(2 * i)) \u2192\n    q' + F' \u2264 Z.Q \u2192\n      (\u2200 i < F', effects (frameInit F' n) m (cStack (q' + i)) = if i < n then m (cT i) else m cZERO) \u2227\n        ThreeSumApsp.WordRam.AgreeOutside (insert cADDR (Stack q' Z.Q)) m (effects (frameInit F' n) m)\nhpool : \u2200 i < F' + 1, m (cPool (2 * i)) = wd W \u2191(2 * i)\nhQ : q' + (F' + 1) \u2264 Z.Q\nval : \u2200 i < F', effects (frameInit F' n) m (cStack (q' + i)) = if i < n then m (cT i) else m cZERO\nA : ThreeSumApsp.WordRam.AgreeOutside (insert cADDR (Stack q' Z.Q)) m (effects (frameInit F' n) m)\ni : \u2115\nhi : i < F' + 1\nhne : i \u2260 F'\n\u22a2 effects (frameInit F' n) m (cStack (q' + i)) = if i < n then m (cT i) else m cZERO\nline 635: unexpected identifier; expected ')'\nline 632: unsolved goals\nW : \u2115\nZ : Sizes W\n\u03c3 : State\nq : \u2115\nm : \u2124 \u2192 BitVec W\nI : Framed Z \u03c3 q m\nhQ : q + Z.F + 1 + Z.F \u2264 Z.Q\nargs : List Expr\nhargs : \u2200 i < args.length, m (cT i) = wd W (frame (List.map (fun x => Expr.val \u03c3 x) args) i)\nret : \u2115\nhret : ret \u2264 Z.disp\nR : Rel Z \u03c3 q "
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.steps_setVar "Compile error in your proof:\nline 504: unexpected identifier; expected ')'\nline 501: unsolved goals\nW : \u2115\nZ : Sizes W\n\u03c3 : State\nq : \u2115\nm : \u2124 \u2192 BitVec W\nR : Rel Z \u03c3 q m\nhq : 1 \u2264 q\nx : \u2115\nv : \u2124\n\u22a2 m cFP = wd W (cStack ?m.23)\n\ncase v\nW : \u2115\nZ : Sizes W\n\u03c3 : State\nq : \u2115\nm : \u2124 \u2192 BitVec W\nR : Rel Z \u03c3 q m\nhq : 1 \u2264 q\nx : \u2115\nv : \u2124\n\u22a2 BitVec W"
+Platform: 41/41 definitions published; 433/481 proofs accepted; 3 verified sketches awaiting children; 32 jobs in flight; 5 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResources.poly_need "Compile error in your proof:\nline 1017: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.magnitude_powerBound.add_same`\nline 1016: unsolved goals\n\u22a2 PowerBound wantedEnvelope 20480"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.EncodedColorReportingResources.poly_need "Compile error in your proof:\nline 1644: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.magnitude_powerBound.add_same`"
+Platform: 41/41 definitions published; 442/481 proofs accepted; 3 verified sketches awaiting children; 29 jobs in flight; 6 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 443/481 proofs accepted; 4 verified sketches awaiting children; 27 jobs in flight; 6 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 443/481 proofs accepted; 5 verified sketches awaiting children; 26 jobs in flight; 6 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct "Compile error in your proof:\nline 1145: unexpected identifier; expected ')'\nline 1142: unsolved goals\ncase v\nW : \u2115\nZ : Sizes W\n\u03c3 : State\nq : \u2115\nm : \u2124 \u2192 BitVec W\nR : Rel Z \u03c3 q m\nhq : 1 \u2264 q\na : \u2124\nha : Z.lim.Addr a\nv : \u2124\nhnonneg : 0 \u2264 a\n\u22a2 BitVec W\nline 1142: unsolved goals\nW : \u2115\nZ : Sizes W\n\u03c3 : State\nq : \u2115\nm : \u2124 \u2192 BitVec W\nR : Rel Z \u03c3 q m\nhq : 1 \u2264 q\na : \u2124\nha : Z.lim.Addr a\nv : \u2124\nhnonneg : 0 \u2264 a\nx : \u2115\nhx : x < Z.F\n\u22a2 m (cStack (q + x)) = wd W (State.loc ?m.26 x)\nline 1264: unexpected identifier; expected ')'\nline 1261: unsolved goals\nW : \u2115\ncode : List Instr\ndisp n j : \u2115\nhcode : ThreeSumApsp.WordRam.CodeAt code disp (dispatcher n)\nhj : j < n\nm : \u2124 \u2192 BitVec W\nhone : m cONE = wd W 1\nv : \u2124\nhv : InRange W (v - 1)\npairCode : ThreeSumApsp.WordRam.CodeAt code (disp + 2 * j) [Instr.sub cRR cRR cONE, Instr.bltz cRR j]\n\u22a2 m cONE = wd W ?m.84\nline 1257: unsolved goals\nW : \u2115\ncode : List Instr\ndisp n j : \u2115\nhcode : ThreeSumApsp.WordRam.CodeAt code disp (dispatcher n)\nhj : j < n\nm : \u2124 \u2192 BitVec W\nhone : m cONE = wd W 1\nv : \u2124\nhv : InRange W (v - 1)\npairCode : ThreeSumApsp.WordRam.CodeAt code (disp + 2 * j) [Instr.sub cRR cRR cONE, Instr.bltz cRR j]\n\u22a2 ThreeSumApsp.WordRam.Steps code 2 { pc := disp + 2 * j, "
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.perTriple_powerBound "Compile error in your proof:\nline 747: Invalid field `add_same`: The environment does not contain `Function.add_same`, so it is not possible to project the field `add_same` from an expression\n  hh'\nof type\n  \u2200 (d : \u211d), 0 < d \u2192 \u2200\u1da0 (n : \u2115) in atTop, \u2191((fun n => 2 * (k + 2) * primeWindow n ^ 2) n) \u2264 \u2191n ^ (0 + d)\nline 820: Unknown constant `ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.rounded_maxMod_powerBound.add_same`\nline 807: unsolved goals\nk : \u2115\nhb : PowerBound (fun n => bandSize n * bitBudget k n) (Parameters.epsilon * (Parameters.E + Parameters.bandShift) + 0)\nhb' : PowerBound (fun n => bandSize n * bitBudget k n) (Parameters.epsilon * (Parameters.E + Parameters.bandShift))\nhba : Parameters.epsilon * (Parameters.E + Parameters.bandShift) \u2264 8 / 5 * (Parameters.epsilon * (Parameters.E + 1 / 2))\nhzero : 0 \u2264 8 / 5 * (Parameters.epsilon * (Parameters.E + 1 / 2))\n\u22a2 PowerBound (fun n => 10000 * (roundedPower (maxMod n) + bandSize n * bitBudget k n + 1))\n    (8 / 5 * (Parameters.epsilon * (Parameters.E + 1 / 2)))"
+Platform: 41/41 definitions published; 446/481 proofs accepted; 5 verified sketches awaiting children; 21 jobs in flight; 8 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead_powerBound "Compile error in your proof:\nline 994: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.width_powerBound.add_same`\nline 993: unsolved goals\n\u22a2 PowerBound overhead 0"
+Platform: 41/41 definitions published; 450/481 proofs accepted; 5 verified sketches awaiting children; 16 jobs in flight; 9 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.HierarchyScales.initial_query_eventually_le "Compile error in your proof:\nline 946: Ambiguous term\n  initialTheta\nPossible interpretations:\n  Parameters.initialTheta : \u211d\n  \n  _root_.ThreeSum.Parameters.initialTheta : \u211d\nline 946: Ambiguous term\n  initialTheta\nPossible interpretations:\n  Parameters.initialTheta : \u211d\n  \n  _root_.ThreeSum.Parameters.initialTheta : \u211d"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.ThreeSumColorDriverResources.full_poly_need "Compile error in your proof:\nline 1420: Unknown constant `ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.magnitude_powerBound.add_same`\nline 1615: Unknown constant `ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.identity_powerBound.add_same`"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.BandPrimeCosts.timeBudget_powerBound "Compile error in your proof:\nline 963: Unknown constant `ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.window_powerBound.add_same`\nline 961: unsolved goals\n\u22a2 PowerBound (fun n => ThreeSum.LightPrimePool.time (primeWindow n)) 0\nline 982: Invalid field `add_same`: The environment does not contain `Function.add_same`, so it is not possible to project the field `add_same` from an expression\n  hc'\nof type\n  \u2200 (d : \u211d),\n    0 < d \u2192\n      \u2200\u1da0 (n : \u2115) in atTop,\n        \u2191((fun n => 3 * CostLedger.bandCount n ^ 2) n) \u2264\n          \u2191n ^ (2 * (1 - Parameters.epsilon * (Parameters.E + Parameters.bandShift)) + d)\nline 1027: Unknown constant `ThreeSum1960614.Machine.ThreeSum.BandPrimeCosts.primeDepth_powerBound.add_same`\nline 1026: unsolved goals\nk : \u2115\n\u22a2 PowerBound (timeBudget k) (2 + Parameters.epsilon * (4 / 5 - 2 / 5 * Parameters.E - 2 * Parameters.bandShift))"
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResourcesHybrid.poly_need "Compile error in your proof:\nline 1016: Unknown constant `ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.identity_powerBound.add_same`\nline 1024: Invalid field `add_same`: The environment does not contain `Function.add_same`, so it is not possible to project the field `add_same` from an expression\n  hn\nof type\n  \u2200 (d : \u211d), 0 < d \u2192 \u2200\u1da0 (n : \u2115) in Filter.atTop, \u2191((fun n => n) n) \u2264 \u2191n ^ (\u2191(\u03ba + 1) + d)\nline 1025: No goals to be solved"
+Platform: 41/41 definitions published; 456/481 proofs accepted; 9 verified sketches awaiting children; 11 jobs in flight; 4 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.effects_newFrame "Compile error in your proof:\nline 566: unsolved goals\ncase succ.inr\nW : \u2115\nZ : Sizes W\nn q' : \u2115\nm : \u2124 \u2192 BitVec W\nhNFP : m cNFP = wd W (cStack q')\nF' : \u2115\nih :\n  (\u2200 i < F', m (cPool (2 * i)) = wd W \u2191(2 * i)) \u2192\n    q' + F' \u2264 Z.Q \u2192\n      (\u2200 i < F', effects (frameInit F' n) m (cStack (q' + i)) = if i < n then m (cT i) else m cZERO) \u2227\n        ThreeSumApsp.WordRam.AgreeOutside (insert cADDR (Stack q' Z.Q)) m (effects (frameInit F' n) m)\nhpool : \u2200 i < F' + 1, m (cPool (2 * i)) = wd W \u2191(2 * i)\nhQ : q' + (F' + 1) \u2264 Z.Q\nval : \u2200 i < F', effects (frameInit F' n) m (cStack (q' + i)) = if i < n then m (cT i) else m cZERO\nA : ThreeSumApsp.WordRam.AgreeOutside (insert cADDR (Stack q' Z.Q)) m (effects (frameInit F' n) m)\ni : \u2115\nhi : i < F' + 1\nhne : i \u2260 F'\n\u22a2 Function.update (Function.update (effects (frameInit F' n) m) cADDR (wd W (cStack (q' + F')))) (cStack (q' + F'))\n      (Function.update (effects (frameInit F' n) m) cADDR (wd W (cStack (q' + F'))) (if F' < n then cT F' else cZERO))\n      (cStack (q' + i)) =\n    if i < n then m (cT i) else m cZERO"
+Platform: 41/41 definitions published; 456/481 proofs accepted; 9 verified sketches awaiting children; 10 jobs in flight; 5 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct "Compile error in your proof:\nline 1362: Unknown identifier `straight_digitsCode`\nline 1361: unsolved goals\nc : \u2124\nd : \u2115\nL : List \u2115\n\u22a2 \u2200 i \u2208 digitsCode c (d :: L), Straight i\nline 1749: Application type mismatch: The argument\n  bs\nhas type\n  List Stmt\nbut is expected to have type\n  List _root_.Light.Stmt\nin the application\n  le_endPos F bs\nline 1749: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c \u2265 0\n  a \u2265 0\n  a - c \u2265 1\nwhere\n a := \u2191pos\n c := \u2191(?m.29 b bs pos)\nline 1928: Unknown identifier `straight_frameInit`"
+Platform: 41/41 definitions published; 458/481 proofs accepted; 9 verified sketches awaiting children; 7 jobs in flight; 6 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 461/481 proofs accepted; 9 verified sketches awaiting children; 4 jobs in flight; 6 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 462/481 proofs accepted; 9 verified sketches awaiting children; 3 jobs in flight; 6 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 464/481 proofs accepted; 8 verified sketches awaiting children; 7 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 465/481 proofs accepted; 8 verified sketches awaiting children; 6 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 467/481 proofs accepted; 8 verified sketches awaiting children; 4 jobs in flight; 1 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 469/481 proofs accepted; 8 verified sketches awaiting children; 2 jobs in flight; 1 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 469/481 proofs accepted; 8 verified sketches awaiting children; 3 jobs in flight; 0 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.program_meets "Compile error in your proof:\nline 674: unsolved goals\nlim : Light.Limits\n\u03bc : \u2115 \u2192 \u2124\nS : Selection\nL : Layout\nselectionHeader layoutHeader cover counter h J K d T : \u2115\nQ : \u2124 \u2192 (\u2115 \u2192 \u2124) \u2192 Prop\nhprime : \u03bc (cover + 6) = \u2191(LocalCoverBounds.localPrime h)\nhcap : \u03bc (cover + 7) = \u2191(LocalCoverBounds.localBucketCap h)\nhw : \u2191lim.space \u2264 lim.word\nhd : d < lim.depth\nhs : space selectionHeader layoutHeader cover counter h J K \u2264 lim.space\n\u22a2 (\u2191selectionHeader + 0).toNat = selectionHeader + 0\nline 677: unsolved goals\nlim : Light.Limits\n\u03bc : \u2115 \u2192 \u2124\nS : Selection\nL : Layout\nselectionHeader layoutHeader cover counter h J K d T : \u2115\nQ : \u2124 \u2192 (\u2115 \u2192 \u2124) \u2192 Prop\nhprime : \u03bc (cover + 6) = \u2191(LocalCoverBounds.localPrime h)\nhcap : \u03bc (cover + 7) = \u2191(LocalCoverBounds.localBucketCap h)\nhw : \u2191lim.space \u2264 lim.word\nhd : d < lim.depth\nhs : space selectionHeader layoutHeader cover counter h J K \u2264 lim.space\nhs0 : \u03bc (\u2191selectionHeader + 0).toNat = S.av\n\u22a2 (\u2191selectionHeader + 1).toNat = selectionHeader + 1\nline 680: unsolved goals\nlim : Light.Limits\n\u03bc : \u2115 \u2192 \u2124\nS : Selection\nL : Layout\nselectionHeader layoutHeader cover counter h J K d T : \u2115\nQ : \u2124 \u2192 (\u2115 \u2192 \u2124) \u2192 Prop\nhprime : \u03bc (cover + 6) = \u2191(LocalCoverBounds.localPrime h)\nhcap : \u03bc (cove"
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 1 jobs in flight; 1 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightThreeSumWantedHost.program_meets "Compile error in your proof:\nline 1755: (deterministic) timeout at `whnf`, maximum number of heartbeats (500000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nline 2841: (deterministic) timeout at `whnf`, maximum number of heartbeats (500000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nline 2752: (deterministic) timeout at `whnf`, maximum number of heartbeats (500000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nline 2901: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.LightThreeSumWantedHost.program_meets__implementation_f11fb1a34c`\nline 2901: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.LightThreeSumWantedHost.program_meets__implementation_f11fb1a34c`\nline 2901: type of theorem `solution` is not a proposition\n  ?m.1\nline 2903: Unknown constant `soluti"
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 1 jobs in flight; 1 proofs and 0 publications need attention
+version=0.12.6
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.program_meets "Compile error in your proof:\nline 673: (deterministic) timeout at `whnf`, maximum number of heartbeats (1000000) has been reached\n\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\nline 2013: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.program_meets__implementation_2a8fd7c113`\nline 2013: Unknown identifier `ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.program_meets__implementation_2a8fd7c113`\nline 2013: type of theorem `solution` is not a proposition\n  ?m.1\nline 2015: Unknown constant `solution`"
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 1 jobs in flight; 1 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 471/481 proofs accepted; 7 verified sketches awaiting children; 2 jobs in flight; 0 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 472/481 proofs accepted; 7 verified sketches awaiting children; 1 jobs in flight; 0 proofs and 0 publications need attention
+Platform: 41/41 definitions published; 480/481 proofs accepted; 0 verified sketches awaiting children; 1 jobs in flight; 0 proofs and 0 publications need attention
+Source correction required for proof: ThreeSum1960614.costs_solve_3sum "Compile error in your proof:\nline 3346: Ambiguous term\n  mu\nPossible interpretations:\n  Scales.mu n : \u2115\n  \n  _root_.ThreeSum.Scales.mu n : \u2115"
+Platform: 41/41 definitions published; 480/481 proofs accepted; 0 verified sketches awaiting children; 0 jobs in flight; 1 proofs and 0 publications need attention
+Uploader paused at a safe boundary; stored jobs remain resumable.
+Platform: 41/41 definitions published; 480/481 proofs accepted; 0 verified sketches awaiting children; 1 jobs in flight; 0 proofs and 0 publications need attention
+all proofs accepted; actual live graph audit required
+All proofs accepted; checking the complete actual graph and original main reduction.
+Audited 25 / 481 live proofs
+Audited 50 / 481 live proofs
+Audited 75 / 481 live proofs
+Audited 100 / 481 live proofs
+Traceback (most recent call last):
+  File "D:\users\self_projects\prove2me_workspace\missions\3sum-1960614\publish_machine_server_first.py", line 409, in <module>
+    subprocess.run([sys.executable,str(HERE/'audit_machine_graph.py')],check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['C:\\Python314\\python.exe', 'D:\\users\\self_projects\\prove2me_workspace\\missions\\3sum-1960614\\audit_machine_graph.py']' returned non-zero exit status 4294967295.

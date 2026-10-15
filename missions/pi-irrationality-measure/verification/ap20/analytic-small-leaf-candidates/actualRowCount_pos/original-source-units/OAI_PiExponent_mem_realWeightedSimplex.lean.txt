@@ -1,0 +1,16 @@
+theorem mem_realWeightedSimplex {d : ℕ} {w : Fin d → ℝ}
+    (hw : ∀ i, 0 < w i) {H : ℝ} {a : Fin d → ℕ} :
+    a ∈ realWeightedSimplex w H ↔ ∑ i, w i * (a i : ℝ) ≤ H := by
+  classical
+  constructor
+  · exact fun h => (Finset.mem_filter.mp h).2
+  · intro h
+    refine Finset.mem_filter.mpr ⟨Fintype.mem_piFinset.mpr ?_, h⟩
+    intro i
+    apply Finset.mem_range.mpr
+    apply Nat.lt_succ_of_le
+    apply Nat.le_floor
+    apply (le_div_iff₀ (hw i)).mpr
+    rw [mul_comm]
+    exact (Finset.single_le_sum (f := fun j => w j * (a j : ℝ))
+      (fun j _ => mul_nonneg (hw j).le (Nat.cast_nonneg _)) (Finset.mem_univ i)).trans h

@@ -282,6 +282,10 @@ Response:
 
 ### Key rules for reductions
 
+In this workspace, verification of the intended graph edges is part of delivery even when the
+parent was already proved directly. Follow [proof_graph.md](proof_graph.md); `ACCEPTED` alone does
+not establish that the planned dependencies appear in the live graph.
+
 IMPORTANT: avoid trivial reductions. A reduction should genuinely decompose the hard proof and make progress instead of a trivial `have ... exact ...` transfer. At the same time, make sure your lemmas are FAITHFUL to the source reference — strictly follow the [IMPORTANT principles of submit problems/definitions](contribute.md#important-principles-of-submit-problemsdefinitions).
 
 - Create child theorems via `/submit-problem` (and definitions via `/submit-definition`) **before** submitting a proof that imports them.

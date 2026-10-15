@@ -1,0 +1,78 @@
+{
+  "id": "561f5d71-28d6-4027-81f0-3fa01d5d7409",
+  "name": "Deterministic Integer 3SUM 1.960614: Quartic Switch and Complete Program Extension",
+  "description": "Prove a deterministic $O(n^{{{value}}})$ time bound for 3SUM on polynomially bounded integers, using the exact shared word-RAM and 3SUM definitions of the foundation mission. Reuse the existing Lean formalization and proved dependencies when establishing a smaller exponent.",
+  "mission_type": "ResearchPaper",
+  "fields": [
+    {
+      "id": "55eec41b-ff24-45ad-96b6-49d7a6869286",
+      "slug": "combinatorics",
+      "name": "Combinatorics"
+    },
+    {
+      "id": "105f8c80-f763-4beb-822c-d9265917c2b1",
+      "slug": "theoretical-computer-science",
+      "name": "Theoretical Computer Science"
+    }
+  ],
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "status": "Draft",
+  "reviews": [],
+  "release_pending": false,
+  "mission_id": null,
+  "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+  "campaign": {
+    "slug": "3sum-exponent",
+    "name": "3SUM Exponent",
+    "value_type": "real",
+    "bound_type": "upper",
+    "value_direction": "lower"
+  },
+  "main_item_id": "b4683e52-9df3-4d03-88a5-37409ee805d0",
+  "item_order": [
+    "ac70286b-0daf-4cc6-8e3d-f0b9852bc88f",
+    "b4683e52-9df3-4d03-88a5-37409ee805d0"
+  ],
+  "submitted_at": null,
+  "created_at": "2026-10-14T05:04:34.756073+00:00",
+  "updated_at": "2026-10-14T05:04:34.990792+00:00",
+  "items": [
+    {
+      "id": "ac70286b-0daf-4cc6-8e3d-f0b9852bc88f",
+      "kind": "reference",
+      "role": null,
+      "theorem_id": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "milestone_title": null,
+      "milestone_description": null,
+      "confirmed_at": null,
+      "created_at": "2026-10-14T05:04:34.908157+00:00",
+      "updated_at": "2026-10-14T05:04:34.908157+00:00"
+    },
+    {
+      "id": "b4683e52-9df3-4d03-88a5-37409ee805d0",
+      "kind": "theorem",
+      "role": "goal",
+      "theorem_name": "TrulySubquadratic3SUM.threeSum_bound",
+      "theorem_title": "3SUM in $O(n^{{{value}}})$ word-RAM steps",
+      "formal_statement": "theorem TrulySubquadratic3SUM.threeSum_bound :\n    EndStatement.ThreeSum.SolvedInTime {{value}} := by sorry",
+      "natural_language_statement": "For every fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural constant $b$, and a step-bound function $T$ that work for every input size $n$ and every word width $W\\ge b(\\operatorname{Nat.log2}(n)+1)$. On integers $x_0,\\ldots,x_{n-1}$ with $|x_i|\\le n^\\kappa$, the program halts within $T(n)$ steps and accepts exactly when there are pairwise distinct indices $i,j,k$ with $x_i+x_j+x_k=0$.\n\nFor the rational exponent $r={{value}}$, the bound is the foundation definition `EndStatement.BigO T r`: there is a natural constant $K$ such that $T(n)^{r.\\mathrm{den}}\\le K n^{r.\\mathrm{num}.\\mathrm{toNat}}$ for every $n\\ge2$. For nonnegative $r$, this is $T(n)=O(n^r)$. Repeated values at distinct positions are allowed; no witness triple is required, and inputs with $n<3$ must be rejected.\n\nUse the foundation mission’s existing definitions without restating them.",
+      "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "https://arxiv.org/abs/2610.06783v1; Theorem 22, second bound using Corollary 26; https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L88-L97; EndStatement.Theorem_22_3SUM.",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "word-ram"
+      ],
+      "readback": null,
+      "readback_model": null,
+      "publish_job_id": null,
+      "milestone_title": null,
+      "milestone_description": null,
+      "confirmed_at": null,
+      "created_at": "2026-10-14T05:04:34.966994+00:00",
+      "updated_at": "2026-10-14T05:04:34.966994+00:00"
+    }
+  ]
+}

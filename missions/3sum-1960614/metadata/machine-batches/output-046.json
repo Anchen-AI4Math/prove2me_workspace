@@ -1,0 +1,79 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSuffixBatch.meets",
+    "theorem_title": "Execution of one locally enumerated suffix layer",
+    "natural_language_statement": "Let global width $W$, suffix width $V$ and offset $a$ satisfy $a+V\\le W$. Fix source/box cutoffs $c,b$, source stage $s\\le W$, fixed global prefixes $P_L,P_R$, and integer subset functions $f,g$ bounded by $B,D$ on cardinalities at most $c\\le W$. Assume $|P_L|+b,|P_R|+b\\le c$. Memory stores both complete compact source transforms, a list of valid width-$V$ masks of common cardinality $k\\le b$, and an initial local box table. All four regions end before scratch; each source and the mask list are disjoint from the box output. Assume addresses fit words; Pascal/power scratch fits; $(W+1)2^{W+1}$ and $(2^sB)(2^sD)$ fit words; and depth $d+W+8$ is allowed. With the batch/cell/leaf literal procedure closure, the call updates exactly the listed compact local cells with their signed lifted-source leaf values, preserves the other initial table cells, meets its prescribed time and changes no cell below scratch outside the box output.\n\nThis builds residual-width leaf tables through real global source reads.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This builds residual-width leaf tables through real global source reads. Only the supplied valid local masks are evaluated, with every signed value read through the stored global transforms."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSuffixExplicit.meets",
+    "theorem_title": "Execution of all explicit local suffix leaves",
+    "natural_language_statement": "Let $a+V\\le W$, $Q\\subseteq\\operatorname{Fin}(V)$, fixed global prefixes $P_L,P_R$, source cutoff $c\\le W$, stage $s\\le W$, and $t\\le|Q|+1$ be given. Let $f,g$ be integer subset functions bounded by $B,D$ through cardinality $c$, with both $P_L\\cup\\operatorname{lift}(Q)$ and $P_R\\cup\\operatorname{lift}(Q)$ of size at most $c$. Suppose memory stores their exact source transforms before a mask buffer of capacity $A=\\sum_{j<t}\\binom{|Q|}{j}$, itself before scratch. Assume addresses fit words; Pascal/power scratch fits; $(W+1)2^{W+1}$ and $(A+1)(2^sB)(2^sD)$ fit words; and $d+W+8$ is allowed. With the explicit enumerator/sum/leaf closure present, the program returns\n\n$$\\sum_{U\\subseteq Q,\\ |U|<t}\\operatorname{leafWeight}(Q\\setminus U),$$\n\nwhere leaf weight is the signed product of the stored stage values at the lifted set and two prefixes. It meets its stated time and preserves cells below scratch outside the mask buffer.\n\nThis executes the explicit half of the sparse-query partition over only the required local layers.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This executes the explicit half of the sparse-query partition over only the required local layers. The exact result sums the signed leaves whose missing subsets have cardinality below the chosen switch."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingTerminalPrepared.program_meets",
+    "theorem_title": "Execution of prepared original-value terminal reporting",
+    "natural_language_statement": "Let $h,J,k,N_L,N_R\\in\\mathbb N$, global output $q$, reporting prefix $u$, arithmetic modulus $p$, offset $\\delta$ and A value $a$ be given. Suppose memory retains the original B/C arrays, their correct two-modulus original-index buckets, exact cover/occurrence data and both full terminal-mask lists for $(q,k,u)$. All these arrays end before preparation base $b$. Reserve after the complete prepared payload a width-$J\\cdot464h$ bit row, two row cells and scratch, with the stated space/word bounds fitting. Assume addresses fit words, originals/$a$/$a+B_i$ and $N_LN_R$ fit words, and depth $d+n+J\\cdot464h+8$ is allowed for the exact terminal candidate count $n$. The fixed program constructs endpoint hashes and independent flags, runs the original-value batch, and returns a Boolean equal to its exact terminal-hit predicate. It meets its prescribed actual time and preserves cells below $b$.\n\nThis closes terminal execution from retained masks and cover data without endpoint or flag oracles.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This closes terminal execution from retained masks and cover data without endpoint or flag oracles. Both independent endpoint flags are constructed before the batch scans original integer values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBandPair.Procs.meets",
+    "theorem_title": "Execution of both complete original-source band catalogs",
+    "natural_language_statement": "Let $N_L,N_R$ be source lengths, band size $g>0$, positive moduli $p,m$, magnitude bound $U$ and shift $\\delta$ with $|\\delta|\\le D$. Suppose memory stores integer arrays $f_L,f_R$ bounded by $U$, their exact length/band-count headers, and the shift cell, all before free base $b$. Let $\\lambda,P,d$ be limits, program and depth with the literal paired-source closure. Assume addresses fit words, the exact paired-catalog space/word budgets fit and $d+6$ is strictly below the depth limit. It constructs both exact band-code/histogram/bucket catalogs, returns their next free address, meets its stated time and preserves every cell below $b$.\n\nThis computes contiguous original-position source fibers for every normalized band from the actual headers.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes contiguous original-position source fibers for every normalized band from the actual headers."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceRetainedStages.Procs.meets",
+    "theorem_title": "Execution of retained-source suffix transforms",
+    "natural_language_statement": "Let width $L$, cutoff $c\\le L$, positive modulus $m$, endpoint map $e$ with $|e(S)|\\le E$ for $|S|\\le c$, Boolean flag map $\\phi$, and histogram $H(r)\\le B$ for $r<m$ be given. Suppose memory stores their exact compact endpoint/flag rows and histogram before transform base $b$. The $(L+1)D(L,c)$ transform cells end before a length-$D(L,c)$ mask buffer, which ends before scratch. Assume addresses fit words, the exact transform space/word budgets fit and depth $d+L+8$ is allowed. With the literal source-stage closure, it constructs all suffix-zeta stages of\n\n$$F(S)=\\begin{cases}H(e(S)\\bmod m),&\\phi(S)=1,\\\\0,&\\phi(S)=0,\\end{cases}$$\n\nmeets its prescribed time and preserves every cell below $b$.\n\nThis turns retained endpoint/flag data and actual input histograms into the exact compact source transforms.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This turns retained endpoint/flag data and actual input histograms into the exact compact source transforms."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandWeightedScore.program_meets",
+    "theorem_title": "Execution of aggregate band-owner weighted scoring",
+    "natural_language_statement": "Let positive band size $g$, base modulus $q\\le M$, original arrays A,B,C with lengths $n_A,n_B,n_C$ and magnitude bound $U$, and a list of physical owner records $R$ be retained before free base $f$. Each record has Boolean flag; flagged band starts lie within the corresponding original lengths. Let $s$ auxiliary values be distinct primes, correctly stored before $f$, with $q p_i\\le M$. For limits $\\lambda$ and depth $d$, assume addresses fit words, the exact scoring space/word budgets fit and $d+\\lceil\\log_2M\\rceil+6$ is allowed. The fixed aggregate scorer returns exactly the sum of the defined weighted modular scores over the flagged owner-band slices, meets its prescribed time and preserves every cell below $f$.\n\nThis computes the complete physical false-score quantity used in prime choice and the dense threshold.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes the complete physical false-score quantity used in prime choice and the dense threshold."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockSourceRetainedStages.meets_left",
+    "theorem_title": "Execution of the original left-source transform",
+    "natural_language_statement": "Let $\\beta$ be a finite type with decidable equality, $B\\subseteq\\beta$, $b:\\beta\\to\\mathbb Z$, and let a bijection $\\operatorname{Fin}(N)\\simeq B$ enumerate its physical value array $v$. Fix $h,J,p$ and a global output $q$, with width $W=J\\cdot464h$ and cutoff $c\\le W$. Suppose memory stores the exact original-value two-modulus histogram with zero offset, left endpoint hashes and independent left flags in compact mask order. These arrays end before transform base; all $(W+1)D(W,c)$ stages end before the mask buffer, which ends before scratch. Assume addresses fit words, exact source-stage space/word bounds with endpoint bound and histogram bound $N$ fit, and $d+W+8$ is allowed. The retained-source program constructs every stage of the original left-source function for $(p,B,b,q)$, meets its stated time and preserves memory below the transform base.\n\nThis identifies the physically constructed source stages with the unchanged independently trimmed mathematical source.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This identifies the physically constructed source stages with the unchanged independently trimmed mathematical source."
+  }
+]

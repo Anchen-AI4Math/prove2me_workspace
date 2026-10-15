@@ -1,0 +1,15 @@
+{
+  "id": "c1036289-f58b-4d4b-8696-65a9b33f234a",
+  "theorem_id": "f1b7f56d-c310-4c67-b669-c67204eba4be",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:15:45.82288+00:00",
+  "updated_at": "2026-10-15T09:17:43.423366+00:00",
+  "explanation": "Specialize realization to polynomially bounded input values and transfer the eventual estimate. This implication transfers a realized machine time with logarithmic overhead to the formal solved-at statement.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSumApsp.FromClaims.solvedAt_of_realized",
+  "theorem_title": "A realized time bound yields a solved-at exponent",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSumApsp.FromClaims.solvedAt_of_realized {Q : _root_.EndStatement.Problem} (T : \u2115 \u2192 \u211d \u2192 \u211d) (\u03ba : \u2115)\n    (hR : _root_.ThreeSum1960614.Machine.ThreeSumApsp.WordRam.Realized Q T) {C a : \u211d} {e : \u2115}\n    (hev : \u2200\u1da0 n : \u2115 in Filter.atTop,\n      T n ((n : \u211d) ^ ((\u03ba : \u2115) : \u211d)) \u2264 C * ((n : \u211d) ^ a * Real.log n ^ e)) :\n    _root_.ThreeSum1960614.Machine.ThreeSumApsp.WordRam.SolvedInTimeAt Q \u03ba a e := by sorry",
+  "theorem_natural_language_statement": "Let $Q$ be a benchmark problem and let real-valued time model $T$ be realized on the word RAM. If, for natural $\\kappa,e$ and real $C,a$, eventually $$T(n,n^\\kappa)\\le Cn^a(\\log n)^e,$$ then $Q$ satisfies the formal solved-at predicate with input-value exponent $\\kappa$, size exponent $a$, and logarithmic exponent $e$.\n\nThis implication transfers a realized machine time with logarithmic overhead to the formal solved-at statement.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,69 @@
+-- Source-faithful candidate only: two theorem imports below await real Open-child interfaces.
+import Mathlib.Tactic
+import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData
+import Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_AnalyticAggregate_RemainderData
+import Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_LiteralAnalyticSummand_InterfaceData
+import Theorems.Thm_OAI_PiExponent_tendsto_collisionRemainder_of_normalized_pow
+-- PENDING import Theorems.Thm_OAI_PiExponent_MatrixCounting_tendsto_rowCount_normalized
+-- PENDING import Theorems.Thm_OAI_PiExponent_tendsto_log_translationTermCount_div
+
+namespace OAI
+
+open Filter
+open scoped Topology
+
+namespace PiExponent.DeterminantContradiction
+
+private theorem finiteDenominators_two_le {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    2 ≤ finiteDenominators d i := (d.approximations i.val).1
+
+private theorem logWeights_eq {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    MatrixArithmetic.logWeights (finiteDenominators d) i = d.x (i.val + 1) :=
+  (d.x_log i.val).symm
+
+end PiExponent.DeterminantContradiction
+
+end OAI
+
+namespace OAI
+
+open scoped BigOperators
+
+namespace PiExponent.LiteralAnalytic
+open DeterminantContradiction
+
+private theorem fixedWeights_pos {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    0 < fixedWeights d i := by
+  change 0 < MatrixArithmetic.logWeights (finiteDenominators d) i
+  rw [logWeights_eq]
+  exact lt_of_lt_of_le zero_lt_one (d.x_one_le _)
+
+end PiExponent.LiteralAnalytic
+
+end OAI
+
+open scoped BigOperators Topology
+open Filter
+open OAI.PiExponent OAI.PiExponent.DeterminantContradiction OAI.PiExponent.LiteralAnalytic
+
+theorem solution {nu : ℝ} (d : FixedData nu) :
+    Tendsto (analyticRemainder d) atTop (𝓝 0) := by
+  have hv : 0 < d.v0 := by exact_mod_cast d.v0_pos
+  have ht : 0 < d.base.theta := by exact_mod_cast d.base.theta_pos
+  have hcount := MatrixCounting.tendsto_rowCount_normalized d.K d.v0 d.base.theta
+    (finiteDenominators d) hv ht (finiteDenominators_two_le d)
+  have hlead : 0 < (d.K : ℝ) * (d.base.theta : ℝ) ^ d.m /
+      (((d.m + 1).factorial : ℝ) * (d.v0 : ℝ) *
+        ∏ i, MatrixArithmetic.logWeights (finiteDenominators d) i) := by
+    apply div_pos
+    · apply mul_pos
+      · exact_mod_cast lt_of_lt_of_le Nat.zero_lt_one d.K_pos
+      · exact pow_pos d.base.theta_pos _
+    · apply mul_pos
+      · exact mul_pos (by positivity) d.v0_pos
+      · exact Finset.prod_pos (fun i _ => fixedWeights_pos d i)
+  have hr := tendsto_collisionRemainder_of_normalized_pow
+    (M := actualRowCount d) hcount hlead
+  have hq := tendsto_log_translationTermCount_div d.m d.v0_pos
+  convert! hr.add hq using 1
+  norm_num

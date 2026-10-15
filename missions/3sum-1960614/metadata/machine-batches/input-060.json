@@ -1,0 +1,111 @@
+{
+  "instructions": "Draft metadata only; never edit Lean code, mathematical scope, names or source links. Return a JSON array with one entry for each input name. Each theorem needs theorem_title, natural_language_statement, tags and explanation. Each definition needs definition_title, natural_language_statement and tags. Write academic English with valid KaTeX, explain every variable and hypothesis, include the main formula where useful, and add a role paragraph in the complete deterministic integer 3SUM runtime proof. A Lean dump or generic upload notice is not an explanation. Preserve attribution and distinguish the independent fixed-model bound from a universal 3SUM lower bound. Use the common tag 3sum-1960614. Do not claim a new speed record or priority. Read references/contribute.md for contributor principles.",
+  "batch": 60,
+  "items": [
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program_meets",
+      "original_decl": "ThreeSum.LightThreeSumColor.program_meets",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/LightThreeSumColor.lean#L35-L85",
+      "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {μ : ℕ→ℤ} {src n params row free k d : ℕ}\n    (color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)) (x : Fin n→ℤ)\n    (hn : _root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.Ready k n) (hsrc : src+n≤free) (hparams : params+19≤free) (hrow : row+6≤free)\n    (hok : (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResourcesColor.need n (n^k)).Ok lim free d)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg μ src (List.ofFn x)) (hx : ∀ i, |x i|≤((n^k : ℕ) : ℤ))\n    (hparameters : _root_.ThreeSum1960614.Machine.Light.Seg μ params (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.values n))\n    (hcolor : _root_.ThreeSum1960614.Machine.Light.Seg μ row (_root_.ThreeSum.ColorParameters.fields color)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program 509 d [src,n,params,row,free] μ (_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.colorBudget k n)\n      (fun r ξ => (r=0 ∨ r=1) ∧ (r=1 ↔ _root_.ThreeSum.ColorClassLists.witness color x) ∧ _root_.ThreeSum1960614.Machine.Light.Kept μ ξ free) := by sorry",
+      "original_type": "∀ {lim : Light.Limits} {μ : Nat → Int} {src n params row free k d : Nat}\n  (color :\n    ThreeSum.Coloring.Parameter\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ThreeSum.Scales.inputBits n)\n        (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1)))))\n  (x : Fin n → Int),\n  ThreeSum.ThreeSumWantedHostConditions.Ready k n →\n    @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) src n) free →\n      @LE.le.{0} Nat instLENat\n          (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) params\n            (@OfNat.ofNat.{0} Nat (nat_lit 19) (instOfNatNat (nat_lit 19))))\n          free →\n        @LE.le.{0} Nat instLENat\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) row\n              (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6))))\n            free →\n          (ThreeSum.ThreeSumFastResourcesColor.need n\n                  (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n                    (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid))) n k)).Ok\n              lim free d →\n            Light.Seg μ src (@List.ofFn.{0} Int n x) →\n              (∀ (i : Fin n),\n                  @LE.le.{0} Int Int.instLEInt (@abs.{0} Int instLatticeInt Int.instAddGroup (x i))\n                    (@Nat.cast.{0} Int instNatCastInt\n                      (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n                        (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid))) n\n                        k))) →\n                Light.Seg μ params (ThreeSum.LightParameterInit.values n) →\n                  Light.Seg μ row\n                      (@ThreeSum.ColorParameters.fields\n                        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (ThreeSum.Scales.inputBits n)\n                          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                        color) →\n                    Light.Meets lim ThreeSum.LightThreeSumColor.program\n                      (@OfNat.ofNat.{0} Nat (nat_lit 509) (instOfNatNat (nat_lit 509))) d\n                      (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt src)\n                        (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt n)\n                          (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt params)\n                            (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt row)\n                              (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt free) (@List.nil.{0} Int))))))\n                      μ (ThreeSum.SharedTraversalCosts.colorBudget k n) fun r ξ =>\n                      And\n                        (Or (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))\n                          (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))))\n                        (And\n                          (Iff (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))\n                            (@ThreeSum.ColorClassLists.witness n\n                              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                                (ThreeSum.Scales.inputBits n)\n                                (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n                              color x))\n                          (Light.Kept μ ξ free))",
+      "children": [
+        "ThreeSum.BandPrimeChoice.modulus_score_bound",
+        "ThreeSum.BandRawA.mem_row",
+        "ThreeSum.BandRawA.mem_aIndices_iff_owner",
+        "ThreeSum.BandRawA.mem_allProducts",
+        "ThreeSum.BandRawA.owner_weightedFalseCount",
+        "ThreeSum.BandWeightedScore.block_bound",
+        "ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered",
+        "ThreeSum1960614.Machine.ThreeSum.EncodedColorReportingData.report_le_source_allocation",
+        "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorReportingPipeline.program_meets",
+        "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.rounds_bound",
+        "ThreeSum.LightPrimePool.prefix_increasing",
+        "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedScanStored.program_meets",
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumWantedHost.program_meets",
+        "ThreeSum.Scales.primeDepth_loss_bound",
+        "ThreeSum1960614.Machine.ThreeSum.Scales.scoreLoss_finite_bound",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.offset_le",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.components",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_threshold_le",
+        "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget",
+        "ThreeSum1960614.Machine.ThreeSum.ThreeSumColorBudgets.wanted_count_le",
+        "ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostCosts.physical_step_le",
+        "ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostDecision.accepted_iff_witness"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.program_meets",
+      "original_decl": "ThreeSum.LightThreeSumHybrid.program_meets",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/LightThreeSumHybrid.lean#L43-L64",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {κ src n U free d : ℕ}\n    (x : Fin n→ℤ) (μ : ℕ→ℤ) (hn : 0<n)\n    (H : (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.need κ n U).Ok lim free d)\n    (hsrc : src+n≤free) (hinput : _root_.ThreeSum1960614.Machine.Light.Seg μ src (List.ofFn x))\n    (hx : ∀ i, |x i|≤(U : ℤ)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.program κ) 542 d [n,U,src,free] μ (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.time κ n U)\n      (fun r ν => (r=0 ∨ r=1) ∧ (r=1 ↔ _root_.ThreeSum.Coloring.DistinctZeroSum x) ∧ _root_.ThreeSum1960614.Machine.Light.Kept μ ν free) := by sorry",
+      "original_type": "∀ {lim : Light.Limits} {κ src n U free d : Nat} (x : Fin n → Int) (μ : Nat → Int),\n  @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) n →\n    (ThreeSum.LightThreeSumHybrid.need κ n U).Ok lim free d →\n      @LE.le.{0} Nat instLENat (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) src n) free →\n        Light.Seg μ src (@List.ofFn.{0} Int n x) →\n          (∀ (i : Fin n),\n              @LE.le.{0} Int Int.instLEInt (@abs.{0} Int instLatticeInt Int.instAddGroup (x i))\n                (@Nat.cast.{0} Int instNatCastInt U)) →\n            Light.Meets lim (ThreeSum.LightThreeSumHybrid.program κ)\n              (@OfNat.ofNat.{0} Nat (nat_lit 542) (instOfNatNat (nat_lit 542))) d\n              (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt n)\n                (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt U)\n                  (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt src)\n                    (@List.cons.{0} Int (@Nat.cast.{0} Int instNatCastInt free) (@List.nil.{0} Int)))))\n              μ (ThreeSum.LightThreeSumHybrid.time κ n U) fun r ν =>\n              And\n                (Or (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 0) (@instOfNat (nat_lit 0))))\n                  (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1)))))\n                (And\n                  (Iff (@Eq.{1} Int r (@OfNat.ofNat.{0} Int (nat_lit 1) (@instOfNat (nat_lit 1))))\n                    (@ThreeSum.Coloring.DistinctZeroSum n x))\n                  (Light.Kept μ ν free))",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program_meets",
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.program_meets",
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybridCore.program_meets"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.solves",
+      "original_decl": "ThreeSum.LightThreeSumHybrid.solves",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/LightThreeSumHybrid.lean#L69-L87",
+      "formal_statement": "\ntheorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.solves (κ : ℕ) : _root_.ThreeSum1960614.Machine.Light.Solves _root_.ThreeSum1960614.Machine.Light.s3Task (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.program κ) 542 (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.time κ) (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.need κ) := by sorry",
+      "original_type": "∀ (κ : Nat),\n  Light.Solves Light.s3Task (ThreeSum.LightThreeSumHybrid.program κ)\n    (@OfNat.ofNat.{0} Nat (nat_lit 542) (instOfNatNat (nat_lit 542))) (ThreeSum.LightThreeSumHybrid.time κ)\n    (ThreeSum.LightThreeSumHybrid.need κ)",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.program_meets"
+      ]
+    },
+    {
+      "kind": "theorem",
+      "name": "ThreeSum1960614.costs_solve_3sum",
+      "original_decl": "ThreeSum1960614.costs_solve_3sum",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/CompleteCostBridge.lean#L9-L20",
+      "formal_statement": "\ntheorem ThreeSum1960614.costs_solve_3sum (r : ℚ) (hr : 0 < r)\n    (hcost : ∀ z ∈ _root_.ThreeSum1960614.costs, z < (r : ℝ)) : _root_.EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "original_type": "∀ (r : Rat),\n  @LT.lt.{0} Rat Rat.instLT (@OfNat.ofNat.{0} Rat (nat_lit 0) (@Rat.instOfNat (nat_lit 0))) r →\n    (∀ (z : Real),\n        @Membership.mem.{0, 0} Real (List.{0} Real) (@List.instMembership.{0} Real) ThreeSum1960614.costs z →\n          @LT.lt.{0} Real Real.instLT z (@Rat.cast.{0} Real Real.instRatCast r)) →\n      EndStatement.ThreeSum.SolvedInTime r",
+      "children": [
+        "ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.powerBound_of_fifth",
+        "ThreeSum1960614.Machine.ThreeSum.BandPrimeCosts.timeBudget_powerBound",
+        "ThreeSum1960614.Machine.ThreeSum.BandPrimeCosts.setup_time_le_budget",
+        "ThreeSum.BandPrimeCosts.aggregate_time_le",
+        "ThreeSum1960614.Machine.ThreeSum.BandScales.bandRoot_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.BandScales.bandDivisor_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.CostLedger.prefixBoxes_log_bound",
+        "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.dimensions",
+        "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.initial_query_eventually_le",
+        "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.bandCount_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.hierarchyEnvelope_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverCost.build_time_bound",
+        "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.bounds",
+        "ThreeSum.LightOriginalOffset.time_bound",
+        "ThreeSum.LightRadixKeys.time_bound",
+        "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybrid.solves",
+        "ThreeSum1960614.Machine.ThreeSum.LocalParameterBounds.time_bound",
+        "ThreeSum1960614.Machine.ThreeSum.MassScales.falseNumerator_log_rate",
+        "ThreeSum.ModuloCosts.roundedPower_fifth",
+        "ThreeSum.ModuloCosts.time_bound",
+        "ThreeSum1960614.Machine.ThreeSum.Scales.typedOutputs_log_ratio_tendsto",
+        "ThreeSum.Scales.natSqrt_ratio_tendsto_zero",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.components",
+        "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead_powerBound",
+        "ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound.add_same",
+        "ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices_log_rate",
+        "ThreeSum.SubsetAddress.enumerationWork_bound",
+        "ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResourcesHybrid.poly_need",
+        "ThreeSum1960614.Machine.ThreeSum.TrimScales.representationBound_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.TrimScales.fullOutputs_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.TrimScales.replicatedHalf_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.TrimScales.localLength_log_rate",
+        "ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.budget_active_powerBound",
+        "ThreeSum1960614.Machine.Light.Wrap.realized",
+        "ThreeSum1960614.Machine.ThreeSumApsp.FromClaims.solvedAt_of_realized",
+        "ThreeSum1960614.Machine.ThreeSumApsp.WordRam.bigO_of_le_rpow"
+      ]
+    }
+  ],
+  "source_repository": "https://github.com/Anchen0823/three-sum-1960614",
+  "source_commit": "8c25c0325de5be4286413f39ca0c9278aad33f52"
+}

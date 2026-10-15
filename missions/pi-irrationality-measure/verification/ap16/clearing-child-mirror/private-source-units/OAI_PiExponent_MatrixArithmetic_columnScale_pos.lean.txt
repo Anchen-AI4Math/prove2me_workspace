@@ -1,0 +1,3 @@
+private theorem columnScale_pos {m : ℕ} {q : Fin m → ℕ} (hq : ∀ i, 0 < q i)
+    (a : Fin m → ℕ) : 0 < columnScale q a := by
+  exact Finset.prod_pos (fun i _ => pow_pos (by exact_mod_cast hq i) _)

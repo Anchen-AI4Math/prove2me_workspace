@@ -1,0 +1,46 @@
+import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor
+import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexUnweighted
+import Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains
+import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains
+import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData
+
+namespace OAI.PiExponent
+
+open scoped BigOperators
+
+def natWeightedSimplex {d : ℕ} (w : Fin d → ℕ) (N : ℕ) : Finset (Fin d → ℕ) :=
+  (Fintype.piFinset (fun _ => Finset.range (N + 1))).filter
+    (fun a => ∑ i, w i * a i ≤ N)
+
+end OAI.PiExponent
+
+namespace OAI.PiExponent
+
+open scoped BigOperators
+
+def residueRectangle {d : ℕ} (w : Fin d → ℕ) : Finset (Fin d → ℕ) :=
+  Fintype.piFinset (fun i => Finset.range (w i))
+
+end OAI.PiExponent
+
+namespace OAI.PiExponent.MatrixCounting
+
+open scoped BigOperators
+open Filter Topology
+
+noncomputable def rowCount {m : ℕ} (K : ℕ) (v0 θ : ℚ)
+    (q : Fin m → ℕ) (H : ℝ) : ℝ :=
+  Fintype.card (InterpolationMatrix.Row K (v0 : ℝ) (θ : ℝ) (MatrixArithmetic.logWeights q) H)
+
+end OAI.PiExponent.MatrixCounting
+
+namespace OAI.PiExponent.MatrixCounting
+
+open scoped BigOperators
+open Filter Topology
+
+noncomputable def rationalLogWeights {m : ℕ} (q : Fin m → ℕ) (i : Fin m) : ℚ :=
+  (⌈Real.log (q i)⌉₊ : ℚ)
+
+end OAI.PiExponent.MatrixCounting
+

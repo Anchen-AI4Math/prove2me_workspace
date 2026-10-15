@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/a37de8e9-9899-4058-9357-6e3c24db13e4",
+  "fetched_at": "2026-10-11T13:38:41.744001+00:00",
+  "data": {
+    "theorem_id": "a37de8e9-9899-4058-9357-6e3c24db13e4",
+    "theorem_name": "ZipfLaw.zipfMandelbrotPMF_hasSum_one",
+    "theorem_title": "Zipf–Mandelbrot law with Hurwitz-zeta normalization is a distribution",
+    "status": "Proved",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem zipfMandelbrotPMF_hasSum_one (q s : ℝ) (hq : 0 ≤ q) (hs : 1 < s) :\n    HasSum (fun k : ℕ => zipfMandelbrotPMF q s k) 1 := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "Let $s>1$ and $q\\ge0$. With normalizing constant $C=\\zeta(s,q+1)=\\sum_{k\\ge1}(k+q)^{-s}$ (Hurwitz zeta), the Zipf–Mandelbrot frequencies\n$$f(k;q,s)=\\frac{1}{C}\\,\\frac{1}{(k+q)^s},\\qquad k=1,2,3,\\dots$$\nform a probability distribution:\n$$\\sum_{k=1}^{\\infty}f(k;q,s)=1 .$$",
+    "created_at": "2026-10-09T21:33:33.147511+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Related laws\" ($f(k;N,q,s)=\\frac1C\\frac1{(k+q)^s}$; \"The constant C is the Hurwitz zeta function evaluated at s\").",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "8b60ba4f-630d-4112-b0e3-5892a8f8ae16",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "a68632ae-3b5d-404e-bdbf-c405fcaabe18",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all reals $q\\ge0$ and $s>1$: the family $k\\mapsto\\mathrm{zipfMandelbrotPMF}(q,s,k)$, $k\\in\\mathbb N$ (value $0$ at $k=0$, and $1/\\big(\\zeta_{\\mathrm{ser}}(s,q+1)(k+q)^s\\big)$ for $k\\ge1$, where $\\zeta_{\\mathrm{ser}}(s,a)=\\sum_{n\\ge0}(n+a)^{-s}$ as a `tsum`), is summable with sum exactly $1$ (Lean `HasSum`, i.e. unconditional convergence).\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:33:34.853653+00:00"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "9118a78a-7c77-4157-bbb4-16de4dac8fa9",
+  "theorem_id": "95a99800-4ad5-4ea2-a56a-1001391e517e",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:09:39.810586+00:00",
+  "updated_at": "2026-10-15T09:11:28.836185+00:00",
+  "explanation": "Connects argument-expression code to the values needed by a simulated procedure call. The temporary values are exactly the evaluated argument frame, while agreement outside the temporary set protects the caller state.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Compiler.effects_argsCode",
+  "theorem_title": "Effects of compiling call arguments",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Compiler.effects_argsCode (I : _root_.ThreeSum1960614.Machine.Light.Compiler.Framed Z \u03c3 q m) (es : List _root_.ThreeSum1960614.Machine.Light.Expr) (k : \u2115)\n    (hw : \u2200 e \u2208 es, e.width \u2264 Z.F) (hs : \u2200 e \u2208 es, e.Safe Z.lim \u03c3)\n    (hk : k + es.length \u2264 Z.F + 1) :\n    (\u2200 i < es.length,\n        _root_.ThreeSumApsp.WordRam.effects (_root_.ThreeSum1960614.Machine.Light.Compiler.argsCode es k) m (_root_.Light.Compiler.cT (k + i)) = _root_.ThreeSumApsp.WordRam.wd W (_root_.Light.frame (es.map (\u00b7.val \u03c3)) i)) \u2227\n      _root_.ThreeSum1960614.Machine.ThreeSumApsp.WordRam.AgreeOutside (_root_.Light.Compiler.Temps k Z.F) m (_root_.ThreeSumApsp.WordRam.effects (_root_.ThreeSum1960614.Machine.Light.Compiler.argsCode es k) m) := by sorry",
+  "theorem_natural_language_statement": "Let a $W$-bit machine memory represent a framed Light state $\\sigma$ under compiler size data $Z$. Let $e_0,\\ldots,e_{r-1}$ be expressions of width at most the frame width $F$, each safe in $\\sigma$. If $k+r\\le F+1$, compiling them into temporaries starting at $k$ stores the word encoding of $e_i(\\sigma)$ in $T_{k+i}$ for each $i<r$, and preserves memory outside the designated temporary set.\n\nConnects argument-expression code to the values needed by a simulated procedure call. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

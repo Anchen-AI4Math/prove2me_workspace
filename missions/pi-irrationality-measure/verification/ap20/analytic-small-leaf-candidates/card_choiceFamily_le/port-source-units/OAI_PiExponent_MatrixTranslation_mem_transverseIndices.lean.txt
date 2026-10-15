@@ -1,0 +1,6 @@
+@[simp] theorem mem_transverseIndices {m : ℕ} (w : Fin m → ℝ) (H : ℝ)
+    (hw : ∀ i, 0 < w i) (A : Fin m →₀ ℕ) :
+    A ∈ transverseIndices w H ↔ ∑ i, w i * A i ≤ H := by
+  classical
+  simp only [transverseIndices, Finset.mem_map_equiv, PiExponent.mem_realWeightedSimplex hw]
+  rfl

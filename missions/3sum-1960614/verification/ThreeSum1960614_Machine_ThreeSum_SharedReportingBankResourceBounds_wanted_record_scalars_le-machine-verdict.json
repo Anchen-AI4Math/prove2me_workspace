@@ -1,0 +1,15 @@
+{
+  "id": "874d3332-99ee-4b7e-9219-6b36933018b2",
+  "theorem_id": "601ca3b4-5ae5-4b79-a83e-4409b515252b",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:28:03.919212+00:00",
+  "updated_at": "2026-10-15T07:30:37.896058+00:00",
+  "explanation": "Collects the numeric controls passed to one physical wanted query. The sum includes block width, traversal depth, global modulus, source cutoff, local prime, and bucket cap.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_scalars_le",
+  "theorem_title": "Scalar controls of a wanted record fit the wanted envelope",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_scalars_le {n K : \u2115} (hK : K\u2264_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n+464*_root_.ThreeSum.SharedReportingBankResourceBounds.half n+K+_root_.ThreeSum1960614.Machine.ThreeSum.BlockSourceEncoding.modulus (_root_.ThreeSum.SharedReportingBankResourceBounds.half n) (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n)+\n      _root_.ThreeSum.LightBlockQuery.sourceCut (_root_.ThreeSum.SharedReportingBankResourceBounds.half n) (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n)+_root_.ThreeSum1960614.Machine.ThreeSum.LocalCoverBounds.localPrime (_root_.ThreeSum.SharedReportingBankResourceBounds.half n)+_root_.ThreeSum1960614.Machine.ThreeSum.LocalCoverBounds.localBucketCap (_root_.ThreeSum.SharedReportingBankResourceBounds.half n)+1024\u2264\n      _root_.ThreeSum.SharedReportingBankResourceBounds.wantedEnvelope n := by sorry",
+  "theorem_natural_language_statement": "Let $n,K\\in\\mathbb N$ with $K\\le J$, where $h,J$ are the executable half-size and block count at size $n$. Write $m(h,J)$ for the global modulus, $c(h,J)$ for the source cutoff, $p_h$ for the local prime, and $b_h$ for its bucket cap. Then $$J+464h+K+m(h,J)+c(h,J)+p_h+b_h+1024\\le\\operatorname{wantedEnvelope}(n).$$\n\nCollects the numeric controls passed to one physical wanted query. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,40 @@
+{
+  "proposal_id": "7552d42d-7c8c-4f16-aead-ec41ac6cc8d5",
+  "milestones": [
+    {
+      "item_id": "8ea823a2-4cc4-4bc8-8d1f-4783698cd52f",
+      "title": "Lemma 3.1 — Two-sided binomial entropy bounds",
+      "milestone_description": "For integers $r\\ge1$ and $0\\le k\\le r$, let $p=k/r$. Then $$\\frac{e^{rH(p)}}{r+1}\\le\\binom rk\\le e^{rH(p)}.$$ The endpoints $k=0,r$ are included. This is a standard estimate used by the manuscript, not a novelty claim.",
+      "sort_order": 0,
+      "theorem_id": null
+    },
+    {
+      "item_id": "01ccb562-b4bd-4e28-b9b0-5f14f996ad5f",
+      "title": "Lemma 3.2 — Sharp normalized binomial tail",
+      "milestone_description": "Let $c>10$ and $m\\ge1$ be integers, $0<\\theta<0.9$, $L=cm$, $D=4^m$, $t=\\lceil\\theta m\\rceil$, $\\beta_d=\\binom L{m-d}9^{L-m+d}$ and $M=\\beta_0$. Then $$\\frac1M\\sum_{d=t}^{m}\\beta_d\\le\\frac{cm+1}{1-9/(c-1)}D^{-\\gamma_*(c,\\theta)}.$$ The ceiling is part of the statement; $t=m$ is included.",
+      "sort_order": 1,
+      "theorem_id": null
+    },
+    {
+      "item_id": "96cb2799-8df8-494c-811d-a2ac2b556626",
+      "title": "Proposition 3.3 — Strict improvement of the preprocessing saving",
+      "milestone_description": "For every real $c>10$ and $0<\\theta<0.9$, $$\\gamma_*(c,\\theta)>\\gamma(c,\\theta)>0.$$ This compares preprocessing savings at the same parameters. It does not by itself establish a smaller 3SUM running-time exponent.",
+      "sort_order": 2,
+      "theorem_id": null
+    },
+    {
+      "item_id": "5bcaecaf-945a-4685-9f34-986f00ba889d",
+      "title": "Propositions 4.1 and 5.1 — From admissible sharp-tail parameters to the shared 3SUM specification",
+      "milestone_description": "Let $c>10$ be an integer, $0<\\theta<0.9$, and let $a,s,r$ be rational with $0<a<1$ and $0<s<1$. Suppose\n$$a(A(c)+\\gamma_*(c,\\theta))<1,\\qquad s<\\gamma_*(c,\\theta),\\qquad s<\\tfrac12-q(\\theta),$$\n$$\\log_2 7+\\tfrac32a<3-as/2,\\qquad 2+a(1+s/2)<3-as/2,\\qquad r>2-as/4.$$\nThen deterministic integer 3SUM satisfies the campaign's exact shared predicate `EndStatement.ThreeSum.SolvedInTime r`. This is the combined consequence of Propositions 4.1 and 5.1, not a verbatim separate proposition in the manuscript. Its proof must construct the word-RAM program and establish correctness and all costs using the inherited algorithms and reductions. No inner-algorithm oracle or correctness assumption is supplied as a hypothesis. The uniform word-width requirement in the shared specification is part of the formalization obligation.",
+      "sort_order": 3,
+      "theorem_id": null
+    },
+    {
+      "item_id": "cff2845c-fbaa-43cb-9e54-10a00e60c9d8",
+      "title": "Section 6.2 — Exact parameter inequalities for exponent 1.999017",
+      "milestone_description": "For the exact rational parameters $c=21$, $\\theta=0.11202$, $a=0.05665$, $s=0.06945$, establish $a(A+\\gamma_*)<1$, $s<\\gamma_*$, $s<1/2-q$, $\\log_2 7+3a/2<3-as/2$, and $2+a(1+s/2)<3-as/2$. Also establish the exact equalities $$2-as/4=1.999016414375,\\qquad 1.999017-(2-as/4)=0.000000585625.$$ All decimal constants denote exact rationals (coerced to reals in the analytic inequalities). The source's rational interval checks are reproducible evidence; proving this Lean statement remains a formalization task.",
+      "sort_order": 4,
+      "theorem_id": null
+    }
+  ]
+}

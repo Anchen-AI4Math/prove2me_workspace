@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/3db55d74-324f-4340-aed9-9dbf6411b23f",
+  "fetched_at": "2026-10-11T12:07:19.106195+00:00",
+  "data": {
+    "theorem_id": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+    "theorem_name": "ZipfLaw.zipf_infinite_extension",
+    "theorem_title": "Zipf extends to infinitely many items iff $s>1$; then $H_{N,s}\\to\\zeta(s)$",
+    "status": "Open",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_infinite_extension (s : ℝ) (hs : 0 ≤ s) :\n    (Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s) ∧\n      (1 < s → Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n        (nhds (riemannZeta s))) ∧\n      (s ≤ 1 → Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop) := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "Let $s\\ge0$. Then:\n\n1. $\\displaystyle\\sum_{k=1}^\\infty\\frac{1}{k^s}$ converges if and only if $s>1$;\n2. if $s>1$, then $H_{N,s}\\to\\zeta(s)$ as $N\\to\\infty$, where $\\zeta$ is Riemann's zeta function;\n3. if $s\\le1$, then $H_{N,s}\\to+\\infty$ as $N\\to\\infty$.\n\nSo the generalized Zipf distribution can be extended to infinitely many items exactly when $s>1$, and then its normalizing constant is $\\zeta(s)$ (the zeta distribution, or Lotka's law). This is the goal theorem of the mission.\n\n**Formalization Note.** Item 2 is stated in $\\mathbb C$ against Mathlib's `riemannZeta`, which is defined on all of $\\mathbb C$ by analytic continuation. Summability is that of $k\\mapsto 1/(k+1)^s$ over $k \\in \\mathbb N$.",
+    "created_at": "2026-10-09T21:35:43.121933+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Formal definition\" (\"The generalized Zipf distribution can be extended to infinitely many items (N = ∞) only if the exponent s exceeds 1. In that case, the normalization constant H_{N,s} becomes Riemann's zeta function ... If the exponent s is 1 or less, the normalization constant H_{N,s} diverges as N tends to infinity\").",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "0b076c18-0998-4818-9d54-50b94364f6ac",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "3801e515-2754-4de3-a52f-f827058d8a2c",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every real $s\\ge0$, all three of the following hold:\n\n1. the family $k\\mapsto 1/(k+1)^s$, $k\\in\\mathbb N$ (real power), is summable if and only if $s>1$;\n2. if $s>1$, then the complex numbers $\\mathrm{genHarmonic}(N,s)=\\sum_{k=1}^N 1/k^s$ (real, cast to $\\mathbb C$) converge as $N\\to\\infty$ to $\\zeta(s)$, Mathlib's Riemann zeta function evaluated at the complex number $s$;\n3. if $s\\le1$, then $\\mathrm{genHarmonic}(N,s)\\to+\\infty$ as $N\\to\\infty$ (Lean `Tendsto … atTop atTop`).\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:35:46.095885+00:00"
+    }
+  }
+}

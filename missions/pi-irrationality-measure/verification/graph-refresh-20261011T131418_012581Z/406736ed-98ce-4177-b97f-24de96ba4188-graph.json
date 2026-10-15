@@ -1,0 +1,1037 @@
+{
+  "root_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "theorem_name": "OAI_PiExponent_ApproximationDefinitions",
+      "theorem_title": "Rational approximation and the irrationality exponent",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real number $x$ and real exponent $\\nu$, good rational approximations are rational numbers $r$ with reduced denominator $q\\ge2$ and $0<|x-r|<q^{-\\nu}$. Approximation exponents are positive $\\nu$ for which this set is infinite; the irrationality exponent $\\mu(x)$ is their supremum in $\\mathbb R$.\n\nThe eventual lower-bound predicate asserts that for every $\\nu>2$ there is a natural $Q\\ge2$ such that $q^{-\\nu}\\le |x-p/q|$ for every integer numerator $p$ and every natural denominator $q\\ge Q$. A companion predicate uses integer thresholds and denominators, still constrained by $Q\\ge2$; the $\\pi$ predicate specializes the natural formulation to $x=\\pi$. These are the six original definitions from the pinned OpenAI source.",
+      "created_at": "2026-10-07T06:57:39.94273+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Data.Rat.Cast.Order\n\nnamespace OAI\n\nnamespace PiExponent\n\ndef GoodRationalApproximations (x ν : ℝ) : Set ℚ :=\n  {r | 2 ≤ r.den ∧ 0 < |x - (r : ℝ)| ∧ |x - (r : ℝ)| < (r.den : ℝ) ^ (-ν)}\n\ndef ApproximationExponents (x : ℝ) : Set ℝ :=\n  {ν | 0 < ν ∧ (GoodRationalApproximations x ν).Infinite}\n\nnoncomputable def irrationalityExponent (x : ℝ) : ℝ := sSup (ApproximationExponents x)\n\ndef EventualLowerBound (x : ℝ) : Prop :=\n  ∀ ν : ℝ, 2 < ν → ∃ Q : ℕ, 2 ≤ Q ∧\n    ∀ (p : ℤ) (q : ℕ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|\n\ndef PiEventualLowerBound : Prop := EventualLowerBound Real.pi\n\ndef IntegerEventualLowerBound (x : ℝ) : Prop :=\n  ∀ ν : ℝ, 2 < ν → ∃ Q : ℤ, 2 ≤ Q ∧\n    ∀ (p q : ℤ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|\n\nend PiExponent\n\nend OAI\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Statement.lean#L7-L23",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "theorem_name": "OAI.PiExponent.pi_cofinal_real_height_determinant_certificates",
+      "theorem_title": "Cofinal real-height determinant certificates for pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_cofinal_real_height_determinant_certificates\n    (nu : ℝ) (hnu : 2 < nu)\n    (hbad : ∀ Q : ℕ, ∃ (p : ℤ) (q : ℕ),\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / (q : ℝ)| ≤ (q : ℝ) ^ (-nu)) :\n    ∃ theta x ear ean collisionLimit : ℝ,\n      ∃ mean error rate : ℝ → ℝ,\n        ear + ean < nu * (x - theta) - (1 - theta) ∧\n        1 + ear + ean < collisionLimit ∧\n        Tendsto error atTop (𝓝 0) ∧\n        Tendsto rate atTop (𝓝 collisionLimit) ∧\n        ∀ L : ℝ, ∃ H D : ℝ,\n          L ≤ H ∧ 0 < H ∧\n          0 ≤ mean H ∧ mean H ≤ theta ∧\n          -(1 - mean H) - ear ≤ D ∧\n          D ≤ ean + error H + max (-rate H) (-nu * (x - mean H)) := by sorry",
+      "natural_language_statement": "Fix a real exponent $\\nu>2$, and suppose that for every natural threshold $Q$ there are integers $p$ and natural numbers $q\\ge Q$ with\n\n$$\\left|\\pi-\\frac pq\\right|\\le q^{-\\nu}.$$\n\nThere exist real constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and functions $b,\\varepsilon,c:\\mathbb R\\to\\mathbb R$ satisfying\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\n$$\\varepsilon(H)\\longrightarrow0,\\qquad c(H)\\longrightarrow c_\\infty\\qquad(H\\longrightarrow+\\infty),$$\n\nsuch that for every real threshold $L$ there are a height $H\\ge L$, with $H>0$, and a scalar determinant certificate $D$ satisfying\n\n$$0\\le b(H)\\le\\theta,$$\n\n$$-(1-b(H))-e_{\\rm ar}\\le D\\le e_{\\rm an}+\\varepsilon(H)+\\max\\{-c(H),-\\nu(x-b(H))\\}.$$\n\nThis is the real-height construction obligation in the determinant argument. Its intended witnesses are obtained from one fixed admissible parameter family: $b(H)$ is the mean row weight, $c(H)$ is the collision rate, $x=A(1-\\eta)$, and $D$ is the normalized logarithm of a nonzero selected minor. This obligation retains the admissible-parameter, cofinal interpolation, arithmetic, and analytic construction; it separates those tasks from the passage to natural-number sequences.\n\n**Formalization Note.** This is an adapted scalar interface, not a verbatim theorem already proved in the source. The pinned source's final implication assumes `GlobalInterpolationStatement` and `AnalyticAggregateStatement`; establishing the relevant interpolation and analytic claims is still part of this Open obligation. The scalar inequalities do not themselves enforce a matrix representation of their witnesses, just as in the parent sequence interface.\n",
+      "created_at": "2026-10-07T19:12:09.075132+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology\n\n-- Real-height scalar interface of the pinned determinant construction.\n-- The certificates must come from one fixed admissible parameter family.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L196 ; adapted scalar real-height interface of actualMean_bounds, actual_minor_arithmetic_lower_bound, GlobalInterpolationStatement, AnalyticAggregateStatement, tendsto_collisionRate, and exists_admissible_parameters in AdmissibleParameters.lean. Interpolation and analytic existence remain Open obligations.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+      "theorem_name": "OAI.PiExponent.exists_admissible_parameters",
+      "theorem_title": "Existence of one admissible pi determinant parameter family",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_admissible_parameters\n    (nu Lambda c : ℝ) (hnu : 2 < nu) (hLambda : 0 < Lambda) (hc : 0 < c)\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\n    Nonempty (AdmissibleParameters nu Lambda c) := by sorry",
+      "natural_language_statement": "Let $\\nu>2$, and let $\\Lambda,c>0$. Suppose that arbitrarily large natural denominators admit integer numerators with\n\n$$|\\pi-p/q|\\le q^{-\\nu}.$$\n\nThen there is one admissible parameter family for $\\nu,\\Lambda,c$, including all the source's rational parameters, dimensions, scales, separated logarithmic weights, rational approximations, and error and collision margins.\n\nThis is the parameter construction needed before selecting any interpolation height. The same family can then be used by arithmetic, counting, geometric, and analytic estimates.\n\n**Formalization Note.** This is the original theorem's complete signature, with the original admissible-parameter structure preserved.",
+      "created_at": "2026-10-07T19:29:56.986438+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean#L112-L218",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1a21b159-35ef-490d-8259-021afd876d54",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate",
+      "theorem_title": "Collision-rate limit for a fixed admissible family",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate {nu : ℝ} (d : FixedData nu) :\n    Tendsto (collisionRate d) atTop (𝓝 (collisionLimit d)) := by sorry",
+      "natural_language_statement": "For every fixed admissible family $d$, the actual collision rate tends to the predicted simplex-volume ratio:\n\n$$c_d(H)\\longrightarrow c_{d,\\infty}\\qquad(H\\longrightarrow+\\infty).$$\n\nThe rate and its limit are defined from the source's actual row count, low-index count, and fixed parameters. This asymptotic counting theorem provides a real-height limit without requiring continuity or monotonicity of the height-dependent finite sets.",
+      "created_at": "2026-10-07T19:30:05.135017+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L110-L125",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "1a21b159-35ef-490d-8259-021afd876d54",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "theorem_name": "OAI.PiExponent.finite_goodRationalApproximations_of_eventualLowerBound",
+      "theorem_title": "Eventual lower bounds make better-than-quadratic approximations finite",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.finite_goodRationalApproximations_of_eventualLowerBound {x ν : ℝ}\n    (hx : EventualLowerBound x) (hν : 2 < ν) :\n    (GoodRationalApproximations x ν).Finite := by sorry",
+      "natural_language_statement": "Let $x$ be a real number satisfying the shared eventual lower-bound predicate, and let $\\nu>2$ be real. Then only finitely many rational numbers $r$ with reduced denominator at least $2$ satisfy $0<|x-r|<r.\\mathrm{den}^{-\\nu}$. The hypothesis provides a bound uniform over all integer numerators and all sufficiently large natural denominators.",
+      "created_at": "2026-10-07T07:07:20.064485+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L77-L90",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.global_interpolation",
+      "theorem_title": "Cofinal global interpolation for the fixed pi matrix family",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.global_interpolation : GlobalInterpolationStatement := by sorry",
+      "natural_language_statement": "For every $\\nu>2$ and every fixed admissible family $d$, the actual interpolation matrix is surjective at cofinally many real heights:\n\n$$\\forall L\\in\\mathbb R\\;\\exists H\\ge L,\\qquad M_d(H):\\mathbb C^{\\operatorname{Columns}_d(H)}\\to\\mathbb C^{\\operatorname{Rows}_d(H)}\\text{ is surjective}.$$\n\nThis is precisely the geometric input named by the pinned source's global interpolation proposition. It is an open proof obligation: the source's determinant contradiction assumes it rather than proving it. Surjectivity enables the separate finite-dimensional extraction of a nonzero full-row minor.",
+      "created_at": "2026-10-07T19:29:55.21612+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L94-L96",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "83845777-56ae-405e-b13a-375abcd494f1",
+          "target": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+          "target": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+          "target": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "theorem_name": "PiIrrationality.openai_bound_two",
+      "theorem_title": "The irrationality measure of π is at most 2",
+      "status": "Open",
+      "formal_statement": "theorem PiIrrationality.openai_bound_two : PiIrrationality.UpperBound (2 : ℝ) := by sorry",
+      "natural_language_statement": "The irrationality measure of $\\pi$ is at most $2$: for every real $\\varepsilon>0$, there is a natural threshold $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{2+\\varepsilon}<|\\pi-p/q|$. This uses the campaign's shared definition. Source: [OpenAI, PiExponent, family 017](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean). The exact source conjunction is included separately as OAI.PiExponent.main; this campaign goal records its upper-bound consequence.",
+      "created_at": "2026-10-07T06:01:15.267396+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_PiIrrationality_UpperBound",
+      "source": "Campaign definition: https://teorth.github.io/optimizationproblems/constants/7a.html . Each entry must cite the source establishing its particular bound.",
+      "tags": [
+        "diophantine-approximation",
+        "irrationality",
+        "number-theory",
+        "pi"
+      ],
+      "audits": [
+        {
+          "audit_id": "2f11784c-2b16-4b3f-baaa-fef4bbcca455",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:11.74308+00:00"
+        },
+        {
+          "audit_id": "6c8c48f1-5469-4ab9-b7c3-8219e5b56a3b",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T06:19:53.222203+00:00"
+        }
+      ],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "theorem_name": "PiIrrationality_UpperBound",
+      "theorem_title": "Upper bounds for the irrationality measure of π",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real number $B$, PiIrrationality.UpperBound $B$ expresses $\\mu(\\pi)\\le B$: for every real $\\varepsilon>0$ there is a natural number $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{B+\\varepsilon}<|\\pi-p/q|$. The threshold is uniform over $p$ and $q$.",
+      "created_at": "2026-10-01T05:22:24.314989+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic\n\nnamespace PiIrrationality\n\n/-- The epsilon formulation of an upper bound on the irrationality measure of pi.\nThe threshold may depend on the positive epsilon, but is uniform in p and q. -/\ndef UpperBound (B : ℝ) : Prop :=\n  ∀ ε : ℝ, 0 < ε →\n    ∃ Q : ℕ,\n      ∀ (p : ℤ) (q : ℕ), 0 < q → Q ≤ q →\n        1 / (q : ℝ) ^ (B + ε) <\n          |Real.pi - (p : ℝ) / (q : ℝ)|\n\nend PiIrrationality\n",
+      "source": "The epsilon characterization of C_7a in https://teorth.github.io/optimizationproblems/constants/7a.html . Related fixed-exponent Lean predicate: https://github.com/AxiomMath/gdm-formal-conjectures/blob/main/BorweinSineSeries/problem.lean . This definition uses the epsilon characterization, which gives the standard upper-bound meaning at the endpoint.",
+      "tags": [
+        "diophantine-approximation",
+        "irrationality",
+        "number-theory",
+        "pi"
+      ],
+      "audits": [
+        {
+          "audit_id": "a22a5f0d-80d8-4de3-b7fb-a18a9e65bea5",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-01T05:25:12.314582+00:00"
+        },
+        {
+          "audit_id": "38f1f7dd-05a1-4cee-9e11-81bc7799bd10",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-03T17:28:24.160004+00:00"
+        },
+        {
+          "audit_id": "b1289fe4-40e7-4ce0-9fa1-a9c130c38faf",
+          "reviewer_id": "eb748f54-a7e9-4b93-8588-69f5b241260e",
+          "reviewer_username": "xuanji",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-03T17:28:24.308723+00:00"
+        },
+        {
+          "audit_id": "ebd78492-13f5-4335-bfae-ef0c1d9ecf3f",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:11.485626+00:00"
+        }
+      ],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "theorem_name": "OAI.PiExponent.pi_approximation_determinant_sequences",
+      "theorem_title": "Determinant sequences from unbounded approximations to pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_approximation_determinant_sequences\n    (nu : ℝ) (hnu : 2 < nu)\n    (hbad : ∀ Q : ℕ, ∃ (p : ℤ) (q : ℕ),\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / (q : ℝ)| ≤ (q : ℝ) ^ (-nu)) :\n    ∃ theta x ear ean collisionLimit : ℝ,\n      ∃ b d err collision : ℕ → ℝ,\n        ear + ean < nu * (x - theta) - (1 - theta) ∧\n        1 + ear + ean < collisionLimit ∧\n        Tendsto err atTop (𝓝 0) ∧\n        Tendsto collision atTop (𝓝 collisionLimit) ∧\n        (∀ᶠ n in atTop, 0 ≤ b n) ∧\n        (∀ᶠ n in atTop, b n ≤ theta) ∧\n        (∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n) ∧\n        (∀ᶠ n in atTop,\n          d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) := by sorry",
+      "natural_language_statement": "Fix a real exponent $\\nu>2$. Suppose arbitrarily large natural denominators admit integer numerators satisfying\n\n$$\\left|\\pi-\\frac pq\\right|\\le q^{-\\nu}.$$\n\nThen there exist real constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and real sequences $b_n,d_n,\\varepsilon_n,c_n$ such that\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,\\qquad \\varepsilon_n\\to0,\\qquad c_n\\to c_\\infty,$$\n\nand eventually\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThis open construction obligation is a scalar sequence interface extracted from the pinned source's determinant argument. It packages the admissible-parameter construction, cofinal nonzero interpolation minors, arithmetic lower bound, analytic aggregate upper bound, and collision-rate limit. The intended scalar sequence $d_n$ represents normalized logarithms of nonzero determinants. The estimates are incompatible by the separate general comparison theorem.\n\n**Formalization Note.** This is an adapted interface, rather than a verbatim named theorem of the source. All margins and limiting inequalities match `DeterminantContradiction.lean`; real interpolation heights are replaced by a cofinal sequence of heights. The geometric and analytic construction is an open proof obligation.",
+      "created_at": "2026-10-07T19:02:30.661855+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology\n\n-- Sequence interface extracted from the pinned source's determinant argument.\n-- The construction of these sequences is the open analytic/geometric obligation.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L180 ; sequence interface combining exists_admissible_parameters, globalInterpolation, analyticAggregate, and tendsto_collisionRate",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "theorem_name": "OAI.PiExponent.main",
+      "theorem_title": null,
+      "status": "Open",
+      "formal_statement": "theorem main :\n  (∀ ν : ℝ, 2 < ν → ∃ Q : ℤ, 2 ≤ Q ∧\n    ∀ p q : ℤ, Q ≤ q →\n      (q : ℝ) ^ (-ν) ≤ |Real.pi - (p : ℝ) / (q : ℝ)|) ∧\n  sSup {ν : ℝ | 0 < ν ∧\n    Set.Infinite {r : ℚ | 2 ≤ r.den ∧\n      0 < |Real.pi - (r : ℝ)| ∧\n      |Real.pi - (r : ℝ)| < (r.den : ℝ) ^ (-ν)}} = 2 := by\n  sorry\n\nend PiExponent\nend OAI\n",
+      "natural_language_statement": "The theorem states that two facts hold about approximating π by rationals, combined in one conjunction. First, for every real ν>2 there is an integer Q≥2 such that for all integers p and q with q≥Q, the distance |π − p/q| is at least q^(−ν); in other words, π has no rational approximations beating exponent ν once the denominator is large enough. Second, the supremum of the set of positive real ν for which there are infinitely many rationals r with denominator at least 2, with r different from π (the distance |π − r| being positive), and with |π − r| < (den r)^(−ν), equals exactly 2. Here den r is the reduced denominator of r. So the irrationality exponent of π is stated to be 2.",
+      "created_at": "2026-10-07T04:33:03.369565+00:00",
+      "vote_count": 0,
+      "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/PiExponent.lean; bytes 53..400\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\n\nnamespace OAI\n\nnamespace PiExponent\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean",
+      "tags": [],
+      "audits": [
+        {
+          "audit_id": "a39dd35f-e8f3-488d-9562-b1e85d394d96",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:12.032816+00:00"
+        },
+        {
+          "audit_id": "5156b8f3-df6a-4657-a9ac-3eab31887258",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T06:19:53.222203+00:00"
+        },
+        {
+          "audit_id": "d13f6cb1-c1f3-4759-bf1b-c659be0cf1ff",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T07:05:13.152874+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.analytic_aggregate",
+      "theorem_title": "Analytic aggregate bound for the fixed pi determinant family",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.analytic_aggregate : AnalyticAggregateStatement := by sorry",
+      "natural_language_statement": "For every $\\nu>2$ and every fixed admissible family $d$, there is a real function $\\varepsilon$ with $\\varepsilon(H)\\to0$ as $H\\to+\\infty$, such that eventually every nonzero selected minor satisfies\n\n$$\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}\n\\le e_{\\rm an}(d)+\\varepsilon(H)+\\max\\{-c_d(H),-\\nu(A(1-\\eta)-b_d(H))\\}.$$\n\nThe same error function applies to all selections at a sufficiently large height. This is precisely the analytic input named in the pinned source. It remains an open obligation: the source's determinant contradiction assumes this proposition rather than establishing it.",
+      "created_at": "2026-10-07T19:30:00.378624+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L98-L108",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+          "target": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+          "target": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "936f9606-5863-4abb-9e4d-c55f5f8ef043",
+          "target": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "theorem_name": "OAI.PiExponent.finite_rat_den_le_abs_sub_lt_one",
+      "theorem_title": "Bounded-denominator rational approximations form a finite set",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.finite_rat_den_le_abs_sub_lt_one (x : ℝ) (N : ℕ) :\n    {r : ℚ | r.den ≤ N ∧ |x - (r : ℝ)| < 1}.Finite := by sorry",
+      "natural_language_statement": "For every real number $x$ and natural number $N$, the set of rational numbers whose reduced denominator is at most $N$ and whose distance from $x$ is less than $1$ is finite:\n$$\\{r\\in\\mathbb Q:r.\\mathrm{den}\\le N,\\ |x-r|<1\\}.\\mathrm{Finite}.$$\nThis supplies the finite exceptional set needed when replacing eventual denominator bounds by finiteness statements about rational approximations.",
+      "created_at": "2026-10-07T07:00:52.874546+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L28-L55",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "theorem_name": "OAI.PiExponent.irrationalityExponent_eq_two_of_eventualLowerBound",
+      "theorem_title": "An eventual lower bound gives irrationality exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.irrationalityExponent_eq_two_of_eventualLowerBound {x : ℝ}\n    (hi : Irrational x) (hx : EventualLowerBound x) :\n    irrationalityExponent x = 2 := by sorry",
+      "natural_language_statement": "Let $x$ be an irrational real number. Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le |x-p/q|$ for every integer $p$ and natural $q\\ge Q$. Then the irrationality exponent defined by the shared approximation predicates is exactly $2$:\n$$\\mu(x)=2.$$\nThe exponent is the real supremum of positive exponents admitting infinitely many distinct rational approximations with reduced denominator at least $2$ and strictly positive error below $q^{-\\nu}$. The upper estimate uses the assumed eventual bound; the lower estimate uses irrationality and Dirichlet approximation.",
+      "created_at": "2026-10-07T07:03:42.075372+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L92-L102",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "97a33302-16bc-4887-9f08-17adc9990640",
+      "theorem_name": "OAI.PiExponent.asymptotic_determinant_bounds_inconsistent",
+      "theorem_title": "Incompatibility of asymptotic determinant bounds",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.asymptotic_determinant_bounds_inconsistent\n    (nu theta x ear ean collisionLimit : ℝ)\n    (b d err collision : ℕ → ℝ)\n    (hnu : 1 < nu)\n    (hgap : ear + ean < nu * (x - theta) - (1 - theta))\n    (hcollision : 1 + ear + ean < collisionLimit)\n    (herr : Tendsto err atTop (𝓝 0))\n    (hcol : Tendsto collision atTop (𝓝 collisionLimit))\n    (hb0 : ∀ᶠ n in atTop, 0 ≤ b n)\n    (hb : ∀ᶠ n in atTop, b n ≤ theta)\n    (hlower : ∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n)\n    (hupper : ∀ᶠ n in atTop,\n      d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) : False := by sorry",
+      "natural_language_statement": "Let $\\nu,\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ be real constants, with $\\nu>1$, and let $b_n,d_n,\\varepsilon_n,c_n$ be real sequences. Assume\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\nand assume that the error tends to zero and the collision rate tends to its limiting value. Then the following inequalities cannot all hold for every sufficiently large index:\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThis is the source's general asymptotic determinant comparison lemma, useful independently of the construction of any particular interpolation matrix.",
+      "created_at": "2026-10-07T19:02:13.671858+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.Tactic.Linarith\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean#L33-L67",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "theorem_name": "OAI.PiExponent.pi_floor_bracket_lower_bound",
+      "theorem_title": "Uniform lower bounds at the integer endpoints bracketing q pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_floor_bracket_lower_bound (nu : ℝ) (hnu : 2 < nu) :\n    ∃ Q : ℕ, 2 ≤ Q ∧\n      ∀ q : ℕ, Q ≤ q →\n        (q : ℝ) ^ (-nu) ≤\n          |Real.pi - ((Int.floor ((q : ℝ) * Real.pi) : ℤ) : ℝ) / (q : ℝ)| ∧\n        (q : ℝ) ^ (-nu) ≤\n          |Real.pi - (((Int.floor ((q : ℝ) * Real.pi) + 1 : ℤ) : ℝ) / (q : ℝ))| := by\n  sorry\n",
+      "natural_language_statement": "For every real exponent nu greater than 2, there is a natural threshold Q at least 2 such that for every natural q at least Q, both rational numbers floor(q*pi)/q and (floor(q*pi)+1)/q have distance from pi at least q^(-nu).",
+      "created_at": "2026-10-10T22:33:42.105306+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean",
+      "tags": [],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound",
+      "theorem_title": "Arithmetic lower bound for every nonzero actual interpolation minor",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound {nu : ℝ} (d : FixedData nu)\n    (H : ℝ) (hH : 0 < H) (selection : Row d H → Column d H)\n    (hdet : (actualMinor d H selection).det ≠ 0) :\n    -(1 - actualMean d H) - d.arithmeticError ≤\n      Real.log ‖(actualMinor d H selection).det‖ /\n        ((actualRowCount d H : ℝ) * H) := by sorry",
+      "natural_language_statement": "For any fixed admissible family $d$, every positive height $H$, and every selection $s$ of columns indexed by the rows, a nonzero selected minor satisfies\n\n$$-(1-b_d(H))-e_{\\rm ar}(d)\\le\n\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}.$$\n\nHere $b_d(H)$ is the actual mean row weight and $e_{\\rm ar}(d)$ is the fixed arithmetic error. The nonvanishing assumption is explicit; this theorem does not construct a nonzero minor. It supplies the arithmetic side of the determinant comparison for whichever minor the interpolation argument selects.",
+      "created_at": "2026-10-07T19:29:55.017604+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L86",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "theorem_name": "OAI.PiExponent.two_mem_approximationExponents",
+      "theorem_title": "Every irrational real has infinitely many approximations at exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.two_mem_approximationExponents {x : ℝ} (hx : Irrational x) :\n    (2 : ℝ) ∈ ApproximationExponents x := by sorry",
+      "natural_language_statement": "For every irrational real number $x$, the exponent $2$ belongs to the set of approximation exponents: there are infinitely many distinct rational numbers $r$ whose reduced denominator is at least $2$ and whose approximation error satisfies $0<|x-r|<r.\\mathrm{den}^{-2}$. This records the Dirichlet lower bound in the shared irrationality-exponent definitions.",
+      "created_at": "2026-10-07T07:07:34.030006+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L57-L75",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "theorem_name": "OAI.PiExponent.pi_irrationalityExponent_eq_two_of_eventualLowerBound",
+      "theorem_title": "The eventual approximation bound for pi implies irrationality exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.pi_irrationalityExponent_eq_two_of_eventualLowerBound\n    (h : PiEventualLowerBound) : irrationalityExponent Real.pi = 2 := by sorry",
+      "natural_language_statement": "Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le|\\pi-p/q|$ for every integer numerator $p$ and natural denominator $q\\ge Q$. Then the irrationality exponent of $\\pi$, defined as the real supremum of the positive approximation exponents in the shared definitions, equals $2$. The eventual bound is an explicit hypothesis of this implication.",
+      "created_at": "2026-10-07T07:07:24.218305+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L104-L106",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "theorem_name": "OAI.PiExponent.pi_eventual_lower_bound",
+      "theorem_title": "The eventual rational approximation lower bound for pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_eventual_lower_bound : PiEventualLowerBound := by sorry",
+      "natural_language_statement": "For every real exponent $\\nu>2$, there exists a natural threshold $Q\\ge2$ such that every integer numerator $p$ and natural denominator $q\\ge Q$ satisfy\n$$q^{-\\nu}\\le |\\pi-p/q|.$$\nThe threshold is uniform over both numerator and denominator. This is the pi-specific eventual approximation bound. Together with the general approximation lemmas, it yields the integer-denominator formulation and the real-supremum characterization of irrationality exponent two.\n",
+      "created_at": "2026-10-07T07:21:51.736866+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Main.lean#L8-L9",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "theorem_name": "OAI.PiExponent.eventualLowerBound_iff_integer",
+      "theorem_title": "Equivalent natural and integer denominator formulations",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.eventualLowerBound_iff_integer (x : ℝ) :\n    EventualLowerBound x ↔ IntegerEventualLowerBound x := by sorry",
+      "natural_language_statement": "For every real number $x$, the eventual lower bound at every exponent $\\nu>2$ is equivalent whether its threshold and denominators are natural numbers or integers. In both formulations the threshold is at least $2$, the numerator is an arbitrary integer, and the bound is uniform in the numerator:\n$$q^{-\\nu}\\le |x-p/q|\\qquad(q\\ge Q).$$\nThis conversion preserves the non-strict approximation inequality and allows results using integer denominators to be reused with natural denominator statements.",
+      "created_at": "2026-10-07T07:02:27.212384+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L7-L26",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "submission_id": "033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "parent_theorem_id": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "For every real exponent $\\nu>2$ and the assumed unbounded rational approximations to $\\pi$, the reduction proves the existence of constants and natural-number sequences satisfying\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\n$$\\varepsilon_n\\to0,\\qquad c_n\\to c_\\infty,$$\n\nand eventually\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThe remaining child, `OAI.PiExponent.pi_cofinal_real_height_determinant_certificates`, asserts a construction indexed by real interpolation heights. It supplies fixed constants, a mean row-weight function, an error function tending to zero, a collision-rate function tending to the prescribed limit, and simultaneous lower and upper determinant certificates at arbitrarily large positive heights. This is an Open assumption of the reduction. It retains the analytic and geometric obligations of the pinned source; this submission proves the entire passage from that cofinal real-height interface to the requested sequence interface.\n\nFor each natural number $n$, choose a height and certificate from the child at threshold $n$:\n\n$$H_n\\ge n,\\qquad H_n>0,\\qquad D_n\\text{ satisfies both bounds at }H_n.$$\n\nThe real-valued natural-number sequence tends to positive infinity. The comparison with $n$ therefore gives\n\n$$H_n\\longrightarrow+\\infty.$$\n\nNo monotonicity of the chosen heights is needed. Define all sequences using these same heights:\n\n$$b_n=b(H_n),\\qquad d_n=D_n,\\qquad\\varepsilon_n=\\varepsilon(H_n),\\qquad c_n=c(H_n).$$\n\nComposition of the two real-height limits with the height sequence gives the required limits. The four scalar bounds hold for every chosen index, hence in particular eventually. The strict margins remain those of the fixed real-height family.\n\nIn the pinned source, admissible parameters provide the margins, `tendsto_collisionRate` supplies the collision limit, and cofinal surjectivity yields nonzero selected minors. `actualMean_bounds` and `actual_minor_arithmetic_lower_bound` provide the lower certificates. `AnalyticAggregateStatement` provides an eventual upper bound; one first increases the height threshold past that eventual bound, then invokes cofinal interpolation. These constructions are exactly what the child still has to establish. The source's conditional determinant contradiction alone does not prove that child.\n",
+      "created_at": "2026-10-07T19:12:32.837749+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "submission_id": "12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "parent_theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "This sketch introduces a new, explicitly open pi-specific obligation: for every exponent nu > 2, both rational errors at the adjacent numerators floor(q*pi) and floor(q*pi)+1 have the stated power lower bound for all sufficiently large natural denominators q >= 2. It does not assert that this analytic obligation has been proved.\r\n\r\nThe complete Lean reduction proves that these two bounds imply the original arbitrary-integer-numerator bound. Positive q preserves order on division. The floor inequalities put pi between the two rational endpoints. If p <= floor(q*pi), the lower endpoint's error is at most the error at p/q. Otherwise floor(q*pi)+1 <= p, and the upper endpoint's error is at most that error. The reduction then uses the already proved natural/integer threshold conversion and the already proved conditional irrationality-exponent result to establish both conjuncts of the exact focused target.\r\n\r\nThis differs from the existing natural-denominator sketch by removing the arbitrary-numerator quantifier from the remaining analytic obligation and proving the bracketing reduction. The proposed child remains open; no unconditional solution of the pi irrationality-exponent problem is claimed. The declaration and full reduction have been compiled locally with Lean 4.33.1 and the mission's pinned Mathlib; the runner must still perform its full dependency, kernel and semantic checks before publication.\r\n",
+      "created_at": "2026-10-11T02:27:05.190392+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "submission_id": "148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "parent_theorem_id": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "We reduce the cofinal real-height certificate assertion to five source-grounded obligations for one fixed admissible parameter family. This is a proof sketch: the five imported child theorems remain assumptions of this submission.\n\nFor an exponent greater than two and arbitrarily large denominators satisfying\n\n$$|\\pi-p/q|\\le q^{-\\nu},$$\n\nthe parameter-existence child supplies one admissible family. All matrix entries, row sets, column sets, mean weights, arithmetic errors, analytic errors, and collision rates are the actual definitions transcribed from the pinned source. No family is changed when the height changes.\n\nThe five children are:\n\n1. `exists_admissible_parameters`: the complete fixed parameter construction from the unbounded approximation hypothesis, with arbitrary positive arithmetic and collision constants.\n2. `actual_minor_arithmetic_lower_bound`: the normalized logarithm of every nonzero selected minor satisfies the arithmetic lower estimate at every positive height.\n3. `tendsto_collisionRate`: the actual collision rate tends to its simplex-volume limit as the real height tends to infinity.\n4. `global_interpolation`: the actual interpolation matrix is surjective at cofinally many real heights.\n5. `analytic_aggregate`: one error function tending to zero gives the analytic upper estimate, eventually in height, for every nonzero selected minor.\n\nThe pinned source proves the parameter, arithmetic, and counting results, which are retained as separate formalization children here. Its final determinant argument assumes the interpolation and analytic propositions; this sketch preserves them as explicit open obligations.\n\nFor the fixed family, write its parameters as $\\theta,A,\\eta$, its errors as $e_{\\rm ar},e_{\\rm an}$, its mean as $b(H)$, and its collision limit as $c_\\infty$. Set\n\n$$x=A(1-\\eta).$$\n\nThe three admissibility budgets are each less than $\\epsilon/3$. Their sum is exactly the total error, and admissibility places $\\epsilon$ below the exponent gap and at most one half. The source's collision margin exceeds two. The reduction proves directly that\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad\n1+e_{\\rm ar}+e_{\\rm an}<c_\\infty.$$\n\nIt also proves directly, from the finite row definitions, that every positive height satisfies\n\n$$0\\le b(H)\\le\\theta.$$\n\nIndeed, every logarithmic row weight is nonnegative, and the defining strict weighted-simplex inequality bounds each row's weighted contribution by $H\\theta$. Summing and dividing by the row count times the positive height gives the claim. The zero-row case is handled separately, with the mean equal to zero.\n\nThe analytic child supplies a function $\\varepsilon(H)\\to0$ and a threshold $L_0$ beyond which its bound holds for all nonzero selected minors. Given an arbitrary requested threshold $L$, use cofinal interpolation above\n\n$$\\max\\{L,L_0,1\\}.$$\n\nThis produces a height satisfying $H\\ge L$, $H\\ge L_0$, and $H>0$, at which the actual matrix is surjective. A finite-dimensional argument extracts a nonzero square full-row minor: a right inverse gives a matrix product equal to the identity; expanding its determinant as a sum over column selections shows that at least one selected determinant is nonzero. This extraction is proved inside the reduction, rather than introduced as another open child.\n\nFor the selected minor define\n\n$$D=\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}.$$\n\nThe arithmetic child and the analytic child apply to this same minor and give\n\n$$-(1-b(H))-e_{\\rm ar}\\le D\\le e_{\\rm an}+\\varepsilon(H)+\n\\max\\{-c(H),-\\nu(x-b(H))\\}.$$\n\nThe collision-rate child supplies the remaining limit. These constants and functions therefore satisfy exactly the target's quantified type, conditional on the five children. The construction works at cofinally many real heights and needs no continuity or monotonicity assumption.\n\nThe definitions and the three source-proved obligations are transcribed from [AdmissibleParameters.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean) and [DeterminantContradiction.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean). The latter file defines, but does not prove, the two geometric and analytic propositions. The matrix and simplex definitions come from its pinned dependencies.\n",
+      "created_at": "2026-10-07T19:30:21.106608+00:00",
+      "child_count": 5,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "submission_id": "15189284-f270-4f09-9af5-5ef49ae63a14",
+      "parent_theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "We reduce the assertion\n\n$$\n\\forall \\nu>2\\;\\exists Q\\ge2\\;\\forall p\\in\\mathbb Z\\;\\forall q\\ge Q,\n\\qquad q^{-\\nu}\\le\\left|\\pi-\\frac pq\\right|\n$$\n\nto the construction of asymptotic determinant sequences from an unbounded family of good rational approximations. This is a proof sketch: `pi_approximation_determinant_sequences` is an open child theorem, not a result proved by this submission. The second child, `asymptotic_determinant_bounds_inconsistent`, has a separate direct proof.\n\nFix an exponent above two and suppose no uniform threshold exists. Negating the threshold statement supplies, for every natural bound, integers and natural denominators satisfying\n\n$$\nq\\ge Q,\\qquad \\left|\\pi-\\frac pq\\right|<q^{-\\nu}.\n$$\n\nWe use the weaker non-strict approximation inequality as the hypothesis of the open construction lemma. The use of the threshold $\\max(Q,2)$ ensures that the original requirement on thresholds is respected.\n\nThe construction lemma is an explicit sequence interface for the pinned source's admissible-parameter, interpolation, arithmetic, and analytic determinant argument. It supplies constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and sequences $b_n,d_n,\\varepsilon_n,c_n$ with\n\n$$\ne_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\n\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,\n\\qquad \\varepsilon_n\\longrightarrow0,\n\\qquad c_n\\longrightarrow c_\\infty.\n$$\n\nEventually these sequences obey\n\n$$\n0\\le b_n\\le\\theta,\n\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\n\\le e_{\\rm an}+\\varepsilon_n+\n\\max\\{-c_n,-\\nu(x-b_n)\\}.\n$$\n\nIn the intended construction, the scalar $d_n$ is the normalized logarithm of the absolute value of a nonzero interpolation minor; the other sequences are its mean row weight, analytic remainder, and collision rate. Cofinal interpolation heights can be chosen above the natural index, so the source's real-height limits give these sequence limits. Proving that construction, including the geometric nonvanishing and analytic upper estimates, remains the open obligation.\n\nThe numerical contradiction is unconditional. The strict margins and the two limits imply, for all sufficiently large indices,\n\n$$\ne_{\\rm ar}+e_{\\rm an}+\\varepsilon_n<\\nu(x-\\theta)-(1-\\theta),\n\\qquad 1+e_{\\rm ar}+e_{\\rm an}+\\varepsilon_n<c_n.\n$$\n\nBecause the exponent exceeds one and the mean weight is at most the parameter $\\theta$,\n\n$$\n\\nu(x-\\theta)-(1-\\theta)\\le\\nu(x-b_n)-(1-b_n).\n$$\n\nConsequently both branches of the maximum in the upper bound are strictly below the lower bound. This contradicts the simultaneous determinant inequalities. Hence failure of the uniform threshold is impossible, conditional on the open construction lemma.\n\nThe comparison lemma is transcribed from [Comparison.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean). The construction interface is a sequence reformulation of the bounds and limits in [DeterminantContradiction.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean), with the source's geometric and analytic inputs retained as the open construction obligation.\n",
+      "created_at": "2026-10-07T19:03:06.41727+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "submission_id": "367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "parent_theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "The original proof from OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a is preserved by compiler-guided extraction. The source theorem uses only propext, Classical.choice, and Quot.sound. The exact uploaded statement and solution were compiled against the platform Mathlib pin, and the elaborated theorem type was compared with the upstream source type. Shared definitions and proved helper lemmas are imported as reusable platform modules.",
+      "created_at": "2026-10-07T07:21:55.195048+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "submission_id": "7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "parent_theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "status": "SKETCH_ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Assuming the imported theorem `OAI.PiExponent.main`, the campaign's shared definition satisfies\n\n$$\\operatorname{PiIrrationality.UpperBound}(2).$$\n\nThe argument uses only the theorem's first conjunct: for every real exponent $\\nu>2$, a single integer threshold $Q\\ge2$ makes $q^{-\\nu}\\le|\\pi-p/q|$ hold for all integer numerators $p$ and integer denominators $q\\ge Q$. Choosing an exponent strictly between $2$ and $2+\\varepsilon$ supplies the strict inequality required by the campaign.\n\nFix $\\varepsilon>0$ and apply this assertion with $\\nu=2+\\varepsilon/2$. Let $Q\\ge2$ be the resulting threshold. Since $Q$ is nonnegative, its natural-number counterpart `Q.toNat` has the same integer value. Every natural denominator above this threshold satisfies $q\\ge2$, so its real value is greater than $1$.\n\nReal powers with a base greater than $1$ are strictly increasing in their exponent. Therefore every such $q$ and every integer $p$ satisfy\n\n$$\\frac{1}{q^{2+\\varepsilon}}=q^{-(2+\\varepsilon)}<q^{-(2+\\varepsilon/2)}\\le\\left|\\pi-\\frac pq\\right|.$$\n\nThe threshold is uniform in $p$ and $q$, exactly as required by `PiIrrationality.UpperBound 2`. The supremum conjunct of the OpenAI theorem is unused.\n\nThis submission is a reduction to `OAI.PiExponent.main`, which is currently an open theorem on Prove2me. The reduction verifies the implication; the campaign goal remains conditional on a verified proof of that dependency.\n",
+      "created_at": "2026-10-07T06:20:49.802341+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "submission_id": "8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "parent_theorem_id": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Apply the proved general irrationality-exponent criterion to the real number pi. Mathlib supplies the irrationality of pi, and the theorem assumption supplies its eventual lower bound. The result is conditional on that explicit eventual-bound assumption; it does not prove the pi-specific bound.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:08:52.525979+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "submission_id": "9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "parent_theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "This sketch introduces a new, explicitly open pi-specific obligation: for every exponent nu > 2, both rational errors at the adjacent numerators floor(q*pi) and floor(q*pi)+1 have the stated power lower bound for all sufficiently large natural denominators q >= 2. It does not assert that this analytic obligation has been proved.\r\n\r\nThe complete Lean reduction proves that these two bounds imply the original arbitrary-integer-numerator bound. Positive q preserves order on division. The floor inequalities put pi between the two rational endpoints. If p <= floor(q*pi), the lower endpoint's error is at most the error at p/q. Otherwise floor(q*pi)+1 <= p, and the upper endpoint's error is at most that error. The reduction then uses the already proved natural/integer threshold conversion and the already proved conditional irrationality-exponent result to establish both conjuncts of the exact focused target.\r\n\r\nThis differs from the existing natural-denominator sketch by removing the arbitrary-numerator quantifier from the remaining analytic obligation and proving the bracketing reduction. The proposed child remains open; no unconditional solution of the pi irrationality-exponent problem is claimed. The declaration and full reduction have been compiled locally with Lean 4.33.1 and the mission's pinned Mathlib; the runner must still perform its full dependency, kernel and semantic checks before publication.\r\n",
+      "created_at": "2026-10-11T02:57:15.22988+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "submission_id": "bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "parent_theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Dirichlet approximation supplies infinitely many rational approximations to an irrational $x$ with error below the reciprocal square of the reduced denominator. Removing the finite set with denominator at most one leaves infinitely many approximations satisfying the shared definition at exponent $2$; irrationality guarantees their errors are positive. Hence $2$ belongs to the set of approximation exponents.\n\nFor any $\\nu>2$, the assumed eventual lower bound gives a threshold $Q$. A good approximation at exponent $\\nu$ must have denominator below $Q$, since otherwise its strict upper bound on the error contradicts the assumed lower bound. Its error is also less than $1$, so the imported bounded-denominator finiteness lemma shows there are only finitely many such rational approximations. Thus no exponent above $2$ belongs to the approximation-exponent set.\n\nThe set contains $2$ and is bounded above by $2$. Its real supremum is therefore exactly $2$. The finite-denominator result is a separately verified, reusable dependency; the irrationality and eventual-bound hypotheses remain explicit in this theorem.\n\nSource: OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, `OAI/NumberTheory/PiExponent/Approximation/Exponent.lean`. The proof body is preserved by compiler-guided extraction and checked against the mission's Mathlib environment.",
+      "created_at": "2026-10-07T07:03:47.598651+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "submission_id": "ea769243-783f-43ab-9a89-ef1793c87b54",
+      "parent_theorem_id": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Dirichlet approximation supplies infinitely many rational numbers with error below the reciprocal square of the reduced denominator. The imported finiteness lemma removes the finitely many approximations with denominator at most one and error less than one. Irrationality ensures that the remaining errors are positive. Rewriting the reciprocal square as the real power with exponent minus two gives membership in the shared approximation-exponent set.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:07:39.717982+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "submission_id": "ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "parent_theorem_id": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "For the chosen exponent, take the threshold supplied by the eventual lower bound. Every good approximation must have denominator below that threshold: a larger denominator would make its strict approximation inequality contradict the assumed lower bound. The error is less than one because the denominator is positive and the exponent is greater than two. The imported bounded-denominator finiteness theorem then bounds the set of good approximations by a finite set.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:07:25.075978+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "target": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "kind": "sketch"
+    },
+    {
+      "source": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "target": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "target": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "kind": "sketch"
+    },
+    {
+      "source": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "target": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "kind": "sketch"
+    },
+    {
+      "source": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "target": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "kind": "sketch"
+    },
+    {
+      "source": "733008a0-daa2-4420-858d-db732aa4313d",
+      "target": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "target": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "kind": "sketch"
+    },
+    {
+      "source": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "target": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "kind": "sketch"
+    },
+    {
+      "source": "97a33302-16bc-4887-9f08-17adc9990640",
+      "target": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "target": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "target": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "target": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "sketch"
+    },
+    {
+      "source": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "1a21b159-35ef-490d-8259-021afd876d54",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "target": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "target": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "target": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "kind": "sketch"
+    },
+    {
+      "source": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "target": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

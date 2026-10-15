@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/2765d49b-7d9c-4669-a8fa-ff678ed2e2c1",
+  "fetched_at": "2026-10-11T13:38:41.809866+00:00",
+  "data": {
+    "theorem_id": "2765d49b-7d9c-4669-a8fa-ff678ed2e2c1",
+    "theorem_name": "ZipfLaw.yuleSimon_tail",
+    "theorem_title": "Yule–Simon tail: $f(k;\\rho)\\sim C/k^{\\rho+1}$",
+    "status": "Proved",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem yuleSimon_tail (ρ : ℝ) (hρ : 0 < ρ) :\n    ∃ C : ℝ, 0 < C ∧\n      Asymptotics.IsEquivalent Filter.atTop (fun k : ℕ => yuleSimonPMF ρ k)\n        (fun k : ℕ => C / (k : ℝ) ^ (ρ + 1)) := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "For every $\\rho>0$ there is a constant $C>0$ such that the Yule–Simon frequencies $f(k;\\rho)=\\rho\\,B(k,\\rho+1)$ satisfy\n$$f(k;\\rho)\\sim\\frac{C}{k^{\\rho+1}}\\qquad(k\\to\\infty),$$\ni.e. $f(k;\\rho)\\,k^{\\rho+1}/C\\to1$.",
+    "created_at": "2026-10-09T21:33:58.141217+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Related laws\" (\"The tail frequencies of the Yule–Simon distribution are approximately f(k;ρ) ≈ [constant]/k^(ρ+1) for any choice of ρ > 0\").",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "124dea91-28d8-4586-a06c-9d6003f1b845",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "750af631-5d21-4ef3-92a0-4704d6f46830",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every real $\\rho>0$ there exists a real $C>0$ such that, as $k\\to\\infty$ through the naturals, $\\mathrm{yuleSimonPMF}(\\rho,k)$ is asymptotically equivalent (Lean `IsEquivalent`: the difference is little-o of the second function) to $C/k^{\\rho+1}$ (real power). Here $\\mathrm{yuleSimonPMF}(\\rho,k)=\\rho\\,\\Gamma(k)\\Gamma(\\rho+1)/\\Gamma(k+\\rho+1)$.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:34:01.316018+00:00"
+    }
+  }
+}

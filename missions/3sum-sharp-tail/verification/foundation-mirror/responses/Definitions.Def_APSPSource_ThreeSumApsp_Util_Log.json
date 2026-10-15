@@ -1,0 +1,23 @@
+{
+  "theorem_id": "d73d9fd8-8a83-4385-81a1-31f85a9d5039",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_Log",
+  "theorem_title": "A positive logarithmic factor and elementary domain bounds",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For a real number $u$, define the clipped logarithmic factor\n\n$$L(u)=\\log(\\max\\{u,2\\}).$$\n\nThis agrees with $\\log u$ for $u\\ge2$ and takes the value $\\log2$ below that threshold. It allows later cost formulas to use a positive logarithmic factor even at small input magnitudes.\n\nThe bundle also supplies the elementary bounds\n\n$$x\\ge3\\Rightarrow\\log x\\ge1,\\qquad D\\in\\mathbb N,\\ D\\ge16\\Rightarrow\\sqrt D\\ge4,$$\n\nincluding the natural-number specialization of the first inequality. These interfaces record the numerical domain facts needed by later parameter and running-time definitions.\n\nReferences:\n\n1. [Source formalization, lines 51–57](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L51-L57).\n2. [Source formalization, lines 72–74](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L72-L74).\n3. [Source formalization, lines 101–104](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L101-L104).",
+  "created_at": "2026-10-06T07:37:01.69215+00:00",
+  "vote_count": 0,
+  "tags": [
+    "asymptotic-analysis",
+    "logarithms",
+    "real-analysis"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# Logarithms and real powers\n\nSmall facts on `Real.log`, `Real.logb`, `Nat.clog`, `Real.sqrt` and real powers that the estimates\nof the paper use silently.\n\n* Values, in the namespace `Real` and named by Mathlib's convention: `1 / 2 < log 2 < 1`,\n  `log 4 = 2 log 2`, `log 9 = 2 log 3`, `1 ≤ log 4`, `1 / 2 ≤ log x` for `x ≥ 2`, `1 ≤ log x` for\n  `x ≥ 3`, `log₂ 7 < 2.81`, `4 ≤ √D` for `D ≥ 16`.\n* The rounded logarithm: `⌈log_b n⌉ < log_b n + 1` (`Real.natCast_clog_lt_logb_add_one`),\n  `c ^ ⌈log_b n⌉ ≤ c * n ^ (log_b c)` (`Real.pow_clog_le_mul_rpow_logb`).\n* The definition `logU u = log (max u 2)`, the paper's `log U`.\n-/\n\n@[expose] public section\n\nnamespace Real\n\n/-! ### Values -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-- `1 ≤ log x` for `x ≥ 3`. -/\ntheorem one_le_log_of_three_le {x : ℝ} (hx : 3 ≤ x) : 1 ≤ log x :=\n  (le_log_iff_exp_le (by linarith)).2 (exp_one_lt_three.le.trans hx)\n\n/-- `1 ≤ log n` for a natural number `n ≥ 3`. -/\ntheorem one_le_log_natCast_of_three_le {n : ℕ} (hn : 3 ≤ n) : 1 ≤ log n :=\n  one_le_log_of_three_le (by exact_mod_cast hn)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-- `4 ≤ √D` for a natural number `D ≥ 16`. -/\ntheorem four_le_sqrt_natCast_of_sixteen_le {D : ℕ} (hD : 16 ≤ D) : 4 ≤ √(D : ℝ) :=\n  le_sqrt_of_sq_le (by norm_num; exact_mod_cast hD)\n\n/-! ### The rounded logarithm `Nat.clog` -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend Real\n\nnamespace ThreeSumApsp\n\n/-- `log U`, read as `log 2` for `U < 2`, so that a bound with `log U` is positive at `U = 1` as\nwell. It occurs in the bounds of Theorem 21(b) and in the overhead for copying in\n`ConditionalTimes.Claim.RectMinPlusFromSquare`. -/\nnoncomputable def logU (u : ℝ) : ℝ := Real.log (max u 2)\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L51-L57; https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L72-L74; https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Log.lean#L101-L104",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

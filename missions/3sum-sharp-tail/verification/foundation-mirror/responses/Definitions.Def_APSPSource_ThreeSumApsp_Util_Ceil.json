@@ -1,0 +1,23 @@
+{
+  "theorem_id": "4539a143-c3ac-4f02-8941-c5ec8b987812",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_Ceil",
+  "theorem_title": "The ceiling of the real cube root",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For a natural number $n$, define\n\n$$q(n)=\\left\\lceil n^{1/3}\\right\\rceil_+.$$\n\nThe power is the real cube root and $\\lceil\\cdot\\rceil_+$ is natural-number ceiling. In particular the definition is meaningful at $n=0$.\n\nThis parameter supplies an integer block size for reductions that use a cube-root scale. Its upper and lower estimates are proved separately.\n\nReferences:\n\n1. [Source formalization, lines 103–104](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Ceil.lean#L103-L104).",
+  "created_at": "2026-10-06T07:36:45.160683+00:00",
+  "vote_count": 0,
+  "tags": [
+    "complexity-theory",
+    "integer-arithmetic",
+    "real-analysis"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Data.Nat.Log\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# Ceilings of quotients and logarithms, floors and ceilings of roots\n\nGeneral facts about natural and real numbers. The quotient of two natural numbers, rounded up, is\nMathlib's `a ⌈/⌉ b`. It is computed by `Nat.ceilDiv_eq_add_pred_div : a ⌈/⌉ b = (a + b - 1) / b`.\nIt is the ceiling of the real quotient (`Nat.ceil_div_eq_ceilDiv`) and the least `k` with\n`a ≤ k * b` (`Nat.ceilDiv_le_iff`, `Nat.lt_ceilDiv_iff`), so `a ≤ a ⌈/⌉ b * b < a + b`\n(`Nat.le_ceilDiv_mul`, `Nat.ceilDiv_mul_lt`). The power of `b` with exponent `⌈log_b n⌉` is at most\n`b * n` (`Nat.pow_clog_le_mul`). A natural number is compared with an `e`-th root by its `e`-th\npower (`Real.natCast_le_rpow_inv_iff`, `Real.rpow_inv_le_natCast_iff`). `cbrtCeil n` is the cube\nroot of `n`, rounded up.\n-/\n\npublic section\n\nnamespace Nat\n\n/-! ## The ceiling of a quotient of natural numbers -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-! ## The ceiling of a logarithm\n\n`Real.natCeil_logb_natCast : ⌈Real.logb b n⌉₊ = Nat.clog b n` passes from real to natural numbers,\nand `Nat.le_pow_clog : 1 < b → x ≤ b ^ Nat.clog b x` is the lower bound. -/\n\n\n\n\n\n\n\n\n\n\n\nend Nat\n\nnamespace Real\n\n/-! ## Roots\n\nThe `e`-th root of `t` is written `(t : ℝ) ^ ((e : ℝ)⁻¹)`. With these two lemmas,\n`Nat.le_floor_iff` and `Nat.ceil_le`, its floor and its ceiling are described by powers of natural\nnumbers. -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend Real\n\nnamespace ThreeSumApsp\n\n/-- The cube root of `n`, rounded up: `⌈n^{1/3}⌉`. -/\n@[expose] noncomputable def cbrtCeil (n : ℕ) : ℕ := ⌈(n : ℝ) ^ (1 / 3 : ℝ)⌉₊\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Ceil.lean#L103-L104",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

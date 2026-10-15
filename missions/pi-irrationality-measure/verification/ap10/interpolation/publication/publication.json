@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "46d5418ab63bfd82dc9a62343f39c555d472375d54cfc69c67701f03eba176d7",
+  "publish_intent": {
+    "at_utc": "2026-10-11T12:34:02.888657+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "definition_title": "Core polynomial data for interpolation matrices",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI.PiExponent.InterpolationMatrix\n\nopen scoped BigOperators\n\nnoncomputable def exponentVector {m : ℕ} (a : Fin m → ℕ) : Fin m →₀ ℕ :=\r\n  Finsupp.equivFunOnFinite.symm a\n\nnoncomputable def truncatedLog (T : ℕ) : Polynomial ℂ :=\r\n  PowerSeries.trunc T (PowerSeries.log ℂ)\n\nnoncomputable def monomialImage {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j h : ℕ) (a : Fin m → ℕ) :\r\n    MvPolynomial (Fin m) (Polynomial ℂ) :=\r\n  MvPolynomial.C ((1 + Polynomial.X) ^ h) *\r\n    ∏ i, (MvPolynomial.C (Polynomial.C ((j : ℂ) * r i) + G i) +\r\n      MvPolynomial.X i) ^ a i\n\nnoncomputable def entry {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j s : ℕ) (b : Fin m → ℕ)\r\n    (h : ℕ) (a : Fin m → ℕ) : ℂ :=\r\n  ((monomialImage r G j h a).coeff (exponentVector b)).coeff s\n\nnoncomputable def matrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (G : Fin m → Polynomial ℂ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  fun ρ c => entry r G ρ.1.val (ρ.2.1 0) (fun i => ρ.2.1 i.succ)\r\n    (c.1 0) (fun i => c.1 i.succ)\n\nnoncomputable def truncatedLogMatrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (T : Fin m → ℕ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  matrix K w0 v0 θ w H r (fun i => truncatedLog (T i))\n\nend OAI.PiExponent.InterpolationMatrix\n",
+      "natural_language_statement": "For natural exponent vectors $a,b$ indexed by $m$ coordinates, complex centers $r_i$, polynomials $G_i$, and natural numbers $j,h,s$, define the monomial image and its coefficient entry by\n\n$$M_{j,h,a}= (1+X)^h\\prod_i(jr_i+G_i+Y_i)^{a_i},\\qquad A_{(j,s,b),(h,a)}=[X^sY^b]M_{j,h,a}.$$\n\nThe finite exponent vector is the finitely supported form of $a$. The truncated logarithm of order $T$ is the polynomial truncation of the formal series $\\log(1+X)$. The interpolation matrix uses these entries on the exact weighted row and column domains; its logarithmic specialization sets $G_i$ equal to the corresponding truncated logarithm. These definitions supply the matrix data of the conditional determinant argument.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "46d5418ab63bfd82dc9a62343f39c555d472375d54cfc69c67701f03eba176d7",
+    "bundle_source_sha256": "4a0b31f337d1f17003c49265be1ecd3020f3676296161425d42f531e3e1f9b50",
+    "bundle_manifest_sha256": "a015793fcfc361e808c98d2b6169df0595f55a08f5bb51f2491d5422f2057507",
+    "validation_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526"
+  },
+  "updated_at_utc": "2026-10-11T12:38:48.331231+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "b60f570a-2b6a-4f01-96dd-511519fef09d",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/b60f570a-2b6a-4f01-96dd-511519fef09d until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "16dcb412ef66c1f2a0b90f081ae8fedd1c05a96b6328714c4bb6f7f7429f5122"
+  },
+  "job_id": "b60f570a-2b6a-4f01-96dd-511519fef09d",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "b60f570a-2b6a-4f01-96dd-511519fef09d",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "theorem_title": "Core polynomial data for interpolation matrices",
+      "formal_statement": "",
+      "natural_language_statement": "For natural exponent vectors $a,b$ indexed by $m$ coordinates, complex centers $r_i$, polynomials $G_i$, and natural numbers $j,h,s$, define the monomial image and its coefficient entry by\n\n$$M_{j,h,a}= (1+X)^h\\prod_i(jr_i+G_i+Y_i)^{a_i},\\qquad A_{(j,s,b),(h,a)}=[X^sY^b]M_{j,h,a}.$$\n\nThe finite exponent vector is the finitely supported form of $a$. The truncated logarithm of order $T$ is the polynomial truncation of the formal series $\\log(1+X)$. The interpolation matrix uses these entries on the exact weighted row and column domains; its logarithmic specialization sets $G_i$ equal to the corresponding truncated logarithm. These definitions supply the matrix data of the conditional determinant argument.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI.PiExponent.InterpolationMatrix\n\nopen scoped BigOperators\n\nnoncomputable def exponentVector {m : ℕ} (a : Fin m → ℕ) : Fin m →₀ ℕ :=\r\n  Finsupp.equivFunOnFinite.symm a\n\nnoncomputable def truncatedLog (T : ℕ) : Polynomial ℂ :=\r\n  PowerSeries.trunc T (PowerSeries.log ℂ)\n\nnoncomputable def monomialImage {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j h : ℕ) (a : Fin m → ℕ) :\r\n    MvPolynomial (Fin m) (Polynomial ℂ) :=\r\n  MvPolynomial.C ((1 + Polynomial.X) ^ h) *\r\n    ∏ i, (MvPolynomial.C (Polynomial.C ((j : ℂ) * r i) + G i) +\r\n      MvPolynomial.X i) ^ a i\n\nnoncomputable def entry {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j s : ℕ) (b : Fin m → ℕ)\r\n    (h : ℕ) (a : Fin m → ℕ) : ℂ :=\r\n  ((monomialImage r G j h a).coeff (exponentVector b)).coeff s\n\nnoncomputable def matrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (G : Fin m → Polynomial ℂ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  fun ρ c => entry r G ρ.1.val (ρ.2.1 0) (fun i => ρ.2.1 i.succ)\r\n    (c.1 0) (fun i => c.1 i.succ)\n\nnoncomputable def truncatedLogMatrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (T : Fin m → ℕ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  matrix K w0 v0 θ w H r (fun i => truncatedLog (T i))\n\nend OAI.PiExponent.InterpolationMatrix\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb",
+      "created_at": "2026-10-11T12:34:03.723991+00:00",
+      "updated_at": "2026-10-11T12:37:38.90811+00:00"
+    }
+  },
+  "definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "theorem_title": "Core polynomial data for interpolation matrices",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For natural exponent vectors $a,b$ indexed by $m$ coordinates, complex centers $r_i$, polynomials $G_i$, and natural numbers $j,h,s$, define the monomial image and its coefficient entry by\n\n$$M_{j,h,a}= (1+X)^h\\prod_i(jr_i+G_i+Y_i)^{a_i},\\qquad A_{(j,s,b),(h,a)}=[X^sY^b]M_{j,h,a}.$$\n\nThe finite exponent vector is the finitely supported form of $a$. The truncated logarithm of order $T$ is the polynomial truncation of the formal series $\\log(1+X)$. The interpolation matrix uses these entries on the exact weighted row and column domains; its logarithmic specialization sets $G_i$ equal to the corresponding truncated logarithm. These definitions supply the matrix data of the conditional determinant argument.",
+      "created_at": "2026-10-11T12:37:38.031852+00:00",
+      "vote_count": 0,
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI.PiExponent.InterpolationMatrix\n\nopen scoped BigOperators\n\nnoncomputable def exponentVector {m : ℕ} (a : Fin m → ℕ) : Fin m →₀ ℕ :=\r\n  Finsupp.equivFunOnFinite.symm a\n\nnoncomputable def truncatedLog (T : ℕ) : Polynomial ℂ :=\r\n  PowerSeries.trunc T (PowerSeries.log ℂ)\n\nnoncomputable def monomialImage {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j h : ℕ) (a : Fin m → ℕ) :\r\n    MvPolynomial (Fin m) (Polynomial ℂ) :=\r\n  MvPolynomial.C ((1 + Polynomial.X) ^ h) *\r\n    ∏ i, (MvPolynomial.C (Polynomial.C ((j : ℂ) * r i) + G i) +\r\n      MvPolynomial.X i) ^ a i\n\nnoncomputable def entry {m : ℕ} (r : Fin m → ℂ)\r\n    (G : Fin m → Polynomial ℂ) (j s : ℕ) (b : Fin m → ℕ)\r\n    (h : ℕ) (a : Fin m → ℕ) : ℂ :=\r\n  ((monomialImage r G j h a).coeff (exponentVector b)).coeff s\n\nnoncomputable def matrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (G : Fin m → Polynomial ℂ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  fun ρ c => entry r G ρ.1.val (ρ.2.1 0) (fun i => ρ.2.1 i.succ)\r\n    (c.1 0) (fun i => c.1 i.succ)\n\nnoncomputable def truncatedLogMatrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\r\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (T : Fin m → ℕ) :\r\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\r\n  matrix K w0 v0 θ w H r (fun i => truncatedLog (T i))\n\nend OAI.PiExponent.InterpolationMatrix\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

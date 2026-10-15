@@ -1,0 +1,9 @@
+private theorem row_weighted_cost_le {m K : ℕ} {v0 θ H : ℝ} {w : Fin m → ℝ}
+    (hv0 : 0 < v0) (hθ : 0 < θ) (hw : ∀ i, 0 < w i)
+    (ρ : PiExponent.InterpolationMatrix.Row K v0 θ w H) :
+    (∑ i, (ρ.2.1 i.succ : ℝ) * w i) ≤ H * θ := by
+  have hb := PiExponent.InterpolationMatrix.row_weight_lt hv0 hθ hw ρ
+  have h0 : 0 ≤ v0 * (ρ.2.1 0 : ℝ) := mul_nonneg hv0.le (Nat.cast_nonneg _)
+  have hh : (∑ i, w i * (ρ.2.1 i.succ : ℝ)) / θ ≤ H := by linarith
+  have hm := (div_le_iff₀ hθ).mp hh
+  simpa only [mul_comm] using hm

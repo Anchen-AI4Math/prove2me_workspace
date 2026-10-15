@@ -1,0 +1,65 @@
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="theorem_id"
+
+f3ace940-1663-489e-af28-d1f63c803801
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="proof_type"
+
+prove
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="explanation"
+
+Let $A:K^C\to K^R$ be the surjective matrix map in the statement. We prove
+
+$$
+\exists s:R\to C,\qquad s\text{ injective},\qquad \det\bigl(A[\operatorname{id}_R,s]\bigr)\ne0.
+$$
+
+Choose a matrix right inverse $B$, so $AB=I_R$ and hence $\det(AB)=1$. Expanding this determinant in Cauchy--Binet form gives a finite sum over functions $p:R\to C$:
+
+$$
+\det(AB)=\sum_{p:R\to C} \det\bigl(A[\operatorname{id}_R,p]\bigr)\prod_{i\in R}B_{p(i),i}.
+$$
+
+Because the sum equals $1$, at least one summand is nonzero, and its matrix minor therefore has nonzero determinant. If its column selector identified two different rows, the square minor would have two equal columns and zero determinant. The selector is consequently injective.
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="file"; filename="Sol_OAI_PiExponent_InterpolationMatrix_exists_full_row_minor_of_surjective_ap8_global.lean"
+Content-Type: text/plain
+
+import Mathlib
+
+open scoped BigOperators
+
+theorem solution
+    {R C K : Type*} [Fintype R] [Fintype C] [DecidableEq R] [Field K]
+    (A : Matrix R C K) (hA : Function.Surjective A.mulVecLin) :
+    ∃ selection : R → C, Function.Injective selection ∧
+      (A.submatrix id selection).det ≠ 0 := by
+  classical
+  obtain ⟨B, hB⟩ := Matrix.mulVec_surjective_iff_exists_right_inverse.mp hA
+  have hexp : (A * B).det =
+      ∑ p : R → C, (A.submatrix id p).det * ∏ i, B (p i) i := by
+    calc
+      (A * B).det = ∑ p : R → C, ∑ σ : Equiv.Perm R,
+          ((Equiv.Perm.sign σ : ℤ) : K) * ∏ i, A (σ i) (p i) * B (p i) i := by
+        simp only [Matrix.det_apply', Matrix.mul_apply, Finset.prod_univ_sum,
+          Finset.mul_sum, Fintype.piFinset_univ]
+        rw [Finset.sum_comm]
+      _ = ∑ p : R → C, (A.submatrix id p).det * ∏ i, B (p i) i := by
+        apply Finset.sum_congr rfl
+        intro p hp
+        simp only [Matrix.det_apply', Matrix.submatrix_apply, id_eq,
+          Finset.prod_mul_distrib, ← mul_assoc, ← Finset.sum_mul]
+  have hsum : (∑ p : R → C, (A.submatrix id p).det * ∏ i, B (p i) i) ≠ 0 := by
+    rw [← hexp, hB, Matrix.det_one]
+    exact one_ne_zero
+  obtain ⟨p, _, hp⟩ := Finset.exists_ne_zero_of_sum_ne_zero hsum
+  have hdet : (A.submatrix id p).det ≠ 0 := by
+    intro h
+    apply hp
+    rw [h, zero_mul]
+  refine ⟨p, ?_, hdet⟩
+  intro i j hij
+  by_contra hne
+  exact hdet (Matrix.det_zero_of_column_eq hne (fun k => congrArg (A k) hij))
+------p2mBoundary7f3a9c2b--

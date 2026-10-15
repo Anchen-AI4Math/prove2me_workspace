@@ -1,0 +1,15 @@
+{
+  "id": "f1d52ea3-b8b0-4d94-8a3f-19d38708b758",
+  "theorem_id": "753ca222-7285-413f-9c53-d5cddc7f1dec",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:27:32.730509+00:00",
+  "updated_at": "2026-10-15T07:30:30.057005+00:00",
+  "explanation": "This computes the physical color-normalization buffers from original size and band size. The returned normalized-end address and stored pointer header are derived from the two scalar size parameters.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorLayout.meets",
+  "theorem_title": "Execution of selected-color normalization layout",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightEncodedColorLayout.meets {pMain pDivide n g free : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (hmain : P[pMain]?=some (_root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorLayout.body pDivide)) (hdiv : P[pDivide]?=some _root_.ThreeSum1960614.Machine.ThreeSum.LightSmallDivide.body)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hn : 0 < n) (hg : 0 < g)\n    (hspace : _root_.ThreeSum.EncodedColorLayout.normalizedEnd free n g+1 \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightEncodedColorLayout.word n g : \u2124) \u2264 lim.word) (hd : d < lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [n,g,free] \u03bc (_root_.ThreeSum.LightEncodedColorLayout.time n g)\n      (fun r \u03bd => r=(_root_.ThreeSum.EncodedColorLayout.normalizedEnd free n g : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bd free (_root_.ThreeSum.EncodedColorLayout.normalizedHeads free n g) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let positive $n,g$ be input length and band size, $a$ an arbitrary free address, and $\\lambda,P,d,\\mu$ limits, program, depth and memory. Suppose the program contains the layout and division bodies, addresses fit words, the computed normalized-end address plus one fits memory, the stated layout word bound fits, and a nested call is allowed. The layout call writes its normalized-header values at $a$, returns\n\n$$\\operatorname{normalizedEnd}(a,n,g),$$\n\nruns within its specified budget and preserves every cell below $a$.\n\nThis computes the physical color-normalization buffers from original size and band size.",
+  "theorem_status": "Proved"
+}

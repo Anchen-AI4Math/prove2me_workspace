@@ -1,0 +1,9 @@
+theorem column_mem_iff {m : ℕ} {w0 H : ℝ} {w : Fin m → ℝ}
+    (hw0 : 0 < w0) (hw : ∀ i, 0 < w i) (a : Fin (m + 1) → ℕ) :
+    a ∈ PiExponent.realWeightedSimplex (columnWeights w0 w) H ↔
+      w0 * (a 0 : ℝ) + ∑ i, w i * (a i.succ : ℝ) ≤ H := by
+  have hp : ∀ i, 0 < columnWeights w0 w i := by
+    intro i
+    refine Fin.cases hw0 (fun j => hw j) i
+  rw [PiExponent.mem_realWeightedSimplex hp, Fin.sum_univ_succ]
+  rfl

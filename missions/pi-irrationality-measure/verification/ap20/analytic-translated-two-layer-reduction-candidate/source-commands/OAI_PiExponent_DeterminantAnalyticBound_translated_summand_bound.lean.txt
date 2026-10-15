@@ -1,0 +1,24 @@
+theorem translated_summand_bound
+    {ι κ : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+    (group : ι → κ) (weight : κ → ℝ) (scalar determinant : ℂ)
+    {H A eta nu c N bbar Etr Ehol rho : ℝ}
+    (hH : 0 < H) (hA : 0 ≤ A) (heta : 0 ≤ eta) (hnu : 0 ≤ nu)
+    (hc : 0 ≤ c) (hN : 0 < N) (hw : ∀ a, 0 ≤ weight a)
+    (hbeta : (Fintype.card ι : ℝ) * H * bbar ≤ ∑ i, weight (group i))
+    (hcap : (((Finset.univ : Finset κ).filter (fun a => weight a ≤ A * H)).card : ℝ) ≤ N)
+    (hscalar : ‖scalar‖ ≤ Real.exp
+      (-nu * ((∑ i, weight (group i)) - (Fintype.card ι : ℝ) * H * bbar) +
+        (Fintype.card ι : ℝ) * H * Etr))
+    (hdet : ‖determinant‖ ≤ Real.exp
+      (-c * (∑ a, (Collision.multiplicity Finset.univ group a : ℝ) ^ 2) +
+        (Fintype.card ι : ℝ) * H * (Ehol + rho))) :
+    ‖scalar * determinant‖ ≤ Real.exp ((Fintype.card ι : ℝ) * H *
+      (Etr + Ehol + rho + max (-c * eta ^ 2 * (Fintype.card ι : ℝ) / (H * N))
+        (-nu * (A * (1 - eta) - bbar)))) := by
+  rw [norm_mul]
+  apply (mul_le_mul hscalar hdet (norm_nonneg _) (Real.exp_pos _).le).trans
+  rw [← Real.exp_add]
+  apply Real.exp_le_exp.mpr
+  have h := two_alternative_exponent group weight hH hA heta hnu hc hN hw hbeta hcap
+    (E := Etr + Ehol + rho)
+  nlinarith [h]

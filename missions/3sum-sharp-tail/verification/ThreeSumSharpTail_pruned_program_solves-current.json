@@ -1,0 +1,23 @@
+{
+  "theorem_id": "8777def1-6656-496d-a34f-e968a7f53458",
+  "theorem_name": "ThreeSumSharpTail.pruned_program_solves",
+  "theorem_title": "Polynomial native resources for the arbitrary-parameter pruned program",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.pruned_program_solves (G : Light.Sec4.RatParams) :\n    ∃ need : List ℕ → Light.Need, Light.PolyNeedN need ∧\n      ∀ (R : Light.Program) (lim : Light.Limits) (fr d : ℕ)\n        (x : Light.ThinInst) (μ : ℕ → ℤ) (C tp tq : ℝ),\n        0 ≤ C → Light.lopCountTask.Pre x μ fr →\n        Light.Sec4.CostsWithinP G C x.N x.D tp tq →\n        (need [x.N, x.D, x.w, x.U]).Ok lim fr d →\n        Light.Meets lim (Light.Sec4.program31P G ++ R) Light.Sec4.Proc.offline32 (d + 1)\n          [x.N, x.D, x.w, x.U, x.x, x.y, x.wi, x.wj, x.out, fr] μ\n          (Light.Sec4.tOffline32P Light.Sec4.cShared30 G x.N x.D x.w)\n          (fun r μ' => Light.lopCountTask.Post x μ fr r μ') := by sorry",
+  "natural_language_statement": "For every rational parameter record G there is a polynomial native Need which, under CostsWithinP and the native Lop-count task precondition, guarantees the actual offline32 Meets specification of program31P G. The conclusion holds for every appended program, free pointer and sufficiently large word, space and depth limits. The runtime is the original natural tOffline32P step count.",
+  "created_at": "2026-10-13T20:56:38.10844+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Definitions.Def_APSP299791_Defs5",
+  "source": "Generic resource and execution assembly from the accepted pruned program source. Uses actual Hyp30 below/top bounds and the proved generic program correctness interface; no fixed numerical parameter specialization is assumed.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

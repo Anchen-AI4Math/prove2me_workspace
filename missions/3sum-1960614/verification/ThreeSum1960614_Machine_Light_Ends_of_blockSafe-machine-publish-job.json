@@ -1,0 +1,21 @@
+{
+  "id": "5bdf61e0-2eac-4d76-98fe-35b3407fbfeb",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Ends.of_blockSafe",
+  "theorem_title": "Safe blocks establish timed execution",
+  "formal_statement": "theorem ThreeSum1960614.Machine.Light.Ends.of_blockSafe : \u2200 {s : _root_.ThreeSum1960614.Machine.Light.Stmt} {\u03c3 : _root_.ThreeSum1960614.Machine.Light.State} {T : \u2115} {Q : _root_.ThreeSum1960614.Machine.Light.State \u2192 Prop}, s.BlockSafe lim \u03c3 \u2192\n    s.blockCost \u2264 T \u2192 Q (s.after \u03c3) \u2192 _root_.ThreeSum1960614.Machine.Light.Ends lim P d s \u03c3 T Q\n  := by sorry",
+  "natural_language_statement": "For limits $L$, program $P$, depth $d$, statement $s$, initial state $\\sigma$, budget $T$, and postcondition $Q$, block safety, $\\operatorname{blockCost}(s)\\le T$, and $Q(\\operatorname{after}(s,\\sigma))$ imply timed execution of $s$ establishing $Q$.\n\nThis rule turns verified straight-line blocks into the timed execution assertions used throughout the concrete programs.",
+  "definitions": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Syntax\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle003\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle004\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle006\nimport Lean\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.Ring\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nnamespace Light\nend Light\nnamespace ThreeSum1960614.Machine.Light\nend ThreeSum1960614.Machine.Light\n\nopen _root_.Light\nopen _root_.ThreeSum1960614.Machine.Light\n\nvariable {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {P : _root_.ThreeSum1960614.Machine.Light.Program} {d : \u2115}",
+  "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSumApsp/Lang/Rules.lean#L138-L154",
+  "tags": [
+    "3sum-1960614",
+    "formal-verification",
+    "algorithms"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "2e52e2e3-7fd5-4a11-b9ec-3393026cd39f",
+  "created_at": "2026-10-15T06:07:32.334703+00:00",
+  "updated_at": "2026-10-15T06:08:19.199641+00:00"
+}

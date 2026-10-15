@@ -1,0 +1,7 @@
+theorem sum_exponents_le_weight_div {ι : Type*} (s : Finset ι)
+    (a : ι → ℕ) (w : ι → ℝ) (wmin : ℝ) (hmin : 0 < wmin)
+    (hw : ∀ i ∈ s, wmin ≤ w i) :
+    (∑ i ∈ s, (a i : ℝ)) ≤ (∑ i ∈ s, (a i : ℝ) * w i) / wmin := by
+  apply (le_div_iff₀ hmin).mpr
+  rw [Finset.sum_mul]
+  exact Finset.sum_le_sum (fun i hi => mul_le_mul_of_nonneg_left (hw i hi) (Nat.cast_nonneg _))

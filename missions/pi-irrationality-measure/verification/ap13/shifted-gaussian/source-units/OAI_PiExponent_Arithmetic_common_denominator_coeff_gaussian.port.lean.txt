@@ -1,0 +1,18 @@
+theorem common_denominator_coeff_gaussian {ι : Type*} (s : Finset ι)
+    (L e d : ι → ℕ) (f : ι → Polynomial ℂ) (P : Polynomial GaussianInt)
+    (hd : ∀ i ∈ s, d i ≤ e i)
+    (hf : ∀ i ∈ s, Polynomial.C (L i : ℂ) * f i ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range) (k : ℕ) :
+    (∏ i ∈ s, (L i : ℂ) ^ e i) *
+      (P.map GaussianInt.toComplex * ∏ i ∈ s, f i ^ d i).coeff k ∈
+      GaussianInt.toComplex.range := by
+  let S := (Polynomial.mapRingHom GaussianInt.toComplex).range
+  have hP : P.map GaussianInt.toComplex ∈ S := ⟨P, rfl⟩
+  have h := S.mul_mem hP (cleared_polynomial_product_mem s L e d f hd hf)
+  have he : P.map GaussianInt.toComplex *
+      (Polynomial.C (∏ i ∈ s, (L i : ℂ) ^ e i) * ∏ i ∈ s, f i ^ d i) =
+      Polynomial.C (∏ i ∈ s, (L i : ℂ) ^ e i) *
+        (P.map GaussianInt.toComplex * ∏ i ∈ s, f i ^ d i) := by ring
+  rw [he] at h
+  have hc := (Polynomial.mem_map_range GaussianInt.toComplex).mp h k
+  simpa only [Polynomial.coeff_C_mul] using hc

@@ -1,0 +1,24 @@
+{
+  "theorem_id": "c9159fb2-11a3-4045-97f2-e386dbbe8d5b",
+  "theorem_name": "ThreeSumApsp.Spec.length_nineStrs",
+  "theorem_title": "Counting strings with a bounded number of nines",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumApsp.Spec.length_nineStrs : ∀ (n lo hi : Nat),\n  @Eq.{1} Nat (@List.length.{0} (List.{0} Nat) (ThreeSumApsp.Spec.nineStrs n lo hi))\n    (∑ f ∈ @Finset.Icc.{0} Nat Nat.instPreorder Nat.instLocallyFiniteOrder lo hi,\n      @HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (n.choose f)\n        (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n          (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid)))\n          (@OfNat.ofNat.{0} Nat (nat_lit 9) (instOfNatNat (nat_lit 9)))\n          (@HSub.hSub.{0, 0, 0} Nat Nat Nat (@instHSub.{0} Nat instSubNat) n f))) := by\n  sorry\n",
+  "natural_language_statement": "For all natural numbers $n,\\mathrm{lo},\\mathrm{hi}$, the length of the source's bounded-nine enumeration is\n\n$$\\left|\\operatorname{nineStrs}(n,\\mathrm{lo},\\mathrm{hi})\\right|=\\sum_{f=\\mathrm{lo}}^{\\mathrm{hi}}\\binom nf9^{n-f}.$$\n\nEach term counts strings with exactly $f$ digits equal to nine: choose their positions, then choose one of the other nine digits at each remaining position. Binomial coefficients vanish when $f>n$, and an empty interval contributes zero. This supplies the enumeration size used in the box-counting analysis.\n\nReferences:\n\n1. [Source formalization](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L198-L229).",
+  "created_at": "2026-10-06T07:56:11.51687+00:00",
+  "vote_count": 0,
+  "tags": [
+    "combinatorics",
+    "enumeration",
+    "formal-math-source",
+    "truly-subcubic-apsp"
+  ],
+  "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Spec_Sec4_Theorem30_NineStrings\nimport Mathlib.Algebra.BigOperators.Intervals\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Data.List.Range\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Logic.Function.Iterate\nimport Mathlib.Order.Interval.Finset.Nat\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\n\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L198-L229",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

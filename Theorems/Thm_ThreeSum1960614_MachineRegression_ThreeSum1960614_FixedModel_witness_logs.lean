@@ -1,0 +1,41 @@
+import Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic
+import Definitions.Def_APSPSource_ThreeSumApsp_Lang_Syntax
+import Definitions.Def_ThreeSum1960614_Analysis
+import Definitions.Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra
+import Definitions.Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_ModelWitnessLogs
+import Definitions.Def_TrulySubcubicAPSP_SourceSpecification
+import Mathlib.Analysis.Calculus.MeanValue
+import Mathlib.Analysis.Convex.Deriv
+import Mathlib.Analysis.SpecialFunctions.BinaryEntropy
+import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+import Mathlib.Analysis.SpecialFunctions.Pow.NthRootLemmas
+import Mathlib.Analysis.SpecificLimits.Basic
+import Mathlib.Analysis.SpecificLimits.Normed
+import Mathlib.Data.Finset.Max
+import Mathlib.Data.Nat.Choose.Bounds
+import Mathlib.Data.Nat.Choose.Sum
+import Mathlib.Tactic
+
+namespace ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel
+end ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel
+
+set_option autoImplicit false
+set_option relaxedAutoImplicit false
+set_option maxHeartbeats 10000000
+set_option maxRecDepth 10000
+open scoped BigOperators
+open _root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel
+
+theorem ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.witness_logs :
+    ((1285276917605861577967/5000000000000000000000 : ℝ) ≤ Real.log (32*_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split) ∧
+      Real.log (32*_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split) ≤ (514110767042344631187/2000000000000000000000 : ℝ)) ∧
+    ((6518981175759055705591/10000000000000000000000 : ℝ) ≤ Real.log (2*(1-_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split)) ∧
+      Real.log (2*(1-_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split)) ≤ (814872646969881963199/1250000000000000000000 : ℝ)) ∧
+    ((437298312323441179/2500000000000000000000 : ℝ) ≤ Real.log (1+_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split/231) ∧
+      Real.log (1+_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split/231) ≤ (1749193249293764717/10000000000000000000000 : ℝ)) ∧
+    ((638270279972769945753/2000000000000000000000 : ℝ) ≤ Real.log (8*_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint) ∧
+      Real.log (8*_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint) ≤ (1595675699931924864383/5000000000000000000000 : ℝ)) ∧
+    ((1008829056134582490741/2000000000000000000000 : ℝ) ≤ Real.log (2*(1-_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint)) ∧
+      Real.log (2*(1-_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint)) ≤ (2522072640336456226853/5000000000000000000000 : ℝ)) ∧
+    ((58146699145150531/78125000000000000000 : ℝ) ≤ Real.log (1+_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint/231) ∧
+      Real.log (1+_root_.ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint/231) ≤ (7442777490579267969/10000000000000000000000 : ℝ)) := by sorry

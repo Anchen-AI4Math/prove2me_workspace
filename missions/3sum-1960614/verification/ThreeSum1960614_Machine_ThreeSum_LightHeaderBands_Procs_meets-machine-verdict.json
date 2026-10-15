@@ -1,0 +1,15 @@
+{
+  "id": "280126fe-00db-4a3d-802d-b14245ec94e0",
+  "theorem_id": "a82e0b6b-56fc-4853-91b0-e139ac235250",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:44:50.449506+00:00",
+  "updated_at": "2026-10-15T07:49:03.590585+00:00",
+  "explanation": "Constructs the owner-candidate tables from actual retained input headers. The code reads actual length and band-count headers before constructing all three rectangular lookup tables.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.Procs.meets",
+  "theorem_title": "Band candidate tables from retained endpoint headers",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.Procs.meets {pMain a b c nA nB nC dst U d : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (R : _root_.ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.Procs P pMain) (A B C : _root_.ThreeSum.BandEnumeration.Family)\n    (hw : (lim.space : \u2124) \u2264 lim.word)\n    (ha : a+2+nA+A.size \u2264 dst) (hb : b+2+nB+B.size \u2264 dst)\n    (hc : c+2+nC+C.size \u2264 dst)\n    (hspace : _root_.ThreeSum.LightBandEnumeration.space dst A.size B.size C.size \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightBandEnumeration.word A.size B.size C.size U : \u2124) \u2264 lim.word)\n    (hd : d+_root_.ThreeSum.LightBandEnumeration.width A.size B.size C.size+5 \u2264 lim.depth)\n    (hA : _root_.ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.At \u03bc a nA A) (hB : _root_.ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.At \u03bc b nB B) (hC : _root_.ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.At \u03bc c nC C)\n    (hAU : _root_.ThreeSum.LightBandEnumeration.Bounded A U) (hBU : _root_.ThreeSum.LightBandEnumeration.Bounded B U)\n    (hCU : _root_.ThreeSum.LightBandEnumeration.Bounded C U) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [a,b,c,dst] \u03bc (_root_.ThreeSum.LightHeaderBands.time A.size B.size C.size)\n      (fun r \u03bc' => r = (_root_.ThreeSum.LightBandEnumeration.count A.size B.size C.size : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Tables \u03bc' dst A B C \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bc' dst) := by sorry",
+  "theorem_natural_language_statement": "Let three interval families be stored in actual headers for source lengths $n_A,n_B,n_C$, with endpoints bounded by $U$. Suppose all headers precede the destination and the concrete procedure interface and specified enumeration space, word, address, and depth bounds hold. The routine returns the exact three-rectangle cell count, constructs all prescribed band lookup tables in its stated time, and preserves the input prefix.\n\nConstructs the owner-candidate tables from actual retained input headers. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

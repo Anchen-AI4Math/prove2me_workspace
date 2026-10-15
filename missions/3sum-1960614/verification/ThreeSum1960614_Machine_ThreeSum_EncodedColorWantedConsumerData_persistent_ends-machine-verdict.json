@@ -1,0 +1,15 @@
+{
+  "id": "41a87ee9-5a12-4ec5-b9b7-2c02ca016a6d",
+  "theorem_id": "5b49dd77-4d66-48a0-990f-15a8552d5a5c",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:52:28.028226+00:00",
+  "updated_at": "2026-10-15T07:55:06.002088+00:00",
+  "explanation": "Extract the protected endpoint ranges from the stored pipeline and its layout order. These protected-endpoint bounds justify reusing pipeline input and occurrence arrays throughout the wanted-record scan.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.persistent_ends",
+  "theorem_title": "Stored pipelines provide persistent wanted endpoints",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.persistent_ends (H : _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.Stored \u03bc free n color x A B C hsA hsB hsC) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.PersistentEnds (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostData.config free n A B C hsA hsB hsC)\n      (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.positions free n A B C hsA hsB hsC) (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.occurrence free n A B C hsA hsB hsC)\n      (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostData.recordCount n A B C hsA hsB hsC)\n      (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostData.count n A B C hsA hsB hsC) := by sorry",
+  "theorem_natural_language_statement": "Suppose memory $\\mu$ stores the complete pipeline for free base $f$, size $n$, selected color, original input $x$, and strictly increasing normalized lists $A,B,C$. Then its derived wanted configuration, position table, occurrence table, band size, total block size, record count, and wanted count satisfy the persistent-endpoint predicate.\n\nThese protected-endpoint bounds justify reusing pipeline input and occurrence arrays throughout the wanted-record scan.",
+  "theorem_status": "Proved"
+}

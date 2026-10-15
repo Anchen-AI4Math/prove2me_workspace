@@ -1,0 +1,14 @@
+private theorem cleared_det_log_bound {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (B : Matrix ι ι GaussianInt)
+    (r c : ι → ℝ) (hr : ∀ i, 0 < r i) (hc : ∀ i, 0 < c i)
+    (hA : A.det ≠ 0)
+    (hB : B.map GaussianInt.toComplex = fun i j => (r i : ℂ) * ((c j : ℂ) * A i j)) :
+    -(∑ i, Real.log (r i)) - ∑ j, Real.log (c j) ≤ Real.log ‖A.det‖ := by
+  have hrp : 0 < ∏ i, r i := Finset.prod_pos (by intro i hi; exact hr i)
+  have hcp : 0 < ∏ i, c i := Finset.prod_pos (by intro i hi; exact hc i)
+  have hn : 0 < ‖A.det‖ := norm_pos_iff.mpr hA
+  have h := Real.log_nonneg (cleared_det_norm_bound A B r c hr hc hA hB)
+  rw [Real.log_mul (mul_pos hrp hcp).ne' hn.ne', Real.log_mul hrp.ne' hcp.ne',
+    Real.log_prod (by intro i hi; exact (hr i).ne'),
+    Real.log_prod (by intro i hi; exact (hc i).ne')] at h
+  linarith

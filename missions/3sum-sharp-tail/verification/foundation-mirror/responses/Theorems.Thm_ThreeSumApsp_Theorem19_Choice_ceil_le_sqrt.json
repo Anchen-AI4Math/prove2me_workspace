@@ -1,0 +1,24 @@
+{
+  "theorem_id": "f91fe613-0301-47c8-b6af-22daa26d70c7",
+  "theorem_name": "ThreeSumApsp.Theorem19.Choice.ceil_le_sqrt",
+  "theorem_title": "The rounded grouping parameter is at most the square root",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumApsp.Theorem19.Choice.ceil_le_sqrt : ∀ {n D : Nat} {η c : Real},\n  ThreeSumApsp.Theorem19.Choice n D η c →\n    @LE.le.{0} Real Real.instLE\n      (@Nat.cast.{0} Real Real.instNatCast\n        (@Nat.ceil.{0} Real Real.semiring Real.partialOrder\n          (@FloorRing.toFloorSemiring.{0} Real Real.instRing Real.linearOrder Real.instFloorRing)\n          (@HPow.hPow.{0, 0, 0} Real Real Real (@instHPow.{0, 0} Real Real Real.instPow)\n            (@Nat.cast.{0} Real Real.instNatCast D) η)))\n      (@Nat.cast.{0} Real Real.instNatCast D).sqrt := by\n  sorry\n",
+  "natural_language_statement": "Let $n,D\\in\\mathbb N$ and $\\eta,c\\in\\mathbb R$ satisfy the source's parameter-choice conditions\n\n$$16\\le D,\\qquad n^{1/18}/c\\le D\\le n^{1/18},\\qquad c>0,\\qquad 0\\le\\eta\\le\\tfrac14.$$\n\nThen the grouping parameter $g=\\lceil D^\\eta\\rceil$ satisfies $g\\le\\sqrt D$. This verifies the upper bound on $g$ needed to apply the reduction in Theorem 17 when proving Theorem 19.\n\nReferences:\n\n1. [Source formalization](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Sec3/Theorem19/Choice.lean#L99-L114).",
+  "created_at": "2026-10-06T08:22:43.898791+00:00",
+  "vote_count": 0,
+  "tags": [
+    "complexity-bounds",
+    "formal-math-source",
+    "real-analysis",
+    "truly-subcubic-apsp"
+  ],
+  "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Sec3_Theorem19_Choice\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Floor.Semifield\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Nat.Log\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.DeriveFintype\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\n\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Sec3/Theorem19/Choice.lean#L99-L114",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

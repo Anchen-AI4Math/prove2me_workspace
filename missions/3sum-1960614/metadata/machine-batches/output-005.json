@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle010",
+    "definition_title": "Elementary Light procedures for hashing, arithmetic, and local cover scans",
+    "natural_language_statement": "This bundle defines concrete finite Light procedures and the memory predicates used to specify them. Its block-index interface flattens $J$ blocks of width $464h$, for natural parameters $h,J$, and assigns each coordinate its selected one-hot coefficient multiplied by the appropriate power of the local prime. The corresponding mask hash evaluates those coefficients on an explicitly encoded subset.\n\nThe executable routines include common-prime depth computation, Boolean inner products, stable signed color-class extraction, active-cover updates, a cumulative-mass guard, residue histograms, indirect table summation, a first-minimum scan, natural powers, binary quotient decoding, rectangular Pascal tables, affine and scaling passes, signed residues, and alternating signs. In particular, for arrays $a,b$ of length $n$ the Boolean dot-product loop computes $\\sum_{i<n}a_i b_i$; the minimum scan retains the earliest minimum; the small-division loop returns natural division, with result zero for divisor zero.\n\nThe Karatsuba interface gives a fixed recursive multiplication program assembled from half, linear-array, and fill procedures. For integer coefficient lists $a,b$ and capacity $n$, its output-memory predicate requires\n$$\\mu(\\mathrm{out}+j)=[X^j]\\bigl(A(X)B(X)\\bigr)\\qquad(0\\le j<2n),$$\nwhere $A,B$ are the polynomials represented by those lists. Its result predicate also limits changes below the scratch pointer to the output cells. Procedure-table structures state the exact bodies stored at each called index.\n\nSupport marking clears a table and sets a bit for every valid input key, so repeated keys represent support rather than multiplicity. The trimming programs implement the prescribed cardinality and independent bucket-cap tests. A structural predicate on scalar expressions records a constant bound and excludes memory loads. Loop invariants specify completed output prefixes and preservation outside the writable region.\n\nThese definitions expose the literal arithmetic, loops, calls, and memory operations later charged in the deterministic integer 3SUM runtime proof; the hash and cover operations are implemented by scans rather than treated as machine oracles.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "light-language",
+      "karatsuba",
+      "hashing"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle011",
+    "definition_title": "Sorting, source normalization, global sizes, and the top-level solver wrapper",
+    "natural_language_statement": "This bundle defines several program interfaces needed to turn a costed Light task solver into a word-RAM solution in the final input layout. The merge-sort program recursively sorts two halves, merges them into scratch memory, and copies back. Its output predicate requires a sorted permutation of the input list and preservation of all cells below the free pointer except the input segment. A subsequent normalization routine removes adjacent equal values within a separated color class.\n\nFor a problem $Q$, a task, and a decision/output mode, the wrapper data give solver arguments, the task instance, the free pointer, input and output correctness conditions, a bound of the form $c(n^2+1)$ on layout size, and evaluation-safety obligations. For each polynomial input-bound exponent $k\\in\\mathbb N$, the outer procedure reads the size $n$, handles $n=0$ explicitly, computes $U=n^k$ by multiplication, and invokes the solver. Auxiliary definitions record wrapper overhead, execution limits, available room, and what it means for the final state to answer $Q$ correctly.\n\nOther procedures append matching residue fibers as original-index pairs, gather selected coefficient rows while preserving repeated selections, build consecutive band endpoints, compute a power-of-two capacity by doubling, score all local-cover candidates, and fold a polynomial product into cyclic correlation. For natural local output count $C$, prime $p$, block count $J$, and inner size $m$, the global-size routine actually computes $C^J$, $p^J$, the rounded square-root capacity, the band divisor, and the ceiling-divided band size. Its time and word-bound functions retain the arithmetic and quotient-loop costs.\n\nThe pair-key and flag constructor visits every pair of local vertices and tests disjointness and bucket caps. The primality procedure tests divisors from $2$ to $n-1$ for $n\\ge2$ using the remainder routine; radix-digit extraction uses two natural quotient calls. Invariants record exact completed output prefixes and preservation outside each destination.\n\nTogether these definitions provide the actual preprocessing, normalization, size computation, and final-layout connection used in the complete deterministic integer 3SUM runtime proof. The merge-sort components retain their pinned upstream provenance.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "sorting",
+      "word-ram",
+      "program-semantics"
+    ]
+  }
+]

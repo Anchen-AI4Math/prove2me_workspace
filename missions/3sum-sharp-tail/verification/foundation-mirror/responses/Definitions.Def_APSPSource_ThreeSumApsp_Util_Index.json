@@ -1,0 +1,23 @@
+{
+  "theorem_id": "2eaf0534-7512-4143-a36c-e53db8f40e4f",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_Index",
+  "theorem_title": "Structural arithmetic for row-major indices and residues",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For natural row and column indices $a,b$ in an $m\\times n$ matrix, the row-major index is $an+b$. The included arithmetic interfaces state\n\n$$a<m\\ \\land\\ b<n\\Rightarrow an+b<mn,\\qquad b<n\\Rightarrow\\left\\lfloor\\frac{an+b}{n}\\right\\rfloor=a.$$\n\nThey also give uniqueness of the pair: if $b,b'<n$ and $an+b=a'n+b'$, then $a=a'$ and $b=b'$. For an integer $x$ and a positive natural modulus $M$, conversion of the integer remainder to a natural number satisfies\n\n$$\\operatorname{toNat}(x\\bmod M)<M.$$\n\nThese short structural facts support array indexing and modular-residue representations used by subsequent definitions and routines.\n\nReferences:\n\n1. [Source formalization, lines 31–33](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L31-L33).\n2. [Source formalization, lines 45–54](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L45-L54).\n3. [Source formalization, lines 107–110](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L107-L110).",
+  "created_at": "2026-10-06T07:36:52.594386+00:00",
+  "vote_count": 0,
+  "tags": [
+    "indexing",
+    "integer-arithmetic",
+    "modular-arithmetic"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.Order.Ring.Int\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# Index arithmetic: a pair of numbers as one number\n\nGeneral facts about natural numbers. A matrix with rows of length `n` is kept as one list, row\nafter row: the entry in row `a` and column `b < n` has the index `a * n + b`. This file has\n\n* the bounds on such an index (`Nat.mul_add_lt_mul`, `Nat.mul_add_le_mul`);\n* the way back from the index to the pair (`Nat.mul_add_div_of_lt`, `Nat.mul_add_inj_of_lt`,\n  `Nat.div_lt_of_lt_mul'`, `Nat.mod_lt_of_lt_mul`, `Nat.exists_eq_mul_add_of_lt_mul`,\n  `Nat.eq_mul_succ_iff`);\n* the pair of the next index (`Nat.succ_div_mod_of_lt`, `Nat.succ_div_mod_of_ne`,\n  `Nat.succ_div_mod_of_eq`);\n* residues seen as natural numbers (`Int.toNat_emod_lt`, `Int.natCast_toNat_emod`).\n-/\n\npublic section\n\nnamespace Nat\n\n/-! ## Bounds on an index -/\n\n/-- The index of an entry of a matrix with `m` rows and `n` columns is below `m * n`. -/\ntheorem mul_add_lt_mul {a b m n : ℕ} (ha : a < m) (hb : b < n) : a * n + b < m * n :=\n  Nat.mul_comm a n ▸ Nat.mul_add_lt_mul_of_lt_of_lt ha hb\n\n\n\n\n\n\n\n/-! ## From the index back to the pair\n\nThe column is `Nat.mul_add_mod_of_lt : c < b → (a * b + c) % b = c`. -/\n\n/-- The row of the index `a * n + b`. -/\ntheorem mul_add_div_of_lt {a b n : ℕ} (hb : b < n) : (a * n + b) / n = a := by\n  rw [Nat.mul_comm, Nat.mul_add_div (Nat.zero_lt_of_lt hb), Nat.div_eq_of_lt hb, Nat.add_zero]\n\n/-- The index determines the pair. -/\ntheorem mul_add_inj_of_lt {a b a' b' n : ℕ} (hb : b < n) (hb' : b' < n)\n    (h : a * n + b = a' * n + b') :\n    a = a' ∧ b = b' :=\n  ⟨by rw [← mul_add_div_of_lt (a := a) hb, h, mul_add_div_of_lt hb'],\n    by rw [← Nat.mul_add_mod_of_lt (a := a) hb, h, Nat.mul_add_mod_of_lt hb']⟩\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/-! ## The next index -/\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend Nat\n\nnamespace Int\n\n/-! ## Residues as natural numbers -/\n\n/-- The residue of an integer modulo `M ≥ 1`, as a natural number, is below `M`. -/\ntheorem toNat_emod_lt {M : ℕ} (hM : 0 < M) (x : ℤ) : (x % (M : ℤ)).toNat < M := by\n  have := Int.emod_lt_of_pos x (Int.natCast_pos.2 hM)\n  omega\n\n\n\n\n\nend Int\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L31-L33; https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L45-L54; https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Index.lean#L107-L110",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

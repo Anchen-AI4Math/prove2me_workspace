@@ -1,0 +1,23 @@
+{
+  "theorem_id": "bc896139-6061-43b1-8210-c82908eab334",
+  "theorem_name": "ThreeSumSharpTail.full_d_call_balance",
+  "theorem_title": "Full dimension host call factors preserve the desired saving",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.full_d_call_balance (D n g s : ℝ)\n    (hD : 1 ≤ D) (_hn : 1 ≤ n) (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : D ^ (s / 2) ≤ g) (hgHi : g ≤ 2 * D ^ (s / 2))\n    (hbuild : D ^ (1 + s) ≤ n) :\n    g / D ^ s ≤ 2 * D ^ (-s / 2) ∧\n    g * D ^ (1 / 2 - s) / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g / Real.sqrt D ≤ 2 * D ^ (-s / 2) ∧\n    g * D ≤ 2 * n * D ^ (-s / 2) ∧\n    1 / g ≤ D ^ (-s / 2) := by sorry",
+  "natural_language_statement": "If D,n>=1, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), and D^(1+s)<=n, then the full dimension preprocessing, query, overhead, construction and scan factors are bounded respectively by 2D^(-s/2), 2D^(-s/2), 2D^(-s/2), 2nD^(-s/2), and D^(-s/2). This is an elementary real-power balance lemma, without any additional program or runtime assumption.",
+  "created_at": "2026-10-13T18:52:17.861004+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Mathlib\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "Derived auxiliary algebraic bounds for Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis, Sections 3-4, composed with the full-D Theorem 17 host.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

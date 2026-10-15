@@ -1,0 +1,273 @@
+{
+  "path": "/theorems/3db55d74-324f-4340-aed9-9dbf6411b23f/graph",
+  "fetched_at": "2026-10-11T13:38:44.459381+00:00",
+  "data": {
+    "root_id": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+    "nodes": [
+      {
+        "node_type": "theorem",
+        "theorem_id": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+        "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_zeta",
+        "theorem_title": "For $s>1$, the Zipf harmonic sums tend to $\\zeta(s)$",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_zeta (s : ℝ) (hs : 1 < s) :\n    Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n      (nhds (riemannZeta s)) := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "If $s>1$, the generalized harmonic partial sums $H_{N,s}=\\sum_{k=1}^{N}k^{-s}$ converge to Riemann's zeta function $\\zeta(s)$. The formal limit takes place in $\\mathbb C$ after casting the real sums, because Mathlib's `riemannZeta` is complex-valued.",
+        "created_at": "2026-10-11T13:29:10.80628+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+        "theorem_name": "ZipfLaw.zipf_infinite_extension",
+        "theorem_title": "Zipf extends to infinitely many items iff $s>1$; then $H_{N,s}\\to\\zeta(s)$",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_infinite_extension (s : ℝ) (hs : 0 ≤ s) :\n    (Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s) ∧\n      (1 < s → Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n        (nhds (riemannZeta s))) ∧\n      (s ≤ 1 → Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop) := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "Let $s\\ge0$. Then:\n\n1. $\\displaystyle\\sum_{k=1}^\\infty\\frac{1}{k^s}$ converges if and only if $s>1$;\n2. if $s>1$, then $H_{N,s}\\to\\zeta(s)$ as $N\\to\\infty$, where $\\zeta$ is Riemann's zeta function;\n3. if $s\\le1$, then $H_{N,s}\\to+\\infty$ as $N\\to\\infty$.\n\nSo the generalized Zipf distribution can be extended to infinitely many items exactly when $s>1$, and then its normalizing constant is $\\zeta(s)$ (the zeta distribution, or Lotka's law). This is the goal theorem of the mission.\n\n**Formalization Note.** Item 2 is stated in $\\mathbb C$ against Mathlib's `riemannZeta`, which is defined on all of $\\mathbb C$ by analytic continuation. Summability is that of $k\\mapsto 1/(k+1)^s$ over $k \\in \\mathbb N$.",
+        "created_at": "2026-10-09T21:35:43.121933+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Formal definition\" (\"The generalized Zipf distribution can be extended to infinitely many items (N = ∞) only if the exponent s exceeds 1. In that case, the normalization constant H_{N,s} becomes Riemann's zeta function ... If the exponent s is 1 or less, the normalization constant H_{N,s} diverges as N tends to infinity\").",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [
+          {
+            "audit_id": "0b076c18-0998-4818-9d54-50b94364f6ac",
+            "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+            "reviewer_username": "Shuze Chen",
+            "decision": "confirm",
+            "comment": "Confirmed by the moderator at approval.",
+            "created_at": "2026-10-10T03:56:31.424325+00:00"
+          },
+          {
+            "audit_id": "3801e515-2754-4de3-a52f-f827058d8a2c",
+            "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+            "reviewer_username": "Lucas",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-10T03:56:31.64398+00:00"
+          }
+        ],
+        "created_by": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "created_by_username": "Lucas",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "theorem_name": "ZipfLaw_Defs",
+        "theorem_title": "Zipf's law: generalized harmonic numbers, Zipf / Zipf–Mandelbrot / Yule–Simon laws",
+        "status": "Definition",
+        "formal_statement": "",
+        "natural_language_statement": "Core definitions for the Zipf's-law mission.\n\n1. **Generalized harmonic number.** $H_{N,s}=\\sum_{k=1}^N k^{-s}$ for $N\\in\\mathbb N$ and real $s$ ($H_{0,s}=0$).\n2. **Zipf distribution.** $f(k;N,s)=\\dfrac{1}{H_{N,s}}\\dfrac{1}{k^s}$ for $1\\le k\\le N$, and $f(k;N,s)=0$ for every other natural number $k$.\n3. **Hurwitz zeta (series form).** $\\zeta(s,a)=\\sum_{n\\ge0}(n+a)^{-s}$.\n4. **Zipf–Mandelbrot law (infinite ranks).** $f(k;q,s)=\\dfrac{1}{\\zeta(s,q+1)\\,(k+q)^s}$ for $k\\ge1$, and $0$ for $k=0$.\n5. **Yule–Simon distribution.** $f(k;\\rho)=\\rho\\,\\dfrac{\\Gamma(k)\\,\\Gamma(\\rho+1)}{\\Gamma(k+\\rho+1)}=\\rho\\,B(k,\\rho+1)$.\n6. **Leading decimal digit** of a natural number $n\\ge1$: $\\lfloor n/10^{\\lfloor\\log_{10}n\\rfloor}\\rfloor$.\n7. **Random-typing word probability.** With $m$ equiprobable letter keys, each typed with probability $q$, and a space typed with probability $1-mq$, the probability that the word following a space is exactly $w$ is $q^{|w|}(1-mq)$.\n\nThese are the objects in which every statement of the mission is phrased.\n\n**Formalization Note.** Powers are real powers (`Real.rpow`). The Hurwitz series takes the value $0$ when it is not summable (Lean's `tsum` convention); statements using it assume $s>1$. The leading digit of $0$ is $0$.",
+        "created_at": "2026-10-09T21:25:53.895255+00:00",
+        "vote_count": 0,
+        "definition": "import Mathlib\n\n/-!\n# Zipf's law — core definitions\n\nShared definitions for the Zipf's-law mission (source: Wikipedia, \"Zipf's law\").\n-/\n\nnamespace ZipfLaw\n\n/-- The `N`-th generalized harmonic number `H_{N,s} = ∑_{k=1}^{N} 1 / k^s`\n(real exponent `s`; `H_{0,s} = 0`). -/\nnoncomputable def genHarmonic (N : ℕ) (s : ℝ) : ℝ :=\n  ∑ k ∈ Finset.Icc 1 N, 1 / (k : ℝ) ^ s\n\n/-- The (generalized) Zipf distribution on `N` elements with exponent `s`: the element of\nrank `k ∈ {1, …, N}` has probability `(1 / k^s) / H_{N,s}`; every other `k` gets `0`. -/\nnoncomputable def zipfPMF (N : ℕ) (s : ℝ) (k : ℕ) : ℝ :=\n  if 1 ≤ k ∧ k ≤ N then (1 / (k : ℝ) ^ s) / genHarmonic N s else 0\n\n/-- The Hurwitz zeta function, as its defining series `ζ(s, a) = ∑_{n ≥ 0} 1 / (n + a)^s`\n(the value is `0` when the series is not summable). -/\nnoncomputable def hurwitzZetaSeries (s a : ℝ) : ℝ :=\n  ∑' n : ℕ, 1 / ((n : ℝ) + a) ^ s\n\n/-- The Zipf–Mandelbrot law on the ranks `k = 1, 2, 3, …` with shift `q` and exponent `s`:\n`f(k; q, s) = (1 / C) · 1 / (k + q)^s` with normalizing constant\n`C = ∑_{k ≥ 1} 1 / (k + q)^s = ζ(s, q + 1)` (Hurwitz zeta). Rank `0` gets `0`. -/\nnoncomputable def zipfMandelbrotPMF (q s : ℝ) (k : ℕ) : ℝ :=\n  if 1 ≤ k then 1 / (hurwitzZetaSeries s (q + 1) * ((k : ℝ) + q) ^ s) else 0\n\n/-- The Yule–Simon distribution with parameter `ρ`:\n`f(k; ρ) = ρ · B(k, ρ + 1) = ρ · Γ(k) Γ(ρ + 1) / Γ(k + ρ + 1)` for `k = 1, 2, …`. -/\nnoncomputable def yuleSimonPMF (ρ : ℝ) (k : ℕ) : ℝ :=\n  ρ * (Real.Gamma k * Real.Gamma (ρ + 1) / Real.Gamma (k + ρ + 1))\n\n/-- The leading decimal digit of a natural number (`leadingDigit 0 = 0`). -/\ndef leadingDigit (n : ℕ) : ℕ :=\n  n / 10 ^ Nat.log 10 n\n\n/-- Random typing with `m` equiprobable letter keys, each hit with probability `q`, and a\nspace bar hit with probability `1 - m q`: the probability that the word (maximal block of\nletters) following a space is exactly `w`, namely `q^{|w|} (1 - m q)`. -/\nnoncomputable def monkeyWordProb (m : ℕ) (q : ℝ) (w : List (Fin m)) : ℝ :=\n  q ^ w.length * (1 - m * q)\n\nend ZipfLaw\n",
+        "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, sections \"Formal definition\", \"Related laws\", \"Statistical explanations\" and the infobox.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [
+          {
+            "audit_id": "f556298b-1899-4772-818c-76c4f94c3848",
+            "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+            "reviewer_username": "Shuze Chen",
+            "decision": "confirm",
+            "comment": "Confirmed by the moderator at approval.",
+            "created_at": "2026-10-10T03:56:31.424325+00:00"
+          },
+          {
+            "audit_id": "882ae319-a99a-462c-8184-c940c1cf34bc",
+            "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+            "reviewer_username": "Lucas",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-10T03:56:31.64398+00:00"
+          }
+        ],
+        "created_by": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "created_by_username": "Lucas",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "dd0d92d9-1846-4951-8189-03dca5f30959",
+        "theorem_name": "ZipfLaw.zipf_summable_iff",
+        "theorem_title": "The Zipf p-series converges exactly for $s>1$",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_summable_iff (s : ℝ) (hs : 0 ≤ s) :\n    Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For a real exponent $s\\ge0$, the series $\\sum_{k=1}^{\\infty} k^{-s}$ is summable if and only if $s>1$. This is the convergence criterion in the infinite-extension theorem, isolated for reuse in both its convergent and divergent branches.",
+        "created_at": "2026-10-11T13:28:01.752508+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+        "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_atTop",
+        "theorem_title": "For $0\\le s\\le1$, the Zipf harmonic sums tend to infinity",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_atTop (s : ℝ) (hs : 0 ≤ s) (hs1 : s ≤ 1) :\n    Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For every real exponent $0\\le s\\le1$, the generalized harmonic sums $H_{N,s}$ tend to $+\\infty$ as $N\\to\\infty$. In particular no finite normalizing constant can extend these finite Zipf laws to infinitely many ranks.",
+        "created_at": "2026-10-11T13:27:46.267329+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-4236c463-faa9-4e68-a654-d8227a8e2918",
+        "submission_id": "4236c463-faa9-4e68-a654-d8227a8e2918",
+        "parent_theorem_id": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "The Zipf convergence criterion rules out summability for $s\\le1$. Each term is nonnegative, so the partial sums of this nonsummable series tend to $+\\infty$. Reindexing the partial sums gives precisely $H_{N,s}$.\n",
+        "created_at": "2026-10-11T13:32:23.258769+00:00",
+        "child_count": 1,
+        "deprecated_at": null
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "submission_id": "864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "parent_theorem_id": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "The infinite-extension theorem has three substantive clauses. The convergence criterion is `zipf_summable_iff`; when $s>1$, `zipf_genHarmonic_tendsto_zeta` identifies the limit as $\\zeta(s)$; when $s\\le1$, `zipf_genHarmonic_tendsto_atTop` proves divergence. Their conjunction is exactly the original target. Both limit lemmas themselves reuse the convergence criterion.\n",
+        "created_at": "2026-10-11T13:34:14.39296+00:00",
+        "child_count": 3,
+        "deprecated_at": null
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-d57eb0af-84d2-48df-a3e3-42f623006f44",
+        "submission_id": "d57eb0af-84d2-48df-a3e3-42f623006f44",
+        "parent_theorem_id": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "The Zipf convergence criterion supplies a summable real series when $s>1$. Casting its terms to $\\mathbb C$ gives the usual complex Dirichlet series, which equals $\\zeta(s)$ in this half-plane. Reindexing the finite interval $1,\\ldots,N$ as $k+1$ for $k<N$ identifies its partial sums with $H_{N,s}$; the partial-sum limit of the resulting `HasSum` is the assertion.\n",
+        "created_at": "2026-10-11T13:32:22.425363+00:00",
+        "child_count": 1,
+        "deprecated_at": null
+      }
+    ],
+    "edges": [
+      {
+        "source": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+        "target": "sketch-864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "kind": "sketch"
+      },
+      {
+        "source": "dd0d92d9-1846-4951-8189-03dca5f30959",
+        "target": "sketch-864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "kind": "sketch"
+      },
+      {
+        "source": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+        "target": "sketch-864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-864ba4aa-33c5-4a50-8698-4eb1a78c4b18",
+        "target": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+        "kind": "sketch"
+      },
+      {
+        "source": "dd0d92d9-1846-4951-8189-03dca5f30959",
+        "target": "sketch-d57eb0af-84d2-48df-a3e3-42f623006f44",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-d57eb0af-84d2-48df-a3e3-42f623006f44",
+        "target": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+        "kind": "sketch"
+      },
+      {
+        "source": "dd0d92d9-1846-4951-8189-03dca5f30959",
+        "target": "sketch-4236c463-faa9-4e68-a654-d8227a8e2918",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-4236c463-faa9-4e68-a654-d8227a8e2918",
+        "target": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+        "kind": "sketch"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+        "kind": "structural"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+        "kind": "structural"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "dd0d92d9-1846-4951-8189-03dca5f30959",
+        "kind": "structural"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+        "kind": "structural"
+      }
+    ],
+    "has_hidden_deprecated": false,
+    "has_hidden_deprecated_sketches": false
+  }
+}

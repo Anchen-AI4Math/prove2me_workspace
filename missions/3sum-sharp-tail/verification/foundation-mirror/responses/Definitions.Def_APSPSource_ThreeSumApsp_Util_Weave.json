@@ -1,0 +1,23 @@
+{
+  "theorem_id": "dbc28f25-dc97-4ab6-8e9a-55e88f086356",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_Weave",
+  "theorem_title": "Interleaving digit lists along a Boolean mask",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Let $m$ be a Boolean mask and let $o,i$ be outer and inner lists of natural-number digits. The interleaving function takes the next inner digit at a true position and the next outer digit at a false position:\n\n$$\\begin{aligned}\nW([],o,i)&=[],\\\\\nW(\\mathrm{true}::m,o,i)&=\\operatorname{head}_0(i)::W(m,o,\\operatorname{tail}(i)),\\\\\nW(\\mathrm{false}::m,o,i)&=\\operatorname{head}_0(o)::W(m,\\operatorname{tail}(o),i).\n\\end{aligned}$$\n\nHere $\\operatorname{head}_0$ returns zero for an empty list, and an empty list has empty tail. Thus the output has one digit for each mask position, with missing input digits replaced by zero.\n\nThis operation reconstructs a complete string from its inner and outer parts at the selected levels.\n\nReferences:\n\n1. [Source formalization, lines 25–31](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Weave.lean#L25-L31).",
+  "created_at": "2026-10-06T07:36:58.248894+00:00",
+  "vote_count": 0,
+  "tags": [
+    "combinatorics",
+    "encoding",
+    "lists"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.OfFn\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Logic.Equiv.Basic\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# Interleaving two strings of digits along a mask\n\nA mask is a list of truth values, one for each level.  `weaveList mask outer inner` runs through the\nlevels and takes the next digit of `inner` at a level with the entry `true` and the next digit of\n`outer` at a level with the entry `false`.  A program that forms the number with these digits by\nHorner's rule needs one pass over the mask and two pointers: at level `ℓ` the pointer into `inner`\nhas passed as many digits as there are entries `true` among the first `ℓ` entries of the mask, and\nthe pointer into `outer` as many as there are entries `false` (`getD_weaveList`).\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp\n\n/-- Two lists of digits interleaved along a mask: at a level with the entry `true` stands the next\ndigit of `inner`, at a level with the entry `false` the next digit of `outer`.  A missing digit\ncounts as 0. -/\ndef weaveList : List Bool → List ℕ → List ℕ → List ℕ\n  | [], _, _ => []\n  | true :: mask, outer, inner => inner.headD 0 :: weaveList mask outer inner.tail\n  | false :: mask, outer, inner => outer.headD 0 :: weaveList mask outer.tail inner\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Weave.lean#L25-L31",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

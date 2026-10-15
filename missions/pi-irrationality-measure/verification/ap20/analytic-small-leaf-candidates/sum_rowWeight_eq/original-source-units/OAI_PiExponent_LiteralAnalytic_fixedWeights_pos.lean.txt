@@ -1,0 +1,5 @@
+theorem fixedWeights_pos {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    0 < fixedWeights d i := by
+  change 0 < MatrixArithmetic.logWeights (finiteDenominators d) i
+  rw [logWeights_eq]
+  exact lt_of_lt_of_le zero_lt_one (d.x_one_le _)

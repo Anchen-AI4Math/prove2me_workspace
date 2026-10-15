@@ -1,0 +1,15 @@
+{
+  "id": "6e206731-94a9-4ae1-bee8-0960f443e569",
+  "theorem_id": "d694fe33-7650-4e01-9275-ddde230b4661",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:08:00.662275+00:00",
+  "updated_at": "2026-10-15T09:13:21.887142+00:00",
+  "explanation": "Use the exact finite semantics and stored-array identities, compose the applicable verified component contracts, and retain the explicit runtime, memory, and original-index conditions. This equivalence closes correctness of the guarded physical wanted scan for one selected color of the original input.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostDecision.accepted_iff_witness",
+  "theorem_title": "Guarded wanted acceptance is equivalent to a true color witness",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostDecision.accepted_iff_witness {\u03bc : \u2115\u2192\u2124} {free n k : \u2115}\n    {color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)} {x : Fin n\u2192\u2124} {A B C : List \u2124}\n    {hsA : A.Pairwise (\u00b7 < \u00b7)} {hsB : B.Pairwise (\u00b7 < \u00b7)} {hsC : C.Pairwise (\u00b7 < \u00b7)}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.Stored \u03bc free n color x A B C hsA hsB hsC)\n    (hn : _root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.Ready k n) (hx : \u2200 i, |x i|\u2264((n^k : \u2115) : \u2124)) :\n    _root_.ThreeSum.LightReportingWantedScan.Accepted (_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostWantedConsumerData.mass H) (_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostWantedConsumerData.hit H)\n      (_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostWantedConsumerData.threshold n A B C hsA hsB hsC) (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostData.count n A B C hsA hsB hsC) \u2194\n        _root_.ThreeSum.ColorClassLists.witness color x := by sorry",
+  "theorem_natural_language_statement": "Suppose memory stores the complete pipeline for a selected color, original length-$n$ input $x$, and strictly increasing normalized lists $A,B,C$. If the schedule is ready for exponent $k$ and $|x_i|\\le n^k$, then the finite wanted scan accepts under its exact physical mass, hit, threshold, and record-count data if and only if that color has a true original 3SUM witness.\n\nThis equivalence closes correctness of the guarded physical wanted scan for one selected color of the original input.",
+  "theorem_status": "Proved"
+}

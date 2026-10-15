@@ -1,0 +1,15 @@
+theorem tendsto_translationTermCount_normalized (m : ℕ) {v : ℝ} (hv : 0 < v) :
+    Tendsto (fun H : ℝ => (translationTermCount m v H : ℝ) / H ^ (2 * m + 1))
+      atTop (𝓝 (1 / v)) := by
+  have h₁ : Tendsto (fun H : ℝ => ((⌊H⌋₊ + 1 : ℕ) : ℝ) / H) atTop (𝓝 1) := by
+    simpa only [one_mul] using tendsto_natFloor_mul_add_one_div (show (0 : ℝ) < 1 by norm_num)
+  have h₂ : Tendsto (fun H : ℝ => ((⌊H / v⌋₊ + 1 : ℕ) : ℝ) / H)
+      atTop (𝓝 (1 / v)) := by
+    simpa only [one_div, div_eq_mul_inv, mul_comm, mul_one, one_mul] using
+      tendsto_natFloor_mul_add_one_div (div_pos zero_lt_one hv)
+  have h := (h₁.pow (2 * m)).mul h₂
+  simp only [one_pow, one_mul] at h
+  convert h using 1
+  ext H
+  simp only [translationTermCount, Nat.cast_mul, Nat.cast_pow, div_pow, div_mul_div_comm,
+    pow_succ]

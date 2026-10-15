@@ -1,0 +1,37 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle001",
+    "definition_title": "Certified logarithm intervals for the integer schedule",
+    "natural_language_statement": "For a natural truncation index $n$ and a real number $z$, define the finite odd-power sum\n\n$$S_n(z)=\\sum_{i=0}^{n-1}\\frac{z^{2i+1}}{2i+1}.$$\n\nThe supporting interval certificate applies when $0\\le z<1$ and $y=(1+z)/(1-z)$. If real endpoints $L,U$ satisfy $L\\le2S_n(z)$ and $2(S_n(z)+z^{2n+1}/(1-z^2))\\le U$, it yields $L\\le\\log y\\le U$. The bundle instantiates this certificate with explicit rational endpoints of denominator $10^{22}$ for $\\log2$, $\\log(29/16)$, $\\log(232/231)$, $\\log(464/463)$, $\\log(32\\theta)$, and $\\log(2(1-\\theta))$, where $\\theta$ is the fixed rational analysis parameter. It also supplies decidability of the cleared integer switching predicate for natural parameters $J,s,j,q$.\n\nThese finite certificates make the numerical exponent and switching estimates available without floating-point assumptions in the deterministic integer 3SUM runtime proof. The finite-minimum and rounding machinery adapts the pinned upstream Switch formalization.",
+    "tags": [
+      "3sum-1960614",
+      "logarithms",
+      "interval-bounds",
+      "integer-schedule"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle002",
+    "definition_title": "Tensor recursion, boxes, and word-RAM problem interfaces",
+    "natural_language_statement": "This bundle retains the paper interfaces needed from the formalization of Alman and Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs*. The finite alphabets contain seven left variables, seven right variables, ten output variables, and ten terms of Schoenhage's identity. For $i,j\\in\\{0,1,2\\}$, its output forms satisfy $\\chi_{P_{ij}}=z_{ij}+z_0$ and $\\chi_{P_0}=z_0$. A length-$L$ leaf contributes to an output string exactly when every coordinate contributes.\n\nA cube is a length-$L$ string of terms and stars. If $S(\\pi)$ and $Z(\\pi)$ are its star and $P_0$ coordinate sets, the box predicate with natural parameters $m,t$ requires\n\n$$|S(\\pi)|+|Z(\\pi)|\\le m-t,\\qquad \\ell<\\ell'\\ \\text{for every }\\ell\\in S(\\pi),\\ \\ell'\\in Z(\\pi).$$\n\nThe graph interface has two parts of $n$ vertices, a finite middle part, two adjacency relations, and a finite set of query pairs. The machine interface defines solving a problem on a domain with a real time bound: every permitted input and admissible word size must have a terminating run within that bound, with a correct verdict and output. The derived bound for an integer-magnitude exponent $\\kappa\\in\\mathbb N$, real time exponent $a$, and logarithmic exponent $e\\in\\mathbb N$ is $C(n^a(\\log n)^e+1)$ for some fixed program, word-size slope, and constant $C$; the unrestricted predicate quantifies over every $\\kappa$. Thin matrix inputs have dimensions $N\\times D$ and $D\\times N$, integer entries bounded in absolute value by $U$, and a repetition-free list of requested positions; their encoding stores the dimensions, fixed extra parameters, and row-major matrix entries.\n\nThese are specifications and data interfaces, not assertions that the corresponding algorithms already meet their bounds. They connect the combinatorial recursion and its matrix queries to the exact word-RAM semantics used by the complete deterministic integer 3SUM proof.",
+    "tags": [
+      "3sum-1960614",
+      "word-ram",
+      "tensor-recursion",
+      "matrix-products",
+      "definitions"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle003",
+    "definition_title": "Light-language execution and exact schedule foundations",
+    "natural_language_statement": "The arithmetic interfaces describe coefficient bounds $|a_j|\\le U$ (using zero outside a coefficient list), and local cover parameters at length $464h$ for $h\\in\\mathbb N$. The local threshold is the output count times $2^{2h}$; a deterministically selected prime $p$ has square between that positive threshold and sixteen times it, and determines the local bucket cap. The executable integer schedule for $m\\in\\mathbb N$ is\n\n$$k(m)=2\\left\\lfloor\\frac{\\lfloor\\sqrt[3]{m}\\rfloor}{2}\\right\\rfloor,\\quad b(m)=20\\left\\lfloor\\frac{203889696m}{20000000000k(m)}\\right\\rfloor,\\quad s(m)=b(m)k(m),$$\n$$d(m)=2^{\\lfloor62656016s(m)/1000000000\\rfloor}.$$\n\nThe divisions here are natural-number divisions, including their total zero-denominator convention. The even-microblock construction follows the pinned Apache-2.0 upstream formalization.\n\nThe Light language has finite expression and statement trees, integer local variables and memory, arithmetic addition, subtraction and multiplication, memory accesses, branches, loops, and procedure calls. An execution judgment $\\operatorname{Exec}(\\lambda,P,d,s,\\sigma,\\sigma',c)$ records an execution of statement $s$ in finite program $P$, at call depth $d$, from state $\\sigma$ to state $\\sigma'$ in exactly $c$ steps. Limits $\\lambda$ bound word magnitudes, memory addresses, and call depth; expression and test costs count their primitive operations. Memory-preservation predicates say that two memories agree on a specified set of natural addresses, including complements of output regions and cells below a free pointer.\n\nFor the target word RAM, the bundle defines an exact number of non-verdict steps between configurations, code placement at an instruction offset, agreement outside a set of integer addresses, and which instructions write only inside a specified set. For any parameter type $A$, domain $D\\subseteq A$, and functions $f,g:A\\to\\mathbb R$, the one-sided domination predicate is\n\n$$\\exists C\\ge0\\;\\forall x\\in D,\\quad f(x)\\le Cg(x).$$\n\nIt also defines absolute bounds on all entries of an integer list. These interfaces support memory framing, compositional step counts, and asymptotic cost estimates in the complete deterministic integer 3SUM runtime proof; the definitions themselves do not assert the final solver theorem.",
+    "tags": [
+      "3sum-1960614",
+      "operational-semantics",
+      "word-ram",
+      "integer-schedule",
+      "asymptotics"
+    ]
+  }
+]

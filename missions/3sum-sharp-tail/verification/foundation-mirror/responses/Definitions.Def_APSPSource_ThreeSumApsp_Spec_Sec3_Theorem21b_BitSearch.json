@@ -1,0 +1,23 @@
+{
+  "theorem_id": "5051d398-52bc-453a-bf85-4e407ec7f07d",
+  "theorem_name": "APSPSource_ThreeSumApsp_Spec_Sec3_Theorem21b_BitSearch",
+  "theorem_title": "Clearing low bits after an integer offset",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For integers $U,c$ and a natural number $t$, define\n\n$$B(U,t,c)=-2U+2^t\\left\\lfloor\\frac{\\max\\{c+2U,0\\}}{2^t}\\right\\rfloor.$$\n\nThe maximum reflects conversion of the shifted integer to a natural number. On the intended domain $c+2U\\ge0$, the operation adds $2U$, clears the lowest $t$ binary bits, and subtracts $2U$ again.\n\nThis total arithmetic function specifies the lower approximation maintained by the later bit-search routine; its iteration and correctness properties are proved separately.\n\nReferences:\n\n1. [Source formalization, lines 41–42](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec3/Theorem21b/BitSearch.lean#L41-L42).",
+  "created_at": "2026-10-06T07:36:17.811172+00:00",
+  "vote_count": 0,
+  "tags": [
+    "binary-representation",
+    "integer-arithmetic",
+    "program-verification"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.Nat.Count\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.DeriveFintype\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# The entries of a (min,+)-product, found bit by bit\n\nTheorem 21(b), after [VW18, Theorem 4.2]: the (min,+)-product is computed\nby a binary search for all entries at once.  An entry `c` with `-2U ≤ c ≤ 2U` is approached from\nbelow: `bitLo U t c` is `c` with the lowest `t` bits of `c + 2U` cleared.\n\n* The search starts at `t = R`, where `4U < 2^R`, with `-2U` (`bitLo_top`), and it ends at `t = 0`\n  with `c` (`bitLo_zero`).\n* One round goes from `t + 1` to `t`: it asks whether `c < bitLo U (t + 1) c + 2^t` and adds `2^t`\n  if not (`bitLo_step`).\n* The question is whether the pair `(i, j)` has a witness: `c` is below a number exactly if one of\n  the sums `A[i,k] + B[k,j]` is (`exists_sum_lt_iff`).  So one round for all entries is one call of\n  a routine that finds all pairs with a witness.\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp.Spec\n\n\n\n\n\n\n\n\n\n\n\n/-- `c` with the lowest `t` bits of `c + 2U` cleared. -/\ndef bitLo (U : ℤ) (t : ℕ) (c : ℤ) : ℤ := -(2 * U) + (((c + 2 * U).toNat / 2 ^ t * 2 ^ t : ℕ) : ℤ)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp.Spec\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec3/Theorem21b/BitSearch.lean#L41-L42",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

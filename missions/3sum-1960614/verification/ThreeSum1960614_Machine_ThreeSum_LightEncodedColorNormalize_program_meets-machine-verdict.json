@@ -1,0 +1,15 @@
+{
+  "id": "320c5930-b042-4536-a967-f7594c486784",
+  "theorem_id": "b562f82f-0ad9-44b5-969f-8c499d4fb8f2",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:51:37.217156+00:00",
+  "updated_at": "2026-10-15T08:59:38.096267+00:00",
+  "explanation": "Apply the verified component contracts in program order, maintain their stored-array invariants, and sum their explicit execution charges. This normalization theorem prepares the selected color directly from original input and stored integer controls.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.program_meets",
+  "theorem_title": "Normalizing the selected color from stored input controls",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.program_meets {\u03bc : \u2115 \u2192 \u2124} {src n params row free U : \u2115}\n    (color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)) (x : Fin n \u2192 \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hn : 0 < n)\n    (hsrc : src+n \u2264 free) (hparams : params+19 \u2264 free) (hrow : row+6 \u2264 free)\n    (hspace : _root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.space free n \u2264 lim.space) (hword : (_root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.word n U : \u2124) \u2264 lim.word)\n    (hd : d+_root_.ThreeSum.LightBandRawAColor.depth (_root_.ThreeSum.Scales.inputBits n+1) n (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n)+2 \u2264 lim.depth)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src (List.ofFn x)) (hbound : \u2200 i, |x i| \u2264 (U : \u2124))\n    (hparameters : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc params (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.values n))\n    (hcolor : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc row (_root_.ThreeSum.ColorParameters.fields color)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.program 45 d [src,n,params,row,free] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorNormalize.time n)\n      (fun r \u03bd => r=(_root_.ThreeSum.EncodedColorLayout.normalizedEnd free n (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorNormalizedData.Output \u03bd free n color x \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "For $n>0$, let the original input $x$ be bounded by $U$, and let its parameter header and six color fields be stored before the free pointer. Under the exact normalization space, word, and depth bounds, procedure 45 constructs the selected-color normalized output, returns the layout-defined normalized end, and preserves memory below the free pointer within its stated time.\n\nThis normalization theorem prepares the selected color directly from original input and stored integer controls.",
+  "theorem_status": "Proved"
+}

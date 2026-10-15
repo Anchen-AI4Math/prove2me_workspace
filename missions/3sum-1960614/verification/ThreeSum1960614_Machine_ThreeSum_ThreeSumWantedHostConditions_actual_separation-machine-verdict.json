@@ -1,0 +1,15 @@
+{
+  "id": "d04d03f7-fc79-4dd1-96a6-ced95fe6d115",
+  "theorem_id": "78d06fa1-58c0-47ee-8cd6-a5dd361c6078",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:04:50.419644+00:00",
+  "updated_at": "2026-10-15T09:07:28.603837+00:00",
+  "explanation": "Instantiates the dense-guard separation property for real retained input differences. The original magnitude bound and the readiness condition are applied to the exact retained owner-incidence differences.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.actual_separation",
+  "theorem_title": "Generated auxiliary primes separate actual nonzero differences",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.actual_separation {\u03bc : \u2115\u2192\u2124} {free n k : \u2115}\n    {color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)} {x : Fin n\u2192\u2124} {A B C : List \u2124}\n    {hsA : A.Pairwise (\u00b7 < \u00b7)} {hsB : B.Pairwise (\u00b7 < \u00b7)} {hsC : C.Pairwise (\u00b7 < \u00b7)}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.Stored \u03bc free n color x A B C hsA hsB hsC)\n    (hn : _root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.Ready k n) (hx : \u2200 i, |x i|\u2264((n^k : \u2115) : \u2124)) :\n    let rs := _root_.ThreeSum.BandRawA.sortedRecords A B C (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize_pos n) hsA hsB hsC\n    \u2200 t\u2208_root_.ThreeSum.BandRawA.finiteAllProducts A.length B.length C.length (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) rs,\n      _root_.ThreeSum.RawIncidences.difference (fun i => _root_.ThreeSum.BandRawA.valueAt A.length (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) rs (fun j => A.getD j 0) i.val)\n        (fun i => B.getD i.val 0) (fun i => C.getD i.val 0) t\u22600 \u2192\n      \u2203 l\u2208_root_.ThreeSum.DenseGuard.actualAux n, \u00acl\u2223 _root_.ThreeSum.RawIncidences.difference\n        (fun i => _root_.ThreeSum.BandRawA.valueAt A.length (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) rs (fun j => A.getD j 0) i.val)\n        (fun i => B.getD i.val 0) (fun i => C.getD i.val 0) t := by sorry",
+  "theorem_natural_language_statement": "Let the encoded-color pipeline retain its normalized lists $A,B,C$ and original input $x:\\operatorname{Fin}(n)\\to\\mathbb Z$. Assume uniform readiness at fixed exponent $k$ and $|x_i|\\le n^k$ for every original index. Every nonzero difference belonging to the exact original owner-incidence product family is not divisible by some prime in the actually generated auxiliary pool.\n\nInstantiates the dense-guard separation property for real retained input differences. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

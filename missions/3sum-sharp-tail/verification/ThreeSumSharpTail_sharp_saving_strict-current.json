@@ -1,0 +1,45 @@
+{
+  "theorem_id": "3adf4d69-99ea-45b7-b6c0-7c5db9bd4123",
+  "theorem_name": "ThreeSumSharpTail.sharp_saving_strict",
+  "theorem_title": "Strict improvement of the preprocessing saving",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.sharp_saving_strict (c θ : ℝ) (hc : 10 < c)\n    (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    0 < ThreeSumSharpTail.oldSaving c θ ∧\n    ThreeSumSharpTail.oldSaving c θ < ThreeSumSharpTail.sharpSaving c θ := by sorry",
+  "natural_language_statement": "For every real $c>10$ and $0<\\theta<0.9$, $$\\gamma_*(c,\\theta)>\\gamma(c,\\theta)>0.$$ This compares preprocessing savings at the same parameters. It does not by itself establish a smaller 3SUM running-time exponent.",
+  "created_at": "2026-10-13T14:53:54.078103+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Proposition 3.3",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "5759c281-9753-4612-8983-ea6714fb904a",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-13T20:30:08.028625+00:00"
+    },
+    {
+      "audit_id": "58697b53-b965-4b56-a563-9c8503ccd3c7",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-13T20:30:08.35446+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "For every pair of real numbers $c,\\theta$ satisfying $c>10$ and $0<\\theta<9/10$, let $H(x)=-x\\log x-(1-x)\\log(1-x)$, where $\\log$ is the natural logarithm extended to be $0$ at zero and to equal the logarithm of the absolute value at negative arguments. Then both strict inequalities $0<\\theta\\log((c-1)/9)/\\log4$ and $\\theta\\log((c-1)/9)/\\log4<[cH(1/c)-cH((1-\\theta)/c)-\\theta\\log9]/\\log4$ hold. Here $c$ ranges over real numbers, not only integers; the arguments of the logarithms appearing after expansion of $H$ are positive under these hypotheses. None of the boundary values $c=10$, $\\theta=0$, or $\\theta=9/10$ is included.",
+    "model": "gpt-6",
+    "created_at": "2026-10-13T14:53:55.978971+00:00"
+  }
+}

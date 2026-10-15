@@ -1,0 +1,70 @@
+{
+  "theorem_id": "cc20ddd0-5f5f-4ba9-85d0-87d794a7f1b6",
+  "theorem_name": "TrulySubcubicAPSP_Problems",
+  "theorem_title": "Exact Triangle, min-plus product, and APSP specifications",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Three weighted problems share the same word-RAM interface. Exact Triangle takes three $n\\times n$ integer matrices and accepts exactly when some $a,b,c$ satisfy $w_{AB}(a,b)+w_{BC}(b,c)+w_{AC}(a,c)=0$. The constant $\\varepsilon_T$ is the exact rational $0.0017$. The $(\\min,+)$-product takes two integer matrices and outputs $C_{ij}=\\min_k(A_{ik}+B_{kj})$, requiring each output to be an attained lower bound of the candidate sums.\n\nFor APSP, the vertex set is $\\{0,\\ldots,n-1\\}$ and each ordered pair has either an integer edge weight or no edge. Paths are finite directed walks, including empty paths of weight zero. Inputs must satisfy\n$$\\forall i\\;\\forall d,\\qquad \\text{there is a closed walk at }i\\text{ of weight }d\\;\\Longrightarrow\\;0\\le d.$$\nThe input stores the edge-presence matrix and weight matrix row by row. Each output pair has a reachability flag followed by a signed distance. A flag of one requires an actual path attaining that distance and no path of smaller weight. A flag of zero requires no path at all, with the distance cell unconstrained. Both function problems always accept, including the empty instance, where there are no output entries. Missing edges and zero-weight edges remain distinct.",
+  "created_at": "2026-10-06T05:01:21.371039+00:00",
+  "vote_count": 0,
+  "tags": [
+    "algorithms",
+    "apsp",
+    "fine-grained-complexity",
+    "shortest-paths",
+    "word-ram"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_TrulySubcubicAPSP_WordRAM\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnamespace TrulySubcubicAPSP\n\n/-- Section 3.2: «S(a, b, c) := w(a, b) + w(b, c) + w(a, c). A zero triangle is a triangle … with S(a, b, c) = 0». -/\ndef ExactTriangle : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (wAB, wBC, wAC) => rowByRow wAB ++ rowByRow wBC ++ rowByRow wAC\n  yes := fun (wAB, wBC, wAC) => ∃ a b c, wAB a b + wBC b c + wAC a c = 0\n\n/-- Theorem 19: «ε_T := 0.0017». -/\ndef ε_T : Rat := 0.0017\n\n\n/-- Output, row by row: entry `(i, j)` is the least of the sums `A i k + B k j`. -/\ndef MinPlusProduct : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (A, B) => rowByRow A ++ rowByRow B\n  output := fun {n} (A, B) out => ∀ i j : Fin n,\n    (∃ k, out (i.val * n + j.val) = A i k + B k j) ∧ ∀ k, out (i.val * n + j.val) ≤ A i k + B k j\n\n\n/-- A path and its total weight; it may repeat vertices. -/\ninductive Path {n : Nat} (w : Fin n → Fin n → Option Int) : Fin n → Fin n → Int → Prop\n  | nil (i : Fin n) : Path w i i 0\n  | cons {i j k : Fin n} {d e : Int} : w i j = some d → Path w j k e → Path w i k (d + e)\n\n/-- Input: the 0/1 matrix of the edges, then the weights, with 0 for no edge. Output, two cells for each `(i, j)`: 1 if\nthere is a path, else 0; then the distance. -/\ndef APSP : Problem where\n  Instance n := {w : Fin n → Fin n → Option Int // ∀ i d, Path w i i d → 0 ≤ d}\n  input := fun ⟨w, _⟩ => rowByRow (fun i j => if (w i j).isSome then 1 else 0) ++ rowByRow fun i j => (w i j).getD 0\n  output := fun {n} ⟨w, _⟩ out => ∀ i j : Fin n,\n    let flag := out (2 * (i.val * n + j.val))\n    let dist := out (2 * (i.val * n + j.val) + 1)\n    (flag = 1 ∧ Path w i j dist ∧ ∀ e, Path w i j e → dist ≤ e) ∨ (flag = 0 ∧ ∀ e, ¬ Path w i j e)\n\nend TrulySubcubicAPSP\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean; lines 75–82, 98–103, 109–122; namespace renamed only; Apache-2.0.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "7cd3bf10-7990-4b3f-89b7-59f0e975f7c7",
+      "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "reviewer_username": "Community (Bot)",
+      "decision": "confirm",
+      "comment": null,
+      "created_at": "2026-10-06T05:41:09.979748+00:00"
+    },
+    {
+      "audit_id": "653eac95-2780-4b08-8514-7828196a7788",
+      "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "reviewer_username": "wurtle",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-06T05:41:12.281103+00:00"
+    },
+    {
+      "audit_id": "5745ab0a-303a-45c1-82e8-1058312f1042",
+      "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "reviewer_username": "marwahaha",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-06T07:22:28.320861+00:00"
+    },
+    {
+      "audit_id": "ff2c55f7-8af0-4bcd-81dc-4718e23245a8",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-06T14:46:26.553604+00:00"
+    },
+    {
+      "audit_id": "cae73683-4f38-413e-a368-8dbfedebfbe3",
+      "reviewer_id": "eb748f54-a7e9-4b93-8588-69f5b241260e",
+      "reviewer_username": "xuanji",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-06T14:50:30.188978+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "**Exact-triangle problem.** For every natural size $n$, an instance is an ordered triple of arbitrary integer matrices $w_{AB},w_{BC},w_{AC}$, each indexed by $\\{0,\\ldots,n-1\\}\\times\\{0,\\ldots,n-1\\}$. Its input is the row-by-row list of $w_{AB}$, followed by that of $w_{BC}$, followed by that of $w_{AC}$; within each matrix entry $(u,v)$ has zero-based position $un+v$. The acceptance proposition is that there exist three indices $a,b,c\\in\\{0,\\ldots,n-1\\}$ such that $w_{AB}(a,b)+w_{BC}(b,c)+w_{AC}(a,c)=0$. These three indices are not required to be distinct, and no symmetry or sign constraint is imposed on any matrix. The output proposition is true for every instance and every integer-valued output function on the natural numbers. At $n=0$ the input is empty and the acceptance proposition is false because there are no indices to choose.\n\n**Rational constant.** The constant $\\varepsilon_T$ is the exact rational number $0.0017=17/10000$.\n\n**Min-plus-product problem.** For every natural size $n$, an instance is an ordered pair of arbitrary integer matrices $A,B$, each indexed by $\\{0,\\ldots,n-1\\}\\times\\{0,\\ldots,n-1\\}$. Its input is the row-by-row list of $A$ followed by the row-by-row list of $B$, with the second coordinate increasing within each fixed first coordinate. Its acceptance proposition is true for every instance. For every output function $f:\\mathbb N\\to\\mathbb Z$, the output proposition holds exactly when, for every $i,j\\in\\{0,\\ldots,n-1\\}$, there exists an index $k\\in\\{0,\\ldots,n-1\\}$ with $f(in+j)=A(i,k)+B(k,j)$, and for every index $k$ in that same range, $f(in+j)\\le A(i,k)+B(k,j)$. Thus each specified entry must be one of those sums and must be no greater than every one of them; the attaining index need not be unique and can depend on $(i,j)$. Output positions beyond the first $n^2$ are unrestricted. At $n=0$ both input matrices contribute empty lists and the output proposition is vacuously true because there are no pairs $(i,j)$, so it does not require a minimum over an empty set for any output entry.\n\n**Path relation.** For every natural $n$ and every function $w$ assigning either an integer weight or absence to each ordered pair of vertices in $\\{0,\\ldots,n-1\\}$, the path relation is a proposition depending on a start vertex, an end vertex, and an integer total weight. It is the inductively generated relation with the following two construction rules: for every vertex $i$, there is a path from $i$ to itself of total weight zero; and, for every vertices $i,j,k$ and integers $d,e$, if the edge value $w(i,j)$ is present and equal to $d$ and there is a path from $j$ to $k$ of total weight $e$, then there is a path from $i$ to $k$ of total weight $d+e$. Only finite applications of these rules generate paths. Vertices and edges may be repeated, the vertex parameters may coincide, and weights may be negative, zero, or positive; no prohibition of negative closed paths is part of this relation. The relation distinguishes absent edges from edges of weight zero and places no symmetry condition on $w$. At $n=0$ there are no vertices to use as endpoints or in either construction rule.\n\n**All-pairs-shortest-path problem.** For every natural size $n$, an instance is a function $w$ assigning either an integer weight or absence to each ordered pair of vertices in $\\{0,\\ldots,n-1\\}$, together with a proof that for every vertex $i$ and every integer $d$, any path from $i$ back to $i$ with total weight $d$ satisfies $0\\le d$. Here a path is a finite sequence of present directed edges with total weight the sum of their weights, allowing repetitions, and also includes the empty path of weight zero from each vertex to itself. This condition concerns all such closed paths and does not prohibit individual negative edge weights. The input is the row-by-row matrix having entry $1$ exactly where an edge is present and $0$ otherwise, followed by the row-by-row matrix of edge weights with zero substituted for every absent edge. The proof component is not included in the input. The acceptance proposition is true for every instance. For every output function $f:\\mathbb N\\to\\mathbb Z$, the output proposition requires that for every ordered pair of vertices $(i,j)$, writing $F=f(2(in+j))$ and $D=f(2(in+j)+1)$, either $F=1$, there is a path from $i$ to $j$ of total weight $D$, and for every integer $e$ the existence of a path from $i$ to $j$ of total weight $e$ implies $D\\le e$; or $F=0$ and for every integer $e$ there is no path from $i$ to $j$ of total weight $e$. In the second case the value $D$ is unrestricted. These are the only permitted flag cases, and output positions beyond the first $2n^2$ are unrestricted. In particular, for each vertex the empty path and the instance condition force its diagonal output flag to be $1$ and diagonal distance to be zero. At $n=0$ the closed-path condition and output condition are both vacuous and the input list is empty.",
+    "model": "GPT-6 (Codex independent sub-agent)",
+    "created_at": "2026-10-06T05:01:27.046613+00:00"
+  }
+}

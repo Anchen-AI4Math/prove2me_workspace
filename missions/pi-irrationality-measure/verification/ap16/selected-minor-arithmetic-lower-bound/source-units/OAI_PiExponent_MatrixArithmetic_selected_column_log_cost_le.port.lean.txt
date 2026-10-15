@@ -1,0 +1,12 @@
+theorem selected_column_log_cost_le {m K : ℕ} {w0 v0 θ H : ℝ}
+    (q : Fin m → ℕ) (hq : ∀ i, 2 ≤ q i) (hw0 : 0 < w0)
+    (selection : PiExponent.InterpolationMatrix.Row K v0 θ
+        (fun i => (⌈Real.log (q i : ℝ)⌉₊ : ℝ)) H →
+      PiExponent.InterpolationMatrix.Column w0
+        (fun i => (⌈Real.log (q i : ℝ)⌉₊ : ℝ)) H) :
+    (∑ ρ, ∑ i, ((selection ρ).1 i.succ : ℝ) * Real.log (q i : ℝ)) ≤
+      (Fintype.card (PiExponent.InterpolationMatrix.Row K v0 θ
+        (fun i => (⌈Real.log (q i : ℝ)⌉₊ : ℝ)) H) : ℝ) * H := by
+  calc
+    _ ≤ ∑ ρ, H := Finset.sum_le_sum (fun ρ hρ => column_log_cost_le_H q hq hw0 (selection ρ))
+    _ = _ := by simp

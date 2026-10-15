@@ -1,0 +1,37 @@
+{
+  "theorem_id": "b6704d8b-ac74-45ed-8c21-3fbf0bb1f7a2",
+  "theorem_name": "TrulySubquadratic3SUM.threeSum_1999074",
+  "theorem_title": "3SUM in $O(n^{1.999074})$ word-RAM steps",
+  "status": "Proved",
+  "formal_statement": "theorem TrulySubquadratic3SUM.threeSum_1999074 :\n    EndStatement.ThreeSum.SolvedInTime 1.999074 := by sorry",
+  "natural_language_statement": "For every fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural constant $b$, and a step bound $T$ that work for every input size $n$ and every word width $W\\ge b(\\operatorname{Nat.log2}(n)+1)$. On $n$ integers of absolute value at most $n^\\kappa$, the program halts within $T(n)$ steps and accepts exactly when three pairwise distinct indices have values summing to zero. Repeated values at distinct positions are allowed, and inputs with fewer than three positions are rejected. The bound is $T(n)=O(n^{1.999074})$: precisely, there is $K\\in\\mathbb N$ such that $T(n)^{500000}\\le K n^{999537}$ for every $n\\ge2$.",
+  "created_at": "2026-10-06T19:05:01.638026+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "Open parameter-refinement target inspired by Alman and Vassilevska Williams (2026), using the existing Anthropic formal-math source at commit e1a4e6508154ea59f030480661590a9fe3018011. This target is proposed here, not asserted as a proved result of the paper. Generic inner construction: https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/RunningTimes/Sec4/Corollary31_32.lean. Parameter estimates: https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Sec4/Table2.lean.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "d8384c48-ae4a-458b-b96e-f01f9cd98b2d",
+      "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "reviewer_username": "marwahaha",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-06T19:07:43.649303+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "For every natural number $\\kappa$, including $\\kappa=0$, there exist a finite program $P$, a natural number $b$, and a function $T:\\mathbb N\\to\\mathbb N$ such that there exists a natural number $K$ with $T(n)^{500000}\\le K n^{999537}$ for every natural number $n\\ge2$, and such that the following correctness and termination condition holds. For every natural number $n$, every integer sequence $x_0,\\ldots,x_{n-1}$ satisfying $|x_i|\\le n^\\kappa$ for every $0\\le i<n$, and every natural-number word width $W\\ge b(\\operatorname{log}_2(n)+1)$, run $P$ from instruction position zero with memory addressed by all integers and containing $W$-bit words: cell $0$ initially contains $n$ reduced modulo $2^W$, cell $i+1$ contains $x_i$ reduced modulo $2^W$ for $0\\le i<n$, and every other cell, including all negative-address cells, contains zero. Here $\\operatorname{log}_2(n)$ is the natural-number base-two logarithm, equal to $\\lfloor\\log_2 n\\rfloor$ for $n\\ge1$ and to zero at $n=0$. There exist a Boolean verdict and a final memory such that execution halts with that verdict and memory within $T(n)$ steps, with the halting instruction counted, and the verdict is true if and only if there exist $i,j,k\\in\\{0,\\ldots,n-1\\}$ satisfying $i\\ne j$, $j\\ne k$, $i\\ne k$, and $x_i+x_j+x_k=0$ as an equality of integers. There is no condition on the final memory or on an output array. The instructions allowed in $P$ are: put the word representing $1$ into a fixed integer-addressed cell; add, subtract, or multiply the words in two fixed cells and write the result to a fixed cell; load indirectly from the address obtained by interpreting a word in a fixed cell as signed; store indirectly at the signed address in a fixed cell; branch to a fixed natural-number instruction position if the signed word in a fixed cell is negative; accept; and reject. Word arithmetic is modulo $2^W$, and signed interpretation uses two's-complement values. The writing instructions advance to the next instruction; a negative-test branch jumps to its target exactly when its test is negative and otherwise advances to the next instruction; reaching any instruction position outside the finite program executes reject. Each executed instruction costs one step, accept and reject terminate with true and false respectively, and a zero step budget yields no terminating result even at a halting instruction. The program, $b$, the time function and the constant $K$ may depend on $\\kappa$ but must work for every allowed input and every qualifying width $W$; $T(n)$ cannot depend on $W$ or on the entries of the input. The exponent $1.999074$ is the exact rational number $999537/500000$, and the displayed integer-power inequality is the entire asserted asymptotic bound: it applies for all $n\\ge2$, with no positive lower bound on the existential natural number $K$. Termination and correctness also apply at $n=0$ and $n=1$, although the asymptotic inequality does not constrain their times; all $n<3$ inputs must be rejected because three distinct positions do not exist. At $\\kappa=0$ the bound is $n^0=1$, including the convention $0^0=1$; at $n=0$ the input-entry bound is vacuous because the sequence is empty. No hypothesis requires $b>0$ or $W>0$: if the selected $b$ is zero, width zero is included, in which case every word and its signed value is zero. The input size and entries are encoded modulo the chosen width, rather than assumed separately to fit in that width.",
+    "model": "Codex",
+    "created_at": "2026-10-06T19:05:33.407625+00:00"
+  }
+}

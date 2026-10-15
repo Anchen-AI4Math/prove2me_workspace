@@ -1,0 +1,79 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBalancedOffset.meets",
+    "theorem_title": "Execution of the least balanced cyclic offset",
+    "natural_language_statement": "Let $p>0$, $p\\le2^k$, and $F,H:\\mathbb Z/p\\mathbb Z\\to\\mathbb N$ have coefficients bounded by $U$. Suppose memory $\\mu$ stores their length-$2^k$ padded vectors, with the H vector reversed by negation of the residue. Let $\\lambda,P,d$ be limits, program and depth, and suppose the balanced-offset, cyclic-product, least-minimum and concrete Karatsuba procedures occur through their literal closure records. Both inputs, the length-$2^{k+1}$ product and length-$p$ correlation output end before scratch $w$; product and correlation outputs are disjoint; $w+8\\cdot2^k$ fits memory; addresses fit words; the Karatsuba word bound fits; and $d+k+3$ is allowed. Then the call returns\n\n$$\\min\\operatorname*{arg\\,min}_{0\\le r<p}\\operatorname{correlation}(F,H,r),$$\n\nwithin its stated time, preserving every cell below $w$ outside the product and correlation outputs.\n\nThis executes the deterministic balanced common-offset choice through fast convolution and exact tie breaking.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This executes the deterministic balanced common-offset choice through fast convolution and exact tie breaking."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockSourcePreparation.meets",
+    "theorem_title": "Execution of endpoint hashes and independent trim flags",
+    "natural_language_statement": "Let $h,J,n\\in\\mathbb N$, occurrence vector $o$, and block-coordinate subsets $S_i$ for $i<n$ be given. Suppose memory $\\mu$ stores the exact occurrence indices, original selected coefficient rows, occurrence-to-candidate indices, candidate left/right bucket counts and indexed masks of $S_i$. All retained arrays end before the first gathered coefficient row. Reserve in order two length-$J\\cdot464h$ coefficient rows, two length-$n$ raw-hash arrays, two flag rows plus two cells, a width-sized bit row, two row-output cells, and scratch. Assume these reservations do not overlap in that order, addresses fit words, the exact preparation space/word budgets fit and $d+J\\cdot464h+5$ is allowed. With the literal procedure closure present, the call writes both positional endpoint hashes and\n\n$$\\phi_L(i)=\\mathbf1_{\\mathrm{LeftAllowed}(o,S_i)},\\qquad\\phi_R(i)=\\mathbf1_{\\mathrm{RightAllowed}(o,S_i)},$$\n\nwithin its stated time, preserving all memory below the gathered coefficient base.\n\nThis constructs original-encoding endpoints and independent trimming decisions from actual retained maps and histograms.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs original-encoding endpoints and independent trimming decisions from actual retained maps and histograms."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightColorBands.Procs.meets",
+    "theorem_title": "Execution of original-input color classes and normalized bands",
+    "natural_language_statement": "Let $n\\le2^W$, band size $g>0$, input $x:\\operatorname{Fin}(n)\\to\\mathbb Z$ with $|x_i|\\le U$, and coloring parameter $p$ of width $W$ be given. Suppose memory stores the original list, followed in order by its color row, three length-$n+1$ class buffers, three normalized value arrays and their length-$2+2n$ band headers, then scratch. Assume every preceding reservation ends before the next, addresses fit words, the exact color-band space/word budgets fit and $d$ plus its stated depth requirement is allowed. A literal procedure-closure record identifies all callees. The program normalizes the color-0 and color-1 values and negated color-2 values, constructs their exact band tables and owner enumeration, meets its stated time and preserves cells below the color row.\n\nThis connects the original signed input and index coloring to the three normalized lists used by the complete solver.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This connects the original signed input and index coloring to the three normalized lists used by the complete solver."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverBuild.Procs.meets",
+    "theorem_title": "Execution of the complete deterministic local-cover builder",
+    "natural_language_statement": "Let $h\\in\\mathbb N$. Reserve, in order, the local layer masks, Boolean bit rows, all radix-enumerated candidate coefficients, two raw arrays, two candidate bucket-histogram arrays, support matrix, greedy workspace and selected schedule coefficients. Let the dimensions be the exact local vertex/candidate/column/schedule counts at width $464h$. Suppose every listed reservation ends before the next, the greedy workspace ends before selected coefficients, the latter fit memory, and the exact candidate scratch and cover word bounds fit. For Light limits/program/depth $\\lambda,P,d$, assume addresses fit words, $d+464h+7$ is allowed and the literal procedure closure holds. The builder returns the selected-coefficient base, establishes the exact candidate data and occurrence-indexed schedule rows, stores each selected candidate index, meets its prescribed time and preserves all cells below the mask base.\n\nThis executes the original deterministic local cover without assuming chosen maps, masks or support tables.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This executes the original deterministic local cover without assuming chosen maps, masks or support tables."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightModuloCounts.meets",
+    "theorem_title": "Execution of exact modular triple counting",
+    "natural_language_statement": "Let $p>0$, integer input arrays A,B,C of lengths $n_A,n_B,n_C\\le N$ and magnitude bound $U$ be stored before free address $f$ in memory $\\mu$. Let $\\lambda,P,d$ be limits, program and depth with the modular-count wrapper, capacity, signed residues, histogram/fill, cyclic product, lookup sum and concrete Karatsuba closures present. Assume addresses fit words, the exact counting space/word budgets fit and $d+\\lceil\\log_2p\\rceil+3$ is allowed. Then the call returns\n\n$$|\\{(i,j,k):i<n_A,\\ j<n_B,\\ k<n_C,\\ p\\mid C_k-B_j-A_i\\}|,$$\n\nwithin its prescribed time, preserving every cell below $f$.\n\nThis supplies actual fast modular counts used by prime selection and weighted false-score computation.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies actual fast modular counts used by prime selection and weighted false-score computation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightParameterInit.Procs.meets",
+    "theorem_title": "Execution of the complete nineteen-field parameter initializer",
+    "natural_language_statement": "Let input size $n$, output base $b$, scratch base $w$, and $\\lambda,P,d,\\mu$ be Light limits, program, depth and memory. Suppose the initializer and all concrete schedule, local-parameter, global-size, square-root and power callees satisfy their literal closure record. Assume addresses fit words, $b+19\\le w$, the exact initializer space/word budgets fit and $d+464h(n)+6$ is allowed, where $h(n)$ is its scheduled microblock half-width. It writes the exact nineteen-field parameter record, returns\n\n$$\\operatorname{radix}(n),$$\n\nmeets its stated time and preserves cells below $w$ outside the output header.\n\nThis constructs every schedule, prime, cap, typed count, band and prime-window parameter from the original input length.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs every schedule, prime, cap, typed count, band and prime-window parameter from the original input length."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightQueryBox.meets",
+    "theorem_title": "Execution of a canonical sparse-query box",
+    "natural_language_statement": "Let $Q,U\\subseteq\\operatorname{Fin}(L)$ with $U\\subseteq Q$, cutoff $c\\le L$ and $|Q\\setminus U|\\le c$, and integer subset weight function $f$ be given. Suppose memory stores every exact compact box stage of $f$ through width $L$ at base $b$, ending before scratch $w$. Let $\\lambda,P,d$ be limits, program and depth, with the box, least-coordinate, stage-lookup, capacity, address, subset-setup and erasure bodies identified by their literal records. Assume addresses fit words, Pascal/power scratch fits memory, $(L+1)2^{L+1}$ fits a word and $d+L+6$ is allowed. The procedure computes the canonical box itself and returns\n\n$$\\operatorname{boxSum}(Q\\setminus U,\\operatorname{queryFree}(Q,U),f)$$\n\nwithin its stated time, preserving all cells below $w$.\n\nThis turns canonical sparse boxes into exact reads from constructed transform stages, with no supplied minimum or address advice.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This turns canonical sparse boxes into exact reads from constructed transform stages, with no supplied minimum or address advice."
+  }
+]

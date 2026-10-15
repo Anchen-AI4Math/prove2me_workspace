@@ -1,0 +1,1 @@
+For a supported rank $k\ge1$ and nonnegative exponent $s$, the rank-frequency formula gives $f(1)/f(k)=k^s\ge1$. Positivity of $f(k)$ then yields $f(k)\le f(1)$. Outside the support the probability is zero, while the rank-one probability is nonnegative.

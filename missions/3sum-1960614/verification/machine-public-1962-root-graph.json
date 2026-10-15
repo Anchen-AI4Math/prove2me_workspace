@@ -1,0 +1,127 @@
+{
+  "root_id": "faf3da56-8bce-41db-b7fb-332e1861ada2",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "theorem_name": "TrulySubcubicAPSP_SourceSpecification",
+      "theorem_title": "Source word-RAM and problem specifications",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines the concrete deterministic word RAM and the problem specifications used by the source formalization of truly subcubic APSP. The machine has signed finite-width words, arithmetic and memory instructions, conditional jumps, and accept/reject verdicts. Its input convention and step-count predicate specify what it means for one program to solve a problem uniformly over input sizes and sufficiently large logarithmic word widths.\n\nThe problem interfaces include Exact Triangle, min-plus matrix multiplication, and all-pairs shortest paths. APSP instances have no negative-weight closed walks; outputs encode reachability and attained minimum distances. The source's rational-power running-time predicate represents $O(n^r)$ using an integer inequality.\n\nThese declarations provide the original `EndStatement` namespace used by the checked algorithm proofs. They are specifications, with no assumed algorithm-correctness or running-time theorems.\n\nReferences:\n\n1. Josh Alman and Virginia Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs*, source formalization, `EndStatement.lean`.",
+      "created_at": "2026-10-06T05:58:53.088962+00:00",
+      "vote_count": 0,
+      "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\nmodule\n\n/-! Claims of the paper \u00abTruly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs\u00bb (Josh\nAlman, Virginia Vassilevska Williams), about programs of a word RAM defined here. Imports nothing, proves nothing. -/\n\n@[expose] public section\n\nnamespace EndStatement\n\n/-- `i j k` name cells, `l` a position in the program, `[i]` is the word in cell `i`. The only constant is 1. -/\ninductive Instr where\n  | one (i : Int)             -- [i] := 1\n  | add (i j k : Int)         -- [i] := [j] + [k]\n  | sub (i j k : Int)         -- [i] := [j] - [k]\n  | mul (i j k : Int)         -- [i] := [j] * [k]\n  | load (i j : Int)          -- [i] := [[j]]\n  | store (i j : Int)         -- [[i]] := [j]\n  | bltz (i : Int) (l : Nat)  -- if [i] < 0, go to position l\n  | accept\n  | reject\n\n/-- The verdict and the final memory, if `P`, run from position `pc` on memory `m`, halts within `t` steps, the halting\nstep counted; past its end `P` rejects. Addresses are read signed; `bltz` jumps on a negative word; `write` runs on. -/\ndef exec {W : Nat} (P : List Instr) : (t pc : Nat) \u2192 (m : Int \u2192 BitVec W) \u2192 Option (Bool \u00d7 (Int \u2192 BitVec W))\n  | 0, _, _ => none\n  | t + 1, pc, m =>\n    let write (i : Int) (v : BitVec W) := exec P t (pc + 1) fun x => if x = i then v else m x\n    match P.getD pc .reject with\n    | .one i => write i 1\n    | .add i j k => write i (m j + m k)\n    | .sub i j k => write i (m j - m k)\n    | .mul i j k => write i (m j * m k)\n    | .load i j => write i (m (m j).toInt)\n    | .store i j => write (m i).toInt (m j)\n    | .bltz i l => exec P t (if (m i).toInt < 0 then l else pc + 1) m\n    | .accept => some (true, m)\n    | .reject => some (false, m)\n\n/-- The memory at the start: `ws` in cells 0, 1, 2, \u2026, and 0 in every other cell. -/\ndef loadWords (W : Nat) (ws : List Int) : Int \u2192 BitVec W :=\n  fun a => if a < 0 then 0 else BitVec.ofInt W (ws.getD a.toNat 0)\n\n/-- `T(n) = O(n^r)`, both sides raised to the power `r.den`: core Lean has no fractional powers. For `r = 1.9992 =\n2499/1250` it says `T(n)^1250 \u2264 K n^2499`. -/\ndef BigO (T : Nat \u2192 Nat) (r : Rat) : Prop :=\n  \u2203 K : Nat, \u2200 n \u2265 2, T n ^ r.den \u2264 K * n ^ r.num.toNat\n\n/-- `yes`: when to accept (always, if not given). `output`: a condition on the cells after the input, read as signed. -/\nstructure Problem where\n  Instance : Nat \u2192 Type\n  input {n : Nat} : Instance n \u2192 List Int\n  yes {n : Nat} : Instance n \u2192 Prop := fun _ => True\n  output {n : Nat} : Instance n \u2192 (Nat \u2192 Int) \u2192 Prop := fun _ _ => True\n\n/-- One run: with `n` in cell 0 and the input after it, `P` halts within `t` steps with the right verdict and output. -/\ndef Problem.SolvedBy (Q : Problem) {n : Nat} (x : Q.Instance n) (P : List Instr) (W t : Nat) : Prop :=\n  \u2203 verdict m, exec P t 0 (loadWords W ((n : Int) :: Q.input x)) = some (verdict, m) \u2227\n    (verdict = true \u2194 Q.yes x) \u2227 Q.output x fun a => (m (1 + (Q.input x).length + a : Nat)).toInt\n\n/-- Theorem 2: \u00aba word RAM with O(log n)-bit words\u00bb, \u00aball numbers in the input are integers of absolute value\nn^O(1)\u00bb: for every `\u03ba`, one `P`, `b`, `T` for all instances, correct at every `W \u2265 b(\u230alog\u2082 n\u230b + 1)`. -/\ndef Problem.SolvedInTime (Q : Problem) (r : Rat) : Prop :=\n  \u2200 \u03ba : Nat, \u2203 (P : List Instr) (b : Nat) (T : Nat \u2192 Nat), BigO T r \u2227\n    \u2200 (n : Nat) (x : Q.Instance n), (\u2200 a \u2208 Q.input x, a.natAbs \u2264 n ^ \u03ba) \u2192 \u2200 W \u2265 b * (Nat.log2 n + 1),\n      Q.SolvedBy x P W (T n)\n\ndef rowByRow {n : Nat} (w : Fin n \u2192 Fin n \u2192 Int) : List Int :=\n  (List.ofFn fun u => List.ofFn fun v => w u v).flatten\n\n/-- Section 3.2: \u00abS(a, b, c) := w(a, b) + w(b, c) + w(a, c). A zero triangle is a triangle \u2026 with S(a, b, c) = 0\u00bb. -/\ndef ExactTriangle : Problem where\n  Instance n := (Fin n \u2192 Fin n \u2192 Int) \u00d7 (Fin n \u2192 Fin n \u2192 Int) \u00d7 (Fin n \u2192 Fin n \u2192 Int)\n  input := fun (wAB, wBC, wAC) => rowByRow wAB ++ rowByRow wBC ++ rowByRow wAC\n  yes := fun (wAB, wBC, wAC) => \u2203 a b c, wAB a b + wBC b c + wAC a c = 0\n\n/-- Theorem 19: \u00ab\u03b5_T := 0.0017\u00bb. -/\ndef \u03b5_T : Rat := 0.0017\n\n/-- Theorem 19: \u00abExact Triangle \u2026 can be solved by a deterministic algorithm in \u2026 O(n^(3\u2212\u03b5_T)) time\u00bb. -/\ndef Theorem_19 : Prop :=\n  ExactTriangle.SolvedInTime (3 - \u03b5_T)\n\n/-- Section 1: \u00abGiven n numbers, decide whether three of them sum to 0\u00bb. Three different positions. -/\ndef ThreeSum : Problem where\n  Instance n := Fin n \u2192 Int\n  input x := List.ofFn x\n  yes x := \u2203 i j k, i \u2260 j \u2227 j \u2260 k \u2227 i \u2260 k \u2227 x i + x j + x k = 0\n\n/-- Theorem 22: \u00absolve 3SUM on n integers of absolute value at most n^\u03bd\u00bb, in time \u00abO(n^1.9992)\u00bb. -/\ndef Theorem_22_3SUM : Prop :=\n  ThreeSum.SolvedInTime 1.9992\n\n/-- Output, row by row: entry `(i, j)` is the least of the sums `A i k + B k j`. -/\ndef MinPlusProduct : Problem where\n  Instance n := (Fin n \u2192 Fin n \u2192 Int) \u00d7 (Fin n \u2192 Fin n \u2192 Int)\n  input := fun (A, B) => rowByRow A ++ rowByRow B\n  output := fun {n} (A, B) out => \u2200 i j : Fin n,\n    (\u2203 k, out (i.val * n + j.val) = A i k + B k j) \u2227 \u2200 k, out (i.val * n + j.val) \u2264 A i k + B k j\n\n/-- Theorem 22: \u00abthe (min, +)-product of two n \u00d7 n integer matrices\u00bb, in time \u00abO(n^2.99942)\u00bb. -/\ndef Theorem_22_MinPlus : Prop :=\n  MinPlusProduct.SolvedInTime 2.99942\n\n/-- A path and its total weight; it may repeat vertices. -/\ninductive Path {n : Nat} (w : Fin n \u2192 Fin n \u2192 Option Int) : Fin n \u2192 Fin n \u2192 Int \u2192 Prop\n  | nil (i : Fin n) : Path w i i 0\n  | cons {i j k : Fin n} {d e : Int} : w i j = some d \u2192 Path w j k e \u2192 Path w i k (d + e)\n\n/-- Input: the 0/1 matrix of the edges, then the weights, with 0 for no edge. Output, two cells for each `(i, j)`: 1 if\nthere is a path, else 0; then the distance. -/\ndef APSP : Problem where\n  Instance n := {w : Fin n \u2192 Fin n \u2192 Option Int // \u2200 i d, Path w i i d \u2192 0 \u2264 d}\n  input := fun \u27e8w, _\u27e9 => rowByRow (fun i j => if (w i j).isSome then 1 else 0) ++ rowByRow fun i j => (w i j).getD 0\n  output := fun {n} \u27e8w, _\u27e9 out => \u2200 i j : Fin n,\n    let flag := out (2 * (i.val * n + j.val))\n    let dist := out (2 * (i.val * n + j.val) + 1)\n    (flag = 1 \u2227 Path w i j dist \u2227 \u2200 e, Path w i j e \u2192 dist \u2264 e) \u2228 (flag = 0 \u2227 \u2200 e, \u00ac Path w i j e)\n\n/-- Theorem 22: \u00abAPSP on directed n-vertex graphs \u2026 and no negative cycles\u00bb, in time \u00abO(n^2.99942)\u00bb. -/\ndef Theorem_22_APSP : Prop :=\n  APSP.SolvedInTime 2.99942\n\n/-- `w i j u v`: weight between `u` in part `i` and `v` in part `j`. All `k\u00b2` blocks are input; only `i < j` counts. -/\ndef ZeroWeightKClique (k : Nat) : Problem where\n  Instance n := Fin k \u2192 Fin k \u2192 Fin n \u2192 Fin n \u2192 Int\n  input w := (List.ofFn fun i => (List.ofFn fun j => rowByRow (w i j)).flatten).flatten\n  yes {n} w := \u2203 v : Fin k \u2192 Fin n,\n    (List.ofFn fun j => (List.ofFn fun i => if i < j then w i j (v i) (v j) else 0).sum).sum = 0\n\n/-- Corollary 39: \u00abdecide in O(n^(k\u2212\u03b5_T\u230ak/3\u230b)) time whether some k-clique \u2026 has total edge weight zero\u00bb. -/\ndef Corollary_39_ZeroWeight : Prop :=\n  \u2200 k \u2265 3, (ZeroWeightKClique k).SolvedInTime (k - \u03b5_T * (k / 3 : Nat))\n\nend EndStatement\n",
+      "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L1-L139",
+      "tags": [
+        "algorithms",
+        "source-specification",
+        "truly-subcubic-apsp",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "98401c42-3a22-4105-8405-f9a760db57a4",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-06T07:22:20.258484+00:00"
+        },
+        {
+          "audit_id": "fdbc3952-7980-41be-b395-11d80ecde6e7",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-06T07:22:28.320861+00:00"
+        },
+        {
+          "audit_id": "3603a12c-33d7-4bb8-b2fc-b2f40c23bdc3",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-09T01:38:57.130988+00:00"
+        },
+        {
+          "audit_id": "fb3b6543-2ac0-407f-a0cb-7736ded2f141",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-13T19:38:11.918622+00:00"
+        },
+        {
+          "audit_id": "fc5812f8-4087-43cb-9535-79f6b1fcbc5b",
+          "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+          "reviewer_username": "Yuxuan Xu",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-13T20:30:08.35446+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "faf3da56-8bce-41db-b7fb-332e1861ada2",
+      "theorem_name": "ThreeSum1962.threeSum_bound",
+      "theorem_title": "Deterministic 3SUM in $O(n^{1.962})$ word-RAM steps",
+      "status": "Open",
+      "formal_statement": "theorem ThreeSum1962.threeSum_bound :\n    EndStatement.ThreeSum.SolvedInTime 1.962 := by sorry",
+      "natural_language_statement": "For every fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural constant $b$, and a step-bound function $T$ that work for every input size $n$ and every word width $W\\ge b(\\operatorname{Nat.log2}(n)+1)$. On integers $x_0,\\ldots,x_{n-1}$ with $|x_i|\\le n^\\kappa$, the program halts within $T(n)$ steps and accepts exactly when there are pairwise distinct indices $i,j,k$ with $x_i+x_j+x_k=0$.\n\nFor the rational exponent $r=1.962$, the bound is the foundation definition `EndStatement.BigO T r`: there is a natural constant $K$ such that $T(n)^{r.\\mathrm{den}}\\le K n^{r.\\mathrm{num}.\\mathrm{toNat}}$ for every $n\\ge2$. For nonnegative $r$, this is $T(n)=O(n^r)$. Repeated values at distinct positions are allowed; no witness triple is required, and inputs with $n<3$ must be rejected.\n\nUse the foundation mission\u2019s existing definitions without restating them.\n\nThe exponent is exactly $981/500$. The source theorem is `Race.bound`, proved by `ThreeSum.solvedInTime_981_500`; the source repository reports completed local proof and axiom checks. The complete proof remains in the cited repository; this proposal includes source links only and does not establish Prove2Me proof acceptance.",
+      "created_at": "2026-10-13T19:37:33.280915+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission.lean#L1-L8; proof: https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/FinalSolver.lean#L17-L24; source commit 2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "3eb8cdaf-5813-4a45-ac4d-39d8f1ecca74",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-13T19:38:12.473384+00:00"
+        },
+        {
+          "audit_id": "9f308808-c9de-4668-b892-7cf10571a323",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-13T19:39:07.669725+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "faf3da56-8bce-41db-b7fb-332e1861ada2",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

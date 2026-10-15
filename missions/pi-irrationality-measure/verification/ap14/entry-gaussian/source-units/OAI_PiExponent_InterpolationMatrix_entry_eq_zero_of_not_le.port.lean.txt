@@ -1,0 +1,12 @@
+theorem entry_eq_zero_of_not_le {m : ℕ} (r : Fin m → ℂ)
+    (G : Fin m → Polynomial ℂ) (j s : ℕ) (β : Fin m → ℕ)
+    (h : ℕ) (α : Fin m → ℕ) (hβα : ¬ ∀ i, β i ≤ α i) :
+    entry r G j s β h α = 0 := by
+  classical
+  push Not at hβα
+  obtain ⟨i, hi⟩ := hβα
+  rw [entry_eq_binomial_product]
+  have hprod : (∏ k, ((α k).choose (β k) : ℂ)) = 0 := by
+    apply Finset.prod_eq_zero (Finset.mem_univ i)
+    simp [Nat.choose_eq_zero_of_lt hi]
+  rw [hprod, zero_mul]

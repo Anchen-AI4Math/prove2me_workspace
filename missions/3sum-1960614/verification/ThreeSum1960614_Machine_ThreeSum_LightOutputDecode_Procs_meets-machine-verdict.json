@@ -1,0 +1,15 @@
+{
+  "id": "937d3b57-16b3-4c1c-ad03-88016c30fc5f",
+  "theorem_id": "d50195db-08df-4c19-ad9b-016ff332bbaf",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:28:07.148331+00:00",
+  "updated_at": "2026-10-15T07:30:35.713226+00:00",
+  "explanation": "This connects every physical global output to its original occurrence and mask rows. Its two output arrays recover schedule occurrences and the original layer masks while accumulating the occurrence-only code.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightOutputDecode.Procs.meets",
+  "theorem_title": "Execution of complete output-record decoding",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightOutputDecode.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightOutputDecode.Procs P pMain)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+2 < lim.depth)\n    (hT : 1 \u2264 T) (hM : 1 \u2264 M) (hk : k \u2264 V)\n    (hmask : masks+M \u2264 dst) (hsep : dst+J+J \u2264 work)\n    (hspace : _root_.ThreeSum.LightOutputDecode.space work V \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightOutputDecode.word V T M J U : \u2124) \u2264 lim.word)\n    (hf : \u2200 s < M, f s \u2264 U) (hread : \u2200 s < M, \u03bc (masks+s)=(f s : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [k,J,T,M,masks,dst,work] \u03bc (_root_.ThreeSum.LightOutputDecode.time J V)\n      (fun r \u03bd => r=(_root_.ThreeSum.OutputDecodeOccurrenceCode.code T M J k : \u2124) \u2227\n        (\u2200 j < J, \u03bd (dst+j)=(((_root_.ThreeSum.OutputDecodeOrder.indices (T*M) J k).getD j 0/M : \u2115) : \u2124)) \u2227\n        (\u2200 j < J, \u03bd (dst+J+j)=(f ((_root_.ThreeSum.OutputDecodeOrder.indices (T*M) J k).getD j 0%M) : \u2124)) \u2227\n        _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd dst) := by sorry",
+  "theorem_natural_language_statement": "Let $T,M\\ge1$, $k\\le V$ and $J,U\\in\\mathbb N$. Suppose a length-$M$ mask table $f(s)\\le U$ is stored in memory $\\mu$ before output base $b$, with $b+2J\\le w$ before scratch. Let $\\lambda,P,d$ be run limits, program and depth, and let the literal procedure record identify the output decoder and its division/digit callees. Assume addresses fit words, the exact decoder space and word budgets fit and $d+2$ is strictly below the call limit. For the forward base-$TM$ digits $z_j$ of $k$, the procedure writes\n\n$$\\nu(b+j)=\\lfloor z_j/M\\rfloor,\\qquad\\nu(b+J+j)=f(z_j\\bmod M),$$\n\nreturns the occurrence-only radix-$T$ code, meets its stated time and preserves cells below $b$.\n\nThis connects every physical global output to its original occurrence and mask rows.",
+  "theorem_status": "Proved"
+}

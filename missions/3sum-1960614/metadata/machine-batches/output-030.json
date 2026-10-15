@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.Light.Emod.sign_ends",
+    "theorem_title": "Correcting the sign of an integer remainder",
+    "natural_language_statement": "Assume the remainder precondition for limits $L$, modulus $M$, value bound $V$, and scratch base $f$, and let $a=|x|$. Starting with frame $[x,M,f,a\\bmod M,0,t]$ and arbitrary memory $\\mu'$, the sign-correction block returns $x\\bmod M$ in local zero within 12 light steps and preserves memory.\n\nThis block establishes canonical signed remainders for original integer values before histogram and bucket construction.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the signed-remainder correction and use the absolute-value remainder identity. This block establishes canonical signed remainders for original integer values before histogram and bucket construction."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.log2_meets",
+    "theorem_title": "Computing the binary logarithm",
+    "natural_language_statement": "For natural $x$, assume the binary-logarithm body is installed at procedure $p$ and $2x+2$ fits a word. Its call on $x$ returns $\\lfloor\\log_2x\\rfloor$, using the natural logarithm convention at zero, within its declared time and preserves memory.\n\nThis arithmetic procedure computes the exact input bit count used by the integer parameter schedule.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply the logarithm loop specification to the procedure call. This arithmetic procedure computes the exact input bit count used by the integer parameter schedule."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.clog2_meets",
+    "theorem_title": "Computing the ceiling binary logarithm",
+    "natural_language_statement": "For natural $x$, assume the ceiling-logarithm body is installed and $2x+1$ fits a word. The call returns the natural ceiling logarithm $\\operatorname{clog}_2x$ within the declared time and preserves memory.\n\nThis arithmetic procedure supplies the ceiling logarithm appearing in padded lengths and finite recursion bounds.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply the ceiling-logarithm loop invariant and stopping condition. This arithmetic procedure supplies the ceiling logarithm appearing in padded lengths and finite recursion bounds."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.cbrtCeil_meets",
+    "theorem_title": "Computing the ceiling cube root",
+    "natural_language_statement": "For natural $n$, assume the cube-root body is installed and $8n+1$ fits a word. The call returns the defined least cube-root ceiling $\\operatorname{cbrtLeast}(n)$ within its stated time and preserves memory.\n\nThis arithmetic procedure supplies the rounded cube-root scale used by the executed initial block schedule.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the exact finite cube-root specification. This arithmetic procedure supplies the rounded cube-root scale used by the executed initial block schedule."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.half_meets",
+    "theorem_title": "Computing the ceiling half",
+    "natural_language_statement": "For natural $h$, assume the halving body is installed and $h+1$ fits a word. The call returns $$\\left\\lfloor\\frac{h+1}{2}\\right\\rfloor$$ within its declared time and preserves memory.\n\nThis arithmetic procedure supplies the ceiling-half value used by recursive splitting and scale initialization.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the counting loop and identify its rounded-half result. This arithmetic procedure supplies the ceiling-half value used by recursive splitting and scale initialization."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.merge_meets",
+    "theorem_title": "Merging two stored sorted arrays",
+    "natural_language_statement": "Suppose the merge precondition holds for limits $L$, initial memory $\\mu$, source bases $a,b$, destination $o$, and integer lists $l,r$, and the merge body is installed. The call writes $l.\\operatorname{merge}(r)$ at $o$ within the merge time for $|l|+|r|$, changing only that destination window.\n\nThis merge contract supplies the stable sorted-array step required by normalization and packed catalog indexing.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply the merge execution invariant to the complete source lists. This merge contract supplies the stable sorted-array step required by normalization and packed catalog indexing."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.sqrt_meets",
+    "theorem_title": "Computing the natural square root",
+    "natural_language_statement": "For natural $K$, assume the square-root body is installed and $3K+4$ fits a word. The call returns $\\lfloor\\sqrt K\\rfloor$ within the declared time and preserves memory.\n\nThis arithmetic contract supplies exact square-root values used by selected-prime and parameter initialization.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the exact square-root loop specification. This arithmetic contract supplies exact square-root values used by selected-prime and parameter initialization."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Ends.for",
+    "theorem_title": "A timed rule for counting loops",
+    "natural_language_statement": "Let $i$ be the counter, $n$ the iteration count, $b$ a body-time bound, $I(j,\\sigma)$ an invariant, and $Q$ the final postcondition. Assume initialization at zero, a body step preserving counter $j$ and establishing the next invariant after increment, termination at $n$, a safe upper-bound expression evaluating to $n$, and $n$ fitting a word. Then the loop establishes $Q$ whenever $$n(\\operatorname{cost}(\\mathrm{hi})+b+7)+\\operatorname{cost}(\\mathrm{hi})+5\\le T.$$\n\nThis counting-loop rule accounts for tests, increments, body execution, and the terminal test in concrete program costs.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Compose initialization, the bounded while loop, and the invariant transition. This counting-loop rule accounts for tests, increments, body execution, and the terminal test in concrete program costs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.fits_of_small",
+    "theorem_title": "Small light limits fit the target machine width",
+    "natural_language_statement": "Let program $P$, decision flag $\\delta$, parameter list $v$, limits $L$, width $W$, and natural envelope constants $s,k,r,b$ be given. If $L$ is small with parameters $s,k,v$, $v$ is admissible at width $W$, $|v|\\le r$, and the compiler slope is at most $b$, then the compiled dispatcher and required stack cells satisfy the compiler fit predicate at width $W$.\n\nThis fit theorem discharges the finite machine-width obligations when compiling a complete light-language solver.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply admissibility to the polynomial word and address bounds. This fit theorem discharges the finite machine-width obligations when compiling a complete light-language solver."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Wrap.body_ends",
+    "theorem_title": "Executing a benchmark wrapper around a light solver",
+    "natural_language_statement": "Let $w$ wrap benchmark problem $Q$ into a light task with decision flag $\\delta$. Suppose program $P$ at procedure $p$ solves that task with time $T(n,U)$ and needs $N(n,U)$. For bounded input $x$ with $x.n\\ge1$, $x.U=x.n^\\kappa$, and enough wrapper room, the appended top body starts in the benchmark input memory, reaches the correct answered predicate, and takes at most $T(x.n,x.U)+\\operatorname{bodySteps}(\\kappa)$.\n\nThis wrapper execution connects the task solver to the benchmark input layout and exact answer predicate.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the wrapper setup, apply the supplied solver contract, and interpret its result as the benchmark answer. This wrapper execution connects the task solver to the benchmark input layout and exact answer predicate."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSumApsp.FromClaims.solvedAt_of_realized",
+    "theorem_title": "A realized time bound yields a solved-at exponent",
+    "natural_language_statement": "Let $Q$ be a benchmark problem and let real-valued time model $T$ be realized on the word RAM. If, for natural $\\kappa,e$ and real $C,a$, eventually $$T(n,n^\\kappa)\\le Cn^a(\\log n)^e,$$ then $Q$ satisfies the formal solved-at predicate with input-value exponent $\\kappa$, size exponent $a$, and logarithmic exponent $e$.\n\nThis implication transfers a realized machine time with logarithmic overhead to the formal solved-at statement.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Specialize realization to polynomially bounded input values and transfer the eventual estimate. This implication transfers a realized machine time with logarithmic overhead to the formal solved-at statement."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandCandidateRows.seg_rect",
+    "theorem_title": "Rectangular candidate cells form the flattened record array",
+    "natural_language_statement": "For natural rectangle dimensions $m,n$, record map $F(i,j)$, destination $o$, and memory $\\mu$, suppose each valid pair $(i,j)$ stores the four cells of $F(i,j)$ at $o+4(in+j)$. Then the full flattened rectangular record list is stored contiguously at $o$.\n\nThis representation lemma assembles individual four-cell candidate records into their contiguous physical table.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Flatten the row-major rectangle and concatenate the individual record segments. This representation lemma assembles individual four-cell candidate records into their contiguous physical table."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize_log_rate",
+    "theorem_title": "Logarithmic rate of the integer band size",
+    "natural_language_statement": "The actual rounded band size satisfies $$\\frac{\\log(\\operatorname{bandSize}(n))}{\\log n}\\longrightarrow\\varepsilon(E+\\operatorname{bandShift})\\quad(n\\to\\infty).$$\n\nThis limit determines the actual rounded band-size exponent used in preprocessing and weighted-score estimates.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Combine the band-root and divisor rates with integer-rounding control. This limit determines the actual rounded band-size exponent used in preprocessing and weighted-score estimates."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockForced.transformPrefixValue_eq_bucket_sum",
+    "theorem_title": "The signed prefix transform equals the exact bucket mass",
+    "natural_language_statement": "Fix dimensions $h,J$, integer modulus and shift $P,d$, finite index sets $B,C$ with value maps $b,c$, output $q$, fixed blocks $I$, and rows $u_i\\subseteq\\operatorname{outputRows}(q,i)$ of cardinality $h$ on $I$. The signed transform-prefix value equals the natural sum of left-times-right bucket sizes over all completed tuples consistent with these rows.\n\nThis equality justifies interpreting a signed subset computation as a nonnegative count of original-index incidences.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use subset-transform cancellation and the completed bucket-product expansion. This equality justifies interpreting a signed subset computation as a nonnegative count of original-index incidences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.dimensions",
+    "theorem_title": "Basic encoded-color dimensions fit the common scale",
+    "natural_language_statement": "For every input length $n$, the common scale bounds width plus one, block count plus one, total block size plus one, band size, and radix. All quantities are the actual integer schedule values.\n\nThese basic dimension inequalities provide common finite bounds for the many explicit selected-color resource formulas.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply the constituent bounds of the defined scale envelope. These basic dimension inequalities provide common finite bounds for the many explicit selected-color resource formulas."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.schedule_power_le",
+    "theorem_title": "Replicated schedules fit a cubic scale envelope",
+    "natural_language_statement": "For input length $n$, local size $h=\\operatorname{half}(n)$ and block count $J$, $$\\bigl(\\operatorname{scheduleSize}(h)+1\\bigr)^{J+1}\\le2\\operatorname{scale}(n)^3.$$\n\nThis schedule estimate bounds occurrence replication by a polynomial in the common finite scale.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Compare the finite replicated schedule with the common magnitude scale. This schedule estimate bounds occurrence replication by a polynomial in the common finite scale."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.encoder_le",
+    "theorem_title": "The encoder count fits a cubic scale envelope",
+    "natural_language_statement": "For every natural input length $n$, $$\\operatorname{encoderCount}(n)\\le2\\operatorname{scale}(n)^3.$$\n\nThis encoder estimate bounds the finite preprocessing charge inside the common polynomial resource envelope.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the encoder factors by the common scale. This encoder estimate bounds the finite preprocessing charge inside the common polynomial resource envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.incidence_length_le_magnitude",
+    "theorem_title": "Physical wanted incidences fit the reporting magnitude",
+    "natural_language_statement": "If memory stores the full selected-color pipeline for size $n$, original input, and strictly increasing normalized lists $A,B,C$, then the derived wanted configuration has physical incidence count $$N\\le3\\operatorname{magnitude}(n)^3.$$\n\nThis physical count bound supplies finite allocation and word capacity for the actual wanted-incidence array.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the stored pipeline count identities and the common reporting envelope. This physical count bound supplies finite allocation and word capacity for the actual wanted-incidence array."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandCandidatesRow.meets",
+    "theorem_title": "Constructing a full row of band-candidate records",
+    "natural_language_statement": "Suppose the row and mode-specific cell bodies are installed. A stored length-$n$ source $f$, outer index, and each source value are bounded by $U$; source precedes the four-cell-per-record destination, the destination fits, addresses fit words, $U+10$ fits a word, and one call level is available. The row call writes each $\\operatorname{make}(\\mathrm{mode},\\mathrm{outer},j,f(j))$ and changes only the $4n$ destination cells, within its declared time.\n\nThis row contract builds the literal physical candidate records used by the later owner-table and scoring stages.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Iterate the single-cell specification with a stored-prefix invariant. This row contract builds the literal physical candidate records used by the later owner-table and scoring stages."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandPartition.upper_meets",
+    "theorem_title": "Writing all upper endpoints of a band partition",
+    "natural_language_statement": "For source values $f$ of length $n$ and positive band size $g$, assume the source precedes the destination, endpoint storage fits memory, addresses fit words, and $n+g+2$ fits a word. The upper-endpoint procedure writes $f(\\operatorname{stop}(n,g,i)-1)$ for each band $i$ within the stated time, preserving all cells outside the endpoint array.\n\nThis endpoint contract constructs the upper band bounds consumed by physical owner lookup and normalization.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute one endpoint store for every band and use the exact stop formula. This endpoint contract constructs the upper band bounds consumed by physical owner lookup and normalization."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawAResources.cells_bound",
+    "theorem_title": "Original-incidence cells fit their finite envelope",
+    "natural_language_statement": "For every input length $n$, the original-$A$ incidence cell requirement at width $\\operatorname{inputBits}(n)+1$, input count $n$, and actual band size is at most the explicitly defined resource envelope.\n\nThis allocation bound covers all parallel original-A incidence arrays used by the concrete reporting pipeline.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound all three parallel arrays and associated controls by the finite envelope. This allocation bound covers all parallel original-A incidence arrays used by the concrete reporting pipeline."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandTable.row_meets",
+    "theorem_title": "Constructing a band-lookup table row",
+    "natural_language_statement": "Let stored values $f$ of length $n$, endpoint arrays $\\mathrm{lo},\\mathrm{hi}$ of length $m$, and a width-$W$ power table satisfy the stated ordered-disjoint layout and memory bounds. Assume nondecreasing lower endpoints, $m<2^W$, query $|x|\\le U$, source values bounded by $U$, sign $|s|\\le1$, required word bounds, and depth $d+W+2$. The installed row, lookup, and search procedures write each semantic row value at the destination, within the row-time bound, changing only that row.\n\nThis row contract computes the owner lookup values needed to construct the complete band-enumeration tables.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Iterate the verified lookup for the signed queries while preserving all source arrays. This row contract computes the owner lookup values needed to construct the complete band-enumeration tables."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockSourceBatchProgram.time_bound",
+    "theorem_title": "Batch source construction is bounded by compact capacity",
+    "natural_language_statement": "For natural count $N$, dimensions $h,J$, and cutoff $c\\le464hJ$, $$\\operatorname{batchTime}(N,h,J,c)\\le(N+1)(\\operatorname{factor}(h,J)+720)(\\operatorname{downsetCap}(464hJ,c)+1).$$\n\nThis batch estimate retains the occurrence count and compact capacity factors in source-construction accounting.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Sum the per-bank retained-source bound and loop overhead. This batch estimate retains the occurrence count and compact capacity factors in source-construction accounting."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBooleanDot.meets",
+    "theorem_title": "Computing the Boolean dot product",
+    "natural_language_statement": "Suppose two stored arrays $f,g$ of length $n$ have values at most one. If their extents fit memory, addresses fit words, and one fits a word, the installed Boolean-dot procedure returns the exact Boolean-dot value within its declared time and preserves memory.\n\nThis Boolean operation computes row coverage against the current active set in the executed greedy-cover algorithm.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the scan and maintain the Boolean accumulation invariant. This Boolean operation computes row coverage against the current active set in the executed greedy-cover algorithm."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightClassFilter.meets",
+    "theorem_title": "Filtering one scaled color class",
+    "natural_language_statement": "Let an integer array $x$ and colors $c(i)<3$ of length $n$ be stored before destination $o$. For wanted color $w<3$, scaling factor $|s|\\le1$, values $|x(i)|\\le U$, and the stated memory and word bounds, the filter returns and stores the selected-list length, writes the scaled selected items after its header, and changes only the reserved $n+1$ destination cells.\n\nThis filter contract constructs each actual color class and its length header from original input values.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Scan in input order and maintain the exact filtered prefix and count. This filter contract constructs each actual color class and its length header from original input values."
+  }
+]

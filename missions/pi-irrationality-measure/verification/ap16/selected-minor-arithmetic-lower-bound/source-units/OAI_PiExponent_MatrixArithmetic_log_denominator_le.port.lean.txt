@@ -1,0 +1,10 @@
+theorem log_denominator_le {m : ℕ} {q : Fin m → ℕ} (F v0 H : ℝ)
+    (hF : 0 ≤ F) (hv0 : 0 < v0) (hH : 0 < H)
+    (hw : ∀ i, 0 < logWeights q i) :
+    Real.log (denominator q (truncationOrders q F v0) H) ≤
+      H * (Arithmetic.lcmConstant * F * m / v0 +
+        Arithmetic.lcmConstant * ∑ i, 1 / logWeights q i) := by
+  have h := Arithmetic.truncation_denominator_log_le Finset.univ
+    (logWeights q) F v0 H hF hv0 hH (fun i _ => hw i)
+  rw [div_le_iff₀ hH] at h
+  simpa [denominator, truncationOrders, mul_comm H] using h

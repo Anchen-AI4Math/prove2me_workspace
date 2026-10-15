@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.cell_le",
+    "theorem_title": "A uniform bound for one shared catalog cell",
+    "natural_language_statement": "For natural $h,J,k,c$, if $k$ is below the number of stored reporting levels for $J$ blocks, then $$\\operatorname{cellSize}(h,J,k,c)\\le\\operatorname{cellBound}(h,J).$$ The cutoff $c$ is arbitrary.\n\nBounds each physical catalog cell by the common reservation. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds each physical catalog cell by the common reservation. The estimate is uniform in the box cutoff and supplies the per-level cell reservation used by the shared bank."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.query_scratch",
+    "theorem_title": "The query reservation supplies level scratch",
+    "natural_language_statement": "Let $\\ell$ be Light limits and $h,J,k$ local parameters with $k$ at most the terminal depth. Choose any reporting bank, occurrence, and independent band indices. If the query-mask buffer ends before the work pointer, the reserved work interval ends within $\\ell$'s space, and the stated query-word bound fits in $\\ell$'s word limit, then the selected level catalog satisfies its complete scratch contract for the two actual finite band sizes.\n\nInstantiates the query scratch interface from uniform reservations. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Instantiates the query scratch interface from uniform reservations. The mask interval, work interval, and arithmetic word bound are supplied separately for the actual selected level catalog."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.components",
+    "theorem_title": "All component resource bounds hold at every input size",
+    "natural_language_statement": "For every natural input size $n$, the collection of component bounds in the specified shared reporting-bank resource interface holds: $$\\operatorname{Components}(n).$$\n\nPackages the component estimates used to combine the concrete resource allocations. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Packages the component estimates used to combine the concrete resource allocations. The packaged predicate provides the component inequalities needed before word, space, and depth requirements can be composed."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_selected_ends",
+    "theorem_title": "Persistent allocation ends bound selected wanted sources",
+    "natural_language_statement": "Let the positive band width be $g$, the selected band indices be valid for source lengths $N_B,N_C$, and the occurrence code be below the occurrence-bank count. Suppose the two original source arrays, pair catalog, complete source banks, occurrence rows, and cover-key payload satisfy their stated allocation-end bounds at address $s$, with the occurrence rows ending before the bank. Then the concrete retained selector satisfies every individual source-end bound at $s$.\n\nConnects whole persistent allocations to the exact selected pointers passed to wanted reporting. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects whole persistent allocations to the exact selected pointers passed to wanted reporting. The valid occurrence code and independent band indices select rows whose individual header, histogram, and stage ends are already controlled."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead_powerBound",
+    "theorem_title": "The shared reporting overhead has exponent zero",
+    "natural_language_statement": "The explicit overhead function $H:\\mathbb N\\to\\mathbb N$ for shared reporting satisfies $$\\operatorname{PowerBound}(H,0).$$\n\nSeparates the low-growth overhead from the main combinatorial ledger terms. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Separates the low-growth overhead from the main combinatorial ledger terms. The exponent-zero power bound lets the explicit shared construction overhead be combined with the prefix-box exponent."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time_le_boxes",
+    "theorem_title": "Shared preprocessing is charged to prefix boxes",
+    "natural_language_statement": "Let $n,k\\in\\mathbb N$, with $k$ at most the executable block count. Then $$T_{\\mathrm{shared}}(n,k)\\le H(n)B_{\\mathrm{prefix}}(n,k),$$ where $H$ is the shared overhead and $B_{\\mathrm{prefix}}$ the exact prefix-box ledger term.\n\nCharges actual shared preprocessing to the intended box count. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Charges actual shared preprocessing to the intended box count. The valid-depth premise links each executed shared level to the matching depth-dependent box count in the ledger."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.terminal_charge_le",
+    "theorem_title": "A concrete bound for terminal-frontier overhead",
+    "natural_language_statement": "For all $h,J,K\\in\\mathbb N$, let $s(h,J)$ be the specified size envelope. The terminal-frontier charge satisfies $$\\operatorname{charge}(h,J,K)+240\\le31000s(h,J)^2\\,2^{(J-K)(2h)}.$$ Natural subtraction is used in $J-K$.\n\nBounds terminal enumeration overhead by the remaining balanced-choice envelope. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds terminal enumeration overhead by the remaining balanced-choice envelope. The charge retains its concrete factor $31000$ and the remaining-choice factor $2^{(J-K)(2h)}$."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initial_le_layer",
+    "theorem_title": "Initial traversal cost is charged to the root layer",
+    "natural_language_statement": "Let $h,J,K\\in\\mathbb N$, $K\\le J$, and let $D$ assign a catalog to each level. Suppose the initial missing-cardinality threshold $t_0$ is at most half of the initial residual size $r_0$. Then $$\\operatorname{initialUnit}(h,J,D,K)\\le\\operatorname{overhead}(h,J)\\binom{r_0}{t_0}.$$\n\nPlaces initialization within the root query-layer charge. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Places initialization within the root query-layer charge. The initial threshold is restricted to half the residual size, allowing the root layer count to cover initialization work."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget",
+    "theorem_title": "A guarded prefix recurrence fits the dispatch budget",
+    "natural_language_statement": "Let $T,m:\\mathbb N\\to\\mathbb N$ be accumulated time and per-slot mass. Suppose $T(0)\\le30$ and every increment is bounded by the specified query/scalar overhead plus the mass-weighted traversal charge only when the running prefix mass remains within threshold $q$. If the processed count is at most the uniform wanted budget and $q$ is at most the uniform false budget times the representation bound, then $$T(\\mathrm{count})\\le\\operatorname{dispatchBudget}(c,k,n),$$ for the natural scalar overhead parameter $c$, magnitude exponent $k$, and size $n$.\n\nSums the actual threshold-sensitive scan recurrence into its uniform ledger budget. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Sums the actual threshold-sensitive scan recurrence into its uniform ledger budget. The recurrence charges expensive traversal only before threshold overflow, while the wanted-count and threshold budgets control the total."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBankLayout.bank_of_kept",
+    "theorem_title": "A retained source bank survives writes after its work boundary",
+    "natural_language_statement": "Let a source-bank predicate hold in memory $\\mu$ for finite source index types, integer source values, modulus, shift, and a global output record. Assume the bank index is below its count. If $\\nu$ agrees with $\\mu$ below address $b$ and the complete bank layout's work boundary is at most $b$, then the same bank predicate holds in $\\nu$.\n\nPreserves previously built stage families during later allocations. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Preserves previously built stage families during later allocations. The work boundary lies before the preserved cutoff, so the stored source-stage families and their header pointers remain valid."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount",
+    "theorem_title": "All original-band bank spans fit the encoder envelope",
+    "natural_language_statement": "Let $G,n\\in\\mathbb N$ with $G$ no greater than the cost-ledger band count. Evaluate $h,J,c$ at the executable half-size, block count, and inner size for $n$. Then $$G\\operatorname{span}(h,J,c)\\le\\operatorname{storageFactor}(n)\\operatorname{encoderCount}(n).$$\n\nBounds persistent source-bank storage by the encoder-count envelope. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds persistent source-bank storage by the encoder-count envelope. The factor for all common bands is controlled before the source-bank construction is combined with the rest of the allocation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandCosts.time_le_encoderCount",
+    "theorem_title": "Source-band construction is bounded by encoder count",
+    "natural_language_statement": "Let $N,n,p,U,D\\in\\mathbb N$ with $N\\le n$. For the executable band width and global modulus at size $n$, the source-band setup time is at most $$\\bigl(1016(\\lfloor\\log_2(U+1)\\rfloor+\\lfloor\\log_2(p+D+1)\\rfloor+1)+1946\\bigr)\\operatorname{encoderCount}(n)+560.$$\n\nRetains all residue, histogram, and bucket construction charges in a uniform original-size bound. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains all residue, histogram, and bucket construction charges in a uniform original-size bound. The explicit logarithmic factors retain dependence on input magnitude and modulus controls rather than treating arithmetic as free."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Data.transfer",
+    "theorem_title": "Transfer of source-pair data under suffix agreement",
+    "natural_language_statement": "Let the source-band-pair data predicate hold in integer memory $\\mu$, with positive residue count $m$. If memory $\\nu$ agrees with $\\mu$ at every address at or after the pair's left-data base, then the same source functions, lengths, band width, prime, modulus, and shift satisfy that data predicate in $\\nu$.\n\nAllows a preserved suffix of memory to retain the source-pair interpretation. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Allows a preserved suffix of memory to retain the source-pair interpretation. Agreement from the left-data base onward retains the complete catalog data required by both source orientations."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandPairData.Stored.of_kept",
+    "theorem_title": "Stored source-pair catalogs survive later writes",
+    "natural_language_statement": "Let a complete source-pair stored predicate hold in memory $\\mu$, with positive residue count. If $\\nu$ agrees with $\\mu$ below address $b$ and the catalog's next-free address is at most $b$, then the same stored predicate holds in $\\nu$.\n\nPreserves both catalog headers and bucket data under later allocation. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Preserves both catalog headers and bucket data under later allocation. The complete next-free address is bounded by the preserved cutoff, which covers headers as well as the stored bucket arrays."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored.mem_bucketList",
+    "theorem_title": "Membership in a stored residue bucket",
+    "natural_language_statement": "Let a stored bucket structure represent a key function $q$ on $N$ indices with $q(i)<M$ for every $i<N$. For a residue $r<M$, the actual bucket list satisfies $$i\\in\\operatorname{bucketList}(r)\\iff i<N\\ \\land\\ q(i)=r.$$ The list is read from its stored offset and histogram count.\n\nConnects physical bucket fibers to exact original indices. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects physical bucket fibers to exact original indices. The equivalence identifies the precise original-index fiber of a residue, including repeated keys at different source positions."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceFiniteData.Normalized.keep",
+    "theorem_title": "Normalized source data survive writes beyond their allocation",
+    "natural_language_statement": "Let normalized strictly sorted lists $A,B,C$ and their original color-class lists be represented in memory $\\mu$ by the normalized-source predicate, for positive band width $g$. Assume each original list has length at most $n$. If $\\nu$ agrees with $\\mu$ below $b$, and every value segment, endpoint header, owner table, four-cell owner record array, and packed raw-$A$ catalog satisfies the displayed end bound at $b$, then the same normalized-source predicate holds in $\\nu$.\n\nRetains the original normalized witnesses throughout later source and reporting construction. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains the original normalized witnesses throughout later source and reporting construction. The same sorted lists and membership witnesses remain available after all writes outside their explicitly reserved regions."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices_log_rate",
+    "theorem_title": "Logarithmic growth of terminal choices",
+    "natural_language_statement": "Let $C_{\\mathrm{term}}(n)$ be the terminal-choice count, $\\varepsilon$ the inner-size fraction, and $\\tau$ the terminal fraction. Then $$\\lim_{n\\to\\infty}\\frac{\\log C_{\\mathrm{term}}(n)}{\\log n}=\\varepsilon(1-\\tau).$$\n\nIdentifies the terminal combinatorial exponent in the runtime ledger. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Identifies the terminal combinatorial exponent in the runtime ledger. The remaining depth fraction produces exponent $\\varepsilon(1-\\tau)$ for the concrete terminal candidate count."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.StoredReporting.positivePrefix_valid",
+    "theorem_title": "A positive prefix query certifies a valid block prefix",
+    "natural_language_statement": "Let $I$ be a finite set of raw incidences, $w$ a wanted label, and $p$ a list of local subsets at natural depth $k\\le J$. If the exact prefix query has positive mass, $$\\operatorname{prefixQuery}(I,w,k,p)>0,$$ then $p$ is a valid length-$k$ prefix for the output record carried by $w$.\n\nJustifies prefix validity for every retained positive reporting branch. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Justifies prefix validity for every retained positive reporting branch. Positive raw incidence mass certifies the cardinality and containment constraints required by subsequent child enumeration."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResources.poly_need",
+    "theorem_title": "Polynomial resources for the complete wanted host",
+    "natural_language_statement": "The explicit resource function $\\operatorname{need}(n,U)$ of the complete fast wanted-header loader and scan satisfies the Light polynomial-resource predicate: $$\\operatorname{PolyNeed}(\\operatorname{need}).$$\n\nProvides a uniform polynomial word, cell, and depth envelope for this concrete stage. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides a uniform polynomial word, cell, and depth envelope for this concrete stage. The exact wanted-host resource function can therefore be supplied to the task-to-word-RAM wrapper with polynomial limits."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.localLength_log_rate",
+    "theorem_title": "Negligible local schedule-length exponent",
+    "natural_language_statement": "For the specified local length $L(h)$ at natural local scale $h$, $$\\lim_{h\\to\\infty}\\frac{\\log L(h)}{2h\\log2}=0.$$\n\nControls schedule and representation overhead before replication. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls schedule and representation overhead before replication. This local logarithmic rate vanishes before replication across blocks, controlling the schedule factor in global bounds."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.WantedPairs.pairs_nodup",
+    "theorem_title": "The actual wanted-pair list has no duplicates",
+    "natural_language_statement": "Let a stored right-bucket structure represent $N_R$ indices with residue keys below $M$, and let all $N_L$ left residue keys also be below $M$. The pair list generated from these actual buckets is duplicate-free. Distinct original positions remain distinct even when keys coincide.\n\nEnsures cumulative wanted queries count distinct physical pairs. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Ensures cumulative wanted queries count distinct physical pairs. Repeated keys do not duplicate an original-position pair, which is essential when physical query slots become distinct labels."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label_injective",
+    "theorem_title": "Injectivity of wanted-record labels",
+    "natural_language_statement": "Let $x$ be an integer list and let $i,i\\prime<3|x|$ and $j,j\\prime$ be below the complete global-key count for local parameters $h,J$. If the two physical index pairs decode to the same original wanted label, then $$i=i\\prime\\quad\\text{and}\\quad j=j\\prime.$$\n\nTransfers duplicate-freeness of physical pairs to distinct combinatorial labels. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Transfers duplicate-freeness of physical pairs to distinct combinatorial labels. Equality of the decoded label recovers both physical indices, preserving incidence identity despite equal integer values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct",
+    "theorem_title": "Correctness of the complete Light-to-word-RAM compiler",
+    "natural_language_statement": "Let a Light execution of the designated main procedure, from argument frame $[0,i,j]$ and memory $\\mu$, terminate in state $\\sigma\\prime$ with cost $c$. Assume the compiler's explicit $W$-bit fit inequalities for the execution limits, dispatcher, and stack, and assume machine memory $m$ satisfies the input-encoding predicate. Then there is a final machine memory $m\\prime$ such that the compiled program terminates within its specified $\\operatorname{ramSteps}(P,\\delta,c)$ execution bound, returns the verdict decoded from $\\sigma\\prime$ in mode $\\delta$, and satisfies the compiler outcome relation.\n\nConnects every concrete source-level proof to the final word-RAM semantics. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects every concrete source-level proof to the final word-RAM semantics. The machine execution returns the decoded source verdict and the outcome relation, with startup and simulation costs included."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Emod.table_ends",
+    "theorem_title": "Construction of the remainder doubling table",
+    "natural_language_statement": "Under the remainder routine's precondition for limits $\\ell$, positive modulus control $M$, input bound $V$, and scratch base $f$, let $a\\le V$. Starting with the prescribed six-local frame, the doubling-table code ends within $$19r(a,M)+6$$ steps, where $r$ is its specified round count. It returns that count and $M2^{r(a,M)}$ and establishes the exact stored doubling-table predicate.\n\nAccounts for the table-building phase of division-free remainder. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Accounts for the table-building phase of division-free remainder. The constructed table stores exactly the repeated doublings required by the following descending-subtraction phase."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Emod.reduce_ends",
+    "theorem_title": "Descending remainder reduction",
+    "natural_language_statement": "Under the remainder precondition, let $a\\le V$ and suppose the stored doubling table has $r(a,M)$ rounds. From the prescribed frame with remainder candidate $a$ and round count $r(a,M)$, the descending reduction ends within $$24r(a,M)+4$$ steps, leaves memory unchanged, sets the remainder local to $a\\bmod M$, and sets the round counter to zero. The auxiliary local $t\\in\\mathbb Z$ is preserved.\n\nEstablishes the exact arithmetic result and cost of binary remainder reduction. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Establishes the exact arithmetic result and cost of binary remainder reduction. The reduction produces the natural remainder and clears its round counter without changing the stored memory table."
+  }
+]

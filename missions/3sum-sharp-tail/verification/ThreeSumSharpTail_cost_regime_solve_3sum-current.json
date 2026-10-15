@@ -1,0 +1,23 @@
+{
+  "theorem_id": "421030db-0ca7-4fd3-af76-166d00b6be18",
+  "theorem_name": "ThreeSumSharpTail.cost_regime_solve_3sum",
+  "theorem_title": "Finite pruned program cost regime implies the 3SUM exponent",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.cost_regime_solve_3sum\n    (G : Light.Sec4.RatParams) (a s r : ℚ)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hsHalf : s < 1 / 2)\n    (hcost : ∃ C : ℝ, 0 ≤ C ∧ ∀ N D : ℕ,\n      1 ≤ D → (D : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n      Light.Sec4.CostsWithinP G C N D\n        ((N : ℝ) ^ 2 * (Real.log D + 1) ^ 2 / (D : ℝ) ^ (s : ℝ))\n        ((D : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log D + 1)))\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : ℝ) / 2 < 3 - (a : ℝ) * s / 2)\n    (hbuild : 2 + (a : ℝ) * (1 + (s : ℝ) / 2) < 3 - (a : ℝ) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+  "natural_language_statement": "Fix the finite rational parameters G of the published pruned program, and rational a,s,r with 0<a<1 and 0<s<1/2. Suppose a uniform CostsWithinP certificate holds whenever 1<=D<=N^a, with preprocessing bound N^2(log D+1)^2/D^s and query bound D^(1/2-s)(log D+1). If the prime-selection and instance-construction exponents are strictly below 3-as/2, then integer 3SUM is solved on the word RAM in O(n^r) for every r>2-as/4. The conclusion uses the exact shared EndStatement model, including finite programs and all sufficiently large word widths.",
+  "created_at": "2026-10-13T17:55:03.55739+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Definitions.Def_APSP299791_Defs4\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "Algorithmic interface lemma derived from Xu, same manuscript, Sections 3-4, composed with the verified 3sum-apsp pruned program and parameterized all-edges/Exact-Triangle/3SUM reductions. This remaining semantic bridge is a separate open proof obligation, not an additional runtime hypothesis in the original certificate.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

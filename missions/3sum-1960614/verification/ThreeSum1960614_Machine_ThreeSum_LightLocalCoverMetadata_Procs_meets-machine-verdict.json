@@ -1,0 +1,15 @@
+{
+  "id": "24c58384-6f2e-4feb-8665-3e528399831a",
+  "theorem_id": "9563067f-fd9e-4ebf-909d-1b045dd1c243",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:12:53.528414+00:00",
+  "updated_at": "2026-10-15T07:18:46.366392+00:00",
+  "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This metadata contract stores the exact layout pointers read by the remaining local-cover and source programs.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.Procs.meets",
+  "theorem_title": "Writing the twelve local-cover metadata fields",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {base h dst : \u2115}\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+2 \u2264 lim.depth)\n    (hout : dst+12 \u2264 base)\n    (hspace : _root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverLayout.space base h \u2264 lim.space) (hword : (_root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverSetup.word h : \u2124) \u2264 lim.word) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [h,_root_.ThreeSum1960614.Machine.ThreeSum.LocalCoverBounds.localPrime h,_root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverLayout.vertices h,base,dst] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.time h)\n      (fun r \u03bd => r = (_root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.nextFree base h : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bd dst (_root_.ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMetadata.values base h) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bd dst 12) := by sorry",
+  "theorem_natural_language_statement": "For local size $h$, cover base $b$, and twelve-cell header destination $o$ with $o+12\\le b$, assume the metadata placement, cover-layout space and setup-word bounds, word-sized addresses, and depth $d+2$. The procedure writes the exact metadata list, returns the layout-defined next free address, and changes only the header within its stated time.\n\nThis metadata contract stores the exact layout pointers read by the remaining local-cover and source programs.",
+  "theorem_status": "Proved"
+}

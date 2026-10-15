@@ -1,0 +1,9 @@
+theorem cleared_log_trunc_mem (T : ℕ) :
+    Polynomial.C (Nat.lcmUpto T : ℂ) * PowerSeries.trunc T (PowerSeries.log ℂ) ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range := by
+  apply (Polynomial.mem_map_range GaussianInt.toComplex).mpr
+  intro k
+  rw [Polynomial.coeff_C_mul, PowerSeries.coeff_trunc]
+  split_ifs with hk
+  · exact lcm_mul_log_coeff_gaussian T k hk.le
+  · simp

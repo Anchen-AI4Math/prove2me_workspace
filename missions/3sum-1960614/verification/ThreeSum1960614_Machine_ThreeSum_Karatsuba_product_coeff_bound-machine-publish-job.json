@@ -1,0 +1,21 @@
+{
+  "id": "66f73c6d-81c8-4447-8609-8dc714cde868",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.Karatsuba.product_coeff_bound",
+  "theorem_title": "A coefficient bound for polynomial multiplication",
+  "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.Karatsuba.product_coeff_bound {as bs : List \u2124} {n : \u2115} {U : \u2124}\n    (ha : as.length \u2264 n) (hb : bs.length \u2264 n)\n    (hA : _root_.ThreeSum1960614.Machine.ThreeSum.Karatsuba.CoeffBound as U) (hB : _root_.ThreeSum1960614.Machine.ThreeSum.Karatsuba.CoeffBound bs U) (j : \u2115) :\n    |(_root_.ThreeSum.Karatsuba.asPolynomial as * _root_.ThreeSum.Karatsuba.asPolynomial bs).coeff j| \u2264 2 * (n : \u2124) * U ^ 2 := by sorry",
+  "natural_language_statement": "Let integer lists $a,b$ have length at most $n$ and coefficient bound $U$. Every coefficient of their polynomial product satisfies $$|[X^j](A(X)B(X))|\\le2nU^2\\qquad(j\\in\\mathbb N).$$\n\nThis coefficient estimate supplies a safe word bound for the concrete Karatsuba product and its intermediate arrays.",
+  "definitions": "import Definitions.Def_ThreeSum1960614_Machine_Bundle003\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Lean\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Data.List.GetD\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nnamespace Polynomial\nend Polynomial\nnamespace ThreeSum\nend ThreeSum\nnamespace ThreeSum.Karatsuba\nend ThreeSum.Karatsuba\nnamespace ThreeSum1960614.Machine.ThreeSum\nend ThreeSum1960614.Machine.ThreeSum\nnamespace ThreeSum1960614.Machine.ThreeSum.Karatsuba\nend ThreeSum1960614.Machine.ThreeSum.Karatsuba\n\nopen _root_.ThreeSum\nopen _root_.ThreeSum1960614.Machine.ThreeSum\n\nopen _root_.ThreeSum.Karatsuba\nopen _root_.ThreeSum1960614.Machine.ThreeSum.Karatsuba\n\nopen _root_.Polynomial\nopen scoped _root_.BigOperators\n",
+  "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/KaratsubaBounds.lean#L86-L110",
+  "tags": [
+    "3sum-1960614",
+    "formal-verification",
+    "algorithms"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "8528d2c8-becc-4afa-b421-1c48d48184a4",
+  "created_at": "2026-10-15T05:16:25.453323+00:00",
+  "updated_at": "2026-10-15T05:17:06.65703+00:00"
+}

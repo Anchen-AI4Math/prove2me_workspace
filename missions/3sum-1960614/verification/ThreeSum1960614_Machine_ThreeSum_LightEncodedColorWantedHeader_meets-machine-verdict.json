@@ -1,0 +1,15 @@
+{
+  "id": "9fa53459-2186-4578-923c-c5619cdf56b4",
+  "theorem_id": "f2b1c32a-6c92-47bc-9e18-d4d06d8595c8",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:55:44.727015+00:00",
+  "updated_at": "2026-10-15T07:58:04.189861+00:00",
+  "explanation": "This obtains the next physical header from retained construction data rather than external pointer advice.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorWantedHeader.meets",
+  "theorem_title": "Reading the computed wanted-header address",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightEncodedColorWantedHeader.meets {pMain free h J len : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (main : P[pMain]?=some _root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorWantedHeader.body) (hw : (lim.space : \u2124) \u2264 lim.word)\n    (hspace : _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.wantedFree free h J len \u2264 lim.space)\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.LightCoverKeyData.Stored \u03bc free h J) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [free,J,len] \u03bc (_root_.ThreeSum.LightEncodedColorWantedHeader.time J)\n      (fun r \u03bd => r=(_root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.wantedFree free h J len : \u2124) \u2227 \u03bd=\u03bc) := by sorry",
+  "theorem_natural_language_statement": "Let $f,h,J,\\ell\\in\\mathbb N$ be cover base, microblock parameter, block count and A-incidence length. Suppose memory $\\mu$ satisfies the complete retained cover/key-data contract at $f$. For Light limits, program and depth $\\lambda,P,d$, assume the program contains the wanted-header body, addresses fit words and the computed wanted-header address fits memory. Then the call on $(f,J,\\ell)$ returns\n\n$$\\operatorname{wantedFree}(f,h,J,\\ell),$$\n\nwithin its prescribed $J$-dependent time, leaving all memory unchanged.\n\nThis obtains the next physical header from retained construction data rather than external pointer advice.",
+  "theorem_status": "Proved"
+}

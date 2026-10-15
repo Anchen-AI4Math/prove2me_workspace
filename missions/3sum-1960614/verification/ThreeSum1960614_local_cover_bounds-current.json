@@ -1,0 +1,28 @@
+{
+  "theorem_id": "76a91726-7da4-44a8-9973-ec007a038c4c",
+  "theorem_name": "ThreeSum1960614.local_cover_bounds",
+  "theorem_title": "Local-cover incidence and degree bounds for general expansion",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSum1960614.local_cover_bounds (c h : ℕ)\n    (hc : 3 ≤ c) (hh : 0 < h) :\n    Nat.choose (c * (2 * h)) h * Nat.choose (c * (2 * h) - h) h =\n      Nat.choose (c * (2 * h)) (2 * h) * Nat.choose (2 * h) h ∧\n    Nat.choose (c * (2 * h) - h) h ≤ Nat.choose (c * (2 * h)) h ∧\n    Nat.choose (2 * h) h < 2 ^ (2 * h) ∧\n    2 ^ (2 * h) < Nat.choose (c * (2 * h)) (2 * h) ∧\n    Nat.choose (c * (2 * h) - h) h ^ 2 <\n      Nat.choose (c * (2 * h)) (2 * h) * 2 ^ (2 * h) := by sorry",
+  "natural_language_statement": "For natural $c\\ge3$ and $h>0$, set $s=2h$, $L=cs$, $M=\\binom Ls$, $V=\\binom Lh$, $\\Delta=\\binom{L-h}h$, and $G=\\binom sh$. Then $V\\Delta=MG$, $\\Delta\\le V$, $G<2^s<M$, and $\\Delta^2<M2^s$. This finite statement permits expansion 232; it does not by itself establish the global encoding or machine cost.",
+  "created_at": "2026-10-14T05:09:00.418115+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 6; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "---\ndeclaration: ThreeSum1960614.local_cover_bounds\nreadback_model: GPT-6\n---\n\nFor every pair of natural numbers $c,h$ satisfying $3\\le c$ and $0<h$, let $N=c(2h)=2ch$, and let $\\binom{m}{r}$ denote the number of $r$-element subsets of an $m$-element set (with value $0$ when $r>m$). The theorem asserts that all five of the following statements hold simultaneously:\n$$\n\\begin{aligned}\n\\binom{N}{h}\\binom{N-h}{h}\n  &=\\binom{N}{2h}\\binom{2h}{h},\\\\\n\\binom{N-h}{h}\n  &\\le\\binom{N}{h},\\\\\n\\binom{2h}{h}\n  &<2^{2h},\\\\\n2^{2h}\n  &<\\binom{N}{2h},\\\\\n\\left(\\binom{N-h}{h}\\right)^2\n  &<\\binom{N}{2h}\\,2^{2h}.\n\\end{aligned}\n$$\nAll products, powers, binomial coefficients, and comparisons here are in the natural numbers. The subtraction in $N-h$ is natural-number subtraction, which gives $0$ if the subtrahend exceeds the minuend; under these hypotheses $N\\ge6h\\ge h$, so it equals the ordinary nonnegative difference. The hypotheses exclude $h=0$ and $c=0,1,2$; they also ensure that every displayed binomial coefficient has its lower argument at most its upper argument. The second assertion is a non-strict upper bound, whereas the third, fourth, and fifth assertions are strict bounds.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:09:04.987471+00:00"
+  }
+}

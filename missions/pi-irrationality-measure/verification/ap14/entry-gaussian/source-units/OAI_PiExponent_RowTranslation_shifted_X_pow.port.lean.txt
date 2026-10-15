@@ -1,0 +1,9 @@
+omit [Fintype σ] [DecidableEq σ] in
+theorem shifted_X_pow (c : σ → R) (i : σ) (n : ℕ) :
+    (X i + C (c i)) ^ n =
+      ∑ b : Fin (n + 1), C ((n.choose b : R) * c i ^ (n - b)) * X i ^ (b : ℕ) := by
+  rw [add_pow, ← Fin.sum_univ_eq_sum_range]
+  apply Finset.sum_congr rfl
+  intro b hb
+  simp only [map_mul, map_pow, map_natCast]
+  ring

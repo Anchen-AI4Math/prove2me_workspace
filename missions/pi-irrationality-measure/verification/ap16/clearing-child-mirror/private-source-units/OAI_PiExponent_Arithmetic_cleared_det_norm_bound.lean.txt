@@ -1,0 +1,26 @@
+private theorem cleared_det_norm_bound {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (B : Matrix ι ι GaussianInt)
+    (r c : ι → ℝ) (hr : ∀ i, 0 < r i) (hc : ∀ i, 0 < c i)
+    (hA : A.det ≠ 0)
+    (hB : B.map GaussianInt.toComplex = fun i j => (r i : ℂ) * ((c j : ℂ) * A i j)) :
+    1 ≤ (∏ i, r i) * (∏ j, c j) * ‖A.det‖ := by
+  have hd : (B.map GaussianInt.toComplex).det =
+      (∏ i, (r i : ℂ)) * (∏ j, (c j : ℂ)) * A.det := by
+    rw [hB, det_row_column_scale]
+  have hn : B.det ≠ 0 := by
+    intro he
+    have hz : (B.map GaussianInt.toComplex).det = 0 := by
+      change (GaussianInt.toComplex.mapMatrix B).det = 0
+      rw [← RingHom.map_det, he, map_zero]
+    rw [hd] at hz
+    have hr' : (∏ i, (r i : ℂ)) ≠ 0 := Finset.prod_ne_zero_iff.mpr (by
+      intro i hi
+      exact_mod_cast (hr i).ne')
+    have hc' : (∏ j, (c j : ℂ)) ≠ 0 := Finset.prod_ne_zero_iff.mpr (by
+      intro j hj
+      exact_mod_cast (hc j).ne')
+    exact mul_ne_zero (mul_ne_zero hr' hc') hA hz
+  have h := gaussian_det_norm_one_le B hn
+  rw [hd, norm_mul, norm_mul, norm_prod, norm_prod] at h
+  simpa only [Complex.norm_real, Real.norm_eq_abs, abs_of_pos (hr _),
+    abs_of_pos (hc _)] using h

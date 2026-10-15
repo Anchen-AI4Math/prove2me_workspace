@@ -1,0 +1,6 @@
+theorem sum_sq_le_card_mul_total_sq (S U : Finset G) (hSU : S ⊆ U)
+    (n : G → ℝ) :
+    (∑ a ∈ S, n a) ^ 2 ≤ (S.card : ℝ) * ∑ a ∈ U, n a ^ 2 := by
+  apply (sum_sq_le_card_mul_sum_sq S n).trans
+  apply mul_le_mul_of_nonneg_left _ (Nat.cast_nonneg _)
+  exact Finset.sum_le_sum_of_subset_of_nonneg hSU (fun a _ _ => sq_nonneg (n a))

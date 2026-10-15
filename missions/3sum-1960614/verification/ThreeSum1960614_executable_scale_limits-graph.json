@@ -1,0 +1,151 @@
+{
+  "root_id": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "theorem_name": "ThreeSum1960614_Analysis",
+      "theorem_title": "Entropy, quartic integer switch, twelve costs and fixed-expansion model",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines binary entropy in bits $H(t)$, $E_c=(c/2)H(1/c)$, $\\kappa_c=2cH(1/(2c))-cH(1/c)-1$, and $\\gamma_c(t)=cH(1/c)-cH((1-t)/c)$ for natural expansion $c$. The quartic is $P(t)=7.85174904t+0.72447023t^2+0.24044466t^3+0.12022459t^4$, with its polynomial derivative. The fixed rational parameters are $e=0.203889696$, $b=-0.062656016$, $S=0.193175570$, $\\theta=0.040409899$, $\\tau=13/20$, $\\rho=0.27905030$, and $u=0.17200068185091493$. The principal cost cap is $1.96061388$ and the campaign target is the rational $1.960614$.\n\nThe ledger lists all twelve source costs in their source order. `costs` instantiates them at the fixed parameters and $c=232$. The natural-number predicate `clearedSwitch` is the degree-four integer comparison of Section 4.2, with $v=S-2b=159243801/500000000$. `ModelFeasible` describes the relaxed fixed-expansion real cost model, including its whole-interval entropy inequality and all twelve charges. It is not a model of arbitrary 3SUM algorithms. Total logarithms, division and natural subtraction are unrestricted in these definitions; theorem hypotheses delimit the intended domains. The shared machine and decision-problem definitions are imported unchanged.",
+      "created_at": "2026-10-14T05:06:31.105618+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnoncomputable section\n\nnamespace ThreeSum1960614\n\nnoncomputable def entropy (t : ℝ) : ℝ := Real.binEntropy t / Real.log 2\nnoncomputable def E (c : ℕ) : ℝ := (c : ℝ) / 2 * entropy (1 / c)\nnoncomputable def kappa (c : ℕ) : ℝ :=\n  2 * c * entropy (1 / (2 * c)) - c * entropy (1 / c) - 1\nnoncomputable def gamma (c : ℕ) (t : ℝ) : ℝ :=\n  c * entropy (1 / c) - c * entropy ((1 - t) / c)\ndef phi (t : ℝ) : ℝ :=\n  (785174904 * t + 72447023 * t ^ 2 + 24044466 * t ^ 3 + 12022459 * t ^ 4) / 100000000\ndef phiDeriv (t : ℝ) : ℝ :=\n  (785174904 + 2 * 72447023 * t + 3 * 24044466 * t ^ 2 + 4 * 12022459 * t ^ 3) / 100000000\ndef epsilon : ℝ := 203889696 / 1000000000\ndef beta : ℝ := -(62656016 / 1000000000)\ndef saving : ℝ := 193175570 / 1000000000\ndef theta : ℝ := 40409899 / 1000000000\ndef tau : ℝ := 13 / 20\ndef rho : ℝ := 2790503 / 10000000\ndef tangentPoint : ℝ := 17200068185091493 / 100000000000000000\ndef principal : ℝ := 196061388 / 100000000\ndef target : ℚ := 1960614 / 1000000\ndef v : ℝ := saving - 2 * beta\ndef threshold (a : ℝ) : ℝ := (v + a) / (1 - a)\ndef ledger (e b S terminal ratio EE kk hh : ℝ) : List ℝ :=\n  [2 * e * EE,\n   1 + e * (EE - b),\n   2 - e * S,\n   2 - e * (1 / 2 + b - hh),\n   2 - e * (1 / 2 - b - kk - ratio * (1 + S - 2 * b)),\n   2 - e * (terminal - 1 / 2 - b - kk),\n   e * (8 / 5) * (EE + 1 / 2),\n   2 + e * (4 / 5 - (2 / 5) * EE - 2 * b),\n   1 + e * (1 / 2 - b),\n   2 - e * (EE + b),\n   2 - 2 * e * (EE + b), 1]\nnoncomputable def costs : List ℝ :=\n  ledger epsilon beta saving tau rho (E 232) (kappa 232) (entropy theta)\ndef clearedSwitch (J s j q : ℕ) : Prop :=\n  let r := (J - j) * s\n  500000000 * (J - j) *\n    (785174904 * q * r ^ 3 + 72447023 * q ^ 2 * r ^ 2 +\n     24044466 * q ^ 3 * r + 12022459 * q ^ 4) ≥\n    100000000 * (159243801 * J + 500000000 * j) * r ^ 4\nnoncomputable def ModelFeasible (c : ℕ) (e b S th terminal ratio R : ℝ) : Prop :=\n  0 < e ∧ e < 1 ∧ b < 0 ∧ 0 < S ∧\n  0 ≤ th ∧ th ≤ 1 / 2 ∧ 0 ≤ terminal ∧ terminal < 1 ∧\n  0 < ratio ∧ S - 2 * b ≤ gamma c th ∧\n  (∀ t ∈ Set.Icc (0 : ℝ) (1 / 2), entropy t ≤ ratio * (1 + gamma c t)) ∧\n  ∀ z ∈ ledger e b S terminal ratio (E c) (kappa c) (entropy th), z ≤ R\n\nend ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 1–5 and 7; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "bb028ec9-fde8-44b5-95aa-5450b036437f",
+      "theorem_name": "ThreeSum1960614.executable_scale_rounding",
+      "theorem_title": "Exact finite rounding of the executable block and band schedules",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.executable_scale_rounding (m : ℕ) :\n    2 ∣ microSize m ∧ 20 ∣ blockCount m ∧\n    (0 < microSize m →\n      0 ≤ epsilon * (m : ℝ) - totalSize m ∧\n      epsilon * (m : ℝ) - totalSize m < 20 * microSize m) ∧\n    0 ≤ (-beta) * (totalSize m : ℝ) - bandExponent m ∧\n    (-beta) * (totalSize m : ℝ) - bandExponent m < 1 ∧\n    0 < bandDivisor m  := by sorry",
+      "natural_language_statement": "For every natural bit parameter $m$, the executable even microblock size $s(m)$ is divisible by two and the block count $J(m)$ by twenty. Whenever $s(m)>0$, the exact total size obeys $0\\le e m-\\mu(m)<20s(m)$. For every $m$, including the zero-size fallback, the natural band exponent $a(m)$ obeys $0\\le(-b)\\mu(m)-a(m)<1$, and the divisor $2^{a(m)}$ is positive. Here $e=0.203889696$ and $b=-0.062656016$ are the fixed exact rational parameters. These are finite statements about actual natural-number quotients, without asymptotic hypotheses.",
+      "created_at": "2026-10-14T07:26:44.23325+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+      "theorem_name": "ThreeSum1960614.executable_scale_limits",
+      "theorem_title": "Limits of the actual rounded microblock, total size and band divisor",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.executable_scale_limits :\n    Tendsto (fun m : ℕ => (microSize m : ℝ) ^ 2 / m) atTop (𝓝 0) ∧\n    Tendsto (fun m : ℕ => (totalSize m : ℝ) / m) atTop (𝓝 epsilon) ∧\n    Tendsto (fun m : ℕ => (bandExponent m : ℝ) / m) atTop (𝓝 ((-beta) * epsilon)) ∧\n    Tendsto (fun m : ℕ => Real.log (bandDivisor m : ℝ) / m) atTop\n      (𝓝 (Real.log 2 * ((-beta) * epsilon)))  := by sorry",
+      "natural_language_statement": "As the natural bit parameter $m$ tends to infinity, the executable schedules obey $s(m)^2/m\\to0$, $\\mu(m)/m\\to e$, $a(m)/m\\to(-b)e$, and $\\log(2^{a(m)})/m\\to\\log(2)(-b)e$. Here $s,\\mu,a$ are the actual integer cube-root and quotient schedules, $e=0.203889696$ and $b=-0.062656016$ are exact rationals, and logarithms are natural. The limits incorporate both integer rounding errors. They describe the changed schedule and its overhead scale, while the complete 3SUM program still requires separate operational contracts.",
+      "created_at": "2026-10-14T07:33:50.371953+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule\nopen Filter\nopen scoped Topology",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "d2377ac7-f0fd-4597-8c1c-96778b335178",
+      "theorem_name": "ThreeSum1960614_Scales",
+      "theorem_title": "Executable rational block and band schedules for the quartic 3SUM parameters",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For an input size $n$, let $m=\\lfloor\\log_2 n\\rfloor$. The even microblock size is $s(m)=2\\lfloor\\lfloor m^{1/3}\\rfloor/2\\rfloor$. The number of blocks is $J(m)=20\\lfloor e m/(20s(m))\\rfloor$ with the exact rational $e=0.203889696$, and the total size is $\\mu(m)=J(m)s(m)$. The band divisor is $2^{\\lfloor-b\\mu(m)\\rfloor}$ with $b=-0.062656016$. All functions use natural-number integer arithmetic, including integer cube root and quotients. At $s(m)=0$, the totalized natural quotient returns zero, so $J(m)=\\mu(m)=0$ and the divisor is one. The complete solver must supply its exceptional-size fallback. These functions specify the executable schedule; correctness and resource costs of the full 3SUM program are separate theorem obligations.",
+      "created_at": "2026-10-14T07:24:22.16142+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n/-!\nExecutable natural-number schedules from PROOF.md, Section 4.1.\nThe even microblock construction follows c0ldzy17/three-sum-lean,\nSubmission/ThreeSum/Scales.lean at commit\n2b639655e07421b9ac743de9090459bab473a7c0 (Apache-2.0).\nThese definitions describe the changed schedule; their integration into\nthe complete Light/word-RAM solver is a separate obligation.\n-/\n\nnamespace ThreeSum1960614.Schedule\n\ndef inputBits (n : ℕ) : ℕ := Nat.log2 n\n\ndef microSize (m : ℕ) : ℕ := 2 * (Nat.nthRoot 3 m / 2)\n\ndef blockCount (m : ℕ) : ℕ :=\n  20 * (203889696 * m / (20000000000 * microSize m))\n\ndef totalSize (m : ℕ) : ℕ := blockCount m * microSize m\n\ndef bandExponent (m : ℕ) : ℕ := 62656016 * totalSize m / 1000000000\n\ndef bandDivisor (m : ℕ) : ℕ := 2 ^ bandExponent m\n\nend ThreeSum1960614.Schedule\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1, 14 October 2026; even microblock inherited from c0ldzy17/three-sum-lean@2b639655e07421b9ac743de9090459bab473a7c0, Submission/ThreeSum/Scales.lean.",
+      "tags": [
+        "3sum",
+        "integer-schedules",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-c65bd12d-9745-464e-a178-b0de81f01a7e",
+      "submission_id": "c65bd12d-9745-464e-a178-b0de81f01a7e",
+      "parent_theorem_id": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "The even microblock grows to infinity and its cube is at most m, so s^2/m is bounded by 1/s and tends to zero. Hence s/m also tends to zero. The published finite block rounding interval squeezes mu/m between e-20 s/m and e. The band rounding interval similarly squeezes a/m between (-b)mu/m-1/m and (-b)mu/m. Finally log(2^a)=a log(2).",
+      "created_at": "2026-10-14T07:37:50.310225+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "bb028ec9-fde8-44b5-95aa-5450b036437f",
+      "target": "sketch-c65bd12d-9745-464e-a178-b0de81f01a7e",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-c65bd12d-9745-464e-a178-b0de81f01a7e",
+      "target": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+      "kind": "sketch"
+    },
+    {
+      "source": "d2377ac7-f0fd-4597-8c1c-96778b335178",
+      "target": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+      "kind": "structural"
+    },
+    {
+      "source": "d2377ac7-f0fd-4597-8c1c-96778b335178",
+      "target": "bb028ec9-fde8-44b5-95aa-5450b036437f",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "d2377ac7-f0fd-4597-8c1c-96778b335178",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

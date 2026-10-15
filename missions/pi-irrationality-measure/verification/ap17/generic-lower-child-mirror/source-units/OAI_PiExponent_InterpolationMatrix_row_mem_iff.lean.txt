@@ -1,0 +1,10 @@
+private theorem row_mem_iff {m : ℕ} {v0 θ H : ℝ} {w : Fin m → ℝ}
+    (hv0 : 0 < v0) (hθ : 0 < θ) (hw : ∀ i, 0 < w i) (b : Fin (m + 1) → ℕ) :
+    b ∈ PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H ↔
+      v0 * (b 0 : ℝ) + (∑ i, w i * (b i.succ : ℝ)) / θ < H := by
+  have hp : ∀ i, 0 < rowWeights v0 θ w i := by
+    intro i
+    refine Fin.cases hv0 (fun j => div_pos (hw j) hθ) i
+  rw [PiExponent.mem_strictWeightedSimplex hp, Fin.sum_univ_succ]
+  simp only [rowWeights, Fin.cases_zero, Fin.cases_succ, div_mul_eq_mul_div,
+    Finset.sum_div]

@@ -1,0 +1,15 @@
+{
+  "id": "08ecb4c1-b712-4558-8d95-10097e48211e",
+  "theorem_id": "5626409f-a887-4534-b9b2-df4c0d20823c",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:22:32.685689+00:00",
+  "updated_at": "2026-10-15T07:24:48.892981+00:00",
+  "explanation": "This preserves all shared reporting catalogs while unrelated later computations use higher scratch addresses.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankHeader.Stored.of_kept",
+  "theorem_title": "Preservation of the complete shared-bank header contract",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankHeader.Stored.of_kept {\u03bc \u03bd : \u2115 \u2192 \u2124} {free h J NB NC g bound : \u2115}\n    {fB fC : \u2115 \u2192 \u2124} {p shift : \u2124}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankHeader.Stored \u03bc free h J NB NC g fB fC p shift) (heq : _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd bound)\n    (hbound : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankHeader.finish free h J NB NC g \u2264 bound) : _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankHeader.Stored \u03bd free h J NB NC g fB fC p shift := by sorry",
+  "theorem_natural_language_statement": "Let $\\mu,\\nu$ be memories, $f,h,J,N_B,N_C,g,s\\in\\mathbb N$ describe a shared bank and preservation boundary, $b,c:\\mathbb N\\to\\mathbb Z$ its original maps, and $p,\\delta\\in\\mathbb Z$ its modulus and offset. Suppose the complete header-and-bank storage contract holds in $\\mu$, its finish address is at most $s$, and the memories agree below $s$. Then\n\n$$\\operatorname{Stored}(\\mu,\\ldots)\\Longrightarrow\\operatorname{Stored}(\\nu,\\ldots).$$\n\nThis preserves all shared reporting catalogs while unrelated later computations use higher scratch addresses.",
+  "theorem_status": "Proved"
+}

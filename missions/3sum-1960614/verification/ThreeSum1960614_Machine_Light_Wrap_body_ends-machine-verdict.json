@@ -1,0 +1,15 @@
+{
+  "id": "147fbd04-492b-467d-bb4c-18246f1dc37d",
+  "theorem_id": "88010159-e6c5-4543-95c6-ffc7656c0637",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:11:42.666684+00:00",
+  "updated_at": "2026-10-15T09:13:34.919063+00:00",
+  "explanation": "Execute the wrapper setup, apply the supplied solver contract, and interpret its result as the benchmark answer. This wrapper execution connects the task solver to the benchmark input layout and exact answer predicate.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Wrap.body_ends",
+  "theorem_title": "Executing a benchmark wrapper around a light solver",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Wrap.body_ends (w : _root_.ThreeSum1960614.Machine.Light.Wrap Q task dec) {P : _root_.ThreeSum1960614.Machine.Light.Program} {p : \u2115} {Tn : \u2115 \u2192 \u2115 \u2192 \u2115} {need : \u2115 \u2192 \u2115 \u2192 _root_.ThreeSum1960614.Machine.Light.Need}\n    (hsol : _root_.ThreeSum1960614.Machine.Light.Solves task P p Tn need) (\u03ba : \u2115) (x : _root_.ThreeSumApsp.WordRam.Bounded Q) (hn : 1 \u2264 x.n) (hU : x.U = x.n ^ \u03ba)\n    {lim : _root_.ThreeSum1960614.Machine.Light.Limits} (hroom : w.Room need x lim) :\n    _root_.ThreeSum1960614.Machine.Light.Ends lim (P ++ [_root_.ThreeSum1960614.Machine.Light.topBody \u03ba p w.args dec]) 1 (_root_.ThreeSum1960614.Machine.Light.topBody \u03ba p w.args dec)\n      \u27e8_root_.Light.frame [0, 0], _root_.Light.memOf ((_root_.ThreeSumApsp.WordRam.ofEnd Q).input x)\u27e9 (Tn x.n x.U + w.bodySteps \u03ba) (_root_.ThreeSum1960614.Machine.Light.Wrap.Answered x dec) := by sorry",
+  "theorem_natural_language_statement": "Let $w$ wrap benchmark problem $Q$ into a light task with decision flag $\\delta$. Suppose program $P$ at procedure $p$ solves that task with time $T(n,U)$ and needs $N(n,U)$. For bounded input $x$ with $x.n\\ge1$, $x.U=x.n^\\kappa$, and enough wrapper room, the appended top body starts in the benchmark input memory, reaches the correct answered predicate, and takes at most $T(x.n,x.U)+\\operatorname{bodySteps}(\\kappa)$.\n\nThis wrapper execution connects the task solver to the benchmark input layout and exact answer predicate.",
+  "theorem_status": "Proved"
+}

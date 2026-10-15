@@ -1,0 +1,158 @@
+{
+  "root_id": "18279722-8cec-48a0-97f0-d0162d84f3d2",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "18279722-8cec-48a0-97f0-d0162d84f3d2",
+      "theorem_name": "ThreeSum1960614.FixedModel.witness_logs",
+      "theorem_title": "Six exact logarithmic intervals at the model witnesses",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.FixedModel.witness_logs :\n    ((1285276917605861577967/5000000000000000000000 : \u211d) \u2264 Real.log (32*split) \u2227\n      Real.log (32*split) \u2264 (514110767042344631187/2000000000000000000000 : \u211d)) \u2227\n    ((6518981175759055705591/10000000000000000000000 : \u211d) \u2264 Real.log (2*(1-split)) \u2227\n      Real.log (2*(1-split)) \u2264 (814872646969881963199/1250000000000000000000 : \u211d)) \u2227\n    ((437298312323441179/2500000000000000000000 : \u211d) \u2264 Real.log (1+split/231) \u2227\n      Real.log (1+split/231) \u2264 (1749193249293764717/10000000000000000000000 : \u211d)) \u2227\n    ((638270279972769945753/2000000000000000000000 : \u211d) \u2264 Real.log (8*ratioPoint) \u2227\n      Real.log (8*ratioPoint) \u2264 (1595675699931924864383/5000000000000000000000 : \u211d)) \u2227\n    ((1008829056134582490741/2000000000000000000000 : \u211d) \u2264 Real.log (2*(1-ratioPoint)) \u2227\n      Real.log (2*(1-ratioPoint)) \u2264 (2522072640336456226853/5000000000000000000000 : \u211d)) \u2227\n    ((58146699145150531/78125000000000000000 : \u211d) \u2264 Real.log (1+ratioPoint/231) \u2227\n      Real.log (1+ratioPoint/231) \u2264 (7442777490579267969/10000000000000000000000 : \u211d)) := by sorry",
+      "natural_language_statement": "Fix\n$$s=\\frac{252561863698173}{6250000000000000},\\qquad u=\\frac{859960785302793}{5000000000000000}.$$\nFor the six positive rational arguments\n$$32s,\\quad2(1-s),\\quad1+s/231,\\quad8u,\\quad2(1-u),\\quad1+u/231,$$\nthe natural logarithm lies in each corresponding exact closed rational interval stated in the theorem. All endpoints are fixed rationals; the intervals have width $10^{-22}$. There are no numerical-oracle or rounding hypotheses. These enclosures supply the split-point entropy and collision bounds and the ratio witness used in the model lower bound.",
+      "created_at": "2026-10-14T13:34:46.008424+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_ThreeSum1960614_FixedModelAlgebra\nimport Definitions.Def_ThreeSum1960614_ModelWitnessPoints\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 10000000\nset_option maxRecDepth 10000\nopen scoped BigOperators\n\nopen ThreeSum1960614 ThreeSum1960614.FixedModel\n",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessLogs.lean#L36-L61",
+      "tags": [
+        "3sum",
+        "3sum-1960614",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "311d6314-9ff3-44cf-917a-63bf97db1afa",
+      "theorem_name": "ThreeSum1960614_ModelWitnessPoints",
+      "theorem_title": "Rational ratio evaluation point for the model lower bound",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "The exact rational evaluation point $$u=\\frac{859960785302793}{5000000000000000}$$ used to force a lower bound on the ratio parameter in the expansion-232 analytic model. This definition states no logarithmic or entropy inequality; those are separate proof obligations.",
+      "created_at": "2026-10-14T13:33:21.8403+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_ThreeSum1960614_FixedModelAlgebra\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 10000000\nset_option maxRecDepth 10000\nopen scoped BigOperators\n\nnoncomputable section\nnamespace ThreeSum1960614.FixedModel\n\ndef ratioPoint : \u211d := 859960785302793/5000000000000000\n\n\n\n\n\n\n\nend ThreeSum1960614.FixedModel\n",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessLogs.lean#L12-L12",
+      "tags": [
+        "3sum",
+        "3sum-1960614",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "theorem_name": "ThreeSum1960614_Analysis",
+      "theorem_title": "Entropy, quartic integer switch, twelve costs and fixed-expansion model",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines binary entropy in bits $H(t)$, $E_c=(c/2)H(1/c)$, $\\kappa_c=2cH(1/(2c))-cH(1/c)-1$, and $\\gamma_c(t)=cH(1/c)-cH((1-t)/c)$ for natural expansion $c$. The quartic is $P(t)=7.85174904t+0.72447023t^2+0.24044466t^3+0.12022459t^4$, with its polynomial derivative. The fixed rational parameters are $e=0.203889696$, $b=-0.062656016$, $S=0.193175570$, $\\theta=0.040409899$, $\\tau=13/20$, $\\rho=0.27905030$, and $u=0.17200068185091493$. The principal cost cap is $1.96061388$ and the campaign target is the rational $1.960614$.\n\nThe ledger lists all twelve source costs in their source order. `costs` instantiates them at the fixed parameters and $c=232$. The natural-number predicate `clearedSwitch` is the degree-four integer comparison of Section 4.2, with $v=S-2b=159243801/500000000$. `ModelFeasible` describes the relaxed fixed-expansion real cost model, including its whole-interval entropy inequality and all twelve charges. It is not a model of arbitrary 3SUM algorithms. Total logarithms, division and natural subtraction are unrestricted in these definitions; theorem hypotheses delimit the intended domains. The shared machine and decision-problem definitions are imported unchanged.",
+      "created_at": "2026-10-14T05:06:31.105618+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnoncomputable section\n\nnamespace ThreeSum1960614\n\nnoncomputable def entropy (t : \u211d) : \u211d := Real.binEntropy t / Real.log 2\nnoncomputable def E (c : \u2115) : \u211d := (c : \u211d) / 2 * entropy (1 / c)\nnoncomputable def kappa (c : \u2115) : \u211d :=\n  2 * c * entropy (1 / (2 * c)) - c * entropy (1 / c) - 1\nnoncomputable def gamma (c : \u2115) (t : \u211d) : \u211d :=\n  c * entropy (1 / c) - c * entropy ((1 - t) / c)\ndef phi (t : \u211d) : \u211d :=\n  (785174904 * t + 72447023 * t ^ 2 + 24044466 * t ^ 3 + 12022459 * t ^ 4) / 100000000\ndef phiDeriv (t : \u211d) : \u211d :=\n  (785174904 + 2 * 72447023 * t + 3 * 24044466 * t ^ 2 + 4 * 12022459 * t ^ 3) / 100000000\ndef epsilon : \u211d := 203889696 / 1000000000\ndef beta : \u211d := -(62656016 / 1000000000)\ndef saving : \u211d := 193175570 / 1000000000\ndef theta : \u211d := 40409899 / 1000000000\ndef tau : \u211d := 13 / 20\ndef rho : \u211d := 2790503 / 10000000\ndef tangentPoint : \u211d := 17200068185091493 / 100000000000000000\ndef principal : \u211d := 196061388 / 100000000\ndef target : \u211a := 1960614 / 1000000\ndef v : \u211d := saving - 2 * beta\ndef threshold (a : \u211d) : \u211d := (v + a) / (1 - a)\ndef ledger (e b S terminal ratio EE kk hh : \u211d) : List \u211d :=\n  [2 * e * EE,\n   1 + e * (EE - b),\n   2 - e * S,\n   2 - e * (1 / 2 + b - hh),\n   2 - e * (1 / 2 - b - kk - ratio * (1 + S - 2 * b)),\n   2 - e * (terminal - 1 / 2 - b - kk),\n   e * (8 / 5) * (EE + 1 / 2),\n   2 + e * (4 / 5 - (2 / 5) * EE - 2 * b),\n   1 + e * (1 / 2 - b),\n   2 - e * (EE + b),\n   2 - 2 * e * (EE + b), 1]\nnoncomputable def costs : List \u211d :=\n  ledger epsilon beta saving tau rho (E 232) (kappa 232) (entropy theta)\ndef clearedSwitch (J s j q : \u2115) : Prop :=\n  let r := (J - j) * s\n  500000000 * (J - j) *\n    (785174904 * q * r ^ 3 + 72447023 * q ^ 2 * r ^ 2 +\n     24044466 * q ^ 3 * r + 12022459 * q ^ 4) \u2265\n    100000000 * (159243801 * J + 500000000 * j) * r ^ 4\nnoncomputable def ModelFeasible (c : \u2115) (e b S th terminal ratio R : \u211d) : Prop :=\n  0 < e \u2227 e < 1 \u2227 b < 0 \u2227 0 < S \u2227\n  0 \u2264 th \u2227 th \u2264 1 / 2 \u2227 0 \u2264 terminal \u2227 terminal < 1 \u2227\n  0 < ratio \u2227 S - 2 * b \u2264 gamma c th \u2227\n  (\u2200 t \u2208 Set.Icc (0 : \u211d) (1 / 2), entropy t \u2264 ratio * (1 + gamma c t)) \u2227\n  \u2200 z \u2208 ledger e b S terminal ratio (E c) (kappa c) (entropy th), z \u2264 R\n\nend ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 1\u20135 and 7; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "09cce931-1260-45e4-ac3c-2811e3c9258b",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-14T21:34:34.686797+00:00"
+        },
+        {
+          "audit_id": "c7eed248-0ed4-4d32-b425-3ca71a76583e",
+          "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+          "reviewer_username": "Yuxuan Xu",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-14T21:34:35.078226+00:00"
+        }
+      ],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "d307edc4-2bbd-47f6-b033-0e818b9e8adb",
+      "theorem_name": "ThreeSum1960614_FixedModelAlgebra",
+      "theorem_title": "Exact witness constants for the expansion-232 model",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Exact rational witnesses for the expansion-232 analytic model. The constants include lower bounds $E_0$ and $\\kappa_0$, a ratio floor $\\rho_0$, a split point $s$, upper and lower point bounds $G$ and $H$, and a saving cap $U$. The auxiliary coefficients are $$a=1-2\\rho_0,\\quad A=\\tfrac12-\\kappa_0-\\rho_0,\\quad C=aE_0-A.$$ The target is $1.96061349120$. These are numerical definitions; the model bound is proved separately.",
+      "created_at": "2026-10-14T13:32:32.590627+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 3000000\n\nnoncomputable section\nnamespace ThreeSum1960614.FixedModel\n\ndef e0 : \u211d := 4648781151243719/1000000000000000\ndef k0 : \u211d := 778993608289/500000000000000\ndef ratio0 : \u211d := 34881106835777/125000000000000\ndef split : \u211d := 252561863698173/6250000000000000\ndef gammaCap : \u211d := 318487605190926/1000000000000000\ndef entropyFloor : \u211d := 244168410993740/1000000000000000\ndef savingCap : \u211d := 193175572822/1000000000000\ndef a : \u211d := 1-2*ratio0\ndef A : \u211d := 1/2-k0-ratio0\ndef C : \u211d := a*e0-A\ndef lowerTarget : \u211d := 196061349120/100000000000\n\n\n\nend ThreeSum1960614.FixedModel\n",
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/FixedModelAlgebra.lean#L10-L20",
+      "tags": [
+        "3sum",
+        "3sum-1960614",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "311d6314-9ff3-44cf-917a-63bf97db1afa",
+      "target": "18279722-8cec-48a0-97f0-d0162d84f3d2",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "18279722-8cec-48a0-97f0-d0162d84f3d2",
+      "kind": "structural"
+    },
+    {
+      "source": "d307edc4-2bbd-47f6-b033-0e818b9e8adb",
+      "target": "18279722-8cec-48a0-97f0-d0162d84f3d2",
+      "kind": "structural"
+    },
+    {
+      "source": "d307edc4-2bbd-47f6-b033-0e818b9e8adb",
+      "target": "311d6314-9ff3-44cf-917a-63bf97db1afa",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "d307edc4-2bbd-47f6-b033-0e818b9e8adb",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

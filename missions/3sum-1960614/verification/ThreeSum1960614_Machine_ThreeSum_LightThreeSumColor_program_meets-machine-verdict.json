@@ -1,0 +1,15 @@
+{
+  "id": "3dc4abaf-f3b1-4ed4-9cc9-e2efef04d109",
+  "theorem_id": "647d1e25-5204-4056-a54d-f4559c7f6dfa",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:12:24.450636+00:00",
+  "updated_at": "2026-10-15T10:11:07.861079+00:00",
+  "explanation": "Combine normalization, executed prime selection, retained sources, guarded wanted traversal, and exact original-value leaf decisions. Readiness discharges the finite schedule conditions and the shared ledger bounds the full execution. This theorem closes the concrete selected-color decision by relating the executed guarded reporter to the original color witness.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program_meets",
+  "theorem_title": "The concrete selected-color program decides its color witness",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {\u03bc : \u2115\u2192\u2124} {src n params row free k d : \u2115}\n    (color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)) (x : Fin n\u2192\u2124)\n    (hn : _root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumWantedHostConditions.Ready k n) (hsrc : src+n\u2264free) (hparams : params+19\u2264free) (hrow : row+6\u2264free)\n    (hok : (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResourcesColor.need n (n^k)).Ok lim free d)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src (List.ofFn x)) (hx : \u2200 i, |x i|\u2264((n^k : \u2115) : \u2124))\n    (hparameters : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc params (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.values n))\n    (hcolor : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc row (_root_.ThreeSum.ColorParameters.fields color)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumColor.program 509 d [src,n,params,row,free] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.colorBudget k n)\n      (fun r \u03be => (r=0 \u2228 r=1) \u2227 (r=1 \u2194 _root_.ThreeSum.ColorClassLists.witness color x) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03be free) := by sorry",
+  "theorem_natural_language_statement": "Let $x$ be a length-$n$ integer input with $|x_i|\\le n^k$, and let a coloring parameter be stored in its six-cell row together with the exact nineteen-cell parameter initializer. Assume the readiness condition for $k,n$, the protected input/header layout, and the complete selected-color resource predicate. Procedure 509 of the fixed color program returns a Boolean exactly equivalent to the selected color-class witness, preserves memory below the free pointer, and runs within $\\operatorname{colorBudget}(k,n)$.\n\nThis theorem closes the concrete selected-color decision by relating the executed guarded reporter to the original color witness.",
+  "theorem_status": "Proved"
+}

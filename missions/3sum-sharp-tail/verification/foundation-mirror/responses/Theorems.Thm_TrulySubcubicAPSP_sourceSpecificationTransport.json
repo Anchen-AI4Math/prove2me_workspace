@@ -1,0 +1,24 @@
+{
+  "theorem_id": "9916eefb-bbe1-47ab-b577-d8730290fe16",
+  "theorem_name": "TrulySubcubicAPSP.sourceSpecificationTransport",
+  "theorem_title": "Transport of Exact Triangle, min-plus, and APSP running-time guarantees",
+  "status": "Proved",
+  "formal_statement": "theorem TrulySubcubicAPSP.sourceSpecificationTransport :\n    (∀ r : Rat, EndStatement.ExactTriangle.SolvedInTime r →\n      TrulySubcubicAPSP.ExactTriangle.SolvedInTime r) ∧\n    (∀ r : Rat, EndStatement.MinPlusProduct.SolvedInTime r →\n      TrulySubcubicAPSP.MinPlusProduct.SolvedInTime r) ∧\n    (∀ r : Rat, EndStatement.APSP.SolvedInTime r →\n      TrulySubcubicAPSP.APSP.SolvedInTime r) := by sorry",
+  "natural_language_statement": "The source and mission specifications of Exact Triangle, min-plus matrix multiplication, and all-pairs shortest paths have equivalent machine encodings. For each of these three problems $Q$ and every rational exponent $r$, the theorem transfers the source running-time claim to the mission:\n\n$$\\operatorname{SolvedInTime}_{\\mathrm{source}}(Q,r)\n\\Longrightarrow \\operatorname{SolvedInTime}_{\\mathrm{mission}}(Q,r).$$\n\nThe transfer preserves the step bound, the word-width bound, and the quantifiers over input size and polynomial weight magnitude. For APSP it also preserves the promise that there are no negative-weight closed walks, reachability flags, and attained shortest-path distances. This connects the source formalization's algorithms to the mission's independently declared interfaces.",
+  "created_at": "2026-10-06T06:13:09.197214+00:00",
+  "vote_count": 0,
+  "tags": [
+    "algorithms",
+    "formalization-transport",
+    "truly-subcubic-apsp",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Definitions.Def_TrulySubcubicAPSP_Problems\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L15-L125",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

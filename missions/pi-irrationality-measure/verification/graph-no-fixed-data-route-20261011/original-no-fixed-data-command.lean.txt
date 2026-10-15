@@ -1,0 +1,41 @@
+theorem no_fixed_data_of_interpolation_and_analytic_aggregate
+    (hgeometry : GlobalInterpolationStatement) (hanalytic : AnalyticAggregateStatement)
+    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) : False := by
+  classical
+  obtain ⟨error, herror, hupper⟩ := hanalytic nu hnu d
+  have hsum : Tendsto (fun H : ℝ => d.arithmeticError + d.analyticError + error H)
+      atTop (𝓝 (d.arithmeticError + d.analyticError + 0)) :=
+    tendsto_const_nhds.add herror
+  have hsmall : ∀ᶠ H : ℝ in atTop,
+      d.arithmeticError + d.analyticError + error H <
+        nu * ((d.base.A : ℝ) * (1 - d.base.eta) - d.base.theta) -
+          (1 - d.base.theta) :=
+    hsum.eventually (Iio_mem_nhds (by simpa using d.error_sum_lt_gap))
+  have hdiff : Tendsto (fun H : ℝ =>
+      collisionRate d H - (1 + d.arithmeticError + d.analyticError + error H))
+      atTop (𝓝 (collisionLimit d - (1 + d.arithmeticError + d.analyticError + 0))) :=
+    (tendsto_collisionRate d).sub (tendsto_const_nhds.add herror)
+  have hlarge : ∀ᶠ H : ℝ in atTop,
+      0 < collisionRate d H - (1 + d.arithmeticError + d.analyticError + error H) := by
+    apply hdiff.eventually (Ioi_mem_nhds ?_)
+    have hh := d.collision_exceeds_error_sum
+    change 1 + d.arithmeticError + d.analyticError < collisionLimit d at hh
+    linarith
+  have hcontradiction : ∀ᶠ H : ℝ in atTop,
+      Function.Surjective (actualMatrix d H).mulVecLin → False := by
+    filter_upwards [hsmall, hlarge, hupper,
+      eventually_gt_atTop (0 : ℝ)] with H hsmall hlarge hupper hH
+    intro hsurj
+    obtain ⟨selection, _hselection, hdet⟩ :=
+      InterpolationMatrix.exists_full_row_minor_of_surjective (actualMatrix d H) hsurj
+    have hdet' : (actualMinor d H selection).det ≠ 0 := hdet
+    have hlower := actual_minor_arithmetic_lower_bound d H hH selection hdet'
+    have hb := actualMean_bounds d H hH
+    exact determinant_bounds_inconsistent nu d.base.theta
+      ((d.base.A : ℝ) * (1 - d.base.eta)) (actualMean d H)
+      d.arithmeticError d.analyticError (error H) (collisionRate d H)
+      (Real.log ‖(actualMinor d H selection).det‖ / ((actualRowCount d H : ℝ) * H))
+      (by linarith) hb.1 hb.2 hsmall (by linarith) hlower (hupper selection hdet')
+  obtain ⟨L, hL⟩ := Filter.eventually_atTop.mp hcontradiction
+  obtain ⟨H, hLH, hsurj⟩ := hgeometry nu hnu d L
+  exact hL H hLH hsurj

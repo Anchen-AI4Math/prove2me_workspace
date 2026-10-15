@@ -1,0 +1,15 @@
+{
+  "id": "3ab3e770-09e7-4cf4-8495-a2a693e74e34",
+  "theorem_id": "a84e8222-2545-407d-aa47-ee9b5ebaeaf1",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:17:30.923113+00:00",
+  "updated_at": "2026-10-15T07:19:52.904833+00:00",
+  "explanation": "Compose the verified helper executions under the explicit array layout, then identify their stored output with the corresponding finite mathematical data and sum their costs. This band step retains the original-index histogram and bucket data once for reuse across many wanted queries.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBandStep.Procs.meets",
+  "theorem_title": "Constructing one original-band histogram and bucket record",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSourceBandStep.Procs.meets {pMain : \u2115} (C : _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBandStep.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {src n g p m base U D i : \u2115} {shift : \u2124} (f : \u2115 \u2192 \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+3 < lim.depth)\n    (hg : 0 < g) (hp : 0 < p) (hm : 0 < m) (hi : i < _root_.ThreeSum.BandPartition.size n g)\n    (hsrc : src+n \u2264 base)\n    (hspace : _root_.ThreeSum.LightSourceResidues.space (_root_.ThreeSum.SourceBandLayout.work base n g m) p U D \u2264 lim.space)\n    (hshift : |shift| \u2264 (D : \u2124)) (hword : (_root_.ThreeSum.LightSourceBandStep.word n g p m U D : \u2124) \u2264 lim.word)\n    (hread : \u2200 j < n, \u03bc (src+j)=f j) (hvalues : \u2200 j < n, |f j| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d\n      [src,n,g,p,m,shift,base,_root_.ThreeSum.SourceBandLayout.cap n g,_root_.ThreeSum.BandPartition.size n g,_root_.ThreeSum.SourceBandLayout.data base n g,_root_.ThreeSum.SourceBandLayout.stride n g m,_root_.ThreeSum.SourceBandLayout.work base n g m,i]\n      \u03bc (_root_.ThreeSum.LightSourceBandStep.time n g p m U D) (fun _ \u03bd =>\n        _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandData.At \u03bd f base n g p m shift i \u2227\n        _root_.ThreeSum1960614.Machine.Light.KeptBut \u03bc \u03bd (_root_.ThreeSum.SourceBandLayout.hist base n g m i) (base+6*i) 6) := by sorry",
+  "theorem_natural_language_statement": "Let a length-$n$ original array $f$ with values bounded by $U$ precede allocation base $b$. Take positive band size $g$, positive moduli $p,m$, shift bounded by $D$, and valid band index $i$. Under the stated placement, residue-scratch, word, and depth bounds, one band step constructs the exact histogram, physical buckets, and six-cell pointer record for band $i$, preserving all protected cells except that record and its allowed band workspace.\n\nThis band step retains the original-index histogram and bucket data once for reuse across many wanted queries.",
+  "theorem_status": "Proved"
+}

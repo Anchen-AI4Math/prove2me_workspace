@@ -1,0 +1,15 @@
+{
+  "id": "c0d99495-bebe-483e-90c3-7a05e093116b",
+  "theorem_id": "95f09219-f8b9-477f-bbb0-06e49498aaec",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:08:43.348053+00:00",
+  "updated_at": "2026-10-15T09:14:41.810985+00:00",
+  "explanation": "Composes exact input normalization, prime choice, wanted/source construction, shared catalogs, and dense initialization. The output contract retains the original normalized witnesses through all encoding, shared catalog, and dense initialization calls.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorReportingPipeline.program_meets",
+  "theorem_title": "The complete selected-color reporting prelude",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightEncodedColorReportingPipeline.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {\u03bc : \u2115 \u2192 \u2124} {src n params row free U d : \u2115}\n    (color : _root_.ThreeSum.Coloring.Parameter (_root_.ThreeSum.Scales.inputBits n+1)) (x : Fin n \u2192 \u2124)\n    (hn : 0 < n) (hR : 4 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.Scales.radix n)\n    (hsrc : src+n \u2264 free) (hparams : params+19 \u2264 free) (hrow : row+6 \u2264 free)\n    (hok : (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorReportingResources.need n U).Ok lim free d)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src (List.ofFn x)) (hbound : \u2200 i, |x i| \u2264 (U : \u2124))\n    (hparameters : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc params (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.values n))\n    (hcolor : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc row (_root_.ThreeSum.ColorParameters.fields color)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorReportingPipeline.program 354 d [src,n,params,row,free] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorReportingPipeline.time n U)\n      (fun r \u03bd => _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorReportingData.Output \u03bd free n color x r \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let $n>0$ and actual radix at least $4$. Suppose memory stores the original input segment, exact parameter record, and selected six-field coloring record, all ending before free address $f$, with original values bounded by $U$. If the composed encoded-color reporting need record is valid at $f$ and current depth, the closed $355$-procedure pipeline produces its full reporting output contract within its stated time and preserves every cell before $f$.\n\nComposes exact input normalization, prime choice, wanted/source construction, shared catalogs, and dense initialization. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

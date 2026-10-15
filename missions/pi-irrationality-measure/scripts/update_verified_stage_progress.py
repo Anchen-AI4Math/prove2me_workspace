@@ -19,7 +19,10 @@ roots = [V / "definition-validation", V / "providers-preview/all-shared-safe-lea
          V / "providers-context-preview/namespace-context/validation",
          V / "providers-formal-log-preview/formal-log/validation",
          V / "ap2/publication", V / "ap3/publication", V / "ap7/publication",
-         V / "ap7/collision-constant"]
+         V / "ap7/collision-constant", V / "ap9/simplex", V / "ap9/domains",
+         V / "ap10/interpolation", V / "ap10/arithmetic", V / "ap10/determinant",
+         V / "ap14/row-data", V / "ap15/scales-costs", V / "ap18/multiplicity",
+         V / "ap19/analytic-remainder-data", V / "ap20/literal-interface-data"]
 published = {}
 pending = []
 for root in roots:
@@ -73,9 +76,27 @@ proof_paths.extend((V / "ap4").glob("*/publication-wire-*/publication.json"))
 proof_paths.extend((V / "ap5").glob("*/publication*/publication.json"))
 proof_paths.extend((V / "ap6/a1").glob("*/publication*/publication.json"))
 proof_paths.extend((V / "ap7").glob("*/publication*/publication.json"))
+proof_paths.extend((V / "ap8").glob("*/publication*/publication.json"))
+proof_paths.extend((V / "ap11").glob("*/publication*/publication.json"))
+proof_paths.extend((V / "ap12").glob("*/publication*/publication.json"))
+proof_paths.extend((V / "ap13").glob("*/publication*/publication.json"))
+proof_paths.extend((V / "ap14/entry-gaussian").glob("publication*/publication.json"))
+proof_paths.extend((V / "ap15/selected-minor-clearing-bound").glob("publication*/publication.json"))
+proof_paths.extend((V / "ap16/selected-minor-arithmetic-lower-bound").glob("publication*/publication.json"))
+proof_paths.extend((V / "ap17/actual-minor-arithmetic-lower-bound").glob("publication*/publication.json"))
 for path in sorted(proof_paths):
         record = json.loads(path.read_bytes())
         if record.get("confirmed_proved") is not True:
+            verification = record.get("last_verify_verdict", record.get("verify_response", {}))
+            verification_body = verification.get("body", verification)
+            if (record.get("submission_id") and verification.get("http_status") == 200
+                    and verification_body.get("status") in {"PENDING", "COMPILING"}):
+                pending.append({"kind": "proof-verification",
+                                "theorem_name": record["theorem_name"],
+                                "theorem_id": record["theorem_id"],
+                                "submission_id": record["submission_id"],
+                                "status_at_last_readback": verification_body["status"],
+                                "publication_record": path.relative_to(TASK).as_posix()})
             continue
         verify = record.get("last_verify_verdict", {})
         body = verify.get("body", verify)  # Historical independent uploader stored the API body directly.
@@ -89,6 +110,124 @@ for path in sorted(proof_paths):
                        "submission_id": record["submission_id"], "status": "ACCEPTED_AND_PROVED",
                        "verification_record": path.relative_to(TASK).as_posix(),
                        "verification_record_sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+# The existing-target AP17 uploader has a distinct durable record schema.
+# Count it only after its exact ACCEPTED submission and hashed Proved readback.
+for path in sorted((V / "ap17/actual-minor-arithmetic-lower-bound").glob("verification-publication*/publication.json")):
+    record = json.loads(path.read_bytes())
+    theorem_id = record["target_theorem_id"]
+    theorem_name = record["target_theorem_name"]
+    assert theorem_id == "15c55202-44da-420f-bf88-f910c0e7060c"
+    assert theorem_name == "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound_source017"
+    verdict = record.get("last_verify_verdict", record.get("verify_response", {}))
+    body = verdict.get("body", {})
+    if record.get("confirmed_ACCEPTED_and_Proved") is not True:
+        if (record.get("submission_id") and verdict.get("http_status") in {200, 202}
+                and body.get("status") in {"PENDING", "COMPILING"}):
+            pending.append({"kind": "proof-verification", "theorem_name": theorem_name,
+                            "theorem_id": theorem_id, "submission_id": record["submission_id"],
+                            "status_at_last_readback": body["status"],
+                            "publication_record": path.relative_to(TASK).as_posix()})
+        continue
+    readback = record["post_accepted_target"]
+    target_path = (TASK / readback["path"]).resolve()
+    assert target_path.is_relative_to(V.resolve())
+    assert hashlib.sha256(target_path.read_bytes()).hexdigest() == readback["sha256"]
+    target = json.loads(target_path.read_bytes())
+    assert (verdict["http_status"] in {200, 202} and body.get("status") == "ACCEPTED"
+            and body.get("theorem_id") == target.get("theorem_id") == theorem_id
+            and body.get("id", body.get("submission_id")) == record["submission_id"]
+            and target.get("theorem_name") == theorem_name and target.get("status") == "Proved")
+    proofs.append({"theorem_id": theorem_id, "theorem_name": theorem_name,
+                   "submission_id": record["submission_id"], "status": "ACCEPTED_AND_PROVED",
+                   "verification_record": path.relative_to(TASK).as_posix(),
+                   "verification_record_sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+# These standalone publishers preserve exact HTTP bytes inline.
+# Its accepted flag is distinct from legacy publishers, so audit the actual
+# submission and public readback rather than counting the prepared certificate.
+inline_publications = [
+    (V / "ap18/translated-summand-bound-v2",
+     "OAI.PiExponent.DeterminantAnalyticBound.translated_summand_bound"),
+    (V / "ap20/collision-remainder-limit-v2",
+     "OAI.PiExponent.tendsto_collisionRemainder_of_normalized_pow"),
+    (V / "ap20/log-translation-term-count-node-v2",
+     "OAI.PiExponent.tendsto_log_translationTermCount_div"),
+]
+for path, theorem_name in [
+    (path, name) for base, name in inline_publications
+    for path in sorted(base.glob("publication*/publication.json"))
+]:
+    record = json.loads(path.read_bytes())
+    assert record["theorem_name"] == theorem_name and record["environment"] == ENV
+    verdict = record.get("last_verify_verdict", record.get("verify_response", {}))
+    body = verdict.get("body", {})
+    if record.get("confirmed_ACCEPTED_and_Proved") is not True:
+        if (record.get("submission_id") and verdict.get("http_status") in {200, 202}
+                and body.get("status") in {"PENDING", "COMPILING"}):
+            pending.append({"kind": "proof-verification", "theorem_name": theorem_name,
+                            "theorem_id": record["theorem_id"],
+                            "submission_id": record["submission_id"],
+                            "status_at_last_readback": body["status"],
+                            "publication_record": path.relative_to(TASK).as_posix()})
+        continue
+    readback = record["post_accepted_target_readback"]
+    raw = readback["raw_body_utf8"].encode("utf-8")
+    assert hashlib.sha256(raw).hexdigest() == readback["raw_body_sha256"]
+    target = json.loads(raw)
+    manifest = json.loads((path.parent / "manifest.json").read_bytes())
+    assert (readback["http_status"] == 200 and target == readback["body"]
+            and verdict["http_status"] == 200 and body["status"] == "ACCEPTED"
+            and body["id"] == record["submission_id"]
+            and body["theorem_id"] == target["theorem_id"] == record["theorem_id"]
+            and target["theorem_name"] == theorem_name and target["status"] == "Proved"
+            and target["mathlib_rev"] == ENV and target["visibility"] == "public"
+            and target["deprecated_at"] is None
+            and target["preamble"] == manifest["preamble"]
+            and target["formal_statement"] == manifest["formal_statement"])
+    proofs.append({"theorem_id": record["theorem_id"], "theorem_name": theorem_name,
+                   "submission_id": record["submission_id"], "status": "ACCEPTED_AND_PROVED",
+                   "verification_record": path.relative_to(TASK).as_posix(),
+                   "verification_record_sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
+# AP21 verifies two already-published targets and stores hashed public readbacks.
+for folder, theorem_id, theorem_name in [
+    ("index-weight-nonneg-node", "0aeabe86-ff79-46b4-b8e3-eacc0125c4e4",
+     "OAI.PiExponent.LiteralAnalytic.indexWeight_nonneg"),
+    ("actual-row-count-pos-node", "df6176c8-39cf-473c-b5f0-447ca52023f2",
+     "OAI.PiExponent.LiteralAnalytic.actualRowCount_pos"),
+]:
+    path = V / "ap21" / folder / "publication/publication.json"
+    if not path.exists():
+        continue
+    record = json.loads(path.read_bytes())
+    assert (record["target_theorem_id"] == theorem_id
+            and record["target_theorem_name"] == theorem_name and record["environment"] == ENV)
+    verdict = record.get("last_verify_verdict", record.get("verify_response", {}))
+    body = verdict.get("body", {})
+    if record.get("confirmed_ACCEPTED_and_Proved") is not True:
+        if record.get("submission_id") and body.get("status") in {"PENDING", "COMPILING"}:
+            pending.append({"kind": "proof-verification", "theorem_name": theorem_name,
+                            "theorem_id": theorem_id, "submission_id": record["submission_id"],
+                            "status_at_last_readback": body["status"],
+                            "publication_record": path.relative_to(TASK).as_posix()})
+        continue
+    witness = record["post_accepted_target"]
+    target_path = (TASK / witness["path"]).resolve()
+    assert target_path.is_relative_to(V.resolve())
+    assert hashlib.sha256(target_path.read_bytes()).hexdigest() == witness["sha256"]
+    target = json.loads(target_path.read_bytes())
+    manifest = json.loads((path.parent / "manifest.json").read_bytes())
+    assert (record["own_ACCEPTED_counted"] is True
+            and verdict["http_status"] in {200, 202} and body["status"] == "ACCEPTED"
+            and body.get("id", body.get("submission_id")) == record["submission_id"]
+            and body["theorem_id"] == target["theorem_id"] == theorem_id
+            and target["theorem_name"] == theorem_name and target["status"] == "Proved"
+            and target["mathlib_rev"] == ENV and target["visibility"] == "public"
+            and target["deprecated_at"] is None
+            and target["preamble"] == manifest["preamble"]
+            and target["formal_statement"] == manifest["formal_statement"])
+    proofs.append({"theorem_id": theorem_id, "theorem_name": theorem_name,
+                   "submission_id": record["submission_id"], "status": "ACCEPTED_AND_PROVED",
+                   "verification_record": path.relative_to(TASK).as_posix(),
+                   "verification_record_sha256": hashlib.sha256(path.read_bytes()).hexdigest()})
 report.update(proof_count=len(proofs), proofs=proofs)
 (V / "verified-stage-progress.json").write_bytes((json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode())
 state_path = V / "run-state.json"

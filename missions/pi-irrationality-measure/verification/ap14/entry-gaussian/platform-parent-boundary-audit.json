@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap14-platform-child-boundary-audit",
+  "source_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+  "stage_preparation_sha256": "41f31dc97227d2133061a9d329d61d98bb534903846276648517cbd33b66c317",
+  "parent_platform_name": "OAI.PiExponent.Arithmetic.shifted_truncation_product_coeff_gaussian",
+  "parent_hidden_local_helper_names": [
+    "OAI.PiExponent.Arithmetic.cleared_log_trunc_mem",
+    "OAI.PiExponent.Arithmetic.cleared_polynomial_power_mem",
+    "OAI.PiExponent.Arithmetic.cleared_polynomial_product_mem",
+    "OAI.PiExponent.Arithmetic.cleared_shifted_log_trunc_mem",
+    "OAI.PiExponent.Arithmetic.common_denominator_coeff_gaussian",
+    "OAI.PiExponent.Arithmetic.dvd_lcmUpto_of_pos_le",
+    "OAI.PiExponent.Arithmetic.gaussian_C_mem",
+    "OAI.PiExponent.Arithmetic.lcm_mul_log_coeff_gaussian"
+  ],
+  "original_direct_kernel_project_refs": [
+    {
+      "name": "OAI.PiExponent.RowTranslation.multiIndex_apply",
+      "typeDeps": [
+        "OAI.PiExponent.RowTranslation.multiIndex"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.multiIndex"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shifted_X_pow",
+      "typeDeps": [],
+      "valueDeps": [],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shifted_product_expansion",
+      "typeDeps": [
+        "OAI.PiExponent.RowTranslation.multiIndex"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.multiIndex",
+        "OAI.PiExponent.RowTranslation.multiIndex_apply",
+        "OAI.PiExponent.RowTranslation.shifted_X_pow"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shift_monomial_one",
+      "typeDeps": [
+        "OAI.PiExponent.RowTranslation.shift"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.shift"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shiftCoefficient_eq",
+      "typeDeps": [
+        "OAI.PiExponent.RowTranslation.shiftCoefficient"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.shift",
+        "OAI.PiExponent.RowTranslation.multiIndex",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient.eq_1",
+        "OAI.PiExponent.RowTranslation.multiIndex_apply",
+        "OAI.PiExponent.RowTranslation.shifted_product_expansion",
+        "OAI.PiExponent.RowTranslation.shift_monomial_one",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.exponentVector_apply",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.exponentVector"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.InterpolationMatrix.exponentVector"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.entry_eq_binomial_product",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.entry"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.shift",
+        "OAI.PiExponent.InterpolationMatrix.entry.eq_1",
+        "OAI.PiExponent.InterpolationMatrix.monomialImage",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient_eq",
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient.eq_1",
+        "OAI.PiExponent.InterpolationMatrix.exponentVector_apply",
+        "OAI.PiExponent.InterpolationMatrix.monomialImage.eq_1",
+        "OAI.PiExponent.RowTranslation.shift_monomial_one",
+        "OAI.PiExponent.InterpolationMatrix.exponentVector",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.entry_eq_zero_of_not_le",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.entry"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.InterpolationMatrix.entry_eq_binomial_product"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.scalar_product_mul_coeff",
+      "typeDeps": [],
+      "valueDeps": [],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.gaussian_center_cast",
+      "typeDeps": [],
+      "valueDeps": [],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.entry_truncatedLog_cleared_gaussian",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+        "OAI.PiExponent.InterpolationMatrix.entry"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+        "OAI.PiExponent.InterpolationMatrix.scalar_product_mul_coeff",
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.InterpolationMatrix.entry_eq_binomial_product",
+        "OAI.PiExponent.InterpolationMatrix.entry_eq_zero_of_not_le",
+        "OAI.PiExponent.Arithmetic.shifted_truncation_product_coeff_gaussian",
+        "OAI.PiExponent.InterpolationMatrix.gaussian_center_cast"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": true
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.entry.eq_1",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.monomialImage",
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.InterpolationMatrix.exponentVector"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.InterpolationMatrix.entry"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.monomialImage.eq_1",
+      "typeDeps": [
+        "OAI.PiExponent.InterpolationMatrix.monomialImage"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.InterpolationMatrix.monomialImage"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    },
+    {
+      "name": "OAI.PiExponent.RowTranslation.shiftCoefficient.eq_1",
+      "typeDeps": [
+        "OAI.PiExponent.RowTranslation.shift",
+        "OAI.PiExponent.RowTranslation.shiftCoefficient"
+      ],
+      "valueDeps": [
+        "OAI.PiExponent.RowTranslation.shiftCoefficient"
+      ],
+      "AP13_helper_refs": [],
+      "AP13_target_ref": false
+    }
+  ],
+  "direct_AP13_helper_reference_count": 0,
+  "platform_parent_boundary_contains_only_target": true,
+  "actual_compiler_refs_must_still_be_checked": true,
+  "consumer_rejects_uncovered_helpers": true,
+  "consumer_sha256": "86302732689463a6ff873f8f9a34e63afb69731a3ed1a2ca842795d6152f8093",
+  "Lean_started": false,
+  "API_used": false
+}

@@ -1,0 +1,15 @@
+{
+  "id": "848000cb-626e-4991-b478-e4db41a067bc",
+  "theorem_id": "054bf2d2-607a-424c-a543-343ce8653e21",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:22:16.362778+00:00",
+  "updated_at": "2026-10-15T07:25:01.299009+00:00",
+  "explanation": "Use the exact finite semantics and stored-array identities, compose the applicable verified component contracts, and retain the explicit runtime, memory, and original-index conditions. This constructor converts the computed owner tables into the exact physical records used by scoring and reporting.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightBandCandidates.Procs.meets",
+  "theorem_title": "Constructing all physical band-candidate records",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightBandCandidates.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandCandidates.Procs P pMain) (A B C : _root_.ThreeSum.BandEnumeration.Family)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+2 < lim.depth)\n    (hsrc : src+_root_.ThreeSum.LightBandEnumeration.count A.size B.size C.size \u2264 dst)\n    (hspace : _root_.ThreeSum.LightBandCandidates.space dst A.size B.size C.size \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightBandCandidates.word A.size B.size C.size : \u2124) \u2264 lim.word)\n    (htables : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Tables \u03bc src A B C) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,dst,A.size,B.size,C.size] \u03bc (_root_.ThreeSum.LightBandCandidates.time A.size B.size C.size)\n      (fun r \u03bd => r=(_root_.ThreeSum.LightBandEnumeration.count A.size B.size C.size : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.Light.Seg \u03bd dst (_root_.ThreeSum.BandCandidateRows.cells (_root_.ThreeSum.BandCandidateRows.records A B C)) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bd dst (4*_root_.ThreeSum.LightBandEnumeration.count A.size B.size C.size)) := by sorry",
+  "theorem_natural_language_statement": "Let three band families $A,B,C$ have their exact owner tables stored before destination $o$. Suppose the complete candidate-helper placement, finite space and word requirements, word-sized addresses, and depth allowance hold. The program returns the exact candidate-record count and writes their flattened four-cell records in order, changing only the output record slab within its stated time.\n\nThis constructor converts the computed owner tables into the exact physical records used by scoring and reporting.",
+  "theorem_status": "Proved"
+}

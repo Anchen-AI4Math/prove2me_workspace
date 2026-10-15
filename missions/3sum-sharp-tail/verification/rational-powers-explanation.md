@@ -1,0 +1,3 @@
+Use the positive rational numerators and denominators: $A=\operatorname{num}(a)$, $B=\operatorname{den}(a)$, $c=\operatorname{num}(s)$ and $e=2\operatorname{den}(s)$. Positivity makes the numerators natural, and the strict upper bounds imply $A\le B$ and $2c\le e$. Their real ratios are exactly $a$ and $s/2$.
+
+For $N,D\ge1$, raising $D\le N^a$ to the positive natural power $B$ preserves and reflects the inequality. Since $aB=A$, this yields exactly $D^B\le N^A$. Thus the real-valued admissible regime can be tested by a finite integer-power program, with no rounding or approximation. The complete proof uses only standard axioms.

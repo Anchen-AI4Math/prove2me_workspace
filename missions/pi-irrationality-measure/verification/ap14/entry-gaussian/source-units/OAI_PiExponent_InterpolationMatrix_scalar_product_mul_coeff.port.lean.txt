@@ -1,0 +1,9 @@
+theorem scalar_product_mul_coeff {m : ℕ} (q : Fin m → ℂ)
+    (d : Fin m → ℕ) (P : Polynomial ℂ) (F : Fin m → Polynomial ℂ) (s : ℕ) :
+    (∏ i, q i ^ d i) * (P * ∏ i, F i ^ d i).coeff s =
+      (P * ∏ i, (Polynomial.C (q i) * F i) ^ d i).coeff s := by
+  have he : P * ∏ i, (Polynomial.C (q i) * F i) ^ d i =
+      Polynomial.C (∏ i, q i ^ d i) * (P * ∏ i, F i ^ d i) := by
+    simp only [mul_pow, Finset.prod_mul_distrib, ← map_pow, ← map_prod]
+    ring
+  rw [he, Polynomial.coeff_C_mul]

@@ -1,0 +1,15 @@
+{
+  "id": "ddb2b0a8-dca7-41d4-88a2-a41fd1e9a036",
+  "theorem_id": "a652c398-1c12-41df-a97f-117082a1b509",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:24:15.568882+00:00",
+  "updated_at": "2026-10-15T07:27:11.316598+00:00",
+  "explanation": "Builds all histograms and original-index fibers once per source. The batch retains every completed catalog entry while advancing through all actual bands of the original source.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBandBatch.Procs.meets",
+  "theorem_title": "Constructing every original source-band catalog entry",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSourceBandBatch.Procs.meets {pMain : \u2115} (C : _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBandBatch.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {src n g p m base U D : \u2115} {shift : \u2124} (f : \u2115 \u2192 \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+4 < lim.depth)\n    (hg : 0 < g) (hp : 0 < p) (hm : 0 < m) (hsrc : src+n \u2264 base)\n    (hspace : _root_.ThreeSum.LightSourceResidues.space (_root_.ThreeSum.SourceBandLayout.work base n g m) p U D \u2264 lim.space)\n    (hshift : |shift| \u2264 (D : \u2124)) (hword : (_root_.ThreeSum.LightSourceBandStep.word n g p m U D : \u2124) \u2264 lim.word)\n    (hread : \u2200 j < n, \u03bc (src+j)=f j) (hvalues : \u2200 j < n, |f j| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d\n      [src,n,g,p,m,shift,base,_root_.ThreeSum.SourceBandLayout.cap n g,_root_.ThreeSum.BandPartition.size n g,_root_.ThreeSum.SourceBandLayout.data base n g,_root_.ThreeSum.SourceBandLayout.stride n g m,_root_.ThreeSum.SourceBandLayout.work base n g m]\n      \u03bc (_root_.ThreeSum.LightSourceBandBatch.time n g p m U D) (fun _ \u03bd =>\n        (\u2200 i < _root_.ThreeSum.BandPartition.size n g, _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandData.At \u03bd f base n g p m shift i) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd base) := by sorry",
+  "theorem_natural_language_statement": "Let a stored source array have length $n$ and values bounded by $U$, with positive band width $g$, prime control $p$, and residue count $m$. Suppose the source precedes the catalog, the shift is bounded by $D$, and the concrete batch interface, stated space/word bounds, address bound, and five call levels hold. The batch constructs the exact stored source-band predicate for every band in its stated time and preserves all memory before the catalog base.\n\nBuilds all histograms and original-index fibers once per source. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

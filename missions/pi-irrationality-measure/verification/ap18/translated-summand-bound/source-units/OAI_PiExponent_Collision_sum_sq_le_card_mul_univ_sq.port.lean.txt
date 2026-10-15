@@ -1,0 +1,3 @@
+theorem sum_sq_le_card_mul_univ_sq (S : Finset G) (n : G → ℝ) :
+    (∑ a ∈ S, n a) ^ 2 ≤ (S.card : ℝ) * ∑ a, n a ^ 2 := by
+  exact sum_sq_le_card_mul_total_sq S Finset.univ (Finset.subset_univ S) n

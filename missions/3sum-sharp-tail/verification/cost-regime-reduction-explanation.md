@@ -1,0 +1,5 @@
+Represent the rational host exponents by finite natural numerator and denominator data. The proved parameter-host theorem then supplies the actual full-dimension Theorem 17 reduction and the exact floor/ceiling identities. The finite pruned cost regime is passed to the native Lop-detection program interface.
+
+The strict construction inequality implies $a(1+s)<1$, and the prime-selection inequality is exactly the hypothesis of the generic full-D time theorem. Thus Exact Triangle has saving $\delta=as/2$ from some fixed size onward. The native brute-force and size-selection procedures extend this to a uniform algorithm for every input size. Finally the proved generic reduction to 3SUM and the strict inequality $r>2-as/4=2-\delta/2$ give the original shared EndStatement conclusion.
+
+This reduction preserves the original theorem statement. Its local reference mirrors contain stubs for platform interfaces. At the time of the local compile, native Lop detection and full-D uniformization are still being implemented and have not been published or proved; this file is a checked reduction, not evidence that the semantic target or main theorem is closed.

@@ -1,0 +1,23 @@
+{
+  "theorem_id": "f9b8eb87-30d8-4f9d-8182-5a1d53dc3b73",
+  "theorem_name": "APSPSource_ThreeSumApsp_Machine_Realized",
+  "theorem_title": "Uniform realization of an integer-input problem with a time function",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Let $Q$ be an integer-input problem and let $T:\\mathbb N\\times\\mathbb R\\to\\mathbb R$ be a proposed time function in size and magnitude bound. The realization predicate requires\n\n$$\\forall\\kappa\\in\\mathbb N,\\ \\exists P\\ \\exists b\\in\\mathbb N\\ \\exists c\\in\\mathbb R_{\\ge0},\\quad P\\text{ solves every bounded instance with }U=n^\\kappa\\text{ within }c\\max\\{T(n,U),0\\}+c\\text{ steps}.$$\n\nHere $P$ is a finite word-RAM program, $b$ is a natural word-size slope, and the displayed nonnegativity requirement applies to the real constant $c$; the underlying solve predicate quantifies over every admissible word size. The program, slope, and constant may depend on $\\kappa$, but not on the instance or its size. Size zero is included.\n\nThe nonnegative truncation and additive constant keep the time allowance meaningful for all inputs. This is the predicate used to connect concrete machine implementations to later asymptotic claims; defining it does not supply a realizing program.\n\nReferences:\n\n1. [Source formalization, lines 35–41](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Machine/Realized.lean#L35-L41).",
+  "created_at": "2026-10-06T08:08:52.481953+00:00",
+  "vote_count": 0,
+  "tags": [
+    "complexity-theory",
+    "program-verification",
+    "word-ram"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_PaperStatements\nimport Definitions.Def_APSPSource_ThreeSumApsp_Machine_Solving\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Analysis.Asymptotics.Lemmas\nimport Mathlib.Analysis.Normed.Field.Basic\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Real.Basic\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Order.Filter.AtTopBot.Basic\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.DeriveFintype\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nnamespace EndStatement\nend EndStatement\n\n\n/-!\n# A running time that is realized on the word RAM\n\nThe deductions between running-time claims are made for an arbitrary reading `M : DetTimeModel` of\n\"is solved by a deterministic algorithm in time T\".  `RealizedWithin` is the link to programs: the\nproblem is solved on the word RAM, in its input layout, within `c T + c` steps.\n-/\n\n@[expose] public section\n\nopen EndStatement (Instr)\n\nnamespace ThreeSumApsp.WordRam\n\n\n\n\n\n\n\n\n\n\n\n\n/-- `RealizedWithin` for a problem of the form of `EndStatement.lean`, on the instances of all\nsizes, 0 included: for every exponent `κ` some program solves all instances whose numbers are\nbounded by `U = n^κ`, within `c max(T, 0) + c` steps. (A running time `T n U` says nothing at\n`n = 0`.) -/\ndef Realized (Q : EndStatement.Problem) (T : ℕ → ℝ → ℝ) : Prop :=\n  ∀ κ : ℕ, ∃ (P : List Instr) (b : ℕ) (c : ℝ), 0 ≤ c ∧\n    Solves (ofEnd Q) P b (fun x => x.U = x.n ^ κ) (fun x => c * max (T x.n x.U) 0 + c)\n\nend ThreeSumApsp.WordRam\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Machine/Realized.lean#L35-L41",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

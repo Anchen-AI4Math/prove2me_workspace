@@ -1,0 +1,188 @@
+{
+  "root_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+  "parent_names": [
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+    "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation",
+    "OAI.PiExponent.LiteralAnalytic.analyticAggregate"
+  ],
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "preparation_sha256": "9f2496a00ce9a6e1c4e5e684aecbc073ec87104377c816932424c546abe0e9c0",
+  "publish_intent": {
+    "at_utc": "2026-10-11T13:36:35.499079+00:00",
+    "endpoint": "/submit-problem",
+    "problem_names": [
+      "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+      "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation",
+      "OAI.PiExponent.LiteralAnalytic.analyticAggregate"
+    ],
+    "payload_sha256": "70336714fca0b85743913d5abbc613465eebb06af26b8c0581da6be1125478ae"
+  },
+  "updated_at_utc": "2026-10-11T13:47:43.069010+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "0a806520-e847-49c5-afaf-7e68989af7e2",
+          "name": "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate"
+        },
+        {
+          "job_id": "d3c2a656-9acf-408b-bdef-a79ff8473c84",
+          "name": "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation"
+        },
+        {
+          "job_id": "0f7ad576-61eb-47ed-9ab4-b3a802db16ef",
+          "name": "OAI.PiExponent.LiteralAnalytic.analyticAggregate"
+        }
+      ],
+      "errors": [],
+      "message": "3/3 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "publish_jobs": {
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate": "0a806520-e847-49c5-afaf-7e68989af7e2",
+    "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation": "d3c2a656-9acf-408b-bdef-a79ff8473c84",
+    "OAI.PiExponent.LiteralAnalytic.analyticAggregate": "0f7ad576-61eb-47ed-9ab4-b3a802db16ef"
+  },
+  "last_publish_verdicts": {
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate": {
+      "http_status": 200,
+      "body": {
+        "id": "0a806520-e847-49c5-afaf-7e68989af7e2",
+        "kind": "problem",
+        "theorem_name": "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+        "theorem_title": "The conditional interpolation and analytic determinant argument for pi",
+        "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate\r\n    (hgeometry : GlobalInterpolationStatement) (hanalytic : AnalyticAggregateStatement) :\r\n    PiEventualLowerBound := by\n  sorry\n",
+        "natural_language_statement": "Assume the global interpolation statement and the analytic aggregate statement for the original fixed admissible data. Then, for every real $\\nu>2$, there is an integer $Q\\ge2$ such that every $p\\in\\mathbb Z$ and $q\\in\\mathbb N$ with $q\\ge Q$ satisfy\n\n$$q^{-\\nu}\\le\\left|\\pi-\\frac pq\\right|.$$\n\nThis is the conditional conclusion of the source determinant contradiction, with the original quantified interpolation and analytic hypotheses.",
+        "definitions": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L167-L180",
+        "tags": [
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+        "created_at": "2026-10-11T13:36:36.530255+00:00",
+        "updated_at": "2026-10-11T13:37:10.087137+00:00"
+      }
+    },
+    "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation": {
+      "http_status": 200,
+      "body": {
+        "id": "d3c2a656-9acf-408b-bdef-a79ff8473c84",
+        "kind": "problem",
+        "theorem_name": "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation",
+        "theorem_title": "Global surjectivity of the original admissible interpolation matrix",
+        "formal_statement": "theorem OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation : GlobalInterpolationStatement := by\n  sorry\n",
+        "natural_language_statement": "For every real $\\nu>2$, every fixed admissible datum $d$, and every real lower height $L$, the original interpolation matrix $A_d(H)$ is surjective at some height $H\\ge L$:\n\n$$\\forall\\nu>2\\;\\forall d\\;\\forall L\\in\\mathbb R\\;\\exists H\\ge L,\\quad\\operatorname{Surjective}(A_d(H)).$$\n\nHere the matrix, its weighted row and column domains, and the fixed-data parameters are exactly those of the source global interpolation statement.",
+        "definitions": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleMatrixGeometry.lean#L41-L44",
+        "tags": [
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "5501b787-d6c8-4ba4-92f1-309d7a78baad",
+        "created_at": "2026-10-11T13:36:36.599478+00:00",
+        "updated_at": "2026-10-11T13:40:25.690795+00:00"
+      }
+    },
+    "OAI.PiExponent.LiteralAnalytic.analyticAggregate": {
+      "http_status": 200,
+      "body": {
+        "id": "0f7ad576-61eb-47ed-9ab4-b3a802db16ef",
+        "kind": "problem",
+        "theorem_name": "OAI.PiExponent.LiteralAnalytic.analyticAggregate",
+        "theorem_title": "The original analytic aggregate bound for admissible selected minors",
+        "formal_statement": "theorem OAI.PiExponent.LiteralAnalytic.analyticAggregate : AnalyticAggregateStatement := by\n  sorry\n",
+        "natural_language_statement": "For every real $\\nu>2$ and fixed admissible datum $d$, there is an error $e_d(H)\\to0$ as $H\\to+\\infty$. Eventually, every selected minor $D$ with nonzero determinant satisfies\n\n$$\\frac{\\log\\|\\det D\\|}{M_d(H)H}\\le a_d+e_d(H)+\\max\\{-\\gamma_d(H),-\\nu[A_d(1-\\eta_d)-b_d(H)]\\}.$$\n\nHere $M_d(H)$ is the row count, $a_d$ the analytic error parameter, $\\gamma_d(H)$ the collision rate, $A_d$ and $\\eta_d$ the fixed-data parameters, and $b_d(H)$ the normalized weighted row mean. The bound is uniform over the original column selections and is precisely the source analytic aggregate statement.",
+        "definitions": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/AnalyticAggregate.lean#L96-L101",
+        "tags": [
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "visibility": "public",
+        "status": "PUBLISHED",
+        "error_message": "",
+        "theorem_id": "c873700d-6b99-4966-899b-2afef157b779",
+        "created_at": "2026-10-11T13:36:36.683736+00:00",
+        "updated_at": "2026-10-11T13:36:59.95218+00:00"
+      }
+    }
+  },
+  "parent_ids": {
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+    "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation": "5501b787-d6c8-4ba4-92f1-309d7a78baad",
+    "OAI.PiExponent.LiteralAnalytic.analyticAggregate": "c873700d-6b99-4966-899b-2afef157b779"
+  },
+  "exact_parent_readbacks": {
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate": {
+      "path": "verification/graph-source-root-20261011/publication-v2/parent-readbacks/conditional.json",
+      "sha256": "7d6213c07dbddd3f119f53c2de6b08b6ba96eca7ff44c1d9208c24ae19628f35",
+      "theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+      "status": "Open"
+    },
+    "OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation": {
+      "path": "verification/graph-source-root-20261011/publication-v2/parent-readbacks/geometry.json",
+      "sha256": "dee3da1bed4e4e0890206fbe4c63c5dd3736dedc867227090e2bdb086c7a2045",
+      "theorem_id": "5501b787-d6c8-4ba4-92f1-309d7a78baad",
+      "status": "Open"
+    },
+    "OAI.PiExponent.LiteralAnalytic.analyticAggregate": {
+      "path": "verification/graph-source-root-20261011/publication-v2/parent-readbacks/analytic.json",
+      "sha256": "b9528c126efef71ca6324fab10d11ea5880e30113aa53fa9a62bf0fe886ba393",
+      "theorem_id": "c873700d-6b99-4966-899b-2afef157b779",
+      "status": "Open"
+    }
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-11T13:42:12.033772+00:00",
+    "endpoint": "/verify",
+    "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+    "multipart_sha256": "75802d81611274a8f00186fe8b5531950cea3b160014a4a74d0f770715b55461",
+    "content_type": "multipart/form-data; boundary=----p2mBoundary7f3a9c2b",
+    "solution_sha256": "2233b20c1dfb1aeb59082b3db7c34725c32dbbc009ece7d99839e846c21cf0b1"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "c57d8b09-857b-4c52-bafa-36dd13f28219",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "c57d8b09-857b-4c52-bafa-36dd13f28219",
+  "last_verify_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "c57d8b09-857b-4c52-bafa-36dd13f28219",
+      "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "status": "SKETCH_ACCEPTED",
+      "error_message": "",
+      "file_path": "e717eef2-11b1-4b14-9789-65f52c0502e1/418b0711-62a5-416a-ba5d-876ae8758fe3/c57d8b09-857b-4c52-bafa-36dd13f28219.lean",
+      "created_at": "2026-10-11T13:42:12.996919+00:00",
+      "updated_at": "2026-10-11T13:47:14.305615+00:00"
+    }
+  },
+  "actual_three_parent_edges": {
+    "sketch_node": "sketch-c57d8b09-857b-4c52-bafa-36dd13f28219",
+    "three_parent_edges": true,
+    "sketch_to_root": true,
+    "nodes": 68,
+    "edges": 101
+  },
+  "post_acceptance_readback_sha256": {
+    "post-root-target.json": "56f7bda7ee447d873d8630edfa24bc4bd293a5c5577efb6d998dc11f3f40534b",
+    "post-graph.json": "44ae676e8a7ea1eae1a0702fc09cab53589c9c76b763e69a32ae301bbd32f173",
+    "post-decompositions.json": "6726c9b7f425bedb62246884025c837370dc203800623281490aa789452339db"
+  },
+  "confirmed_SKETCH_ACCEPTED": true
+}

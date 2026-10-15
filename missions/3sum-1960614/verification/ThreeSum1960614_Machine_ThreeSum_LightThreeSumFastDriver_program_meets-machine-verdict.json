@@ -1,0 +1,15 @@
+{
+  "id": "a3aa0a1d-a520-4881-98d4-999ffe866f1f",
+  "theorem_id": "608810c6-9499-48bb-9642-01161297ff35",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:12:16.512492+00:00",
+  "updated_at": "2026-10-15T09:14:48.6327+00:00",
+  "explanation": "Apply the verified component contracts in program order, maintain their stored-array invariants, and sum their explicit execution charges. This driver theorem promotes a concrete per-color execution law to an exact original-input 3SUM decision.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.program_meets",
+  "theorem_title": "The finite coloring driver decides distinct-index 3SUM",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {colorProgram : _root_.ThreeSum1960614.Machine.Light.Program} {pColor : \u2115}\n    {colorNeed : \u2115\u2192\u2115\u2192_root_.ThreeSum1960614.Machine.Light.Need} {src n free U colorTime d : \u2115}\n    (x : Fin n\u2192\u2124) (\u03bc : \u2115\u2192\u2124)\n    (H : (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumColorDriverResources.fullNeed colorNeed n U).Ok lim free d)\n    (hsrc : src+n\u2264free) (hinput : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src (List.ofFn x))\n    (hcolor : _root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumColorDriver.ColorLaw lim colorProgram pColor colorNeed\n      src n free (_root_.ThreeSum.LightThreeSumFastDriver.row free) U colorTime x) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.program colorProgram pColor) (colorProgram.length+26) d [src,n,free] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.time colorTime n)\n      (fun r \u03be => (r=0 \u2228 r=1) \u2227 (r=1 \u2194 _root_.ThreeSum.Coloring.DistinctZeroSum x) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03be free) := by sorry",
+  "theorem_natural_language_statement": "Let $x$ be a length-$n$ integer input stored before a free pointer. Suppose a concrete color program and entry procedure satisfy the stated color law with resource function and per-color time, and the complete driver resource predicate holds. The assembled fast driver, entered at procedure $|P_{\\mathrm{color}}|+26$, returns a Boolean equivalent to the existence of three distinct indices with zero sum, preserves earlier memory, and meets its exact finite-color time bound.\n\nThis driver theorem promotes a concrete per-color execution law to an exact original-input 3SUM decision.",
+  "theorem_status": "Proved"
+}

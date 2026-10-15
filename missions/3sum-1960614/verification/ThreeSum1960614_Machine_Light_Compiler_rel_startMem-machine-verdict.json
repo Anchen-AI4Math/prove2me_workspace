@@ -1,0 +1,15 @@
+{
+  "id": "569294f2-ddb7-464a-82c6-3e8eb4fdec45",
+  "theorem_id": "effbf234-25cc-4887-9a99-cd54c4b44249",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:21:11.521423+00:00",
+  "updated_at": "2026-10-15T09:23:30.655404+00:00",
+  "explanation": "Establishes the initial simulation relation after startup. The constant cells, initial argument frame, and nonnegative input memory are related before the main source execution is simulated.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Compiler.rel_startMem",
+  "theorem_title": "Initialized memory represents the initial Light frame",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Compiler.rel_startMem (Z : _root_.ThreeSum1960614.Machine.Light.Compiler.Sizes W) (h3 : 3 \u2264 Z.F) (hpool : 2 * _root_.Light.Compiler.mainFrame \u2264 Z.disp) {\u03bc : \u2115 \u2192 \u2124}\n    {i j : \u2124} (hm : \u2200 a < Z.lim.space, m (a : \u2124) = _root_.ThreeSumApsp.WordRam.wd W (\u03bc a)) (hi : m _root_.Light.Compiler.cARG1 = _root_.ThreeSumApsp.WordRam.wd W i)\n    (hj : m _root_.Light.Compiler.cARG2 = _root_.ThreeSumApsp.WordRam.wd W j) :\n    _root_.ThreeSum1960614.Machine.Light.Compiler.Rel Z \u27e8_root_.Light.frame [0, i, j], \u03bc\u27e9 _root_.Light.Compiler.mainFrame (_root_.Light.Compiler.startMem Z.F Z.disp m) := by sorry",
+  "theorem_natural_language_statement": "Let compiler size data $Z$ have frame width at least $3$ and a dispatcher pool containing twice the main-frame index. Suppose the initial machine memory encodes a Light memory $\\mu$ at all allowed nonnegative addresses and the two argument cells contain the encodings of integers $i,j$. Then the compiler startup memory represents the main Light frame $[0,i,j]$ with memory $\\mu$.\n\nEstablishes the initial simulation relation after startup. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

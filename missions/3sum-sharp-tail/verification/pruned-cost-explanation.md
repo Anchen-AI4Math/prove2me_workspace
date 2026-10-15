@@ -1,0 +1,3 @@
+The pruned encoding comparison gives Apruned(c) <= A(c). Since a is positive, the original strict encoding hypothesis implies a(Apruned(c)+Gamma(c,theta))<1. The entropy, saving and query functions in the certificate agree exactly with those in the existing parameterized pruned program analysis.
+
+Apply CorollaryP.costs to obtain a uniform constant and threshold, tile fit, and the exact preprocessing and query cost bounds. For D>=2, real powers are increasing in the exponent. The inequalities s<Gamma and q<1/2-s therefore weaken the preprocessing and query bounds to the claimed exponents. This is a transfer to the actual published cost functions, not an assumed runtime bound on an unspecified program.

@@ -1,0 +1,10 @@
+theorem cleared_polynomial_product_mem {ι : Type*} (s : Finset ι)
+    (L e d : ι → ℕ) (f : ι → Polynomial ℂ) (hd : ∀ i ∈ s, d i ≤ e i)
+    (hf : ∀ i ∈ s, Polynomial.C (L i : ℂ) * f i ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range) :
+    Polynomial.C (∏ i ∈ s, (L i : ℂ) ^ e i) * (∏ i ∈ s, f i ^ d i) ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range := by
+  let S := (Polynomial.mapRingHom GaussianInt.toComplex).range
+  have h := S.prod_mem (fun i hi => cleared_polynomial_power_mem (L i) (e i) (d i)
+    (f i) (hd i hi) (hf i hi))
+  simpa only [← Finset.prod_mul_distrib, map_prod] using h

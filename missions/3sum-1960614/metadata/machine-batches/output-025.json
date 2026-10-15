@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverResources.space_polynomial",
+    "theorem_title": "Cubic relative-space bound for the local cover",
+    "natural_language_statement": "Let $h,B,a\\in\\mathbb N$, where $a$ is the initial address. Suppose $B\\ge1$ bounds the local width plus one, vertex count plus one, selected prime plus one, bucket cap plus one, candidate and schedule counts plus one, and the radix-decoding and mask powers plus one, as specified by the local-cover magnitude record. Then the complete local-cover layout satisfies\n\n$$\\operatorname{space}(a,h)\\le a+20B^3.$$\n\nThis bounds extra storage independently of a translated base address in the complete deterministic integer 3SUM machine.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This bounds extra storage independently of a translated base address in the complete deterministic integer 3SUM machine."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverSchedule.target_injective",
+    "theorem_title": "Injective residue-pair column indexing",
+    "natural_language_statement": "For every $h\\in\\mathbb N$, let $p$ be its selected local prime. The target map sends a column index $r$ to the residue pair $(\\lfloor r/p\\rfloor,r\\bmod p)$ in the local field. It is injective on the valid column range:\n\n$$0\\le r,s<p^2,\\quad\\operatorname{target}_h(r)=\\operatorname{target}_h(s)\\ \\Longrightarrow\\ r=s.$$\n\nThis ensures that physical support-matrix columns retain distinct residue-pair identities in the deterministic cover construction.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This ensures that physical support-matrix columns retain distinct residue-pair identities in the deterministic cover construction."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverSchedule.indices_lt",
+    "theorem_title": "Greedy schedule indices stay within the candidate table",
+    "natural_language_statement": "Let $h\\in\\mathbb N$ and let $i$ be an index occurring in the concrete greedy local-cover schedule. If $R(h)$ is the number of radix-enumerated candidate maps, then\n\n$$i<R(h).$$\n\nThis is the array-safety interface for reading candidate coefficients and histograms at every selected schedule occurrence.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This is the array-safety interface for reading candidate coefficients and histograms at every selected schedule occurrence."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverTables.Data.of_kept",
+    "theorem_title": "Preservation of retained local-cover tables",
+    "natural_language_statement": "Let $\\mu,\\nu:\\mathbb N\\to\\mathbb Z$ be memories, $h$ a microblock parameter, and let $a_m,a_0,a_1,a_s,c$ be respectively the coefficient, left-histogram, right-histogram, support-matrix and preservation-boundary addresses. Suppose $\\mu$ contains the specified local-cover data and $\\mu,\\nu$ agree below $c$. Write $R,C,p$ for the candidate count, column count and local prime. If\n\n$$a_m+R(2\\cdot464h)\\le c,\\quad a_0+Rp\\le c,\\quad a_1+Rp\\le c,\\quad a_s+RC\\le c,$$\n\nthen $\\nu$ contains the same local-cover data at those addresses.\n\nThis transports the semantic cover-table contract across later procedures that preserve the retained prefix of memory.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This transports the semantic cover-table contract across later procedures that preserve the retained prefix of memory."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSourceSelect.program_meets_fits",
+    "theorem_title": "Bounded execution of source-pointer selection",
+    "natural_language_statement": "Let $\\lambda$ be run limits, $\\mu$ an integer memory, and $d$ a call depth. Fix source-pair, bank, cover and original B/C addresses, band indices $i,j$, an occurrence code, block count $J$, and destination $a$. Let $X$ be the pointer record whose required header reads hold in $\\mu$. Assume the address space fits the word bound and the selection-fit predicate places every required read, scalar and fifteen-cell output within the limits. Then procedure zero of the fixed source-selector program satisfies\n\n$$\\operatorname{steps}\\le6000,\\qquad r=a,$$\n\nand writes the fifteen natural-valued source-selection fields determined by $X$, the B/C bases, the code and $J$ at $a$. Every cell outside those fifteen is unchanged.\n\nThis replaces abstract source selection by a bounded actual execution before the original-value reporter.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This replaces abstract source selection by a bounded actual execution before the original-value reporter."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedDispatch.program_meets",
+    "theorem_title": "Composition of physical wanted-slot dispatch",
+    "natural_language_statement": "Let $\\lambda,\\mu,d$ be limits, initial memory and depth; let $C$ be a dispatch configuration, $L$ a scratch layout, $s$ a physical slot, $V$ a decoder magnitude bound, and $T$ a reporter time budget. Let $A,B$ be memory predicates and $Q$ a result/memory postcondition. Assume addresses fit words, $d<\\lambda.\\mathrm{depth}$, and the configuration header through $38+2J$ cells fits memory. Suppose the layout procedure at depth $d+1$ returns $L.\\mathrm{work}$ and establishes $A$ within its prescribed layout time; every $A$ memory supports the slot decoder at depth $d+1$ within its prescribed decoder time and establishes $B$; and every $B$ memory supports the record-call procedure within $T+4000$ with postcondition $Q$. Then the fixed dispatch procedure has the same postcondition $Q$ within\n\n$$T_{\\mathrm{dispatch}}(C,V,T).$$\n\nThis composes the exact layout, decoder and reporter implementations without weakening their final reporting contract.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This composes the exact layout, decoder and reporter implementations without weakening their final reporting contract."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.program_meets",
+    "theorem_title": "Execution of the packed wanted-record reporter call",
+    "natural_language_statement": "Let $\\lambda,\\mu,d$ be run limits, memory and depth. Let $S$ be a wanted selection record and $L$ a scratch layout, stored at headers $a_s,a_l$. Fix cover and counter addresses, microblock parameter $h$, block count $J$, reporting depth $K$, budget $T$, and postcondition $Q$. Assume the cover header stores the selected local prime and bucket cap; addresses fit words; $d$ permits a nested call; the complete loader-space bound fits memory; all selected record values fit words; and all layout values fit the address space. If the guarded reporter at depth $d+1$, with the arguments determined by these records, meets $Q$ within $T$, then its packed-record adapter meets\n\n$$Q\\quad\\text{within }T+4000\\text{ steps}.$$\n\nIts argument list consists of the two headers, $h,J,K$, the computed block-source modulus, cover and counter addresses.\n\nThis accounts for loading the actual retained records before invoking the complete wanted reporter.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This accounts for loading the actual retained records before invoking the complete wanted reporter. The bounded adapter preserves the reporter postcondition while accounting for its register loads and one nested call."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedScan.program_meets",
+    "theorem_title": "Ascending wanted scan with exact acceptance and counter",
+    "natural_language_statement": "Let $\\lambda,\\mu,C$ be limits, memory and dispatch configuration. Let $m_i,t_i\\in\\mathbb N$ be slot masses and time budgets, $H(i)$ a slot-hit predicate, $\\mathcal I$ a memory invariant, and $\\tau,n,N,D,d\\in\\mathbb N$. Assume addresses fit words, $N+1$ cells fit memory, $D+1$ fits call depth, $d+n\\le D$, $n\\le N$, $\\mathcal I(\\mu)$, and the counter starts at zero. For every $i<N$, invariant memory with counter $\\sum_{j<i}m_j$, and depth $e$ with $e+i\\le D+1$, assume dispatch within $t_i$ returns a Boolean, succeeds exactly when $\\tau<\\sum_{j\\le i}m_j$ or $H(i)$, sets that cumulative counter, preserves $\\mathcal I$, and changes no other cell below the layout header. Then the recursive scan satisfies\n\n$$r\\in\\{0,1\\},\\qquad r=1\\iff\\operatorname{Accepted}(m,H,\\tau,n),$$\n\nwithin its specified scan-time sum, preserving the invariant and the same memory frame. Its counter is exactly the mass of the visited prefix, including the first successful slot when it stops early.\n\nThis proves the complete physical wanted scan, including immediate return and cumulative dense stopping.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This proves the complete physical wanted scan, including immediate return and cumulative dense stopping."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSharedReportingLookup.program_meets",
+    "theorem_title": "Constant-time lookup of a shared reporting record",
+    "natural_language_statement": "Let $\\mu$ contain a shared reporting bank at address $a$ for parameters $h,J$, original band-array lengths $N_B,N_C$, band size $g$, maps $f_B,f_C:\\mathbb N\\to\\mathbb Z$, and integer modulus/offset $p,\\delta$. Fix a valid occurrence index $s$ and valid B/C band indices $i,j$. If the bank's finish address fits the run's address space and addresses fit words, then for every call depth $d$ procedure zero on $(a,s,i,j)$ returns the exact shared-bank record address in at most\n\n$$500\\text{ steps},$$\n\nleaving the entire memory unchanged.\n\nThis supplies actual bounded access to the reused source-pair catalogs in the deterministic integer 3SUM reporter.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies actual bounded access to the reused source-pair catalogs in the deterministic integer 3SUM reporter."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Prepared.transfer",
+    "theorem_title": "Transfer of normalized band preparation",
+    "natural_language_statement": "Let $\\mu,\\mu':\\mathbb N\\to\\mathbb Z$, value and endpoint addresses $a_v,a_e$, band size $g$, and original integer list $X$ be given. Suppose the normalized sorted-band preparation contract holds in $\\mu$. If the memories agree on\n\n$$[a_v,a_v+|X|)\\ \\cup\\ [a_e,a_e+2+2|X|),$$\n\nthen the same preparation contract holds in $\\mu'$ with the same addresses, band size and original list.\n\nThis permits later stages to retain normalization and band-partition witnesses without re-running preprocessing.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This permits later stages to retain normalization and band-partition witnesses without re-running preprocessing."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBandHistSelect.meets",
+    "theorem_title": "Execution of paired source-histogram pointer selection",
+    "natural_language_statement": "Let $P$ be a Light program containing the histogram-selection body at procedure $p_0$, with limits $\\lambda$ and depth $d$. Suppose memory $\\mu$ stores the paired source catalogs for original maps $f_L,f_R:\\mathbb N\\to\\mathbb Z$, lengths $N_L,N_R$, band size $g$, first modulus $p$, positive histogram modulus $m$, and signed shift $\\delta$, at header $a$. Fix an occurrence index $i$ and destination $b$. Assume addresses fit words, the stored catalog ends no later than $b$, $b+2$ fits memory, and $N_L+N_R+i+6$ fits a word. Then the call on $(a,i,b)$ takes at most $400$ steps and writes\n\n$$\\nu(b)=\\operatorname{histLeft}(a,N_L,N_R,g,m,i),\\qquad\\nu(b+1)=\\operatorname{histRight}(a,N_L,N_R,g,m,i),$$\n\npreserving every cell below $b$.\n\nThis computes the actual source histogram pointers from retained physical headers.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes the actual source histogram pointers from retained physical headers. Its two written cells point to the retained left and right histogram slices, with all earlier memory preserved."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketSelect.meets",
+    "theorem_title": "Constant-time independent-flag-aware bucket selection",
+    "natural_language_statement": "Let a Light program contain the bucket-selection body at procedure $p_0$, and let $\\mu$ store contiguous original-index buckets for a code map $c:\\mathbb N\\to\\mathbb N$, $N$ indices, $M$ residues, prefix offsets at $a_o$, and flat indices at $a_f$. Let $r<M$, $\\phi\\le1$ be a natural flag, and $b$ the two-cell destination. Assume all $c(i)<M$ for $i<N$, both stored arrays end no later than $b$, $b+2$ fits memory, and addresses fit words. At any depth $d$, the call takes at most $120$ steps and writes\n\n$$\\nu(b)=a_f+\\operatorname{offset}(c,N,r),\\qquad\\nu(b+1)=\\begin{cases}|\\{i<N:c(i)=r\\}|,&\\phi=1,\\\\0,&\\phi=0.\\end{cases}$$\n\nEvery other memory cell is unchanged.\n\nThis makes independent trimming flags control the exact original-index fiber scanned by terminal tests.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This makes independent trimming flags control the exact original-index fiber scanned by terminal tests."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceControlsMax.meets",
+    "theorem_title": "Memory-preserving maximum routine",
+    "natural_language_statement": "Let $a,b\\in\\mathbb N$, $\\mu$ be any integer memory, and $\\lambda,P,d$ be run limits, a Light program and call depth. If procedure $p$ of $P$ is the maximum body and $\\max(a,b)$ fits the word bound, then\n\n$$\\operatorname{result}=\\max(a,b),\\qquad\\operatorname{steps}\\le40,$$\n\nand the entire memory is unchanged.\n\nThis provides a concrete scalar maximum operation for computing source-control dimensions.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This provides a concrete scalar maximum operation for computing source-control dimensions. The result is the maximum of the two supplied natural dimensions, and its contract charges forty primitive steps."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceFlagTest.meets",
+    "theorem_title": "Execution of the independent source-trimming flag",
+    "natural_language_statement": "Let $c,k,n,B\\in\\mathbb N$ denote an observed cardinality, required cardinality, bucket count and cap. Let $\\mu$ be any integer memory, and $\\lambda,P,d$ be limits, program and depth, with procedure $p$ equal to the flag-test body. If $c+k+n+B+2$ fits the word bound, the procedure takes at most $25$ steps, leaves memory unchanged, and returns\n\n$$\\mathbf1_{\\{c=k\\ \\wedge\\ n\\le B\\}}.$$\n\nThis implements the independent cardinality-and-bucket trimming condition for each endpoint.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This implements the independent cardinality-and-bucket trimming condition for each endpoint. The returned Boolean requires both the prescribed subset cardinality and a bucket count within the given cap."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSwitchScalar.scalar_safe",
+    "theorem_title": "Structural word safety of scalar switch expressions",
+    "natural_language_statement": "Let $B\\in\\mathbb N$ with $B\\ge2$, $\\sigma$ a Light state, $\\lambda$ run limits, and $e$ a scalar expression. Assume every local value satisfies $|\\sigma_i|\\le B$, every literal of $e$ is at most $B$, and $e$ uses only literals, variables and arithmetic operations, without memory loads. If its syntactic evaluation cost is $c(e)$ and\n\n$$B^{c(e)}\\le\\lambda.\\mathrm{word},$$\n\nthen every intermediate evaluation of $e$ stays within the run limits.\n\nThis supplies word-safety bounds for the fixed integer switching arithmetic.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies word-safety bounds for the fixed integer switching arithmetic. The expression has no memory loads; the bound controls every arithmetic intermediate in terms of its syntax cost."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightTrimTest.meets",
+    "theorem_title": "Execution of the retained-edge trimming test",
+    "natural_language_statement": "Let $x,l,r,b\\in\\mathbb N$ be overlap, left/right bucket counts and cap. For any memory $\\mu$, limits $\\lambda$, program $P$ and depth $d$, assume procedure $p$ is the trimming body and both $1$ and $b+1$ fit the word bound. Then it takes at most $30$ steps, leaves the entire memory unchanged, and returns\n\n$$\\mathbf1_{\\{x=0\\ \\wedge\\ l\\le b\\ \\wedge\\ r\\le b\\}}.$$\n\nThis realizes the exact retained local-edge predicate used by the deterministic cover matrix.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This realizes the exact retained local-edge predicate used by the deterministic cover matrix. A pair is retained exactly when its overlap is zero and each endpoint bucket count is at most the common cap."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LocalParameterBounds.count_word_bound",
+    "theorem_title": "Explicit word envelope for local graph counts",
+    "natural_language_statement": "For every natural microblock parameter $h$, the word reservation of the actual local-count program satisfies\n\n$$\\operatorname{word}_{\\mathrm{counts}}(h)\\le2^{1024h+11}.$$\n\nThis puts all finite graph-count arithmetic within the later schedule-derived polynomial word budget.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This puts all finite graph-count arithmetic within the later schedule-derived polynomial word budget."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LocalParameterBounds.space_bound",
+    "theorem_title": "Relative-space envelope for local parameter initialization",
+    "natural_language_statement": "For every natural scratch address $a$ and microblock parameter $h$, the complete local-parameter initializer satisfies\n\n$$\\operatorname{space}_{\\mathrm{parameters}}(a,h)\\le a+E(h),$$\n\nwhere $E(h)$ is the explicit local-parameter envelope.\n\nThis separates the additional storage requirement from the arbitrary starting address for subsequent machine-resource composition.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This separates the additional storage requirement from the arbitrary starting address for subsequent machine-resource composition."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.localRecords_getD",
+    "theorem_title": "Exact indexing of local output records",
+    "natural_language_statement": "Let $h,i\\in\\mathbb N$ with $i$ below the total local-record count, and let $M$ be the positive output-layer count for $h$. Entry $i$ of the ordered local-record list, read with its specified default, is exactly\n\n$$\\left(\\left\\lfloor i/M\\right\\rfloor,\\ \\operatorname{layerRecord}_h(i\\bmod M)\\right).$$\n\nThe quotient is interpreted as the schedule occurrence and the remainder as the layer index, with their finite-index bounds supplied by the stated range assumption.\n\nThis identifies physical record order with occurrence-and-mask decoding, retaining repeated values as distinct records.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This identifies physical record order with occurrence-and-mask decoding, retaining repeated values as distinct records."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.PolynomialResources.pair_polyBound_of_powerBound",
+    "theorem_title": "Polynomial resources from an asymptotic power bound",
+    "natural_language_statement": "Let $f:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$ satisfy the power-bound condition: for every $\\varepsilon>0$, eventually $f(n)\\le n^{a+\\varepsilon}$. For any natural exponent $e$, there are natural constants $s,k$ such that\n\n$$\\forall n,U\\in\\mathbb N,\\quad f(n)(U+1)^e\\le2^s((n+1)(U+1))^k.$$\n\nThis converts an eventual analytic estimate into an all-size polynomial need bound for the deterministic integer 3SUM machine.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This converts an eventual analytic estimate into an all-size polynomial need bound for the deterministic integer 3SUM machine."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.RawReporting.partitionWord_length",
+    "theorem_title": "Length of a retained choice tuple partition word",
+    "natural_language_statement": "For natural $h,J$ and any retained global choice tuple $t$ with $J$ blocks, its partition-word representation has exactly one entry per block:\n\n$$|\\operatorname{partitionWord}(t)|=J.$$\n\nThis aligns the original combinatorial tuple representation with fixed-width reporting prefixes.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This aligns the original combinatorial tuple representation with fixed-width reporting prefixes. The length identity supplies valid list indices when a block coordinate is read during prefix traversal."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostFrontierLayout.At.of_kept",
+    "theorem_title": "Preservation of a physical frontier slot",
+    "natural_language_statement": "Let $\\alpha,\\beta,\\gamma$ be finite types with decidable equality, $I$ a finite raw-incidence set over them with parameters $h,J$, and $w$ a wanted label. Let $\\mu,\\nu$ be integer memories and $b,c,k,s\\in\\mathbb N$ be base, capacity, depth and preservation boundary. Suppose the exact frontier-slot contract holds in $\\mu$, the frontier length at $k$ is at most $c$, the next slot address is at most $s$, and the memories agree below $s$. Then\n\n$$\\operatorname{At}(\\mu,I,w,b,c,k)\\Longrightarrow\\operatorname{At}(\\nu,I,w,b,c,k).$$\n\nThis preserves the exact stored frontier count, query mask and aligned endpoint arrays through later scratch computation.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This preserves the exact stored frontier count, query mask and aligned endpoint arrays through later scratch computation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostPrefixMasks.maskPair_injective",
+    "theorem_title": "Injective paired-mask encoding of reporting prefixes",
+    "natural_language_statement": "Let $h,J,k\\in\\mathbb N$ with $k\\le J$. For each valid length-$k$ reporting prefix $p$, form its left and right flattened endpoint subsets and their binary subset masks. The map\n\n$$p\\longmapsto\\bigl(\\operatorname{mask}(L(p)),\\operatorname{mask}(R(p))\\bigr)$$\n\nis injective.\n\nThis guarantees that the physical paired masks uniquely identify the original prefix used for catalog lookup.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This guarantees that the physical paired masks uniquely identify the original prefix used for catalog lookup."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalChoices.mem_choices",
+    "theorem_title": "Exact membership in terminal completion enumeration",
+    "natural_language_statement": "Let $h,J,k\\in\\mathbb N$, $q$ a global output record, and $S$ a finite subset of the $J\\cdot464h$ block coordinates. Let $R_k(q)$ be the remaining query-coordinate set after the first $k$ blocks. Then\n\n$$S\\in\\operatorname{choices}(q,k)\\iff S\\subseteq R_k(q)\\ \\wedge\\ |S|=(J-k)h.$$\n\nThis characterizes every enumerated terminal completion exactly, including natural-subtraction boundary cases.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This characterizes every enumerated terminal completion exactly, including natural-subtraction boundary cases."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostWantedRecordData.cover_scalars",
+    "theorem_title": "Scalar fields of a retained cover header",
+    "natural_language_statement": "Let $\\mu:\\mathbb N\\to\\mathbb Z$, cover address $a$, and natural parameters $h,J$ satisfy the complete retained cover/key-data contract. Then its scalar header cells are\n\n$$\\mu(a+3)=G(h),\\qquad\\mu(a+6)=p(h),\\qquad\\mu(a+7)=B(h),$$\n\nwhere $G(h)$ is the local representation count, $p(h)$ the selected local prime and $B(h)$ the independent bucket cap.\n\nThis connects actual header reads to the mathematical cover parameters used by wanted-record dispatch.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This connects actual header reads to the mathematical cover parameters used by wanted-record dispatch."
+  }
+]

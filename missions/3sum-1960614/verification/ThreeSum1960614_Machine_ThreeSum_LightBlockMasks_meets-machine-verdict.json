@@ -1,0 +1,15 @@
+{
+  "id": "722ce107-37e1-43e4-82ab-3b33aecd1dba",
+  "theorem_id": "f646b0c6-16db-4704-8b3d-bd8b9d9475cb",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:13:38.356199+00:00",
+  "updated_at": "2026-10-15T07:15:59.430617+00:00",
+  "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This packing contract links stored per-block row masks to the compact indexed coordinates used by reporting queries.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightBlockMasks.meets",
+  "theorem_title": "Packing all block masks into indexed coordinates",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightBlockMasks.meets {pMain pPowers : \u2115}\n    (hmain : P[pMain]? = some (_root_.ThreeSum1960614.Machine.ThreeSum.LightBlockMasks.body pPowers)) (hPowers : P[pPowers]? = some _root_.ThreeSum1960614.Machine.Light.powTableBody)\n    {\u03bc : \u2115 \u2192 \u2124} {J L src dst work d : \u2115} (rows : Fin J \u2192 Finset (Fin L))\n    (hw : (lim.space : \u2124) \u2264 lim.word)\n    (hsrc : src+J \u2264 work) (hdst : dst+J \u2264 work) (hsep : _root_.Light.Apart src J dst J)\n    (hspace : work+(L+1) \u2264 lim.space)\n    (hword : ((2^(J*L+1) : \u2115) : \u2124) \u2264 lim.word)\n    (hread : _root_.ThreeSum1960614.Machine.Light.SegN \u03bc src (_root_.ThreeSum.BlockMaskLayout.rawMasks rows)) (hd : d+1 \u2264 lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [J,L,src,dst,work] \u03bc (_root_.ThreeSum.LightBlockMasks.time J L)\n      (fun r \u03bc' => r = (_root_.ThreeSum.SubsetAddress.subsetMask (_root_.ThreeSum.BlockIndex.indexSet (_root_.ThreeSum.BlockRows.flat rows)) : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SegN \u03bc' dst (_root_.ThreeSum.BlockMaskLayout.packedMasks rows) \u2227 _root_.ThreeSum1960614.Machine.Light.KeptBut \u03bc \u03bc' work dst J) := by sorry",
+  "theorem_natural_language_statement": "Let $J$ stored width-$L$ row masks represent subsets $R_i$. Suppose source and destination arrays are disjoint before scratch, its $L+1$ power cells fit, $2^{JL+1}$ and addresses fit words, and the power helper and depth bound hold. The program writes every packed row mask and returns the mask of their flattened indexed-coordinate set, changing only the output and scratch within its stated time.\n\nThis packing contract links stored per-block row masks to the compact indexed coordinates used by reporting queries.",
+  "theorem_status": "Proved"
+}

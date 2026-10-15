@@ -1,0 +1,15 @@
+{
+  "id": "a2cfb64b-f835-4180-8d0d-e1babb6d1d1c",
+  "theorem_id": "5794d622-1111-4978-bced-4233a04789e2",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:21:44.507126+00:00",
+  "updated_at": "2026-10-15T07:24:48.628706+00:00",
+  "explanation": "Bounds persistent source-bank storage by the encoder-count envelope. The factor for all common bands is controlled before the source-bank construction is combined with the rest of the allocation.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount",
+  "theorem_title": "All original-band bank spans fit the encoder envelope",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.span_count_le_encoderCount {G n : \u2115} (hG : G \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.bandCount n) :\n    G*_root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankLayout.span (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) \u2264\n      _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.storageFactor n*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n := by sorry",
+  "theorem_natural_language_statement": "Let $G,n\\in\\mathbb N$ with $G$ no greater than the cost-ledger band count. Evaluate $h,J,c$ at the executable half-size, block count, and inner size for $n$. Then $$G\\operatorname{span}(h,J,c)\\le\\operatorname{storageFactor}(n)\\operatorname{encoderCount}(n).$$\n\nBounds persistent source-bank storage by the encoder-count envelope. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

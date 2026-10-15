@@ -1,0 +1,45 @@
+{
+  "theorem_id": "855a023f-a057-46c2-bfda-b79ac07eed11",
+  "theorem_name": "ThreeSumSharpTail.binomial_entropy_bounds",
+  "theorem_title": "Two-sided binomial entropy bounds",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.binomial_entropy_bounds (r k : ℕ) (hr : 1 ≤ r) (hk : k ≤ r) :\n    Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) / (r + 1) ≤ (Nat.choose r k : ℝ) ∧\n    (Nat.choose r k : ℝ) ≤ Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) := by sorry",
+  "natural_language_statement": "For integers $r\\ge1$ and $0\\le k\\le r$, let $p=k/r$. Then $$\\frac{e^{rH(p)}}{r+1}\\le\\binom rk\\le e^{rH(p)}.$$ The endpoints $k=0,r$ are included. This is a standard estimate used by the manuscript, not a novelty claim.",
+  "created_at": "2026-10-13T14:52:51.136992+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Lemma 3.1",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "79539be7-c390-4d66-bc1a-4dfe542cdea5",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-13T20:30:08.028625+00:00"
+    },
+    {
+      "audit_id": "261dc768-cd9e-4f05-a7ba-a403e1630983",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-13T20:30:08.35446+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "For every pair of natural numbers $r,k$ satisfying $r\\ge1$ and $0\\le k\\le r$, put $p=k/r$ as a real number and $H(p)=-p\\log p-(1-p)\\log(1-p)$, where $\\log$ denotes the natural logarithm with its total real extension $\\log0=0$ and $\\log x=\\log|x|$ for negative $x$. Then both inequalities $\\exp(rH(p))/(r+1)\\le\\binom rk$ and $\\binom rk\\le\\exp(rH(p))$ hold, with the binomial coefficient and natural parameters interpreted in the real numbers for these comparisons. Both endpoint cases $k=0$ and $k=r$ are included: $H(p)=0$ and the assertion is $1/(r+1)\\le1\\le1$. The case $r=0$ is excluded by the hypothesis.",
+    "model": "gpt-6",
+    "created_at": "2026-10-13T14:52:53.717762+00:00"
+  }
+}

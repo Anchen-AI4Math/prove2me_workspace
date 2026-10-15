@@ -1,0 +1,5 @@
+The query exponent is nonnegative on the interval (0,9/10): both entropy terms are nonnegative there, as is theta log(9), and log(4) is positive. Thus the strict query inequality implies 0<s<1/2.
+
+Continuity and rational density replace the real switch parameter by a rational one while preserving the encoding, preprocessing and query margins. The finite-parameter cost certificate then constructs an actual RatParams record and a uniform CostsWithinP regime for 1<=D<=N^a, with preprocessing bound N^2(log D+1)^2/D^s and query bound D^(1/2-s)(log D+1). Prime-selection, construction and final exponent inequalities depend only on a and s and remain unchanged.
+
+The remaining child is the explicit cost-regime-to-3SUM semantic bridge: it must compose the actual finite pruned program with the full-D reduction and the shared word-RAM model. This submission is a reduction, not a claim that this remaining child has been proved. It connects the proved real-parameter and finite-cost certificates to that exact algorithmic obligation in the original graph.

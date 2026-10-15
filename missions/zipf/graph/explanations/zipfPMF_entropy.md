@@ -1,0 +1,1 @@
+Use the affine logarithmic probability formula in the entropy sum. Distributing the sum separates the weighted logarithmic ranks and the constant $\log H_{N,s}$. The proved normalization makes the total probability multiplying that constant equal to one. Writing the remaining weighted sum with its common denominator gives the stated formula.

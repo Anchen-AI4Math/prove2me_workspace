@@ -1,0 +1,3565 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap10-core-data-provider-preparation",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+  "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData",
+  "source_path": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+  "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+  "original_source_path": "source/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+  "original_source_sha256": "b9c6643a0b8eb48868d597c1e4a613ec2f1da5d49cedc3484c67b3ca057a8130",
+  "provided_names": [
+    "OAI.PiExponent.DeterminantContradiction.FixedData",
+    "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+    "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+    "OAI.PiExponent.DeterminantContradiction.Row",
+    "OAI.PiExponent.DeterminantContradiction.Column",
+    "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+    "OAI.PiExponent.DeterminantContradiction.actualMinor",
+    "OAI.PiExponent.DeterminantContradiction.actualMean",
+    "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+    "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+    "OAI.PiExponent.DeterminantContradiction.collisionRate",
+    "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+    "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+    "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement"
+  ],
+  "provider_file": "Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData.lean",
+  "exact_source_units": [
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.FixedData",
+      "start": 677,
+      "end": 772,
+      "source_lines": [
+        21,
+        21
+      ],
+      "sha256": "b08c07536b36725367a5c823100a8062c006e1bebc8df494a3828b4c8d728408",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 21,
+          "normalizedOffset": 657,
+          "offset": 677
+        },
+        "end": {
+          "col": 93,
+          "line": 21,
+          "normalizedOffset": 752,
+          "offset": 772
+        },
+        "nameText": "FixedData",
+        "nameRange": {
+          "end": {
+            "col": 16,
+            "line": 21,
+            "normalizedOffset": 673,
+            "offset": 693
+          },
+          "start": {
+            "col": 7,
+            "line": 21,
+            "normalizedOffset": 664,
+            "offset": 684
+          }
+        },
+        "valueStart": {
+          "col": 26,
+          "line": 21,
+          "normalizedOffset": 685,
+          "offset": 705
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 93,
+            "line": 21,
+            "normalizedOffset": 752,
+            "offset": 772
+          },
+          "start": {
+            "col": 0,
+            "line": 21,
+            "normalizedOffset": 657,
+            "offset": 677
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:677",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:677",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "FixedData",
+        "unit_start_offset": 677,
+        "unit_end_offset": 772,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "121224e4a278e93b89f07eebcde883b9f77b943b3aceef201dd82c735f11504b",
+        "decl_graph_line": 643,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "startLine": 21,
+        "endLine": 21,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": [
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+      "start": 776,
+      "end": 883,
+      "source_lines": [
+        23,
+        24
+      ],
+      "sha256": "c7099ec7648080226c436c73a3f5e1e10eea2a27901c5c744920f834f7e5cfad",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 23,
+          "normalizedOffset": 754,
+          "offset": 776
+        },
+        "end": {
+          "col": 20,
+          "line": 24,
+          "normalizedOffset": 860,
+          "offset": 883
+        },
+        "nameText": "finiteNumerators",
+        "nameRange": {
+          "end": {
+            "col": 34,
+            "line": 23,
+            "normalizedOffset": 788,
+            "offset": 810
+          },
+          "start": {
+            "col": 18,
+            "line": 23,
+            "normalizedOffset": 772,
+            "offset": 794
+          }
+        },
+        "valueStart": {
+          "col": 77,
+          "line": 23,
+          "normalizedOffset": 837,
+          "offset": 859
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.finiteNumerators"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.finiteNumerators"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 20,
+            "line": 24,
+            "normalizedOffset": 860,
+            "offset": 883
+          },
+          "start": {
+            "col": 0,
+            "line": 23,
+            "normalizedOffset": 754,
+            "offset": 776
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:776",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:776",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "finiteNumerators",
+        "unit_start_offset": 776,
+        "unit_end_offset": 883,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "881d847e91466f3a5e9d02b59051247374f1ba923f2b2a731d861488931a6110",
+        "decl_graph_line": 7158,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+        "startLine": 23,
+        "endLine": 24,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.p",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+      "start": 887,
+      "end": 996,
+      "source_lines": [
+        26,
+        27
+      ],
+      "sha256": "b18d202e54e6e33eb83ae4a75862f97fde8adb575b1a5072fa80a804e8d2193a",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 26,
+          "normalizedOffset": 862,
+          "offset": 887
+        },
+        "end": {
+          "col": 20,
+          "line": 27,
+          "normalizedOffset": 970,
+          "offset": 996
+        },
+        "nameText": "finiteDenominators",
+        "nameRange": {
+          "end": {
+            "col": 36,
+            "line": 26,
+            "normalizedOffset": 898,
+            "offset": 923
+          },
+          "start": {
+            "col": 18,
+            "line": 26,
+            "normalizedOffset": 880,
+            "offset": 905
+          }
+        },
+        "valueStart": {
+          "col": 79,
+          "line": 26,
+          "normalizedOffset": 947,
+          "offset": 972
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 20,
+            "line": 27,
+            "normalizedOffset": 970,
+            "offset": 996
+          },
+          "start": {
+            "col": 0,
+            "line": 26,
+            "normalizedOffset": 862,
+            "offset": 887
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:887",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:887",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "finiteDenominators",
+        "unit_start_offset": 887,
+        "unit_end_offset": 996,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "07144205a73259ce61ef5436ceafade674483476fe4e75c2f61202ce36998ade",
+        "decl_graph_line": 4407,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+        "startLine": 26,
+        "endLine": 27,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.AdmissibleParameters.q",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.Row",
+      "start": 1321,
+      "end": 1483,
+      "source_lines": [
+        36,
+        38
+      ],
+      "sha256": "97d042722ff6a941d035f1382119c841252a688e1d28f7f9fa1fcf94a07a3dfa",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 36,
+          "normalizedOffset": 1286,
+          "offset": 1321
+        },
+        "end": {
+          "col": 58,
+          "line": 38,
+          "normalizedOffset": 1446,
+          "offset": 1483
+        },
+        "nameText": "Row",
+        "nameRange": {
+          "end": {
+            "col": 10,
+            "line": 36,
+            "normalizedOffset": 1296,
+            "offset": 1331
+          },
+          "start": {
+            "col": 7,
+            "line": 36,
+            "normalizedOffset": 1293,
+            "offset": 1328
+          }
+        },
+        "valueStart": {
+          "col": 47,
+          "line": 36,
+          "normalizedOffset": 1337,
+          "offset": 1372
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.Row"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.Row"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 58,
+            "line": 38,
+            "normalizedOffset": 1446,
+            "offset": 1483
+          },
+          "start": {
+            "col": 0,
+            "line": 36,
+            "normalizedOffset": 1286,
+            "offset": 1321
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.Row",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.Row",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1321",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1321",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "Row",
+        "unit_start_offset": 1321,
+        "unit_end_offset": 1483,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "bd10ee494ae0d521d267cc74ad5168ac0bcde905a98dffe617198da4ffb4cee7",
+        "decl_graph_line": 5100,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.Row",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.Row",
+        "startLine": 36,
+        "endLine": 38,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.Column",
+      "start": 1487,
+      "end": 1633,
+      "source_lines": [
+        40,
+        41
+      ],
+      "sha256": "f35cbc37d7e7823612b7b8ff5e3ce2865b54a7b3b054efd5de2abbc9dc901da0",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 40,
+          "normalizedOffset": 1448,
+          "offset": 1487
+        },
+        "end": {
+          "col": 88,
+          "line": 41,
+          "normalizedOffset": 1593,
+          "offset": 1633
+        },
+        "nameText": "Column",
+        "nameRange": {
+          "end": {
+            "col": 13,
+            "line": 40,
+            "normalizedOffset": 1461,
+            "offset": 1500
+          },
+          "start": {
+            "col": 7,
+            "line": 40,
+            "normalizedOffset": 1455,
+            "offset": 1494
+          }
+        },
+        "valueStart": {
+          "col": 50,
+          "line": 40,
+          "normalizedOffset": 1502,
+          "offset": 1541
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.Column"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.Column"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 88,
+            "line": 41,
+            "normalizedOffset": 1593,
+            "offset": 1633
+          },
+          "start": {
+            "col": 0,
+            "line": 40,
+            "normalizedOffset": 1448,
+            "offset": 1487
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.Column",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.Column",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1487",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1487",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "Column",
+        "unit_start_offset": 1487,
+        "unit_end_offset": 1633,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "d254537eeec190a12d8ff0ce95e052da1f9a345a68563291203cd32d1183cf36",
+        "decl_graph_line": 6734,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.Column",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.Column",
+        "startLine": 40,
+        "endLine": 41,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.AdmissibleParameters.w0",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.InterpolationMatrix.Column",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+      "start": 1637,
+      "end": 2038,
+      "source_lines": [
+        43,
+        48
+      ],
+      "sha256": "3d28d7f073a75990df648e385bf464b2d4a45341f0af36be710fe4cc489587bb",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 43,
+          "normalizedOffset": 1595,
+          "offset": 1637
+        },
+        "end": {
+          "col": 72,
+          "line": 48,
+          "normalizedOffset": 1991,
+          "offset": 2038
+        },
+        "nameText": "actualMatrix",
+        "nameRange": {
+          "end": {
+            "col": 30,
+            "line": 43,
+            "normalizedOffset": 1625,
+            "offset": 1667
+          },
+          "start": {
+            "col": 18,
+            "line": 43,
+            "normalizedOffset": 1613,
+            "offset": 1655
+          }
+        },
+        "valueStart": {
+          "col": 36,
+          "line": 44,
+          "normalizedOffset": 1706,
+          "offset": 1749
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMatrix"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMatrix"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 72,
+            "line": 48,
+            "normalizedOffset": 1991,
+            "offset": 2038
+          },
+          "start": {
+            "col": 0,
+            "line": 43,
+            "normalizedOffset": 1595,
+            "offset": 1637
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1637",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:1637",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "actualMatrix",
+        "unit_start_offset": 1637,
+        "unit_end_offset": 2038,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "c596b19a391f6687196e929f09f6f23874aaee52b5c16552ba7a24037956af5c",
+        "decl_graph_line": 226,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "startLine": 43,
+        "endLine": 48,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.Column"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.AdmissibleParameters.w0",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.AdmissibleParameters.F0",
+          "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+      "start": 2042,
+      "end": 2316,
+      "source_lines": [
+        50,
+        53
+      ],
+      "sha256": "0504681e1e054634a55a50da712fd9f9bf64ec61e2f268f6f64d44ba0c430cbd",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 50,
+          "normalizedOffset": 1993,
+          "offset": 2042
+        },
+        "end": {
+          "col": 57,
+          "line": 53,
+          "normalizedOffset": 2264,
+          "offset": 2316
+        },
+        "nameText": "actualMinor",
+        "nameRange": {
+          "end": {
+            "col": 29,
+            "line": 50,
+            "normalizedOffset": 2022,
+            "offset": 2071
+          },
+          "start": {
+            "col": 18,
+            "line": 50,
+            "normalizedOffset": 2011,
+            "offset": 2060
+          }
+        },
+        "valueStart": {
+          "col": 70,
+          "line": 51,
+          "normalizedOffset": 2137,
+          "offset": 2187
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMinor"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMinor"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 57,
+            "line": 53,
+            "normalizedOffset": 2264,
+            "offset": 2316
+          },
+          "start": {
+            "col": 0,
+            "line": 50,
+            "normalizedOffset": 1993,
+            "offset": 2042
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2042",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2042",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "actualMinor",
+        "unit_start_offset": 2042,
+        "unit_end_offset": 2316,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "a28bf2bbe2b0e0f95c74f5a963edb00130a88fb224af1797083b0bf5a059a47f",
+        "decl_graph_line": 852,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "startLine": 50,
+        "endLine": 53,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.Column"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.AdmissibleParameters.w0",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.DeterminantContradiction.Column",
+          "OAI.PiExponent.AdmissibleParameters.F0",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.actualMean",
+      "start": 2320,
+      "end": 2478,
+      "source_lines": [
+        55,
+        56
+      ],
+      "sha256": "2e611a20c57997829a195f3b5fa479d4c380f902a77346ca97ec429458836208",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 55,
+          "normalizedOffset": 2266,
+          "offset": 2320
+        },
+        "end": {
+          "col": 79,
+          "line": 56,
+          "normalizedOffset": 2423,
+          "offset": 2478
+        },
+        "nameText": "actualMean",
+        "nameRange": {
+          "end": {
+            "col": 28,
+            "line": 55,
+            "normalizedOffset": 2294,
+            "offset": 2348
+          },
+          "start": {
+            "col": 18,
+            "line": 55,
+            "normalizedOffset": 2284,
+            "offset": 2338
+          }
+        },
+        "valueStart": {
+          "col": 69,
+          "line": 55,
+          "normalizedOffset": 2341,
+          "offset": 2395
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMean"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualMean"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 79,
+            "line": 56,
+            "normalizedOffset": 2423,
+            "offset": 2478
+          },
+          "start": {
+            "col": 0,
+            "line": 55,
+            "normalizedOffset": 2266,
+            "offset": 2320
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2320",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2320",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "actualMean",
+        "unit_start_offset": 2320,
+        "unit_end_offset": 2478,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "a6f2fbaca54c085fa54fb9973ba9b8a2eeb74448de555ce17d611b4a24cbe42f",
+        "decl_graph_line": 2694,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "startLine": 55,
+        "endLine": 56,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+      "start": 2482,
+      "end": 2589,
+      "source_lines": [
+        58,
+        59
+      ],
+      "sha256": "fa01228a38d0992fa37b42fa726b748810d7b279a119799d42c7400116c15e05",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 58,
+          "normalizedOffset": 2425,
+          "offset": 2482
+        },
+        "end": {
+          "col": 24,
+          "line": 59,
+          "normalizedOffset": 2531,
+          "offset": 2589
+        },
+        "nameText": "actualRowCount",
+        "nameRange": {
+          "end": {
+            "col": 32,
+            "line": 58,
+            "normalizedOffset": 2457,
+            "offset": 2514
+          },
+          "start": {
+            "col": 18,
+            "line": 58,
+            "normalizedOffset": 2443,
+            "offset": 2500
+          }
+        },
+        "valueStart": {
+          "col": 73,
+          "line": 58,
+          "normalizedOffset": 2504,
+          "offset": 2561
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualRowCount"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.actualRowCount"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 24,
+            "line": 59,
+            "normalizedOffset": 2531,
+            "offset": 2589
+          },
+          "start": {
+            "col": 0,
+            "line": 58,
+            "normalizedOffset": 2425,
+            "offset": 2482
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2482",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2482",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "actualRowCount",
+        "unit_start_offset": 2482,
+        "unit_end_offset": 2589,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "fc4e13f893e5ea9a1732519e8ea9cdce538421d7c2144c95b981b41f3b0f3329",
+        "decl_graph_line": 2321,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "startLine": 58,
+        "endLine": 59,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+      "start": 2593,
+      "end": 2784,
+      "source_lines": [
+        61,
+        63
+      ],
+      "sha256": "1a6d1ec1975c06e25c2a7f4b54d69000df4674b976288674770cd9fac400f7ad",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 61,
+          "normalizedOffset": 2533,
+          "offset": 2593
+        },
+        "end": {
+          "col": 30,
+          "line": 63,
+          "normalizedOffset": 2722,
+          "offset": 2784
+        },
+        "nameText": "lowIndexCount",
+        "nameRange": {
+          "end": {
+            "col": 31,
+            "line": 61,
+            "normalizedOffset": 2564,
+            "offset": 2624
+          },
+          "start": {
+            "col": 18,
+            "line": 61,
+            "normalizedOffset": 2551,
+            "offset": 2611
+          }
+        },
+        "valueStart": {
+          "col": 72,
+          "line": 61,
+          "normalizedOffset": 2611,
+          "offset": 2671
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.lowIndexCount"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.lowIndexCount"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 30,
+            "line": 63,
+            "normalizedOffset": 2722,
+            "offset": 2784
+          },
+          "start": {
+            "col": 0,
+            "line": 61,
+            "normalizedOffset": 2533,
+            "offset": 2593
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2593",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2593",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "lowIndexCount",
+        "unit_start_offset": 2593,
+        "unit_end_offset": 2784,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "eb03d7e80ca2a1823b7b96c2950a8bd2f905759f858124a87c92c25c762e329b",
+        "decl_graph_line": 8011,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+        "startLine": 61,
+        "endLine": 63,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.Parameters.A",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+      "start": 2788,
+      "end": 2974,
+      "source_lines": [
+        65,
+        67
+      ],
+      "sha256": "045d03a1d8821f4631a646cdd50d3d38c0959ec1f484a299b4ab1f445bbe954e",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 65,
+          "normalizedOffset": 2724,
+          "offset": 2788
+        },
+        "end": {
+          "col": 33,
+          "line": 67,
+          "normalizedOffset": 2908,
+          "offset": 2974
+        },
+        "nameText": "collisionRate",
+        "nameRange": {
+          "end": {
+            "col": 31,
+            "line": 65,
+            "normalizedOffset": 2755,
+            "offset": 2819
+          },
+          "start": {
+            "col": 18,
+            "line": 65,
+            "normalizedOffset": 2742,
+            "offset": 2806
+          }
+        },
+        "valueStart": {
+          "col": 72,
+          "line": 65,
+          "normalizedOffset": 2802,
+          "offset": 2866
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionRate"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionRate"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 33,
+            "line": 67,
+            "normalizedOffset": 2908,
+            "offset": 2974
+          },
+          "start": {
+            "col": 0,
+            "line": 65,
+            "normalizedOffset": 2724,
+            "offset": 2788
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2788",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2788",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "collisionRate",
+        "unit_start_offset": 2788,
+        "unit_end_offset": 2974,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "1f70e5d4eb8de11f7c1960a315425afb988ce51775deb690dc5c0918c57cac46",
+        "decl_graph_line": 5137,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "startLine": 65,
+        "endLine": 67,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+          "OAI.PiExponent.Parameters.eta",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.lowIndexCount"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+      "start": 2978,
+      "end": 3206,
+      "source_lines": [
+        69,
+        72
+      ],
+      "sha256": "f2889b59f90ff3a4b4d1affa55d985a52c8d7462738b5efabe0bb5c37139e955",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 69,
+          "normalizedOffset": 2910,
+          "offset": 2978
+        },
+        "end": {
+          "col": 60,
+          "line": 72,
+          "normalizedOffset": 3135,
+          "offset": 3206
+        },
+        "nameText": "collisionLimit",
+        "nameRange": {
+          "end": {
+            "col": 32,
+            "line": 69,
+            "normalizedOffset": 2942,
+            "offset": 3010
+          },
+          "start": {
+            "col": 18,
+            "line": 69,
+            "normalizedOffset": 2928,
+            "offset": 2996
+          }
+        },
+        "valueStart": {
+          "col": 65,
+          "line": 69,
+          "normalizedOffset": 2979,
+          "offset": 3047
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionLimit"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionLimit"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 60,
+            "line": 72,
+            "normalizedOffset": 3135,
+            "offset": 3206
+          },
+          "start": {
+            "col": 0,
+            "line": 69,
+            "normalizedOffset": 2910,
+            "offset": 2978
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2978",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:2978",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "collisionLimit",
+        "unit_start_offset": 2978,
+        "unit_end_offset": 3206,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "fbf7d66e807b98c2e715deb8230c9208758198cc7902864abce81c926c009172",
+        "decl_graph_line": 962,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "startLine": 69,
+        "endLine": 72,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.DeterminantContradiction.FixedData"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.Parameters.A",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.Parameters.eta",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.Parameters.theta"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+      "start": 4399,
+      "end": 4583,
+      "source_lines": [
+        94,
+        96
+      ],
+      "sha256": "600c31a137530d200b04ba1adabbf6cb8c9c9f5b8a677658741df7731a1dea82",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 94,
+          "normalizedOffset": 4306,
+          "offset": 4399
+        },
+        "end": {
+          "col": 78,
+          "line": 96,
+          "normalizedOffset": 4488,
+          "offset": 4583
+        },
+        "nameText": "GlobalInterpolationStatement",
+        "nameRange": {
+          "end": {
+            "col": 32,
+            "line": 94,
+            "normalizedOffset": 4338,
+            "offset": 4431
+          },
+          "start": {
+            "col": 4,
+            "line": 94,
+            "normalizedOffset": 4310,
+            "offset": 4403
+          }
+        },
+        "valueStart": {
+          "col": 40,
+          "line": 94,
+          "normalizedOffset": 4346,
+          "offset": 4439
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 78,
+            "line": 96,
+            "normalizedOffset": 4488,
+            "offset": 4583
+          },
+          "start": {
+            "col": 0,
+            "line": 94,
+            "normalizedOffset": 4306,
+            "offset": 4399
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:4399",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:4399",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "GlobalInterpolationStatement",
+        "unit_start_offset": 4399,
+        "unit_end_offset": 4583,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "e631ecae0b10fd1511cd84cc1be084d3af8290c040ecfcfe3c84c4e65b48f642",
+        "decl_graph_line": 7803,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "startLine": 94,
+        "endLine": 96,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.AdmissibleParameters.w0",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.DeterminantContradiction.Column",
+          "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    },
+    {
+      "name": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+      "start": 4587,
+      "end": 5113,
+      "source_lines": [
+        98,
+        106
+      ],
+      "sha256": "b5832f528ce0522f3a6665cad6e3a00538b71843514e392ae6d1688f8663781b",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 98,
+          "normalizedOffset": 4490,
+          "offset": 4587
+        },
+        "end": {
+          "col": 74,
+          "line": 106,
+          "normalizedOffset": 5008,
+          "offset": 5113
+        },
+        "nameText": "AnalyticAggregateStatement",
+        "nameRange": {
+          "end": {
+            "col": 30,
+            "line": 98,
+            "normalizedOffset": 4520,
+            "offset": 4617
+          },
+          "start": {
+            "col": 4,
+            "line": 98,
+            "normalizedOffset": 4494,
+            "offset": 4591
+          }
+        },
+        "valueStart": {
+          "col": 38,
+          "line": 98,
+          "normalizedOffset": 4528,
+          "offset": 4625
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 74,
+            "line": 106,
+            "normalizedOffset": 5008,
+            "offset": 5113
+          },
+          "start": {
+            "col": 0,
+            "line": 98,
+            "normalizedOffset": 4490,
+            "offset": 4587
+          }
+        },
+        "namespace": "OAI.PiExponent.DeterminantContradiction",
+        "verified_name": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 8,
+                "normalizedOffset": 366,
+                "offset": 373
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 353,
+                "offset": 360
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "DeterminantContradiction",
+            "opening": {
+              "end": {
+                "col": 45,
+                "line": 13,
+                "normalizedOffset": 447,
+                "offset": 459
+              },
+              "start": {
+                "col": 0,
+                "line": 13,
+                "normalizedOffset": 402,
+                "offset": 414
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 11,
+                "line": 10,
+                "normalizedOffset": 379,
+                "offset": 388
+              },
+              "start": {
+                "col": 0,
+                "line": 10,
+                "normalizedOffset": 368,
+                "offset": 377
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 11,
+                "normalizedOffset": 400,
+                "offset": 410
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 380,
+                "offset": 390
+              }
+            }
+          }
+        ]
+      },
+      "owner": {
+        "source_name": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "source_sha256": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:4587",
+        "owner_kind": "definition",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction:4587",
+        "source_category": "definition",
+        "source_private": false,
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "unit_name_text": "AnalyticAggregateStatement",
+        "unit_start_offset": 4587,
+        "unit_end_offset": 5113,
+        "graph_kind": "def",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "decl_graph_row_sha256": "7ff3637cf679513fca377c20a6da7b76705a89d07054edb7118e964250f295c2",
+        "decl_graph_line": 3067,
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-DeterminantContradiction-20261007-230938.log",
+        "stage2_facts_sha256": "a2b2fe466e154a10b37c91e7cf58ac338e658aedaa1ae262ee1fa29ebb8ab84c"
+      },
+      "graph": {
+        "name": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+        "kind": "def",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+        "startLine": 98,
+        "endLine": 106,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": [
+          "OAI.PiExponent.AdmissibleParameters.m",
+          "OAI.PiExponent.DeterminantContradiction.Row",
+          "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "OAI.PiExponent.AdmissibleParameters.v0",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.DeterminantContradiction.collisionRate",
+          "OAI.PiExponent.DeterminantContradiction.actualMean",
+          "OAI.PiExponent.Parameters.A",
+          "OAI.PiExponent.Parameters.eta",
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+          "OAI.PiExponent.Parameters.theta",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.DeterminantContradiction.Column",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.AdmissibleParameters.analyticError",
+          "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+          "OAI.PiExponent.AdmissibleParameters.K",
+          "OAI.PiExponent.AdmissibleParameters.base",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.DeterminantContradiction.actualMinor",
+          "OAI.PiExponent.DeterminantContradiction.finiteDenominators"
+        ]
+      },
+      "contexts": [
+        "open Filter",
+        "open scoped Topology"
+      ]
+    }
+  ],
+  "source_context_commands": [
+    "open Filter",
+    "open scoped Topology"
+  ],
+  "imports": [
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+    "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+    "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+    "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+    "Mathlib.Analysis.SpecificLimits.Basic",
+    "Mathlib.Analysis.SpecificLimits.Normed",
+    "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+    "Mathlib.NumberTheory.Chebyshev",
+    "Mathlib.NumberTheory.Zsqrtd.GaussianInt",
+    "Mathlib.RingTheory.PowerSeries.Log",
+    "Mathlib.RingTheory.PowerSeries.Order",
+    "Mathlib.RingTheory.PowerSeries.Trunc",
+    "Mathlib.Tactic",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+  ],
+  "project_dependencies": [
+    "OAI.PiExponent.AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.F0",
+    "OAI.PiExponent.AdmissibleParameters.K",
+    "OAI.PiExponent.AdmissibleParameters.analyticError",
+    "OAI.PiExponent.AdmissibleParameters.base",
+    "OAI.PiExponent.AdmissibleParameters.m",
+    "OAI.PiExponent.AdmissibleParameters.p",
+    "OAI.PiExponent.AdmissibleParameters.q",
+    "OAI.PiExponent.AdmissibleParameters.v0",
+    "OAI.PiExponent.AdmissibleParameters.w0",
+    "OAI.PiExponent.Arithmetic.lcmConstant",
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+    "OAI.PiExponent.InterpolationMatrix.Column",
+    "OAI.PiExponent.InterpolationMatrix.Row",
+    "OAI.PiExponent.InterpolationMatrix.columnWeights",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights",
+    "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+    "OAI.PiExponent.MatrixArithmetic.logWeights",
+    "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+    "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+    "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+    "OAI.PiExponent.Parameters.A",
+    "OAI.PiExponent.Parameters.eta",
+    "OAI.PiExponent.Parameters.theta",
+    "OAI.PiExponent.realWeightedSimplex",
+    "OAI.PiExponent.strictWeightedSimplex"
+  ],
+  "actual_dependency_bindings": {
+    "OAI.PiExponent.AdmissibleParameters": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.F0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.K": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.analyticError": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.base": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.m": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.p": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.q": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.v0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.AdmissibleParameters.w0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+    "OAI.PiExponent.Arithmetic.lcmConstant": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+    "OAI.PiExponent.DeterminantContradiction.collisionConstant": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+    "OAI.PiExponent.InterpolationMatrix.Column": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "OAI.PiExponent.InterpolationMatrix.Row": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "OAI.PiExponent.InterpolationMatrix.columnWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+    "OAI.PiExponent.MatrixArithmetic.logWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "OAI.PiExponent.MatrixArithmetic.meanRowWeight": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "OAI.PiExponent.MatrixArithmetic.rationalCenters": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "OAI.PiExponent.MatrixArithmetic.truncationOrders": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "OAI.PiExponent.Parameters.A": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "OAI.PiExponent.Parameters.eta": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "OAI.PiExponent.Parameters.theta": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+    "OAI.PiExponent.realWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+    "OAI.PiExponent.strictWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+  },
+  "dependency_provider_evidence": {
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters": {
+      "publication_record": "verification/ap2/publication/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/publication.json",
+      "publication_record_sha256": "7a2ec0b19eff481281fc817f5232f4724db172aad6de92804cb0b84c6f45841e",
+      "literal_source_sha256": "6a0f1366cd4af5fe993c59cc76c1ecf72089eb26b839be9f98940597fdf08125",
+      "actual_ci_certificate": "verification/ap2/complete-validation.json",
+      "actual_ci_certificate_sha256": "82940ed662e22b240f2f6a34deaabdc2c3eba5bd3fe40ad408efa3e4ba2a5123",
+      "declared_names": [
+        "OAI.PiExponent.AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.F0",
+        "OAI.PiExponent.AdmissibleParameters.F0_large",
+        "OAI.PiExponent.AdmissibleParameters.F0_pos",
+        "OAI.PiExponent.AdmissibleParameters.K",
+        "OAI.PiExponent.AdmissibleParameters.K_eq",
+        "OAI.PiExponent.AdmissibleParameters.K_pos",
+        "OAI.PiExponent.AdmissibleParameters.analyticError",
+        "OAI.PiExponent.AdmissibleParameters.approximations",
+        "OAI.PiExponent.AdmissibleParameters.arithmeticError",
+        "OAI.PiExponent.AdmissibleParameters.base",
+        "OAI.PiExponent.AdmissibleParameters.casesOn",
+        "OAI.PiExponent.AdmissibleParameters.cast_rationalWeight",
+        "OAI.PiExponent.AdmissibleParameters.collision_margin",
+        "OAI.PiExponent.AdmissibleParameters.dimension_margin",
+        "OAI.PiExponent.AdmissibleParameters.epsilon",
+        "OAI.PiExponent.AdmissibleParameters.epsilon_le_half",
+        "OAI.PiExponent.AdmissibleParameters.epsilon_lt_gap",
+        "OAI.PiExponent.AdmissibleParameters.epsilon_pos",
+        "OAI.PiExponent.AdmissibleParameters.holomorphicError",
+        "OAI.PiExponent.AdmissibleParameters.initial_margin",
+        "OAI.PiExponent.AdmissibleParameters.m",
+        "OAI.PiExponent.AdmissibleParameters.m_pos",
+        "OAI.PiExponent.AdmissibleParameters.mk",
+        "OAI.PiExponent.AdmissibleParameters.mk.noConfusion",
+        "OAI.PiExponent.AdmissibleParameters.noConfusion",
+        "OAI.PiExponent.AdmissibleParameters.p",
+        "OAI.PiExponent.AdmissibleParameters.q",
+        "OAI.PiExponent.AdmissibleParameters.rationalWeight",
+        "OAI.PiExponent.AdmissibleParameters.rationalWeight_pos",
+        "OAI.PiExponent.AdmissibleParameters.rec",
+        "OAI.PiExponent.AdmissibleParameters.recOn",
+        "OAI.PiExponent.AdmissibleParameters.sigma",
+        "OAI.PiExponent.AdmissibleParameters.sigma_centers",
+        "OAI.PiExponent.AdmissibleParameters.sigma_pos",
+        "OAI.PiExponent.AdmissibleParameters.sigma_theta",
+        "OAI.PiExponent.AdmissibleParameters.sigma_volume",
+        "OAI.PiExponent.AdmissibleParameters.translationError",
+        "OAI.PiExponent.AdmissibleParameters.v0",
+        "OAI.PiExponent.AdmissibleParameters.v0_eq",
+        "OAI.PiExponent.AdmissibleParameters.v0_pos",
+        "OAI.PiExponent.AdmissibleParameters.volume_eq",
+        "OAI.PiExponent.AdmissibleParameters.volume_lt_one",
+        "OAI.PiExponent.AdmissibleParameters.w0",
+        "OAI.PiExponent.AdmissibleParameters.w0_eq",
+        "OAI.PiExponent.AdmissibleParameters.w0_pos",
+        "OAI.PiExponent.AdmissibleParameters.weight_growth",
+        "OAI.PiExponent.AdmissibleParameters.weight_margin",
+        "OAI.PiExponent.AdmissibleParameters.wstar",
+        "OAI.PiExponent.AdmissibleParameters.wstar_attained",
+        "OAI.PiExponent.AdmissibleParameters.wstar_lower",
+        "OAI.PiExponent.AdmissibleParameters.wstar_pos",
+        "OAI.PiExponent.AdmissibleParameters.x",
+        "OAI.PiExponent.AdmissibleParameters.x_log",
+        "OAI.PiExponent.AdmissibleParameters.x_one_le",
+        "OAI.PiExponent.AdmissibleParameters.x_zero",
+        "OAI.PiExponent.interpolationSeparationConstant",
+        "OAI.PiExponent.weightErrorCoefficient"
+      ]
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic": {
+      "publication_record": "verification/ap7/publication/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json",
+      "publication_record_sha256": "e031b6ac1b2c3ba6797640c26ef1efaf0c53c9c7dad0f52fbe9cac2a7165fad8",
+      "literal_source_sha256": "f966344d0c55d6ce540e29ab8d7d4fc7748a3346820b5693e0db35d665cdbfc4",
+      "literal_ast_command": {
+        "start": {
+          "col": 0,
+          "line": 13,
+          "normalizedOffset": 343,
+          "offset": 355
+        },
+        "end": {
+          "col": 51,
+          "line": 13,
+          "normalizedOffset": 396,
+          "offset": 408
+        },
+        "nameText": "lcmConstant",
+        "nameRange": {
+          "end": {
+            "col": 29,
+            "line": 13,
+            "normalizedOffset": 372,
+            "offset": 384
+          },
+          "start": {
+            "col": 18,
+            "line": 13,
+            "normalizedOffset": 361,
+            "offset": 373
+          }
+        },
+        "valueStart": {
+          "col": 34,
+          "line": 13,
+          "normalizedOffset": 379,
+          "offset": 391
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "declared_names": [
+        "OAI.PiExponent.Arithmetic.lcmConstant"
+      ]
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant": {
+      "publication_record": "verification/ap7/collision-constant/publication-draft/publication.json",
+      "publication_record_sha256": "5aa6bf130f05cd839a9a75aaa5bccb3271bc1d83a879cbd8f4ae63206d637f59",
+      "literal_source_sha256": "003b60ee649641310e259c4d7a0a04e0a00a5414209c3fed92ad646a498c1ea5",
+      "literal_ast_command": {
+        "start": {
+          "col": 0,
+          "line": 15,
+          "normalizedOffset": 449,
+          "offset": 463
+        },
+        "end": {
+          "col": 57,
+          "line": 15,
+          "normalizedOffset": 508,
+          "offset": 522
+        },
+        "nameText": "collisionConstant",
+        "nameRange": {
+          "end": {
+            "col": 35,
+            "line": 15,
+            "normalizedOffset": 484,
+            "offset": 498
+          },
+          "start": {
+            "col": 18,
+            "line": 15,
+            "normalizedOffset": 467,
+            "offset": 481
+          }
+        },
+        "valueStart": {
+          "col": 40,
+          "line": 15,
+          "normalizedOffset": 491,
+          "offset": 505
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant"
+        ],
+        "graph_kinds": [
+          "def"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.DeterminantContradiction.collisionConstant"
+        ]
+      },
+      "declared_names": [
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant"
+      ]
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData": {
+      "prepared_provider": "verification/ap10/interpolation/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData.lean",
+      "source_sha256": "4a0b31f337d1f17003c49265be1ecd3020f3676296161425d42f531e3e1f9b50",
+      "exact_ast_preparation": "verification/ap10/interpolation/preparation.json",
+      "exact_ast_preparation_sha256": "2e3386cbd3c06e336a07dba204371a78e43b70a7e76726a97c659364bf4894c4",
+      "declared_names": [
+        "OAI.PiExponent.InterpolationMatrix.exponentVector",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+        "OAI.PiExponent.InterpolationMatrix.monomialImage",
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.InterpolationMatrix.matrix",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix"
+      ],
+      "requires_actual_compile_before_import": true
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains": {
+      "prepared_provider": "verification/ap9/domains/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains.lean",
+      "source_sha256": "dec372a59ecd8f0a45440e59dc11e604ad316ea33df0a312045508075d133500",
+      "exact_ast_preparation": "verification/ap9/domains/preparation.json",
+      "exact_ast_preparation_sha256": "75ab7741a95afede050f98c560b0b119619eb9d4fd0718697ca9822ac1fb1eff",
+      "declared_names": [
+        "OAI.PiExponent.InterpolationMatrix.columnWeights",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.InterpolationMatrix.Column",
+        "OAI.PiExponent.InterpolationMatrix.Row"
+      ],
+      "requires_actual_compile_before_import": true
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData": {
+      "prepared_provider": "verification/ap10/arithmetic/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData.lean",
+      "source_sha256": "87817dfd562f366605290ae71d1959522bd5360065905f7e68131b496d171868",
+      "exact_ast_preparation": "verification/ap10/arithmetic/preparation.json",
+      "exact_ast_preparation_sha256": "ba70df47b83cfe30c39a20516ec65a249fb8721d475a38ec6de01102cb447743",
+      "declared_names": [
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+        "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+        "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+        "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+        "OAI.PiExponent.MatrixArithmetic.selectedMinor"
+      ],
+      "requires_actual_compile_before_import": true
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters": {
+      "publication_record": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/publication.json",
+      "publication_record_sha256": "76b8b6c9e4c5a7d0999ccb124b330bf38cdd86bfd349c1fa4683fbbf79b8bdf9",
+      "literal_source_sha256": "5cc159d56c790a4016c6efc625cab455cec7a77986ddf52ce21b82c28a46d824",
+      "actual_ci_certificate": "verification/providers-complete-preview/all-shared-safe-leaves/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/provider-validation-structural.json",
+      "actual_ci_certificate_sha256": "8b2ac14792ee70c941243f57b6345e9efbb9cfd941785ad674cfc8e667c41939",
+      "declared_names": [
+        "OAI.PiExponent.Parameters.approximation_gap",
+        "OAI.PiExponent.Parameters.one_lt_C",
+        "OAI.PiExponent.Parameters.C",
+        "OAI.PiExponent.Parameters.mk",
+        "OAI.PiExponent.Parameters.B_lt_C_theta",
+        "OAI.PiExponent.Parameters.eta",
+        "OAI.PiExponent.Parameters.B",
+        "OAI.PiExponent.Parameters.B_lt_inv_C",
+        "OAI.PiExponent.Parameters.eta_pos",
+        "OAI.PiExponent.Parameters.rec",
+        "OAI.PiExponent.Parameters",
+        "OAI.PiExponent.Parameters.recOn",
+        "OAI.PiExponent.Parameters.casesOn",
+        "OAI.PiExponent.Parameters.eta_lt_one",
+        "OAI.PiExponent.Parameters.A_lt_B",
+        "OAI.PiExponent.Parameters.noConfusion",
+        "OAI.PiExponent.Parameters.C_theta_lt_one",
+        "OAI.PiExponent.Parameters.theta_pos",
+        "OAI.PiExponent.Parameters.A",
+        "OAI.PiExponent.Parameters.gap_pos",
+        "OAI.PiExponent.Parameters.theta_lt_A",
+        "OAI.PiExponent.Parameters.theta",
+        "OAI.PiExponent.Parameters.B_lt_one",
+        "OAI.PiExponent.Parameters.mk.noConfusion",
+        "OAI.PiExponent.Parameters.A_pos"
+      ]
+    },
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains": {
+      "prepared_provider": "verification/ap9/simplex/Definitions/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains.lean",
+      "source_sha256": "9c9e73b2afd72e117b070c4be805287b9711aebb01aa4964e94447876c07e44b",
+      "exact_ast_preparation": "verification/ap9/simplex/preparation.json",
+      "exact_ast_preparation_sha256": "f1a1829b2206f0f2c43b294e3450ae46e039179aa35d6c41ac6d45be4d4f09b1",
+      "declared_names": [
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "requires_actual_compile_before_import": true
+    }
+  },
+  "outside_dependency_closure_complete": true,
+  "mathlib_import_basis": {
+    "core_imports_source": "port/lean/OAI/NumberTheory/PiExponent/CoreImports.lean",
+    "core_imports_sha256": "9f9840acfeb19cd0b0b951762c953dd3be914221356683af4acf1274db641c4c",
+    "core_original_external_imports": [
+      "Mathlib.Algebra.MvPolynomial.Eval",
+      "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+      "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+      "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+      "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+      "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+      "Mathlib.Analysis.SpecificLimits.Basic",
+      "Mathlib.Analysis.SpecificLimits.Normed",
+      "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+      "Mathlib.NumberTheory.Chebyshev",
+      "Mathlib.NumberTheory.Zsqrtd.GaussianInt",
+      "Mathlib.RingTheory.PowerSeries.Log",
+      "Mathlib.RingTheory.PowerSeries.Order",
+      "Mathlib.RingTheory.PowerSeries.Trunc",
+      "Mathlib.Tactic"
+    ],
+    "blanket_Mathlib_import": false
+  },
+  "input_hashes": {
+    "verification/ap9/published-definition-coverage.json": "20c5d755bb456baf2a3ac04ec48f3526153fa1728ba7da23e3bee6fa78780bd6",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/publication.json": "76b8b6c9e4c5a7d0999ccb124b330bf38cdd86bfd349c1fa4683fbbf79b8bdf9",
+    "verification/providers-complete-preview/all-shared-safe-leaves/snapshots/Def_OAI_NumberTheory_PiExponent_Approximation_Parameters/provider-validation-structural.json": "8b2ac14792ee70c941243f57b6345e9efbb9cfd941785ad674cfc8e667c41939",
+    "verification/ap2/publication/Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters/publication.json": "7a2ec0b19eff481281fc817f5232f4724db172aad6de92804cb0b84c6f45841e",
+    "verification/ap2/complete-validation.json": "82940ed662e22b240f2f6a34deaabdc2c3eba5bd3fe40ad408efa3e4ba2a5123",
+    "verification/ap7/publication/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json": "e031b6ac1b2c3ba6797640c26ef1efaf0c53c9c7dad0f52fbe9cac2a7165fad8",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+    "verification/ap7/collision-constant/publication-draft/publication.json": "5aa6bf130f05cd839a9a75aaa5bccb3271bc1d83a879cbd8f4ae63206d637f59",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+    "verification/ap9/simplex/preparation.json": "f1a1829b2206f0f2c43b294e3450ae46e039179aa35d6c41ac6d45be4d4f09b1",
+    "verification/ap9/simplex/Definitions/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains.lean": "9c9e73b2afd72e117b070c4be805287b9711aebb01aa4964e94447876c07e44b",
+    "verification/ap9/domains/preparation.json": "75ab7741a95afede050f98c560b0b119619eb9d4fd0718697ca9822ac1fb1eff",
+    "verification/ap9/domains/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains.lean": "dec372a59ecd8f0a45440e59dc11e604ad316ea33df0a312045508075d133500",
+    "verification/ap10/interpolation/preparation.json": "2e3386cbd3c06e336a07dba204371a78e43b70a7e76726a97c659364bf4894c4",
+    "verification/ap10/interpolation/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData.lean": "4a0b31f337d1f17003c49265be1ecd3020f3676296161425d42f531e3e1f9b50",
+    "verification/ap10/arithmetic/preparation.json": "ba70df47b83cfe30c39a20516ec65a249fb8721d475a38ec6de01102cb447743",
+    "verification/ap10/arithmetic/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData.lean": "87817dfd562f366605290ae71d1959522bd5360065905f7e68131b496d171868",
+    "scripts/stage_core_parent_data_providers.py": "41e081cba2376d61ef1703942ad7956a1616a9098d9b6d9abfb22cb2ab1f9ef6",
+    "scripts/stage_weighted_simplex_domains_providers.py": "b9d00544fecdcd965fc6eaf2d0d9db4c74d3d6f11a0e7fba42bb98969ad7841e",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean": "b9c6643a0b8eb48868d597c1e4a613ec2f1da5d49cedc3484c67b3ca057a8130",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276",
+    "verification/StructuralKernelSnapshotCore.inc": "b0e9d33b62aaed702066cd358943a3d61e3641ec7e4d464c76bb1809c85ce33d",
+    "verification/lean-runtime.json": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "scripts/validate_namespace_context_providers.py": "fc398f10e2a4403aa1461569e0b9b3d1b6c6efbfad474c0f150d91fcbe8a7dd8",
+    "port/lean/OAI/NumberTheory/PiExponent/CoreImports.lean": "9f9840acfeb19cd0b0b951762c953dd3be914221356683af4acf1274db641c4c"
+  },
+  "order": [
+    "Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData.lean",
+    "SourceSnapshot.lean",
+    "GeneratedSnapshot.lean"
+  ],
+  "commands": [
+    "python scripts/preflight_staged_module.py ap10/determinant/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData.lean --root ap10/determinant --imports-manifest ap10/determinant/c1.json --timeout-seconds 300 --emit-olean",
+    "python scripts/preflight_staged_module.py ap10/determinant/SourceSnapshot.lean --root ap10/determinant --imports-manifest ap10/determinant/c2.json --timeout-seconds 300",
+    "python scripts/preflight_staged_module.py ap10/determinant/GeneratedSnapshot.lean --root ap10/determinant --imports-manifest ap10/determinant/c3.json --timeout-seconds 300"
+  ],
+  "snapshot_outputs": {
+    "SourceSnapshot.lean": "verification/ap10/determinant/source-full-ci.jsonl",
+    "GeneratedSnapshot.lean": "verification/ap10/determinant/generated-full-ci.jsonl"
+  },
+  "expected_provider_olean": "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData.olean",
+  "Lean_started": false,
+  "API_used": false,
+  "validated": false,
+  "submission_ready": false,
+  "proposal_status": "Draft"
+}

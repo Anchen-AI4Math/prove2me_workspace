@@ -1,0 +1,3 @@
+theorem sum_sq_le_card_mul_sum_sq (S : Finset G) (n : G → ℝ) :
+    (∑ a ∈ S, n a) ^ 2 ≤ (S.card : ℝ) * ∑ a ∈ S, n a ^ 2 := by
+  simpa using Finset.sum_mul_sq_le_sq_mul_sq S (fun _ : G => (1 : ℝ)) n

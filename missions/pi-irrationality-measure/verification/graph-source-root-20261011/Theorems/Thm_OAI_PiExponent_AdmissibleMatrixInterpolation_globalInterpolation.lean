@@ -1,0 +1,7 @@
+import Definitions.Def_OAI_PiExponent_ApproximationDefinitions
+import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData
+
+open OAI.PiExponent OAI.PiExponent.DeterminantContradiction
+
+theorem OAI.PiExponent.AdmissibleMatrixInterpolation.globalInterpolation : GlobalInterpolationStatement := by
+  sorry

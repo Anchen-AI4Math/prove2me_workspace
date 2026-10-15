@@ -1,0 +1,1 @@
+The Zipf convergence criterion supplies a summable real series when $s>1$. Casting its terms to $\mathbb C$ gives the usual complex Dirichlet series, which equals $\zeta(s)$ in this half-plane. Reindexing the finite interval $1,\ldots,N$ as $k+1$ for $k<N$ identifies its partial sums with $H_{N,s}$; the partial-sum limit of the resulting `HasSum` is the assertion.

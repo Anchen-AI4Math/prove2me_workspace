@@ -1,0 +1,23 @@
+{
+  "theorem_id": "63c3c531-59ff-45a0-89ba-b6ee50e6b0ee",
+  "theorem_name": "APSPSource_ThreeSumApsp_Lang_WordSize",
+  "theorem_title": "Polynomial bounds in instance parameters",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For natural numbers $s,k$ and a finite list of natural-number instance parameters $p_1,\\ldots,p_r$, define\n\n$$B(s,k;p_1,\\ldots,p_r)=2^s\\left(\\prod_{i=1}^{r}(p_i+1)\\right)^k.$$\n\nThe empty product is $1$. Adding one to each parameter keeps the product positive even when some parameters are zero.\n\nThis family of bounds is used to express polynomial limits on values and addresses in the structured-language development, and later to choose sufficient machine word sizes.\n\nReferences:\n\n1. [Source formalization: polynomial parameter bound](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Lang/WordSize.lean#L37-L38).",
+  "created_at": "2026-10-06T07:26:08.507318+00:00",
+  "vote_count": 0,
+  "tags": [
+    "complexity-theory",
+    "program-verification",
+    "word-ram"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.List\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Size\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.DeriveFintype\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# A polynomial bound in the parameters fits in a word\n\nThe running-time claims hold at every word size W ≥ b (log₂ p₁ + ⋯ + log₂ p_r + 1), where p₁, …, p_r\nare the parameters of the instance and the slope b is chosen with the program (`Admissible`).  A\nlight program states its limits as a polynomial in the parameters,\n`polyBound s k params` = 2^s ((p₁ + 1) ⋯ (p_r + 1))^k.\n\nThe main fact is `polyBound_le`: this bound is at most 2^W as soon as b ≥ s + k r + k.  Each factor\np + 1 is at most 2^(log₂ p + 1) (`prod_succ_le`), so with S the sum of the logarithms the bound is\nat most 2^(s + k (S + r)), and s + k (S + r) ≤ (s + k r + k) (S + 1) ≤ W.\n-/\n\n@[expose] public section\n\nnamespace Light\n\n\n\n/-- The bound 2^s · ((p₁ + 1) (p₂ + 1) ⋯)^k in the parameters of an instance. -/\ndef polyBound (s k : ℕ) (params : List ℕ) : ℕ := 2 ^ s * ((params.map (· + 1)).prod) ^ k\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend Light\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Lang/WordSize.lean#L37-L38",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

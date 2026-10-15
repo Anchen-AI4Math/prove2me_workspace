@@ -139,3 +139,16 @@ lean_lib PiExponentStageProofs where
     `independent.OAI_PiExponent_tendsto_nat_add_one_div_pow.Sol_OAI_PiExponent_tendsto_nat_add_one_div_pow,
     `«nodes-preview».OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le.Sol_OAI_PiExponent_Collision_sum_weight_ge_of_low_count_le
   ]
+
+-- The changed 3SUM machine is compiled only through its mission wrappers.
+-- Source imports preserve the pinned upstream Light-language module paths.
+lean_lib ThreeSum1960614Machine where
+  srcDir := "missions/3sum-1960614/machine/lean"
+  roots := #[]
+  globs := #[.submodules `Submission]
+
+lean_lib ThreeSum1960614ClosedProofs where
+  srcDir := "missions/3sum-1960614/machine/lean"
+  roots := #[]
+  globs := #[.submodules `Closed3Sum]
+

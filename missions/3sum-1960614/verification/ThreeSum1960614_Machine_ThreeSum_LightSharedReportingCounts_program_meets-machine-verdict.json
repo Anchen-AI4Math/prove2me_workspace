@@ -1,0 +1,15 @@
+{
+  "id": "34ed2c5c-3495-42b7-abad-57a3cafbd6df",
+  "theorem_id": "33ec4102-d66f-4e12-8f18-1fc5310737e7",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:27:37.597045+00:00",
+  "updated_at": "2026-10-15T07:30:09.858099+00:00",
+  "explanation": "The proof combines the explicit component contracts and finite layout or counting identities of this construction, retaining the stated runtime and memory bounds. These exact local counts determine the shared reporting-bank headers and per-level physical layouts.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSharedReportingCounts.program_meets",
+  "theorem_title": "Computing the two shared reporting counts",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSharedReportingCounts.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {\u03bc : \u2115 \u2192 \u2124} {h dst work d : \u2115}\n    (hw : (lim.space : \u2124) \u2264 lim.word) (horder : dst+2 \u2264 work)\n    (hconstants : (464 : \u2124) \u2264 lim.word)\n    (hspace : work+_root_.ThreeSum.LightPascal.tableSize (464*h) \u2264 lim.space)\n    (hpowWord : ((2^(464*h+1) : \u2115) : \u2124) \u2264 lim.word)\n    (hcountWord : (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLayout.localPairs h : \u2124) \u2264 lim.word) (hd : d+464*h+3 \u2264 lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightSharedReportingCounts.program 0 d [h,dst,work] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightSharedReportingCounts.time h)\n      (fun r \u03bd => r=(_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLayout.localPairs h : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.SegN \u03bd dst [_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLayout.localChoose h,_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLayout.localPairs h] \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd dst) := by sorry",
+  "theorem_natural_language_statement": "For local size $h$, two-cell destination $o$ preceding Pascal scratch $w$, suppose the required Pascal space, constants, $2^{464h+1}$, and pair count fit the limits and depth $d+464h+3$ is allowed. Procedure zero writes the local choose count and local pair count, returns the pair count, and preserves memory below $o$, within the stated time.\n\nThese exact local counts determine the shared reporting-bank headers and per-level physical layouts.",
+  "theorem_status": "Proved"
+}

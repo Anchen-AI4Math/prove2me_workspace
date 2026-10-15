@@ -1,0 +1,105 @@
+import Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_LiteralAnalyticSummand_InterfaceData
+
+open scoped BigOperators Topology
+open Filter
+open OAI.PiExponent OAI.PiExponent.DeterminantContradiction OAI.PiExponent.LiteralAnalytic
+
+
+namespace OAI.PiExponent.DeterminantContradiction
+
+open Filter
+open scoped Topology
+
+theorem logWeights_eq {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    MatrixArithmetic.logWeights (finiteDenominators d) i = d.x (i.val + 1) :=
+  (d.x_log i.val).symm
+
+end OAI.PiExponent.DeterminantContradiction
+
+namespace OAI.PiExponent
+
+open scoped BigOperators
+open Filter Topology
+
+theorem mem_realWeightedSimplex {d : ℕ} {w : Fin d → ℝ}
+    (hw : ∀ i, 0 < w i) {H : ℝ} {a : Fin d → ℕ} :
+    a ∈ realWeightedSimplex w H ↔ ∑ i, w i * (a i : ℝ) ≤ H := by
+  classical
+  constructor
+  · exact fun h => (Finset.mem_filter.mp h).2
+  · intro h
+    refine Finset.mem_filter.mpr ⟨Fintype.mem_piFinset.mpr ?_, h⟩
+    intro i
+    apply Finset.mem_range.mpr
+    apply Nat.lt_succ_of_le
+    apply Nat.le_floor
+    apply (le_div_iff₀ (hw i)).mpr
+    rw [mul_comm]
+    exact (Finset.single_le_sum (f := fun j => w j * (a j : ℝ))
+      (fun j _ => mul_nonneg (hw j).le (Nat.cast_nonneg _)) (Finset.mem_univ i)).trans h
+
+end OAI.PiExponent
+
+namespace OAI.PiExponent.LiteralAnalytic
+
+open scoped BigOperators
+open DeterminantContradiction
+
+theorem fixedWeights_pos {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    0 < fixedWeights d i := by
+  change 0 < MatrixArithmetic.logWeights (finiteDenominators d) i
+  rw [logWeights_eq]
+  exact lt_of_lt_of_le zero_lt_one (d.x_one_le _)
+
+end OAI.PiExponent.LiteralAnalytic
+
+namespace OAI.PiExponent
+
+open scoped BigOperators
+open Filter Topology
+
+theorem mem_strictWeightedSimplex {d : ℕ} {w : Fin d → ℝ}
+    (hw : ∀ i, 0 < w i) {H : ℝ} {a : Fin d → ℕ} :
+    a ∈ strictWeightedSimplex w H ↔ ∑ i, w i * (a i : ℝ) < H := by
+  classical
+  simp only [strictWeightedSimplex, Finset.mem_filter, mem_realWeightedSimplex hw,
+    and_iff_right_iff_imp]
+  exact fun h => h.le
+
+end OAI.PiExponent
+
+namespace OAI.PiExponent.InterpolationMatrix
+
+open scoped BigOperators
+
+theorem row_mem_iff {m : ℕ} {v0 θ H : ℝ} {w : Fin m → ℝ}
+    (hv0 : 0 < v0) (hθ : 0 < θ) (hw : ∀ i, 0 < w i) (b : Fin (m + 1) → ℕ) :
+    b ∈ PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H ↔
+      v0 * (b 0 : ℝ) + (∑ i, w i * (b i.succ : ℝ)) / θ < H := by
+  have hp : ∀ i, 0 < rowWeights v0 θ w i := by
+    intro i
+    refine Fin.cases hv0 (fun j => div_pos (hw j) hθ) i
+  rw [PiExponent.mem_strictWeightedSimplex hp, Fin.sum_univ_succ]
+  simp only [rowWeights, Fin.cases_zero, Fin.cases_succ, div_mul_eq_mul_div,
+    Finset.sum_div]
+
+end OAI.PiExponent.InterpolationMatrix
+
+namespace OAI.PiExponent.MatrixArithmetic
+
+open scoped BigOperators
+
+theorem actual_row_card_pos {m K : ℕ} {v0 θ H : ℝ} {q : Fin m → ℕ}
+    (hK : 0 < K) (hv0 : 0 < v0) (hθ : 0 < θ) (hH : 0 < H)
+    (hw : ∀ i, 0 < logWeights q i) :
+    0 < Fintype.card (InterpolationMatrix.Row K v0 θ (logWeights q) H) := by
+  apply Fintype.card_pos_iff.mpr
+  refine ⟨⟨⟨0, hK⟩, ⟨fun _ => 0, ?_⟩⟩⟩
+  apply (InterpolationMatrix.row_mem_iff hv0 hθ hw _).mpr
+  simpa using hH
+
+end OAI.PiExponent.MatrixArithmetic
+theorem solution {nu : ℝ} (d : FixedData nu) {H : ℝ} (hH : 0 < H) :
+    0 < actualRowCount d H :=
+  MatrixArithmetic.actual_row_card_pos (lt_of_lt_of_le Nat.zero_lt_one d.K_pos) d.v0_pos d.base.theta_pos hH
+    (fixedWeights_pos d)

@@ -1,0 +1,14 @@
+theorem meanRowWeight_le_theta {m K : ℕ} {v0 θ H : ℝ} (q : Fin m → ℕ)
+    (hq : ∀ i, 2 ≤ q i) (hK : 0 < K) (hv0 : 0 < v0) (hθ : 0 < θ)
+    (hH : 0 < H) : meanRowWeight K v0 θ q H ≤ θ := by
+  have hw : ∀ i, 0 < logWeights q i := fun i => ceil_log_weight_pos (hq i)
+  have hM : 0 < (Fintype.card (InterpolationMatrix.Row K v0 θ (logWeights q) H) : ℝ) := by
+    exact_mod_cast actual_row_card_pos hK hv0 hθ hH hw
+  apply (div_le_iff₀ (mul_pos hM hH)).mpr
+  calc
+    rowWeightedSum K v0 θ q H ≤
+        ∑ _ρ : InterpolationMatrix.Row K v0 θ (logWeights q) H, H * θ :=
+      Finset.sum_le_sum (fun ρ hρ => row_weighted_cost_le hv0 hθ hw ρ)
+    _ = θ * ((Fintype.card (InterpolationMatrix.Row K v0 θ (logWeights q) H) : ℝ) * H) := by
+      simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+      ring

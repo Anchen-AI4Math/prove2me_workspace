@@ -1,0 +1,15 @@
+{
+  "id": "9c6a22fa-caef-4bbd-a64e-af9fa2d0e2ae",
+  "theorem_id": "71c16aa8-9fb7-41c5-9c7e-9fe158db7b33",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T08:58:43.718986+00:00",
+  "updated_at": "2026-10-15T09:00:52.117051+00:00",
+  "explanation": "Transfers duplicate-freeness of physical pairs to distinct combinatorial labels. Equality of the decoded label recovers both physical indices, preserving incidence identity despite equal integer values.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label_injective",
+  "theorem_title": "Injectivity of wanted-record labels",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label_injective {xs : List \u2124} {h J i i' j j' : \u2115}\n    (hi : i < 3*xs.length) (hi' : i' < 3*xs.length)\n    (hj : j < _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J) (hj' : j' < _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J)\n    (he : _root_.ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label h J i j hi=_root_.ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label h J i' j' hi') : i=i' \u2227 j=j' := by sorry",
+  "theorem_natural_language_statement": "Let $x$ be an integer list and let $i,i\\prime<3|x|$ and $j,j\\prime$ be below the complete global-key count for local parameters $h,J$. If the two physical index pairs decode to the same original wanted label, then $$i=i\\prime\\quad\\text{and}\\quad j=j\\prime.$$\n\nTransfers duplicate-freeness of physical pairs to distinct combinatorial labels. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

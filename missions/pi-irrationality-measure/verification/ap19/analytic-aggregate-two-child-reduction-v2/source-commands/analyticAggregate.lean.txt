@@ -1,0 +1,6 @@
+theorem analyticAggregate : AnalyticAggregateStatement := by
+  intro nu hnu d
+  refine ⟨analyticRemainder d, tendsto_analyticRemainder d, ?_⟩
+  filter_upwards [eventually_gt_atTop (0 : ℝ)] with H hH
+  intro selection hne
+  exact actual_minor_analytic_bound d (by linarith) hH selection hne

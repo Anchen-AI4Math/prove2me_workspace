@@ -1,0 +1,406 @@
+{
+  "root_id": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "theorem_name": "ThreeSum1960614_Analysis",
+      "theorem_title": "Entropy, quartic integer switch, twelve costs and fixed-expansion model",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines binary entropy in bits $H(t)$, $E_c=(c/2)H(1/c)$, $\\kappa_c=2cH(1/(2c))-cH(1/c)-1$, and $\\gamma_c(t)=cH(1/c)-cH((1-t)/c)$ for natural expansion $c$. The quartic is $P(t)=7.85174904t+0.72447023t^2+0.24044466t^3+0.12022459t^4$, with its polynomial derivative. The fixed rational parameters are $e=0.203889696$, $b=-0.062656016$, $S=0.193175570$, $\\theta=0.040409899$, $\\tau=13/20$, $\\rho=0.27905030$, and $u=0.17200068185091493$. The principal cost cap is $1.96061388$ and the campaign target is the rational $1.960614$.\n\nThe ledger lists all twelve source costs in their source order. `costs` instantiates them at the fixed parameters and $c=232$. The natural-number predicate `clearedSwitch` is the degree-four integer comparison of Section 4.2, with $v=S-2b=159243801/500000000$. `ModelFeasible` describes the relaxed fixed-expansion real cost model, including its whole-interval entropy inequality and all twelve charges. It is not a model of arbitrary 3SUM algorithms. Total logarithms, division and natural subtraction are unrestricted in these definitions; theorem hypotheses delimit the intended domains. The shared machine and decision-problem definitions are imported unchanged.",
+      "created_at": "2026-10-14T05:06:31.105618+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnoncomputable section\n\nnamespace ThreeSum1960614\n\nnoncomputable def entropy (t : ℝ) : ℝ := Real.binEntropy t / Real.log 2\nnoncomputable def E (c : ℕ) : ℝ := (c : ℝ) / 2 * entropy (1 / c)\nnoncomputable def kappa (c : ℕ) : ℝ :=\n  2 * c * entropy (1 / (2 * c)) - c * entropy (1 / c) - 1\nnoncomputable def gamma (c : ℕ) (t : ℝ) : ℝ :=\n  c * entropy (1 / c) - c * entropy ((1 - t) / c)\ndef phi (t : ℝ) : ℝ :=\n  (785174904 * t + 72447023 * t ^ 2 + 24044466 * t ^ 3 + 12022459 * t ^ 4) / 100000000\ndef phiDeriv (t : ℝ) : ℝ :=\n  (785174904 + 2 * 72447023 * t + 3 * 24044466 * t ^ 2 + 4 * 12022459 * t ^ 3) / 100000000\ndef epsilon : ℝ := 203889696 / 1000000000\ndef beta : ℝ := -(62656016 / 1000000000)\ndef saving : ℝ := 193175570 / 1000000000\ndef theta : ℝ := 40409899 / 1000000000\ndef tau : ℝ := 13 / 20\ndef rho : ℝ := 2790503 / 10000000\ndef tangentPoint : ℝ := 17200068185091493 / 100000000000000000\ndef principal : ℝ := 196061388 / 100000000\ndef target : ℚ := 1960614 / 1000000\ndef v : ℝ := saving - 2 * beta\ndef threshold (a : ℝ) : ℝ := (v + a) / (1 - a)\ndef ledger (e b S terminal ratio EE kk hh : ℝ) : List ℝ :=\n  [2 * e * EE,\n   1 + e * (EE - b),\n   2 - e * S,\n   2 - e * (1 / 2 + b - hh),\n   2 - e * (1 / 2 - b - kk - ratio * (1 + S - 2 * b)),\n   2 - e * (terminal - 1 / 2 - b - kk),\n   e * (8 / 5) * (EE + 1 / 2),\n   2 + e * (4 / 5 - (2 / 5) * EE - 2 * b),\n   1 + e * (1 / 2 - b),\n   2 - e * (EE + b),\n   2 - 2 * e * (EE + b), 1]\nnoncomputable def costs : List ℝ :=\n  ledger epsilon beta saving tau rho (E 232) (kappa 232) (entropy theta)\ndef clearedSwitch (J s j q : ℕ) : Prop :=\n  let r := (J - j) * s\n  500000000 * (J - j) *\n    (785174904 * q * r ^ 3 + 72447023 * q ^ 2 * r ^ 2 +\n     24044466 * q ^ 3 * r + 12022459 * q ^ 4) ≥\n    100000000 * (159243801 * J + 500000000 * j) * r ^ 4\nnoncomputable def ModelFeasible (c : ℕ) (e b S th terminal ratio R : ℝ) : Prop :=\n  0 < e ∧ e < 1 ∧ b < 0 ∧ 0 < S ∧\n  0 ≤ th ∧ th ≤ 1 / 2 ∧ 0 ≤ terminal ∧ terminal < 1 ∧\n  0 < ratio ∧ S - 2 * b ≤ gamma c th ∧\n  (∀ t ∈ Set.Icc (0 : ℝ) (1 / 2), entropy t ≤ ratio * (1 + gamma c t)) ∧\n  ∀ z ∈ ledger e b S terminal ratio (E c) (kappa c) (entropy th), z ≤ R\n\nend ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 1–5 and 7; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "theorem_name": "ThreeSum1960614.quartic_parameter_certificate",
+      "theorem_title": "Exact parameters and all twelve cost caps",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.quartic_parameter_certificate :\n    4648781151243719 / 1000000000000000 < E 232 ∧\n    E 232 < 4648781151243720 / 1000000000000000 ∧\n    1557987216578 / 1000000000000000 < kappa 232 ∧\n    kappa 232 < 1557987216579 / 1000000000000000 ∧\n    entropy theta < 244168414687344 / 1000000000000000 ∧\n    v < phi theta ∧ threshold tau < phi (1 / 2) ∧\n    0 < epsilon * (E 232 + beta) ∧ epsilon * (E 232 + beta) < 1 ∧\n    (∀ z ∈ costs, z < principal) ∧ principal < (target : ℝ) := by sorry",
+      "natural_language_statement": "The expansion-232 entropy and multiplicity constants satisfy $4.648781151243719<E_{232}<4.648781151243720$ and $0.001557987216578<\\kappa_{232}<0.001557987216579$, while $H(\\theta)<0.244168414687344$. The initial threshold is below $P(\\theta)$, the terminal threshold is below $P(1/2)$, and $0<e(E_{232}+b)<1$. Every one of the twelve exact real costs is strictly below $1.96061388<1.960614$. These inequalities assert an analytic certificate and do not themselves assert a machine runtime.",
+      "created_at": "2026-10-14T05:08:07.48987+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 5.1; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "7c23d3cb-c4a0-4bc1-975a-ca2e5849adc6",
+      "theorem_name": "ThreeSum1960614.costs_solve_3sum",
+      "theorem_title": "Complete expansion-232 program and runtime bridge",
+      "status": "Open",
+      "formal_statement": "theorem ThreeSum1960614.costs_solve_3sum (r : ℚ)\n    (hr : 0 < r) (hcost : ∀ z ∈ costs, z < (r : ℝ)) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "For every positive rational $r$ strictly above all twelve costs of the fixed expansion-232 quartic parameter choice, deterministic integer 3SUM satisfies the campaign's exact shared word-RAM specification in $O(n^r)$ time. The theorem must construct a finite program for each fixed integer-size exponent, preserve distinct input positions and repetitions, reject sizes below three, and establish correctness for every sufficiently large word width together with instruction, addressing and memory costs. No solver oracle or assumed program-correctness contract is a hypothesis. This is the remaining algorithmic extension sought by this mission: the source package explicitly leaves it unproved.",
+      "created_at": "2026-10-14T05:09:50.156568+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 0, 4–6: outstanding algorithmic extension; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+      "theorem_name": "ThreeSum1960614.initial_entropy_bound",
+      "theorem_title": "Strict initial-threshold binary entropy cap",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.initial_entropy_bound : entropy theta < (244168414687344 / 1000000000000000 : ℝ)  := by sorry",
+      "natural_language_statement": "At the exact fixed threshold theta=0.040409899, the normalized binary entropy H(theta) is strictly less than 0.244168414687344. The threshold and cap are exact rationals; no approximate evaluation is assumed.",
+      "created_at": "2026-10-14T07:17:24.174533+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "a53b364e-57a0-4d2c-adc6-983a74218a4b",
+      "theorem_name": "ThreeSum1960614.threeSum_1960614",
+      "theorem_title": "3SUM in O(n^1.960614) word-RAM steps",
+      "status": "Open",
+      "formal_statement": "theorem ThreeSum1960614.threeSum_1960614 :\n    EndStatement.ThreeSum.SolvedInTime 1.960614 := by sorry",
+      "natural_language_statement": "For every fixed natural integer-size exponent $\\kappa$, there exist a finite deterministic word-RAM program $P$, a natural word-width constant $b$, and a natural-valued time function $T$. For every input size $n$, every list of $n$ integers of absolute value at most $n^\\kappa$, and every word width $W\\ge b(\\lfloor\\log_2n\\rfloor+1)$, the program halts within $T(n)$ steps and accepts exactly when three pairwise distinct positions sum to zero. Repeated values at different positions are allowed. For the reduced rational $1.960614=980307/500000$, there is a natural $K$ such that $T(n)^{500000}\\le K n^{980307}$ for every $n\\ge2$. This exact campaign goal remains unproved until the modified complete program and runtime bridge are closed; it is not asserted to follow from numeric checks alone.",
+      "created_at": "2026-10-14T05:10:16.03444+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+      "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 0: intended machine target; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "entropy",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "a9706156-d570-4deb-9673-92dc5a793f2a",
+      "theorem_name": "ThreeSum1960614.encoding_parameter_bounds",
+      "theorem_title": "Strict expansion-232 encoding and collision intervals",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.encoding_parameter_bounds :\n    4648781151243719 / 1000000000000000 < E 232 ∧\n    E 232 < 4648781151243720 / 1000000000000000 ∧\n    1557987216578 / 1000000000000000 < kappa 232 ∧\n    kappa 232 < 1557987216579 / 1000000000000000  := by sorry",
+      "natural_language_statement": "The fixed expansion-232 entropy constants obey 4.648781151243719 < E(232) < 4.648781151243720 and 0.001557987216578 < kappa(232) < 0.001557987216579, with E and kappa defined in the shared analytic bundle. All four displayed endpoints are exact rationals with denominator 10^15.",
+      "created_at": "2026-10-14T07:17:18.045306+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+      "theorem_name": "ThreeSum1960614.high_precision_logs",
+      "theorem_title": "Six logarithmic intervals with exact 22-digit rational endpoints",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum1960614.high_precision_logs :\n    ((6931471805599453094172 / 10 ^ 22 : ℝ) ≤ Real.log 2 ∧\n      Real.log 2 ≤ 6931471805599453094173 / 10 ^ 22) ∧\n    ((5947071077466927895143 / 10 ^ 22 : ℝ) ≤ Real.log (29 / 16) ∧\n      Real.log (29 / 16) ≤ 5947071077466927895144 / 10 ^ 22) ∧\n    ((43196611445164148724 / 10 ^ 22 : ℝ) ≤ Real.log (232 / 231) ∧\n      Real.log (232 / 231) ≤ 43196611445164148725 / 10 ^ 22) ∧\n    ((21574981400211907723 / 10 ^ 22 : ℝ) ≤ Real.log (464 / 463) ∧\n      Real.log (464 / 463) ≤ 21574981400211907724 / 10 ^ 22) ∧\n    ((2570554035235070921259 / 10 ^ 22 : ℝ) ≤ Real.log (32 * theta) ∧\n      Real.log (32 * theta) ≤ 2570554035235070921260 / 10 ^ 22) ∧\n    ((6518981167335747474116 / 10 ^ 22 : ℝ) ≤ Real.log (2 * (1 - theta)) ∧\n      Real.log (2 * (1 - theta)) ≤ 6518981167335747474117 / 10 ^ 22)  := by sorry",
+      "natural_language_statement": "Certifies both endpoints of six exact rational intervals for the natural logarithms of 2, 29/16, 232/231, 464/463, 32 theta, and 2(1-theta), where theta=0.040409899 is the published fixed parameter. Every interval has denominator 10^22 and width 10^(-22). The endpoints are exactly those displayed in the formal statement; no rounding or numerical oracle is a hypothesis.",
+      "created_at": "2026-10-14T07:11:24.510651+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614",
+      "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Sections 5.1 and 8, exact_interval.py; certificate c232_quartic.json; 14 October 2026.",
+      "tags": [
+        "3sum",
+        "entropy",
+        "exact-certificates"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "theorem_name": "TrulySubcubicAPSP_SourceSpecification",
+      "theorem_title": "Source word-RAM and problem specifications",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines the concrete deterministic word RAM and the problem specifications used by the source formalization of truly subcubic APSP. The machine has signed finite-width words, arithmetic and memory instructions, conditional jumps, and accept/reject verdicts. Its input convention and step-count predicate specify what it means for one program to solve a problem uniformly over input sizes and sufficiently large logarithmic word widths.\n\nThe problem interfaces include Exact Triangle, min-plus matrix multiplication, and all-pairs shortest paths. APSP instances have no negative-weight closed walks; outputs encode reachability and attained minimum distances. The source's rational-power running-time predicate represents $O(n^r)$ using an integer inequality.\n\nThese declarations provide the original `EndStatement` namespace used by the checked algorithm proofs. They are specifications, with no assumed algorithm-correctness or running-time theorems.\n\nReferences:\n\n1. Josh Alman and Virginia Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs*, source formalization, `EndStatement.lean`.",
+      "created_at": "2026-10-06T05:58:53.088962+00:00",
+      "vote_count": 0,
+      "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\nmodule\n\n/-! Claims of the paper «Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs» (Josh\nAlman, Virginia Vassilevska Williams), about programs of a word RAM defined here. Imports nothing, proves nothing. -/\n\n@[expose] public section\n\nnamespace EndStatement\n\n/-- `i j k` name cells, `l` a position in the program, `[i]` is the word in cell `i`. The only constant is 1. -/\ninductive Instr where\n  | one (i : Int)             -- [i] := 1\n  | add (i j k : Int)         -- [i] := [j] + [k]\n  | sub (i j k : Int)         -- [i] := [j] - [k]\n  | mul (i j k : Int)         -- [i] := [j] * [k]\n  | load (i j : Int)          -- [i] := [[j]]\n  | store (i j : Int)         -- [[i]] := [j]\n  | bltz (i : Int) (l : Nat)  -- if [i] < 0, go to position l\n  | accept\n  | reject\n\n/-- The verdict and the final memory, if `P`, run from position `pc` on memory `m`, halts within `t` steps, the halting\nstep counted; past its end `P` rejects. Addresses are read signed; `bltz` jumps on a negative word; `write` runs on. -/\ndef exec {W : Nat} (P : List Instr) : (t pc : Nat) → (m : Int → BitVec W) → Option (Bool × (Int → BitVec W))\n  | 0, _, _ => none\n  | t + 1, pc, m =>\n    let write (i : Int) (v : BitVec W) := exec P t (pc + 1) fun x => if x = i then v else m x\n    match P.getD pc .reject with\n    | .one i => write i 1\n    | .add i j k => write i (m j + m k)\n    | .sub i j k => write i (m j - m k)\n    | .mul i j k => write i (m j * m k)\n    | .load i j => write i (m (m j).toInt)\n    | .store i j => write (m i).toInt (m j)\n    | .bltz i l => exec P t (if (m i).toInt < 0 then l else pc + 1) m\n    | .accept => some (true, m)\n    | .reject => some (false, m)\n\n/-- The memory at the start: `ws` in cells 0, 1, 2, …, and 0 in every other cell. -/\ndef loadWords (W : Nat) (ws : List Int) : Int → BitVec W :=\n  fun a => if a < 0 then 0 else BitVec.ofInt W (ws.getD a.toNat 0)\n\n/-- `T(n) = O(n^r)`, both sides raised to the power `r.den`: core Lean has no fractional powers. For `r = 1.9992 =\n2499/1250` it says `T(n)^1250 ≤ K n^2499`. -/\ndef BigO (T : Nat → Nat) (r : Rat) : Prop :=\n  ∃ K : Nat, ∀ n ≥ 2, T n ^ r.den ≤ K * n ^ r.num.toNat\n\n/-- `yes`: when to accept (always, if not given). `output`: a condition on the cells after the input, read as signed. -/\nstructure Problem where\n  Instance : Nat → Type\n  input {n : Nat} : Instance n → List Int\n  yes {n : Nat} : Instance n → Prop := fun _ => True\n  output {n : Nat} : Instance n → (Nat → Int) → Prop := fun _ _ => True\n\n/-- One run: with `n` in cell 0 and the input after it, `P` halts within `t` steps with the right verdict and output. -/\ndef Problem.SolvedBy (Q : Problem) {n : Nat} (x : Q.Instance n) (P : List Instr) (W t : Nat) : Prop :=\n  ∃ verdict m, exec P t 0 (loadWords W ((n : Int) :: Q.input x)) = some (verdict, m) ∧\n    (verdict = true ↔ Q.yes x) ∧ Q.output x fun a => (m (1 + (Q.input x).length + a : Nat)).toInt\n\n/-- Theorem 2: «a word RAM with O(log n)-bit words», «all numbers in the input are integers of absolute value\nn^O(1)»: for every `κ`, one `P`, `b`, `T` for all instances, correct at every `W ≥ b(⌊log₂ n⌋ + 1)`. -/\ndef Problem.SolvedInTime (Q : Problem) (r : Rat) : Prop :=\n  ∀ κ : Nat, ∃ (P : List Instr) (b : Nat) (T : Nat → Nat), BigO T r ∧\n    ∀ (n : Nat) (x : Q.Instance n), (∀ a ∈ Q.input x, a.natAbs ≤ n ^ κ) → ∀ W ≥ b * (Nat.log2 n + 1),\n      Q.SolvedBy x P W (T n)\n\ndef rowByRow {n : Nat} (w : Fin n → Fin n → Int) : List Int :=\n  (List.ofFn fun u => List.ofFn fun v => w u v).flatten\n\n/-- Section 3.2: «S(a, b, c) := w(a, b) + w(b, c) + w(a, c). A zero triangle is a triangle … with S(a, b, c) = 0». -/\ndef ExactTriangle : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (wAB, wBC, wAC) => rowByRow wAB ++ rowByRow wBC ++ rowByRow wAC\n  yes := fun (wAB, wBC, wAC) => ∃ a b c, wAB a b + wBC b c + wAC a c = 0\n\n/-- Theorem 19: «ε_T := 0.0017». -/\ndef ε_T : Rat := 0.0017\n\n/-- Theorem 19: «Exact Triangle … can be solved by a deterministic algorithm in … O(n^(3−ε_T)) time». -/\ndef Theorem_19 : Prop :=\n  ExactTriangle.SolvedInTime (3 - ε_T)\n\n/-- Section 1: «Given n numbers, decide whether three of them sum to 0». Three different positions. -/\ndef ThreeSum : Problem where\n  Instance n := Fin n → Int\n  input x := List.ofFn x\n  yes x := ∃ i j k, i ≠ j ∧ j ≠ k ∧ i ≠ k ∧ x i + x j + x k = 0\n\n/-- Theorem 22: «solve 3SUM on n integers of absolute value at most n^ν», in time «O(n^1.9992)». -/\ndef Theorem_22_3SUM : Prop :=\n  ThreeSum.SolvedInTime 1.9992\n\n/-- Output, row by row: entry `(i, j)` is the least of the sums `A i k + B k j`. -/\ndef MinPlusProduct : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (A, B) => rowByRow A ++ rowByRow B\n  output := fun {n} (A, B) out => ∀ i j : Fin n,\n    (∃ k, out (i.val * n + j.val) = A i k + B k j) ∧ ∀ k, out (i.val * n + j.val) ≤ A i k + B k j\n\n/-- Theorem 22: «the (min, +)-product of two n × n integer matrices», in time «O(n^2.99942)». -/\ndef Theorem_22_MinPlus : Prop :=\n  MinPlusProduct.SolvedInTime 2.99942\n\n/-- A path and its total weight; it may repeat vertices. -/\ninductive Path {n : Nat} (w : Fin n → Fin n → Option Int) : Fin n → Fin n → Int → Prop\n  | nil (i : Fin n) : Path w i i 0\n  | cons {i j k : Fin n} {d e : Int} : w i j = some d → Path w j k e → Path w i k (d + e)\n\n/-- Input: the 0/1 matrix of the edges, then the weights, with 0 for no edge. Output, two cells for each `(i, j)`: 1 if\nthere is a path, else 0; then the distance. -/\ndef APSP : Problem where\n  Instance n := {w : Fin n → Fin n → Option Int // ∀ i d, Path w i i d → 0 ≤ d}\n  input := fun ⟨w, _⟩ => rowByRow (fun i j => if (w i j).isSome then 1 else 0) ++ rowByRow fun i j => (w i j).getD 0\n  output := fun {n} ⟨w, _⟩ out => ∀ i j : Fin n,\n    let flag := out (2 * (i.val * n + j.val))\n    let dist := out (2 * (i.val * n + j.val) + 1)\n    (flag = 1 ∧ Path w i j dist ∧ ∀ e, Path w i j e → dist ≤ e) ∨ (flag = 0 ∧ ∀ e, ¬ Path w i j e)\n\n/-- Theorem 22: «APSP on directed n-vertex graphs … and no negative cycles», in time «O(n^2.99942)». -/\ndef Theorem_22_APSP : Prop :=\n  APSP.SolvedInTime 2.99942\n\n/-- `w i j u v`: weight between `u` in part `i` and `v` in part `j`. All `k²` blocks are input; only `i < j` counts. -/\ndef ZeroWeightKClique (k : Nat) : Problem where\n  Instance n := Fin k → Fin k → Fin n → Fin n → Int\n  input w := (List.ofFn fun i => (List.ofFn fun j => rowByRow (w i j)).flatten).flatten\n  yes {n} w := ∃ v : Fin k → Fin n,\n    (List.ofFn fun j => (List.ofFn fun i => if i < j then w i j (v i) (v j) else 0).sum).sum = 0\n\n/-- Corollary 39: «decide in O(n^(k−ε_T⌊k/3⌋)) time whether some k-clique … has total edge weight zero». -/\ndef Corollary_39_ZeroWeight : Prop :=\n  ∀ k ≥ 3, (ZeroWeightKClique k).SolvedInTime (k - ε_T * (k / 3 : Nat))\n\nend EndStatement\n",
+      "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L1-L139",
+      "tags": [
+        "algorithms",
+        "source-specification",
+        "truly-subcubic-apsp",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "98401c42-3a22-4105-8405-f9a760db57a4",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-06T07:22:20.258484+00:00"
+        },
+        {
+          "audit_id": "fdbc3952-7980-41be-b395-11d80ecde6e7",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-06T07:22:28.320861+00:00"
+        },
+        {
+          "audit_id": "3603a12c-33d7-4bb8-b2fc-b2f40c23bdc3",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-09T01:38:57.130988+00:00"
+        },
+        {
+          "audit_id": "fb3b6543-2ac0-407f-a0cb-7736ded2f141",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-13T19:38:11.918622+00:00"
+        },
+        {
+          "audit_id": "fc5812f8-4087-43cb-9535-79f6b1fcbc5b",
+          "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+          "reviewer_username": "Yuxuan Xu",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-13T20:30:08.35446+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-03e9ef10-def9-4e26-a45c-499b29ed4a7b",
+      "submission_id": "03e9ef10-def9-4e26-a45c-499b29ed4a7b",
+      "parent_theorem_id": "a9706156-d570-4deb-9673-92dc5a793f2a",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "Expand binary entropy and range-reduce log(232) to 7 log(2)+log(29/16). This gives E=(7 log(2)+log(29/16)+231 log(232/231))/(2 log(2)) and kappa=(463 log(464/463)-231 log(232/231))/log(2). The published 22-digit logarithm intervals and exact sign-directed rational comparisons prove the four strict inequalities.",
+      "created_at": "2026-10-14T07:17:38.006825+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-17448ceb-49aa-4f37-9e4e-107b286f0059",
+      "submission_id": "17448ceb-49aa-4f37-9e4e-107b286f0059",
+      "parent_theorem_id": "a53b364e-57a0-4d2c-adc6-983a74218a4b",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "The target is the campaign's exact deterministic word-RAM statement\n\n$$\\texttt{EndStatement.ThreeSum.SolvedInTime}\\;(1.960614).$$\n\nThis submission is a reduction to two published children, both currently\nopen. The parameter-certificate child bounds each of the twelve fixed\nexpansion-232 costs strictly below the principal cap and bounds that cap\nstrictly below the rational target, viewed as a real number. Transitivity\ntherefore supplies the cost hypotheses of the second child at exponent\n$1.960614$.\n\nThe complete cost-to-program child then supplies the exact shared machine\nstatement. It must construct and verify the entire modified algorithm and\nall instruction, resource and runtime costs. This reduction does not prove\nthat child or treat numeric certificate checks as a complete machine proof.\nThe parent remains open until these actual dependencies are resolved.\n",
+      "created_at": "2026-10-14T05:20:16.884984+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-25a37a8a-a911-4afd-87f5-81ce12d8f7bd",
+      "submission_id": "25a37a8a-a911-4afd-87f5-81ce12d8f7bd",
+      "parent_theorem_id": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "Expand H(theta)=-[theta log(theta)+(1-theta)log(1-theta)]/log(2). Range reduction uses log(theta)=log(32 theta)-5 log(2) and log(1-theta)=log(2(1-theta))-log(2). The published logarithm upper bound for log(2), lower bounds for both reduced arguments, and an exact rational comparison prove the cap.",
+      "created_at": "2026-10-14T07:17:40.668377+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-611cc51f-a057-401f-96ca-b428c3a3e4e1",
+      "submission_id": "611cc51f-a057-401f-96ca-b428c3a3e4e1",
+      "parent_theorem_id": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "The published exact encoding intervals and initial-entropy cap supply the first five conjuncts. Exact rational arithmetic checks both quartic switch margins. The strict E bounds give the positive and subunit band exponent. Unfold the twelve-element ledger and use the relevant upper or lower interval endpoint according to each coefficient's sign; every cost is strictly below 1.96061388. The final rational comparison is 1.96061388 < 1.960614. This proves the analytic parameter certificate, while the complete executable cost/program bridge remains an independent open obligation.\n",
+      "created_at": "2026-10-14T07:22:53.829821+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+      "target": "sketch-611cc51f-a057-401f-96ca-b428c3a3e4e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "a9706156-d570-4deb-9673-92dc5a793f2a",
+      "target": "sketch-611cc51f-a057-401f-96ca-b428c3a3e4e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-611cc51f-a057-401f-96ca-b428c3a3e4e1",
+      "target": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "kind": "sketch"
+    },
+    {
+      "source": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+      "target": "sketch-25a37a8a-a911-4afd-87f5-81ce12d8f7bd",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-25a37a8a-a911-4afd-87f5-81ce12d8f7bd",
+      "target": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+      "kind": "sketch"
+    },
+    {
+      "source": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "target": "sketch-17448ceb-49aa-4f37-9e4e-107b286f0059",
+      "kind": "sketch"
+    },
+    {
+      "source": "7c23d3cb-c4a0-4bc1-975a-ca2e5849adc6",
+      "target": "sketch-17448ceb-49aa-4f37-9e4e-107b286f0059",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-17448ceb-49aa-4f37-9e4e-107b286f0059",
+      "target": "a53b364e-57a0-4d2c-adc6-983a74218a4b",
+      "kind": "sketch"
+    },
+    {
+      "source": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+      "target": "sketch-03e9ef10-def9-4e26-a45c-499b29ed4a7b",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-03e9ef10-def9-4e26-a45c-499b29ed4a7b",
+      "target": "a9706156-d570-4deb-9673-92dc5a793f2a",
+      "kind": "sketch"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "82a98e6b-b1f8-42a5-8831-b1541490e1f9",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "a53b364e-57a0-4d2c-adc6-983a74218a4b",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "a53b364e-57a0-4d2c-adc6-983a74218a4b",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "a9706156-d570-4deb-9673-92dc5a793f2a",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "de7fe647-8aac-4316-94bf-b5004b38aa98",
+      "kind": "structural"
+    },
+    {
+      "source": "4f989e3e-71e0-4d7d-ad99-06cb29a25354",
+      "target": "7c23d3cb-c4a0-4bc1-975a-ca2e5849adc6",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "7c23d3cb-c4a0-4bc1-975a-ca2e5849adc6",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

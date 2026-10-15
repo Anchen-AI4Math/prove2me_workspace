@@ -1,0 +1,12 @@
+theorem actual_minor_arithmetic_lower_bound {nu : ℝ} (d : FixedData nu)
+    (H : ℝ) (hH : 0 < H) (selection : Row d H → Column d H)
+    (hdet : (actualMinor d H selection).det ≠ 0) :
+    -(1 - actualMean d H) - d.arithmeticError ≤
+      Real.log ‖(actualMinor d H selection).det‖ /
+        ((actualRowCount d H : ℝ) * H) := by
+  have hh := MatrixArithmetic.selectedMinor_arithmetic_lower_bound
+    (finiteNumerators d) (finiteDenominators d) (finiteDenominators_two_le d)
+    (Nat.zero_lt_of_lt d.K_pos) d.w0_pos d.v0_pos d.base.theta_pos d.F0_pos.le hH
+    d.wstar_pos (fun i => by rw [logWeights_eq]; exact d.wstar_lower i) selection hdet
+  simpa only [actualMinor, actualMean, actualRowCount,
+    AdmissibleParameters.arithmeticError, logWeights_eq] using hh

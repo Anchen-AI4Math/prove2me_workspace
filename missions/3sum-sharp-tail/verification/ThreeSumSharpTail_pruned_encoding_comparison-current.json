@@ -1,0 +1,23 @@
+{
+  "theorem_id": "e8e4e1a1-9f72-4d34-918e-23238f797f5c",
+  "theorem_name": "ThreeSumSharpTail.pruned_encoding_comparison",
+  "theorem_title": "Pruned encoding exponent is bounded by the original encoding exponent",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.pruned_encoding_comparison (c : ℝ) (hc : 1 < c) :\n    ((c / 2) * ThreeSumSharpTail.entropy (1 / c) + (c - 1) * Real.log 3) / Real.log 4\n      ≤ ThreeSumSharpTail.encodingExponent c := by sorry",
+  "natural_language_statement": "For every real c>1, the exponent ((c/2)H(1/c)+(c-1)log(3))/log(4) is at most A(c). Consequently the strict thinness assumption in the sharp-tail certificate also satisfies the encoding assumption of the parameterized pruned program interface. This comparison follows from the weighted log inequality H(p)+(1-p)log(9)<=log(10).",
+  "created_at": "2026-10-13T17:38:15.176137+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "Derived auxiliary inequality for Xu, same manuscript, Section 4, encodingbound; the pruned exponent Apruned is defined in the existing platform module APSP299791_Defs4, source ThreeSumApsp/Pruned/Costs.lean at formal-math commit 27a2fa4bab32. It is not an additional theorem claimed in the manuscript.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

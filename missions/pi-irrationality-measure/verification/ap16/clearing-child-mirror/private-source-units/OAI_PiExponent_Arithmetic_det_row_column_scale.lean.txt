@@ -1,0 +1,8 @@
+private theorem det_row_column_scale {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (r c : ι → ℂ) :
+    Matrix.det (fun i j => r i * (c j * A i j)) =
+      (∏ i, r i) * (∏ j, c j) * A.det := by
+  calc
+    _ = (∏ i, r i) * (Matrix.of fun i j => c j * A i j).det :=
+      Matrix.det_mul_column r (Matrix.of fun i j => c j * A i j)
+    _ = _ := by rw [Matrix.det_mul_row c A]; ring

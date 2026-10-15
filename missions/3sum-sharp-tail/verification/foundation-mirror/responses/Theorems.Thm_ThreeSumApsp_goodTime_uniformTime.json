@@ -1,0 +1,24 @@
+{
+  "theorem_id": "1ea5bb44-2125-47ec-b503-faf1ed9a8d2e",
+  "theorem_name": "ThreeSumApsp.goodTime_uniformTime",
+  "theorem_title": "The uniform Exact Triangle time satisfies the reduction requirements",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumApsp.goodTime_uniformTime : ∀ {K δ : Real} (e : Nat),\n  @LE.le.{0} Real Real.instLE (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) K →\n    @LE.le.{0} Real Real.instLE δ (@OfNat.ofNat.{0} Real (nat_lit 1) (@One.toOfNat1.{0} Real Real.instOne)) →\n      ThreeSumApsp.GoodTime (ThreeSumApsp.uniformTime K δ e) := by\n  sorry\n",
+  "natural_language_statement": "Let $K,\\delta\\in\\mathbb R$ with $K\\ge1$ and $\\delta\\le1$, and let $e\\in\\mathbb N$. Write $\\lambda(u)=\\log(\\max\\{u,2\\})$ and\n\n$$T(s,u)=K s^{3-\\delta}(\\log s+1)^e(1+\\lambda(u))^2.$$\n\nFor every real $u$ and integer $s\\ge1$, this time bound satisfies\n\n$$T(s,u)\\ge s^2(1+\\lambda(u)).$$\n\nFor fixed $u$, the quotient $T(s,u)/s$ is nondecreasing over integers $s\\ge1$. These two properties are the source's `GoodTime` requirements for the reduction in Theorem 21(b). No lower bound on $\\delta$ is assumed.\n\nReferences:\n\n1. [Source formalization](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/TimeClaims/Sec3/Theorem21_22.lean#L200-L227).",
+  "created_at": "2026-10-06T08:28:28.152796+00:00",
+  "vote_count": 0,
+  "tags": [
+    "complexity-bounds",
+    "formal-math-source",
+    "real-analysis",
+    "truly-subcubic-apsp"
+  ],
+  "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Sec3_Parameters\nimport Definitions.Def_APSPSource_ThreeSumApsp_Util_Log\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Mathlib.Algebra.BigOperators.GroupWithZero.Finset\nimport Mathlib.Algebra.Group.Action.Defs\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Floor.Semifield\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Analysis.Asymptotics.Lemmas\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Normed.Field.Basic\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Real.Basic\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Order.Filter.AtTopBot.Basic\nimport Mathlib.Order.Interval.Finset.Fin\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.DeriveFintype\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\n\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/TimeClaims/Sec3/Theorem21_22.lean#L200-L227",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

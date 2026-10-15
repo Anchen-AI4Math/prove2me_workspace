@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "92e2aac6a71daf7ddbe2340b67bdc49c2d1d4662b3b676ba3cb90c0946adc46b",
+  "publish_intent": {
+    "at_utc": "2026-10-11T12:15:01.765951+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "definition_title": "Finite real-weighted simplices",
+      "definition": "import Mathlib\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent\n\nopen Filter Topology\n\nnoncomputable def realWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (Fintype.piFinset (fun i => Finset.range (⌊H / w i⌋₊ + 1))).filter\r\n    (fun a => ∑ i, w i * (a i : ℝ) ≤ H)\n\nnoncomputable def strictWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (realWeightedSimplex w H).filter (fun a => ∑ i, w i * (a i : ℝ) < H)\n\nend PiExponent\n\nend OAI\n",
+      "natural_language_statement": "For real weights w indexed by a finite set of d coordinates and a real height H, define the finite weak simplex of natural exponent vectors using coordinate ranges up to the natural floor of H/w_i and the inequality sum_i w_i a_i <= H. Define the strict simplex by filtering this finite weak simplex with sum_i w_i a_i < H. These exact finite sets supply the row and column domains of the interpolation matrix; no positivity or asymptotic theorem is asserted here.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean#L154-L163",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "92e2aac6a71daf7ddbe2340b67bdc49c2d1d4662b3b676ba3cb90c0946adc46b",
+    "bundle_source_sha256": "9c9e73b2afd72e117b070c4be805287b9711aebb01aa4964e94447876c07e44b",
+    "bundle_manifest_sha256": "8dc5803355d7f616829bba5f65fca72fc7ffd0a097b18cf70f79c1fc573eea95",
+    "validation_sha256": "84ce8e320bfa9f89a115cfaff81f4b0795a854f4d7f76f9f52eecc4d2352eb99"
+  },
+  "updated_at_utc": "2026-10-11T12:18:07.583723+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "2fee13a0-a403-485e-a50d-a76c96dcccde",
+      "definition_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/2fee13a0-a403-485e-a50d-a76c96dcccde until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "c18a4b04be6245d5234f98aeaddf337c8d844d1dc7b86425933bb0fd758aafd9"
+  },
+  "job_id": "2fee13a0-a403-485e-a50d-a76c96dcccde",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "2fee13a0-a403-485e-a50d-a76c96dcccde",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "theorem_title": "Finite real-weighted simplices",
+      "formal_statement": "",
+      "natural_language_statement": "For real weights w indexed by a finite set of d coordinates and a real height H, define the finite weak simplex of natural exponent vectors using coordinate ranges up to the natural floor of H/w_i and the inequality sum_i w_i a_i <= H. Define the strict simplex by filtering this finite weak simplex with sum_i w_i a_i < H. These exact finite sets supply the row and column domains of the interpolation matrix; no positivity or asymptotic theorem is asserted here.",
+      "definitions": "import Mathlib\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent\n\nopen Filter Topology\n\nnoncomputable def realWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (Fintype.piFinset (fun i => Finset.range (⌊H / w i⌋₊ + 1))).filter\r\n    (fun a => ∑ i, w i * (a i : ℝ) ≤ H)\n\nnoncomputable def strictWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (realWeightedSimplex w H).filter (fun a => ∑ i, w i * (a i : ℝ) < H)\n\nend PiExponent\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean#L154-L163",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c",
+      "created_at": "2026-10-11T12:15:02.690419+00:00",
+      "updated_at": "2026-10-11T12:16:53.382151+00:00"
+    }
+  },
+  "definition_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "theorem_title": "Finite real-weighted simplices",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For real weights w indexed by a finite set of d coordinates and a real height H, define the finite weak simplex of natural exponent vectors using coordinate ranges up to the natural floor of H/w_i and the inequality sum_i w_i a_i <= H. Define the strict simplex by filtering this finite weak simplex with sum_i w_i a_i < H. These exact finite sets supply the row and column domains of the interpolation matrix; no positivity or asymptotic theorem is asserted here.",
+      "created_at": "2026-10-11T12:16:52.633399+00:00",
+      "vote_count": 0,
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent\n\nopen Filter Topology\n\nnoncomputable def realWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (Fintype.piFinset (fun i => Finset.range (⌊H / w i⌋₊ + 1))).filter\r\n    (fun a => ∑ i, w i * (a i : ℝ) ≤ H)\n\nnoncomputable def strictWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\r\n    Finset (Fin d → ℕ) := by\r\n  classical\r\n  exact (realWeightedSimplex w H).filter (fun a => ∑ i, w i * (a i : ℝ) < H)\n\nend PiExponent\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean#L154-L163",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

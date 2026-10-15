@@ -1,0 +1,15 @@
+{
+  "id": "89569c85-346a-4b85-a476-db94a17765d4",
+  "theorem_id": "787faff3-0140-46b6-8a20-76b2dd23f3aa",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:41:40.769307+00:00",
+  "updated_at": "2026-10-15T07:43:50.879417+00:00",
+  "explanation": "Compare layout formulas using nonnegativity of allocated extents. These address comparisons justify preservation of prime, cover, wanted, and source headers during subsequent allocation.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered",
+  "theorem_title": "The encoded-color pipeline layout is ordered",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered (free n : \u2115) (A B C : List \u2124)\n    (hsA : A.Pairwise (\u00b7 < \u00b7)) (hsB : B.Pairwise (\u00b7 < \u00b7)) (hsC : C.Pairwise (\u00b7 < \u00b7)) :\n    _root_.ThreeSum.EncodedColorLayout.prime free n (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n)+6 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.coverBase free n \u2227\n    free+8 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.coverBase free n \u2227 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.coverBase free n \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.controls free n A B C hsA hsB hsC \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.wantedHeader free n (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorNormalizedData.incidences n A B C hsA hsB hsC).length+4 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.controls free n A B C hsA hsB hsC \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.controls free n A B C hsA hsB hsC+3 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.finish free n A B C hsA hsB hsC \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.bankHeader free n A B C hsA hsB hsC+5 \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.finish free n A B C hsA hsB hsC := by sorry",
+  "theorem_natural_language_statement": "For free base $f$, input length $n$, and strictly increasing integer lists $A,B,C$, the prime metadata and initial header precede the cover base. The cover and four-cell wanted header precede the source controls. The three-cell controls and five-cell bank header fit before the pipeline finish address, using the exact list-dependent layout.\n\nThese address comparisons justify preservation of prime, cover, wanted, and source headers during subsequent allocation.",
+  "theorem_status": "Proved"
+}

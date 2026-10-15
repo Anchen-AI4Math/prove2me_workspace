@@ -1,0 +1,98 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "6d3f6a1b0f9839afa8dff53a5b9c980f07bcc7dbd6f12b418541d81da63a8bad",
+  "publish_intent": {
+    "at_utc": "2026-10-11T14:31:13.286968+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+      "definition_title": "Polynomial translation and finite multi-index data",
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\n\nnamespace OAI\n\nnamespace PiExponent.RowTranslation\n\nopen scoped BigOperators\nopen MvPolynomial\n\nsection PolynomialShift\nvariable {σ R : Type*} [CommSemiring R]\n\nnoncomputable def shift (c : σ → R) : MvPolynomial σ R →+* MvPolynomial σ R :=\r\n  eval₂Hom C (fun i => X i + C (c i))\n\nnoncomputable def shiftCoefficient (c : σ → R) (β a : σ →₀ ℕ) : R :=\r\n  (shift c (monomial a 1)).coeff β\n\nend PolynomialShift\n\nsection FiniteExpansion\nvariable {σ R : Type*} [Fintype σ] [DecidableEq σ] [CommSemiring R]\n\nnoncomputable def multiIndex (a : σ → ℕ) : σ →₀ ℕ := Finsupp.equivFunOnFinite.symm a\n\nend FiniteExpansion\n\nend PiExponent.RowTranslation\n\nend OAI\n",
+      "natural_language_statement": "Let $R$ be a commutative semiring and $\\sigma$ an index type. For $c:\\sigma\\to R$, define the polynomial translation homomorphism and its monomial coefficient by\n\n$$\\tau_c(X_i)=X_i+c_i,\\qquad S_c(\\beta,a)=[X^\\beta]\\tau_c(X^a).$$\n\nHere $a,\\beta:\\sigma\\to_0\\mathbb N$ are finitely supported exponent vectors. When $\\sigma$ is finite, the finite multi-index map converts $a:\\sigma\\to\\mathbb N$ to the same vector viewed as a finitely supported function. These are the original data used to expand shifted interpolation polynomials.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean#L13-L68",
+      "tags": [
+        "polynomial",
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "6d3f6a1b0f9839afa8dff53a5b9c980f07bcc7dbd6f12b418541d81da63a8bad",
+    "bundle_source_sha256": "e95b4c0145dda11a72cd22c89aa8cbc58e3b89cc53b2e4df6e9b1b33a5d036f4",
+    "bundle_manifest_sha256": "af5f5ceeea957fae61bb7e0029c1f570f8a0c7ac990563d5bf1b455930b0a045",
+    "validation_sha256": "e04eb024abb4e4614bafd5e0df7d6d347e443af89213a9f9ec636737ad4b3f57"
+  },
+  "updated_at_utc": "2026-10-11T14:32:28.971294+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "48fe2663-f922-4fc4-afcf-2223e1144582",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/48fe2663-f922-4fc4-afcf-2223e1144582 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "ef429bf384d0e8f0209ea5a25b93c03dd462a358cf6408b15fcbb5046754c261"
+  },
+  "job_id": "48fe2663-f922-4fc4-afcf-2223e1144582",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "48fe2663-f922-4fc4-afcf-2223e1144582",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+      "theorem_title": "Polynomial translation and finite multi-index data",
+      "formal_statement": "",
+      "natural_language_statement": "Let $R$ be a commutative semiring and $\\sigma$ an index type. For $c:\\sigma\\to R$, define the polynomial translation homomorphism and its monomial coefficient by\n\n$$\\tau_c(X_i)=X_i+c_i,\\qquad S_c(\\beta,a)=[X^\\beta]\\tau_c(X^a).$$\n\nHere $a,\\beta:\\sigma\\to_0\\mathbb N$ are finitely supported exponent vectors. When $\\sigma$ is finite, the finite multi-index map converts $a:\\sigma\\to\\mathbb N$ to the same vector viewed as a finitely supported function. These are the original data used to expand shifted interpolation polynomials.",
+      "definitions": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\n\nnamespace OAI\n\nnamespace PiExponent.RowTranslation\n\nopen scoped BigOperators\nopen MvPolynomial\n\nsection PolynomialShift\nvariable {σ R : Type*} [CommSemiring R]\n\nnoncomputable def shift (c : σ → R) : MvPolynomial σ R →+* MvPolynomial σ R :=\r\n  eval₂Hom C (fun i => X i + C (c i))\n\nnoncomputable def shiftCoefficient (c : σ → R) (β a : σ →₀ ℕ) : R :=\r\n  (shift c (monomial a 1)).coeff β\n\nend PolynomialShift\n\nsection FiniteExpansion\nvariable {σ R : Type*} [Fintype σ] [DecidableEq σ] [CommSemiring R]\n\nnoncomputable def multiIndex (a : σ → ℕ) : σ →₀ ℕ := Finsupp.equivFunOnFinite.symm a\n\nend FiniteExpansion\n\nend PiExponent.RowTranslation\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean#L13-L68",
+      "tags": [
+        "polynomial",
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "73744b41-5d27-45ae-a5c7-6230fc07a4dc",
+      "created_at": "2026-10-11T14:31:14.326985+00:00",
+      "updated_at": "2026-10-11T14:31:23.435098+00:00"
+    }
+  },
+  "definition_id": "73744b41-5d27-45ae-a5c7-6230fc07a4dc",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "73744b41-5d27-45ae-a5c7-6230fc07a4dc",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_RowTranslation_CoreData",
+      "theorem_title": "Polynomial translation and finite multi-index data",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Let $R$ be a commutative semiring and $\\sigma$ an index type. For $c:\\sigma\\to R$, define the polynomial translation homomorphism and its monomial coefficient by\n\n$$\\tau_c(X_i)=X_i+c_i,\\qquad S_c(\\beta,a)=[X^\\beta]\\tau_c(X^a).$$\n\nHere $a,\\beta:\\sigma\\to_0\\mathbb N$ are finitely supported exponent vectors. When $\\sigma$ is finite, the finite multi-index map converts $a:\\sigma\\to\\mathbb N$ to the same vector viewed as a finitely supported function. These are the original data used to expand shifted interpolation polynomials.",
+      "created_at": "2026-10-11T14:31:22.413162+00:00",
+      "vote_count": 0,
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017",
+        "polynomial"
+      ],
+      "definition": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\n\nnamespace OAI\n\nnamespace PiExponent.RowTranslation\n\nopen scoped BigOperators\nopen MvPolynomial\n\nsection PolynomialShift\nvariable {σ R : Type*} [CommSemiring R]\n\nnoncomputable def shift (c : σ → R) : MvPolynomial σ R →+* MvPolynomial σ R :=\r\n  eval₂Hom C (fun i => X i + C (c i))\n\nnoncomputable def shiftCoefficient (c : σ → R) (β a : σ →₀ ℕ) : R :=\r\n  (shift c (monomial a 1)).coeff β\n\nend PolynomialShift\n\nsection FiniteExpansion\nvariable {σ R : Type*} [Fintype σ] [DecidableEq σ] [CommSemiring R]\n\nnoncomputable def multiIndex (a : σ → ℕ) : σ →₀ ℕ := Finsupp.equivFunOnFinite.symm a\n\nend FiniteExpansion\n\nend PiExponent.RowTranslation\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/RowTranslation.lean#L13-L68",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

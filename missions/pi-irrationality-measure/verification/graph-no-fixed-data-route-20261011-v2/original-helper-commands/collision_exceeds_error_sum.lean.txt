@@ -1,0 +1,5 @@
+theorem collision_exceeds_error_sum : 1 + d.arithmeticError + d.analyticError <
+    c * (d.base.eta ^ 2 * (d.K : ℝ) * (d.base.theta : ℝ) ^ d.m /
+      (((d.m : ℝ) + 1) * (d.v0 : ℝ) * (d.base.A : ℝ) ^ d.m)) := by
+  rw [add_assoc, d.error_sum_eq]
+  exact d.collision_exceeds_one_add_error

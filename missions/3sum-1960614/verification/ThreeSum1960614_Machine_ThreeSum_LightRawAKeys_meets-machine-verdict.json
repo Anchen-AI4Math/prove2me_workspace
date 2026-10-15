@@ -1,0 +1,15 @@
+{
+  "id": "9c0af54a-8c06-4fb6-abf4-a600dd487e78",
+  "theorem_id": "6ba89810-dc0d-465d-87dd-4442c35c5e46",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:27:35.639693+00:00",
+  "updated_at": "2026-10-15T07:29:51.365513+00:00",
+  "explanation": "This retains every original A incidence in the raw wanted-label domain. Lift-major order keeps each original position in every guarded residue row, including repeated input values.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightRawAKeys.meets",
+  "theorem_title": "Execution of all three guarded A-key lifts",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightRawAKeys.meets {pMain pResidues pAffine pEmod src free p U : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (hmain : P[pMain]? = some (_root_.ThreeSum1960614.Machine.ThreeSum.LightRawAKeys.body pResidues pAffine))\n    (hres : P[pResidues]? = some (_root_.ThreeSum1960614.Machine.ThreeSum.LightResidues.residuesBody pEmod))\n    (haff : P[pAffine]? = some _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingAffine.body)\n    (hem : P[pEmod]? = some _root_.ThreeSum1960614.Machine.Light.emodBody) (xs : List \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hp : 0 < p)\n    (hsrc : src+xs.length \u2264 free)\n    (hspace : _root_.ThreeSum.LightRawAKeys.space free xs.length U \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightRawAKeys.word p U : \u2124) \u2264 lim.word) (hd : d+2 \u2264 lim.depth)\n    (hread : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc src xs) (hvalues : \u2200 x \u2208 xs, |x| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,xs.length,p,free] \u03bc (_root_.ThreeSum.LightRawAKeys.time xs.length U)\n      (fun r \u03bd => r=(free : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bd free (_root_.ThreeSum.RawAKeyLists.keys p xs) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let integer list $X$ with $|x|\\le U$ be stored at source $s$, positive modulus $p$, and free base $f$ after the source. Let $\\lambda,P,d$ be run limits, program and depth. Suppose $P$ contains the lift wrapper, signed-residue, affine and remainder bodies; addresses fit words; the stated lift space and word budgets fit; and $d+2$ is allowed. The call returns $f$ and writes the exact three guarded residue lifts of every original position, in lift-major order, within its stated time, preserving all cells below $f$.\n\nThis retains every original A incidence in the raw wanted-label domain.",
+  "theorem_status": "Proved"
+}

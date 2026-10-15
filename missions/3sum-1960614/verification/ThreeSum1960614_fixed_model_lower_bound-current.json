@@ -1,0 +1,28 @@
+{
+  "theorem_id": "9319378a-d6f7-45f7-b66b-35f91d017f2e",
+  "theorem_name": "ThreeSum1960614.fixed_model_lower_bound",
+  "theorem_title": "Lower bound for the relaxed fixed-expansion cost model",
+  "status": "Open",
+  "formal_statement": "theorem ThreeSum1960614.fixed_model_lower_bound\n    (e b S th terminal ratio R : ℝ)\n    (hmodel : ModelFeasible 232 e b S th terminal ratio R) :\n    (196061349120 / 100000000000 : ℝ) < R := by sorry",
+  "natural_language_statement": "For every real tuple $(e,b,S,\\theta,\\tau,\\rho,R)$ satisfying the explicitly defined relaxed twelve-cost model at $c=232$, its common cost upper bound satisfies $R>1.96061349120$. The model requires $0<e<1$, $b<0$, $S>0$, $0\\le\\theta\\le1/2$, $0\\le\\tau<1$, $\\rho>0$, $S-2b\\le\\gamma_{232}(\\theta)$, the whole-interval bound $H(t)\\le\\rho(1+\\gamma_{232}(t))$, and each ledger charge at most $R$. The quantification covers all such parameter choices. This is only a lower bound for that fixed model, not for 3SUM algorithms or other expansions.",
+  "created_at": "2026-10-14T05:09:31.049867+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 7; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "# Read-back: `ThreeSum1960614.fixed_model_lower_bound`\n\nreadback_model: GPT-6\n\nFor every seven real numbers $e,b,S,\\theta,u,r,R$, where $\\theta$ denotes the argument named `th`, $u$ denotes `terminal`, and $r$ denotes `ratio`, define the normalized binary entropy, on the arguments in $[0,1]$ used here, by $H(x)=-\\bigl(x\\log x+(1-x)\\log(1-x)\\bigr)/\\log 2$, with the endpoint convention $0\\log 0=0$ and with $\\log$ the natural logarithm. Suppose all of the following conditions hold:\n\n$$\n\\begin{gathered}\n0<e<1,\\qquad b<0,\\qquad 0<S,\\\\\n0\\le\\theta\\le\\frac12,\\qquad 0\\le u<1,\\qquad 0<r,\\\\\nS-2b\\le 232H\\!\\left(\\frac1{232}\\right)-232H\\!\\left(\\frac{1-\\theta}{232}\\right),\\\\\n\\text{for every real }t\\text{ with }0\\le t\\le\\frac12,\\quad\nH(t)\\le r\\left(1+232H\\!\\left(\\frac1{232}\\right)-232H\\!\\left(\\frac{1-t}{232}\\right)\\right).\n\\end{gathered}\n$$\n\nSuppose also that every real number $z$ belonging to the twelve-entry ledger is at most $R$; fully expanded, this means that each of the following twelve inequalities holds, in the ledger's order:\n\n$$\n\\begin{aligned}\n1.\\quad &2e\\left(116H\\!\\left(\\frac1{232}\\right)\\right)\\le R,\\\\\n2.\\quad &1+e\\left(116H\\!\\left(\\frac1{232}\\right)-b\\right)\\le R,\\\\\n3.\\quad &2-eS\\le R,\\\\\n4.\\quad &2-e\\left(\\frac12+b-H(\\theta)\\right)\\le R,\\\\\n5.\\quad &2-e\\left(\\frac12-b-\\left(464H\\!\\left(\\frac1{464}\\right)-232H\\!\\left(\\frac1{232}\\right)-1\\right)-r(1+S-2b)\\right)\\le R,\\\\\n6.\\quad &2-e\\left(u-\\frac12-b-\\left(464H\\!\\left(\\frac1{464}\\right)-232H\\!\\left(\\frac1{232}\\right)-1\\right)\\right)\\le R,\\\\\n7.\\quad &e\\,\\frac85\\left(116H\\!\\left(\\frac1{232}\\right)+\\frac12\\right)\\le R,\\\\\n8.\\quad &2+e\\left(\\frac45-\\frac25\\left(116H\\!\\left(\\frac1{232}\\right)\\right)-2b\\right)\\le R,\\\\\n9.\\quad &1+e\\left(\\frac12-b\\right)\\le R,\\\\\n10.\\quad &2-e\\left(116H\\!\\left(\\frac1{232}\\right)+b\\right)\\le R,\\\\\n11.\\quad &2-2e\\left(116H\\!\\left(\\frac1{232}\\right)+b\\right)\\le R,\\\\\n12.\\quad &1\\le R.\n\\end{aligned}\n$$\n\nThen the theorem asserts the strict lower bound $\\frac{196061349120}{100000000000}<R$. The natural-number parameter of the feasibility predicate is fixed to $232$, rather than quantified. The quantifiers over $t$ include both $t=0$ and $t=\\frac12$; the permitted parameter values include $\\theta=0$, $\\theta=\\frac12$, and $u=0$. The values $e=0$, $e=1$, $b=0$, $S=0$, $u=1$, and $r=0$ are excluded by strict hypotheses. No integrality assumptions or further bounds on these seven real parameters are imposed; in particular, $R$ is quantified over all real numbers before the hypotheses are applied. Every ledger bound and both entropy comparison bounds are non-strict, whereas the asserted bound on $R$ is strict.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:09:32.786671+00:00"
+  }
+}

@@ -1,0 +1,1 @@
+The Zipf convergence criterion rules out summability for $s\le1$. Each term is nonnegative, so the partial sums of this nonsummable series tend to $+\infty$. Reindexing the partial sums gives precisely $H_{N,s}$.

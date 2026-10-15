@@ -1,0 +1,19 @@
+private theorem row_log_cost_lower {ι : Type*} (s : Finset ι)
+    (a q : ι → ℕ) (wmin U : ℝ) (hmin : 0 < wmin)
+    (hw : ∀ i ∈ s, wmin ≤ (⌈Real.log (q i)⌉₊ : ℝ))
+    (hbudget : (∑ i ∈ s, (a i : ℝ) * (⌈Real.log (q i)⌉₊ : ℝ)) ≤ U) :
+    (∑ i ∈ s, (a i : ℝ) * (⌈Real.log (q i)⌉₊ : ℝ)) - U / wmin ≤
+      ∑ i ∈ s, (a i : ℝ) * Real.log (q i) := by
+  have hsum := sum_exponents_le_weight_div s a (fun i => (⌈Real.log (q i)⌉₊ : ℝ))
+    wmin hmin hw
+  have hsumU : (∑ i ∈ s, (a i : ℝ)) ≤ U / wmin :=
+    hsum.trans (div_le_div_of_nonneg_right hbudget hmin.le)
+  have hceil : (∑ i ∈ s, (a i : ℝ) * (⌈Real.log (q i)⌉₊ : ℝ)) ≤
+      (∑ i ∈ s, (a i : ℝ) * Real.log (q i)) + ∑ i ∈ s, (a i : ℝ) := by
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_le_sum
+    intro i hi
+    have h := mul_le_mul_of_nonneg_left
+      (Nat.ceil_lt_add_one (Real.log_natCast_nonneg (q i))).le (Nat.cast_nonneg (a i) : (0 : ℝ) ≤ a i)
+    nlinarith only [h]
+  linarith

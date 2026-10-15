@@ -1,0 +1,198 @@
+{
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "helpers": [
+    {
+      "name": "zipf_summable_iff",
+      "title": "The Zipf p-series converges exactly for $s>1$",
+      "statement": "For a real exponent $s\\ge0$, the series $\\sum_{k=1}^{\\infty} k^{-s}$ is summable if and only if $s>1$. This is the convergence criterion in the infinite-extension theorem, isolated for reuse in both its convergent and divergent branches.",
+      "dependencies": [],
+      "source": "missions/zipf/graph/solutions/zipf_summable_iff.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipf_summable_iff.md",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_summable_iff (s : ℝ) (hs : 0 ≤ s) :\n    Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s := by sorry\n\nend ZipfLaw",
+      "problem": {
+        "theorem_name": "ZipfLaw.zipf_summable_iff",
+        "theorem_title": "The Zipf p-series converges exactly for $s>1$",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_summable_iff (s : ℝ) (hs : 0 ≤ s) :\n    Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For a real exponent $s\\ge0$, the series $\\sum_{k=1}^{\\infty} k^{-s}$ is summable if and only if $s>1$. This is the convergence criterion in the infinite-extension theorem, isolated for reuse in both its convergent and divergent branches.",
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "zipf-law",
+          "harmonic-numbers",
+          "power-law"
+        ]
+      }
+    },
+    {
+      "name": "zipf_genHarmonic_tendsto_zeta",
+      "title": "For $s>1$, the Zipf harmonic sums tend to $\\zeta(s)$",
+      "statement": "If $s>1$, the generalized harmonic partial sums $H_{N,s}=\\sum_{k=1}^{N}k^{-s}$ converge to Riemann's zeta function $\\zeta(s)$. The formal limit takes place in $\\mathbb C$ after casting the real sums, because Mathlib's `riemannZeta` is complex-valued.",
+      "dependencies": [
+        "zipf_summable_iff"
+      ],
+      "source": "missions/zipf/graph/solutions/zipf_genHarmonic_tendsto_zeta.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipf_genHarmonic_tendsto_zeta.md",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_zeta (s : ℝ) (hs : 1 < s) :\n    Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n      (nhds (riemannZeta s)) := by sorry\n\nend ZipfLaw",
+      "problem": {
+        "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_zeta",
+        "theorem_title": "For $s>1$, the Zipf harmonic sums tend to $\\zeta(s)$",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_zeta (s : ℝ) (hs : 1 < s) :\n    Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n      (nhds (riemannZeta s)) := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "If $s>1$, the generalized harmonic partial sums $H_{N,s}=\\sum_{k=1}^{N}k^{-s}$ converge to Riemann's zeta function $\\zeta(s)$. The formal limit takes place in $\\mathbb C$ after casting the real sums, because Mathlib's `riemannZeta` is complex-valued.",
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "zipf-law",
+          "harmonic-numbers",
+          "power-law"
+        ]
+      }
+    },
+    {
+      "name": "zipf_genHarmonic_tendsto_atTop",
+      "title": "For $0\\le s\\le1$, the Zipf harmonic sums tend to infinity",
+      "statement": "For every real exponent $0\\le s\\le1$, the generalized harmonic sums $H_{N,s}$ tend to $+\\infty$ as $N\\to\\infty$. In particular no finite normalizing constant can extend these finite Zipf laws to infinitely many ranks.",
+      "dependencies": [
+        "zipf_summable_iff"
+      ],
+      "source": "missions/zipf/graph/solutions/zipf_genHarmonic_tendsto_atTop.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipf_genHarmonic_tendsto_atTop.md",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_atTop (s : ℝ) (hs : 0 ≤ s) (hs1 : s ≤ 1) :\n    Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop := by sorry\n\nend ZipfLaw",
+      "problem": {
+        "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_atTop",
+        "theorem_title": "For $0\\le s\\le1$, the Zipf harmonic sums tend to infinity",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_atTop (s : ℝ) (hs : 0 ≤ s) (hs1 : s ≤ 1) :\n    Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For every real exponent $0\\le s\\le1$, the generalized harmonic sums $H_{N,s}$ tend to $+\\infty$ as $N\\to\\infty$. In particular no finite normalizing constant can extend these finite Zipf laws to infinitely many ranks.",
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "zipf-law",
+          "harmonic-numbers",
+          "power-law"
+        ]
+      }
+    },
+    {
+      "name": "genHarmonic_pos",
+      "title": "A nonempty generalized harmonic sum is positive",
+      "statement": "For every integer $N\\ge1$ and real exponent $s$, the generalized harmonic sum $H_{N,s}=\\sum_{k=1}^{N} k^{-s}$ is strictly positive. This ensures that the common normalizing factor can be cancelled and logarithms of supported Zipf probabilities are well-defined.",
+      "dependencies": [],
+      "source": "missions/zipf/graph/solutions/genHarmonic_pos.lean",
+      "explanation_file": "missions/zipf/graph/explanations/genHarmonic_pos.md",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem genHarmonic_pos (N : ℕ) (hN : 1 ≤ N) (s : ℝ) : 0 < genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "problem": {
+        "theorem_name": "ZipfLaw.genHarmonic_pos",
+        "theorem_title": "A nonempty generalized harmonic sum is positive",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem genHarmonic_pos (N : ℕ) (hN : 1 ≤ N) (s : ℝ) : 0 < genHarmonic N s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For every integer $N\\ge1$ and real exponent $s$, the generalized harmonic sum $H_{N,s}=\\sum_{k=1}^{N} k^{-s}$ is strictly positive. This ensures that the common normalizing factor can be cancelled and logarithms of supported Zipf probabilities are well-defined.",
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "zipf-law",
+          "harmonic-numbers",
+          "power-law"
+        ]
+      }
+    },
+    {
+      "name": "zipfPMF_moment",
+      "title": "All finite Zipf moments are ratios of shifted harmonic sums",
+      "statement": "For every cutoff $N\\in\\mathbb N$, real exponent $s$, and integer moment order $p\\ge0$, the finite Zipf law satisfies $\\sum_{k=1}^{N} k^p f(k;s,N)=H_{N,s-p}/H_{N,s}$. The identity includes $N=0$ under Lean's convention for division by zero. The first and second moment formulas in the mission are its special cases.",
+      "dependencies": [],
+      "source": "missions/zipf/graph/solutions/zipfPMF_moment.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_moment.md",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_moment (N : ℕ) (s : ℝ) (p : ℕ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ p * zipfPMF N s k) =\n      genHarmonic N (s - p) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "problem": {
+        "theorem_name": "ZipfLaw.zipfPMF_moment",
+        "theorem_title": "All finite Zipf moments are ratios of shifted harmonic sums",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_moment (N : ℕ) (s : ℝ) (p : ℕ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ p * zipfPMF N s k) =\n      genHarmonic N (s - p) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For every cutoff $N\\in\\mathbb N$, real exponent $s$, and integer moment order $p\\ge0$, the finite Zipf law satisfies $\\sum_{k=1}^{N} k^p f(k;s,N)=H_{N,s-p}/H_{N,s}$. The identity includes $N=0$ under Lean's convention for division by zero. The first and second moment formulas in the mission are its special cases.",
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "zipf-law",
+          "harmonic-numbers",
+          "power-law"
+        ]
+      }
+    }
+  ],
+  "reductions": [
+    {
+      "name": "zipf_infinite_extension",
+      "dependencies": [
+        "zipf_summable_iff",
+        "zipf_genHarmonic_tendsto_zeta",
+        "zipf_genHarmonic_tendsto_atTop"
+      ],
+      "source": "missions/zipf/graph/solutions/zipf_infinite_extension.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipf_infinite_extension.md"
+    },
+    {
+      "name": "zipfPMF_sum_eq_one",
+      "dependencies": [
+        "zipfPMF_cdf",
+        "genHarmonic_pos"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_sum_eq_one.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_sum_eq_one.md"
+    },
+    {
+      "name": "zipfPMF_mean",
+      "dependencies": [
+        "zipfPMF_moment"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_mean.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_mean.md"
+    },
+    {
+      "name": "zipfPMF_variance",
+      "dependencies": [
+        "zipfPMF_moment",
+        "zipfPMF_mean"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_variance.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_variance.md"
+    },
+    {
+      "name": "zipfPMF_entropy",
+      "dependencies": [
+        "log_zipfPMF_affine",
+        "zipfPMF_sum_eq_one"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_entropy.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_entropy.md"
+    },
+    {
+      "name": "zipfPMF_ratio",
+      "dependencies": [
+        "genHarmonic_pos"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_ratio.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_ratio.md"
+    },
+    {
+      "name": "log_zipfPMF_affine",
+      "dependencies": [
+        "zipfPMF_ratio",
+        "genHarmonic_pos"
+      ],
+      "source": "missions/zipf/graph/solutions/log_zipfPMF_affine.lean",
+      "explanation_file": "missions/zipf/graph/explanations/log_zipfPMF_affine.md"
+    },
+    {
+      "name": "zipfPMF_mode",
+      "dependencies": [
+        "zipfPMF_ratio",
+        "genHarmonic_pos"
+      ],
+      "source": "missions/zipf/graph/solutions/zipfPMF_mode.lean",
+      "explanation_file": "missions/zipf/graph/explanations/zipfPMF_mode.md"
+    }
+  ],
+  "independent_roots": [
+    "zipfMandelbrotPMF_hasSum_one",
+    "yuleSimon_tail",
+    "monkey_typing_power_law",
+    "zipf_one_leadingDigit_benford"
+  ]
+}

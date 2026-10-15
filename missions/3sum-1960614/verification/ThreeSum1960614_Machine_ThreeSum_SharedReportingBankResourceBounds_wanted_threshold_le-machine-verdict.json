@@ -1,0 +1,15 @@
+{
+  "id": "678d34db-d978-4f0f-acdd-77e67b6c1c37",
+  "theorem_id": "db9c909e-3671-4692-a8ac-cb3facdda97d",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:05:50.785318+00:00",
+  "updated_at": "2026-10-15T09:08:10.204406+00:00",
+  "explanation": "Bounds the threshold value used by the physical cumulative guard. The estimate includes the representation cap and the false score of the generated auxiliary pool, not a caller-supplied score bound.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_threshold_le",
+  "theorem_title": "An eighth-power bound for the actual dense threshold",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_threshold_le {n nA nB nC q : \u2115}\n    (A B C : \u2115\u2192\u2124) (rs : List _root_.ThreeSum.BandCandidateRows.Record) (hrs : rs.length\u22643*n^2) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.representationCap (_root_.ThreeSum.SharedReportingBankResourceBounds.half n) (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n)*\n      _root_.ThreeSum.LightDenseSetup.falseScore (_root_.ThreeSum.LightPrimePool.prime (_root_.ThreeSum.Scales.primeWindow n))\n        (_root_.ThreeSum.LightPrimePool.size (_root_.ThreeSum.Scales.primeWindow n)) q nA nB nC (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) A B C rs\u2264\n      9*(_root_.ThreeSum.SharedReportingBankResourceBounds.magnitude n)^8 := by sorry",
+  "theorem_natural_language_statement": "Let natural size and source-length controls, modulus $q$, integer source functions, and owner-record list be arbitrary, with at most $3n^2$ owner records. The representation cap at the executable local parameters multiplied by the false score computed with the actual generated prime pool is at most $$9M(n)^8,$$ where $M$ is the reporting magnitude envelope.\n\nBounds the threshold value used by the physical cumulative guard. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

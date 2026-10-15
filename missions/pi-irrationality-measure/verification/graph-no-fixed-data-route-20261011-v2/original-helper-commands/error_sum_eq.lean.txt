@@ -1,0 +1,8 @@
+theorem error_sum_eq : d.arithmeticError + d.analyticError =
+    nu / d.F0 +
+      ((Lambda * d.F0 * (d.m : ℝ) + 2 * Real.log 2) / (d.v0 : ℝ) +
+        100 * (d.K : ℝ) / (d.w0 : ℝ)) +
+      (Lambda * (∑ i : Fin d.m, 1 / d.x (i.val + 1)) +
+        weightErrorCoefficient nu d.base.theta d.K / d.wstar) := by
+  unfold arithmeticError analyticError translationError holomorphicError weightErrorCoefficient
+  ring

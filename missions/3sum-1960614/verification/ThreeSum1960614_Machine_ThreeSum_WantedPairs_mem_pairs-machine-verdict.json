@@ -1,0 +1,15 @@
+{
+  "id": "8802389a-4a81-4ad2-88b7-97b925bee648",
+  "theorem_id": "22c26371-500b-498a-9a03-9f336ac19fd8",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:12:12.85298+00:00",
+  "updated_at": "2026-10-15T07:14:57.722198+00:00",
+  "explanation": "Establishes exact soundness and completeness of the physical residue join. The actual stored buckets provide both directions of the residue-equality characterization for original index pairs.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.WantedPairs.mem_pairs",
+  "theorem_title": "Exact membership in the constructed wanted-pair list",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.WantedPairs.mem_pairs {\u03bc : \u2115 \u2192 \u2124} {offsets flat NR NL M i j : \u2115} {left right : \u2115 \u2192 \u2115}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored \u03bc right NR M offsets flat) (hl : \u2200 a < NL, left a < M)\n    (hr : \u2200 b < NR, right b < M) :\n    (i,j) \u2208 _root_.ThreeSum.WantedPairs.pairs \u03bc offsets flat left NL \u2194 i < NL \u2227 j < NR \u2227 right j=left i := by sorry",
+  "theorem_natural_language_statement": "Let actual stored right buckets represent a residue-key function on $N_R$ indices, with all right keys below $M$, and let the $N_L$ left keys also be below $M$. Then $$ (i,j)\\in\\operatorname{pairs}\\iff i<N_L\\land j<N_R\\land q_R(j)=q_L(i).$$\n\nEstablishes exact soundness and completeness of the physical residue join. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

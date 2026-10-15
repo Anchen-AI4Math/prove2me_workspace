@@ -1,0 +1,9 @@
+theorem row_term_count {m : ℕ} (w : Fin m → ℝ) (H v : ℝ)
+    (hw : ∀ i, 1 ≤ w i) (β : Fin m →₀ ℕ) (s : ℕ) (hs : (s : ℝ) ≤ H / v) :
+    Fintype.card (RowChoices (transverseIndices w H) β s) ≤
+      (⌊H⌋₊ + 1) ^ (2 * m) * (⌊H / v⌋₊ + 1) := by
+  have h := card_rowChoices_box_le (transverseIndices w H) β s ⌊H⌋₊
+    (fun A hA i => transverseIndices_coordinate_le w H hw hA i)
+    (by simpa using transverseIndices_card_le w H hw)
+  simp only [Fintype.card_fin] at h
+  exact h.trans (Nat.mul_le_mul_left _ (Nat.add_le_add_right (Nat.le_floor hs) 1))

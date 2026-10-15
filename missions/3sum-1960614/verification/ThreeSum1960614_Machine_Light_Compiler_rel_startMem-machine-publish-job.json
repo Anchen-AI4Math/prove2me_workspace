@@ -1,0 +1,21 @@
+{
+  "id": "7ad1c311-0255-4bb5-997f-0d81569f0cce",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Compiler.rel_startMem",
+  "theorem_title": "Initialized memory represents the initial Light frame",
+  "formal_statement": "theorem ThreeSum1960614.Machine.Light.Compiler.rel_startMem (Z : _root_.ThreeSum1960614.Machine.Light.Compiler.Sizes W) (h3 : 3 \u2264 Z.F) (hpool : 2 * _root_.Light.Compiler.mainFrame \u2264 Z.disp) {\u03bc : \u2115 \u2192 \u2124}\n    {i j : \u2124} (hm : \u2200 a < Z.lim.space, m (a : \u2124) = _root_.ThreeSumApsp.WordRam.wd W (\u03bc a)) (hi : m _root_.Light.Compiler.cARG1 = _root_.ThreeSumApsp.WordRam.wd W i)\n    (hj : m _root_.Light.Compiler.cARG2 = _root_.ThreeSumApsp.WordRam.wd W j) :\n    _root_.ThreeSum1960614.Machine.Light.Compiler.Rel Z \u27e8_root_.Light.frame [0, i, j], \u03bc\u27e9 _root_.Light.Compiler.mainFrame (_root_.Light.Compiler.startMem Z.F Z.disp m) := by sorry",
+  "natural_language_statement": "Let compiler size data $Z$ have frame width at least $3$ and a dispatcher pool containing twice the main-frame index. Suppose the initial machine memory encodes a Light memory $\\mu$ at all allowed nonnegative addresses and the two argument cells contain the encodings of integers $i,j$. Then the compiler startup memory represents the main Light frame $[0,i,j]$ with memory $\\mu$.\n\nEstablishes the initial simulation relation after startup. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "definitions": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Compiler_Cells\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Compiler_StatementCode\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Syntax\nimport Definitions.Def_APSPSource_ThreeSumApsp_Machine_Steps\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle003\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle004\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle005\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle006\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Lean\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Data.Nat.Digits.Defs\nimport Mathlib.Data.Set.Function\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Ring\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\nnamespace Light\nend Light\nnamespace Light.Compiler\nend Light.Compiler\nnamespace ThreeSum1960614.Machine.Light\nend ThreeSum1960614.Machine.Light\nnamespace ThreeSum1960614.Machine.Light.Compiler\nend ThreeSum1960614.Machine.Light.Compiler\nnamespace ThreeSum1960614.Machine.ThreeSumApsp.WordRam\nend ThreeSum1960614.Machine.ThreeSumApsp.WordRam\nnamespace ThreeSumApsp.WordRam\nend ThreeSumApsp.WordRam\n\nopen _root_.ThreeSumApsp.WordRam\nopen _root_.ThreeSum1960614.Machine.ThreeSumApsp.WordRam\nopen _root_.Light\nopen _root_.ThreeSum1960614.Machine.Light\n\nopen _root_.Light.Compiler\nopen _root_.ThreeSum1960614.Machine.Light.Compiler\n\nvariable {W : \u2115} {F N : \u2115} {m : \u2124 \u2192 BitVec W}\n",
+  "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSumApsp/Lang/Compiler/StartUp.lean#L193-L223",
+  "tags": [
+    "3sum-1960614",
+    "3sum",
+    "formal-verification"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "effbf234-25cc-4887-9a99-cd54c4b44249",
+  "created_at": "2026-10-15T09:08:49.158521+00:00",
+  "updated_at": "2026-10-15T09:09:25.33534+00:00"
+}

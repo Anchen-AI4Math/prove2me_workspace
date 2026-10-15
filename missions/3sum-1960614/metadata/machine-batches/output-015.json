@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle029",
+    "definition_title": "Shared source-bank catalogs and physical suffix-query lookup",
+    "natural_language_statement": "This library defines the complete interfaces for selecting original source bands, constructing the shared occurrence catalog, sorting physical lookup keys, and querying retained suffix boxes. Source selection reads the stored band, stage-bank, and cover headers and materializes the fifteen controls needed by a wanted query. Its reads precede its writes. For original source lengths $N_B,N_C$, band size $g$, local size $h$, block count $J$, and output base $b$, the source-bank constructor builds one occurrence table and both retained source-stage families for each common padded band and occurrence. Its header records the bank base, count, stride, next free address, and occurrence-row pointer.\n\nA sorted catalog packs the physical prefix masks and original catalog index into integer keys, preserving multiplicities and payload pointers. The query recovers its catalog position through an actual sorted lookup and invokes the stored suffix-box program. Finite-input records connect these operations to the normalized original arrays and the constructed wanted output. The library also defines the shared-construction cost quantities and a recursive finite coloring search that reuses a six-cell parameter row and skips later calls once an accepting color is found.\n\nThese interfaces support reuse across many wanted queries without reconstructing histograms or source transforms. Their role in the deterministic integer 3SUM proof is to expose actual packed storage, query access, and compositional color calls; the required execution and resource bounds are proved separately.",
+    "tags": [
+      "3sum-1960614",
+      "definitions",
+      "algorithms",
+      "reporting",
+      "word-ram"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle030",
+    "definition_title": "Positive-frontier expansion, source controls, and the finite color driver",
+    "natural_language_statement": "This library defines programs for batching exact reporting counts, expanding a parent through a shared suffix catalog, and retaining the positive children in stable order. A candidate supplies its constructed prefix masks; physical sorted lookup selects its cached suffix box, and the sparse-query program writes its exact count. Positive compaction then records the selected child positions. The stored source and complete shared catalog are retained across these calls.\n\nFor block dimensions $h,J$ and stored local schedule controls, source-control initialization computes the occurrence count, compact downset capacity, and exact bank stride using explicit powering, downset-size, logarithm, and span-arithmetic routines. Three persistent control cells precede the full source host; scratch used to construct the capacity is subsequently reused. The color-driver assembly appends a six-cell decoder, scalar division helper, recursive short-circuit scan, and parameter-header reader to a supplied concrete color program. Threshold and switch cost interfaces retain their finite overheads. The positive-frontier data relate stable gathering to the recursively defined reporting order and raw-incidence charges.\n\nThe library supplies the executable plumbing that connects finite color search and exact source controls to the deterministic integer 3SUM reporter. Its definitions preserve the actual query order and multiplicity so later cost theorems can charge positive parents and terminal fibers precisely.",
+    "tags": [
+      "3sum-1960614",
+      "definitions",
+      "algorithms",
+      "reporting",
+      "word-ram"
+    ]
+  }
+]

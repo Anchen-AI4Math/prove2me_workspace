@@ -1,0 +1,21 @@
+{
+  "id": "294fe956-029b-41d3-bd5a-b13dc5460ce9",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.executable_scale_limits",
+  "theorem_title": "Limits of the actual rounded microblock, total size and band divisor",
+  "formal_statement": "theorem ThreeSum1960614.executable_scale_limits :\n    Tendsto (fun m : ℕ => (microSize m : ℝ) ^ 2 / m) atTop (𝓝 0) ∧\n    Tendsto (fun m : ℕ => (totalSize m : ℝ) / m) atTop (𝓝 epsilon) ∧\n    Tendsto (fun m : ℕ => (bandExponent m : ℝ) / m) atTop (𝓝 ((-beta) * epsilon)) ∧\n    Tendsto (fun m : ℕ => Real.log (bandDivisor m : ℝ) / m) atTop\n      (𝓝 (Real.log 2 * ((-beta) * epsilon)))  := by sorry",
+  "natural_language_statement": "As the natural bit parameter $m$ tends to infinity, the executable schedules obey $s(m)^2/m\\to0$, $\\mu(m)/m\\to e$, $a(m)/m\\to(-b)e$, and $\\log(2^{a(m)})/m\\to\\log(2)(-b)e$. Here $s,\\mu,a$ are the actual integer cube-root and quotient schedules, $e=0.203889696$ and $b=-0.062656016$ are exact rationals, and logarithms are natural. The limits incorporate both integer rounding errors. They describe the changed schedule and its overhead scale, while the complete 3SUM program still requires separate operational contracts.",
+  "definitions": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule\nopen Filter\nopen scoped Topology",
+  "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+  "tags": [
+    "3sum",
+    "entropy",
+    "exact-certificates"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "ceee4e00-162f-4bb6-ab79-97d693159b35",
+  "created_at": "2026-10-14T07:33:22.340294+00:00",
+  "updated_at": "2026-10-14T07:33:51.318055+00:00"
+}

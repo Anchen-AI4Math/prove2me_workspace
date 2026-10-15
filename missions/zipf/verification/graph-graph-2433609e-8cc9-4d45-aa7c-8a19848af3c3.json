@@ -1,0 +1,232 @@
+{
+  "path": "/theorems/2433609e-8cc9-4d45-aa7c-8a19848af3c3/graph",
+  "fetched_at": "2026-10-11T13:38:45.247681+00:00",
+  "data": {
+    "root_id": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+    "nodes": [
+      {
+        "node_type": "theorem",
+        "theorem_id": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+        "theorem_name": "ZipfLaw.zipfPMF_mean",
+        "theorem_title": "Mean of the Zipf distribution: $H_{N,s-1}/H_{N,s}$",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_mean (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    ∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k = genHarmonic N (s - 1) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For $N\\ge1$ and real $s$, the mean rank under the Zipf distribution is\n$$\\sum_{k=1}^{N}k\\,f(k;N,s)=\\frac{H_{N,s-1}}{H_{N,s}} .$$",
+        "created_at": "2026-10-09T21:28:43.198065+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Mean $H_{N,s-1}/H_{N,s}$).",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [
+          {
+            "audit_id": "2c96df12-1b8f-49f3-80ca-e1014f62efb8",
+            "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+            "reviewer_username": "Shuze Chen",
+            "decision": "confirm",
+            "comment": "Confirmed by the moderator at approval.",
+            "created_at": "2026-10-10T03:56:31.424325+00:00"
+          },
+          {
+            "audit_id": "2ea96c93-2e6c-49ea-bf8c-db9ce4461455",
+            "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+            "reviewer_username": "Lucas",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-10T03:56:31.64398+00:00"
+          }
+        ],
+        "created_by": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "created_by_username": "Lucas",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "7a1111e5-8f7a-4838-9116-4d150410c7a8",
+        "theorem_name": "ZipfLaw.zipfPMF_moment",
+        "theorem_title": "All finite Zipf moments are ratios of shifted harmonic sums",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_moment (N : ℕ) (s : ℝ) (p : ℕ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ p * zipfPMF N s k) =\n      genHarmonic N (s - p) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For every cutoff $N\\in\\mathbb N$, real exponent $s$, and integer moment order $p\\ge0$, the finite Zipf law satisfies $\\sum_{k=1}^{N} k^p f(k;s,N)=H_{N,s-p}/H_{N,s}$. The identity includes $N=0$ under Lean's convention for division by zero. The first and second moment formulas in the mission are its special cases.",
+        "created_at": "2026-10-11T13:28:17.97358+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "theorem_name": "ZipfLaw_Defs",
+        "theorem_title": "Zipf's law: generalized harmonic numbers, Zipf / Zipf–Mandelbrot / Yule–Simon laws",
+        "status": "Definition",
+        "formal_statement": "",
+        "natural_language_statement": "Core definitions for the Zipf's-law mission.\n\n1. **Generalized harmonic number.** $H_{N,s}=\\sum_{k=1}^N k^{-s}$ for $N\\in\\mathbb N$ and real $s$ ($H_{0,s}=0$).\n2. **Zipf distribution.** $f(k;N,s)=\\dfrac{1}{H_{N,s}}\\dfrac{1}{k^s}$ for $1\\le k\\le N$, and $f(k;N,s)=0$ for every other natural number $k$.\n3. **Hurwitz zeta (series form).** $\\zeta(s,a)=\\sum_{n\\ge0}(n+a)^{-s}$.\n4. **Zipf–Mandelbrot law (infinite ranks).** $f(k;q,s)=\\dfrac{1}{\\zeta(s,q+1)\\,(k+q)^s}$ for $k\\ge1$, and $0$ for $k=0$.\n5. **Yule–Simon distribution.** $f(k;\\rho)=\\rho\\,\\dfrac{\\Gamma(k)\\,\\Gamma(\\rho+1)}{\\Gamma(k+\\rho+1)}=\\rho\\,B(k,\\rho+1)$.\n6. **Leading decimal digit** of a natural number $n\\ge1$: $\\lfloor n/10^{\\lfloor\\log_{10}n\\rfloor}\\rfloor$.\n7. **Random-typing word probability.** With $m$ equiprobable letter keys, each typed with probability $q$, and a space typed with probability $1-mq$, the probability that the word following a space is exactly $w$ is $q^{|w|}(1-mq)$.\n\nThese are the objects in which every statement of the mission is phrased.\n\n**Formalization Note.** Powers are real powers (`Real.rpow`). The Hurwitz series takes the value $0$ when it is not summable (Lean's `tsum` convention); statements using it assume $s>1$. The leading digit of $0$ is $0$.",
+        "created_at": "2026-10-09T21:25:53.895255+00:00",
+        "vote_count": 0,
+        "definition": "import Mathlib\n\n/-!\n# Zipf's law — core definitions\n\nShared definitions for the Zipf's-law mission (source: Wikipedia, \"Zipf's law\").\n-/\n\nnamespace ZipfLaw\n\n/-- The `N`-th generalized harmonic number `H_{N,s} = ∑_{k=1}^{N} 1 / k^s`\n(real exponent `s`; `H_{0,s} = 0`). -/\nnoncomputable def genHarmonic (N : ℕ) (s : ℝ) : ℝ :=\n  ∑ k ∈ Finset.Icc 1 N, 1 / (k : ℝ) ^ s\n\n/-- The (generalized) Zipf distribution on `N` elements with exponent `s`: the element of\nrank `k ∈ {1, …, N}` has probability `(1 / k^s) / H_{N,s}`; every other `k` gets `0`. -/\nnoncomputable def zipfPMF (N : ℕ) (s : ℝ) (k : ℕ) : ℝ :=\n  if 1 ≤ k ∧ k ≤ N then (1 / (k : ℝ) ^ s) / genHarmonic N s else 0\n\n/-- The Hurwitz zeta function, as its defining series `ζ(s, a) = ∑_{n ≥ 0} 1 / (n + a)^s`\n(the value is `0` when the series is not summable). -/\nnoncomputable def hurwitzZetaSeries (s a : ℝ) : ℝ :=\n  ∑' n : ℕ, 1 / ((n : ℝ) + a) ^ s\n\n/-- The Zipf–Mandelbrot law on the ranks `k = 1, 2, 3, …` with shift `q` and exponent `s`:\n`f(k; q, s) = (1 / C) · 1 / (k + q)^s` with normalizing constant\n`C = ∑_{k ≥ 1} 1 / (k + q)^s = ζ(s, q + 1)` (Hurwitz zeta). Rank `0` gets `0`. -/\nnoncomputable def zipfMandelbrotPMF (q s : ℝ) (k : ℕ) : ℝ :=\n  if 1 ≤ k then 1 / (hurwitzZetaSeries s (q + 1) * ((k : ℝ) + q) ^ s) else 0\n\n/-- The Yule–Simon distribution with parameter `ρ`:\n`f(k; ρ) = ρ · B(k, ρ + 1) = ρ · Γ(k) Γ(ρ + 1) / Γ(k + ρ + 1)` for `k = 1, 2, …`. -/\nnoncomputable def yuleSimonPMF (ρ : ℝ) (k : ℕ) : ℝ :=\n  ρ * (Real.Gamma k * Real.Gamma (ρ + 1) / Real.Gamma (k + ρ + 1))\n\n/-- The leading decimal digit of a natural number (`leadingDigit 0 = 0`). -/\ndef leadingDigit (n : ℕ) : ℕ :=\n  n / 10 ^ Nat.log 10 n\n\n/-- Random typing with `m` equiprobable letter keys, each hit with probability `q`, and a\nspace bar hit with probability `1 - m q`: the probability that the word (maximal block of\nletters) following a space is exactly `w`, namely `q^{|w|} (1 - m q)`. -/\nnoncomputable def monkeyWordProb (m : ℕ) (q : ℝ) (w : List (Fin m)) : ℝ :=\n  q ^ w.length * (1 - m * q)\n\nend ZipfLaw\n",
+        "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, sections \"Formal definition\", \"Related laws\", \"Statistical explanations\" and the infobox.",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [
+          {
+            "audit_id": "f556298b-1899-4772-818c-76c4f94c3848",
+            "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+            "reviewer_username": "Shuze Chen",
+            "decision": "confirm",
+            "comment": "Confirmed by the moderator at approval.",
+            "created_at": "2026-10-10T03:56:31.424325+00:00"
+          },
+          {
+            "audit_id": "882ae319-a99a-462c-8184-c940c1cf34bc",
+            "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+            "reviewer_username": "Lucas",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-10T03:56:31.64398+00:00"
+          }
+        ],
+        "created_by": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "created_by_username": "Lucas",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+        "theorem_name": "ZipfLaw.zipfPMF_variance",
+        "theorem_title": "Variance of the Zipf distribution",
+        "status": "Proved",
+        "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_variance (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ 2 * zipfPMF N s k) -\n        (∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k) ^ 2 =\n      genHarmonic N (s - 2) / genHarmonic N s -\n        genHarmonic N (s - 1) ^ 2 / genHarmonic N s ^ 2 := by sorry\n\nend ZipfLaw",
+        "natural_language_statement": "For $N\\ge1$ and real $s$, the variance of the rank under the Zipf distribution is\n$$\\sum_{k=1}^N k^2 f(k;N,s)-\\Big(\\sum_{k=1}^N k\\,f(k;N,s)\\Big)^2=\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H_{N,s-1}^2}{H_{N,s}^2}.$$",
+        "created_at": "2026-10-09T21:29:24.07398+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+        "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Variance $\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H^2_{N,s-1}}{H^2_{N,s}}$).",
+        "tags": [
+          "harmonic-numbers",
+          "power-law",
+          "zipf-law"
+        ],
+        "audits": [
+          {
+            "audit_id": "995e7728-4216-42ab-ab8d-b6520ea42420",
+            "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+            "reviewer_username": "Shuze Chen",
+            "decision": "confirm",
+            "comment": "Confirmed by the moderator at approval.",
+            "created_at": "2026-10-10T03:56:31.424325+00:00"
+          },
+          {
+            "audit_id": "550ddaf7-85a1-4fc0-beb6-1c7d05d414a8",
+            "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+            "reviewer_username": "Lucas",
+            "decision": "confirm",
+            "comment": "Confirmed by the mission captain (proposal self-audit).",
+            "created_at": "2026-10-10T03:56:31.64398+00:00"
+          }
+        ],
+        "created_by": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "created_by_username": "Lucas",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-0f7b2a83-b03b-4ea6-a473-5703c68feac9",
+        "submission_id": "0f7b2a83-b03b-4ea6-a473-5703c68feac9",
+        "parent_theorem_id": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "Apply the general moment identity with $p=2$ and reuse the proved first-moment formula. Subtracting the square of the mean from the second moment yields $H_{N,s-2}/H_{N,s}-H_{N,s-1}^2/H_{N,s}^2$.\n",
+        "created_at": "2026-10-11T13:31:26.788017+00:00",
+        "child_count": 2,
+        "deprecated_at": null
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-e064d416-65de-403b-b171-b72b55db00b3",
+        "submission_id": "e064d416-65de-403b-b171-b72b55db00b3",
+        "parent_theorem_id": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "The mean is the moment of order one. Substituting $p=1$ in the general exponent-shift identity gives $\\mathbb E[k]=H_{N,s-1}/H_{N,s}$.\n",
+        "created_at": "2026-10-11T13:31:26.033871+00:00",
+        "child_count": 1,
+        "deprecated_at": null
+      }
+    ],
+    "edges": [
+      {
+        "source": "7a1111e5-8f7a-4838-9116-4d150410c7a8",
+        "target": "sketch-e064d416-65de-403b-b171-b72b55db00b3",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-e064d416-65de-403b-b171-b72b55db00b3",
+        "target": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+        "kind": "sketch"
+      },
+      {
+        "source": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+        "target": "sketch-0f7b2a83-b03b-4ea6-a473-5703c68feac9",
+        "kind": "sketch"
+      },
+      {
+        "source": "7a1111e5-8f7a-4838-9116-4d150410c7a8",
+        "target": "sketch-0f7b2a83-b03b-4ea6-a473-5703c68feac9",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-0f7b2a83-b03b-4ea6-a473-5703c68feac9",
+        "target": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+        "kind": "sketch"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+        "kind": "structural"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+        "kind": "structural"
+      },
+      {
+        "source": "80b903ce-0a62-46ef-a030-7a4fb82b4c05",
+        "target": "7a1111e5-8f7a-4838-9116-4d150410c7a8",
+        "kind": "structural"
+      }
+    ],
+    "has_hidden_deprecated": false,
+    "has_hidden_deprecated_sketches": false
+  }
+}

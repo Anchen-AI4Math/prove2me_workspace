@@ -1,0 +1,24 @@
+{
+  "theorem_id": "3ff52b0c-6cdb-49df-9a61-7bb014a1119d",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_Flag",
+  "theorem_title": "Integer encoding of decision-problem answers",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "For a proposition $p$, its integer indicator records a yes answer as $1$ and a no answer as $0$:\n\n$$\\chi(p)=\\begin{cases}1,&p\\text{ holds},\\\\0,&p\\text{ does not hold}.\\end{cases}$$\n\nThis convention is used in the specifications of decision routines underlying the Exact Triangle and APSP algorithms. The accompanying equations give $\\chi(p)=1$ under the hypothesis $p$ and $\\chi(p)=0$ under the hypothesis $\\neg p$; these equations are required by subsequent specification definitions.\n\nReferences:\n\n1. [Source formalization: integer answer indicators](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Flag.lean#L21-L29).",
+  "created_at": "2026-10-06T07:13:33.647603+00:00",
+  "vote_count": 0,
+  "tags": [
+    "apsp-source-library",
+    "decision-problems",
+    "truly-subcubic-apsp",
+    "word-ram"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\nmodule\n\npublic import Init\npublic import Mathlib.Algebra.Order.Ring.Int\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# The answer of a decision problem as a number\n\nA routine for a decision problem returns 1 for yes and 0 for no: `flag p` is this number for the\nproposition `p`.\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp\n\nopen Classical in\n/-- The answer of a decision problem as a number: 1 for yes, 0 for no. -/\nnoncomputable def flag (p : Prop) : ℤ := if p then 1 else 0\n\n/-- The answer yes is written as 1. -/\ntheorem flag_of {p : Prop} (h : p) : flag p = 1 := if_pos h\n\n/-- The answer no is written as 0. -/\ntheorem flag_of_not {p : Prop} (h : ¬ p) : flag p = 0 := if_neg h\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/Flag.lean#L21-L29",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

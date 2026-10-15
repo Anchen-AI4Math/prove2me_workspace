@@ -1,0 +1,15 @@
+{
+  "id": "cbb62ae9-2a53-4d66-bfea-678a822f20bd",
+  "theorem_id": "6cca9e16-0688-4415-94cc-4671a8544d8f",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:52:42.205332+00:00",
+  "updated_at": "2026-10-15T07:55:32.21365+00:00",
+  "explanation": "This supports the exact original-input fallback for the finite exceptional size regime. The decoded triple is tested against the original array and all three pairwise index inequalities.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleRow.meets",
+  "theorem_title": "Execution of one original-position triple test",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleRow.meets {pMain pDivide src n t U d : \u2115} (x : Fin n \u2192 \u2124) (\u03bc : \u2115 \u2192 \u2124)\n    (hp : P[pMain]?=some (_root_.ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleRow.body pDivide)) (hdivide : P[pDivide]?=some _root_.ThreeSum1960614.Machine.ThreeSum.LightSmallDivide.body)\n    (hn : 0 < n) (ht : t < n^3)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hspace : src+n \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightOriginalTripleRow.word n U : \u2124) \u2264 lim.word) (hd : d < lim.depth)\n    (hread : \u2200 i : Fin n, \u03bc (src+i.val)=x i) (hbound : \u2200 i, |x i| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,n,t] \u03bc (_root_.ThreeSum.LightOriginalTripleRow.time n)\n      (fun result \u03bd => (result=0 \u2228 result=1) \u2227\n        (result=1 \u2194 _root_.ThreeSum.BruteTripleIndex.witness x hn ht) \u2227 \u03bd=\u03bc) := by sorry",
+  "theorem_natural_language_statement": "Let $n>0$, $t<n^3$, $U,a\\in\\mathbb N$, and $x:\\operatorname{Fin}(n)\\to\\mathbb Z$ with $|x_i|\\le U$. Suppose memory $\\mu$ stores $x$ at $a$, that segment fits memory, addresses fit words and the explicit triple-row word budget fits. Let a Light program contain the triple-test and small-division bodies, with a nested call allowed at depth $d$. The call returns a Boolean and\n\n$$r=1\\iff\\operatorname{witness}(x,n,t),$$\n\nwhere the witness is the distinct-position zero-sum condition for the triple decoded from $t$. It meets the stated row-time bound and leaves memory unchanged.\n\nThis supports the exact original-input fallback for the finite exceptional size regime.",
+  "theorem_status": "Proved"
+}

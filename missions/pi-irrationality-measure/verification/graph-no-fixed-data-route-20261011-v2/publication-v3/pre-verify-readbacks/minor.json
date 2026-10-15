@@ -1,0 +1,23 @@
+{
+  "theorem_id": "f3ace940-1663-489e-af28-d1f63c803801",
+  "theorem_name": "OAI.PiExponent.InterpolationMatrix.exists_full_row_minor_of_surjective",
+  "theorem_title": "A surjective matrix has a nonsingular full-row minor",
+  "status": "Proved",
+  "formal_statement": "theorem exists_full_row_minor_of_surjective\r\n    {R C K : Type*} [Fintype R] [Fintype C] [DecidableEq R] [Field K]\r\n    (A : Matrix R C K) (hA : Function.Surjective A.mulVecLin) :\r\n    ∃ selection : R → C, Function.Injective selection ∧\r\n      (A.submatrix id selection).det ≠ 0 := by\n  sorry\n\nend PiExponent.InterpolationMatrix\n\nend OAI\n",
+  "natural_language_statement": "Let $R$ and $C$ be finite index types, let $K$ be a field, and let $A=(A_{r,c})_{r\\in R,\\,c\\in C}$ be an $R$-by-$C$ matrix over $K$. Assume equality on $R$ is decidable and multiplication by $A$ defines a surjective $K$-linear map $K^C\\to K^R$. Then there is a function $s:R\\to C$ such that $s$ is injective and\n\n$$\n\\det\\bigl(A[\\operatorname{id}_R,s]\\bigr)\\ne 0.\n$$\n\nThus the selected columns form a nonsingular square minor containing every row. This generic matrix-rank lemma is a direct core dependency for choosing a nonvanishing interpolation minor in the $\\pi$ irrationality-measure argument.",
+  "created_at": "2026-10-11T12:11:20.84849+00:00",
+  "vote_count": 0,
+  "tags": [
+    "linear-algebra",
+    "matrix-theory",
+    "openai-pi-exponent-017"
+  ],
+  "preamble": "import Mathlib\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent.InterpolationMatrix\n\n",
+  "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean#L135-L166",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

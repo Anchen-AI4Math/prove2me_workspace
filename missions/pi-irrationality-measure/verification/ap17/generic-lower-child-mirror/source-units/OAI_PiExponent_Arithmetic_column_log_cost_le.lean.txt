@@ -1,0 +1,6 @@
+private theorem column_log_cost_le {ι : Type*} (s : Finset ι) (a q : ι → ℕ) :
+    (∑ i ∈ s, (a i : ℝ) * Real.log (q i)) ≤
+      ∑ i ∈ s, (a i : ℝ) * (⌈Real.log (q i)⌉₊ : ℝ) := by
+  apply Finset.sum_le_sum
+  intro i hi
+  exact mul_le_mul_of_nonneg_left (Nat.le_ceil _) (Nat.cast_nonneg _)

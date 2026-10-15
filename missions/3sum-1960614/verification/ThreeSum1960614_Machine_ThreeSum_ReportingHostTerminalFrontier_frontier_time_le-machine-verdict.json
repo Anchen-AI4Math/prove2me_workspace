@@ -1,0 +1,15 @@
+{
+  "id": "7e0e0739-03df-45af-8e9f-b868c5c3f4c2",
+  "theorem_id": "1d606be3-d0c0-498d-a20f-b99e63b97bd5",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:31:12.658314+00:00",
+  "updated_at": "2026-10-15T07:34:15.874766+00:00",
+  "explanation": "Charges actual physical terminal tests to raw incidence mass and frontier overhead. The original-value enumerations preserve source identities, so terminal bucket products are charged to the corresponding raw incidences.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.frontier_time_le",
+  "theorem_title": "Terminal frontier time is charged to raw incidences",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.frontier_time_le {h J k NL NR : \u2115} (p : \u2115) (shift : \u2124)\n    (A : Finset \u03b1) (B : Finset \u03b2) (C : Finset \u03b3) (a : \u03b1\u2192\u2124) (b : \u03b2\u2192\u2124) (c : \u03b3\u2192\u2124)\n    (left right : \u2115\u2192\u2124) (eL : Fin NL \u2243 B) (eR : Fin NR \u2243 C)\n    (hvL : \u2200 i : Fin NL, left i.val=b (eL i)) (hvR : \u2200 j : Fin NR, right j.val=c (eR j))\n    (w : _root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.Wanted h J \u03b1) (hk : k\u2264J)\n    (hkey : w.1\u2208A \u2227 _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.globalModulus h J \u2223 (a w.1%(p : \u2124)+_root_.ThreeSum.RawIncidences.lift w.2.1*(p : \u2124)+shift)-_root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.globalKey w.2.2) :\n    let I := _root_.ThreeSum1960614.Machine.ThreeSum.RawIncidences.rawOn h J (p : \u2124) shift (A \u00d7\u02e2 (B \u00d7\u02e2 C)) a b c\n    let pres := _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostFrontier.frontier I w k\n    _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.time p shift left right NL NR w.2.2 k pres pres.length\u2264\n      240*(_root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.domain I w).card+_root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.charge h J k*pres.length+30 := by sorry",
+  "theorem_natural_language_statement": "Let finite source sets $A,B,C$ have integer value functions, with actual left and right arrays bijective to $B,C$ and preserving those values. Fix a wanted label whose $A$ component is in $A$ and whose shifted lifted key satisfies the required global divisibility condition. At any depth $k\\le J$, for the corresponding raw-incidence set $I$ and actual frontier $F$, $$T_{\\mathrm{terminal}}\\le240|\\operatorname{domain}(I,w)|+\\operatorname{charge}(h,J,k)|F|+30.$$\n\nCharges actual physical terminal tests to raw incidence mass and frontier overhead. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

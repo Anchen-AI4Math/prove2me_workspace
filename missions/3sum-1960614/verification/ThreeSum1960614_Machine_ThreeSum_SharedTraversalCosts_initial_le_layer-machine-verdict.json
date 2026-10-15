@@ -1,0 +1,15 @@
+{
+  "id": "b56f5923-c1b8-48b9-8d69-d237a0fb21fd",
+  "theorem_id": "020ded4d-6fa5-498d-8be5-31c4464b38b7",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:52:35.901009+00:00",
+  "updated_at": "2026-10-15T07:55:29.908974+00:00",
+  "explanation": "Places initialization within the root query-layer charge. The initial threshold is restricted to half the residual size, allowing the root layer count to cover initialization work.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initial_le_layer",
+  "theorem_title": "Initial traversal cost is charged to the root layer",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initial_le_layer {h J K : \u2115} (D : \u2115 \u2192 _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostLevelData.Catalog) (hK : K \u2264 J)\n    (ht : (D 0).t \u2264 _root_.ThreeSum.LightBlockQuery.residualSize h J 0/2) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.initialUnit h J D K \u2264 _root_.ThreeSum.SharedTraversalCosts.overhead h J*(_root_.ThreeSum.LightBlockQuery.residualSize h J 0).choose (D 0).t := by sorry",
+  "theorem_natural_language_statement": "Let $h,J,K\\in\\mathbb N$, $K\\le J$, and let $D$ assign a catalog to each level. Suppose the initial missing-cardinality threshold $t_0$ is at most half of the initial residual size $r_0$. Then $$\\operatorname{initialUnit}(h,J,D,K)\\le\\operatorname{overhead}(h,J)\\binom{r_0}{t_0}.$$\n\nPlaces initialization within the root query-layer charge. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

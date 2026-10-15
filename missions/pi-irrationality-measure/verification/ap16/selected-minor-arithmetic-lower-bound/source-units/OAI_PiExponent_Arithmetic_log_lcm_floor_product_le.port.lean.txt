@@ -1,0 +1,18 @@
+theorem log_lcm_floor_product_le {ι : Type*} (s : Finset ι)
+    (T : ι → ℕ) (w : ι → ℝ) (H : ℝ) (hH : 0 ≤ H) (hw : ∀ i ∈ s, 0 < w i) :
+    Real.log (∏ i ∈ s, (Nat.lcmUpto (T i) : ℝ) ^ ⌊H / w i⌋₊) ≤
+      H * lcmConstant * ∑ i ∈ s, (T i : ℝ) / w i := by
+  calc
+    _ ≤ lcmConstant * ∑ i ∈ s, (⌊H / w i⌋₊ : ℝ) * T i :=
+      log_lcm_power_product_le s T _
+    _ ≤ lcmConstant * ∑ i ∈ s, (H / w i) * T i := by
+      apply mul_le_mul_of_nonneg_left _ lcmConstant_pos.le
+      apply Finset.sum_le_sum
+      intro i hi
+      apply mul_le_mul_of_nonneg_right _ (Nat.cast_nonneg (T i))
+      exact Nat.floor_le (div_nonneg hH (hw i hi).le)
+    _ = _ := by
+      rw [Finset.mul_sum, Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro i hi
+      ring

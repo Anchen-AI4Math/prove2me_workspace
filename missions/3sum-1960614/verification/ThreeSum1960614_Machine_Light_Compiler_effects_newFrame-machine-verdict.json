@@ -1,0 +1,15 @@
+{
+  "id": "a5b01520-8db7-4d2e-8176-a7af362643ee",
+  "theorem_id": "e9eaefe0-d2df-4f1f-baa9-497c83159b44",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:25:55.483871+00:00",
+  "updated_at": "2026-10-15T09:27:46.029636+00:00",
+  "explanation": "Provides the memory relation needed to simulate procedure entry. The new memory relation, saved return address, and writable-region preservation supply all three parts of the procedure-entry simulation.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Compiler.effects_newFrame",
+  "theorem_title": "Effects of constructing a new call frame",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Compiler.effects_newFrame (I : _root_.ThreeSum1960614.Machine.Light.Compiler.Framed Z \u03c3 q m) (hQ : q + Z.F + 1 + Z.F \u2264 Z.Q) (args : List _root_.ThreeSum1960614.Machine.Light.Expr)\n    (hargs : \u2200 i < args.length, m (_root_.Light.Compiler.cT i) = _root_.ThreeSumApsp.WordRam.wd W (_root_.Light.frame (args.map (\u00b7.val \u03c3)) i)) {ret : \u2115}\n    (hret : ret \u2264 Z.disp) :\n    _root_.ThreeSum1960614.Machine.Light.Compiler.Rel Z \u27e8_root_.Light.frame (args.map (\u00b7.val \u03c3)), \u03c3.mem\u27e9 (q + Z.F + 1)\n        (_root_.ThreeSumApsp.WordRam.effects (_root_.Light.Compiler.newFrame Z.F args.length ret) m) \u2227\n      _root_.ThreeSumApsp.WordRam.effects (_root_.Light.Compiler.newFrame Z.F args.length ret) m (_root_.Light.Compiler.cStack (q + Z.F)) = _root_.ThreeSumApsp.WordRam.wd W ret \u2227\n      _root_.ThreeSum1960614.Machine.ThreeSumApsp.WordRam.AgreeOutside (_root_.ThreeSum1960614.Machine.Light.Compiler.Writable Z (q + Z.F)) m (_root_.ThreeSumApsp.WordRam.effects (_root_.Light.Compiler.newFrame Z.F args.length ret) m) := by sorry",
+  "theorem_natural_language_statement": "Let the machine memory represent a framed Light state with frame base $q$ and width $F$. Suppose the next full frame fits in the stack, the argument values already occupy the designated temporaries, and the return address is at most the dispatcher bound. Executing the new-frame instruction effects produces the argument frame at $q+F+1$, stores the return address at stack cell $q+F$, and preserves memory outside the specified writable region.\n\nProvides the memory relation needed to simulate procedure entry. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

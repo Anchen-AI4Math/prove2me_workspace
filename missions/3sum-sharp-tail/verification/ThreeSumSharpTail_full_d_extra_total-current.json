@@ -1,0 +1,23 @@
+{
+  "theorem_id": "82d81272-5461-43d6-a2ad-99bbc5f46c95",
+  "theorem_name": "ThreeSumSharpTail.full_d_extra_total",
+  "theorem_title": "Full dimension scan, prime and construction costs preserve the saving",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.full_d_extra_total (n D g : ℕ) (a s κ C : ℝ)\n    (hn : 3 ≤ n) (hD : 1 ≤ D) (hDa : (D : ℝ) ≤ (n : ℝ) ^ a)\n    (hs0 : 0 ≤ s) (hsHalf : s ≤ 1 / 2)\n    (hgLo : (D : ℝ) ^ (s / 2) ≤ g) (hgHi : (g : ℝ) ≤ 2 * (D : ℝ) ^ (s / 2))\n    (hbuild : a * (1 + s) ≤ 1)\n    (hprime : Real.logb 2 7 + 3 * a / 2 ≤ 3 - a * s / 2)\n    (hκ : 1 ≤ κ) (hC : 0 ≤ C) :\n    C * (termScans n g κ + termPrime strassen n D + termBuild n D g) ≤\n      4 * C * (κ * ((n : ℝ) ^ 3 * (D : ℝ) ^ (-s / 2) * Real.log n ^ 2)) := by sorry",
+  "natural_language_statement": "For n>=3, 1<=D<=n^a, 0<=s<=1/2, D^(s/2)<=g<=2D^(s/2), a(1+s)<=1 and log_2(7)+3a/2<=3-as/2, the actual scan, prime-selection and instance-construction time functions of the full-D host are bounded by 4C kappa n^3 D^(-s/2) log^2 n whenever C>=0 and kappa>=1.",
+  "created_at": "2026-10-13T19:11:19.505297+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Definitions.Def_APSPSource_ThreeSumApsp_Sec3_Parameters\nimport Theorems.Thm_ThreeSumSharpTail_full_d_call_balance\nimport Mathlib\nopen ThreeSumApsp",
+  "source": "Derived bound for the actual termScans, termPrime and termBuild functions in the pinned full-D Theorem 17 interface. The certificate strict prime/build margins imply its hypotheses.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

@@ -1,0 +1,94 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "c6ad7676672fa7f5fdd77e39a7f9006f0b1b8bbbd32445e4f28d1fdce76db5a5",
+  "publish_intent": {
+    "at_utc": "2026-10-11T18:55:18.147232+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+      "definition_title": "Multiplicity of a group in a finite row set",
+      "definition": "import Mathlib.Data.Finset.Card\nimport Mathlib.Algebra.BigOperators.Group.Finset.Defs\n\nnamespace OAI.PiExponent.Collision\n\nopen scoped BigOperators\n\ndef multiplicity {ι κ : Type*} [DecidableEq κ]\r\n    (rows : Finset ι) (group : ι → κ) (a : κ) : ℕ :=\r\n  (rows.filter fun i => group i = a).card\n\nend OAI.PiExponent.Collision\n",
+      "natural_language_statement": "Let $\\iota$ and $\\kappa$ be types, let $s\\subset\\iota$ be finite, and let $g:\\iota\\to\\kappa$. For $a\\in\\kappa$, define\n\n$$m_s(g,a)=\\#\\{i\\in s:g(i)=a\\}. $$\n\nThe definition assumes decidable equality on $\\kappa$. It counts how many rows occupy each group and provides the original data for collision bounds. No finiteness assumption on either ambient type is required.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L34-L36",
+      "tags": [
+        "combinatorics",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "c6ad7676672fa7f5fdd77e39a7f9006f0b1b8bbbd32445e4f28d1fdce76db5a5",
+    "bundle_source_sha256": "86ed311f2381cbcbef8dca0f628ed28b6aa84aebb1e5e2786b43207c93dce519",
+    "bundle_manifest_sha256": "42cca1e6951b694998b8b053fd65aeeee1982af4dc801c9050dddd161f0fbe67",
+    "validation_sha256": "cf385371b76c8cfd53f8773aab0815be52023eff2db6fd9cb44e72d8be80e1a7"
+  },
+  "updated_at_utc": "2026-10-11T18:57:35.838077+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "f138b78a-be87-4bd8-af89-e708a1506099",
+      "definition_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/f138b78a-be87-4bd8-af89-e708a1506099 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "job_id": "f138b78a-be87-4bd8-af89-e708a1506099",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "f138b78a-be87-4bd8-af89-e708a1506099",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+      "theorem_title": "Multiplicity of a group in a finite row set",
+      "formal_statement": "",
+      "natural_language_statement": "Let $\\iota$ and $\\kappa$ be types, let $s\\subset\\iota$ be finite, and let $g:\\iota\\to\\kappa$. For $a\\in\\kappa$, define\n\n$$m_s(g,a)=\\#\\{i\\in s:g(i)=a\\}. $$\n\nThe definition assumes decidable equality on $\\kappa$. It counts how many rows occupy each group and provides the original data for collision bounds. No finiteness assumption on either ambient type is required.",
+      "definitions": "import Mathlib.Data.Finset.Card\nimport Mathlib.Algebra.BigOperators.Group.Finset.Defs\n\nnamespace OAI.PiExponent.Collision\n\nopen scoped BigOperators\n\ndef multiplicity {ι κ : Type*} [DecidableEq κ]\r\n    (rows : Finset ι) (group : ι → κ) (a : κ) : ℕ :=\r\n  (rows.filter fun i => group i = a).card\n\nend OAI.PiExponent.Collision\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L34-L36",
+      "tags": [
+        "combinatorics",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "9e7cfb76-3480-4078-b240-661c13a8f231",
+      "created_at": "2026-10-11T18:55:19.502294+00:00",
+      "updated_at": "2026-10-11T18:55:25.162326+00:00"
+    }
+  },
+  "definition_id": "9e7cfb76-3480-4078-b240-661c13a8f231",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "9e7cfb76-3480-4078-b240-661c13a8f231",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+      "theorem_title": "Multiplicity of a group in a finite row set",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Let $\\iota$ and $\\kappa$ be types, let $s\\subset\\iota$ be finite, and let $g:\\iota\\to\\kappa$. For $a\\in\\kappa$, define\n\n$$m_s(g,a)=\\#\\{i\\in s:g(i)=a\\}. $$\n\nThe definition assumes decidable equality on $\\kappa$. It counts how many rows occupy each group and provides the original data for collision bounds. No finiteness assumption on either ambient type is required.",
+      "created_at": "2026-10-11T18:55:24.236989+00:00",
+      "vote_count": 0,
+      "tags": [
+        "combinatorics",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib.Data.Finset.Card\nimport Mathlib.Algebra.BigOperators.Group.Finset.Defs\n\nnamespace OAI.PiExponent.Collision\n\nopen scoped BigOperators\n\ndef multiplicity {ι κ : Type*} [DecidableEq κ]\r\n    (rows : Finset ι) (group : ι → κ) (a : κ) : ℕ :=\r\n  (rows.filter fun i => group i = a).card\n\nend OAI.PiExponent.Collision\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L34-L36",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

@@ -1,0 +1,6 @@
+theorem gaussian_center_cast (j : ℕ) (p : ℤ) :
+    (((⟨0, 2 * (j : ℤ) * p⟩ : GaussianInt) : ℂ)) =
+      (j : ℂ) * (2 * Complex.I * (p : ℂ)) := by
+  simp only [GaussianInt.toComplex_def', Int.cast_zero, Int.cast_mul,
+    Int.cast_ofNat, Int.cast_natCast, zero_add]
+  ring

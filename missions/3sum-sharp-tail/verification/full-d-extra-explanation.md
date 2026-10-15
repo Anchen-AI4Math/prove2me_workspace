@@ -1,0 +1,3 @@
+The condition $a(1+s)\le1$ and $D\le n^a$ imply $D^{1+s}\le n$. The call-balance lemma therefore bounds the scan factor $1/g$ by $D^{-s/2}$ and the construction factor $gD$ by $2nD^{-s/2}$. Since $n\ge3$, $\log n\ge1$, both terms fit the claimed logarithmic square.
+
+For prime selection, the actual time function is $n^{\log_2 7}D^{3/2}$. Its exponent is at most $3-as/2$ by hypothesis. Also $n^{3-as/2}\le n^3D^{-s/2}$, because $D\le n^a$ and $s\ge0$. Adding the scan, prime and construction estimates yields the factor four. This bounds the existing time functions of the full-D host rather than introducing a new runtime assumption.

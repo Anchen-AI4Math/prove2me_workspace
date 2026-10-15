@@ -1,0 +1,15 @@
+{
+  "id": "8aec6711-2068-4177-a18d-879944f05aa5",
+  "theorem_id": "11b9f53d-3649-44a2-8430-232046974881",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:08:41.298835+00:00",
+  "updated_at": "2026-10-15T09:11:32.285694+00:00",
+  "explanation": "This constructs every schedule, prime, cap, typed count, band and prime-window parameter from the original input length.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightParameterInit.Procs.meets",
+  "theorem_title": "Execution of the complete nineteen-field parameter initializer",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightParameterInit.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {n dst work : \u2115}\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+464*_root_.ThreeSum.LightParameterInit.half n+6 \u2264 lim.depth)\n    (hout : dst+19 \u2264 work) (hspace : _root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.space work n \u2264 lim.space)\n    (hword : (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.word n : \u2124) \u2264 lim.word) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [n,dst,work] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.time n)\n      (fun r \u03bc' => r = (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.radix n : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bc' dst (_root_.ThreeSum1960614.Machine.ThreeSum.LightParameterInit.values n) \u2227\n        _root_.ThreeSum1960614.Machine.Light.KeptBut \u03bc \u03bc' work dst 19) := by sorry",
+  "theorem_natural_language_statement": "Let input size $n$, output base $b$, scratch base $w$, and $\\lambda,P,d,\\mu$ be Light limits, program, depth and memory. Suppose the initializer and all concrete schedule, local-parameter, global-size, square-root and power callees satisfy their literal closure record. Assume addresses fit words, $b+19\\le w$, the exact initializer space/word budgets fit and $d+464h(n)+6$ is allowed, where $h(n)$ is its scheduled microblock half-width. It writes the exact nineteen-field parameter record, returns\n\n$$\\operatorname{radix}(n),$$\n\nmeets its stated time and preserves cells below $w$ outside the output header.\n\nThis constructs every schedule, prime, cap, typed count, band and prime-window parameter from the original input length.",
+  "theorem_status": "Proved"
+}

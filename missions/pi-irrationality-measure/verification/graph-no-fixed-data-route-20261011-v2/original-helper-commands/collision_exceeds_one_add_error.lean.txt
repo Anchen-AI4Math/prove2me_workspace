@@ -1,0 +1,14 @@
+theorem collision_exceeds_one_add_error :
+    1 + (nu / d.F0 +
+      ((Lambda * d.F0 * (d.m : ℝ) + 2 * Real.log 2) / (d.v0 : ℝ) +
+        100 * (d.K : ℝ) / (d.w0 : ℝ)) +
+      (Lambda * (∑ i : Fin d.m, 1 / d.x (i.val + 1)) +
+        weightErrorCoefficient nu d.base.theta d.K / d.wstar)) <
+      c * (d.base.eta ^ 2 * (d.K : ℝ) * (d.base.theta : ℝ) ^ d.m /
+        (((d.m : ℝ) + 1) * (d.v0 : ℝ) * (d.base.A : ℝ) ^ d.m)) := by
+  have h1 := d.initial_margin
+  have h2 := d.dimension_margin
+  have h3 := d.weight_margin
+  have h4 := d.epsilon_le_half
+  have h5 := d.collision_margin
+  linarith

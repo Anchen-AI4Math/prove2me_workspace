@@ -1,0 +1,15 @@
+{
+  "id": "d14fc22b-26f5-4ea6-89fe-6cad687fda43",
+  "theorem_id": "c9466a90-c464-4329-86ac-3fe319098a25",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:15:39.986993+00:00",
+  "updated_at": "2026-10-15T07:18:15.76153+00:00",
+  "explanation": "The proof combines the explicit component contracts and finite layout or counting identities of this construction, retaining the stated runtime and memory bounds. This generic setup provides complete physical fibers for both source reporting and wanted-record residue joins.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketSetup.Procs.meets",
+  "theorem_title": "Setting up packed physical residue buckets",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSourceBucketSetup.Procs.meets {pMain : \u2115} (C : _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBucketSetup.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {keys N M base : \u2115} (key : \u2115 \u2192 \u2115)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+2 < lim.depth) (hM : 0 < M)\n    (hkeys : keys+N \u2264 base) (hspace : _root_.ThreeSum.LightSourceBucketSetup.next base N M \u2264 lim.space)\n    (hkey : \u2200 i < N, key i < M) (hread : \u2200 i < N, \u03bc (keys+i) = (key i : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [keys,N,M,base] \u03bc (_root_.ThreeSum.LightSourceBucketSetup.time N M)\n      (fun r \u03bd => r = (_root_.ThreeSum.LightSourceBucketSetup.next base N M : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.SourceBuckets.Stored \u03bd key N M (_root_.ThreeSum.LightSourceBucketSetup.offsets base M) (_root_.ThreeSum.LightSourceBucketSetup.flat base M) \u2227\n        (\u2200 j < M, \u03bd (_root_.ThreeSum.LightSourceBucketSetup.hist base+j) = (_root_.ThreeSum.LightHistogram.count key j N : \u2124)) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd base) := by sorry",
+  "theorem_natural_language_statement": "A length-$N$ key array with keys below positive $M$ precedes allocation base $b$. Under the exact next-free space bound, word-address bound, helper placement, and call-depth bound, the setup procedure builds the exact histogram, offsets, and physical index fibers at their computed addresses, returns the next free address, and preserves memory below $b$ in its stated time.\n\nThis generic setup provides complete physical fibers for both source reporting and wanted-record residue joins.",
+  "theorem_status": "Proved"
+}

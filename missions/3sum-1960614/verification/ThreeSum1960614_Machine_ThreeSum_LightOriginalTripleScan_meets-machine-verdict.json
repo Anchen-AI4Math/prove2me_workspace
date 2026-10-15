@@ -1,0 +1,15 @@
+{
+  "id": "7128c7b0-9377-48cc-b69b-b67f26ec2af9",
+  "theorem_id": "53bb73b8-504e-4681-b3ee-c06783d5b0d7",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:01:26.366106+00:00",
+  "updated_at": "2026-10-15T09:04:10.613745+00:00",
+  "explanation": "This proves the exact finite fallback scan used outside the eventual subquadratic regime. Its Boolean result covers exactly the requested prefix of distinct-position triples while retaining the original array.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleScan.meets",
+  "theorem_title": "Execution of the original-position triple-prefix scan",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleScan.meets {pMain pRow pDivide src n t U d : \u2115} (x : Fin n \u2192 \u2124) (\u03bc : \u2115 \u2192 \u2124)\n    (hp : P[pMain]?=some (_root_.ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleScan.body pMain pRow))\n    (hrow : P[pRow]?=some (_root_.ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleRow.body pDivide))\n    (hdivide : P[pDivide]?=some _root_.ThreeSum1960614.Machine.ThreeSum.LightSmallDivide.body)\n    (hn : 0 < n) (ht : t \u2264 n^3)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hspace : src+n \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightOriginalTripleRow.word n U : \u2124) \u2264 lim.word)\n    (hd : d+t+2 \u2264 lim.depth)\n    (hread : \u2200 i : Fin n, \u03bc (src+i.val)=x i) (hbound : \u2200 i, |x i| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,n,t] \u03bc (_root_.ThreeSum.LightOriginalTripleScan.time n t)\n      (fun result \u03bd => (result=0 \u2228 result=1) \u2227 (result=1 \u2194 _root_.ThreeSum.BruteTripleIndex.Hit x hn t) \u2227 \u03bd=\u03bc) := by sorry",
+  "theorem_natural_language_statement": "Let $n>0$, $t\\le n^3$, magnitude bound $U$, source base $a$, input $x:\\operatorname{Fin}(n)\\to\\mathbb Z$, and memory $\\mu$ storing $x$ at $a$ be given. Assume $|x_i|\\le U$, the segment fits memory, addresses fit words, the row word budget fits and depth $d+t+2$ is allowed. Let $P$ contain the recursive scan, triple-row and division bodies. Within its specified $(n,t)$ budget it returns a Boolean with\n\n$$r=1\\iff\\text{one of the first }t\\text{ decoded distinct-position triples sums to zero},$$\n\nand leaves memory unchanged.\n\nThis proves the exact finite fallback scan used outside the eventual subquadratic regime.",
+  "theorem_status": "Proved"
+}

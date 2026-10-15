@@ -1,0 +1,1 @@
+The infinite-extension theorem has three substantive clauses. The convergence criterion is `zipf_summable_iff`; when $s>1$, `zipf_genHarmonic_tendsto_zeta` identifies the limit as $\zeta(s)$; when $s\le1$, `zipf_genHarmonic_tendsto_atTop` proves divergence. Their conjunction is exactly the original target. Both limit lemmas themselves reuse the convergence criterion.

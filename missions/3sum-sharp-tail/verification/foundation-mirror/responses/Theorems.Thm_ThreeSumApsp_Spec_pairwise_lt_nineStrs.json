@@ -1,0 +1,24 @@
+{
+  "theorem_id": "66a63824-a28a-4861-a13a-8c52342027b0",
+  "theorem_name": "ThreeSumApsp.Spec.pairwise_lt_nineStrs",
+  "theorem_title": "Lexicographic order of the bounded-nine string enumeration",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumApsp.Spec.pairwise_lt_nineStrs : ∀ (n lo hi : Nat),\n  @List.Pairwise.{0} (List.{0} Nat)\n    (fun (x1 x2 : List.{0} Nat) => @LT.lt.{0} (List.{0} Nat) (@List.instLT.{0} Nat instLTNat) x1 x2)\n    (ThreeSumApsp.Spec.nineStrs n lo hi) := by\n  sorry\n",
+  "natural_language_statement": "For natural numbers $n,\\mathrm{lo},\\mathrm{hi}$, the source's list $\\operatorname{nineStrs}(n,\\mathrm{lo},\\mathrm{hi})$ enumerates length-$n$ strings over the digits $0,\\ldots,9$ whose number of nines lies between the two bounds. The list is strictly increasing in lexicographic order:\n\n$$i<j\\quad\\Longrightarrow\\quad S_i<_{\\mathrm{lex}}S_j.$$\n\nHere $S$ denotes that list and $i,j$ are valid indices. This ordering property supports the deterministic traversal of the strings used to represent boxes and their components.\n\nReferences:\n\n1. [Source formalization](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L129-L154).",
+  "created_at": "2026-10-06T07:56:09.352462+00:00",
+  "vote_count": 0,
+  "tags": [
+    "enumeration",
+    "formal-math-source",
+    "lexicographic-order",
+    "truly-subcubic-apsp"
+  ],
+  "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_ThreeSumApsp_Spec_Sec4_Theorem30_NineStrings\nimport Mathlib.Algebra.BigOperators.Intervals\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Data.List.Range\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Logic.Function.Iterate\nimport Mathlib.Order.Interval.Finset.Nat\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Ring\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\n\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec4/Theorem30/NineStrings.lean#L129-L154",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

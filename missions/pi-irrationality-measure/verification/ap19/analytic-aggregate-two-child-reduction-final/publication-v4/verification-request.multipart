@@ -1,0 +1,34 @@
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="theorem_id"
+
+c873700d-6b99-4966-899b-2afef157b779
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="proof_type"
+
+prove
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="explanation"
+
+This is the source-faithful two-step analytic reduction. The first Open child is the original theorem that the analytic remainder tends to zero. The second Open child is the original selected-minor logarithmic bound. The unchanged six-line source proof combines them to establish the existing analytic aggregate interface. Both children remain Open, so this verification is a SKETCH_ACCEPTED decomposition rather than a closed proof.
+------p2mBoundary7f3a9c2b
+Content-Disposition: form-data; name="file"; filename="Sol_OAI_PiExponent_LiteralAnalytic_analyticAggregate_two_children_ap19.lean"
+Content-Type: text/plain
+
+import Definitions.Def_OAI_PiExponent_ApproximationDefinitions
+import Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData
+import Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_AnalyticAggregate_RemainderData
+import Theorems.Thm_OAI_PiExponent_LiteralAnalytic_tendsto_analyticRemainder
+import Theorems.Thm_OAI_PiExponent_LiteralAnalytic_actual_minor_analytic_bound
+
+open scoped BigOperators Topology
+open Filter
+open OAI.PiExponent OAI.PiExponent.DeterminantContradiction OAI.PiExponent.LiteralAnalytic
+
+theorem solution : AnalyticAggregateStatement := by
+  intro nu hnu d
+  refine ⟨analyticRemainder d, tendsto_analyticRemainder d, ?_⟩
+  filter_upwards [eventually_gt_atTop (0 : ℝ)] with H hH
+  intro selection hne
+  exact actual_minor_analytic_bound d (by linarith) hH selection hne
+
+------p2mBoundary7f3a9c2b--

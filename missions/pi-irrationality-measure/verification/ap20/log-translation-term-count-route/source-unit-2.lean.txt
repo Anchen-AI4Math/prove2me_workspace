@@ -1,0 +1,4 @@
+theorem tendsto_natFloor_mul_add_one_div {a : ℝ} (ha : 0 < a) :
+    Tendsto (fun H : ℝ => ((⌊a * H⌋₊ + 1 : ℕ) : ℝ) / H) atTop (𝓝 a) := by
+  have h := (tendsto_natFloor_affine_div ha 0).add (tendsto_id.const_div_atTop (1 : ℝ))
+  simpa only [add_zero, id_eq, Nat.cast_add, Nat.cast_one, add_div] using h

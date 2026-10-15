@@ -1,0 +1,15 @@
+{
+  "id": "2145fb86-1d65-4aa4-b3d9-687722d07d15",
+  "theorem_id": "d4ea0a43-7179-4516-9ffa-e982e105932a",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:30:33.715137+00:00",
+  "updated_at": "2026-10-15T09:33:06.847593+00:00",
+  "explanation": "Connects every concrete source-level proof to the final word-RAM semantics. The machine execution returns the decoded source verdict and the outcome relation, with startup and simulation costs included.",
+  "theorem_name": "ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct",
+  "theorem_title": "Correctness of the complete Light-to-word-RAM compiler",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {P : _root_.ThreeSum1960614.Machine.Light.Program} {p0 : \u2115} {dec : Bool} {\u03bc : \u2115 \u2192 \u2124}\n    {i j : \u2124} {\u03c3' : _root_.ThreeSum1960614.Machine.Light.State} {c : \u2115} {m : \u2124 \u2192 BitVec W}\n    (h : _root_.ThreeSum1960614.Machine.Light.Exec lim P 0 (_root_.ThreeSum1960614.Machine.Light.mainStmt p0) \u27e8_root_.Light.frame [0, i, j], \u03bc\u27e9 \u03c3' c)\n    (hfit : _root_.ThreeSum1960614.Machine.Light.Compiler.Fits W lim (_root_.ThreeSum1960614.Machine.Light.Compiler.dispPos P dec) (_root_.ThreeSum1960614.Machine.Light.Compiler.stackCells P lim)) (hm : _root_.ThreeSum1960614.Machine.Light.Compiler.Input lim \u03bc i j m) :\n    \u2203 m' : \u2124 \u2192 BitVec W, _root_.EndStatement.exec (_root_.ThreeSum1960614.Machine.Light.compileProgram P p0 dec) (_root_.ThreeSum1960614.Machine.Light.ramSteps P dec c) 0 m\n        = some (_root_.Light.verdictOf dec (\u03c3'.loc 0), m') \u2227 _root_.ThreeSum1960614.Machine.Light.Compiler.Outcome lim P dec m \u03c3' m' := by sorry",
+  "theorem_natural_language_statement": "Let a Light execution of the designated main procedure, from argument frame $[0,i,j]$ and memory $\\mu$, terminate in state $\\sigma\\prime$ with cost $c$. Assume the compiler's explicit $W$-bit fit inequalities for the execution limits, dispatcher, and stack, and assume machine memory $m$ satisfies the input-encoding predicate. Then there is a final machine memory $m\\prime$ such that the compiled program terminates within its specified $\\operatorname{ramSteps}(P,\\delta,c)$ execution bound, returns the verdict decoded from $\\sigma\\prime$ in mode $\\delta$, and satisfies the compiler outcome relation.\n\nConnects every concrete source-level proof to the final word-RAM semantics. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,23 @@
+{
+  "theorem_id": "fc1420c5-0f9d-41f8-b807-559e822db878",
+  "theorem_name": "APSPSource_ThreeSumApsp_Util_CountingSort",
+  "theorem_title": "Counts and positions for stable sorting by natural keys",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "Let $k:\\mathbb N\\to\\mathbb N$ assign a key to each item. For a key $t$ and prefix length $j$, define\n\n$$E(t,j)=|\\{i<j:k(i)=t\\}|,\\qquad L(t,j)=|\\{i<j:k(i)<t\\}|.$$\n\nFor $N$ items, the specified sorted position of item $j$ is\n\n$$\\operatorname{pos}(N,j)=L(k(j),N)+E(k(j),j).$$\n\nThe first term counts all items with smaller keys; the second counts earlier items with the same key. This is the position formula used to specify stable counting sort. Bounds, injectivity, and correctness of an implementing routine are separate results.\n\nReferences:\n\n1. [Source formalization, lines 27–34](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/CountingSort.lean#L27-L34).",
+  "created_at": "2026-10-06T07:36:50.110473+00:00",
+  "vote_count": 0,
+  "tags": [
+    "counting",
+    "program-verification",
+    "sorting"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.Order.Ring.Nat\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.SuccPred\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# The pure side of counting sort\n\n`N` items `0, …, N - 1` have keys `kf 0, …, kf (N - 1)`.  A stable sort by key puts item `j` at the\nplace `sortPos kf N j`: the number of items with a smaller key plus the number of earlier items with\nthe same key.\n\nThis is a bijection of `{0, …, N - 1}` (`eq_of_sortPos_eq`, `exists_sortPos_eq`) that is increasing\nfor the order \"smaller key, or same key and earlier\" (`sortPos_lt_sortPos_iff`).\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp\n\n/-- The number of items `i < j` with key `t`. -/\ndef cntEq (kf : ℕ → ℕ) (t j : ℕ) : ℕ := Nat.count (fun i => kf i = t) j\n\n/-- The number of items `i < j` with a key smaller than `t`. -/\ndef cntLt (kf : ℕ → ℕ) (t j : ℕ) : ℕ := Nat.count (fun i => kf i < t) j\n\n/-- The place of item `j` after a stable sort of the items `0, …, N - 1` by key. -/\ndef sortPos (kf : ℕ → ℕ) (N j : ℕ) : ℕ := cntLt kf (kf j) N + cntEq kf (kf j) j\n\nsection\nvariable (kf : ℕ → ℕ)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend\n\nvariable {kf : ℕ → ℕ} {N K : ℕ}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Util/CountingSort.lean#L27-L34",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

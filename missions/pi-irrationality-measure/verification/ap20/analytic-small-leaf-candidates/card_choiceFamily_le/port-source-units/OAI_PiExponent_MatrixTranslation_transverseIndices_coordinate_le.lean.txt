@@ -1,0 +1,11 @@
+theorem transverseIndices_coordinate_le {m : ℕ} (w : Fin m → ℝ) (H : ℝ)
+    (hw : ∀ i, 1 ≤ w i) {A : Fin m →₀ ℕ} (hA : A ∈ transverseIndices w H) (i : Fin m) :
+    A i ≤ ⌊H⌋₊ := by
+  have hwpos : ∀ i, 0 < w i := fun i => lt_of_lt_of_le zero_lt_one (hw i)
+  have ha := (mem_transverseIndices w H hwpos A).mp hA
+  apply Nat.le_floor
+  calc
+    (A i : ℝ) ≤ w i * A i := by nlinarith [show (0 : ℝ) ≤ (A i : ℝ) by positivity, hw i]
+    _ ≤ ∑ k, w k * A k := Finset.single_le_sum
+      (fun k hk => mul_nonneg (hwpos k).le (Nat.cast_nonneg _)) (Finset.mem_univ i)
+    _ ≤ H := ha

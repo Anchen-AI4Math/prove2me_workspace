@@ -1,0 +1,15 @@
+{
+  "id": "2410d482-8a51-48d0-9843-9165bfce77c0",
+  "theorem_id": "e9310bce-0a82-4cd5-94cf-f0f9da6bd4c7",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:41:37.980978+00:00",
+  "updated_at": "2026-10-15T07:44:16.691759+00:00",
+  "explanation": "Constructs the exact shifted join without supplied residue or bucket advice. The returned header records the count, actual pair base, next free address, and common shift of the complete constructed join.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.program_meets",
+  "theorem_title": "Complete wanted-pair setup from signed source arrays",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.program_meets {\u03bc : \u2115 \u2192 \u2124} {a b NL NR M free U D d : \u2115} {shift : \u2124}\n    (left right : \u2115 \u2192 \u2124) (hw : (lim.space : \u2124) \u2264 lim.word) (hM : 0 < M)\n    (ha : a+NL \u2264 free) (hb : b+NR \u2264 free)\n    (hspace : _root_.ThreeSum.LightWantedSetup.space free M left right NL NR U D shift \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightSourceResidues.word M M U D : \u2124) \u2264 lim.word)\n    (hshift : |shift| \u2264 (D : \u2124)) (hd : d+NL+5 \u2264 lim.depth)\n    (hleft : \u2200 i < NL, \u03bc (a+i)=left i) (hright : \u2200 j < NR, \u03bc (b+j)=right j)\n    (hvaluesL : \u2200 i < NL, |left i| \u2264 (U : \u2124))\n    (hvaluesR : \u2200 j < NR, |right j| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.program 11 d [a,b,NL,NR,M,shift,free] \u03bc (_root_.ThreeSum.LightWantedSetup.time M left right NL NR U D shift)\n      (fun r \u03bd => r=(free : \u2124) \u2227 _root_.ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.Output \u03bd free M left right NL NR shift \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let two stored signed arrays have lengths $N_L,N_R$ and absolute values bounded by $U$, let modulus $M>0$, and let shift $s$ satisfy $|s|\\le D$. Assume both inputs end before the free address, the exact setup allocation and source-residue word bound hold, addresses fit words, and depth $d+N_L+5$ is available. The closed program computes residues and buckets and writes the complete wanted output contract, including all original-position pairs satisfying $M\\mid a_i+s-b_j$, in its stated time. It returns the header address and preserves the input prefix.\n\nConstructs the exact shifted join without supplied residue or bucket advice. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

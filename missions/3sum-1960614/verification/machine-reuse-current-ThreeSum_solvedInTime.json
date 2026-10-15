@@ -1,0 +1,77 @@
+{
+  "theorems": [
+    {
+      "theorem_id": "faf3da56-8bce-41db-b7fb-332e1861ada2",
+      "theorem_name": "ThreeSum1962.threeSum_bound",
+      "theorem_title": "Deterministic 3SUM in $O(n^{1.962})$ word-RAM steps",
+      "status": "Open",
+      "formal_statement": "theorem ThreeSum1962.threeSum_bound :\n    EndStatement.ThreeSum.SolvedInTime 1.962 := by sorry",
+      "natural_language_statement": "For every fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural constant $b$, and a step-bound function $T$ that work for every input size $n$ and every word width $W\\ge b(\\operatorname{Nat.log2}(n)+1)$. On integers $x_0,\\ldots,x_{n-1}$ with $|x_i|\\le n^\\kappa$, the program halts within $T(n)$ steps and accepts exactly when there are pairwise distinct indices $i,j,k$ with $x_i+x_j+x_k=0$.\n\nFor the rational exponent $r=1.962$, the bound is the foundation definition `EndStatement.BigO T r`: there is a natural constant $K$ such that $T(n)^{r.\\mathrm{den}}\\le K n^{r.\\mathrm{num}.\\mathrm{toNat}}$ for every $n\\ge2$. For nonnegative $r$, this is $T(n)=O(n^r)$. Repeated values at distinct positions are allowed; no witness triple is required, and inputs with $n<3$ must be rejected.\n\nUse the foundation mission\u2019s existing definitions without restating them.\n\nThe exponent is exactly $981/500$. The source theorem is `Race.bound`, proved by `ThreeSum.solvedInTime_981_500`; the source repository reports completed local proof and axiom checks. The complete proof remains in the cited repository; this proposal includes source links only and does not establish Prove2Me proof acceptance.",
+      "created_at": "2026-10-13T19:37:33.280915+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission.lean#L1-L8; proof: https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/FinalSolver.lean#L17-L24; source commit 2b639655e07421b9ac743de9090459bab473a7c0",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+    },
+    {
+      "theorem_id": "87e1ae72-5579-4a7e-b1a8-501649499458",
+      "theorem_name": "ThreeSumSharpTail.uniform_three_sum_transfer",
+      "theorem_title": "Uniform Exact Triangle exponent transfers to integer 3SUM",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSumSharpTail.uniform_three_sum_transfer (\u03b4 : \u211d) (r : \u211a) (e : \u2115)\n    (h\u03b4 : \u03b4 \u2264 1) (hr : 2 - \u03b4 / 2 < (r : \u211d))\n    (hu : ThreeSumApsp.Claim.ExactTriangleUniform Light.lightModel \u03b4 e) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "For any real saving delta<=1, rational r>2-delta/2, and natural logarithmic degree e, a uniform Exact Triangle solver in the actual light model implies EndStatement.ThreeSum.SolvedInTime r. The conclusion includes the original word-RAM finite-program and all-sufficient-word-width semantics. The five existing proved reduction and realization interfaces are actual dependencies.",
+      "created_at": "2026-10-13T18:54:00.599997+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_APSPSource_PaperStatements\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_ThreeSumSource_ReductionClaims",
+      "source": "Generic reduction and asymptotic proof bodies extracted from ACCEPTED TrulySubquadratic3SUM.threeSum_1999074, submission 7d7091ea-6717-4422-b336-026472ef8a11; the numerical specialization is excluded. Composes CH20 and VW13 Theorem 4.3 with the actual light-model realization and shared EndStatement interface.",
+      "tags": [
+        "3sum",
+        "sharp-tail",
+        "word-ram-costs"
+      ],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+    },
+    {
+      "theorem_id": "40c65758-b61e-402e-8afd-d2bc6e1784f1",
+      "theorem_name": "ThreeSumSharpTail.admissible_parameters_solve_3sum",
+      "theorem_title": "From admissible sharp-tail parameters to the shared 3SUM specification",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSumSharpTail.admissible_parameters_solve_3sum\n    (c : \u2115) (\u03b8 : \u211d) (a s r : \u211a) (hc : 10 < c)\n    (h\u03b80 : 0 < \u03b8) (h\u03b89 : \u03b8 < 9 / 10)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hs1 : s < 1)\n    (henc : (a : \u211d) * (ThreeSumSharpTail.encodingExponent c + ThreeSumSharpTail.sharpSaving c \u03b8) < 1)\n    (hprep : (s : \u211d) < ThreeSumSharpTail.sharpSaving c \u03b8)\n    (hquery : (s : \u211d) < 1 / 2 - ThreeSumSharpTail.queryExponent \u03b8)\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : \u211d) / 2 < 3 - (a : \u211d) * s / 2)\n    (hbuild : 2 + (a : \u211d) * (1 + (s : \u211d) / 2) < 3 - (a : \u211d) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+      "natural_language_statement": "Let $c>10$ be an integer, $0<\\theta<0.9$, and let $a,s,r$ be rational with $0<a<1$ and $0<s<1$. Suppose\n$$a(A(c)+\\gamma_*(c,\\theta))<1,\\qquad s<\\gamma_*(c,\\theta),\\qquad s<\\tfrac12-q(\\theta),$$\n$$\\log_2 7+\\tfrac32a<3-as/2,\\qquad 2+a(1+s/2)<3-as/2,\\qquad r>2-as/4.$$\nThen deterministic integer 3SUM satisfies the campaign's exact shared predicate `EndStatement.ThreeSum.SolvedInTime r`. This is the combined consequence of Propositions 4.1 and 5.1, not a verbatim separate proposition in the manuscript. Its proof must construct the word-RAM program and establish correctness and all costs using the inherited algorithms and reductions. No inner-algorithm oracle or correctness assumption is supplied as a hypothesis. The uniform word-width requirement in the shared specification is part of the formalization obligation.",
+      "created_at": "2026-10-13T14:54:18.965287+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Propositions 4.1 and 5.1; combined consequence",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "word-ram"
+      ],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)"
+    }
+  ],
+  "total": 3
+}

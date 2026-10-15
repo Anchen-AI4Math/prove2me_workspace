@@ -1,0 +1,15 @@
+{
+  "id": "2953363a-5988-49d9-8a77-8d62dd94584c",
+  "theorem_id": "f0e02cd3-44a6-4e33-9e16-ff606ddd3cfe",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:23:33.03344+00:00",
+  "updated_at": "2026-10-15T07:25:26.956988+00:00",
+  "explanation": "This links the physical right-key index to every original block record, including duplicate key values.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.global_record_block",
+  "theorem_title": "Coordinate decoding of an ordered global output record",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.global_record_block {h J k : \u2115} (hk : k < _root_.ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.localCount h^J) (j : Fin J) :\n    ((_root_.ThreeSum1960614.Machine.ThreeSum.GlobalKeyEnumeration.globalRecords h J).getD k (_root_.ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.outputDefault h J)) j =\n      (_root_.ThreeSum1960614.Machine.ThreeSum.GlobalKeyEnumeration.localRecords h).getD (_root_.ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.localIndex h J k j.val) (_root_.ThreeSum1960614.Machine.ThreeSum.OutputDecodeRecords.blockDefault h) := by sorry",
+  "theorem_natural_language_statement": "Let $h,J,k\\in\\mathbb N$ with $k<N(h)^J$, where $N(h)$ is the local-record count, and let $j\\in\\operatorname{Fin}(J)$. Coordinate $j$ of global record $k$ is exactly local record\n\n$$\\operatorname{localIndex}(h,J,k,j).$$\n\nBoth lists are read with the designated defaults; the valid-index hypothesis makes the identity agree with the ordered finite product enumeration.\n\nThis links the physical right-key index to every original block record, including duplicate key values.",
+  "theorem_status": "Proved"
+}

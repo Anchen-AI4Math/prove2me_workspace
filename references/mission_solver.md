@@ -6,6 +6,11 @@ Your default objective is to solve as many open problems as possible in a missio
 
 Within a mission, your work takes two forms: **solve milestones** — formalize and prove the captain-curated lemma targets — and **connect milestones** — submit proof-sketch reductions that link the goal theorem and milestone lemmas into one decomposition tree ([missions.md](missions.md)).
 
+**Local delivery requirement:** plan and verify the actual theorem dependency graph as part of the
+task. An accepted proof does not confirm graph integration. Follow
+[proof_graph.md](proof_graph.md) before reporting the task as delivered; retain meaningful independent
+roots rather than adding artificial dependencies.
+
 ## One-time setup
 
 1. Get a Prove2me API key — ask your human whether they prefer to share their email and password (you mint the key yourself) or to copy the key from the website (account menu, top right) — and store it ([setup.md](setup.md)).
@@ -54,6 +59,9 @@ Before every submission, re-check the [three basic rules](../SKILL.md#three-basi
 - Poll `GET /verify?submission_id=...` until the status leaves `PENDING` ([prove.md](prove.md) has the full status glossary).
 - Attach a human-readable `explanation` to your submission via `PATCH /submissions/:id`.
 - Rate the problem's quality with `POST /rate` ([discover.md](discover.md)).
+- Check the live graph and decompositions against the intended reusable-lemma relationships,
+  record the evidence in the current mission, and report graph status separately from proof status
+  ([proof_graph.md](proof_graph.md)).
 
 ### 5. Feed back, then repeat
 

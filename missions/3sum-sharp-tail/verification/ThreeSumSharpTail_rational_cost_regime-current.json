@@ -1,0 +1,23 @@
+{
+  "theorem_id": "3edaf29a-0559-4471-b17a-a4f9bc203272",
+  "theorem_name": "ThreeSumSharpTail.rational_cost_regime",
+  "theorem_title": "Finite rational parameters realizing the sharp-tail cost regime",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.rational_cost_regime\n    (c : ℕ) (η a s : ℚ) (hc : 10 < c)\n    (hη0 : 0 < η) (hη9 : η < 9 / 10)\n    (ha0 : 0 < a) (ha1 : (a : ℝ) < 1)\n    (hs0 : 0 < s) (hs5 : (s : ℝ) < 1 / 2)\n    (henc : (a : ℝ) * (ThreeSumSharpTail.encodingExponent c +\n      ThreeSumSharpTail.sharpSaving c (η : ℝ)) < 1)\n    (hprep : (s : ℝ) < ThreeSumSharpTail.sharpSaving c (η : ℝ))\n    (hquery : (s : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent (η : ℝ)) :\n    ∃ G : Light.Sec4.RatParams, ∃ C : ℝ, 0 ≤ C ∧\n      ∀ N D₀ : ℕ, 1 ≤ D₀ → (D₀ : ℝ) ≤ (N : ℝ) ^ (a : ℝ) →\n        Light.Sec4.CostsWithinP G C N D₀\n          ((N : ℝ) ^ 2 * (Real.log (D₀ : ℝ) + 1) ^ 2 / (D₀ : ℝ) ^ (s : ℝ))\n          ((D₀ : ℝ) ^ (1 / 2 - (s : ℝ)) * (Real.log (D₀ : ℝ) + 1)) := by sorry",
+  "natural_language_statement": "For integer c>10 and rational eta,a,s satisfying the strict encoding, preprocessing and query inequalities, with 0<a<1 and 0<s<1/2, there are a finite rational parameter record G and a uniform constant C>=0 such that CostsWithinP holds for every 1<=D<=N^a. The preprocessing bound is N^2(log D+1)^2/D^s and the query bound is D^(1/2-s)(log D+1). The record represents c exactly and eta by its integer numerator and denominator, and includes a fixed threshold for the bounded-size cases.",
+  "created_at": "2026-10-13T18:21:55.924989+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "sharp-tail",
+    "word-ram-costs"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_APSP299791_Defs4\nimport Theorems.Thm_ThreeSumSharpTail_pruned_cost_certificate\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 1000000\nopen ThreeSumApsp Light.Sec4",
+  "source": "Derived finite-parameter interface for Xu, same manuscript, Sections 3-4. It consumes the proved pruned cost certificate and the actual RatParams/CostsWithinP definitions of the published pruned program.",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

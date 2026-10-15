@@ -1,0 +1,119 @@
+{
+  "target_theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+  "target_theorem_name": "PiIrrationality.openai_bound_two",
+  "parent_theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "solution_sha256": "1ff43cfef7f359a3649f5c0e999b42f3dc2b826388b82444ebc70f8b64d8fad5",
+  "multipart_sha256": "4bc65c4db03d84b6df1533e3c4c83bab17dde0ac8f78ccb2a70d1059d6a805d8",
+  "pre_post_target": {
+    "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+    "theorem_name": "PiIrrationality.openai_bound_two",
+    "theorem_title": "The irrationality measure of π is at most 2",
+    "status": "Open",
+    "formal_statement": "theorem PiIrrationality.openai_bound_two : PiIrrationality.UpperBound (2 : ℝ) := by sorry",
+    "natural_language_statement": "The irrationality measure of $\\pi$ is at most $2$: for every real $\\varepsilon>0$, there is a natural threshold $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{2+\\varepsilon}<|\\pi-p/q|$. This uses the campaign's shared definition. Source: [OpenAI, PiExponent, family 017](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean). The exact source conjunction is included separately as OAI.PiExponent.main; this campaign goal records its upper-bound consequence.",
+    "created_at": "2026-10-07T06:01:15.267396+00:00",
+    "vote_count": 0,
+    "tags": [
+      "diophantine-approximation",
+      "irrationality",
+      "number-theory",
+      "pi"
+    ],
+    "preamble": "import Definitions.Def_PiIrrationality_UpperBound",
+    "source": "Campaign definition: https://teorth.github.io/optimizationproblems/constants/7a.html . Each entry must cite the source establishing its particular bound.",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "2f11784c-2b16-4b3f-baaa-fef4bbcca455",
+        "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+        "reviewer_username": "Community (Bot)",
+        "decision": "confirm",
+        "comment": null,
+        "created_at": "2026-10-07T06:19:11.74308+00:00"
+      },
+      {
+        "audit_id": "6c8c48f1-5469-4ab9-b7c3-8219e5b56a3b",
+        "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+        "reviewer_username": "marwahaha",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-07T06:19:53.222203+00:00"
+      }
+    ],
+    "readback": null
+  },
+  "pre_post_parent": {
+    "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+    "theorem_name": "OAI.PiExponent.pi_eventual_lower_bound",
+    "theorem_title": "The eventual rational approximation lower bound for pi",
+    "status": "Open",
+    "formal_statement": "theorem OAI.PiExponent.pi_eventual_lower_bound : PiEventualLowerBound := by sorry",
+    "natural_language_statement": "For every real exponent $\\nu>2$, there exists a natural threshold $Q\\ge2$ such that every integer numerator $p$ and natural denominator $q\\ge Q$ satisfy\n$$q^{-\\nu}\\le |\\pi-p/q|.$$\nThe threshold is uniform over both numerator and denominator. This is the pi-specific eventual approximation bound. Together with the general approximation lemmas, it yields the integer-denominator formulation and the real-supremum characterization of irrationality exponent two.\n",
+    "created_at": "2026-10-07T07:21:51.736866+00:00",
+    "vote_count": 0,
+    "tags": [
+      "irrationality-measure",
+      "number-theory",
+      "openai-pi-exponent-017"
+    ],
+    "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+    "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Main.lean#L8-L9",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [],
+    "readback": null
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-11T13:28:33.164397+00:00",
+    "endpoint": "/verify",
+    "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+    "parent_theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+    "multipart_sha256": "4bc65c4db03d84b6df1533e3c4c83bab17dde0ac8f78ccb2a70d1059d6a805d8",
+    "content_type": "multipart/form-data; boundary=----p2mBoundary7f3a9c2b",
+    "solution_sha256": "1ff43cfef7f359a3649f5c0e999b42f3dc2b826388b82444ebc70f8b64d8fad5"
+  },
+  "updated_at_utc": "2026-10-11T13:29:19.678235+00:00",
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "5bf1a83d-0e23-4eb0-8ca6-20a93bc1746e",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "5bf1a83d-0e23-4eb0-8ca6-20a93bc1746e",
+  "last_verify_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "5bf1a83d-0e23-4eb0-8ca6-20a93bc1746e",
+      "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "status": "SKETCH_ACCEPTED",
+      "error_message": "",
+      "file_path": "406736ed-98ce-4177-b97f-24de96ba4188/418b0711-62a5-416a-ba5d-876ae8758fe3/5bf1a83d-0e23-4eb0-8ca6-20a93bc1746e.lean",
+      "created_at": "2026-10-11T13:28:34.038986+00:00",
+      "updated_at": "2026-10-11T13:29:11.308982+00:00"
+    }
+  },
+  "confirmed_SKETCH_ACCEPTED": true,
+  "actual_parent_edge": {
+    "sketch_node": "sketch-5bf1a83d-0e23-4eb0-8ca6-20a93bc1746e",
+    "parent_to_sketch": true,
+    "sketch_to_root": true,
+    "decomposition_parent_present": true,
+    "graph_nodes": 39,
+    "graph_edges": 62
+  },
+  "post_readback_sha256": {
+    "post-target.json": "d16fa25ec033ba9b7d6105cc68b36685f1f9476a2e3d8cfdacf71aa54b4a6d6b",
+    "post-graph.json": "90ca95ca78adc78c41594f7fb25e8989b23e3e80981d7d9cce52b8395b318cca",
+    "post-decompositions.json": "b10d1a2190b92a986f9ea8719486c57c8dc1f8f9475f941d419675f06bd93cad"
+  }
+}

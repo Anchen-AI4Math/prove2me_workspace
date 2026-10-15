@@ -1,0 +1,10 @@
+private theorem normalized_arithmetic_bound (M H b E δ logD columnCost rowCost logAbsDet : ℝ)
+    (hM : 0 < M) (hH : 0 < H)
+    (hclear : -M * logD - columnCost + rowCost ≤ logAbsDet)
+    (hden : logD ≤ H * E)
+    (hcol : columnCost ≤ M * H)
+    (hrow : M * H * b - M * H * δ ≤ rowCost) :
+    -(1 - b) - (E + δ) ≤ logAbsDet / (M * H) := by
+  apply (le_div_iff₀ (mul_pos hM hH)).mpr
+  have hd := mul_le_mul_of_nonneg_left hden hM.le
+  nlinarith only [hclear, hd, hcol, hrow]

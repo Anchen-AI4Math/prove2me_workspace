@@ -1,0 +1,15 @@
+{
+  "id": "e436380f-d2de-4d87-8551-14a6cf77c835",
+  "theorem_id": "e5430bee-0416-4c8d-bd83-d7b73ba9aa2e",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:26:58.45347+00:00",
+  "updated_at": "2026-10-15T07:28:48.887468+00:00",
+  "explanation": "Retains all residue, histogram, and bucket construction charges in a uniform original-size bound. The explicit logarithmic factors retain dependence on input magnitude and modulus controls rather than treating arithmetic as free.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceBandCosts.time_le_encoderCount",
+  "theorem_title": "Source-band construction is bounded by encoder count",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandCosts.time_le_encoderCount {N n p U D : \u2115} (hN : N \u2264 n) :\n    _root_.ThreeSum.LightSourceBandSetup.time N (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) p\n      (_root_.ThreeSum1960614.Machine.ThreeSum.BlockSourceEncoding.modulus (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n))) U D \u2264\n      (1016*(Nat.log 2 (U+1)+Nat.log 2 (p+D+1)+1)+1946)*_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n+560 := by sorry",
+  "theorem_natural_language_statement": "Let $N,n,p,U,D\\in\\mathbb N$ with $N\\le n$. For the executable band width and global modulus at size $n$, the source-band setup time is at most $$\\bigl(1016(\\lfloor\\log_2(U+1)\\rfloor+\\lfloor\\log_2(p+D+1)\\rfloor+1)+1946\\bigr)\\operatorname{encoderCount}(n)+560.$$\n\nRetains all residue, histogram, and bucket construction charges in a uniform original-size bound. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

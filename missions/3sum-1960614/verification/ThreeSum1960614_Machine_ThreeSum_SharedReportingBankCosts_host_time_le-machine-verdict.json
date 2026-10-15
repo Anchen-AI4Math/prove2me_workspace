@@ -1,0 +1,15 @@
+{
+  "id": "8b72adbf-b069-47af-8d52-b87a07308f7d",
+  "theorem_id": "e6f4d77a-ecad-4ec5-bddc-2e1b9a32b387",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:33:48.609053+00:00",
+  "updated_at": "2026-10-15T07:37:01.986805+00:00",
+  "explanation": "This gives a uniform original-input-size bound for reusable shared reporting preprocessing. Its assumptions bound the two actual normalized array lengths by the original input length before specializing the schedule.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankCosts.host_time_le",
+  "theorem_title": "Shared-bank host time fits the size-only budget",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankCosts.host_time_le {NB NC n : \u2115} (hB : NB \u2264 n) (hC : NC \u2264 n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightSharedReportingHost.time (_root_.ThreeSum.SharedReportingCosts.half n) (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.blocks n) NB NC (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankCosts.budget n := by sorry",
+  "theorem_natural_language_statement": "Let $N_B,N_C,n\\in\\mathbb N$ with $N_B,N_C\\le n$. Specialize the shared-host microblock parameter, block count and band size to the schedule at $n$. Then\n\n$$T_{\\mathrm{sharedHost}}(h(n),J(n),N_B,N_C,g(n))\\le\\operatorname{budget}_{\\mathrm{sharedBank}}(n).$$\n\nThis gives a uniform original-input-size bound for reusable shared reporting preprocessing.",
+  "theorem_status": "Proved"
+}

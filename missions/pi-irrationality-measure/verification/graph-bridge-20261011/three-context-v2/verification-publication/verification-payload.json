@@ -1,0 +1,11 @@
+{
+  "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+  "proof_type": "prove",
+  "explanation": "Let ε>0. Apply OAI.PiExponent.pi_eventual_lower_bound at the exponent 2+ε/2>2, obtaining Q≥2 and q^{-(2+ε/2)}≤|π-p/q| for q≥Q. Such q satisfies q>1. Since -(2+ε)<-(2+ε/2), strict monotonicity of the real power of the base q gives q^{-(2+ε)}<q^{-(2+ε/2)}. Rewriting 1/q^{2+ε} as q^{-(2+ε)} and composing the inequalities proves the campaign's exact PiIrrationality.UpperBound 2 statement.",
+  "file": {
+    "filename": "Sol_PiIrrationality_openai_bound_two_transfer_graph_bridge.lean",
+    "source": "verification/graph-bridge-20261011/three-context-v2/Solutions/Sol_PiIrrationality_openai_bound_two_transfer_graph_bridge.lean",
+    "sha256": "1ff43cfef7f359a3649f5c0e999b42f3dc2b826388b82444ebc70f8b64d8fad5",
+    "utf8": "import Mathlib.Tactic\nimport Theorems.Thm_OAI_PiExponent_pi_eventual_lower_bound\nimport Definitions.Def_PiIrrationality_UpperBound\n\n-- Local integration target. The source import will be platformized only after\n-- the complete source closure and its axioms have passed verification.\ntheorem solution : PiIrrationality.UpperBound (2 : ℝ) := by\n  intro ε hε\n  obtain ⟨Q, hQ, hLower⟩ :=\n    OAI.PiExponent.pi_eventual_lower_bound (2 + ε / 2) (by linarith)\n  refine ⟨Q, ?_⟩\n  intro p q _hqpos hq\n  have hqTwo : 2 ≤ q := hQ.trans hq\n  have hqOne : (1 : ℝ) < q := by exact_mod_cast (by omega : 1 < q)\n  rw [one_div, ← Real.rpow_neg (Nat.cast_nonneg q)]\n  exact (Real.rpow_lt_rpow_of_exponent_lt hqOne\n    (by linarith : -(2 + ε) < -(2 + ε / 2))).trans_le (hLower p q hq)\n\n"
+  }
+}

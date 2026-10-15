@@ -1,0 +1,15 @@
+{
+  "id": "94ca5c29-2acc-4b78-8c81-5c8caa6decf6",
+  "theorem_id": "da99b79f-451f-4ca6-aa51-9f7bd0431315",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:01:13.107714+00:00",
+  "updated_at": "2026-10-15T09:03:48.647825+00:00",
+  "explanation": "This provides terminal completeness from an original equation while retaining physical original-index enumeration.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalBatch.hit_of_compatible",
+  "theorem_title": "Compatible original endpoints produce a terminal hit",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalBatch.hit_of_compatible {h J k NL NR : \u2115} (p : \u2115) (shift av : \u2124)\n    (B : Finset \u03b2) (C : Finset \u03b3) (b : \u03b2\u2192\u2124) (c : \u03b3\u2192\u2124)\n    (left right : \u2115\u2192\u2124) (eL : Fin NL \u2243 B) (eR : Fin NR \u2243 C)\n    (hvL : \u2200 i : Fin NL, left i.val=b (eL i)) (hvR : \u2200 j : Fin NR, right j.val=c (eR j))\n    (q : _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.GlobalOutput h J) (pre : List (Finset (Fin (464*h)))) (hk : k\u2264J) (hp : _root_.ThreeSum1960614.Machine.ThreeSum.StoredReporting.ValidPrefix q k pre)\n    (t : _root_.ThreeSum1960614.Machine.ThreeSum.RawIncidences.ChoiceTuple h J) (ht : t\u2208_root_.ThreeSum1960614.Machine.ThreeSum.RawPrefixCounts.completions q k pre) (bc : \u03b2\u00d7\u03b3)\n    (hbc : bc\u2208_root_.ThreeSum1960614.Machine.ThreeSum.RawPrefixCounts.compatiblePairs (p : \u2124) shift B C b c t) (heq : c bc.2-b bc.1-av=0) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalBatch.Hit av p shift left right NL NR q k pre := by sorry",
+  "theorem_natural_language_statement": "Let $h,J,k,N_L,N_R\\in\\mathbb N$, modulus $p\\in\\mathbb N$, and shift/A value $\\delta,a_0\\in\\mathbb Z$. Let finite sets $B,C$ over decidable finite types have integer maps $b,c$ and ordered array enumerations $\\ell,r$ through bijections $\\operatorname{Fin}(N_L)\\simeq B$ and $\\operatorname{Fin}(N_R)\\simeq C$, preserving those values. Fix global output $q$ and a valid depth-$k$ prefix $u$, with $k\\le J$. If a retained tuple $t$ completes that prefix and $(b_0,c_0)$ is one of its compatible original pairs with\n\n$$c(c_0)-b(b_0)-a_0=0,$$\n\nthen the actual terminal batch\u2019s hit predicate holds for those arrays, output and prefix.\n\nThis provides terminal completeness from an original equation while retaining physical original-index enumeration.",
+  "theorem_status": "Proved"
+}

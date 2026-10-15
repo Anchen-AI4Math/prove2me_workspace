@@ -1,0 +1,45 @@
+{
+  "theorem_id": "c9f11bd4-4101-4aaa-8c30-d0efc095df48",
+  "theorem_name": "ThreeSumSharpTail.explicit_parameter_certificate",
+  "theorem_title": "Exact parameter inequalities for exponent 1.999017",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.explicit_parameter_certificate :\n    (0.05665 : ℝ) * (ThreeSumSharpTail.encodingExponent 21 + ThreeSumSharpTail.sharpSaving 21 0.11202) < 1 ∧\n    (0.06945 : ℝ) < ThreeSumSharpTail.sharpSaving 21 0.11202 ∧\n    (0.06945 : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent 0.11202 ∧\n    Real.log 7 / Real.log 2 + 3 * (0.05665 : ℝ) / 2 < 3 - 0.05665 * 0.06945 / 2 ∧\n    2 + (0.05665 : ℝ) * (1 + 0.06945 / 2) < 3 - 0.05665 * 0.06945 / 2 ∧\n    (2 - (0.05665 : ℚ) * 0.06945 / 4) = 1.999016414375 ∧\n    (1.999017 : ℚ) - (2 - 0.05665 * 0.06945 / 4) = 0.000000585625 := by sorry",
+  "natural_language_statement": "For the exact rational parameters $c=21$, $\\theta=0.11202$, $a=0.05665$, $s=0.06945$, establish $a(A+\\gamma_*)<1$, $s<\\gamma_*$, $s<1/2-q$, $\\log_2 7+3a/2<3-as/2$, and $2+a(1+s/2)<3-as/2$. Also establish the exact equalities $$2-as/4=1.999016414375,\\qquad 1.999017-(2-as/4)=0.000000585625.$$ All decimal constants denote exact rationals (coerced to reals in the analytic inequalities). The source's rational interval checks are reproducible evidence; proving this Lean statement remains a formalization task.",
+  "created_at": "2026-10-13T14:54:53.237585+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Section 6.2; parameter certificate used in Theorem 1.1",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "53615a18-ac50-49ac-be12-47235b280c29",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-13T20:30:08.028625+00:00"
+    },
+    {
+      "audit_id": "7c82bd01-515d-4507-9c39-6f41a74b001b",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-13T20:30:08.35446+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "Let $H(x)=-x\\log x-(1-x)\\log(1-x)$, where $\\log$ is the natural logarithm extended by $\\log0=0$ and by the logarithm of the absolute value on negative inputs. With the exact real constants $a=0.05665$, $s=0.06945$, and $t=0.11202$, define $S=[21H(1/21)-21H((1-t)/21)-t\\log9]/\\log4$, $Q=[H(t)+t\\log9]/\\log4$, and $E=[21\\log10-21H(1/21)/2-20\\log3]/\\log4$. With no hypotheses or free parameters, the declaration asserts the conjunction of these seven statements: $a(E+S)<1$; $s<S$; $s<1/2-Q$; $\\log7/\\log2+3a/2<3-as/2$; $2+a(1+s/2)<3-as/2$; the exact rational equality $2-0.05665\\cdot0.06945/4=1.999016414375$; and the exact rational equality $1.999017-(2-0.05665\\cdot0.06945/4)=0.000000585625$. The first five comparisons are strict comparisons of real numbers. The last two equalities are in the rational numbers, and every decimal in the statement denotes its exact terminating-decimal value, not a floating-point approximation. The declaration asserts these numerical statements and no machine-existence conclusion.",
+    "model": "gpt-6",
+    "created_at": "2026-10-13T14:54:55.412024+00:00"
+  }
+}

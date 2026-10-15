@@ -1,0 +1,1 @@
+For supported rank $k$, both probabilities are positive. Take logarithms in the rank-frequency ratio $f(1)/f(k)=k^s$, obtaining $\log f(1)-\log f(k)=s\log k$. Since $f(1)=1/H_{N,s}$, its logarithm is $-\log H_{N,s}$. Solving for $\log f(k)$ gives the affine law.

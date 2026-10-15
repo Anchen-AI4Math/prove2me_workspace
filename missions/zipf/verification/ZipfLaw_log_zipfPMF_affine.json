@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/51ed4521-43d5-49f9-9eff-95300c416e5c",
+  "fetched_at": "2026-10-11T12:10:44.438837+00:00",
+  "data": {
+    "theorem_id": "51ed4521-43d5-49f9-9eff-95300c416e5c",
+    "theorem_name": "ZipfLaw.log_zipfPMF_affine",
+    "theorem_title": "Log–log plot of the Zipf distribution is affine with slope $-s$",
+    "status": "Open",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem log_zipfPMF_affine (N : ℕ) (s : ℝ) (k : ℕ) (hk1 : 1 ≤ k) (hkN : k ≤ N) :\n    Real.log (zipfPMF N s k) = -s * Real.log k - Real.log (genHarmonic N s) := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "For $1\\le k\\le N$ and real $s$,\n$$\\ln f(k;N,s)=-s\\ln k-\\ln H_{N,s},$$\nso on a log–log plot (log rank against log frequency) the Zipf distribution lies on a straight line of slope $-s$.",
+    "created_at": "2026-10-09T21:32:51.71368+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Empirical testing\" (\"The data conform to Zipf's law with exponent s to the extent that the plot approximates a linear (more precisely, affine) function with slope −s\").",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "ae321810-99b1-4c79-9bed-59a1e8d9a091",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "32ae58af-826c-4a41-8238-ffd61913a146",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all naturals $N$, $k$ with $1\\le k\\le N$ and every real $s$: $\\ln\\big(\\mathrm{zipfPMF}(N,s,k)\\big)=-s\\ln k-\\ln\\big(\\mathrm{genHarmonic}(N,s)\\big)$.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:32:53.482774+00:00"
+    }
+  }
+}

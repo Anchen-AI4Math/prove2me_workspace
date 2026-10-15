@@ -1,0 +1,6 @@
+theorem actualMean_bounds {nu : ℝ} (d : FixedData nu) (H : ℝ) (hH : 0 < H) :
+    0 ≤ actualMean d H ∧ actualMean d H ≤ (d.base.theta : ℝ) := by
+  exact ⟨MatrixArithmetic.meanRowWeight_nonneg _ _ _ _ hH.le,
+    MatrixArithmetic.meanRowWeight_le_theta (finiteDenominators d)
+      (finiteDenominators_two_le d) (Nat.zero_lt_of_lt d.K_pos)
+      d.v0_pos d.base.theta_pos hH⟩

@@ -1,0 +1,178 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceTrim.Procs.meets",
+    "theorem_title": "Correct independent source-flag products over all blocks",
+    "natural_language_statement": "Let $J$ blocks have width $L$, desired cardinality $h\\le L$, positive modulus $p$, and bucket cap $c$. Suppose memory stores valid selected occurrence indices, valid candidate indices, Boolean rows, two coefficient orientations bounded by $U$, and independent histograms bounded by $V$. Assume the concrete procedure interface, the displayed ordered input/output/scratch reservations, the row-flag space and word bounds, address representability, and two available call levels. The routine writes the product of the exact per-block flags in each orientation within its stated time, preserving other cells below row scratch.\n\nConstructs both global trimming flags without identifying the independent endpoints. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs both global trimming flags without identifying the independent endpoints. The procedure multiplies the exact per-block flags separately in both orientations and preserves all earlier retained input cells."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWeightDecode.Procs.meets",
+    "theorem_title": "Decoding both coefficient rows of a candidate",
+    "natural_language_statement": "Let $L,k$ be natural width and candidate index, and $p\\ge1$ the radix. Under the concrete decode procedure interface, two available call levels, output of $2L$ cells before scratch, $2L+1$ scratch cells within space, and the stated word/address bounds, the routine constructs both specified coefficient rows and the table $p^e$ for $e\\le2L$. It meets its stated time and preserves other cells below scratch.\n\nMakes candidate one-hot weights actual computed memory data. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Makes candidate one-hot weights actual computed memory data. The two coefficient orientations and the full power table are computed from the candidate index under explicit word and space limits."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.MassScales.falseNumerator_log_rate",
+    "theorem_title": "Logarithmic growth of the false-mass numerator",
+    "natural_language_statement": "For every fixed $k\\in\\mathbb N$, let $F_k(n)$ be the false-mass numerator. With fixed encoding parameters $\\varepsilon,E$ and band shift $\\beta$, $$\\lim_{n\\to\\infty}\\frac{\\log F_k(n)}{\\log n}=2+\\varepsilon(E+\\beta).$$\n\nIdentifies the false-mass exponent before division by the selected modulus. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Identifies the false-mass exponent before division by the selected modulus. The numerator rate includes the original quadratic incidence scale and the executable encoding-and-band contribution."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostSuffixValueBounds.prefix_count_le_word",
+    "theorem_title": "A valid prefix count fits the sparse-query word bound",
+    "natural_language_statement": "Let finite source sets $A,B,C$ carry integer values, let $w$ be a wanted label satisfying membership and its exact shifted lifted-key divisibility condition, and let $p$ be a valid prefix at depth $k\\le J$. If the stated sparse-query magnitude bound for the suffix stage, residual size, threshold $t$, and source cardinalities fits the word limit, then the exact prefix-query count for the corresponding raw-incidence set also fits that limit.\n\nConnects semantic nonnegative prefix counts to the stored signed-query arithmetic bound. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects semantic nonnegative prefix counts to the stored signed-query arithmetic bound. The stored sparse-query magnitude inequality therefore bounds the actual nonnegative prefix mass returned to frontier code."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.dense_word_le",
+    "theorem_title": "Polynomial dense-initialization word bound",
+    "natural_language_statement": "For every natural input size $n$ and supplied magnitude $U$, $$\\operatorname{denseWord}(n,U)\\le10000\\operatorname{scale}(n)^8+4U,$$ where scale is the explicit encoded-color resource envelope.\n\nBounds the actual dense setup integers by a uniform polynomial expression. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the actual dense setup integers by a uniform polynomial expression. The supplied original magnitude contributes linearly, while every size-dependent dense control is covered by the eighth-power scale term."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_space_of_ok",
+    "theorem_title": "Wanted-record space follows from its need record",
+    "natural_language_statement": "Let $K$ be at most the executable block count, $N\\le3M(n)^3$, and $N_B,N_C\\le n$, where $M$ is the reporting magnitude envelope. Suppose the cover header ends at least eight cells before the destination, the counter has two cells before it, and the wanted need record is valid at that destination and current depth. Then the exact wanted-record caller and access-layout space fit the execution space limit.\n\nConverts the uniform relative reservation to the concrete wanted-record call allocation. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Converts the uniform relative reservation to the concrete wanted-record call allocation. The valid need record bounds the actual access layout and scratch extent at the chosen destination, keeping earlier cover and counter headers intact."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.wanted_time_le",
+    "theorem_title": "Guard-sensitive bound for one wanted traversal",
+    "natural_language_statement": "Let actual left and right arrays be value-preserving enumerations of finite source sets $B,C$. Fix a wanted label from $A$ satisfying the exact lifted-key divisibility condition, a catalog family $D$, and depth $K\\le J$. Let $m$ be its raw root mass, $o$ the previous cumulative mass, and $q$ the threshold. Then $$T_{\\mathrm{wanted}}\\le I(h,J,D,K)+\\begin{cases}0&q<o+m,\\\\mS(h,J,D,K)&q\\ge o+m,\\end{cases}$$ where $I,S$ are the specified initialization and search units.\n\nRetains the actual dense-guard condition in the execution cost. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains the actual dense-guard condition in the execution cost. The initialization charge is always retained, while traversal is charged only when the actual counter comparison allows that branch."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.sort_meets",
+    "theorem_title": "Correctness and cost of merge sort",
+    "natural_language_statement": "Let the concrete sort, half, merge, and copy bodies be present. Suppose a list $L$ is stored at $a$, the input ends before scratch $f$, scratch has $|L|$ cells, addresses and $1$ fit words, and $d+\\lceil\\log_2|L|\\rceil+1$ fits call depth. The sort procedure runs within its specified sort time and leaves a sorted permutation of $L$ at $a$, preserving all cells below $f$ except the input segment.\n\nProvides the original upstream sorting component used in normalization and catalog lookup. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides the original upstream sorting component used in normalization and catalog lookup. The exact sorted-permutation and preservation conclusions justify its reuse for color normalization and packed-prefix index sorting."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorResources.source_space_bound",
+    "theorem_title": "A uniform source-construction space bound",
+    "natural_language_statement": "For all natural base addresses $b$, sizes $n$, and supplied magnitudes $U$, evaluate the finite-source construction at its actual maximum modulus and radix. Then $$\\operatorname{sourceSpace}\\le b+200\\operatorname{scale}(n)^5+U.$$\n\nKeeps the free address affine while bounding the complete source payload. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Keeps the free address affine while bounding the complete source payload. The supplied magnitude remains an explicit additive term, and translation to an arbitrary base keeps coefficient one on that base."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawA.Procs.meets",
+    "theorem_title": "Constructing packed original A incidences",
+    "natural_language_statement": "Let positive band width $g$, source length $n$, and owner-record list be given. Suppose every flagged record has a valid $A$ band; memory contains the exact four-cell records and original source values before the destination; and the concrete procedure interface, stated space/word bounds, address bound, and three available levels hold. The routine returns the exact incidence count and stores every packed value, owner, and original position in its prescribed time, preserving the preceding memory.\n\nConnects physical owner records to the complete original-A incidence catalog. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects physical owner records to the complete original-A incidence catalog. The output stores value, owner, and original position for every flagged incidence, retaining separate physical owner identities."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockChildren.meets",
+    "theorem_title": "Correct construction of next-block reporting children",
+    "natural_language_statement": "Let $A,B,Q,R$ be subsets of a width-$W$ ground set, with $A,B$ disjoint from $Q$ and $Q\\subseteq R$. For $h\\le|Q|+1$, assume the concrete enumeration/affine interface, ordered mask and child buffers before scratch, $2W+2$ scratch cells, representability of $2^{W+1}$ and addresses, and depth $d+W+3$. The routine emits the exact missing-$h$ subset masks and both child-prefix arrays, returns the mask of $R\\setminus Q$, and preserves memory before the first output.\n\nImplements actual child construction in global mask coordinates. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Implements actual child construction in global mask coordinates. The enumerated subsets yield both exact child prefix arrays and the residual mask without traversing the ambient cube."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightHeaderBands.Procs.meets",
+    "theorem_title": "Band candidate tables from retained endpoint headers",
+    "natural_language_statement": "Let three interval families be stored in actual headers for source lengths $n_A,n_B,n_C$, with endpoints bounded by $U$. Suppose all headers precede the destination and the concrete procedure interface and specified enumeration space, word, address, and depth bounds hold. The routine returns the exact three-rectangle cell count, constructs all prescribed band lookup tables in its stated time, and preserves the input prefix.\n\nConstructs the owner-candidate tables from actual retained input headers. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs the owner-candidate tables from actual retained input headers. The code reads actual length and band-count headers before constructing all three rectangular lookup tables."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightKaratsuba.recurse_ends",
+    "theorem_title": "The recursive Karatsuba body doubles the verified capacity",
+    "natural_language_statement": "Let $m=2^k$ and let two integer coefficient lists of length $2m$ be stored and bounded by $U$. Assume the concrete Karatsuba procedure interface, input and output intervals before scratch, $16m$ scratch cells, stated word/address/depth bounds, and a recursive hypothesis correctly multiplying all admissible length-$m$ inputs one call level deeper. Then the recursive body produces the exact length-$4m$ polynomial product with its specified preservation predicate within $\\operatorname{time}(k+1)-4$ steps.\n\nProvides the recursive operational step for verified polynomial multiplication. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides the recursive operational step for verified polynomial multiplication. The induction hypothesis covers arbitrary admissible half-size calls, allowing all three recursive products and the final join to be costed."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverCandidate.Procs.meets",
+    "theorem_title": "Correct construction of one local-cover candidate",
+    "natural_language_statement": "Let $n>0$ masks of width $L$ and their Boolean rows be stored, with positive modulus $p$, cap $c$, and candidate index $k$. Suppose the two desired coefficient rows equal the even and odd base-$p$ digits of $k$. Under the concrete candidate interface, ordered coefficient/raw-hash/histogram/output buffers, and stated space, word, address, and depth bounds, the routine decodes both coefficient rows, constructs both exact residue histograms, and writes all $p^2$ prescribed cover entries within its stated time, with the explicit preservation contract.\n\nBuilds a candidate cover row from arithmetic and scans rather than a cover oracle. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Builds a candidate cover row from arithmetic and scans rather than a cover oracle. The candidate index is decoded into coefficient rows before computing both histograms and all prescribed cover entries."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalKeys.Procs.meets",
+    "theorem_title": "The complete occurrence-by-output local key array",
+    "natural_language_statement": "Let stored masks lie below $2^L$, and let each of $R$ selected map rows have two width-$L$ coefficient orientations bounded by $U$. Assume input segments precede the $Rn$ output, the output ends before scratch, and the concrete procedure interface and stated space, word, address, and depth bounds hold. The routine writes at position $(j,i)$ the difference of the true- and false-orientation one-hot evaluations for mask $i$, in its specified time, preserving the preceding memory.\n\nConstructs signed local output keys in exact occurrence order. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs signed local output keys in exact occurrence order. The result keeps each schedule occurrence and output-mask position as a separate array entry, even when key values coincide."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightNormalize.Procs.meets",
+    "theorem_title": "Sorting and deduplicating one separated color class",
+    "natural_language_statement": "Let integer list $L$ be stored at the source, with a disjoint later destination and scratch after both length-$|L|$ reservations. Under the concrete normalization interface, space and word bounds, and sufficient depth for sort and dedup recursion, the routine returns a strictly increasing list $S$ with $$|S|\\le|L|,\\qquad z\\in S\\iff z\\in L.$$ It stores $S$ at the destination within its stated time and preserves cells below scratch outside the source and destination reservations.\n\nRemoves duplicates within a color class while preserving exactly its original membership witnesses. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Removes duplicates within a color class while preserving exactly its original membership witnesses. The membership equivalence recovers every original class value while strict ordering permits the subsequent sorted-band reasoning."
+  }
+]

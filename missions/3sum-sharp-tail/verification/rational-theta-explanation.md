@@ -1,0 +1,3 @@
+The entropy function is continuous at each argument occurring in the strict certificate. Consequently the encoding, preprocessing and query margins remain strictly positive in a neighborhood of theta. Intersect these three neighborhoods with the open interval (0,9/10). A sufficiently small open interval around theta lies inside the intersection. Density of the rationals supplies eta in that interval, preserving all five strict inequalities simultaneously.
+
+This lemma supplies a rational parameter that can be represented by a fixed finite program. The prime-selection, construction, and final exponent inequalities depend on a and s and are unchanged by the choice of eta.

@@ -1,0 +1,21 @@
+{
+  "id": "cf423a1d-bb81-4af1-a40f-815ec9610ade",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.executable_scale_rounding",
+  "theorem_title": "Exact finite rounding of the executable block and band schedules",
+  "formal_statement": "theorem ThreeSum1960614.executable_scale_rounding (m : ℕ) :\n    2 ∣ microSize m ∧ 20 ∣ blockCount m ∧\n    (0 < microSize m →\n      0 ≤ epsilon * (m : ℝ) - totalSize m ∧\n      epsilon * (m : ℝ) - totalSize m < 20 * microSize m) ∧\n    0 ≤ (-beta) * (totalSize m : ℝ) - bandExponent m ∧\n    (-beta) * (totalSize m : ℝ) - bandExponent m < 1 ∧\n    0 < bandDivisor m  := by sorry",
+  "natural_language_statement": "For every natural bit parameter $m$, the executable even microblock size $s(m)$ is divisible by two and the block count $J(m)$ by twenty. Whenever $s(m)>0$, the exact total size obeys $0\\le e m-\\mu(m)<20s(m)$. For every $m$, including the zero-size fallback, the natural band exponent $a(m)$ obeys $0\\le(-b)\\mu(m)-a(m)<1$, and the divisor $2^{a(m)}$ is positive. Here $e=0.203889696$ and $b=-0.062656016$ are the fixed exact rational parameters. These are finite statements about actual natural-number quotients, without asymptotic hypotheses.",
+  "definitions": "import Definitions.Def_ThreeSum1960614_Scales\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614 ThreeSum1960614.Schedule",
+  "source": "Author-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md, Section 4.1; certificate c232_quartic.json; 14 October 2026.",
+  "tags": [
+    "3sum",
+    "entropy",
+    "exact-certificates"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "bb028ec9-fde8-44b5-95aa-5450b036437f",
+  "created_at": "2026-10-14T07:26:19.798731+00:00",
+  "updated_at": "2026-10-14T07:26:45.21598+00:00"
+}

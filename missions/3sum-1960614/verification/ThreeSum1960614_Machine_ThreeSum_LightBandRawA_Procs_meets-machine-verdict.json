@@ -1,0 +1,15 @@
+{
+  "id": "9aec26d4-9c47-4df6-9522-fadb30d3e335",
+  "theorem_id": "e35996be-7ccb-4949-95a1-0c6386f7d0a5",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:14:21.435979+00:00",
+  "updated_at": "2026-10-15T07:17:42.980929+00:00",
+  "explanation": "Connects physical owner records to the complete original-A incidence catalog. The output stores value, owner, and original position for every flagged incidence, retaining separate physical owner identities.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawA.Procs.meets",
+  "theorem_title": "Constructing packed original A incidences",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightBandRawA.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandRawA.Procs P pMain)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+2 < lim.depth) (hg : 0 < g)\n    (hrecords : records+4*rs.length \u2264 vals) (hsrc : src+n \u2264 vals)\n    (hspace : _root_.ThreeSum.LightBandRawA.space vals rs.length g \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightBandRawA.word n g rs.length : \u2124) \u2264 lim.word)\n    (hvalid : \u2200 i < rs.length, (rs.getD i default).flag=1 \u2192\n      (rs.getD i default).a < _root_.ThreeSum.BandPartition.size n g)\n    (hrecordRead : _root_.ThreeSum1960614.Machine.Light.Seg \u03bc records (_root_.ThreeSum.BandCandidateRows.cells rs))\n    (hread : \u2200 j < n, \u03bc (src+j)=f j) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [records,rs.length,src,n,g,vals] \u03bc (_root_.ThreeSum.LightBandRawA.time rs.length g)\n      (fun r \u03bd => r=((_root_.ThreeSum.BandRawA.items n g rs).length : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.BandRawA.Stored \u03bd vals (_root_.ThreeSum.LightBandRawA.ownerBase vals rs.length g) (_root_.ThreeSum.LightBandRawA.positionBase vals rs.length g)\n          f (_root_.ThreeSum.BandRawA.items n g rs) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd vals) := by sorry",
+  "theorem_natural_language_statement": "Let positive band width $g$, source length $n$, and owner-record list be given. Suppose every flagged record has a valid $A$ band; memory contains the exact four-cell records and original source values before the destination; and the concrete procedure interface, stated space/word bounds, address bound, and three available levels hold. The routine returns the exact incidence count and stores every packed value, owner, and original position in its prescribed time, preserving the preceding memory.\n\nConnects physical owner records to the complete original-A incidence catalog. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,5 @@
+theorem error_sum_lt_gap : d.arithmeticError + d.analyticError <
+    nu * ((d.base.A : ℝ) * (1 - d.base.eta) - d.base.theta) -
+      (1 - d.base.theta) := by
+  rw [d.error_sum_eq]
+  exact d.total_error_lt_gap

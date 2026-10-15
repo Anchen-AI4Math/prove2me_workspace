@@ -1,0 +1,23 @@
+{
+  "theorem_id": "70447e3d-ebef-4bb4-8556-83d397efbc69",
+  "theorem_name": "APSPSource_ThreeSumApsp_Spec_Sec2_Theorem5_Counters",
+  "theorem_title": "Band, block, and row-offset counters",
+  "status": "Definition",
+  "formal_statement": "",
+  "natural_language_statement": "A counter is a triple of natural numbers $(b,k,o)$ giving a band's index, the block within that band, and the row offset within that block. For $k_0$ blocks per band and $n_0$ rows per block, the counter attached to row $I$ is\n\n$$C(I)=\\left(\\left\\lfloor\\frac{I}{k_0n_0}\\right\\rfloor,\\ \\left\\lfloor\\frac{I}{n_0}\\right\\rfloor\\bmod k_0,\\ I\\bmod n_0\\right).$$\n\nThe update function uses comparisons and increments:\n\n$$\\operatorname{step}(b,k,o)=\\begin{cases}(b,k,o+1),&o+1<n_0,\\\\(b,k+1,0),&o+1\\ge n_0\\ \\text{and}\\ k+1<k_0,\\\\(b+1,0,0),&\\text{otherwise}.\\end{cases}$$\n\nFor positive block dimensions these are the usual quotient/remainder coordinates of a row in nested bands and blocks. They specify the counters maintained by later array routines; the theorem relating one update to the next row is separate.\n\n**Formalization Note** Both functions are defined for all natural parameters, including zero, using Lean's total natural-number division and remainder.\n\nReferences:\n\n1. [Source formalization: counter structure and operations](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec2/Theorem5/Counters.lean#L23-L40).",
+  "created_at": "2026-10-06T07:22:22.12118+00:00",
+  "vote_count": 0,
+  "tags": [
+    "data-structures",
+    "indexing",
+    "program-verification"
+  ],
+  "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Mathlib.Algebra.Order.Ring.Int\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\n\n/-!\n# Quotients and remainders by counters\n\nThe word RAM has no division.  A program that runs through the rows `I = 0, 1, …, N - 1` of a matrix\ncan still know, for each row, its band, its block within the band and its offset within the block\n(Section 2.3.4), that is `I / (K₀ N₀)`, `I / N₀ % K₀` and `I % N₀`: it keeps three counters and\nsteps them (`stepCtr`, `ctrAt_succ`).\n-/\n\n@[expose] public section\n\nnamespace ThreeSumApsp.Spec\n\n/-- The band of a row, its block within the band, and its offset within the block. -/\nstructure Ctr where\n  /-- The band of the row. -/\n  band : ℕ\n  /-- The block of the row within its band. -/\n  block : ℕ\n  /-- The offset of the row within its block. -/\n  off : ℕ\n\n/-- The band, block and offset of row `I`, for bands of `k₀` blocks of `n₀` rows. -/\ndef ctrAt (k₀ n₀ I : ℕ) : Ctr := ⟨I / (k₀ * n₀), I / n₀ % k₀, I % n₀⟩\n\n/-- From the band, block and offset of a row to those of the next row: comparisons and additions of\n1 only. -/\ndef stepCtr (k₀ n₀ : ℕ) (s : Ctr) : Ctr :=\n  if s.off + 1 < n₀ then { s with off := s.off + 1 }\n  else if s.block + 1 < k₀ then { s with block := s.block + 1, off := 0 }\n  else ⟨s.band + 1, 0, 0⟩\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend ThreeSumApsp.Spec\n",
+  "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Spec/Sec2/Theorem5/Counters.lean#L23-L40",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": null
+}

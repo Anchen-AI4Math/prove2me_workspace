@@ -1,0 +1,3 @@
+Use c/1 and the positive numerator and denominator of eta as the integer entries of RatParams. The ceiling-division identities show that the program's arithmetic routines compute exactly the levels and switch point used by the analytic certificate. Choose the fixed threshold to be the maximum of its certificate threshold and one.
+
+For every 1<=D<=N^a, positivity implies N>=1. Since a<1, D<=N. The preprocessing and query expressions are at least one because 0<s<1/2; these facts discharge the bounded-input and scale fields of CostsWithinP. Above the fixed threshold, the pruned cost certificate supplies tile fit and the two bounds. Monotonicity from log D to log D+1 completes the bounds, and the exact program parameters supply all four Hyp30 fields.

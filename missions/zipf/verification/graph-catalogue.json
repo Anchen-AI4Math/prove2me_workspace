@@ -1,0 +1,693 @@
+{
+  "fetched_at": "2026-10-11T13:38:42.271665+00:00",
+  "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "theorems": [
+    {
+      "theorem_id": "dd0d92d9-1846-4951-8189-03dca5f30959",
+      "theorem_name": "ZipfLaw.zipf_summable_iff",
+      "theorem_title": "The Zipf p-series converges exactly for $s>1$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_summable_iff (s : ℝ) (hs : 0 ≤ s) :\n    Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For a real exponent $s\\ge0$, the series $\\sum_{k=1}^{\\infty} k^{-s}$ is summable if and only if $s>1$. This is the convergence criterion in the infinite-extension theorem, isolated for reuse in both its convergent and divergent branches.",
+      "created_at": "2026-10-11T13:28:01.752508+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    },
+    {
+      "theorem_id": "207133b7-d4cf-4627-bc1f-e2f75f531235",
+      "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_zeta",
+      "theorem_title": "For $s>1$, the Zipf harmonic sums tend to $\\zeta(s)$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_zeta (s : ℝ) (hs : 1 < s) :\n    Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n      (nhds (riemannZeta s)) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "If $s>1$, the generalized harmonic partial sums $H_{N,s}=\\sum_{k=1}^{N}k^{-s}$ converge to Riemann's zeta function $\\zeta(s)$. The formal limit takes place in $\\mathbb C$ after casting the real sums, because Mathlib's `riemannZeta` is complex-valued.",
+      "created_at": "2026-10-11T13:29:10.80628+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    },
+    {
+      "theorem_id": "f0a0ba06-47c3-4c10-b63c-f396c8d1c474",
+      "theorem_name": "ZipfLaw.zipf_genHarmonic_tendsto_atTop",
+      "theorem_title": "For $0\\le s\\le1$, the Zipf harmonic sums tend to infinity",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_genHarmonic_tendsto_atTop (s : ℝ) (hs : 0 ≤ s) (hs1 : s ≤ 1) :\n    Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For every real exponent $0\\le s\\le1$, the generalized harmonic sums $H_{N,s}$ tend to $+\\infty$ as $N\\to\\infty$. In particular no finite normalizing constant can extend these finite Zipf laws to infinitely many ranks.",
+      "created_at": "2026-10-11T13:27:46.267329+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    },
+    {
+      "theorem_id": "c8f6df3c-57b1-4269-8978-bc95c250e35d",
+      "theorem_name": "ZipfLaw.genHarmonic_pos",
+      "theorem_title": "A nonempty generalized harmonic sum is positive",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem genHarmonic_pos (N : ℕ) (hN : 1 ≤ N) (s : ℝ) : 0 < genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For every integer $N\\ge1$ and real exponent $s$, the generalized harmonic sum $H_{N,s}=\\sum_{k=1}^{N} k^{-s}$ is strictly positive. This ensures that the common normalizing factor can be cancelled and logarithms of supported Zipf probabilities are well-defined.",
+      "created_at": "2026-10-11T13:27:54.477356+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    },
+    {
+      "theorem_id": "7a1111e5-8f7a-4838-9116-4d150410c7a8",
+      "theorem_name": "ZipfLaw.zipfPMF_moment",
+      "theorem_title": "All finite Zipf moments are ratios of shifted harmonic sums",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_moment (N : ℕ) (s : ℝ) (p : ℕ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ p * zipfPMF N s k) =\n      genHarmonic N (s - p) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For every cutoff $N\\in\\mathbb N$, real exponent $s$, and integer moment order $p\\ge0$, the finite Zipf law satisfies $\\sum_{k=1}^{N} k^p f(k;s,N)=H_{N,s-p}/H_{N,s}$. The identity includes $N=0$ under Lean's convention for division by zero. The first and second moment formulas in the mission are its special cases.",
+      "created_at": "2026-10-11T13:28:17.97358+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\", https://en.wikipedia.org/wiki/Zipf%27s_law, section \"Formal definition\"; auxiliary lemma for the original ZipfLaw mission, derived from its displayed PMF and generalized harmonic sum.",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    },
+    {
+      "theorem_id": "3db55d74-324f-4340-aed9-9dbf6411b23f",
+      "theorem_name": "ZipfLaw.zipf_infinite_extension",
+      "theorem_title": "Zipf extends to infinitely many items iff $s>1$; then $H_{N,s}\\to\\zeta(s)$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_infinite_extension (s : ℝ) (hs : 0 ≤ s) :\n    (Summable (fun k : ℕ => 1 / ((k : ℝ) + 1) ^ s) ↔ 1 < s) ∧\n      (1 < s → Filter.Tendsto (fun N : ℕ => ((genHarmonic N s : ℝ) : ℂ)) Filter.atTop\n        (nhds (riemannZeta s))) ∧\n      (s ≤ 1 → Filter.Tendsto (fun N : ℕ => genHarmonic N s) Filter.atTop Filter.atTop) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "Let $s\\ge0$. Then:\n\n1. $\\displaystyle\\sum_{k=1}^\\infty\\frac{1}{k^s}$ converges if and only if $s>1$;\n2. if $s>1$, then $H_{N,s}\\to\\zeta(s)$ as $N\\to\\infty$, where $\\zeta$ is Riemann's zeta function;\n3. if $s\\le1$, then $H_{N,s}\\to+\\infty$ as $N\\to\\infty$.\n\nSo the generalized Zipf distribution can be extended to infinitely many items exactly when $s>1$, and then its normalizing constant is $\\zeta(s)$ (the zeta distribution, or Lotka's law). This is the goal theorem of the mission.\n\n**Formalization Note.** Item 2 is stated in $\\mathbb C$ against Mathlib's `riemannZeta`, which is defined on all of $\\mathbb C$ by analytic continuation. Summability is that of $k\\mapsto 1/(k+1)^s$ over $k \\in \\mathbb N$.",
+      "created_at": "2026-10-09T21:35:43.121933+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Formal definition\" (\"The generalized Zipf distribution can be extended to infinitely many items (N = ∞) only if the exponent s exceeds 1. In that case, the normalization constant H_{N,s} becomes Riemann's zeta function ... If the exponent s is 1 or less, the normalization constant H_{N,s} diverges as N tends to infinity\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "0b076c18-0998-4818-9d54-50b94364f6ac",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "3801e515-2754-4de3-a52f-f827058d8a2c",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every real $s\\ge0$, all three of the following hold:\n\n1. the family $k\\mapsto 1/(k+1)^s$, $k\\in\\mathbb N$ (real power), is summable if and only if $s>1$;\n2. if $s>1$, then the complex numbers $\\mathrm{genHarmonic}(N,s)=\\sum_{k=1}^N 1/k^s$ (real, cast to $\\mathbb C$) converge as $N\\to\\infty$ to $\\zeta(s)$, Mathlib's Riemann zeta function evaluated at the complex number $s$;\n3. if $s\\le1$, then $\\mathrm{genHarmonic}(N,s)\\to+\\infty$ as $N\\to\\infty$ (Lean `Tendsto … atTop atTop`).\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:35:46.095885+00:00"
+      }
+    },
+    {
+      "theorem_id": "9f1f191e-020e-45cb-9765-0221bed168dd",
+      "theorem_name": "ZipfLaw.zipfPMF_sum_eq_one",
+      "theorem_title": "The Zipf distribution sums to $1$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_sum_eq_one (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    ∑ k ∈ Finset.Icc 1 N, zipfPMF N s k = 1 := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For every integer $N\\ge1$ and real exponent $s$,\n$$\\sum_{k=1}^{N}f(k;N,s)=\\sum_{k=1}^N\\frac{1}{H_{N,s}\\,k^s}=1 .$$\n\nThis is the statement that $H_{N,s}$ is the normalization constant of the Zipf distribution.",
+      "created_at": "2026-10-09T21:27:28.345312+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Formal definition\" (PMF $f(k;N,s)=\\frac{1}{H_{N,s}}\\frac{1}{k^s}$, $H_{N,s}$ the normalization constant).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "88072207-c2cb-42f4-b68c-69defb389730",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "988f2c97-9887-48f2-b7e9-79b250778179",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and every real $s$ (no sign restriction): $\\sum_{k=1}^{N}\\mathrm{zipfPMF}(N,s,k)=1$, where on this range $\\mathrm{zipfPMF}(N,s,k)=(1/k^s)/\\sum_{j=1}^N 1/j^s$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:27:30.522143+00:00"
+      }
+    },
+    {
+      "theorem_id": "2433609e-8cc9-4d45-aa7c-8a19848af3c3",
+      "theorem_name": "ZipfLaw.zipfPMF_mean",
+      "theorem_title": "Mean of the Zipf distribution: $H_{N,s-1}/H_{N,s}$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_mean (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    ∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k = genHarmonic N (s - 1) / genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $N\\ge1$ and real $s$, the mean rank under the Zipf distribution is\n$$\\sum_{k=1}^{N}k\\,f(k;N,s)=\\frac{H_{N,s-1}}{H_{N,s}} .$$",
+      "created_at": "2026-10-09T21:28:43.198065+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Mean $H_{N,s-1}/H_{N,s}$).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "2c96df12-1b8f-49f3-80ca-e1014f62efb8",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "2ea96c93-2e6c-49ea-bf8c-db9ce4461455",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and real $s$: $\\sum_{k=1}^{N}k\\cdot\\mathrm{zipfPMF}(N,s,k)=\\mathrm{genHarmonic}(N,s-1)/\\mathrm{genHarmonic}(N,s)$, with $k$ cast to $\\mathbb R$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:28:44.804733+00:00"
+      }
+    },
+    {
+      "theorem_id": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+      "theorem_name": "ZipfLaw.zipfPMF_variance",
+      "theorem_title": "Variance of the Zipf distribution",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_variance (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ 2 * zipfPMF N s k) -\n        (∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k) ^ 2 =\n      genHarmonic N (s - 2) / genHarmonic N s -\n        genHarmonic N (s - 1) ^ 2 / genHarmonic N s ^ 2 := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $N\\ge1$ and real $s$, the variance of the rank under the Zipf distribution is\n$$\\sum_{k=1}^N k^2 f(k;N,s)-\\Big(\\sum_{k=1}^N k\\,f(k;N,s)\\Big)^2=\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H_{N,s-1}^2}{H_{N,s}^2}.$$",
+      "created_at": "2026-10-09T21:29:24.07398+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Variance $\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H^2_{N,s-1}}{H^2_{N,s}}$).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "995e7728-4216-42ab-ab8d-b6520ea42420",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "550ddaf7-85a1-4fc0-beb6-1c7d05d414a8",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and real $s$:\n$$\\Big(\\sum_{k=1}^N k^2\\,\\mathrm{zipfPMF}(N,s,k)\\Big)-\\Big(\\sum_{k=1}^N k\\,\\mathrm{zipfPMF}(N,s,k)\\Big)^2=\\frac{\\mathrm{genHarmonic}(N,s-2)}{\\mathrm{genHarmonic}(N,s)}-\\frac{\\mathrm{genHarmonic}(N,s-1)^2}{\\mathrm{genHarmonic}(N,s)^2},$$\nwith $k^2$ a natural-exponent power of the real $k$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:29:26.090979+00:00"
+      }
+    },
+    {
+      "theorem_id": "67f9705e-99e7-4852-8806-bfb0baaefc89",
+      "theorem_name": "ZipfLaw.zipfPMF_entropy",
+      "theorem_title": "Entropy of the Zipf distribution",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_entropy (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    -(∑ k ∈ Finset.Icc 1 N, zipfPMF N s k * Real.log (zipfPMF N s k)) =\n      s / genHarmonic N s * (∑ k ∈ Finset.Icc 1 N, Real.log k / (k : ℝ) ^ s) +\n        Real.log (genHarmonic N s) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $N\\ge1$ and real $s$, the Shannon entropy (in nats) of the Zipf distribution is\n$$-\\sum_{k=1}^N f(k;N,s)\\ln f(k;N,s)=\\frac{s}{H_{N,s}}\\sum_{k=1}^N\\frac{\\ln k}{k^s}+\\ln H_{N,s}.$$",
+      "created_at": "2026-10-09T21:29:54.829425+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Entropy $\\frac{s}{H_{N,s}}\\sum_{k=1}^N\\frac{\\ln k}{k^s}+\\ln H_{N,s}$).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "27672660-70ec-4361-817e-e06e6658aa4b",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "6211a722-0001-4a29-9616-d7cc2486f369",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and real $s$:\n$$-\\sum_{k=1}^N \\mathrm{zipfPMF}(N,s,k)\\cdot\\ln\\big(\\mathrm{zipfPMF}(N,s,k)\\big)=\\frac{s}{\\mathrm{genHarmonic}(N,s)}\\cdot\\sum_{k=1}^N\\frac{\\ln k}{k^s}+\\ln\\big(\\mathrm{genHarmonic}(N,s)\\big),$$\nwith natural log (Lean's $\\ln$, which satisfies $\\ln x = \\ln|x|$ and $\\ln 0 = 0$; all arguments here are positive).\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:29:57.568461+00:00"
+      }
+    },
+    {
+      "theorem_id": "1f2b24c3-2e4c-4979-b6dc-273061017e66",
+      "theorem_name": "ZipfLaw.zipfPMF_ratio",
+      "theorem_title": "$f(1)/f(n)=n^s$: the top item is $n^s$ times as frequent as the $n$-th",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_ratio (N : ℕ) (s : ℝ) (n : ℕ) (hn1 : 1 ≤ n) (hnN : n ≤ N) :\n    zipfPMF N s 1 / zipfPMF N s n = (n : ℝ) ^ s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $1\\le n\\le N$ and real $s$, the most probable item is exactly $n^s$ times as probable as the item of rank $n$:\n$$\\frac{f(1;N,s)}{f(n;N,s)}=n^{s}.$$\nFor $s=1$: the most common word occurs $n$ times as often as the $n$-th most common one.",
+      "created_at": "2026-10-09T21:32:19.309428+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, lead section and \"Word frequencies in human languages\" (\"the most common word occurs about n times the n-th most common one\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "fe5ef17b-aae7-4a0c-bcbd-65d581762a90",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "2528ef47-a084-4af5-ac00-d0b3ab14fefb",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all naturals $N$, $n$ with $1\\le n\\le N$ and every real $s$: $\\mathrm{zipfPMF}(N,s,1)/\\mathrm{zipfPMF}(N,s,n)=n^s$ (real power of the real $n$).\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:32:20.539506+00:00"
+      }
+    },
+    {
+      "theorem_id": "51ed4521-43d5-49f9-9eff-95300c416e5c",
+      "theorem_name": "ZipfLaw.log_zipfPMF_affine",
+      "theorem_title": "Log–log plot of the Zipf distribution is affine with slope $-s$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem log_zipfPMF_affine (N : ℕ) (s : ℝ) (k : ℕ) (hk1 : 1 ≤ k) (hkN : k ≤ N) :\n    Real.log (zipfPMF N s k) = -s * Real.log k - Real.log (genHarmonic N s) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $1\\le k\\le N$ and real $s$,\n$$\\ln f(k;N,s)=-s\\ln k-\\ln H_{N,s},$$\nso on a log–log plot (log rank against log frequency) the Zipf distribution lies on a straight line of slope $-s$.",
+      "created_at": "2026-10-09T21:32:51.71368+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Empirical testing\" (\"The data conform to Zipf's law with exponent s to the extent that the plot approximates a linear (more precisely, affine) function with slope −s\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "ae321810-99b1-4c79-9bed-59a1e8d9a091",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "32ae58af-826c-4a41-8238-ffd61913a146",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all naturals $N$, $k$ with $1\\le k\\le N$ and every real $s$: $\\ln\\big(\\mathrm{zipfPMF}(N,s,k)\\big)=-s\\ln k-\\ln\\big(\\mathrm{genHarmonic}(N,s)\\big)$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:32:53.482774+00:00"
+      }
+    },
+    {
+      "theorem_id": "174e811f-b86f-4ba0-9c38-10b06f8880d2",
+      "theorem_name": "ZipfLaw.zipfPMF_mode",
+      "theorem_title": "Rank $1$ is a mode of the Zipf distribution ($s\\ge0$)",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_mode (N : ℕ) (hN : 1 ≤ N) (s : ℝ) (hs : 0 ≤ s) (k : ℕ) :\n    zipfPMF N s k ≤ zipfPMF N s 1 := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For $N\\ge1$ and exponent $s\\ge0$, the element of rank $1$ is a most probable element of the Zipf distribution: for every natural number $k$,\n$$f(k;N,s)\\le f(1;N,s)=\\frac1{H_{N,s}}.$$\n(For $s=0$ the distribution is uniform and every rank is a mode.)",
+      "created_at": "2026-10-09T21:31:47.418658+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Mode $1$; parameters $s\\ge0$).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "dba2a7c1-c7f5-4b31-969b-15194a34c805",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "7f481498-5537-44b6-9e05-549d34772084",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$, real $s\\ge0$ and natural $k$ (any $k$, including $0$ and $k>N$, where the left side is $0$): $\\mathrm{zipfPMF}(N,s,k)\\le\\mathrm{zipfPMF}(N,s,1)$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:31:49.312242+00:00"
+      }
+    },
+    {
+      "theorem_id": "a37de8e9-9899-4058-9357-6e3c24db13e4",
+      "theorem_name": "ZipfLaw.zipfMandelbrotPMF_hasSum_one",
+      "theorem_title": "Zipf–Mandelbrot law with Hurwitz-zeta normalization is a distribution",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfMandelbrotPMF_hasSum_one (q s : ℝ) (hq : 0 ≤ q) (hs : 1 < s) :\n    HasSum (fun k : ℕ => zipfMandelbrotPMF q s k) 1 := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "Let $s>1$ and $q\\ge0$. With normalizing constant $C=\\zeta(s,q+1)=\\sum_{k\\ge1}(k+q)^{-s}$ (Hurwitz zeta), the Zipf–Mandelbrot frequencies\n$$f(k;q,s)=\\frac{1}{C}\\,\\frac{1}{(k+q)^s},\\qquad k=1,2,3,\\dots$$\nform a probability distribution:\n$$\\sum_{k=1}^{\\infty}f(k;q,s)=1 .$$",
+      "created_at": "2026-10-09T21:33:33.147511+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Related laws\" ($f(k;N,q,s)=\\frac1C\\frac1{(k+q)^s}$; \"The constant C is the Hurwitz zeta function evaluated at s\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "8b60ba4f-630d-4112-b0e3-5892a8f8ae16",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "a68632ae-3b5d-404e-bdbf-c405fcaabe18",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all reals $q\\ge0$ and $s>1$: the family $k\\mapsto\\mathrm{zipfMandelbrotPMF}(q,s,k)$, $k\\in\\mathbb N$ (value $0$ at $k=0$, and $1/\\big(\\zeta_{\\mathrm{ser}}(s,q+1)(k+q)^s\\big)$ for $k\\ge1$, where $\\zeta_{\\mathrm{ser}}(s,a)=\\sum_{n\\ge0}(n+a)^{-s}$ as a `tsum`), is summable with sum exactly $1$ (Lean `HasSum`, i.e. unconditional convergence).\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:33:34.853653+00:00"
+      }
+    },
+    {
+      "theorem_id": "2765d49b-7d9c-4669-a8fa-ff678ed2e2c1",
+      "theorem_name": "ZipfLaw.yuleSimon_tail",
+      "theorem_title": "Yule–Simon tail: $f(k;\\rho)\\sim C/k^{\\rho+1}$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem yuleSimon_tail (ρ : ℝ) (hρ : 0 < ρ) :\n    ∃ C : ℝ, 0 < C ∧\n      Asymptotics.IsEquivalent Filter.atTop (fun k : ℕ => yuleSimonPMF ρ k)\n        (fun k : ℕ => C / (k : ℝ) ^ (ρ + 1)) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For every $\\rho>0$ there is a constant $C>0$ such that the Yule–Simon frequencies $f(k;\\rho)=\\rho\\,B(k,\\rho+1)$ satisfy\n$$f(k;\\rho)\\sim\\frac{C}{k^{\\rho+1}}\\qquad(k\\to\\infty),$$\ni.e. $f(k;\\rho)\\,k^{\\rho+1}/C\\to1$.",
+      "created_at": "2026-10-09T21:33:58.141217+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Related laws\" (\"The tail frequencies of the Yule–Simon distribution are approximately f(k;ρ) ≈ [constant]/k^(ρ+1) for any choice of ρ > 0\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "124dea91-28d8-4586-a06c-9d6003f1b845",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "750af631-5d21-4ef3-92a0-4704d6f46830",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every real $\\rho>0$ there exists a real $C>0$ such that, as $k\\to\\infty$ through the naturals, $\\mathrm{yuleSimonPMF}(\\rho,k)$ is asymptotically equivalent (Lean `IsEquivalent`: the difference is little-o of the second function) to $C/k^{\\rho+1}$ (real power). Here $\\mathrm{yuleSimonPMF}(\\rho,k)=\\rho\\,\\Gamma(k)\\Gamma(\\rho+1)/\\Gamma(k+\\rho+1)$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:34:01.316018+00:00"
+      }
+    },
+    {
+      "theorem_id": "fee6ee30-fa71-411e-a302-0bdf2fbf1bd7",
+      "theorem_name": "ZipfLaw.monkey_typing_power_law",
+      "theorem_title": "Random typing produces a power law in rank (Li's model)",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem monkey_typing_power_law (m : ℕ) (hm : 2 ≤ m) (q : ℝ) (hq : 0 < q) (hmq : (m : ℝ) * q < 1)\n    (e : ℕ → List (Fin m)) (he_inj : Function.Injective e)\n    (he_range : Set.range e = {w | w ≠ []})\n    (he_sorted : Antitone (fun r => monkeyWordProb m q (e r))) :\n    ∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧ ∀ r : ℕ,\n      C₁ * ((r : ℝ) + 1) ^ (-Real.logb m (1 / q)) ≤ monkeyWordProb m q (e r) ∧\n        monkeyWordProb m q (e r) ≤ C₂ * ((r : ℝ) + 1) ^ (-Real.logb m (1 / q)) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "Consider a monkey typing on a keyboard with $m\\ge2$ letter keys, each pressed with the same probability $q>0$, and a space bar pressed with probability $1-mq>0$. The probability that the word following a space is exactly the string $w$ of letters is $p(w)=q^{|w|}(1-mq)$. List all nonempty words in order of non-increasing probability, $w_1,w_2,w_3,\\dots$ (ties in any order). Then the probability of the word of rank $r$ obeys a power law in $r$: with $\\alpha=\\log_m(1/q)$ there are constants $0<C_1\\le C_2$ such that for all $r\\ge1$\n$$C_1\\,r^{-\\alpha}\\le p(w_r)\\le C_2\\,r^{-\\alpha}.$$\n\n**Formalization Note.** Ranks are $0$-indexed in Lean: the rank order is a bijection $e:\\mathbb N\\to\\{\\text{nonempty words}\\}$ along which $p$ is non-increasing, and the bound is stated with $(r+1)^{-\\alpha}$.",
+      "created_at": "2026-10-09T21:34:22.855851+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Statistical explanations\" (Li: \"in a document in which each character has been chosen randomly from a uniform distribution of all letters (plus a space character), the 'words' with different lengths follow the macro-trend of Zipf's law\"; ref. Li 1992, https://doi.org/10.1109/18.165464).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "65c9e802-4c1f-45e6-8d60-ac5f05c2c340",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "d67e17e2-46cb-4974-aae7-bf6799fd5125",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nLet $m\\ge2$ be a natural number, $q$ a real with $q>0$ and $mq<1$. Let $e$ be a function from $\\mathbb N$ to finite lists over an $m$-letter alphabet which is injective, whose image is exactly the set of nonempty lists, and such that $r\\mapsto q^{|e(r)|}(1-mq)$ is antitone (non-increasing in $r$). Then there exist reals $C_1>0$ and $C_2>0$ such that for every natural $r$:\n$$C_1\\,(r+1)^{-\\log_m(1/q)}\\le q^{|e(r)|}(1-mq)\\le C_2\\,(r+1)^{-\\log_m(1/q)},$$\nwith $\\log_m(1/q)=\\ln(1/q)/\\ln m$ and real powers.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:34:25.601321+00:00"
+      }
+    },
+    {
+      "theorem_id": "93d4cca7-9afc-4fe0-9461-cd45c00698df",
+      "theorem_name": "ZipfLaw.zipf_one_leadingDigit_benford",
+      "theorem_title": "Leading digits of Zipf ($s=1$) data follow Benford's law",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipf_one_leadingDigit_benford (d : ℕ) (hd1 : 1 ≤ d) (hd9 : d ≤ 9) :\n    Filter.Tendsto\n      (fun N : ℕ => ∑ k ∈ (Finset.Icc 1 N).filter (fun k => leadingDigit k = d), zipfPMF N 1 k)\n      Filter.atTop (nhds (Real.logb 10 (1 + 1 / (d : ℝ)))) := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "Let $K_N$ be a random rank drawn from the Zipf distribution with $s=1$ on $\\{1,\\dots,N\\}$, $\\mathbb P(K_N=k)=\\frac{1}{H_N\\,k}$. For every digit $d\\in\\{1,\\dots,9\\}$, the probability that the leading decimal digit of $K_N$ equals $d$ tends to the Benford probability:\n$$\\lim_{N\\to\\infty}\\sum_{\\substack{1\\le k\\le N\\\\ D_{10}(k)=d}}\\frac{1}{H_N\\,k}=\\log_{10}\\!\\left(1+\\frac1d\\right).$$\n\n**Formalization Note.** The source's sentence does not say which numbers' leading digits are meant; this item reads it as the leading digits of the ranks $k$ when $k$ occurs with Zipf ($s=1$) frequency $\\propto 1/k$. (The other reading, the leading digits of the values $C/k$ for $k = 1, \\dots, N$ counted once each, is the reciprocal sequence, which does not satisfy Benford's law.)",
+      "created_at": "2026-10-09T21:34:50.356089+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Related laws\" (\"The leading digits of data satisfying Zipf's law with s = 1, satisfy Benford's law\").",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "b0bd8d5c-c648-4a08-8996-5b2cb7e1cca5",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "f92b258b-c3ff-40f8-b95f-cf8c42df35df",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $d$ with $1\\le d\\le9$: as $N\\to\\infty$ (naturals),\n$$\\sum_{\\substack{k\\in\\{1,\\dots,N\\}\\\\ \\mathrm{leadingDigit}(k)=d}}\\mathrm{zipfPMF}(N,1,k)\\longrightarrow\\log_{10}(1+1/d),$$\nwhere $\\mathrm{leadingDigit}(k)=k\\operatorname{div}10^{\\lfloor\\log_{10}k\\rfloor}$ (natural numbers) and $\\mathrm{zipfPMF}(N,1,k)=1/(k\\,H_N)$ for $1\\le k\\le N$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:34:52.076481+00:00"
+      }
+    },
+    {
+      "theorem_id": "c21b4a38-f01a-48db-987a-684583516f57",
+      "theorem_name": "ZipfLaw.zipfPMF_cdf",
+      "theorem_title": "CDF of the Zipf distribution: $H_{n,s}/H_{N,s}$",
+      "status": "Proved",
+      "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_cdf (N : ℕ) (hN : 1 ≤ N) (s : ℝ) (n : ℕ) (hn : n ≤ N) :\n    ∑ k ∈ Finset.Icc 1 n, zipfPMF N s k = genHarmonic n s / genHarmonic N s := by sorry\n\nend ZipfLaw",
+      "natural_language_statement": "For integers $N\\ge1$, $0\\le n\\le N$ and real $s$, the cumulative distribution function of the Zipf distribution is\n$$\\sum_{k=1}^{n}f(k;N,s)=\\frac{H_{n,s}}{H_{N,s}} .$$",
+      "created_at": "2026-10-09T21:28:05.342107+00:00",
+      "vote_count": 0,
+      "tags": [
+        "harmonic-numbers",
+        "power-law",
+        "zipf-law"
+      ],
+      "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+      "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (CDF $H_{k,s}/H_{N,s}$).",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [
+        {
+          "audit_id": "e508dccc-8a4b-48b3-808e-6eba3c20377b",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-10T03:56:31.424325+00:00"
+        },
+        {
+          "audit_id": "f7cd35aa-eb95-4fd4-a3d1-6a22fb600183",
+          "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+          "reviewer_username": "Lucas",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-10T03:56:31.64398+00:00"
+        }
+      ],
+      "readback": {
+        "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor all naturals $N\\ge1$ and $n\\le N$ and every real $s$: $\\sum_{k=1}^{n}\\mathrm{zipfPMF}(N,s,k)=\\mathrm{genHarmonic}(n,s)/\\mathrm{genHarmonic}(N,s)$. For $n=0$ both sides are $0$.\n",
+        "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+        "created_at": "2026-10-09T21:28:06.817221+00:00"
+      }
+    }
+  ]
+}

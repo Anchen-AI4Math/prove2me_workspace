@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/fee6ee30-fa71-411e-a302-0bdf2fbf1bd7",
+  "fetched_at": "2026-10-11T13:38:41.832479+00:00",
+  "data": {
+    "theorem_id": "fee6ee30-fa71-411e-a302-0bdf2fbf1bd7",
+    "theorem_name": "ZipfLaw.monkey_typing_power_law",
+    "theorem_title": "Random typing produces a power law in rank (Li's model)",
+    "status": "Proved",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem monkey_typing_power_law (m : ℕ) (hm : 2 ≤ m) (q : ℝ) (hq : 0 < q) (hmq : (m : ℝ) * q < 1)\n    (e : ℕ → List (Fin m)) (he_inj : Function.Injective e)\n    (he_range : Set.range e = {w | w ≠ []})\n    (he_sorted : Antitone (fun r => monkeyWordProb m q (e r))) :\n    ∃ C₁ C₂ : ℝ, 0 < C₁ ∧ 0 < C₂ ∧ ∀ r : ℕ,\n      C₁ * ((r : ℝ) + 1) ^ (-Real.logb m (1 / q)) ≤ monkeyWordProb m q (e r) ∧\n        monkeyWordProb m q (e r) ≤ C₂ * ((r : ℝ) + 1) ^ (-Real.logb m (1 / q)) := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "Consider a monkey typing on a keyboard with $m\\ge2$ letter keys, each pressed with the same probability $q>0$, and a space bar pressed with probability $1-mq>0$. The probability that the word following a space is exactly the string $w$ of letters is $p(w)=q^{|w|}(1-mq)$. List all nonempty words in order of non-increasing probability, $w_1,w_2,w_3,\\dots$ (ties in any order). Then the probability of the word of rank $r$ obeys a power law in $r$: with $\\alpha=\\log_m(1/q)$ there are constants $0<C_1\\le C_2$ such that for all $r\\ge1$\n$$C_1\\,r^{-\\alpha}\\le p(w_r)\\le C_2\\,r^{-\\alpha}.$$\n\n**Formalization Note.** Ranks are $0$-indexed in Lean: the rank order is a bijection $e:\\mathbb N\\to\\{\\text{nonempty words}\\}$ along which $p$ is non-increasing, and the bound is stated with $(r+1)^{-\\alpha}$.",
+    "created_at": "2026-10-09T21:34:22.855851+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Statistical explanations\" (Li: \"in a document in which each character has been chosen randomly from a uniform distribution of all letters (plus a space character), the 'words' with different lengths follow the macro-trend of Zipf's law\"; ref. Li 1992, https://doi.org/10.1109/18.165464).",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "65c9e802-4c1f-45e6-8d60-ac5f05c2c340",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "d67e17e2-46cb-4974-aae7-bf6799fd5125",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nLet $m\\ge2$ be a natural number, $q$ a real with $q>0$ and $mq<1$. Let $e$ be a function from $\\mathbb N$ to finite lists over an $m$-letter alphabet which is injective, whose image is exactly the set of nonempty lists, and such that $r\\mapsto q^{|e(r)|}(1-mq)$ is antitone (non-increasing in $r$). Then there exist reals $C_1>0$ and $C_2>0$ such that for every natural $r$:\n$$C_1\\,(r+1)^{-\\log_m(1/q)}\\le q^{|e(r)|}(1-mq)\\le C_2\\,(r+1)^{-\\log_m(1/q)},$$\nwith $\\log_m(1/q)=\\ln(1/q)/\\ln m$ and real powers.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:34:25.601321+00:00"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+theorem logWeights_eq {nu : ℝ} (d : FixedData nu) (i : Fin d.m) :
+    MatrixArithmetic.logWeights (finiteDenominators d) i = d.x (i.val + 1) :=
+  (d.x_log i.val).symm

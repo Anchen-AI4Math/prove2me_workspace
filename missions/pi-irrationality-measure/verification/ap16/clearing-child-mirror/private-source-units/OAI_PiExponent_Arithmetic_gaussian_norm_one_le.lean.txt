@@ -1,0 +1,7 @@
+private theorem gaussian_norm_one_le (z : GaussianInt) (hz : z ≠ 0) :
+    1 ≤ ‖(z : ℂ)‖ := by
+  have hi : (1 : ℤ) ≤ z.norm := (GaussianInt.norm_pos.mpr hz)
+  have hr : (1 : ℝ) ≤ (z.norm : ℝ) := by exact_mod_cast hi
+  rw [GaussianInt.intCast_real_norm, Complex.normSq_eq_norm_sq] at hr
+  have hn : 0 ≤ ‖(z : ℂ)‖ := norm_nonneg _
+  nlinarith

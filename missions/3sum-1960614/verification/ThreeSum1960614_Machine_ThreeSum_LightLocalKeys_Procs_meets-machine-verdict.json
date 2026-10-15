@@ -1,0 +1,15 @@
+{
+  "id": "6ed31ba8-1b6e-4575-a6b0-591a9acd3745",
+  "theorem_id": "10fb9614-daad-4f81-9db3-3d993a166289",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:15:37.89675+00:00",
+  "updated_at": "2026-10-15T07:17:43.508695+00:00",
+  "explanation": "Constructs signed local output keys in exact occurrence order. The result keeps each schedule occurrence and output-mask position as a separate array entry, even when key values coincide.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightLocalKeys.Procs.meets",
+  "theorem_title": "The complete occurrence-by-output local key array",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightLocalKeys.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightLocalKeys.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {L masks n maps rows dst free U : \u2115}\n    (mask : \u2115 \u2192 \u2115) (wFalse wTrue : \u2115 \u2192 \u2115 \u2192 \u2115)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+L+3 \u2264 lim.depth)\n    (hspace : _root_.ThreeSum.LightLocalKeyRow.space free L n \u2264 lim.space)\n    (hmasks : masks+n \u2264 dst) (hmaps : maps+rows*(2*L) \u2264 dst) (hdst : dst+rows*n \u2264 free)\n    (hword : (_root_.ThreeSum.LightLocalKeys.word L U rows : \u2124) \u2264 lim.word)\n    (hmaskRead : \u2200 i < n, \u03bc (masks+i)=(mask i : \u2124))\n    (hmaskLt : \u2200 i < n, mask i < 2^L)\n    (hreadFalse : \u2200 j < rows, \u2200 i < L, \u03bc (maps+j*(2*L)+i)=(wFalse j i : \u2124))\n    (hreadTrue : \u2200 j < rows, \u2200 i < L, \u03bc (maps+j*(2*L)+L+i)=(wTrue j i : \u2124))\n    (hboundFalse : \u2200 j < rows, \u2200 i < L, wFalse j i \u2264 U)\n    (hboundTrue : \u2200 j < rows, \u2200 i < L, wTrue j i \u2264 U) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [L,masks,n,maps,rows,dst,free] \u03bc (_root_.ThreeSum.LightLocalKeys.time L n rows)\n      (fun _ \u03bd =>\n        (\u2200 j < rows, \u2200 i < n, \u03bd (dst+j*n+i)=\n          (_root_.ThreeSum.OneHotMask.eval (wTrue j) (fun _ => 0) L (mask i) : \u2124)-\n          (_root_.ThreeSum.OneHotMask.eval (wFalse j) (fun _ => 0) L (mask i) : \u2124)) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd dst) := by sorry",
+  "theorem_natural_language_statement": "Let stored masks lie below $2^L$, and let each of $R$ selected map rows have two width-$L$ coefficient orientations bounded by $U$. Assume input segments precede the $Rn$ output, the output ends before scratch, and the concrete procedure interface and stated space, word, address, and depth bounds hold. The routine writes at position $(j,i)$ the difference of the true- and false-orientation one-hot evaluations for mask $i$, in its specified time, preserving the preceding memory.\n\nConstructs signed local output keys in exact occurrence order. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

@@ -1,0 +1,28 @@
+{
+  "theorem_id": "6f7c52c1-6e2d-4554-adb3-bf79b8ed51a9",
+  "theorem_name": "ThreeSum1960614.quartic_parameter_certificate",
+  "theorem_title": "Exact parameters and all twelve cost caps",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSum1960614.quartic_parameter_certificate :\n    4648781151243719 / 1000000000000000 < E 232 ∧\n    E 232 < 4648781151243720 / 1000000000000000 ∧\n    1557987216578 / 1000000000000000 < kappa 232 ∧\n    kappa 232 < 1557987216579 / 1000000000000000 ∧\n    entropy theta < 244168414687344 / 1000000000000000 ∧\n    v < phi theta ∧ threshold tau < phi (1 / 2) ∧\n    0 < epsilon * (E 232 + beta) ∧ epsilon * (E 232 + beta) < 1 ∧\n    (∀ z ∈ costs, z < principal) ∧ principal < (target : ℝ) := by sorry",
+  "natural_language_statement": "The expansion-232 entropy and multiplicity constants satisfy $4.648781151243719<E_{232}<4.648781151243720$ and $0.001557987216578<\\kappa_{232}<0.001557987216579$, while $H(\\theta)<0.244168414687344$. The initial threshold is below $P(\\theta)$, the terminal threshold is below $P(1/2)$, and $0<e(E_{232}+b)<1$. Every one of the twelve exact real costs is strictly below $1.96061388<1.960614$. These inequalities assert an analytic certificate and do not themselves assert a machine runtime.",
+  "created_at": "2026-10-14T05:08:07.48987+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 5.1; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "# Read-back of `ThreeSum1960614.quartic_parameter_certificate`\n\nreadback_model: GPT-6\n\nThis is an unconditional assertion about fixed real numbers, with no hypotheses or free parameters. Write $H(x)=\\bigl(-x\\ln x-(1-x)\\ln(1-x)\\bigr)/\\ln 2$ for binary entropy measured in bits; every argument of $H$ used below is strictly between $0$ and $1$. Define the real constants $A=116H(1/232)$ and $B=464H(1/464)-232H(1/232)-1$, and the real polynomial $P(x)=(785174904x+72447023x^2+24044466x^3+12022459x^4)/100000000$. The declaration asserts the conjunction of all eleven statements below (the rational number in the last statement is viewed as a real number):\n\n$$\n\\begin{aligned}\n(1)\\quad &\\frac{4648781151243719}{1000000000000000}<A,\\\\\n(2)\\quad &A<\\frac{4648781151243720}{1000000000000000},\\\\\n(3)\\quad &\\frac{1557987216578}{1000000000000000}<B,\\\\\n(4)\\quad &B<\\frac{1557987216579}{1000000000000000},\\\\\n(5)\\quad &H\\!\\left(\\frac{40409899}{1000000000}\\right)<\\frac{244168414687344}{1000000000000000},\\\\\n(6)\\quad &\\frac{193175570}{1000000000}-2\\left(-\\frac{62656016}{1000000000}\\right)<P\\!\\left(\\frac{40409899}{1000000000}\\right),\\\\\n(7)\\quad &\\frac{\\frac{193175570}{1000000000}-2\\left(-\\frac{62656016}{1000000000}\\right)+\\frac{13}{20}}{1-\\frac{13}{20}}<P\\!\\left(\\frac12\\right),\\\\\n(8)\\quad &0<\\frac{203889696}{1000000000}\\left(A-\\frac{62656016}{1000000000}\\right),\\\\\n(9)\\quad &\\frac{203889696}{1000000000}\\left(A-\\frac{62656016}{1000000000}\\right)<1,\\\\\n(10)\\quad &\\text{for every real }z\\text{ occurring in the twelve-entry list }\\mathcal L\\text{ below, }z<\\frac{196061388}{100000000},\\\\\n(11)\\quad &\\frac{196061388}{100000000}<\\frac{1960614}{1000000}.\n\\end{aligned}\n$$\n\nHere $\\mathcal L$ is exactly the following ordered list of twelve real values, with every constant written as an exact fraction:\n\n$$\n\\begin{aligned}\nL_1&=2\\frac{203889696}{1000000000}A,\\\\\nL_2&=1+\\frac{203889696}{1000000000}\\left(A+\\frac{62656016}{1000000000}\\right),\\\\\nL_3&=2-\\frac{203889696}{1000000000}\\frac{193175570}{1000000000},\\\\\nL_4&=2-\\frac{203889696}{1000000000}\\left(\\frac12-\\frac{62656016}{1000000000}-H\\!\\left(\\frac{40409899}{1000000000}\\right)\\right),\\\\\nL_5&=2-\\frac{203889696}{1000000000}\\left(\\frac12+\\frac{62656016}{1000000000}-B-\\frac{2790503}{10000000}\\left(1+\\frac{193175570}{1000000000}+2\\frac{62656016}{1000000000}\\right)\\right),\\\\\nL_6&=2-\\frac{203889696}{1000000000}\\left(\\frac{13}{20}-\\frac12+\\frac{62656016}{1000000000}-B\\right),\\\\\nL_7&=\\frac{203889696}{1000000000}\\frac85\\left(A+\\frac12\\right),\\\\\nL_8&=2+\\frac{203889696}{1000000000}\\left(\\frac45-\\frac25A+2\\frac{62656016}{1000000000}\\right),\\\\\nL_9&=1+\\frac{203889696}{1000000000}\\left(\\frac12+\\frac{62656016}{1000000000}\\right),\\\\\nL_{10}&=2-\\frac{203889696}{1000000000}\\left(A-\\frac{62656016}{1000000000}\\right),\\\\\nL_{11}&=2-2\\frac{203889696}{1000000000}\\left(A-\\frac{62656016}{1000000000}\\right),\\\\\nL_{12}&=1,\n\\qquad\\mathcal L=(L_1,L_2,\\ldots,L_{12}).\n\\end{aligned}\n$$\n\nThe quantifier in (10) ranges over membership in this fixed list, so it asserts the strict bound for each of these twelve entries; the list is nonempty and includes the value $1$. All divisions here have nonzero denominators, including $1-13/20=7/20$ in (7), and none of the assertions is conditional on a choice of an input, a natural-number parameter, or an entropy argument.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:08:08.851266+00:00"
+  }
+}

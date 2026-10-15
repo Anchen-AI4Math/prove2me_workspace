@@ -1,0 +1,4 @@
+private theorem log_rowScale {m : ℕ} {q : Fin m → ℕ} (hq : ∀ i, 0 < q i)
+    (b : Fin m → ℕ) :
+    Real.log (rowScale q b) = -(∑ i, (b i : ℝ) * Real.log (q i)) := by
+  rw [rowScale, Real.log_inv, log_columnScale hq]

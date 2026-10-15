@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle025",
+    "definition_title": "Complete local-cover initialization and signed table preparation",
+    "natural_language_statement": "For microblock parameter $h\\in\\mathbb N$, selected local prime $p$, vertex count, bucket cap, and a free address, the local-cover setup computes all candidate counts, schedule lengths and packed table pointers before invoking the cover builder. The metadata consists of twelve fields: width $464h$, output-layer size $2h$, schedule length, candidate count, selected coefficient rows, candidate indices, two bucket-count arrays, all candidate coefficients, the support matrix, next free address, and $p^2$. The initializer prepends eight graph-count/prime/cap fields, giving a twenty-cell header, and constructs the actual tables immediately afterwards.\n\nThe global-key host reads those computed headers and produces all original global-output keys for $J$ blocks. Its retained-data predicate records the cover matrix and histograms, occurrence-indexed coefficient rows, the exact selected candidate index at every schedule occurrence, and the enumerated local output masks. Repeated selected maps and equal key values retain their physical identities.\n\nOther programs construct the compact signed-product leaf table by enumerating each cardinality layer and reading the actual stored source stages, then build all box-transform stages. The suffix-cell version lifts a local mask into the global coordinates while computing the destination's compact address at local width. A source-band setup computes band counts, truncated capacities and pointer arrays from the original array length before building each slice's code, histogram, prefix and scatter arrays. Child-prefix interfaces append the local child subsets in their actual enumeration order to an existing valid reporting prefix.\n\nThese definitions provide the executable initialization and exact storage contracts used by the complete deterministic integer 3SUM runtime proof. Every large table's dimensions and addresses are computed from scalar parameters rather than supplied as advice, while global source reads and local box storage remain explicitly distinct.",
+    "tags": [
+      "3sum-1960614",
+      "local-cover",
+      "machine-initialization",
+      "signed-transforms",
+      "source-bands"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle026",
+    "definition_title": "Suffix-local sparse queries, guarded wanted records, and dense thresholds",
+    "natural_language_statement": "Let the global ground-set width be $W$, the residual suffix width be $V$, and its offset be $a$, with $a+V\\le W$. Suffix preprocessing enumerates only local masks of width $V$, lifts them by the factor $2^a$, evaluates signed leaves through the global source transforms, and stores compact local tables. The explicit-query program enumerates the required local layers and sums their actual global source reads. The complementary canonical-box query uses local compact addresses; their signed combination has the same intended subset-Moebius value. A separate mask-lowering program converts a lifted global subset back to its local mask by coordinate tests.\n\nThe reporting frontier uses the actual recursive child enumeration order. For a wanted record and depth $k$, its positive frontier is the one obtained from the raw-prefix query on those children, preserving raw incidence multiplicities.\n\nThe guarded-wanted constructor initializes the local cover, creates the global keys and all three original A-key lifts, chooses a balanced common offset, and emits matching physical position pairs. It retains the cover and key tables for later source-bank and output-decoding operations. For schedule length $s(h)$, bucket cap $b(h)$ and block count $J$, the dense-stop representation cap is computed by an actual scalar power routine as\n\n$$\\operatorname{cap}(h,J)=(s(h)b(h)^2)^J.$$\n\nThe dense setup reads the retained cover data, recomputes the exact aggregate weighted modular score $H$, and writes a four-cell record consisting of initial counter zero, threshold $\\operatorname{cap}(h,J)H$, the cap, and $H$. All component time, space, word and procedure-closure interfaces remain explicit.\n\nThese executable objects provide the local-width sparse-query path and the actual stopping threshold used in the complete deterministic integer 3SUM reporting proof. Exponential suffix storage depends on $V$; the larger global width contributes to the specified overhead rather than replacing the residual domain.",
+    "tags": [
+      "3sum-1960614",
+      "sparse-reporting",
+      "suffix-transforms",
+      "dense-stop",
+      "output-sensitive-enumeration"
+    ]
+  }
+]

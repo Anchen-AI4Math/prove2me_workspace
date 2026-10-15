@@ -1,0 +1,15 @@
+{
+  "id": "53fa0f52-e190-4081-a086-04fd119a005b",
+  "theorem_id": "0ab3a17a-b5ff-4f19-9279-2a664ad31df5",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:55:47.579435+00:00",
+  "updated_at": "2026-10-15T07:59:48.107236+00:00",
+  "explanation": "Constructs the wanted-query allocation from actual retained headers. The constructor reads the actual group and representation-cap headers and writes precisely the fourteen fields of the allocated layout.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.program_meets_relative",
+  "theorem_title": "Relative correctness of the wanted-layout constructor",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.program_meets_relative {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {\u03bc : \u2115\u2192\u2124} {dst cover counter h J K N NB NC d : \u2115}\n    (hgroup : \u03bc (cover+3)=(_root_.ThreeSum.LocalCoverBounds.groupSize h : \u2124))\n    (hcap : \u03bc (counter+2)=(_root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.representationCap h J : \u2124))\n    (hw : (lim.space : \u2124)\u2264lim.word) (hd : d<lim.depth)\n    (hs : _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.relativeSpace dst cover counter h J K N NB NC\u2264lim.space) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.program 1 d [J,h,K,cover,counter,N,NB,NC,dst] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.time h J)\n      (fun result \u03bd => result=((_root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.layout dst h J K N NB NC).work : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SegN \u03bd dst (_root_.ThreeSum.ReportingHostWantedLayout.values (_root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.layout dst h J K N NB NC)) \u2227 _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bd dst 14) := by sorry",
+  "theorem_natural_language_statement": "Let integer memory $\\mu$ store the prescribed local group size at the cover header and representation cap at the counter header. For natural block, depth, incidence, and source-size parameters, assume addresses fit the word limit, the call depth is available, and the exact relative layout fits space. The closed layout program returns its work pointer, writes the fourteen natural layout fields at the destination, changes no cells outside that fourteen-cell record, and meets its specified time bound.\n\nConstructs the wanted-query allocation from actual retained headers. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

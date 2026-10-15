@@ -1,0 +1,15 @@
+{
+  "id": "6a046976-cb1c-454f-b259-7d4907936a0e",
+  "theorem_id": "8e131a40-0616-41c8-b55e-cafe3dd3d3fb",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:52:17.157766+00:00",
+  "updated_at": "2026-10-15T07:55:16.785271+00:00",
+  "explanation": "Converts the uniform relative reservation to the concrete wanted-record call allocation. The valid need record bounds the actual access layout and scratch extent at the chosen destination, keeping earlier cover and counter headers intact.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_space_of_ok",
+  "theorem_title": "Wanted-record space follows from its need record",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_record_space_of_ok {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {dst cover counter n U K N NB NC d : \u2115}\n    (hK : K\u2264_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n) (hN : N\u22643*(_root_.ThreeSum.SharedReportingBankResourceBounds.magnitude n)^3) (hB : NB\u2264n) (hC : NC\u2264n)\n    (hcover : cover+8\u2264dst) (hcounter : counter+2\u2264dst)\n    (hok : (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wantedNeed n U).Ok lim dst d) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingWantedRecordCall.space (_root_.ThreeSum.ReportingHostWantedLayout.access dst (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n)) dst cover counter\n      (_root_.ThreeSum.SharedReportingBankResourceBounds.half n) (_root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.blocks n) K\u2264lim.space := by sorry",
+  "theorem_natural_language_statement": "Let $K$ be at most the executable block count, $N\\le3M(n)^3$, and $N_B,N_C\\le n$, where $M$ is the reporting magnitude envelope. Suppose the cover header ends at least eight cells before the destination, the counter has two cells before it, and the wanted need record is valid at that destination and current depth. Then the exact wanted-record caller and access-layout space fit the execution space limit.\n\nConverts the uniform relative reservation to the concrete wanted-record call allocation. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

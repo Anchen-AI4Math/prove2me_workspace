@@ -1,0 +1,10 @@
+private theorem cleared_det_log_bound_of_entries {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (r c : ι → ℝ) (hr : ∀ i, 0 < r i) (hc : ∀ i, 0 < c i)
+    (hA : A.det ≠ 0)
+    (hentries : ∀ i j, (r i : ℂ) * ((c j : ℂ) * A i j) ∈ GaussianInt.toComplex.range) :
+    -(∑ i, Real.log (r i)) - ∑ j, Real.log (c j) ≤ Real.log ‖A.det‖ := by
+  classical
+  choose B hB using hentries
+  apply cleared_det_log_bound A B r c hr hc hA
+  ext i j
+  exact hB i j

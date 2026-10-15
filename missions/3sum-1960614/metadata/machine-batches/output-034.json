@@ -1,0 +1,189 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskBits.meets",
+    "theorem_title": "Construction of a Boolean row from a subset mask",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be Light limits, program, depth and memory; let $L,m,b,w\\in\\mathbb N$ be width, mask, output and scratch base. Suppose $P$ contains the mask-row, power-table and recursive erasure bodies; addresses fit words; $d+L+1$ is allowed; $w+L+1$ fits memory; $b+L\\le w$; $2^{L+1}$ fits a word; and $m<2^L$. The program writes each of the $L$ Boolean mask bits to $b+j$, constructs the correct powers at $w$, meets its prescribed width-time budget, and preserves every cell below $w$ outside that output row.\n\nThis constructs literal coordinate rows for the local support matrix and independent endpoint tests.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs literal coordinate rows for the local support matrix and independent endpoint tests."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskHashes.meets",
+    "theorem_title": "Execution of a whole list of one-hot mask hashes",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be run limits, program, depth and memory. Fix width $L$, mask count $n$, weight bound $U$, mask map $m_i<2^L$, and nonnegative coefficient maps $w_0,w_1$ bounded by $U$. Suppose the exact mask list and coefficient rows are stored before destination $b$, $b+n$ ends before scratch $w$, $w+L+1$ fits memory, addresses fit words, the one-hot word budget fits, and $d+L+1$ is allowed. Assume the wrapper, powers and recursive one-hot bodies occur in $P$. It writes\n\n$$\\mu'(b+i)=\\operatorname{OneHotEval}(w_0,w_1,L,m_i)\\quad(i<n),$$\n\nconstructs the correct powers at $w$, meets its specified time and preserves cells below $w$ outside the output.\n\nThis performs every candidate/source mask hash by actual arithmetic, without a hash-evaluation oracle.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This performs every candidate/source mask hash by actual arithmetic, without a hash-evaluation oracle."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskMinimum.meets",
+    "theorem_title": "Execution of the minimum coordinate of a nonempty mask",
+    "natural_language_statement": "Let $S\\subseteq\\operatorname{Fin}(L)$ be nonempty, $w$ a scratch base and $\\lambda,P,d,\\mu$ limits, program, depth and memory. Suppose the minimum-mask, powers and recursive erasure bodies occur in $P$; addresses fit words; $w+L+1$ fits memory; $2^{L+1}$ fits a word; and $d+L+1$ is allowed. The call returns\n\n$$\\min S,$$\n\nwithin its specified width-dependent time and preserves every memory cell below $w$.\n\nThis computes canonical-box split coordinates from the actual mask.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes canonical-box split coordinates from the actual mask. The program constructs its powers table and discovers the minimum through checked coordinate tests."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskUnion.meets",
+    "theorem_title": "Execution of mask union and its cardinality",
+    "natural_language_statement": "Let $A,B\\subseteq\\operatorname{Fin}(W)$, $b$ a cardinality-output cell, $w$ scratch, and $\\lambda,P,d,\\mu$ limits, program, depth and memory. Suppose the union, power-table and recursive erasure bodies occur in $P$; addresses fit words; $b+1\\le w$; $w+W+1$ fits memory; $2^{W+1}$ fits a word; and $d+W+1$ is allowed. The call returns\n\n$$\\operatorname{mask}(A\\cup B),\\qquad\\mu'(b)=|A\\cup B|,$$\n\nconstructs the correct powers at $w$, meets its stated time and preserves all cells below $w$ except $b$.\n\nThis forms exact prefix/suffix endpoint unions using the restricted machine instruction set.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This forms exact prefix/suffix endpoint unions using the restricted machine instruction set. The output mask and its cardinality are computed together, with only one lower output cell permitted to change."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleScan.meets",
+    "theorem_title": "Execution of the original-position triple-prefix scan",
+    "natural_language_statement": "Let $n>0$, $t\\le n^3$, magnitude bound $U$, source base $a$, input $x:\\operatorname{Fin}(n)\\to\\mathbb Z$, and memory $\\mu$ storing $x$ at $a$ be given. Assume $|x_i|\\le U$, the segment fits memory, addresses fit words, the row word budget fits and depth $d+t+2$ is allowed. Let $P$ contain the recursive scan, triple-row and division bodies. Within its specified $(n,t)$ budget it returns a Boolean with\n\n$$r=1\\iff\\text{one of the first }t\\text{ decoded distinct-position triples sums to zero},$$\n\nand leaves memory unchanged.\n\nThis proves the exact finite fallback scan used outside the eventual subquadratic regime.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This proves the exact finite fallback scan used outside the eventual subquadratic regime. Its Boolean result covers exactly the requested prefix of distinct-position triples while retaining the original array."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOutputDecodeDigits.meets",
+    "theorem_title": "Execution of big-endian output-index digit decoding",
+    "natural_language_statement": "Let $k,J,m,V,b,w\\in\\mathbb N$, with $m\\ge1$ and $k\\le V$, and let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Suppose the digit wrapper and output-division body occur in $P$; addresses fit words; $d+1$ is strictly below the depth limit; $b+J\\le w$; and the stated scratch-space and word bounds fit. The call writes the $J$ base-$m$ digits of $k$ in forward order at $b$, returns\n\n$$\\lfloor k/m^J\\rfloor,$$\n\nmeets its stated $(J,V)$ time and preserves every cell below $b$.\n\nThis decodes physical global-output indices in the original block order.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This decodes physical global-output indices in the original block order. Both occurrence and layer decoding later consume these forward-ordered digits of the same physical output index."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOutputDecodeStep.meets",
+    "theorem_title": "Execution of one output-record digit split",
+    "natural_language_statement": "Let $T,M\\ge1$, $x<TM$, $x\\le V$, accumulator $a$ and positional power $q$ be natural numbers. Let memory $\\mu$ store a length-$M$ mask table $f(s)\\le U$ at $b_m$. Let distinct occurrence and mask output cells lie below scratch $w$, with $b_m+M\\le w$. Assume addresses fit words, the explicit scratch and word budgets fit, $d+1$ is strictly below the call limit, and $P$ contains the step and output-division bodies. The call returns\n\n$$a+q\\lfloor x/M\\rfloor,$$\n\nwrites $\\lfloor x/M\\rfloor$ and $f(x\\bmod M)$ to the two output cells, meets its stated time and preserves all other cells below $w$.\n\nThis recovers the original schedule occurrence and layer mask while accumulating the source occurrence code.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This recovers the original schedule occurrence and layer mask while accumulating the source occurrence code."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightPairFlags.meets",
+    "theorem_title": "Execution of all local pair keys and retention flags",
+    "natural_language_statement": "Let $n,p>0$, width $L$, cap $B$, a Boolean row map $s_{ij}$, residue arrays $\\ell_i,r_i<p$, and histogram maps $H_L,H_R\\le n$ be given. Suppose memory $\\mu$ stores the $nL$ bits, two length-$n$ residue rows and two length-$p$ histograms entirely before destination $b$. Assume the $2n^2$ output cells fit memory, addresses fit words, the explicit pair-flag word envelope fits, a nested call is allowed, and the program contains its division, dot-product and trimming bodies. It writes the exact pair-key array followed by the exact disjointness-and-bucket-cap flags for all $n^2$ physical pairs, within its stated time, preserving every other cell.\n\nThis builds the literal retained-edge data for the deterministic local-cover matrix.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This builds the literal retained-edge data for the deterministic local-cover matrix. Every physical pair receives its exact residue-pair key and its disjointness-and-bucket-cap flag."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightPrimality.meets",
+    "theorem_title": "Execution of deterministic primality testing",
+    "natural_language_statement": "Let $2\\le n\\le V$, scratch base $w$, memory $\\mu$, and $\\lambda,P,d$ limits, program and depth be given. Suppose the primality and remainder bodies occur in $P$; addresses fit words; a nested call is allowed; $w+\\lfloor\\log_2(V+1)\\rfloor+2$ fits memory; and $8V+16$ fits a word. The procedure returns the exact primality indicator of $n$ within its specified $(n,V)$ time and preserves every cell below $w$.\n\nThis makes local and auxiliary prime construction executable without a primality oracle.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This makes local and auxiliary prime construction executable without a primality oracle. The concrete trial-division routine reuses verified remainder scratch while preserving every cell below the free pointer."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightQueryWeights.meets",
+    "theorem_title": "Construction of selected query-coordinate powers",
+    "natural_language_statement": "Let $Q\\subseteq\\operatorname{Fin}(W)$, output base $b$, scratch base $w$, and $\\lambda,P,d,\\mu$ limits, program, depth and memory be given. Suppose the powers and recursive erasure bodies occur with the query-weight wrapper; addresses fit words; $b+W\\le w$; $w+W+1$ fits memory; $2^{W+1}$ fits a word; and $d+W+1$ is allowed. It returns $|Q|$, writes the ordered powers $2^i$ for selected coordinates $i\\in Q$, constructs the full powers table at $w$, and preserves cells below $w$ outside the output reservation, within its stated width-time budget.\n\nThis supplies physical weighted coordinates for output-sensitive subset enumeration.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies physical weighted coordinates for output-sensitive subset enumeration. The returned list contains precisely the powers belonging to the selected coordinates of the query set."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightRadixRows.meets",
+    "theorem_title": "Execution of a radix-product row extension",
+    "natural_language_statement": "Let integer lists $X,Y$ be stored in memory $\\mu$ at two bases, with lengths ending before destination $b$, and suppose their absolute values are bounded by natural $U,V$. Fix natural radix $p$. For limits, program and depth $\\lambda,P,d$, assume addresses fit words, the $|X||Y|$ output cells fit memory, the explicit radix-row word budget fits, a nested call is permitted, and the row/affine bodies occur in $P$. Then the call writes exactly the ordered radix-list step $\\operatorname{step}(p,X,Y)$ at $b$, meets its stated product-row time and changes no cell outside those $|X||Y|$ output cells.\n\nThis constructs ordered global keys by explicit affine combinations of local keys.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs ordered global keys by explicit affine combinations of local keys. The product row preserves the specified enumeration order and writes only its designated contiguous output interval."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingBucketPairs.meets",
+    "theorem_title": "Execution of selected physical bucket-pair counting",
+    "natural_language_statement": "Let original integer arrays $\\ell,r$ of lengths $N_L,N_R$ and selected index arrays $i,j$ of lengths $n_L,n_R$ be correctly stored in memory $\\mu$. Assume every selected index is in range, all four segments fit memory, addresses fit words, the original values and A value $a$ fit words, every $a+\\ell(u)$ fits a word and $n_Ln_R$ fits a word. Let $\\lambda,P,d$ be limits, program and depth with the pair and row bodies present and a nested call allowed. It returns\n\n$$|\\{(u,v):u<n_L,\\ v<n_R,\\ r(j_v)=a+\\ell(i_u)\\}|$$\n\nwithin the specified selected-product time and leaves memory unchanged.\n\nThis is the exact original-value check on independently selected residue buckets.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This is the exact original-value check on independently selected residue buckets. The returned count retains original-index multiplicities and tests the integer equation rather than only modular agreement."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingCatalogLookup.program_meets",
+    "theorem_title": "Execution of unique paired-prefix catalog lookup",
+    "natural_language_statement": "Let width $W$, catalog count $n\\le2^{2W}$, valid index $i<n$, and paired mask maps $L_j,R_j<2^W$ have pairwise distinct packed keys. Let a sorted list $S$ be a permutation of their indexed packed codes and be stored before scratch $w$ in memory $\\mu$. Assume addresses fit words; the catalog, $2W+2$ power cells and stated logarithmic remainder scratch fit memory; the exact lookup word envelope fits; and $d+2W+2$ is allowed. The fixed lookup program on $(L_i,R_i)$ returns\n\n$$i$$\n\nwithin its prescribed $(W,n)$ time, preserving every cell below $w$.\n\nThis recovers the original prefix identity from physical paired masks through the retained sorted catalog.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This recovers the original prefix identity from physical paired masks through the retained sorted catalog."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingGatherPair.program_meets",
+    "theorem_title": "Execution of aligned paired-mask gathering",
+    "natural_language_statement": "Let $i_s<n$ for $s<t$ be selected indices, and let integer arrays $L,R$ of length $n$ be correctly stored with those indices in memory $\\mu$. Let the two length-$t$ output arrays fit memory and be disjoint from each other and the index row. The left output is disjoint from both source rows, and the right output is disjoint from its right source row. Assume every segment fits, addresses fit words, all source values fit words and a nested call is allowed. The fixed paired-gather program writes\n\n$$[L_{i_s}]_{s<t},\\qquad[R_{i_s}]_{s<t}$$\n\nwithin its specified $t$-dependent time, changing only those two output intervals.\n\nThis keeps selected left and right reporting-prefix masks aligned in physical memory.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This keeps selected left and right reporting-prefix masks aligned in physical memory. The same selected index row is applied to both source arrays, so every resulting pair refers to one child prefix."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingPackKeys.meets",
+    "theorem_title": "Execution of indexed paired-mask key packing",
+    "natural_language_statement": "Let $R,n,b\\in\\mathbb N$ be radix, item count and destination. Suppose memory $\\mu$ stores natural rows $L_i,R_i<R$ for $i<n$ at two source bases whose ends are no later than $b$. For Light limits, program and depth $\\lambda,P,d$, assume the packing body is present, addresses fit words, $b+n$ fits memory and the explicit packing word budget fits. It writes the exact indexed code list for the packed pair keys at $b$, within its prescribed scan time, preserving every other memory cell.\n\nThis prepares sortable physical catalog keys while retaining each pair’s original index.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This prepares sortable physical catalog keys while retaining each pair’s original index. The indexed code list allows sorting for lookup without losing the original position associated with each mask pair."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSuffixLower.meets",
+    "theorem_title": "Execution of global-to-local suffix mask lowering",
+    "natural_language_statement": "Let natural widths $W,V$ and offset $a$ satisfy $a+V\\le W$, and let $S\\subseteq\\operatorname{Fin}(V)$. Suppose a Light program contains the lowering, power-table and recursive erasure bodies. For memory $\\mu$, scratch base $w$, limits $\\lambda$ and depth $d$, assume addresses fit words, $w+W+1$ fits memory, $2^{W+1}$ fits a word and $d+W+1$ is allowed. On the mask of $S$ lifted by offset $a$, it returns\n\n$$\\operatorname{mask}(S),$$\n\nconstructs the width-$W$ powers at $w$, meets its stated $(W,V)$ time and preserves every cell below $w$.\n\nThis lets residual-width queries consume original global masks without scanning numeric mask values.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This lets residual-width queries consume original global masks without scanning numeric mask values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedAccess.program_meets_fits",
+    "theorem_title": "Bounded access to the actual wanted owner and source records",
+    "natural_language_statement": "Let $\\lambda,\\mu,d$ be limits, memory and depth; $f_A,f_B,f_C$ original-value maps; and $n,N_B,N_C,g,p,h,J,c$ the original sizes, band/modulus/block parameters and source cutoff. Suppose memory contains the same full A-incidence value/owner/position arrays, owner records, paired buckets, source-transform bank, local cover and shared catalog bank. Fix a valid A-incidence index and valid occurrence code, with its owner B/C band indices in range. Assume every retained array ends before destination $b$, occurrence rows end before the bank base, original B/C arrays also end before $b$, the selected A value fits a word, addresses fit words and a nested call is allowed. Finally require the exact source-selection fit predicate for the derived owner/occurrence pointers and destination $b+5$. The fixed accessor returns $b$ within $8100$ steps, writes the exact wanted-control record and preserves every cell below $b$.\n\nThis assembles the physical wanted reporter’s controls from the actual owner-specific retained data.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This assembles the physical wanted reporter’s controls from the actual owner-specific retained data."
+  }
+]

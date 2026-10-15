@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "graph-conditional-open-NoFixedData-A1-reference-sketch-preparation",
+  "validated": false,
+  "proposal_status": "Draft",
+  "submission_ready": false,
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "NoFixedData": {
+    "name": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+    "source_lines": [
+      125,
+      165
+    ],
+    "source_command_sha256": "e89cfac26d80fea2844987c01bc83a36b3bf562e353d291001e5eb3d4804d3e6",
+    "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+    "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate\r\n    (hgeometry : GlobalInterpolationStatement) (hanalytic : AnalyticAggregateStatement)\r\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) : False := by\r\n  sorry\r\n",
+    "complete_compiled_wire_sha256": "a214ccd474d3272c39ea21d25ab0059e87c4d964e8f871a37c064bed01f1feee",
+    "status": "Open target candidate; actual Lean type check and upload pending"
+  },
+  "A1_reference": {
+    "name": "OAI.PiExponent.exists_admissible_parameters_source017",
+    "platform_theorem_id": "fdcbce8c-d9e6-43dd-8587-cfe865e6e78a",
+    "actual_platform_status": "ACCEPTED_AND_PROVED",
+    "local_stub_only_for_type_and_reference_resolution": true,
+    "local_stub_contains_sorryAx": true,
+    "platform_record": "verification/ap6/a1/source017f/publication-v3/publication.json",
+    "platform_record_sha256": "ae25665f9413d36264bff2b98fed4493003f9b896ab6110149a0b4caa173248f"
+  },
+  "conditional": {
+    "name": "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+    "platform_theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+    "platform_status": "Open",
+    "published_comparator_sha256": "d18989e62d3535cac29927902d931f23123e181e7fa29c0f9e18480f4f7bd44b",
+    "original_AST_sha256": "e423aecf7c1a794d42270a9a44338408b6fb9be11983b0a16a89dd7e1e333621",
+    "candidate_solution_sha256": "9fe6115dafd017ff51615b84e0bd2b34545d60eb550c77087277926c303d2957",
+    "single_original_proof_edit": {
+      "before": "exists_admissible_parameters nu Arithmetic.lcmConstant",
+      "after": "OAI.PiExponent.exists_admissible_parameters_source017 nu Arithmetic.lcmConstant",
+      "count": 1
+    }
+  },
+  "source_snapshot_names": [
+    "OAI.PiExponent.exists_admissible_parameters",
+    "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate"
+  ],
+  "generated_snapshot_names": [
+    "OAI.PiExponent.exists_admissible_parameters_source017",
+    "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+    "OAI.PiExponent.DeterminantContradiction.piEventualLowerBound_of_interpolation_and_analytic_aggregate",
+    "solution"
+  ],
+  "source_snapshot_expected_axioms": "Std3 only for three actual original source proofs",
+  "generated_snapshot_expected_axioms": "sorryAx present in four local Open/type sketches; A1 platform Proved is separate evidence",
+  "theorem_values_exported": false,
+  "ordered_compiler_manifests": [
+    "c1.json",
+    "c2.json",
+    "c3.json",
+    "c4.json",
+    "c5.json"
+  ],
+  "compile_commands": {
+    "c1.json": "python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Theorems/Thm_OAI_PiExponent_DeterminantContradiction_no_fixed_data_of_interpolation_and_analytic_aggregate.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c1.json --timeout-seconds 300",
+    "c2.json": "python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Theorems/Thm_OAI_PiExponent_exists_admissible_parameters_source017.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c2.json --timeout-seconds 300",
+    "c3.json": "python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Solutions/Sol_OAI_PiExponent_DeterminantContradiction_piEventualLowerBound_conditional.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c3.json --timeout-seconds 300",
+    "c4.json": "python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/SourceSnapshot.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c4.json --timeout-seconds 300",
+    "c5.json": "python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/GeneratedSnapshot.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c5.json --timeout-seconds 300"
+  },
+  "input_sha256": {
+    "scripts/stage_graph_conditional_open_chain.py": "67cb1290923eca2d48a45c426f9185c1bd97ed37fd351ff699e1cf0462a64654",
+    "scripts/stage_graph_conditional_route.py": "4393d9786eadf4a600fc049a47cdcea6160c817c167dfbbbf985198a9f085eeb",
+    "verification/graph-conditional-route-20261011/preparation.json": "90edf27663af8be4c8d63250c85a34ff00b72a6a7a63a79bba403a0e5b291f5b",
+    "verification/graph-conditional-route-20261011/original-no-fixed-data-source-command.lean.txt": "e89cfac26d80fea2844987c01bc83a36b3bf562e353d291001e5eb3d4804d3e6",
+    "verification/graph-conditional-route-20261011/Solutions/Sol_OAI_PiExponent_DeterminantContradiction_piEventualLowerBound_conditional.lean": "9fe6115dafd017ff51615b84e0bd2b34545d60eb550c77087277926c303d2957",
+    "verification/graph-source-root-20261011/SourceSnapshot.lean": "d91db0e2b7440dd2c5799b0e9940e86ff13ed866a05b474ee484faf6a8ea5ad3",
+    "verification/graph-source-root-20261011/parents/conditional/wire-theorem-source.lean": "d18989e62d3535cac29927902d931f23123e181e7fa29c0f9e18480f4f7bd44b",
+    "verification/graph-source-root-20261011/actual-source-root-graph-validation.json": "5e30c44993a01dae45962d773d9a69469e7ca46d79be41de9f54242b525ac1e4",
+    "verification/graph-source-root-20261011/publication-v2/parent-readbacks/conditional.json": "7d6213c07dbddd3f119f53c2de6b08b6ba96eca7ff44c1d9208c24ae19628f35",
+    "verification/ap6/a1/source017f/publication-v3/publication.json": "ae25665f9413d36264bff2b98fed4493003f9b896ab6110149a0b4caa173248f",
+    "verification/ap6/a1/source017f/publication-v3/wire-theorem-source.lean": "d511bbd7273dba67cc1eeb8fb3ba28fd5c8d77b23bc0b338798887f5ae1debce",
+    "verification/determinant-core-exact-name-lookup-20261011T135109_614374Z.json": "216fce5c03d9f9cde689c9e04f5206a43cdf08785855aef0450aead974ccbc05",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean": "74329150cc64ac655ee0ce56454519170ce15b4b58dfd85ba5a9ab850c740e53",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean": "b9c6643a0b8eb48868d597c1e4a613ec2f1da5d49cedc3484c67b3ca057a8130",
+    "verification/TypeOnlyTheoremSnapshotCore.inc": "09716404d45acbbaf2728a2071042f7e4a1d08b8b5058692a71211ae6e465951",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "verification/lean-runtime.json": "ab61393780988c65493c5969dccfce9a5e88b18a3866e6ed65e2c89ca36fc9ef"
+  },
+  "file_sha256": {
+    "Theorems/Thm_OAI_PiExponent_DeterminantContradiction_no_fixed_data_of_interpolation_and_analytic_aggregate.lean": "a214ccd474d3272c39ea21d25ab0059e87c4d964e8f871a37c064bed01f1feee",
+    "Theorems/Thm_OAI_PiExponent_exists_admissible_parameters_source017.lean": "d511bbd7273dba67cc1eeb8fb3ba28fd5c8d77b23bc0b338798887f5ae1debce",
+    "Solutions/Sol_OAI_PiExponent_DeterminantContradiction_piEventualLowerBound_conditional.lean": "9fe6115dafd017ff51615b84e0bd2b34545d60eb550c77087277926c303d2957",
+    "SourceSnapshot.lean": "7071c4e22769a0f113ea55ae4a511df4d94a791b7d0e48651ae95b2f286d9229",
+    "GeneratedSnapshot.lean": "4d05a4c504074232fc8075caa6927d8bc8e5d14d7631751226b773f522569eec",
+    "conditional-published-wire.lean": "d18989e62d3535cac29927902d931f23123e181e7fa29c0f9e18480f4f7bd44b",
+    "original-no-fixed-data-command.lean.txt": "e89cfac26d80fea2844987c01bc83a36b3bf562e353d291001e5eb3d4804d3e6",
+    "c1.json": "01a15f178f69a62a0fefadf5951d9a2d991fdb0aeda47685f3b0df1dc5c9e285",
+    "c2.json": "962c47cd42ac7d471d150312305add9b640e6137f66993f42a4511d481ade8d6",
+    "c3.json": "bd3237d6607a07f86899cd397f1415bd56a0209d68987a2ef8fe7acacef3d325",
+    "c4.json": "2c9362803c3bf51a83113db5f0608ec4ca109735480167a4c55aeb2c4098bfde",
+    "c5.json": "456f43f8507ca554cb9b94992ccf0292fbd1bcbd91b4a19ad8f3409bc7b9e290"
+  },
+  "NoFixedData_exact_name_lookup": "verification/determinant-core-exact-name-lookup-20261011T135109_614374Z.json",
+  "NoFixedData_exact_name_lookup_sha256": "216fce5c03d9f9cde689c9e04f5206a43cdf08785855aef0450aead974ccbc05",
+  "Lean_started": false,
+  "API_used": false
+}

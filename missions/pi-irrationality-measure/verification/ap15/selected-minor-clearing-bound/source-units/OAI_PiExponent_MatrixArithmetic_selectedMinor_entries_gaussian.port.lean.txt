@@ -1,0 +1,26 @@
+theorem selectedMinor_entries_gaussian {m K : ℕ} {w0 v0 θ F H : ℝ}
+    (p : Fin m → ℤ) (q : Fin m → ℕ) (hq : ∀ i, 2 ≤ q i) (hw0 : 0 < w0)
+    (selection : InterpolationMatrix.Row K v0 θ (logWeights q) H →
+      InterpolationMatrix.Column w0 (logWeights q) H)
+    (ρ σ : InterpolationMatrix.Row K v0 θ (logWeights q) H) :
+    (denominator q (truncationOrders q F v0) H : ℂ) *
+      (rowScale q (fun i => ρ.2.1 i.succ) : ℂ) *
+        ((columnScale q (fun i => (selection σ).1 i.succ) : ℂ) *
+          selectedMinor K w0 v0 θ F H p q selection ρ σ) ∈
+        GaussianInt.toComplex.range := by
+  have hw : ∀ i, 0 < logWeights q i := fun i => ceil_log_weight_pos (hq i)
+  have he := InterpolationMatrix.entry_truncatedLog_cleared_gaussian
+    (truncationOrders q F v0) q (fun i => ⌊H / logWeights q i⌋₊) p
+    (fun i => by have := hq i; omega) ρ.1.val (ρ.2.1 0) ((selection σ).1 0)
+    (fun i => ρ.2.1 i.succ) (fun i => (selection σ).1 i.succ)
+    (column_coordinate_le_floor hw0 hw (selection σ))
+  simp only [denominator, rowScale, columnScale, selectedMinor,
+    InterpolationMatrix.truncatedLogMatrix, InterpolationMatrix.matrix,
+    Matrix.submatrix_apply, id_eq,
+    Complex.ofReal_prod, Complex.ofReal_pow, Complex.ofReal_natCast,
+    Complex.ofReal_inv]
+  have hcenters : rationalCenters p q =
+      (fun i => 2 * Complex.I * (p i : ℂ) / (q i : ℂ)) := rfl
+  rw [← hcenters] at he
+  convert he using 1
+  ring

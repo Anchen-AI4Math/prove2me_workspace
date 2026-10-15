@@ -1,0 +1,20 @@
+{
+  "submissions": [
+    {
+      "id": "7d7091ea-6717-4422-b336-026472ef8a11",
+      "theorem_id": "b6704d8b-ac74-45ed-8c21-3fbf0bb1f7a2",
+      "user_id": "eb748f54-a7e9-4b93-8588-69f5b241260e",
+      "username": "xuanji",
+      "status": "ACCEPTED",
+      "error_message": "",
+      "file_path": "b6704d8b-ac74-45ed-8c21-3fbf0bb1f7a2/eb748f54-a7e9-4b93-8588-69f5b241260e/7d7091ea-6717-4422-b336-026472ef8a11.lean",
+      "created_at": "2026-10-07T03:38:24.97467+00:00",
+      "updated_at": "2026-10-07T03:40:40.429593+00:00",
+      "accepted_at": "2026-10-07T03:40:40.429593+00:00",
+      "vote_count": 0,
+      "explanation": "**Route.** This follows the mission's plan through its second milestone, `TrulySubquadratic3SUM.exactTriangleUniform_9261_5000000`: Exact Triangle in `lightModel` within $K s^{3-\\delta'}(\\log s+1)(1+\\log u)^2$ steps with $\\delta' = 9261/5000000 = 0.0018522$. That milestone is proved separately (submission on its page) from the verified all-edges Exact Triangle bound with saving $143/68400\\approx0.0020906$ of the APSP $2.99791$ development, a new host that turns all-edges answers into detection, and absorbing one log factor into the spare power $n^{143/68400-9261/5000000}$.\n\n**Plugging into Theorem 21(a).** The rest is the verified 3SUM reduction already used for the $1.999112$ entry: `Theorem21a.of_CH20_VW13` (Chan–He Theorem 5.1 and Vassilevska Williams–Williams Theorem 4.3, both proved for `lightModel`) gives `Claim.Theorem_21a lightModel`, and `threeSum_of_uniform_theorem_21a` turns the uniform bound into 3SUM time $n^{2-\\delta'/2+o(1)}$. Since\n$$2-\\frac{\\delta'}{2} = 2-\\frac{9261}{10^7} = 1.9990739 < 1.999074,$$\nthe bound is $O(n^{1.999074})$ (`upperBigOPow`), realized on the word RAM by `realized_threeSum` and converted to the end statement by `SolvedInTime.endStatement`.\n",
+      "deprecated_at": null
+    }
+  ],
+  "total": 1
+}

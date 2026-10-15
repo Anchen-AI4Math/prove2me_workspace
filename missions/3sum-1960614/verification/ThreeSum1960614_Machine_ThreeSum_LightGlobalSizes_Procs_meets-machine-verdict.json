@@ -1,0 +1,15 @@
+{
+  "id": "cf7aed30-bc7f-4a0f-88f2-7d282bc1d19e",
+  "theorem_id": "b8613dfc-d761-42c3-bf80-49710adc5040",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:01:24.311017+00:00",
+  "updated_at": "2026-10-15T09:04:10.320144+00:00",
+  "explanation": "Use the defining finite layout or schedule identities and the corresponding verified component contracts, retaining explicit integer rounding, multiplicity, and memory bounds. This initializer contract computes global output counts and radix powers as actual machine values.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.Procs.meets",
+  "theorem_title": "Computing and storing the five global sizes",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.Procs.meets {pMain : \u2115} (S : _root_.ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {C p J mu dst : \u2115}\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d < lim.depth)\n    (hC : 1 \u2264 C) (hp : 1 \u2264 p) (hspace : dst+5 \u2264 lim.space)\n    (hword : (_root_.ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.word C p J mu : \u2124) \u2264 lim.word) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [C,p,J,mu,dst] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.time C J mu)\n      (fun r \u03bc' => r = ((p^J : \u2115) : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bc' dst (_root_.ThreeSum1960614.Machine.ThreeSum.LightGlobalSizes.values C p J mu) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bc' dst 5) := by sorry",
+  "theorem_natural_language_statement": "For natural controls $C,p\\ge1$, block count $J$, total size $\\mu$, and destination $o$, suppose the global-size helper placement and word bound hold, five output cells fit, addresses fit words, and a call level is available. The program writes the exact five size values, returns $p^J$, and changes only the output record within its stated time.\n\nThis initializer contract computes global output counts and radix powers as actual machine values.",
+  "theorem_status": "Proved"
+}

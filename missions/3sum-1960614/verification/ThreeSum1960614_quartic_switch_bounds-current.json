@@ -1,0 +1,28 @@
+{
+  "theorem_id": "8223bf4a-1f91-47b9-a6a5-d332ecdb806d",
+  "theorem_name": "ThreeSum1960614.quartic_switch_bounds",
+  "theorem_title": "Quartic switch validity on the full half interval",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSum1960614.quartic_switch_bounds (t : ℝ)\n    (ht : t ∈ Set.Icc (0 : ℝ) (1 / 2)) :\n    phi t ≤ gamma 232 t ∧ 0 < phiDeriv t ∧ phiDeriv t < 9 ∧\n    phi tangentPoint + (t - tangentPoint) * phiDeriv tangentPoint ≤ phi t := by sorry",
+  "natural_language_statement": "For every real $0\\le t\\le1/2$, the exact quartic satisfies $P(t)\\le\\gamma_{232}(t)$ and $0<P'(t)<9$. Its tangent at $u=0.17200068185091493$ lies below $P(t)$ throughout the same interval. Both endpoints are included; the conclusion concerns the whole continuum.",
+  "created_at": "2026-10-14T05:07:04.730278+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 2–3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "For every real number $t$ satisfying $0 \\le t \\le \\tfrac12$, let $H(x)=\\frac{-x\\log x-(1-x)\\log(1-x)}{\\log 2}$, where $\\log$ is the natural logarithm, let $P(x)=\\frac{785174904x+72447023x^2+24044466x^3+12022459x^4}{100000000}$, let $D(x)=\\frac{785174904+2\\cdot72447023x+3\\cdot24044466x^2+4\\cdot12022459x^3}{100000000}$, and let $a=\\frac{17200068185091493}{100000000000000000}$. The theorem asserts all four inequalities simultaneously: $P(t)\\le 232H(\\tfrac1{232})-232H(\\tfrac{1-t}{232})$, $0<D(t)$, $D(t)<9$, and $P(a)+(t-a)D(a)\\le P(t)$. The sole hypothesis on $t$ is membership in the closed interval $[0,\\tfrac12]$, so both endpoints $t=0$ and $t=\\tfrac12$ are included in each conclusion. The entropy arguments $\\tfrac1{232}$ and $\\tfrac{1-t}{232}$ lie in $[\\tfrac1{464},\\tfrac1{232}]$, strictly between $0$ and $1$; thus all logarithms occurring in these expressions have positive arguments. Both bounds involving $P$ are non-strict, whereas the lower and upper bounds on the explicitly specified polynomial $D$ are strict.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:07:09.849977+00:00"
+  }
+}

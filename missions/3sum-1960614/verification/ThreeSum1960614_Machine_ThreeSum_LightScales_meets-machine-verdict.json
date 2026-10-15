@@ -1,0 +1,15 @@
+{
+  "id": "ecb1b5da-4755-49aa-a8c5-475e842d866d",
+  "theorem_id": "a01cdf53-2b5c-43f1-a0cb-019be97bf25e",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T08:58:55.134619+00:00",
+  "updated_at": "2026-10-15T09:01:24.647049+00:00",
+  "explanation": "This executes the natural-number schedule underlying the certified runtime exponent. The five-cell header is computed by the concrete logarithm, root, halving and division routines.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightScales.meets",
+  "theorem_title": "Execution of the exact integer microblock scales",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightScales.meets {pMain pLog pCube pHalf pDiv : \u2115}\n    (hmain : P[pMain]? = some (_root_.ThreeSum1960614.Machine.ThreeSum.LightScales.body pLog pCube pHalf pDiv))\n    (hlog : P[pLog]? = some _root_.ThreeSum1960614.Machine.Light.log2Body)\n    (hcube : P[pCube]? = some _root_.ThreeSum1960614.Machine.Light.cbrtCeilBody)\n    (hhalf : P[pHalf]? = some _root_.ThreeSum1960614.Machine.Light.halfBody)\n    (hdiv : P[pDiv]? = some _root_.ThreeSum1960614.Machine.ThreeSum.LightSmallDivide.body)\n    {\u03bc : \u2115 \u2192 \u2124} {n dst d : \u2115}\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hspace : dst+5 \u2264 lim.space)\n    (hword : ((35000000000*(n+1) : \u2115) : \u2124) \u2264 lim.word) (hd : d < lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [n,dst] \u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.LightScales.time n)\n      (fun r \u03bc' => r = (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bc' dst (_root_.ThreeSum1960614.Machine.ThreeSum.LightScales.values n) \u2227 _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bc' dst 5) := by sorry",
+  "theorem_natural_language_statement": "Let $n,b,d\\in\\mathbb N$ and $\\mu$ be input length, five-cell destination, depth and memory. Let $\\lambda,P$ be limits and a program containing the scale body with its logarithm, rounded cube-root, rounded-half and division helpers at their recorded indices. Suppose addresses fit words, $b+5$ fits memory, $35000000000(n+1)$ fits a word and a nested call is allowed. The procedure writes the exact five scale values, returns\n\n$$\\mu(n),$$\n\nruns within its prescribed scale time and preserves every cell outside the five-cell output.\n\nThis executes the natural-number schedule underlying the certified runtime exponent.",
+  "theorem_status": "Proved"
+}

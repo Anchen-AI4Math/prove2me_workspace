@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.Light.Ends.of_blockSafe",
+    "theorem_title": "Safe blocks establish timed execution",
+    "natural_language_statement": "For limits $L$, program $P$, depth $d$, statement $s$, initial state $\\sigma$, budget $T$, and postcondition $Q$, block safety, $\\operatorname{blockCost}(s)\\le T$, and $Q(\\operatorname{after}(s,\\sigma))$ imply timed execution of $s$ establishing $Q$.\n\nThis rule turns verified straight-line blocks into the timed execution assertions used throughout the concrete programs.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the block statement and combine the structural execution rules. This rule turns verified straight-line blocks into the timed execution assertions used throughout the concrete programs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Exec.bounded",
+    "theorem_title": "Execution preserves bounded states",
+    "natural_language_statement": "For limits $L$, program $P$, and depth $d$, any execution of statement $s$ from $\\sigma$ to $\\sigma'$ in $c$ steps preserves the bounded-state predicate: boundedness of $\\sigma$ implies boundedness of $\\sigma'$.\n\nThis invariant ensures each light execution remains compatible with the finite machine word and address limits.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the execution derivation and use operation safety. This invariant ensures each light execution remains compatible with the finite machine word and address limits."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Exec.mem_outside",
+    "theorem_title": "Execution leaves out-of-range memory unchanged",
+    "natural_language_statement": "If statement $s$ executes from $\\sigma$ to $\\sigma'$ under limits $L$, program $P$, and depth $d$, then every address $a\\ge L.\\mathrm{space}$ satisfies $\\sigma'.\\mathrm{mem}(a)=\\sigma.\\mathrm{mem}(a)$.\n\nThis memory invariant justifies treating all cells beyond the permitted light memory range as unchanged.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Each store is confined to the allowed memory range; compose this property through execution. This memory invariant justifies treating all cells beyond the permitted light memory range as unchanged."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Wrap.small",
+    "theorem_title": "Polynomial wrapper needs admit uniform smallness parameters",
+    "natural_language_statement": "Let $w$ wrap benchmark task $Q$ into a light task with decision flag $\\delta$, and let its resource-need function be polynomial. For each natural exponent $\\kappa$, there exist uniform natural parameters $s,k$ such that every bounded input $x$ with $x.U=x.n^\\kappa$ satisfies the framework smallness predicate for its size and wrapper limits.\n\nThis uniform smallness result provides machine-width parameters for wrapped solvers on every polynomial input-value regime.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Combine the polynomial need bound with the polynomial input-value bound. This uniform smallness result provides machine-width parameters for wrapped solvers on every polynomial input-value regime."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.pow_spec",
+    "theorem_title": "The power-initialization statement computes the exact power",
+    "natural_language_statement": "Let $n\\ge1$, $a\\in\\mathbb Z$, and memory $\\mu$ be arbitrary. For every exponent $\\kappa$ with $n^\\kappa$ fitting a word, the power statement transforms frame $[a,n,1]$ into $[a,n,n^\\kappa]$ within $4\\kappa$ light steps, leaving memory unchanged.\n\nThis execution contract supplies the exact polynomial input bound computed by the top-level benchmark wrapper.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the exponent and execute the repeated multiplication. This execution contract supplies the exact polynomial input bound computed by the top-level benchmark wrapper."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.polyBound_le",
+    "theorem_title": "Admissibility bounds polynomial parameters by the word range",
+    "natural_language_statement": "Suppose parameter list $v$ and width $W$ satisfy word-RAM admissibility with constant $b$, $|v|\\le r$, and $s+kr+k\\le b$. Then $$\\operatorname{polyBound}(s,k,v)\\le2^W.$$\n\nThis finite bound translates admissible machine parameters into the numerical polynomial envelope used by the compiler.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply admissibility to each factor in the polynomial bound. This finite bound translates admissible machine parameters into the numerical polynomial envelope used by the compiler."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSumApsp.WordRam.bigO_of_le_rpow",
+    "theorem_title": "A real power estimate implies benchmark Big O",
+    "natural_language_statement": "Let $T:\\mathbb N\\to\\mathbb N$, $C\\in\\mathbb R$, and nonnegative rational $r$. If $T(n)\\le Cn^r$ for every $n\\ge2$, then $T$ satisfies the benchmark predicate $\\operatorname{BigO}(T,r)$.\n\nThis conversion closes the benchmark Big O predicate after the actual machine time has been bounded by a real power.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Convert the real estimate into the integer-constant Big O witness. This conversion closes the benchmark Big O predicate after the actual machine time has been bounded by a real power."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSumApsp.Dominated.of_eventually",
+    "theorem_title": "Eventual domination extends over a positive tail",
+    "natural_language_statement": "Let $f,g:\\mathbb N\\to\\mathbb R$, with $f(n)\\le Cg(n)$ eventually. If $g(n)>0$ for every $n\\ge n_0$, then $f$ is dominated by $g$ on that whole tail in the framework sense.\n\nThis tail-extension result makes eventual asymptotic comparisons usable in solver contracts requiring bounds on a full tail.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Enlarge the domination constant to cover the finite exceptional prefix. This tail-extension result makes eventual asymptotic comparisons usable in solver contracts requiring bounds on a full tail."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandPrimeCosts.setup_time_le_budget",
+    "theorem_title": "Prime setup fits the executed arithmetic budget",
+    "natural_language_statement": "For natural $k$, positive input length $n$, and record count $R\\le3\\operatorname{bandCount}(n)^2$, the actual band-prime setup time at the schedule modulus, band size, radix, window, and input bound $n^k$ is at most $\\operatorname{timeBudget}(k,n)$.\n\nThis estimate accounts for every executed prime-setup component inside the arithmetic term of the runtime ledger.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound each concrete setup component by its arithmetic-budget term. This estimate accounts for every executed prime-setup component inside the arithmetic term of the runtime ledger."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandScales.bandRoot_log_rate",
+    "theorem_title": "Logarithmic rate of the band root",
+    "natural_language_statement": "The integer band-root scale satisfies $$\\frac{\\log(\\operatorname{bandRoot}(n))}{\\log n}\\longrightarrow\\varepsilon E$$ as $n\\to\\infty$, for the fixed schedule constants $\\varepsilon,E$.\n\nThis limit supplies the rounded root exponent used to determine the actual band size and the remaining number of bands.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Evaluate the rounded scale limit. This limit supplies the rounded root exponent used to determine the actual band size and the remaining number of bands."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockForced.completed_bucket_sum",
+    "theorem_title": "Completed representations equal a finite bucket-product expansion",
+    "natural_language_statement": "Fix local dimensions $h,J$, moduli and shift $P,d$, finite original-index sets $B,C$ with maps $b,c$, output $q$, fixed block set $I$, and row choices $u_i\\subseteq\\operatorname{outputRows}(q,i)$ for $i\\in I$. The sum of left-times-right bucket multiplicities over completed representation tuples equals the sum over subsets of the remaining output coordinates of the corresponding left prefix weight times complementary right prefix weight.\n\nThis exact expansion connects retained representation multiplicities to source weights before subset-transform evaluation.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Reindex completion choices by the remaining coordinate subset and preserve original-index multiplicities. This exact expansion connects retained representation multiplicities to source weights before subset-transform evaluation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockIndex.maskHash_left",
+    "theorem_title": "The left machine mask hash is the semantic endpoint",
+    "natural_language_statement": "For local dimensions $h,J$, occurrence family $o$, and coordinate subset $S$, $$\\operatorname{maskHash}(o,\\mathrm{false},S)=\\operatorname{endpointLeft}(o,S)$$ after casting the natural hash to an integer.\n\nThis identity links the left hash computed from machine mask coordinates to the semantic left source endpoint.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Expand the coordinate hash and the left endpoint definition. This identity links the left hash computed from machine mask coordinates to the semantic left source endpoint."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockIndex.maskHash_right",
+    "theorem_title": "The right machine mask hash is the semantic endpoint",
+    "natural_language_statement": "For local dimensions $h,J$, occurrence family $o$, and coordinate subset $S$, $$\\operatorname{maskHash}(o,\\mathrm{true},S)=\\operatorname{endpointRight}(o,S)$$ after casting the natural hash to an integer.\n\nThis identity links the right hash computed from machine mask coordinates to the semantic right source endpoint.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Expand the coordinate hash and the right endpoint definition. This identity links the right hash computed from machine mask coordinates to the semantic right source endpoint."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorWantedConsumerData.persistent_ends",
+    "theorem_title": "Stored pipelines provide persistent wanted endpoints",
+    "natural_language_statement": "Suppose memory $\\mu$ stores the complete pipeline for free base $f$, size $n$, selected color, original input $x$, and strictly increasing normalized lists $A,B,C$. Then its derived wanted configuration, position table, occurrence table, band size, total block size, record count, and wanted count satisfy the persistent-endpoint predicate.\n\nThese protected-endpoint bounds justify reusing pipeline input and occurrence arrays throughout the wanted-record scan.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Extract the protected endpoint ranges from the stored pipeline and its layout order. These protected-endpoint bounds justify reusing pipeline input and occurrence arrays throughout the wanted-record scan."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandCandidatesCell.meets",
+    "theorem_title": "Constructing one physical band-candidate record",
+    "natural_language_statement": "For candidate mode $m$ and natural controls $r,i,j\\le U$, suppose procedure $p$ is the corresponding cell body, addresses fit words, four destination cells fit memory, and $U+10$ fits a word. The procedure writes the four cells of $\\operatorname{make}(m,i,j,r)$ in its declared time and changes no other memory cells.\n\nThis cell contract gives the literal four-field candidate record from which the complete owner-record array is assembled.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the mode-dependent record stores and compare the cells with the finite record. This cell contract gives the literal four-field candidate record from which the complete owner-record array is assembled."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandLookup.meets",
+    "theorem_title": "Band lookup agrees with the semantic lookup result",
+    "natural_language_statement": "Let stored lower and upper endpoint arrays each have length $n$, with nondecreasing lower endpoints, and let the stored power table have width $W$. For query $x$, suppose $L\\le W$, $n<2^L$, all stated array and word bounds hold, and depth $d+L+1$ is allowed. The lookup body and its recursive search helper return the semantic lookup result within the prescribed time and preserve memory.\n\nThis lookup contract supplies the exact semantic band result to owner-table construction while preserving its inputs.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Apply the binary-search contract to the partition boundary and execute the final endpoint test. This lookup contract supplies the exact semantic band result to owner-table construction while preserving its inputs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandPrimeDepth.meets",
+    "theorem_title": "Computing the prime-chain depth",
+    "natural_language_statement": "For natural record parameter $R$ and positive window scale $y$, assume the prime-depth body is installed and its explicit word requirement fits the limits. The call on $(R,y)$ returns $\\operatorname{depth}(R,y)$ within $\\operatorname{time}(R,y)$ and preserves memory.\n\nThis computed depth selects how many contracting-modulus levels are actually executed by prime-chain construction.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the finite depth calculation under its word bound. This computed depth selects how many contracting-modulus levels are actually executed by prime-chain construction."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBlockSourceRetainedProgram.time_le_factor",
+    "theorem_title": "Retained source construction is linear in compact capacity",
+    "natural_language_statement": "For natural $h,J,c$ with $c\\le464hJ$, $$\\operatorname{retainedHostTime}(h,J,c)\\le\\operatorname{factor}(h,J)\\bigl(\\operatorname{downsetCap}(464hJ,c)+1\\bigr).$$\n\nThis factorization isolates compact-table capacity so the source stage can be charged to the finite encoder ledger.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Collect the explicit construction costs into a polynomial factor times compact capacity. This factorization isolates compact-table capacity so the source stage can be charged to the finite encoder ledger."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightCapacity.meets",
+    "theorem_title": "Computing the Karatsuba capacity",
+    "natural_language_statement": "For positive natural $p$, with $2p+1$ fitting a word and the capacity body installed, the call on $p$ returns the exact Karatsuba interface capacity within its declared time and leaves memory unchanged.\n\nThis capacity contract supplies the concrete padded polynomial length used by the executed convolution routine.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Evaluate the capacity loop using the defining power-of-two bound. This capacity contract supplies the concrete padded polynomial length used by the executed convolution routine."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightCoverKeyData.Stored.of_kept",
+    "theorem_title": "Stored cover keys survive a protected-prefix update",
+    "natural_language_statement": "If $\\mu$ stores cover-key data at free base $f$ for dimensions $h,J$ and $\\nu$ agrees with $\\mu$ below the exact key-end address, the same stored cover-key data hold in $\\nu$.\n\nThis transport retains the constructed cover and global output keys while later wanted and source storage is allocated.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Transport the stored arrays and headers through prefix agreement. This transport retains the constructed cover and global output keys while later wanted and source storage is allocated."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverCost.build_time_bound",
+    "theorem_title": "A polynomial envelope for local-cover construction time",
+    "natural_language_statement": "If $B\\ge1$ bounds, with one-cell slack, the width $464h$, vertex count, local prime, candidate-row count, and schedule size, then $$\\operatorname{buildTime}(h)\\le10000B^5.$$\n\nThis common-envelope estimate supplies a polynomial bound for the full executed local-cover construction time.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound each component of the actual constructor by the common envelope. This common-envelope estimate supplies a polynomial bound for the full executed local-cover construction time."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.bounds",
+    "theorem_title": "The selected magnitude bounds every local-cover control",
+    "natural_language_statement": "For each natural local size $h$, the explicitly defined $\\operatorname{magnitude}(h)$ satisfies the complete local-cover magnitude-bounds predicate at $h$.\n\nThis magnitude certificate provides all local-cover size bounds from one explicit finite envelope.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Verify all constituent bounds for the chosen common envelope. This magnitude certificate provides all local-cover size bounds from one explicit finite envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMaskErase.meets",
+    "theorem_title": "Recursive bit erasure agrees with the semantic mask operation",
+    "natural_language_statement": "A recursive erase body reads a valid width-$W$ power table. Assume its table and word bounds. For remaining width $L\\le W$, target coordinate $a\\le W$, mask $m<2^L$, and allowed depth $d+L$, the call returns $\\operatorname{eraseMask}(L,a,m)$ in the declared time and preserves memory.\n\nThis bit-erasure contract supplies recursive mask updates used by subset enumeration, coloring, and coordinate lookup.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the decreasing width and follow the corresponding bit branch. This bit-erasure contract supplies recursive mask updates used by subset enumeration, coloring, and coordinate lookup."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightNormalize.dedup_meets",
+    "theorem_title": "Deduplicating a sorted physical array",
+    "natural_language_statement": "Let a nondecreasing integer list $L$ be stored at source $s$. Suppose the deduplication body is installed, source and destination are disjoint in order, the destination extent fits memory, addresses fit words, and depth $d+|L|$ is allowed. The call writes $L.\\operatorname{dedup}$, returns its length within the deduplication-time bound, and changes only the reserved destination window.\n\nThis deduplication contract produces distinct normalized values while preserving their original value membership.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct through the sorted input and retain the distinct-value prefix. This deduplication contract produces distinct normalized values while preserving their original value membership."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOneHot.meets",
+    "theorem_title": "Recursive mask evaluation reads the exact coefficient choice",
+    "natural_language_statement": "Suppose two coefficient arrays $w_0,w_1$ of width $W$ and a power table are stored at the specified bases, all coefficients are at most $U$, and their address and word bounds hold. For $L\\le W$, $m<2^L$, and allowed depth $d+L$, the recursive hash body returns $\\operatorname{eval}(w_0,w_1,L,m)$ within the stated time and leaves memory unchanged.\n\nThis mask-evaluation contract supplies the actual endpoint hashes read by local and block source construction.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the width, selecting the coefficient prescribed by the current mask bit. This mask-evaluation contract supplies the actual endpoint hashes read by local and block source construction."
+  }
+]

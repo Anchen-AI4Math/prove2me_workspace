@@ -1,0 +1,20 @@
+{
+  "submissions": [
+    {
+      "id": "ae580f3d-054b-4ce0-887f-1623aa9fbbf1",
+      "theorem_id": "86662280-ad77-4341-89f6-2a606cd717da",
+      "user_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "username": "wurtle",
+      "status": "ACCEPTED",
+      "error_message": "",
+      "file_path": "86662280-ad77-4341-89f6-2a606cd717da/2d179df8-bdcc-43d6-ac3c-03247c42e9b2/ae580f3d-054b-4ce0-887f-1623aa9fbbf1.lean",
+      "created_at": "2026-10-06T09:40:44.257274+00:00",
+      "updated_at": "2026-10-06T10:23:09.929792+00:00",
+      "accepted_at": "2026-10-06T10:23:09.929792+00:00",
+      "vote_count": 0,
+      "explanation": "For three $n\\times n$ integer weight matrices with entries of absolute value at most $n^\\kappa$, Exact Triangle is decided deterministically in\n\n$$O(n^{3-0.0017})=O(n^{2.9983})$$\n\nword-RAM steps. Acceptance is equivalent to the existence of indices $a,b,c$ whose selected three weights sum to zero.\n\nThe proof uses the source's Theorem 17 reduction from Exact Triangle to lopsided sparse triangle instances and the Corollary 16 solver built from Corollary 26. The parameter choice yields the stronger bound\n\n$$O(n^{3-0.00175}\\log n).$$\n\nSince $0.00175-0.0017=0.00005>0$, the logarithmic factor is absorbed by the exponent slack, giving the displayed bound. The routines, their composition, and their compilation to the concrete word RAM carry correctness and step-count proofs. Small-instance handling is included in the source construction.\n\nThe prepared proof applies `exactTriangleIn_of_explicit` to the Corollary 26 estimate, uses `FromClaims.solvedInTime_of_claim` with the verified program realization, and converts the result through `SolvedInTime.endStatement`. Exact Triangle's serialized input and acceptance predicate coincide under the namespace transport. Its output predicate imposes no additional data requirement.\n\nFor every natural weight exponent $\\kappa$, the claimed program is uniform across input sizes, admissible instances, and all word widths above a constant multiple of $\\operatorname{Nat.log2}(n)+1$. The instruction semantics, signed input/output layout, and step count are those of the supplied word RAM. Correctness includes input sizes zero and one. The natural-valued step bound is obtained by rounding the source running-time bound upward and proving the corresponding rational-power inequality.\n\nThe final transport between the source namespace and the mission namespace maps each machine instruction to the corresponding instruction and proves equality of executions by induction on the step allowance. Initial memory, final memory, verdict, and number of steps are preserved. The problem encodings are then related explicitly, so this transport preserves the full statement rather than merely its informal interpretation.\n\nReferences:\n\n1. [ThreeSumApsp/RunningTimes/Sec3/Theorem19.lean](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/RunningTimes/Sec3/Theorem19.lean)\n2. [ThreeSumApsp/Statements/Exponents.lean](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Statements/Exponents.lean)\n3. [ThreeSumApsp/TimeClaims/Sec3/Theorem19.lean](https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/TimeClaims/Sec3/Theorem19.lean#L160)\n\nThe submitted Lean proof retains the cited source proof commands and imports the explicitly named supporting results. It finishes by applying the already proved source-specification transport, preserving the exact exponent and machine guarantees.",
+      "deprecated_at": null
+    }
+  ],
+  "total": 1
+}

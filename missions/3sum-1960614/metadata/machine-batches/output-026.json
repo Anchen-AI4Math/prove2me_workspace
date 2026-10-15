@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Scales.typedOutputs_log_ratio_tendsto",
+    "theorem_title": "Logarithmic growth of typed outputs",
+    "natural_language_statement": "Let $O(n)$ be the executable typed-output count at natural input size $n$, and let $\\varepsilon,E$ be the fixed expansion-$232$ parameters. Then $$\\lim_{n\\to\\infty}\\frac{\\log O(n)}{\\log n}=2\\varepsilon E.$$\n\nIdentifies the output-count exponent used in the runtime ledger. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Identifies the output-count exponent used in the runtime ledger. It makes the exact typed-output count usable as a term with exponent $2\\varepsilon E$ in the final growth comparison."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Scales.primeDepth_log_ratio_tendsto_zero",
+    "theorem_title": "The prime-chain depth is negligible on the logarithmic scale",
+    "natural_language_statement": "Let $d(n)$ be the prescribed prime depth for the executable radix at input size $n\\in\\mathbb N$. Then $$\\lim_{n\\to\\infty}\\frac{d(n)}{\\log n}=0.$$\n\nControls overhead repeated once per common-prime level. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls overhead repeated once per common-prime level. It shows that repetition over the prescribed prime depth contributes no positive power of the original input size."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Scales.scoreLoss_finite_bound",
+    "theorem_title": "Finite contraction bound for the accumulated prime score",
+    "natural_language_statement": "Let $k,n,H,H_1,P\\in\\mathbb N$. Write $C$ for the number of candidate primes, $Y$ for the prime window, $D$ for the divisor budget, $d$ for the prescribed prime depth, and $b$ for the input bit width at size $n$. Suppose $C>0$, $DY\\le C\\,4(k+2)(b+1)$, $C^dH\\le D^dH_1$, and $P\\le(4Y)^d$. Then $$PH\\le L_k(n)H_1,$$ where $L_k(n)$ is the specified score-loss factor.\n\nConverts repeated score contraction into the explicit finite loss appearing in the runtime analysis. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Converts repeated score contraction into the explicit finite loss appearing in the runtime analysis. Its finite hypotheses retain both the candidate-prime contraction and the upper bound on the accumulated modulus."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Scales.scoreLoss_log_ratio_tendsto_zero",
+    "theorem_title": "Subpolynomial growth of the score-loss factor",
+    "natural_language_statement": "For every fixed $k\\in\\mathbb N$, let $L_k(n)$ be the score-loss factor at natural input size $n$. Then $$\\lim_{n\\to\\infty}\\frac{\\log L_k(n)}{\\log n}=0.$$\n\nEnsures common-prime selection loses only a subpolynomial factor. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Ensures common-prime selection loses only a subpolynomial factor. The result permits the explicit loss function to be absorbed into the asymptotic exponent slack for each fixed magnitude exponent."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankLevels.candidates_nonempty",
+    "theorem_title": "Nonempty switch choices at every reporting-bank level",
+    "natural_language_statement": "Let $h,J,k\\in\\mathbb N$, with $k$ at most the prescribed terminal reporting depth for $J$ blocks. For the residual parameter $r(h,J,k)$ of the shared reporting bank, the finite family of switching candidates is nonempty: $$\\mathcal C(J,k,r(h,J,k))\\ne\\varnothing.$$\n\nMakes the finite switching selection available at each constructed reporting level. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Makes the finite switching selection available at each constructed reporting level. The depth restriction ensures the catalog constructor can select a switching candidate throughout the prescribed traversal range."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_buffers",
+    "theorem_title": "The wanted-cell reservation supplies every buffer",
+    "natural_language_statement": "Let $\\ell$ be execution limits and let $d,h,J,K,N,N_B,N_C,V\\in\\mathbb N$ be the destination and wanted-query size parameters. If $C_{\\mathrm{wanted}}$ is their exact reserved cell count and $$d+C_{\\mathrm{wanted}}(h,J,K,N,N_B,N_C,V)\\le\\ell_{\\mathrm{space}},$$ then all component wanted buffers satisfy their required space bounds.\n\nDischarges the combined wanted-buffer allocation from one relative cell reservation. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Discharges the combined wanted-buffer allocation from one relative cell reservation. The component buffers inherit their space bounds from the complete relative cell reservation, including the decoding and reporting work areas."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.WantedSourceEnds.values",
+    "theorem_title": "Selected source-control values precede their allocation end",
+    "natural_language_statement": "Let $X$ be a source-selection pointer record. Suppose its selected pair, bank, cover, source arrays, occurrence row, maps, histograms, and stage tables satisfy the stated individual end bounds at a natural address $s$. Then every value $v$ passed by the source-selection interface satisfies $$v\\le s.$$\n\nTurns individual persistent allocation ends into bounds for the selector argument list. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Turns individual persistent allocation ends into bounds for the selector argument list. Each passed pointer or control is bounded using its own retained allocation end, so absolute addresses need not enter a growth envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.source_bounds",
+    "theorem_title": "Both selected source-stage families lie inside their bank",
+    "natural_language_statement": "Let $b,N_B,N_C,g,h,J,c,i,s\\in\\mathbb N$ be the bank base, original source sizes, band width, local parameters, source cutoff, band index, and occurrence index. Assume $i$ is below the common-band slice count and $s$ below the occurrence-bank count. Both stage-pointer cells are strictly before the bank finish; each selected left and right stage family, of extent $(464hJ+1)D(464hJ,c)$, ends at or before that finish, where $D$ is the compact downset capacity.\n\nProvides exact selected-bank address bounds without including absolute pointers in a numeric growth envelope. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides exact selected-bank address bounds without including absolute pointers in a numeric growth envelope. Both pointer cells and both full stage-family extents are bounded, which is needed when later calls preserve the occupied prefix."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.local_count_le_search",
+    "theorem_title": "The local reporting count is covered by the search envelope",
+    "natural_language_statement": "For every natural input size $n$, the exact local reporting count satisfies $$C_{\\mathrm{local}}(n)\\le S_{257}(n),$$ where $S_{257}$ is the prescribed local-search envelope with parameter $257$.\n\nRelates the concrete local count to an existing cost-ledger term. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Relates the concrete local count to an existing cost-ledger term. The constant search parameter is $257$, matching the finite local-search term already present in the common cost analysis."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceBandData.At.transfer",
+    "theorem_title": "Transport of a stored source-band record",
+    "natural_language_statement": "Let $\\mu,\\nu:\\mathbb N\\to\\mathbb Z$ be memories and let a source-band record for an integer source function be valid in $\\mu$. Assume its residue count $m$ is positive, all six header cells agree in $\\nu$, and $\\nu=\\mu$ throughout the interval from that band's histogram base to its flat-index base plus allocated capacity. Then the same source-band record is valid in $\\nu$.\n\nAllows later writes outside retained band data to preserve its exact stored interpretation. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Allows later writes outside retained band data to preserve its exact stored interpretation. The six-cell header and the complete histogram-to-flat-index interval are explicitly preserved, so their stored interpretations transfer together."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound.add_same",
+    "theorem_title": "Addition preserves a common power bound",
+    "natural_language_statement": "Let $f,g:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$. If both $f$ and $g$ satisfy the specified power-bound predicate at exponent $a$, then $$\\operatorname{PowerBound}(n\\mapsto f(n)+g(n),a).$$\n\nCombines stage charges that have the same exponent bound. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Combines stage charges that have the same exponent bound. It allows separately bounded runtime stages to be summed without introducing a larger target exponent."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Switch.terminal_fraction_exact",
+    "theorem_title": "Exact terminal-depth fraction",
+    "natural_language_statement": "At any natural input size $n$ with positive executable inner size $\\mu(n)$, let $d_{\\mathrm{term}}(n)$ be the terminal depth and $J(n)$ the block count. Then $$\\frac{d_{\\mathrm{term}}(n)}{J(n)}=\\tau,$$ where $\\tau=13/20$ is the fixed terminal fraction.\n\nConnects the integer executable depth to the exact analytic switching parameter. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects the integer executable depth to the exact analytic switching parameter. The positive-inner-size premise makes the executable block ratio exact, so the analysis can use the fixed fraction $13/20$."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumColorBudgets.wanted_count_le",
+    "theorem_title": "The stored wanted count obeys its uniform budget",
+    "natural_language_statement": "For a natural input size $n$, a selected coloring, and an integer input array, suppose the encoded-color pipeline has stored its output in memory $\\mu$ at the specified free address, with its retained strictly sorted class witnesses $A,B,C$. Then the natural count read from the actual wanted header satisfies $$N_{\\mathrm{wanted}}\\le B_{\\mathrm{wanted}}(n).$$\n\nBounds physical wanted records produced by the executable pipeline. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds physical wanted records produced by the executable pipeline. The bound concerns the count read from the actual emitted wanted header, retaining all physical input occurrences and lifts."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.fullOutputs_log_rate",
+    "theorem_title": "Logarithmic growth of complete output records",
+    "natural_language_statement": "Let $F(n)$ be the complete output-record count and $\\varepsilon,E$ the fixed analytic parameters. Then $$\\lim_{n\\to\\infty}\\frac{\\log F(n)}{\\log n}=2\\varepsilon E.$$\n\nIdentifies the full-record growth rate without coalescing equal integer keys. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Identifies the full-record growth rate without coalescing equal integer keys. The complete record count therefore has the same exponent even when different records produce equal integer keys."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.replicatedHalf_log_rate",
+    "theorem_title": "Growth of a replicated local quantity",
+    "natural_language_statement": "Let $f:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$. Suppose $$\\lim_{h\\to\\infty}\\frac{\\log f(h)}{2h\\log2}=a.$$ For its specified replicated-half construction $R_f(n)$ at input size $n$, $$\\lim_{n\\to\\infty}\\frac{\\log R_f(n)}{\\log n}=\\varepsilon a,$$ where $\\varepsilon$ is the fixed inner-size fraction.\n\nTransfers a local exponential rate to the global input-size exponent. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Transfers a local exponential rate to the global input-size exponent. The scaling factor $\\varepsilon$ records the executable total inner size relative to the logarithm of the original input size."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.TrimScales.localPrime_sq_le_power",
+    "theorem_title": "A uniform square bound for the selected local prime",
+    "natural_language_statement": "For every $h\\in\\mathbb N$, the selected local prime $p_h$ satisfies $$p_h^2\\le2^{4+466h}.$$\n\nSupplies a simple word and growth bound for finite-field tables. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Supplies a simple word and growth bound for finite-field tables. The estimate applies uniformly to every natural local half-size, supplying a concrete power-of-two bound on field-table dimensions."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.WantedRecordCoverage.output_complete",
+    "theorem_title": "Every original wanted label occurs in the physical pair array",
+    "natural_language_statement": "Let $\\mu$ satisfy the complete wanted-setup output contract for an integer list $x$, natural moduli and local parameters $M,P,h,J$, and shift $s\\in\\mathbb Z$. Every original label in the corresponding wanted family is decoded from some physical pair slot below the stored count. The two cells at that slot contain indices $i<3|x|$ and $j$ below the global-key count, and their decoded label is exactly the given one.\n\nEstablishes completeness of physical reporting queries, including distinct original positions with equal keys. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Establishes completeness of physical reporting queries, including distinct original positions with equal keys. Every original wanted label is realized by an in-range stored slot, so scanning the physical array does not omit a valid label."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.effects_argsCode",
+    "theorem_title": "Effects of compiling call arguments",
+    "natural_language_statement": "Let a $W$-bit machine memory represent a framed Light state $\\sigma$ under compiler size data $Z$. Let $e_0,\\ldots,e_{r-1}$ be expressions of width at most the frame width $F$, each safe in $\\sigma$. If $k+r\\le F+1$, compiling them into temporaries starting at $k$ stores the word encoding of $e_i(\\sigma)$ in $T_{k+i}$ for each $i<r$, and preserves memory outside the designated temporary set.\n\nConnects argument-expression code to the values needed by a simulated procedure call. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects argument-expression code to the values needed by a simulated procedure call. The temporary values are exactly the evaluated argument frame, while agreement outside the temporary set protects the caller state."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.effects_newFrame",
+    "theorem_title": "Effects of constructing a new call frame",
+    "natural_language_statement": "Let the machine memory represent a framed Light state with frame base $q$ and width $F$. Suppose the next full frame fits in the stack, the argument values already occupy the designated temporaries, and the return address is at most the dispatcher bound. Executing the new-frame instruction effects produces the argument frame at $q+F+1$, stores the return address at stack cell $q+F$, and preserves memory outside the specified writable region.\n\nProvides the memory relation needed to simulate procedure entry. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides the memory relation needed to simulate procedure entry. The new memory relation, saved return address, and writable-region preservation supply all three parts of the procedure-entry simulation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.steps_setVar",
+    "theorem_title": "Two instructions implement a local-variable write",
+    "natural_language_statement": "Let a machine memory represent a framed Light state $\\sigma$ at frame $q$, and let $x<F$ be a local index. Suppose the code at position $p$ is the prescribed address-subtraction followed by a store from cell $c$, with $c$ different from the address scratch cell and holding the word encoding of $v\\in\\mathbb Z$. There is a two-step execution to position $p+2$ representing $\\sigma[x\\leftarrow v]$, preserving memory outside the frame's writable region.\n\nLinks the concrete store sequence to a source-level assignment. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Links the concrete store sequence to a source-level assignment. The two-step run writes the selected local cell and preserves the compiler relation for every other represented source component."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.steps_start",
+    "theorem_title": "Execution of the compiler startup code",
+    "natural_language_statement": "Let $P$ be a Light program, $p_0\\in\\mathbb N$ its entry procedure, and $\\delta$ its decision/output mode. Assume $-1$ is representable in a $W$-bit word. From any machine memory, the compiled program reaches its main-code position and the specified initialized memory in exactly $$d(P,\\delta)+F(P)+9$$ steps, where $d$ is the dispatcher position and $F$ the compiled frame size.\n\nAccounts for initialization before source-level simulation begins. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Accounts for initialization before source-level simulation begins. The exact dispatcher-position plus frame-size startup charge is carried into the compiled program step bound."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Compiler.rel_startMem",
+    "theorem_title": "Initialized memory represents the initial Light frame",
+    "natural_language_statement": "Let compiler size data $Z$ have frame width at least $3$ and a dispatcher pool containing twice the main-frame index. Suppose the initial machine memory encodes a Light memory $\\mu$ at all allowed nonnegative addresses and the two argument cells contain the encodings of integers $i,j$. Then the compiler startup memory represents the main Light frame $[0,i,j]$ with memory $\\mu$.\n\nEstablishes the initial simulation relation after startup. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Establishes the initial simulation relation after startup. The constant cells, initial argument frame, and nonnegative input memory are related before the main source execution is simulated."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.seg_cons",
+    "theorem_title": "A memory segment split at its first cell",
+    "natural_language_statement": "For an integer memory $\\mu$, natural base address $a$, integer $x$, and integer list $L$, $$\\operatorname{Seg}(\\mu,a,x::L)\\iff\\mu(a)=x\\ \\land\\ \\operatorname{Seg}(\\mu,a+1,L).$$\n\nSupports compositional reads and writes of consecutive memory arrays. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Supports compositional reads and writes of consecutive memory arrays. The equivalence exposes the head cell and the shifted tail segment, supporting exact prefix and array access reasoning."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.seg_append",
+    "theorem_title": "A memory segment split at list concatenation",
+    "natural_language_statement": "For an integer memory $\\mu$, natural base $a$, and integer lists $L_1,L_2$, $$\\operatorname{Seg}(\\mu,a,L_1{+\\!+}L_2)\\iff\\operatorname{Seg}(\\mu,a,L_1)\\land\\operatorname{Seg}(\\mu,a+|L_1|,L_2).$$\n\nConnects concatenated logical arrays to adjacent physical segments. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects concatenated logical arrays to adjacent physical segments. The split places the second list precisely at the first base plus its length, which matches the consecutive-memory layout."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.Light.Ends.while",
+    "theorem_title": "A bounded while loop with round-dependent costs",
+    "natural_language_statement": "Let $\\ell,P,d$ be Light limits, program, and call depth; let $c$ be a condition, $s$ a body, and $I(i,\\sigma)$ an invariant. Suppose $I(0,\\sigma_0)$; for every $i<n$, the invariant makes $c$ safe and true and the body reaches $I(i+1)$ within $b(i)$ steps; and at $i=n$ the condition is safe and false and the final postcondition $Q$ holds. Then the while loop reaches $Q$ within $$\\sum_{i<n}(\\operatorname{cost}(c)+1+b(i))+\\operatorname{cost}(c)+1.$$\n\nProvides the exact finite-loop rule used throughout the concrete procedure proofs. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides the exact finite-loop rule used throughout the concrete procedure proofs. The rule accumulates condition, body, and final failing-test costs while advancing the invariant for exactly the prescribed rounds."
+  }
+]

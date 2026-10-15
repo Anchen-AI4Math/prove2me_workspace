@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle006",
+    "definition_title": "Block execution, original-index incidences, and whole-program compilation",
+    "natural_language_statement": "This library defines the interfaces that connect finite combinatorial counts to executable programs. For a light-language statement $s$, state $\\sigma$, and resource limits $L$, it defines the resulting block state, block cost, block safety, and the assertion that a safe block establishes a postcondition. It also supplies counting-loop syntax, expression-value assertions, array passes, and structural rules for sequencing, branches, assignments, and stores.\n\nFor nonnegative block parameters $h,J$, integer modulus $P$, balancing offset $d$, finite original-index sets, and integer-valued input maps $a,b,c$, the library retains both original indices and complete representation choices. Its raw mass is the cardinality of these incidences; left and right bucket sizes count indices with the required residue conditions, so equal input values retain their multiplicity. The operational exponent is the maximum of the twelve entries of the fixed cost ledger:\n$$\\rho=\\max\\bigl(\\{0\\}\\cup\\operatorname{costLedger}(E,\\kappa,H(\\theta_0))\\bigr).$$\nFor a finite procedure list $P_0$, entry procedure $p_0$, and decision flag $\\delta$, whole-program compilation concatenates initialization, the outermost call and verdict, compiled procedure bodies, a return dispatcher, and startup code. The compiler-test specification records the selected successor address, a step bound, and preservation of all nonscratch cells.\n\nThese definitions preserve the finite counting data and precise execution costs used by the deterministic integer 3SUM runtime proof. They adapt the attributed light-language and word-RAM infrastructure from the pinned source project; the library itself does not assert a new runtime theorem.",
+    "tags": [
+      "3sum-1960614",
+      "definitions",
+      "word-ram",
+      "compiler-correctness",
+      "combinatorics"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle007",
+    "definition_title": "Reporting prefixes, procedure specifications, and compiler simulation states",
+    "natural_language_statement": "This library packages the state and counting interfaces for reporting and machine simulation. A row-major rectangular memory representation records an array's entries by their row and column positions. A wanted reporting query fixes an original $A$ index, a signed lift, and a global output. For finite original-index sets $A,B,C$, integer input maps $a,b,c$, modulus $P$, offset $d$, prefix length $k$, and prescribed list $u$, its bucket-prefix mass is zero unless the fixed $A$ key is compatible; otherwise it is\n$$\\sum_{t\\in\\operatorname{completions}(q,k,u)}\\operatorname{leftBucket}(P,B,b,t)\\operatorname{rightBucket}(P,d,C,c,t).$$\nHere $q$ is the wanted global output and the completion set contains precisely the choice tuples with output $q$ and prefix $u$.\n\nThe procedure assertion $\\operatorname{Meets}(L,P_0,p,d,v,\\mu,T,R)$ states that procedure $p$ of program $P_0$, begun at depth $d$ with argument list $v$ and memory $\\mu$, finishes within $T$ light steps and satisfies the result-and-memory relation $R$. Compiler simulation records a fixed setting, a framed starting state, and a finished word-RAM run; the latter bounds machine steps by the per-step simulation factor and records the memory relation and unchanged cells. Relocation shifts every procedure call by a common offset and composes a verified library with a prelude. Integer scale definitions specify replicated schedule counts, representation bounds, output counts, and trimmed-bucket multiplicities from the actual finite schedules and bucket caps.\n\nTogether these interfaces connect exact reporting counts, modular procedure reasoning, and concrete word-RAM execution in the deterministic integer 3SUM proof. Their source attribution and dependencies are retained from the pinned project.",
+    "tags": [
+      "3sum-1960614",
+      "definitions",
+      "reporting",
+      "word-ram",
+      "compiler-correctness"
+    ]
+  }
+]

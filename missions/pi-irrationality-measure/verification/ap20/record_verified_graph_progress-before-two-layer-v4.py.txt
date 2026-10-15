@@ -1,0 +1,54 @@
+"""Record verified server graph connections separately from accepted leaf proofs."""
+import hashlib
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+
+TASK = Path(__file__).resolve().parents[1]
+V = TASK / "verification"
+sources = [
+    ("campaign_epsilon_half_bridge", V / "graph-bridge-20261011/three-context-v2/verification-publication/publication.json"),
+    ("source_main_three_parent_reduction", V / "graph-source-root-20261011/publication-v2/publication.json"),
+    ("conditional_A1_NoFixedData_reduction", V / "graph-conditional-route-20261011-v2/publication-v3/publication.json"),
+    ("NoFixedData_five_child_reduction", V / "graph-no-fixed-data-route-20261011-v2/publication-v3/publication.json"),
+    ("analyticAggregate_two_child_reduction", V / "ap19/analytic-aggregate-two-child-reduction-final/publication-v3/publication.json")]
+connections, pending = [], []
+for label, path in sources:
+    if not path.exists():
+        continue
+    record = json.loads(path.read_bytes())
+    accepted = record.get("confirmed_SKETCH_ACCEPTED") is True
+    entry = {"label": label, "publication_record": path.relative_to(TASK).as_posix(),
+             "publication_record_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+             "submission_id": record.get("submission_id"),
+             "root_id": record.get("root_id", record.get("target_theorem_id", record.get("conditional_theorem_id", record.get("NoFixedData_theorem_id", record.get("parent_theorem_id"))))),
+             "verdict": record.get("last_verify_verdict", {}).get("body", {}).get("status"),
+             "actual_edge_confirmation": record.get("actual_three_parent_edges", record.get("actual_five_child_edges", record.get("actual_two_child_edges", record.get("actual_parent_edge", record.get("actual_two_Open_child_edges"))))),
+             "actual_root_transitive_paths": record.get("actual_root_transitive_paths"),
+             "open_reduction_is_not_a_closed_final_proof": True}
+    if accepted:
+        if entry["verdict"] != "SKETCH_ACCEPTED" or not entry["actual_edge_confirmation"]:
+            raise ValueError("Verified graph connection lacks its actual server verdict/edges")
+        connections.append(entry)
+    else:
+        entry["known_publish_jobs"] = record.get("publish_jobs", {})
+        if record.get("publish_job_id"):
+            entry["known_publish_jobs"]["NoFixedData"] = record["publish_job_id"]
+        if record.get("arithmetic_publish_job_id"):
+            entry["known_publish_jobs"]["arithmetic_source017"] = record["arithmetic_publish_job_id"]
+        entry["publish_statuses"] = {name: row["body"]["status"] for name, row in record.get("last_publish_verdicts", {}).items()}
+        pending.append(entry)
+report = {"updated_at_utc": datetime.now(timezone.utc).isoformat(), "verified_connection_count": len(connections),
+          "connections": connections, "pending_connections": pending,
+          "final_platform_dependency_closure_complete": False,
+          "proof_checkpoint": "verification/verified-stage-progress.json",
+          "next_actual_source_dependency": "verification/ap20/analytic-translated-two-layer-reduction-final/preparation.json"}
+dest = V / "verified-graph-progress.json"
+dest.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+state_path = V / "run-state.json"
+state = json.loads(state_path.read_bytes())
+state["verified_graph_progress"] = dest.relative_to(TASK).as_posix()
+state["verified_graph_progress_sha256"] = hashlib.sha256(dest.read_bytes()).hexdigest()
+state["verified_graph_connection_count"] = len(connections)
+state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+print(json.dumps({"verified_connection_count": len(connections), "pending_connection_count": len(pending)}))

@@ -1,0 +1,15 @@
+{
+  "id": "7ebba005-70fb-42cb-8219-221296a760c7",
+  "theorem_id": "9bedf08e-5a2b-4cd0-871d-62fbd3bb9310",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:11:44.804492+00:00",
+  "updated_at": "2026-10-15T09:14:13.385465+00:00",
+  "explanation": "The proof combines the explicit component contracts and finite layout or counting identities of this construction, retaining the stated runtime and memory bounds. This composition theorem joins the concrete fast branch and original-triple fallback into one exact decision contract.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybridCore.program_meets",
+  "theorem_title": "The hybrid core composes the fast solver with the finite fallback",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybridCore.program_meets {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {fastP : _root_.ThreeSum1960614.Machine.Light.Program} {\u03ba cutoff src n U free d : \u2115}\n    (hlen : fastP.length=537) (x : Fin n\u2192\u2124) (\u03bc : \u2115\u2192\u2124)\n    (hn : 0<n) (hsrc : src+n\u2264free)\n    (H : (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumFastResourcesHybrid.need \u03ba cutoff n U).Ok lim free d)\n    (hread : \u2200 i : Fin n, \u03bc (src+i.val)=x i) (hx : \u2200 i, |x i|\u2264(U : \u2124))\n    (hfast : cutoff\u2264n \u2192 U\u2264n^\u03ba \u2192\n      _root_.ThreeSum1960614.Machine.Light.Meets lim fastP 536 (d+1) [src,n,free] \u03bc\n        (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumFastDriver.time (_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.colorBudget \u03ba n) n)\n        (fun r \u03bd => (r=0 \u2228 r=1) \u2227 (r=1 \u2194 _root_.ThreeSum.Coloring.DistinctZeroSum x) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim (_root_.ThreeSum1960614.Machine.ThreeSum.LightThreeSumHybridCore.program fastP \u03ba cutoff) 542 d [n,U,src,free] \u03bc\n      (_root_.ThreeSum1960614.Machine.ThreeSum.ThreeSumHybridCosts.time \u03ba cutoff n U)\n      (fun r \u03bd => (r=0 \u2228 r=1) \u2227 (r=1 \u2194 _root_.ThreeSum.Coloring.DistinctZeroSum x) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let the fast program have exactly 537 procedures and let $x$ be a nonempty length-$n$ integer input bounded by $U$, stored before the free pointer. Assume the complete hybrid resource predicate and a fast-procedure contract whenever the cutoff is reached and $U\\le n^\\kappa$. Procedure 542 of the assembled hybrid program returns a Boolean equivalent to a distinct-index zero-sum triple, preserves memory below the free pointer, and meets the exact hybrid time bound.\n\nThis composition theorem joins the concrete fast branch and original-triple fallback into one exact decision contract.",
+  "theorem_status": "Proved"
+}

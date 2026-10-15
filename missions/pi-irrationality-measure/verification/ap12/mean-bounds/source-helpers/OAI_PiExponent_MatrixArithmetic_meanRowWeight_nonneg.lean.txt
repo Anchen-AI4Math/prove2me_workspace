@@ -1,0 +1,7 @@
+theorem meanRowWeight_nonneg {m : ℕ} (K : ℕ) (v0 θ : ℝ) (q : Fin m → ℕ)
+    {H : ℝ} (hH : 0 ≤ H) : 0 ≤ meanRowWeight K v0 θ q H := by
+  apply div_nonneg
+  · apply Finset.sum_nonneg
+    intro ρ hρ
+    exact Finset.sum_nonneg (fun i hi => mul_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _))
+  · exact mul_nonneg (Nat.cast_nonneg _) hH

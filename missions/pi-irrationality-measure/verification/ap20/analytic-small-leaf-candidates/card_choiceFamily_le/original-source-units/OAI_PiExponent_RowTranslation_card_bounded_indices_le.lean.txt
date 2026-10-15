@@ -1,0 +1,7 @@
+theorem card_bounded_indices_le (a : σ → ℕ) (H : ℕ) (ha : ∀ i, a i ≤ H) :
+    Fintype.card (∀ i, Fin (a i + 1)) ≤ (H + 1) ^ Fintype.card σ := by
+  rw [Fintype.card_pi]
+  simp only [Fintype.card_fin]
+  calc
+    _ ≤ ∏ _i : σ, (H + 1) := Finset.prod_le_prod (fun i hi => Nat.add_le_add_right (ha i) 1)
+    _ = _ := by simp

@@ -1,0 +1,1734 @@
+{
+  "root_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "theorem_name": "OAI_PiExponent_ApproximationDefinitions",
+      "theorem_title": "Rational approximation and the irrationality exponent",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real number $x$ and real exponent $\\nu$, good rational approximations are rational numbers $r$ with reduced denominator $q\\ge2$ and $0<|x-r|<q^{-\\nu}$. Approximation exponents are positive $\\nu$ for which this set is infinite; the irrationality exponent $\\mu(x)$ is their supremum in $\\mathbb R$.\n\nThe eventual lower-bound predicate asserts that for every $\\nu>2$ there is a natural $Q\\ge2$ such that $q^{-\\nu}\\le |x-p/q|$ for every integer numerator $p$ and every natural denominator $q\\ge Q$. A companion predicate uses integer thresholds and denominators, still constrained by $Q\\ge2$; the $\\pi$ predicate specializes the natural formulation to $x=\\pi$. These are the six original definitions from the pinned OpenAI source.",
+      "created_at": "2026-10-07T06:57:39.94273+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Data.Rat.Cast.Order\n\nnamespace OAI\n\nnamespace PiExponent\n\ndef GoodRationalApproximations (x ν : ℝ) : Set ℚ :=\n  {r | 2 ≤ r.den ∧ 0 < |x - (r : ℝ)| ∧ |x - (r : ℝ)| < (r.den : ℝ) ^ (-ν)}\n\ndef ApproximationExponents (x : ℝ) : Set ℝ :=\n  {ν | 0 < ν ∧ (GoodRationalApproximations x ν).Infinite}\n\nnoncomputable def irrationalityExponent (x : ℝ) : ℝ := sSup (ApproximationExponents x)\n\ndef EventualLowerBound (x : ℝ) : Prop :=\n  ∀ ν : ℝ, 2 < ν → ∃ Q : ℕ, 2 ≤ Q ∧\n    ∀ (p : ℤ) (q : ℕ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|\n\ndef PiEventualLowerBound : Prop := EventualLowerBound Real.pi\n\ndef IntegerEventualLowerBound (x : ℝ) : Prop :=\n  ∀ ν : ℝ, 2 < ν → ∃ Q : ℤ, 2 ≤ Q ∧\n    ∀ (p q : ℤ), Q ≤ q → (q : ℝ) ^ (-ν) ≤ |x - (p : ℝ) / (q : ℝ)|\n\nend PiExponent\n\nend OAI\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Statement.lean#L7-L23",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "theorem_name": "OAI.PiExponent.pi_cofinal_real_height_determinant_certificates",
+      "theorem_title": "Cofinal real-height determinant certificates for pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_cofinal_real_height_determinant_certificates\n    (nu : ℝ) (hnu : 2 < nu)\n    (hbad : ∀ Q : ℕ, ∃ (p : ℤ) (q : ℕ),\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / (q : ℝ)| ≤ (q : ℝ) ^ (-nu)) :\n    ∃ theta x ear ean collisionLimit : ℝ,\n      ∃ mean error rate : ℝ → ℝ,\n        ear + ean < nu * (x - theta) - (1 - theta) ∧\n        1 + ear + ean < collisionLimit ∧\n        Tendsto error atTop (𝓝 0) ∧\n        Tendsto rate atTop (𝓝 collisionLimit) ∧\n        ∀ L : ℝ, ∃ H D : ℝ,\n          L ≤ H ∧ 0 < H ∧\n          0 ≤ mean H ∧ mean H ≤ theta ∧\n          -(1 - mean H) - ear ≤ D ∧\n          D ≤ ean + error H + max (-rate H) (-nu * (x - mean H)) := by sorry",
+      "natural_language_statement": "Fix a real exponent $\\nu>2$, and suppose that for every natural threshold $Q$ there are integers $p$ and natural numbers $q\\ge Q$ with\n\n$$\\left|\\pi-\\frac pq\\right|\\le q^{-\\nu}.$$\n\nThere exist real constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and functions $b,\\varepsilon,c:\\mathbb R\\to\\mathbb R$ satisfying\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\n$$\\varepsilon(H)\\longrightarrow0,\\qquad c(H)\\longrightarrow c_\\infty\\qquad(H\\longrightarrow+\\infty),$$\n\nsuch that for every real threshold $L$ there are a height $H\\ge L$, with $H>0$, and a scalar determinant certificate $D$ satisfying\n\n$$0\\le b(H)\\le\\theta,$$\n\n$$-(1-b(H))-e_{\\rm ar}\\le D\\le e_{\\rm an}+\\varepsilon(H)+\\max\\{-c(H),-\\nu(x-b(H))\\}.$$\n\nThis is the real-height construction obligation in the determinant argument. Its intended witnesses are obtained from one fixed admissible parameter family: $b(H)$ is the mean row weight, $c(H)$ is the collision rate, $x=A(1-\\eta)$, and $D$ is the normalized logarithm of a nonzero selected minor. This obligation retains the admissible-parameter, cofinal interpolation, arithmetic, and analytic construction; it separates those tasks from the passage to natural-number sequences.\n\n**Formalization Note.** This is an adapted scalar interface, not a verbatim theorem already proved in the source. The pinned source's final implication assumes `GlobalInterpolationStatement` and `AnalyticAggregateStatement`; establishing the relevant interpolation and analytic claims is still part of this Open obligation. The scalar inequalities do not themselves enforce a matrix representation of their witnesses, just as in the parent sequence interface.\n",
+      "created_at": "2026-10-07T19:12:09.075132+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology\n\n-- Real-height scalar interface of the pinned determinant construction.\n-- The certificates must come from one fixed admissible parameter family.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L196 ; adapted scalar real-height interface of actualMean_bounds, actual_minor_arithmetic_lower_bound, GlobalInterpolationStatement, AnalyticAggregateStatement, tendsto_collisionRate, and exists_admissible_parameters in AdmissibleParameters.lean. Interpolation and analytic existence remain Open obligations.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+      "theorem_name": "OAI.PiExponent.exists_admissible_parameters",
+      "theorem_title": "Existence of one admissible pi determinant parameter family",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.exists_admissible_parameters\n    (nu Lambda c : ℝ) (hnu : 2 < nu) (hLambda : 0 < Lambda) (hc : 0 < c)\n    (hbad : ∀ Q : ℕ, ∃ p : ℤ, ∃ q : ℕ,\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / q| ≤ (q : ℝ) ^ (-nu)) :\n    Nonempty (AdmissibleParameters nu Lambda c) := by sorry",
+      "natural_language_statement": "Let $\\nu>2$, and let $\\Lambda,c>0$. Suppose that arbitrarily large natural denominators admit integer numerators with\n\n$$|\\pi-p/q|\\le q^{-\\nu}.$$\n\nThen there is one admissible parameter family for $\\nu,\\Lambda,c$, including all the source's rational parameters, dimensions, scales, separated logarithmic weights, rational approximations, and error and collision margins.\n\nThis is the parameter construction needed before selecting any interpolation height. The same family can then be used by arithmetic, counting, geometric, and analytic estimates.\n\n**Formalization Note.** This is the original theorem's complete signature, with the original admissible-parameter structure preserved.",
+      "created_at": "2026-10-07T19:29:56.986438+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean#L112-L218",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1a21b159-35ef-490d-8259-021afd876d54",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate",
+      "theorem_title": "Collision-rate limit for a fixed admissible family",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate {nu : ℝ} (d : FixedData nu) :\n    Tendsto (collisionRate d) atTop (𝓝 (collisionLimit d)) := by sorry",
+      "natural_language_statement": "For every fixed admissible family $d$, the actual collision rate tends to the predicted simplex-volume ratio:\n\n$$c_d(H)\\longrightarrow c_{d,\\infty}\\qquad(H\\longrightarrow+\\infty).$$\n\nThe rate and its limit are defined from the source's actual row count, low-index count, and fixed parameters. This asymptotic counting theorem provides a real-height limit without requiring continuity or monotonicity of the height-dependent finite sets.",
+      "created_at": "2026-10-07T19:30:05.135017+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L110-L125",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1af087c1-f65e-41b5-90e3-ea99fecb6829",
+      "theorem_name": "OAI_PiExponent_AnalyticRemainder",
+      "theorem_title": "Explicit collision and translation error for the fixed determinant family",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a fixed admissible determinant family, write $M(H)$ for the row count, and let $m$ and $v_0$ be its dimension and row scale. Define\n\n$$Q(H)=(H+1)^{2m}(H/v_0+1),\\qquad s=\\exp(-\\log2/2),$$\n\n$$\\varepsilon_d(H)=\\frac{\\log M(H)+\\log2/4-\\log(1-s)}{H}+\\frac{\\log Q(H)}{H}.$$\n\nFor positive heights, $Q(H)$ majorizes the natural-floor translation count in the pinned source. The first error term is the source's normalized factorial and geometric collision correction. These explicit functions allow the finite determinant estimate and the vanishing-error argument to be treated separately. This definition asserts neither estimate nor convergence.",
+      "created_at": "2026-10-07T19:41:30.829758+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nnoncomputable section\nnamespace OAI.PiExponent.DeterminantContradiction\n\n-- Real polynomial majorant of TranslationCountLimit.translationTermCount.\ndef translationEnvelope (m : ℕ) (v H : ℝ) : ℝ :=\n  (H + 1) ^ (2 * m) * (H / v + 1)\n\n-- CollisionExponential.collisionRemainder, plus the translation entropy.\ndef analyticRemainder {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℝ :=\n  (Real.log (actualRowCount d H : ℝ) + Real.log 2 / 4 -\n    Real.log (1 - Real.exp (-Real.log 2 / 2))) / H +\n    Real.log (translationEnvelope d.m d.v0 H) / H\n\nend OAI.PiExponent.DeterminantContradiction\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionExponential.lean (collisionRatio, collisionRemainder); https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/TranslationCountLimit.lean (translationTermCount). Q is the real polynomial upper envelope obtained by replacing each natural floor by its argument at positive heights.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "1af087c1-f65e-41b5-90e3-ea99fecb6829",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "theorem_name": "OAI.PiExponent.finite_goodRationalApproximations_of_eventualLowerBound",
+      "theorem_title": "Eventual lower bounds make better-than-quadratic approximations finite",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.finite_goodRationalApproximations_of_eventualLowerBound {x ν : ℝ}\n    (hx : EventualLowerBound x) (hν : 2 < ν) :\n    (GoodRationalApproximations x ν).Finite := by sorry",
+      "natural_language_statement": "Let $x$ be a real number satisfying the shared eventual lower-bound predicate, and let $\\nu>2$ be real. Then only finitely many rational numbers $r$ with reduced denominator at least $2$ satisfy $0<|x-r|<r.\\mathrm{den}^{-\\nu}$. The hypothesis provides a bound uniform over all integer numerators and all sufficiently large natural denominators.",
+      "created_at": "2026-10-07T07:07:20.064485+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L77-L90",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.global_interpolation",
+      "theorem_title": "Cofinal global interpolation for the fixed pi matrix family",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.global_interpolation : GlobalInterpolationStatement := by sorry",
+      "natural_language_statement": "For every $\\nu>2$ and every fixed admissible family $d$, the actual interpolation matrix is surjective at cofinally many real heights:\n\n$$\\forall L\\in\\mathbb R\\;\\exists H\\ge L,\\qquad M_d(H):\\mathbb C^{\\operatorname{Columns}_d(H)}\\to\\mathbb C^{\\operatorname{Rows}_d(H)}\\text{ is surjective}.$$\n\nThis is precisely the geometric input named by the pinned source's global interpolation proposition. It is an open proof obligation: the source's determinant contradiction assumes it rather than proving it. Surjectivity enables the separate finite-dimensional extraction of a nonzero full-row minor.",
+      "created_at": "2026-10-07T19:29:55.21612+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L94-L96",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "theorem_name": "PiIrrationality.openai_bound_two",
+      "theorem_title": "The irrationality measure of π is at most 2",
+      "status": "Open",
+      "formal_statement": "theorem PiIrrationality.openai_bound_two : PiIrrationality.UpperBound (2 : ℝ) := by sorry",
+      "natural_language_statement": "The irrationality measure of $\\pi$ is at most $2$: for every real $\\varepsilon>0$, there is a natural threshold $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{2+\\varepsilon}<|\\pi-p/q|$. This uses the campaign's shared definition. Source: [OpenAI, PiExponent, family 017](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean). The exact source conjunction is included separately as OAI.PiExponent.main; this campaign goal records its upper-bound consequence.",
+      "created_at": "2026-10-07T06:01:15.267396+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_PiIrrationality_UpperBound",
+      "source": "Campaign definition: https://teorth.github.io/optimizationproblems/constants/7a.html . Each entry must cite the source establishing its particular bound.",
+      "tags": [
+        "diophantine-approximation",
+        "irrationality",
+        "number-theory",
+        "pi"
+      ],
+      "audits": [
+        {
+          "audit_id": "2f11784c-2b16-4b3f-baaa-fef4bbcca455",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:11.74308+00:00"
+        },
+        {
+          "audit_id": "6c8c48f1-5469-4ab9-b7c3-8219e5b56a3b",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T06:19:53.222203+00:00"
+        }
+      ],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_truncatedJetCoeff",
+      "theorem_title": "The concrete matrix computes truncated jet coefficients",
+      "status": "Open",
+      "formal_statement": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\ntheorem OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_truncatedJetCoeff\n    {nu : Real} (d : FixedData nu) (H : Rat)\n    (P : FormalInterpolation.WeightedPolynomial d.w0\n      (MatrixArithmetic.logWeights (finiteDenominators d)) (H : Real)) :\n    forall rho : Row d H,\n      (actualMatrix d (H : Real)).mulVecLin\n          (fun c : Column d (H : Real) =>\n            P.val.coeff (InterpolationMatrix.exponentVector c.1)) rho =\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector rho.2.val)\n          (MvPolynomial.aeval (Fin.cases (1 + MvPowerSeries.X 0)\n            (fun i => MvPowerSeries.C ((rho.1.val : Complex) *\n                MatrixArithmetic.rationalCenters (finiteNumerators d)\n                  (finiteDenominators d) i) + MvPowerSeries.X i.succ +\n              FormalInterpolation.liftSeries d.m\n                ((PowerSeries.trunc\n                  (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i)\n                  (PowerSeries.log Complex) : Polynomial Complex) : PowerSeries Complex))) P.val) := by sorry\n",
+      "natural_language_statement": "For an admissible determinant family and a weighted polynomial, the concrete truncated logarithmic matrix applied to the polynomial coefficient vector equals the coefficient packet of the truncated logarithmic jet at every row.",
+      "created_at": "2026-10-08T06:35:46.227325+00:00",
+      "vote_count": 0,
+      "preamble": "",
+      "source": "openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/FormalMatrixBridge.lean, theorem truncatedLogMatrix_mulVec_eq_coeff",
+      "tags": [
+        "formal-interpolation",
+        "number-theory"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "55056d74-2dc6-497b-85ff-503762716411",
+          "target": "sketch-04a7e644-36cd-4916-a025-80ea038c77c9",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-04a7e644-36cd-4916-a025-80ea038c77c9",
+          "target": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "55056d74-2dc6-497b-85ff-503762716411",
+          "target": "sketch-c3a65396-6099-48a3-a775-869bf771eb82",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-c3a65396-6099-48a3-a775-869bf771eb82",
+          "target": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "target": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "443b7bc2-5366-4875-969c-729f392f870d",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.eventual_packet_degree_reduction",
+      "theorem_title": "Eventual weighted-degree reduction preserving logarithmic packets",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.eventual_packet_degree_reduction\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) :\n    ∃ R : ℚ, 0 < R ∧ ∀ᶠ n : ℕ in atTop,\n      ∀ P : MvPolynomial (Fin (d.m + 1)) ℂ,\n        ∃ Q : FormalInterpolation.WeightedPolynomial d.w0\n          (MatrixArithmetic.logWeights (finiteDenominators d)) ((n : ℝ) * (R : ℝ)),\n          ∀ ρ : Row d ((n : ℝ) * (R : ℝ)),\n            FormalInterpolation.packetMap d ((n : ℝ) * (R : ℝ)) Q ρ =\n              MvPowerSeries.coeff (InterpolationMatrix.exponentVector ρ.2.val)\n                (FormalInterpolation.formalJet\n                  (fun i => (ρ.1.val : ℂ) * MatrixArithmetic.rationalCenters\n                    (finiteNumerators d) (finiteDenominators d) i) P) := by sorry",
+      "natural_language_statement": "Fix $\\nu>2$ and an admissible determinant family $d$. There is a positive rational scale $R$ such that, at every sufficiently large natural multiple $H=nR$, every polynomial $P$ has a polynomial representative $Q$ whose monomials have column weight at most $H$ and whose recorded formal logarithmic jet coefficients agree with those of $P$ at every center and every strict row index.\n\nThe scale and eventual threshold are uniform over all polynomials $P$. This states a weighted degree reduction in the finite jet quotient; it does not supply interpolation of arbitrary packets without the separate algebraic interpolation lemma.\n\n**Formalization note.** This is an adapted polynomial representative consequence of the source's geometric restriction surjectivity and eventual support bound. The intended proof lifts the jet quotient class of $P$ to a global section and takes its affine coefficient polynomial. The open obligation includes that geometric lifting argument; it must be proved from the blowup geometry and section bounds, independently of eventual packet interpolation or its right-inverse formulation.",
+      "created_at": "2026-10-08T04:49:25.720243+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleMatrixGeometry.lean#L20-L44, eventual_packets_of_eventual_jetRestriction; Approximation/WeightedGlobalSectionBound.lean, eventual_admissible_supportBound; Jets/AdmissibleJetSurjectivity.lean, eventual_jetRestriction_surjective; Jets/AdmissibleJetPackets.lean, formalPackets_surjective_of_jetRestriction. Adapted polynomial representative interface.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "e4952ac7-e4ab-4005-bb5a-d27145617452",
+          "target": "sketch-1f4963fa-8e8c-4b84-ae64-b362f8075efc",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-1f4963fa-8e8c-4b84-ae64-b362f8075efc",
+          "target": "443b7bc2-5366-4875-969c-729f392f870d",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "89c9a7c5-f2df-446d-a5c8-5e48bef6310a",
+          "target": "sketch-1f4963fa-8e8c-4b84-ae64-b362f8075efc",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "target": "443b7bc2-5366-4875-969c-729f392f870d",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "theorem_name": "PiIrrationality_UpperBound",
+      "theorem_title": "Upper bounds for the irrationality measure of π",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For a real number $B$, PiIrrationality.UpperBound $B$ expresses $\\mu(\\pi)\\le B$: for every real $\\varepsilon>0$ there is a natural number $Q$ such that every integer $p$ and positive natural denominator $q\\ge Q$ satisfy $1/q^{B+\\varepsilon}<|\\pi-p/q|$. The threshold is uniform over $p$ and $q$.",
+      "created_at": "2026-10-01T05:22:24.314989+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic\n\nnamespace PiIrrationality\n\n/-- The epsilon formulation of an upper bound on the irrationality measure of pi.\nThe threshold may depend on the positive epsilon, but is uniform in p and q. -/\ndef UpperBound (B : ℝ) : Prop :=\n  ∀ ε : ℝ, 0 < ε →\n    ∃ Q : ℕ,\n      ∀ (p : ℤ) (q : ℕ), 0 < q → Q ≤ q →\n        1 / (q : ℝ) ^ (B + ε) <\n          |Real.pi - (p : ℝ) / (q : ℝ)|\n\nend PiIrrationality\n",
+      "source": "The epsilon characterization of C_7a in https://teorth.github.io/optimizationproblems/constants/7a.html . Related fixed-exponent Lean predicate: https://github.com/AxiomMath/gdm-formal-conjectures/blob/main/BorweinSineSeries/problem.lean . This definition uses the epsilon characterization, which gives the standard upper-bound meaning at the endpoint.",
+      "tags": [
+        "diophantine-approximation",
+        "irrationality",
+        "number-theory",
+        "pi"
+      ],
+      "audits": [
+        {
+          "audit_id": "a22a5f0d-80d8-4de3-b7fb-a18a9e65bea5",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-01T05:25:12.314582+00:00"
+        },
+        {
+          "audit_id": "38f1f7dd-05a1-4cee-9e11-81bc7799bd10",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-03T17:28:24.160004+00:00"
+        },
+        {
+          "audit_id": "b1289fe4-40e7-4ce0-9fa1-a9c130c38faf",
+          "reviewer_id": "eb748f54-a7e9-4b93-8588-69f5b241260e",
+          "reviewer_username": "xuanji",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-03T17:28:24.308723+00:00"
+        },
+        {
+          "audit_id": "ebd78492-13f5-4335-bfae-ef0c1d9ecf3f",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:11.485626+00:00"
+        }
+      ],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.matrix_surjective_of_packets",
+      "theorem_title": "Transfer formal logarithmic packets to the actual truncated matrix",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.matrix_surjective_of_packets\n    {nu : ℝ} (d : FixedData nu) (H : ℚ)\n    (hT : ∀ i : Fin d.m,\n      MatrixArithmetic.logWeights (finiteDenominators d) i / (d.base.theta : ℝ) ≤\n        (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i : ℝ) *\n          (d.v0 : ℝ))\n    (hpacket : Function.Surjective (FormalInterpolation.packetMap d (H : ℝ))) :\n    Function.Surjective (actualMatrix d (H : ℝ)).mulVecLin := by sorry",
+      "natural_language_statement": "Let $d$ be an admissible determinant family and $H\\in\\mathbb Q$. Put $w_i=\\lceil\\log q_i\\rceil$ and $T_i=\\lceil F_0 w_i/v_0\\rceil$. Assume that each truncation threshold dominates the corresponding jet weight:\n\n$$\\frac{w_i}{\\theta}\\le T_i v_0\\qquad(1\\le i\\le m).$$\n\nIf weighted polynomials of column weight at most $H$ interpolate every coefficient packet of the formal logarithmic jets at the centers $j r$, then the actual matrix with logarithms truncated at the fixed orders $T_i$ is surjective:\n\n$$J_d(H)\\text{ surjective}\\quad\\Longrightarrow\\quad M_d(H):\\mathbb C^{\\operatorname{Columns}_d(H)}\\longrightarrow\\mathbb C^{\\operatorname{Rows}_d(H)}\\text{ surjective}.$$\n\nThis isolates the passage between the formal jet model and the concrete finite matrix. The weight threshold is stated explicitly; no equality between infinite and truncated logarithmic coefficients is asserted.\n\n**Formalization Note.** This specializes the source's truncatedLogMatrix_surjective_of_formalLog_packets to the actual admissible family. Polynomial degree is recorded in the domain subtype, and concrete row indices replace the equivalent rational coefficient packet indices.",
+      "created_at": "2026-10-07T19:41:15.394894+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/FormalMatrixSurjectivity.lean#L57-L83; Approximation/AdmissibleMatrixInterpolation.lean#L94-L115.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "theorem_name": "OAI.PiExponent.pi_approximation_determinant_sequences",
+      "theorem_title": "Determinant sequences from unbounded approximations to pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_approximation_determinant_sequences\n    (nu : ℝ) (hnu : 2 < nu)\n    (hbad : ∀ Q : ℕ, ∃ (p : ℤ) (q : ℕ),\n      Q ≤ q ∧ |Real.pi - (p : ℝ) / (q : ℝ)| ≤ (q : ℝ) ^ (-nu)) :\n    ∃ theta x ear ean collisionLimit : ℝ,\n      ∃ b d err collision : ℕ → ℝ,\n        ear + ean < nu * (x - theta) - (1 - theta) ∧\n        1 + ear + ean < collisionLimit ∧\n        Tendsto err atTop (𝓝 0) ∧\n        Tendsto collision atTop (𝓝 collisionLimit) ∧\n        (∀ᶠ n in atTop, 0 ≤ b n) ∧\n        (∀ᶠ n in atTop, b n ≤ theta) ∧\n        (∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n) ∧\n        (∀ᶠ n in atTop,\n          d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) := by sorry",
+      "natural_language_statement": "Fix a real exponent $\\nu>2$. Suppose arbitrarily large natural denominators admit integer numerators satisfying\n\n$$\\left|\\pi-\\frac pq\\right|\\le q^{-\\nu}.$$\n\nThen there exist real constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and real sequences $b_n,d_n,\\varepsilon_n,c_n$ such that\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,\\qquad \\varepsilon_n\\to0,\\qquad c_n\\to c_\\infty,$$\n\nand eventually\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThis open construction obligation is a scalar sequence interface extracted from the pinned source's determinant argument. It packages the admissible-parameter construction, cofinal nonzero interpolation minors, arithmetic lower bound, analytic aggregate upper bound, and collision-rate limit. The intended scalar sequence $d_n$ represents normalized logarithms of nonzero determinants. The estimates are incompatible by the separate general comparison theorem.\n\n**Formalization Note.** This is an adapted interface, rather than a verbatim named theorem of the source. All margins and limiting inequalities match `DeterminantContradiction.lean`; real interpolation heights are replaced by a cofinal sequence of heights. The geometric and analytic construction is an open proof obligation.",
+      "created_at": "2026-10-07T19:02:30.661855+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology\n\n-- Sequence interface extracted from the pinned source's determinant argument.\n-- The construction of these sequences is the open analytic/geometric obligation.",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L180 ; sequence interface combining exists_admissible_parameters, globalInterpolation, analyticAggregate, and tendsto_collisionRate",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "5b9ab31c-d24b-4336-adec-68429fdf66ff",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_row_l1_exp_bound",
+      "theorem_title": "Uniform exponential bound for each actual minor row sum",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_minor_row_l1_exp_bound\n    {nu : Real} (d : FixedData nu) (hnu : 0 <= nu)\n    {H : Real} (hH : 0 < H) (selection : Row d H -> Column d H)\n    (rowIdx : Row d H) :\n    Finset.sum Finset.univ (fun colIdx : Row d H =>\n      norm ((actualMinor d H selection) rowIdx colIdx)) <=\n      Real.exp (H *\n        (d.analyticError + analyticRemainder d H +\n          max (-collisionRate d H)\n            (-nu * ((d.base.A : Real) * (1 - d.base.eta) - actualMean d H)))) := by sorry",
+      "natural_language_statement": "Fix an admissible family $d$, a nonnegative exponent $\\\\nu$, a positive height $H$, a column selection, and a row of the selected minor. The sum of the absolute values of the entries in that row is at most\n\n$$\\\\exp(H C_d(H)),$$\n\nwhere $C_d(H)$ is the analytic error plus the explicit remainder and the larger of the collision and low-index exponents in the parent determinant estimate. This uniform row bound supplies the analytic input for the determinant reduction.",
+      "created_at": "2026-10-07T19:48:29.109172+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_AnalyticRemainder\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/Collision.lean; https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "5fd29cfa-13f6-482a-a021-0533d5705a71",
+          "target": "sketch-2259c2da-1ed7-4032-ba18-039191467fe1",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-2259c2da-1ed7-4032-ba18-039191467fe1",
+          "target": "5b9ab31c-d24b-4336-adec-68429fdf66ff",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "502ab8da-19a2-43e2-82ab-42ca7cef209e",
+          "target": "sketch-2259c2da-1ed7-4032-ba18-039191467fe1",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "1af087c1-f65e-41b5-90e3-ea99fecb6829",
+          "target": "5b9ab31c-d24b-4336-adec-68429fdf66ff",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_uniform_exp_bound",
+      "theorem_title": "Uniform exponential bound for every actual selected pi minor",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_minor_uniform_exp_bound\n    {nu : ℝ} (d : FixedData nu) (hnu : 0 ≤ nu)\n    {H : ℝ} (hH : 0 < H) (selection : Row d H → Column d H) :\n    ‖(actualMinor d H selection).det‖ ≤\n      Real.exp ((actualRowCount d H : ℝ) * H *\n        (d.analyticError + analyticRemainder d H +\n          max (-collisionRate d H)\n            (-nu * ((d.base.A : ℝ) * (1 - d.base.eta) - actualMean d H)))) := by sorry",
+      "natural_language_statement": "Fix a real exponent $\\nu\\ge0$ and an admissible family $d$. Let $M(H)$ be its row count, $b_d(H)$ its mean row weight, $c_d(H)$ its collision rate, and $\\varepsilon_d(H)$ the explicit collision and translation error. At every positive height, every selected minor satisfies\n\n$$\\|\\det M_d(H)[u]\\|\\le\\exp\\left(M(H)H\\left[e_{\\rm an}(d)+\\varepsilon_d(H)+\\max\\{-c_d(H),-\\nu(A(1-\\eta)-b_d(H))\\}\\right]\\right).$$\n\nThe estimate is uniform over all selections, including selections with zero determinant. This is an open bridge obligation for the actual truncated logarithmic matrix. The pinned source's formal period collision and translated summand estimates motivate its constants, but do not by themselves establish this actual-matrix statement. It supplies the finite-height analytic input needed for the aggregate reduction.",
+      "created_at": "2026-10-07T19:42:03.998127+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_AnalyticRemainder\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/Collision.lean, formal_period_collision_bound; https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean, translated_summand_bound and log_norm_sum_le; https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/TranslationCountLimit.lean, translationTermCount. Synthesized explicit actual-matrix bridge obligation for Approximation/DeterminantContradiction.lean, AnalyticAggregateStatement; not claimed to be proved by those source lemmas.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "theorem_name": "OAI.PiExponent.main",
+      "theorem_title": null,
+      "status": "Open",
+      "formal_statement": "theorem main :\n  (∀ ν : ℝ, 2 < ν → ∃ Q : ℤ, 2 ≤ Q ∧\n    ∀ p q : ℤ, Q ≤ q →\n      (q : ℝ) ^ (-ν) ≤ |Real.pi - (p : ℝ) / (q : ℝ)|) ∧\n  sSup {ν : ℝ | 0 < ν ∧\n    Set.Infinite {r : ℚ | 2 ≤ r.den ∧\n      0 < |Real.pi - (r : ℝ)| ∧\n      |Real.pi - (r : ℝ)| < (r.den : ℝ) ^ (-ν)}} = 2 := by\n  sorry\n\nend PiExponent\nend OAI\n",
+      "natural_language_statement": "The theorem states that two facts hold about approximating π by rationals, combined in one conjunction. First, for every real ν>2 there is an integer Q≥2 such that for all integers p and q with q≥Q, the distance |π − p/q| is at least q^(−ν); in other words, π has no rational approximations beating exponent ν once the denominator is large enough. Second, the supremum of the set of positive real ν for which there are infinitely many rationals r with denominator at least 2, with r different from π (the distance |π − r| being positive), and with |π − r| < (den r)^(−ν), equals exactly 2. Here den r is the reduced denominator of r. So the irrationality exponent of π is stated to be 2.",
+      "created_at": "2026-10-07T04:33:03.369565+00:00",
+      "vote_count": 0,
+      "preamble": "-- Generated from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a\n-- Source: lean/ComparatorChallenges/PiExponent.lean; bytes 53..400\n-- Kind: theorem; original declaration names and bodies preserved.\n-- Source groups are independent. Target: Lean 4.33.1; see compilation.json.\n\nimport Mathlib\n\nnamespace OAI\n\nnamespace PiExponent\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean",
+      "tags": [],
+      "audits": [
+        {
+          "audit_id": "a39dd35f-e8f3-488d-9562-b1e85d394d96",
+          "reviewer_id": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+          "reviewer_username": "Community (Bot)",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-07T06:19:12.032816+00:00"
+        },
+        {
+          "audit_id": "5156b8f3-df6a-4657-a9ac-3eab31887258",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T06:19:53.222203+00:00"
+        },
+        {
+          "audit_id": "d13f6cb1-c1f3-4759-bf1b-c659be0cf1ff",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-07T07:05:13.152874+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "658ccfed-c1c8-4674-bbdd-50c0ace16714",
+      "theorem_name": "OAI_PiExponent_AdmissibleDeterminantParameters",
+      "theorem_title": "Admissible parameters for the pi determinant construction",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "This is the fixed parameter family used in the determinant construction for a real exponent $\\nu$. Its rational parameters $\\theta,A,B,C$ and real parameter $\\eta$ satisfy the source's order, volume, and exponent-gap conditions. The family also carries a positive tolerance $\\epsilon$, an initial scale $F_0$, a dimension $m\\ge1$, a multiplicity $K$, positive rational scales $w_0,v_0,\\sigma$, and integer numerators and natural denominators with\n\n$$q_n\\ge2,\\qquad p_n\\ne0,\\qquad |\\pi-p_n/q_n|\\le q_n^{-\\nu}.$$\n\nThe weights are $x_0=1$ and $x_{n+1}=\\lceil\\log q_n\\rceil$. Their growth, their minimum $w_*>0$, and the three error budgets satisfy the exact separation and margin conditions of the pinned source. In particular, the three budgets are each less than $\\epsilon/3$, while $\\epsilon$ is smaller than the exponent gap and at most $1/2$; the collision budget exceeds $2$.\n\nThe arithmetic and analytic errors are the source's functions of this fixed data, with the analytic error split into translation and holomorphic contributions. The arithmetic constant is $\\Lambda=\\log4+4$. This module retains every field of the original admissible-parameter structure, so later geometric and analytic statements apply to the same family.\n\n**Formalization Note.** Only source definitions and structures are included. No existence theorem, interpolation theorem, or determinant estimate is asserted by this definition file.",
+      "created_at": "2026-10-07T19:28:57.27253+00:00",
+      "vote_count": 0,
+      "definition": "-- Definitions transcribed from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a.\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Mathlib.Algebra.Order.Floor.Semiring\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\n\nopen scoped BigOperators\nnoncomputable section\nnamespace OAI\nnamespace PiExponentApprox\ndef weightSeparationFactor (m : ℕ) (C w0 v0 theta : ℝ) : ℝ :=\n  C * (max 1 (max v0 (1 / theta) / min w0 1)) ^ (m + 1)\n\ndef SeparatedWeightGrowth (m : ℕ) (D : ℝ) (x : ℕ → ℝ) : Prop :=\n  ∀ i, 0 < i → i ≤ m → D * (∏ j ∈ Finset.range i, x j) < x i\n\nend PiExponentApprox\nnamespace PiExponent\nstructure Parameters (ν : ℝ) where\n  theta : ℚ\n  A : ℚ\n  B : ℚ\n  C : ℚ\n  eta : ℝ\n  theta_pos : 0 < (theta : ℝ)\n  theta_lt_A : (theta : ℝ) < A\n  A_lt_B : (A : ℝ) < B\n  B_lt_one : (B : ℝ) < 1\n  approximation_gap : 1 - (theta : ℝ) < ν * ((A : ℝ) - theta)\n  one_lt_C : 1 < (C : ℝ)\n  B_lt_inv_C : (B : ℝ) < 1 / C\n  B_lt_C_theta : (B : ℝ) < (C : ℝ) * theta\n  C_theta_lt_one : (C : ℝ) * theta < 1\n  eta_pos : 0 < eta\n  eta_lt_one : eta < 1\n  gap_pos : 0 < ν * ((A : ℝ) * (1 - eta) - theta) - (1 - theta)\n\ndef dimensionK (C : ℝ) (m : ℕ) : ℕ := ⌊C ^ m⌋₊\n\ndef dimensionW (B : ℝ) (m : ℕ) : ℝ := (B ^ m)⁻¹\n\ndef dimensionV (theta B C : ℝ) (m : ℕ) : ℝ :=\n  2 * (dimensionK C m : ℝ) * theta ^ m * dimensionW B m\n\nnoncomputable def interpolationSeparationConstant (m : ℕ) (sigma : ℚ) : ℝ :=\n  2 * ((m : ℝ) + 2) ^ (m + 2) *\n    (1 + ((m : ℝ) + 2) / (sigma : ℝ)) ^ (m + 2)\n\nnoncomputable def weightErrorCoefficient (nu theta : ℝ) (K : ℕ) : ℝ :=\n  theta + Real.log 4 + Real.log (2 * (K : ℝ)) + nu + Real.log (200 * (K : ℝ))\n\nstructure AdmissibleParameters (nu Lambda c : ℝ) where\n  base : Parameters nu\n  epsilon : ℝ\n  F0 : ℝ\n  m : ℕ\n  K : ℕ\n  w0 : ℚ\n  v0 : ℚ\n  sigma : ℚ\n  p : ℕ → ℤ\n  q : ℕ → ℕ\n  x : ℕ → ℝ\n  wstar : ℝ\n  epsilon_pos : 0 < epsilon\n  epsilon_lt_gap : epsilon <\n    nu * ((base.A : ℝ) * (1 - base.eta) - base.theta) - (1 - base.theta)\n  epsilon_le_half : epsilon ≤ 1 / 2\n  F0_pos : 0 < F0\n  F0_large : 2 / (base.theta : ℝ) < F0\n  initial_margin : nu / F0 < epsilon / 3\n  m_pos : 1 ≤ m\n  K_eq : K = dimensionK (base.C : ℝ) m\n  K_pos : 1 ≤ K\n  w0_eq : (w0 : ℝ) = dimensionW (base.B : ℝ) m\n  v0_eq : (v0 : ℝ) = dimensionV (base.theta : ℝ) base.B base.C m\n  w0_pos : 0 < (w0 : ℝ)\n  v0_pos : 0 < (v0 : ℝ)\n  volume_eq : (K : ℝ) * ((w0 : ℝ) / v0) * (base.theta : ℝ) ^ m = 1 / 2\n  volume_lt_one : (K : ℝ) * (base.theta : ℝ) ^ m < 1\n  dimension_margin :\n    (Lambda * F0 * (m : ℝ) + 2 * Real.log 2) / (v0 : ℝ) +\n      100 * (K : ℝ) / (w0 : ℝ) < epsilon / 3\n  collision_margin : 2 < c *\n    (base.eta ^ 2 * (K : ℝ) * (base.theta : ℝ) ^ m /\n      (((m : ℝ) + 1) * (v0 : ℝ) * (base.A : ℝ) ^ m))\n  sigma_pos : 0 < (sigma : ℝ)\n  sigma_volume : (1 + 3 * (sigma : ℝ)) ^ (m + 1) *\n    ((K : ℝ) * ((w0 : ℝ) / v0) * (base.theta : ℝ) ^ m) < 1\n  sigma_centers : (1 + 3 * (sigma : ℝ)) ^ m *\n    ((K : ℝ) * (base.theta : ℝ) ^ m) < 1\n  sigma_theta : (1 + (sigma : ℝ)) * (base.theta : ℝ) < 1\n  x_zero : x 0 = 1\n  x_log : ∀ n, x (n + 1) = (Nat.ceil (Real.log (q n)) : ℝ)\n  approximations : ∀ n, 2 ≤ q n ∧ p n ≠ 0 ∧\n    |Real.pi - (p n : ℝ) / q n| ≤ (q n : ℝ) ^ (-nu)\n  x_one_le : ∀ i, 1 ≤ x i\n  weight_growth : PiExponentApprox.SeparatedWeightGrowth m\n    (PiExponentApprox.weightSeparationFactor m (interpolationSeparationConstant m sigma)\n      w0 v0 base.theta) x\n  wstar_pos : 0 < wstar\n  wstar_lower : ∀ i : Fin m, wstar ≤ x (i.val + 1)\n  wstar_attained : ∃ i : Fin m, wstar = x (i.val + 1)\n  weight_margin : Lambda * (∑ i : Fin m, 1 / x (i.val + 1)) +\n    weightErrorCoefficient nu base.theta K / wstar < epsilon / 3\n\nnamespace AdmissibleParameters\nvariable {nu Lambda c : ℝ} (d : AdmissibleParameters nu Lambda c)\n\nnoncomputable def arithmeticError : ℝ :=\n  Lambda * d.F0 * (d.m : ℝ) / (d.v0 : ℝ) +\n    Lambda * (∑ i : Fin d.m, 1 / d.x (i.val + 1)) + (d.base.theta : ℝ) / d.wstar\n\nnoncomputable def translationError : ℝ :=\n  nu / d.F0 + Real.log 2 / (d.v0 : ℝ) +\n    (Real.log 4 + Real.log (2 * (d.K : ℝ)) + nu) / d.wstar\n\nnoncomputable def holomorphicError : ℝ :=\n  100 * (d.K : ℝ) / (d.w0 : ℝ) + Real.log 2 / (d.v0 : ℝ) +\n    Real.log (200 * (d.K : ℝ)) / d.wstar\n\nnoncomputable def analyticError : ℝ := d.translationError + d.holomorphicError\n\nend AdmissibleParameters\nnamespace Arithmetic\nnoncomputable def lcmConstant : ℝ := Real.log 4 + 4\n\nend Arithmetic\nend PiExponent\nend OAI\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean#L14-L110 ; error definitions L295-L307; Parameters.lean#L93-L110; LocalAlgebra/Dimension.lean#L17-L22; WeightSeparation.lean#L20-L21,L107-L108; Arithmetic.lean#L13",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+          "target": "658ccfed-c1c8-4674-bbdd-50c0ace16714",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.analytic_aggregate",
+      "theorem_title": "Analytic aggregate bound for the fixed pi determinant family",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.analytic_aggregate : AnalyticAggregateStatement := by sorry",
+      "natural_language_statement": "For every $\\nu>2$ and every fixed admissible family $d$, there is a real function $\\varepsilon$ with $\\varepsilon(H)\\to0$ as $H\\to+\\infty$, such that eventually every nonzero selected minor satisfies\n\n$$\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}\n\\le e_{\\rm an}(d)+\\varepsilon(H)+\\max\\{-c_d(H),-\\nu(A(1-\\eta)-b_d(H))\\}.$$\n\nThe same error function applies to all selections at a sufficiently large height. This is precisely the analytic input named in the pinned source. It remains an open obligation: the source's determinant contradiction assumes this proposition rather than establishing it.",
+      "created_at": "2026-10-07T19:30:00.378624+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L98-L108",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "theorem_name": "OAI.PiExponent.finite_rat_den_le_abs_sub_lt_one",
+      "theorem_title": "Bounded-denominator rational approximations form a finite set",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.finite_rat_den_le_abs_sub_lt_one (x : ℝ) (N : ℕ) :\n    {r : ℚ | r.den ≤ N ∧ |x - (r : ℝ)| < 1}.Finite := by sorry",
+      "natural_language_statement": "For every real number $x$ and natural number $N$, the set of rational numbers whose reduced denominator is at most $N$ and whose distance from $x$ is less than $1$ is finite:\n$$\\{r\\in\\mathbb Q:r.\\mathrm{den}\\le N,\\ |x-r|<1\\}.\\mathrm{Finite}.$$\nThis supplies the finite exceptional set needed when replacing eventual denominator bounds by finiteness statements about rational approximations.",
+      "created_at": "2026-10-07T07:00:52.874546+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L28-L55",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "theorem_name": "OAI.PiExponent.irrationalityExponent_eq_two_of_eventualLowerBound",
+      "theorem_title": "An eventual lower bound gives irrationality exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.irrationalityExponent_eq_two_of_eventualLowerBound {x : ℝ}\n    (hi : Irrational x) (hx : EventualLowerBound x) :\n    irrationalityExponent x = 2 := by sorry",
+      "natural_language_statement": "Let $x$ be an irrational real number. Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le |x-p/q|$ for every integer $p$ and natural $q\\ge Q$. Then the irrationality exponent defined by the shared approximation predicates is exactly $2$:\n$$\\mu(x)=2.$$\nThe exponent is the real supremum of positive exponents admitting infinitely many distinct rational approximations with reduced denominator at least $2$ and strictly positive error below $q^{-\\nu}$. The upper estimate uses the assumed eventual bound; the lower estimate uses irrationality and Dirichlet approximation.",
+      "created_at": "2026-10-07T07:03:42.075372+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L92-L102",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "77135f94-b700-497a-9598-1304d5238120",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.unbounded_packet_interpolation",
+      "theorem_title": "Unrestricted polynomial interpolation of finite logarithmic packets",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.unbounded_packet_interpolation\n    {nu : ℝ} (d : FixedData nu) (H : ℝ) :\n    ∀ y : Row d H → ℂ, ∃ P : MvPolynomial (Fin (d.m + 1)) ℂ,\n      ∀ ρ : Row d H,\n        MvPowerSeries.coeff (InterpolationMatrix.exponentVector ρ.2.val)\n          (FormalInterpolation.formalJet\n            (fun i => (ρ.1.val : ℂ) * MatrixArithmetic.rationalCenters\n              (finiteNumerators d) (finiteDenominators d) i) P) = y ρ := by sorry",
+      "natural_language_statement": "For a fixed admissible family and any real height, every prescribed finite packet of formal logarithmic jet coefficients at the centers $jr$ is realized by a polynomial, with no weighted degree restriction. The polynomial ring has $m+1$ variables and coefficients in $\\mathbb C$; the packet records precisely the coefficients indexed by the strict row simplex at that height.\n\nThis isolates the algebraic interpolation step: local finite jet interpolation combined with the Chinese remainder theorem at distinct centers. It makes no assertion about the eventual weighted degree budget. For nonpositive height the coefficient index set is empty.\n\n**Formalization note.** Adapted concrete coefficient formulation of `AffineJetPackets.formalJet_packets_surjective`. Rational weights and strict jet indices are represented by the fixed matrix row weights and indices; arbitrary height can be treated by finite local jet interpolation. No degree bound is added.",
+      "created_at": "2026-10-08T04:49:28.767121+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Jets/AffineJetPackets.lean, formalJet_packets_surjective; Jets/AlgebraicJetPackets.lean, formalJet_packet_surjective; Jets/AdmissibleJetPackets.lean, distinctness of curveCenters. Adapted to concrete row coefficient indices.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "1d4716ba-85db-4492-a03a-63281efcffc2",
+          "target": "sketch-aa97bf13-5588-4fc3-8c02-bef69de4b07a",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-aa97bf13-5588-4fc3-8c02-bef69de4b07a",
+          "target": "77135f94-b700-497a-9598-1304d5238120",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "d4f8b883-ecf8-4c29-a1cd-a56d4999d670",
+          "target": "sketch-aa97bf13-5588-4fc3-8c02-bef69de4b07a",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "target": "77135f94-b700-497a-9598-1304d5238120",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "7769fb08-f620-4843-aa1f-9ade31c94fa5",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_packetMap",
+      "theorem_title": "Realize formal packets by actual matrix columns",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.actualMatrix_mulVec_eq_packetMap\n    {nu : ℝ} (d : FixedData nu) (H : ℚ)\n    (P : FormalInterpolation.WeightedPolynomial d.w0\n      (MatrixArithmetic.logWeights (finiteDenominators d)) (H : ℝ)) :\n    ∃ x : Column d (H : ℝ) → ℂ,\n      ∀ ρ : Row d (H : ℝ),\n        (actualMatrix d (H : ℝ)).mulVecLin x ρ =\n          FormalInterpolation.packetMap d (H : ℝ) P ρ := by sorry",
+      "natural_language_statement": "For an admissible determinant family and a weighted polynomial P, the finite coefficient vector of P in the weighted monomial basis can be chosen so that applying the actual matrix to that vector reproduces, row by row, the formal logarithmic packet map of P. This is the coefficient-transfer step from formal jets to the concrete truncated matrix.",
+      "created_at": "2026-10-07T19:49:27.535989+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/FormalMatrixBridge.lean and Approximation/AdmissibleMatrixInterpolation.lean",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "39893d2c-f28c-4c1c-963a-9bd2abc99f3c",
+          "target": "sketch-234fe541-c5bd-496b-9b3c-dae13bc4fedf",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-234fe541-c5bd-496b-9b3c-dae13bc4fedf",
+          "target": "7769fb08-f620-4843-aa1f-9ade31c94fa5",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "target": "7769fb08-f620-4843-aa1f-9ade31c94fa5",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "83845777-56ae-405e-b13a-375abcd494f1",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.eventual_packet_interpolation",
+      "theorem_title": "Eventual formal logarithmic packet interpolation at a rational scale",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.FormalInterpolation.eventual_packet_interpolation\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) :\n    ∃ R : ℚ, 0 < R ∧ ∀ᶠ n : ℕ in atTop,\n      Function.Surjective (FormalInterpolation.packetMap d ((n : ℝ) * (R : ℝ))) := by sorry",
+      "natural_language_statement": "Fix $\\nu>2$ and an admissible determinant family $d$. Let $\\mathcal P_d(H)$ be the polynomials whose monomials have column weight at most $H$. At the center $j r$, form the logarithmic jet by substituting $Y=1+t$ and $X_i=j r_i+u_i+\\log(1+t)$. Write $J_d(H)$ for its coefficients indexed by the strict row simplex, at every center $0\\le j<K$.\n\nThere is a positive rational scale $R$ for which all sufficiently large natural multiples admit arbitrary simultaneous coefficient packets:\n\n$$\\exists R\\in\\mathbb Q_{>0}\\;\\exists N\\in\\mathbb N\\;\\forall n\\ge N,\\qquad J_d(nR):\\mathcal P_d(nR)\\longrightarrow\\mathbb C^{\\operatorname{Rows}_d(nR)}\\ \\text{is surjective}.$$\n\nThis is the formal jet interpolation input before transferring from the infinite logarithm to the fixed truncations of the actual matrix.\n\n**Formalization Note.** This is the concrete coefficient formulation of eventual packet surjectivity in the pinned source. The source's positive rational geometric radius is existentially quantified; the matrix row indices replace the equivalent rational jet indices. The source's support bound equals the finite sum used here.",
+      "created_at": "2026-10-07T19:40:52.979988+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleMatrixGeometry.lean#L20-L44; Approximation/AdmissibleMatrixInterpolation.lean#L117-L166 (WeightedPolynomials, packetMap and the cofinal radius).",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "84aa3fa2-09a3-4b89-af10-e9e55edca8af",
+      "theorem_name": "matrix_det_norm_le_prod_row_sum",
+      "theorem_title": "Determinant bounded by the product of row sums",
+      "status": "Proved",
+      "formal_statement": "theorem matrix_det_norm_le_prod_row_sum\n    {idx : Type*} [Fintype idx] [DecidableEq idx] (A : Matrix idx idx Complex) :\n    norm A.det <= Finset.prod Finset.univ (fun i : idx =>\n      Finset.sum Finset.univ (fun j : idx => norm (A i j))) := by sorry",
+      "natural_language_statement": "For every finite square complex matrix, the absolute value of its determinant is at most the product of the sums of absolute values along its rows. This reusable estimate controls determinants from rowwise bounds.",
+      "created_at": "2026-10-07T19:49:27.96284+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.Analysis.Complex.Basic\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+      "source": "Hadamard determinant inequality; follows from the Leibniz expansion.",
+      "tags": [
+        "linear-algebra",
+        "matrix-analysis"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "417e9b4d-dd45-46dc-a98c-480d75b268fb",
+          "target": "sketch-d30c54b5-dd34-47b2-a8ef-b66778263150",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-d30c54b5-dd34-47b2-a8ef-b66778263150",
+          "target": "84aa3fa2-09a3-4b89-af10-e9e55edca8af",
+          "hidden_by_definitions": false
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "936f9606-5863-4abb-9e4d-c55f5f8ef043",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.tendsto_actualRowCount_normalized",
+      "theorem_title": "Normalized row-count limit for a fixed pi determinant family",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.tendsto_actualRowCount_normalized\n    {nu : ℝ} (d : FixedData nu) :\n    Tendsto (fun H : ℝ => (actualRowCount d H : ℝ) / H ^ (d.m + 1)) atTop\n      (𝓝 ((d.K : ℝ) * (d.base.theta : ℝ) ^ d.m /\n        (((d.m + 1).factorial : ℝ) * (d.v0 : ℝ) *\n          ∏ i, MatrixArithmetic.logWeights (finiteDenominators d) i))) := by sorry",
+      "natural_language_statement": "Fix an admissible family with dimension $m$, multiplicity $K$, positive row scale $v_0$, positive parameter $\\theta$, and logarithmic weights $w_i=\\lceil\\log q_i\\rceil$. Its number $M(H)$ of strict weighted-simplex rows satisfies\n\n$$\\frac{M(H)}{H^{m+1}}\\longrightarrow\\frac{K\\theta^m}{(m+1)!\\,v_0\\prod_i w_i}\\qquad(H\\to+\\infty).$$\n\nThis specializes the pinned source's weighted-simplex row-count theorem to the fixed admissible family. The positive leading coefficient controls logarithmic collision errors after division by the height, independently of the analytic estimates for the minors.",
+      "created_at": "2026-10-07T19:42:11.390991+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen scoped BigOperators\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean, tendsto_rowCount_normalized (lines 36-75), specialized to the fixed admissible family.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+      "theorem_name": "OAI_PiExponent_FormalInterpolationPackets",
+      "theorem_title": "Weighted formal logarithmic interpolation packets",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Let $m$ be the number of logarithmic coordinates. A polynomial $P(Y,X_1,\\ldots,X_m)$ has weighted degree at most $H$ when every monomial in its support satisfies\n\n$$w_0 a_0+\\sum_{i=1}^m w_i a_i\\le H.$$\n\nAt a center $c\\in\\mathbb C^m$, its formal logarithmic jet is obtained by the substitutions\n\n$$Y\\mapsto1+t,\\qquad X_i\\mapsto c_i+u_i+\\log(1+t).$$\n\nFor a fixed admissible family $d$, the packet map records the coefficients of these jets at all centers $j r$, with $0\\le j<K$, and all exponents in the strict row simplex. It maps weighted polynomials to the same coefficient space as the actual interpolation matrix. The formal logarithm is the infinite power series, rather than the fixed polynomial truncation used by that matrix.\n\n**Formalization Note.** The formal jet is transcribed from FormalLogJet. The polynomial support bound and coefficient packets use the existing matrix weights and row indices; this is the concrete coefficient version of the source's rational packet interface.",
+      "created_at": "2026-10-07T19:39:53.988761+00:00",
+      "vote_count": 0,
+      "definition": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\nimport Mathlib.RingTheory.MvPowerSeries.Equiv\n\nopen scoped BigOperators\nnoncomputable section\n\nnamespace OAI.PiExponent.FormalInterpolation\n\n-- FormalLogJet.liftSeries and formalJet in the pinned source.\ndef liftSeries (m : ℕ) : PowerSeries ℂ →+* MvPowerSeries (Fin (m + 1)) ℂ :=\n  (MvPowerSeries.finSuccEquiv ℂ m).symm.toRingHom.comp\n    (PowerSeries.map MvPowerSeries.C)\n\ndef formalJet {m : ℕ} (c : Fin m → ℂ) :\n    MvPolynomial (Fin (m + 1)) ℂ →ₐ[ℂ] MvPowerSeries (Fin (m + 1)) ℂ :=\n  MvPolynomial.aeval (Fin.cases (1 + MvPowerSeries.X 0)\n    (fun i => MvPowerSeries.C (c i) + MvPowerSeries.X i.succ +\n      liftSeries m (PowerSeries.log ℂ)))\n\ndef WeightedPolynomial {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\n  {P : MvPolynomial (Fin (m + 1)) ℂ //\n    ∀ a ∈ P.support,\n      ∑ i, InterpolationMatrix.columnWeights w0 w i * (a i : ℝ) ≤ H}\n\ndef packetMap {nu : ℝ} (d : DeterminantContradiction.FixedData nu) (H : ℝ)\n    (P : WeightedPolynomial d.w0\n      (MatrixArithmetic.logWeights (DeterminantContradiction.finiteDenominators d)) H) :\n    DeterminantContradiction.Row d H → ℂ :=\n  fun ρ => MvPowerSeries.coeff (InterpolationMatrix.exponentVector ρ.2.val)\n    (formalJet (fun i => (ρ.1.val : ℂ) *\n      MatrixArithmetic.rationalCenters\n        (DeterminantContradiction.finiteNumerators d)\n        (DeterminantContradiction.finiteDenominators d) i) P.val)\n\nend OAI.PiExponent.FormalInterpolation\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Jets/FormalLogJet.lean#L16-L18 and #L68-L72; Approximation/WeightedSliceDegree.lean, SupportBound; Approximation/AdmissibleMatrixInterpolation.lean, WeightedPolynomials and packetMap.",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+          "target": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "97a33302-16bc-4887-9f08-17adc9990640",
+      "theorem_name": "OAI.PiExponent.asymptotic_determinant_bounds_inconsistent",
+      "theorem_title": "Incompatibility of asymptotic determinant bounds",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.asymptotic_determinant_bounds_inconsistent\n    (nu theta x ear ean collisionLimit : ℝ)\n    (b d err collision : ℕ → ℝ)\n    (hnu : 1 < nu)\n    (hgap : ear + ean < nu * (x - theta) - (1 - theta))\n    (hcollision : 1 + ear + ean < collisionLimit)\n    (herr : Tendsto err atTop (𝓝 0))\n    (hcol : Tendsto collision atTop (𝓝 collisionLimit))\n    (hb0 : ∀ᶠ n in atTop, 0 ≤ b n)\n    (hb : ∀ᶠ n in atTop, b n ≤ theta)\n    (hlower : ∀ᶠ n in atTop, -(1 - b n) - ear ≤ d n)\n    (hupper : ∀ᶠ n in atTop,\n      d n ≤ ean + err n + max (-collision n) (-nu * (x - b n))) : False := by sorry",
+      "natural_language_statement": "Let $\\nu,\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ be real constants, with $\\nu>1$, and let $b_n,d_n,\\varepsilon_n,c_n$ be real sequences. Assume\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\nand assume that the error tends to zero and the collision rate tends to its limiting value. Then the following inequalities cannot all hold for every sufficiently large index:\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThis is the source's general asymptotic determinant comparison lemma, useful independently of the construction of any particular interpolation matrix.",
+      "created_at": "2026-10-07T19:02:13.671858+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.Tactic.Linarith\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean#L33-L67",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "theorem_name": "OAI.PiExponent.pi_floor_bracket_lower_bound",
+      "theorem_title": "Uniform lower bounds at the integer endpoints bracketing q pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_floor_bracket_lower_bound (nu : ℝ) (hnu : 2 < nu) :\n    ∃ Q : ℕ, 2 ≤ Q ∧\n      ∀ q : ℕ, Q ≤ q →\n        (q : ℝ) ^ (-nu) ≤\n          |Real.pi - ((Int.floor ((q : ℝ) * Real.pi) : ℤ) : ℝ) / (q : ℝ)| ∧\n        (q : ℝ) ^ (-nu) ≤\n          |Real.pi - (((Int.floor ((q : ℝ) * Real.pi) + 1 : ℤ) : ℝ) / (q : ℝ))| := by\n  sorry\n",
+      "natural_language_statement": "For every real exponent nu greater than 2, there is a natural threshold Q at least 2 such that for every natural q at least Q, both rational numbers floor(q*pi)/q and (floor(q*pi)+1)/q have distance from pi at least q^(-nu).",
+      "created_at": "2026-10-10T22:33:42.105306+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/ComparatorChallenges/PiExponent.lean",
+      "tags": [],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound",
+      "theorem_title": "Arithmetic lower bound for every nonzero actual interpolation minor",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound {nu : ℝ} (d : FixedData nu)\n    (H : ℝ) (hH : 0 < H) (selection : Row d H → Column d H)\n    (hdet : (actualMinor d H selection).det ≠ 0) :\n    -(1 - actualMean d H) - d.arithmeticError ≤\n      Real.log ‖(actualMinor d H selection).det‖ /\n        ((actualRowCount d H : ℝ) * H) := by sorry",
+      "natural_language_statement": "For any fixed admissible family $d$, every positive height $H$, and every selection $s$ of columns indexed by the rows, a nonzero selected minor satisfies\n\n$$-(1-b_d(H))-e_{\\rm ar}(d)\\le\n\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}.$$\n\nHere $b_d(H)$ is the actual mean row weight and $e_{\\rm ar}(d)$ is the fixed arithmetic error. The nonvanishing assumption is explicit; this theorem does not construct a nonzero minor. It supplies the arithmetic side of the determinant comparison for whichever minor the interpolation argument selects.",
+      "created_at": "2026-10-07T19:29:55.017604+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_FixedDeterminantFamily\n\nopen Filter Topology\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L86",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "theorem_name": "OAI.PiExponent.two_mem_approximationExponents",
+      "theorem_title": "Every irrational real has infinitely many approximations at exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.two_mem_approximationExponents {x : ℝ} (hx : Irrational x) :\n    (2 : ℝ) ∈ ApproximationExponents x := by sorry",
+      "natural_language_statement": "For every irrational real number $x$, the exponent $2$ belongs to the set of approximation exponents: there are infinitely many distinct rational numbers $r$ whose reduced denominator is at least $2$ and whose approximation error satisfies $0<|x-r|<r.\\mathrm{den}^{-2}$. This records the Dirichlet lower bound in the shared irrationality-exponent definitions.",
+      "created_at": "2026-10-07T07:07:34.030006+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L57-L75",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "theorem_name": "OAI_PiExponent_FixedDeterminantFamily",
+      "theorem_title": "The fixed interpolation matrix and determinant family for pi",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "For one fixed admissible parameter family $d$ and a real height $H$, this module defines the source's finite row and column sets, truncated logarithmic interpolation matrix $M_d(H)$, and square minors $M_d(H)[s]$ selected by maps from rows to columns. The rational centers are $2i\\,p_j/q_j$; the logarithms are truncated at $\\lceil F_0\\lceil\\log q_j\\rceil/v_0\\rceil$.\n\nThe mean row weight $b_d(H)$ is the sum of the weighted row indices divided by the number of rows times $H$. With $c_0=\\log2/4$, the collision rate is\n\n$$c_d(H)=\\frac{c_0\\eta^2\\,\\#\\operatorname{Rows}_d(H)}{H\\,\\#\\operatorname{LowIndices}_d(H)},\\qquad\nc_{d,\\infty}=\\frac{c_0\\eta^2K\\theta^m}{(m+1)v_0A^m}.$$\n\nTwo propositions name the source's open inputs. The interpolation proposition requires $M_d(H)$ to be surjective at cofinally many real heights. The analytic proposition requires an error $\\varepsilon(H)\\to0$ and, eventually in $H$, the upper estimate for every nonzero selected minor:\n\n$$\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}\n\\le e_{\\rm an}(d)+\\varepsilon(H)+\\max\\{-c_d(H),-\\nu(A(1-\\eta)-b_d(H))\\}.$$\n\n**Formalization Note.** The definitions, including both propositions, are transcribed from the pinned source. Naming a proposition does not prove it. The matrix is defined explicitly rather than supplied as an arbitrary witness.",
+      "created_at": "2026-10-07T19:29:19.623232+00:00",
+      "vote_count": 0,
+      "definition": "-- Definitions transcribed from openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a.\nimport Definitions.Def_OAI_PiExponent_AdmissibleDeterminantParameters\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.Topology.Instances.Real.Lemmas\n\nopen Filter Topology\nopen scoped BigOperators\nnoncomputable section\nnamespace OAI.PiExponent\nnoncomputable def realWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\n    Finset (Fin d → ℕ) := by\n  classical\n  exact (Fintype.piFinset (fun i => Finset.range (⌊H / w i⌋₊ + 1))).filter\n    (fun a => ∑ i, w i * (a i : ℝ) ≤ H)\n\nnoncomputable def strictWeightedSimplex {d : ℕ} (w : Fin d → ℝ) (H : ℝ) :\n    Finset (Fin d → ℕ) := by\n  classical\n  exact (realWeightedSimplex w H).filter (fun a => ∑ i, w i * (a i : ℝ) < H)\n\nnamespace InterpolationMatrix\nnoncomputable def exponentVector {m : ℕ} (a : Fin m → ℕ) : Fin m →₀ ℕ :=\n  Finsupp.equivFunOnFinite.symm a\n\nnoncomputable def truncatedLog (T : ℕ) : Polynomial ℂ :=\n  PowerSeries.trunc T (PowerSeries.log ℂ)\n\nnoncomputable def monomialImage {m : ℕ} (r : Fin m → ℂ)\n    (G : Fin m → Polynomial ℂ) (j h : ℕ) (a : Fin m → ℕ) :\n    MvPolynomial (Fin m) (Polynomial ℂ) :=\n  MvPolynomial.C ((1 + Polynomial.X) ^ h) *\n    ∏ i, (MvPolynomial.C (Polynomial.C ((j : ℂ) * r i) + G i) +\n      MvPolynomial.X i) ^ a i\n\nnoncomputable def entry {m : ℕ} (r : Fin m → ℂ)\n    (G : Fin m → Polynomial ℂ) (j s : ℕ) (b : Fin m → ℕ)\n    (h : ℕ) (a : Fin m → ℕ) : ℂ :=\n  ((monomialImage r G j h a).coeff (exponentVector b)).coeff s\n\ndef columnWeights {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\n  Fin.cases w0 w\n\nnoncomputable def rowWeights {m : ℕ} (v0 θ : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\n  Fin.cases v0 (fun i => w i / θ)\n\nabbrev Column {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\n  ↥(PiExponent.realWeightedSimplex (columnWeights w0 w) H)\n\nabbrev Row {m : ℕ} (K : ℕ) (v0 θ : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\n  Fin K × ↥(PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H)\n\nnoncomputable def matrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (G : Fin m → Polynomial ℂ) :\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\n  fun ρ c => entry r G ρ.1.val (ρ.2.1 0) (fun i => ρ.2.1 i.succ)\n    (c.1 0) (fun i => c.1 i.succ)\n\nnoncomputable def truncatedLogMatrix {m : ℕ} (K : ℕ) (w0 v0 θ : ℝ)\n    (w : Fin m → ℝ) (H : ℝ) (r : Fin m → ℂ) (T : Fin m → ℕ) :\n    Matrix (Row K v0 θ w H) (Column w0 w H) ℂ :=\n  matrix K w0 v0 θ w H r (fun i => truncatedLog (T i))\n\nend InterpolationMatrix\nnamespace MatrixArithmetic\nnoncomputable def logWeights {m : ℕ} (q : Fin m → ℕ) (i : Fin m) : ℝ :=\n  (⌈Real.log (q i)⌉₊ : ℝ)\n\nnoncomputable def rationalCenters {m : ℕ} (p : Fin m → ℤ) (q : Fin m → ℕ) : Fin m → ℂ :=\n  fun i => 2 * Complex.I * (p i : ℂ) / (q i : ℂ)\n\nnoncomputable def truncationOrders {m : ℕ} (q : Fin m → ℕ) (F v0 : ℝ) : Fin m → ℕ :=\n  fun i => ⌈F * logWeights q i / v0⌉₊\n\nnoncomputable def rowWeightedSum {m : ℕ} (K : ℕ) (v0 θ : ℝ)\n    (q : Fin m → ℕ) (H : ℝ) : ℝ :=\n  ∑ ρ : InterpolationMatrix.Row K v0 θ (logWeights q) H,\n    ∑ i, (ρ.2.1 i.succ : ℝ) * logWeights q i\n\nnoncomputable def meanRowWeight {m : ℕ} (K : ℕ) (v0 θ : ℝ)\n    (q : Fin m → ℕ) (H : ℝ) : ℝ :=\n  rowWeightedSum K v0 θ q H /\n    ((Fintype.card (InterpolationMatrix.Row K v0 θ (logWeights q) H) : ℝ) * H)\n\nnoncomputable def selectedMinor {m : ℕ} (K : ℕ) (w0 v0 θ F H : ℝ)\n    (p : Fin m → ℤ) (q : Fin m → ℕ)\n    (selection : InterpolationMatrix.Row K v0 θ (logWeights q) H →\n      InterpolationMatrix.Column w0 (logWeights q) H) :\n    Matrix (InterpolationMatrix.Row K v0 θ (logWeights q) H)\n      (InterpolationMatrix.Row K v0 θ (logWeights q) H) ℂ :=\n  (InterpolationMatrix.truncatedLogMatrix K w0 v0 θ (logWeights q) H\n    (rationalCenters p q) (truncationOrders q F v0)).submatrix id selection\n\nend MatrixArithmetic\nnamespace DeterminantContradiction\nnoncomputable def collisionConstant : ℝ := Real.log 2 / 4\n\nabbrev FixedData (nu : ℝ) := AdmissibleParameters nu Arithmetic.lcmConstant collisionConstant\n\nnoncomputable def finiteNumerators {nu : ℝ} (d : FixedData nu) : Fin d.m → ℤ :=\n  fun i => d.p i.val\n\nnoncomputable def finiteDenominators {nu : ℝ} (d : FixedData nu) : Fin d.m → ℕ :=\n  fun i => d.q i.val\n\nabbrev Row {nu : ℝ} (d : FixedData nu) (H : ℝ) :=\n  InterpolationMatrix.Row d.K d.v0 d.base.theta\n    (MatrixArithmetic.logWeights (finiteDenominators d)) H\n\nabbrev Column {nu : ℝ} (d : FixedData nu) (H : ℝ) :=\n  InterpolationMatrix.Column d.w0 (MatrixArithmetic.logWeights (finiteDenominators d)) H\n\nnoncomputable def actualMatrix {nu : ℝ} (d : FixedData nu) (H : ℝ) :\n    Matrix (Row d H) (Column d H) ℂ :=\n  InterpolationMatrix.truncatedLogMatrix d.K d.w0 d.v0 d.base.theta\n    (MatrixArithmetic.logWeights (finiteDenominators d)) H\n    (MatrixArithmetic.rationalCenters (finiteNumerators d) (finiteDenominators d))\n    (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0)\n\nnoncomputable def actualMinor {nu : ℝ} (d : FixedData nu) (H : ℝ)\n    (selection : Row d H → Column d H) : Matrix (Row d H) (Row d H) ℂ :=\n  MatrixArithmetic.selectedMinor d.K d.w0 d.v0 d.base.theta d.F0 H\n    (finiteNumerators d) (finiteDenominators d) selection\n\nnoncomputable def actualMean {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℝ :=\n  MatrixArithmetic.meanRowWeight d.K d.v0 d.base.theta (finiteDenominators d) H\n\nnoncomputable def actualRowCount {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℕ :=\n  Fintype.card (Row d H)\n\nnoncomputable def lowIndexCount {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℕ :=\n  (realWeightedSimplex (MatrixArithmetic.logWeights (finiteDenominators d))\n    ((d.base.A : ℝ) * H)).card\n\nnoncomputable def collisionRate {nu : ℝ} (d : FixedData nu) (H : ℝ) : ℝ :=\n  collisionConstant * d.base.eta ^ 2 * (actualRowCount d H : ℝ) /\n    (H * (lowIndexCount d H : ℝ))\n\nnoncomputable def collisionLimit {nu : ℝ} (d : FixedData nu) : ℝ :=\n  collisionConstant *\n    (d.base.eta ^ 2 * (d.K : ℝ) * (d.base.theta : ℝ) ^ d.m /\n      (((d.m : ℝ) + 1) * (d.v0 : ℝ) * (d.base.A : ℝ) ^ d.m))\n\ndef GlobalInterpolationStatement : Prop :=\n  ∀ nu : ℝ, 2 < nu → ∀ d : FixedData nu,\n    ∀ L : ℝ, ∃ H : ℝ, L ≤ H ∧ Function.Surjective (actualMatrix d H).mulVecLin\n\ndef AnalyticAggregateStatement : Prop :=\n  ∀ nu : ℝ, 2 < nu → ∀ d : FixedData nu,\n    ∃ error : ℝ → ℝ, Tendsto error atTop (𝓝 0) ∧\n      ∀ᶠ H : ℝ in atTop, ∀ selection : Row d H → Column d H,\n        (actualMinor d H selection).det ≠ 0 →\n        Real.log ‖(actualMinor d H selection).det‖ / ((actualRowCount d H : ℝ) * H) ≤\n          d.analyticError + error H +\n            max (-collisionRate d H)\n              (-nu * ((d.base.A : ℝ) * (1 - d.base.eta) - actualMean d H))\n\nend DeterminantContradiction\nend OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L15-L108 ; InterpolationMatrix.lean definitions; MatrixArithmetic.lean#L132-L219; Polynomials/SimplexCounting.lean#L154-L164",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false,
+      "missing_children": []
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "d0d1afad-8cdf-4969-ad45-60f9f32d35e6",
+      "theorem_name": "OAI.PiExponent.FormalInterpolation.truncatedJetPacket_surjective_of_fullPacket",
+      "theorem_title": "Transfer packet surjectivity through logarithmic truncation",
+      "status": "Open",
+      "formal_statement": "import Definitions.Def_OAI_PiExponent_FormalInterpolationPackets\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\ntheorem OAI.PiExponent.FormalInterpolation.truncatedJetPacket_surjective_of_fullPacket\n    {nu : Real} (d : FixedData nu) (H : Rat)\n    (hT : forall i : Fin d.m,\n      MatrixArithmetic.logWeights (finiteDenominators d) i / (d.base.theta : Real) <=\n        (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i : Real) *\n          (d.v0 : Real))\n    (hpacket : Function.Surjective\n      (FormalInterpolation.packetMap d (H : Real))) :\n    Function.Surjective\n      (fun P : FormalInterpolation.WeightedPolynomial d.w0\n          (MatrixArithmetic.logWeights (finiteDenominators d)) (H : Real) =>\n        fun rho : Row d H =>\n          MvPowerSeries.coeff (InterpolationMatrix.exponentVector rho.2.val)\n            (MvPolynomial.aeval (Fin.cases (1 + MvPowerSeries.X 0)\n              (fun i => MvPowerSeries.C ((rho.1.val : Complex) *\n                  MatrixArithmetic.rationalCenters (finiteNumerators d)\n                    (finiteDenominators d) i) + MvPowerSeries.X i.succ +\n                FormalInterpolation.liftSeries d.m\n                  ((PowerSeries.trunc\n                    (MatrixArithmetic.truncationOrders (finiteDenominators d) d.F0 d.v0 i)\n                    (PowerSeries.log Complex) : Polynomial Complex) : PowerSeries Complex))) P.val)) := by sorry\n",
+      "natural_language_statement": "For admissible determinant data, if the cutoff orders dominate the weighted row coordinates and the full formal logarithmic packet map is surjective, then the coefficient packets formed with the truncated logarithms are also surjective. The cutoff condition ensures the logarithmic tails lie in the weighted ideal, so the invertible formal variable shift preserves packets modulo that ideal.",
+      "created_at": "2026-10-08T06:35:55.733626+00:00",
+      "vote_count": 0,
+      "preamble": "",
+      "source": "openai/math @ adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Analysis/FormalLogTruncation.lean, theorem formalLog_packets_surjective_iff_truncated",
+      "tags": [
+        "formal-interpolation",
+        "number-theory"
+      ],
+      "audits": [],
+      "created_by": "b28ce847-d6d8-4fa3-9ee9-e5d293e2a29a",
+      "created_by_username": "Eyal1990",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": true,
+      "has_more_parents": false,
+      "missing_children": [
+        {
+          "source": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+          "target": "sketch-295a8af2-0c81-4093-85ea-c513d31dee9f",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "sketch-295a8af2-0c81-4093-85ea-c513d31dee9f",
+          "target": "d0d1afad-8cdf-4969-ad45-60f9f32d35e6",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "ba764e54-2528-47dc-b194-c219738df2d4",
+          "target": "sketch-295a8af2-0c81-4093-85ea-c513d31dee9f",
+          "hidden_by_definitions": false
+        },
+        {
+          "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+          "target": "d0d1afad-8cdf-4969-ad45-60f9f32d35e6",
+          "hidden_by_definitions": true
+        }
+      ]
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "theorem_name": "OAI.PiExponent.pi_irrationalityExponent_eq_two_of_eventualLowerBound",
+      "theorem_title": "The eventual approximation bound for pi implies irrationality exponent two",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.pi_irrationalityExponent_eq_two_of_eventualLowerBound\n    (h : PiEventualLowerBound) : irrationalityExponent Real.pi = 2 := by sorry",
+      "natural_language_statement": "Assume that for every real $\\nu>2$ there is a natural threshold $Q\\ge2$ such that $q^{-\\nu}\\le|\\pi-p/q|$ for every integer numerator $p$ and natural denominator $q\\ge Q$. Then the irrationality exponent of $\\pi$, defined as the real supremum of the positive approximation exponents in the shared definitions, equals $2$. The eventual bound is an explicit hypothesis of this implication.",
+      "created_at": "2026-10-07T07:07:24.218305+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L104-L106",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "theorem_name": "OAI.PiExponent.pi_eventual_lower_bound",
+      "theorem_title": "The eventual rational approximation lower bound for pi",
+      "status": "Open",
+      "formal_statement": "theorem OAI.PiExponent.pi_eventual_lower_bound : PiEventualLowerBound := by sorry",
+      "natural_language_statement": "For every real exponent $\\nu>2$, there exists a natural threshold $Q\\ge2$ such that every integer numerator $p$ and natural denominator $q\\ge Q$ satisfy\n$$q^{-\\nu}\\le |\\pi-p/q|.$$\nThe threshold is uniform over both numerator and denominator. This is the pi-specific eventual approximation bound. Together with the general approximation lemmas, it yields the integer-denominator formulation and the real-supremum characterization of irrationality exponent two.\n",
+      "created_at": "2026-10-07T07:21:51.736866+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Main.lean#L8-L9",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "theorem_name": "OAI.PiExponent.eventualLowerBound_iff_integer",
+      "theorem_title": "Equivalent natural and integer denominator formulations",
+      "status": "Proved",
+      "formal_statement": "theorem OAI.PiExponent.eventualLowerBound_iff_integer (x : ℝ) :\n    EventualLowerBound x ↔ IntegerEventualLowerBound x := by sorry",
+      "natural_language_statement": "For every real number $x$, the eventual lower bound at every exponent $\\nu>2$ is equivalent whether its threshold and denominators are natural numbers or integers. In both formulations the threshold is at least $2$, the numerator is an arbitrary integer, and the bound is uniform in the numerator:\n$$q^{-\\nu}\\le |x-p/q|\\qquad(q\\ge Q).$$\nThis conversion preserves the non-strict approximation inequality and allows results using integer denominators to be reused with natural denominator statements.",
+      "created_at": "2026-10-07T07:02:27.212384+00:00",
+      "vote_count": 0,
+      "preamble": "import Mathlib.NumberTheory.DiophantineApproximation.Basic\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Positivity\nimport Definitions.Def_OAI_PiExponent_ApproximationDefinitions\n\nopen OAI.PiExponent\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Exponent.lean#L7-L26",
+      "tags": [
+        "irrationality-measure",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "audits": [],
+      "created_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "created_by_username": "marwahaha",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "submission_id": "033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "parent_theorem_id": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "For every real exponent $\\nu>2$ and the assumed unbounded rational approximations to $\\pi$, the reduction proves the existence of constants and natural-number sequences satisfying\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,$$\n\n$$\\varepsilon_n\\to0,\\qquad c_n\\to c_\\infty,$$\n\nand eventually\n\n$$0\\le b_n\\le\\theta,\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\\le e_{\\rm an}+\\varepsilon_n+\\max\\{-c_n,-\\nu(x-b_n)\\}.$$\n\nThe remaining child, `OAI.PiExponent.pi_cofinal_real_height_determinant_certificates`, asserts a construction indexed by real interpolation heights. It supplies fixed constants, a mean row-weight function, an error function tending to zero, a collision-rate function tending to the prescribed limit, and simultaneous lower and upper determinant certificates at arbitrarily large positive heights. This is an Open assumption of the reduction. It retains the analytic and geometric obligations of the pinned source; this submission proves the entire passage from that cofinal real-height interface to the requested sequence interface.\n\nFor each natural number $n$, choose a height and certificate from the child at threshold $n$:\n\n$$H_n\\ge n,\\qquad H_n>0,\\qquad D_n\\text{ satisfies both bounds at }H_n.$$\n\nThe real-valued natural-number sequence tends to positive infinity. The comparison with $n$ therefore gives\n\n$$H_n\\longrightarrow+\\infty.$$\n\nNo monotonicity of the chosen heights is needed. Define all sequences using these same heights:\n\n$$b_n=b(H_n),\\qquad d_n=D_n,\\qquad\\varepsilon_n=\\varepsilon(H_n),\\qquad c_n=c(H_n).$$\n\nComposition of the two real-height limits with the height sequence gives the required limits. The four scalar bounds hold for every chosen index, hence in particular eventually. The strict margins remain those of the fixed real-height family.\n\nIn the pinned source, admissible parameters provide the margins, `tendsto_collisionRate` supplies the collision limit, and cofinal surjectivity yields nonzero selected minors. `actualMean_bounds` and `actual_minor_arithmetic_lower_bound` provide the lower certificates. `AnalyticAggregateStatement` provides an eventual upper bound; one first increases the height threshold past that eventual bound, then invokes cofinal interpolation. These constructions are exactly what the child still has to establish. The source's conditional determinant contradiction alone does not prove that child.\n",
+      "created_at": "2026-10-07T19:12:32.837749+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "submission_id": "12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "parent_theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "This sketch introduces a new, explicitly open pi-specific obligation: for every exponent nu > 2, both rational errors at the adjacent numerators floor(q*pi) and floor(q*pi)+1 have the stated power lower bound for all sufficiently large natural denominators q >= 2. It does not assert that this analytic obligation has been proved.\r\n\r\nThe complete Lean reduction proves that these two bounds imply the original arbitrary-integer-numerator bound. Positive q preserves order on division. The floor inequalities put pi between the two rational endpoints. If p <= floor(q*pi), the lower endpoint's error is at most the error at p/q. Otherwise floor(q*pi)+1 <= p, and the upper endpoint's error is at most that error. The reduction then uses the already proved natural/integer threshold conversion and the already proved conditional irrationality-exponent result to establish both conjuncts of the exact focused target.\r\n\r\nThis differs from the existing natural-denominator sketch by removing the arbitrary-numerator quantifier from the remaining analytic obligation and proving the bracketing reduction. The proposed child remains open; no unconditional solution of the pi irrationality-exponent problem is claimed. The declaration and full reduction have been compiled locally with Lean 4.33.1 and the mission's pinned Mathlib; the runner must still perform its full dependency, kernel and semantic checks before publication.\r\n",
+      "created_at": "2026-10-11T02:27:05.190392+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "submission_id": "148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "parent_theorem_id": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "We reduce the cofinal real-height certificate assertion to five source-grounded obligations for one fixed admissible parameter family. This is a proof sketch: the five imported child theorems remain assumptions of this submission.\n\nFor an exponent greater than two and arbitrarily large denominators satisfying\n\n$$|\\pi-p/q|\\le q^{-\\nu},$$\n\nthe parameter-existence child supplies one admissible family. All matrix entries, row sets, column sets, mean weights, arithmetic errors, analytic errors, and collision rates are the actual definitions transcribed from the pinned source. No family is changed when the height changes.\n\nThe five children are:\n\n1. `exists_admissible_parameters`: the complete fixed parameter construction from the unbounded approximation hypothesis, with arbitrary positive arithmetic and collision constants.\n2. `actual_minor_arithmetic_lower_bound`: the normalized logarithm of every nonzero selected minor satisfies the arithmetic lower estimate at every positive height.\n3. `tendsto_collisionRate`: the actual collision rate tends to its simplex-volume limit as the real height tends to infinity.\n4. `global_interpolation`: the actual interpolation matrix is surjective at cofinally many real heights.\n5. `analytic_aggregate`: one error function tending to zero gives the analytic upper estimate, eventually in height, for every nonzero selected minor.\n\nThe pinned source proves the parameter, arithmetic, and counting results, which are retained as separate formalization children here. Its final determinant argument assumes the interpolation and analytic propositions; this sketch preserves them as explicit open obligations.\n\nFor the fixed family, write its parameters as $\\theta,A,\\eta$, its errors as $e_{\\rm ar},e_{\\rm an}$, its mean as $b(H)$, and its collision limit as $c_\\infty$. Set\n\n$$x=A(1-\\eta).$$\n\nThe three admissibility budgets are each less than $\\epsilon/3$. Their sum is exactly the total error, and admissibility places $\\epsilon$ below the exponent gap and at most one half. The source's collision margin exceeds two. The reduction proves directly that\n\n$$e_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\\qquad\n1+e_{\\rm ar}+e_{\\rm an}<c_\\infty.$$\n\nIt also proves directly, from the finite row definitions, that every positive height satisfies\n\n$$0\\le b(H)\\le\\theta.$$\n\nIndeed, every logarithmic row weight is nonnegative, and the defining strict weighted-simplex inequality bounds each row's weighted contribution by $H\\theta$. Summing and dividing by the row count times the positive height gives the claim. The zero-row case is handled separately, with the mean equal to zero.\n\nThe analytic child supplies a function $\\varepsilon(H)\\to0$ and a threshold $L_0$ beyond which its bound holds for all nonzero selected minors. Given an arbitrary requested threshold $L$, use cofinal interpolation above\n\n$$\\max\\{L,L_0,1\\}.$$\n\nThis produces a height satisfying $H\\ge L$, $H\\ge L_0$, and $H>0$, at which the actual matrix is surjective. A finite-dimensional argument extracts a nonzero square full-row minor: a right inverse gives a matrix product equal to the identity; expanding its determinant as a sum over column selections shows that at least one selected determinant is nonzero. This extraction is proved inside the reduction, rather than introduced as another open child.\n\nFor the selected minor define\n\n$$D=\\frac{\\log\\|\\det M_d(H)[s]\\|}{\\#\\operatorname{Rows}_d(H)\\,H}.$$\n\nThe arithmetic child and the analytic child apply to this same minor and give\n\n$$-(1-b(H))-e_{\\rm ar}\\le D\\le e_{\\rm an}+\\varepsilon(H)+\n\\max\\{-c(H),-\\nu(x-b(H))\\}.$$\n\nThe collision-rate child supplies the remaining limit. These constants and functions therefore satisfy exactly the target's quantified type, conditional on the five children. The construction works at cofinally many real heights and needs no continuity or monotonicity assumption.\n\nThe definitions and the three source-proved obligations are transcribed from [AdmissibleParameters.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/AdmissibleParameters.lean) and [DeterminantContradiction.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean). The latter file defines, but does not prove, the two geometric and analytic propositions. The matrix and simplex definitions come from its pinned dependencies.\n",
+      "created_at": "2026-10-07T19:30:21.106608+00:00",
+      "child_count": 5,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "submission_id": "15189284-f270-4f09-9af5-5ef49ae63a14",
+      "parent_theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "We reduce the assertion\n\n$$\n\\forall \\nu>2\\;\\exists Q\\ge2\\;\\forall p\\in\\mathbb Z\\;\\forall q\\ge Q,\n\\qquad q^{-\\nu}\\le\\left|\\pi-\\frac pq\\right|\n$$\n\nto the construction of asymptotic determinant sequences from an unbounded family of good rational approximations. This is a proof sketch: `pi_approximation_determinant_sequences` is an open child theorem, not a result proved by this submission. The second child, `asymptotic_determinant_bounds_inconsistent`, has a separate direct proof.\n\nFix an exponent above two and suppose no uniform threshold exists. Negating the threshold statement supplies, for every natural bound, integers and natural denominators satisfying\n\n$$\nq\\ge Q,\\qquad \\left|\\pi-\\frac pq\\right|<q^{-\\nu}.\n$$\n\nWe use the weaker non-strict approximation inequality as the hypothesis of the open construction lemma. The use of the threshold $\\max(Q,2)$ ensures that the original requirement on thresholds is respected.\n\nThe construction lemma is an explicit sequence interface for the pinned source's admissible-parameter, interpolation, arithmetic, and analytic determinant argument. It supplies constants $\\theta,x,e_{\\rm ar},e_{\\rm an},c_\\infty$ and sequences $b_n,d_n,\\varepsilon_n,c_n$ with\n\n$$\ne_{\\rm ar}+e_{\\rm an}<\\nu(x-\\theta)-(1-\\theta),\n\\qquad 1+e_{\\rm ar}+e_{\\rm an}<c_\\infty,\n\\qquad \\varepsilon_n\\longrightarrow0,\n\\qquad c_n\\longrightarrow c_\\infty.\n$$\n\nEventually these sequences obey\n\n$$\n0\\le b_n\\le\\theta,\n\\qquad -(1-b_n)-e_{\\rm ar}\\le d_n\n\\le e_{\\rm an}+\\varepsilon_n+\n\\max\\{-c_n,-\\nu(x-b_n)\\}.\n$$\n\nIn the intended construction, the scalar $d_n$ is the normalized logarithm of the absolute value of a nonzero interpolation minor; the other sequences are its mean row weight, analytic remainder, and collision rate. Cofinal interpolation heights can be chosen above the natural index, so the source's real-height limits give these sequence limits. Proving that construction, including the geometric nonvanishing and analytic upper estimates, remains the open obligation.\n\nThe numerical contradiction is unconditional. The strict margins and the two limits imply, for all sufficiently large indices,\n\n$$\ne_{\\rm ar}+e_{\\rm an}+\\varepsilon_n<\\nu(x-\\theta)-(1-\\theta),\n\\qquad 1+e_{\\rm ar}+e_{\\rm an}+\\varepsilon_n<c_n.\n$$\n\nBecause the exponent exceeds one and the mean weight is at most the parameter $\\theta$,\n\n$$\n\\nu(x-\\theta)-(1-\\theta)\\le\\nu(x-b_n)-(1-b_n).\n$$\n\nConsequently both branches of the maximum in the upper bound are strictly below the lower bound. This contradicts the simultaneous determinant inequalities. Hence failure of the uniform threshold is impossible, conditional on the open construction lemma.\n\nThe comparison lemma is transcribed from [Comparison.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/Comparison.lean). The construction interface is a sequence reformulation of the bounds and limits in [DeterminantContradiction.lean](https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean), with the source's geometric and analytic inputs retained as the open construction obligation.\n",
+      "created_at": "2026-10-07T19:03:06.41727+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "submission_id": "367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "parent_theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "The original proof from OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a is preserved by compiler-guided extraction. The source theorem uses only propext, Classical.choice, and Quot.sound. The exact uploaded statement and solution were compiled against the platform Mathlib pin, and the elaborated theorem type was compared with the upstream source type. Shared definitions and proved helper lemmas are imported as reusable platform modules.",
+      "created_at": "2026-10-07T07:21:55.195048+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-640ff9ff-8758-4b58-9aa3-3c5494681472",
+      "submission_id": "640ff9ff-8758-4b58-9aa3-3c5494681472",
+      "parent_theorem_id": "83845777-56ae-405e-b13a-375abcd494f1",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "For every admissible family $d$ and real exponent $\\nu>2$, the reduction establishes\n\n$$\\exists R\\in\\mathbb Q_{>0},\\qquad J_d(nR):\\mathcal P_d(nR)\\longrightarrow\\mathbb C^{\\operatorname{Rows}_d(nR)}\\text{ is surjective for all sufficiently large }n,$$\n\nconditional on two independent child lemmas. Here $\\mathcal P_d(H)$ consists of polynomials whose monomials have column weight at most $H$, and $J_d(H)$ records the specified coefficients of the formal logarithmic jets at the centers $jr$.\n\nThe argument separates interpolation in the unrestricted polynomial ring from the weighted degree estimate. Neither child imports eventual packet interpolation, its right-inverse formulation, or any theorem that depends on those statements.\n\nThe first child, `unbounded_packet_interpolation`, asserts that every finite coefficient packet is realized by a polynomial, without imposing a degree bound. Its intended algebraic proof is finite jet interpolation at distinct centers followed by the Chinese remainder theorem. Distinctness follows from the admissible data: there is at least one logarithmic coordinate, its numerator is nonzero, and its denominator is positive. The pinned source implements the algebraic step in `Jets/AffineJetPackets.lean`, `formalJet_packets_surjective`, using `AlgebraicJetPackets.formalJet_packet_surjective` and pairwise coprime powers of the center ideals. The concrete row indices used here are the corresponding strict weighted jet indices. At a nonpositive height the row simplex is empty, so no extra positivity assumption on the height is required.\n\nThe second child, `eventual_packet_degree_reduction`, asserts that there is one positive rational scale such that, eventually, every unrestricted polynomial has a representative of weighted degree at most the height with exactly the same recorded jet coefficients. This is the remaining geometric obligation. The intended independent proof uses the source's eventual surjectivity of restriction to powers of the center ideal, the formal packet factorization through that quotient, and the eventual weighted support bound for section polynomials. These inputs appear in `Jets/AdmissibleJetSurjectivity.lean`, `Jets/AdmissibleJetPackets.lean`, and `Approximation/WeightedGlobalSectionBound.lean`; their combination is exhibited in `Approximation/AdmissibleMatrixGeometry.lean`, `eventual_packets_of_eventual_jetRestriction`. This child is an adapted polynomial representative formulation of those inputs, rather than a claim that the current submission formalizes the geometric argument.\n\nChoose the rational scale supplied by degree reduction. At any sufficiently large multiple and for any prescribed packet, first choose an unrestricted interpolating polynomial using the algebraic child. Next choose its bounded representative using the geometric child. The representative's packet equals the original polynomial's packet coefficient by coefficient, hence equals the prescribed packet. Function extensionality gives the required equality of packets, and the eventual quantifier is preserved.\n\nThis is a proof sketch, not a completed direct proof: both child statements remain open. It replaces the circular reduction through `eventual_packet_interpolation_with_right_inverse` with separate algebraic and geometric proof obligations.\n",
+      "created_at": "2026-10-08T04:49:49.92941+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+      "submission_id": "6804deab-1601-4556-9b2d-020a20800796",
+      "parent_theorem_id": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "We reduce the uniform analytic aggregate statement to two explicit obligations for the actual determinant family. For each fixed admissible family, put\n\n$$M(H)=\\#\\operatorname{Rows}_d(H),\\qquad Q(H)=(H+1)^{2m}(H/v_0+1),$$\n\nand choose the selection-independent error\n\n$$\\varepsilon_d(H)=\\frac{\\log M(H)+c_0-\\log(1-s)}{H}+\\frac{\\log Q(H)}{H},\\qquad c_0=\\frac{\\log2}{4},\\quad s=e^{-\\log2/2}.$$\n\nThe first child, `actual_minor_uniform_exp_bound`, is the open finite-height analytic obligation. It asserts, for every positive height and every selection,\n\n$$\\|\\det M_d(H)[u]\\|\\le\\exp\\left(M(H)H\\left[e_{\\rm an}(d)+\\varepsilon_d(H)+\\max\\{-c_d(H),-\\nu(A(1-\\eta)-b_d(H))\\}\\right]\\right).$$\n\nThis child must still connect the actual truncated logarithmic matrix to the translation and collision estimates. The pinned source supplies a bound for translated period determinants and a two-alternative summand estimate; neither is asserted here to establish this child. The polynomial factor above majorizes the source's per-row translation count for positive heights, since each natural floor is bounded above by its argument. The factorial and geometric collision factors produce the displayed logarithmic correction.\n\nThe second child, `tendsto_actualRowCount_normalized`, is the weighted-simplex counting asymptotic\n\n$$\\frac{M(H)}{H^{m+1}}\\longrightarrow\\frac{K\\theta^m}{(m+1)!\\,v_0\\prod_i\\lceil\\log q_i\\rceil}>0.$$\n\nThis is the specialization of the pinned source's `MatrixCounting.tendsto_rowCount_normalized` to the fixed family. It is an independent counting obligation, with its positive leading coefficient proved in the reduction from admissibility.\n\nThe remaining argument is proved in Lean. If a function divided by a fixed power of the height tends to a positive constant, taking logarithms shows that its logarithm divided by the height tends to zero: the normalized logarithm stays bounded, while the remaining term is a constant multiple of $\\log H/H$. Apply this to the row count and to the polynomial envelope, whose normalized limit is $1/v_0$. The constant collision correction divided by the height also tends to zero. Consequently the explicit error tends to zero.\n\nAt every positive height there is a row with all indices zero, so the row count is positive. For a nonzero selected determinant its norm is positive. Taking logarithms of the first child's estimate and dividing by the positive quantity $M(H)H$ gives exactly the target inequality. Positive heights hold eventually at infinity, and the chosen error does not depend on the selection.\n\nThis is a proof-sketch: the finite-height bound and the row-count asymptotic are imported open children. The reduction contains no unproved local steps.\n",
+      "created_at": "2026-10-07T19:42:25.997031+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+      "submission_id": "74da2c65-1f0f-43ef-9028-b13c4ff66951",
+      "parent_theorem_id": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "For every $\\nu>2$, every fixed admissible family $d$, and every real lower bound $L$, the reduction establishes\n\n$$\\exists H\\ge L,\\qquad M_d(H):\\mathbb C^{\\operatorname{Columns}_d(H)}\\longrightarrow\\mathbb C^{\\operatorname{Rows}_d(H)}\\text{ surjective}.$$\n\nThe reduction follows the pinned source's formal jet route. It depends on two open child lemmas: **eventual_packet_interpolation** supplies simultaneous interpolation of the infinite formal logarithmic jets at sufficiently large multiples of a positive rational scale; **matrix_surjective_of_packets** transfers these packets to the actual finite matrix, provided the fixed logarithmic truncation orders dominate the jet weights. These children are assumptions of this sketch, not results proved by it.\n\nFor each coordinate, write\n\n$$w_i=\\lceil\\log q_i\\rceil,\\qquad T_i=\\left\\lceil\\frac{F_0w_i}{v_0}\\right\\rceil.$$\n\nAdmissibility gives positive $w_i$, $v_0$, and $\\theta$, together with $F_0>2/\\theta$. Consequently,\n\n$$\\frac{w_i}{\\theta}\\le F_0w_i\\le T_iv_0.$$\n\nThis calculation is proved in the submitted Lean file using the recorded weight bounds and the defining ceiling inequality. It verifies the transfer lemma's truncation hypothesis without assuming that the infinite logarithm and its fixed truncation have identical coefficients.\n\nThe interpolation child gives a rational $R>0$ and an integer threshold $N$ such that formal packets are surjective at height $nR$ whenever $n\\ge N$. Set\n\n$$n=\\max\\left\\{N,\\left\\lceil\\frac L R\\right\\rceil\\right\\},\\qquad H=nR.$$\n\nThen $n\\ge N$ and $H\\ge L$. Apply the transfer child at the rational height $nR$, using the truncation inequality proved above. The resulting matrix is exactly the actual matrix at the corresponding real height, which proves the required cofinal statement.\n\nThe formal packet definitions transcribe FormalLogJet and use the source's weighted polynomial support bound. Concrete strict-simplex row indices replace the equivalent rational coefficient packet indices. The two children correspond to the interpolation and formal-to-truncated-matrix interfaces in AdmissibleMatrixGeometry.lean and FormalMatrixSurjectivity.lean at commit adc7f1241b42e322a6451854ab7e4b4c146bf78a.",
+      "created_at": "2026-10-07T19:41:28.196126+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "submission_id": "7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "parent_theorem_id": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "status": "SKETCH_ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Assuming the imported theorem `OAI.PiExponent.main`, the campaign's shared definition satisfies\n\n$$\\operatorname{PiIrrationality.UpperBound}(2).$$\n\nThe argument uses only the theorem's first conjunct: for every real exponent $\\nu>2$, a single integer threshold $Q\\ge2$ makes $q^{-\\nu}\\le|\\pi-p/q|$ hold for all integer numerators $p$ and integer denominators $q\\ge Q$. Choosing an exponent strictly between $2$ and $2+\\varepsilon$ supplies the strict inequality required by the campaign.\n\nFix $\\varepsilon>0$ and apply this assertion with $\\nu=2+\\varepsilon/2$. Let $Q\\ge2$ be the resulting threshold. Since $Q$ is nonnegative, its natural-number counterpart `Q.toNat` has the same integer value. Every natural denominator above this threshold satisfies $q\\ge2$, so its real value is greater than $1$.\n\nReal powers with a base greater than $1$ are strictly increasing in their exponent. Therefore every such $q$ and every integer $p$ satisfy\n\n$$\\frac{1}{q^{2+\\varepsilon}}=q^{-(2+\\varepsilon)}<q^{-(2+\\varepsilon/2)}\\le\\left|\\pi-\\frac pq\\right|.$$\n\nThe threshold is uniform in $p$ and $q$, exactly as required by `PiIrrationality.UpperBound 2`. The supremum conjunct of the OpenAI theorem is unused.\n\nThis submission is a reduction to `OAI.PiExponent.main`, which is currently an open theorem on Prove2me. The reduction verifies the implication; the campaign goal remains conditional on a verified proof of that dependency.\n",
+      "created_at": "2026-10-07T06:20:49.802341+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "submission_id": "8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "parent_theorem_id": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Apply the proved general irrationality-exponent criterion to the real number pi. Mathlib supplies the irrationality of pi, and the theorem assumption supplies its eventual lower bound. The result is conditional on that explicit eventual-bound assumption; it does not prove the pi-specific bound.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:08:52.525979+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-970c1c98-e835-43f7-ba02-d5eec7176d25",
+      "submission_id": "970c1c98-e835-43f7-ba02-d5eec7176d25",
+      "parent_theorem_id": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "For each desired row vector y, packet surjectivity provides a weighted polynomial P whose formal packet map equals y. The coefficient-transfer lemma supplies a column vector x whose image under the actual truncated matrix agrees row by row with the packet map of P. Therefore the actual matrix sends x to y, proving surjectivity. The remaining child theorem is the coefficient identity relating the formal logarithmic jet to the finite truncated matrix.",
+      "created_at": "2026-10-07T19:49:57.605995+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "submission_id": "9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "parent_theorem_id": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "This sketch introduces a new, explicitly open pi-specific obligation: for every exponent nu > 2, both rational errors at the adjacent numerators floor(q*pi) and floor(q*pi)+1 have the stated power lower bound for all sufficiently large natural denominators q >= 2. It does not assert that this analytic obligation has been proved.\r\n\r\nThe complete Lean reduction proves that these two bounds imply the original arbitrary-integer-numerator bound. Positive q preserves order on division. The floor inequalities put pi between the two rational endpoints. If p <= floor(q*pi), the lower endpoint's error is at most the error at p/q. Otherwise floor(q*pi)+1 <= p, and the upper endpoint's error is at most that error. The reduction then uses the already proved natural/integer threshold conversion and the already proved conditional irrationality-exponent result to establish both conjuncts of the exact focused target.\r\n\r\nThis differs from the existing natural-denominator sketch by removing the arbitrary-numerator quantifier from the remaining analytic obligation and proving the bracketing reduction. The proposed child remains open; no unconditional solution of the pi irrationality-exponent problem is claimed. The declaration and full reduction have been compiled locally with Lean 4.33.1 and the mission's pinned Mathlib; the runner must still perform its full dependency, kernel and semantic checks before publication.\r\n",
+      "created_at": "2026-10-11T02:57:15.22988+00:00",
+      "child_count": 3,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-a83bac8c-ec97-4218-8fbd-c8cd3260e342",
+      "submission_id": "a83bac8c-ec97-4218-8fbd-c8cd3260e342",
+      "parent_theorem_id": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "The determinant estimate follows from two reusable bounds. The first child theorem bounds the norm of any finite square complex determinant by the product of its row sums of entry norms. The second child theorem supplies the analytic estimate for each row of this selected minor: its row sum is at most $\\\\exp(H C_d(H))$, where $C_d(H)$ is exactly the parent’s analytic error, remainder, and maximum of the collision and low-index terms.\n\nApplying the row estimate in every factor gives a product of $N(H)$ copies of $\\\\exp(H C_d(H))$. The identity $(\\\\exp x)^N=\\\\exp(Nx)$ then yields the target bound. The row estimate is an open child obligation, so this submission is a proof sketch depending on that analytic bridge.",
+      "created_at": "2026-10-07T19:51:15.417753+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-aff010c6-1343-4caf-b42c-62ed9c3eadf8",
+      "submission_id": "aff010c6-1343-4caf-b42c-62ed9c3eadf8",
+      "parent_theorem_id": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "status": "SKETCH_ACCEPTED",
+      "username": "Eyal1990",
+      "explanation": "The proof factors the transfer through the truncated logarithmic jet. The first helper identifies each matrix-vector product with the coefficient packet of the truncated jet. The second transfers surjectivity from the full formal-log packet map to the truncated packet map: the difference is an invertible formal shift by logarithmic tails, and the cutoff bound puts those tails in the weighted ideal. Given a desired row vector, choose a weighted polynomial realizing its truncated packet and use that polynomial coefficient vector as a matrix preimage. This route uses the truncated-jet coefficient identity and shift transfer, and avoids the disproven pointwise equality between full and truncated jets.",
+      "created_at": "2026-10-08T06:36:13.088114+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "submission_id": "bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "parent_theorem_id": "733008a0-daa2-4420-858d-db732aa4313d",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Dirichlet approximation supplies infinitely many rational approximations to an irrational $x$ with error below the reciprocal square of the reduced denominator. Removing the finite set with denominator at most one leaves infinitely many approximations satisfying the shared definition at exponent $2$; irrationality guarantees their errors are positive. Hence $2$ belongs to the set of approximation exponents.\n\nFor any $\\nu>2$, the assumed eventual lower bound gives a threshold $Q$. A good approximation at exponent $\\nu$ must have denominator below $Q$, since otherwise its strict upper bound on the error contradicts the assumed lower bound. Its error is also less than $1$, so the imported bounded-denominator finiteness lemma shows there are only finitely many such rational approximations. Thus no exponent above $2$ belongs to the approximation-exponent set.\n\nThe set contains $2$ and is bounded above by $2$. Its real supremum is therefore exactly $2$. The finite-denominator result is a separately verified, reusable dependency; the irrationality and eventual-bound hypotheses remain explicit in this theorem.\n\nSource: OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, `OAI/NumberTheory/PiExponent/Approximation/Exponent.lean`. The proof body is preserved by compiler-guided extraction and checked against the mission's Mathlib environment.",
+      "created_at": "2026-10-07T07:03:47.598651+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "submission_id": "ea769243-783f-43ab-9a89-ef1793c87b54",
+      "parent_theorem_id": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "Dirichlet approximation supplies infinitely many rational numbers with error below the reciprocal square of the reduced denominator. The imported finiteness lemma removes the finitely many approximations with denominator at most one and error less than one. Irrationality ensures that the remaining errors are positive. Rewriting the reciprocal square as the real power with exponent minus two gives membership in the shared approximation-exponent set.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:07:39.717982+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "submission_id": "ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "parent_theorem_id": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "status": "ACCEPTED",
+      "username": "marwahaha",
+      "explanation": "For the chosen exponent, take the threshold supplied by the eventual lower bound. Every good approximation must have denominator below that threshold: a larger denominator would make its strict approximation inequality contradict the assumed lower bound. The error is less than one because the denominator is positive and the exponent is greater than two. The imported bounded-denominator finiteness theorem then bounds the set of good approximations by a finite set.\n\nSource: OpenAI math commit adc7f1241b42e322a6451854ab7e4b4c146bf78a, OAI/NumberTheory/PiExponent/Approximation/Exponent.lean. The original proof body is preserved by compiler-guided extraction.",
+      "created_at": "2026-10-07T07:07:25.075978+00:00",
+      "child_count": 2,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "target": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "kind": "sketch"
+    },
+    {
+      "source": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "target": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-7e2032bf-c97d-4115-9caf-a734e883dd72",
+      "target": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "kind": "sketch"
+    },
+    {
+      "source": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "target": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-12cb7def-e37d-4c8c-89f0-2950e8f320b4",
+      "target": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "kind": "sketch"
+    },
+    {
+      "source": "a65c6978-0919-4c12-97db-2beaaec550ec",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "target": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-9d446c64-bc36-4a0b-8ef1-76314fa097e1",
+      "target": "5f472fc7-4c4f-407f-ac60-4bbaa407d996",
+      "kind": "sketch"
+    },
+    {
+      "source": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "target": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "kind": "sketch"
+    },
+    {
+      "source": "97a33302-16bc-4887-9f08-17adc9990640",
+      "target": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-15189284-f270-4f09-9af5-5ef49ae63a14",
+      "target": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "kind": "sketch"
+    },
+    {
+      "source": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "target": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-033cfaaa-7a8c-4c6a-a02f-e67d90b7df01",
+      "target": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "kind": "sketch"
+    },
+    {
+      "source": "733008a0-daa2-4420-858d-db732aa4313d",
+      "target": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-8df6373e-5c08-4102-a5a1-b2ee59817630",
+      "target": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "kind": "sketch"
+    },
+    {
+      "source": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "1a21b159-35ef-490d-8259-021afd876d54",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+      "target": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-148cea1b-9371-49a6-8d5f-ac4aa6050acc",
+      "target": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "target": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-367d02c9-9fb9-4e53-9b66-cfe5230211ee",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-bf623eb4-230e-45f9-b474-2a87e9a97e71",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-ff1540c7-c7d6-43b6-a02c-8e095125b2e2",
+      "target": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "kind": "sketch"
+    },
+    {
+      "source": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "target": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+      "kind": "sketch"
+    },
+    {
+      "source": "83845777-56ae-405e-b13a-375abcd494f1",
+      "target": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-74da2c65-1f0f-43ef-9028-b13c4ff66951",
+      "target": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "kind": "sketch"
+    },
+    {
+      "source": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+      "target": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+      "kind": "sketch"
+    },
+    {
+      "source": "936f9606-5863-4abb-9e4d-c55f5f8ef043",
+      "target": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-6804deab-1601-4556-9b2d-020a20800796",
+      "target": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "kind": "sketch"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "kind": "sketch"
+    },
+    {
+      "source": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "target": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-ea769243-783f-43ab-9a89-ef1793c87b54",
+      "target": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "kind": "sketch"
+    },
+    {
+      "source": "41ad03fb-e224-4cbd-9e92-f864df11005d",
+      "target": "sketch-aff010c6-1343-4caf-b42c-62ed9c3eadf8",
+      "kind": "sketch"
+    },
+    {
+      "source": "d0d1afad-8cdf-4969-ad45-60f9f32d35e6",
+      "target": "sketch-aff010c6-1343-4caf-b42c-62ed9c3eadf8",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-aff010c6-1343-4caf-b42c-62ed9c3eadf8",
+      "target": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "kind": "sketch"
+    },
+    {
+      "source": "7769fb08-f620-4843-aa1f-9ade31c94fa5",
+      "target": "sketch-970c1c98-e835-43f7-ba02-d5eec7176d25",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-970c1c98-e835-43f7-ba02-d5eec7176d25",
+      "target": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "kind": "sketch"
+    },
+    {
+      "source": "5b9ab31c-d24b-4336-adec-68429fdf66ff",
+      "target": "sketch-a83bac8c-ec97-4218-8fbd-c8cd3260e342",
+      "kind": "sketch"
+    },
+    {
+      "source": "84aa3fa2-09a3-4b89-af10-e9e55edca8af",
+      "target": "sketch-a83bac8c-ec97-4218-8fbd-c8cd3260e342",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-a83bac8c-ec97-4218-8fbd-c8cd3260e342",
+      "target": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+      "kind": "sketch"
+    },
+    {
+      "source": "443b7bc2-5366-4875-969c-729f392f870d",
+      "target": "sketch-640ff9ff-8758-4b58-9aa3-3c5494681472",
+      "kind": "sketch"
+    },
+    {
+      "source": "77135f94-b700-497a-9598-1304d5238120",
+      "target": "sketch-640ff9ff-8758-4b58-9aa3-3c5494681472",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-640ff9ff-8758-4b58-9aa3-3c5494681472",
+      "target": "83845777-56ae-405e-b13a-375abcd494f1",
+      "kind": "sketch"
+    },
+    {
+      "source": "47a8e938-d9f9-4663-8a39-bfe20bb0c189",
+      "target": "406736ed-98ce-4177-b97f-24de96ba4188",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "4f9a0257-b61f-4860-8324-60502061abcc",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "e25cf846-f8a9-46b4-84f2-45e5eadc9701",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "f6226cea-1cdb-4891-8f38-f628fef25206",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "03a7c22a-56ee-44f4-ba9c-3aa11221c6d8",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "733008a0-daa2-4420-858d-db732aa4313d",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "0e39fe8e-ecf1-493e-879d-f84ba547389d",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "1a21b159-35ef-490d-8259-021afd876d54",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "1ca41a5f-a862-4d4d-a3a4-ad4c5a4fa70b",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "1f7002fc-342e-4696-a3d2-539dbdaa1b2a",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "67192408-1d0d-4b30-ab99-7919c1c13b59",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "6a1e361b-a076-4905-946e-fcbbffca3403",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "bd566832-025d-4e8f-95cf-c42d37b6db92",
+      "kind": "structural"
+    },
+    {
+      "source": "036f42cc-1c09-4e3b-b6c0-81e678bf7d9d",
+      "target": "c67d99ad-d5f8-4d1f-b110-4a9e56bc199b",
+      "kind": "structural"
+    },
+    {
+      "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+      "target": "4b414961-3af3-45a7-b5fa-d217d37922d3",
+      "kind": "structural"
+    },
+    {
+      "source": "1af087c1-f65e-41b5-90e3-ea99fecb6829",
+      "target": "5c1bf3a1-b882-42ee-8bc3-4ede8ba9371f",
+      "kind": "structural"
+    },
+    {
+      "source": "93cdde3e-6e69-4221-b4dc-f037f29d324d",
+      "target": "83845777-56ae-405e-b13a-375abcd494f1",
+      "kind": "structural"
+    },
+    {
+      "source": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "target": "936f9606-5863-4abb-9e4d-c55f5f8ef043",
+      "kind": "structural"
+    },
+    {
+      "source": "658ccfed-c1c8-4674-bbdd-50c0ace16714",
+      "target": "cbf7eeb1-95ec-4611-938f-2f3704818cb1",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": true,
+  "has_hidden_deprecated_sketches": true
+}

@@ -1,0 +1,15 @@
+{
+  "id": "7dbeddfc-2c6e-470f-b624-0a470f5be646",
+  "theorem_id": "10030d11-4f11-4672-b9ea-ef430cea49ea",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:13:35.881765+00:00",
+  "updated_at": "2026-10-15T07:16:12.347086+00:00",
+  "explanation": "Provides exact selected-bank address bounds without including absolute pointers in a numeric growth envelope. Both pointer cells and both full stage-family extents are bounded, which is needed when later calls preserve the occupied prefix.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.source_bounds",
+  "theorem_title": "Both selected source-stage families lie inside their bank",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.source_bounds {base NB NC g h J cut i s : \u2115}\n    (hi : i < _root_.ThreeSum.SourceBandPairSlices.count NB NC g)\n    (hs : s < _root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalog.count h J) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.leftCell base h J cut i s < _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish base NB NC g h J cut \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.rightCell base h J cut i s < _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish base NB NC g h J cut \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.leftBase base h J cut i s+(J*(464*h)+1)*_root_.ThreeSum.SubsetAddress.downsetCap (J*(464*h)) cut \u2264\n      _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish base NB NC g h J cut \u2227\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingBankSources.rightBase base h J cut i s+(J*(464*h)+1)*_root_.ThreeSum.SubsetAddress.downsetCap (J*(464*h)) cut \u2264\n      _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandBankData.finish base NB NC g h J cut := by sorry",
+  "theorem_natural_language_statement": "Let $b,N_B,N_C,g,h,J,c,i,s\\in\\mathbb N$ be the bank base, original source sizes, band width, local parameters, source cutoff, band index, and occurrence index. Assume $i$ is below the common-band slice count and $s$ below the occurrence-bank count. Both stage-pointer cells are strictly before the bank finish; each selected left and right stage family, of extent $(464hJ+1)D(464hJ,c)$, ends at or before that finish, where $D$ is the compact downset capacity.\n\nProvides exact selected-bank address bounds without including absolute pointers in a numeric growth envelope. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

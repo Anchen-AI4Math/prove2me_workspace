@@ -1,0 +1,14 @@
+theorem cleared_shifted_log_trunc_mem (T q : ℕ) (z : GaussianInt) :
+    Polynomial.C (Nat.lcmUpto T : ℂ) *
+      (Polynomial.C (z : ℂ) + Polynomial.C (q : ℂ) *
+        PowerSeries.trunc T (PowerSeries.log ℂ)) ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range := by
+  let S := (Polynomial.mapRingHom GaussianInt.toComplex).range
+  have hL : Polynomial.C (Nat.lcmUpto T : ℂ) ∈ S := by
+    simp
+  have hq : Polynomial.C (q : ℂ) ∈ S := by
+    simp
+  have hlog := cleared_log_trunc_mem T
+  have h := S.add_mem (S.mul_mem hL (gaussian_C_mem z)) (S.mul_mem hq hlog)
+  convert h using 1
+  ring

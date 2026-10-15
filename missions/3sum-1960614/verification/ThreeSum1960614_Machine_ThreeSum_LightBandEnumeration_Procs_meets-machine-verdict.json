@@ -1,0 +1,15 @@
+{
+  "id": "12a343d7-58b7-4265-8872-b3a8131cbe26",
+  "theorem_id": "1abda5f7-a973-49b6-9b0a-c893a3931939",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:44:34.806981+00:00",
+  "updated_at": "2026-10-15T07:49:03.590585+00:00",
+  "explanation": "Use the exact finite semantics and stored-array identities, compose the applicable verified component contracts, and retain the explicit runtime, memory, and original-index conditions. This enumeration contract supplies physical owner tables directly from bounded, stored band endpoints.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Procs.meets",
+  "theorem_title": "Enumerating the band-owner tables from physical endpoints",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Procs.meets {pMain al ah bl bh cl ch dst U d : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (R : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Procs P pMain) (A B C : _root_.ThreeSum.BandEnumeration.Family)\n    (hw : (lim.space : \u2124) \u2264 lim.word)\n    (hal : al+A.size \u2264 dst) (hah : ah+A.size \u2264 dst)\n    (hbl : bl+B.size \u2264 dst) (hbh : bh+B.size \u2264 dst)\n    (hcl : cl+C.size \u2264 dst) (hch : ch+C.size \u2264 dst)\n    (hspace : _root_.ThreeSum.LightBandEnumeration.space dst A.size B.size C.size \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightBandEnumeration.word A.size B.size C.size U : \u2124) \u2264 lim.word)\n    (hd : d+_root_.ThreeSum.LightBandEnumeration.width A.size B.size C.size+4 \u2264 lim.depth)\n    (hA : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.At \u03bc al ah A) (hB : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.At \u03bc bl bh B) (hC : _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.At \u03bc cl ch C)\n    (hAU : _root_.ThreeSum.LightBandEnumeration.Bounded A U) (hBU : _root_.ThreeSum.LightBandEnumeration.Bounded B U) (hCU : _root_.ThreeSum.LightBandEnumeration.Bounded C U) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [al,ah,bl,bh,cl,ch,A.size,B.size,C.size,dst] \u03bc\n      (_root_.ThreeSum.LightBandEnumeration.time A.size B.size C.size)\n      (fun r \u03bc' => r = (_root_.ThreeSum.LightBandEnumeration.count A.size B.size C.size : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.LightBandEnumeration.Tables \u03bc' dst A B C \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bc' dst) := by sorry",
+  "theorem_natural_language_statement": "Let bounded families $A,B,C$ have stored lower and upper endpoint arrays preceding destination $o$. Under the complete owner-enumeration placement, layout, space, word, and width-dependent depth requirements, the program constructs their exact owner tables, returns the prescribed table count, and preserves memory below $o$, within the finite enumeration time.\n\nThis enumeration contract supplies physical owner tables directly from bounded, stored band endpoints.",
+  "theorem_status": "Proved"
+}

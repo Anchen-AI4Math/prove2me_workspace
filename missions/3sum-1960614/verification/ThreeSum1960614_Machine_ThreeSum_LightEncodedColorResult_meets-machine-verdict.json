@@ -1,0 +1,15 @@
+{
+  "id": "d14cd4cd-1b5d-4d0c-884d-c13c878edf20",
+  "theorem_id": "e8c793c2-c12f-4f4d-bbab-a6e832fdaa21",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:34:04.908483+00:00",
+  "updated_at": "2026-10-15T07:36:01.331953+00:00",
+  "explanation": "Execute the stores and check their safety and costs. This record-writing contract exposes the completed selected-color pipeline through actual stored pointers and counts.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorResult.meets",
+  "theorem_title": "Materializing the encoded-color result header",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightEncodedColorResult.meets {pMain prime cover wanted controls bank out len p : \u2115} {\u03bc : \u2115 \u2192 \u2124}\n    (main : P[pMain]?=some _root_.ThreeSum1960614.Machine.ThreeSum.LightEncodedColorResult.body) (hw : (lim.space : \u2124) \u2264 lim.word)\n    (hprime : prime \u2264 out) (hcover : cover \u2264 out) (hwanted : wanted \u2264 out)\n    (hcontrols : controls \u2264 out) (hbank : bank \u2264 out)\n    (hspace : out+8 \u2264 lim.space) (hlen : (len : \u2124) \u2264 lim.word) (hp : (p : \u2124) \u2264 lim.word) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [prime,cover,wanted,controls,bank,out,len,p] \u03bc 600\n      (fun r \u03bd => r=(out : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.Seg \u03bd out (_root_.ThreeSum.LightEncodedColorResult.values prime cover wanted controls bank out len p) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd out) := by sorry",
+  "theorem_natural_language_statement": "Suppose the prime, cover, wanted, control, and bank pointers precede output address $o$, eight output cells fit, the length and modulus fit words, and addresses fit words. The result-header procedure returns $o$ in at most 600 light steps, writes the specified eight-cell record, and preserves memory below $o$.\n\nThis record-writing contract exposes the completed selected-color pipeline through actual stored pointers and counts.",
+  "theorem_status": "Proved"
+}

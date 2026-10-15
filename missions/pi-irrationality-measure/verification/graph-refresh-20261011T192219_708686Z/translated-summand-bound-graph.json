@@ -1,0 +1,126 @@
+{
+  "http_status": 200,
+  "path": "/theorems/4340823c-de0b-446e-9161-c7ddd0bcb17a/graph",
+  "raw_body_utf8": "{\"root_id\":\"4340823c-de0b-446e-9161-c7ddd0bcb17a\",\"nodes\":[{\"node_type\":\"theorem\",\"theorem_id\":\"4340823c-de0b-446e-9161-c7ddd0bcb17a\",\"theorem_name\":\"OAI.PiExponent.DeterminantAnalyticBound.translated_summand_bound\",\"theorem_title\":\"Exponential bound for a translated scalar–determinant summand\",\"status\":\"Proved\",\"formal_statement\":\"theorem OAI.PiExponent.DeterminantAnalyticBound.translated_summand_bound\\r\\n    {ι κ : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]\\r\\n    (group : ι → κ) (weight : κ → ℝ) (scalar determinant : ℂ)\\r\\n    {H A eta nu c N bbar Etr Ehol rho : ℝ}\\r\\n    (hH : 0 < H) (hA : 0 ≤ A) (heta : 0 ≤ eta) (hnu : 0 ≤ nu)\\r\\n    (hc : 0 ≤ c) (hN : 0 < N) (hw : ∀ a, 0 ≤ weight a)\\r\\n    (hbeta : (Fintype.card ι : ℝ) * H * bbar ≤ ∑ i, weight (group i))\\r\\n    (hcap : (((Finset.univ : Finset κ).filter (fun a => weight a ≤ A * H)).card : ℝ) ≤ N)\\r\\n    (hscalar : ‖scalar‖ ≤ Real.exp\\r\\n      (-nu * ((∑ i, weight (group i)) - (Fintype.card ι : ℝ) * H * bbar) +\\r\\n        (Fintype.card ι : ℝ) * H * Etr))\\r\\n    (hdet : ‖determinant‖ ≤ Real.exp\\r\\n      (-c * (∑ a, (Collision.multiplicity Finset.univ group a : ℝ) ^ 2) +\\r\\n        (Fintype.card ι : ℝ) * H * (Ehol + rho))) :\\r\\n    ‖scalar * determinant‖ ≤ Real.exp ((Fintype.card ι : ℝ) * H *\\r\\n      (Etr + Ehol + rho + max (-c * eta ^ 2 * (Fintype.card ι : ℝ) / (H * N))\\r\\n        (-nu * (A * (1 - eta) - bbar)))) := by\\n  sorry\\n\",\"natural_language_statement\":\"Let finite index types $\\\\iota,\\\\kappa$, a grouping $g:\\\\iota\\\\to\\\\kappa$, nonnegative group weights $w$, and complex numbers $s,d$ satisfy the original scalar and determinant exponential bounds. Assume $H,N>0$, $A,\\\\eta,\\\\nu,c\\\\ge0$, total weight at least $|\\\\iota|H\\\\bar b$, and at most $N$ groups of weight at most $AH$. Then\\n\\n$$\\\\|sd\\\\|\\\\le \\\\exp\\\\!\\\\left(|\\\\iota|H\\\\left[E_{\\\\mathrm{tr}}+E_{\\\\mathrm{hol}}+\\\\rho+\\\\max\\\\!\\\\left\\\\{-\\\\frac{c\\\\eta^2|\\\\iota|}{HN},-\\\\nu(A(1-\\\\eta)-\\\\bar b)\\\\right\\\\}\\\\right]\\\\right).$$\\n\\nThe determinant hypothesis contains the collision occupancy sum $\\\\sum_{a\\\\in\\\\kappa}m(g,a)^2$, where $m(g,a)=\\\\#\\\\{i:g(i)=a\\\\}$. The scalar hypothesis contains $-\\\\nu(\\\\sum_i w(g(i))-|\\\\iota|H\\\\bar b)+|\\\\iota|HE_{\\\\mathrm{tr}}$, and the determinant hypothesis contains $-c\\\\sum_a m(g,a)^2+|\\\\iota|H(E_{\\\\mathrm{hol}}+\\\\rho)$. No sign assumption on $E_{\\\\mathrm{tr}},E_{\\\\mathrm{hol}},\\\\rho,\\\\bar b$ is added.\",\"created_at\":\"2026-10-11T19:20:18.176374+00:00\",\"vote_count\":0,\"preamble\":\"import Mathlib.Algebra.BigOperators.Group.Finset.Basic\\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\\nimport Mathlib.Analysis.SpecialFunctions.Exp\\nimport Mathlib.Tactic\\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity\\n\\nopen scoped BigOperators\\n\\nopen OAI.PiExponent\\n\\n\",\"source\":\"https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean#L80-L103\",\"tags\":[\"finite-counting\",\"number-theory\",\"openai-pi-exponent-017\"],\"audits\":[],\"created_by\":\"418b0711-62a5-416a-ba5d-876ae8758fe3\",\"created_by_username\":\"Yuxuan Xu\",\"deprecated_at\":null,\"mathlib_rev\":\"0df444a360eaa60ab8c11dca51a86af692955474\",\"env_display_name\":\"Mathlib 0df444a (Lean v4.33.1)\",\"has_more_children\":false,\"has_more_parents\":false},{\"node_type\":\"theorem\",\"theorem_id\":\"84999320-3725-4c17-b1cb-428d9f92f6cc\",\"theorem_name\":\"OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le\",\"theorem_title\":\"A lower bound for a nonnegative weighted sum from a low-weight count\",\"status\":\"Proved\",\"formal_statement\":\"theorem OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le {ι : Type*}\\r\\n    (rows : Finset ι) (weight : ι → ℝ) {cutoff η : ℝ}\\r\\n    (hcutoff : 0 ≤ cutoff) (hnonneg : ∀ i ∈ rows, 0 ≤ weight i)\\r\\n    (hlow : ((rows.filter fun i => weight i ≤ cutoff).card : ℝ) ≤\\r\\n      η * rows.card) :\\r\\n    cutoff * (1 - η) * rows.card ≤ ∑ i ∈ rows, weight i := by sorry\\n\",\"natural_language_statement\":\"Let $R$ be a finite set of indices, let $w$ assign a real weight to each index, and let $c,\\\\eta\\\\in\\\\mathbb R$. Assume $c\\\\ge 0$ and $w(i)\\\\ge 0$ for every $i\\\\in R$. If the number of indices with weight at most $c$ satisfies $$\\\\#\\\\{i\\\\in R:w(i)\\\\le c\\\\}\\\\le\\\\eta\\\\,\\\\#R,$$ then $$c(1-\\\\eta)\\\\,\\\\#R\\\\le\\\\sum_{i\\\\in R}w(i).$$ No separate restriction on $\\\\eta$ is required. This finite counting estimate turns an upper bound on the number of low-weight indices into a lower bound for the total weight.\",\"created_at\":\"2026-10-08T08:35:44.174477+00:00\",\"vote_count\":0,\"preamble\":\"import Mathlib.Algebra.MvPolynomial.Eval\\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\\nimport Mathlib.Analysis.Complex.CauchyIntegral\\nimport Mathlib.Analysis.Complex.TaylorSeries\\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\\nimport Mathlib.Analysis.SpecificLimits.Basic\\nimport Mathlib.Analysis.SpecificLimits.Normed\\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\\nimport Mathlib.RingTheory.PowerSeries.Log\\nimport Mathlib.RingTheory.PowerSeries.Order\\nimport Mathlib.RingTheory.PowerSeries.Trunc\\nimport Mathlib.Tactic\\nimport Mathlib.Topology.Instances.Matrix\\n\\nsection\\n\\r\\n\\r\\nnamespace OAI\\r\\n\\r\\nopen scoped BigOperators\\r\\n\\r\\nnamespace PiExponent.Collision\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\ntheorem cutoff_mul_high_count_le_sum {ι : Type*}\\r\\n    (rows : Finset ι) (weight : ι → ℝ) (cutoff : ℝ)\\r\\n    (hnonneg : ∀ i ∈ rows, 0 ≤ weight i) :\\r\\n    cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) ≤\\r\\n      ∑ i ∈ rows, weight i := by\\r\\n  classical\\r\\n  calc\\r\\n    _ = ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), cutoff := by\\r\\n      simp [mul_comm]\\r\\n    _ ≤ ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), weight i := by\\r\\n      apply Finset.sum_le_sum\\r\\n      intro i hi\\r\\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\\r\\n    _ ≤ ∑ i ∈ rows, weight i := by\\r\\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\\r\\n      intro i hi _\\r\\n      exact hnonneg i hi\\r\\n\\r\\n\\r\\n\\r\\nend PiExponent.Collision\\r\\n\\r\\nend OAI\\r\\n\\nend\\n\\nopen scoped BigOperators\\n\",\"source\":\"https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L137-L154\",\"tags\":[\"finite-counting\",\"openai-math-017\",\"pi-irrationality-measure\",\"weighted-sums\"],\"audits\":[],\"created_by\":\"418b0711-62a5-416a-ba5d-876ae8758fe3\",\"created_by_username\":\"Yuxuan Xu\",\"deprecated_at\":null,\"mathlib_rev\":\"0df444a360eaa60ab8c11dca51a86af692955474\",\"env_display_name\":\"Mathlib 0df444a (Lean v4.33.1)\",\"has_more_children\":false,\"has_more_parents\":false},{\"node_type\":\"theorem\",\"theorem_id\":\"9e7cfb76-3480-4078-b240-661c13a8f231\",\"theorem_name\":\"OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity\",\"theorem_title\":\"Multiplicity of a group in a finite row set\",\"status\":\"Definition\",\"formal_statement\":\"\",\"natural_language_statement\":\"Let $\\\\iota$ and $\\\\kappa$ be types, let $s\\\\subset\\\\iota$ be finite, and let $g:\\\\iota\\\\to\\\\kappa$. For $a\\\\in\\\\kappa$, define\\n\\n$$m_s(g,a)=\\\\#\\\\{i\\\\in s:g(i)=a\\\\}. $$\\n\\nThe definition assumes decidable equality on $\\\\kappa$. It counts how many rows occupy each group and provides the original data for collision bounds. No finiteness assumption on either ambient type is required.\",\"created_at\":\"2026-10-11T18:55:24.236989+00:00\",\"vote_count\":0,\"definition\":\"import Mathlib.Data.Finset.Card\\nimport Mathlib.Algebra.BigOperators.Group.Finset.Defs\\n\\nnamespace OAI.PiExponent.Collision\\n\\nopen scoped BigOperators\\n\\ndef multiplicity {ι κ : Type*} [DecidableEq κ]\\r\\n    (rows : Finset ι) (group : ι → κ) (a : κ) : ℕ :=\\r\\n  (rows.filter fun i => group i = a).card\\n\\nend OAI.PiExponent.Collision\\n\",\"source\":\"https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L34-L36\",\"tags\":[\"combinatorics\",\"number-theory\",\"openai-pi-exponent-017\"],\"audits\":[],\"created_by\":\"418b0711-62a5-416a-ba5d-876ae8758fe3\",\"created_by_username\":\"Yuxuan Xu\",\"deprecated_at\":null,\"mathlib_rev\":\"0df444a360eaa60ab8c11dca51a86af692955474\",\"env_display_name\":\"Mathlib 0df444a (Lean v4.33.1)\",\"has_more_children\":false,\"has_more_parents\":false},{\"node_type\":\"sketch\",\"node_id\":\"sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e\",\"submission_id\":\"6f3fb375-a5ab-4052-a59d-90a06cba315e\",\"parent_theorem_id\":\"4340823c-de0b-446e-9161-c7ddd0bcb17a\",\"status\":\"ACCEPTED\",\"username\":\"Yuxuan Xu\",\"explanation\":\"Partition the groups at weight AH. If low groups carry at least eta times the row mass, Cauchy–Schwarz forces the collision sum to be large. Otherwise the accepted finite weighted-sum lower bound forces a large total weight. Combine this two-alternative exponent estimate with norm multiplicativity and the two original exponential bounds.\",\"created_at\":\"2026-10-11T19:20:37.009443+00:00\",\"child_count\":2,\"deprecated_at\":null}],\"edges\":[{\"source\":\"84999320-3725-4c17-b1cb-428d9f92f6cc\",\"target\":\"sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e\",\"kind\":\"sketch\"},{\"source\":\"9e7cfb76-3480-4078-b240-661c13a8f231\",\"target\":\"sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e\",\"kind\":\"sketch\"},{\"source\":\"sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e\",\"target\":\"4340823c-de0b-446e-9161-c7ddd0bcb17a\",\"kind\":\"sketch\"},{\"source\":\"9e7cfb76-3480-4078-b240-661c13a8f231\",\"target\":\"4340823c-de0b-446e-9161-c7ddd0bcb17a\",\"kind\":\"structural\"}],\"has_hidden_deprecated\":false,\"has_hidden_deprecated_sketches\":false}",
+  "raw_body_sha256": "9736cc6e57563731ba33d08156b3d63f2e7919e7d7cacbbc74ec35d559764a85",
+  "body": {
+    "root_id": "4340823c-de0b-446e-9161-c7ddd0bcb17a",
+    "nodes": [
+      {
+        "node_type": "theorem",
+        "theorem_id": "4340823c-de0b-446e-9161-c7ddd0bcb17a",
+        "theorem_name": "OAI.PiExponent.DeterminantAnalyticBound.translated_summand_bound",
+        "theorem_title": "Exponential bound for a translated scalar–determinant summand",
+        "status": "Proved",
+        "formal_statement": "theorem OAI.PiExponent.DeterminantAnalyticBound.translated_summand_bound\r\n    {ι κ : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]\r\n    (group : ι → κ) (weight : κ → ℝ) (scalar determinant : ℂ)\r\n    {H A eta nu c N bbar Etr Ehol rho : ℝ}\r\n    (hH : 0 < H) (hA : 0 ≤ A) (heta : 0 ≤ eta) (hnu : 0 ≤ nu)\r\n    (hc : 0 ≤ c) (hN : 0 < N) (hw : ∀ a, 0 ≤ weight a)\r\n    (hbeta : (Fintype.card ι : ℝ) * H * bbar ≤ ∑ i, weight (group i))\r\n    (hcap : (((Finset.univ : Finset κ).filter (fun a => weight a ≤ A * H)).card : ℝ) ≤ N)\r\n    (hscalar : ‖scalar‖ ≤ Real.exp\r\n      (-nu * ((∑ i, weight (group i)) - (Fintype.card ι : ℝ) * H * bbar) +\r\n        (Fintype.card ι : ℝ) * H * Etr))\r\n    (hdet : ‖determinant‖ ≤ Real.exp\r\n      (-c * (∑ a, (Collision.multiplicity Finset.univ group a : ℝ) ^ 2) +\r\n        (Fintype.card ι : ℝ) * H * (Ehol + rho))) :\r\n    ‖scalar * determinant‖ ≤ Real.exp ((Fintype.card ι : ℝ) * H *\r\n      (Etr + Ehol + rho + max (-c * eta ^ 2 * (Fintype.card ι : ℝ) / (H * N))\r\n        (-nu * (A * (1 - eta) - bbar)))) := by\n  sorry\n",
+        "natural_language_statement": "Let finite index types $\\iota,\\kappa$, a grouping $g:\\iota\\to\\kappa$, nonnegative group weights $w$, and complex numbers $s,d$ satisfy the original scalar and determinant exponential bounds. Assume $H,N>0$, $A,\\eta,\\nu,c\\ge0$, total weight at least $|\\iota|H\\bar b$, and at most $N$ groups of weight at most $AH$. Then\n\n$$\\|sd\\|\\le \\exp\\!\\left(|\\iota|H\\left[E_{\\mathrm{tr}}+E_{\\mathrm{hol}}+\\rho+\\max\\!\\left\\{-\\frac{c\\eta^2|\\iota|}{HN},-\\nu(A(1-\\eta)-\\bar b)\\right\\}\\right]\\right).$$\n\nThe determinant hypothesis contains the collision occupancy sum $\\sum_{a\\in\\kappa}m(g,a)^2$, where $m(g,a)=\\#\\{i:g(i)=a\\}$. The scalar hypothesis contains $-\\nu(\\sum_i w(g(i))-|\\iota|H\\bar b)+|\\iota|HE_{\\mathrm{tr}}$, and the determinant hypothesis contains $-c\\sum_a m(g,a)^2+|\\iota|H(E_{\\mathrm{hol}}+\\rho)$. No sign assumption on $E_{\\mathrm{tr}},E_{\\mathrm{hol}},\\rho,\\bar b$ is added.",
+        "created_at": "2026-10-11T19:20:18.176374+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Order.BigOperators.Ring.Finset\nimport Mathlib.Analysis.SpecialFunctions.Exp\nimport Mathlib.Tactic\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity\n\nopen scoped BigOperators\n\nopen OAI.PiExponent\n\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean#L80-L103",
+        "tags": [
+          "finite-counting",
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "84999320-3725-4c17-b1cb-428d9f92f6cc",
+        "theorem_name": "OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le",
+        "theorem_title": "A lower bound for a nonnegative weighted sum from a low-weight count",
+        "status": "Proved",
+        "formal_statement": "theorem OAI.PiExponent.Collision.sum_weight_ge_of_low_count_le {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) {cutoff η : ℝ}\r\n    (hcutoff : 0 ≤ cutoff) (hnonneg : ∀ i ∈ rows, 0 ≤ weight i)\r\n    (hlow : ((rows.filter fun i => weight i ≤ cutoff).card : ℝ) ≤\r\n      η * rows.card) :\r\n    cutoff * (1 - η) * rows.card ≤ ∑ i ∈ rows, weight i := by sorry\n",
+        "natural_language_statement": "Let $R$ be a finite set of indices, let $w$ assign a real weight to each index, and let $c,\\eta\\in\\mathbb R$. Assume $c\\ge 0$ and $w(i)\\ge 0$ for every $i\\in R$. If the number of indices with weight at most $c$ satisfies $$\\#\\{i\\in R:w(i)\\le c\\}\\le\\eta\\,\\#R,$$ then $$c(1-\\eta)\\,\\#R\\le\\sum_{i\\in R}w(i).$$ No separate restriction on $\\eta$ is required. This finite counting estimate turns an upper bound on the number of low-weight indices into a lower bound for the total weight.",
+        "created_at": "2026-10-08T08:35:44.174477+00:00",
+        "vote_count": 0,
+        "preamble": "import Mathlib.Algebra.MvPolynomial.Eval\nimport Mathlib.Algebra.Order.Antidiag.FinsuppEquiv\nimport Mathlib.Analysis.Asymptotics.SpecificAsymptotics\nimport Mathlib.Analysis.Complex.CauchyIntegral\nimport Mathlib.Analysis.Complex.TaylorSeries\nimport Mathlib.Analysis.SpecialFunctions.Complex.Analytic\nimport Mathlib.Analysis.SpecialFunctions.Complex.LogBounds\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.LinearAlgebra.Matrix.Determinant.Basic\nimport Mathlib.RingTheory.PowerSeries.Log\nimport Mathlib.RingTheory.PowerSeries.Order\nimport Mathlib.RingTheory.PowerSeries.Trunc\nimport Mathlib.Tactic\nimport Mathlib.Topology.Instances.Matrix\n\nsection\n\r\n\r\nnamespace OAI\r\n\r\nopen scoped BigOperators\r\n\r\nnamespace PiExponent.Collision\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntheorem cutoff_mul_high_count_le_sum {ι : Type*}\r\n    (rows : Finset ι) (weight : ι → ℝ) (cutoff : ℝ)\r\n    (hnonneg : ∀ i ∈ rows, 0 ≤ weight i) :\r\n    cutoff * ((rows.filter fun i => ¬ weight i ≤ cutoff).card : ℝ) ≤\r\n      ∑ i ∈ rows, weight i := by\r\n  classical\r\n  calc\r\n    _ = ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), cutoff := by\r\n      simp [mul_comm]\r\n    _ ≤ ∑ i ∈ rows.filter (fun i => ¬ weight i ≤ cutoff), weight i := by\r\n      apply Finset.sum_le_sum\r\n      intro i hi\r\n      exact le_of_lt (lt_of_not_ge (Finset.mem_filter.mp hi).2)\r\n    _ ≤ ∑ i ∈ rows, weight i := by\r\n      apply Finset.sum_le_sum_of_subset_of_nonneg (Finset.filter_subset _ rows)\r\n      intro i hi _\r\n      exact hnonneg i hi\r\n\r\n\r\n\r\nend PiExponent.Collision\r\n\r\nend OAI\r\n\nend\n\nopen scoped BigOperators\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L137-L154",
+        "tags": [
+          "finite-counting",
+          "openai-math-017",
+          "pi-irrationality-measure",
+          "weighted-sums"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "theorem",
+        "theorem_id": "9e7cfb76-3480-4078-b240-661c13a8f231",
+        "theorem_name": "OAI_NumberTheory_PiExponent_Analysis_CollisionCombinatorics_Multiplicity",
+        "theorem_title": "Multiplicity of a group in a finite row set",
+        "status": "Definition",
+        "formal_statement": "",
+        "natural_language_statement": "Let $\\iota$ and $\\kappa$ be types, let $s\\subset\\iota$ be finite, and let $g:\\iota\\to\\kappa$. For $a\\in\\kappa$, define\n\n$$m_s(g,a)=\\#\\{i\\in s:g(i)=a\\}. $$\n\nThe definition assumes decidable equality on $\\kappa$. It counts how many rows occupy each group and provides the original data for collision bounds. No finiteness assumption on either ambient type is required.",
+        "created_at": "2026-10-11T18:55:24.236989+00:00",
+        "vote_count": 0,
+        "definition": "import Mathlib.Data.Finset.Card\nimport Mathlib.Algebra.BigOperators.Group.Finset.Defs\n\nnamespace OAI.PiExponent.Collision\n\nopen scoped BigOperators\n\ndef multiplicity {ι κ : Type*} [DecidableEq κ]\r\n    (rows : Finset ι) (group : ι → κ) (a : κ) : ℕ :=\r\n  (rows.filter fun i => group i = a).card\n\nend OAI.PiExponent.Collision\n",
+        "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Analysis/CollisionCombinatorics.lean#L34-L36",
+        "tags": [
+          "combinatorics",
+          "number-theory",
+          "openai-pi-exponent-017"
+        ],
+        "audits": [],
+        "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+        "created_by_username": "Yuxuan Xu",
+        "deprecated_at": null,
+        "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+        "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+        "has_more_children": false,
+        "has_more_parents": false
+      },
+      {
+        "node_type": "sketch",
+        "node_id": "sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e",
+        "submission_id": "6f3fb375-a5ab-4052-a59d-90a06cba315e",
+        "parent_theorem_id": "4340823c-de0b-446e-9161-c7ddd0bcb17a",
+        "status": "ACCEPTED",
+        "username": "Yuxuan Xu",
+        "explanation": "Partition the groups at weight AH. If low groups carry at least eta times the row mass, Cauchy–Schwarz forces the collision sum to be large. Otherwise the accepted finite weighted-sum lower bound forces a large total weight. Combine this two-alternative exponent estimate with norm multiplicativity and the two original exponential bounds.",
+        "created_at": "2026-10-11T19:20:37.009443+00:00",
+        "child_count": 2,
+        "deprecated_at": null
+      }
+    ],
+    "edges": [
+      {
+        "source": "84999320-3725-4c17-b1cb-428d9f92f6cc",
+        "target": "sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e",
+        "kind": "sketch"
+      },
+      {
+        "source": "9e7cfb76-3480-4078-b240-661c13a8f231",
+        "target": "sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e",
+        "kind": "sketch"
+      },
+      {
+        "source": "sketch-6f3fb375-a5ab-4052-a59d-90a06cba315e",
+        "target": "4340823c-de0b-446e-9161-c7ddd0bcb17a",
+        "kind": "sketch"
+      },
+      {
+        "source": "9e7cfb76-3480-4078-b240-661c13a8f231",
+        "target": "4340823c-de0b-446e-9161-c7ddd0bcb17a",
+        "kind": "structural"
+      }
+    ],
+    "has_hidden_deprecated": false,
+    "has_hidden_deprecated_sketches": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "d6dcc1ee-50fb-4833-bd9d-17f89e1eb58c",
+  "theorem_id": "47bfb934-13c4-4bb2-8a6b-cdd72dfb83df",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:23:55.963546+00:00",
+  "updated_at": "2026-10-15T07:27:40.356534+00:00",
+  "explanation": "This replaces abstract source selection by a bounded actual execution before the original-value reporter.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSourceSelect.program_meets_fits",
+  "theorem_title": "Bounded execution of source-pointer selection",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightReportingSourceSelect.program_meets_fits {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {\u03bc : \u2115\u2192\u2124} {d pair bank cover srcB srcC i j code J dst : \u2115}\n    (X : _root_.ThreeSum.ReportingHostSourceSelection.Pointers) (H : _root_.ThreeSum.ReportingHostSourceSelection.HeaderReads \u03bc X pair bank cover i j code)\n    (hw : (lim.space : \u2124)\u2264lim.word)\n    (hs : _root_.ThreeSum.ReportingHostSourceSelection.Fits X pair bank cover srcB srcC i j code J dst lim.space) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingSourceSelect.program 0 d [pair,bank,cover,srcB,srcC,i,j,code,J,dst] \u03bc 6000\n      (fun result \u03bd => result=(dst : \u2124) \u2227 _root_.ThreeSum1960614.Machine.Light.SegN \u03bd dst (_root_.ThreeSum.ReportingHostSourceSelection.values X srcB srcC code J) \u2227\n        _root_.ThreeSum1960614.Machine.Light.SameOutside \u03bc \u03bd dst 15) := by sorry",
+  "theorem_natural_language_statement": "Let $\\lambda$ be run limits, $\\mu$ an integer memory, and $d$ a call depth. Fix source-pair, bank, cover and original B/C addresses, band indices $i,j$, an occurrence code, block count $J$, and destination $a$. Let $X$ be the pointer record whose required header reads hold in $\\mu$. Assume the address space fits the word bound and the selection-fit predicate places every required read, scalar and fifteen-cell output within the limits. Then procedure zero of the fixed source-selector program satisfies\n\n$$\\operatorname{steps}\\le6000,\\qquad r=a,$$\n\nand writes the fifteen natural-valued source-selection fields determined by $X$, the B/C bases, the code and $J$ at $a$. Every cell outside those fifteen is unchanged.\n\nThis replaces abstract source selection by a bounded actual execution before the original-value reporter.",
+  "theorem_status": "Proved"
+}

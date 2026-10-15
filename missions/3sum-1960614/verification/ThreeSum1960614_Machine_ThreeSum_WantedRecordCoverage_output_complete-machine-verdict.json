@@ -1,0 +1,15 @@
+{
+  "id": "408047c4-3e97-4277-aaca-3bba71058c6b",
+  "theorem_id": "094cf1c9-6512-42f3-92ab-bcd9f090aa8c",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T08:58:52.721161+00:00",
+  "updated_at": "2026-10-15T09:00:59.134603+00:00",
+  "explanation": "Establishes completeness of physical reporting queries, including distinct original positions with equal keys. Every original wanted label is realized by an in-range stored slot, so scanning the physical array does not omit a valid label.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.WantedRecordCoverage.output_complete",
+  "theorem_title": "Every original wanted label occurs in the physical pair array",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.WantedRecordCoverage.output_complete {\u03bc : \u2115 \u2192 \u2124} {free M P h J : \u2115} {shift : \u2124} {xs : List \u2124}\n    (H : _root_.ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.Output \u03bc free M (_root_.ThreeSum.LightGuardedWanted.left P xs)\n      (_root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.right h J) (3*xs.length) (_root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J) shift)\n    {w : _root_.ThreeSum1960614.Machine.ThreeSum.RawReporting.Wanted h J (Fin xs.length)}\n    (hw : w \u2208 _root_.ThreeSum1960614.Machine.ThreeSum.RawAKeyLists.wanted M P xs h J shift) :\n    \u2203 slot i j, \u2203 hi : i < 3*xs.length,\n      slot < (\u03bc free).toNat \u2227 j < _root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J \u2227\n      \u03bc (_root_.ThreeSum.LightWantedSetup.pairBase free (3*xs.length) (_root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J) M+2*slot)=(i : \u2124) \u2227\n      \u03bc (_root_.ThreeSum.LightWantedSetup.pairBase free (3*xs.length) (_root_.ThreeSum1960614.Machine.ThreeSum.LightGuardedWanted.totalKeys h J) M+2*slot+1)=(j : \u2124) \u2227\n      _root_.ThreeSum1960614.Machine.ThreeSum.WantedRecordOrder.label h J i j hi=w := by sorry",
+  "theorem_natural_language_statement": "Let $\\mu$ satisfy the complete wanted-setup output contract for an integer list $x$, natural moduli and local parameters $M,P,h,J$, and shift $s\\in\\mathbb Z$. Every original label in the corresponding wanted family is decoded from some physical pair slot below the stored count. The two cells at that slot contain indices $i<3|x|$ and $j$ below the global-key count, and their decoded label is exactly the given one.\n\nEstablishes completeness of physical reporting queries, including distinct original positions with equal keys. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

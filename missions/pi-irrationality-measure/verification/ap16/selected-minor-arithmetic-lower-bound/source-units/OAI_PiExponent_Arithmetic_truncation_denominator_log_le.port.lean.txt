@@ -1,0 +1,14 @@
+theorem truncation_denominator_log_le {ι : Type*} (s : Finset ι)
+    (w : ι → ℝ) (F v H : ℝ) (hF : 0 ≤ F) (hv : 0 < v) (hH : 0 < H)
+    (hw : ∀ i ∈ s, 0 < w i) :
+    Real.log (∏ i ∈ s,
+      (Nat.lcmUpto (⌈F * w i / v⌉₊) : ℝ) ^ ⌊H / w i⌋₊) / H ≤
+      lcmConstant * F * s.card / v + lcmConstant * ∑ i ∈ s, 1 / w i := by
+  apply (div_le_iff₀ hH).mpr
+  calc
+    _ ≤ H * lcmConstant * ∑ i ∈ s, (⌈F * w i / v⌉₊ : ℝ) / w i :=
+      log_lcm_floor_product_le s _ w H hH.le hw
+    _ ≤ H * lcmConstant * (F * s.card / v + ∑ i ∈ s, 1 / w i) := by
+      exact mul_le_mul_of_nonneg_left (sum_ceil_truncation_div_le s w F v hF hv hw)
+        (mul_pos hH lcmConstant_pos).le
+    _ = _ := by ring

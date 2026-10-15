@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ThreeSum1960614_Machine_Bundle004",
+    "definition_title": "Exact parameter bounds, local schedules, and the Light compiler interface",
+    "natural_language_statement": "This bundle joins the exact expansion-$232$ parameter interface to the semantics and compiler of the Light intermediate language. It includes certified rational intervals for the encoding quantities $E(232)$ and $\\kappa(232)$, and the integer rounding facts for the executable schedule. For an input scale $m\\in\\mathbb N$, the microblock size is even, the block count is divisible by $20$, the total size has a nonnegative rounding deficit smaller than $20$ microblocks whenever the microblock size is positive, and the band divisor is positive.\n\nFor $h\\in\\mathbb N$, let $p_h$ be the selected local prime. The local field is $\\mathbb Z/p_h\\mathbb Z$; the deterministic schedule enumerates one-hot weight assignments on $464h$ coordinates and has length\n$$320(2h+1)\\bigl(\\lfloor\\log_2(p_h^2)\\rfloor+1\\bigr).$$\n\nThe compiler definitions give code and exact code-size functions for expressions, conditions, calls, and statements. Their width functions bound local-variable indices, call arities, and temporary requirements. For limits $\\ell$, program $P$, call depth $d$, statement $s$, initial state $\\sigma$, time allowance $T$, and postcondition $Q$, the predicate $\\operatorname{Ends}(\\ell,P,d,s,\\sigma,T,Q)$ means that an execution ends in a state satisfying $Q$ with cost at most $T$. The bundle supplies basic compositional rules and the standard assumptions that addresses and program constants fit within the word bound.\n\nFor a problem $Q$ and real-valued time function $T(n,U)$, the word-RAM realization interface quantifies over every polynomial input bound $U=n^k$, including size zero, and allows a nonnegative constant-factor bound $c\\max(T(n,U),0)+c$. The natural-valued step-bound conversion is\n$$B_{C,a}(n)=\\left\\lceil C(n^a+1)\\right\\rceil_+\\qquad(C,a\\in\\mathbb R,\\ n\\in\\mathbb N).$$\n\nThese interfaces connect the exact rational parameter certificate, finite local schedules, operational Light proofs, and the final deterministic integer 3SUM runtime statement. They retain the pinned source project's compiler and machine conventions.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "word-ram",
+      "compiler-correctness",
+      "exact-arithmetic"
+    ]
+  },
+  {
+    "name": "ThreeSum1960614_Machine_Bundle005",
+    "definition_title": "Global radix encoding, exact cost parameters, and compiler memory relations",
+    "natural_language_statement": "This bundle defines the concrete global encoding and the memory invariants used by the compiled deterministic integer 3SUM algorithm. For a local scale $h\\in\\mathbb N$, a retained choice records both an occurrence of a hash map in the deterministic local schedule and a disjoint-subset edge whose two hash buckets satisfy the prescribed cap. Keeping the occurrence preserves multiplicity even when maps repeat. Raw hashes sum canonical integer representatives before reduction modulo the selected prime $p_h$. For a depth $J\\in\\mathbb N$, the global modulus and representation cap are\n$$M_{h,J}=p_h^J,\\qquad R_{h,J}=(s_h b_h^2)^J,$$\nwhere $s_h$ is the schedule length and $b_h$ is the local bucket cap. Output records retain the map occurrence and the union of the endpoint subsets; their global keys are positional radix hashes of the resulting integer contributions.\n\nThe analytic interface fixes the expansion-$232$ entropy quantities, the rational quartic switching function, and the exact rational constants $\\varepsilon$, band shift, box saving, initial threshold, terminal fraction, and entropy ratio. Its twelve-entry cost ledger keeps each operational exponent separately. The bundle also includes the executable scale limits: if $u_m$, $s_m$, $a_m$, and $D_m$ denote the microblock size, total size, band exponent, and band divisor, respectively, then\n$$\\frac{u_m^2}{m}\\to0,\\quad \\frac{s_m}{m}\\to\\varepsilon,\\quad \\frac{a_m}{m}\\to(-\\beta)\\varepsilon,\\quad \\frac{\\log D_m}{m}\\to(\\log2)(-\\beta)\\varepsilon$$\nas the natural input scale $m$ tends to infinity, with $\\beta$ the fixed band-shift parameter.\n\nFor word size $W\\in\\mathbb N$, the compiler's size data package its code layout, execution limits, stack capacity, and explicit word-fit inequalities. The relation between a Light state and a word-RAM memory specifies the constant cells, number pool, frame pointer, local-variable cells, and simulated nonnegative memory cells. A framed relation additionally requires the current frame to lie inside the stack. The writable-region predicate and arithmetic descriptions of temporary, stack, and pool cells support preservation under writes. Finally, a segment predicate states that a finite integer list occupies consecutive memory cells; its natural-number version uses integer casts.\n\nThese definitions connect finite radix representations and the exact analytic ledger to the concrete memory layout needed for compiler simulation and the complete runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "radix-encoding",
+      "word-ram",
+      "memory-invariants"
+    ]
+  }
+]

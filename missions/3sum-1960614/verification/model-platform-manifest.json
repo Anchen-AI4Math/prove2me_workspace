@@ -1,0 +1,134 @@
+{
+  "source_repository": "https://github.com/Anchen0823/three-sum-1960614",
+  "source_commit": "8c25c0325de5be4286413f39ca0c9278aad33f52",
+  "project_tag": "3sum-1960614",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "classification_sha256": "50c21d8de876ebc62ce21a5891262207fee179ed493f20d353fd0236b1684a8c",
+  "validation_complete": true,
+  "definitions": [
+    {
+      "module": "Definitions.Def_ThreeSum1960614_FixedModelAlgebra",
+      "path": "Definitions/Def_ThreeSum1960614_FixedModelAlgebra.lean",
+      "sha256": "9cff3771192118e98beaa803567deeef9e011a940365195a3d6cbba39050cbda",
+      "dependencies": [
+        "Definitions.Def_ThreeSum1960614_Analysis"
+      ],
+      "payload": {
+        "definition_name": "ThreeSum1960614_FixedModelAlgebra",
+        "definition_title": "Exact witness constants for the expansion-232 model",
+        "definition": "import Definitions.Def_ThreeSum1960614_Analysis\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 3000000\n\nnoncomputable section\nnamespace ThreeSum1960614.FixedModel\n\ndef e0 : ℝ := 4648781151243719/1000000000000000\ndef k0 : ℝ := 778993608289/500000000000000\ndef ratio0 : ℝ := 34881106835777/125000000000000\ndef split : ℝ := 252561863698173/6250000000000000\ndef gammaCap : ℝ := 318487605190926/1000000000000000\ndef entropyFloor : ℝ := 244168410993740/1000000000000000\ndef savingCap : ℝ := 193175572822/1000000000000\ndef a : ℝ := 1-2*ratio0\ndef A : ℝ := 1/2-k0-ratio0\ndef C : ℝ := a*e0-A\ndef lowerTarget : ℝ := 196061349120/100000000000\n\n\n\nend ThreeSum1960614.FixedModel\n",
+        "natural_language_statement": "Exact rational witnesses for the expansion-232 analytic model. The constants include lower bounds $E_0$ and $\\kappa_0$, a ratio floor $\\rho_0$, a split point $s$, upper and lower point bounds $G$ and $H$, and a saving cap $U$. The auxiliary coefficients are $$a=1-2\\rho_0,\\quad A=\\tfrac12-\\kappa_0-\\rho_0,\\quad C=aE_0-A.$$ The target is $1.96061349120$. These are numerical definitions; the model bound is proved separately.",
+        "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/FixedModelAlgebra.lean#L10-L20",
+        "tags": [
+          "3sum-1960614",
+          "3sum",
+          "exact-certificates"
+        ],
+        "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+      }
+    },
+    {
+      "module": "Definitions.Def_ThreeSum1960614_ModelWitnessPoints",
+      "path": "Definitions/Def_ThreeSum1960614_ModelWitnessPoints.lean",
+      "sha256": "17cf460689258459f11e02a7e513bb4db28dea5d9f3403ef14a56f06fee662e0",
+      "dependencies": [
+        "Definitions.Def_ThreeSum1960614_FixedModelAlgebra"
+      ],
+      "payload": {
+        "definition_name": "ThreeSum1960614_ModelWitnessPoints",
+        "definition_title": "Rational ratio evaluation point for the model lower bound",
+        "definition": "import Definitions.Def_ThreeSum1960614_FixedModelAlgebra\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 10000000\nset_option maxRecDepth 10000\nopen scoped BigOperators\n\nnoncomputable section\nnamespace ThreeSum1960614.FixedModel\n\ndef ratioPoint : ℝ := 859960785302793/5000000000000000\n\n\n\n\n\n\n\nend ThreeSum1960614.FixedModel\n",
+        "natural_language_statement": "The exact rational evaluation point $$u=\\frac{859960785302793}{5000000000000000}$$ used to force a lower bound on the ratio parameter in the expansion-232 analytic model. This definition states no logarithmic or entropy inequality; those are separate proof obligations.",
+        "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessLogs.lean#L12-L12",
+        "tags": [
+          "3sum-1960614",
+          "3sum",
+          "exact-certificates"
+        ],
+        "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+      }
+    }
+  ],
+  "theorems": [
+    {
+      "name": "ThreeSum1960614.FixedModel.bound_of_witnesses",
+      "original_module": "Submission.ThreeSum.FixedModelAlgebra",
+      "original_decl": "ThreeSum1960614.FixedModel.bound_of_witnesses",
+      "solution_module": "Solutions.Sol_ThreeSum1960614_FixedModel_bound_of_witnesses",
+      "solution_path": "Solutions/Sol_ThreeSum1960614_FixedModel_bound_of_witnesses.lean",
+      "solution_sha256": "0d4f86fe03f501bd6fab12822c67f18f90ad42b7f2e5810df1ea9a8f40ab40ca",
+      "children": [],
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/FixedModelAlgebra.lean#L22-L95",
+      "theorem_module": "Theorems.Thm_ThreeSum1960614_FixedModel_bound_of_witnesses",
+      "theorem_path": "Theorems/Thm_ThreeSum1960614_FixedModel_bound_of_witnesses.lean",
+      "theorem_sha256": "01cb0a8ecd539b307ec9618031ccba05641867bad3961f2f4c1c932680eed53f",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_ThreeSum1960614_FixedModelAlgebra\nimport Definitions.Def_ThreeSum1960614_ModelWitnessPoints\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 3000000\n\nopen ThreeSum1960614 ThreeSum1960614.FixedModel\n",
+      "formal_statement": "\ntheorem ThreeSum1960614.FixedModel.bound_of_witnesses (e b S th terminal ratio R : ℝ)\n    (hmodel : ModelFeasible 232 e b S th terminal ratio R)\n    (hE : e0 ≤ E 232) (hk : k0 ≤ kappa 232) (hrho : ratio0 ≤ ratio)\n    (hgamma : th ≤ split → gamma 232 th ≤ gammaCap)\n    (hentropy : split ≤ th → entropyFloor ≤ entropy th) : lowerTarget < R := by sorry",
+      "explanation": "Put $\\delta=2-R$. If $R\\ge2$, the conclusion is immediate. Otherwise extract the box, encoding, initial-cover and recursive-filter charges from the model. The lower witnesses for $E$, $\\kappa$ and $\\rho$ give a linear constraint on $e b$ and $\\delta$.\n\nSplit at $t=s$. On the left use the upper bound on $\\gamma$ and the switch constraint; on the right use the lower entropy bound and the initial-cover charge. Both yield $\\delta\\le Ue$ for the exact rational saving cap $U$. Combining this with the encoding charge eliminates $e$ through the positive coefficient $C=(1-2\\rho_0)E_0-(1/2-\\kappa_0-\\rho_0)$. An exact rational comparison gives the displayed strict endpoint.",
+      "payload": {
+        "theorem_name": "ThreeSum1960614.FixedModel.bound_of_witnesses",
+        "theorem_title": "Four-charge elimination for the expansion-232 analytic model",
+        "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_ThreeSum1960614_FixedModelAlgebra\nimport Definitions.Def_ThreeSum1960614_ModelWitnessPoints\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 3000000\n\nopen ThreeSum1960614 ThreeSum1960614.FixedModel\n",
+        "formal_statement": "\ntheorem ThreeSum1960614.FixedModel.bound_of_witnesses (e b S th terminal ratio R : ℝ)\n    (hmodel : ModelFeasible 232 e b S th terminal ratio R)\n    (hE : e0 ≤ E 232) (hk : k0 ≤ kappa 232) (hrho : ratio0 ≤ ratio)\n    (hgamma : th ≤ split → gamma 232 th ≤ gammaCap)\n    (hentropy : split ≤ th → entropyFloor ≤ entropy th) : lowerTarget < R := by sorry",
+        "natural_language_statement": "Let $e>0$ be the block fraction, $b$ the band exponent, $S$ the saving, $t$ the switch point, $\\tau$ the terminal threshold, $\\rho$ the ratio parameter, and $R$ a common upper bound on the model charges. Assume the published predicate $\\operatorname{ModelFeasible}(232,e,b,S,t,\\tau,\\rho,R)$.\n\nLet $E_0,\\kappa_0,\\rho_0,s,G,H$ be the exact rational witnesses in the shared definitions. Suppose $E_0\\le E(232)$, $\\kappa_0\\le\\kappa(232)$, $\\rho_0\\le\\rho$, and that the two sides of the switch obey\n$$t\\le s\\Longrightarrow\\gamma(232,t)\\le G,\\qquad s\\le t\\Longrightarrow H\\le h(t),$$\nwhere $h$ is binary entropy in base two. Then\n$$R>1.96061349120.$$\nOnly the fixed analytic model is bounded; this is not a lower bound for arbitrary 3SUM algorithms.",
+        "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/FixedModelAlgebra.lean#L22-L95",
+        "tags": [
+          "3sum-1960614",
+          "3sum",
+          "exact-certificates"
+        ],
+        "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+      }
+    },
+    {
+      "name": "ThreeSum1960614.FixedModel.witness_logs",
+      "original_module": "Submission.ThreeSum.ModelWitnessLogs",
+      "original_decl": "ThreeSum1960614.FixedModel.witness_logs",
+      "solution_module": "Solutions.Sol_ThreeSum1960614_FixedModel_witness_logs",
+      "solution_path": "Solutions/Sol_ThreeSum1960614_FixedModel_witness_logs.lean",
+      "solution_sha256": "c326ac775ccd80ccdadd7a3eb06311737cbb7dfa6be52b8683432f52d8a73d19",
+      "children": [],
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessLogs.lean#L36-L61",
+      "theorem_module": "Theorems.Thm_ThreeSum1960614_FixedModel_witness_logs",
+      "theorem_path": "Theorems/Thm_ThreeSum1960614_FixedModel_witness_logs.lean",
+      "theorem_sha256": "aabdeee78861886be56b888252a4e4d30f3d7430df82f99769919c334e7fd72e",
+      "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_ThreeSum1960614_FixedModelAlgebra\nimport Definitions.Def_ThreeSum1960614_ModelWitnessPoints\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 10000000\nset_option maxRecDepth 10000\nopen scoped BigOperators\n\nopen ThreeSum1960614 ThreeSum1960614.FixedModel\n",
+      "formal_statement": "theorem ThreeSum1960614.FixedModel.witness_logs :\n    ((1285276917605861577967/5000000000000000000000 : ℝ) ≤ Real.log (32*split) ∧\n      Real.log (32*split) ≤ (514110767042344631187/2000000000000000000000 : ℝ)) ∧\n    ((6518981175759055705591/10000000000000000000000 : ℝ) ≤ Real.log (2*(1-split)) ∧\n      Real.log (2*(1-split)) ≤ (814872646969881963199/1250000000000000000000 : ℝ)) ∧\n    ((437298312323441179/2500000000000000000000 : ℝ) ≤ Real.log (1+split/231) ∧\n      Real.log (1+split/231) ≤ (1749193249293764717/10000000000000000000000 : ℝ)) ∧\n    ((638270279972769945753/2000000000000000000000 : ℝ) ≤ Real.log (8*ratioPoint) ∧\n      Real.log (8*ratioPoint) ≤ (1595675699931924864383/5000000000000000000000 : ℝ)) ∧\n    ((1008829056134582490741/2000000000000000000000 : ℝ) ≤ Real.log (2*(1-ratioPoint)) ∧\n      Real.log (2*(1-ratioPoint)) ≤ (2522072640336456226853/5000000000000000000000 : ℝ)) ∧\n    ((58146699145150531/78125000000000000000 : ℝ) ≤ Real.log (1+ratioPoint/231) ∧\n      Real.log (1+ratioPoint/231) ≤ (7442777490579267969/10000000000000000000000 : ℝ)) := by sorry",
+      "explanation": "For each rational argument $y$, set $z=(y-1)/(y+1)$ and use Mathlib's rigorous finite-series enclosure\n$$2\\sum_{i<n}\\frac{z^{2i+1}}{2i+1}\\le\\log y\\le2\\left(\\sum_{i<n}\\frac{z^{2i+1}}{2i+1}+\\frac{z^{2n+1}}{1-z^2}\\right).$$\nAll six points satisfy $0\\le z<1$. The respective term counts are $18,26,4,18,24,5$. Exact rational arithmetic compares both enclosure endpoints with the displayed target endpoints, so no floating-point calculation enters the proof.",
+      "payload": {
+        "theorem_name": "ThreeSum1960614.FixedModel.witness_logs",
+        "theorem_title": "Six exact logarithmic intervals at the model witnesses",
+        "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_ThreeSum1960614_FixedModelAlgebra\nimport Definitions.Def_ThreeSum1960614_ModelWitnessPoints\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option maxHeartbeats 10000000\nset_option maxRecDepth 10000\nopen scoped BigOperators\n\nopen ThreeSum1960614 ThreeSum1960614.FixedModel\n",
+        "formal_statement": "theorem ThreeSum1960614.FixedModel.witness_logs :\n    ((1285276917605861577967/5000000000000000000000 : ℝ) ≤ Real.log (32*split) ∧\n      Real.log (32*split) ≤ (514110767042344631187/2000000000000000000000 : ℝ)) ∧\n    ((6518981175759055705591/10000000000000000000000 : ℝ) ≤ Real.log (2*(1-split)) ∧\n      Real.log (2*(1-split)) ≤ (814872646969881963199/1250000000000000000000 : ℝ)) ∧\n    ((437298312323441179/2500000000000000000000 : ℝ) ≤ Real.log (1+split/231) ∧\n      Real.log (1+split/231) ≤ (1749193249293764717/10000000000000000000000 : ℝ)) ∧\n    ((638270279972769945753/2000000000000000000000 : ℝ) ≤ Real.log (8*ratioPoint) ∧\n      Real.log (8*ratioPoint) ≤ (1595675699931924864383/5000000000000000000000 : ℝ)) ∧\n    ((1008829056134582490741/2000000000000000000000 : ℝ) ≤ Real.log (2*(1-ratioPoint)) ∧\n      Real.log (2*(1-ratioPoint)) ≤ (2522072640336456226853/5000000000000000000000 : ℝ)) ∧\n    ((58146699145150531/78125000000000000000 : ℝ) ≤ Real.log (1+ratioPoint/231) ∧\n      Real.log (1+ratioPoint/231) ≤ (7442777490579267969/10000000000000000000000 : ℝ)) := by sorry",
+        "natural_language_statement": "Fix\n$$s=\\frac{252561863698173}{6250000000000000},\\qquad u=\\frac{859960785302793}{5000000000000000}.$$\nFor the six positive rational arguments\n$$32s,\\quad2(1-s),\\quad1+s/231,\\quad8u,\\quad2(1-u),\\quad1+u/231,$$\nthe natural logarithm lies in each corresponding exact closed rational interval stated in the theorem. All endpoints are fixed rationals; the intervals have width $10^{-22}$. There are no numerical-oracle or rounding hypotheses. These enclosures supply the split-point entropy and collision bounds and the ratio witness used in the model lower bound.",
+        "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessLogs.lean#L36-L61",
+        "tags": [
+          "3sum-1960614",
+          "3sum",
+          "exact-certificates"
+        ],
+        "env": "0df444a360eaa60ab8c11dca51a86af692955474"
+      }
+    },
+    {
+      "name": "ThreeSum1960614.FixedModel.complete_lower_bound",
+      "original_module": "Submission.ThreeSum.ModelWitnessBounds",
+      "original_decl": "ThreeSum1960614.FixedModel.complete_lower_bound",
+      "solution_module": "Solutions.Sol_ThreeSum1960614_model_platform_bound",
+      "solution_path": "Solutions/Sol_ThreeSum1960614_model_platform_bound.lean",
+      "solution_sha256": "20a16ecf66ceaf0a1edaa19d935320b831a528d38371a301e93388ba02803e45",
+      "children": [
+        "ThreeSum1960614.encoding_parameter_bounds",
+        "ThreeSum1960614.high_precision_logs",
+        "ThreeSum1960614.FixedModel.bound_of_witnesses",
+        "ThreeSum1960614.FixedModel.witness_logs"
+      ],
+      "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/ModelWitnessBounds.lean#L123-L146",
+      "existing_theorem_id": "9319378a-d6f7-45f7-b66b-35f91d017f2e",
+      "platform_name": "ThreeSum1960614.fixed_model_lower_bound",
+      "original_solution_type_uses": "ThreeSum1960614.FixedModel.lowerTarget",
+      "frozen_target_check_required": true,
+      "explanation": "The accepted encoding certificate gives the required lower bounds for $E(232)$ and $\\kappa(232)$. At the fixed ratio point $u$, the six new logarithm intervals and the accepted base logarithm intervals prove\n$$\\rho_0(1+\\gamma(232,u))<h(u).$$\nThe model's uniform entropy constraint and positivity of $1+\\gamma$ therefore force $\\rho_0\\le\\rho$.\n\nThe same exact intervals bound $\\gamma(232,s)$ from above and $h(s)$ from below. Monotonicity of the two functions on $[0,1/2]$ extends those point bounds to the two sides of the split. The four-charge elimination theorem then gives $R>1.96061349120$. The source abbreviation lowerTarget is definitionally the literal rational endpoint in the existing platform goal; a separate local Lean check verifies that unchanged contract."
+    }
+  ]
+}

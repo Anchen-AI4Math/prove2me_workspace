@@ -1,0 +1,95 @@
+{
+  "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "visibility": "public",
+  "publish_payload_sha256": "2b19797b6cb4ca3cba89750eb1a8de2328b882e2410cca97bb4015d0f9a1175f",
+  "publish_intent": {
+    "at_utc": "2026-10-11T12:19:39.784579+00:00",
+    "endpoint": "/submit-definition",
+    "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+    "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "visibility": "public",
+    "payload": {
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "definition_title": "Weighted row and column domains for interpolation",
+      "definition": "import Mathlib\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent.InterpolationMatrix\n\ndef columnWeights {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases w0 w\n\nnoncomputable def rowWeights {m : ℕ} (v0 θ : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases v0 (fun i => w i / θ)\n\nabbrev Column {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  ↥(PiExponent.realWeightedSimplex (columnWeights w0 w) H)\n\nabbrev Row {m : ℕ} (K : ℕ) (v0 θ : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  Fin K × ↥(PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H)\n\nend PiExponent.InterpolationMatrix\n\nend OAI\n",
+      "natural_language_statement": "Given real weights w_0, v_0, theta and w indexed by m coordinates, form column weights (w_0,w) and row weights (v_0,w/theta). The column domain is the finite real-weighted simplex at height H with column weights. The row domain is the product of Fin K and the strict weighted simplex at height H with row weights. These are the exact finite indexing domains used by the source interpolation matrix.",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean#L58-L68",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "env": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "private": false
+    },
+    "payload_sha256": "2b19797b6cb4ca3cba89750eb1a8de2328b882e2410cca97bb4015d0f9a1175f",
+    "bundle_source_sha256": "dec372a59ecd8f0a45440e59dc11e604ad316ea33df0a312045508075d133500",
+    "bundle_manifest_sha256": "1bb9094a0d8dfed2e9d59ae4f46642de2693f3a073d482dcaba10ffcf5ed4650",
+    "validation_sha256": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64"
+  },
+  "updated_at_utc": "2026-10-11T12:23:56.854241+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "job_id": "6a22c522-0756-4118-925f-07aeaece99a1",
+      "definition_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "status": "PENDING",
+      "message": "Definition queued. Poll GET /api/v1/publish-jobs/6a22c522-0756-4118-925f-07aeaece99a1 until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    },
+    "response_sha256": "b44627927b4c3a1e00c8881360bdc2d14e702fdc8ed8ad4eeb431d539cf9d42d"
+  },
+  "job_id": "6a22c522-0756-4118-925f-07aeaece99a1",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "6a22c522-0756-4118-925f-07aeaece99a1",
+      "kind": "definition",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "theorem_title": "Weighted row and column domains for interpolation",
+      "formal_statement": "",
+      "natural_language_statement": "Given real weights w_0, v_0, theta and w indexed by m coordinates, form column weights (w_0,w) and row weights (v_0,w/theta). The column domain is the finite real-weighted simplex at height H with column weights. The row domain is the product of Fin K and the strict weighted simplex at height H with row weights. These are the exact finite indexing domains used by the source interpolation matrix.",
+      "definitions": "import Mathlib\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent.InterpolationMatrix\n\ndef columnWeights {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases w0 w\n\nnoncomputable def rowWeights {m : ℕ} (v0 θ : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases v0 (fun i => w i / θ)\n\nabbrev Column {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  ↥(PiExponent.realWeightedSimplex (columnWeights w0 w) H)\n\nabbrev Row {m : ℕ} (K : ℕ) (v0 θ : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  Fin K × ↥(PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H)\n\nend PiExponent.InterpolationMatrix\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean#L58-L68",
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "2e538a46-bbf9-4562-a008-33350d61b366",
+      "created_at": "2026-10-11T12:19:40.63063+00:00",
+      "updated_at": "2026-10-11T12:22:59.899732+00:00"
+    }
+  },
+  "definition_id": "2e538a46-bbf9-4562-a008-33350d61b366",
+  "target_readback": {
+    "http_status": 200,
+    "body": {
+      "theorem_id": "2e538a46-bbf9-4562-a008-33350d61b366",
+      "theorem_name": "OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "theorem_title": "Weighted row and column domains for interpolation",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Given real weights w_0, v_0, theta and w indexed by m coordinates, form column weights (w_0,w) and row weights (v_0,w/theta). The column domain is the finite real-weighted simplex at height H with column weights. The row domain is the product of Fin K and the strict weighted simplex at height H with row weights. These are the exact finite indexing domains used by the source interpolation matrix.",
+      "created_at": "2026-10-11T12:22:58.979798+00:00",
+      "vote_count": 0,
+      "tags": [
+        "linear-algebra",
+        "number-theory",
+        "openai-pi-exponent-017"
+      ],
+      "definition": "import Mathlib\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains\n\nnamespace OAI\n\nopen scoped BigOperators\n\nnamespace PiExponent.InterpolationMatrix\n\ndef columnWeights {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases w0 w\n\nnoncomputable def rowWeights {m : ℕ} (v0 θ : ℝ) (w : Fin m → ℝ) : Fin (m + 1) → ℝ :=\r\n  Fin.cases v0 (fun i => w i / θ)\n\nabbrev Column {m : ℕ} (w0 : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  ↥(PiExponent.realWeightedSimplex (columnWeights w0 w) H)\n\nabbrev Row {m : ℕ} (K : ℕ) (v0 θ : ℝ) (w : Fin m → ℝ) (H : ℝ) :=\r\n  Fin K × ↥(PiExponent.strictWeightedSimplex (rowWeights v0 θ w) H)\n\nend PiExponent.InterpolationMatrix\n\nend OAI\n",
+      "source": "OpenAI math, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a: https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean#L58-L68",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+}

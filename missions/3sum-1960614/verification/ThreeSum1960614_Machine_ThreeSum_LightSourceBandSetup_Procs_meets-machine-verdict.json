@@ -1,0 +1,15 @@
+{
+  "id": "d201d7b6-e96d-4feb-90e1-a3d89ea04a1f",
+  "theorem_id": "82fc0fd7-567f-4b5a-bcbd-eced7838cdba",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:41:35.029752+00:00",
+  "updated_at": "2026-10-15T07:43:37.616093+00:00",
+  "explanation": "Apply the verified component contracts in program order, maintain their stored-array invariants, and sum their explicit execution charges. This constructor prepares all original-band histograms and physical buckets once before shared source-bank reuse.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBandSetup.Procs.meets",
+  "theorem_title": "Constructing all original source-band records",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightSourceBandSetup.Procs.meets {pMain : \u2115} (C : _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBandSetup.Procs P pMain)\n    {\u03bc : \u2115 \u2192 \u2124} {src n g p m base U D : \u2115} {shift : \u2124} (f : \u2115 \u2192 \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hd : d+5 < lim.depth)\n    (hg : 0 < g) (hp : 0 < p) (hm : 0 < m) (hsrc : src+n \u2264 base)\n    (hspace : _root_.ThreeSum.LightSourceResidues.space (_root_.ThreeSum.SourceBandLayout.work base n g m) p U D \u2264 lim.space)\n    (hshift : |shift| \u2264 (D : \u2124)) (hword : (_root_.ThreeSum.LightSourceBandStep.word n g p m U D : \u2124) \u2264 lim.word)\n    (hread : \u2200 j < n, \u03bc (src+j)=f j) (hvalues : \u2200 j < n, |f j| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [src,n,g,p,m,shift,base] \u03bc (_root_.ThreeSum.LightSourceBandSetup.time n g p m U D) (fun r \u03bd =>\n      r=(_root_.ThreeSum.SourceBandLayout.work base n g m : \u2124) \u2227\n      (\u2200 i < _root_.ThreeSum.BandPartition.size n g, _root_.ThreeSum1960614.Machine.ThreeSum.SourceBandData.At \u03bd f base n g p m shift i) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd base) := by sorry",
+  "theorem_natural_language_statement": "Let $n$ original values bounded by $U$ be stored before allocation base $b$. For positive band size $g$, moduli $p,m$, and shift bounded by $D$, assume the source-band helper placement and full residue-space, word, and depth bounds. The setup program constructs every band histogram, bucket data, and pointer record, returns the computed workspace address, and preserves memory below $b$, within its declared time.\n\nThis constructor prepares all original-band histograms and physical buckets once before shared source-bank reuse.",
+  "theorem_status": "Proved"
+}

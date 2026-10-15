@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/fd2d814e-cf40-467b-a87f-4b217ac1803e",
+  "fetched_at": "2026-10-11T12:10:43.336801+00:00",
+  "data": {
+    "theorem_id": "fd2d814e-cf40-467b-a87f-4b217ac1803e",
+    "theorem_name": "ZipfLaw.zipfPMF_variance",
+    "theorem_title": "Variance of the Zipf distribution",
+    "status": "Open",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_variance (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    (∑ k ∈ Finset.Icc 1 N, (k : ℝ) ^ 2 * zipfPMF N s k) -\n        (∑ k ∈ Finset.Icc 1 N, (k : ℝ) * zipfPMF N s k) ^ 2 =\n      genHarmonic N (s - 2) / genHarmonic N s -\n        genHarmonic N (s - 1) ^ 2 / genHarmonic N s ^ 2 := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "For $N\\ge1$ and real $s$, the variance of the rank under the Zipf distribution is\n$$\\sum_{k=1}^N k^2 f(k;N,s)-\\Big(\\sum_{k=1}^N k\\,f(k;N,s)\\Big)^2=\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H_{N,s-1}^2}{H_{N,s}^2}.$$",
+    "created_at": "2026-10-09T21:29:24.07398+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, infobox (Variance $\\frac{H_{N,s-2}}{H_{N,s}}-\\frac{H^2_{N,s-1}}{H^2_{N,s}}$).",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "995e7728-4216-42ab-ab8d-b6520ea42420",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "550ddaf7-85a1-4fc0-beb6-1c7d05d414a8",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and real $s$:\n$$\\Big(\\sum_{k=1}^N k^2\\,\\mathrm{zipfPMF}(N,s,k)\\Big)-\\Big(\\sum_{k=1}^N k\\,\\mathrm{zipfPMF}(N,s,k)\\Big)^2=\\frac{\\mathrm{genHarmonic}(N,s-2)}{\\mathrm{genHarmonic}(N,s)}-\\frac{\\mathrm{genHarmonic}(N,s-1)^2}{\\mathrm{genHarmonic}(N,s)^2},$$\nwith $k^2$ a natural-exponent power of the real $k$.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:29:26.090979+00:00"
+    }
+  }
+}

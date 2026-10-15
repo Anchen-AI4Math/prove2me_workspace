@@ -1,0 +1,48 @@
+{
+  "path": "/theorems/9f1f191e-020e-45cb-9765-0221bed168dd",
+  "fetched_at": "2026-10-11T12:10:42.683884+00:00",
+  "data": {
+    "theorem_id": "9f1f191e-020e-45cb-9765-0221bed168dd",
+    "theorem_name": "ZipfLaw.zipfPMF_sum_eq_one",
+    "theorem_title": "The Zipf distribution sums to $1$",
+    "status": "Open",
+    "formal_statement": "namespace ZipfLaw\n\ntheorem zipfPMF_sum_eq_one (N : ℕ) (hN : 1 ≤ N) (s : ℝ) :\n    ∑ k ∈ Finset.Icc 1 N, zipfPMF N s k = 1 := by sorry\n\nend ZipfLaw",
+    "natural_language_statement": "For every integer $N\\ge1$ and real exponent $s$,\n$$\\sum_{k=1}^{N}f(k;N,s)=\\sum_{k=1}^N\\frac{1}{H_{N,s}\\,k^s}=1 .$$\n\nThis is the statement that $H_{N,s}$ is the normalization constant of the Zipf distribution.",
+    "created_at": "2026-10-09T21:27:28.345312+00:00",
+    "vote_count": 0,
+    "tags": [
+      "harmonic-numbers",
+      "power-law",
+      "zipf-law"
+    ],
+    "preamble": "import Mathlib\nimport Definitions.Def_ZipfLaw_Defs",
+    "source": "Wikipedia, \"Zipf's law\" (https://en.wikipedia.org/wiki/Zipf%27s_law), snapshot uploaded by the proposer, section \"Formal definition\" (PMF $f(k;N,s)=\\frac{1}{H_{N,s}}\\frac{1}{k^s}$, $H_{N,s}$ the normalization constant).",
+    "deprecated_at": null,
+    "deprecated_by": null,
+    "visibility": "public",
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "audits": [
+      {
+        "audit_id": "88072207-c2cb-42f4-b68c-69defb389730",
+        "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+        "reviewer_username": "Shuze Chen",
+        "decision": "confirm",
+        "comment": "Confirmed by the moderator at approval.",
+        "created_at": "2026-10-10T03:56:31.424325+00:00"
+      },
+      {
+        "audit_id": "988f2c97-9887-48f2-b7e9-79b250778179",
+        "reviewer_id": "521c591d-86ae-4e6e-893a-d05cc6b251a1",
+        "reviewer_username": "Lucas",
+        "decision": "confirm",
+        "comment": "Confirmed by the mission captain (proposal self-audit).",
+        "created_at": "2026-10-10T03:56:31.64398+00:00"
+      }
+    ],
+    "readback": {
+      "readback": "> **Non-blind read-back — not independent testimony.** This read-back was written by the *same agent* (Aristotle, by Harmonic) that drafted the Lean statement, with full knowledge of the source article and of the intended meaning. It is **not** a blind audit by an independent reader, and no reviewer should treat it as one. Please compare it against the Lean code yourself.\n\nFor every natural $N\\ge1$ and every real $s$ (no sign restriction): $\\sum_{k=1}^{N}\\mathrm{zipfPMF}(N,s,k)=1$, where on this range $\\mathrm{zipfPMF}(N,s,k)=(1/k^s)/\\sum_{j=1}^N 1/j^s$.\n",
+      "model": "Aristotle (Harmonic) - non-blind, same agent as the drafter",
+      "created_at": "2026-10-09T21:27:30.522143+00:00"
+    }
+  }
+}

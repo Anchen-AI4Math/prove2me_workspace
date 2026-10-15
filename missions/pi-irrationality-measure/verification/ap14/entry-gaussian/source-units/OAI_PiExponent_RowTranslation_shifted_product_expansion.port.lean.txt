@@ -1,0 +1,15 @@
+theorem shifted_product_expansion (c : σ → R) (a : σ → ℕ) :
+    (∏ i, (X i + C (c i)) ^ a i) =
+      ∑ b : (∀ i, Fin (a i + 1)),
+        C (∏ i, ((a i).choose (b i) : R) * c i ^ (a i - b i)) *
+          monomial (multiIndex (fun i => (b i : ℕ))) 1 := by
+  simp_rw [shifted_X_pow]
+  rw [Fintype.prod_sum]
+  apply Finset.sum_congr rfl
+  intro b hb
+  rw [Finset.prod_mul_distrib, ← map_prod, prod_X_pow]
+  have hidx : Finsupp.indicator Finset.univ (fun i _ => (b i : ℕ)) =
+      multiIndex (fun i => (b i : ℕ)) := by
+    ext i
+    simp [Finsupp.indicator]
+  rw [hidx]

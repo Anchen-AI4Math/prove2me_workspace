@@ -1,0 +1,15 @@
+{
+  "id": "fd51c346-76e1-4b5c-b988-4ee651b12515",
+  "theorem_id": "4528325a-83fa-485e-84bf-ae6ef865abb2",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:12:44.746185+00:00",
+  "updated_at": "2026-10-15T07:15:04.204381+00:00",
+  "explanation": "The proof combines the explicit component contracts and finite layout or counting identities of this construction, retaining the stated runtime and memory bounds. This sorting contract makes exact suffix-catalog lookup available without supplying precomputed catalog indices.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightReportingSortedCatalog.program_meets",
+  "theorem_title": "Constructing the sorted physical catalog index",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightReportingSortedCatalog.program_meets {\u03bc : \u2115 \u2192 \u2124} {W inL inR n dst work d : \u2115}\n    (left right : \u2115 \u2192 \u2115) (hw : (lim.space : \u2124) \u2264 lim.word)\n    (hleft : inL+n \u2264 dst) (hright : inR+n \u2264 dst) (hdst : dst+n \u2264 work)\n    (hpowSpace : work+(W+1) \u2264 lim.space) (hsortSpace : work+n \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightReportingSortedCatalog.word W n : \u2124) \u2264 lim.word)\n    (hreadL : \u2200 i < n, \u03bc (inL+i) = (left i : \u2124))\n    (hreadR : \u2200 i < n, \u03bc (inR+i) = (right i : \u2124))\n    (hboundL : \u2200 i < n, left i < 2^W) (hboundR : \u2200 i < n, right i < 2^W)\n    (hd : d+Nat.clog 2 n+2 \u2264 lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightReportingSortedCatalog.program 6 d [W,inL,inR,n,dst,work] \u03bc (_root_.ThreeSum.LightReportingSortedCatalog.time W n)\n      (fun _ \u03bc' =>\n        (\u2203 S : List \u2124, _root_.ThreeSum1960614.Machine.Light.Seg \u03bc' dst S \u2227 S.Perm (_root_.ThreeSum.ReportingHostPackedCatalog.codes (fun i => _root_.ThreeSum.ReportingHostPackedCatalog.pairKey (2^W) (left i) (right i)) n) \u2227\n          S.Pairwise (\u00b7 \u2264 \u00b7)) \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bc' dst) := by sorry",
+  "theorem_natural_language_statement": "Suppose two stored natural mask arrays of length $n$ have entries below $2^W$ and precede destination and scratch. Under the declared power-table, sorting-space, word, and $d+\\operatorname{clog}_2n+2$ depth bounds, procedure 6 writes a nondecreasing permutation of the packed pair keys carrying their original catalog indices. It preserves all memory below the destination and meets the stated sorting time.\n\nThis sorting contract makes exact suffix-catalog lookup available without supplying precomputed catalog indices.",
+  "theorem_status": "Proved"
+}

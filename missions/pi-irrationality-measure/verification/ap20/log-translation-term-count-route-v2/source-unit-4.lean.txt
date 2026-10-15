@@ -1,0 +1,5 @@
+theorem tendsto_log_translationTermCount_div (m : ℕ) {v : ℝ} (hv : 0 < v) :
+    Tendsto (fun H : ℝ => Real.log (translationTermCount m v H : ℝ) / H)
+      atTop (𝓝 0) :=
+  tendsto_log_div_of_normalized_pow (tendsto_translationTermCount_normalized m hv)
+    (div_pos zero_lt_one hv)

@@ -1,0 +1,527 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap9-coarse-core-parent-route",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "target": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+  "literal_published_definition_coverage": "verification/ap9/published-definition-coverage.json",
+  "baseline_definition_count": 22,
+  "ap9_additional_foundations": [
+    "OAI.PiExponent.realWeightedSimplex",
+    "OAI.PiExponent.strictWeightedSimplex",
+    "OAI.PiExponent.InterpolationMatrix.columnWeights",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights",
+    "OAI.PiExponent.InterpolationMatrix.Column",
+    "OAI.PiExponent.InterpolationMatrix.Row"
+  ],
+  "missing_statement_definitions_after_ap9": 25,
+  "extra_proof_data_definition": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+  "new_data_provider_order": [
+    {
+      "key": "interpolation",
+      "stage": "verification/ap10/interpolation",
+      "preparation": "verification/ap10/interpolation/preparation.json",
+      "preparation_sha256": "2e3386cbd3c06e336a07dba204371a78e43b70a7e76726a97c659364bf4894c4",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "provided_names": [
+        "OAI.PiExponent.InterpolationMatrix.exponentVector",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+        "OAI.PiExponent.InterpolationMatrix.monomialImage",
+        "OAI.PiExponent.InterpolationMatrix.entry",
+        "OAI.PiExponent.InterpolationMatrix.matrix",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix"
+      ],
+      "source_ast_units": [
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.exponentVector",
+          "start": 198,
+          "end": 317,
+          "source_lines": [
+            10,
+            11
+          ],
+          "sha256": "035d49715115f16baca2798e8ad96d2cc34777a87c514c62c5fb2da447932fd7"
+        },
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+          "start": 466,
+          "end": 571,
+          "source_lines": [
+            17,
+            18
+          ],
+          "sha256": "254e497d49cb51a9b0cd165a651ca5d2788a79e58c6dea3d9671502ff344e169"
+        },
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.monomialImage",
+          "start": 824,
+          "end": 1146,
+          "source_lines": [
+            27,
+            32
+          ],
+          "sha256": "807d1c1f9bda375038f33736bf29b2125672e16c6cb99f6aa937bbb4cfd80783"
+        },
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.entry",
+          "start": 1150,
+          "end": 1379,
+          "source_lines": [
+            34,
+            37
+          ],
+          "sha256": "68ca313273a95fbb3a5479a21e8de956658e36f355fe39ff61d7909b137ec6b7"
+        },
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.matrix",
+          "start": 4363,
+          "end": 4670,
+          "source_lines": [
+            101,
+            105
+          ],
+          "sha256": "46baae3731aea89985ce972848bdc345c3f7e049e72c150e73fe0d8a3e88e5c6"
+        },
+        {
+          "name": "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+          "start": 8124,
+          "end": 8384,
+          "source_lines": [
+            177,
+            180
+          ],
+          "sha256": "02cbdd2ca1bf85e38547855b990981858901f30c216dbca52874599c4b12ab6b"
+        }
+      ],
+      "external_project_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Column",
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.InterpolationMatrix.columnWeights",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "actual_dependency_bindings": {
+        "OAI.PiExponent.InterpolationMatrix.Column": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.Row": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.columnWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.realWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+        "OAI.PiExponent.strictWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      },
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+        "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.RingTheory.PowerSeries.Log",
+        "Mathlib.RingTheory.PowerSeries.Order",
+        "Mathlib.RingTheory.PowerSeries.Trunc",
+        "Mathlib.Tactic",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      ],
+      "compile_commands": [
+        "python scripts/preflight_staged_module.py ap10/interpolation/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData.lean --root ap10/interpolation --imports-manifest ap10/interpolation/c1.json --timeout-seconds 300 --emit-olean",
+        "python scripts/preflight_staged_module.py ap10/interpolation/SourceSnapshot.lean --root ap10/interpolation --imports-manifest ap10/interpolation/c2.json --timeout-seconds 300",
+        "python scripts/preflight_staged_module.py ap10/interpolation/GeneratedSnapshot.lean --root ap10/interpolation --imports-manifest ap10/interpolation/c3.json --timeout-seconds 300"
+      ],
+      "status": "pure-prepared-not-compiled"
+    },
+    {
+      "key": "arithmetic",
+      "stage": "verification/ap10/arithmetic",
+      "preparation": "verification/ap10/arithmetic/preparation.json",
+      "preparation_sha256": "ba70df47b83cfe30c39a20516ec65a249fb8721d475a38ec6de01102cb447743",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "provided_names": [
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+        "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+        "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+        "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+        "OAI.PiExponent.MatrixArithmetic.selectedMinor"
+      ],
+      "source_ast_units": [
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "start": 5936,
+          "end": 6050,
+          "source_lines": [
+            132,
+            133
+          ],
+          "sha256": "bc1defc87889cb204b2b8307c43195ad3af6b502f2e0d9603bc7c4c4d17987e5"
+        },
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+          "start": 6457,
+          "end": 6613,
+          "source_lines": [
+            144,
+            145
+          ],
+          "sha256": "349ba34b0ac5d22ed015296c0f13582623c4f84e49f6b3308c34a78171338969"
+        },
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+          "start": 6617,
+          "end": 6758,
+          "source_lines": [
+            147,
+            148
+          ],
+          "sha256": "4fbc1078a623f8d629f84d4ff817c8857f66131d211782a593abf2590657dc40"
+        },
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+          "start": 8477,
+          "end": 8700,
+          "source_lines": [
+            189,
+            192
+          ],
+          "sha256": "2b293156cbf321ef26ce88cdb3e01f788aab167f0ba3baacf750ca738290e413"
+        },
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+          "start": 8704,
+          "end": 8928,
+          "source_lines": [
+            194,
+            197
+          ],
+          "sha256": "61d6f21a15eded9bf90805da1661a9825475e2d7bf7428e73c3baa921d05fdfe"
+        },
+        {
+          "name": "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+          "start": 9514,
+          "end": 10035,
+          "source_lines": [
+            211,
+            218
+          ],
+          "sha256": "6752bd41d4da4616c777c5c3534c46080eb851d8157bbd5ec0698a33c457c7a9"
+        }
+      ],
+      "external_project_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Column",
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "actual_dependency_bindings": {
+        "OAI.PiExponent.InterpolationMatrix.Column": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.Row": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+        "OAI.PiExponent.strictWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      },
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+        "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.NumberTheory.Chebyshev",
+        "Mathlib.NumberTheory.Zsqrtd.GaussianInt",
+        "Mathlib.RingTheory.PowerSeries.Log",
+        "Mathlib.RingTheory.PowerSeries.Order",
+        "Mathlib.RingTheory.PowerSeries.Trunc",
+        "Mathlib.Tactic",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      ],
+      "compile_commands": [
+        "python scripts/preflight_staged_module.py ap10/arithmetic/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData.lean --root ap10/arithmetic --imports-manifest ap10/arithmetic/c1.json --timeout-seconds 300 --emit-olean",
+        "python scripts/preflight_staged_module.py ap10/arithmetic/SourceSnapshot.lean --root ap10/arithmetic --imports-manifest ap10/arithmetic/c2.json --timeout-seconds 300",
+        "python scripts/preflight_staged_module.py ap10/arithmetic/GeneratedSnapshot.lean --root ap10/arithmetic --imports-manifest ap10/arithmetic/c3.json --timeout-seconds 300"
+      ],
+      "status": "pure-prepared-not-compiled"
+    },
+    {
+      "key": "determinant",
+      "stage": "verification/ap10/determinant",
+      "preparation": "verification/ap10/determinant/preparation.json",
+      "preparation_sha256": "4cc2f3a9e55425af95a3556b83247a723a07bd0075b230453044ccdce6d12fc8",
+      "source_module": "OAI.NumberTheory.PiExponent.Approximation.DeterminantContradiction",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData",
+      "provided_names": [
+        "OAI.PiExponent.DeterminantContradiction.FixedData",
+        "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+        "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+        "OAI.PiExponent.DeterminantContradiction.Row",
+        "OAI.PiExponent.DeterminantContradiction.Column",
+        "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+        "OAI.PiExponent.DeterminantContradiction.actualMinor",
+        "OAI.PiExponent.DeterminantContradiction.actualMean",
+        "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+        "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+        "OAI.PiExponent.DeterminantContradiction.collisionRate",
+        "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+        "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+        "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement"
+      ],
+      "source_ast_units": [
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.FixedData",
+          "start": 677,
+          "end": 772,
+          "source_lines": [
+            21,
+            21
+          ],
+          "sha256": "b08c07536b36725367a5c823100a8062c006e1bebc8df494a3828b4c8d728408"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.finiteNumerators",
+          "start": 776,
+          "end": 883,
+          "source_lines": [
+            23,
+            24
+          ],
+          "sha256": "c7099ec7648080226c436c73a3f5e1e10eea2a27901c5c744920f834f7e5cfad"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.finiteDenominators",
+          "start": 887,
+          "end": 996,
+          "source_lines": [
+            26,
+            27
+          ],
+          "sha256": "b18d202e54e6e33eb83ae4a75862f97fde8adb575b1a5072fa80a804e8d2193a"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.Row",
+          "start": 1321,
+          "end": 1483,
+          "source_lines": [
+            36,
+            38
+          ],
+          "sha256": "97d042722ff6a941d035f1382119c841252a688e1d28f7f9fa1fcf94a07a3dfa"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.Column",
+          "start": 1487,
+          "end": 1633,
+          "source_lines": [
+            40,
+            41
+          ],
+          "sha256": "f35cbc37d7e7823612b7b8ff5e3ce2865b54a7b3b054efd5de2abbc9dc901da0"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.actualMatrix",
+          "start": 1637,
+          "end": 2038,
+          "source_lines": [
+            43,
+            48
+          ],
+          "sha256": "3d28d7f073a75990df648e385bf464b2d4a45341f0af36be710fe4cc489587bb"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.actualMinor",
+          "start": 2042,
+          "end": 2316,
+          "source_lines": [
+            50,
+            53
+          ],
+          "sha256": "0504681e1e054634a55a50da712fd9f9bf64ec61e2f268f6f64d44ba0c430cbd"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.actualMean",
+          "start": 2320,
+          "end": 2478,
+          "source_lines": [
+            55,
+            56
+          ],
+          "sha256": "2e611a20c57997829a195f3b5fa479d4c380f902a77346ca97ec429458836208"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.actualRowCount",
+          "start": 2482,
+          "end": 2589,
+          "source_lines": [
+            58,
+            59
+          ],
+          "sha256": "fa01228a38d0992fa37b42fa726b748810d7b279a119799d42c7400116c15e05"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.lowIndexCount",
+          "start": 2593,
+          "end": 2784,
+          "source_lines": [
+            61,
+            63
+          ],
+          "sha256": "1a6d1ec1975c06e25c2a7f4b54d69000df4674b976288674770cd9fac400f7ad"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.collisionRate",
+          "start": 2788,
+          "end": 2974,
+          "source_lines": [
+            65,
+            67
+          ],
+          "sha256": "045d03a1d8821f4631a646cdd50d3d38c0959ec1f484a299b4ab1f445bbe954e"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.collisionLimit",
+          "start": 2978,
+          "end": 3206,
+          "source_lines": [
+            69,
+            72
+          ],
+          "sha256": "f2889b59f90ff3a4b4d1affa55d985a52c8d7462738b5efabe0bb5c37139e955"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.GlobalInterpolationStatement",
+          "start": 4399,
+          "end": 4583,
+          "source_lines": [
+            94,
+            96
+          ],
+          "sha256": "600c31a137530d200b04ba1adabbf6cb8c9c9f5b8a677658741df7731a1dea82"
+        },
+        {
+          "name": "OAI.PiExponent.DeterminantContradiction.AnalyticAggregateStatement",
+          "start": 4587,
+          "end": 5113,
+          "source_lines": [
+            98,
+            106
+          ],
+          "sha256": "b5832f528ce0522f3a6665cad6e3a00538b71843514e392ae6d1688f8663781b"
+        }
+      ],
+      "external_project_dependencies": [
+        "OAI.PiExponent.AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.F0",
+        "OAI.PiExponent.AdmissibleParameters.K",
+        "OAI.PiExponent.AdmissibleParameters.analyticError",
+        "OAI.PiExponent.AdmissibleParameters.base",
+        "OAI.PiExponent.AdmissibleParameters.m",
+        "OAI.PiExponent.AdmissibleParameters.p",
+        "OAI.PiExponent.AdmissibleParameters.q",
+        "OAI.PiExponent.AdmissibleParameters.v0",
+        "OAI.PiExponent.AdmissibleParameters.w0",
+        "OAI.PiExponent.Arithmetic.lcmConstant",
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant",
+        "OAI.PiExponent.InterpolationMatrix.Column",
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.InterpolationMatrix.columnWeights",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+        "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+        "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+        "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+        "OAI.PiExponent.Parameters.A",
+        "OAI.PiExponent.Parameters.eta",
+        "OAI.PiExponent.Parameters.theta",
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "actual_dependency_bindings": {
+        "OAI.PiExponent.AdmissibleParameters": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.F0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.K": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.analyticError": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.base": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.m": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.p": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.q": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.v0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.AdmissibleParameters.w0": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "OAI.PiExponent.Arithmetic.lcmConstant": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+        "OAI.PiExponent.DeterminantContradiction.collisionConstant": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+        "OAI.PiExponent.InterpolationMatrix.Column": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.Row": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.columnWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+        "OAI.PiExponent.MatrixArithmetic.logWeights": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "OAI.PiExponent.MatrixArithmetic.meanRowWeight": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "OAI.PiExponent.MatrixArithmetic.rationalCenters": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "OAI.PiExponent.MatrixArithmetic.selectedMinor": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "OAI.PiExponent.MatrixArithmetic.truncationOrders": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "OAI.PiExponent.Parameters.A": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+        "OAI.PiExponent.Parameters.eta": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+        "OAI.PiExponent.Parameters.theta": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+        "OAI.PiExponent.realWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+        "OAI.PiExponent.strictWeightedSimplex": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      },
+      "imports": [
+        "Mathlib.Algebra.MvPolynomial.Eval",
+        "Mathlib.Algebra.Order.Antidiag.FinsuppEquiv",
+        "Mathlib.Analysis.Asymptotics.SpecificAsymptotics",
+        "Mathlib.Analysis.SpecialFunctions.Log.Basic",
+        "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds",
+        "Mathlib.Analysis.SpecificLimits.Basic",
+        "Mathlib.Analysis.SpecificLimits.Normed",
+        "Mathlib.LinearAlgebra.Matrix.Determinant.Basic",
+        "Mathlib.NumberTheory.Chebyshev",
+        "Mathlib.NumberTheory.Zsqrtd.GaussianInt",
+        "Mathlib.RingTheory.PowerSeries.Log",
+        "Mathlib.RingTheory.PowerSeries.Order",
+        "Mathlib.RingTheory.PowerSeries.Trunc",
+        "Mathlib.Tactic",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_AdmissibleParameters",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CollisionConstant",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Parameters",
+        "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains"
+      ],
+      "compile_commands": [
+        "python scripts/preflight_staged_module.py ap10/determinant/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData.lean --root ap10/determinant --imports-manifest ap10/determinant/c1.json --timeout-seconds 300 --emit-olean",
+        "python scripts/preflight_staged_module.py ap10/determinant/SourceSnapshot.lean --root ap10/determinant --imports-manifest ap10/determinant/c2.json --timeout-seconds 300",
+        "python scripts/preflight_staged_module.py ap10/determinant/GeneratedSnapshot.lean --root ap10/determinant --imports-manifest ap10/determinant/c3.json --timeout-seconds 300"
+      ],
+      "status": "pure-prepared-not-compiled"
+    }
+  ],
+  "major_proof_branches": [
+    "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound",
+    "OAI.PiExponent.DeterminantContradiction.actualMean_bounds",
+    "OAI.PiExponent.DeterminantContradiction.tendsto_collisionRate"
+  ],
+  "parent_short_inline_methods": [
+    "OAI.PiExponent.AdmissibleParameters.total_error_lt_gap",
+    "OAI.PiExponent.AdmissibleParameters.collision_exceeds_one_add_error",
+    "OAI.PiExponent.AdmissibleParameters.error_sum_eq",
+    "OAI.PiExponent.AdmissibleParameters.error_sum_lt_gap",
+    "OAI.PiExponent.AdmissibleParameters.collision_exceeds_error_sum"
+  ],
+  "details": "verification/ap9/next-core-route.md",
+  "per_file_compile_budget_seconds": 300,
+  "new_compiler_started_by_this_producer": false,
+  "API_used": false,
+  "final_campaign_root_complete": false,
+  "proposal_status": "Draft"
+}

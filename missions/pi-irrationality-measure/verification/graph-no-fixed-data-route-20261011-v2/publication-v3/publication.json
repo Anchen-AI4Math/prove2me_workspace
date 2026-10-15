@@ -1,0 +1,132 @@
+{
+  "NoFixedData_theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+  "arithmetic_source017_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound_source017",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "preparation_sha256": "e791d5730db260410051d438185fc5a914b43f182ca15665757e6fc8dbe3f2df",
+  "arithmetic_publish_intent": {
+    "at_utc": "2026-10-11T14:37:44.196776+00:00",
+    "endpoint": "/submit-problem",
+    "payload_sha256": "d499a940f1df7f5697a11268d0e921de8279e3f965b5b1a19ccb7b5df59c3847"
+  },
+  "updated_at_utc": "2026-10-11T14:42:40.368726+00:00",
+  "arithmetic_publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "da72e4c2-3ece-4dcb-97d7-9650da64d263",
+          "name": "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound_source017"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "arithmetic_publish_job_id": "da72e4c2-3ece-4dcb-97d7-9650da64d263",
+  "last_arithmetic_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "da72e4c2-3ece-4dcb-97d7-9650da64d263",
+      "kind": "problem",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound_source017",
+      "theorem_title": "Arithmetic lower bound for a nonzero selected interpolation minor",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.actual_minor_arithmetic_lower_bound_source017 {nu : ℝ} (d : FixedData nu)\r\n    (H : ℝ) (hH : 0 < H) (selection : Row d H → Column d H)\r\n    (hdet : (actualMinor d H selection).det ≠ 0) :\r\n    -(1 - actualMean d H) - d.arithmeticError ≤\r\n      Real.log ‖(actualMinor d H selection).det‖ /\r\n        ((actualRowCount d H : ℝ) * H) := by\n  sorry\n",
+      "natural_language_statement": "For fixed approximation data $d$, a positive interpolation scale $H$, and a selection of columns whose interpolation minor has nonzero determinant, let $b(H)$ be the actual mean row weight and $M(H)$ the actual row count. The source arithmetic estimate gives\n\n$$-\\bigl(1-b(H)\\bigr)-e_{\\mathrm{ar}}(d)\\le \\frac{\\log|\\det A_{\\mathrm{minor}}(H)|}{M(H)H}.$$\n\nHere $e_{\\mathrm{ar}}(d)$ is the arithmetic error stored in the campaign's original fixed data. This is the exact original source interface, currently published as an Open dependency for the NoFixedData reduction.",
+      "definitions": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L74-L85",
+      "tags": [
+        "number-theory",
+        "determinants",
+        "irrationality-measure",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "15c55202-44da-420f-bf88-f910c0e7060c",
+      "created_at": "2026-10-11T14:37:45.917097+00:00",
+      "updated_at": "2026-10-11T14:38:08.819622+00:00"
+    }
+  },
+  "arithmetic_theorem_id": "15c55202-44da-420f-bf88-f910c0e7060c",
+  "pre_verify_readback_sha256": {
+    "arithmetic": "fa841f87fb67d7ef063180367c13910709894d981b36a5f0c592999e61c2041a",
+    "NoFixedData": "cc1a4e92378d3aa5335d1c60a75783633d358f7598f13fa4a12f1e46c3675d71",
+    "collision": "6f5a8f3e878a9d8a41ca62128185634f9bae8167a1395c15bffb68c7a0297ff3",
+    "minor": "5fb8331a7f354c6fd1fe269972aabc0719d3d8799e9a49e186d6e937e4d8f09a",
+    "comparison": "994486fcd18beb4497926b87a558f862de50f4056641a3006aae909885a3c601",
+    "mean": "07e5d573634a1634a61f735504f6ddcaf8c541ebd85c878e50d9a1e9d6ee5af4"
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-11T14:39:14.841201+00:00",
+    "endpoint": "/verify",
+    "theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+    "actual_five_child_theorem_ids": [
+      "15c55202-44da-420f-bf88-f910c0e7060c",
+      "1677ee1f-dd0a-49be-8325-1b69a90cfea9",
+      "a9904f48-a524-4023-b106-063256a5e681",
+      "c04dc423-4e49-4dce-b431-7033f136ac18",
+      "f3ace940-1663-489e-af28-d1f63c803801"
+    ],
+    "multipart_sha256": "2676a62428eb1703dc501c1226cefa7a919f2f6f211dc63caf2d52beeaf72e5d",
+    "content_type": "multipart/form-data; boundary=----p2mBoundary7f3a9c2b",
+    "solution_sha256": "2a85086e939278cdefbf414e43035a9bbb31be39c45c19da4c3007a30a09927c"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "f42a614d-a654-4b6b-b2df-8805d5077e1f",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "f42a614d-a654-4b6b-b2df-8805d5077e1f",
+  "last_verify_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "f42a614d-a654-4b6b-b2df-8805d5077e1f",
+      "theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+      "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "status": "SKETCH_ACCEPTED",
+      "error_message": "",
+      "file_path": "6348c86e-c85a-4559-99e4-7e0ec083208e/418b0711-62a5-416a-ba5d-876ae8758fe3/f42a614d-a654-4b6b-b2df-8805d5077e1f.lean",
+      "created_at": "2026-10-11T14:39:16.554061+00:00",
+      "updated_at": "2026-10-11T14:41:40.595212+00:00"
+    }
+  },
+  "post_acceptance_readback_sha256": {
+    "arithmetic.json": "fa841f87fb67d7ef063180367c13910709894d981b36a5f0c592999e61c2041a",
+    "NoFixedData.json": "cc1a4e92378d3aa5335d1c60a75783633d358f7598f13fa4a12f1e46c3675d71",
+    "collision.json": "6f5a8f3e878a9d8a41ca62128185634f9bae8167a1395c15bffb68c7a0297ff3",
+    "minor.json": "5fb8331a7f354c6fd1fe269972aabc0719d3d8799e9a49e186d6e937e4d8f09a",
+    "comparison.json": "994486fcd18beb4497926b87a558f862de50f4056641a3006aae909885a3c601",
+    "mean.json": "07e5d573634a1634a61f735504f6ddcaf8c541ebd85c878e50d9a1e9d6ee5af4",
+    "NoFixedData-graph.json": "84c61638a458cae48d42bfce8e9d916bb8a8142c086ef021012ec5c255ae0c76",
+    "NoFixedData-decompositions.json": "15c28be7a798c5390fb0532680797624d9c25d6219ac0779ad9f7831bb0d29fb",
+    "conditional.json": "7d6213c07dbddd3f119f53c2de6b08b6ba96eca7ff44c1d9208c24ae19628f35",
+    "root.json": "56f7bda7ee447d873d8630edfa24bc4bd293a5c5577efb6d998dc11f3f40534b",
+    "root-graph.json": "20bd9cab4d4c9b1a0cd1580381d13b7e133e2536bf6263723c3a921870a25ea3"
+  },
+  "actual_five_child_edges": {
+    "five_actual_children": [
+      "15c55202-44da-420f-bf88-f910c0e7060c",
+      "1677ee1f-dd0a-49be-8325-1b69a90cfea9",
+      "a9904f48-a524-4023-b106-063256a5e681",
+      "c04dc423-4e49-4dce-b431-7033f136ac18",
+      "f3ace940-1663-489e-af28-d1f63c803801"
+    ],
+    "actual_sketch_node": "sketch-f42a614d-a654-4b6b-b2df-8805d5077e1f",
+    "NoFixedData_parent": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+    "graph_edges": 147
+  },
+  "actual_root_transitive_paths": {
+    "five_children_to_root_transitive": true,
+    "NoFixedData_sketch_node": "sketch-f42a614d-a654-4b6b-b2df-8805d5077e1f",
+    "conditional_sketch_node": "sketch-351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+    "root_sketch_node": "sketch-c57d8b09-857b-4c52-bafa-36dd13f28219",
+    "root_graph_edges": 147
+  },
+  "confirmed_SKETCH_ACCEPTED": true
+}

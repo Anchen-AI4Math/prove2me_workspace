@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightColorIndex.meets",
+    "theorem_title": "Execution of an index-coloring family member",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be Light limits, program, depth and memory. Let $W$ be bit width, $m<2^W$ an index, $p$ a coloring parameter selecting two bit coordinates and four colors, and $a$ a correct powers-table base. Suppose $P$ contains the color evaluator and recursive mask-erasure bodies; addresses fit words; the $W+1$ power cells fit memory; $2^{W+1}$ fits a word; and $d+W+1$ is permitted. The evaluator returns\n\n$$\\operatorname{color}_p(m)$$\n\nwithin its prescribed width-dependent time, leaving memory unchanged.\n\nThis gives actual execution of each deterministic coloring used to separate three original positions.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This gives actual execution of each deterministic coloring used to separate three original positions."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightColorParameters.meets",
+    "theorem_title": "Execution of coloring-parameter decoding",
+    "natural_language_statement": "Let $W,t,a\\in\\mathbb N$ be bit width, coloring index and six-cell destination. Let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Suppose the program contains the parameter-decoder and small-division bodies, a nested call is permitted, addresses fit words, $a+6$ fits memory and $t+W+10$ fits a word. The call returns $a$, writes the exact six-field coloring parameter record $\\operatorname{data}(W,t)$, uses its specified $t$-dependent time and changes no cell outside those six.\n\nThis constructs coloring parameters from a physical index without assuming supplied parameter rows.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs coloring parameters from a physical index without assuming supplied parameter rows. The six stored fields are decoded by actual integer divisions and can be consumed by the original-index color evaluator."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightDownsetEnumeration.meets",
+    "theorem_title": "Execution of compact downset enumeration",
+    "natural_language_statement": "Let $L,c,a,p,d\\in\\mathbb N$ be width, cutoff, destination, powers base and depth, with $c\\le L$. Suppose the Light program contains the downset wrapper and recursive layer enumerator; memory $\\mu$ has the correct $L+1$ powers table; addresses fit words; the powers fit memory and $2^{L+1}$ fits a word. Assume the complete output of capacity $D(L,c)$ ends before the power table and $d+L+1$ is permitted. Then the call returns\n\n$$D(L,c)=\\sum_{i=0}^{c}\\binom Li,$$\n\nwrites the exact ordered compact downset enumeration at $a$, runs within its prescribed budget and preserves every cell outside that capacity.\n\nThis constructs the compact mask domain used by stored subset transforms.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs the compact mask domain used by stored subset transforms. Each cardinality layer appears in the prescribed order, and the returned count is the sum of its binomial sizes."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorLayout.meets",
+    "theorem_title": "Execution of selected-color normalization layout",
+    "natural_language_statement": "Let positive $n,g$ be input length and band size, $a$ an arbitrary free address, and $\\lambda,P,d,\\mu$ limits, program, depth and memory. Suppose the program contains the layout and division bodies, addresses fit words, the computed normalized-end address plus one fits memory, the stated layout word bound fits, and a nested call is allowed. The layout call writes its normalized-header values at $a$, returns\n\n$$\\operatorname{normalizedEnd}(a,n,g),$$\n\nruns within its specified budget and preserves every cell below $a$.\n\nThis computes the physical color-normalization buffers from original size and band size.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes the physical color-normalization buffers from original size and band size. The returned normalized-end address and stored pointer header are derived from the two scalar size parameters."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorWantedHeader.meets",
+    "theorem_title": "Reading the computed wanted-header address",
+    "natural_language_statement": "Let $f,h,J,\\ell\\in\\mathbb N$ be cover base, microblock parameter, block count and A-incidence length. Suppose memory $\\mu$ satisfies the complete retained cover/key-data contract at $f$. For Light limits, program and depth $\\lambda,P,d$, assume the program contains the wanted-header body, addresses fit words and the computed wanted-header address fits memory. Then the call on $(f,J,\\ell)$ returns\n\n$$\\operatorname{wantedFree}(f,h,J,\\ell),$$\n\nwithin its prescribed $J$-dependent time, leaving all memory unchanged.\n\nThis obtains the next physical header from retained construction data rather than external pointer advice.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This obtains the next physical header from retained construction data rather than external pointer advice."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightHistogram.count_ends",
+    "theorem_title": "Histogram counting from a zeroed destination",
+    "natural_language_statement": "Let $\\lambda,P,d$ be run limits, program and depth; $\\ell$ a local-variable map; $\\mu$ memory; and $s,b,n,p\\in\\mathbb N$ source, destination, item count and residue count. Assume the first three locals hold $s,b,n$; addresses fit words; both arrays fit memory and are disjoint; source entry $i<n$ holds a natural code $c_i<p$; and every destination cell starts at zero. The counting statement ends within its specified $n$-dependent time with\n\n$$\\mu'(b+r)=|\\{i<n:c_i=r\\}|\\qquad(r<p),$$\n\npreserving every cell outside the histogram.\n\nThis establishes exact multiplicity counting for physical input and hash-code arrays.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This establishes exact multiplicity counting for physical input and hash-code arrays. Starting from zero, the program increments once per stored code and preserves every cell outside the histogram."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLookupSum.meets",
+    "theorem_title": "Execution of a table-lookup sum",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Let $a_k,a_t,n,p,B\\in\\mathbb N$ be key/table bases, key count, table length and entry bound. Suppose procedure $q$ is the lookup-sum body, both arrays fit memory and addresses fit words; the keys equal $c_i<p$, table entries equal $f(r)\\le B$, and $nB$ fits a word. The routine returns\n\n$$\\sum_{i<n}f(c_i)$$\n\nwithin its prescribed linear scan budget and leaves memory unchanged.\n\nThis charges actual histogram lookups and accumulation in modular counting.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This charges actual histogram lookups and accumulation in modular counting. The output sums precisely the table entries indexed by the stored key sequence, including repeated keys."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightMinimum.meets",
+    "theorem_title": "Execution of least-index minimum selection",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Let $a,n\\in\\mathbb N$ with $n>0$, and $f:\\mathbb N\\to\\mathbb Z$. Suppose procedure $p$ is the minimum body, addresses fit words, the $n$ source cells at $a$ fit memory and store $f(0),\\ldots,f(n-1)$. The call returns the least index minimizing $f$ on that range:\n\n$$r=\\min\\operatorname*{arg\\,min}_{i<n}f(i),$$\n\nwithin its prescribed $n$-dependent time, leaving memory unchanged.\n\nThis fixes deterministic first-minimum choices in offset and greedy-selection implementations.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This fixes deterministic first-minimum choices in offset and greedy-selection implementations. Equal minimum values are resolved by the least physical index, making subsequent algorithmic choices deterministic."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightNatPower.meets",
+    "theorem_title": "Execution of natural exponentiation",
+    "natural_language_statement": "Let $b,e\\in\\mathbb N$, $\\mu$ any integer memory, and $\\lambda,P,d$ limits, program and depth. If procedure $p$ is the power body, $e$ fits a word and every $b^i$ for $i\\le e$ fits a word, then\n\n$$\\operatorname{result}=b^e$$\n\nwithin its prescribed exponent-dependent time, with the entire memory unchanged.\n\nThis realizes the scalar powers needed for finite counts, moduli and representation caps.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This realizes the scalar powers needed for finite counts, moduli and representation caps. The contract exposes the exponent-dependent step budget and requires every intermediate natural power to fit a word."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOriginalTripleRow.meets",
+    "theorem_title": "Execution of one original-position triple test",
+    "natural_language_statement": "Let $n>0$, $t<n^3$, $U,a\\in\\mathbb N$, and $x:\\operatorname{Fin}(n)\\to\\mathbb Z$ with $|x_i|\\le U$. Suppose memory $\\mu$ stores $x$ at $a$, that segment fits memory, addresses fit words and the explicit triple-row word budget fits. Let a Light program contain the triple-test and small-division bodies, with a nested call allowed at depth $d$. The call returns a Boolean and\n\n$$r=1\\iff\\operatorname{witness}(x,n,t),$$\n\nwhere the witness is the distinct-position zero-sum condition for the triple decoded from $t$. It meets the stated row-time bound and leaves memory unchanged.\n\nThis supports the exact original-input fallback for the finite exceptional size regime.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supports the exact original-input fallback for the finite exceptional size regime. The decoded triple is tested against the original array and all three pairwise index inequalities."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightOutputDecodeDivide.meets",
+    "theorem_title": "Division through the retained doubling-table routine",
+    "natural_language_statement": "Let $a,M,V,f\\in\\mathbb N$, with $a\\le V$, and let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Suppose $M,V,f$ satisfy the verified remainder precondition, including positive modulus, sufficient word magnitude and logarithmic scratch space. If the selected procedure is the output-decoding division body, it returns\n\n$$\\lfloor a/M\\rfloor$$\n\nwithin the specified division time and preserves every memory cell below $f$.\n\nThis performs physical output-index decoding using only the allowed arithmetic and scratch operations.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This performs physical output-index decoding using only the allowed arithmetic and scratch operations."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightRadixDigit.meets",
+    "theorem_title": "Execution of radix-digit extraction",
+    "natural_language_statement": "Let $k,b,p\\in\\mathbb N$, $\\mu$ an integer memory, and $\\lambda,P,d$ limits, program and depth. Suppose the program contains the radix-digit body and small-division helper, a nested call is allowed, and the explicit digit word envelope fits. The call returns\n\n$$\\left\\lfloor k/b\\right\\rfloor\\bmod p$$\n\nwithin its stated $k$-dependent time, leaving memory unchanged. Both natural division and remainder use their total conventions, including zero parameters.\n\nThis implements exact ordered coefficient and record digit decoding.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This implements exact ordered coefficient and record digit decoding. The result is the quotient modulo the radix, with the total natural-number conventions retained at zero parameters."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingBucketRow.meets",
+    "theorem_title": "Counting matching original values through a selected index row",
+    "natural_language_statement": "Let $\\lambda,P,d,\\mu$ be limits, program, depth and memory. Let $N,n,a_v,a_i\\in\\mathbb N$, target $z\\in\\mathbb Z$, value map $v:\\mathbb N\\to\\mathbb Z$ and index map $j:\\mathbb N\\to\\mathbb N$ be given. Suppose the program contains the bucket-row body, both source segments fit memory, addresses fit words, $j(i)<N$ for $i<n$, and the arrays store exactly $j(i)$ and $v(k)$. If all $|v(k)|$ for $k<N$ and $|z|$ fit words, it returns\n\n$$|\\{i<n:v(j(i))=z\\}|$$\n\nwithin its prescribed scan time, preserving all memory.\n\nThis scans only the selected original-index fiber during terminal exact-value checking.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This scans only the selected original-index fiber during terminal exact-value checking. The test reads the physical index row and returns the exact multiplicity of the target among those original values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingFilter.meets",
+    "theorem_title": "Execution of positive-count filtering",
+    "natural_language_statement": "Let $n,s,b,d\\in\\mathbb N$, $c:\\mathbb N\\to\\mathbb N$, and $\\lambda,P,\\mu$ be run limits, program and memory. Suppose the filter body is in the program, addresses fit words, disjoint length-$n$ source and destination segments fit memory, and source cell $s+i$ stores $c(i)$ within the word bound for every $i<n$. The procedure writes the ordered selected indices\n\n$$[\\,i<n:c(i)>0\\,]$$\n\nat $b$, returns their count within its prescribed scan time, and changes no cell outside the length-$n$ destination reservation.\n\nThis realizes the positive-frontier selection used by output-sensitive reporting.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This realizes the positive-frontier selection used by output-sensitive reporting. The ordered output contains exactly the source positions whose stored natural counts are positive."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightScales.meets",
+    "theorem_title": "Execution of the exact integer microblock scales",
+    "natural_language_statement": "Let $n,b,d\\in\\mathbb N$ and $\\mu$ be input length, five-cell destination, depth and memory. Let $\\lambda,P$ be limits and a program containing the scale body with its logarithm, rounded cube-root, rounded-half and division helpers at their recorded indices. Suppose addresses fit words, $b+5$ fits memory, $35000000000(n+1)$ fits a word and a nested call is allowed. The procedure writes the exact five scale values, returns\n\n$$\\mu(n),$$\n\nruns within its prescribed scale time and preserves every cell outside the five-cell output.\n\nThis executes the natural-number schedule underlying the certified runtime exponent.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This executes the natural-number schedule underlying the certified runtime exponent. The five-cell header is computed by the concrete logarithm, root, halving and division routines."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSign.meets",
+    "theorem_title": "Execution of a signed parity factor",
+    "natural_language_statement": "Let $e\\in\\mathbb N$, $x\\in\\mathbb Z$, $\\mu$ an integer memory, and $\\lambda,P,d$ limits, program and depth. Suppose the program contains the sign body, addresses fit words, $e$ is within the address-space bound and $|x|$ fits a word. Then the procedure returns\n\n$$(-1)^e x$$\n\nwithin its stated parity-loop time, leaving all memory unchanged.\n\nThis implements the exact signs in subset-Moebius query evaluation.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This implements the exact signs in subset-Moebius query evaluation. Its memory-preserving contract applies to either sign of the supplied integer while charging the parity computation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketOffsets.meets",
+    "theorem_title": "Execution of bucket prefix offsets and initial cursors",
+    "natural_language_statement": "Let $c:\\mathbb N\\to\\mathbb N$, $N,M\\in\\mathbb N$, and histogram, offset and cursor bases $a_h,a_o,a_c$ be given. Suppose the histogram in memory $\\mu$ counts every code $c(i)<M$ for $i<N$, the regions satisfy $a_h+M\\le a_o$ and $a_o+M+1\\le a_c$, and $a_c+M$ fits memory. Let $\\lambda,P,d$ be limits, program and depth with the offset body present, addresses fitting words and $N$ fitting a word. The routine writes\n\n$$\\nu(a_o+r)=\\operatorname{offset}(c,N,r)\\ (r\\le M),\\qquad\\nu(a_c+r)=\\operatorname{offset}(c,N,r)\\ (r<M),$$\n\nwithin its specified $M$-dependent time, changing no cell outside $[a_o,a_c+M)$.\n\nThis constructs exact contiguous bucket boundaries from actual histogram counts.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This constructs exact contiguous bucket boundaries from actual histogram counts. The stored prefix sums initialize both immutable offsets and mutable scatter cursors for every residue."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketScatter.meets",
+    "theorem_title": "Execution of stable original-index bucket scattering",
+    "natural_language_statement": "Let $c:\\mathbb N\\to\\mathbb N$ have $c(i)<M$ for $i<N$, with key, cursor and flat-index bases $a_k,a_c,a_f$. Suppose memory $\\mu$ stores all keys and the initial prefix offsets at the cursors. Assume $a_k+N\\le a_c$, $a_c+M\\le a_f$, $a_f+N$ fits memory, and addresses fit words. In any Light program containing the scatter body, at depth $d$ it writes\n\n$$\\nu(a_f+\\operatorname{position}(c,N,i))=i\\quad(i<N),\\qquad\\nu(a_c+r)=\\operatorname{offset}(c,N,r+1)\\quad(r<M),$$\n\nwithin its specified $N$-dependent time, preserving memory outside $[a_c,a_f+N)$.\n\nThis retains every physical input incidence exactly in its own residue bucket.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This retains every physical input incidence exactly in its own residue bucket. The final cursors equal the next bucket boundaries, and each index is written at its exact stable position."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceRowScan.meets",
+    "theorem_title": "Execution of endpoint cardinality and paired one-hot hashes",
+    "natural_language_statement": "Let $L,U\\in\\mathbb N$, bit map $s$ and nonnegative weight maps $w_0,w_1$ be given, with $s_i\\le1$ and both weights at most $U$ for $i<L$. Suppose their three length-$L$ arrays are stored in memory $\\mu$, all those arrays and a three-cell destination $b$ fit memory, addresses fit words and the explicit row-scan word budget fits. For limits, program and depth $\\lambda,P,d$ with the scan body present, the procedure writes the cardinality $\\sum_{i<L}s_i$ and the two complementary one-hot hash sums at $b,b+1,b+2$. It meets its specified linear scan time and changes no other cell.\n\nThis computes the literal endpoint statistics used for independent trimming and modular source encoding.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This computes the literal endpoint statistics used for independent trimming and modular source encoding."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSubsetOffset.meets",
+    "theorem_title": "Execution of a compact layer offset",
+    "natural_language_statement": "Let $W,L,k\\in\\mathbb N$ with $L,k\\le W$, $a$ a correct Pascal-table base in memory $\\mu$, and $\\lambda,P,d$ limits, program and depth. Suppose the table fits memory, addresses fit words, $(W+1)2^{W+1}$ fits a word and the offset body is present. The procedure returns\n\n$$\\operatorname{layerOffset}(L,k)=\\sum_{j<k}\\binom Lj$$\n\nwithin its specified $k$-dependent budget, leaving all memory unchanged.\n\nThis supplies the preceding-layer displacement for exact compact subset addresses.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This supplies the preceding-layer displacement for exact compact subset addresses. The finite sum of earlier binomial layers provides the displacement that precedes the current layer rank."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWantedRow.meets",
+    "theorem_title": "Appending a physical wanted-pair row",
+    "natural_language_statement": "Let $\\ell,s,a,n,b,q\\in\\mathbb N$ denote a left index, right-index source base and start, row length, output base and previously emitted pair count. Let $\\lambda,P,d,\\mu$ be limits, program, depth and memory with the row body present. Suppose addresses fit words, the source slice ends before $b$, the pair output through $q+n$ fits memory, $\\ell$ fits a word and all source values in the slice fit words. The procedure writes\n\n$$\\nu(b+2(q+t))=\\ell,\\qquad\\nu(b+2(q+t)+1)=\\mu(s+a+t)\\quad(t<n),$$\n\nwithin its specified $n$-dependent time, changing only the newly appended $2n$ cells.\n\nThis emits the exact physical matching-pair list without losing repeated original positions.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This emits the exact physical matching-pair list without losing repeated original positions. Each emitted pair keeps its left physical index and the corresponding retained right physical index."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LocalCoverMatrix.entry_eq_one_iff",
+    "theorem_title": "Constructed support-matrix entries equal retained coverage",
+    "natural_language_statement": "Let $h,L,k,B\\in\\mathbb N$, $p=p(h)$ the local prime and $w$ a length-$L$ weight over its local field. For residues $a,b<p$, the actual histogram-trimmed matrix entry satisfies\n\n$$\\operatorname{entry}(w,k,B,ap+b)=1\\iff\\operatorname{Covers}(L,k,B,w,(a,b)).$$\n\nThis joins the literal Boolean support table to the finite-moment and greedy cover semantics.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This joins the literal Boolean support table to the finite-moment and greedy cover semantics. The equivalence identifies both independent bucket-cap conditions and the disjointness test with the cover predicate."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostFrontier.mem_frontier_iff",
+    "theorem_title": "Exact raw-incidence membership of the actual frontier",
+    "natural_language_statement": "Let $h,J,k\\in\\mathbb N$ with $k\\le J$, $I$ a finite raw-incidence set over finite decidable index types, $w$ a wanted label and $u$ a length-variable local-subset prefix. Then\n\n$$u\\in\\operatorname{frontier}(I,w,k)\\iff\\exists r\\in I:\\ \\operatorname{wantedOf}(r)=w\\ \\wedge\\ \\operatorname{take}_k(\\operatorname{word}(r))=u.$$\n\nThis states completeness and exact membership of the executed reporting frontier in original raw incidences.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This states completeness and exact membership of the executed reporting frontier in original raw incidences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankCosts.host_time_le",
+    "theorem_title": "Shared-bank host time fits the size-only budget",
+    "natural_language_statement": "Let $N_B,N_C,n\\in\\mathbb N$ with $N_B,N_C\\le n$. Specialize the shared-host microblock parameter, block count and band size to the schedule at $n$. Then\n\n$$T_{\\mathrm{sharedHost}}(h(n),J(n),N_B,N_C,g(n))\\le\\operatorname{budget}_{\\mathrm{sharedBank}}(n).$$\n\nThis gives a uniform original-input-size bound for reusable shared reporting preprocessing.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This gives a uniform original-input-size bound for reusable shared reporting preprocessing. Its assumptions bound the two actual normalized array lengths by the original input length before specializing the schedule."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.offset_le",
+    "theorem_title": "Total shared-level offset is bounded by the cell envelope",
+    "natural_language_statement": "For every $h,J\\in\\mathbb N$, write $K(J)$ for the number of prescribed reporting levels and $C(h,J)$ for the uniform per-level cell bound. The packed level offset satisfies\n\n$$\\operatorname{offset}(h,J,K(J))\\le K(J)C(h,J).$$\n\nThis converts the actual variable-size catalog packing into a finite total storage bound.",
+    "tags": [
+      "3sum-1960614",
+      "machine-correctness",
+      "runtime-analysis"
+    ],
+    "explanation": "This converts the actual variable-size catalog packing into a finite total storage bound. It bounds the sum of the packed level extents by the number of levels times one uniform per-level reservation."
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "db455a61-b4a6-4718-b75d-0b24729fd301",
+  "theorem_id": "4339f148-6152-4e71-a687-a59a6b8dec3a",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:26:55.656526+00:00",
+  "updated_at": "2026-10-15T07:29:30.122981+00:00",
+  "explanation": "Charges actual shared preprocessing to the intended box count. The valid-depth premise links each executed shared level to the matching depth-dependent box count in the ledger.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time_le_boxes",
+  "theorem_title": "Shared preprocessing is charged to prefix boxes",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time_le_boxes {n k : \u2115} (hk : k \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.blocks n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.time n k \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.SharedReportingCosts.overhead n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.prefixBoxes n k := by sorry",
+  "theorem_natural_language_statement": "Let $n,k\\in\\mathbb N$, with $k$ at most the executable block count. Then $$T_{\\mathrm{shared}}(n,k)\\le H(n)B_{\\mathrm{prefix}}(n,k),$$ where $H$ is the shared overhead and $B_{\\mathrm{prefix}}$ the exact prefix-box ledger term.\n\nCharges actual shared preprocessing to the intended box count. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

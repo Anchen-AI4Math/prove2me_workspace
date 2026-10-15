@@ -1,0 +1,189 @@
+"""AP18 literal six-proof node: pure candidate now, actual prerequisite gates before finalization."""
+from __future__ import annotations
+import argparse,copy,importlib,json
+from pathlib import Path
+import stage_translated_summand_bound_route as route
+import stage_grouped_actual_mean_bounds_node as probes
+import certify_collision_multiplicity_existing as data_consumer
+TASK,ROOT,V,STAGE=route.TASK,route.ROOT,route.V,route.STAGE
+SELF=Path(__file__).resolve();COMMIT=route.data.COMMIT;TARGET=PLATFORM_NAME=route.TARGET
+TARGET_MODULE='OAI.NumberTheory.PiExponent.Analysis.DeterminantAnalyticBound'
+SOLUTION_MODULE='Solutions.Sol_translated_summand_bound_ap18'
+TARGET_OUTPUT='Theorems/Thm_'+TARGET.replace('.','_')+'.lean'
+SOLUTION_OUTPUT=SOLUTION_MODULE.replace('.','/')+'.lean'
+SOURCE_SNAPSHOT,GENERATED_SNAPSHOT='SourceSnapshot.lean','GeneratedSnapshot.lean'
+SOURCE_TYPE_JSON,GENERATED_TYPE_JSON='source-types.json','generated-types.json'
+SOURCE_REFS_JSON,GENERATED_REFS_JSON='source-proof-references.json','generated-proof-references.json'
+FILES=[TARGET_OUTPUT,SOLUTION_OUTPUT,SOURCE_SNAPSHOT,GENERATED_SNAPSHOT]
+MODES=['modecheck','emit-olean','modecheck','modecheck'];MANIFESTS=[f'c{i}.json' for i in range(1,5)]
+CERTIFICATE='node-validation.json';CONSUMER=TASK/'scripts/certify_translated_summand_bound_node.py'
+RUNNER=route.data.RUNNER;LEGACY_RUNNER=route.data.ap9.PREFLIGHT
+SNAPSHOT_CORE=V/'TypeOnlyTheoremSnapshotCore.inc';RUNTIME=route.data.ap9.RUNTIME
+CHILD_MODULE=route.CHILD_MODULE;CHILD_STAGE=V/'ap18/sum-weight-child-mirror-v2'
+CHILD_CERTIFICATE=CHILD_STAGE/'local-child-validation.json'
+CHILD_PRODUCER=TASK/'scripts/stage_sum_weight_child_mirror.py'
+CHILD_CONSUMER=TASK/'scripts/certify_sum_weight_child_mirror.py'
+PUBLISHED=STAGE/'published-multiplicity-record.json'
+CANDIDATE=STAGE/'candidate-v2';CANDIDATE_SPEC=STAGE/'candidate-spec-v2.json'
+read,sha,sha_bytes,encode,need,rel=route.read,route.sha,route.sha_bytes,route.encode,route.need,route.rel
+workspace_rel=lambda p:Path(p).resolve().relative_to(ROOT.resolve()).as_posix()
+verification_rel=lambda p:Path(p).resolve().relative_to(V.resolve()).as_posix()
+_BOUNDARY_CACHE=None
+
+def snapshot(side,names,boundary):
+    module=TARGET_MODULE if side=='source' else SOLUTION_MODULE
+    owners=['OAI.NumberTheory.PiExponent.Analysis.CollisionCombinatorics',
+      'OAI.NumberTheory.PiExponent.Analysis.CollisionOccupancy',TARGET_MODULE,'SourceSnapshot'] if side=='source' else [SOLUTION_MODULE,route.data.PLATFORM_MODULE,CHILD_MODULE,'GeneratedSnapshot']
+    out=SOURCE_TYPE_JSON if side=='source' else GENERATED_TYPE_JSON
+    refs=SOURCE_REFS_JSON if side=='source' else GENERATED_REFS_JSON
+    roots='#['+', '.join('`'+n for n in names)+']'
+    return ('import Lean\nimport '+module+'\n\n'+SNAPSHOT_CORE.read_text(encoding='utf-8').rstrip()+'\n'+probes.base.ap8.PROBE+'\n'+probes.PROBE+'\nrun_meta do\n  PiExponentInterfaceSnapshot.exportSnapshot '+roots+' '+json.dumps(workspace_rel(STAGE/out))+'\n  ActualMeanBoundsProofSnapshot.exportBundle '+json.dumps(side)+' '+json.dumps(workspace_rel(STAGE/refs))+' '+roots+' #['+', '.join(json.dumps(x) for x in owners)+'] #['+', '.join(json.dumps(x) for x in sorted(boundary))+']\n#print axioms '+names[-1]+'\n').encode()
+
+def proof_files():
+    route.check_only();rows,closure,pins,pub,_=route.source_units()
+    rp=read(STAGE/'route-preparation.json');source_names=[r['name'] for r in rows]
+    generated_names=source_names[:-1]+['solution'];boundary=set(rp['provider_boundary_names'])
+    files={TARGET_OUTPUT:(STAGE/'candidate-target.lean.txt').read_bytes(),
+      SOLUTION_OUTPUT:(STAGE/'candidate-solution.lean.txt').read_bytes(),
+      SOURCE_SNAPSHOT:snapshot('source',source_names,boundary),
+      GENERATED_SNAPSHOT:snapshot('generated',generated_names,boundary)}
+    files['wire-theorem-source.lean']=files[TARGET_OUTPUT]
+    metadata={'title':'Exponential bound for a translated scalar–determinant summand',
+      'statement':r'Let finite index types $\iota,\kappa$, a grouping $g:\iota\to\kappa$, nonnegative group weights $w$, and complex numbers $s,d$ satisfy the original scalar and determinant exponential bounds. Assume $H,N>0$, $A,\eta,\nu,c\ge0$, total weight at least $|\iota|H\bar b$, and at most $N$ groups of weight at most $AH$. Then'+'\n\n'+r'$$\|sd\|\le \exp\!\left(|\iota|H\left[E_{\mathrm{tr}}+E_{\mathrm{hol}}+\rho+\max\!\left\{-\frac{c\eta^2|\iota|}{HN},-\nu(A(1-\eta)-\bar b)\right\}\right]\right).$$'+'\n\n'+r'The determinant hypothesis contains the collision occupancy sum $\sum_{a\in\kappa}m(g,a)^2$, where $m(g,a)=\#\{i:g(i)=a\}$. The scalar hypothesis contains $-\nu(\sum_i w(g(i))-|\iota|H\bar b)+|\iota|HE_{\mathrm{tr}}$, and the determinant hypothesis contains $-c\sum_a m(g,a)^2+|\iota|H(E_{\mathrm{hol}}+\rho)$. No sign assumption on $E_{\mathrm{tr}},E_{\mathrm{hol}},\rho,\bar b$ is added.',
+      'explanation':'Partition the groups at weight AH. If low groups carry at least eta times the row mass, Cauchy–Schwarz forces the collision sum to be large. Otherwise the accepted finite weighted-sum lower bound forces a large total weight. Combine this two-alternative exponent estimate with norm multiplicativity and the two original exponential bounds.',
+      'source_commit':COMMIT,'source_url':'https://github.com/openai/math/blob/'+COMMIT+'/lean/OAI/NumberTheory/PiExponent/Analysis/DeterminantAnalyticBound.lean#L80-L103',
+      'tags':['number-theory','finite-counting','openai-pi-exponent-017']}
+    files['academic-metadata.json']=encode(metadata)
+    for path in [SELF,CONSUMER,route.SELF,Path(probes.__file__),Path(probes.base.ap8.__file__),SNAPSHOT_CORE,RUNTIME,RUNNER,LEGACY_RUNNER,STAGE/'route-preparation.json']:
+        pins[rel(path)]=sha(path)
+    p={'schema_version':1,'artifact_kind':'ap18-translated-summand-node-candidate',
+       'source_commit':COMMIT,'source_name':TARGET,'platform_name':PLATFORM_NAME,'source_module':TARGET_MODULE,
+       'original_proof_AST_units':6,'original_source_lines':110,'inline_exact_source_units':[{k:v for k,v in r.items() if k!='bytes'} for r in rows],
+       'inline_helper_names':source_names[:-1],'source_type_only_names':source_names,'generated_type_only_names':generated_names,
+       'graph_closure_names':sorted(closure),'provider_subtracted_names':sorted(boundary),
+       'preamble':rp['target_preamble'],'formal_statement':rp['target_formal_statement'],
+       'target_imports':route.IMPORTS+[route.data.PLATFORM_MODULE],
+       'solution_imports':route.IMPORTS+[route.data.PLATFORM_MODULE,CHILD_MODULE],
+       'solution_module':SOLUTION_MODULE,'all_original_proof_suffixes_unchanged':True,
+       'only_target_binding_name_changed':True,'existing_port_adaptations':[],
+       'literal_global_solution':True,'source_theorem_values_null':True,'generated_theorem_values_null':True,
+       'multiplicity_Published_and_fullDef_certificate_pending':True,'sum_weight_Accepted_closed_child_pending':True,
+       'sum_weight_closed_child_module':CHILD_MODULE,'sum_weight_parent_theorem_id':pub['theorem_id'],
+       'sum_weight_parent_proof_id':pub['submission_id'],'input_hashes':pins,
+       'files':{f:sha_bytes(raw) for f,raw in files.items()},'names_need_root_authoritative_exact_lookup':True,
+       'compiler_manifests_finalized':False,'compiled':False,'validated':False,'submission_ready':False,
+       'proposal_status':'Draft','Lean_started':False,'API_used':False}
+    return files,p
+
+def candidate_files():
+    files,p=proof_files();outputs={'candidate-v2/'+f+'.txt':raw for f,raw in files.items()}
+    p['sum_weight_closed_child_stage']=rel(CHILD_STAGE)
+    outputs['candidate-spec-v2.json']=encode(p);return outputs
+
+def check_candidate():
+    outputs=candidate_files()
+    for f,raw in outputs.items():need((STAGE/f).read_bytes()==raw,'Immutable AP18 candidate differs: '+f)
+    return {'checked_files':len(outputs),'original_AST_units':6,'source_lines':110,
+       'prerequisites_pending':True,'compiler_manifests_finalized':False,'Lean_started':False,'API_used':False}
+
+def bind_published():
+    src=route.data.STAGE/'publication-v2/publication.json';p=read(src);body=p['target_readback']['body']
+    need(p['last_publish_verdict']['body']['status']=='PUBLISHED' and body['status']=='Definition'
+         and body['theorem_name']==route.data.PLATFORM_MODULE.removeprefix('Definitions.Def_')
+         and body['mathlib_rev']=='0df444a360eaa60ab8c11dca51a86af692955474'
+         and body['visibility']=='public' and body['definition'].encode()==(route.data.STAGE/route.data.PROVIDER_FILE).read_bytes(),
+         'Multiplicity exact actual Published Definition readback is pending or differs')
+    if PUBLISHED.exists():need(PUBLISHED.read_bytes()==src.read_bytes(),'Immutable multiplicity Published snapshot differs')
+    else:PUBLISHED.write_bytes(src.read_bytes())
+    return {'bound_actual_Published':True,'record':rel(PUBLISHED),'record_sha256':sha(PUBLISHED),'API_used':False}
+
+def boundary_evidence():
+    global _BOUNDARY_CACHE
+    def gate(pins):
+        for f,h in pins.items():need(sha(TASK/f)==h,'Fixed boundary replay input changed: '+f)
+    if _BOUNDARY_CACHE is not None:
+        pins,reports=_BOUNDARY_CACHE;gate(pins);return copy.deepcopy(reports),dict(pins)
+    need(PUBLISHED.is_file() and CHILD_CERTIFICATE.is_file() and CHILD_CONSUMER.is_file(),
+         'AP18 final contexts await actual Published multiplicity and genuine closed Accepted sum-weight certificate')
+    child=importlib.import_module(CHILD_CONSUMER.stem)
+    certificates=[(route.data.STAGE/'actual-provider-validation.json',route.data.STAGE,data_consumer),
+                  (CHILD_CERTIFICATE,CHILD_STAGE,child)]
+    pins={rel(PUBLISHED):sha(PUBLISHED),rel(CHILD_PRODUCER):sha(CHILD_PRODUCER)}
+    for cert_path,base,consumer in certificates:
+        recorded=read(cert_path);pins[rel(cert_path)]=sha(cert_path);pins[rel(Path(consumer.__file__))]=sha(Path(consumer.__file__))
+        prep=read(base/'preparation.json');pins[rel(base/'preparation.json')]=sha(base/'preparation.json')
+        pins.update(prep['input_hashes']);pins.update(recorded['implementation_hashes'])
+        for pf in recorded['preflights'].values():
+            pins[pf['record']]=pf['record_sha256']
+            for key in ['source','manifest','log']:
+                path=consumer.context.file(pf['data'][key]);pins[rel(path)]=sha(path)
+            for d in pf['data']['dependency_oleans']:
+                need(d['stable_during_compile'] and d['sha256_before']==d['sha256_after'],'Actual boundary dependency OLean was unstable')
+                path=Path(d['path']).resolve()
+                pins[rel(path) if path.is_relative_to(TASK.resolve()) else str(path)]=d['sha256_before']
+        pins[recorded['provider_olean']]=recorded['provider_olean_sha256']
+        for f,h in recorded.get('output_json_sha256',{}).items():pins[f]=h
+        for f,h in recorded.get('generated_json_sha256',{}).items():pins[rel(base/f)]=h
+        for f,h in recorded.get('json_sha256',{}).items():pins[rel(base/f)]=h
+    gate(pins)
+    actual_data=data_consumer.validate('multiplicity');actual_child=child.validate()
+    need(encode(actual_data)==(route.data.STAGE/'actual-provider-validation.json').read_bytes()
+         and encode(actual_child)==CHILD_CERTIFICATE.read_bytes(),'First full boundary mathematical replay differs from recorded certificate')
+    need(actual_data['validated'] is True and actual_data['Std3_only'] is True and actual_data['definition_values_equal_and_exported'] is True
+         and actual_child['validated'] is True and actual_child['Std3_only'] is True
+         and actual_child['public_platform_boundary_names']==[route.PARENT]
+         and actual_child['accepted_theorem_id']=='84999320-3725-4c17-b1cb-428d9f92f6cc'
+         and actual_child['accepted_proof_id']=='78ad72fd-0fdd-44e6-93c7-f0e607baa6fa',
+         'Actual full-Def or public-only Accepted sum-weight boundary differs')
+    pub=read(PUBLISHED);body=pub['target_readback']['body']
+    need(pub['last_publish_verdict']['body']['status']=='PUBLISHED' and body['status']=='Definition'
+         and body['definition'].encode()==(route.data.STAGE/route.data.PROVIDER_FILE).read_bytes(),
+         'Actual immutable Published multiplicity body differs')
+    gate(pins);reports={'multiplicity':actual_data,'sum_weight':actual_child}
+    _BOUNDARY_CACHE=(dict(pins),copy.deepcopy(reports));return copy.deepcopy(reports),dict(pins)
+
+def final_files():
+    check_candidate();reports,boundary_pins=boundary_evidence();files,p=proof_files()
+    outside_oleans={f:h for f,h in boundary_pins.items() if Path(f).is_absolute()}
+    pins={**p['input_hashes'],**{f:h for f,h in boundary_pins.items() if not Path(f).is_absolute()}}
+    manifests={};commands=[]
+    for i,(f,mode,imps) in enumerate(zip(FILES,MODES,[p['target_imports'],p['solution_imports'],['Lean',TARGET_MODULE],['Lean',SOLUTION_MODULE]],strict=True),1):
+        mf=f'c{i}.json';files[mf]=encode({'schema_version':1,'artifact_kind':'ap18-translated-summand-bounded-manifest',
+          'output':workspace_rel(STAGE/f),'output_sha256':sha_bytes(files[f]),'imports':imps,'input_hashes':pins,
+          'runtime_sha256':sha(RUNTIME),'mode':mode,'emit_olean':mode=='emit-olean','timeout_seconds':300,
+          'bounded_runner':rel(RUNNER),'bounded_runner_sha256':sha(RUNNER),'legacy_runner_sha256':sha(LEGACY_RUNNER),
+          'validated':False,'submission_ready':False})
+        manifests[f]={'sha256':sha_bytes(files[f]),'mode':mode,'manifest':mf,'imports':imps,'emit_olean':mode=='emit-olean'}
+        commands.append('& '+repr(route.data.PYTHON)+' scripts/preflight_staged_module_windows_bounded.py '+verification_rel(STAGE/f)+' --root '+verification_rel(STAGE)+' --imports-manifest '+verification_rel(STAGE/mf)+' --timeout-seconds 300'+(' --emit-olean' if mode=='emit-olean' else ''))
+    p.update({'artifact_kind':'ap18-translated-summand-node-preparation','multiplicity_Published_and_fullDef_certificate_pending':False,
+      'sum_weight_Accepted_closed_child_pending':False,'compiler_manifests_finalized':True,'files':manifests,'input_hashes':pins,
+      'boundary_dependency_olean_sha256':outside_oleans,
+      'boundary_certificates':{'multiplicity':{'certificate':rel(route.data.STAGE/'actual-provider-validation.json'),'sha256':sha(route.data.STAGE/'actual-provider-validation.json')},
+          'sum_weight':{'certificate':rel(CHILD_CERTIFICATE),'sha256':sha(CHILD_CERTIFICATE)}},'compile_commands':commands})
+    files['preparation.json']=encode(p);files['compile-commands.txt']=('\n'.join(commands)+'\n').encode();return files
+
+def check_only():
+    outputs=final_files()
+    for f,raw in outputs.items():need((STAGE/f).read_bytes()==raw,'Immutable AP18 final file differs: '+f)
+    return {'checked_files':len(outputs),'actual_prerequisites_replayed':True,'Lean_started':False,'API_used':False}
+
+def write_exact(outputs):
+    for f,raw in outputs.items():
+        path=STAGE/f
+        if path.exists():need(path.read_bytes()==raw,'Refusing overwrite: '+f)
+        else:path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(raw)
+    for f,raw in outputs.items():need((STAGE/f).read_bytes()==raw,'Written pure output differs: '+f)
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__);g=p.add_mutually_exclusive_group(required=True)
+    for flag in ['prepare-candidate','check-candidate','bind-published','finalize','check-only']:g.add_argument('--'+flag,action='store_true')
+    a=p.parse_args()
+    if a.bind_published:result=bind_published()
+    elif a.finalize:
+        outputs=final_files();write_exact(outputs);result={'prepared':True,'files':len(outputs),'compile_commands':read(STAGE/'preparation.json')['compile_commands'],'API_used':False,'Lean_started':False}
+    elif a.check_only:result=check_only()
+    else:
+        if a.prepare_candidate:write_exact(candidate_files())
+        result=check_candidate()
+    print(json.dumps(result,ensure_ascii=False,indent=2))
+if __name__=='__main__':main()

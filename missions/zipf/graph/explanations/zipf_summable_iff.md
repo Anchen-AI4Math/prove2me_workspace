@@ -1,0 +1,1 @@
+For every nonnegative exponent $s$, Mathlib's real p-series criterion, applied to the shift $1$, gives summability exactly when $s>1$. Every shifted base $k+1$ is positive, so removing the absolute value in that criterion gives precisely the Zipf series.

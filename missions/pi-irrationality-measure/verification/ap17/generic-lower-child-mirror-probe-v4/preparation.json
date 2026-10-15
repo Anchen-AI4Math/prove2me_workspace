@@ -1,0 +1,4567 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ap17-generic-lower-inventory-IO-probe-v4-preparation",
+  "source_name": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "platform_module": "Theorems.Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound",
+  "imports": [
+    "Mathlib.Tactic",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData",
+    "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+    "Theorems.Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_clearing_bound"
+  ],
+  "source_type_only_names": [
+    "OAI.PiExponent.mem_realWeightedSimplex",
+    "OAI.PiExponent.mem_strictWeightedSimplex",
+    "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+    "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+    "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+    "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+    "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+    "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+    "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+    "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+    "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+    "OAI.PiExponent.Arithmetic.column_log_cost_le",
+    "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+    "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+    "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+    "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+    "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+    "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+    "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+    "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+    "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound"
+  ],
+  "private_helper_names": [
+    "OAI.PiExponent.mem_realWeightedSimplex",
+    "OAI.PiExponent.mem_strictWeightedSimplex",
+    "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+    "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+    "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+    "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+    "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+    "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+    "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+    "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+    "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+    "OAI.PiExponent.Arithmetic.column_log_cost_le",
+    "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+    "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+    "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+    "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+    "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+    "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+    "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+    "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+    "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le"
+  ],
+  "public_platform_boundary_names": [
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound"
+  ],
+  "private_helper_count": 21,
+  "original_AST_count": 22,
+  "original_source_lines": 247,
+  "source_units": [
+    {
+      "name": "OAI.PiExponent.mem_realWeightedSimplex",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 165,
+          "normalizedOffset": 6752,
+          "offset": 6916
+        },
+        "end": {
+          "col": 88,
+          "line": 180,
+          "normalizedOffset": 7406,
+          "offset": 7585
+        },
+        "nameText": "mem_realWeightedSimplex",
+        "nameRange": {
+          "end": {
+            "col": 31,
+            "line": 165,
+            "normalizedOffset": 6783,
+            "offset": 6947
+          },
+          "start": {
+            "col": 8,
+            "line": 165,
+            "normalizedOffset": 6760,
+            "offset": 6924
+          }
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 167,
+          "normalizedOffset": 6941,
+          "offset": 7107
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.mem_realWeightedSimplex"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.mem_realWeightedSimplex"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 88,
+            "line": 180,
+            "normalizedOffset": 7406,
+            "offset": 7585
+          },
+          "start": {
+            "col": 0,
+            "line": 165,
+            "normalizedOffset": 6752,
+            "offset": 6916
+          }
+        },
+        "namespace": "OAI.PiExponent",
+        "verified_name": "OAI.PiExponent.mem_realWeightedSimplex",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 139,
+                "offset": 142
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 126,
+                "offset": 129
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 167,
+                "offset": 174
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 165,
+                "offset": 170
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 141,
+                "offset": 146
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 118,
+                "normalizedOffset": 4879,
+                "offset": 4996
+              },
+              "start": {
+                "col": 0,
+                "line": 118,
+                "normalizedOffset": 4859,
+                "offset": 4976
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.mem_realWeightedSimplex",
+        "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.mem_realWeightedSimplex",
+        "startLine": 165,
+        "endLine": 180,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.realWeightedSimplex"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.realWeightedSimplex"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "start": 6916,
+      "end": 7585,
+      "command_sha256": "c11a4bef1d0e3fcb54ca89c51c42d3799d793b2ac8835d2b3a98065c944b068d",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.mem_strictWeightedSimplex",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 182,
+          "normalizedOffset": 7408,
+          "offset": 7589
+        },
+        "end": {
+          "col": 21,
+          "line": 188,
+          "normalizedOffset": 7748,
+          "offset": 7935
+        },
+        "nameText": "mem_strictWeightedSimplex",
+        "nameRange": {
+          "end": {
+            "col": 33,
+            "line": 182,
+            "normalizedOffset": 7441,
+            "offset": 7622
+          },
+          "start": {
+            "col": 8,
+            "line": 182,
+            "normalizedOffset": 7416,
+            "offset": 7597
+          }
+        },
+        "valueStart": {
+          "col": 61,
+          "line": 184,
+          "normalizedOffset": 7599,
+          "offset": 7782
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.mem_strictWeightedSimplex"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.mem_strictWeightedSimplex"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 21,
+            "line": 188,
+            "normalizedOffset": 7748,
+            "offset": 7935
+          },
+          "start": {
+            "col": 0,
+            "line": 182,
+            "normalizedOffset": 7408,
+            "offset": 7589
+          }
+        },
+        "namespace": "OAI.PiExponent",
+        "verified_name": "OAI.PiExponent.mem_strictWeightedSimplex",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 139,
+                "offset": 142
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 126,
+                "offset": 129
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 167,
+                "offset": 174
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 165,
+                "offset": 170
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 141,
+                "offset": 146
+              }
+            }
+          },
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 20,
+                "line": 118,
+                "normalizedOffset": 4879,
+                "offset": 4996
+              },
+              "start": {
+                "col": 0,
+                "line": 118,
+                "normalizedOffset": 4859,
+                "offset": 4976
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.mem_strictWeightedSimplex",
+        "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.mem_strictWeightedSimplex",
+        "startLine": 182,
+        "endLine": 188,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.strictWeightedSimplex"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.mem_realWeightedSimplex",
+          "OAI.PiExponent.realWeightedSimplex"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "start": 7589,
+      "end": 7935,
+      "command_sha256": "a4b21f507307f5935c45bf5a309f68935f512014f85218d473eb845d4f15c42c",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 70,
+          "normalizedOffset": 2734,
+          "offset": 2803
+        },
+        "end": {
+          "col": 5,
+          "line": 78,
+          "normalizedOffset": 3178,
+          "offset": 3255
+        },
+        "nameText": "column_mem_iff",
+        "nameRange": {
+          "end": {
+            "col": 22,
+            "line": 70,
+            "normalizedOffset": 2756,
+            "offset": 2825
+          },
+          "start": {
+            "col": 8,
+            "line": 70,
+            "normalizedOffset": 2742,
+            "offset": 2811
+          }
+        },
+        "valueStart": {
+          "col": 53,
+          "line": 73,
+          "normalizedOffset": 2998,
+          "offset": 3070
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.InterpolationMatrix.column_mem_iff"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.InterpolationMatrix.column_mem_iff"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 5,
+            "line": 78,
+            "normalizedOffset": 3178,
+            "offset": 3255
+          },
+          "start": {
+            "col": 0,
+            "line": 70,
+            "normalizedOffset": 2734,
+            "offset": 2803
+          }
+        },
+        "namespace": "OAI.PiExponent.InterpolationMatrix",
+        "verified_name": "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 119,
+                "offset": 122
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 106,
+                "offset": 109
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "InterpolationMatrix",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 145,
+                "offset": 150
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 121,
+                "offset": 126
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+        "startLine": 70,
+        "endLine": 78,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.mem_realWeightedSimplex",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.columnWeights"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "original_sha256": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+      "start": 2803,
+      "end": 3255,
+      "command_sha256": "4c2515411f3fbe8b95251b588fe508cdd7c43d495752beb540777b4fd0358ff6",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 80,
+          "normalizedOffset": 3180,
+          "offset": 3259
+        },
+        "end": {
+          "col": 19,
+          "line": 89,
+          "normalizedOffset": 3753,
+          "offset": 3841
+        },
+        "nameText": "row_mem_iff",
+        "nameRange": {
+          "end": {
+            "col": 19,
+            "line": 80,
+            "normalizedOffset": 3199,
+            "offset": 3278
+          },
+          "start": {
+            "col": 8,
+            "line": 80,
+            "normalizedOffset": 3188,
+            "offset": 3267
+          }
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 83,
+          "normalizedOffset": 3466,
+          "offset": 3548
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_mem_iff"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_mem_iff"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 19,
+            "line": 89,
+            "normalizedOffset": 3753,
+            "offset": 3841
+          },
+          "start": {
+            "col": 0,
+            "line": 80,
+            "normalizedOffset": 3180,
+            "offset": 3259
+          }
+        },
+        "namespace": "OAI.PiExponent.InterpolationMatrix",
+        "verified_name": "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 119,
+                "offset": 122
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 106,
+                "offset": 109
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "InterpolationMatrix",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 145,
+                "offset": 150
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 121,
+                "offset": 126
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+        "startLine": 80,
+        "endLine": 89,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.mem_strictWeightedSimplex",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "original_sha256": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+      "start": 3259,
+      "end": 3841,
+      "command_sha256": "16dbcfdd4d2a77fadcb5fdc169e4b63520dcf1cff3c8a1161fd550eb16718a42",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 91,
+          "normalizedOffset": 3755,
+          "offset": 3845
+        },
+        "end": {
+          "col": 36,
+          "line": 94,
+          "normalizedOffset": 3988,
+          "offset": 4081
+        },
+        "nameText": "column_weight_le",
+        "nameRange": {
+          "end": {
+            "col": 24,
+            "line": 91,
+            "normalizedOffset": 3779,
+            "offset": 3869
+          },
+          "start": {
+            "col": 8,
+            "line": 91,
+            "normalizedOffset": 3763,
+            "offset": 3853
+          }
+        },
+        "valueStart": {
+          "col": 55,
+          "line": 93,
+          "normalizedOffset": 3949,
+          "offset": 4041
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.InterpolationMatrix.column_weight_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.InterpolationMatrix.column_weight_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 36,
+            "line": 94,
+            "normalizedOffset": 3988,
+            "offset": 4081
+          },
+          "start": {
+            "col": 0,
+            "line": 91,
+            "normalizedOffset": 3755,
+            "offset": 3845
+          }
+        },
+        "namespace": "OAI.PiExponent.InterpolationMatrix",
+        "verified_name": "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 119,
+                "offset": 122
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 106,
+                "offset": 109
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "InterpolationMatrix",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 145,
+                "offset": 150
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 121,
+                "offset": 126
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+        "startLine": 91,
+        "endLine": 94,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.Column"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+          "OAI.PiExponent.InterpolationMatrix.Column"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "original_sha256": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+      "start": 3845,
+      "end": 4081,
+      "command_sha256": "3b3f7617c37dd5b8539bdb07fade8d84bbc4eba42fb77c994f860dfeb4a280af",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 96,
+          "normalizedOffset": 3990,
+          "offset": 4085
+        },
+        "end": {
+          "col": 40,
+          "line": 99,
+          "normalizedOffset": 4261,
+          "offset": 4359
+        },
+        "nameText": "row_weight_lt",
+        "nameRange": {
+          "end": {
+            "col": 21,
+            "line": 96,
+            "normalizedOffset": 4011,
+            "offset": 4106
+          },
+          "start": {
+            "col": 8,
+            "line": 96,
+            "normalizedOffset": 3998,
+            "offset": 4093
+          }
+        },
+        "valueStart": {
+          "col": 65,
+          "line": 98,
+          "normalizedOffset": 4215,
+          "offset": 4312
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_weight_lt"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_weight_lt"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 40,
+            "line": 99,
+            "normalizedOffset": 4261,
+            "offset": 4359
+          },
+          "start": {
+            "col": 0,
+            "line": 96,
+            "normalizedOffset": 3990,
+            "offset": 4085
+          }
+        },
+        "namespace": "OAI.PiExponent.InterpolationMatrix",
+        "verified_name": "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 4,
+                "normalizedOffset": 119,
+                "offset": 122
+              },
+              "start": {
+                "col": 0,
+                "line": 4,
+                "normalizedOffset": 106,
+                "offset": 109
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "InterpolationMatrix",
+            "opening": {
+              "end": {
+                "col": 40,
+                "line": 8,
+                "normalizedOffset": 187,
+                "offset": 194
+              },
+              "start": {
+                "col": 0,
+                "line": 8,
+                "normalizedOffset": 147,
+                "offset": 154
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 6,
+                "normalizedOffset": 145,
+                "offset": 150
+              },
+              "start": {
+                "col": 0,
+                "line": 6,
+                "normalizedOffset": 121,
+                "offset": 126
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+        "startLine": 96,
+        "endLine": 99,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.row_mem_iff"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "original_sha256": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+      "start": 4085,
+      "end": 4359,
+      "command_sha256": "6760b502765bda7e45968d0f9d77f26e3b537ffb28f7c14f443586be73b7f9c2",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 20,
+          "normalizedOffset": 544,
+          "offset": 563
+        },
+        "end": {
+          "col": 55,
+          "line": 23,
+          "normalizedOffset": 735,
+          "offset": 757
+        },
+        "nameText": "log_lcmUpto_le",
+        "nameRange": {
+          "end": {
+            "col": 22,
+            "line": 20,
+            "normalizedOffset": 566,
+            "offset": 585
+          },
+          "start": {
+            "col": 8,
+            "line": 20,
+            "normalizedOffset": 552,
+            "offset": 571
+          }
+        },
+        "valueStart": {
+          "col": 51,
+          "line": 21,
+          "normalizedOffset": 634,
+          "offset": 654
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.log_lcmUpto_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.log_lcmUpto_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 55,
+            "line": 23,
+            "normalizedOffset": 735,
+            "offset": 757
+          },
+          "start": {
+            "col": 0,
+            "line": 20,
+            "normalizedOffset": 544,
+            "offset": 563
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+        "startLine": 20,
+        "endLine": 23,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 563,
+      "end": 757,
+      "command_sha256": "2e6c7e5aa4e10953550c3cdc83b273cb1467c14252ee3548e89727f1336f778f",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 91,
+          "normalizedOffset": 3932,
+          "offset": 4022
+        },
+        "end": {
+          "col": 20,
+          "line": 100,
+          "normalizedOffset": 4451,
+          "offset": 4550
+        },
+        "nameText": "log_lcm_power_product_le",
+        "nameRange": {
+          "end": {
+            "col": 32,
+            "line": 91,
+            "normalizedOffset": 3964,
+            "offset": 4054
+          },
+          "start": {
+            "col": 8,
+            "line": 91,
+            "normalizedOffset": 3940,
+            "offset": 4030
+          }
+        },
+        "valueStart": {
+          "col": 45,
+          "line": 93,
+          "normalizedOffset": 4130,
+          "offset": 4222
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.log_lcm_power_product_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.log_lcm_power_product_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 20,
+            "line": 100,
+            "normalizedOffset": 4451,
+            "offset": 4550
+          },
+          "start": {
+            "col": 0,
+            "line": 91,
+            "normalizedOffset": 3932,
+            "offset": 4022
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+        "startLine": 91,
+        "endLine": 100,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.Arithmetic.log_lcmUpto_le"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 4022,
+      "end": 4550,
+      "command_sha256": "c04fa1e8f01ecd793f4e9dc8169a46423f03673d5675e66908071abe25b9389b",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 102,
+          "normalizedOffset": 4453,
+          "offset": 4554
+        },
+        "end": {
+          "col": 10,
+          "line": 119,
+          "normalizedOffset": 5263,
+          "offset": 5381
+        },
+        "nameText": "log_lcm_floor_product_le",
+        "nameRange": {
+          "end": {
+            "col": 32,
+            "line": 102,
+            "normalizedOffset": 4485,
+            "offset": 4586
+          },
+          "start": {
+            "col": 8,
+            "line": 102,
+            "normalizedOffset": 4461,
+            "offset": 4562
+          }
+        },
+        "valueStart": {
+          "col": 49,
+          "line": 105,
+          "normalizedOffset": 4740,
+          "offset": 4844
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 10,
+            "line": 119,
+            "normalizedOffset": 5263,
+            "offset": 5381
+          },
+          "start": {
+            "col": 0,
+            "line": 102,
+            "normalizedOffset": 4453,
+            "offset": 4554
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+        "startLine": 102,
+        "endLine": 119,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+          "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 4554,
+      "end": 5381,
+      "command_sha256": "d0a1de35eac2315b243c2ea57153fc3574787f2b55d2b04e4cc148a361034c6a",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 121,
+          "normalizedOffset": 5265,
+          "offset": 5385
+        },
+        "end": {
+          "col": 73,
+          "line": 135,
+          "normalizedOffset": 5983,
+          "offset": 6117
+        },
+        "nameText": "sum_ceil_truncation_div_le",
+        "nameRange": {
+          "end": {
+            "col": 34,
+            "line": 121,
+            "normalizedOffset": 5299,
+            "offset": 5419
+          },
+          "start": {
+            "col": 8,
+            "line": 121,
+            "normalizedOffset": 5273,
+            "offset": 5393
+          }
+        },
+        "valueStart": {
+          "col": 40,
+          "line": 124,
+          "normalizedOffset": 5522,
+          "offset": 5645
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 73,
+            "line": 135,
+            "normalizedOffset": 5983,
+            "offset": 6117
+          },
+          "start": {
+            "col": 0,
+            "line": 121,
+            "normalizedOffset": 5265,
+            "offset": 5385
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+        "startLine": 121,
+        "endLine": 135,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 5385,
+      "end": 6117,
+      "command_sha256": "d20cd14f80d4d858073b47f4c1636da50782643d4a778a7a013395ae4a5950b8",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 137,
+          "normalizedOffset": 5985,
+          "offset": 6121
+        },
+        "end": {
+          "col": 20,
+          "line": 150,
+          "normalizedOffset": 6727,
+          "offset": 6876
+        },
+        "nameText": "truncation_denominator_log_le",
+        "nameRange": {
+          "end": {
+            "col": 37,
+            "line": 137,
+            "normalizedOffset": 6022,
+            "offset": 6158
+          },
+          "start": {
+            "col": 8,
+            "line": 137,
+            "normalizedOffset": 5993,
+            "offset": 6129
+          }
+        },
+        "valueStart": {
+          "col": 68,
+          "line": 142,
+          "normalizedOffset": 6338,
+          "offset": 6479
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.truncation_denominator_log_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.truncation_denominator_log_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 20,
+            "line": 150,
+            "normalizedOffset": 6727,
+            "offset": 6876
+          },
+          "start": {
+            "col": 0,
+            "line": 137,
+            "normalizedOffset": 5985,
+            "offset": 6121
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+        "startLine": 137,
+        "endLine": 150,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+          "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+          "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+          "OAI.PiExponent.Arithmetic.lcmConstant"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 6121,
+      "end": 6876,
+      "command_sha256": "656983262026eb97a0401f01ce19b142a0838720a1f6dbc50050f32af0962b26",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.column_log_cost_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 281,
+          "normalizedOffset": 13094,
+          "offset": 13374
+        },
+        "end": {
+          "col": 69,
+          "line": 286,
+          "normalizedOffset": 13402,
+          "offset": 13687
+        },
+        "nameText": "column_log_cost_le",
+        "nameRange": {
+          "end": {
+            "col": 26,
+            "line": 281,
+            "normalizedOffset": 13120,
+            "offset": 13400
+          },
+          "start": {
+            "col": 8,
+            "line": 281,
+            "normalizedOffset": 13102,
+            "offset": 13382
+          }
+        },
+        "valueStart": {
+          "col": 51,
+          "line": 283,
+          "normalizedOffset": 13288,
+          "offset": 13570
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.column_log_cost_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.column_log_cost_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 69,
+            "line": 286,
+            "normalizedOffset": 13402,
+            "offset": 13687
+          },
+          "start": {
+            "col": 0,
+            "line": 281,
+            "normalizedOffset": 13094,
+            "offset": 13374
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.column_log_cost_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.column_log_cost_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.column_log_cost_le",
+        "startLine": 281,
+        "endLine": 286,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 13374,
+      "end": 13687,
+      "command_sha256": "dc28887a17a4a21d6546680bfac873efc3b2d528562476c9a8892c868cadd6b8",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 288,
+          "normalizedOffset": 13404,
+          "offset": 13691
+        },
+        "end": {
+          "col": 95,
+          "line": 294,
+          "normalizedOffset": 13808,
+          "offset": 14101
+        },
+        "nameText": "sum_exponents_le_weight_div",
+        "nameRange": {
+          "end": {
+            "col": 35,
+            "line": 288,
+            "normalizedOffset": 13439,
+            "offset": 13726
+          },
+          "start": {
+            "col": 8,
+            "line": 288,
+            "normalizedOffset": 13412,
+            "offset": 13699
+          }
+        },
+        "valueStart": {
+          "col": 61,
+          "line": 291,
+          "normalizedOffset": 13652,
+          "offset": 13942
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 95,
+            "line": 294,
+            "normalizedOffset": 13808,
+            "offset": 14101
+          },
+          "start": {
+            "col": 0,
+            "line": 288,
+            "normalizedOffset": 13404,
+            "offset": 13691
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+        "startLine": 288,
+        "endLine": 294,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 13691,
+      "end": 14101,
+      "command_sha256": "6141a85ba52cd4651195bec0d9f8c57ac11530c99aec21cc0cc77a781281b66c",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 296,
+          "normalizedOffset": 13810,
+          "offset": 14105
+        },
+        "end": {
+          "col": 10,
+          "line": 314,
+          "normalizedOffset": 14853,
+          "offset": 15166
+        },
+        "nameText": "row_log_cost_lower",
+        "nameRange": {
+          "end": {
+            "col": 26,
+            "line": 296,
+            "normalizedOffset": 13836,
+            "offset": 14131
+          },
+          "start": {
+            "col": 8,
+            "line": 296,
+            "normalizedOffset": 13818,
+            "offset": 14113
+          }
+        },
+        "valueStart": {
+          "col": 42,
+          "line": 301,
+          "normalizedOffset": 14200,
+          "offset": 14500
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.row_log_cost_lower"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.row_log_cost_lower"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 10,
+            "line": 314,
+            "normalizedOffset": 14853,
+            "offset": 15166
+          },
+          "start": {
+            "col": 0,
+            "line": 296,
+            "normalizedOffset": 13810,
+            "offset": 14105
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+        "startLine": 296,
+        "endLine": 314,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 14105,
+      "end": 15166,
+      "command_sha256": "e461975f8dd6e68c073d5a2a33f22c106844a0523e66900277a5ac7533df1327",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 316,
+          "normalizedOffset": 14855,
+          "offset": 15170
+        },
+        "end": {
+          "col": 41,
+          "line": 325,
+          "normalizedOffset": 15337,
+          "offset": 15661
+        },
+        "nameText": "normalized_arithmetic_bound",
+        "nameRange": {
+          "end": {
+            "col": 35,
+            "line": 316,
+            "normalizedOffset": 14890,
+            "offset": 15205
+          },
+          "start": {
+            "col": 8,
+            "line": 316,
+            "normalizedOffset": 14863,
+            "offset": 15178
+          }
+        },
+        "valueStart": {
+          "col": 45,
+          "line": 322,
+          "normalizedOffset": 15196,
+          "offset": 15517
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 41,
+            "line": 325,
+            "normalizedOffset": 15337,
+            "offset": 15661
+          },
+          "start": {
+            "col": 0,
+            "line": 316,
+            "normalizedOffset": 14855,
+            "offset": 15170
+          }
+        },
+        "namespace": "OAI.PiExponent.Arithmetic",
+        "verified_name": "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 9,
+                "normalizedOffset": 308,
+                "offset": 316
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 295,
+                "offset": 303
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "Arithmetic",
+            "opening": {
+              "end": {
+                "col": 31,
+                "line": 11,
+                "normalizedOffset": 341,
+                "offset": 351
+              },
+              "start": {
+                "col": 0,
+                "line": 11,
+                "normalizedOffset": 310,
+                "offset": 320
+              }
+            }
+          }
+        ],
+        "context_commands": []
+      },
+      "graph": {
+        "name": "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.Arithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+        "startLine": 316,
+        "endLine": 325,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_sha256": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "original_sha256": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+      "start": 15170,
+      "end": 15661,
+      "command_sha256": "2068f369ee102a4adfdce9e81ce5af1e0068feba1d12b583e2cef705dd8176c7",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 178,
+          "normalizedOffset": 7746,
+          "offset": 7923
+        },
+        "end": {
+          "col": 59,
+          "line": 187,
+          "normalizedOffset": 8287,
+          "offset": 8473
+        },
+        "nameText": "log_denominator_le",
+        "nameRange": {
+          "end": {
+            "col": 26,
+            "line": 178,
+            "normalizedOffset": 7772,
+            "offset": 7949
+          },
+          "start": {
+            "col": 8,
+            "line": 178,
+            "normalizedOffset": 7754,
+            "offset": 7931
+          }
+        },
+        "valueStart": {
+          "col": 58,
+          "line": 183,
+          "normalizedOffset": 8074,
+          "offset": 8256
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.log_denominator_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.log_denominator_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 59,
+            "line": 187,
+            "normalizedOffset": 8287,
+            "offset": 8473
+          },
+          "start": {
+            "col": 0,
+            "line": 178,
+            "normalizedOffset": 7746,
+            "offset": 7923
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+        "startLine": 178,
+        "endLine": 187,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.denominator"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.denominator"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 7923,
+      "end": 8473,
+      "command_sha256": "44b9fcb25b15c9e181b940edcd56dcb5bcb7b3afe2f6bdd409e11fb36719fd94",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 220,
+          "normalizedOffset": 9820,
+          "offset": 10039
+        },
+        "end": {
+          "col": 16,
+          "line": 227,
+          "normalizedOffset": 10236,
+          "offset": 10462
+        },
+        "nameText": "actual_row_card_pos",
+        "nameRange": {
+          "end": {
+            "col": 27,
+            "line": 220,
+            "normalizedOffset": 9847,
+            "offset": 10066
+          },
+          "start": {
+            "col": 8,
+            "line": 220,
+            "normalizedOffset": 9828,
+            "offset": 10047
+          }
+        },
+        "valueStart": {
+          "col": 71,
+          "line": 223,
+          "normalizedOffset": 10067,
+          "offset": 10289
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 16,
+            "line": 227,
+            "normalizedOffset": 10236,
+            "offset": 10462
+          },
+          "start": {
+            "col": 0,
+            "line": 220,
+            "normalizedOffset": 9820,
+            "offset": 10039
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+        "startLine": 220,
+        "endLine": 227,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.row_mem_iff"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 10039,
+      "end": 10462,
+      "command_sha256": "da2445fc8cd6acf1598020844b846cbcf7de83caf5d8d979b8f6155346265bde",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 229,
+          "normalizedOffset": 10238,
+          "offset": 10466
+        },
+        "end": {
+          "col": 57,
+          "line": 232,
+          "normalizedOffset": 10467,
+          "offset": 10698
+        },
+        "nameText": "ceil_log_weight_pos",
+        "nameRange": {
+          "end": {
+            "col": 27,
+            "line": 229,
+            "normalizedOffset": 10265,
+            "offset": 10493
+          },
+          "start": {
+            "col": 8,
+            "line": 229,
+            "normalizedOffset": 10246,
+            "offset": 10474
+          }
+        },
+        "valueStart": {
+          "col": 34,
+          "line": 230,
+          "normalizedOffset": 10337,
+          "offset": 10566
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 57,
+            "line": 232,
+            "normalizedOffset": 10467,
+            "offset": 10698
+          },
+          "start": {
+            "col": 0,
+            "line": 229,
+            "normalizedOffset": 10238,
+            "offset": 10466
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+        "startLine": 229,
+        "endLine": 232,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [],
+        "valueDeps": []
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 10466,
+      "end": 10698,
+      "command_sha256": "e39b735c1b7031a4c2e7b7261b675a01c9788ef3c428bca6cac76ed04a913a1f",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 248,
+          "normalizedOffset": 11133,
+          "offset": 11380
+        },
+        "end": {
+          "col": 24,
+          "line": 264,
+          "normalizedOffset": 11976,
+          "offset": 12239
+        },
+        "nameText": "column_log_cost_le_H",
+        "nameRange": {
+          "end": {
+            "col": 28,
+            "line": 248,
+            "normalizedOffset": 11161,
+            "offset": 11408
+          },
+          "start": {
+            "col": 8,
+            "line": 248,
+            "normalizedOffset": 11141,
+            "offset": 11388
+          }
+        },
+        "valueStart": {
+          "col": 53,
+          "line": 252,
+          "normalizedOffset": 11419,
+          "offset": 11670
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 24,
+            "line": 264,
+            "normalizedOffset": 11976,
+            "offset": 12239
+          },
+          "start": {
+            "col": 0,
+            "line": 248,
+            "normalizedOffset": 11133,
+            "offset": 11380
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+        "startLine": 248,
+        "endLine": 264,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.Column"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.Column",
+          "OAI.PiExponent.Arithmetic.column_log_cost_le",
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 11380,
+      "end": 12239,
+      "command_sha256": "dc80adf8c36ed7ac3b739eeddb7d412b68f9a93e4a0e98f08e75c6f4710d02c6",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 266,
+          "normalizedOffset": 11978,
+          "offset": 12243
+        },
+        "end": {
+          "col": 20,
+          "line": 277,
+          "normalizedOffset": 12690,
+          "offset": 12966
+        },
+        "nameText": "selected_column_log_cost_le",
+        "nameRange": {
+          "end": {
+            "col": 35,
+            "line": 266,
+            "normalizedOffset": 12013,
+            "offset": 12278
+          },
+          "start": {
+            "col": 8,
+            "line": 266,
+            "normalizedOffset": 11986,
+            "offset": 12251
+          }
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 274,
+          "normalizedOffset": 12555,
+          "offset": 12828
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 20,
+            "line": 277,
+            "normalizedOffset": 12690,
+            "offset": 12966
+          },
+          "start": {
+            "col": 0,
+            "line": 266,
+            "normalizedOffset": 11978,
+            "offset": 12243
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+        "startLine": 266,
+        "endLine": 277,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.Column"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.columnWeights",
+          "OAI.PiExponent.realWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.Column"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 12243,
+      "end": 12966,
+      "command_sha256": "40d1aecbbdaad9e12673e9db526d238055064e63f9ea2b5d0d4849e8645306fc",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 279,
+          "normalizedOffset": 12692,
+          "offset": 12970
+        },
+        "end": {
+          "col": 32,
+          "line": 287,
+          "normalizedOffset": 13242,
+          "offset": 13528
+        },
+        "nameText": "row_weighted_cost_le",
+        "nameRange": {
+          "end": {
+            "col": 28,
+            "line": 279,
+            "normalizedOffset": 12720,
+            "offset": 12998
+          },
+          "start": {
+            "col": 8,
+            "line": 279,
+            "normalizedOffset": 12700,
+            "offset": 12978
+          }
+        },
+        "valueStart": {
+          "col": 44,
+          "line": 282,
+          "normalizedOffset": 12937,
+          "offset": 13218
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 32,
+            "line": 287,
+            "normalizedOffset": 13242,
+            "offset": 13528
+          },
+          "start": {
+            "col": 0,
+            "line": 279,
+            "normalizedOffset": 12692,
+            "offset": 12970
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+        "startLine": 279,
+        "endLine": 287,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.row_weight_lt"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 12970,
+      "end": 13528,
+      "command_sha256": "66ac232561f145e9fdb05e5f5d8e51ae620f617aaa8b354e31fb477f6e2883c7",
+      "original_port_command_equal_modulo_line_endings": true
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "kind": "theorem",
+      "ast": {
+        "start": {
+          "col": 0,
+          "line": 360,
+          "normalizedOffset": 17288,
+          "offset": 17647
+        },
+        "end": {
+          "col": 87,
+          "line": 393,
+          "normalizedOffset": 19339,
+          "offset": 19731
+        },
+        "nameText": "selectedMinor_arithmetic_lower_bound",
+        "nameRange": {
+          "end": {
+            "col": 44,
+            "line": 360,
+            "normalizedOffset": 17332,
+            "offset": 17691
+          },
+          "start": {
+            "col": 8,
+            "line": 360,
+            "normalizedOffset": 17296,
+            "offset": 17655
+          }
+        },
+        "valueStart": {
+          "col": 83,
+          "line": 372,
+          "normalizedOffset": 18108,
+          "offset": 18479
+        },
+        "docstring": null,
+        "privateTok": null,
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound"
+        ],
+        "graph_kinds": [
+          "theorem"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound"
+        ]
+      },
+      "scope": {
+        "range": {
+          "end": {
+            "col": 87,
+            "line": 393,
+            "normalizedOffset": 19339,
+            "offset": 19731
+          },
+          "start": {
+            "col": 0,
+            "line": 360,
+            "normalizedOffset": 17288,
+            "offset": 17647
+          }
+        },
+        "namespace": "OAI.PiExponent.MatrixArithmetic",
+        "verified_name": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+        "scope_stack": [
+          {
+            "kind": "namespace",
+            "name": "OAI",
+            "opening": {
+              "end": {
+                "col": 13,
+                "line": 5,
+                "normalizedOffset": 207,
+                "offset": 211
+              },
+              "start": {
+                "col": 0,
+                "line": 5,
+                "normalizedOffset": 194,
+                "offset": 198
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "PiExponent",
+            "opening": {
+              "end": {
+                "col": 20,
+                "line": 7,
+                "normalizedOffset": 229,
+                "offset": 235
+              },
+              "start": {
+                "col": 0,
+                "line": 7,
+                "normalizedOffset": 209,
+                "offset": 215
+              }
+            }
+          },
+          {
+            "kind": "namespace",
+            "name": "MatrixArithmetic",
+            "opening": {
+              "end": {
+                "col": 26,
+                "line": 130,
+                "normalizedOffset": 5803,
+                "offset": 5932
+              },
+              "start": {
+                "col": 0,
+                "line": 130,
+                "normalizedOffset": 5777,
+                "offset": 5906
+              }
+            }
+          }
+        ],
+        "context_commands": [
+          {
+            "syntaxKind": "Lean.Parser.Command.open",
+            "range": {
+              "end": {
+                "col": 24,
+                "line": 9,
+                "normalizedOffset": 255,
+                "offset": 263
+              },
+              "start": {
+                "col": 0,
+                "line": 9,
+                "normalizedOffset": 231,
+                "offset": 239
+              }
+            }
+          }
+        ]
+      },
+      "graph": {
+        "name": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "kind": "theorem",
+        "isPrivate": false,
+        "isInstance": false,
+        "userName": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+        "startLine": 360,
+        "endLine": 393,
+        "ctorParent": null,
+        "constructors": [],
+        "typeDeps": [
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.InterpolationMatrix.Column",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor"
+        ],
+        "valueDeps": [
+          "OAI.PiExponent.MatrixArithmetic.rowCost",
+          "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+          "OAI.PiExponent.InterpolationMatrix.rowWeights",
+          "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+          "OAI.PiExponent.InterpolationMatrix.Column",
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+          "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+          "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+          "OAI.PiExponent.MatrixArithmetic.denominator",
+          "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+          "OAI.PiExponent.MatrixArithmetic.columnCost",
+          "OAI.PiExponent.InterpolationMatrix.Row",
+          "OAI.PiExponent.strictWeightedSimplex",
+          "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+          "OAI.PiExponent.MatrixArithmetic.logWeights",
+          "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+          "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+          "OAI.PiExponent.Arithmetic.lcmConstant",
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor_clearing_bound",
+          "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+          "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos"
+        ]
+      },
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "original": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "start": 17647,
+      "end": 19731,
+      "command_sha256": "a1234e732cae6e499d8878fd98fec1471c72eab07b605245149eb740fedc68ac",
+      "original_port_command_equal_modulo_line_endings": true
+    }
+  ],
+  "visibility_edits": [
+    {
+      "source_name": "OAI.PiExponent.mem_realWeightedSimplex",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_byte_range": [
+        6916,
+        7585
+      ],
+      "original_command_sha256": "c11a4bef1d0e3fcb54ca89c51c42d3799d793b2ac8835d2b3a98065c944b068d",
+      "mirror_command_sha256": "9e68d9a38e8425a403224fa2ae6cabbb2a5122e5facbc86bd332665f8be4651f",
+      "proof_suffix_sha256": "45159f95cc4ece6fed79cfa6973609f782a2bda50ab366f8ea7b390651a71663",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.mem_strictWeightedSimplex",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_byte_range": [
+        7589,
+        7935
+      ],
+      "original_command_sha256": "a4b21f507307f5935c45bf5a309f68935f512014f85218d473eb845d4f15c42c",
+      "mirror_command_sha256": "2f77c0e8cb23115ce3a2d24a9be66e30183da1a17e0e5d0b6a12a09c4dbc0753",
+      "proof_suffix_sha256": "5cc892f7d4e072e9ef2d93806161f175621da78c4d4fbc5a75842d72f7f3132b",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.InterpolationMatrix.column_mem_iff",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_byte_range": [
+        2803,
+        3255
+      ],
+      "original_command_sha256": "4c2515411f3fbe8b95251b588fe508cdd7c43d495752beb540777b4fd0358ff6",
+      "mirror_command_sha256": "5635f60e5aa4dda574696addf26c775501cae810197981dc97451c5569bbf659",
+      "proof_suffix_sha256": "79e5b2feac232e255fafec10ecfce26c6834f0ce818d92f76c7915ed6ce456fa",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.InterpolationMatrix.row_mem_iff",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_byte_range": [
+        3259,
+        3841
+      ],
+      "original_command_sha256": "16dbcfdd4d2a77fadcb5fdc169e4b63520dcf1cff3c8a1161fd550eb16718a42",
+      "mirror_command_sha256": "87183706348bffd424b29e62a5fed095e77ffc52a809c5aab89382fa3340f7a3",
+      "proof_suffix_sha256": "4e0e32a3e1aa5bcf8d96cd7cb4856041b56a4e4af800bb5d08fbd6ee4a9b98fa",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.InterpolationMatrix.column_weight_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_byte_range": [
+        3845,
+        4081
+      ],
+      "original_command_sha256": "3b3f7617c37dd5b8539bdb07fade8d84bbc4eba42fb77c994f860dfeb4a280af",
+      "mirror_command_sha256": "24af2e9dbbf4446abc991ebee359aab4b94064a0f2053a52b6152db27a205934",
+      "proof_suffix_sha256": "1f6d4bd4d25efcf3d018fd47924b499c33975936ee84c6d4c334d1e979453521",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.InterpolationMatrix.row_weight_lt",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_byte_range": [
+        4085,
+        4359
+      ],
+      "original_command_sha256": "6760b502765bda7e45968d0f9d77f26e3b537ffb28f7c14f443586be73b7f9c2",
+      "mirror_command_sha256": "ed1d9d2da4b019d51598954097e1a0c4aa354bd31bc4f31913ff52cd896f4a70",
+      "proof_suffix_sha256": "5e92333a1d59ee30146cd2a7aec6908eafe2b004f7caab9a95303a0baf3aeca6",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.log_lcmUpto_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        563,
+        757
+      ],
+      "original_command_sha256": "2e6c7e5aa4e10953550c3cdc83b273cb1467c14252ee3548e89727f1336f778f",
+      "mirror_command_sha256": "039b3ccd2164bae1e9c3d065beb54601ce872402a7043f8ece1ed1c181a9bbf1",
+      "proof_suffix_sha256": "57ad3ad79ffa89aca204ef6bb325827fbd53e2c67f5df7a8b58114419380fdf9",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.log_lcm_power_product_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        4022,
+        4550
+      ],
+      "original_command_sha256": "c04fa1e8f01ecd793f4e9dc8169a46423f03673d5675e66908071abe25b9389b",
+      "mirror_command_sha256": "95d9324f6723801b5aea700e7855094a32df3966b60c214a5389fea038275c86",
+      "proof_suffix_sha256": "3a246a920a44c86bb306abc14f91464ca774505e7b7fc655763ac98db9141ee7",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.log_lcm_floor_product_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        4554,
+        5381
+      ],
+      "original_command_sha256": "d0a1de35eac2315b243c2ea57153fc3574787f2b55d2b04e4cc148a361034c6a",
+      "mirror_command_sha256": "48a2d125b37544be0ccc3f0390462fcd1c528788beffa3c345200524086de8b2",
+      "proof_suffix_sha256": "e6df3cf458ed0afbd3676d1020af45926176deef3dd4d4f83786c4dcd8f50aa6",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.sum_ceil_truncation_div_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        5385,
+        6117
+      ],
+      "original_command_sha256": "d20cd14f80d4d858073b47f4c1636da50782643d4a778a7a013395ae4a5950b8",
+      "mirror_command_sha256": "079ad9d958567612ff739f5532d0439fcc8fd209fb90cc2701389ff8a31aff0b",
+      "proof_suffix_sha256": "826be76cccf149070a027e6f8049842bef2bf4baadd9a0b91dfc4ddf8a114e03",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.truncation_denominator_log_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        6121,
+        6876
+      ],
+      "original_command_sha256": "656983262026eb97a0401f01ce19b142a0838720a1f6dbc50050f32af0962b26",
+      "mirror_command_sha256": "38703ee0df308950ab92f79f995e06297ed59de576133f3ecd5848e830cfc0bd",
+      "proof_suffix_sha256": "79a16f934e7ebd67efa8cb442b4a38f82b31f1d23e1ee2025692b770aa9aacda",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.column_log_cost_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        13374,
+        13687
+      ],
+      "original_command_sha256": "dc28887a17a4a21d6546680bfac873efc3b2d528562476c9a8892c868cadd6b8",
+      "mirror_command_sha256": "8ed945696bba9825c794c441e42f7cf0b5ec0af1ccc92fbbd657d19ceda57ce8",
+      "proof_suffix_sha256": "daadb044fe1c18809b28e007c0c2592a72bcd2721ec956ca914259c4984acc5b",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.sum_exponents_le_weight_div",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        13691,
+        14101
+      ],
+      "original_command_sha256": "6141a85ba52cd4651195bec0d9f8c57ac11530c99aec21cc0cc77a781281b66c",
+      "mirror_command_sha256": "6f8adf2fbcebcca660e3ade96439ab8f9b03bf22db2d6fb97f32200b7f29dee7",
+      "proof_suffix_sha256": "c1a58c5bd60fa2fec8c0c62b805151bc094b95a34dd036922cb394322dbb7be8",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.row_log_cost_lower",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        14105,
+        15166
+      ],
+      "original_command_sha256": "e461975f8dd6e68c073d5a2a33f22c106844a0523e66900277a5ac7533df1327",
+      "mirror_command_sha256": "5915e07c31213dc03c434a304241db2dcad3b21cb2d19d9558d9f460423fd1b7",
+      "proof_suffix_sha256": "3e9ff4d6f8c86a98179fd64f7fb4c82702cc1751fcf0283e676047bf9d1aa25a",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.Arithmetic.normalized_arithmetic_bound",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean",
+      "source_byte_range": [
+        15170,
+        15661
+      ],
+      "original_command_sha256": "2068f369ee102a4adfdce9e81ce5af1e0068feba1d12b583e2cef705dd8176c7",
+      "mirror_command_sha256": "e0c8d94fe9987463406186776564238ae57f707408a5222ee5e3799c5b4fd60d",
+      "proof_suffix_sha256": "69f50e141d24bcef9052a61e771fa8c70592f1d36dcee11736c5cf8508684c81",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.log_denominator_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        7923,
+        8473
+      ],
+      "original_command_sha256": "44b9fcb25b15c9e181b940edcd56dcb5bcb7b3afe2f6bdd409e11fb36719fd94",
+      "mirror_command_sha256": "b190b9fac1efad7ba3be998a8c3427616c351dad7ba889e9db9c8003b70b0071",
+      "proof_suffix_sha256": "3af4f22cfc573824ebe5761bf8977a26e7df3c7f10de6d52133fb9285b9ec8b2",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.actual_row_card_pos",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        10039,
+        10462
+      ],
+      "original_command_sha256": "da2445fc8cd6acf1598020844b846cbcf7de83caf5d8d979b8f6155346265bde",
+      "mirror_command_sha256": "adb531dc6e6467d33ceec1d0f9875879b3ca7e8e714f26f9513b2594a7d43037",
+      "proof_suffix_sha256": "1ae326b2371f0fc62f1ee31f2aecf0b5a7e7bdf2b7749c40261f6099e17c4fbe",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        10466,
+        10698
+      ],
+      "original_command_sha256": "e39b735c1b7031a4c2e7b7261b675a01c9788ef3c428bca6cac76ed04a913a1f",
+      "mirror_command_sha256": "997cf2cb73fdddd779a6284b41375b9b03dde0e9f65b12e18283ed8e8afd3ae0",
+      "proof_suffix_sha256": "8af3773a383f674ccd553be2dadffc39e0850c4c636b37ad19c5c0445bf8b2d4",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.column_log_cost_le_H",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        11380,
+        12239
+      ],
+      "original_command_sha256": "dc80adf8c36ed7ac3b739eeddb7d412b68f9a93e4a0e98f08e75c6f4710d02c6",
+      "mirror_command_sha256": "121065ebab960494f0e8b1368db3e8854e7a32ef0722b189b8e722b7fafc7ece",
+      "proof_suffix_sha256": "105b164a01a442a8626e54b49d66d2ba85d3f47d752d3029915a114599d4a91b",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.selected_column_log_cost_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        12243,
+        12966
+      ],
+      "original_command_sha256": "40d1aecbbdaad9e12673e9db526d238055064e63f9ea2b5d0d4849e8645306fc",
+      "mirror_command_sha256": "4f4f7cabe5331ab60b41373d4b20709e8d4fbe8e63138420f5f140607907fe16",
+      "proof_suffix_sha256": "04e7e851438dab7a8b38259130449a8f28e06952572cca4d95c201eb73ae4437",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.row_weighted_cost_le",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        12970,
+        13528
+      ],
+      "original_command_sha256": "66ac232561f145e9fdb05e5f5d8e51ae620f617aaa8b354e31fb477f6e2883c7",
+      "mirror_command_sha256": "758dcb27a0cc46533132e83dd958c35b7edbed9236a7b4515e954f2989ffa07d",
+      "proof_suffix_sha256": "c51a8dc70ddfc2d7efb7ec3e23fc7e9df590143a918538adf4a29a00100ae9fe",
+      "private_visibility_prefix_only": true,
+      "proof_suffix_unchanged": true
+    },
+    {
+      "source_name": "OAI.PiExponent.MatrixArithmetic.selectedMinor_arithmetic_lower_bound",
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_byte_range": [
+        17647,
+        19731
+      ],
+      "original_command_sha256": "a1234e732cae6e499d8878fd98fec1471c72eab07b605245149eb740fedc68ac",
+      "mirror_command_sha256": "a1234e732cae6e499d8878fd98fec1471c72eab07b605245149eb740fedc68ac",
+      "proof_suffix_sha256": "f38bc57cefa8e95d68c29c78282cd3212dd3018f48a4f6c94c9c0a1bcd3d394a",
+      "private_visibility_prefix_only": false,
+      "proof_suffix_unchanged": true
+    }
+  ],
+  "all_proof_suffixes_unchanged": true,
+  "provider_subtracted_names": [
+    "OAI.PiExponent.Arithmetic.lcmConstant",
+    "OAI.PiExponent.Arithmetic.lcmConstant_pos",
+    "OAI.PiExponent.InterpolationMatrix.Column",
+    "OAI.PiExponent.InterpolationMatrix.Row",
+    "OAI.PiExponent.InterpolationMatrix.columnWeights",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights",
+    "OAI.PiExponent.MatrixArithmetic.columnCost",
+    "OAI.PiExponent.MatrixArithmetic.denominator",
+    "OAI.PiExponent.MatrixArithmetic.logWeights",
+    "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+    "OAI.PiExponent.MatrixArithmetic.rowCost",
+    "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+    "OAI.PiExponent.MatrixArithmetic.selectedMinor_clearing_bound",
+    "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+    "OAI.PiExponent.realWeightedSimplex",
+    "OAI.PiExponent.strictWeightedSimplex"
+  ],
+  "certified_auxiliary_primary_definitions": [
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.exponentVector",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "910317ec7f846a347c2ca65ffcd7a04dc26e6e620e20a810e173c4923133e080",
+      "generated_row_sha256": "11961c6f2bd09d7b67173b9f407b5a64ada4f9ed7b300c2dffada5dc1f174daa",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.truncatedLog",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "e6777179b5721c3b135379714d2b3a955be38d29a9d1407ff71895287e4617af",
+      "generated_row_sha256": "04f12122afe112786a199adc60fd8a60b829b12dc7e342e1a4175630f9898cff",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.monomialImage",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "482c47c23cf9d2ff5d119d60dc67c6a7aeb89aa9eb91277565ca73a4e2e29dff",
+      "generated_row_sha256": "9d2f47a11951cb1fae37e0abd8aa826fe5e2e488d2ab36fc51d491d004475e30",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.entry",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "1a9f97b1ce0cb05ec05ad153d3bd5441f56d9e23ec9635fd89b301709800bd98",
+      "generated_row_sha256": "b167d53dfeb47e7ef76e8ac9fe19de90589e7aecf68898fce6e980cb599f5d60",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.matrix",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "6a80d2dd64a4c34f1956c4a79e286d4a7174b71fd3b010653cade51a1037bdbd",
+      "generated_row_sha256": "20273cc966f4785c932e6fe90137da26da425ae410ad161f528cff3115683365",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.truncatedLogMatrix",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+      "certificate": "verification/ap10/interpolation/actual-provider-validation.json",
+      "certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "source_json": "verification/ap10/interpolation/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/interpolation/generated-full-ci.jsonl",
+      "source_row_sha256": "b66eacdcbdefed24fc1452eee0c93ccc585b3411275b4650fa02ec62b47a11ff",
+      "generated_row_sha256": "9e4a190949f4e88f64d30ffcf1c1093c9eecca929e1d565ebce28dba58815293",
+      "publication": "verification/ap10/interpolation/publication/publication.json",
+      "publication_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+      "published_definition_id": "555d4701-6886-4e12-b3cb-0fc0f0705cdb"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.logWeights",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "db55d86bc2f44adb57492b36f0268fe84ec345b4f17d6b4a240e7e21fcfbb7f2",
+      "generated_row_sha256": "077653dec1c6adbbca8a40d197e1d35b0f2462f797e6fc7a2edadbb3a34c6e59",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.rationalCenters",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "131e8962bf3f087537dbaa7ceb69c2ab3fe7223abb9d90cd216c6fd25deb2ca2",
+      "generated_row_sha256": "39925453ec752b6c9b60cc90361a2fe15fab6f5c646b432cc3aa952251c8f968",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.truncationOrders",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "e833d8127eabb6c2c6b749b62ca3c0e005a39214f9ef0220f72bf90867835b33",
+      "generated_row_sha256": "fd6be0f79f5041d39491885626680fe8ca3b80f4bb8e6d6ba8707021f99dae60",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.rowWeightedSum",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "092e40a54efec1c5cce7bfe9cec901cd32748b45ecb48100eed0d1319993e41c",
+      "generated_row_sha256": "56b4cc6a19a2cef31acf10fa121890ff00f7701cd2bde0fcdd25e43ed57241bf",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.meanRowWeight",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "9bcf5b6e72075872d7b4ac7543b2b5f93891680ffc3b03d9430de0db1b2b62b8",
+      "generated_row_sha256": "aa436f4802e8db7e4c2f9f05572aea67c05d121afbf53270cf36267460a5a4be",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.selectedMinor",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "certificate": "verification/ap10/arithmetic/actual-provider-validation.json",
+      "certificate_sha256": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+      "source_json": "verification/ap10/arithmetic/source-full-ci.jsonl",
+      "generated_json": "verification/ap10/arithmetic/generated-full-ci.jsonl",
+      "source_row_sha256": "63c32190187295ce6cf9f6c0427bf7f1dca2426a75b52546cbee8c6aa38cd243",
+      "generated_row_sha256": "b8ba063eb68c83a4d2161a4fa6dbf9310605848c03ec7b1b012c836f0816349e",
+      "publication": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "published_definition_id": "50f6bce0-2053-45be-9234-91f7141175ac"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.columnScale",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+      "certificate": "verification/ap15/scales-costs/actual-provider-validation.json",
+      "certificate_sha256": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+      "source_json": "verification/ap15/scales-costs/source-full-ci.jsonl",
+      "generated_json": "verification/ap15/scales-costs/generated-full-ci.jsonl",
+      "source_row_sha256": "f6805a5587fb57455d3592b23875485ce220e3f37484b12d26e90ea3f2c53a18",
+      "generated_row_sha256": "f7ffd5f47f99b631bcaeaaed55f80727cd3652dc83f367764d1b98f5151ee780",
+      "publication": "verification/ap15/scales-costs/publication-v2/publication.json",
+      "publication_sha256": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+      "published_definition_id": "adbbdd9e-dab1-41a2-94df-449a05cd66da"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.rowScale",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+      "certificate": "verification/ap15/scales-costs/actual-provider-validation.json",
+      "certificate_sha256": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+      "source_json": "verification/ap15/scales-costs/source-full-ci.jsonl",
+      "generated_json": "verification/ap15/scales-costs/generated-full-ci.jsonl",
+      "source_row_sha256": "e35af624855554419de55f0ab5377522ac1949ce8988151f19f2b3e04b591baa",
+      "generated_row_sha256": "2939f36b151137b26f5171d4069f49154e66fbe14f965b539df57dace0b03ce9",
+      "publication": "verification/ap15/scales-costs/publication-v2/publication.json",
+      "publication_sha256": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+      "published_definition_id": "adbbdd9e-dab1-41a2-94df-449a05cd66da"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.denominator",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+      "certificate": "verification/ap15/scales-costs/actual-provider-validation.json",
+      "certificate_sha256": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+      "source_json": "verification/ap15/scales-costs/source-full-ci.jsonl",
+      "generated_json": "verification/ap15/scales-costs/generated-full-ci.jsonl",
+      "source_row_sha256": "ead4a10ce8ef706c0322231d6f2ea65d285efdcd334de1cee91688824a0ddc55",
+      "generated_row_sha256": "5fe5e88a2f064724bc8afb745238c033c9fbcae5ab38480a143a1a5499a1c600",
+      "publication": "verification/ap15/scales-costs/publication-v2/publication.json",
+      "publication_sha256": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+      "published_definition_id": "adbbdd9e-dab1-41a2-94df-449a05cd66da"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.rowCost",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+      "certificate": "verification/ap15/scales-costs/actual-provider-validation.json",
+      "certificate_sha256": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+      "source_json": "verification/ap15/scales-costs/source-full-ci.jsonl",
+      "generated_json": "verification/ap15/scales-costs/generated-full-ci.jsonl",
+      "source_row_sha256": "1ee7d8cf9c3a89265cb94cd9322067ccdc5540f4cda4244d16457becccc7c76b",
+      "generated_row_sha256": "d3db62a11f2e1a0855c641b4de07a10cd2cb8f6350eb613031d77a31ec622b6b",
+      "publication": "verification/ap15/scales-costs/publication-v2/publication.json",
+      "publication_sha256": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+      "published_definition_id": "adbbdd9e-dab1-41a2-94df-449a05cd66da"
+    },
+    {
+      "name": "OAI.PiExponent.MatrixArithmetic.columnCost",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts",
+      "certificate": "verification/ap15/scales-costs/actual-provider-validation.json",
+      "certificate_sha256": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+      "source_json": "verification/ap15/scales-costs/source-full-ci.jsonl",
+      "generated_json": "verification/ap15/scales-costs/generated-full-ci.jsonl",
+      "source_row_sha256": "11b97dee8ad20870b3c6e619376e0f82496df9ca62d82e5accfcbe08ab737206",
+      "generated_row_sha256": "738f687a66b2342670b8ec1476bf7dc9504b952d2b392e4b4f33546a3a4f708d",
+      "publication": "verification/ap15/scales-costs/publication-v2/publication.json",
+      "publication_sha256": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+      "published_definition_id": "adbbdd9e-dab1-41a2-94df-449a05cd66da"
+    },
+    {
+      "name": "OAI.PiExponent.realWeightedSimplex",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "certificate": "verification/ap9/simplex/actual-provider-validation.json",
+      "certificate_sha256": "84ce8e320bfa9f89a115cfaff81f4b0795a854f4d7f76f9f52eecc4d2352eb99",
+      "source_json": "verification/ap9/simplex/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/simplex/generated-full-ci.jsonl",
+      "source_row_sha256": "bbe37b07e5363c1bbfc0fc1e11eb3f49d7addd820ea027d120b8cb3a5f1fddd4",
+      "generated_row_sha256": "4b6f4793a84aed9db2d1c49d3f4a66a8b96f82c53d4f73e22595bf43405b910e",
+      "publication": "verification/ap9/simplex/publication/publication.json",
+      "publication_sha256": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+      "published_definition_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c"
+    },
+    {
+      "name": "OAI.PiExponent.strictWeightedSimplex",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "certificate": "verification/ap9/simplex/actual-provider-validation.json",
+      "certificate_sha256": "84ce8e320bfa9f89a115cfaff81f4b0795a854f4d7f76f9f52eecc4d2352eb99",
+      "source_json": "verification/ap9/simplex/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/simplex/generated-full-ci.jsonl",
+      "source_row_sha256": "f1ef15dfdbef6367f4941a93410040e2c0c9434dcb880951d4a3f5c056557923",
+      "generated_row_sha256": "124915818a9337dc9c092570f04bc9276e9c2b4e7468bc3d401e2dd9998e8349",
+      "publication": "verification/ap9/simplex/publication/publication.json",
+      "publication_sha256": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+      "published_definition_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.columnWeights",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "certificate": "verification/ap9/domains/actual-provider-validation.json",
+      "certificate_sha256": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64",
+      "source_json": "verification/ap9/domains/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/domains/generated-full-ci.jsonl",
+      "source_row_sha256": "8dafe2cc9b31bf95c3ae41e734369e5058cc348cfb002baf4eed50abf4004d3c",
+      "generated_row_sha256": "68648388ce6d702315b64071e1d4c5306fea2f360fa47b107bc5e332e162cc55",
+      "publication": "verification/ap9/domains/publication/publication.json",
+      "publication_sha256": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+      "published_definition_id": "2e538a46-bbf9-4562-a008-33350d61b366"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.rowWeights",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "certificate": "verification/ap9/domains/actual-provider-validation.json",
+      "certificate_sha256": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64",
+      "source_json": "verification/ap9/domains/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/domains/generated-full-ci.jsonl",
+      "source_row_sha256": "047f397d87360420447066ec866d737476aecf021d78011b81d3de8f2a89b780",
+      "generated_row_sha256": "6f3d98b90273c4a3e33fc3d9a1ac4841a767a38dd70c46ecbeb19561166b6823",
+      "publication": "verification/ap9/domains/publication/publication.json",
+      "publication_sha256": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+      "published_definition_id": "2e538a46-bbf9-4562-a008-33350d61b366"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.Column",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "certificate": "verification/ap9/domains/actual-provider-validation.json",
+      "certificate_sha256": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64",
+      "source_json": "verification/ap9/domains/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/domains/generated-full-ci.jsonl",
+      "source_row_sha256": "dd8ba20200d4edb65cfe425d31fe80f7e70f4c571f5ce64ec44e81e67bf2f51f",
+      "generated_row_sha256": "c7394aef85f5dab3e7474d2828fd03ef2481c701fc07b42390b7b6a9048f74c5",
+      "publication": "verification/ap9/domains/publication/publication.json",
+      "publication_sha256": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+      "published_definition_id": "2e538a46-bbf9-4562-a008-33350d61b366"
+    },
+    {
+      "name": "OAI.PiExponent.InterpolationMatrix.Row",
+      "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "certificate": "verification/ap9/domains/actual-provider-validation.json",
+      "certificate_sha256": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64",
+      "source_json": "verification/ap9/domains/source-full-ci.jsonl",
+      "generated_json": "verification/ap9/domains/generated-full-ci.jsonl",
+      "source_row_sha256": "4670e7b914bb0a6d89032ca0ca0be3ef6af2c2657d4b26572202c61ceab0657e",
+      "generated_row_sha256": "6248c7cd885fa0493f01743a6438655b57fd20c3701309d5cdfdbc987fb90e47",
+      "publication": "verification/ap9/domains/publication/publication.json",
+      "publication_sha256": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+      "published_definition_id": "2e538a46-bbf9-4562-a008-33350d61b366"
+    }
+  ],
+  "certified_historical_automatic_data_helper_pair": {
+    "certificate": "verification/ap16/clearing-child-mirror-validation-v5/local-child-validation.json",
+    "certificate_sha256": "ba85c8b9e7d14528932616692af87e09ac3599ab86313fd3bd1c350863edcaf9",
+    "pair": {
+      "name": "OAI.PiExponent.InterpolationMatrix.matrix._proof_1",
+      "source_owner": {
+        "kind": "ImportedModule",
+        "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "moduleIndex": 5766
+      },
+      "generated_owner": {
+        "kind": "ImportedModule",
+        "module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_CoreData",
+        "moduleIndex": 11015
+      },
+      "source_complete_CI_sha256": "9e7829e6d91fea5fe325455b607d198ebf5219ecb0f29730b3c4ef8eb6e785de",
+      "generated_complete_CI_sha256": "6e5ecf3ec03d571b51b765c88ec80567e6a5e1060077f7cac444ad1874250110",
+      "full_type_axioms_and_all_actual_refs_equal": true,
+      "closed_source_and_generated_proof_values": true,
+      "only_actual_auxiliary_project_ref_exception": true,
+      "original_AP10_matrix_complete_Def_certificate_sha256": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+      "published_AP10_matrix_definition_sha256": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b"
+    },
+    "source_json": "verification/ap15/selected-minor-clearing-bound/source-proof-references.json",
+    "source_json_sha256": "a2eb40b065c4a7630e1c11ceb438174a0b3cd150e6bf3c17c6f9bff4a623b539",
+    "generated_json": "verification/ap16/clearing-child-mirror-probe-v4/generated-proof-references.json",
+    "generated_json_sha256": "27e82d4b75262341debfe06c0301d94c63758e57a23be3daec4e9392b34b8a7e"
+  },
+  "data_auxiliary_provenance_mechanism": "one-pass inventory + exact full Published Def + nullable registry results + closed forall/Eq no-approximation defEq",
+  "mechanism_sha256": "2e43ce466d7dcf034b819a7fa30ea1c841f622311ccc982b2fa51a0f3bc763f8",
+  "candidate_sha256": "e24f4f9dfacca30c99116449809f32fe8fafd13d117c5937f7d9fef2e1ef851b",
+  "snapshot_candidate_sha256": "36bfef003f49d8bda779ea1376ee7e5401107caa99cc7b5d6b0f98a1f541c293",
+  "required_AP16_source_certificate": "verification/ap16/selected-minor-arithmetic-lower-bound/validation-v2/node-validation.json",
+  "real_AP16_certificate_pending": false,
+  "real_Accepted_Proved_boundary_pending": true,
+  "compiler_manifests_finalized": true,
+  "input_hashes": {
+    "scripts/stage_selected_minor_arithmetic_lower_bound_route.py": "36a3c72ac5936f28ceb08e98744d28e0a81e4c392bfe66c2f00c9a3f939d5af2",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/ap15/selected-minor-clearing-bound/preparation.json": "713eb8e79b71c7c4f5ce1603c6d00af13dadc8822da153b58a9924158ce15d52",
+    "verification/ap15/selected-minor-clearing-bound/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_clearing_bound.lean": "7636c1dff11a454ee35ea519823df5bc9f81a4c78ffb60d067c8f09f28daa0ac",
+    "verification/ap15/selected-minor-clearing-bound/Solutions/Sol_OAI_PiExponent_MatrixArithmetic_selectedMinor_clearing_bound_ap15_global.lean": "cec31a9bc4079e11337e402d3dee2fc060d8aa8905c4d6ef6faf1f826b2c1b63",
+    "verification/ap15/scales-costs/preparation.json": "e409ea90de8c4442479358aa4f8cec244e84ce394db8c7c377e0567e3d450e7d",
+    "verification/ap15/scales-costs/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_ScalesCosts.lean": "6eaf2a9c3d384cbfba932b2d706281e5854df974f6d264a564e7760ab33003b5",
+    "verification/ap14/entry-gaussian/publication-v3/publication.json": "255f55daa39568f9690489b96772ea8baf66332a79bec0b9aef3ec313cd2c592",
+    "verification/ap7/publication/Def_OAI_NumberTheory_PiExponent_Approximation_Arithmetic/publication.json": "e031b6ac1b2c3ba6797640c26ef1efaf0c53c9c7dad0f52fbe9cac2a7165fad8",
+    "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+    "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean": "a1c5ccc7f5644ef75b932bc511909df81780ed6169b7b0faf85d8dc4076b5d9f",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/Arithmetic.lean": "817e15508877f81678541584469c1c52dc6004ca6abc8c2ea57ae89767f20e0a",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+    "scripts/stage_selected_minor_lower_child_mirror.py": "e0a1baaa773b2144af6391c7395c790124c22fc4bbd8b3935bbecef74fffc1ef",
+    "scripts/stage_selected_minor_clearing_child_mirror_probe_v4.py": "2e43ce466d7dcf034b819a7fa30ea1c841f622311ccc982b2fa51a0f3bc763f8",
+    "scripts/certify_selected_minor_clearing_child_mirror_probe_v4.py": "fbad9ab9f271cdd05b4cfe3b61dd2704d6b83421aae1020e1814faf464b4136d",
+    "scripts/preflight_staged_module_windows_bounded.py": "e7bae2e09d36395b014a96bfa8ae7b6d88b1b987e85b27c4b8a9da759d0d0fe8",
+    "scripts/preflight_staged_module.py": "b086bf29aa08ad73b1c0843050e9cea0114831894429e334f76a5ca60088ced3",
+    "scripts/certify_selected_minor_lower_child_mirror.py": "7427160a68251640f36d8b14ad0096eeb6cbcaac055955a5a6041770cd194083",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/route-preparation.json": "11ed74f64bf6b8027b756f14c9f0590f6211a79bfaeb24ee7c8e0c8871639aad",
+    "verification/ap10/interpolation/actual-provider-validation.json": "1eb1e28af81f2a63a11ba6006a1b3dea8f2c08aa8841643b831a3e4ea7924526",
+    "verification/ap10/interpolation/source-full-ci.jsonl": "3d23401999f872ef7e95820ababa37864cb92e033ad399728d885a07371fe9c9",
+    "verification/ap10/interpolation/generated-full-ci.jsonl": "e5d8f8dba3efac696678e57ce544459eb6822780c3bb98f274ff40a3295cecbc",
+    "verification/ap10/interpolation/publication/publication.json": "ac911e0b1bc2244381b41a453f5a34cb68ceb506ba8417f60a88464d120b8e5b",
+    "verification/ap10/arithmetic/actual-provider-validation.json": "3477a59d20373f15cb8b13e4b66a620f7015d298a0d58855a16ec3665f187dec",
+    "verification/ap10/arithmetic/source-full-ci.jsonl": "d1547e3691dde99bcfeba23bbedbf97e75dc56c5715c82cf96c50736973246c9",
+    "verification/ap10/arithmetic/generated-full-ci.jsonl": "7d6931b0422c74187715c95143cf4cc79558634a385d80077f28a31fe548234f",
+    "verification/ap10/arithmetic/publication/publication.json": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+    "verification/ap15/scales-costs/actual-provider-validation.json": "f75c0d9bc68650790c1b75242dd585f20da326999b2293770c4ba5d450bbe816",
+    "verification/ap15/scales-costs/source-full-ci.jsonl": "e13fa9af4a48840a86b103c81b4bdec3a0867dda51ef3a6bf47316a63018aaf3",
+    "verification/ap15/scales-costs/generated-full-ci.jsonl": "8ab4eea053c790769aa432dccb61a8e6f7cf6c09862047e8e0f9f6ada88f74ee",
+    "verification/ap15/scales-costs/publication-v2/publication.json": "88f704a8691accdfaa88695577a58cdbf69c3f10a0c53958c51497a0bbe07d73",
+    "verification/ap16/clearing-child-mirror-validation-v5/local-child-validation.json": "ba85c8b9e7d14528932616692af87e09ac3599ab86313fd3bd1c350863edcaf9",
+    "verification/ap15/selected-minor-clearing-bound/source-proof-references.json": "a2eb40b065c4a7630e1c11ceb438174a0b3cd150e6bf3c17c6f9bff4a623b539",
+    "verification/ap16/clearing-child-mirror-probe-v4/generated-proof-references.json": "27e82d4b75262341debfe06c0301d94c63758e57a23be3daec4e9392b34b8a7e",
+    "scripts/stage_selected_minor_arithmetic_lower_bound_node.py": "a19383ff02b6625250eed91397dee1fc6bb17432d69a404b07733c06abe29a86",
+    "scripts/certify_selected_minor_arithmetic_lower_bound_node_v2.py": "2f4deab927a9c6c4ad88379502720e8dc4b0bd79ad7825d7a5a5a5689f406a46",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/validation-v2/node-validation.json": "267cbdabdd52a5f808fa1b4da4c0e7e899896c048f56001dba33d86ccd2367b2",
+    "verification/staged-build/lib/lean/Solutions/Sol_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_ap16_global.olean": "df60920a61e2f9e6e3f584dd308339fa5d5d3801eeeb973267a7ff1ad3113fba",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/preparation.json": "5b131c0e9ecd4128a11c2d9e1dc6a55d0f291d399f45899aa02dc0c940e5cac1",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/source-types.json": "78c8ef93b18cb45240837866b986c4728b0f01d5ecb2de0bb102d4a3b8889a5a",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/source-proof-references.json": "b6bff259a20e817da3fad1e67e508ffec22063a52cd9568d17b7c6e36eac6879",
+    "verification/ap17/generic-lower-child-mirror/candidate-spec.json": "0f36bf537844b032649d1ec2c823947d37a0ef34b24f3e26a0ed2e41400e094a",
+    "verification/ap17/generic-lower-child-mirror/mirror-candidate.lean.txt": "e24f4f9dfacca30c99116449809f32fe8fafd13d117c5937f7d9fef2e1ef851b",
+    "verification/ap17/generic-lower-child-mirror/snapshot-candidate.lean.txt": "36bfef003f49d8bda779ea1376ee7e5401107caa99cc7b5d6b0f98a1f541c293",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/generated-types.json": "2fc35a67e9a0309695afbed95d740e6edf9c42c3c22d50c88c3dfb7db274f89e",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/generated-proof-references.json": "826b33cfc42946907eae96be70b7f05e770a1e24e8a8d5e4654645bfb238cf2f",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.lean": "0a237be4e6ed83c63002319159738ba035c3d478935d849984119665a5d80a28",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/c1.json": "aea030c0d73b5bf21a98be8a842612ffa3b602e4db7bef9e55dd054256846a52",
+    "verification/staged-preflight-logs/Theorems_Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_20261011T164032_608935Z.log": "b08e89fe4db3345ca0792bb78184a91a3428473cbead2fde104c81116ba60cde",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.lean.preflight.json": "c235511dbc00ae985e4505e34ccec86dc172d822782656e1392a09b999b3c18c",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/Solutions/Sol_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_ap16_global.lean": "12b07013340461dbd229ce6afcea7dc8e2166af670caff47e197dd17e685fe36",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/c2.json": "fd6b9caa34f60f753c4f8f9c0d5117f2f64a094b4831a19835b71adc7e55e461",
+    "verification/staged-preflight-logs/Solutions_Sol_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_ap16_global_20261011T164155_250873Z.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/Solutions/Sol_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_ap16_global.lean.preflight.json": "fa4c6cfad19d1d29621aa54c2d9bfa11af66f7506e675004799a4906248ac568",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/SourceSnapshot.lean": "d52ed7a757c33579d9b26bf8d42e9966683308f0919fc6a951b13c988c4c79ba",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/c3.json": "8ef10079e2926d795b874924ba7a4459f12c0be83f7e33969d7f769f17beff19",
+    "verification/staged-preflight-logs/SourceSnapshot_20261011T164250_645525Z.log": "d460e51c6003df9e84a54066c806ee565f66acb895a578eb13fbea27ba2243e6",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/SourceSnapshot.lean.preflight.json": "c5aad0e45a4b9798568e7f3bad7e696e8a2b8878fdca8ab86a7984a1bc672924",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/GeneratedSnapshot.lean": "fd7c187b969239c22f156c390c82b672278324290b3cf68c220a4268fe3c95e9",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/c4.json": "666801076d1849df5f809f55241ac8d76055d7b4e17d6805e93ebcb7a58145b6",
+    "verification/staged-preflight-logs/GeneratedSnapshot_20261011T164350_227064Z.log": "3c45b5bbbc5477031cd8ce25542a4173fd9168e3ec3c96fdefae390a1c51a617",
+    "verification/ap16/selected-minor-arithmetic-lower-bound/GeneratedSnapshot.lean.preflight.json": "51d29cec32233d13f5237254b0a46f850975f66ae629d7ca06df71ca10562854",
+    "scripts/stage_selected_minor_lower_child_mirror_probe_v2.py": "8a1c95a4fed9df7d42b7ca6d26ef7024309e199ebdb8593456a48a396a2b492f",
+    "scripts/certify_selected_minor_lower_child_mirror_probe_v2.py": "c529929e39283ccf02058e25d9bcdf5678e78528a5d26ac721668b1b62b7e34d",
+    "verification/ap17/generic-lower-child-mirror/preparation.json": "2b92679436a2f67d5204b569ce1061410d88b26ee5ad49ed67cd9ffe33c349b7",
+    "verification/ap17/generic-lower-child-mirror/c1.json": "ef9ad182069bd636c9f94baee29d9e910545ebd0608557ff5d45b2d06c65bdde",
+    "verification/ap17/generic-lower-child-mirror/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.lean": "e24f4f9dfacca30c99116449809f32fe8fafd13d117c5937f7d9fef2e1ef851b",
+    "verification/ap17/generic-lower-child-mirror/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.lean.preflight.json": "a21c360b15bc5043d82c9caf39d5d7697bb275c065e463d2c4a397a46a398cca",
+    "verification/staged-preflight-logs/Theorems_Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound_20261011T170843_258721Z.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verification/staged-build/lib/lean/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.olean": "b3e07bdb503d4afc4c4a3e3c84c8dd4083609b847d477c444af41feb486f1d58",
+    "verification/ap17/generic-lower-child-mirror/c2.json": "f877e92573a8c8c28911f5d9fd02f031b13968bd2d95148a63bfe14737697dcf",
+    "verification/ap17/generic-lower-child-mirror/GeneratedSnapshot.lean": "36bfef003f49d8bda779ea1376ee7e5401107caa99cc7b5d6b0f98a1f541c293",
+    "verification/ap17/generic-lower-child-mirror/GeneratedSnapshot.lean.preflight.json": "b1b5c44b14620993cf90a3647372f97ba04e3cb30b5fee52fddef16032c3ee47",
+    "verification/staged-preflight-logs/GeneratedSnapshot_20261011T171104_183865Z.log": "06f8c869fc688fb6276b7c1a98c9223a1ddafba93dc928fd8605d959094e1345",
+    "verification/ap16/clearing-child-mirror-probe-v4/GeneratedSnapshot.lean": "2317b94f864f7f44e9d129392b18c4d2bdf7ab0d3ab302390365f0459189b429",
+    "verification/ap17/generic-lower-child-mirror/accepted-publication-record.json": "191e416b303174e4b89ebbb15dbfe66c0aa6fb811289a568bb5adb6040e47d8b",
+    "verification/ap9/simplex/actual-provider-validation.json": "84ce8e320bfa9f89a115cfaff81f4b0795a854f4d7f76f9f52eecc4d2352eb99",
+    "verification/ap9/simplex/source-full-ci.jsonl": "47aee9db75b8d207d3a79797dd7a6e64b55ef0bd10911a68e72f9dbe9c53071a",
+    "verification/ap9/simplex/generated-full-ci.jsonl": "40a37cec3fbb0ab6f2bddfe9962df8f637e46afbe93d77ecc33eef66bd430452",
+    "verification/ap9/simplex/publication/publication.json": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+    "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains.olean": "4873caf122444edcc0088c8f37a9bc54b382366ee5896f7f1b0df2474829c54e",
+    "verification/ap9/domains/actual-provider-validation.json": "0e82068192ee13ba01e8c23b17cb067ff371251c94e653196be122c41e075f64",
+    "verification/ap9/domains/source-full-ci.jsonl": "05a5dfadc6fe5b9e51e6be77228ebc9ec157c9434a90b2455a382e1b6723f8ef",
+    "verification/ap9/domains/generated-full-ci.jsonl": "c0045c1d71bdf875ca1c13e7519199839bcff13dd282a81d493ee14cd08944ac",
+    "verification/ap9/domains/publication/publication.json": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+    "verification/staged-build/lib/lean/Definitions/Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains.olean": "2f0b3b01f201809eed2eaef83e8c574e98097647c7a9503e6290e08900f28ede",
+    "scripts/stage_selected_minor_lower_child_mirror_probe_v3.py": "ff2fc9a020b09f4a9d2dd3bade055d6dabcd17a00f6a7a7fe3f679a0c0c08766",
+    "scripts/certify_selected_minor_lower_child_mirror_probe_v3.py": "53e84ec10a2bd0d44b4fce60227d4c3fd858633d577aca1c47751b305fa43698",
+    "verification/ap17/generic-lower-child-mirror-probe-v2/preparation.json": "c574dd1ea243653fbd2c25f83775d2e83f14078ad77123d2598d40844822ce6d",
+    "verification/ap17/generic-lower-child-mirror-probe-v2/c2.json": "043e6dc6facff35fd2dc0badb87ad84e90bbb0766abf4ec71d22a9ee8e14eafd",
+    "verification/ap17/generic-lower-child-mirror-probe-v2/GeneratedSnapshot.lean": "693e700804286a1598ad870f2ed7bcfeca620d93528eff3c0b03c7641da3f0e6",
+    "verification/ap17/generic-lower-child-mirror-probe-v2/GeneratedSnapshot.lean.preflight.json": "eb74278ca77a7715d0984e8b83189ad6cdc4cea8c03c9ed56a9f51b2c8a08d81",
+    "verification/staged-preflight-logs/GeneratedSnapshot_20261011T171547_540795Z.log": "acbda875c709d53449a79adf8bf471f238af9d41f17fb00bc5b3e09604f74e11",
+    "scripts/stage_selected_minor_lower_child_mirror_probe_v4.py": "20cca89ec26e3e88c81a9cc353de3abeb4eb9dc4afa01f42cf270c82444083df",
+    "scripts/certify_selected_minor_lower_child_mirror_probe_v4.py": "06378a3005d31b5872bcfdd56a832bfbc5e9b9342d689807c9b70d498bec02b6",
+    "verification/ap17/generic-lower-child-mirror-probe-v3/preparation.json": "5e1afb63a8aadedbc23cb61251c81d81bc49d99fba7784c8f7f2136d502c4ee6",
+    "verification/ap17/generic-lower-child-mirror-probe-v3/c2.json": "2e5ea0c4dbdd872f94a5b85136cfc61b8d4ad9eeb77036987819b712685a6275",
+    "verification/ap17/generic-lower-child-mirror-probe-v3/GeneratedSnapshot.lean": "6041989aaa3aa375079d4793cb7cb1fa680656812e6735e58154bc51940b8cf3",
+    "verification/ap17/generic-lower-child-mirror-probe-v3/GeneratedSnapshot.lean.preflight.json": "d5e9eadbbbb825668c598e4b7f05faf25df6adbe0acb89e954c6d30825e46d71",
+    "verification/staged-preflight-logs/GeneratedSnapshot_20261011T172241_081954Z.log": "ccdb0c127783523239ec3da14f4647cab527a88a3db8ce352932b0bffac32176"
+  },
+  "validated": false,
+  "submission_ready": false,
+  "Lean_started": false,
+  "API_used": false,
+  "historical_source_certificate_sha256": "267cbdabdd52a5f808fa1b4da4c0e7e899896c048f56001dba33d86ccd2367b2",
+  "platform_boundary_certification_pending": true,
+  "Accepted_readback_not_compiler_input": true,
+  "compile_commands": [
+    "python scripts/preflight_staged_module_windows_bounded.py ap17/generic-lower-child-mirror-probe-v4/GeneratedSnapshot.lean --root ap17/generic-lower-child-mirror-probe-v4 --imports-manifest ap17/generic-lower-child-mirror-probe-v4/c2.json --timeout-seconds 300"
+  ],
+  "reused_emitter_root": "verification/ap17/generic-lower-child-mirror",
+  "reused_emitter_preflight": "verification/ap17/generic-lower-child-mirror/Theorems/Thm_OAI_PiExponent_MatrixArithmetic_selectedMinor_arithmetic_lower_bound.lean.preflight.json",
+  "reused_emitter_preflight_sha256": "a21c360b15bc5043d82c9caf39d5d7697bb275c065e463d2c4a397a46a398cca",
+  "reused_olean_sha256": "b3e07bdb503d4afc4c4a3e3c84c8dd4083609b847d477c444af41feb486f1d58",
+  "failed_original_probe_preflight": "verification/ap17/generic-lower-child-mirror/GeneratedSnapshot.lean.preflight.json",
+  "failed_original_probe_preflight_sha256": "b1b5c44b14620993cf90a3647372f97ba04e3cb30b5fee52fddef16032c3ee47",
+  "failed_original_probe_log_sha256": "06f8c869fc688fb6276b7c1a98c9223a1ddafba93dc928fd8605d959094e1345",
+  "provenance_block_source": "verification/ap16/clearing-child-mirror-probe-v4/GeneratedSnapshot.lean",
+  "provenance_block_source_sha256": "2317b94f864f7f44e9d129392b18c4d2bdf7ab0d3ab302390365f0459189b429",
+  "inserted_exact_provenance_block_sha256": "b2aee85e8d956cdf080c3bde7ed73c101d1f924a10abdd9fd57258500e99d48e",
+  "only_missing_provenance_declarations_and_output_directory_changed": true,
+  "proof_source_and_OLean_unchanged": true,
+  "actual_Accepted_evidence_sha256": "191e416b303174e4b89ebbb15dbfe66c0aa6fb811289a568bb5adb6040e47d8b",
+  "actual_primary_Def_domain_size": 23,
+  "exact_six_AP9_complete_Def_witnesses_added": true,
+  "early_owned_inventory_output": "actual-owned-public-inventory.json",
+  "early_inventory_export_before_strict_primary_gate": true,
+  "failed_v2_probe_preflight": "verification/ap17/generic-lower-child-mirror-probe-v2/GeneratedSnapshot.lean.preflight.json",
+  "failed_v2_probe_preflight_sha256": "eb74278ca77a7715d0984e8b83189ad6cdc4cea8c03c9ed56a9f51b2c8a08d81",
+  "failed_v2_probe_log_sha256": "acbda875c709d53449a79adf8bf471f238af9d41f17fb00bc5b3e09604f74e11",
+  "failed_v3_probe_preflight": "verification/ap17/generic-lower-child-mirror-probe-v3/GeneratedSnapshot.lean.preflight.json",
+  "failed_v3_probe_preflight_sha256": "d5e9eadbbbb825668c598e4b7f05faf25df6adbe0acb89e954c6d30825e46d71",
+  "failed_v3_probe_log_sha256": "ccdb0c127783523239ec3da14f4647cab527a88a3db8ce352932b0bffac32176",
+  "only_inventory_IO_identifier_and_output_directory_changed": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": "351c42ed-4cf7-46cb-b083-925b4585e4c7",
+  "kind": "theorem",
+  "role": "goal",
+  "theorem_name": "ThreeSumSharpTail.threeSum_1999017",
+  "theorem_title": "Deterministic integer 3SUM in O(n^1.999017) word-RAM steps",
+  "formal_statement": "theorem ThreeSumSharpTail.threeSum_1999017 :\n    EndStatement.ThreeSum.SolvedInTime 1.999017 := by sorry",
+  "natural_language_statement": "For each fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural number $b$, and a step bound $T:\\mathbb N\\to\\mathbb N$. For every $n$, input $x:\\{0,\\ldots,n-1\\}\\to\\mathbb Z$ with $|x_i|\\le n^\\kappa$, and every $W\\ge b(\\operatorname{Nat.log2}(n)+1)$, the program halts within $T(n)$ steps and accepts exactly when three pairwise distinct indices have sum zero. Equal values at distinct indices are allowed; no witness is required; inputs of size less than three are rejected.\n\nThe exact time requirement is $\\exists K\\in\\mathbb N\\;\\forall n\\ge2,\\ T(n)^{1000000}\\le K n^{1999017}$, equivalent to $T(n)=O(n^{1.999017})$. The target instantiates the campaign template without changing its definitions.\n\nSource: Theorem 1.1 of Xu's sharp-tail manuscript. The manuscript states $\\kappa\\ge1$ and a sufficiently large logarithmic word width; the campaign additionally makes uniformity over all larger widths explicit. The case $\\kappa=0$ follows from the $\\kappa=1$ bound for $n\\ge1$, with $n=0$ handled separately. The formal development must justify this interface adaptation. The improved bound is a proposed formalization target, not an already Lean-certified result.",
+  "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Theorem 1.1; shared campaign interface adaptation",
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "readback": "For every natural number $\\kappa$, there exist a finite instruction list $P$, a natural number $b$, a function $T:\\mathbb N\\to\\mathbb N$, and a natural number $K$ such that for every natural $n\\ge2$, $T(n)^{1000000}\\le K n^{1999017}$, and such that the following correctness condition holds. For every natural $n$, every integer sequence $(x_0,\\ldots,x_{n-1})$ with $|x_i|\\le n^\\kappa$ at every position, and every natural word width $W\\ge b(\\lfloor\\log_2 n\\rfloor+1)$, taking the integer logarithm of $0$ to be $0$, the program $P$ started at instruction position $0$ halts within $T(n)$ steps and accepts if and only if three pairwise distinct positions $i,j,k\\in\\{0,\\ldots,n-1\\}$ satisfy $x_i+x_j+x_k=0$ as integers. Memory consists of $W$-bit words at every integer address. It initially contains $n$ modulo $2^W$ at address $0$, the input values in order modulo $2^W$ at addresses $1$ through $n$, and zero at every other address, including all negative addresses. The allowed instructions are: write constant $1$ to a fixed integer-addressed cell; add, subtract, or multiply two fixed cells into a fixed cell modulo $2^W$; load into a fixed cell from an address supplied by the signed interpretation of another fixed cell; store the value of a fixed cell at an address supplied by the signed interpretation of another fixed cell; jump to a fixed natural instruction position when a fixed cell has negative signed value; accept; and reject. Each instruction consumes one step. Writes and non-taken conditional jumps advance by one instruction, and a position beyond the list executes rejection. The halting instruction is counted, and zero available steps produce no verdict. The final memory has no output constraint. The same witnesses work for all eligible sizes, inputs, and word widths for the fixed $\\kappa$; witnesses may vary with $\\kappa$, and word width has no upper bound. Sizes $n=0,1,2$ are included in correctness and require rejection because three distinct positions do not exist, although the time inequality is imposed only for $n\\ge2$. At $n=0$ the magnitude condition is vacuous, and natural exponentiation uses $0^0=1$. Neither $b$ nor $K$ is required to be positive, so a chosen $b=0$ would require correctness even at $W=0$. The exponent is the exact rational $1.999017=1999017/1000000$, which is why the time condition uses the displayed integer powers.",
+  "readback_model": "gpt-6",
+  "publish_job_id": null,
+  "milestone_title": null,
+  "milestone_description": null,
+  "confirmed_at": null,
+  "created_at": "2026-10-13T13:35:18.745916+00:00",
+  "updated_at": "2026-10-13T14:33:13.04099+00:00"
+}

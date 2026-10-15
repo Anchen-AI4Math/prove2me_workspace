@@ -1,0 +1,3 @@
+theorem rowScale_pos {m : ℕ} {q : Fin m → ℕ} (hq : ∀ i, 0 < q i)
+    (b : Fin m → ℕ) : 0 < rowScale q b :=
+  inv_pos.mpr (columnScale_pos hq b)

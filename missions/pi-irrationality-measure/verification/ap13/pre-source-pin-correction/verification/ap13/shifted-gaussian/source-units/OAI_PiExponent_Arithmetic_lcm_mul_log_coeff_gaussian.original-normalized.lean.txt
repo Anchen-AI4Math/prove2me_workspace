@@ -1,0 +1,11 @@
+theorem lcm_mul_log_coeff_gaussian (T k : ℕ) (hk : k ≤ T) :
+    (Nat.lcmUpto T : ℂ) * PowerSeries.coeff k (PowerSeries.log ℂ) ∈
+      GaussianInt.toComplex.range := by
+  by_cases hk0 : k = 0
+  · simp [hk0]
+  obtain ⟨m, hm⟩ := dvd_lcmUpto_of_pos_le (Nat.pos_of_ne_zero hk0) hk
+  refine ⟨((-1 : GaussianInt) ^ (k + 1)) * (m : GaussianInt), ?_⟩
+  rw [PowerSeries.coeff_log, ite_eq_right hk0, hm]
+  have hkC : (k : ℂ) ≠ 0 := by exact_mod_cast hk0
+  simp only [map_mul, map_pow, map_neg, map_one, map_natCast, map_div₀, Nat.cast_mul]
+  field_simp

@@ -1,0 +1,4 @@
+private theorem ceil_log_weight_pos {q : ℕ} (hq : 2 ≤ q) :
+    0 < (⌈Real.log (q : ℝ)⌉₊ : ℝ) := by
+  have hqR : (1 : ℝ) < q := by exact_mod_cast (by omega : 1 < q)
+  exact lt_of_lt_of_le (Real.log_pos hqR) (Nat.le_ceil _)

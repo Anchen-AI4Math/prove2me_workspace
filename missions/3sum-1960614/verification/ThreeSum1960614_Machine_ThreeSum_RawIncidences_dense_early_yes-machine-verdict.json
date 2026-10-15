@@ -1,0 +1,15 @@
+{
+  "id": "85324620-1816-4ef6-b93c-bb63e76ba2aa",
+  "theorem_id": "a6762d36-e71b-4bed-8668-cad3d1d645bd",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:01:08.752087+00:00",
+  "updated_at": "2026-10-15T09:05:00.024614+00:00",
+  "explanation": "This is the soundness bridge for the machine\u2019s cumulative early-YES dense branch. Exceeding the representation cap times the separated false count forces an original triple with zero difference.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.RawIncidences.dense_early_yes",
+  "theorem_title": "A dense raw mass certifies an original zero",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.RawIncidences.dense_early_yes {h J : \u2115} {P d : \u2124} (T : Finset (_root_.ThreeSum.RawIncidences.Original \u03b1 \u03b2 \u03b3))\n    (a : \u03b1 \u2192 \u2124) (b : \u03b2 \u2192 \u2124) (c : \u03b3 \u2192 \u2124) (aux : Finset \u2124)\n    (hP : 0 < P) (hguard : 4 * P \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.globalModulus h J)\n    (hsep : \u2200 t \u2208 T, _root_.ThreeSum.RawIncidences.difference a b c t \u2260 0 \u2192 \u2203 l \u2208 aux, \u00acl \u2223 _root_.ThreeSum.RawIncidences.difference a b c t)\n    (hlarge : _root_.ThreeSum1960614.Machine.ThreeSum.GlobalEncoding.representationCap h J * _root_.ThreeSum.Arithmetic.weightedFalseCount T (_root_.ThreeSum.RawIncidences.difference a b c) aux P <\n      _root_.ThreeSum1960614.Machine.ThreeSum.RawIncidences.rawMass h J P d T a b c) :\n    \u2203 t \u2208 T, _root_.ThreeSum.RawIncidences.difference a b c t = 0 := by sorry",
+  "theorem_natural_language_statement": "Let $h,J\\in\\mathbb N$, $P>0$ and $\\delta\\in\\mathbb Z$. Let $T$ be a finite set of original triples over finite decidable index types, with integer maps $a,b,c$, and write $\\Delta(t)=c(t_C)-b(t_B)-a(t_A)$. Let $A$ be a finite auxiliary-modulus set. Assume $4P$ is at most the global encoding modulus and every $t\\in T$ with $\\Delta(t)\\ne0$ fails divisibility by at least one modulus in $A$. If\n\n$$\\operatorname{repCap}(h,J)\\,\\operatorname{weightedFalseCount}(T,\\Delta,A,P)<\\operatorname{rawMass}(h,J,P,\\delta,T,a,b,c),$$\n\nthen $\\Delta(t)=0$ for some $t\\in T$.\n\nThis is the soundness bridge for the machine\u2019s cumulative early-YES dense branch.",
+  "theorem_status": "Proved"
+}

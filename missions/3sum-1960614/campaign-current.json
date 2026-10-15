@@ -1,0 +1,145 @@
+{
+  "id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+  "slug": "3sum-exponent",
+  "name": "3SUM Exponent",
+  "description": "Classical algorithms solve 3SUM in $O(n^2)$ time. In a 2026 breakthrough, [Alman and Vassilevska Williams](https://arxiv.org/abs/2610.06783v1) gave a deterministic $O(n^{1.9992})$ algorithm, refuting the integer 3SUM hypothesis. How low can the exponent go?\n\nBuilding on existing Lean formalizations, this campaign tracks upper bounds for 3SUM on polynomially bounded integers, using a word RAM with $O(\\log n)$-bit words, and pursues smaller exponents.",
+  "template_proposal_id": "35734a46-dd9b-4a8d-8e6e-cea1cd2c855f",
+  "foundation_mission_id": "487064c8-0ffb-4779-802b-6824b289a73c",
+  "env": {
+    "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "display_name": "Mathlib 0df444a (Lean v4.33.1)"
+  },
+  "status": "active",
+  "value_type": "real",
+  "bound_type": "upper",
+  "value_direction": "lower",
+  "created_at": "2026-10-06T17:39:17.042579+00:00",
+  "updated_at": "2026-10-06T17:40:25.180021+00:00",
+  "template_statement": "theorem TrulySubquadratic3SUM.threeSum_bound :\n    EndStatement.ThreeSum.SolvedInTime {{value}} := by sorry",
+  "template_preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false",
+  "template_title": "3SUM in $O(n^{{{value}}})$ word-RAM steps",
+  "template_nl": "For every fixed $\\kappa\\in\\mathbb N$, there exist a finite deterministic word-RAM program $P$, a natural constant $b$, and a step-bound function $T$ that work for every input size $n$ and every word width $W\\ge b(\\operatorname{Nat.log2}(n)+1)$. On integers $x_0,\\ldots,x_{n-1}$ with $|x_i|\\le n^\\kappa$, the program halts within $T(n)$ steps and accepts exactly when there are pairwise distinct indices $i,j,k$ with $x_i+x_j+x_k=0$.\n\nFor the rational exponent $r={{value}}$, the bound is the foundation definition `EndStatement.BigO T r`: there is a natural constant $K$ such that $T(n)^{r.\\mathrm{den}}\\le K n^{r.\\mathrm{num}.\\mathrm{toNat}}$ for every $n\\ge2$. For nonnegative $r$, this is $T(n)=O(n^r)$. Repeated values at distinct positions are allowed; no witness triple is required, and inputs with $n<3$ must be rejected.\n\nUse the foundation mission¡¯s existing definitions without restating them.",
+  "template_tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "entries": [
+    {
+      "id": "5fe48b28-d999-4d11-9c30-47f73829d2f9",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "487064c8-0ffb-4779-802b-6824b289a73c",
+      "attested_value": "1.9992",
+      "attested_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "recorded_at": "2026-10-06T17:39:17.782164+00:00",
+      "created_at": "2026-10-06T17:39:17.782164+00:00",
+      "updated_at": "2026-10-06T17:39:17.782164+00:00",
+      "mission": {
+        "id": "487064c8-0ffb-4779-802b-6824b289a73c",
+        "name": "Truly Subquadratic 3SUM on a Word RAM",
+        "main_theorem": {
+          "theorem_id": "07f62b7b-6f72-4cec-a1fd-eed6348830bf",
+          "status": "Proved",
+          "solved_at": "2026-10-06T17:31:01.966999+00:00"
+        }
+      }
+    },
+    {
+      "id": "46fdad48-d972-4856-83bb-6e0614b4c474",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "c69c563c-99fe-4f40-a740-e10a6b16706f",
+      "attested_value": "1.99913",
+      "attested_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "recorded_at": "2026-10-06T18:15:23.148231+00:00",
+      "created_at": "2026-10-06T18:15:23.148231+00:00",
+      "updated_at": "2026-10-06T18:15:23.148231+00:00",
+      "mission": {
+        "id": "c69c563c-99fe-4f40-a740-e10a6b16706f",
+        "name": "3SUM in O(n^1.99913) Time on a Word RAM",
+        "main_theorem": {
+          "theorem_id": "d284346d-62ef-4166-abfe-67b6e6135038",
+          "status": "Proved",
+          "solved_at": "2026-10-06T18:14:13.362416+00:00"
+        }
+      }
+    },
+    {
+      "id": "6e3939cf-295d-4d2e-9011-3e4036231a76",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "a5b52369-055a-41b3-a4fa-81f2343b6069",
+      "attested_value": "1.999112",
+      "attested_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "recorded_at": "2026-10-06T18:55:28.974746+00:00",
+      "created_at": "2026-10-06T18:55:28.974746+00:00",
+      "updated_at": "2026-10-06T18:55:28.974746+00:00",
+      "mission": {
+        "id": "a5b52369-055a-41b3-a4fa-81f2343b6069",
+        "name": "3SUM in O(n^1.999112) Time on a Word RAM",
+        "main_theorem": {
+          "theorem_id": "914126b2-461c-42b3-a5ef-9ab394fe8451",
+          "status": "Proved",
+          "solved_at": "2026-10-06T18:54:35.600522+00:00"
+        }
+      }
+    },
+    {
+      "id": "81a6f832-d24d-4d17-9b55-d47c3aea13eb",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "702b0d73-2bc2-4812-8b9e-380a535b4050",
+      "attested_value": "1.999074",
+      "attested_by": "1218a2a5-fec3-4902-88f2-735b90eee971",
+      "recorded_at": "2026-10-06T19:07:44.006222+00:00",
+      "created_at": "2026-10-06T19:07:44.006222+00:00",
+      "updated_at": "2026-10-06T19:07:44.006222+00:00",
+      "mission": {
+        "id": "702b0d73-2bc2-4812-8b9e-380a535b4050",
+        "name": "3SUM in O(n^1.999074) Time on a Word RAM",
+        "main_theorem": {
+          "theorem_id": "b6704d8b-ac74-45ed-8c21-3fbf0bb1f7a2",
+          "status": "Proved",
+          "solved_at": "2026-10-07T03:40:40.429593+00:00"
+        }
+      }
+    },
+    {
+      "id": "1a195583-75d9-451e-9ad1-d7db10886cf5",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "164ae9a9-2e87-4034-a3f8-597ac4bd04fa",
+      "attested_value": "1.962",
+      "attested_by": "942b6fef-c91c-42f1-bd47-ebd4b637520c",
+      "recorded_at": "2026-10-13T19:39:07.715766+00:00",
+      "created_at": "2026-10-13T19:39:07.715766+00:00",
+      "updated_at": "2026-10-13T19:39:07.715766+00:00",
+      "mission": {
+        "id": "164ae9a9-2e87-4034-a3f8-597ac4bd04fa",
+        "name": "3SUM in O(n^1.962) Time on a Word RAM",
+        "main_theorem": {
+          "theorem_id": "faf3da56-8bce-41db-b7fb-332e1861ada2",
+          "status": "Open",
+          "solved_at": null
+        }
+      }
+    },
+    {
+      "id": "4f32190d-2079-4c2f-a104-8dee57c66458",
+      "campaign_id": "52073c33-5f7d-479b-b2db-238c6e280c9a",
+      "mission_id": "3fecdd66-37fa-4406-87a5-61db25383b86",
+      "attested_value": "1.999017",
+      "attested_by": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "recorded_at": "2026-10-13T20:30:08.402338+00:00",
+      "created_at": "2026-10-13T20:30:08.402338+00:00",
+      "updated_at": "2026-10-13T20:30:08.402338+00:00",
+      "mission": {
+        "id": "3fecdd66-37fa-4406-87a5-61db25383b86",
+        "name": "Deterministic Integer 3SUM in O(n^1.999017): Sharp Binomial-Tail Analysis",
+        "main_theorem": {
+          "theorem_id": "1674355a-fcd8-4885-8ec3-cc3e1ff29624",
+          "status": "Proved",
+          "solved_at": "2026-10-13T21:34:24.362931+00:00"
+        }
+      }
+    }
+  ],
+  "entry_count": 6
+}

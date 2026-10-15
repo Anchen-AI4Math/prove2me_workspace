@@ -1,0 +1,6 @@
+private theorem denominator_pos {m : ℕ} (q : Fin m → ℕ) (T : Fin m → ℕ) (H : ℝ) :
+    0 < denominator q T H := by
+  apply Finset.prod_pos
+  intro i hi
+  apply pow_pos
+  exact_mod_cast Nat.pos_of_ne_zero (Nat.lcmUpto_ne_zero (T i))

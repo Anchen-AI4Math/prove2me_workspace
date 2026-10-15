@@ -1,0 +1,118 @@
+{
+  "NoFixedData_name": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+  "conditional_theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+  "A1_theorem_id": "fdcbce8c-d9e6-43dd-8587-cfe865e6e78a",
+  "root_theorem_id": "e717eef2-11b1-4b14-9789-65f52c0502e1",
+  "environment": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "preparation_sha256": "3d65e8ee8db38cc3e953c5533ded9e6484a33e55d6274954272168628b99869a",
+  "publish_intent": {
+    "at_utc": "2026-10-11T14:15:13.914003+00:00",
+    "endpoint": "/submit-problem",
+    "payload_sha256": "3a4662fa6613cb4601be326d30985974c6b538db33605530795243a85dd74469"
+  },
+  "updated_at_utc": "2026-10-11T14:19:27.302772+00:00",
+  "publish_response": {
+    "http_status": 202,
+    "body": {
+      "jobs": [
+        {
+          "job_id": "1c438de8-6f4a-481b-896d-e38582eaee36",
+          "name": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate"
+        }
+      ],
+      "errors": [],
+      "message": "1/1 problem(s) queued. Poll GET /api/v1/publish-jobs/{job_id} until status is PUBLISHED, FAILED, or ERROR.",
+      "guidelines": "Reminder: write the natural_language_statement like an academic paper, not a Lean dump. Use standard mathematical notation in KaTeX (backslashes doubled in JSON) instead of raw Lean expressions, give context for every variable and symbol, put the main formula in a display-math block, follow it with a short paragraph on the result's mathematical role, keep Lean-specific details in an optional final Formalization Note paragraph, and do not include proof details. Full principles: references/contribute.md#important-principles-of-submit-problemsdefinitions"
+    }
+  },
+  "publish_job_id": "1c438de8-6f4a-481b-896d-e38582eaee36",
+  "last_publish_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "1c438de8-6f4a-481b-896d-e38582eaee36",
+      "kind": "problem",
+      "theorem_name": "OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate",
+      "theorem_title": "The interpolation and analytic bounds exclude fixed admissible data",
+      "formal_statement": "theorem OAI.PiExponent.DeterminantContradiction.no_fixed_data_of_interpolation_and_analytic_aggregate\r\n    (hgeometry : GlobalInterpolationStatement) (hanalytic : AnalyticAggregateStatement)\r\n    (nu : ℝ) (hnu : 2 < nu) (d : FixedData nu) : False := by\r\n  sorry\r\n",
+      "natural_language_statement": "Assume the original global interpolation statement and analytic aggregate statement. For every real exponent $\\nu>2$ and every fixed admissible datum $d:\\mathrm{FixedData}(\\nu)$, these hypotheses imply a contradiction:\n\n$$\n\\mathrm{GlobalInterpolation}\\;\\land\\;\\mathrm{AnalyticAggregate}\\;\\Longrightarrow\\;\\bot.\n$$\n\nThus no fixed admissible family can coexist with both source hypotheses at an exponent above $2$.  This is the source theorem that converts the determinant estimates into the conditional lower bound for rational approximations to $\\pi$.",
+      "definitions": "import Definitions.Def_OAI_PiExponent_ApproximationDefinitions\nimport Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_DeterminantContradiction_CoreData\n\nopen OAI.PiExponent OAI.PiExponent.DeterminantContradiction\n\n",
+      "source": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/OAI/NumberTheory/PiExponent/Approximation/DeterminantContradiction.lean#L125-L165",
+      "tags": [
+        "number-theory",
+        "determinants",
+        "irrationality-measure",
+        "openai-pi-exponent-017"
+      ],
+      "visibility": "public",
+      "status": "PUBLISHED",
+      "error_message": "",
+      "theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+      "created_at": "2026-10-11T14:15:14.957425+00:00",
+      "updated_at": "2026-10-11T14:15:36.042199+00:00"
+    }
+  },
+  "NoFixedData_theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+  "pre_verify_readback_sha256": {
+    "NoFixedData": "cc1a4e92378d3aa5335d1c60a75783633d358f7598f13fa4a12f1e46c3675d71",
+    "A1": "d90b0e1b6c00e73e671e5bb75c56eac9bb270793a56d4722eb4dc29369a96eeb",
+    "conditional": "7d6213c07dbddd3f119f53c2de6b08b6ba96eca7ff44c1d9208c24ae19628f35"
+  },
+  "verify_intent": {
+    "at_utc": "2026-10-11T14:16:14.140928+00:00",
+    "endpoint": "/verify",
+    "theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+    "A1_theorem_id": "fdcbce8c-d9e6-43dd-8587-cfe865e6e78a",
+    "NoFixedData_theorem_id": "6348c86e-c85a-4559-99e4-7e0ec083208e",
+    "multipart_sha256": "75b96d3aa6419ddc898915335f7ea0eb61900761f00fe841e7188a417b83c0b6",
+    "content_type": "multipart/form-data; boundary=----p2mBoundary7f3a9c2b",
+    "solution_sha256": "9fe6115dafd017ff51615b84e0bd2b34545d60eb550c77087277926c303d2957"
+  },
+  "verify_response": {
+    "http_status": 200,
+    "body": {
+      "submission_id": "351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+      "status": "PENDING",
+      "message": "Proof submitted for verification. Poll GET /submission/{id} for results.",
+      "guidelines": "Reminder: write the explanation like a section of a math paper, not a tactic-by-tactic transcript. Walk through the mathematical argument and show how it maps onto your Lean code, in Markdown with KaTeX math. The explanation is the only part of a submission you can edit later, via PATCH /api/v1/submissions/:id. Full principles: references/prove.md#attach-an-explanation"
+    }
+  },
+  "submission_id": "351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+  "last_verify_verdict": {
+    "http_status": 200,
+    "body": {
+      "id": "351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+      "theorem_id": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a",
+      "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "status": "SKETCH_ACCEPTED",
+      "error_message": "",
+      "file_path": "cbe4fb5f-2db8-4484-b209-ecb4e4efea9a/418b0711-62a5-416a-ba5d-876ae8758fe3/351f81bf-da48-4eb0-8d03-79bc77a8fcbd.lean",
+      "created_at": "2026-10-11T14:16:15.152173+00:00",
+      "updated_at": "2026-10-11T14:17:32.424338+00:00"
+    }
+  },
+  "post_acceptance_readback_sha256": {
+    "post-conditional-target.json": "7d6213c07dbddd3f119f53c2de6b08b6ba96eca7ff44c1d9208c24ae19628f35",
+    "post-NoFixedData.json": "cc1a4e92378d3aa5335d1c60a75783633d358f7598f13fa4a12f1e46c3675d71",
+    "post-A1.json": "d90b0e1b6c00e73e671e5bb75c56eac9bb270793a56d4722eb4dc29369a96eeb",
+    "post-conditional-graph.json": "ae31100af8f498ca4039d4ae49da70a133578dd999b238506e7e1dc4946020c3",
+    "post-conditional-decompositions.json": "323226db57fc33bf334b4754e944937dd29927af18bf4686ee836942392509ec",
+    "post-root-target.json": "56f7bda7ee447d873d8630edfa24bc4bd293a5c5577efb6d998dc11f3f40534b",
+    "post-root-graph.json": "3768201c94ae4c63c5882deff51aa23b2b31a70350288221a4fe57ee16ef98fb"
+  },
+  "actual_two_child_edges": {
+    "sketch_node": "sketch-351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+    "A1_to_sketch": true,
+    "NoFixedData_to_sketch": true,
+    "sketch_to_conditional": true,
+    "decomposition_two_children": true
+  },
+  "actual_root_transitive_paths": {
+    "root_sketch_node": "sketch-c57d8b09-857b-4c52-bafa-36dd13f28219",
+    "conditional_sketch_node": "sketch-351f81bf-da48-4eb0-8d03-79bc77a8fcbd",
+    "A1_to_root_path": true,
+    "NoFixedData_to_root_path": true,
+    "nodes": 86,
+    "edges": 133
+  },
+  "confirmed_SKETCH_ACCEPTED": true
+}

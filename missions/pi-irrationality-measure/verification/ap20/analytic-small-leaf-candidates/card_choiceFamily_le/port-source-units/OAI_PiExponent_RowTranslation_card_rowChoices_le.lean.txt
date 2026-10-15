@@ -1,0 +1,13 @@
+theorem card_rowChoices_le (S : Finset (σ →₀ ℕ)) (β : σ →₀ ℕ) (s H : ℕ)
+    (ha : ∀ a ∈ S, ∀ i, a i ≤ H) :
+    Fintype.card (RowChoices S β s) ≤ S.card * (H + 1) ^ Fintype.card σ * (s + 1) := by
+  classical
+  rw [Fintype.card_sigma]
+  simp only [Fintype.card_prod, Fintype.card_fin]
+  calc
+    _ ≤ ∑ _a : S, (H + 1) ^ Fintype.card σ * (s + 1) := by
+      apply Finset.sum_le_sum
+      intro a ha'
+      apply Nat.mul_le_mul_right
+      exact card_bounded_indices_le _ H (fun i => (Nat.sub_le _ _).trans (ha a.1 a.2 i))
+    _ = _ := by simp [Nat.mul_assoc]

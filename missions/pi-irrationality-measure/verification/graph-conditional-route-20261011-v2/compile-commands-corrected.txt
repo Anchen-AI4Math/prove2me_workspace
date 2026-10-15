@@ -1,0 +1,11 @@
+The c1, c2, and c3 manifests request emit-olean. Pass --emit-olean explicitly to the preflight CLI.
+Run each command from the mission directory. Root alone runs Lean/API. Do not edit the staged source or manifests.
+
+python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Theorems/Thm_OAI_PiExponent_DeterminantContradiction_no_fixed_data_of_interpolation_and_analytic_aggregate.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c1.json --timeout-seconds 300 --emit-olean
+python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Theorems/Thm_OAI_PiExponent_exists_admissible_parameters_source017.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c2.json --timeout-seconds 300 --emit-olean
+python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/Solutions/Sol_OAI_PiExponent_DeterminantContradiction_piEventualLowerBound_conditional.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c3.json --timeout-seconds 300 --emit-olean
+python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/SourceSnapshot.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c4.json --timeout-seconds 300
+python scripts/preflight_staged_module.py graph-conditional-route-20261011-v2/GeneratedSnapshot.lean --root graph-conditional-route-20261011-v2 --imports-manifest graph-conditional-route-20261011-v2/c5.json --timeout-seconds 300
+
+Then run the pure consumer: python scripts/certify_graph_conditional_open_chain.py --certify-existing
+Its certificate is an Open interface/type/reference result. It does not certify a closed conditional proof.

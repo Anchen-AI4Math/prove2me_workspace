@@ -1,0 +1,28 @@
+{
+  "theorem_id": "23685129-7595-4605-accf-6de4710e077b",
+  "theorem_name": "ThreeSum1960614.integer_schedule",
+  "theorem_title": "Least integer quartic switch and uniform rounding bounds",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSum1960614.integer_schedule (J s j : ℕ)\n    (hJ : 0 < J) (hs : 0 < s) (heven : Even s) (hj : j < J)\n    (hlevel : (j : ℝ) / J ≤ tau) :\n    ∃ q : ℕ, 0 < q ∧ q ≤ ((J - j) * s) / 2 ∧ clearedSwitch J s j q ∧\n      (∀ k < q, ¬ clearedSwitch J s j k) ∧\n      threshold ((j : ℝ) / J) ≤ phi ((q : ℝ) / ((J - j) * s)) ∧\n      phi ((q : ℝ) / ((J - j) * s)) <\n        threshold ((j : ℝ) / J) + 9 / ((J - j) * s) ∧\n      saving ≤ 2 * beta - (j : ℝ) / J +\n        (1 - (j : ℝ) / J) * gamma 232 ((q : ℝ) / ((J - j) * s)) ∧\n      (1 - (j : ℝ) / J) * entropy ((q : ℝ) / ((J - j) * s)) <\n        rho * (1 + v) + 9 * rho / (J * s) := by sorry",
+  "natural_language_statement": "For arbitrary positive natural block count $J$, positive even microblock size $s$, and level $0\\le j<J$ with $j/J\\le13/20$, let $r=(J-j)s$ and $\\mu=Js$. There exists a positive least integer $q\\le r/2$ satisfying the cleared integer comparison, and every smaller natural number fails it. This same $q$ satisfies $K\\le P(q/r)<K+9/r$ for $K=(v+j/J)/(1-j/J)$. It also satisfies $S\\le2b-j/J+(1-j/J)\\gamma_{232}(q/r)$ and $(1-j/J)H(q/r)<\\rho(1+v)+9\\rho/\\mu$. No divisibility of $J$ is needed for these per-level bounds; positivity and evenness make $r/2$ an integer and every real denominator nonzero.",
+  "created_at": "2026-10-14T05:08:34.601986+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Section 4.2–4.3; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [],
+  "readback": {
+    "readback": "---\ndeclaration: ThreeSum1960614.integer_schedule\nreadback_model: GPT-6\n---\n\nFor every three natural numbers $J,s,j$ such that $J>0$, $s>0$, $s$ is even, $j<J$, and $j/J\\leq 13/20$ when this quotient is taken in the real numbers, put $d=J-j$, $r=ds$, and $a=j/J$. Here the natural-number subtraction $J-j$, which in general is truncated at zero, is the ordinary positive difference under the hypothesis $j<J$. Define the real-valued functions\n$$\nH(t)=\\frac{-t\\log t-(1-t)\\log(1-t)}{\\log 2},\\qquad\nP(t)=\\frac{785174904t+72447023t^2+24044466t^3+12022459t^4}{100000000},\n$$\nwhere $\\log$ is the total real natural logarithm: $\\log t=\\ln|t|$ for $t\\ne0$ and $\\log0=0$, so the entropy summands at zero are zero. There exists a natural number $q>0$ with $q\\leq\\lfloor r/2\\rfloor$ such that the following comparison of nonnegative integers holds:\n$$\n500000000d\\bigl(785174904qr^3+72447023q^2r^2+24044466q^3r+12022459q^4\\bigr)\n\\geq\n100000000\\bigl(159243801J+500000000j\\bigr)r^4.\n$$\nMoreover, for every natural number $k<q$, including $k=0$, this integer comparison is false after replacing $q$ by $k$; thus $q$ is least among all natural numbers satisfying that comparison, not merely among those in the stated upper range. For this same $q$, putting $x=q/r$, all four of the following real inequalities hold:\n$$\n\\frac{159243801/500000000+a}{1-a}\\leq P(x),\n$$\n$$\nP(x)<\\frac{159243801/500000000+a}{1-a}+\\frac{9}{r},\n$$\n$$\n\\frac{193175570}{1000000000}\n\\leq\n2\\left(-\\frac{62656016}{1000000000}\\right)-a\n+(1-a)\\left[232H\\left(\\frac1{232}\\right)-232H\\left(\\frac{1-x}{232}\\right)\\right],\n$$\n$$\n(1-a)H(x)\n<\\frac{2790503}{10000000}\\left(1+\\frac{159243801}{500000000}\\right)\n+\\frac{9(2790503/10000000)}{Js}.\n$$\nThe bound on $q$ uses natural-number division, hence the floor indicated above; since $s$ is positive and even, $r$ is even and at least $2$, so that floor equals the exact integer $r/2$. Every quotient in the four analytic inequalities, and in $a$, $x$, $H$, and $P$, is real division, with natural numbers embedded into the real numbers. Their denominators are nonzero: $J>0$, $r>0$, $Js>0$, and $1-a\\geq 7/20>0$. In particular $0<x\\leq 1/2$, so the entropy arguments appearing in these inequalities are positive and less than $1$. The hypotheses allow $j=0$ and allow $J=1$ with $j=0$; they impose no additional lower bound on $J$ or on the positive even number $s$.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:08:36.833141+00:00"
+  }
+}

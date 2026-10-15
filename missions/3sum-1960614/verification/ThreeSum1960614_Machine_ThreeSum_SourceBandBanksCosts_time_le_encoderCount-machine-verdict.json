@@ -1,0 +1,15 @@
+{
+  "id": "0dbdb5a1-58dc-481a-9563-c4e0b4114356",
+  "theorem_id": "e7d59a75-7839-4632-a223-e52085ac977f",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:28:09.882829+00:00",
+  "updated_at": "2026-10-15T07:30:44.228508+00:00",
+  "explanation": "The proof combines the explicit component contracts and finite layout or counting identities of this construction, retaining the stated runtime and memory bounds. This estimate charges original-band source reuse to encoder construction without adding a new per-query input scan.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.time_le_encoderCount",
+  "theorem_title": "Shared source-bank construction is charged to the encoder count",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SourceBandBanksCosts.time_le_encoderCount {NL NR n : \u2115} (hn : 0 < n) (hNL : NL \u2264 n) (hNR : NR \u2264 n) :\n    _root_.ThreeSum1960614.Machine.ThreeSum.LightSourceBandBanks.time NL NR (_root_.ThreeSum1960614.Machine.ThreeSum.BandScales.bandSize n) (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n) \u2264\n      (_root_.ThreeSum1960614.Machine.ThreeSum.LightBlockSourceCatalogProgram.factor (_root_.ThreeSum.Scales.microHalf (_root_.ThreeSum.Scales.inputBits n)) (_root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n))*(232*_root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n+2)+1300)*\n        _root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.encoderCount n+1220 := by sorry",
+  "theorem_natural_language_statement": "For $n>0$ and independent source lengths $N_L,N_R\\le n$, instantiate the source-bank constructor at the actual band size, local half-size, block count, and total size. Its time is at most $$\\bigl(F(h,J)(232\\mu+2)+1300\\bigr)\\operatorname{encoderCount}(n)+1220,$$ where $F$ is the catalog-program factor and $\\mu$ is the total block size.\n\nThis estimate charges original-band source reuse to encoder construction without adding a new per-query input scan.",
+  "theorem_status": "Proved"
+}

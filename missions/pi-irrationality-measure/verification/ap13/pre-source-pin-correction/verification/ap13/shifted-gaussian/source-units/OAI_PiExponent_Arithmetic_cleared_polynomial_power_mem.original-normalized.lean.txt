@@ -1,0 +1,11 @@
+theorem cleared_polynomial_power_mem (L e d : ℕ) (f : Polynomial ℂ) (hd : d ≤ e)
+    (hf : Polynomial.C (L : ℂ) * f ∈ (Polynomial.mapRingHom GaussianInt.toComplex).range) :
+    Polynomial.C ((L : ℂ) ^ e) * f ^ d ∈
+      (Polynomial.mapRingHom GaussianInt.toComplex).range := by
+  let S := (Polynomial.mapRingHom GaussianInt.toComplex).range
+  have hL : Polynomial.C (L : ℂ) ∈ S := by
+    simp
+  have h := S.mul_mem (S.pow_mem hL (e - d)) (S.pow_mem hf d)
+  have he : e = (e - d) + d := (Nat.sub_add_cancel hd).symm
+  rw [he, map_pow, pow_add]
+  simpa only [mul_pow, mul_assoc] using h

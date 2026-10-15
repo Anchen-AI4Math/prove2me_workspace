@@ -1,0 +1,666 @@
+3sum-1960614: 1050 selected root modules (plus their imports)
+Scoped build batch 1/4: 300 roots
+⚠ [2763/2777] Replayed Definitions.Def_APSPSource_ThreeSumApsp_Util_Ceil
+warning: Definitions/Def_APSPSource_ThreeSumApsp_Util_Ceil.lean:107:2: `@[expose]` has no effect outside a `module` file
+⚠ [3497/3503] Replayed Definitions.Def_ThreeSum1962Source_Bundle01
+warning: Definitions/Def_ThreeSum1962Source_Bundle01.lean:372:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: Definitions/Def_ThreeSum1962Source_Bundle01.lean:3254:0: automatically included section variable(s) unused in theorem `ThreeSum.Cover.greedyChoices_length`:
+  [DecidableEq U]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq U] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [3499/3503] Replayed Definitions.Def_ThreeSum1962Source_Bundle03
+warning: Definitions/Def_ThreeSum1962Source_Bundle03.lean:3545:19: This simp argument is unused:
+  Nat.succ_eq_add_one
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [Nat.add_mul, one_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [3501/3516] Replayed Definitions.Def_ThreeSum1962Source_Bundle04
+warning: Definitions/Def_ThreeSum1962Source_Bundle04.lean:1957:57: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3504/3516] Replayed Definitions.Def_ThreeSum1962Source_Bundle07
+warning: Definitions/Def_ThreeSum1962Source_Bundle07.lean:874:20: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Definitions/Def_ThreeSum1962Source_Bundle07.lean:874:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Definitions/Def_ThreeSum1962Source_Bundle07.lean:1284:30: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Definitions/Def_ThreeSum1962Source_Bundle07.lean:1284:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3506/3516] Replayed Definitions.Def_ThreeSum1962Source_Bundle09
+warning: Definitions/Def_ThreeSum1962Source_Bundle09.lean:2759:48: The syntax is now `structure S : Type extends P` rather than `structure S extends P : Type`
+
+Note: The purpose of this change is to accommodate `structure S extends toP : P` syntax for naming parent projections.
+⚠ [3507/3516] Replayed Definitions.Def_ThreeSum1962Source_Bundle10
+warning: Definitions/Def_ThreeSum1962Source_Bundle10.lean:2384:29: Local variable 'zero' resembles constructor 'Nat.zero' - write '.zero' (with a dot) or 'Nat.zero' to use the constructor.
+
+Note: This linter can be disabled with `set_option linter.constructorNameAsVariable false`
+ℹ [8782/8798] Replayed Solutions.Sol_ThreeSum1960614_FixedModel_bound_of_witnesses
+info: Solutions/Sol_ThreeSum1960614_FixedModel_bound_of_witnesses.lean:106:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8783/8798] Replayed Solutions.Sol_ThreeSum1960614_FixedModel_witness_logs
+info: Solutions/Sol_ThreeSum1960614_FixedModel_witness_logs.lean:72:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8784/8798] Replayed Definitions.Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:29:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.e0`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:30:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.k0`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:31:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratio0`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:32:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:33:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.gammaCap`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:34:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.entropyFloor`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:35:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.savingCap`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:36:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.a`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:37:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.A`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:38:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.C`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_FixedModelAlgebra.lean:39:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.lowerTarget`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+ℹ [8785/8798] Replayed Solutions.Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_bound_of_witnesses
+info: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_bound_of_witnesses.lean:101:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8786/8798] Replayed Definitions.Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_ModelWitnessLogs
+warning: Definitions/Def_ThreeSum1960614_MachineRegression_Submission_ThreeSum_ModelWitnessLogs.lean:32:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratioPoint`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8787/8798] Replayed Theorems.Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_bound_of_witnesses
+warning: Theorems/Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_bound_of_witnesses.lean:27:8: declaration uses `sorry`
+warning: Theorems/Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_bound_of_witnesses.lean:27:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.bound_of_witnesses`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8788/8798] Replayed Theorems.Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_witness_logs
+warning: Theorems/Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_witness_logs.lean:29:8: declaration uses `sorry`
+warning: Theorems/Thm_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_witness_logs.lean:29:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.witness_logs`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8789/8798] Replayed Theorems.Thm_ThreeSum1960614_encoding_parameter_bounds
+warning: Theorems/Thm_ThreeSum1960614_encoding_parameter_bounds.lean:7:8: declaration uses `sorry`
+⚠ [8790/8798] Replayed Theorems.Thm_ThreeSum1960614_high_precision_logs
+warning: Theorems/Thm_ThreeSum1960614_high_precision_logs.lean:7:8: declaration uses `sorry`
+⚠ [8791/8798] Replayed Solutions.Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:71:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.gamma_formula`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:87:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.entropy_scaled_formula`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:97:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.entropy_monotone`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:104:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.gamma_monotone`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:114:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.gamma_nonnegative`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:118:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split_gamma_bound`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:126:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.split_entropy_bound`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:142:25: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:134:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.MachineRegression.ThreeSum1960614.FixedModel.ratio_point_bound`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:142:25: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+info: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_complete_lower_bound.lean:186:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+ℹ [8792/8798] Replayed Solutions.Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_witness_logs
+info: Solutions/Sol_ThreeSum1960614_MachineRegression_ThreeSum1960614_FixedModel_witness_logs.lean:99:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8794/8798] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Bands_tripleOwner_injective
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Bands_tripleOwner_injective.lean:146:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8796/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_two_coordinates_separate
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_two_coordinates_separate.lean:23:8: declaration uses `sorry`
+ℹ [8797/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_reduction_correct
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_reduction_correct.lean:157:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+ℹ [8798/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_two_coordinates_separate
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Coloring_two_coordinates_separate.lean:123:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8800/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_three_relation
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_three_relation.lean:27:8: declaration uses `sorry`
+ℹ [8801/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_four_relation_of_mask_ne
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_four_relation_of_mask_ne.lean:57:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+ℹ [8802/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_hashMap_surjective
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_hashMap_surjective.lean:45:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8803/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_hashMap_surjective
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_hashMap_surjective.lean:27:8: declaration uses `sorry`
+⚠ [8804/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_linear_fiber_card
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_linear_fiber_card.lean:27:8: declaration uses `sorry`
+⚠ [8805/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_jointPair_card_le_cube
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_jointPair_card_le_cube.lean:260:47: Variable name `huv` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _huv
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_jointPair_card_le_cube.lean:287:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+ℹ [8806/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_linear_fiber_card
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_linear_fiber_card.lean:48:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8807/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_four_relation_of_mask_ne
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_four_relation_of_mask_ne.lean:28:8: declaration uses `sorry`
+ℹ [8808/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_oneHot_four_independent
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_oneHot_four_independent.lean:40:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8809/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_jointPair_card_le_cube
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_jointPair_card_le_cube.lean:30:8: declaration uses `sorry`
+⚠ [8810/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_oneHot_four_independent
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_oneHot_four_independent.lean:27:8: declaration uses `sorry`
+⚠ [8811/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_sum_incidenceCount_sq
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_sum_incidenceCount_sq.lean:27:8: declaration uses `sorry`
+ℹ [8812/8816] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment.lean:368:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8813/8816] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment.lean:33:8: declaration uses `sorry`
+⚠ [8814/8829] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment_five
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment_five.lean:47:22: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment_five.lean:56:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8815/8829] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_sum_incidenceCount_sq
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_sum_incidenceCount_sq.lean:132:0: automatically included section variable(s) unused in theorem `ThreeSum1960614.MachineScopeRegression.ThreeSum.HashFamily.incidenceCount_eq_sum`:
+  [Fintype Ω]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Ω] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_sum_incidenceCount_sq.lean:245:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8816/8829] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_three_relation
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_three_relation.lean:242:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8817/8829] Replayed Theorems.Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment_five
+warning: Theorems/Thm_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_raw_second_moment_five.lean:29:8: declaration uses `sorry`
+⚠ [8818/8829] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_trimmed_second_moment
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_trimmed_second_moment.lean:137:0: automatically included section variable(s) unused in theorem `ThreeSum1960614.MachineScopeRegression.ThreeSum.HashFamily.incidenceCount_mono`:
+  [Fintype Ω]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Ω] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_HashFamily_trimmed_second_moment.lean:236:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8821/8829] Replayed Solutions.Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:103:0: automatically included section variable(s) unused in theorem `ThreeSum1960614.MachineScopeRegression.ThreeSum.Histograms.sum_histogram`:
+  [AddCommGroup G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [AddCommGroup G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:128:34: This simp argument is unused:
+  sum_ite_eq'
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_mul, zero_mul, mem_univ, ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:128:47: This simp argument is unused:
+  mem_univ
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_mul, zero_mul, sum_ite_eq', ite_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:128:57: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [ite_mul, zero_mul, sum_ite_eq', mem_univ]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:131:12: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [h', Nat.mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: Solutions/Sol_ThreeSum1960614_MachineScopeRegression_ThreeSum_Histograms_selected_pairMass_bound.lean:171:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8823/8829] Replayed Definitions.Def_ThreeSum1960614_Machine_Bundle003
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle003.lean:319:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.Schedule.microSize`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle003.lean:321:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.Schedule.blockCount`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle003.lean:324:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.Schedule.totalSize`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle003.lean:326:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.Schedule.bandExponent`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle003.lean:328:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.Schedule.bandDivisor`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8824/8829] Replayed Definitions.Def_ThreeSum1960614_Machine_Bundle001
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle001.lean:65:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.high_precision_logs`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8826/8830] Built Definitions.Def_ThreeSum1960614_Machine_Bundle004 (115s)
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:159:53: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:164:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:159:53: Unused tactic linter: `ring` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:211:2: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:215:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.encoding_parameter_bounds`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:256:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.executable_scale_rounding`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:789:53: Cond.lt does not have a doc string
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:790:53: Cond.eq does not have a doc string
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle004.lean:791:54: Stmt.seq does not have a doc string
+⚠ [8827/8831] Built Definitions.Def_ThreeSum1960614_Machine_Bundle005 (56s)
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle005.lean:225:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.executable_scale_limits`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8828/8832] Built Definitions.Def_ThreeSum1960614_Machine_Bundle006 (29s)
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle006.lean:437:88: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8829/8832] Built Definitions.Def_ThreeSum1960614_Machine_Bundle007 (40s)
+info: Definitions/Def_ThreeSum1960614_Machine_Bundle007.lean:570:30: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle007.lean:570:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8830/8833] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_effects_argsCode (31s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_effects_argsCode.lean:59:8: declaration uses `sorry`
+✔ [8831/8834] Built Definitions.Def_ThreeSum1960614_Machine_Bundle008 (22s)
+⚠ [8832/8835] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_effects_newFrame (21s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_effects_newFrame.lean:59:8: declaration uses `sorry`
+⚠ [8833/8836] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_rel_startMem (19s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_rel_startMem.lean:50:8: declaration uses `sorry`
+⚠ [8834/8836] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_steps_setVar (19s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_steps_setVar.lean:53:8: declaration uses `sorry`
+⚠ [8835/8841] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_steps_start (18s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_steps_start.lean:50:8: declaration uses `sorry`
+⚠ [8836/8841] Replayed Theorems.Thm_ThreeSum1960614_Machine_Light_Exec_bounded
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Exec_bounded.lean:34:8: declaration uses `sorry`
+⚠ [8837/8841] Replayed Theorems.Thm_ThreeSum1960614_Machine_Light_Exec_mem_outside
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Exec_mem_outside.lean:34:8: declaration uses `sorry`
+⚠ [8838/8841] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_effects_argsCode (20s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_effects_argsCode.lean:879:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.effects_argsCode__implementation_7491417883' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_effects_argsCode.lean:906:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8839/8842] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_compileProgram_correct (30s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_compileProgram_correct.lean:2852:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.compileProgram_correct__implementation_98c501a79a' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_compileProgram_correct.lean:2898:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8840/8843] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_effects_newFrame (21s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_effects_newFrame.lean:587:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.effects_newFrame__implementation_9d32bedaad' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_effects_newFrame.lean:639:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8841/8844] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_rel_startMem (20s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_rel_startMem.lean:576:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.rel_startMem__implementation_8b5750d36e' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_rel_startMem.lean:610:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8842/8844] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_steps_setVar (19s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_steps_setVar.lean:548:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.steps_setVar__implementation_892ddb9dff' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_steps_setVar.lean:573:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8843/8847] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Compiler_steps_start (21s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_steps_start.lean:1181:8: The declaration 'ThreeSum1960614.Machine.Light.Compiler.steps_start__implementation_441fc0a44b' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Compiler_steps_start.lean:1204:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8844/8847] Built Definitions.Def_ThreeSum1960614_Machine_Bundle009 (40s)
+⚠ [8845/8849] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Ends_while (31s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Ends_while.lean:29:8: declaration uses `sorry`
+⚠ [8846/8849] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Emod_reduce_ends (43s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_reduce_ends.lean:413:8: The declaration 'ThreeSum1960614.Machine.Light.Emod.reduce_ends__implementation_bb5cde54ac' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_reduce_ends.lean:462:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8847/8849] Replayed Theorems.Thm_Light_neg_emod_nat
+warning: Theorems/Thm_Light_neg_emod_nat.lean:48:8: declaration uses `sorry`
+⚠ [8848/8851] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Emod_sign_ends (32s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_sign_ends.lean:319:8: The declaration 'ThreeSum1960614.Machine.Light.Emod.sign_ends__implementation_aba8b604b6' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_sign_ends.lean:344:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8849/8852] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Emod_table_ends (31s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_table_ends.lean:278:8: The declaration 'ThreeSum1960614.Machine.Light.Emod.table_ends__implementation_04c3e19566' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Emod_table_ends.lean:320:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8850/8852] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Ends_for (28s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_for.lean:161:8: The declaration 'ThreeSum1960614.Machine.Light.Ends.for__implementation_8b3380e34f' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_for.lean:207:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8851/8855] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Ends_of_blockSafe (24s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_of_blockSafe.lean:158:8: The declaration 'ThreeSum1960614.Machine.Light.Ends.of_blockSafe__implementation_89a79a0685' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_of_blockSafe.lean:181:0: 'solution' depends on axioms: [propext, Quot.sound]
+⚠ [8852/8856] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Ends_for (24s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Ends_for.lean:33:8: declaration uses `sorry`
+⚠ [8853/8857] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Ends_of_blockSafe (26s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Ends_of_blockSafe.lean:31:8: declaration uses `sorry`
+⚠ [8854/8857] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Ends_while (27s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_while.lean:34:8: The declaration 'ThreeSum1960614.Machine.Light.Ends.while__implementation_571b60a33a' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_while.lean:66:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8855/8861] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Ends_pass (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_pass.lean:460:8: The declaration 'ThreeSum1960614.Machine.Light.Ends.pass__implementation_e0d640eb6c' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Ends_pass.lean:490:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8856/8861] Replayed Solutions.Sol_ThreeSum1960614_Machine_Light_Exec_bounded
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Exec_bounded.lean:295:8: The declaration 'ThreeSum1960614.Machine.Light.Exec.bounded__implementation_f52c3f5ec2' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Exec_bounded.lean:315:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8857/8861] Replayed Solutions.Sol_ThreeSum1960614_Machine_Light_Exec_mem_outside
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Exec_mem_outside.lean:38:8: The declaration 'ThreeSum1960614.Machine.Light.Exec.mem_outside__implementation_a579c487bd' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Exec_mem_outside.lean:58:0: 'solution' depends on axioms: [propext, Quot.sound]
+✔ [8858/8862] Built Definitions.Def_ThreeSum1960614_Machine_Bundle010 (28s)
+⚠ [8859/8862] Replayed Theorems.Thm_Light_MergeSort_clog_split
+warning: Theorems/Thm_Light_MergeSort_clog_split.lean:47:8: declaration uses `sorry`
+✔ [8860/8863] Built Definitions.Def_ThreeSum1960614_Machine_Bundle011 (28s)
+⚠ [8861/8863] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Ends_pass (28s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Ends_pass.lean:55:8: declaration uses `sorry`
+⚠ [8862/8867] Built Theorems.Thm_ThreeSum1960614_Machine_Light_half_meets (26s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_half_meets.lean:48:8: declaration uses `sorry`
+⚠ [8863/8867] Built Theorems.Thm_ThreeSum1960614_Machine_Light_seg_append (26s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_seg_append.lean:54:8: declaration uses `sorry`
+⚠ [8864/8869] Built Theorems.Thm_ThreeSum1960614_Machine_Light_seg_cons (23s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_seg_cons.lean:54:8: declaration uses `sorry`
+⚠ [8865/8869] Built Theorems.Thm_ThreeSum1960614_Machine_Light_merge_meets (38s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_merge_meets.lean:68:8: declaration uses `sorry`
+⚠ [8866/8869] Built Theorems.Thm_ThreeSum1960614_Machine_Light_pow_spec (27s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_pow_spec.lean:107:8: declaration uses `sorry`
+⚠ [8867/8869] Built Solutions.Sol_ThreeSum1960614_Machine_Light_MergeSort_body_ends (31s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_MergeSort_body_ends.lean:849:8: The declaration 'ThreeSum1960614.Machine.Light.MergeSort.body_ends__implementation_c745cd92da' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_MergeSort_body_ends.lean:899:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8868/8870] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Wrap_body_ends (28s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_body_ends.lean:575:8: The declaration 'ThreeSum1960614.Machine.Light.Wrap.body_ends__implementation_16ccd5debd' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_body_ends.lean:618:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8869/8873] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Compiler_compileProgram_correct (27s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Compiler_compileProgram_correct.lean:71:8: declaration uses `sorry`
+⚠ [8870/8873] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Wrap_body_ends (29s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Wrap_body_ends.lean:111:8: declaration uses `sorry`
+⚠ [8871/8876] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Wrap_small (28s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Wrap_small.lean:110:8: declaration uses `sorry`
+⚠ [8872/8878] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Wrap_topSolves (27s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Wrap_topSolves.lean:112:8: declaration uses `sorry`
+⚠ [8873/8878] Replayed Theorems.Thm_ThreeSum1960614_Machine_Light_polyBound_le
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_polyBound_le.lean:47:8: declaration uses `sorry`
+⚠ [8874/8878] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Wrap_small (28s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_small.lean:234:8: The declaration 'ThreeSum1960614.Machine.Light.Wrap.small__implementation_b13e428d34' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_small.lean:271:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8875/8878] Built Theorems.Thm_ThreeSum1960614_Machine_Light_fits_of_small (26s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_fits_of_small.lean:102:8: declaration uses `sorry`
+⚠ [8876/8878] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Wrap_topSolves (28s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_topSolves.lean:504:8: The declaration 'ThreeSum1960614.Machine.Light.Wrap.topSolves__implementation_7727cce274' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_topSolves.lean:532:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8877/8881] Built Solutions.Sol_ThreeSum1960614_Machine_Light_Wrap_realized (36s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_realized.lean:931:8: The declaration 'ThreeSum1960614.Machine.Light.Wrap.realized__implementation_ebf05bdbf2' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_Wrap_realized.lean:950:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8878/8881] Replayed Theorems.Thm_Light_cbrtLeast_pow_le
+warning: Theorems/Thm_Light_cbrtLeast_pow_le.lean:37:8: declaration uses `sorry`
+⚠ [8879/8881] Built Solutions.Sol_ThreeSum1960614_Machine_Light_clog2_meets (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_clog2_meets.lean:383:8: The declaration 'ThreeSum1960614.Machine.Light.clog2_meets__implementation_e5e9f7b4ff' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_clog2_meets.lean:416:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8880/8883] Built Solutions.Sol_ThreeSum1960614_Machine_Light_cbrtCeil_meets (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_cbrtCeil_meets.lean:502:8: The declaration 'ThreeSum1960614.Machine.Light.cbrtCeil_meets__implementation_dfa78d4086' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_cbrtCeil_meets.lean:538:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8881/8885] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Emod_reduce_ends (28s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Emod_reduce_ends.lean:68:8: declaration uses `sorry`
+⚠ [8882/8886] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Emod_sign_ends (27s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Emod_sign_ends.lean:68:8: declaration uses `sorry`
+⚠ [8883/8887] Built Theorems.Thm_ThreeSum1960614_Machine_Light_Emod_table_ends (24s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_Emod_table_ends.lean:68:8: declaration uses `sorry`
+⚠ [8884/8887] Built Solutions.Sol_ThreeSum1960614_Machine_Light_fits_of_small (30s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_fits_of_small.lean:294:8: The declaration 'ThreeSum1960614.Machine.Light.fits_of_small__implementation_707914a4b2' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_fits_of_small.lean:333:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8885/8888] Built Solutions.Sol_ThreeSum1960614_Machine_Light_emod_meets (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_emod_meets.lean:152:8: The declaration 'ThreeSum1960614.Machine.Light.emod_meets__implementation_69a14252b0' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_emod_meets.lean:187:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8886/8889] Built Solutions.Sol_ThreeSum1960614_Machine_Light_half_meets (28s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_half_meets.lean:383:8: The declaration 'ThreeSum1960614.Machine.Light.half_meets__implementation_0512af3b32' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_half_meets.lean:409:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8887/8890] Built Solutions.Sol_ThreeSum1960614_Machine_Light_log2_meets (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_log2_meets.lean:383:8: The declaration 'ThreeSum1960614.Machine.Light.log2_meets__implementation_00a587bc4c' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_log2_meets.lean:421:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8888/8892] Built Solutions.Sol_ThreeSum1960614_Machine_Light_merge_meets (31s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_merge_meets.lean:785:8: The declaration 'ThreeSum1960614.Machine.Light.merge_meets__implementation_a2d3e199b8' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_merge_meets.lean:829:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8889/8892] Replayed Solutions.Sol_ThreeSum1960614_Machine_Light_polyBound_le
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_polyBound_le.lean:117:8: The declaration 'ThreeSum1960614.Machine.Light.polyBound_le__implementation_29eecfb5c3' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_polyBound_le.lean:136:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8890/8893] Built Solutions.Sol_ThreeSum1960614_Machine_Light_powTable_ends (39s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_powTable_ends.lean:358:8: The declaration 'ThreeSum1960614.Machine.Light.powTable_ends__implementation_07413759d3' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_powTable_ends.lean:398:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8891/8894] Built Solutions.Sol_ThreeSum1960614_Machine_Light_pow_spec (27s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_pow_spec.lean:110:8: The declaration 'ThreeSum1960614.Machine.Light.pow_spec__implementation_d1cc9bc2b7' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_pow_spec.lean:135:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8892/8894] Built Solutions.Sol_ThreeSum1960614_Machine_Light_seg_append (37s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_seg_append.lean:57:8: The declaration 'ThreeSum1960614.Machine.Light.seg_append__implementation_1cd1141f7f' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_seg_append.lean:78:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8893/8897] Built Solutions.Sol_ThreeSum1960614_Machine_Light_seg_cons (24s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_seg_cons.lean:57:8: The declaration 'ThreeSum1960614.Machine.Light.seg_cons__implementation_3723e885f3' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_seg_cons.lean:76:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8894/8897] Built Theorems.Thm_ThreeSum1960614_Machine_Light_MergeSort_body_ends (23s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_Light_MergeSort_body_ends.lean:72:8: declaration uses `sorry`
+⚠ [8895/8897] Built Solutions.Sol_ThreeSum1960614_Machine_Light_sqrt_meets (29s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_sqrt_meets.lean:378:8: The declaration 'ThreeSum1960614.Machine.Light.sqrt_meets__implementation_42331c3a1d' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_sqrt_meets.lean:414:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8896/8900] Built Solutions.Sol_ThreeSum1960614_Machine_Light_sort_meets (24s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_Light_sort_meets.lean:151:8: The declaration 'ThreeSum1960614.Machine.Light.sort_meets__implementation_27a054da17' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_Light_sort_meets.lean:174:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8897/8901] Built Definitions.Def_ThreeSum1960614_Machine_Bundle012 (21s)
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:833:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.polynomial`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:836:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.left`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:839:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.factor`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:841:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.accepts`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:843:9: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.instDecidableAccepts`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:846:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.candidates`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:849:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.index`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:852:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.word`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:868:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.test`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:876:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.body`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Definitions/Def_ThreeSum1960614_Machine_Bundle012.lean:881:4: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.time`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+⚠ [8898/8901] Built Theorems.Thm_ThreeSum1960614_Machine_ThreeSum_LightSwitchScalar_scalar_safe (18s)
+warning: Theorems/Thm_ThreeSum1960614_Machine_ThreeSum_LightSwitchScalar_scalar_safe.lean:46:8: declaration uses `sorry`
+⚠ [8899/8901] Replayed Solutions.Sol_ThreeSum1960614_Machine_ThreeSumApsp_Dominated_of_eventually
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_Dominated_of_eventually.lean:41:8: The declaration 'ThreeSum1960614.Machine.ThreeSumApsp.Dominated.of_eventually__implementation_b160db49ab' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_Dominated_of_eventually.lean:65:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8900/8904] Built Solutions.Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets (23s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:430:86: This simp argument is unused:
+  Nat.lt_succ_iff
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [_root_.ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.candidates]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:428:16: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.mem_candidates`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:432:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.index_mem`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:437:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.index_le`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:442:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.before_rejects`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:453:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.at_accepts`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:457:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.index_le_residual`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:471:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.frame_vars_bound`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:485:104: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [_root_.ThreeSum1960614.Machine.ThreeSum.LightSwitchScalar.Small, and_true, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:494:94: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [_root_.ThreeSum1960614.Machine.ThreeSum.LightSwitchScalar.Small, and_true, and_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:494:104: This simp argument is unused:
+  and_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [_root_.ThreeSum1960614.Machine.ThreeSum.LightSwitchScalar.Small, and_true, true_and]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:476:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.test_safe`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:503:24: This simp argument is unused:
+  Nat.cast_add
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [_root_.ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.test,
+    _root_.ThreeSum1960614.Machine.Light.Cond.Holds, _root_.ThreeSum1960614.Machine.Light.Expr.val,
+    _root_.Light.Op.eval, _root_.Light.frame, List.getD_cons_zero, List.getD_cons_succ, Nat.cast_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:500:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.test_holds_iff`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:534:8: The declaration 'ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.meets__implementation_44279ce992' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:534:8: The namespace `ThreeSum1960614` is duplicated in the declaration `ThreeSum1960614.Machine.ThreeSum1960614.LightQuarticSwitch.meets__implementation_44279ce992`.
+
+Note: This linter can be disabled with `set_option linter.dupNamespace false`
+info: Solutions/Sol_ThreeSum1960614_Machine_ThreeSum1960614_LightQuarticSwitch_meets.lean:570:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+⚠ [8901/8904] Replayed Theorems.Thm_ThreeSum1960614_Machine_ThreeSumApsp_Dominated_of_eventually
+warning: Theorems/Thm_ThreeSum1960614_Machine_ThreeSumApsp_Dominated_of_eventually.lean:37:8: declaration uses `sorry`
+⚠ [8902/8904] Built Solutions.Sol_ThreeSum1960614_Machine_ThreeSumApsp_WordRam_bigO_of_le_rpow (20s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_WordRam_bigO_of_le_rpow.lean:93:8: The declaration 'ThreeSum1960614.Machine.ThreeSumApsp.WordRam.bigO_of_le_rpow__implementation_2c76354196' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_WordRam_bigO_of_le_rpow.lean:112:0: 'solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8903/8906] Built Solutions.Sol_ThreeSum1960614_Machine_ThreeSumApsp_FromClaims_solvedAt_of_realized (20s)
+warning: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_FromClaims_solvedAt_of_realized.lean:385:8: The declaration 'ThreeSum1960614.Machine.ThreeSumApsp.FromClaims.solvedAt_of_realized__implementation_3cf9a65dc2' contains '__', which does not follow the mathlib naming conventions. Consider using single underscores instead.
+
+Note: This linter can be disabled with `set_option linter.style.nameCheck false`
+info: Solutions/Sol_ThreeSum1960614_Machine_ThreeSumApsp_FromClaims_solvedAt_of_realized.lean:412:0: 'solution' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

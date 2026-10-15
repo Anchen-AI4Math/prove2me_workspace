@@ -68,7 +68,22 @@ def build_mission(mission, dry_run=False):
         print('lake build ' + ' '.join(targets))
         return 0
     lake, env = lake_environment()
-    return subprocess.run([lake, 'build', *targets], cwd=ROOT, env=env).returncode
+    # A large mission can exceed CreateProcess's Windows command-line limit.
+    # Keep the identical scoped target set, building bounded batches in order.
+    batches = [[]]
+    for target in targets:
+        candidate = [lake, 'build', *batches[-1], target]
+        size = len(subprocess.list2cmdline(candidate).encode('utf-16-le')) // 2
+        if os.name == 'nt' and size > 24000 and batches[-1]:
+            batches.append([])
+        batches[-1].append(target)
+    for index, batch in enumerate(batches, 1):
+        if len(batches) > 1:
+            print(f'Scoped build batch {index}/{len(batches)}: {len(batch)} roots', flush=True)
+        result = subprocess.run([lake, 'build', *batch], cwd=ROOT, env=env)
+        if result.returncode:
+            return result.returncode
+    return 0
 
 
 def inside_root(value):

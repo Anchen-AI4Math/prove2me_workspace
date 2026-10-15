@@ -1,0 +1,10 @@
+theorem shifted_truncation_product_coeff_gaussian {ι : Type*} (s : Finset ι)
+    (T q e d : ι → ℕ) (z : ι → GaussianInt) (P : Polynomial GaussianInt)
+    (hd : ∀ i ∈ s, d i ≤ e i) (k : ℕ) :
+    (∏ i ∈ s, (Nat.lcmUpto (T i) : ℂ) ^ e i) *
+      (P.map GaussianInt.toComplex * ∏ i ∈ s,
+        (Polynomial.C (z i : ℂ) + Polynomial.C (q i : ℂ) *
+          PowerSeries.trunc (T i) (PowerSeries.log ℂ)) ^ d i).coeff k ∈
+      GaussianInt.toComplex.range := by
+  exact common_denominator_coeff_gaussian s (fun i => Nat.lcmUpto (T i)) e d _ P hd
+    (fun i hi => cleared_shifted_log_trunc_mem (T i) (q i) (z i)) k

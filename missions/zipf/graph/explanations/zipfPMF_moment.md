@@ -1,0 +1,1 @@
+On the supported ranks $1\le k\le N$, multiplying $f(k;s,N)=k^{-s}/H_{N,s}$ by $k^p$ gives $k^{-(s-p)}/H_{N,s}$. The rank is positive, so the real-power subtraction identity applies. Summing the identity and taking the common denominator outside the sum yields the shifted harmonic ratio. An empty support satisfies the same algebraic identity.

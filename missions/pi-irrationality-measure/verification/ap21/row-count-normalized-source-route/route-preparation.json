@@ -1,0 +1,3666 @@
+{
+  "API_used": false,
+  "Lean_started": false,
+  "artifact_kind": "ap21-row-count-normalized-source-only-route",
+  "candidate_data_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixCounting_RowCountData",
+  "candidate_data_sha256": "f476b9a5ca38c5a0bcc53bf129737d8e207720e3c2775345e81b166d2012fc3e",
+  "candidate_facts": {
+    "definition_commands_literal_original": true,
+    "future_data_module_name_is_provisional": true,
+    "global_solution_proof_suffix_sha256": "9edd2a7bd1f5925a53681c80508739981d5011c475dfb827d112dd342552b05a",
+    "helper_proof_commands_literal_original_after_private_prefix": true,
+    "target_only_name_changed_to_global_solution": true,
+    "target_original_proof_suffix_sha256": "9edd2a7bd1f5925a53681c80508739981d5011c475dfb827d112dd342552b05a"
+  },
+  "candidate_solution_sha256": "38df92b120e8b60adb1de9d7a1fef5fb7dab48498628eb3d43fb0da1ef71053b",
+  "candidate_statement_is_not_a_published_wire": true,
+  "closed_ready": false,
+  "compiled": false,
+  "files": {
+    "4Def-candidate.lean.txt": "f476b9a5ca38c5a0bcc53bf129737d8e207720e3c2775345e81b166d2012fc3e",
+    "Sol-candidate.lean.txt": "38df92b120e8b60adb1de9d7a1fef5fb7dab48498628eb3d43fb0da1ef71053b"
+  },
+  "four_Def_package_is_not_published": true,
+  "full_project_closure_count": 39,
+  "full_project_closure_names": [
+    "OAI.PiExponent.InterpolationMatrix.Row",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights",
+    "OAI.PiExponent.InterpolationMatrix.row_card",
+    "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+    "OAI.PiExponent.MatrixArithmetic.logWeights",
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast",
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos",
+    "OAI.PiExponent.MatrixCounting.rowCount",
+    "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized",
+    "OAI.PiExponent.card_residueRectangle",
+    "OAI.PiExponent.card_unweightedSimplex",
+    "OAI.PiExponent.common_denominator_simplex_constant",
+    "OAI.PiExponent.mem_natWeightedSimplex",
+    "OAI.PiExponent.mem_realWeightedSimplex",
+    "OAI.PiExponent.mem_residueRectangle",
+    "OAI.PiExponent.mem_strictWeightedSimplex",
+    "OAI.PiExponent.mem_unweightedSimplex",
+    "OAI.PiExponent.natWeightedSimplex",
+    "OAI.PiExponent.natWeightedSimplex_one",
+    "OAI.PiExponent.positive_rational_weights_common_denominator",
+    "OAI.PiExponent.realWeightedSimplex",
+    "OAI.PiExponent.realWeightedSimplex_scaled",
+    "OAI.PiExponent.residueRectangle",
+    "OAI.PiExponent.simplex_count_lower_sandwich",
+    "OAI.PiExponent.simplex_count_upper_sandwich",
+    "OAI.PiExponent.strictWeightedSimplex",
+    "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+    "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled",
+    "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational",
+    "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled",
+    "OAI.PiExponent.tendsto_card_unweightedSimplex",
+    "OAI.PiExponent.tendsto_card_unweightedSimplex_add",
+    "OAI.PiExponent.tendsto_choose_add_normalized",
+    "OAI.PiExponent.tendsto_choose_normalized",
+    "OAI.PiExponent.tendsto_natFloor_affine_atTop",
+    "OAI.PiExponent.tendsto_natFloor_affine_div",
+    "OAI.PiExponent.tendsto_normalized_natFloor_affine",
+    "OAI.PiExponent.unweightedSimplex"
+  ],
+  "full_project_definition_count": 10,
+  "full_project_theorem_count": 29,
+  "input_hashes": {
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+    "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+    "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+    "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean": "9af9b0304f1e11ad39c5e76d186509dfb0e78ba918422fb825fd271ef31e36c7",
+    "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRationalWeights.lean": "2c5fa5506ba2378f6ce34cb26a599b311758bd3f83a41ea7af791a2a717ddc71",
+    "scripts/stage_row_count_normalized_source_route.py": "978a13e33d704843a43ef720e1e28a804cec985470cc020ad89cccf3a96a6125",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+    "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+    "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+    "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean": "16f2b97142fef42d0ba4dcbcb4d4e77eb951c5b32ba041e06a315dcf90b9a7ed",
+    "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRationalWeights.lean": "bafcc114aecf646b2a78a275f6cb274e954d5e7049801e7ca8263974ad0a05bd",
+    "verification/ap10/arithmetic/publication/publication.json": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+    "verification/ap9/domains/publication/publication.json": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+    "verification/ap9/simplex/publication/publication.json": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+    "verification/ast-scope-inventory.json": "7b991f651a5e972f7a880fb4d36f86cdbfd94a636afad4e6d344f3073b07620f",
+    "verification/ast-unit-inventory.json": "733de9216ffda3d8f81082e583defb4af63fd25b172922dda46d8d948050b4a6",
+    "verification/decl_graph.jsonl": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor/publication.json": "b621e41818840b034f06de765e689d0e378d9724f86285e4b0897f6e9c5fa921",
+    "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexUnweighted/publication.json": "ed4c5dc509de9c5f5b4976c3675b9107988ec96440e96c7b9a189db7cf4b6523",
+    "verification/shared-source-snapshot/complete-source/CompleteSource875.owners.json": "2419b100a667104db7ef549aceaaac164f3c2038d36fc04f6373bc9f14127276"
+  },
+  "missing_original_Def_AST_count": 4,
+  "missing_original_Def_names": [
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+    "OAI.PiExponent.MatrixCounting.rowCount",
+    "OAI.PiExponent.natWeightedSimplex",
+    "OAI.PiExponent.residueRectangle"
+  ],
+  "missing_original_Definitions": [
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 25,
+          "line": 19,
+          "normalizedOffset": 723,
+          "offset": 741
+        },
+        "graph_kinds": [
+          "def"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 36,
+            "line": 18,
+            "normalizedOffset": 638,
+            "offset": 655
+          },
+          "start": {
+            "col": 18,
+            "line": 18,
+            "normalizedOffset": 620,
+            "offset": 637
+          }
+        },
+        "nameText": "rationalLogWeights",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights"
+        ],
+        "start": {
+          "col": 0,
+          "line": 18,
+          "normalizedOffset": 602,
+          "offset": 619
+        },
+        "valueStart": {
+          "col": 77,
+          "line": 18,
+          "normalizedOffset": 687,
+          "offset": 704
+        }
+      },
+      "command_sha256": "b301c5a3171999192fc5aaf533fc65c918ee4248decc9a254b55640f14637488",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 741,
+      "kind": "def",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "name": "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+      "namespace": "OAI.PiExponent.MatrixCounting",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "original_source_sha256": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:619",
+        "decl_graph_line": 3826,
+        "decl_graph_row_sha256": "38d3ed072c371bb871c1c1986d06d5b6b48af53449243541d8080eff05ba3991",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "def",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:619",
+        "owner_kind": "definition",
+        "source_category": "definition",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+        "source_name": "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixCounting-20261007-232813.log",
+        "stage2_facts_sha256": "f33f685f9a23ceef1e5ce9e2c8d45aee480c63507b6793e004891f13037f2e9d",
+        "unit_end_offset": 741,
+        "unit_name_text": "rationalLogWeights",
+        "unit_start_offset": 619
+      },
+      "proof_suffix_sha256": null,
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 143,
+              "offset": 146
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 130,
+              "offset": 133
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixCounting",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "source_lines": [
+        18,
+        19
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+      "start": 619
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 93,
+          "line": 13,
+          "normalizedOffset": 431,
+          "offset": 443
+        },
+        "graph_kinds": [
+          "def"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixCounting.rowCount"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 26,
+            "line": 11,
+            "normalizedOffset": 255,
+            "offset": 265
+          },
+          "start": {
+            "col": 18,
+            "line": 11,
+            "normalizedOffset": 247,
+            "offset": 257
+          }
+        },
+        "nameText": "rowCount",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixCounting.rowCount"
+        ],
+        "start": {
+          "col": 0,
+          "line": 11,
+          "normalizedOffset": 229,
+          "offset": 239
+        },
+        "valueStart": {
+          "col": 32,
+          "line": 12,
+          "normalizedOffset": 330,
+          "offset": 341
+        }
+      },
+      "command_sha256": "50a1616514b8362c9fb82a4ed83a0ab403e8e6a41fcafc0a4f2a8d5f4bebba1e",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights"
+      ],
+      "end": 443,
+      "kind": "def",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "name": "OAI.PiExponent.MatrixCounting.rowCount",
+      "namespace": "OAI.PiExponent.MatrixCounting",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "original_source_sha256": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:239",
+        "decl_graph_line": 4245,
+        "decl_graph_row_sha256": "7954110a276ead7f2a49e5073418ba4ecfc17e7f9a33de9bd482fa89f88e602e",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "def",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:239",
+        "owner_kind": "definition",
+        "source_category": "definition",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+        "source_name": "OAI.PiExponent.MatrixCounting.rowCount",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixCounting-20261007-232813.log",
+        "stage2_facts_sha256": "f33f685f9a23ceef1e5ce9e2c8d45aee480c63507b6793e004891f13037f2e9d",
+        "unit_end_offset": 443,
+        "unit_name_text": "rowCount",
+        "unit_start_offset": 239
+      },
+      "proof_suffix_sha256": null,
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 143,
+              "offset": 146
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 130,
+              "offset": 133
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixCounting",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "source_lines": [
+        11,
+        13
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+      "start": 239
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 33,
+          "line": 12,
+          "normalizedOffset": 377,
+          "offset": 388
+        },
+        "graph_kinds": [
+          "def"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.natWeightedSimplex"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 22,
+            "line": 10,
+            "normalizedOffset": 211,
+            "offset": 220
+          },
+          "start": {
+            "col": 4,
+            "line": 10,
+            "normalizedOffset": 193,
+            "offset": 202
+          }
+        },
+        "nameText": "natWeightedSimplex",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.natWeightedSimplex"
+        ],
+        "start": {
+          "col": 0,
+          "line": 10,
+          "normalizedOffset": 189,
+          "offset": 198
+        },
+        "valueStart": {
+          "col": 76,
+          "line": 10,
+          "normalizedOffset": 277,
+          "offset": 286
+        }
+      },
+      "command_sha256": "4628d3b120bfe582f9a547713eb691a721c9e91ea3586fe24a678e1e37015c03",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 388,
+      "kind": "def",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.natWeightedSimplex",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:198",
+        "decl_graph_line": 4078,
+        "decl_graph_row_sha256": "6cf5e05f7c860ed80436703c40b898102a2e1dba2f2433a908126bf9142dda36",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "def",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:198",
+        "owner_kind": "definition",
+        "source_category": "definition",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.natWeightedSimplex",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 388,
+        "unit_name_text": "natWeightedSimplex",
+        "unit_start_offset": 198
+      },
+      "proof_suffix_sha256": null,
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        10,
+        12
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 198
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 48,
+          "line": 30,
+          "normalizedOffset": 1120,
+          "offset": 1149
+        },
+        "graph_kinds": [
+          "def"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.residueRectangle"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 20,
+            "line": 29,
+            "normalizedOffset": 1013,
+            "offset": 1041
+          },
+          "start": {
+            "col": 4,
+            "line": 29,
+            "normalizedOffset": 997,
+            "offset": 1025
+          }
+        },
+        "nameText": "residueRectangle",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.residueRectangle"
+        ],
+        "start": {
+          "col": 0,
+          "line": 29,
+          "normalizedOffset": 993,
+          "offset": 1021
+        },
+        "valueStart": {
+          "col": 66,
+          "line": 29,
+          "normalizedOffset": 1069,
+          "offset": 1097
+        }
+      },
+      "command_sha256": "9e1cdab206c0b41e9d675ec2c0312422c97945db600890a0699e5377cd79ea49",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 1149,
+      "kind": "def",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.residueRectangle",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1021",
+        "decl_graph_line": 4710,
+        "decl_graph_row_sha256": "e95203858fdc52a3d7d2d4cb1550fdd0dd580e94d7c480d13c886160d33176c7",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "def",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1021",
+        "owner_kind": "definition",
+        "source_category": "definition",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.residueRectangle",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 1149,
+        "unit_name_text": "residueRectangle",
+        "unit_start_offset": 1021
+      },
+      "proof_suffix_sha256": null,
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        29,
+        30
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 1021
+    }
+  ],
+  "pending_gates": [
+    "Publish and exactly read back a genuine full-type/full-value/Std3 provider for the four original definitions",
+    "Compile the twenty-theorem source-faithful candidate in bounded contexts after that provider exists",
+    "Certify full source/generated theorem types, actual proof references, owned CI inventory, and Std3",
+    "Perform a fresh exact-name platform lookup before any theorem publication"
+  ],
+  "proposal_status": "Draft",
+  "published_boundary_count": 15,
+  "published_boundary_names": [
+    "OAI.PiExponent.InterpolationMatrix.Row",
+    "OAI.PiExponent.InterpolationMatrix.rowWeights",
+    "OAI.PiExponent.MatrixArithmetic.logWeights",
+    "OAI.PiExponent.card_unweightedSimplex",
+    "OAI.PiExponent.mem_unweightedSimplex",
+    "OAI.PiExponent.realWeightedSimplex",
+    "OAI.PiExponent.strictWeightedSimplex",
+    "OAI.PiExponent.tendsto_card_unweightedSimplex",
+    "OAI.PiExponent.tendsto_card_unweightedSimplex_add",
+    "OAI.PiExponent.tendsto_choose_add_normalized",
+    "OAI.PiExponent.tendsto_choose_normalized",
+    "OAI.PiExponent.tendsto_natFloor_affine_atTop",
+    "OAI.PiExponent.tendsto_natFloor_affine_div",
+    "OAI.PiExponent.tendsto_normalized_natFloor_affine",
+    "OAI.PiExponent.unweightedSimplex"
+  ],
+  "published_boundary_records": [
+    {
+      "definition_id": "267bbaee-7627-4f89-805d-0230294e25ff",
+      "exact_public_wire_sha256": "294a82042b21105177ce492953c4a75338f99bb5bdb7058d577f3762a2f19895",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor",
+      "provided_boundary_names": [
+        "OAI.PiExponent.tendsto_natFloor_affine_atTop",
+        "OAI.PiExponent.tendsto_natFloor_affine_div",
+        "OAI.PiExponent.tendsto_normalized_natFloor_affine"
+      ],
+      "publication_record": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexFloor/publication.json",
+      "publication_record_sha256": "b621e41818840b034f06de765e689d0e378d9724f86285e4b0897f6e9c5fa921",
+      "status": "PUBLISHED"
+    },
+    {
+      "definition_id": "30610836-78a0-4b0b-92e7-bbe4d6ff4312",
+      "exact_public_wire_sha256": "55459c0f6e21c987fabd6ca2fbda28fb162cf23a08c7732e9238ea206ca68840",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexUnweighted",
+      "provided_boundary_names": [
+        "OAI.PiExponent.card_unweightedSimplex",
+        "OAI.PiExponent.mem_unweightedSimplex",
+        "OAI.PiExponent.tendsto_card_unweightedSimplex",
+        "OAI.PiExponent.tendsto_card_unweightedSimplex_add",
+        "OAI.PiExponent.tendsto_choose_add_normalized",
+        "OAI.PiExponent.tendsto_choose_normalized",
+        "OAI.PiExponent.unweightedSimplex"
+      ],
+      "publication_record": "verification/providers-complete-preview/all-shared-safe-leaves/validation/Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexUnweighted/publication.json",
+      "publication_record_sha256": "ed4c5dc509de9c5f5b4976c3675b9107988ec96440e96c7b9a189db7cf4b6523",
+      "status": "PUBLISHED"
+    },
+    {
+      "definition_id": "8990eb4d-e2e2-4868-86d7-b5478cd7406c",
+      "exact_public_wire_sha256": "9c9e73b2afd72e117b070c4be805287b9711aebb01aa4964e94447876c07e44b",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Polynomials_SimplexCounting_WeightedDomains",
+      "provided_boundary_names": [
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "publication_record": "verification/ap9/simplex/publication/publication.json",
+      "publication_record_sha256": "d7693b60e1713ec4ec66a8d839439655d817525ef36ff7ff91066de321867de9",
+      "status": "PUBLISHED"
+    },
+    {
+      "definition_id": "2e538a46-bbf9-4562-a008-33350d61b366",
+      "exact_public_wire_sha256": "dec372a59ecd8f0a45440e59dc11e604ad316ea33df0a312045508075d133500",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_InterpolationMatrix_Domains",
+      "provided_boundary_names": [
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.InterpolationMatrix.Row"
+      ],
+      "publication_record": "verification/ap9/domains/publication/publication.json",
+      "publication_record_sha256": "64520660f691f64e36d45daf0d7cbc7344c7026fa5f77da375597cffc416b926",
+      "status": "PUBLISHED"
+    },
+    {
+      "definition_id": "50f6bce0-2053-45be-9234-91f7141175ac",
+      "exact_public_wire_sha256": "87817dfd562f366605290ae71d1959522bd5360065905f7e68131b496d171868",
+      "platform_module": "Definitions.Def_OAI_NumberTheory_PiExponent_Approximation_MatrixArithmetic_CoreData",
+      "provided_boundary_names": [
+        "OAI.PiExponent.MatrixArithmetic.logWeights"
+      ],
+      "publication_record": "verification/ap10/arithmetic/publication/publication.json",
+      "publication_record_sha256": "940d8ad7f8834552a1bd50e3dee54cf07288199a557447acfd108f6974943121",
+      "status": "PUBLISHED"
+    }
+  ],
+  "remaining_original_theorem_AST_count": 20,
+  "remaining_original_theorem_order": [
+    "OAI.PiExponent.InterpolationMatrix.row_card",
+    "OAI.PiExponent.positive_rational_weights_common_denominator",
+    "OAI.PiExponent.common_denominator_simplex_constant",
+    "OAI.PiExponent.mem_realWeightedSimplex",
+    "OAI.PiExponent.mem_strictWeightedSimplex",
+    "OAI.PiExponent.mem_natWeightedSimplex",
+    "OAI.PiExponent.card_residueRectangle",
+    "OAI.PiExponent.mem_residueRectangle",
+    "OAI.PiExponent.simplex_count_lower_sandwich",
+    "OAI.PiExponent.simplex_count_upper_sandwich",
+    "OAI.PiExponent.natWeightedSimplex_one",
+    "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+    "OAI.PiExponent.realWeightedSimplex_scaled",
+    "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled",
+    "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled",
+    "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational",
+    "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos",
+    "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast",
+    "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized"
+  ],
+  "remaining_original_theorem_source_line_count": 312,
+  "remaining_original_theorems": [
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 12,
+          "line": 133,
+          "normalizedOffset": 5944,
+          "offset": 6076
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_card"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 24,
+            "line": 128,
+            "normalizedOffset": 5733,
+            "offset": 5860
+          },
+          "start": {
+            "col": 16,
+            "line": 128,
+            "normalizedOffset": 5725,
+            "offset": 5852
+          }
+        },
+        "nameText": "row_card",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.InterpolationMatrix.row_card"
+        ],
+        "start": {
+          "col": 0,
+          "line": 128,
+          "normalizedOffset": 5709,
+          "offset": 5836
+        },
+        "valueStart": {
+          "col": 72,
+          "line": 131,
+          "normalizedOffset": 5914,
+          "offset": 6044
+        }
+      },
+      "command_sha256": "e03abaffe55f8f6f3525da1ea5b7f742e16af33dd186df6f814e419a2697274d",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights"
+      ],
+      "end": 6076,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+      "name": "OAI.PiExponent.InterpolationMatrix.row_card",
+      "namespace": "OAI.PiExponent.InterpolationMatrix",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "original_source_sha256": "018d3cb3facbad9c346505560aa9d16fa36a7d4775a6d2a573a49603c5029ba2",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix:5836",
+        "decl_graph_line": 117,
+        "decl_graph_row_sha256": "10a91e1e0073d665bbc29b3ce0b054684e685100bb0cc3812f0993e669ae7c7f",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix:5836",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+        "source_name": "OAI.PiExponent.InterpolationMatrix.row_card",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-InterpolationMatrix-20261007-232308.log",
+        "stage2_facts_sha256": "788bb11169d4486d6469799d09ffd494d6424914a0f1d0e49c57e0d2dde11175",
+        "unit_end_offset": 6076,
+        "unit_name_text": "row_card",
+        "unit_start_offset": 5836
+      },
+      "proof_suffix_sha256": "a6c1c54d2db6ab9ed8f32112ba3c99553b6e466261d9b39c9319bf4f59304acf",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 119,
+              "offset": 122
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 106,
+              "offset": 109
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 40,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 147,
+              "offset": 154
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "InterpolationMatrix",
+          "opening": {
+            "end": {
+              "col": 40,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 147,
+              "offset": 154
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/InterpolationMatrix.lean",
+      "source_lines": [
+        128,
+        133
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "ab84501a2a29cb569118260ffd1adb30ca827936727fa868db0e829cb1bfde38",
+      "start": 5836
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 14,
+          "line": 42,
+          "normalizedOffset": 1587,
+          "offset": 1628
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.positive_rational_weights_common_denominator"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 52,
+            "line": 9,
+            "normalizedOffset": 163,
+            "offset": 171
+          },
+          "start": {
+            "col": 8,
+            "line": 9,
+            "normalizedOffset": 119,
+            "offset": 127
+          }
+        },
+        "nameText": "positive_rational_weights_common_denominator",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.positive_rational_weights_common_denominator"
+        ],
+        "start": {
+          "col": 0,
+          "line": 9,
+          "normalizedOffset": 111,
+          "offset": 119
+        },
+        "valueStart": {
+          "col": 60,
+          "line": 12,
+          "normalizedOffset": 348,
+          "offset": 359
+        }
+      },
+      "command_sha256": "a19a379b57eb8538ef995420b54b8a0ed5ab4f5b1b6798043c916a4e64004fe0",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 1628,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRationalWeights",
+      "name": "OAI.PiExponent.positive_rational_weights_common_denominator",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRationalWeights.lean",
+      "original_source_sha256": "bafcc114aecf646b2a78a275f6cb274e954d5e7049801e7ca8263974ad0a05bd",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRationalWeights:119",
+        "decl_graph_line": 8006,
+        "decl_graph_row_sha256": "ad2abb5e5933fbacb65261beb26f50b64a167c49566e3c504072588984c38521",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRationalWeights:119",
+        "owner_kind": "definition_embedded",
+        "source_category": "definition_embedded",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRationalWeights.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRationalWeights",
+        "source_name": "OAI.PiExponent.positive_rational_weights_common_denominator",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "2c5fa5506ba2378f6ce34cb26a599b311758bd3f83a41ea7af791a2a717ddc71",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexRationalWeights-20261008-060832.log",
+        "stage2_facts_sha256": "4a8e539ff978ddcc0bdfb03f87715621a73c0fed991751c00b188c33f1c8420b",
+        "unit_end_offset": 1628,
+        "unit_name_text": "positive_rational_weights_common_denominator",
+        "unit_start_offset": 119
+      },
+      "proof_suffix_sha256": "224eac0abd67470e110a951aa969c95af8ac433097c0ad30b16b3021ccb1e873",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 3,
+              "normalizedOffset": 61,
+              "offset": 63
+            },
+            "start": {
+              "col": 0,
+              "line": 3,
+              "normalizedOffset": 48,
+              "offset": 50
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 7,
+              "normalizedOffset": 109,
+              "offset": 115
+            },
+            "start": {
+              "col": 0,
+              "line": 7,
+              "normalizedOffset": 89,
+              "offset": 95
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRationalWeights.lean",
+      "source_lines": [
+        9,
+        42
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "2c5fa5506ba2378f6ce34cb26a599b311758bd3f83a41ea7af791a2a717ddc71",
+      "start": 119
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 12,
+          "line": 25,
+          "normalizedOffset": 971,
+          "offset": 995
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.common_denominator_simplex_constant"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 43,
+            "line": 11,
+            "normalizedOffset": 261,
+            "offset": 271
+          },
+          "start": {
+            "col": 8,
+            "line": 11,
+            "normalizedOffset": 226,
+            "offset": 236
+          }
+        },
+        "nameText": "common_denominator_simplex_constant",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.common_denominator_simplex_constant"
+        ],
+        "start": {
+          "col": 0,
+          "line": 11,
+          "normalizedOffset": 218,
+          "offset": 228
+        },
+        "valueStart": {
+          "col": 47,
+          "line": 15,
+          "normalizedOffset": 544,
+          "offset": 558
+        }
+      },
+      "command_sha256": "e231fed73d980ed11e8ff75457da966927b213e26f0413a40215e1b1f3d696cb",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 995,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational",
+      "name": "OAI.PiExponent.common_denominator_simplex_constant",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+      "original_source_sha256": "16f2b97142fef42d0ba4dcbcb4d4e77eb951c5b32ba041e06a315dcf90b9a7ed",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational:228",
+        "decl_graph_line": 192,
+        "decl_graph_row_sha256": "2720f490e2e1382e48dfd77ffc11a3983293f0601f5b90aa5c8e5c38caa81cef",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational:228",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational",
+        "source_name": "OAI.PiExponent.common_denominator_simplex_constant",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "9af9b0304f1e11ad39c5e76d186509dfb0e78ba918422fb825fd271ef31e36c7",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexRational-20261008-041756.log",
+        "stage2_facts_sha256": "ebe367807e6420ff9b1312593ed8395a24d6485dd58ea8467f895c3df6f7cba8",
+        "unit_end_offset": 995,
+        "unit_name_text": "common_denominator_simplex_constant",
+        "unit_start_offset": 228
+      },
+      "proof_suffix_sha256": "b978d6f5c0251ff4f238130ed9738c8a611cf86147dce06a40d903d7ce09c584",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 147,
+              "offset": 150
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 134,
+              "offset": 137
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 9,
+              "normalizedOffset": 216,
+              "offset": 224
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 196,
+              "offset": 204
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+      "source_lines": [
+        11,
+        25
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "9af9b0304f1e11ad39c5e76d186509dfb0e78ba918422fb825fd271ef31e36c7",
+      "start": 228
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 88,
+          "line": 180,
+          "normalizedOffset": 7406,
+          "offset": 7585
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.mem_realWeightedSimplex"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 31,
+            "line": 165,
+            "normalizedOffset": 6783,
+            "offset": 6947
+          },
+          "start": {
+            "col": 8,
+            "line": 165,
+            "normalizedOffset": 6760,
+            "offset": 6924
+          }
+        },
+        "nameText": "mem_realWeightedSimplex",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.mem_realWeightedSimplex"
+        ],
+        "start": {
+          "col": 0,
+          "line": 165,
+          "normalizedOffset": 6752,
+          "offset": 6916
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 167,
+          "normalizedOffset": 6941,
+          "offset": 7107
+        }
+      },
+      "command_sha256": "c11a4bef1d0e3fcb54ca89c51c42d3799d793b2ac8835d2b3a98065c944b068d",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "end": 7585,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.mem_realWeightedSimplex",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:6916",
+        "decl_graph_line": 2736,
+        "decl_graph_row_sha256": "a93601ce7592a04a476f1b4c6010fa5b88e7c8ad4b50d54c0a05b54cc3a64342",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:6916",
+        "owner_kind": "definition_embedded",
+        "source_category": "definition_embedded",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.mem_realWeightedSimplex",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 7585,
+        "unit_name_text": "mem_realWeightedSimplex",
+        "unit_start_offset": 6916
+      },
+      "proof_suffix_sha256": "45159f95cc4ece6fed79cfa6973609f782a2bda50ab366f8ea7b390651a71663",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        165,
+        180
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 6916
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 21,
+          "line": 188,
+          "normalizedOffset": 7748,
+          "offset": 7935
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.mem_strictWeightedSimplex"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 33,
+            "line": 182,
+            "normalizedOffset": 7441,
+            "offset": 7622
+          },
+          "start": {
+            "col": 8,
+            "line": 182,
+            "normalizedOffset": 7416,
+            "offset": 7597
+          }
+        },
+        "nameText": "mem_strictWeightedSimplex",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.mem_strictWeightedSimplex"
+        ],
+        "start": {
+          "col": 0,
+          "line": 182,
+          "normalizedOffset": 7408,
+          "offset": 7589
+        },
+        "valueStart": {
+          "col": 61,
+          "line": 184,
+          "normalizedOffset": 7599,
+          "offset": 7782
+        }
+      },
+      "command_sha256": "a4b21f507307f5935c45bf5a309f68935f512014f85218d473eb845d4f15c42c",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.mem_realWeightedSimplex",
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "end": 7935,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.mem_strictWeightedSimplex",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:7589",
+        "decl_graph_line": 2823,
+        "decl_graph_row_sha256": "11a56cef67214cf0ea1dc56d44457b1f13bf47939e83de5cf63c18ad0446db8d",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:7589",
+        "owner_kind": "definition_embedded",
+        "source_category": "definition_embedded",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.mem_strictWeightedSimplex",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 7935,
+        "unit_name_text": "mem_strictWeightedSimplex",
+        "unit_start_offset": 7589
+      },
+      "proof_suffix_sha256": "5cc892f7d4e072e9ef2d93806161f175621da78c4d4fbc5a75842d72f7f3132b",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        182,
+        188
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 7589
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 9,
+          "line": 27,
+          "normalizedOffset": 991,
+          "offset": 1017
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.mem_natWeightedSimplex"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 30,
+            "line": 14,
+            "normalizedOffset": 409,
+            "offset": 422
+          },
+          "start": {
+            "col": 8,
+            "line": 14,
+            "normalizedOffset": 387,
+            "offset": 400
+          }
+        },
+        "nameText": "mem_natWeightedSimplex",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.mem_natWeightedSimplex"
+        ],
+        "start": {
+          "col": 0,
+          "line": 14,
+          "normalizedOffset": 379,
+          "offset": 392
+        },
+        "valueStart": {
+          "col": 52,
+          "line": 16,
+          "normalizedOffset": 558,
+          "offset": 573
+        }
+      },
+      "command_sha256": "cc49e651f56730d09332edd877aae9af30db758e3b558b9022eb9b56841a296c",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex"
+      ],
+      "end": 1017,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.mem_natWeightedSimplex",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:392",
+        "decl_graph_line": 1281,
+        "decl_graph_row_sha256": "c248602e530a7a7cf17cd37a86b9ae269d2ec7080d7bf5bd08122d3d6425b6d1",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:392",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.mem_natWeightedSimplex",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 1017,
+        "unit_name_text": "mem_natWeightedSimplex",
+        "unit_start_offset": 392
+      },
+      "proof_suffix_sha256": "1a794f6bce5250e1d333795c47f8803df9d072d811afd88d36ad406987e97c06",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        14,
+        27
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 392
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 48,
+          "line": 38,
+          "normalizedOffset": 1465,
+          "offset": 1502
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.card_residueRectangle"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 37,
+            "line": 36,
+            "normalizedOffset": 1335,
+            "offset": 1370
+          },
+          "start": {
+            "col": 16,
+            "line": 36,
+            "normalizedOffset": 1314,
+            "offset": 1349
+          }
+        },
+        "nameText": "card_residueRectangle",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.card_residueRectangle"
+        ],
+        "start": {
+          "col": 0,
+          "line": 36,
+          "normalizedOffset": 1298,
+          "offset": 1333
+        },
+        "valueStart": {
+          "col": 41,
+          "line": 37,
+          "normalizedOffset": 1411,
+          "offset": 1447
+        }
+      },
+      "command_sha256": "4ee0a64267349daf42b806da8ab7170247f45dd0e01020f23d44ce3d7cd0541b",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.residueRectangle"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.residueRectangle"
+      ],
+      "end": 1502,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.card_residueRectangle",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1333",
+        "decl_graph_line": 8188,
+        "decl_graph_row_sha256": "6d8b867545dff6682e0de84f829448de7c64bb98387cc2ca3f1b1f7c65636625",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1333",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.card_residueRectangle",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 1502,
+        "unit_name_text": "card_residueRectangle",
+        "unit_start_offset": 1333
+      },
+      "proof_suffix_sha256": "17772578ed80579109baccf666b2b530e37be8b2ba5401f1dcc1a6227e1f0c37",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        36,
+        38
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 1333
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 47,
+          "line": 34,
+          "normalizedOffset": 1296,
+          "offset": 1329
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.mem_residueRectangle"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 36,
+            "line": 32,
+            "normalizedOffset": 1158,
+            "offset": 1189
+          },
+          "start": {
+            "col": 16,
+            "line": 32,
+            "normalizedOffset": 1138,
+            "offset": 1169
+          }
+        },
+        "nameText": "mem_residueRectangle",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.mem_residueRectangle"
+        ],
+        "start": {
+          "col": 0,
+          "line": 32,
+          "normalizedOffset": 1122,
+          "offset": 1153
+        },
+        "valueStart": {
+          "col": 44,
+          "line": 33,
+          "normalizedOffset": 1243,
+          "offset": 1275
+        }
+      },
+      "command_sha256": "4156fa1f327390614e3033ec51b7e548ecd4ab12b9f4ff65e45969bcd31cf57c",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.residueRectangle"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.residueRectangle"
+      ],
+      "end": 1329,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.mem_residueRectangle",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1153",
+        "decl_graph_line": 3063,
+        "decl_graph_row_sha256": "4495ab61bec324275139968b21c6899739e2f2643458557d93b04202306e261c",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1153",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.mem_residueRectangle",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 1329,
+        "unit_name_text": "mem_residueRectangle",
+        "unit_start_offset": 1153
+      },
+      "proof_suffix_sha256": "42e5644db1b34da07f3e960e8f4bbace268dd3dffbb76e87be17a84d59542938",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        32,
+        34
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 1153
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 20,
+          "line": 69,
+          "normalizedOffset": 2754,
+          "offset": 2822
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.simplex_count_lower_sandwich"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 36,
+            "line": 40,
+            "normalizedOffset": 1503,
+            "offset": 1542
+          },
+          "start": {
+            "col": 8,
+            "line": 40,
+            "normalizedOffset": 1475,
+            "offset": 1514
+          }
+        },
+        "nameText": "simplex_count_lower_sandwich",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.simplex_count_lower_sandwich"
+        ],
+        "start": {
+          "col": 0,
+          "line": 40,
+          "normalizedOffset": 1467,
+          "offset": 1506
+        },
+        "valueStart": {
+          "col": 47,
+          "line": 43,
+          "normalizedOffset": 1678,
+          "offset": 1720
+        }
+      },
+      "command_sha256": "724a01397ed250289ddf21805c47f97b1f515412a60a23d3ca986add4736abed",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.mem_natWeightedSimplex",
+        "OAI.PiExponent.card_residueRectangle",
+        "OAI.PiExponent.residueRectangle",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.mem_residueRectangle"
+      ],
+      "end": 2822,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.simplex_count_lower_sandwich",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1506",
+        "decl_graph_line": 3244,
+        "decl_graph_row_sha256": "32550919c6a092b470e3882ead26d4db3780d662f8eeea7df5bbc198c495ca0a",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:1506",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.simplex_count_lower_sandwich",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 2822,
+        "unit_name_text": "simplex_count_lower_sandwich",
+        "unit_start_offset": 1506
+      },
+      "proof_suffix_sha256": "efc4bd3bc2279ed63533100892ba0715ceda7ea065dbbccd9595fa6fa0938b8e",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        40,
+        69
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 1506
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 80,
+          "line": 110,
+          "normalizedOffset": 4597,
+          "offset": 4706
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.simplex_count_upper_sandwich"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 36,
+            "line": 71,
+            "normalizedOffset": 2792,
+            "offset": 2862
+          },
+          "start": {
+            "col": 8,
+            "line": 71,
+            "normalizedOffset": 2764,
+            "offset": 2834
+          }
+        },
+        "nameText": "simplex_count_upper_sandwich",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.simplex_count_upper_sandwich"
+        ],
+        "start": {
+          "col": 0,
+          "line": 71,
+          "normalizedOffset": 2756,
+          "offset": 2826
+        },
+        "valueStart": {
+          "col": 74,
+          "line": 74,
+          "normalizedOffset": 2990,
+          "offset": 3063
+        }
+      },
+      "command_sha256": "f766cc2b96a95efc2d6d1201ab4ced7ee9cf6ddacdb5cc24e14ea8769fb158b6",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.mem_natWeightedSimplex",
+        "OAI.PiExponent.card_residueRectangle",
+        "OAI.PiExponent.residueRectangle",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.mem_residueRectangle"
+      ],
+      "end": 4706,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.simplex_count_upper_sandwich",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:2826",
+        "decl_graph_line": 3155,
+        "decl_graph_row_sha256": "3be5d197c182f42e1ef1b28687c97b8527ecfe640d86659f6b56dfa96d9e9f44",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:2826",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.simplex_count_upper_sandwich",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 4706,
+        "unit_name_text": "simplex_count_upper_sandwich",
+        "unit_start_offset": 2826
+      },
+      "proof_suffix_sha256": "351183470f49cafa3e96f520c7520d5d164e6fa79da29680bc2d12f01e82a10e",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        71,
+        110
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 2826
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 21,
+          "line": 116,
+          "normalizedOffset": 4857,
+          "offset": 4972
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.natWeightedSimplex_one"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 38,
+            "line": 112,
+            "normalizedOffset": 4637,
+            "offset": 4748
+          },
+          "start": {
+            "col": 16,
+            "line": 112,
+            "normalizedOffset": 4615,
+            "offset": 4726
+          }
+        },
+        "nameText": "natWeightedSimplex_one",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.natWeightedSimplex_one"
+        ],
+        "start": {
+          "col": 0,
+          "line": 112,
+          "normalizedOffset": 4599,
+          "offset": 4710
+        },
+        "valueStart": {
+          "col": 70,
+          "line": 113,
+          "normalizedOffset": 4722,
+          "offset": 4834
+        }
+      },
+      "command_sha256": "53328e24c00db37edde7f60215076c1f4507c6f6e566eca10463976d9a35b027",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.unweightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.mem_natWeightedSimplex",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.unweightedSimplex",
+        "OAI.PiExponent.mem_unweightedSimplex"
+      ],
+      "end": 4972,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.natWeightedSimplex_one",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:4710",
+        "decl_graph_line": 7616,
+        "decl_graph_row_sha256": "52a189e57abdd32af6b5ea584669ef686682f12e5e4746d6fb1af0939edf3805",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:4710",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.natWeightedSimplex_one",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 4972,
+        "unit_name_text": "natWeightedSimplex_one",
+        "unit_start_offset": 4710
+      },
+      "proof_suffix_sha256": "308df41794e14df0465290b2e13f167193ed34dde073e55427e75bf2ee1986d5",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        112,
+        116
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 4710
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 15,
+          "line": 152,
+          "normalizedOffset": 6288,
+          "offset": 6439
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.tendsto_card_natWeightedSimplex"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 39,
+            "line": 120,
+            "normalizedOffset": 4920,
+            "offset": 5039
+          },
+          "start": {
+            "col": 8,
+            "line": 120,
+            "normalizedOffset": 4889,
+            "offset": 5008
+          }
+        },
+        "nameText": "tendsto_card_natWeightedSimplex",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.tendsto_card_natWeightedSimplex"
+        ],
+        "start": {
+          "col": 0,
+          "line": 120,
+          "normalizedOffset": 4881,
+          "offset": 5000
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 123,
+          "normalizedOffset": 5130,
+          "offset": 5252
+        }
+      },
+      "command_sha256": "4f1741f976568a7110de9be89da5945c67d4b9b03b83afa244413e8a92c35321",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.simplex_count_lower_sandwich",
+        "OAI.PiExponent.tendsto_card_unweightedSimplex_add",
+        "OAI.PiExponent.tendsto_card_unweightedSimplex",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.unweightedSimplex",
+        "OAI.PiExponent.simplex_count_upper_sandwich",
+        "OAI.PiExponent.natWeightedSimplex_one"
+      ],
+      "end": 6439,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:5000",
+        "decl_graph_line": 6668,
+        "decl_graph_row_sha256": "e76a614393c0b41d06d2b460c406de4461fc3b9192f368e1e67781009882b5b8",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:5000",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 6439,
+        "unit_name_text": "tendsto_card_natWeightedSimplex",
+        "unit_start_offset": 5000
+      },
+      "proof_suffix_sha256": "8748fb4fbfc7af65bf0aed1fc3078a02d9b83b00fa775aac61bcbe919fc043fd",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        120,
+        152
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 5000
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 39,
+          "line": 200,
+          "normalizedOffset": 8360,
+          "offset": 8559
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.realWeightedSimplex_scaled"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 34,
+            "line": 190,
+            "normalizedOffset": 7784,
+            "offset": 7973
+          },
+          "start": {
+            "col": 8,
+            "line": 190,
+            "normalizedOffset": 7758,
+            "offset": 7947
+          }
+        },
+        "nameText": "realWeightedSimplex_scaled",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.realWeightedSimplex_scaled"
+        ],
+        "start": {
+          "col": 0,
+          "line": 190,
+          "normalizedOffset": 7750,
+          "offset": 7939
+        },
+        "valueStart": {
+          "col": 36,
+          "line": 193,
+          "normalizedOffset": 7980,
+          "offset": 8172
+        }
+      },
+      "command_sha256": "125be6bd2e342ce753320adbd4731cb98d5a27bac5bb3ea1bf78305620d18ab2",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.mem_natWeightedSimplex",
+        "OAI.PiExponent.mem_realWeightedSimplex",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "end": 8559,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.realWeightedSimplex_scaled",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:7939",
+        "decl_graph_line": 227,
+        "decl_graph_row_sha256": "530ee9d98e40c5db706a5eb10a02aca9cb5412e7306f2142087a777c20204f8d",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:7939",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.realWeightedSimplex_scaled",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 8559,
+        "unit_name_text": "realWeightedSimplex_scaled",
+        "unit_start_offset": 7939
+      },
+      "proof_suffix_sha256": "9c6e9806c73756f3d6ffb03515edc0a20a4a1beb8ac20d18ea0f2fac540759f4",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        190,
+        200
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 7939
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 61,
+          "line": 226,
+          "normalizedOffset": 9608,
+          "offset": 9833
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 47,
+            "line": 218,
+            "normalizedOffset": 9109,
+            "offset": 9326
+          },
+          "start": {
+            "col": 8,
+            "line": 218,
+            "normalizedOffset": 9070,
+            "offset": 9287
+          }
+        },
+        "nameText": "tendsto_card_realWeightedSimplex_scaled",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled"
+        ],
+        "start": {
+          "col": 0,
+          "line": 218,
+          "normalizedOffset": 9062,
+          "offset": 9279
+        },
+        "valueStart": {
+          "col": 69,
+          "line": 221,
+          "normalizedOffset": 9370,
+          "offset": 9590
+        }
+      },
+      "command_sha256": "8a2496f67d0e21a70ae8ea016b4f554f14dde42beae859ee3961f7cbcdf51355",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.realWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.realWeightedSimplex_scaled",
+        "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.tendsto_normalized_natFloor_affine"
+      ],
+      "end": 9833,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:9279",
+        "decl_graph_line": 4236,
+        "decl_graph_row_sha256": "7e194929217dea4a0883488afe790553f6cd33d5100ee60f591ecce7f5bf9847",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:9279",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 9833,
+        "unit_name_text": "tendsto_card_realWeightedSimplex_scaled",
+        "unit_start_offset": 9279
+      },
+      "proof_suffix_sha256": "6e8a55994ac155985d060ec2a8f5201771ff673060c1946d516a532c3ef16230",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        218,
+        226
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 9279
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 56,
+          "line": 259,
+          "normalizedOffset": 11433,
+          "offset": 11691
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 49,
+            "line": 228,
+            "normalizedOffset": 9659,
+            "offset": 9886
+          },
+          "start": {
+            "col": 8,
+            "line": 228,
+            "normalizedOffset": 9618,
+            "offset": 9845
+          }
+        },
+        "nameText": "tendsto_card_strictWeightedSimplex_scaled",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled"
+        ],
+        "start": {
+          "col": 0,
+          "line": 228,
+          "normalizedOffset": 9610,
+          "offset": 9837
+        },
+        "valueStart": {
+          "col": 69,
+          "line": 231,
+          "normalizedOffset": 9922,
+          "offset": 10152
+        }
+      },
+      "command_sha256": "8ea7c2e9e2512661af278f077ba29be8e9bbb9620bea809bf970bd4702d4f0cd",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.mem_strictWeightedSimplex",
+        "OAI.PiExponent.mem_natWeightedSimplex",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.tendsto_card_natWeightedSimplex",
+        "OAI.PiExponent.realWeightedSimplex",
+        "OAI.PiExponent.natWeightedSimplex",
+        "OAI.PiExponent.tendsto_normalized_natFloor_affine",
+        "OAI.PiExponent.tendsto_card_realWeightedSimplex_scaled"
+      ],
+      "end": 11691,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+      "name": "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "original_source_sha256": "c64dab10566809cb7db6eee772116f3bfc6c033505b4f0256e90cb46dee131b1",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:9837",
+        "decl_graph_line": 2213,
+        "decl_graph_row_sha256": "9bcbdf73c502b767e770d56544588cf0a1eb5aa8d8c8d9b688430f08199a8a0f",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting:9837",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+        "source_name": "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexCounting-20261008-041418.log",
+        "stage2_facts_sha256": "96462be4b6e71c4c7f61500ce5a55fc78e58d922e149154261ddde46856f689f",
+        "unit_end_offset": 11691,
+        "unit_name_text": "tendsto_card_strictWeightedSimplex_scaled",
+        "unit_start_offset": 9837
+      },
+      "proof_suffix_sha256": "a8eb6d93faeaf0b20a685877c0a93ec388a8e14993ec21545355a6afa70fb2d2",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 139,
+              "offset": 142
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 126,
+              "offset": 129
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 8,
+              "normalizedOffset": 187,
+              "offset": 194
+            },
+            "start": {
+              "col": 0,
+              "line": 8,
+              "normalizedOffset": 167,
+              "offset": 174
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexCounting.lean",
+      "source_lines": [
+        228,
+        259
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "69cf799999bdc7da4c293a578fb23eb225b6850e94e775cc5726f0d2da7dea2d",
+      "start": 9837
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 33,
+          "line": 47,
+          "normalizedOffset": 2149,
+          "offset": 2195
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 51,
+            "line": 38,
+            "normalizedOffset": 1610,
+            "offset": 1647
+          },
+          "start": {
+            "col": 8,
+            "line": 38,
+            "normalizedOffset": 1567,
+            "offset": 1604
+          }
+        },
+        "nameText": "tendsto_card_strictWeightedSimplex_rational",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational"
+        ],
+        "start": {
+          "col": 0,
+          "line": 38,
+          "normalizedOffset": 1559,
+          "offset": 1596
+        },
+        "valueStart": {
+          "col": 59,
+          "line": 42,
+          "normalizedOffset": 1847,
+          "offset": 1888
+        }
+      },
+      "command_sha256": "da106fcc910b4bf3a64cecd779a448f97e0a90222761acd676213b25e22ee0ba",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.strictWeightedSimplex"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.positive_rational_weights_common_denominator",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.common_denominator_simplex_constant",
+        "OAI.PiExponent.tendsto_card_strictWeightedSimplex_scaled"
+      ],
+      "end": 2195,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational",
+      "name": "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational",
+      "namespace": "OAI.PiExponent",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+      "original_source_sha256": "16f2b97142fef42d0ba4dcbcb4d4e77eb951c5b32ba041e06a315dcf90b9a7ed",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational:1596",
+        "decl_graph_line": 1907,
+        "decl_graph_row_sha256": "77b032f8d7d8cec774a72df7bdf901b0f9874bbc0c97d14504e1dcff15f7d5e3",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational:1596",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational",
+        "source_name": "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "9af9b0304f1e11ad39c5e76d186509dfb0e78ba918422fb825fd271ef31e36c7",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-SimplexRational-20261008-041756.log",
+        "stage2_facts_sha256": "ebe367807e6420ff9b1312593ed8395a24d6485dd58ea8467f895c3df6f7cba8",
+        "unit_end_offset": 2195,
+        "unit_name_text": "tendsto_card_strictWeightedSimplex_rational",
+        "unit_start_offset": 1596
+      },
+      "proof_suffix_sha256": "1b5c52a45afc8249bebac0232089747db4e78bc5927fada575a9d8f9b8116c59",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 147,
+              "offset": 150
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 134,
+              "offset": 137
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 9,
+              "normalizedOffset": 216,
+              "offset": 224
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 196,
+              "offset": 204
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Polynomials/SimplexRational.lean",
+      "source_lines": [
+        38,
+        47
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "9af9b0304f1e11ad39c5e76d186509dfb0e78ba918422fb825fd271ef31e36c7",
+      "start": 1596
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 57,
+          "line": 232,
+          "normalizedOffset": 10467,
+          "offset": 10698
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 27,
+            "line": 229,
+            "normalizedOffset": 10265,
+            "offset": 10493
+          },
+          "start": {
+            "col": 8,
+            "line": 229,
+            "normalizedOffset": 10246,
+            "offset": 10474
+          }
+        },
+        "nameText": "ceil_log_weight_pos",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+        ],
+        "start": {
+          "col": 0,
+          "line": 229,
+          "normalizedOffset": 10238,
+          "offset": 10466
+        },
+        "valueStart": {
+          "col": 34,
+          "line": 230,
+          "normalizedOffset": 10337,
+          "offset": 10566
+        }
+      },
+      "command_sha256": "e39b735c1b7031a4c2e7b7261b675a01c9788ef3c428bca6cac76ed04a913a1f",
+      "contexts": [
+        "open scoped BigOperators"
+      ],
+      "direct_type_dependencies": [],
+      "direct_value_dependencies": [],
+      "end": 10698,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+      "name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+      "namespace": "OAI.PiExponent.MatrixArithmetic",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "original_source_sha256": "2a3e4d4bb77fdfca3fd525d6c5eb143add0e7e017b3b064d2df7f8cbd3db5f2a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic:10466",
+        "decl_graph_line": 6759,
+        "decl_graph_row_sha256": "7498e07b4d00c3d109b2ba1690bb98d533c11f3348aea098ff2046bec95e2432",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic:10466",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+        "source_name": "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixArithmetic-20261007-232740.log",
+        "stage2_facts_sha256": "340d166d4c156bc921a87da1a41eb3a78c08063d4c790cfad3a27f590f4dccc2",
+        "unit_end_offset": 10698,
+        "unit_name_text": "ceil_log_weight_pos",
+        "unit_start_offset": 10466
+      },
+      "proof_suffix_sha256": "8af3773a383f674ccd553be2dadffc39e0850c4c636b37ad19c5c0445bf8b2d4",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 5,
+              "normalizedOffset": 207,
+              "offset": 211
+            },
+            "start": {
+              "col": 0,
+              "line": 5,
+              "normalizedOffset": 194,
+              "offset": 198
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 20,
+              "line": 7,
+              "normalizedOffset": 229,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 7,
+              "normalizedOffset": 209,
+              "offset": 215
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixArithmetic",
+          "opening": {
+            "end": {
+              "col": 26,
+              "line": 130,
+              "normalizedOffset": 5803,
+              "offset": 5932
+            },
+            "start": {
+              "col": 0,
+              "line": 130,
+              "normalizedOffset": 5777,
+              "offset": 5906
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixArithmetic.lean",
+      "source_lines": [
+        229,
+        232
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "fb2547fa5e853f3f9962729dc5f0e5f39d034f13307212886ddd9ae9541ecb66",
+      "start": 10466
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 18,
+          "line": 29,
+          "normalizedOffset": 1180,
+          "offset": 1208
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 30,
+            "line": 25,
+            "normalizedOffset": 972,
+            "offset": 996
+          },
+          "start": {
+            "col": 8,
+            "line": 25,
+            "normalizedOffset": 950,
+            "offset": 974
+          }
+        },
+        "nameText": "rationalLogWeights_pos",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos"
+        ],
+        "start": {
+          "col": 0,
+          "line": 25,
+          "normalizedOffset": 942,
+          "offset": 966
+        },
+        "valueStart": {
+          "col": 45,
+          "line": 26,
+          "normalizedOffset": 1072,
+          "offset": 1097
+        }
+      },
+      "command_sha256": "c900e0e53aa48d9e5953900baa76a85b9a591a10050fc90c5be58e69f9b4c5f9",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+        "OAI.PiExponent.MatrixArithmetic.ceil_log_weight_pos"
+      ],
+      "end": 1208,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "name": "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos",
+      "namespace": "OAI.PiExponent.MatrixCounting",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "original_source_sha256": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:966",
+        "decl_graph_line": 7677,
+        "decl_graph_row_sha256": "385cf5ec611547d2eddcaa13f22a219735ab256e7236dacb68d4c61a47d27626",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:966",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+        "source_name": "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixCounting-20261007-232813.log",
+        "stage2_facts_sha256": "f33f685f9a23ceef1e5ce9e2c8d45aee480c63507b6793e004891f13037f2e9d",
+        "unit_end_offset": 1208,
+        "unit_name_text": "rationalLogWeights_pos",
+        "unit_start_offset": 966
+      },
+      "proof_suffix_sha256": "45d56fa27176254041dec2c4d2aaeb8fb754a0bad1b3707df520be895fbaddbd",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 143,
+              "offset": 146
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 130,
+              "offset": 133
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixCounting",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "source_lines": [
+        25,
+        29
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+      "start": 966
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 56,
+          "line": 23,
+          "normalizedOffset": 940,
+          "offset": 962
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 39,
+            "line": 21,
+            "normalizedOffset": 764,
+            "offset": 784
+          },
+          "start": {
+            "col": 16,
+            "line": 21,
+            "normalizedOffset": 741,
+            "offset": 761
+          }
+        },
+        "nameText": "rationalLogWeights_cast",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast"
+        ],
+        "start": {
+          "col": 0,
+          "line": 21,
+          "normalizedOffset": 725,
+          "offset": 745
+        },
+        "valueStart": {
+          "col": 67,
+          "line": 22,
+          "normalizedOffset": 878,
+          "offset": 899
+        }
+      },
+      "command_sha256": "01d4a3c0b55baac82c2ae3e3cf35b05ade077ed4eab34806818cd1ca6f83eef2",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights"
+      ],
+      "end": 962,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "name": "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast",
+      "namespace": "OAI.PiExponent.MatrixCounting",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "original_source_sha256": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:745",
+        "decl_graph_line": 5143,
+        "decl_graph_row_sha256": "5387204acae68b0a4951b5ebefe6fc8b8631c0a74805ea437729a0c2ed9da54e",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:745",
+        "owner_kind": "inline",
+        "source_category": "inline",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+        "source_name": "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixCounting-20261007-232813.log",
+        "stage2_facts_sha256": "f33f685f9a23ceef1e5ce9e2c8d45aee480c63507b6793e004891f13037f2e9d",
+        "unit_end_offset": 962,
+        "unit_name_text": "rationalLogWeights_cast",
+        "unit_start_offset": 745
+      },
+      "proof_suffix_sha256": "4e8c396dc9622ad35573be68a25ecd15d9524bf9d4229ea09a85ef490092ae63",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 143,
+              "offset": 146
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 130,
+              "offset": 133
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixCounting",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "source_lines": [
+        21,
+        23
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+      "start": 745
+    },
+    {
+      "ast": {
+        "docstring": null,
+        "end": {
+          "col": 9,
+          "line": 62,
+          "normalizedOffset": 2792,
+          "offset": 2853
+        },
+        "graph_kinds": [
+          "theorem"
+        ],
+        "graph_names": [
+          "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized"
+        ],
+        "is_instance_command": false,
+        "is_local_instance": false,
+        "local_modifier_ranges": [],
+        "nameRange": {
+          "end": {
+            "col": 35,
+            "line": 31,
+            "normalizedOffset": 1217,
+            "offset": 1247
+          },
+          "start": {
+            "col": 8,
+            "line": 31,
+            "normalizedOffset": 1190,
+            "offset": 1220
+          }
+        },
+        "nameText": "tendsto_rowCount_normalized",
+        "privateTok": null,
+        "reachable_names": [
+          "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized"
+        ],
+        "start": {
+          "col": 0,
+          "line": 31,
+          "normalizedOffset": 1182,
+          "offset": 1212
+        },
+        "valueStart": {
+          "col": 86,
+          "line": 35,
+          "normalizedOffset": 1536,
+          "offset": 1570
+        }
+      },
+      "command_sha256": "abea9f86db4188f18219a6f89246db0a394f31ede975948c4691ad438c7bdfd7",
+      "contexts": [
+        "open scoped BigOperators",
+        "open Filter Topology"
+      ],
+      "direct_type_dependencies": [
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixCounting.rowCount"
+      ],
+      "direct_value_dependencies": [
+        "OAI.PiExponent.InterpolationMatrix.Row",
+        "OAI.PiExponent.strictWeightedSimplex",
+        "OAI.PiExponent.MatrixArithmetic.logWeights",
+        "OAI.PiExponent.MatrixCounting.rowCount",
+        "OAI.PiExponent.InterpolationMatrix.rowWeights",
+        "OAI.PiExponent.InterpolationMatrix.row_card",
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights",
+        "OAI.PiExponent.tendsto_card_strictWeightedSimplex_rational",
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights_pos",
+        "OAI.PiExponent.MatrixCounting.rationalLogWeights_cast"
+      ],
+      "end": 2853,
+      "kind": "theorem",
+      "module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+      "name": "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized",
+      "namespace": "OAI.PiExponent.MatrixCounting",
+      "original_source": "source/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "original_source_sha256": "2d1177d49399a6bd5f6f0dbef1a5d981c0e3228f72f39bc95d4303683a4b333a",
+      "owner": {
+        "command_unit": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:1212",
+        "decl_graph_line": 4130,
+        "decl_graph_row_sha256": "b576bf07ee19920a3f2068920da62e9a6795bbb59bbbaa7bd3169410f3f3319a",
+        "decl_graph_sha256": "dcae43b0481ca8781071ec96ac5920bdebc3280636c3a610fb855ba8e8a769c4",
+        "graph_kind": "theorem",
+        "owner_id": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting:1212",
+        "owner_kind": "node",
+        "source_category": "node",
+        "source_file": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+        "source_module": "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+        "source_name": "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized",
+        "source_name_resolution": "exact-graph-Name.toString-public",
+        "source_private": false,
+        "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+        "stage2_facts": "missions/pi-irrationality-measure/verification/sketch-MatrixCounting-20261007-232813.log",
+        "stage2_facts_sha256": "f33f685f9a23ceef1e5ce9e2c8d45aee480c63507b6793e004891f13037f2e9d",
+        "unit_end_offset": 2853,
+        "unit_name_text": "tendsto_rowCount_normalized",
+        "unit_start_offset": 1212
+      },
+      "proof_suffix_sha256": "9edd2a7bd1f5925a53681c80508739981d5011c475dfb827d112dd342552b05a",
+      "scope_stack": [
+        {
+          "kind": "namespace",
+          "name": "OAI",
+          "opening": {
+            "end": {
+              "col": 13,
+              "line": 4,
+              "normalizedOffset": 143,
+              "offset": 146
+            },
+            "start": {
+              "col": 0,
+              "line": 4,
+              "normalizedOffset": 130,
+              "offset": 133
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "PiExponent",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        },
+        {
+          "kind": "namespace",
+          "name": "MatrixCounting",
+          "opening": {
+            "end": {
+              "col": 35,
+              "line": 9,
+              "normalizedOffset": 227,
+              "offset": 235
+            },
+            "start": {
+              "col": 0,
+              "line": 9,
+              "normalizedOffset": 192,
+              "offset": 200
+            }
+          }
+        }
+      ],
+      "source": "port/lean/OAI/NumberTheory/PiExponent/Approximation/MatrixCounting.lean",
+      "source_lines": [
+        31,
+        62
+      ],
+      "source_original_command_equal_modulo_line_endings": true,
+      "source_sha256": "33845f7abdec28661337d1e3b33a0f2633acfe6408499e6359c261c49afc9ec2",
+      "start": 1212
+    }
+  ],
+  "schema_version": 1,
+  "source_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "source_modules": [
+    "OAI.NumberTheory.PiExponent.Approximation.InterpolationMatrix",
+    "OAI.NumberTheory.PiExponent.Approximation.MatrixArithmetic",
+    "OAI.NumberTheory.PiExponent.Approximation.MatrixCounting",
+    "OAI.NumberTheory.PiExponent.Polynomials.SimplexCounting",
+    "OAI.NumberTheory.PiExponent.Polynomials.SimplexRational",
+    "OAI.NumberTheory.PiExponent.Polynomials.SimplexRationalWeights"
+  ],
+  "submission_ready": false,
+  "target": "OAI.PiExponent.MatrixCounting.tendsto_rowCount_normalized",
+  "validated": false
+}

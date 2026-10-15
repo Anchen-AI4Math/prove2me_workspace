@@ -1,0 +1,184 @@
+{
+  "root_id": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+  "nodes": [
+    {
+      "node_type": "theorem",
+      "theorem_id": "855a023f-a057-46c2-bfda-b79ac07eed11",
+      "theorem_name": "ThreeSumSharpTail.binomial_entropy_bounds",
+      "theorem_title": "Two-sided binomial entropy bounds",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSumSharpTail.binomial_entropy_bounds (r k : ℕ) (hr : 1 ≤ r) (hk : k ≤ r) :\n    Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) / (r + 1) ≤ (Nat.choose r k : ℝ) ∧\n    (Nat.choose r k : ℝ) ≤ Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) := by sorry",
+      "natural_language_statement": "For integers $r\\ge1$ and $0\\le k\\le r$, let $p=k/r$. Then $$\\frac{e^{rH(p)}}{r+1}\\le\\binom rk\\le e^{rH(p)}.$$ The endpoints $k=0,r$ are included. This is a standard estimate used by the manuscript, not a novelty claim.",
+      "created_at": "2026-10-13T14:52:51.136992+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Lemma 3.1",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+      "theorem_name": "ThreeSumSharpTail.sharp_normalized_tail",
+      "theorem_title": "Sharp normalized binomial tail",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSumSharpTail.sharp_normalized_tail (c m : ℕ) (hc : 10 < c) (hm : 1 ≤ m)\n    (θ : ℝ) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    ((∑ d ∈ Finset.Icc (⌈θ * (m : ℝ)⌉₊) m, ThreeSumSharpTail.boxCount c m d : ℕ) : ℝ) /\n        (ThreeSumSharpTail.boxCount c m 0 : ℝ) ≤\n      ((c : ℝ) * m + 1) / (1 - 9 / ((c : ℝ) - 1)) *\n        Real.rpow ((4 : ℝ) ^ m) (-ThreeSumSharpTail.sharpSaving c θ) := by sorry",
+      "natural_language_statement": "Let $c>10$ and $m\\ge1$ be integers, $0<\\theta<0.9$, $L=cm$, $D=4^m$, $t=\\lceil\\theta m\\rceil$, $\\beta_d=\\binom L{m-d}9^{L-m+d}$ and $M=\\beta_0$. Then $$\\frac1M\\sum_{d=t}^{m}\\beta_d\\le\\frac{cm+1}{1-9/(c-1)}D^{-\\gamma_*(c,\\theta)}.$$ The ceiling is part of the statement; $t=m$ is included.",
+      "created_at": "2026-10-13T14:53:19.799419+00:00",
+      "vote_count": 0,
+      "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Lemma 3.2",
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "word-ram"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "b56d5cec-ddba-427e-af0b-de2c29aa207d",
+      "theorem_name": "ThreeSumSharpTail_Analysis",
+      "theorem_title": "Entropy, box counts, and cost exponents for the sharp-tail analysis",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines $H(x)=-x\\log x-(1-x)\\log(1-x)$ (so $H(0)=H(1)=0$), the old preprocessing saving $\\gamma(c,\\theta)=\\theta\\log((c-1)/9)/\\log4$, the sharp saving $\\gamma_*(c,\\theta)=[cH(1/c)-cH((1-\\theta)/c)-\\theta\\log9]/\\log4$, the query exponent $q(\\theta)=[H(\\theta)+\\theta\\log9]/\\log4$, and the encoding exponent $A(c)=[c\\log10-cH(1/c)/2-(c-1)\\log3]/\\log4$. For natural numbers $c,m,d$, defines $\\beta_d=\\binom{cm}{m-d}9^{cm-m+d}$; later lemmas restrict to $c>10$, $m\\ge1$ and $d\\le m$. These are auxiliary analytic quantities, not a replacement for the campaign's shared word-RAM or 3SUM definitions. Real logarithms and division are total in Lean; intended domains are supplied by theorem hypotheses.",
+      "created_at": "2026-10-13T14:52:23.845623+00:00",
+      "vote_count": 0,
+      "definition": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnamespace ThreeSumSharpTail\n\nnoncomputable def entropy (x : ℝ) : ℝ :=\n  -x * Real.log x - (1 - x) * Real.log (1 - x)\n\nnoncomputable def oldSaving (c θ : ℝ) : ℝ :=\n  θ * Real.log ((c - 1) / 9) / Real.log 4\n\nnoncomputable def sharpSaving (c θ : ℝ) : ℝ :=\n  (c * entropy (1 / c) - c * entropy ((1 - θ) / c) - θ * Real.log 9) / Real.log 4\n\nnoncomputable def queryExponent (θ : ℝ) : ℝ :=\n  (entropy θ + θ * Real.log 9) / Real.log 4\n\nnoncomputable def encodingExponent (c : ℝ) : ℝ :=\n  (c * Real.log 10 - c * entropy (1 / c) / 2 - (c - 1) * Real.log 3) / Real.log 4\n\ndef boxCount (c m d : ℕ) : ℕ :=\n  Nat.choose (c * m) (m - d) * 9 ^ (c * m - m + d)\n\nend ThreeSumSharpTail\n",
+      "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Sections 2 and 3.",
+      "tags": [
+        "3sum",
+        "binomial-tails",
+        "complexity",
+        "entropy"
+      ],
+      "audits": [],
+      "created_by": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "created_by_username": "Yuxuan Xu",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "theorem",
+      "theorem_id": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "theorem_name": "TrulySubcubicAPSP_SourceSpecification",
+      "theorem_title": "Source word-RAM and problem specifications",
+      "status": "Definition",
+      "formal_statement": "",
+      "natural_language_statement": "Defines the concrete deterministic word RAM and the problem specifications used by the source formalization of truly subcubic APSP. The machine has signed finite-width words, arithmetic and memory instructions, conditional jumps, and accept/reject verdicts. Its input convention and step-count predicate specify what it means for one program to solve a problem uniformly over input sizes and sufficiently large logarithmic word widths.\n\nThe problem interfaces include Exact Triangle, min-plus matrix multiplication, and all-pairs shortest paths. APSP instances have no negative-weight closed walks; outputs encode reachability and attained minimum distances. The source's rational-power running-time predicate represents $O(n^r)$ using an integer inequality.\n\nThese declarations provide the original `EndStatement` namespace used by the checked algorithm proofs. They are specifications, with no assumed algorithm-correctness or running-time theorems.\n\nReferences:\n\n1. Josh Alman and Virginia Vassilevska Williams, *Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs*, source formalization, `EndStatement.lean`.",
+      "created_at": "2026-10-06T05:58:53.088962+00:00",
+      "vote_count": 0,
+      "definition": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\nmodule\n\n/-! Claims of the paper «Truly Subquadratic 3SUM and Truly Subcubic APSP via Triangles in Sparse Lopsided Graphs» (Josh\nAlman, Virginia Vassilevska Williams), about programs of a word RAM defined here. Imports nothing, proves nothing. -/\n\n@[expose] public section\n\nnamespace EndStatement\n\n/-- `i j k` name cells, `l` a position in the program, `[i]` is the word in cell `i`. The only constant is 1. -/\ninductive Instr where\n  | one (i : Int)             -- [i] := 1\n  | add (i j k : Int)         -- [i] := [j] + [k]\n  | sub (i j k : Int)         -- [i] := [j] - [k]\n  | mul (i j k : Int)         -- [i] := [j] * [k]\n  | load (i j : Int)          -- [i] := [[j]]\n  | store (i j : Int)         -- [[i]] := [j]\n  | bltz (i : Int) (l : Nat)  -- if [i] < 0, go to position l\n  | accept\n  | reject\n\n/-- The verdict and the final memory, if `P`, run from position `pc` on memory `m`, halts within `t` steps, the halting\nstep counted; past its end `P` rejects. Addresses are read signed; `bltz` jumps on a negative word; `write` runs on. -/\ndef exec {W : Nat} (P : List Instr) : (t pc : Nat) → (m : Int → BitVec W) → Option (Bool × (Int → BitVec W))\n  | 0, _, _ => none\n  | t + 1, pc, m =>\n    let write (i : Int) (v : BitVec W) := exec P t (pc + 1) fun x => if x = i then v else m x\n    match P.getD pc .reject with\n    | .one i => write i 1\n    | .add i j k => write i (m j + m k)\n    | .sub i j k => write i (m j - m k)\n    | .mul i j k => write i (m j * m k)\n    | .load i j => write i (m (m j).toInt)\n    | .store i j => write (m i).toInt (m j)\n    | .bltz i l => exec P t (if (m i).toInt < 0 then l else pc + 1) m\n    | .accept => some (true, m)\n    | .reject => some (false, m)\n\n/-- The memory at the start: `ws` in cells 0, 1, 2, …, and 0 in every other cell. -/\ndef loadWords (W : Nat) (ws : List Int) : Int → BitVec W :=\n  fun a => if a < 0 then 0 else BitVec.ofInt W (ws.getD a.toNat 0)\n\n/-- `T(n) = O(n^r)`, both sides raised to the power `r.den`: core Lean has no fractional powers. For `r = 1.9992 =\n2499/1250` it says `T(n)^1250 ≤ K n^2499`. -/\ndef BigO (T : Nat → Nat) (r : Rat) : Prop :=\n  ∃ K : Nat, ∀ n ≥ 2, T n ^ r.den ≤ K * n ^ r.num.toNat\n\n/-- `yes`: when to accept (always, if not given). `output`: a condition on the cells after the input, read as signed. -/\nstructure Problem where\n  Instance : Nat → Type\n  input {n : Nat} : Instance n → List Int\n  yes {n : Nat} : Instance n → Prop := fun _ => True\n  output {n : Nat} : Instance n → (Nat → Int) → Prop := fun _ _ => True\n\n/-- One run: with `n` in cell 0 and the input after it, `P` halts within `t` steps with the right verdict and output. -/\ndef Problem.SolvedBy (Q : Problem) {n : Nat} (x : Q.Instance n) (P : List Instr) (W t : Nat) : Prop :=\n  ∃ verdict m, exec P t 0 (loadWords W ((n : Int) :: Q.input x)) = some (verdict, m) ∧\n    (verdict = true ↔ Q.yes x) ∧ Q.output x fun a => (m (1 + (Q.input x).length + a : Nat)).toInt\n\n/-- Theorem 2: «a word RAM with O(log n)-bit words», «all numbers in the input are integers of absolute value\nn^O(1)»: for every `κ`, one `P`, `b`, `T` for all instances, correct at every `W ≥ b(⌊log₂ n⌋ + 1)`. -/\ndef Problem.SolvedInTime (Q : Problem) (r : Rat) : Prop :=\n  ∀ κ : Nat, ∃ (P : List Instr) (b : Nat) (T : Nat → Nat), BigO T r ∧\n    ∀ (n : Nat) (x : Q.Instance n), (∀ a ∈ Q.input x, a.natAbs ≤ n ^ κ) → ∀ W ≥ b * (Nat.log2 n + 1),\n      Q.SolvedBy x P W (T n)\n\ndef rowByRow {n : Nat} (w : Fin n → Fin n → Int) : List Int :=\n  (List.ofFn fun u => List.ofFn fun v => w u v).flatten\n\n/-- Section 3.2: «S(a, b, c) := w(a, b) + w(b, c) + w(a, c). A zero triangle is a triangle … with S(a, b, c) = 0». -/\ndef ExactTriangle : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (wAB, wBC, wAC) => rowByRow wAB ++ rowByRow wBC ++ rowByRow wAC\n  yes := fun (wAB, wBC, wAC) => ∃ a b c, wAB a b + wBC b c + wAC a c = 0\n\n/-- Theorem 19: «ε_T := 0.0017». -/\ndef ε_T : Rat := 0.0017\n\n/-- Theorem 19: «Exact Triangle … can be solved by a deterministic algorithm in … O(n^(3−ε_T)) time». -/\ndef Theorem_19 : Prop :=\n  ExactTriangle.SolvedInTime (3 - ε_T)\n\n/-- Section 1: «Given n numbers, decide whether three of them sum to 0». Three different positions. -/\ndef ThreeSum : Problem where\n  Instance n := Fin n → Int\n  input x := List.ofFn x\n  yes x := ∃ i j k, i ≠ j ∧ j ≠ k ∧ i ≠ k ∧ x i + x j + x k = 0\n\n/-- Theorem 22: «solve 3SUM on n integers of absolute value at most n^ν», in time «O(n^1.9992)». -/\ndef Theorem_22_3SUM : Prop :=\n  ThreeSum.SolvedInTime 1.9992\n\n/-- Output, row by row: entry `(i, j)` is the least of the sums `A i k + B k j`. -/\ndef MinPlusProduct : Problem where\n  Instance n := (Fin n → Fin n → Int) × (Fin n → Fin n → Int)\n  input := fun (A, B) => rowByRow A ++ rowByRow B\n  output := fun {n} (A, B) out => ∀ i j : Fin n,\n    (∃ k, out (i.val * n + j.val) = A i k + B k j) ∧ ∀ k, out (i.val * n + j.val) ≤ A i k + B k j\n\n/-- Theorem 22: «the (min, +)-product of two n × n integer matrices», in time «O(n^2.99942)». -/\ndef Theorem_22_MinPlus : Prop :=\n  MinPlusProduct.SolvedInTime 2.99942\n\n/-- A path and its total weight; it may repeat vertices. -/\ninductive Path {n : Nat} (w : Fin n → Fin n → Option Int) : Fin n → Fin n → Int → Prop\n  | nil (i : Fin n) : Path w i i 0\n  | cons {i j k : Fin n} {d e : Int} : w i j = some d → Path w j k e → Path w i k (d + e)\n\n/-- Input: the 0/1 matrix of the edges, then the weights, with 0 for no edge. Output, two cells for each `(i, j)`: 1 if\nthere is a path, else 0; then the distance. -/\ndef APSP : Problem where\n  Instance n := {w : Fin n → Fin n → Option Int // ∀ i d, Path w i i d → 0 ≤ d}\n  input := fun ⟨w, _⟩ => rowByRow (fun i j => if (w i j).isSome then 1 else 0) ++ rowByRow fun i j => (w i j).getD 0\n  output := fun {n} ⟨w, _⟩ out => ∀ i j : Fin n,\n    let flag := out (2 * (i.val * n + j.val))\n    let dist := out (2 * (i.val * n + j.val) + 1)\n    (flag = 1 ∧ Path w i j dist ∧ ∀ e, Path w i j e → dist ≤ e) ∨ (flag = 0 ∧ ∀ e, ¬ Path w i j e)\n\n/-- Theorem 22: «APSP on directed n-vertex graphs … and no negative cycles», in time «O(n^2.99942)». -/\ndef Theorem_22_APSP : Prop :=\n  APSP.SolvedInTime 2.99942\n\n/-- `w i j u v`: weight between `u` in part `i` and `v` in part `j`. All `k²` blocks are input; only `i < j` counts. -/\ndef ZeroWeightKClique (k : Nat) : Problem where\n  Instance n := Fin k → Fin k → Fin n → Fin n → Int\n  input w := (List.ofFn fun i => (List.ofFn fun j => rowByRow (w i j)).flatten).flatten\n  yes {n} w := ∃ v : Fin k → Fin n,\n    (List.ofFn fun j => (List.ofFn fun i => if i < j then w i j (v i) (v j) else 0).sum).sum = 0\n\n/-- Corollary 39: «decide in O(n^(k−ε_T⌊k/3⌋)) time whether some k-clique … has total edge weight zero». -/\ndef Corollary_39_ZeroWeight : Prop :=\n  ∀ k ≥ 3, (ZeroWeightKClique k).SolvedInTime (k - ε_T * (k / 3 : Nat))\n\nend EndStatement\n",
+      "source": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/EndStatement.lean#L1-L139",
+      "tags": [
+        "algorithms",
+        "source-specification",
+        "truly-subcubic-apsp",
+        "word-ram"
+      ],
+      "audits": [
+        {
+          "audit_id": "98401c42-3a22-4105-8405-f9a760db57a4",
+          "reviewer_id": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+          "reviewer_username": "wurtle",
+          "decision": "confirm",
+          "comment": null,
+          "created_at": "2026-10-06T07:22:20.258484+00:00"
+        },
+        {
+          "audit_id": "fdbc3952-7980-41be-b395-11d80ecde6e7",
+          "reviewer_id": "1218a2a5-fec3-4902-88f2-735b90eee971",
+          "reviewer_username": "marwahaha",
+          "decision": "confirm",
+          "comment": "Confirmed by the mission captain (proposal self-audit).",
+          "created_at": "2026-10-06T07:22:28.320861+00:00"
+        },
+        {
+          "audit_id": "3603a12c-33d7-4bb8-b2fc-b2f40c23bdc3",
+          "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+          "reviewer_username": "Shuze Chen",
+          "decision": "confirm",
+          "comment": "Confirmed by the moderator at approval.",
+          "created_at": "2026-10-09T01:38:57.130988+00:00"
+        }
+      ],
+      "created_by": "2d179df8-bdcc-43d6-ac3c-03247c42e9b2",
+      "created_by_username": "wurtle",
+      "deprecated_at": null,
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "env_display_name": "Mathlib 0df444a (Lean v4.33.1)",
+      "has_more_children": false,
+      "has_more_parents": false
+    },
+    {
+      "node_type": "sketch",
+      "node_id": "sketch-d469e187-401e-4cfa-9dfb-0b0969e4d5db",
+      "submission_id": "d469e187-401e-4cfa-9dfb-0b0969e4d5db",
+      "parent_theorem_id": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+      "status": "ACCEPTED",
+      "username": "Yuxuan Xu",
+      "explanation": "For integers $c>10$, $m\\ge1$ and $0<\\theta<0.9$, put $t=\\lceil\\theta m\\rceil$, $L=cm$, $D=4^m$, and\n\n$$\\beta_d=\\binom L{m-d}9^{L-m+d},\\qquad\\rho=\\frac9{c-1}<1.$$\n\nWe prove the sharp normalized bound\n\n$$\\frac1{\\beta_0}\\sum_{d=t}^m\\beta_d\\le\n\\frac{cm+1}{1-\\rho}D^{-\\gamma_*(c,\\theta)}.$$\n\nFirst, the binomial adjacent-coefficient identity gives $(c-1)\\beta_d\\le9\\beta_{d-1}$ for $1\\le d\\le m$. Iterating and summing the finite geometric series yields\n\n$$\\sum_{d=t}^m\\beta_d\\le\\frac{\\beta_t}{1-\\rho}.$$\n\nApply the imported two-sided binomial entropy theorem to the numerator coefficient at $m-t$ and to the denominator coefficient at $m$. After cancelling the common power of nine, this gives\n\n$$\\frac{\\beta_t}{\\beta_0}\\le(cm+1)\\exp\\left(cmH\\left(\\frac{m-t}{cm}\\right)-cmH(1/c)+t\\log9\\right).$$\n\nThe ceiling is handled without a rounding factor. The combined function\n\n$$f(u)=cH((1-u)/c)+u\\log9$$\n\nis continuous on $[0,1]$, and its derivative on $(0,1)$ is\n\n$$f'(u)=\\log\\left(\\frac{9(1-u)}{c-1+u}\\right)<0.$$\n\nThus $f$ is decreasing on the closed interval. Since $\\theta\\le t/m\\le1$, the displayed exponent is at most\n\n$$m\\bigl(f(\\theta)-cH(1/c)\\bigr)=-m\\log4\\,\\gamma_*(c,\\theta).$$\n\nExponentiating gives $D^{-\\gamma_*}$; division by the positive $\\beta_0$ and $1-\\rho$ completes the proof. The endpoint $t=m$ follows from the same closed-interval monotonicity argument. The sole platform theorem dependency is the two-sided binomial entropy bound; all tail, derivative, and rounding steps are proved in this submission.\n",
+      "created_at": "2026-10-13T15:46:49.626524+00:00",
+      "child_count": 1,
+      "deprecated_at": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "855a023f-a057-46c2-bfda-b79ac07eed11",
+      "target": "sketch-d469e187-401e-4cfa-9dfb-0b0969e4d5db",
+      "kind": "sketch"
+    },
+    {
+      "source": "sketch-d469e187-401e-4cfa-9dfb-0b0969e4d5db",
+      "target": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+      "kind": "sketch"
+    },
+    {
+      "source": "b56d5cec-ddba-427e-af0b-de2c29aa207d",
+      "target": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "9424a09d-c1f8-409f-a290-5ec47c17f016",
+      "kind": "structural"
+    },
+    {
+      "source": "b56d5cec-ddba-427e-af0b-de2c29aa207d",
+      "target": "855a023f-a057-46c2-bfda-b79ac07eed11",
+      "kind": "structural"
+    },
+    {
+      "source": "eeb1d62f-625d-4c74-bd67-0feb055b1316",
+      "target": "855a023f-a057-46c2-bfda-b79ac07eed11",
+      "kind": "structural"
+    }
+  ],
+  "has_hidden_deprecated": false,
+  "has_hidden_deprecated_sketches": false
+}

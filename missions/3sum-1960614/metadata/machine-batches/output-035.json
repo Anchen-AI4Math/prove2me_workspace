@@ -1,0 +1,233 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightReportingWantedLayout.program_meets_relative",
+    "theorem_title": "Relative correctness of the wanted-layout constructor",
+    "natural_language_statement": "Let integer memory $\\mu$ store the prescribed local group size at the cover header and representation cap at the counter header. For natural block, depth, incidence, and source-size parameters, assume addresses fit the word limit, the call depth is available, and the exact relative layout fits space. The closed layout program returns its work pointer, writes the fourteen natural layout fields at the destination, changes no cells outside that fourteen-cell record, and meets its specified time bound.\n\nConstructs the wanted-query allocation from actual retained headers. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs the wanted-query allocation from actual retained headers. The constructor reads the actual group and representation-cap headers and writes precisely the fourteen fields of the allocated layout."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightResidues.residues_ends",
+    "theorem_title": "Correctness of signed residue-array construction",
+    "natural_language_statement": "Let $n$ source integers have absolute value at most $U$, let $p>0$, and let $c\\in\\mathbb Z$ satisfy $|c|\\le1$. Suppose source and destination segments are disjoint and end before reusable remainder scratch; the logarithmic scratch interval fits space; addresses and $4U+4p+16$ fit the word limit; and the program contains the checked remainder routine with available depth. The residue loop writes every specified signed residue modulo $p$, meets its stated residue-array time bound, and preserves cells below scratch except the destination.\n\nProvides multiplicity-preserving signed residue scans. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Provides multiplicity-preserving signed residue scans. The two arrays stay disjoint while a single logarithmic remainder scratch region is reused for all original values."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceBucketFromHistogram.Procs.meets",
+    "theorem_title": "Buckets built from an actual stored histogram",
+    "natural_language_statement": "Let $q(i)<M$ for $i<N$, and suppose memory stores both these keys and their exact histogram. Assume the concrete bucket subroutines are present, addresses fit words, call depth is available, input arrays precede the offset region, the offset region precedes cursors, cursors precede flat indices, and the flat array fits space. The procedure constructs the exact stored bucket predicate in its stated time, preserves the preceding memory, and changes only the designated offset-to-flat interval.\n\nBuilds exact original-index fibers from computed counts. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Builds exact original-index fibers from computed counts. The actual histogram supplies exact offsets and scatter counts, so later code can read original-index fibers directly."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceGather.meets",
+    "theorem_title": "Gathering independently trimmed histogram values",
+    "natural_language_statement": "Let endpoint integers be bounded by $U$, flags by $1$, and histogram entries by $B$, with positive modulus $m$. Suppose the raw, flag, and histogram arrays are stored correctly before the destination, the destination ends before remainder scratch, the specified logarithmic scratch fits space, and all word and depth bounds hold. With the concrete gather and remainder bodies present, the routine writes the histogram count at each endpoint residue when selected by its independent flag, or zero otherwise, within its stated time. It preserves other cells below scratch.\n\nConstructs source weights by indexed lookup rather than rescanning original arrays. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs source weights by indexed lookup rather than rescanning original arrays. The stored independent flag selects the histogram entry at the endpoint residue, with zero written for a rejected endpoint."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceResidues.ends",
+    "theorem_title": "Exact shifted source residues",
+    "natural_language_statement": "Let source values have absolute value at most $U$, shift $s$ satisfy $|s|\\le D$, and prime and residue controls $p,m$ be positive. Assume disjoint source and output arrays ending before scratch, the specified source-residue space and word bounds, address representability, available call depth, and the checked remainder body. Then the routine writes exactly the defined shifted two-stage source key for each input within its stated time and preserves other cells below scratch.\n\nSupplies the source-key arrays used by retained original-band histograms. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Supplies the source-key arrays used by retained original-band histograms. The explicit prime, residue, magnitude, and shift bounds keep both remainder stages inside the stated machine limits."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSourceRowFlag.meets",
+    "theorem_title": "Both independent trimming flags for a physical row",
+    "natural_language_statement": "Let a stored Boolean row have width $L$, desired cardinality $h\\le L$, coefficient rows bounded by $U$, and two stored histograms bounded by $V$ modulo $p>0$. Suppose the scan, remainder, flag-test, and wrapper bodies are present; all source arrays, histograms, and two output cells precede scratch; and the stated space, word, address, and depth bounds hold. The procedure writes the exact left-orientation and right-orientation flags using their independent histograms, in its prescribed time, preserving other cells below scratch.\n\nImplements independent source trimming for one actual mask row. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Implements independent source trimming for one actual mask row. The two orientations use their own bucket histograms, so the procedure does not replace independent endpoint trimming by a joint test."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSubsetEnumerationSetup.meets",
+    "theorem_title": "Complete layer enumeration with its own powers",
+    "natural_language_statement": "Let $L,k\\in\\mathbb N$ with $k\\le L+1$. Suppose the concrete setup, power-table, and recursive enumerator bodies are present, the $L+1$ power cells fit space, $2^{L+1}$ fits the word limit, the output of length $\\binom Lk$ ends before scratch, and call depth $d+L+1$ is available. The procedure returns $\\binom Lk$, stores the exact compact layer enumeration and power table, meets its stated time, and preserves other cells below scratch.\n\nConstructs subset masks internally, including the empty out-of-range layer case. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Constructs subset masks internally, including the empty out-of-range layer case. The program constructs its own powers and returns the exact binomial layer count together with the ordered emitted masks."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightSupportMark.meets",
+    "theorem_title": "Correct support marking with repeated keys",
+    "natural_language_statement": "Let stored arrays contain $n$ keys below $p$ and their natural validity flags. Suppose the fill and marking bodies are present, the key and flag segments are disjoint from the $p$-cell destination, all segments fit space, addresses fit words, $1$ fits the word bound, and call depth is available. The routine writes the exact support bit for each key, counting an index only when its flag equals one, in the specified time and changes no other cells.\n\nConverts repeated valid representations into a Boolean support table. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Converts repeated valid representations into a Boolean support table. The result records whether some flag-one input has each key, so repeated representations set the same support bit."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWantedJoin.meets",
+    "theorem_title": "Correct output-sensitive wanted-pair join",
+    "natural_language_statement": "Let right buckets store $N_R$ indices with keys below $M$, and let the $n$ stored left keys also lie below $M$. Suppose the recursive join and row append bodies are present, all inputs precede the output, the exact twice-pair-count output fits space, addresses fit words, and depth $d+n+2$ is available. The join returns the exact matching-pair count, writes the complete interleaved pair list in its specified time, and preserves all cells before the destination.\n\nImplements the complete residue join with cost depending on actual matching output. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Implements the complete residue join with cost depending on actual matching output. The returned count and complete interleaved list are obtained from the actual right buckets with no scan over absent pairs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWeightGather.Procs.meets",
+    "theorem_title": "Gathering selected coefficient rows",
+    "natural_language_statement": "Let a row-major source have $N$ rows of width $W$, and let a stored selection array choose $R$ valid row indices. Under the concrete copy/wrapper interface, input-before-output ordering, output-space, word, address, and call-depth bounds, the procedure writes $$\\nu(\\mathrm{dst}+iW+a)=\\mu(\\mathrm{src}+\\mathrm{select}(i)W+a)$$ for $i<R,a<W$. It meets its prescribed gathering time and changes no cells outside the output.\n\nRetains repeated selected candidates in exact schedule order. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Retains repeated selected candidates in exact schedule order. Each selected row is copied to its schedule slot, preserving ties and repeated selections rather than deduplicating them."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWeightRow.meets",
+    "theorem_title": "Decoding an arithmetic progression of weight coordinates",
+    "natural_language_statement": "Let a stored table contain $p^e$ for $e\\le W$, with $p\\ge1$. Suppose all requested coordinates $a+si$ for $i<n$ are below $W$, the power table and output are disjoint and fit space, and the stated word, address, and two-level depth bounds hold. With the concrete digit and quotient procedures, the row routine writes the prescribed base-$p$ digit of candidate $k$ at each requested coordinate within its stated time, changing only the output.\n\nDecodes candidate coefficient rows by actual bounded arithmetic. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Decodes candidate coefficient rows by actual bounded arithmetic. The stored powers and bounded coordinate progression identify precisely which radix digits become the coefficient row."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightWeightedScore.meets_of_count_backend",
+    "theorem_title": "Weighted scoring from a verified counting backend",
+    "natural_language_statement": "Let three stored source arrays have lengths at most $N$, and let a stored auxiliary array contain distinct primes $\\ell_i$. Suppose $0<q\\le M$, every $q\\ell_i\\le M$, input arrays precede scratch, the stated logarithmic scratch, word, address, and depth bounds hold, and a counting backend correctly counts modular triples for every positive modulus at most $M$ while preserving the input prefix. The concrete weighted-score wrapper returns the exact defined score in its specified time and preserves the prefix.\n\nConnects the executable aggregate score to its modular-counting specification. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Connects the executable aggregate score to its modular-counting specification. The backend contract is quantified over every permitted modulus and preserved input memory, allowing the wrapper to reuse one scratch region."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ReportingHostTerminalFrontier.frontier_time_le",
+    "theorem_title": "Terminal frontier time is charged to raw incidences",
+    "natural_language_statement": "Let finite source sets $A,B,C$ have integer value functions, with actual left and right arrays bijective to $B,C$ and preserving those values. Fix a wanted label whose $A$ component is in $A$ and whose shifted lifted key satisfies the required global divisibility condition. At any depth $k\\le J$, for the corresponding raw-incidence set $I$ and actual frontier $F$, $$T_{\\mathrm{terminal}}\\le240|\\operatorname{domain}(I,w)|+\\operatorname{charge}(h,J,k)|F|+30.$$\n\nCharges actual physical terminal tests to raw incidence mass and frontier overhead. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Charges actual physical terminal tests to raw incidence mass and frontier overhead. The original-value enumerations preserve source identities, so terminal bucket products are charged to the corresponding raw incidences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.resources",
+    "theorem_title": "Uniform reservations supply shared-host resources",
+    "natural_language_statement": "Let natural source sizes $N_B,N_C\\le n$. If the shared-host relative extent at free address $f$ fits space, its explicit word bound fits the word limit, and its depth allowance fits beyond current depth $d$, then the concrete shared reporting host satisfies its full resource contract. The local parameters $h,J$ and band width $g$ are arbitrary.\n\nPackages component allocations into the operational host resource interface. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Packages component allocations into the operational host resource interface. The extent, word bound, and depth allowance jointly establish the complete operational resource predicate for the shared host."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.scaled_word_le",
+    "theorem_title": "Scaled word controls fit the reporting envelope",
+    "natural_language_statement": "For every natural input size $n$, $$\\operatorname{scaledWord}(n)\\le\\operatorname{envelope}(n),$$ using the explicit shared reporting resource functions.\n\nBounds scaled integer controls in the common polynomial envelope. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds scaled integer controls in the common polynomial envelope. The scaled control expression is evaluated at the actual executable input size before applying the common envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_threshold_le",
+    "theorem_title": "An eighth-power bound for the actual dense threshold",
+    "natural_language_statement": "Let natural size and source-length controls, modulus $q$, integer source functions, and owner-record list be arbitrary, with at most $3n^2$ owner records. The representation cap at the executable local parameters multiplied by the false score computed with the actual generated prime pool is at most $$9M(n)^8,$$ where $M$ is the reporting magnitude envelope.\n\nBounds the threshold value used by the physical cumulative guard. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the threshold value used by the physical cumulative guard. The estimate includes the representation cap and the false score of the generated auxiliary pool, not a caller-supplied score bound."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_numeric_le",
+    "theorem_title": "A seventh-power bound for wanted numeric controls",
+    "natural_language_statement": "Let $K\\le J(n)$, $N\\le3M(n)^3$, and $N_B,N_C\\le n$, where $M$ is the reporting magnitude envelope. At the executable half-size and block count, $$\\operatorname{wantedNumeric}\\le100(M(n)+1)^7.$$\n\nBounds the numeric controls of a complete wanted record. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the numeric controls of a complete wanted record. The incidence and source-size hypotheses constrain the exact numeric controls passed through a wanted-record call."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_scratch_le",
+    "theorem_title": "A quadratic bound for wanted scratch",
+    "natural_language_statement": "For every natural input size $n$, evaluate the wanted scratch function at its executable half-size, block count, and decoding bound. Then $$\\operatorname{wantedScratch}\\le100(M(n)+1)^2,$$ where $M$ is the reporting magnitude envelope.\n\nControls reusable local scratch for physical wanted queries. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls reusable local scratch for physical wanted queries. The bound concerns the reusable wanted scratch interval, including its prescribed decoding numerator control."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_depth_le",
+    "theorem_title": "Wanted query depth fits the uniform envelope",
+    "natural_language_statement": "Let $K\\le J(n)$, $N\\le3M(n)^3$, and $N_B,N_C\\le n$. With executable local parameters, the exact wanted-record call-depth bound satisfies $$\\operatorname{wantedDepth}\\le\\operatorname{wantedEnvelope}(n).$$ Here $M$ is the reporting magnitude envelope.\n\nBounds the recursion depth of one complete wanted query. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds the recursion depth of one complete wanted query. The valid requested depth and source-size restrictions bound the recursion of the exact wanted-record implementation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SharedReportingBankResourceBounds.wanted_work_le",
+    "theorem_title": "A ninth-power bound for wanted working storage",
+    "natural_language_statement": "Let $K\\le J(n)$, $N\\le3M(n)^3$, and $N_B,N_C\\le n$, where $M$ is the reporting magnitude envelope. At the executable local parameters, $$\\operatorname{wantedWork}\\le100(M(n)+1)^9.$$\n\nControls relative working storage for a complete wanted record. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Controls relative working storage for a complete wanted record. The ninth-power bound accounts for the complete wanted-record work extent under the stated incidence and source-size restrictions."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.SourceControlCosts.space_le_encoderCount",
+    "theorem_title": "Source-control storage fits the encoder envelope",
+    "natural_language_statement": "Let $n>0$ and $N_L,N_R\\le n$, with natural base $b$ and arithmetic controls $p,U,D$. Evaluate the source-control host at the executable band and local parameters. Its required final address is bounded by $b$ plus encoder count times $$29+J+F(n)+(232\\mu(n)+1)^2+(232\\mu(n)+1),$$ plus $\\lfloor\\log_2(S(n)+1)\\rfloor+\\max(\\lfloor\\log_2(U+1)\\rfloor+2,\\lfloor\\log_2(p+D+1)\\rfloor+2)+19$, where $J,F,S$ are block count, storage factor, and schedule count.\n\nBounds complete source-control storage while keeping the base address affine. This supports the complete deterministic integer 3SUM runtime proof.",
+    "tags": [
+      "3sum-1960614",
+      "3sum",
+      "formal-verification"
+    ],
+    "explanation": "Bounds complete source-control storage while keeping the base address affine. The explicit encoder multiplier includes both the source-bank storage and the compact-width control tables."
+  }
+]

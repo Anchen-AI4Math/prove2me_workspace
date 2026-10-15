@@ -1,0 +1,21 @@
+{
+  "id": "e6e5bb99-4804-46cf-bf68-3feee51e3390",
+  "kind": "problem",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightNatPower.meets",
+  "theorem_title": "Execution of natural exponentiation",
+  "formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightNatPower.meets {p b e : \u2115} (hp : P[p]? = some _root_.ThreeSum1960614.Machine.ThreeSum.LightNatPower.body) (\u03bc : \u2115 \u2192 \u2124)\n    (he : (e : \u2124) \u2264 lim.word)\n    (hpow : \u2200 i \u2264 e, ((b^i : \u2115) : \u2124) \u2264 lim.word) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P p d [b,e] \u03bc (_root_.ThreeSum.LightNatPower.time e)\n      (fun r \u03bc' => r = ((b^e : \u2115) : \u2124) \u2227 \u03bc' = \u03bc) := by sorry",
+  "natural_language_statement": "Let $b,e\\in\\mathbb N$, $\\mu$ any integer memory, and $\\lambda,P,d$ limits, program and depth. If procedure $p$ is the power body, $e$ fits a word and every $b^i$ for $i\\le e$ fits a word, then\n\n$$\\operatorname{result}=b^e$$\n\nwithin its prescribed exponent-dependent time, with the entire memory unchanged.\n\nThis realizes the scalar powers needed for finite counts, moduli and representation caps.",
+  "definitions": "import Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Syntax\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle003\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle004\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle006\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle007\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle008\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle009\nimport Definitions.Def_ThreeSum1960614_Machine_Bundle010\nimport Definitions.Def_ThreeSum1962Source_Bundle02\nimport Definitions.Def_ThreeSum1962Source_Bundle04\nimport Lean\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\nimport Theorems.Thm_ThreeSum1960614_Machine_Light_Ends_for\n\nnamespace Light\nend Light\nnamespace ThreeSum\nend ThreeSum\nnamespace ThreeSum.LightNatPower\nend ThreeSum.LightNatPower\nnamespace ThreeSum1960614.Machine.Light\nend ThreeSum1960614.Machine.Light\nnamespace ThreeSum1960614.Machine.ThreeSum\nend ThreeSum1960614.Machine.ThreeSum\nnamespace ThreeSum1960614.Machine.ThreeSum.LightNatPower\nend ThreeSum1960614.Machine.ThreeSum.LightNatPower\n\nopen _root_.ThreeSum\nopen _root_.ThreeSum1960614.Machine.ThreeSum\n\nopen _root_.ThreeSum.LightNatPower\nopen _root_.ThreeSum1960614.Machine.ThreeSum.LightNatPower\n\nopen _root_.Light\nopen _root_.ThreeSum1960614.Machine.Light\nvariable {lim : _root_.ThreeSum1960614.Machine.Light.Limits} {P : _root_.ThreeSum1960614.Machine.Light.Program} {d : \u2115}",
+  "source": "https://github.com/Anchen0823/three-sum-1960614/blob/8c25c0325de5be4286413f39ca0c9278aad33f52/Submission/ThreeSum/LightNatPower.lean#L24-L56",
+  "tags": [
+    "3sum-1960614",
+    "machine-correctness",
+    "runtime-analysis"
+  ],
+  "visibility": "public",
+  "status": "PUBLISHED",
+  "error_message": "",
+  "theorem_id": "e374a29e-e979-44a6-a24d-0ac95e1d455d",
+  "created_at": "2026-10-15T06:46:40.877276+00:00",
+  "updated_at": "2026-10-15T06:47:34.750751+00:00"
+}

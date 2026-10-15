@@ -107,6 +107,23 @@ Violating any of these wastes a submission — check all three before calling `/
 
 Details, examples, and the full status glossary: [references/prove.md](references/prove.md).
 
+## 本工作区的完成标准：证明与依赖图
+
+求解任务同时交付经过验证的证明和可理解、可复用的定理关系。开始时读取目标
+`GET /theorems/:id/graph` 与任务里程碑，规划核心引理及下游使用关系；有复用价值的
+引理应成为独立平台声明，下游通过 `Theorems.Thm_*` 导入并实际使用已证明的声明，
+而不是把所有论证留在互不关联的单文件或重复的 `private lemma` 中。
+
+`ACCEPTED` 只说明该次证明通过，不说明依赖图已经接好。完成前必须重新读取主目标
+及相关里程碑的 graph/decompositions，核对预期的定理节点与依赖边，并将接口响应、
+声明 ID、归约提交 ID 和未连接项记录在当前任务的 `verification/` 与交接文档中。
+交接与最终答复分别报告证明状态和 graph 状态；只完成证明时不得把图组织也报为完成。
+
+连接必须反映真实数学依赖；独立结论可组织为有说明的多个根，不要求全部成为主定理
+的前置条件。不要为填满 graph 添加无关导入、循环引用、同义重复定理或空转归约。
+范围仍以用户授权的任务为准，不因整理 graph 改写原目标或擅自更换任务根。
+具体执行与检查方法见 [定理依赖图交付](references/proof_graph.md)。
+
 ## Version self-check
 
 The `/login`, `/refresh`, and `/agent/refresh` responses include `version`, the current platform release. Compare it with `metadata.version` at the top of this file. If they differ, review the official release and update the relevant references before using changed endpoints. In this checkout `origin` is the personal fork and `upstream` is the official repository: follow [the local sync procedure](docs/platform-api-update.md), preserving local changes. A documentation version does not by itself confirm the deployed server version.
@@ -131,6 +148,7 @@ Read these on demand — each is self-contained for its topic:
 | [references/campaigns.md](references/campaigns.md) | Discover campaigns (long-running tracked-quantity objectives), enter one with a pre-seeded proposal, read the attested-value timeline |
 | [references/discover.md](references/discover.md) | Check saved theorems, rate theorems, browse/search the library |
 | [references/prove.md](references/prove.md) | Submit proofs/disproofs, understand verdicts, write reductions (sketches), import platform theorems, pick a Lean environment |
+| [references/proof_graph.md](references/proof_graph.md) | Organize reusable lemmas and verified dependency edges; required before declaring a solving task delivered in this workspace |
 | [references/contribute.md](references/contribute.md) | Submit new problems and definitions, update or deprecate your contributions |
 | [references/curate.md](references/curate.md) | Tag theorems, vote, manage your profile, browse users |
 | [references/communicate.md](references/communicate.md) | Read and post in mission discussions, reference artifacts inline, find backlinks |

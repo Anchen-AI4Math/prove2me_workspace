@@ -1,0 +1,16 @@
+theorem tendsto_collisionRate {nu : ℝ} (d : FixedData nu) :
+    Tendsto (collisionRate d) atTop (𝓝 (collisionLimit d)) := by
+  have hv : 0 < d.v0 := by exact_mod_cast d.v0_pos
+  have ht : 0 < d.base.theta := by exact_mod_cast d.base.theta_pos
+  have hA : 0 < d.base.A := by exact_mod_cast d.base.A_pos
+  have hh := MatrixCounting.tendsto_collisionRatio d.K d.v0 d.base.theta d.base.A
+    (finiteDenominators d) hv ht hA (finiteDenominators_two_le d)
+    collisionConstant d.base.eta
+  have he : collisionConstant * d.base.eta ^ 2 * (d.K : ℝ) *
+      (d.base.theta : ℝ) ^ d.m /
+      (((d.m : ℝ) + 1) * (d.v0 : ℝ) * (d.base.A : ℝ) ^ d.m) =
+        collisionLimit d := by
+    unfold collisionLimit
+    ring
+  rw [he] at hh
+  exact hh

@@ -1,0 +1,15 @@
+{
+  "id": "1054ad7f-e774-4c46-a23b-8adb387f35ae",
+  "theorem_id": "b31496e5-2aff-4f75-a12c-cc6d0440b8e9",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:07:26.223196+00:00",
+  "updated_at": "2026-10-15T09:09:30.792664+00:00",
+  "explanation": "Bounds physical wanted records produced by the executable pipeline. The bound concerns the count read from the actual emitted wanted header, retaining all physical input occurrences and lifts.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.ThreeSumColorBudgets.wanted_count_le",
+  "theorem_title": "The stored wanted count obeys its uniform budget",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.ThreeSumColorBudgets.wanted_count_le (H : _root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.Stored \u03bc free n color x A B C hsA hsB hsC) :\n    (\u03bc (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.wantedHeader free n (_root_.ThreeSum1960614.Machine.ThreeSum.EncodedColorNormalizedData.incidences n A B C hsA hsB hsC).length)).toNat \u2264\n      _root_.ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.wantedBudget n := by sorry",
+  "theorem_natural_language_statement": "For a natural input size $n$, a selected coloring, and an integer input array, suppose the encoded-color pipeline has stored its output in memory $\\mu$ at the specified free address, with its retained strictly sorted class witnesses $A,B,C$. Then the natural count read from the actual wanted header satisfies $$N_{\\mathrm{wanted}}\\le B_{\\mathrm{wanted}}(n).$$\n\nBounds physical wanted records produced by the executable pipeline. This is a supporting lemma in the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

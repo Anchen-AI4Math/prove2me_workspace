@@ -1,0 +1,20 @@
+{
+  "submissions": [
+    {
+      "id": "50de6837-5a9a-4f1f-ab1f-e9cff8fc270a",
+      "theorem_id": "e3ae742f-f583-44ac-94b5-283d5e66986a",
+      "user_id": "eb748f54-a7e9-4b93-8588-69f5b241260e",
+      "username": "xuanji",
+      "status": "ACCEPTED",
+      "error_message": "",
+      "file_path": "e3ae742f-f583-44ac-94b5-283d5e66986a/eb748f54-a7e9-4b93-8588-69f5b241260e/50de6837-5a9a-4f1f-ab1f-e9cff8fc270a.lean",
+      "created_at": "2026-10-06T23:44:20.11664+00:00",
+      "updated_at": "2026-10-06T23:49:25.246808+00:00",
+      "accepted_at": "2026-10-06T23:49:25.246808+00:00",
+      "vote_count": 0,
+      "explanation": "`allInstancesP` calls `regimeTestP`, which decides $D^{91}\\le N^5$. In the regime it calls the offline routine `offline32` of the programs with rational parameters at $c=22$, $\\theta=29/250$; otherwise it calls the brute-force thin product.\n\nWe prove the general `allInstancesP_solves`: from the need, the limits satisfy what `offline32` asks (`lim31_of_needP`: in the regime the hypotheses of Theorem 30 hold from a threshold on, and $10^L\\le(N+1)^5$ bounds the word size), so its specification gives the wanted entries within `tOffline32P`; outside the regime the brute force gives them within $40(w+1)(D+1)$ steps. For `programP` the hypotheses are discharged by locating the procedures, and the specification of `offline32` holds in `programP ++ R` because `programP` begins with `base58P`, whose preprocessing and query specifications are `preCoreSpec_all`, `queryAtSpec_all` and `shared_base58`.",
+      "deprecated_at": null
+    }
+  ],
+  "total": 1
+}

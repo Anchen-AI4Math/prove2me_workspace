@@ -1,0 +1,15 @@
+{
+  "id": "0ea0910b-d0bc-45ec-a461-2191b6ac181f",
+  "theorem_id": "0d558eeb-f547-4147-ac8c-d60eced222df",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:50:05.89432+00:00",
+  "updated_at": "2026-10-15T07:53:17.129831+00:00",
+  "explanation": "Apply the verified component contracts in program order, maintain their stored-array invariants, and sum their explicit execution charges. This construction supplies an actual wanted array whose count obeys the selected balancing offset guarantee.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightBalancedWanted.program_meets",
+  "theorem_title": "Constructing a balanced physical wanted array",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightBalancedWanted.program_meets {\u03bc : \u2115 \u2192 \u2124} {a b NL NR M free U d : \u2115} [NeZero M]\n    (left right : \u2115 \u2192 \u2124) (hw : (lim.space : \u2124) \u2264 lim.word)\n    (ha : a+NL \u2264 free) (hb : b+NR \u2264 free)\n    (hspace : _root_.ThreeSum.LightBalancedWanted.space free M left right NL NR U \u2264 lim.space)\n    (hword : (_root_.ThreeSum.LightBalancedWanted.word M NL NR U : \u2124) \u2264 lim.word)\n    (hd : d+Nat.clog 2 M+NL+6 \u2264 lim.depth)\n    (hleft : \u2200 i < NL, \u03bc (a+i)=left i) (hright : \u2200 j < NR, \u03bc (b+j)=right j)\n    (hvaluesL : \u2200 i < NL, |left i| \u2264 (U : \u2124))\n    (hvaluesR : \u2200 j < NR, |right j| \u2264 (U : \u2124)) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim _root_.ThreeSum1960614.Machine.ThreeSum.LightBalancedWanted.program 25 d [a,b,NL,NR,M,free] \u03bc (_root_.ThreeSum.LightBalancedWanted.time M left right NL NR U)\n      (fun r \u03bd => r=(free : \u2124) \u2227\n        _root_.ThreeSum1960614.Machine.ThreeSum.LightWantedSetup.Output \u03bd free M left right NL NR\n          (_root_.ThreeSum.LightOriginalOffset.selected M left right NL NR) \u2227\n        M*(\u03bd free).toNat \u2264 NL*NR \u2227 _root_.ThreeSum1960614.Machine.Light.Kept \u03bc \u03bd free) := by sorry",
+  "theorem_natural_language_statement": "Let two stored integer source arrays of lengths $N_L,N_R$ be bounded by $U$, with nonzero modulus $M$. Under the declared source protection, space, word, and depth bounds, procedure 25 chooses the deterministic original offset and constructs the exact wanted output at the free base. It returns that base and guarantees $$M\\cdot\\operatorname{wantedCount}\\le N_LN_R,$$ preserving earlier memory within the stated time.\n\nThis construction supplies an actual wanted array whose count obeys the selected balancing offset guarantee.",
+  "theorem_status": "Proved"
+}

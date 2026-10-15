@@ -1,0 +1,1 @@
+The generalized harmonic sum is positive, so the common normalizing denominator can be cancelled. The supported rank-one weight is one, while the rank-$n$ weight is $n^{-s}$. Their probability ratio is therefore $n^s$.

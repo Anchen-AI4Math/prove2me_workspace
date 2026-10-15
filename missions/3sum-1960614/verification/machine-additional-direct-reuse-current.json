@@ -1,0 +1,317 @@
+[
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.powerBound_of_fifth",
+      "original_decl": "ThreeSum.ArithmeticStageBounds.powerBound_of_fifth",
+      "candidate_id": "a269756c-57de-453d-bac4-7cbf753e6eb1",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "a269756c-57de-453d-bac4-7cbf753e6eb1",
+      "theorem_name": "ThreeSum.ArithmeticStageBounds.powerBound_of_fifth",
+      "theorem_title": "A fifth-power estimate transfers an asymptotic exponent",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.ArithmeticStageBounds.powerBound_of_fifth : ∀ {f g : Nat → Nat} {a : Real} (hg : ThreeSum.StageBounds.PowerBound g a)\n  (hfg :\n    ∀ (n : Nat),\n      @LE.le.{0} Nat instLENat\n        (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n          (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid))) (f n)\n          (@OfNat.ofNat.{0} Nat (nat_lit 5) (instOfNatNat (nat_lit 5))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 256) (instOfNatNat (nat_lit 256)))\n          (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n            (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid))) (g n)\n            (@OfNat.ofNat.{0} Nat (nat_lit 8) (instOfNatNat (nat_lit 8)))))),\n  ThreeSum.StageBounds.PowerBound f\n    (@HMul.hMul.{0, 0, 0} Real Real Real (@instHMul.{0} Real Real.instMul)\n      (@HDiv.hDiv.{0, 0, 0} Real Real Real (@instHDiv.{0} Real (@DivInvMonoid.toDiv.{0} Real Real.instDivInvMonoid))\n        (@OfNat.ofNat.{0} Real (nat_lit 8)\n          (@instOfNatAtLeastTwo.{0} Real (nat_lit 8) Real.instNatCast\n            (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 7) (instOfNatNat (nat_lit 7)))\n              (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 6) (instOfNatNat (nat_lit 6)))))))\n        (@OfNat.ofNat.{0} Real (nat_lit 5)\n          (@instOfNatAtLeastTwo.{0} Real (nat_lit 5) Real.instNatCast\n            (@Nat.instAtLeastTwoHAddOfNat (@OfNat.ofNat.{0} Nat (nat_lit 4) (instOfNatNat (nat_lit 4)))\n              (@Nat.instNeZeroSucc (@OfNat.ofNat.{0} Nat (nat_lit 3) (instOfNatNat (nat_lit 3))))))))\n      a) := by\n  sorry\n",
+      "natural_language_statement": "Let $f,g:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$. Say a function has power bound $a$ when, for every $\\varepsilon>0$, it is eventually at most $n^{a+\\varepsilon}$. Suppose $g$ has power bound $a$ and $f(n)^5\\le256g(n)^8$ for every $n$. Then\n\n$$\\forall\\varepsilon>0,\\quad f(n)\\le n^{(8/5)a+\\varepsilon}\\quad\\text{for all sufficiently large }n.$$\n\nThis converts an exact integer estimate for a rounded arithmetic cost into the real exponent bound used in the runtime ledger.",
+      "created_at": "2026-10-14T06:34:12.774444+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Aesop\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle10\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Field.ZMod\nimport Mathlib.Algebra.Group.Equiv.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Chebyshev\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Order.Ring.Pow\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Convex.Deriv\nimport Mathlib.Analysis.SpecialFunctions.BinaryEntropy\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.NthRootLemmas\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Data.Bool.Basic\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Data.Finset.Card\nimport Mathlib.Data.Finset.Max\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Prod\nimport Mathlib.Data.Finset.Range\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.EquivFin\nimport Mathlib.Data.Fintype.Pi\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.ModEq\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.MinMax\nimport Mathlib.Data.List.Pi\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Central\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.Size\nimport Mathlib.Data.Nat.Sqrt\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.ZMod.Basic\nimport Mathlib.GroupTheory.Index\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.LinearAlgebra.Matrix.Dual\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.NumberTheory.Bertrand\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Order.Monotone.Basic\nimport Mathlib.RingTheory.Coprime.Lemmas\nimport Mathlib.Tactic.Abel\nimport Mathlib.Tactic.ByContra\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.FinCases\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.LinearCombination\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Push\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace ThreeSum.BandScales\nend ThreeSum.BandScales\nnamespace ThreeSum.CostLedger\nend ThreeSum.CostLedger\nnamespace ThreeSum.HierarchyScales\nend ThreeSum.HierarchyScales\nnamespace ThreeSum.MassScales\nend ThreeSum.MassScales\nnamespace ThreeSum.ModuloCosts\nend ThreeSum.ModuloCosts\nnamespace ThreeSum.Parameters\nend ThreeSum.Parameters\nnamespace ThreeSum.Scales\nend ThreeSum.Scales\nnamespace ThreeSum.StageBounds\nend ThreeSum.StageBounds\nnamespace ThreeSum.Switch\nend ThreeSum.Switch\nnamespace ThreeSum.TrimScales\nend ThreeSum.TrimScales\nnamespace ThreeSum.UniformStageBounds\nend ThreeSum.UniformStageBounds\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/ArithmeticStageBounds.lean#L80-L104",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.DenseGuardWanted.pair_indices_injective",
+      "original_decl": "ThreeSum.DenseGuardWanted.pair_indices_injective",
+      "candidate_id": "c5d07951-1053-45a5-bf23-b85c9b3679c4",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "c5d07951-1053-45a5-bf23-b85c9b3679c4",
+      "theorem_name": "ThreeSum.DenseGuardWanted.pair_indices_injective",
+      "theorem_title": "Stored wanted-pair slots have distinct index pairs",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.DenseGuardWanted.pair_indices_injective : ∀ {μ : Nat → Int} {free NL NR M k k' : Nat} {left right : Nat → Int} {shift : Int}\n  (H : ThreeSum.LightWantedSetup.Output μ free M left right NL NR shift)\n  (hk : @LT.lt.{0} Nat instLTNat k (μ free).toNat) (hk' : @LT.lt.{0} Nat instLTNat k' (μ free).toNat)\n  (hl :\n    @Eq.{1} Nat (ThreeSum.DenseGuardWanted.leftIndex μ free NL NR M k)\n      (ThreeSum.DenseGuardWanted.leftIndex μ free NL NR M k'))\n  (hr :\n    @Eq.{1} Nat (ThreeSum.DenseGuardWanted.rightIndex μ free NL NR M k)\n      (ThreeSum.DenseGuardWanted.rightIndex μ free NL NR M k')),\n  @Eq.{1} Nat k k' := by\n  sorry\n",
+      "natural_language_statement": "Let $\\mu:\\mathbb N\\to\\mathbb Z$ satisfy the wanted-pair output specification at base $f$, for left and right integer arrays of lengths $N_L,N_R$, modulus $M\\in\\mathbb N$, and shift $s\\in\\mathbb Z$. This specification stores without repetition the index pairs $(i,j)$ with $i<N_L$, $j<N_R$, and $M\\mid\\mathrm{left}(i)+s-\\mathrm{right}(j)$. Let $L(k),R(k)$ be the two indices read from stored slot $k$. For valid slots $k,k'<(\\mu(f))_{\\mathbb N}$,\n\n$$\nL(k)=L(k')\\ \\land\\ R(k)=R(k')\\quad\\Longrightarrow\\quad k=k'.\n$$\n\nHere the subscript denotes integer-to-natural conversion. The result supplies distinct labels for the dense guard even when input values or residue keys repeat.",
+      "created_at": "2026-10-14T06:40:25.047437+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Aesop\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle07\nimport Definitions.Def_ThreeSum1962Source_Bundle09\nimport Definitions.Def_ThreeSum1962Source_Bundle11\nimport Definitions.Def_ThreeSum1962Source_Bundle15\nimport Definitions.Def_ThreeSum1962Source_Bundle16\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.BigOperators.Group.Finset.Powerset\nimport Mathlib.Algebra.BigOperators.Group.Finset.Sigma\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Field.ZMod\nimport Mathlib.Algebra.GCDMonoid.Nat\nimport Mathlib.Algebra.Group.Equiv.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Chebyshev\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Order.Ring.Pow\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Algebra.Ring.Nat\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Convex.Deriv\nimport Mathlib.Analysis.SpecialFunctions.BinaryEntropy\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.NthRootLemmas\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Combinatorics.Colex\nimport Mathlib.Data.Bool.Basic\nimport Mathlib.Data.Fin.Embedding\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Data.Finset.Basic\nimport Mathlib.Data.Finset.Card\nimport Mathlib.Data.Finset.Max\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Prod\nimport Mathlib.Data.Finset.Range\nimport Mathlib.Data.Finset.Sigma\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.EquivFin\nimport Mathlib.Data.Fintype.Fin\nimport Mathlib.Data.Fintype.Pi\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.ModEq\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.Int.SuccPred\nimport Mathlib.Data.List.Basic\nimport Mathlib.Data.List.FinRange\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.MinMax\nimport Mathlib.Data.List.Nodup\nimport Mathlib.Data.List.OfFn\nimport Mathlib.Data.List.Pi\nimport Mathlib.Data.List.ProdSigma\nimport Mathlib.Data.List.Range\nimport Mathlib.Data.List.Sublists\nimport Mathlib.Data.List.TakeDrop\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Bounds\nimport Mathlib.Data.Nat.Choose.Central\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.GCD.Basic\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.Prime.Basic\nimport Mathlib.Data.Nat.Size\nimport Mathlib.Data.Nat.Sqrt\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.ZMod.Basic\nimport Mathlib.GroupTheory.Index\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.LinearAlgebra.Matrix.Dual\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.Logic.Equiv.Fin.Basic\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.NumberTheory.Bertrand\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Order.Monotone.Basic\nimport Mathlib.RingTheory.Coprime.Lemmas\nimport Mathlib.Tactic.Abel\nimport Mathlib.Tactic.ByContra\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.FinCases\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Push\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\nimport Mathlib.Tactic.Tauto\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace Light\nend Light\nnamespace ThreeSum.WantedRecordOrder\nend ThreeSum.WantedRecordOrder\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/DenseGuardWanted.lean#L23-L39",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightBandPreprocessing.Represents.keep",
+      "original_decl": "ThreeSum.LightBandPreprocessing.Represents.keep",
+      "candidate_id": "b9440ac4-e11b-464f-a4c0-9eadee22e18e",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "b9440ac4-e11b-464f-a4c0-9eadee22e18e",
+      "theorem_name": "ThreeSum.LightBandPreprocessing.Represents.keep",
+      "theorem_title": "Band representation survives preservation of the memory prefix",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.LightBandPreprocessing.Represents.keep : ∀ {μ μ' : Nat → Int} {values endpoints g bound : Nat}\n  {hg : @LT.lt.{0} Nat instLTNat (@OfNat.ofNat.{0} Nat (nat_lit 0) (instOfNatNat (nat_lit 0))) g}\n  {original L : List.{0} Int} {hs : @List.Pairwise.{0} Int (fun (x1 x2 : Int) => @LT.lt.{0} Int Int.instLTInt x1 x2) L}\n  (h : ThreeSum.LightBandPreprocessing.Represents μ values endpoints g hg original L hs) (hk : Light.Kept μ μ' bound)\n  (hv :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) values (@List.length.{0} Int original)) bound)\n  (he :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) endpoints\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n          (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Int original)))\n      bound),\n  ThreeSum.LightBandPreprocessing.Represents μ' values endpoints g hg original L hs := by\n  sorry\n",
+      "natural_language_statement": "Let $O,L$ be integer lists with $L$ strictly increasing, let $g>0$ be a natural band size, and let $v,e,b\\in\\mathbb N$ be addresses and a cutoff. Write $\\mathcal R_\\mu(v,e,g;O,L)$ for the representation that stores $L$ at $v$, has $|L|\\le|O|$ and the same value membership as $O$, and stores its length, band count, and lower/upper endpoints at the header $e$. Suppose integer memories $\\mu,\\mu'$ agree at every address below $b$, and\n$v+|O|\\le b$ and $e+2+2|O|\\le b$. Then\n\n$$\n\\mathcal R_\\mu(v,e,g;O,L)\\Longrightarrow\n\\mathcal R_{\\mu'}(v,e,g;O,L).\n$$\n\nThe result allows later computation beyond the cutoff to preserve the normalized class and its band data as one reusable invariant.",
+      "created_at": "2026-10-14T06:42:38.685708+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle04\nimport Definitions.Def_ThreeSum1962Source_Bundle05\nimport Definitions.Def_ThreeSum1962Source_Bundle06\nimport Definitions.Def_ThreeSum1962Source_Bundle08\nimport Definitions.Def_ThreeSum1962Source_Bundle09\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Combinatorics.Colex\nimport Mathlib.Data.Fin.Embedding\nimport Mathlib.Data.Finset.Basic\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Fintype.Sets\nimport Mathlib.Data.Fintype.Sum\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.Int.SuccPred\nimport Mathlib.Data.List.Basic\nimport Mathlib.Data.List.Dedup\nimport Mathlib.Data.List.FinRange\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.Nodup\nimport Mathlib.Data.List.ProdSigma\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Bounds\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace Light\nend Light\nnamespace ThreeSum.BandEnumeration\nend ThreeSum.BandEnumeration\nnamespace ThreeSum.BandPartition\nend ThreeSum.BandPartition\nnamespace ThreeSum.LightSubsetAddress\nend ThreeSum.LightSubsetAddress\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/LightBandPreprocessing.lean#L41-L57",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawAColor.tables_keep",
+      "original_decl": "ThreeSum.LightBandRawAColor.tables_keep",
+      "candidate_id": "585ab271-9bf8-40ec-96c8-7a9695bfec3a",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "585ab271-9bf8-40ec-96c8-7a9695bfec3a",
+      "theorem_name": "ThreeSum.LightBandRawAColor.tables_keep",
+      "theorem_title": "Owner tables survive preservation of their memory prefix",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.LightBandRawAColor.tables_keep : ∀ {μ ν : Nat → Int} {tables bound : Nat} {A B C : ThreeSum.BandEnumeration.Family}\n  (ht : ThreeSum.LightBandEnumeration.Tables μ tables A B C) (hk : Light.Kept μ ν bound)\n  (hb :\n    @LE.le.{0} Nat instLENat\n      (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) tables\n        (ThreeSum.LightBandEnumeration.count A.size B.size C.size))\n      bound),\n  ThreeSum.LightBandEnumeration.Tables ν tables A B C := by\n  sorry\n",
+      "natural_language_statement": "Let $A,B,C$ be finite families of nonempty, sorted, pairwise separated integer intervals, with sizes $n_A,n_B,n_C$. Their three consecutive owner tables store interval-lookup results for the $B\\times C$, $A\\times B$, and $A\\times C$ pairs. Let $\\mathcal T_\\mu(t;A,B,C)$ denote that table representation in integer memory $\\mu$, starting at address $t$.\n\nSuppose memories $\\mu,\\nu$ agree below a natural cutoff $b$ and $t+n_Bn_C+n_An_B+n_An_C\\le b$. Then\n\n$$\n\\mathcal T_\\mu(t;A,B,C)\\Longrightarrow\n\\mathcal T_\\nu(t;A,B,C).\n$$\n\nThis preserves the owner-table invariant while later catalog construction writes in higher memory, without imposing any further condition on the interval values.",
+      "created_at": "2026-10-14T06:42:40.041232+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Aesop\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle04\nimport Definitions.Def_ThreeSum1962Source_Bundle06\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Group.Finset.Piecewise\nimport Mathlib.Algebra.BigOperators.Group.Finset.Powerset\nimport Mathlib.Algebra.BigOperators.Group.Finset.Sigma\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Field.ZMod\nimport Mathlib.Algebra.GCDMonoid.Nat\nimport Mathlib.Algebra.Group.Equiv.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.List\nimport Mathlib.Algebra.Order.Chebyshev\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Order.Ring.Pow\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Algebra.Ring.Nat\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Convex.Deriv\nimport Mathlib.Analysis.SpecialFunctions.BinaryEntropy\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Combinatorics.Colex\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Bool.Basic\nimport Mathlib.Data.Fin.Embedding\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Data.Finset.Basic\nimport Mathlib.Data.Finset.Card\nimport Mathlib.Data.Finset.Image\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Prod\nimport Mathlib.Data.Finset.Range\nimport Mathlib.Data.Finset.Sigma\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.EquivFin\nimport Mathlib.Data.Fintype.Pi\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Fintype.Sets\nimport Mathlib.Data.Fintype.Sum\nimport Mathlib.Data.Int.Basic\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.ModEq\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.Int.SuccPred\nimport Mathlib.Data.List.Basic\nimport Mathlib.Data.List.Dedup\nimport Mathlib.Data.List.FinRange\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.MinMax\nimport Mathlib.Data.List.Nodup\nimport Mathlib.Data.List.OfFn\nimport Mathlib.Data.List.Pi\nimport Mathlib.Data.List.ProdSigma\nimport Mathlib.Data.List.TakeDrop\nimport Mathlib.Data.Nat.Bitwise\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Bounds\nimport Mathlib.Data.Nat.Choose.Central\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.GCD.Basic\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.Prime.Basic\nimport Mathlib.Data.Nat.Size\nimport Mathlib.Data.Nat.Sqrt\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.ZMod.Basic\nimport Mathlib.GroupTheory.Index\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.LinearAlgebra.Matrix.Dual\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.Logic.Equiv.Fin.Basic\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.Bertrand\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Order.Monotone.Basic\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.RingTheory.Coprime.Lemmas\nimport Mathlib.Tactic.Abel\nimport Mathlib.Tactic.ByContra\nimport Mathlib.Tactic.DeriveFintype\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.FinCases\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Push\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\nimport Mathlib.Tactic.Tauto\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace Light\nend Light\nnamespace ThreeSum.BandCandidateRows\nend ThreeSum.BandCandidateRows\nnamespace ThreeSum.BandEnumeration\nend ThreeSum.BandEnumeration\nnamespace ThreeSum.BandPartition\nend ThreeSum.BandPartition\nnamespace ThreeSum.BandRawA\nend ThreeSum.BandRawA\nnamespace ThreeSum.ColorClassLists\nend ThreeSum.ColorClassLists\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/LightBandRawAColor.lean#L63-L80",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.LightSortedBands.Prepared.transfer",
+      "original_decl": "ThreeSum.LightSortedBands.Prepared.transfer",
+      "candidate_id": "4ef71fa7-e0ff-4f02-b583-30da7b032c2a",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "4ef71fa7-e0ff-4f02-b583-30da7b032c2a",
+      "theorem_name": "ThreeSum.LightSortedBands.Prepared.transfer",
+      "theorem_title": "Prepared sorted bands depend only on their allocated regions",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.LightSortedBands.Prepared.transfer : ∀ {μ μ' : Nat → Int} {values endpoints g : Nat} {original : List.{0} Int}\n  (h : ThreeSum.LightSortedBands.Prepared μ values endpoints g original)\n  (hk :\n    ∀ (a : Nat),\n      Or\n          (And (@LE.le.{0} Nat instLENat values a)\n            (@LT.lt.{0} Nat instLTNat a\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) values (@List.length.{0} Int original))))\n          (And (@LE.le.{0} Nat instLENat endpoints a)\n            (@LT.lt.{0} Nat instLTNat a\n              (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat)\n                (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) endpoints\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))))\n                (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat)\n                  (@OfNat.ofNat.{0} Nat (nat_lit 2) (instOfNatNat (nat_lit 2))) (@List.length.{0} Int original))))) →\n        @Eq.{1} Int (μ' a) (μ a)),\n  ThreeSum.LightSortedBands.Prepared μ' values endpoints g original := by\n  sorry\n",
+      "natural_language_statement": "Let $O$ be an integer list, let $v,e,g\\in\\mathbb N$, and let $\\mu,\\mu'$ be integer memories. The predicate $\\mathcal P_\\mu(v,e,g;O)$ means that some strictly increasing list of the same values as $O$, of length at most $|O|$, is stored at $v$, with the prescribed length and band-count headers and lower/upper endpoints at $e$. Suppose the memories agree throughout\n$[v,v+|O|)$ and $[e,e+2+2|O|)$. Then\n\n$$\n\\mathcal P_\\mu(v,e,g;O)\\Longrightarrow\n\\mathcal P_{\\mu'}(v,e,g;O).\n$$\n\nThe band-size parameter $g$ is any natural number.\n\nThis specifies exactly which regions must be retained when later machine stages modify other parts of memory.",
+      "created_at": "2026-10-14T06:42:37.419265+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle05\nimport Definitions.Def_ThreeSum1962Source_Bundle08\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.BigOperators.Ring.Finset\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Polynomial.Basic\nimport Mathlib.Algebra.Polynomial.Coeff\nimport Mathlib.Combinatorics.Colex\nimport Mathlib.Data.Fin.Embedding\nimport Mathlib.Data.Finset.Basic\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Fintype.Sets\nimport Mathlib.Data.Fintype.Sum\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.Int.SuccPred\nimport Mathlib.Data.List.Basic\nimport Mathlib.Data.List.Dedup\nimport Mathlib.Data.List.FinRange\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.Nodup\nimport Mathlib.Data.List.ProdSigma\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Bounds\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Log\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace Light\nend Light\nnamespace ThreeSum.BandPartition\nend ThreeSum.BandPartition\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/LightSortedBands.lean#L180-L203",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.PolynomialResources.pair_polyBound_of_powerBound",
+      "original_decl": "ThreeSum.PolynomialResources.pair_polyBound_of_powerBound",
+      "candidate_id": "97f1d606-8684-42f4-b6be-a30c52f48d0c",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "97f1d606-8684-42f4-b6be-a30c52f48d0c",
+      "theorem_name": "ThreeSum.PolynomialResources.pair_polyBound_of_powerBound",
+      "theorem_title": "A uniform two-parameter polynomial bound from an eventual power bound",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.PolynomialResources.pair_polyBound_of_powerBound : ∀ {f : Nat → Nat} {a : Real} (hf : ThreeSum.StageBounds.PowerBound f a) (e : Nat),\n  ∃ (s : Nat) (k : Nat),\n    ∀ (n U : Nat),\n      @LE.le.{0} Nat instLENat\n        (@HMul.hMul.{0, 0, 0} Nat Nat Nat (@instHMul.{0} Nat instMulNat) (f n)\n          (@HPow.hPow.{0, 0, 0} Nat Nat Nat\n            (@instHPow.{0, 0} Nat Nat (@NPow.toPow.{0} Nat (@Monoid.toNPow.{0} Nat Nat.instMonoid)))\n            (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) U\n              (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n            e))\n        (Light.polyBound s k (@List.cons.{0} Nat n (@List.cons.{0} Nat U (@List.nil.{0} Nat)))) := by\n  sorry\n",
+      "natural_language_statement": "Let $f:\\mathbb N\\to\\mathbb N$, let $a\\in\\mathbb R$, and suppose that for every $\\varepsilon>0$, one has $f(n)\\le n^{a+\\varepsilon}$ for all sufficiently large $n$. For every fixed $e\\in\\mathbb N$, there exist $s,k\\in\\mathbb N$ such that\n\n$$\n\\forall n,U\\in\\mathbb N,\\qquad\nf(n)(U+1)^e\\le 2^s\\bigl((n+1)(U+1)\\bigr)^k.\n$$\n\nThe expression on the right is the compiler's polynomial resource bound for the two parameters $n$ and $U$. Its constants are independent of both parameters, and the inequality holds at every input size, including the finitely many sizes excluded by the eventual hypothesis.\n\nThis converts asymptotic resource envelopes into the uniform polynomial limits required for compilation.",
+      "created_at": "2026-10-14T06:42:25.686294+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Aesop\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_WordSize\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle10\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Field.ZMod\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.MvPolynomial.Basic\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.BigOperators.GroupWithZero.List\nimport Mathlib.Algebra.Order.Chebyshev\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Group.Abs\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Algebra.Order.Ring.Pow\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Convex.Deriv\nimport Mathlib.Analysis.SpecialFunctions.BinaryEntropy\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Log.Basic\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.NthRootLemmas\nimport Mathlib.Analysis.SpecialFunctions.Pow.Real\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Combinatorics.SimpleGraph.Basic\nimport Mathlib.Data.Bool.Basic\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Data.Finset.Card\nimport Mathlib.Data.Finset.Max\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Prod\nimport Mathlib.Data.Finset.Sort\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.Pi\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.List.MinMax\nimport Mathlib.Data.List.Pi\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Central\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.Size\nimport Mathlib.Data.Nat.Sqrt\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.ZMod.Basic\nimport Mathlib.GroupTheory.Index\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.LinearAlgebra.Matrix.Dual\nimport Mathlib.LinearAlgebra.Matrix.Notation\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.MeasureTheory.Integral.Bochner.Basic\nimport Mathlib.NumberTheory.Bertrand\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.NumberTheory.PrimeCounting\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Order.Monotone.Basic\nimport Mathlib.Probability.Independence.Basic\nimport Mathlib.Tactic.ByContra\nimport Mathlib.Tactic.DeriveFintype\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.FinCases\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.LinearCombination\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Push\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace ThreeSum.StageBounds\nend ThreeSum.StageBounds\nnamespace ThreeSumApsp.WordRam\nend ThreeSumApsp.WordRam\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/PolynomialResources.lean#L48-L60",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.ThreeSum.StageBounds.PowerBound.add_same",
+      "original_decl": "ThreeSum.StageBounds.PowerBound.add_same",
+      "candidate_id": "c5be299e-3538-45e1-9ba5-ce5da321d5ac",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "c5be299e-3538-45e1-9ba5-ce5da321d5ac",
+      "theorem_name": "ThreeSum.StageBounds.PowerBound.add_same",
+      "theorem_title": "Adding two costs preserves their common power bound",
+      "status": "Proved",
+      "formal_statement": "theorem ThreeSum.StageBounds.PowerBound.add_same : ∀ {f g : Nat → Nat} {a : Real} (hf : ThreeSum.StageBounds.PowerBound f a) (hg : ThreeSum.StageBounds.PowerBound g a),\n  ThreeSum.StageBounds.PowerBound\n    (fun (n : Nat) => @HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) (f n) (g n)) a := by\n  sorry\n",
+      "natural_language_statement": "Let $f,g:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$. Suppose each function has power bound $a$: for every positive slack, each is eventually bounded by $n$ raised to $a$ plus that slack. Then their sum has the same power bound:\n\n$$\\forall\\varepsilon>0,\\quad f(n)+g(n)\\le n^{a+\\varepsilon}\\quad\\text{for all sufficiently large }n.$$\n\nThis closure property combines separate stage costs without increasing their common asymptotic exponent.",
+      "created_at": "2026-10-14T06:32:54.152394+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "import Aesop\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Definitions.Def_ThreeSum1962Source_Bundle10\nimport Lean.Elab.Tactic.Omega\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Field.ZMod\nimport Mathlib.Algebra.Order.BigOperators.Group.Finset\nimport Mathlib.Algebra.Order.Chebyshev\nimport Mathlib.Algebra.Order.Floor.Div\nimport Mathlib.Algebra.Order.Ring.Pow\nimport Mathlib.Analysis.Complex.ExponentialBounds\nimport Mathlib.Analysis.Convex.Deriv\nimport Mathlib.Analysis.SpecialFunctions.BinaryEntropy\nimport Mathlib.Analysis.SpecialFunctions.Log.Base\nimport Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics\nimport Mathlib.Analysis.SpecialFunctions.Pow.NthRootLemmas\nimport Mathlib.Analysis.SpecificLimits.Basic\nimport Mathlib.Analysis.SpecificLimits.Normed\nimport Mathlib.Data.Bool.Basic\nimport Mathlib.Data.Fin.VecNotation\nimport Mathlib.Data.Finset.Card\nimport Mathlib.Data.Finset.Max\nimport Mathlib.Data.Finset.Powerset\nimport Mathlib.Data.Finset.Prod\nimport Mathlib.Data.Fintype.BigOperators\nimport Mathlib.Data.Fintype.Card\nimport Mathlib.Data.Fintype.Pi\nimport Mathlib.Data.Fintype.Prod\nimport Mathlib.Data.List.MinMax\nimport Mathlib.Data.List.Pi\nimport Mathlib.Data.Nat.Choose.Basic\nimport Mathlib.Data.Nat.Choose.Central\nimport Mathlib.Data.Nat.Choose.Sum\nimport Mathlib.Data.Nat.Sqrt\nimport Mathlib.Data.Real.Basic\nimport Mathlib.Data.ZMod.Basic\nimport Mathlib.GroupTheory.Index\nimport Mathlib.LinearAlgebra.Dual.Lemmas\nimport Mathlib.LinearAlgebra.Matrix.Dual\nimport Mathlib.LinearAlgebra.Matrix.ToLin\nimport Mathlib.NumberTheory.Bertrand\nimport Mathlib.NumberTheory.Chebyshev\nimport Mathlib.Order.Monotone.Basic\nimport Mathlib.Tactic.ByContra\nimport Mathlib.Tactic.FieldSimp\nimport Mathlib.Tactic.FinCases\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.LinearCombination\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Push\nimport Mathlib.Tactic.Ring\nimport Mathlib.Tactic.SplitIfs\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace ThreeSum.BandScales\nend ThreeSum.BandScales\nnamespace ThreeSum.CostLedger\nend ThreeSum.CostLedger\nnamespace ThreeSum.HierarchyScales\nend ThreeSum.HierarchyScales\nnamespace ThreeSum.MassScales\nend ThreeSum.MassScales\nnamespace ThreeSum.Parameters\nend ThreeSum.Parameters\nnamespace ThreeSum.Scales\nend ThreeSum.Scales\nnamespace ThreeSum.Switch\nend ThreeSum.Switch\nnamespace ThreeSum.TrimScales\nend ThreeSum.TrimScales\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSum/StageBounds.lean#L80-L92",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.Light.seg_cons",
+      "original_decl": "Light.seg_cons",
+      "candidate_id": "67ee68f5-e63c-40d4-935d-03250600ef2d",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "67ee68f5-e63c-40d4-935d-03250600ef2d",
+      "theorem_name": "Light.seg_cons",
+      "theorem_title": "Splitting the head of a stored memory segment",
+      "status": "Proved",
+      "formal_statement": "theorem Light.seg_cons : ∀ {μ : Nat → Int} {a : Nat} {l : List.{0} Int} {x : Int},\n  Iff (Light.Seg μ a (@List.cons.{0} Int x l))\n    (And (@Eq.{1} Int (μ a) x)\n      (Light.Seg μ\n        (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a\n          (@OfNat.ofNat.{0} Nat (nat_lit 1) (instOfNatNat (nat_lit 1))))\n        l)) := by\n  sorry\n",
+      "natural_language_statement": "Let $\\mu:\\mathbb N\\to\\mathbb Z$ be memory, $a$ a starting address, $x\\in\\mathbb Z$, and $L$ a list of integers. Write $\\operatorname{Seg}(\\mu,a,L)$ when memory at addresses $a+i$ contains $L_i$ for every $i<|L|$. Then\n\n$$\\operatorname{Seg}(\\mu,a,x::L)\\iff\\mu(a)=x\\;\\land\\;\\operatorname{Seg}(\\mu,a+1,L).$$\n\nThis gives the head-and-tail rule for reading or constructing contiguous memory representations.",
+      "created_at": "2026-10-14T06:32:39.454093+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace ThreeSumApsp\nend ThreeSumApsp\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSumApsp/Lang/Lib/Seg.lean#L65-L77",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  },
+  {
+    "candidate": {
+      "name": "ThreeSum1960614.Machine.Light.seg_append",
+      "original_decl": "Light.seg_append",
+      "candidate_id": "d25274d7-03e8-45dc-bcf7-1b443f3d15d9",
+      "already_published": false,
+      "children": [],
+      "server_type_check_required": true
+    },
+    "public": {
+      "theorem_id": "d25274d7-03e8-45dc-bcf7-1b443f3d15d9",
+      "theorem_name": "Light.seg_append",
+      "theorem_title": "Concatenation corresponds to adjacent memory segments",
+      "status": "Proved",
+      "formal_statement": "theorem Light.seg_append : ∀ {μ : Nat → Int} {a : Nat} {l₁ l₂ : List.{0} Int},\n  Iff\n    (Light.Seg μ a\n      (@HAppend.hAppend.{0, 0, 0} (List.{0} Int) (List.{0} Int) (List.{0} Int)\n        (@instHAppendOfAppend.{0} (List.{0} Int) (@List.instAppend.{0} Int)) l₁ l₂))\n    (And (Light.Seg μ a l₁)\n      (Light.Seg μ (@HAdd.hAdd.{0, 0, 0} Nat Nat Nat (@instHAdd.{0} Nat instAddNat) a (@List.length.{0} Int l₁)) l₂)) := by\n  sorry\n",
+      "natural_language_statement": "Let $\\mu:\\mathbb N\\to\\mathbb Z$ be memory, $a\\in\\mathbb N$ an address, and $L_1,L_2$ lists of integers. The predicate $\\operatorname{Seg}(\\mu,a,L)$ means that memory contains $L$ consecutively from address $a$. Then\n\n$$\\operatorname{Seg}(\\mu,a,L_1\\mathbin{+\\!+}L_2)\\iff\\operatorname{Seg}(\\mu,a,L_1)\\land\\operatorname{Seg}(\\mu,a+|L_1|,L_2).$$\n\nThis equivalence allows a contiguous array representation to be split at a list boundary or assembled from adjacent pieces, including empty pieces.",
+      "created_at": "2026-10-14T06:32:56.575147+00:00",
+      "vote_count": 0,
+      "tags": [
+        "3sum",
+        "algorithms",
+        "fine-grained-complexity",
+        "three-sum-1962",
+        "word-ram"
+      ],
+      "preamble": "/-\nCopyright (c) 2026 Anthropic, PBC. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nSPDX-License-Identifier: Apache-2.0\n-/\n\nimport Definitions.Def_APSPSource_RemainingDefinitions\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Logic\nimport Definitions.Def_APSPSource_ThreeSumApsp_Lang_Regions\nimport Definitions.Def_ThreeSum1962Source_Bundle01\nimport Mathlib.Algebra.BigOperators.Fin\nimport Mathlib.Algebra.BigOperators.Group.Finset.Basic\nimport Mathlib.Algebra.Group.Int.Defs\nimport Mathlib.Algebra.GroupWithZero.Nat\nimport Mathlib.Algebra.Order.BigOperators.Group.List\nimport Mathlib.Algebra.Order.BigOperators.Group.Multiset\nimport Mathlib.Algebra.Order.Field.Basic\nimport Mathlib.Algebra.Order.Group.Int\nimport Mathlib.Algebra.Order.Group.Nat\nimport Mathlib.Algebra.Order.Group.Unbundled.Abs\nimport Mathlib.Algebra.Order.Ring.Abs\nimport Mathlib.Algebra.Order.Ring.Int\nimport Mathlib.Data.Int.Cast.Lemmas\nimport Mathlib.Data.Int.Notation\nimport Mathlib.Data.List.GetD\nimport Mathlib.Data.Nat.Cast.Order.Ring\nimport Mathlib.Data.Nat.Count\nimport Mathlib.Data.Nat.Notation\nimport Mathlib.Data.Nat.SuccPred\nimport Mathlib.LinearAlgebra.Matrix.Defs\nimport Mathlib.Logic.Function.Basic\nimport Mathlib.Order.ConditionallyCompleteLattice.Basic\nimport Mathlib.Tactic.GCongr\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.NormNum\nimport Mathlib.Tactic.Positivity\nimport Mathlib.Tactic.Ring\n\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nset_option Elab.async false\nnamespace ThreeSumApsp\nend ThreeSumApsp\n\n",
+      "source": "https://github.com/c0ldzy17/three-sum-lean/blob/2b639655e07421b9ac743de9090459bab473a7c0/Submission/ThreeSumApsp/Lang/Lib/Seg.lean#L79-L93",
+      "deprecated_at": null,
+      "deprecated_by": null,
+      "visibility": "public",
+      "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "audits": [],
+      "readback": null
+    }
+  }
+]

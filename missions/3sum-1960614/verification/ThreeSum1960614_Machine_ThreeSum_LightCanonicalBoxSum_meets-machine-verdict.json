@@ -1,0 +1,15 @@
+{
+  "id": "ca94e232-bca8-4c35-9db6-ed7c3349d14f",
+  "theorem_id": "cff27f96-e108-4ea2-8256-d9f79b76918e",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T07:25:42.526672+00:00",
+  "updated_at": "2026-10-15T07:28:54.049593+00:00",
+  "explanation": "Apply the verified component contracts in program order, maintain their stored-array invariants, and sum their explicit execution charges. This sum computes the canonical-box portion of the sparse reporting query from actual retained compact tables.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.LightCanonicalBoxSum.meets",
+  "theorem_title": "Summing the canonical sparse boxes",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.LightCanonicalBoxSum.meets {pMain pEnum pSum : \u2115}\n    (hmain : P[pMain]? = some (_root_.ThreeSum1960614.Machine.ThreeSum.LightCanonicalBoxSum.body pEnum pSum))\n    (C : _root_.ThreeSum1960614.Machine.ThreeSum.LightCanonicalBoxSum.Procs P pEnum pSum)\n    {\u03bc : \u2115 \u2192 \u2124} {W cut t base maskBase work B d : \u2115}\n    (Q : Finset (Fin W)) (weight : Finset (Fin W) \u2192 \u2124)\n    (hw : (lim.space : \u2124) \u2264 lim.word) (hcut : cut \u2264 W)\n    (hdata : base+(W+1)*_root_.ThreeSum.SubsetAddress.downsetCap W cut \u2264 maskBase)\n    (hmasks : maskBase+Q.card.choose t \u2264 work)\n    (hspace : work+_root_.ThreeSum.LightPascal.tableSize W+(W+1) \u2264 lim.space)\n    (hword : (((W+1)*2^(W+1) : \u2115) : \u2124) \u2264 lim.word)\n    (haccWord : ((Q.card.choose t*(2^W*B) : \u2115) : \u2124) \u2264 lim.word)\n    (ht : t \u2264 Q.card+1) (hflags : Q.card-t \u2264 cut)\n    (hweight : \u2200 S, S.card \u2264 cut \u2192 |weight S| \u2264 B)\n    (hstored : _root_.ThreeSum.LightBoxStages.StoredThrough \u03bc base cut weight W)\n    (hd : d+W+8 \u2264 lim.depth) :\n    _root_.ThreeSum1960614.Machine.Light.Meets lim P pMain d [W,cut,Q.card,_root_.ThreeSum.SubsetAddress.subsetMask Q,t,base,maskBase,work] \u03bc (_root_.ThreeSum.LightCanonicalBoxSum.time W Q.card t)\n      (fun r \u03bc' =>\n        r = \u2211 U \u2208 Q.powersetCard t, _root_.ThreeSum.SparseBoxes.boxSum (Q \\ U) (_root_.ThreeSum.SparseBoxes.queryFree Q U) weight \u2227\n        _root_.ThreeSum1960614.Machine.Light.KeptBut \u03bc \u03bc' work maskBase (Q.card.choose t)) := by sorry",
+  "theorem_natural_language_statement": "Let $Q$ be a width-$W$ query set and $t\\le|Q|+1$, with $|Q|-t$ within cutoff $c\\le W$. Suppose a bounded integer weight function has all compact box stages stored, and the table, mask workspace, accumulator, helper, word, and depth bounds hold. The program returns $$\\sum_{U\\subseteq Q,\\ |U|=t}\\operatorname{boxSum}(Q\\setminus U,\\operatorname{queryFree}(Q,U),\\mathrm{weight})$$ in its stated time, preserving memory outside its mask workspace and scratch.\n\nThis sum computes the canonical-box portion of the sparse reporting query from actual retained compact tables.",
+  "theorem_status": "Proved"
+}

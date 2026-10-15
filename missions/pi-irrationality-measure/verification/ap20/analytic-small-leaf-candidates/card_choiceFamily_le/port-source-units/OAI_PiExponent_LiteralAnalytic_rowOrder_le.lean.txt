@@ -1,0 +1,8 @@
+theorem rowOrder_le {nu : ℝ} (d : FixedData nu) {H : ℝ} (r : Row d H) :
+    (r.2.1 0 : ℝ) ≤ H / (d.v0 : ℝ) := by
+  have hr := InterpolationMatrix.row_weight_lt d.v0_pos d.base.theta_pos (fixedWeights_pos d) r
+  have hs : 0 ≤ (∑ i, fixedWeights d i * (r.2.1 i.succ : ℝ)) / (d.base.theta : ℝ) :=
+    div_nonneg (Finset.sum_nonneg fun i _ => mul_nonneg (fixedWeights_pos d i).le (Nat.cast_nonneg _))
+      d.base.theta_pos.le
+  apply (le_div_iff₀ d.v0_pos).mpr
+  nlinarith

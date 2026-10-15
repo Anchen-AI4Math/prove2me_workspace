@@ -1,0 +1,45 @@
+{
+  "theorem_id": "7c23d3cb-c4a0-4bc1-975a-ca2e5849adc6",
+  "theorem_name": "ThreeSum1960614.costs_solve_3sum",
+  "theorem_title": "Complete expansion-232 program and runtime bridge",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSum1960614.costs_solve_3sum (r : ℚ)\n    (hr : 0 < r) (hcost : ∀ z ∈ costs, z < (r : ℝ)) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+  "natural_language_statement": "For every positive rational $r$ strictly above all twelve costs of the fixed expansion-232 quartic parameter choice, deterministic integer 3SUM satisfies the campaign's exact shared word-RAM specification in $O(n^r)$ time. The theorem must construct a finite program for each fixed integer-size exponent, preserve distinct input positions and repetitions, reject sizes below three, and establish correctness for every sufficiently large word width together with instruction, addressing and memory costs. No solver oracle or assumed program-correctness contract is a hypothesis. This is the remaining algorithmic extension sought by this mission: the source package explicitly leaves it unproved.",
+  "created_at": "2026-10-14T05:09:50.156568+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "entropy",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSum1960614_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen ThreeSum1960614\n",
+  "source": "User-supplied 3sum_certificate_1p960614_v3/3sum_certificate_v3/PROOF.md (14 October 2026); Sections 0, 4–6: outstanding algorithmic extension; upstream https://github.com/c0ldzy17/three-sum-lean/tree/2b639655e07421b9ac743de9090459bab473a7c0",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "29c489aa-9fef-48e6-bbc1-986389d8a096",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-14T21:34:34.686797+00:00"
+    },
+    {
+      "audit_id": "8415489a-224d-46d5-a2a6-a1c0a34dc5df",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-14T21:34:35.078226+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "---\ndeclaration: ThreeSum1960614.costs_solve_3sum\nreadback_model: GPT-6\n---\n\nFor every rational number $r$, assume $0<r$ and assume that each of the following twelve real numbers is strictly less than the real number represented by $r$. Here $e=203889696/1000000000$, $d=62656016/1000000000$, $s=193175570/1000000000$, and $H(t)=\\bigl(-t\\ln t-(1-t)\\ln(1-t)\\bigr)/\\ln 2$ is the binary entropy in base two; all arguments of $H$ appearing below lie strictly between zero and one:\n$$\n\\begin{aligned}\n&232eH(1/232),\\\\\n&1+e\\bigl(116H(1/232)+d\\bigr),\\\\\n&2-es,\\\\\n&2-e\\bigl(1/2-d-H(40409899/1000000000)\\bigr),\\\\\n&2-e\\Bigl(1/2+d-\\bigl(464H(1/464)-232H(1/232)-1\\bigr)\n -(2790503/10000000)(1+s+2d)\\Bigr),\\\\\n&2-e\\Bigl(13/20-1/2+d-\\bigl(464H(1/464)-232H(1/232)-1\\bigr)\\Bigr),\\\\\n&(8e/5)\\bigl(116H(1/232)+1/2\\bigr),\\\\\n&2+e\\bigl(4/5-(232/5)H(1/232)+2d\\bigr),\\\\\n&1+e(1/2+d),\\\\\n&2-e\\bigl(116H(1/232)-d\\bigr),\\\\\n&2-2e\\bigl(116H(1/232)-d\\bigr),\\\\\n&1.\n\\end{aligned}\n$$\nThen, for every natural number $\\kappa$ (including zero), there exist a finite program $P$, a natural number $b$ (with no separately imposed positivity condition), and a function $T:\\mathbb N\\to\\mathbb N$ with the following two properties simultaneously. First, writing the positive rational $r=p/q$ in lowest terms with positive integer numerator $p$ and positive integer denominator $q$, there exists a natural number $K$ such that, for every natural number $n\\ge2$, $T(n)^q\\le K n^p$. Second, for every natural number $n$, every function $x:\\{0,\\ldots,n-1\\}\\to\\mathbb Z$, and every natural word width $W$, if $|x(i)|\\le n^\\kappa$ for every input position $i$ and $W\\ge b(\\lfloor\\log_2 n\\rfloor+1)$, then there exist a Boolean verdict $v$ and a final memory $m$ assigning a $W$-bit word to every integer address such that running $P$ from program position zero on the initial memory specified below halts within $T(n)$ steps with precisely verdict $v$ and memory $m$, and\n$$\nv=\\mathrm{true}\\quad\\Longleftrightarrow\\quad\n\\exists i,j,k\\in\\{0,\\ldots,n-1\\},\\quad\ni\\ne j\\ \\land\\ j\\ne k\\ \\land\\ i\\ne k\\ \\land\\ x(i)+x(j)+x(k)=0.\n$$\nThe sum and absolute-value bound in this equivalence and its hypothesis are operations on the original, unbounded integers. The witnesses $P,b,T$ may depend on $\\kappa$ and the fixed $r$ but must work simultaneously for all permitted $n,x,W$; $K$ is also chosen before $n$. In the width bound, the natural-number binary logarithm is defined to be zero at $n=0$, is zero at $n=1$, and is $\\lfloor\\log_2 n\\rfloor$ for positive $n$. Initial memory contains the integer $n$ reduced modulo $2^W$ at address zero, $x(i)$ reduced modulo $2^W$ at address $i+1$ for $0\\le i<n$, and the zero word at every other integer address, including all negative addresses. The program is a finite list whose positions are numbered by natural numbers; each instruction is exactly one of the following: write the word for $1$ into a specified integer-addressed cell; write into a specified cell the sum, difference, or product of the words in two specified cells, with these word operations performed modulo $2^W$; load into a specified cell the word at the address obtained by reading another specified cell as a signed integer; store the word in a specified source cell at the address obtained by reading another specified cell as a signed integer; branch to a specified natural program position if a specified cell read as a signed integer is negative, otherwise advance to the next position; accept with Boolean verdict true; or reject with Boolean verdict false. Each cell named directly by an instruction may have any integer address, and an indirect signed address may also be negative. For $W>0$, signed word interpretation uses the interval $[-2^{W-1},2^{W-1}-1]$; for $W=0$, the sole word and its signed interpretation are zero, so even writing $1$ yields zero. Every write updates only its destination cell and advances to the next program position; branches change only the program position; accept and reject return the current memory. Executing at any position beyond the list's end executes reject. Every executed instruction, including accept, reject, and rejection beyond the end, consumes one step; with no steps remaining there is no returned verdict or memory, even if the next instruction would halt. The default output predicate is true: the output function reads, for each natural $a$, the signed word in final-memory cell $n+1+a$, but no condition is imposed on those words or on any other final-memory contents. The strict cost hypotheses include $1<r$, and equality with any listed cost does not meet the hypotheses. Correctness is required also at $n=0,1,2$, where there are no three distinct positions and the program must reject; at $n=0$ the input bound is vacuous, and when $\\kappa=0$ the convention $n^0=1$ applies even at $n=0$. The power bound imposes no inequality at $n=0$ or $n=1$, although the halting and correctness requirement still applies there. Width zero is included if the chosen $b$ makes its lower bound zero; there is no separate hypothesis requiring positive $W$ or requiring exact signed representation of the input words.\n",
+    "model": "GPT-6",
+    "created_at": "2026-10-14T05:09:51.793865+00:00"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "d2346cd1-782c-476c-b0fa-3f0570de41ec",
+  "theorem_id": "05210b04-e306-4299-8f09-371bdfe90766",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:09:11.083033+00:00",
+  "updated_at": "2026-10-15T09:11:57.587539+00:00",
+  "explanation": "Connects the rounded executable switch to the certified analytic inequalities. The statement retains both the box-saving inequality and the entropy bound with its finite $9\\rho/\\mu$ rounding slack.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.Switch.actual_switch_certified",
+  "theorem_title": "Certification of the actual integer switching choice",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.Switch.actual_switch_certified {n j : \u2115} (hmu : 0 < _root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n)\n    (hj : j \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.Switch.terminalDepth n) :\n    let a : \u211d := (j : \u211d) / _root_.ThreeSum1960614.Machine.ThreeSum.Scales.blockCount (_root_.ThreeSum.Scales.inputBits n)\n    let t : \u211d := (_root_.ThreeSum1960614.Machine.ThreeSum.Switch.actualSwitch n j : \u211d) / _root_.ThreeSum1960614.Machine.ThreeSum.Switch.residualSize n j\n    t \u2208 Icc (0 : \u211d) (1 / 2) \u2227\n      _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.boxSaving \u2264 2 * _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.bandShift - a + (1 - a) * _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.gamma t \u2227\n      (1 - a) * _root_.ThreeSum.Parameters.entropy t <\n        _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.entropyRatio * (1 + _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.boxSaving - 2 * _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.bandShift) + 9 * _root_.ThreeSum1960614.Machine.ThreeSum.Parameters.entropyRatio / _root_.ThreeSum1960614.Machine.ThreeSum.Scales.mu n := by sorry",
+  "theorem_natural_language_statement": "Let input size $n$ have positive inner size $\\mu$, and let $j$ be no greater than its terminal depth. Set $a=j/J$ using the executable block count $J$, and $t=s/r$ using the actual integer switch $s$ and residual size $r$. With fixed box saving $b$, band shift $\\beta$, entropy ratio $\\rho$, binary entropy $H$, and entropy-loss function $\\gamma$, $$0\\le t\\le\\tfrac12,\\qquad b\\le2\\beta-a+(1-a)\\gamma(t),$$ $$ (1-a)H(t)<\\rho(1+b-2\\beta)+\\frac{9\\rho}{\\mu}.$$\n\nConnects the rounded executable switch to the certified analytic inequalities. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}

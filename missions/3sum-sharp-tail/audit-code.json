@@ -1,0 +1,37 @@
+[
+  {
+    "key": "ThreeSumSharpTail_Analysis",
+    "code": "import Mathlib\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n\nnamespace ThreeSumSharpTail\n\nnoncomputable def entropy (x : ℝ) : ℝ :=\n  -x * Real.log x - (1 - x) * Real.log (1 - x)\n\nnoncomputable def oldSaving (c θ : ℝ) : ℝ :=\n  θ * Real.log ((c - 1) / 9) / Real.log 4\n\nnoncomputable def sharpSaving (c θ : ℝ) : ℝ :=\n  (c * entropy (1 / c) - c * entropy ((1 - θ) / c) - θ * Real.log 9) / Real.log 4\n\nnoncomputable def queryExponent (θ : ℝ) : ℝ :=\n  (entropy θ + θ * Real.log 9) / Real.log 4\n\nnoncomputable def encodingExponent (c : ℝ) : ℝ :=\n  (c * Real.log 10 - c * entropy (1 / c) / 2 - (c - 1) * Real.log 3) / Real.log 4\n\ndef boxCount (c m d : ℕ) : ℕ :=\n  Nat.choose (c * m) (m - d) * 9 ^ (c * m - m + d)\n\nend ThreeSumSharpTail\n",
+    "preamble": ""
+  },
+  {
+    "key": "ThreeSumSharpTail.binomial_entropy_bounds",
+    "code": "theorem ThreeSumSharpTail.binomial_entropy_bounds (r k : ℕ) (hr : 1 ≤ r) (hk : k ≤ r) :\n    Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) / (r + 1) ≤ (Nat.choose r k : ℝ) ∧\n    (Nat.choose r k : ℝ) ≤ Real.exp ((r : ℝ) * ThreeSumSharpTail.entropy ((k : ℝ) / r)) := by sorry",
+    "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n"
+  },
+  {
+    "key": "ThreeSumSharpTail.sharp_normalized_tail",
+    "code": "theorem ThreeSumSharpTail.sharp_normalized_tail (c m : ℕ) (hc : 10 < c) (hm : 1 ≤ m)\n    (θ : ℝ) (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    ((∑ d ∈ Finset.Icc (⌈θ * (m : ℝ)⌉₊) m, ThreeSumSharpTail.boxCount c m d : ℕ) : ℝ) /\n        (ThreeSumSharpTail.boxCount c m 0 : ℝ) ≤\n      ((c : ℝ) * m + 1) / (1 - 9 / ((c : ℝ) - 1)) *\n        Real.rpow ((4 : ℝ) ^ m) (-ThreeSumSharpTail.sharpSaving c θ) := by sorry",
+    "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n"
+  },
+  {
+    "key": "ThreeSumSharpTail.sharp_saving_strict",
+    "code": "theorem ThreeSumSharpTail.sharp_saving_strict (c θ : ℝ) (hc : 10 < c)\n    (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10) :\n    0 < ThreeSumSharpTail.oldSaving c θ ∧\n    ThreeSumSharpTail.oldSaving c θ < ThreeSumSharpTail.sharpSaving c θ := by sorry",
+    "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n"
+  },
+  {
+    "key": "ThreeSumSharpTail.admissible_parameters_solve_3sum",
+    "code": "theorem ThreeSumSharpTail.admissible_parameters_solve_3sum\n    (c : ℕ) (θ : ℝ) (a s r : ℚ) (hc : 10 < c)\n    (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hs1 : s < 1)\n    (henc : (a : ℝ) * (ThreeSumSharpTail.encodingExponent c + ThreeSumSharpTail.sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < ThreeSumSharpTail.sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent θ)\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : ℝ) / 2 < 3 - (a : ℝ) * s / 2)\n    (hbuild : 2 + (a : ℝ) * (1 + (s : ℝ) / 2) < 3 - (a : ℝ) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+    "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n"
+  },
+  {
+    "key": "ThreeSumSharpTail.explicit_parameter_certificate",
+    "code": "theorem ThreeSumSharpTail.explicit_parameter_certificate :\n    (0.05665 : ℝ) * (ThreeSumSharpTail.encodingExponent 21 + ThreeSumSharpTail.sharpSaving 21 0.11202) < 1 ∧\n    (0.06945 : ℝ) < ThreeSumSharpTail.sharpSaving 21 0.11202 ∧\n    (0.06945 : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent 0.11202 ∧\n    Real.log 7 / Real.log 2 + 3 * (0.05665 : ℝ) / 2 < 3 - 0.05665 * 0.06945 / 2 ∧\n    2 + (0.05665 : ℝ) * (1 + 0.06945 / 2) < 3 - 0.05665 * 0.06945 / 2 ∧\n    (2 - (0.05665 : ℚ) * 0.06945 / 4) = 1.999016414375 ∧\n    (1.999017 : ℚ) - (2 - 0.05665 * 0.06945 / 4) = 0.000000585625 := by sorry",
+    "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n"
+  },
+  {
+    "key": "ThreeSumSharpTail.threeSum_1999017",
+    "code": "theorem ThreeSumSharpTail.threeSum_1999017 :\n    EndStatement.ThreeSum.SolvedInTime 1.999017 := by sorry",
+    "preamble": "import Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "theorem_id": "40c65758-b61e-402e-8afd-d2bc6e1784f1",
+  "theorem_name": "ThreeSumSharpTail.admissible_parameters_solve_3sum",
+  "theorem_title": "From admissible sharp-tail parameters to the shared 3SUM specification",
+  "status": "Proved",
+  "formal_statement": "theorem ThreeSumSharpTail.admissible_parameters_solve_3sum\n    (c : ℕ) (θ : ℝ) (a s r : ℚ) (hc : 10 < c)\n    (hθ0 : 0 < θ) (hθ9 : θ < 9 / 10)\n    (ha0 : 0 < a) (ha1 : a < 1) (hs0 : 0 < s) (hs1 : s < 1)\n    (henc : (a : ℝ) * (ThreeSumSharpTail.encodingExponent c + ThreeSumSharpTail.sharpSaving c θ) < 1)\n    (hprep : (s : ℝ) < ThreeSumSharpTail.sharpSaving c θ)\n    (hquery : (s : ℝ) < 1 / 2 - ThreeSumSharpTail.queryExponent θ)\n    (hprime : Real.log 7 / Real.log 2 + 3 * (a : ℝ) / 2 < 3 - (a : ℝ) * s / 2)\n    (hbuild : 2 + (a : ℝ) * (1 + (s : ℝ) / 2) < 3 - (a : ℝ) * s / 2)\n    (hr : 2 - a * s / 4 < r) :\n    EndStatement.ThreeSum.SolvedInTime r := by sorry",
+  "natural_language_statement": "Let $c>10$ be an integer, $0<\\theta<0.9$, and let $a,s,r$ be rational with $0<a<1$ and $0<s<1$. Suppose\n$$a(A(c)+\\gamma_*(c,\\theta))<1,\\qquad s<\\gamma_*(c,\\theta),\\qquad s<\\tfrac12-q(\\theta),$$\n$$\\log_2 7+\\tfrac32a<3-as/2,\\qquad 2+a(1+s/2)<3-as/2,\\qquad r>2-as/4.$$\nThen deterministic integer 3SUM satisfies the campaign's exact shared predicate `EndStatement.ThreeSum.SolvedInTime r`. This is the combined consequence of Propositions 4.1 and 5.1, not a verbatim separate proposition in the manuscript. Its proof must construct the word-RAM program and establish correctness and all costs using the inherited algorithms and reductions. No inner-algorithm oracle or correctness assumption is supplied as a hypothesis. The uniform word-width requirement in the shared specification is part of the formalization obligation.",
+  "created_at": "2026-10-13T14:54:18.965287+00:00",
+  "vote_count": 0,
+  "tags": [
+    "3sum",
+    "algorithms",
+    "fine-grained-complexity",
+    "word-ram"
+  ],
+  "preamble": "import Definitions.Def_ThreeSumSharpTail_Analysis\nimport Definitions.Def_TrulySubcubicAPSP_SourceSpecification\n\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\nopen scoped BigOperators\n",
+  "source": "Yuxuan Xu, Deterministic Integer 3SUM in O(n^1.999017) Time via a Sharper Binomial-Tail Analysis (13 October 2026), Hexagon submission https://hexagonmath.org/submit/d57cba23-2d89-4bcb-8180-7c1bde7d14e3; Propositions 4.1 and 5.1; combined consequence",
+  "deprecated_at": null,
+  "deprecated_by": null,
+  "visibility": "public",
+  "mathlib_rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audits": [
+    {
+      "audit_id": "6d3b2183-6002-4d4c-a750-d6690a2d3438",
+      "reviewer_id": "136472b2-7660-4cad-97ab-bc0d424d2ccd",
+      "reviewer_username": "Shuze Chen",
+      "decision": "confirm",
+      "comment": "Confirmed by the moderator at approval.",
+      "created_at": "2026-10-13T20:30:08.028625+00:00"
+    },
+    {
+      "audit_id": "8218a97a-9719-4759-8f6e-f47d199165a2",
+      "reviewer_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+      "reviewer_username": "Yuxuan Xu",
+      "decision": "confirm",
+      "comment": "Confirmed by the mission captain (proposal self-audit).",
+      "created_at": "2026-10-13T20:30:08.35446+00:00"
+    }
+  ],
+  "readback": {
+    "readback": "For every natural number $c$, real number $\\theta$, and rational numbers $a,s,r$, assume $c>10$, $0<\\theta<9/10$, $0<a<1$, and $0<s<1$. Define $H(x)=-x\\log x-(1-x)\\log(1-x)$, with the total real logarithm taking value $0$ at zero and the logarithm of the absolute value at negative arguments, $S=[cH(1/c)-cH((1-\\theta)/c)-\\theta\\log9]/\\log4$, $Q=[H(\\theta)+\\theta\\log9]/\\log4$, and $E=[c\\log10-cH(1/c)/2-(c-1)\\log3]/\\log4$. Also assume the five strict real inequalities $a(E+S)<1$, $s<S$, $s<1/2-Q$, $\\log7/\\log2+3a/2<3-as/2$, and $2+a(1+s/2)<3-as/2$, where natural and rational parameters are cast to the reals, together with the strict rational inequality $2-as/4<r$. The conclusion is the following quantified assertion about a specified machine: for every natural number $\\kappa$, there exist a finite instruction list $P$, a natural number $b$, a function $T:\\mathbb N\\to\\mathbb N$, and a natural number $K$ such that $T(n)^q\\le K n^{\\max(p,0)}$ for every natural $n\\ge2$, where $r=p/q$ is the reduced rational representation with integer numerator $p$ and positive natural denominator $q$. For every natural $n$, every integer sequence $(x_0,\\ldots,x_{n-1})$ satisfying $|x_i|\\le n^\\kappa$ at every position, and every natural word width $W\\ge b(\\lfloor\\log_2 n\\rfloor+1)$, with the integer logarithm taken to be $0$ at $n=0$, running this same $P$ from instruction position $0$ halts within $T(n)$ steps with acceptance if and only if there exist three pairwise distinct positions $i,j,k$ in $\\{0,\\ldots,n-1\\}$ with $x_i+x_j+x_k=0$ as integers. Memory consists of $W$-bit words at all integer addresses; initially address $0$ contains $n$ modulo $2^W$, addresses $1$ through $n$ contain the corresponding inputs modulo $2^W$, and every other address contains zero. An instruction may write the constant $1$ to a fixed integer address, add, subtract, or multiply words at two fixed addresses into another fixed address modulo $2^W$, load through an address read as a signed word, store through an address read as a signed word, jump to a specified natural instruction position if a fixed cell is negative when read as a signed word, accept, or reject. Indirect load writes into a fixed cell; indirect store reads its source from a fixed cell. Each instruction takes one step, writing proceeds to the next instruction, a non-taken conditional branch also proceeds to the next instruction, and executing beyond the finite list rejects. A halting instruction counts toward the time bound; with zero steps there is no verdict. There is no further condition on the final memory. The witnesses may depend on $\\kappa$ and the initially fixed parameters but must work uniformly for every eligible $n$, input, and $W$, with no upper bound on $W$. The correctness requirement includes $n=0,1,2$, for which no three distinct positions exist and the verdict must be rejection; the polynomial inequality only constrains $n\\ge2$. For $n=0$ the input magnitude condition is vacuous, and natural powers use $0^0=1$. The definition does not require $b>0$ or $K>0$, so if a chosen $b$ is zero the quantifier includes zero-width words. Under the parameter hypotheses $r>7/4$, so the numerator truncation in the time bound does not alter $p$. No claim is made for parameter choices failing any hypothesis, and no upper bound on $r$ is imposed.",
+    "model": "gpt-6",
+    "created_at": "2026-10-13T14:54:22.237733+00:00"
+  }
+}

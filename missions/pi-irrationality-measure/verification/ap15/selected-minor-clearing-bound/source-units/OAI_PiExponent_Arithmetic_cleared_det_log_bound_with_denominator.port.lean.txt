@@ -1,0 +1,13 @@
+theorem cleared_det_log_bound_with_denominator {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (r c : ι → ℝ) (D : ℝ)
+    (hD : 0 < D) (hr : ∀ i, 0 < r i) (hc : ∀ i, 0 < c i) (hA : A.det ≠ 0)
+    (hentries : ∀ i j, (D : ℂ) * (r i : ℂ) * ((c j : ℂ) * A i j) ∈
+      GaussianInt.toComplex.range) :
+    -(Fintype.card ι : ℝ) * Real.log D - (∑ i, Real.log (r i)) -
+      ∑ j, Real.log (c j) ≤ Real.log ‖A.det‖ := by
+  have h := cleared_det_log_bound_of_entries A (fun i => D * r i) c
+    (fun i => mul_pos hD (hr i)) hc hA (by simpa using hentries)
+  simp_rw [Real.log_mul hD.ne' (hr _).ne'] at h
+  rw [Finset.sum_add_distrib, Finset.sum_const] at h
+  simp only [Finset.card_univ, nsmul_eq_mul] at h
+  linarith

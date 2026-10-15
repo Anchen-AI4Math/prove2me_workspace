@@ -1,0 +1,277 @@
+[
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.ArithmeticStageBounds.powerBound_of_fifth",
+    "theorem_title": "Fifth-power domination transfers an exponent bound",
+    "natural_language_statement": "Let $f,g:\\mathbb N\\to\\mathbb N$ and $a\\in\\mathbb R$. If $g$ has power bound $a$ and $f(n)^5\\le256g(n)^8$ for every $n$, then $f$ has power bound $8a/5$.\n\nThis estimate converts the fifth-power arithmetic comparison into the exponent bound used for convolution costs.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Take logarithms of the finite comparison and apply the given power bound. This estimate converts the fifth-power arithmetic comparison into the exponent bound used for convolution costs."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandRawA.Stored.read",
+    "theorem_title": "Reading a stored original-index incidence",
+    "natural_language_statement": "Let memory $\\mu$ contain the parallel value, owner, and position arrays for the incidence list constructed from length $n$, band size $g$, records $R$, and original value map $f$. At every valid list index $k$, the three reads equal respectively $f$ at the labelled original position, its owner label, and its original position.\n\nThese reads let a physical wanted slot recover its original A value, owner label, and original input position.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Unpack the stored predicate at the chosen list index. These reads let a physical wanted slot recover its original A value, owner label, and original input position."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandRawA.row_stored",
+    "theorem_title": "A band row satisfies the stored-incidence relation",
+    "natural_language_statement": "Fix memory $\\mu$, original value map $f$, length $n$, band size $g$, owner $o$, and band record $r$. If row position $j$ stores value $f(\\operatorname{start}(g,r.a)+j)$, owner $o$, and that original position in the three parallel arrays, those arrays satisfy the stored-incidence predicate for the row.\n\nThis representation lemma supplies the stored-array invariant for a newly emitted original-A band row.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Identify the row labels and verify the three stored-array components. This representation lemma supplies the stored-array invariant for a newly emitted original-A band row."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandRawA.Stored.keep_before_append",
+    "theorem_title": "Appending disjoint incidence arrays preserves the stored prefix",
+    "natural_language_statement": "Let $\\mu$ store a label list $L$ in three parallel arrays of common reserved capacity $C$, each ending before the next begins. Suppose an update to $\\nu$ preserves cells outside the three append windows of length $m$, and $|L|+m\\le C$. The original prefix $L$ remains stored in $\\nu$.\n\nThis preservation lemma permits further owner rows to be appended without invalidating earlier physical incidences.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Capacity and separation place all prefix cells outside the append windows. This preservation lemma permits further owner rows to be appended without invalidating earlier physical incidences."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BandScales.bandDivisor_log_rate",
+    "theorem_title": "Logarithmic rate of the band divisor",
+    "natural_language_statement": "As $n\\to\\infty$, the actual integer band divisor satisfies $$\\frac{\\log(\\operatorname{bandDivisor}(n))}{\\log n}\\longrightarrow-\\operatorname{bandShift}\\,\\varepsilon,$$ with the fixed schedule parameters shown.\n\nThis limit supplies the exact rounded divisor exponent when deriving the actual band-size and band-count rates.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Compute the limit from the rounded integer schedule. This limit supplies the exact rounded divisor exponent when deriving the actual band-size and band-count rates."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockSourceCatalogCosts.catalogCells_le_encoderCount",
+    "theorem_title": "Catalog cells are bounded by the encoder count",
+    "natural_language_statement": "For input length $n$, let $J=\\operatorname{blockCount}(\\operatorname{inputBits}(n))$ and $\\mu=\\operatorname{mu}(n)$. Then $$\\operatorname{catalogCells}(n)\\le(J+464\\mu+7)(232\\mu+2)\\operatorname{encoderCount}(n).$$\n\nThis estimate charges the complete retained catalog allocation to the finite encoder-count term of the ledger.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the exact catalog layout by the finite encoder envelope. This estimate charges the complete retained catalog allocation to the finite encoder-count term of the ledger."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.BlockSourceCoverInput.Input.of_kept",
+    "theorem_title": "Retained cover input survives a protected-memory update",
+    "natural_language_statement": "Suppose $\\mu$ stores cover input for size $h$ at its coefficient, candidate, and two histogram bases. If $\\nu$ agrees below bound $b$, and every array ends by $b$ using its specified schedule and local-prime length, then the identical cover-input predicate holds in $\\nu$.\n\nThis transport permits source construction to reuse protected coefficient and histogram tables after intervening calls.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Transport each defining read through protected-prefix agreement. This transport permits source construction to reuse protected coefficient and histogram tables after intervening calls."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.DenseGuardWanted.pair_indices_injective",
+    "theorem_title": "Physical wanted-pair indices are injective",
+    "natural_language_statement": "Let wanted-setup output be stored in $\\mu$ at base $f$, for source functions of lengths $N_L,N_R$, modulus $M$, and shift $d$. If valid slots $k,k'$ decode to the same left and right physical indices, then $k=k'$.\n\nThis injectivity prevents two physical wanted slots from being charged as the same original-index pair.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Recover the unique slot from its physical pair in the exact enumeration. This injectivity prevents two physical wanted slots from being charged as the same original-index pair."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorCoverData.source_controls",
+    "theorem_title": "Reading retained cover source controls",
+    "natural_language_statement": "A stored cover-key output at base $f$, local size $h$, and block count $J$ returns at the designated offsets the local prime, bucket cap, width $464h$, schedule size, coefficient pointer, selected-candidate pointer, and both histogram pointers.\n\nThese header equations supply the concrete source controls read by the selected-color source-bank constructor.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Unpack the stored header and finite-input layout. These header equations supply the concrete source controls read by the selected-color source-bank constructor."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorParameterData.reads",
+    "theorem_title": "Reading initialized integer parameters",
+    "natural_language_statement": "If the segment at parameter base $p$ contains initializer values for input length $n$, offsets $0,1,3,4,14,17,18$ contain respectively the bit count, micro-half size, block count, total block size, radix, band size, and prime-window size.\n\nThese read equations connect parameter-header RAM expressions to the exact integer schedule used in later contracts.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Evaluate the relevant initializer-list entries. These read equations connect parameter-header RAM expressions to the exact integer schedule used in later contracts."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorPipelineData.ordered",
+    "theorem_title": "The encoded-color pipeline layout is ordered",
+    "natural_language_statement": "For free base $f$, input length $n$, and strictly increasing integer lists $A,B,C$, the prime metadata and initial header precede the cover base. The cover and four-cell wanted header precede the source controls. The three-cell controls and five-cell bank header fit before the pipeline finish address, using the exact list-dependent layout.\n\nThese address comparisons justify preservation of prime, cover, wanted, and source headers during subsequent allocation.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Compare layout formulas using nonnegativity of allocated extents. These address comparisons justify preservation of prime, cover, wanted, and source headers during subsequent allocation."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.EncodedColorPrimeData.Stored.of_kept",
+    "theorem_title": "Retained prime metadata survives a protected-memory update",
+    "natural_language_statement": "Suppose $\\mu$ stores the common-prime header, pool, and prefix moduli $q_i$ for base $f$, parameter $M$, and window $y$. If $\\nu$ agrees below $b$ and the full prime allocation ends by $b$, the same stored-prime predicate holds in $\\nu$.\n\nThis transport keeps the selected modulus and prime-chain metadata available while later pipeline regions are built.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Preserve every header, pool, and prefix-modulus read. This transport keeps the selected modulus and prime-chain metadata available while later pipeline regions are built."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.GlobalKeyEnumeration.rawOutput_abs_le",
+    "theorem_title": "Absolute bound for a local raw output key",
+    "natural_language_statement": "For natural local size $h$, width $L$, local-field weight assignment $w$, and coordinate subset $Q\\subseteq\\{0,\\ldots,L-1\\}$, $$|\\operatorname{rawOutput}(w,Q)|\\le L\\operatorname{localPrime}(h).$$\n\nThis bound places constructed local keys inside the finite word envelopes required by the actual key-building code.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the coefficient sum by the coordinate count times the local prime. This bound places constructed local keys inside the finite word envelopes required by the actual key-building code."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.HierarchyScales.hierarchyEnvelope_log_rate",
+    "theorem_title": "Logarithmic rate of the hierarchy envelope",
+    "natural_language_statement": "For any real constants $C,B$, $$\\frac{\\log(\\operatorname{hierarchyEnvelope}(C,B,n))}{\\log n}\\longrightarrow\\varepsilon C\\quad(n\\to\\infty).$$ Here $\\varepsilon$ is the fixed scale parameter.\n\nThis limit converts a hierarchy envelope into the polynomial exponent used by the final uniform runtime bound.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Combine the schedule limits in the defined envelope. This limit converts a hierarchy envelope into the polynomial exponent used by the final uniform runtime bound."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.Karatsuba.product_coeff_bound",
+    "theorem_title": "A coefficient bound for polynomial multiplication",
+    "natural_language_statement": "Let integer lists $a,b$ have length at most $n$ and coefficient bound $U$. Every coefficient of their polynomial product satisfies $$|[X^j](A(X)B(X))|\\le2nU^2\\qquad(j\\in\\mathbb N).$$\n\nThis coefficient estimate supplies a safe word bound for the concrete Karatsuba product and its intermediate arrays.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the finite convolution termwise. This coefficient estimate supplies a safe word bound for the concrete Karatsuba product and its intermediate arrays."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandLookup.search_meets",
+    "theorem_title": "Binary band search returns the partition boundary",
+    "natural_language_statement": "A recursive search procedure reads a length-$n$ array $f$ at address $a$ and a width-$W$ power table. Suppose $f$ is partitioned for query $x$ at $K$, all declared address and word bounds hold, $L\\le W$, and $k\\le K<k+2^L$. If depth $d+L$ is allowed, the call on these controls returns $K$ within the declared search time and leaves memory unchanged.\n\nThis search contract supplies exact partition boundaries for physical band lookup without changing endpoint storage.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Induct on the remaining width and retain the interval invariant. This search contract supplies exact partition boundaries for physical band lookup without changing endpoint storage."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandPreprocessing.Represents.keep",
+    "theorem_title": "Band representations survive protected-memory updates",
+    "natural_language_statement": "Let $g>0$ and a strictly increasing list $L$ represent an original list through stored values and endpoints in $\\mu$. If $\\mu'$ agrees below $b$ and the value and endpoint arrays fit below $b$, then the same representation holds in $\\mu'$.\n\nThis transport lets later allocations retain the normalized values and exact band endpoints used by owner lookup.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Transfer all representation reads through memory agreement. This transport lets later allocations retain the normalized values and exact band endpoints used by owner lookup."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandRawAColor.tables_keep",
+    "theorem_title": "Owner tables survive protected-memory updates",
+    "natural_language_statement": "Let band families $A,B,C$ have their enumeration tables stored at $t$ in $\\mu$. If $\\nu$ agrees below $b$ and the complete prescribed table extent ends by $b$, those tables remain stored in $\\nu$.\n\nThis preservation fact keeps the computed owner tables valid during construction of physical original-A rows.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Preserve the entire table segment. This preservation fact keeps the computed owner tables valid during construction of physical original-A rows."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBandWeightedScoreSlice.meets",
+    "theorem_title": "Computing a truncated band length",
+    "natural_language_statement": "Suppose procedure $p$ is the truncated-band-length body, $g>0$, $ig\\le n$, and the word bound accommodates $n+g+4$. Its call on $(n,g,i)$ returns the exact truncated band length within the declared constant time and preserves memory.\n\nThis constant-time length query supplies the exact final truncated-band size to the weighted-score procedure.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the straight-line arithmetic and minimum branch. This constant-time length query supplies the exact final truncated-band size to the weighted-score procedure."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightBruteThreeSum.poly_need",
+    "theorem_title": "The finite fallback has polynomial resource needs",
+    "natural_language_statement": "The concrete brute-force 3SUM resource-need function satisfies the precise polynomial-need predicate of the light-language framework.\n\nThis polynomial-resource fact allows the finite fallback to participate in the same word-RAM compilation interface.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound its explicit space, word, and depth needs by fixed polynomials. This polynomial-resource fact allows the finite fallback to participate in the same word-RAM compilation interface."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightEncodedColorResult.meets",
+    "theorem_title": "Materializing the encoded-color result header",
+    "natural_language_statement": "Suppose the prime, cover, wanted, control, and bank pointers precede output address $o$, eight output cells fit, the length and modulus fit words, and addresses fit words. The result-header procedure returns $o$ in at most 600 light steps, writes the specified eight-cell record, and preserves memory below $o$.\n\nThis record-writing contract exposes the completed selected-color pipeline through actual stored pointers and counts.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Execute the stores and check their safety and costs. This record-writing contract exposes the completed selected-color pipeline through actual stored pointers and counts."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightKaratsuba.joined_product",
+    "theorem_title": "Karatsuba recombination recovers product coefficients",
+    "natural_language_statement": "Let integer lists $a,b$ have length $n=2h$. If three workspace blocks store the low-half product, high-half product, and product of half-sums, then for every $j$ the recombined value equals $$[X^j](A(X)B(X)).$$\n\nThis identity connects the stored three-product recombination to the polynomial coefficients required by cyclic correlation.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Reuses the platform-proved Karatsuba joining identity, with the identical coefficient-storage predicate. The platform checks that its complete proof type agrees with this existing target; no assumption or bound is added."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.rounds_bound",
+    "theorem_title": "An exponential bound on the cover schedule",
+    "natural_language_statement": "For every natural local size $h$, $$\\operatorname{scheduleSize}(h)\\le2^{1029h+16}.$$\n\nThis explicit schedule bound contributes to the common local-cover magnitude and finite word-resource envelope.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the exact finite schedule by the displayed power of two. This explicit schedule bound contributes to the common local-cover magnitude and finite word-resource envelope."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverMagnitude.cap_bound",
+    "theorem_title": "An exponential bound on the local bucket cap",
+    "natural_language_statement": "For every natural local size $h$, $$\\operatorname{localBucketCap}(h)\\le2^{514h+6}.$$\n\nThis explicit cap bound controls the retained-bucket threshold inside the local-cover word and time estimates.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Use the finite estimates defining the selected local cap. This explicit cap bound controls the retained-bucket threshold inside the local-cover word and time estimates."
+  },
+  {
+    "name": "ThreeSum1960614.Machine.ThreeSum.LightLocalCoverResources.word_polynomial",
+    "theorem_title": "A quadratic word envelope for local-cover setup",
+    "natural_language_statement": "If natural parameters $h,B$ satisfy the complete local-cover magnitude-bounds predicate, then $$\\operatorname{setupWord}(h)\\le2000B^2.$$\n\nThis quadratic estimate turns the common local-cover magnitude into a concrete setup word requirement.",
+    "tags": [
+      "3sum-1960614",
+      "formal-verification",
+      "algorithms"
+    ],
+    "explanation": "Bound the setup word summands by the common envelope. This quadratic estimate turns the common local-cover magnitude into a concrete setup word requirement."
+  }
+]

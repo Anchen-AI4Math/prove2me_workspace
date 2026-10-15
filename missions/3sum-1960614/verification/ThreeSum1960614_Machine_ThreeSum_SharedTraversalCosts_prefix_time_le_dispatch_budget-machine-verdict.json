@@ -1,0 +1,15 @@
+{
+  "id": "557d3f2e-8897-4924-a55c-77d896f1f1a8",
+  "theorem_id": "30bb9258-c40d-42be-9908-09b788eccd69",
+  "user_id": "418b0711-62a5-416a-ba5d-876ae8758fe3",
+  "status": "ACCEPTED",
+  "error_message": "",
+  "created_at": "2026-10-15T09:06:22.021407+00:00",
+  "updated_at": "2026-10-15T09:08:57.645359+00:00",
+  "explanation": "Sums the actual threshold-sensitive scan recurrence into its uniform ledger budget. The recurrence charges expensive traversal only before threshold overflow, while the wanted-count and threshold budgets control the total.",
+  "theorem_name": "ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget",
+  "theorem_title": "A guarded prefix recurrence fits the dispatch budget",
+  "theorem_formal_statement": "theorem ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.prefix_time_le_dispatch_budget {time mass : \u2115 \u2192 \u2115} {c n k threshold count : \u2115}\n    (hzero : time 0 \u2264 30)\n    (hstep : \u2200 i, time (i+1) \u2264 time i+(_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scaledOverhead n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.queryTerms n 0+_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scalarOverhead c n)+\n      if threshold < _root_.ThreeSum.SharedTraversalCosts.prefixMass mass i+mass i then 0 else\n        mass i*(_root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.scaledOverhead n*(_root_.ThreeSum.CostLedger.microPartitions n*_root_.ThreeSum1960614.Machine.ThreeSum.CostLedger.allQueryTerms n+_root_.ThreeSum1960614.Machine.ThreeSum.StageBounds.terminalChoices n)))\n    (hcount : count \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.wantedBudget n)\n    (hthreshold : threshold \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.UniformStageBounds.falseBudget k n*_root_.ThreeSum1960614.Machine.ThreeSum.TrimScales.representationBound n) :\n    time count \u2264 _root_.ThreeSum1960614.Machine.ThreeSum.SharedTraversalCosts.dispatchBudget c k n := by sorry",
+  "theorem_natural_language_statement": "Let $T,m:\\mathbb N\\to\\mathbb N$ be accumulated time and per-slot mass. Suppose $T(0)\\le30$ and every increment is bounded by the specified query/scalar overhead plus the mass-weighted traversal charge only when the running prefix mass remains within threshold $q$. If the processed count is at most the uniform wanted budget and $q$ is at most the uniform false budget times the representation bound, then $$T(\\mathrm{count})\\le\\operatorname{dispatchBudget}(c,k,n),$$ for the natural scalar overhead parameter $c$, magnitude exponent $k$, and size $n$.\n\nSums the actual threshold-sensitive scan recurrence into its uniform ledger budget. This supports the complete deterministic integer 3SUM runtime proof.",
+  "theorem_status": "Proved"
+}
