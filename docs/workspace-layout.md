@@ -64,6 +64,10 @@ python scripts/workspace.py check
 
 ## 整理记录
 
+2026-10-17：删除根目录及共享依赖的 `.lake/build` 编译缓存，以及已有官方 `.tar.zst` 和解压目录的 Linux Lean `.tar` 中间包，释放约 16.83 GiB。保留 Mathlib/依赖源码与 Git 历史、固定工具链配置、任务内独立验证项目、全部研究源码和原始日志。保留的运行时 `.tar.zst` SHA-256 与原 manifest 一致。逐目录的字节数与文件数见 [清理清单](workspace-cleanup-2026-10-17.json)。
+
+清理后，下一次任务构建需要重新生成缓存，耗时会增加；仍使用 `python scripts/workspace.py build <slug>`，不要为恢复缓存而全量构建所有任务。清理前后运行结构检查，不将其表述为 Lean 证明复验。Git 提交保存清理清单与文档；被忽略的本地缓存删除本身不出现在 Git diff 中。
+
 2026-10-11：补齐大型证据的压缩归档与无损恢复入口，完善缓存和私有发布材料的忽略规则，修复五素数任务的两份源码归属，修复任务导航表格。保留既有任务状态、研究源码与全部 Lean 模块路径；未进行全量 Lean 审计。详细清理结果见 [清理记录](workspace-cleanup-2026-10-11.json)。
 
 2026-09-27：补齐任务索引，增加 18 个任务的上下文与构建清单，取消默认全量构建。根目录的 Zudilin 说明和 HTML 移至 `missions/zudilin/research/`；根目录临时 Lean 探针移至 `tmp/`。既有未提交证明、历史记录、发布目录和缓存均保留。
